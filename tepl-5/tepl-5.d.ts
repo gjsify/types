@@ -1540,13 +1540,34 @@ export namespace Tepl {
          * See the #GAsyncResult documentation to know how to use this function.
          * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        load_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Loads asynchronously the file content into the #TeplBuffer.
+         *
+         * See the #GAsyncResult documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         */
+        load_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Loads asynchronously the file content into the #TeplBuffer.
+         *
+         * See the #GAsyncResult documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
          */
         load_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes a file loading started with tepl_file_loader_load_async().
          * @param result a #GAsyncResult.
@@ -1630,13 +1651,32 @@ export namespace Tepl {
          * documentation to know how to use this function.
          * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        save_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Saves asynchronously the buffer into the file. See the #GAsyncResult
+         * documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         */
+        save_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Saves asynchronously the buffer into the file. See the #GAsyncResult
+         * documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
          */
         save_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes a file saving started with tepl_file_saver_save_async().
          *
@@ -6194,9 +6234,24 @@ export namespace Tepl {
          * appropriate #TeplFileSaver and asynchronously runs it.
          *
          * See the #GAsyncResult documentation to know how to use this function.
+         */
+        save_as_async(): Promise<boolean>;
+        /**
+         * Shows a #GtkFileChooser to save the `tab` to a different location, creates an
+         * appropriate #TeplFileSaver and asynchronously runs it.
+         *
+         * See the #GAsyncResult documentation to know how to use this function.
          * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
          */
-        save_as_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        save_as_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Shows a #GtkFileChooser to save the `tab` to a different location, creates an
+         * appropriate #TeplFileSaver and asynchronously runs it.
+         *
+         * See the #GAsyncResult documentation to know how to use this function.
+         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         */
+        save_as_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * The same as tepl_tab_save_as_async(), but without callback.
          *
@@ -6216,9 +6271,24 @@ export namespace Tepl {
          * be %NULL.
          *
          * See the #GAsyncResult documentation to know how to use this function.
+         */
+        save_async(): Promise<boolean>;
+        /**
+         * Saves asynchronously the content of the `tab`. The #TeplFile:location must not
+         * be %NULL.
+         *
+         * See the #GAsyncResult documentation to know how to use this function.
          * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
          */
-        save_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        save_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Saves asynchronously the content of the `tab`. The #TeplFile:location must not
+         * be %NULL.
+         *
+         * See the #GAsyncResult documentation to know how to use this function.
+         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         */
+        save_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * The same as tepl_tab_save_async(), but without callback.
          *

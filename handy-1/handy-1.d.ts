@@ -5970,6 +5970,34 @@ export namespace Handy {
          * @param size the size of the pixbuf
          * @param scale_factor the scale factor
          * @param cancellable a cancellable
+         */
+        draw_to_pixbuf_async(
+            size: number,
+            scale_factor: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<GdkPixbuf.Pixbuf>;
+        /**
+         * Renders asynchronously `self` into a pixbuf at `size` and `scale_factor`.
+         *
+         * This can be used to export the fallback avatar.
+         * @param size the size of the pixbuf
+         * @param scale_factor the scale factor
+         * @param cancellable a cancellable
+         * @param callback a [callback@Gio.AsyncReadyCallback] to call when   the avatar is generated
+         */
+        draw_to_pixbuf_async(
+            size: number,
+            scale_factor: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Renders asynchronously `self` into a pixbuf at `size` and `scale_factor`.
+         *
+         * This can be used to export the fallback avatar.
+         * @param size the size of the pixbuf
+         * @param scale_factor the scale factor
+         * @param cancellable a cancellable
          * @param callback a [callback@Gio.AsyncReadyCallback] to call when   the avatar is generated
          */
         draw_to_pixbuf_async(
@@ -5977,7 +6005,7 @@ export namespace Handy {
             scale_factor: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GdkPixbuf.Pixbuf> | void;
         /**
          * Finishes an asynchronous draw of an avatar to a pixbuf.
          * @param async_result a [iface@Gio.AsyncResult]

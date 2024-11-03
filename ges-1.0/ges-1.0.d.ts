@@ -2048,13 +2048,100 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -8122,13 +8209,100 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -10424,13 +10598,100 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -16460,13 +16721,6 @@ export namespace GES {
          * @param handle_events a #gboolean indicating if events should be handled or not.
          */
         vfunc_handle_events(handle_events: boolean): void;
-        /**
-         * virtual method to set the render rectangle
-         * @param x
-         * @param y
-         * @param width
-         * @param height
-         */
         vfunc_set_render_rectangle(x: number, y: number, width: number, height: number): void;
         /**
          * This will call the video overlay's set_window_handle method. You
@@ -17626,13 +17880,100 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -19119,13 +19460,100 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -28327,13 +28755,100 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -30410,13 +30925,100 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -30972,13 +31574,100 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().

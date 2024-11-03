@@ -9826,28 +9826,9 @@ export namespace Clutter {
          * @param flags flags that control the allocation
          */
         vfunc_allocate(box: ActorBox, flags: AllocationFlags): void;
-        /**
-         * virtual function, used when applying the transformations
-         *   to an actor before painting it or when transforming coordinates or
-         *   the allocation; it must chain up to the parent's implementation
-         * @param matrix
-         */
         vfunc_apply_transform(matrix: Matrix): void;
-        /**
-         * class handler for #ClutterActor::button-press-event
-         * @param event
-         */
         vfunc_button_press_event(event: ButtonEvent): boolean;
-        /**
-         * class handler for
-         *   #ClutterActor::button-release-event
-         * @param event
-         */
         vfunc_button_release_event(event: ButtonEvent): boolean;
-        /**
-         * signal class closure for #ClutterActor::captured-event
-         * @param event
-         */
         vfunc_captured_event(event: Event): boolean;
         /**
          * Destroys an actor.  When an actor is destroyed, it will break any
@@ -9860,15 +9841,7 @@ export namespace Clutter {
          * clutter_stage_get_default().
          */
         vfunc_destroy(): void;
-        /**
-         * signal class closure for #ClutterActor::enter-event
-         * @param event
-         */
         vfunc_enter_event(event: CrossingEvent): boolean;
-        /**
-         * class handler for #ClutterActor::event
-         * @param event
-         */
         vfunc_event(event: Event): boolean;
         /**
          * Returns the accessible object that describes the actor to an
@@ -9885,11 +9858,6 @@ export namespace Clutter {
          * their uses.
          */
         vfunc_get_accessible(): Atk.Object;
-        /**
-         * virtual function, for sub-classes to define their
-         *   #ClutterPaintVolume
-         * @param volume
-         */
         vfunc_get_paint_volume(volume: PaintVolume): boolean;
         /**
          * Computes the requested minimum and natural heights for an actor,
@@ -9944,29 +9912,10 @@ export namespace Clutter {
          * Calls clutter_actor_hide() on all child actors (if any).
          */
         vfunc_hide_all(): void;
-        /**
-         * signal class closure for #ClutterActor::key-focus-in
-         */
         vfunc_key_focus_in(): void;
-        /**
-         * signal class closure for #ClutterActor::key-focus-out
-         */
         vfunc_key_focus_out(): void;
-        /**
-         * signal class closure for #ClutterActor::key-press-event
-         * @param event
-         */
         vfunc_key_press_event(event: KeyEvent): boolean;
-        /**
-         * signal class closure for
-         *   #ClutterActor::key-release-event
-         * @param event
-         */
         vfunc_key_release_event(event: KeyEvent): boolean;
-        /**
-         * signal class closure for #ClutterActor::leave-event
-         * @param event
-         */
         vfunc_leave_event(event: CrossingEvent): boolean;
         /**
          * Sets the %CLUTTER_ACTOR_MAPPED flag on the actor and possibly maps
@@ -9981,10 +9930,6 @@ export namespace Clutter {
          * implementation.
          */
         vfunc_map(): void;
-        /**
-         * signal class closure for #ClutterActor::motion-event
-         * @param event
-         */
         vfunc_motion_event(event: MotionEvent): boolean;
         /**
          * Renders the actor to display.
@@ -10002,27 +9947,9 @@ export namespace Clutter {
          * unless it is performing a pick paint.
          */
         vfunc_paint(): void;
-        /**
-         * virtual function for creating paint nodes and attaching
-         *   them to the render tree
-         * @param root
-         */
         vfunc_paint_node(root: PaintNode): void;
-        /**
-         * signal class handler for the #ClutterActor::parent-set
-         * @param old_parent
-         */
         vfunc_parent_set(old_parent: Actor): void;
-        /**
-         * virtual function, used to draw an outline of the actor with
-         *   the given color
-         * @param color
-         */
         vfunc_pick(color: Color): void;
-        /**
-         * class handler for #ClutterActor::queue-redraw
-         * @param leaf_that_queued
-         */
         vfunc_queue_redraw(leaf_that_queued: Actor): void;
         /**
          * Indicates that the actor's size request or other layout-affecting
@@ -10050,10 +9977,6 @@ export namespace Clutter {
          * suddenly map (and thus realize) the children of the stage.
          */
         vfunc_realize(): void;
-        /**
-         * signal class closure for #ClutterActor::scroll-event
-         * @param event
-         */
         vfunc_scroll_event(event: ScrollEvent): boolean;
         /**
          * Flags an actor to be displayed. An actor that isn't shown will not
@@ -10070,10 +9993,6 @@ export namespace Clutter {
          * Calls clutter_actor_show() on all children of an actor (if any).
          */
         vfunc_show_all(): void;
-        /**
-         * signal class closure for #ClutterActor::touch-event
-         * @param event
-         */
         vfunc_touch_event(event: TouchEvent): boolean;
         /**
          * Unsets the %CLUTTER_ACTOR_MAPPED flag on the actor and possibly
@@ -12873,15 +12792,7 @@ export namespace Clutter {
          * be normally used by applications.
          */
         sort_depth_order(): void;
-        /**
-         * class handler for #ClutterContainer::actor-added
-         * @param actor
-         */
         vfunc_actor_added(actor: Actor): void;
-        /**
-         * class handler for #ClutterContainer::actor-removed
-         * @param actor
-         */
         vfunc_actor_removed(actor: Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -14317,9 +14228,6 @@ export namespace Clutter {
          * #ClutterAnimation::completed signal
          */
         vfunc_completed(): void;
-        /**
-         * class handler for the #ClutterAnimation::started signal
-         */
         vfunc_started(): void;
 
         // Methods
@@ -15746,23 +15654,8 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * virtual function, called each time the #ClutterAlpha
-         *   computes a new alpha value; the actors to which the behaviour applies
-         *   should be changed in this function. Every subclass of #ClutterBehaviour
-         *   must implement this virtual function
-         * @param alpha_value
-         */
         vfunc_alpha_notify(alpha_value: number): void;
-        /**
-         * signal class handler for the ClutterBehaviour::applied signal
-         * @param actor
-         */
         vfunc_applied(actor: Actor): void;
-        /**
-         * signal class handler for the ClutterBehaviour::removed signal
-         * @param actor
-         */
         vfunc_removed(actor: Actor): void;
 
         // Methods
@@ -18080,11 +17973,6 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * signal class handler for the
-         *   ClutterBehaviourPath::knot_reached signal
-         * @param knot_num
-         */
         vfunc_knot_reached(knot_num: number): void;
 
         // Methods
@@ -20490,15 +20378,7 @@ export namespace Clutter {
          * be normally used by applications.
          */
         sort_depth_order(): void;
-        /**
-         * class handler for #ClutterContainer::actor-added
-         * @param actor
-         */
         vfunc_actor_added(actor: Actor): void;
-        /**
-         * class handler for #ClutterContainer::actor-removed
-         * @param actor
-         */
         vfunc_actor_removed(actor: Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -21558,17 +21438,7 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * class handler for the #ClutterCairoTexture::create-surface
-         *   signal
-         * @param width
-         * @param height
-         */
         vfunc_create_surface(width: number, height: number): cairo.Surface;
-        /**
-         * class handler for the #ClutterCairoTexture::draw signal
-         * @param cr
-         */
         vfunc_draw(cr: cairo.Context): boolean;
 
         // Methods
@@ -22176,12 +22046,6 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * class handler for the #ClutterCanvas::draw signal
-         * @param cr
-         * @param width
-         * @param height
-         */
         vfunc_draw(cr: cairo.Context, width: number, height: number): boolean;
 
         // Methods
@@ -22246,17 +22110,7 @@ export namespace Clutter {
          * actor state.
          */
         invalidate(): void;
-        /**
-         * virtual function; called each time a #ClutterContent is attached
-         *   to a #ClutterActor.
-         * @param actor
-         */
         vfunc_attached(actor: Actor): void;
-        /**
-         * virtual function; called each time a #ClutterContent is detached
-         *   from a #ClutterActor.
-         * @param actor
-         */
         vfunc_detached(actor: Actor): void;
         /**
          * Retrieves the natural size of the `content,` if any.
@@ -22274,12 +22128,6 @@ export namespace Clutter {
          * actor state.
          */
         vfunc_invalidate(): void;
-        /**
-         * virtual function; called each time the content needs to
-         *   paint itself
-         * @param actor
-         * @param node
-         */
         vfunc_paint_content(actor: Actor, node: PaintNode): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -22867,16 +22715,7 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * class handler for the #ClutterClickAction::clicked signal
-         * @param actor
-         */
         vfunc_clicked(actor: Actor): void;
-        /**
-         * class handler for the #ClutterClickAction::long-press signal
-         * @param actor
-         * @param state
-         */
         vfunc_long_press(actor: Actor, state: LongPressState): boolean;
 
         // Methods
@@ -23232,15 +23071,7 @@ export namespace Clutter {
          * be normally used by applications.
          */
         sort_depth_order(): void;
-        /**
-         * class handler for #ClutterContainer::actor-added
-         * @param actor
-         */
         vfunc_actor_added(actor: Actor): void;
-        /**
-         * class handler for #ClutterContainer::actor-removed
-         * @param actor
-         */
         vfunc_actor_removed(actor: Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -23896,23 +23727,7 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * virtual function used to update the allocation
-         *   of the #ClutterActor using the #ClutterConstraint
-         * @param actor
-         * @param allocation
-         */
         vfunc_update_allocation(actor: Actor, allocation: ActorBox): void;
-        /**
-         * virtual function used to update the preferred
-         *   size of the #ClutterActor using the #ClutterConstraint; optional,
-         *   since 1.22
-         * @param actor
-         * @param direction
-         * @param for_size
-         * @param minimum_size
-         * @param natural_size
-         */
         vfunc_update_preferred_size(
             actor: Actor,
             direction: Orientation,
@@ -23975,13 +23790,6 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * virtual function; sub-classes should override this
-         *   function to compute the deformation of each vertex
-         * @param width
-         * @param height
-         * @param vertex
-         */
         vfunc_deform_vertex(width: number, height: number, vertex: Cogl.TextureVertex): void;
 
         // Methods
@@ -24397,35 +24205,9 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * class handler of the #ClutterDragAction::drag-begin signal
-         * @param actor
-         * @param event_x
-         * @param event_y
-         * @param modifiers
-         */
         vfunc_drag_begin(actor: Actor, event_x: number, event_y: number, modifiers: ModifierType): void;
-        /**
-         * class handler of the #ClutterDragAction::drag-end signal
-         * @param actor
-         * @param event_x
-         * @param event_y
-         * @param modifiers
-         */
         vfunc_drag_end(actor: Actor, event_x: number, event_y: number, modifiers: ModifierType): void;
-        /**
-         * class handler of the #ClutterDragAction::drag-motion signal
-         * @param actor
-         * @param delta_x
-         * @param delta_y
-         */
         vfunc_drag_motion(actor: Actor, delta_x: number, delta_y: number): void;
-        /**
-         * class handler of the #ClutterDragAction::drag-progress signal
-         * @param actor
-         * @param delta_x
-         * @param delta_y
-         */
         vfunc_drag_progress(actor: Actor, delta_x: number, delta_y: number): boolean;
 
         // Methods
@@ -24581,29 +24363,9 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * class handler for the #ClutterDropAction::can-drop signal
-         * @param actor
-         * @param event_x
-         * @param event_y
-         */
         vfunc_can_drop(actor: Actor, event_x: number, event_y: number): boolean;
-        /**
-         * class handler for the #ClutterDropAction::drop signal
-         * @param actor
-         * @param event_x
-         * @param event_y
-         */
         vfunc_drop(actor: Actor, event_x: number, event_y: number): void;
-        /**
-         * class handler for the #ClutterDropAction::over-in signal
-         * @param actor
-         */
         vfunc_over_in(actor: Actor): void;
-        /**
-         * class handler for the #ClutterDropAction::over-out signal
-         * @param actor
-         */
         vfunc_over_out(actor: Actor): void;
     }
 
@@ -24628,28 +24390,10 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * virtual function
-         * @param volume
-         */
         vfunc_get_paint_volume(volume: PaintVolume): boolean;
-        /**
-         * virtual function
-         * @param flags
-         */
         vfunc_paint(flags: EffectPaintFlags): void;
-        /**
-         * virtual function
-         * @param flags
-         */
         vfunc_pick(flags: EffectPaintFlags): void;
-        /**
-         * virtual function
-         */
         vfunc_post_paint(): void;
-        /**
-         * virtual function
-         */
         vfunc_pre_paint(): boolean;
 
         // Methods
@@ -25059,31 +24803,10 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * class handler for the #ClutterGestureAction::gesture-begin signal
-         * @param actor
-         */
         vfunc_gesture_begin(actor: Actor): boolean;
-        /**
-         * class handler for the #ClutterGestureAction::gesture-cancel signal
-         * @param actor
-         */
         vfunc_gesture_cancel(actor: Actor): void;
-        /**
-         * class handler for the #ClutterGestureAction::gesture-end signal
-         * @param actor
-         */
         vfunc_gesture_end(actor: Actor): void;
-        /**
-         * virtual function called before emitting the
-         *   #ClutterGestureAction::gesture-cancel signal
-         * @param actor
-         */
         vfunc_gesture_prepare(actor: Actor): boolean;
-        /**
-         * class handler for the #ClutterGestureAction::gesture-progress signal
-         * @param actor
-         */
         vfunc_gesture_progress(actor: Actor): boolean;
 
         // Methods
@@ -25701,15 +25424,7 @@ export namespace Clutter {
          * be normally used by applications.
          */
         sort_depth_order(): void;
-        /**
-         * class handler for #ClutterContainer::actor-added
-         * @param actor
-         */
         vfunc_actor_added(actor: Actor): void;
-        /**
-         * class handler for #ClutterContainer::actor-removed
-         * @param actor
-         */
         vfunc_actor_removed(actor: Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -26434,17 +26149,7 @@ export namespace Clutter {
          * actor state.
          */
         invalidate(): void;
-        /**
-         * virtual function; called each time a #ClutterContent is attached
-         *   to a #ClutterActor.
-         * @param actor
-         */
         vfunc_attached(actor: Actor): void;
-        /**
-         * virtual function; called each time a #ClutterContent is detached
-         *   from a #ClutterActor.
-         * @param actor
-         */
         vfunc_detached(actor: Actor): void;
         /**
          * Retrieves the natural size of the `content,` if any.
@@ -26462,12 +26167,6 @@ export namespace Clutter {
          * actor state.
          */
         vfunc_invalidate(): void;
-        /**
-         * virtual function; called each time the content needs to
-         *   paint itself
-         * @param actor
-         * @param node
-         */
         vfunc_paint_content(actor: Actor, node: PaintNode): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -28416,10 +28115,6 @@ export namespace Clutter {
          * value
          */
         vfunc_get_animation_progress(): number;
-        /**
-         * virtual function; override to return the #GType
-         *   of the #ClutterLayoutMeta sub-class used by the #ClutterLayoutManager
-         */
         vfunc_get_child_meta_type(): GObject.GType;
         /**
          * Computes the minimum and natural heights of the `container` according
@@ -29192,9 +28887,6 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * signal class handler for ClutterModel::filter-changed
-         */
         vfunc_filter_changed(): void;
         /**
          * Retrieves the name of the `column`
@@ -29224,29 +28916,10 @@ export namespace Clutter {
          * into account any filtering function set using clutter_model_set_filter().
          */
         vfunc_get_n_rows(): number;
-        /**
-         * virtual function for removing a row at the given index
-         * @param row
-         */
         vfunc_remove_row(row: number): void;
-        /**
-         * signal class handler for ClutterModel::row-added
-         * @param iter
-         */
         vfunc_row_added(iter: ModelIter): void;
-        /**
-         * signal class handler for ClutterModel::row-changed
-         * @param iter
-         */
         vfunc_row_changed(iter: ModelIter): void;
-        /**
-         * signal class handler for ClutterModel::row-removed
-         * @param iter
-         */
         vfunc_row_removed(iter: ModelIter): void;
-        /**
-         * signal class handler for ClutterModel::sort-changed
-         */
         vfunc_sort_changed(): void;
 
         // Methods
@@ -30340,16 +30013,7 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * class handler for the #ClutterPanAction::pan signal
-         * @param actor
-         * @param is_interpolated
-         */
         vfunc_pan(actor: Actor, is_interpolated: boolean): boolean;
-        /**
-         * class handler for the #ClutterPanAction::pan-stopped signal
-         * @param actor
-         */
         vfunc_pan_stopped(actor: Actor): void;
 
         // Methods
@@ -31572,15 +31236,7 @@ export namespace Clutter {
          * be normally used by applications.
          */
         sort_depth_order(): void;
-        /**
-         * class handler for #ClutterContainer::actor-added
-         * @param actor
-         */
         vfunc_actor_added(actor: Actor): void;
-        /**
-         * class handler for #ClutterContainer::actor-removed
-         * @param actor
-         */
         vfunc_actor_removed(actor: Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -32195,11 +31851,6 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * class handler for the #ClutterRotateAction::rotate signal
-         * @param actor
-         * @param angle
-         */
         vfunc_rotate(actor: Actor, angle: number): boolean;
     }
 
@@ -32279,28 +31930,10 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * handler for the #ClutterScore::completed signal
-         */
         vfunc_completed(): void;
-        /**
-         * handler for the #ClutterScore::paused signal
-         */
         vfunc_paused(): void;
-        /**
-         * handler for the #ClutterScore::started signal
-         */
         vfunc_started(): void;
-        /**
-         * handler for the #ClutterScore::timeline-completed
-         *   signal
-         * @param timeline
-         */
         vfunc_timeline_completed(timeline: Timeline): void;
-        /**
-         * handler for the #ClutterScore::timeline-started signal
-         * @param timeline
-         */
         vfunc_timeline_started(timeline: Timeline): void;
 
         // Methods
@@ -32927,15 +32560,7 @@ export namespace Clutter {
          * be normally used by applications.
          */
         sort_depth_order(): void;
-        /**
-         * class handler for #ClutterContainer::actor-added
-         * @param actor
-         */
         vfunc_actor_added(actor: Actor): void;
-        /**
-         * class handler for #ClutterContainer::actor-removed
-         * @param actor
-         */
         vfunc_actor_removed(actor: Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -33925,13 +33550,6 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * Returns the GLSL source code to use for
-         *  instances of this shader effect. Note that this function is only
-         *  called once per subclass of #ClutterShaderEffect regardless of how
-         *  many instances are used. It is expected that subclasses will return
-         *  a copy of a static string from this function.
-         */
         vfunc_get_static_shader_source(): string;
 
         // Methods
@@ -34346,26 +33964,10 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * handler for the #ClutterStage::activate signal
-         */
         vfunc_activate(): void;
-        /**
-         * handler for the #ClutterStage::deactivate signal
-         */
         vfunc_deactivate(): void;
-        /**
-         * handler for the #ClutterStage::delete-event signal
-         * @param event
-         */
         vfunc_delete_event(event: Event): boolean;
-        /**
-         * handler for the #ClutterStage::fullscreen signal
-         */
         vfunc_fullscreen(): void;
-        /**
-         * handler for the #ClutterStage::unfullscreen signal
-         */
         vfunc_unfullscreen(): void;
 
         // Methods
@@ -35281,9 +34883,6 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * class handler for the #ClutterState::completed signal
-         */
         vfunc_completed(): void;
 
         // Methods
@@ -35948,18 +35547,7 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * class handler for the #ClutterSwipeAction::swept signal;
-         *   deprecated since 1.14
-         * @param actor
-         * @param direction
-         */
         vfunc_swept(actor: Actor, direction: SwipeDirection): void;
-        /**
-         * class handler for the #ClutterSwipeAction::swipe signal
-         * @param actor
-         * @param direction
-         */
         vfunc_swipe(actor: Actor, direction: SwipeDirection): boolean;
     }
 
@@ -36265,10 +35853,6 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * class handler for the #ClutterTapAction::tap signal
-         * @param actor
-         */
         vfunc_tap(actor: Actor): boolean;
     }
 
@@ -36726,22 +36310,9 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * class handler for the #ClutterText::activate signal
-         */
         vfunc_activate(): void;
-        /**
-         * class handler for the #ClutterText::cursor-changed signal
-         */
         vfunc_cursor_changed(): void;
-        /**
-         * class handler for the #ClutterText::cursor-event signal
-         * @param geometry
-         */
         vfunc_cursor_event(geometry: Geometry): void;
-        /**
-         * class handler for the #ClutterText::text-changed signal
-         */
         vfunc_text_changed(): void;
 
         // Methods
@@ -37529,15 +37100,7 @@ export namespace Clutter {
          * be normally used by applications.
          */
         sort_depth_order(): void;
-        /**
-         * class handler for #ClutterContainer::actor-added
-         * @param actor
-         */
         vfunc_actor_added(actor: Actor): void;
-        /**
-         * class handler for #ClutterContainer::actor-removed
-         * @param actor
-         */
         vfunc_actor_removed(actor: Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -38209,20 +37772,11 @@ export namespace Clutter {
          * @param n_chars number of characters to delete
          */
         vfunc_delete_text(position: number, n_chars: number): number;
-        /**
-         * default hanlder for the #ClutterTextBuffer::deleted-text signal
-         * @param position
-         * @param n_chars
-         */
         vfunc_deleted_text(position: number, n_chars: number): void;
         /**
          * Retrieves the length in characters of the buffer.
          */
         vfunc_get_length(): number;
-        /**
-         * virtual function
-         * @param n_bytes
-         */
         vfunc_get_text(n_bytes: number): string;
         /**
          * Inserts `n_chars` characters of `chars` into the contents of the
@@ -38239,12 +37793,6 @@ export namespace Clutter {
          * @param n_chars the length of the text in characters, or -1
          */
         vfunc_insert_text(position: number, chars: string, n_chars: number): number;
-        /**
-         * default handler for the #ClutterTextBuffer::inserted-text signal
-         * @param position
-         * @param chars
-         * @param n_chars
-         */
         vfunc_inserted_text(position: number, chars: string, n_chars: number): void;
 
         // Methods
@@ -38524,20 +38072,8 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * handler for the #ClutterTexture::load-finished signal
-         * @param error
-         */
         vfunc_load_finished(error: GLib.Error): void;
-        /**
-         * handler for the #ClutterTexture::pixbuf-change signal
-         */
         vfunc_pixbuf_change(): void;
-        /**
-         * handler for the #ClutterTexture::size-change signal
-         * @param width
-         * @param height
-         */
         vfunc_size_change(width: number, height: number): void;
 
         // Methods
@@ -39040,15 +38576,7 @@ export namespace Clutter {
          * be normally used by applications.
          */
         sort_depth_order(): void;
-        /**
-         * class handler for #ClutterContainer::actor-added
-         * @param actor
-         */
         vfunc_actor_added(actor: Actor): void;
-        /**
-         * class handler for #ClutterContainer::actor-removed
-         * @param actor
-         */
         vfunc_actor_removed(actor: Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -39807,33 +39335,11 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * class handler for the #ClutterTimeline::completed signal
-         */
         vfunc_completed(): void;
-        /**
-         * class handler for the #ClutterTimeline::marker-reached signal
-         * @param marker_name
-         * @param msecs
-         */
         vfunc_marker_reached(marker_name: string, msecs: number): void;
-        /**
-         * class handler for the #ClutterTimeline::new-frame signal
-         * @param msecs
-         */
         vfunc_new_frame(msecs: number): void;
-        /**
-         * class handler for the #ClutterTimeline::paused signal
-         */
         vfunc_paused(): void;
-        /**
-         * class handler for the #ClutterTimeline::started signal
-         */
         vfunc_started(): void;
-        /**
-         * class handler for the #ClutterTimeline::stopped signal
-         * @param is_finished
-         */
         vfunc_stopped(is_finished: boolean): void;
 
         // Methods
@@ -40698,25 +40204,8 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * virtual function; called when a transition is attached to
-         *   a #ClutterAnimatable instance
-         * @param animatable
-         */
         vfunc_attached(animatable: Animatable): void;
-        /**
-         * virtual function; called each frame to compute and apply
-         *   the interpolation of the interval
-         * @param animatable
-         * @param interval
-         * @param progress
-         */
         vfunc_compute_value(animatable: Animatable, interval: Interval, progress: number): void;
-        /**
-         * virtual function; called when a transition is detached from
-         *   a #ClutterAnimatable instance
-         * @param animatable
-         */
         vfunc_detached(animatable: Animatable): void;
 
         // Methods
@@ -41777,12 +41266,6 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * class handler of the #ClutterZoomAction::zoom signal
-         * @param actor
-         * @param focal_point
-         * @param factor
-         */
         vfunc_zoom(actor: Actor, focal_point: Point, factor: number): boolean;
 
         // Methods
@@ -44782,15 +44265,7 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * class handler for #ClutterContainer::actor-added
-         * @param actor
-         */
         vfunc_actor_added(actor: Actor): void;
-        /**
-         * class handler for #ClutterContainer::actor-removed
-         * @param actor
-         */
         vfunc_actor_removed(actor: Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -44938,17 +44413,7 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * virtual function; called each time a #ClutterContent is attached
-         *   to a #ClutterActor.
-         * @param actor
-         */
         vfunc_attached(actor: Actor): void;
-        /**
-         * virtual function; called each time a #ClutterContent is detached
-         *   from a #ClutterActor.
-         * @param actor
-         */
         vfunc_detached(actor: Actor): void;
         /**
          * Retrieves the natural size of the `content,` if any.
@@ -44966,12 +44431,6 @@ export namespace Clutter {
          * actor state.
          */
         vfunc_invalidate(): void;
-        /**
-         * virtual function; called each time the content needs to
-         *   paint itself
-         * @param actor
-         * @param node
-         */
         vfunc_paint_content(actor: Actor, node: PaintNode): void;
     }
 
@@ -45181,14 +44640,7 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * handler for the #ClutterMedia::eos signal
-         */
         vfunc_eos(): void;
-        /**
-         * handler for the #ClutterMedia::error signal
-         * @param error
-         */
         vfunc_error(error: GLib.Error): void;
     }
 

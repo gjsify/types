@@ -1610,6 +1610,44 @@ export namespace GUPnP {
          * @param requested_height The requested height, or -1 for any
          * @param prefer_bigger %TRUE if a bigger, rather than a smaller icon should be returned if no exact match could be found
          * @param cancellable
+         */
+        get_icon_async(
+            requested_mime_type: string | null,
+            requested_depth: number,
+            requested_width: number,
+            requested_height: number,
+            prefer_bigger: boolean,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<[GLib.Bytes, string, number, number, number]>;
+        /**
+         * Download the device icon matching the request parameters. For details on
+         * the lookup procedure, see [method`GUPnP`.DeviceInfo.get_icon_url]
+         * @param requested_mime_type The requested file format, or %NULL for any
+         * @param requested_depth The requested color depth, or -1 for any
+         * @param requested_width The requested width, or -1 for any
+         * @param requested_height The requested height, or -1 for any
+         * @param prefer_bigger %TRUE if a bigger, rather than a smaller icon should be returned if no exact match could be found
+         * @param cancellable
+         * @param callback
+         */
+        get_icon_async(
+            requested_mime_type: string | null,
+            requested_depth: number,
+            requested_width: number,
+            requested_height: number,
+            prefer_bigger: boolean,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Download the device icon matching the request parameters. For details on
+         * the lookup procedure, see [method`GUPnP`.DeviceInfo.get_icon_url]
+         * @param requested_mime_type The requested file format, or %NULL for any
+         * @param requested_depth The requested color depth, or -1 for any
+         * @param requested_width The requested width, or -1 for any
+         * @param requested_height The requested height, or -1 for any
+         * @param prefer_bigger %TRUE if a bigger, rather than a smaller icon should be returned if no exact match could be found
+         * @param cancellable
          * @param callback
          */
         get_icon_async(
@@ -1620,7 +1658,7 @@ export namespace GUPnP {
             prefer_bigger: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[GLib.Bytes, string, number, number, number]> | void;
         get_icon_finish(res: Gio.AsyncResult): [GLib.Bytes, string, number, number, number];
         /**
          * Get an URL pointing to the icon most closely matching the
@@ -2742,9 +2780,33 @@ export namespace GUPnP {
          * If `cancellable` is used to cancel the call, `callback` will be called with
          * error code %G_IO_ERROR_CANCELLED.
          * @param cancellable a #GCancellable that can be used to cancel the call.
+         */
+        introspect_async(cancellable?: Gio.Cancellable | null): Promise<ServiceIntrospection | null>;
+        /**
+         * Note that introspection object is created from the information in service
+         * description document (SCPD) provided by the service so it can not be created
+         * if the service does not provide a SCPD.
+         *
+         * If `cancellable` is used to cancel the call, `callback` will be called with
+         * error code %G_IO_ERROR_CANCELLED.
+         * @param cancellable a #GCancellable that can be used to cancel the call.
          * @param callback callback to be called when introspection object is ready.
          */
-        introspect_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        introspect_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Note that introspection object is created from the information in service
+         * description document (SCPD) provided by the service so it can not be created
+         * if the service does not provide a SCPD.
+         *
+         * If `cancellable` is used to cancel the call, `callback` will be called with
+         * error code %G_IO_ERROR_CANCELLED.
+         * @param cancellable a #GCancellable that can be used to cancel the call.
+         * @param callback callback to be called when introspection object is ready.
+         */
+        introspect_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<ServiceIntrospection | null> | void;
         /**
          * Finish an asynchronous call initiated with
          * gupnp_service_info_introspect_async().
@@ -3414,13 +3476,43 @@ export namespace GUPnP {
          * remote call.
          * @param action A #GUPnPServiceProxyAction to call
          * @param cancellable A #GCancellable which can be used to cancel the current action call
+         */
+        call_action_async(
+            action: ServiceProxyAction,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<ServiceProxyAction | null>;
+        /**
+         * Start a call on the remote UPnP service using the pre-configured `action`.
+         * Use gupnp_service_proxy_call_action_finish() in the `callback` to finalize
+         * the call and gupnp_service_proxy_action_get_result(),
+         * gupnp_service_proxy_action_get_result_hash() or
+         * gupnp_service_proxy_action_get_result_list() to extract the result of the
+         * remote call.
+         * @param action A #GUPnPServiceProxyAction to call
+         * @param cancellable A #GCancellable which can be used to cancel the current action call
+         * @param callback A #GAsyncReadyCallback to call when the action is finished.
+         */
+        call_action_async(
+            action: ServiceProxyAction,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Start a call on the remote UPnP service using the pre-configured `action`.
+         * Use gupnp_service_proxy_call_action_finish() in the `callback` to finalize
+         * the call and gupnp_service_proxy_action_get_result(),
+         * gupnp_service_proxy_action_get_result_hash() or
+         * gupnp_service_proxy_action_get_result_list() to extract the result of the
+         * remote call.
+         * @param action A #GUPnPServiceProxyAction to call
+         * @param cancellable A #GCancellable which can be used to cancel the current action call
          * @param callback A #GAsyncReadyCallback to call when the action is finished.
          */
         call_action_async(
             action: ServiceProxyAction,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<ServiceProxyAction | null> | void;
         /**
          * Finish an asynchronous call initiated with
          * gupnp_service_proxy_call_action_async().
@@ -4389,6 +4481,62 @@ export namespace GUPnP {
          * @param address IP address of the peer
          * @param agent The User-Agent header of the peer or %NULL if not unknown.
          * @param cancellable A cancellable which can be used to cancel the operation.
+         */
+        is_allowed_async(
+            device: Device | null,
+            service: Service | null,
+            path: string,
+            address: string,
+            agent?: string | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Check asynchronously whether an IP address is allowed to access
+         * this resource.
+         *
+         * This function is optional. [method`GUPnP`.Acl.can_sync] should return %TRUE
+         * if the implementing class supports it. If it is supported, GUPnP will
+         * prefer to use this function over [method`GUPnP`.Acl.is_allowed].
+         *
+         * Implement this function if the process of verifying the access right
+         * is expected to take some time, for example when using D-Bus etc.
+         *
+         * Use [method`GUPnP`.Acl.is_allowed_finish] to retrieve the result.
+         * @param device The [class@GUPnP.Device] associated with @path or %NULL if unknown.
+         * @param service The [class@GUPnP.Service] associated with @path or %NULL if unknown.
+         * @param path The path being served.
+         * @param address IP address of the peer
+         * @param agent The User-Agent header of the peer or %NULL if not unknown.
+         * @param cancellable A cancellable which can be used to cancel the operation.
+         * @param callback Callback to call after the function is done.
+         */
+        is_allowed_async(
+            device: Device | null,
+            service: Service | null,
+            path: string,
+            address: string,
+            agent: string | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Check asynchronously whether an IP address is allowed to access
+         * this resource.
+         *
+         * This function is optional. [method`GUPnP`.Acl.can_sync] should return %TRUE
+         * if the implementing class supports it. If it is supported, GUPnP will
+         * prefer to use this function over [method`GUPnP`.Acl.is_allowed].
+         *
+         * Implement this function if the process of verifying the access right
+         * is expected to take some time, for example when using D-Bus etc.
+         *
+         * Use [method`GUPnP`.Acl.is_allowed_finish] to retrieve the result.
+         * @param device The [class@GUPnP.Device] associated with @path or %NULL if unknown.
+         * @param service The [class@GUPnP.Service] associated with @path or %NULL if unknown.
+         * @param path The path being served.
+         * @param address IP address of the peer
+         * @param agent The User-Agent header of the peer or %NULL if not unknown.
+         * @param cancellable A cancellable which can be used to cancel the operation.
          * @param callback Callback to call after the function is done.
          */
         is_allowed_async(
@@ -4399,7 +4547,7 @@ export namespace GUPnP {
             agent?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Get the result of [method`GUPnP`.Acl.is_allowed_async].
          * @param res [iface@Gio.AsyncResult] obtained from the callback passed to [method@GUPnP.Acl.is_allowed_async]

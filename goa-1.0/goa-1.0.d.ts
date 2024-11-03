@@ -817,13 +817,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -1018,12 +1105,34 @@ export namespace Goa {
          *
          * See goa_account_call_ensure_credentials_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_ensure_credentials(cancellable?: Gio.Cancellable | null): Promise<number>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_account_call_ensure_credentials_finish() to get the result of the operation.
+         *
+         * See goa_account_call_ensure_credentials_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_ensure_credentials(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_account_call_ensure_credentials_finish() to get the result of the operation.
+         *
+         * See goa_account_call_ensure_credentials_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_ensure_credentials(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an operation started with goa_account_call_ensure_credentials().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_account_call_ensure_credentials().
@@ -1045,9 +1154,31 @@ export namespace Goa {
          *
          * See goa_account_call_remove_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_remove(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.Remove">Remove()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_account_call_remove_finish() to get the result of the operation.
+         *
+         * See goa_account_call_remove_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
-        call_remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_remove(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.Remove">Remove()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_account_call_remove_finish() to get the result of the operation.
+         *
+         * See goa_account_call_remove_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_remove(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with goa_account_call_remove().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_account_call_remove().
@@ -1850,12 +1981,34 @@ export namespace Goa {
          *
          * See goa_account_call_ensure_credentials_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_ensure_credentials(cancellable?: Gio.Cancellable | null): Promise<number>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_account_call_ensure_credentials_finish() to get the result of the operation.
+         *
+         * See goa_account_call_ensure_credentials_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_ensure_credentials(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_account_call_ensure_credentials_finish() to get the result of the operation.
+         *
+         * See goa_account_call_ensure_credentials_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_ensure_credentials(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an operation started with goa_account_call_ensure_credentials().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_account_call_ensure_credentials().
@@ -1877,9 +2030,31 @@ export namespace Goa {
          *
          * See goa_account_call_remove_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_remove(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.Remove">Remove()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_account_call_remove_finish() to get the result of the operation.
+         *
+         * See goa_account_call_remove_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
-        call_remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_remove(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.Remove">Remove()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_account_call_remove_finish() to get the result of the operation.
+         *
+         * See goa_account_call_remove_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_remove(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with goa_account_call_remove().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_account_call_remove().
@@ -2490,13 +2665,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -3715,13 +3977,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -4926,13 +5275,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -5655,13 +6091,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -6880,13 +7403,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -8105,13 +8715,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -9353,13 +10050,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -10825,13 +11609,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -12274,13 +13145,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -12480,6 +13438,50 @@ export namespace Goa {
          * @param arg_credentials Argument to pass with the method invocation.
          * @param arg_details Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_add_account(
+            arg_provider: string,
+            arg_identity: string,
+            arg_presentation_identity: string,
+            arg_credentials: GLib.Variant,
+            arg_details: GLib.Variant,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<string>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_manager_call_add_account_finish() to get the result of the operation.
+         *
+         * See goa_manager_call_add_account_sync() for the synchronous, blocking version of this method.
+         * @param arg_provider Argument to pass with the method invocation.
+         * @param arg_identity Argument to pass with the method invocation.
+         * @param arg_presentation_identity Argument to pass with the method invocation.
+         * @param arg_credentials Argument to pass with the method invocation.
+         * @param arg_details Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_add_account(
+            arg_provider: string,
+            arg_identity: string,
+            arg_presentation_identity: string,
+            arg_credentials: GLib.Variant,
+            arg_details: GLib.Variant,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_manager_call_add_account_finish() to get the result of the operation.
+         *
+         * See goa_manager_call_add_account_sync() for the synchronous, blocking version of this method.
+         * @param arg_provider Argument to pass with the method invocation.
+         * @param arg_identity Argument to pass with the method invocation.
+         * @param arg_presentation_identity Argument to pass with the method invocation.
+         * @param arg_credentials Argument to pass with the method invocation.
+         * @param arg_details Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_add_account(
@@ -12490,7 +13492,7 @@ export namespace Goa {
             arg_details: GLib.Variant,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Finishes an operation started with goa_manager_call_add_account().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_manager_call_add_account().
@@ -12525,13 +13527,38 @@ export namespace Goa {
          * See goa_manager_call_is_supported_provider_sync() for the synchronous, blocking version of this method.
          * @param arg_provider_type Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_is_supported_provider(arg_provider_type: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.IsSupportedProvider">IsSupportedProvider()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_manager_call_is_supported_provider_finish() to get the result of the operation.
+         *
+         * See goa_manager_call_is_supported_provider_sync() for the synchronous, blocking version of this method.
+         * @param arg_provider_type Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_is_supported_provider(
+            arg_provider_type: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.IsSupportedProvider">IsSupportedProvider()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_manager_call_is_supported_provider_finish() to get the result of the operation.
+         *
+         * See goa_manager_call_is_supported_provider_sync() for the synchronous, blocking version of this method.
+         * @param arg_provider_type Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_is_supported_provider(
             arg_provider_type: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with goa_manager_call_is_supported_provider().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_manager_call_is_supported_provider().
@@ -13061,6 +14088,50 @@ export namespace Goa {
          * @param arg_credentials Argument to pass with the method invocation.
          * @param arg_details Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_add_account(
+            arg_provider: string,
+            arg_identity: string,
+            arg_presentation_identity: string,
+            arg_credentials: GLib.Variant,
+            arg_details: GLib.Variant,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<string>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_manager_call_add_account_finish() to get the result of the operation.
+         *
+         * See goa_manager_call_add_account_sync() for the synchronous, blocking version of this method.
+         * @param arg_provider Argument to pass with the method invocation.
+         * @param arg_identity Argument to pass with the method invocation.
+         * @param arg_presentation_identity Argument to pass with the method invocation.
+         * @param arg_credentials Argument to pass with the method invocation.
+         * @param arg_details Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_add_account(
+            arg_provider: string,
+            arg_identity: string,
+            arg_presentation_identity: string,
+            arg_credentials: GLib.Variant,
+            arg_details: GLib.Variant,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_manager_call_add_account_finish() to get the result of the operation.
+         *
+         * See goa_manager_call_add_account_sync() for the synchronous, blocking version of this method.
+         * @param arg_provider Argument to pass with the method invocation.
+         * @param arg_identity Argument to pass with the method invocation.
+         * @param arg_presentation_identity Argument to pass with the method invocation.
+         * @param arg_credentials Argument to pass with the method invocation.
+         * @param arg_details Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_add_account(
@@ -13071,7 +14142,7 @@ export namespace Goa {
             arg_details: GLib.Variant,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Finishes an operation started with goa_manager_call_add_account().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_manager_call_add_account().
@@ -13106,13 +14177,38 @@ export namespace Goa {
          * See goa_manager_call_is_supported_provider_sync() for the synchronous, blocking version of this method.
          * @param arg_provider_type Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_is_supported_provider(arg_provider_type: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.IsSupportedProvider">IsSupportedProvider()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_manager_call_is_supported_provider_finish() to get the result of the operation.
+         *
+         * See goa_manager_call_is_supported_provider_sync() for the synchronous, blocking version of this method.
+         * @param arg_provider_type Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_is_supported_provider(
+            arg_provider_type: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.IsSupportedProvider">IsSupportedProvider()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_manager_call_is_supported_provider_finish() to get the result of the operation.
+         *
+         * See goa_manager_call_is_supported_provider_sync() for the synchronous, blocking version of this method.
+         * @param arg_provider_type Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_is_supported_provider(
             arg_provider_type: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with goa_manager_call_is_supported_provider().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_manager_call_is_supported_provider().
@@ -13718,13 +14814,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -14943,13 +16126,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -16168,13 +17438,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -17400,13 +18757,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -17601,12 +19045,31 @@ export namespace Goa {
          *
          * See goa_oauth2_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[boolean, string, number]>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_oauth2_based_call_get_access_token_finish() to get the result of the operation.
+         *
+         * See goa_oauth2_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_get_access_token(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_oauth2_based_call_get_access_token_finish() to get the result of the operation.
+         *
+         * See goa_oauth2_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_get_access_token(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, string, number]> | void;
         /**
          * Finishes an operation started with goa_oauth2_based_call_get_access_token().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_oauth2_based_call_get_access_token().
@@ -18132,12 +19595,31 @@ export namespace Goa {
          *
          * See goa_oauth2_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[boolean, string, number]>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_oauth2_based_call_get_access_token_finish() to get the result of the operation.
+         *
+         * See goa_oauth2_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_get_access_token(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_oauth2_based_call_get_access_token_finish() to get the result of the operation.
+         *
+         * See goa_oauth2_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_get_access_token(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, string, number]> | void;
         /**
          * Finishes an operation started with goa_oauth2_based_call_get_access_token().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_oauth2_based_call_get_access_token().
@@ -18744,13 +20226,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -18945,12 +20514,31 @@ export namespace Goa {
          *
          * See goa_oauth_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[boolean, string, string, number]>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_oauth_based_call_get_access_token_finish() to get the result of the operation.
+         *
+         * See goa_oauth_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_get_access_token(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_oauth_based_call_get_access_token_finish() to get the result of the operation.
+         *
+         * See goa_oauth_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_get_access_token(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, string, string, number]> | void;
         /**
          * Finishes an operation started with goa_oauth_based_call_get_access_token().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_oauth_based_call_get_access_token().
@@ -19482,12 +21070,31 @@ export namespace Goa {
          *
          * See goa_oauth_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[boolean, string, string, number]>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_oauth_based_call_get_access_token_finish() to get the result of the operation.
+         *
+         * See goa_oauth_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_get_access_token(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_oauth_based_call_get_access_token_finish() to get the result of the operation.
+         *
+         * See goa_oauth_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_get_access_token(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, string, string, number]> | void;
         /**
          * Finishes an operation started with goa_oauth_based_call_get_access_token().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_oauth_based_call_get_access_token().
@@ -20082,13 +21689,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -22447,13 +24141,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -22649,13 +24430,38 @@ export namespace Goa {
          * See goa_password_based_call_get_password_sync() for the synchronous, blocking version of this method.
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_get_password(arg_id: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_password_based_call_get_password_finish() to get the result of the operation.
+         *
+         * See goa_password_based_call_get_password_sync() for the synchronous, blocking version of this method.
+         * @param arg_id Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_get_password(
+            arg_id: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_password_based_call_get_password_finish() to get the result of the operation.
+         *
+         * See goa_password_based_call_get_password_sync() for the synchronous, blocking version of this method.
+         * @param arg_id Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_get_password(
             arg_id: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Finishes an operation started with goa_password_based_call_get_password().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_password_based_call_get_password().
@@ -23153,13 +24959,38 @@ export namespace Goa {
          * See goa_password_based_call_get_password_sync() for the synchronous, blocking version of this method.
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_get_password(arg_id: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_password_based_call_get_password_finish() to get the result of the operation.
+         *
+         * See goa_password_based_call_get_password_sync() for the synchronous, blocking version of this method.
+         * @param arg_id Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_get_password(
+            arg_id: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_password_based_call_get_password_finish() to get the result of the operation.
+         *
+         * See goa_password_based_call_get_password_sync() for the synchronous, blocking version of this method.
+         * @param arg_id Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_get_password(
             arg_id: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Finishes an operation started with goa_password_based_call_get_password().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_password_based_call_get_password().
@@ -23737,13 +25568,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -24939,13 +26857,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -26141,13 +28146,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -27352,13 +29444,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -27553,9 +29732,31 @@ export namespace Goa {
          *
          * See goa_ticketing_call_get_ticket_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_get_ticket(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_ticketing_call_get_ticket_finish() to get the result of the operation.
+         *
+         * See goa_ticketing_call_get_ticket_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
-        call_get_ticket(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_get_ticket(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_ticketing_call_get_ticket_finish() to get the result of the operation.
+         *
+         * See goa_ticketing_call_get_ticket_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_get_ticket(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with goa_ticketing_call_get_ticket().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_ticketing_call_get_ticket().
@@ -28058,9 +30259,31 @@ export namespace Goa {
          *
          * See goa_ticketing_call_get_ticket_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_get_ticket(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_ticketing_call_get_ticket_finish() to get the result of the operation.
+         *
+         * See goa_ticketing_call_get_ticket_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
-        call_get_ticket(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_get_ticket(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_ticketing_call_get_ticket_finish() to get the result of the operation.
+         *
+         * See goa_ticketing_call_get_ticket_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_get_ticket(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with goa_ticketing_call_get_ticket().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_ticketing_call_get_ticket().
@@ -28635,13 +30858,100 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -30472,12 +32782,34 @@ export namespace Goa {
          *
          * See goa_account_call_ensure_credentials_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_ensure_credentials(cancellable?: Gio.Cancellable | null): Promise<number>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_account_call_ensure_credentials_finish() to get the result of the operation.
+         *
+         * See goa_account_call_ensure_credentials_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_ensure_credentials(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_account_call_ensure_credentials_finish() to get the result of the operation.
+         *
+         * See goa_account_call_ensure_credentials_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_ensure_credentials(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an operation started with goa_account_call_ensure_credentials().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_account_call_ensure_credentials().
@@ -30499,9 +32831,31 @@ export namespace Goa {
          *
          * See goa_account_call_remove_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_remove(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.Remove">Remove()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_account_call_remove_finish() to get the result of the operation.
+         *
+         * See goa_account_call_remove_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
-        call_remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_remove(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.Remove">Remove()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_account_call_remove_finish() to get the result of the operation.
+         *
+         * See goa_account_call_remove_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_remove(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with goa_account_call_remove().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_account_call_remove().
@@ -31163,6 +33517,50 @@ export namespace Goa {
          * @param arg_credentials Argument to pass with the method invocation.
          * @param arg_details Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_add_account(
+            arg_provider: string,
+            arg_identity: string,
+            arg_presentation_identity: string,
+            arg_credentials: GLib.Variant,
+            arg_details: GLib.Variant,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<string>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_manager_call_add_account_finish() to get the result of the operation.
+         *
+         * See goa_manager_call_add_account_sync() for the synchronous, blocking version of this method.
+         * @param arg_provider Argument to pass with the method invocation.
+         * @param arg_identity Argument to pass with the method invocation.
+         * @param arg_presentation_identity Argument to pass with the method invocation.
+         * @param arg_credentials Argument to pass with the method invocation.
+         * @param arg_details Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_add_account(
+            arg_provider: string,
+            arg_identity: string,
+            arg_presentation_identity: string,
+            arg_credentials: GLib.Variant,
+            arg_details: GLib.Variant,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_manager_call_add_account_finish() to get the result of the operation.
+         *
+         * See goa_manager_call_add_account_sync() for the synchronous, blocking version of this method.
+         * @param arg_provider Argument to pass with the method invocation.
+         * @param arg_identity Argument to pass with the method invocation.
+         * @param arg_presentation_identity Argument to pass with the method invocation.
+         * @param arg_credentials Argument to pass with the method invocation.
+         * @param arg_details Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_add_account(
@@ -31173,7 +33571,7 @@ export namespace Goa {
             arg_details: GLib.Variant,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Finishes an operation started with goa_manager_call_add_account().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_manager_call_add_account().
@@ -31208,13 +33606,38 @@ export namespace Goa {
          * See goa_manager_call_is_supported_provider_sync() for the synchronous, blocking version of this method.
          * @param arg_provider_type Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_is_supported_provider(arg_provider_type: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.IsSupportedProvider">IsSupportedProvider()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_manager_call_is_supported_provider_finish() to get the result of the operation.
+         *
+         * See goa_manager_call_is_supported_provider_sync() for the synchronous, blocking version of this method.
+         * @param arg_provider_type Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_is_supported_provider(
+            arg_provider_type: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.IsSupportedProvider">IsSupportedProvider()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_manager_call_is_supported_provider_finish() to get the result of the operation.
+         *
+         * See goa_manager_call_is_supported_provider_sync() for the synchronous, blocking version of this method.
+         * @param arg_provider_type Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_is_supported_provider(
             arg_provider_type: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with goa_manager_call_is_supported_provider().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_manager_call_is_supported_provider().
@@ -31453,12 +33876,31 @@ export namespace Goa {
          *
          * See goa_oauth2_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[boolean, string, number]>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_oauth2_based_call_get_access_token_finish() to get the result of the operation.
+         *
+         * See goa_oauth2_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_get_access_token(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_oauth2_based_call_get_access_token_finish() to get the result of the operation.
+         *
+         * See goa_oauth2_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_get_access_token(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, string, number]> | void;
         /**
          * Finishes an operation started with goa_oauth2_based_call_get_access_token().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_oauth2_based_call_get_access_token().
@@ -31562,12 +34004,31 @@ export namespace Goa {
          *
          * See goa_oauth_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[boolean, string, string, number]>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_oauth_based_call_get_access_token_finish() to get the result of the operation.
+         *
+         * See goa_oauth_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_get_access_token(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_oauth_based_call_get_access_token_finish() to get the result of the operation.
+         *
+         * See goa_oauth_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_get_access_token(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, string, string, number]> | void;
         /**
          * Finishes an operation started with goa_oauth_based_call_get_access_token().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_oauth_based_call_get_access_token().
@@ -31963,13 +34424,38 @@ export namespace Goa {
          * See goa_password_based_call_get_password_sync() for the synchronous, blocking version of this method.
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_get_password(arg_id: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_password_based_call_get_password_finish() to get the result of the operation.
+         *
+         * See goa_password_based_call_get_password_sync() for the synchronous, blocking version of this method.
+         * @param arg_id Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_get_password(
+            arg_id: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_password_based_call_get_password_finish() to get the result of the operation.
+         *
+         * See goa_password_based_call_get_password_sync() for the synchronous, blocking version of this method.
+         * @param arg_id Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_get_password(
             arg_id: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Finishes an operation started with goa_password_based_call_get_password().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_password_based_call_get_password().
@@ -32128,9 +34614,31 @@ export namespace Goa {
          *
          * See goa_ticketing_call_get_ticket_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_get_ticket(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_ticketing_call_get_ticket_finish() to get the result of the operation.
+         *
+         * See goa_ticketing_call_get_ticket_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
-        call_get_ticket(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_get_ticket(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call goa_ticketing_call_get_ticket_finish() to get the result of the operation.
+         *
+         * See goa_ticketing_call_get_ticket_sync() for the synchronous, blocking version of this method.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_get_ticket(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with goa_ticketing_call_get_ticket().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_ticketing_call_get_ticket().

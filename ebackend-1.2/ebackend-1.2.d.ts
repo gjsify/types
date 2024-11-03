@@ -416,13 +416,6 @@ export namespace EBackend {
 
         // Virtual methods
 
-        /**
-         * Authenticate synchronously
-         * @param credentials
-         * @param out_certificate_pem
-         * @param out_certificate_errors
-         * @param cancellable
-         */
         vfunc_authenticate_sync(
             credentials: EDataServer.NamedParameters,
             out_certificate_pem: string,
@@ -461,6 +454,46 @@ export namespace EBackend {
          * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
          * @param op_error a #GError with a description of the previous credentials error, or %NULL
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        credentials_required(
+            reason: EDataServer.SourceCredentialsReason,
+            certificate_pem: string,
+            certificate_errors: Gio.TlsCertificateFlags,
+            op_error?: GLib.Error | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously calls the e_backend_credentials_required_sync() on the `backend,`
+         * to inform clients that credentials are required.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_backend_credentials_required_finish() to get the result of the operation.
+         * @param reason an #ESourceCredentialsReason, why the credentials are required
+         * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
+         * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
+         * @param op_error a #GError with a description of the previous credentials error, or %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        credentials_required(
+            reason: EDataServer.SourceCredentialsReason,
+            certificate_pem: string,
+            certificate_errors: Gio.TlsCertificateFlags,
+            op_error: GLib.Error | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously calls the e_backend_credentials_required_sync() on the `backend,`
+         * to inform clients that credentials are required.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_backend_credentials_required_finish() to get the result of the operation.
+         * @param reason an #ESourceCredentialsReason, why the credentials are required
+         * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
+         * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
+         * @param op_error a #GError with a description of the previous credentials error, or %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         credentials_required(
@@ -470,7 +503,7 @@ export namespace EBackend {
             op_error?: GLib.Error | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_backend_credentials_required().
          *
@@ -653,13 +686,39 @@ export namespace EBackend {
          * call e_backend_trust_prompt_finish() to get the result of the operation.
          * @param parameters an #ENamedParameters with values for the trust prompt
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        trust_prompt(
+            parameters: EDataServer.NamedParameters,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<EDataServer.TrustPromptResponse>;
+        /**
+         * Initiates a user trust prompt with given `parameters`.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_backend_trust_prompt_finish() to get the result of the operation.
+         * @param parameters an #ENamedParameters with values for the trust prompt
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        trust_prompt(
+            parameters: EDataServer.NamedParameters,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Initiates a user trust prompt with given `parameters`.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_backend_trust_prompt_finish() to get the result of the operation.
+         * @param parameters an #ENamedParameters with values for the trust prompt
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         trust_prompt(
             parameters: EDataServer.NamedParameters,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<EDataServer.TrustPromptResponse> | void;
         /**
          * Finishes the operation started with e_backend_trust_prompt().
          * If an error occurred, the function will set `error` and return
@@ -2048,13 +2107,62 @@ export namespace EBackend {
          * the operation.
          * @param source an #ESource
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        create_resource(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously creates a server-side resource described by `source`.
+         * For example, if `source` describes a new calendar, an equivalent calendar
+         * is created on the server.
+         *
+         * It is the implementor's responsibility to examine `source` and determine
+         * what the equivalent server-side resource would be.  If this cannot be
+         * determined without ambiguity, the function must return an error.
+         *
+         * After the server-side resource is successfully created, the implementor
+         * must also add an #ESource to `backend'`s #ECollectionBackend:server.  This
+         * can either be done immediately or in response to some "resource created"
+         * notification from the server.  The added #ESource can be `source` itself
+         * or a different #ESource instance that describes the new resource.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_collection_backend_create_resource_finish() to get the result of
+         * the operation.
+         * @param source an #ESource
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        create_resource(
+            source: EDataServer.Source,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously creates a server-side resource described by `source`.
+         * For example, if `source` describes a new calendar, an equivalent calendar
+         * is created on the server.
+         *
+         * It is the implementor's responsibility to examine `source` and determine
+         * what the equivalent server-side resource would be.  If this cannot be
+         * determined without ambiguity, the function must return an error.
+         *
+         * After the server-side resource is successfully created, the implementor
+         * must also add an #ESource to `backend'`s #ECollectionBackend:server.  This
+         * can either be done immediately or in response to some "resource created"
+         * notification from the server.  The added #ESource can be `source` itself
+         * or a different #ESource instance that describes the new resource.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_collection_backend_create_resource_finish() to get the result of
+         * the operation.
+         * @param source an #ESource
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         create_resource(
             source: EDataServer.Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_collection_backend_create_resource().
          *
@@ -2098,13 +2206,50 @@ export namespace EBackend {
          * the operation.
          * @param source an #ESource
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        delete_resource(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously deletes a server-side resource described by `source`.
+         * The `source` must be a child of `backend'`s collection #EBackend:source.
+         *
+         * After the server-side resource is successfully deleted, the implementor
+         * must also remove `source` from the `backend'`s #ECollectionBackend:server.
+         * This can either be done immediately or in response to some "resource
+         * deleted" notification from the server.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_collection_backend_delete_resource_finish() to get the result of
+         * the operation.
+         * @param source an #ESource
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        delete_resource(
+            source: EDataServer.Source,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously deletes a server-side resource described by `source`.
+         * The `source` must be a child of `backend'`s collection #EBackend:source.
+         *
+         * After the server-side resource is successfully deleted, the implementor
+         * must also remove `source` from the `backend'`s #ECollectionBackend:server.
+         * This can either be done immediately or in response to some "resource
+         * deleted" notification from the server.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_collection_backend_delete_resource_finish() to get the result of
+         * the operation.
+         * @param source an #ESource
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         delete_resource(
             source: EDataServer.Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_collection_backend_delete_resource().
          *
@@ -3983,13 +4128,32 @@ export namespace EBackend {
          * details.
          * @param uri a URI representing the destination to connect to
          * @param cancellable a #GCancellable, or %NULL
+         */
+        lookup_async(uri: string, cancellable?: Gio.Cancellable | null): Promise<string[]>;
+        /**
+         * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
+         * details.
+         * @param uri a URI representing the destination to connect to
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call after resolution completes
+         */
+        lookup_async(
+            uri: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
+         * details.
+         * @param uri a URI representing the destination to connect to
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call after resolution completes
          */
         lookup_async(
             uri: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string[]> | void;
         /**
          * Call this function to obtain the array of proxy URIs when
          * g_proxy_resolver_lookup_async() is complete. See
@@ -5157,13 +5321,43 @@ export namespace EBackend {
          * operation.
          * @param source an #ESource
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        get_access_token(
+            source: EDataServer.Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<[boolean, string, number]>;
+        /**
+         * Asynchronously obtains the OAuth 2.0 access token for `source` along
+         * with its expiry in seconds from the current time (or 0 if unknown).
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_oauth2_support_get_access_token_finish() to get the result of the
+         * operation.
+         * @param source an #ESource
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_access_token(
+            source: EDataServer.Source,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously obtains the OAuth 2.0 access token for `source` along
+         * with its expiry in seconds from the current time (or 0 if unknown).
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_oauth2_support_get_access_token_finish() to get the result of the
+         * operation.
+         * @param source an #ESource
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         get_access_token(
             source: EDataServer.Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, string, number]> | void;
         /**
          * Finishes the operation started with e_oauth2_support_get_access_token().
          *
@@ -6346,6 +6540,48 @@ export namespace EBackend {
          * @param dialog_name name of a dialog to invoke
          * @param in_parameters optional parameters to pass to extension; can be %NULL
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        extension_prompt(
+            dialog_name: string,
+            in_parameters?: EDataServer.NamedParameters | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Asynchronously prompt a user for a decision on an extension-provided dialog.
+         * The caller usually provides an extension for #EUserPrompterServer, a descendant
+         * of #EUserPrompterServerExtension, which registers itself as a dialog provider.
+         * The extension defines `dialog_name,` same as meaning of `in_parameters;`
+         * only the extension and the caller know about meaning of these.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_user_prompter_extension_prompt_finish() to get the result of the operation.
+         * If there is no extension providing given dialog name, the operation finishes with
+         * a G_IO_ERROR, G_IO_ERROR_NOT_FOUND #GError.
+         * @param dialog_name name of a dialog to invoke
+         * @param in_parameters optional parameters to pass to extension; can be %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        extension_prompt(
+            dialog_name: string,
+            in_parameters: EDataServer.NamedParameters | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously prompt a user for a decision on an extension-provided dialog.
+         * The caller usually provides an extension for #EUserPrompterServer, a descendant
+         * of #EUserPrompterServerExtension, which registers itself as a dialog provider.
+         * The extension defines `dialog_name,` same as meaning of `in_parameters;`
+         * only the extension and the caller know about meaning of these.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_user_prompter_extension_prompt_finish() to get the result of the operation.
+         * If there is no extension providing given dialog name, the operation finishes with
+         * a G_IO_ERROR, G_IO_ERROR_NOT_FOUND #GError.
+         * @param dialog_name name of a dialog to invoke
+         * @param in_parameters optional parameters to pass to extension; can be %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         extension_prompt(
@@ -6353,7 +6589,7 @@ export namespace EBackend {
             in_parameters?: EDataServer.NamedParameters | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes the operation started with e_user_prompter_extension_prompt().
          * Caller can provide `out_values` to get additional values provided by the extension.
@@ -6416,6 +6652,64 @@ export namespace EBackend {
          * @param use_markup whether both texts are with markup
          * @param button_captions captions of buttons to    use in the message; can be %NULL
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        prompt(
+            type: string | null,
+            title: string | null,
+            primary_text: string | null,
+            secondary_text: string | null,
+            use_markup: boolean,
+            button_captions?: string[] | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Asynchronously prompt a user for a decision.
+         *
+         * The `type` can be one of "info", "warning", "question" or "error", to include
+         * an icon in the message prompt; anything else results in no icon in the message.
+         *
+         * If `button_captions` is %NULL or empty list, then only one button is shown in
+         * the prompt, a "Dismiss" button.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_user_prompter_prompt_finish() to get the result of the operation.
+         * @param type type of the prompt; can be %NULL
+         * @param title window title of the prompt; can be %NULL
+         * @param primary_text primary text of the prompt; can be %NULL
+         * @param secondary_text secondary text of the prompt; can be %NULL
+         * @param use_markup whether both texts are with markup
+         * @param button_captions captions of buttons to    use in the message; can be %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        prompt(
+            type: string | null,
+            title: string | null,
+            primary_text: string | null,
+            secondary_text: string | null,
+            use_markup: boolean,
+            button_captions: string[] | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously prompt a user for a decision.
+         *
+         * The `type` can be one of "info", "warning", "question" or "error", to include
+         * an icon in the message prompt; anything else results in no icon in the message.
+         *
+         * If `button_captions` is %NULL or empty list, then only one button is shown in
+         * the prompt, a "Dismiss" button.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_user_prompter_prompt_finish() to get the result of the operation.
+         * @param type type of the prompt; can be %NULL
+         * @param title window title of the prompt; can be %NULL
+         * @param primary_text primary text of the prompt; can be %NULL
+         * @param secondary_text secondary text of the prompt; can be %NULL
+         * @param use_markup whether both texts are with markup
+         * @param button_captions captions of buttons to    use in the message; can be %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         prompt(
@@ -6427,7 +6721,7 @@ export namespace EBackend {
             button_captions?: string[] | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes the operation started with e_user_prompter_prompt().
          *
@@ -7466,13 +7760,43 @@ export namespace EBackend {
          * operation.
          * @param source an #ESource
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        get_access_token(
+            source: EDataServer.Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<[boolean, string, number]>;
+        /**
+         * Asynchronously obtains the OAuth 2.0 access token for `source` along
+         * with its expiry in seconds from the current time (or 0 if unknown).
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_oauth2_support_get_access_token_finish() to get the result of the
+         * operation.
+         * @param source an #ESource
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_access_token(
+            source: EDataServer.Source,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously obtains the OAuth 2.0 access token for `source` along
+         * with its expiry in seconds from the current time (or 0 if unknown).
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_oauth2_support_get_access_token_finish() to get the result of the
+         * operation.
+         * @param source an #ESource
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         get_access_token(
             source: EDataServer.Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, string, number]> | void;
         /**
          * Finishes the operation started with e_oauth2_support_get_access_token().
          *

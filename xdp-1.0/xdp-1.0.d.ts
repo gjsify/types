@@ -883,6 +883,38 @@ export namespace Xdp {
          * @param parent parent window information
          * @param flags options for this call
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        access_camera(
+            parent: Parent | null,
+            flags: CameraFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Request access to a camera.
+         *
+         * When the request is done, `callback` will be called.
+         * You can then call [method`Portal`.access_camera_finish]
+         * to get the results.
+         * @param parent parent window information
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        access_camera(
+            parent: Parent | null,
+            flags: CameraFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request access to a camera.
+         *
+         * When the request is done, `callback` will be called.
+         * You can then call [method`Portal`.access_camera_finish]
+         * to get the results.
+         * @param parent parent window information
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         access_camera(
@@ -890,7 +922,7 @@ export namespace Xdp {
             flags: CameraFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes a camera acess request.
          *
@@ -939,6 +971,94 @@ export namespace Xdp {
          * @param notification a [struct@GLib.Variant] dictionary with the content of the notification
          * @param flags options for this call
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        add_notification(
+            id: string,
+            notification: GLib.Variant,
+            flags: NotificationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Sends a desktop notification.
+         *
+         * The following keys may be present in `notification:`
+         *
+         * - title `s`: a user-visible string to display as title
+         * - body `s`: a user-visible string to display as body
+         * - icon `v`: a serialized icon (in the format produced by [method`Gio`.Icon.serialize])
+         * - priority `s`: "low", "normal", "high" or "urgent"
+         * - default-action `s`: name of an action that
+         *     will be activated when the user clicks on the notification
+         * - default-action-target `v`: target parameter to send along when
+         *     activating the default action.
+         * - buttons `aa{sv}`: array of serialized buttons
+         *
+         * Each serialized button is a dictionary with the following supported keys:
+         *
+         * - label `s`: user-visible lable for the button. Mandatory
+         * - action `s`: name of an action that will be activated when
+         *     the user clicks on the button. Mandatory
+         * - target `v`: target parameter to send along when activating
+         *     the button
+         *
+         * Actions with a prefix of "app." are assumed to be exported by the
+         * application and will be activated via the org.freedesktop.Application
+         * interface, others are activated by emitting the
+         * [signal`Portal:`:notification-action-invoked] signal.
+         *
+         * It is the callers responsibility to ensure that the ID is unique
+         * among all notifications.
+         *
+         * To withdraw a notification, use [method`Portal`.remove_notification].
+         * @param id unique ID for the notification
+         * @param notification a [struct@GLib.Variant] dictionary with the content of the notification
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        add_notification(
+            id: string,
+            notification: GLib.Variant,
+            flags: NotificationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Sends a desktop notification.
+         *
+         * The following keys may be present in `notification:`
+         *
+         * - title `s`: a user-visible string to display as title
+         * - body `s`: a user-visible string to display as body
+         * - icon `v`: a serialized icon (in the format produced by [method`Gio`.Icon.serialize])
+         * - priority `s`: "low", "normal", "high" or "urgent"
+         * - default-action `s`: name of an action that
+         *     will be activated when the user clicks on the notification
+         * - default-action-target `v`: target parameter to send along when
+         *     activating the default action.
+         * - buttons `aa{sv}`: array of serialized buttons
+         *
+         * Each serialized button is a dictionary with the following supported keys:
+         *
+         * - label `s`: user-visible lable for the button. Mandatory
+         * - action `s`: name of an action that will be activated when
+         *     the user clicks on the button. Mandatory
+         * - target `v`: target parameter to send along when activating
+         *     the button
+         *
+         * Actions with a prefix of "app." are assumed to be exported by the
+         * application and will be activated via the org.freedesktop.Application
+         * interface, others are activated by emitting the
+         * [signal`Portal:`:notification-action-invoked] signal.
+         *
+         * It is the callers responsibility to ensure that the ID is unique
+         * among all notifications.
+         *
+         * To withdraw a notification, use [method`Portal`.remove_notification].
+         * @param id unique ID for the notification
+         * @param notification a [struct@GLib.Variant] dictionary with the content of the notification
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         add_notification(
@@ -947,7 +1067,7 @@ export namespace Xdp {
             flags: NotificationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the notification request.
          *
@@ -956,6 +1076,62 @@ export namespace Xdp {
          * @returns `TRUE` if the notification was added
          */
         add_notification_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Presents a window that lets the user compose an email,
+         * with some pre-filled information.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.compose_email_finish] to get the results.
+         * @param parent parent window information
+         * @param addresses the email addresses to send to
+         * @param cc the email addresses to cc
+         * @param bcc the email addresses to bcc
+         * @param subject the subject for the email
+         * @param body the body for the email
+         * @param attachments an array of paths for files to attach
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         */
+        compose_email(
+            parent: Parent | null,
+            addresses: string[] | null,
+            cc: string[] | null,
+            bcc: string[] | null,
+            subject: string | null,
+            body: string | null,
+            attachments: string[] | null,
+            flags: EmailFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Presents a window that lets the user compose an email,
+         * with some pre-filled information.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.compose_email_finish] to get the results.
+         * @param parent parent window information
+         * @param addresses the email addresses to send to
+         * @param cc the email addresses to cc
+         * @param bcc the email addresses to bcc
+         * @param subject the subject for the email
+         * @param body the body for the email
+         * @param attachments an array of paths for files to attach
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        compose_email(
+            parent: Parent | null,
+            addresses: string[] | null,
+            cc: string[] | null,
+            bcc: string[] | null,
+            subject: string | null,
+            body: string | null,
+            attachments: string[] | null,
+            flags: EmailFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Presents a window that lets the user compose an email,
          * with some pre-filled information.
@@ -984,13 +1160,51 @@ export namespace Xdp {
             flags: EmailFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the compose-email request.
          * @param result a [iface@Gio.AsyncResult]
          * @returns `TRUE` if the request was handled successfully
          */
         compose_email_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Creates a session for remote desktop.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.create_remote_desktop_session_finish] to get the results.
+         * @param devices which kinds of input devices to ofer in the new dialog
+         * @param outputs which kinds of source to offer in the dialog
+         * @param flags options for this call
+         * @param cursor_mode the cursor mode of the session
+         * @param cancellable optional [class@Gio.Cancellable]
+         */
+        create_remote_desktop_session(
+            devices: DeviceType,
+            outputs: OutputType,
+            flags: RemoteDesktopFlags,
+            cursor_mode: CursorMode,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Session>;
+        /**
+         * Creates a session for remote desktop.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.create_remote_desktop_session_finish] to get the results.
+         * @param devices which kinds of input devices to ofer in the new dialog
+         * @param outputs which kinds of source to offer in the dialog
+         * @param flags options for this call
+         * @param cursor_mode the cursor mode of the session
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        create_remote_desktop_session(
+            devices: DeviceType,
+            outputs: OutputType,
+            flags: RemoteDesktopFlags,
+            cursor_mode: CursorMode,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Creates a session for remote desktop.
          *
@@ -1010,13 +1224,55 @@ export namespace Xdp {
             cursor_mode: CursorMode,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Session> | void;
         /**
          * Finishes the create-remote-desktop request, and returns a [class`Session]`.
          * @param result a [iface@Gio.AsyncResult]
          * @returns a [class@Session]
          */
         create_remote_desktop_session_finish(result: Gio.AsyncResult): Session;
+        /**
+         * Creates a session for a screencast.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.create_screencast_session_finish] to get the results.
+         * @param outputs which kinds of source to offer in the dialog
+         * @param flags options for this call
+         * @param cursor_mode the cursor mode of the session
+         * @param persist_mode the persist mode of the session
+         * @param restore_token the token of a previous screencast session to restore
+         * @param cancellable optional [class@Gio.Cancellable]
+         */
+        create_screencast_session(
+            outputs: OutputType,
+            flags: ScreencastFlags,
+            cursor_mode: CursorMode,
+            persist_mode: PersistMode,
+            restore_token?: string | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Session>;
+        /**
+         * Creates a session for a screencast.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.create_screencast_session_finish] to get the results.
+         * @param outputs which kinds of source to offer in the dialog
+         * @param flags options for this call
+         * @param cursor_mode the cursor mode of the session
+         * @param persist_mode the persist mode of the session
+         * @param restore_token the token of a previous screencast session to restore
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        create_screencast_session(
+            outputs: OutputType,
+            flags: ScreencastFlags,
+            cursor_mode: CursorMode,
+            persist_mode: PersistMode,
+            restore_token: string | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Creates a session for a screencast.
          *
@@ -1038,7 +1294,7 @@ export namespace Xdp {
             restore_token?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Session> | void;
         /**
          * Finishes the create-screencast request, and returns a [class`Session]`.
          * @param result a [iface@Gio.AsyncResult]
@@ -1103,6 +1359,58 @@ export namespace Xdp {
          * @param editable_name if %TRUE, the user will be able to edit the name of the launcher
          * @param editable_icon if %TRUE, the user will be able to edit the icon of the launcher, if the implementation supports this
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        dynamic_launcher_prepare_install(
+            parent: Parent | null,
+            name: string,
+            icon_v: GLib.Variant,
+            launcher_type: LauncherType,
+            target: string | null,
+            editable_name: boolean,
+            editable_icon: boolean,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<GLib.Variant>;
+        /**
+         * Presents a dialog to the user so they can confirm they want to install a
+         * launcher to their desktop.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.dynamic_launcher_prepare_install_finish] to get the results.
+         * @param parent parent window information
+         * @param name the name for the launcher
+         * @param icon_v a #GBytesIcon as returned by g_icon_serialize(). Must be a png or jpeg no larger than 512x512, or an svg
+         * @param launcher_type the type of the launcher
+         * @param target the URL if the launcher is for a web app, or %NULL
+         * @param editable_name if %TRUE, the user will be able to edit the name of the launcher
+         * @param editable_icon if %TRUE, the user will be able to edit the icon of the launcher, if the implementation supports this
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        dynamic_launcher_prepare_install(
+            parent: Parent | null,
+            name: string,
+            icon_v: GLib.Variant,
+            launcher_type: LauncherType,
+            target: string | null,
+            editable_name: boolean,
+            editable_icon: boolean,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Presents a dialog to the user so they can confirm they want to install a
+         * launcher to their desktop.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.dynamic_launcher_prepare_install_finish] to get the results.
+         * @param parent parent window information
+         * @param name the name for the launcher
+         * @param icon_v a #GBytesIcon as returned by g_icon_serialize(). Must be a png or jpeg no larger than 512x512, or an svg
+         * @param launcher_type the type of the launcher
+         * @param target the URL if the launcher is for a web app, or %NULL
+         * @param editable_name if %TRUE, the user will be able to edit the name of the launcher
+         * @param editable_icon if %TRUE, the user will be able to edit the icon of the launcher, if the implementation supports this
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         dynamic_launcher_prepare_install(
@@ -1115,7 +1423,7 @@ export namespace Xdp {
             editable_icon: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Variant> | void;
         /**
          * Finishes the prepare-install-launcher request, and returns
          * [struct`GLib`.Variant] dictionary with the following information:
@@ -1159,6 +1467,40 @@ export namespace Xdp {
          * @param reason a string that can be shown in the dialog to explain    why the information is needed
          * @param flags options for this call
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        get_user_information(
+            parent: Parent | null,
+            reason: string | null,
+            flags: UserInformationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<GLib.Variant>;
+        /**
+         * Gets information about the user.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.get_user_information_finish] to get the results.
+         * @param parent parent window information
+         * @param reason a string that can be shown in the dialog to explain    why the information is needed
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        get_user_information(
+            parent: Parent | null,
+            reason: string | null,
+            flags: UserInformationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Gets information about the user.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.get_user_information_finish] to get the results.
+         * @param parent parent window information
+         * @param reason a string that can be shown in the dialog to explain    why the information is needed
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         get_user_information(
@@ -1167,7 +1509,7 @@ export namespace Xdp {
             flags: UserInformationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Variant> | void;
         /**
          * Finishes the get-user-information request.
          *
@@ -1205,6 +1547,64 @@ export namespace Xdp {
          * @param accuracy desired accuracy
          * @param flags options for this call
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        location_monitor_start(
+            parent: Parent | null,
+            distance_threshold: number,
+            time_threshold: number,
+            accuracy: LocationAccuracy,
+            flags: LocationMonitorFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Makes `XdpPortal` start monitoring location changes.
+         *
+         * When the location changes, the [signal`Portal:`:location-updated].
+         * signal is emitted.
+         *
+         * Use [method`Portal`.location_monitor_stop] to stop monitoring.
+         *
+         * Note that [class`Portal]` only maintains a single location monitor
+         * at a time. If you want to change the `distance_threshold,`
+         * `time_threshold` or `accuracy` of the current monitor, you
+         * first have to call [method`Portal`.location_monitor_stop] to
+         * stop monitoring.
+         * @param parent a [struct@Parent], or `NULL`
+         * @param distance_threshold distance threshold, in meters
+         * @param time_threshold time threshold, in seconds
+         * @param accuracy desired accuracy
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        location_monitor_start(
+            parent: Parent | null,
+            distance_threshold: number,
+            time_threshold: number,
+            accuracy: LocationAccuracy,
+            flags: LocationMonitorFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Makes `XdpPortal` start monitoring location changes.
+         *
+         * When the location changes, the [signal`Portal:`:location-updated].
+         * signal is emitted.
+         *
+         * Use [method`Portal`.location_monitor_stop] to stop monitoring.
+         *
+         * Note that [class`Portal]` only maintains a single location monitor
+         * at a time. If you want to change the `distance_threshold,`
+         * `time_threshold` or `accuracy` of the current monitor, you
+         * first have to call [method`Portal`.location_monitor_stop] to
+         * stop monitoring.
+         * @param parent a [struct@Parent], or `NULL`
+         * @param distance_threshold distance threshold, in meters
+         * @param time_threshold time threshold, in seconds
+         * @param accuracy desired accuracy
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         location_monitor_start(
@@ -1215,7 +1615,7 @@ export namespace Xdp {
             flags: LocationMonitorFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes a location-monitor request.
          *
@@ -1238,6 +1638,40 @@ export namespace Xdp {
          * @param uri the URI to open
          * @param flags options for this call
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        open_directory(
+            parent: Parent,
+            uri: string,
+            flags: OpenUriFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Opens the directory containing the file specified by the `uri`.
+         *
+         * which must be a file: uri pointing to a file that the application has access
+         * to.
+         * @param parent parent window information
+         * @param uri the URI to open
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        open_directory(
+            parent: Parent,
+            uri: string,
+            flags: OpenUriFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Opens the directory containing the file specified by the `uri`.
+         *
+         * which must be a file: uri pointing to a file that the application has access
+         * to.
+         * @param parent parent window information
+         * @param uri the URI to open
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         open_directory(
@@ -1246,7 +1680,7 @@ export namespace Xdp {
             flags: OpenUriFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the open-directory request.
          *
@@ -1255,6 +1689,96 @@ export namespace Xdp {
          * @returns `TRUE` if the call succeeded
          */
         open_directory_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Asks the user to open one or more files.
+         *
+         * The format for the `filters` argument is `a(sa(us))`.
+         * Each item in the array specifies a single filter to offer to the user.
+         * The first string is a user-visible name for the filter. The `a(us)`
+         * specifies a list of filter strings, which can be either a glob pattern
+         * (indicated by 0) or a mimetype (indicated by 1).
+         *
+         * Example: `[('Images', [(0, '*.ico'), (1, 'image/png')]), ('Text', [(0, '*.txt')])]`
+         *
+         * The format for the `choices` argument is `a(ssa(ss)s)`.
+         * For each element, the first string is an ID that will be returned
+         * with the response, te second string is a user-visible label. The
+         * `a(ss)` is the list of choices, each being a is an ID and a
+         * user-visible label. The final string is the initial selection,
+         * or `""`, to let the portal decide which choice will be initially selected.
+         * None of the strings, except for the initial selection, should be empty.
+         *
+         * As a special case, passing an empty array for the list of choices
+         * indicates a boolean choice that is typically displayed as a check
+         * button, using `"true"` and `"false"` as the choices.
+         *
+         * Example: `[('encoding', 'Encoding', [('utf8', 'Unicode (UTF-8)'), ('latin15', 'Western')], 'latin15'), ('reencode', 'Reencode', [], 'false')]`
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.open_file_finish] to get the results.
+         * @param parent parent window information
+         * @param title title for the file chooser dialog
+         * @param filters a [struct@GLib.Variant] describing file filters
+         * @param current_filter a [struct@GLib.Variant] describing the current file filter
+         * @param choices a [struct@GLib.Variant] describing extra widgets
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         */
+        open_file(
+            parent: Parent | null,
+            title: string,
+            filters: GLib.Variant | null,
+            current_filter: GLib.Variant | null,
+            choices: GLib.Variant | null,
+            flags: OpenFileFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<GLib.Variant>;
+        /**
+         * Asks the user to open one or more files.
+         *
+         * The format for the `filters` argument is `a(sa(us))`.
+         * Each item in the array specifies a single filter to offer to the user.
+         * The first string is a user-visible name for the filter. The `a(us)`
+         * specifies a list of filter strings, which can be either a glob pattern
+         * (indicated by 0) or a mimetype (indicated by 1).
+         *
+         * Example: `[('Images', [(0, '*.ico'), (1, 'image/png')]), ('Text', [(0, '*.txt')])]`
+         *
+         * The format for the `choices` argument is `a(ssa(ss)s)`.
+         * For each element, the first string is an ID that will be returned
+         * with the response, te second string is a user-visible label. The
+         * `a(ss)` is the list of choices, each being a is an ID and a
+         * user-visible label. The final string is the initial selection,
+         * or `""`, to let the portal decide which choice will be initially selected.
+         * None of the strings, except for the initial selection, should be empty.
+         *
+         * As a special case, passing an empty array for the list of choices
+         * indicates a boolean choice that is typically displayed as a check
+         * button, using `"true"` and `"false"` as the choices.
+         *
+         * Example: `[('encoding', 'Encoding', [('utf8', 'Unicode (UTF-8)'), ('latin15', 'Western')], 'latin15'), ('reencode', 'Reencode', [], 'false')]`
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.open_file_finish] to get the results.
+         * @param parent parent window information
+         * @param title title for the file chooser dialog
+         * @param filters a [struct@GLib.Variant] describing file filters
+         * @param current_filter a [struct@GLib.Variant] describing the current file filter
+         * @param choices a [struct@GLib.Variant] describing extra widgets
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        open_file(
+            parent: Parent | null,
+            title: string,
+            filters: GLib.Variant | null,
+            current_filter: GLib.Variant | null,
+            choices: GLib.Variant | null,
+            flags: OpenFileFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asks the user to open one or more files.
          *
@@ -1300,7 +1824,7 @@ export namespace Xdp {
             flags: OpenFileFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Variant> | void;
         /**
          * Finishes the open-file request
          *
@@ -1331,6 +1855,34 @@ export namespace Xdp {
          * @param uri the URI to open
          * @param flags options for this call
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        open_uri(
+            parent: Parent,
+            uri: string,
+            flags: OpenUriFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Opens `uri` with an external handler.
+         * @param parent parent window information
+         * @param uri the URI to open
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        open_uri(
+            parent: Parent,
+            uri: string,
+            flags: OpenUriFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Opens `uri` with an external handler.
+         * @param parent parent window information
+         * @param uri the URI to open
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         open_uri(
@@ -1339,7 +1891,7 @@ export namespace Xdp {
             flags: OpenUriFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the open-uri request.
          *
@@ -1355,13 +1907,36 @@ export namespace Xdp {
          * call [method`Portal`.pick_color_finish] to get the results.
          * @param parent parent window information
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        pick_color(parent?: Parent | null, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant>;
+        /**
+         * Lets the user pick a color from the screen.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.pick_color_finish] to get the results.
+         * @param parent parent window information
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        pick_color(
+            parent: Parent | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Lets the user pick a color from the screen.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.pick_color_finish] to get the results.
+         * @param parent parent window information
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         pick_color(
             parent?: Parent | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Variant> | void;
         /**
          * Finishes a pick-color request.
          *
@@ -1371,6 +1946,48 @@ export namespace Xdp {
          * @returns GVariant containing the color
          */
         pick_color_finish(result: Gio.AsyncResult): GLib.Variant;
+        /**
+         * Presents a print dialog to the user and returns print settings and page setup.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.prepare_print_finish] to get the results.
+         * @param parent parent window information
+         * @param title tile for the print dialog
+         * @param settings Serialized print settings
+         * @param page_setup Serialized page setup
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         */
+        prepare_print(
+            parent: Parent | null,
+            title: string,
+            settings: GLib.Variant | null,
+            page_setup: GLib.Variant | null,
+            flags: PrintFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<GLib.Variant>;
+        /**
+         * Presents a print dialog to the user and returns print settings and page setup.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.prepare_print_finish] to get the results.
+         * @param parent parent window information
+         * @param title tile for the print dialog
+         * @param settings Serialized print settings
+         * @param page_setup Serialized page setup
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        prepare_print(
+            parent: Parent | null,
+            title: string,
+            settings: GLib.Variant | null,
+            page_setup: GLib.Variant | null,
+            flags: PrintFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Presents a print dialog to the user and returns print settings and page setup.
          *
@@ -1392,7 +2009,7 @@ export namespace Xdp {
             flags: PrintFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Variant> | void;
         /**
          * Finishes the prepare-print request.
          *
@@ -1421,6 +2038,56 @@ export namespace Xdp {
          * @param file path of the document to print
          * @param flags options for this call
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        print_file(
+            parent: Parent | null,
+            title: string,
+            token: number,
+            file: string,
+            flags: PrintFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Prints a file.
+         *
+         * If a valid token is present in the `options,` then this call will print
+         * with the settings from the Print call that the token refers to. If
+         * no token is present, then a print dialog will be presented to the user.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.print_file_finish] to get the results.
+         * @param parent parent window information
+         * @param title tile for the print dialog
+         * @param token token that was returned by a previous [method@Portal.prepare_print] call, or 0
+         * @param file path of the document to print
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        print_file(
+            parent: Parent | null,
+            title: string,
+            token: number,
+            file: string,
+            flags: PrintFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Prints a file.
+         *
+         * If a valid token is present in the `options,` then this call will print
+         * with the settings from the Print call that the token refers to. If
+         * no token is present, then a print dialog will be presented to the user.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.print_file_finish] to get the results.
+         * @param parent parent window information
+         * @param title tile for the print dialog
+         * @param token token that was returned by a previous [method@Portal.prepare_print] call, or 0
+         * @param file path of the document to print
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         print_file(
@@ -1431,7 +2098,7 @@ export namespace Xdp {
             flags: PrintFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the print request.
          * @param result a [iface@Gio.AsyncResult]
@@ -1453,6 +2120,44 @@ export namespace Xdp {
          * @param commandline command line to autostart
          * @param flags options for this call
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        request_background(
+            parent: Parent | null,
+            reason: string | null,
+            commandline: string[],
+            flags: BackgroundFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Requests background permissions.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.request_background_finish] to get the results.
+         * @param parent parent window information
+         * @param reason reason to present to user for request
+         * @param commandline command line to autostart
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        request_background(
+            parent: Parent | null,
+            reason: string | null,
+            commandline: string[],
+            flags: BackgroundFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests background permissions.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.request_background_finish] to get the results.
+         * @param parent parent window information
+         * @param reason reason to present to user for request
+         * @param commandline command line to autostart
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         request_background(
@@ -1462,7 +2167,7 @@ export namespace Xdp {
             flags: BackgroundFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the request.
          *
@@ -1471,6 +2176,72 @@ export namespace Xdp {
          * @returns `TRUE` if successful.
          */
         request_background_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Asks the user for a location to save a file.
+         *
+         * The format for the `filters` argument is the same as for [method`Portal`.open_file].
+         *
+         * The format for the `choices` argument is the same as for [method`Portal`.open_file].
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.save_file_finish] to get the results.
+         * @param parent parent window information
+         * @param title title for the file chooser dialog
+         * @param current_name suggested filename
+         * @param current_folder suggested folder to save the file in
+         * @param current_file the current file (when saving an existing file)
+         * @param filters a [struct@GLib.Variant] describing file filters
+         * @param current_filter a [struct@GLib.Variant] describing the current file filter
+         * @param choices a [struct@GLib.Variant] describing extra widgets
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         */
+        save_file(
+            parent: Parent | null,
+            title: string,
+            current_name: string | null,
+            current_folder: string | null,
+            current_file: string | null,
+            filters: GLib.Variant | null,
+            current_filter: GLib.Variant | null,
+            choices: GLib.Variant | null,
+            flags: SaveFileFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<GLib.Variant>;
+        /**
+         * Asks the user for a location to save a file.
+         *
+         * The format for the `filters` argument is the same as for [method`Portal`.open_file].
+         *
+         * The format for the `choices` argument is the same as for [method`Portal`.open_file].
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.save_file_finish] to get the results.
+         * @param parent parent window information
+         * @param title title for the file chooser dialog
+         * @param current_name suggested filename
+         * @param current_folder suggested folder to save the file in
+         * @param current_file the current file (when saving an existing file)
+         * @param filters a [struct@GLib.Variant] describing file filters
+         * @param current_filter a [struct@GLib.Variant] describing the current file filter
+         * @param choices a [struct@GLib.Variant] describing extra widgets
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        save_file(
+            parent: Parent | null,
+            title: string,
+            current_name: string | null,
+            current_folder: string | null,
+            current_file: string | null,
+            filters: GLib.Variant | null,
+            current_filter: GLib.Variant | null,
+            choices: GLib.Variant | null,
+            flags: SaveFileFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asks the user for a location to save a file.
          *
@@ -1504,7 +2275,7 @@ export namespace Xdp {
             flags: SaveFileFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Variant> | void;
         /**
          * Finishes the save-file request.
          *
@@ -1539,6 +2310,70 @@ export namespace Xdp {
          * @param choices a [struct@GLib.Variant] describing extra widgets
          * @param flags options for this call
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        save_files(
+            parent: Parent | null,
+            title: string,
+            current_name: string | null,
+            current_folder: string | null,
+            files: GLib.Variant,
+            choices: GLib.Variant | null,
+            flags: SaveFileFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<GLib.Variant>;
+        /**
+         * Asks for a folder as a location to save one or more files.
+         *
+         * The names of the files will be used as-is and appended to the selected
+         * folder's path in the list of returned files. If the selected folder already
+         * contains a file with one of the given names, the portal may prompt or take
+         * some other action to construct a unique file name and return that instead.
+         *
+         * The format for the `choices` argument is the same as for [method`Portal`.open_file].
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.save_file_finish] to get the results.
+         * @param parent parent window information
+         * @param title title for the file chooser dialog
+         * @param current_name suggested filename
+         * @param current_folder suggested folder to save the file in
+         * @param files An array of file names to be saved
+         * @param choices a [struct@GLib.Variant] describing extra widgets
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        save_files(
+            parent: Parent | null,
+            title: string,
+            current_name: string | null,
+            current_folder: string | null,
+            files: GLib.Variant,
+            choices: GLib.Variant | null,
+            flags: SaveFileFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asks for a folder as a location to save one or more files.
+         *
+         * The names of the files will be used as-is and appended to the selected
+         * folder's path in the list of returned files. If the selected folder already
+         * contains a file with one of the given names, the portal may prompt or take
+         * some other action to construct a unique file name and return that instead.
+         *
+         * The format for the `choices` argument is the same as for [method`Portal`.open_file].
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.save_file_finish] to get the results.
+         * @param parent parent window information
+         * @param title title for the file chooser dialog
+         * @param current_name suggested filename
+         * @param current_folder suggested folder to save the file in
+         * @param files An array of file names to be saved
+         * @param choices a [struct@GLib.Variant] describing extra widgets
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         save_files(
@@ -1551,7 +2386,7 @@ export namespace Xdp {
             flags: SaveFileFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Variant> | void;
         /**
          * Finishes the save-files request.
          *
@@ -1581,6 +2416,46 @@ export namespace Xdp {
          * @param reason user-visible reason for the inhibition
          * @param flags information about what to inhibit
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        session_inhibit(
+            parent: Parent | null,
+            reason: string | null,
+            flags: InhibitFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Inhibits various session status changes.
+         *
+         * To obtain an ID that can be used to undo the inhibition, use
+         * [method`Portal`.session_inhibit_finish] in the callback.
+         *
+         * To remove an active inhibitor, call [method`Portal`.session_uninhibit]
+         * with the same ID.
+         * @param parent parent window information
+         * @param reason user-visible reason for the inhibition
+         * @param flags information about what to inhibit
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        session_inhibit(
+            parent: Parent | null,
+            reason: string | null,
+            flags: InhibitFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Inhibits various session status changes.
+         *
+         * To obtain an ID that can be used to undo the inhibition, use
+         * [method`Portal`.session_inhibit_finish] in the callback.
+         *
+         * To remove an active inhibitor, call [method`Portal`.session_uninhibit]
+         * with the same ID.
+         * @param parent parent window information
+         * @param reason user-visible reason for the inhibition
+         * @param flags information about what to inhibit
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         session_inhibit(
@@ -1589,7 +2464,7 @@ export namespace Xdp {
             flags: InhibitFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes the inhbit request.
          *
@@ -1621,6 +2496,40 @@ export namespace Xdp {
          * @param parent a XdpParent, or `NULL`
          * @param flags options for this call
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        session_monitor_start(
+            parent: Parent | null,
+            flags: SessionMonitorFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Makes [class`Portal]` start monitoring the login session state.
+         *
+         * When the state changes, the [signal`Portal:`:session-state-changed]
+         * signal is emitted.
+         *
+         * Use [method`Portal`.session_monitor_stop] to stop monitoring.
+         * @param parent a XdpParent, or `NULL`
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        session_monitor_start(
+            parent: Parent | null,
+            flags: SessionMonitorFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Makes [class`Portal]` start monitoring the login session state.
+         *
+         * When the state changes, the [signal`Portal:`:session-state-changed]
+         * signal is emitted.
+         *
+         * Use [method`Portal`.session_monitor_stop] to stop monitoring.
+         * @param parent a XdpParent, or `NULL`
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         session_monitor_start(
@@ -1628,7 +2537,7 @@ export namespace Xdp {
             flags: SessionMonitorFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes a session-monitor request.
          *
@@ -1653,19 +2562,66 @@ export namespace Xdp {
          * in background.
          * @param status_message status message when running in background
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        set_background_status(status_message?: string | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Sets the status information of the application, for when it's running
+         * in background.
+         * @param status_message status message when running in background
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        set_background_status(
+            status_message: string | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Sets the status information of the application, for when it's running
+         * in background.
+         * @param status_message status message when running in background
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         set_background_status(
             status_message?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes setting the background status of the application.
          * @param result a [iface@Gio.AsyncResult]
          * @returns %TRUE if successfully set status, %FALSE otherwise
          */
         set_background_status_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Sets a desktop background image, given by a uri.
+         * @param parent parent window information
+         * @param uri the URI to use
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         */
+        set_wallpaper(
+            parent: Parent | null,
+            uri: string,
+            flags: WallpaperFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Sets a desktop background image, given by a uri.
+         * @param parent parent window information
+         * @param uri the URI to use
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        set_wallpaper(
+            parent: Parent | null,
+            uri: string,
+            flags: WallpaperFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Sets a desktop background image, given by a uri.
          * @param parent parent window information
@@ -1680,7 +2636,7 @@ export namespace Xdp {
             flags: WallpaperFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the open-uri request.
          *
@@ -1689,6 +2645,62 @@ export namespace Xdp {
          * @returns `TRUE` if the call succeeded
          */
         set_wallpaper_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Creates a new copy of the applications sandbox, and runs
+         * a process in, with the given arguments.
+         *
+         * The learn when the spawned process exits, connect to the
+         * [signal`Portal:`:spawn-exited] signal.
+         * @param cwd the cwd for the new process
+         * @param argv the argv for the new process
+         * @param fds an array of open fds to pass to the new process, or `NULL`
+         * @param map_to an array of integers to map the @fds to, or `NULL`. Must be the same     length as @fds
+         * @param env an array of KEY=VALUE environment settings, or `NULL`
+         * @param flags flags influencing the spawn operation
+         * @param sandbox_expose paths to expose rw in the new sandbox, or `NULL`
+         * @param sandbox_expose_ro paths to expose ro in the new sandbox, or `NULL`
+         * @param cancellable optional [class@Gio.Cancellable]
+         */
+        spawn(
+            cwd: string,
+            argv: string[],
+            fds: number[] | null,
+            map_to: number[] | null,
+            env: string[] | null,
+            flags: SpawnFlags,
+            sandbox_expose?: string[] | null,
+            sandbox_expose_ro?: string[] | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Creates a new copy of the applications sandbox, and runs
+         * a process in, with the given arguments.
+         *
+         * The learn when the spawned process exits, connect to the
+         * [signal`Portal:`:spawn-exited] signal.
+         * @param cwd the cwd for the new process
+         * @param argv the argv for the new process
+         * @param fds an array of open fds to pass to the new process, or `NULL`
+         * @param map_to an array of integers to map the @fds to, or `NULL`. Must be the same     length as @fds
+         * @param env an array of KEY=VALUE environment settings, or `NULL`
+         * @param flags flags influencing the spawn operation
+         * @param sandbox_expose paths to expose rw in the new sandbox, or `NULL`
+         * @param sandbox_expose_ro paths to expose ro in the new sandbox, or `NULL`
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        spawn(
+            cwd: string,
+            argv: string[],
+            fds: number[] | null,
+            map_to: number[] | null,
+            env: string[] | null,
+            flags: SpawnFlags,
+            sandbox_expose: string[] | null,
+            sandbox_expose_ro: string[] | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Creates a new copy of the applications sandbox, and runs
          * a process in, with the given arguments.
@@ -1717,7 +2729,7 @@ export namespace Xdp {
             sandbox_expose_ro?: string[] | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes the spawn request.
          *
@@ -1742,6 +2754,36 @@ export namespace Xdp {
          * @param parent parent window information
          * @param flags options for this call
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        take_screenshot(
+            parent: Parent | null,
+            flags: ScreenshotFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<string | null>;
+        /**
+         * Takes a screenshot.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.take_screenshot_finish] to get the results.
+         * @param parent parent window information
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        take_screenshot(
+            parent: Parent | null,
+            flags: ScreenshotFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Takes a screenshot.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Portal`.take_screenshot_finish] to get the results.
+         * @param parent parent window information
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         take_screenshot(
@@ -1749,7 +2791,7 @@ export namespace Xdp {
             flags: ScreenshotFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string | null> | void;
         /**
          * Finishes a screenshot request.
          *
@@ -1762,13 +2804,30 @@ export namespace Xdp {
          * Sends the file at `path` to the trash can.
          * @param path the path for a local file
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        trash_file(path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Sends the file at `path` to the trash can.
+         * @param path the path for a local file
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        trash_file(
+            path: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Sends the file at `path` to the trash can.
+         * @param path the path for a local file
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         trash_file(
             path: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the trash-file request.
          *
@@ -1788,6 +2847,42 @@ export namespace Xdp {
          * @param parent a [struct@Parent]
          * @param flags options for this call
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        update_install(
+            parent: Parent,
+            flags: UpdateInstallFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Installs an available software update.
+         *
+         * This should be called in response to a [signal`Portal:`:update-available]
+         * signal.
+         *
+         * During the update installation, the [signal`Portal:`:update-progress]
+         * signal will be emitted to provide progress information.
+         * @param parent a [struct@Parent]
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        update_install(
+            parent: Parent,
+            flags: UpdateInstallFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Installs an available software update.
+         *
+         * This should be called in response to a [signal`Portal:`:update-available]
+         * signal.
+         *
+         * During the update installation, the [signal`Portal:`:update-progress]
+         * signal will be emitted to provide progress information.
+         * @param parent a [struct@Parent]
+         * @param flags options for this call
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         update_install(
@@ -1795,7 +2890,7 @@ export namespace Xdp {
             flags: UpdateInstallFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an update-installation request.
          *
@@ -1818,13 +2913,40 @@ export namespace Xdp {
          * Use [method`Portal`.update_monitor_stop] to stop monitoring.
          * @param flags options for this cal..
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        update_monitor_start(flags: UpdateMonitorFlags, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Makes `XdpPortal` start monitoring for available software updates.
+         *
+         * When a new update is available, the [signal`Portal:`:update-available].
+         * signal is emitted.
+         *
+         * Use [method`Portal`.update_monitor_stop] to stop monitoring.
+         * @param flags options for this cal..
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        update_monitor_start(
+            flags: UpdateMonitorFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Makes `XdpPortal` start monitoring for available software updates.
+         *
+         * When a new update is available, the [signal`Portal:`:update-available].
+         * signal is emitted.
+         *
+         * Use [method`Portal`.update_monitor_stop] to stop monitoring.
+         * @param flags options for this cal..
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         update_monitor_start(
             flags: UpdateMonitorFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an update-monitor request.
          *
@@ -2525,13 +3647,36 @@ export namespace Xdp {
          * call [method`Session`.start_finish] to get the results.
          * @param parent parent window information
          * @param cancellable optional [class@Gio.Cancellable]
+         */
+        start(parent?: Parent | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts the session.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Session`.start_finish] to get the results.
+         * @param parent parent window information
+         * @param cancellable optional [class@Gio.Cancellable]
+         * @param callback a callback to call when the request is done
+         */
+        start(
+            parent: Parent | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts the session.
+         *
+         * When the request is done, `callback` will be called. You can then
+         * call [method`Session`.start_finish] to get the results.
+         * @param parent parent window information
+         * @param cancellable optional [class@Gio.Cancellable]
          * @param callback a callback to call when the request is done
          */
         start(
             parent?: Parent | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the session-start request.
          * @param result a [iface@Gio.AsyncResult]

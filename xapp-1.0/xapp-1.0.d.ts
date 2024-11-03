@@ -6387,13 +6387,100 @@ export namespace XApp {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -9500,13 +9587,100 @@ export namespace XApp {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -9706,6 +9880,50 @@ export namespace XApp {
          * @param arg_time Argument to pass with the method invocation.
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_button_press(
+            arg_x: number,
+            arg_y: number,
+            arg_button: number,
+            arg_time: number,
+            arg_panel_position: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_button_press_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_button_press_sync() for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_button_press(
+            arg_x: number,
+            arg_y: number,
+            arg_button: number,
+            arg_time: number,
+            arg_panel_position: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_button_press_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_button_press_sync() for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_button_press(
@@ -9716,7 +9934,7 @@ export namespace XApp {
             arg_panel_position: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with xapp_status_icon_interface_call_button_press().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to xapp_status_icon_interface_call_button_press().
@@ -9755,6 +9973,50 @@ export namespace XApp {
          * @param arg_time Argument to pass with the method invocation.
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_button_release(
+            arg_x: number,
+            arg_y: number,
+            arg_button: number,
+            arg_time: number,
+            arg_panel_position: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_button_release_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_button_release_sync() for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_button_release(
+            arg_x: number,
+            arg_y: number,
+            arg_button: number,
+            arg_time: number,
+            arg_panel_position: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_button_release_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_button_release_sync() for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_button_release(
@@ -9765,7 +10027,7 @@ export namespace XApp {
             arg_panel_position: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with xapp_status_icon_interface_call_button_release().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to xapp_status_icon_interface_call_button_release().
@@ -9802,6 +10064,42 @@ export namespace XApp {
          * @param arg_orientation Argument to pass with the method invocation.
          * @param arg_time Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_scroll(
+            arg_delta: number,
+            arg_orientation: number,
+            arg_time: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_scroll_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_scroll_sync() for the synchronous, blocking version of this method.
+         * @param arg_delta Argument to pass with the method invocation.
+         * @param arg_orientation Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_scroll(
+            arg_delta: number,
+            arg_orientation: number,
+            arg_time: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_scroll_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_scroll_sync() for the synchronous, blocking version of this method.
+         * @param arg_delta Argument to pass with the method invocation.
+         * @param arg_orientation Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_scroll(
@@ -9810,7 +10108,7 @@ export namespace XApp {
             arg_time: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with xapp_status_icon_interface_call_scroll().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to xapp_status_icon_interface_call_scroll().
@@ -10476,6 +10774,50 @@ export namespace XApp {
          * @param arg_time Argument to pass with the method invocation.
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_button_press(
+            arg_x: number,
+            arg_y: number,
+            arg_button: number,
+            arg_time: number,
+            arg_panel_position: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_button_press_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_button_press_sync() for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_button_press(
+            arg_x: number,
+            arg_y: number,
+            arg_button: number,
+            arg_time: number,
+            arg_panel_position: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_button_press_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_button_press_sync() for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_button_press(
@@ -10486,7 +10828,7 @@ export namespace XApp {
             arg_panel_position: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with xapp_status_icon_interface_call_button_press().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to xapp_status_icon_interface_call_button_press().
@@ -10525,6 +10867,50 @@ export namespace XApp {
          * @param arg_time Argument to pass with the method invocation.
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_button_release(
+            arg_x: number,
+            arg_y: number,
+            arg_button: number,
+            arg_time: number,
+            arg_panel_position: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_button_release_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_button_release_sync() for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_button_release(
+            arg_x: number,
+            arg_y: number,
+            arg_button: number,
+            arg_time: number,
+            arg_panel_position: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_button_release_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_button_release_sync() for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_button_release(
@@ -10535,7 +10921,7 @@ export namespace XApp {
             arg_panel_position: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with xapp_status_icon_interface_call_button_release().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to xapp_status_icon_interface_call_button_release().
@@ -10572,6 +10958,42 @@ export namespace XApp {
          * @param arg_orientation Argument to pass with the method invocation.
          * @param arg_time Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_scroll(
+            arg_delta: number,
+            arg_orientation: number,
+            arg_time: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_scroll_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_scroll_sync() for the synchronous, blocking version of this method.
+         * @param arg_delta Argument to pass with the method invocation.
+         * @param arg_orientation Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_scroll(
+            arg_delta: number,
+            arg_orientation: number,
+            arg_time: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_scroll_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_scroll_sync() for the synchronous, blocking version of this method.
+         * @param arg_delta Argument to pass with the method invocation.
+         * @param arg_orientation Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_scroll(
@@ -10580,7 +11002,7 @@ export namespace XApp {
             arg_time: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with xapp_status_icon_interface_call_scroll().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to xapp_status_icon_interface_call_scroll().
@@ -11364,13 +11786,100 @@ export namespace XApp {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -12891,6 +13400,50 @@ export namespace XApp {
          * @param arg_time Argument to pass with the method invocation.
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_button_press(
+            arg_x: number,
+            arg_y: number,
+            arg_button: number,
+            arg_time: number,
+            arg_panel_position: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_button_press_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_button_press_sync() for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_button_press(
+            arg_x: number,
+            arg_y: number,
+            arg_button: number,
+            arg_time: number,
+            arg_panel_position: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_button_press_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_button_press_sync() for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_button_press(
@@ -12901,7 +13454,7 @@ export namespace XApp {
             arg_panel_position: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with xapp_status_icon_interface_call_button_press().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to xapp_status_icon_interface_call_button_press().
@@ -12940,6 +13493,50 @@ export namespace XApp {
          * @param arg_time Argument to pass with the method invocation.
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_button_release(
+            arg_x: number,
+            arg_y: number,
+            arg_button: number,
+            arg_time: number,
+            arg_panel_position: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_button_release_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_button_release_sync() for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_button_release(
+            arg_x: number,
+            arg_y: number,
+            arg_button: number,
+            arg_time: number,
+            arg_panel_position: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_button_release_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_button_release_sync() for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_button_release(
@@ -12950,7 +13547,7 @@ export namespace XApp {
             arg_panel_position: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with xapp_status_icon_interface_call_button_release().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to xapp_status_icon_interface_call_button_release().
@@ -12987,6 +13584,42 @@ export namespace XApp {
          * @param arg_orientation Argument to pass with the method invocation.
          * @param arg_time Argument to pass with the method invocation.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_scroll(
+            arg_delta: number,
+            arg_orientation: number,
+            arg_time: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_scroll_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_scroll_sync() for the synchronous, blocking version of this method.
+         * @param arg_delta Argument to pass with the method invocation.
+         * @param arg_orientation Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         */
+        call_scroll(
+            arg_delta: number,
+            arg_orientation: number,
+            arg_time: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+         * You can then call xapp_status_icon_interface_call_scroll_finish() to get the result of the operation.
+         *
+         * See xapp_status_icon_interface_call_scroll_sync() for the synchronous, blocking version of this method.
+         * @param arg_delta Argument to pass with the method invocation.
+         * @param arg_orientation Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
         call_scroll(
@@ -12995,7 +13628,7 @@ export namespace XApp {
             arg_time: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with xapp_status_icon_interface_call_scroll().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to xapp_status_icon_interface_call_scroll().

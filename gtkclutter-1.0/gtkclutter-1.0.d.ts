@@ -398,15 +398,7 @@ export namespace GtkClutter {
          * be normally used by applications.
          */
         sort_depth_order(): void;
-        /**
-         * class handler for #ClutterContainer::actor-added
-         * @param actor
-         */
         vfunc_actor_added(actor: Clutter.Actor): void;
-        /**
-         * class handler for #ClutterContainer::actor-removed
-         * @param actor
-         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -1012,12 +1004,14 @@ export namespace GtkClutter {
         // Properties
 
         /**
-         * The #GtkWidget to be embedded into the #GtkClutterActor
+         * Whether to use the reported size of the LayoutManager on the stage as the widget size.
+         * See gtk_clutter_embed_set_use_layout_size() for details.
          */
         get use_layout_size(): boolean;
         set use_layout_size(val: boolean);
         /**
-         * The #GtkWidget to be embedded into the #GtkClutterActor
+         * Whether to use the reported size of the LayoutManager on the stage as the widget size.
+         * See gtk_clutter_embed_set_use_layout_size() for details.
          */
         get useLayoutSize(): boolean;
         set useLayoutSize(val: boolean);

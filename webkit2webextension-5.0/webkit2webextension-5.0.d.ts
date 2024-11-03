@@ -35029,13 +35029,38 @@ export namespace WebKit2WebExtension {
          * webkit_web_extension_send_message_to_context_finish() to get the message reply.
          * @param message a #WebKitUserMessage
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        send_message_to_context(message: UserMessage, cancellable?: Gio.Cancellable | null): Promise<UserMessage>;
+        /**
+         * Send `message` to the #WebKitWebContext corresponding to `extension`. If `message` is floating, it's consumed.
+         *
+         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `calback`.
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_extension_send_message_to_context_finish() to get the message reply.
+         * @param message a #WebKitUserMessage
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback (nullable): A #GAsyncReadyCallback to call when the request is satisfied or %NULL
+         */
+        send_message_to_context(
+            message: UserMessage,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Send `message` to the #WebKitWebContext corresponding to `extension`. If `message` is floating, it's consumed.
+         *
+         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `calback`.
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_extension_send_message_to_context_finish() to get the message reply.
+         * @param message a #WebKitUserMessage
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback (nullable): A #GAsyncReadyCallback to call when the request is satisfied or %NULL
          */
         send_message_to_context(
             message: UserMessage,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<UserMessage> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_extension_send_message_to_context().
          * @param result a #GAsyncResult
@@ -35279,13 +35304,38 @@ export namespace WebKit2WebExtension {
          * webkit_web_page_send_message_to_view_finish() to get the message reply.
          * @param message a #WebKitUserMessage
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        send_message_to_view(message: UserMessage, cancellable?: Gio.Cancellable | null): Promise<UserMessage>;
+        /**
+         * Send `message` to the #WebKitWebView corresponding to `web_page`. If `message` is floating, it's consumed.
+         *
+         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `callback`.
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_page_send_message_to_view_finish() to get the message reply.
+         * @param message a #WebKitUserMessage
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback (nullable): A #GAsyncReadyCallback to call when the request is satisfied or %NULL
+         */
+        send_message_to_view(
+            message: UserMessage,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Send `message` to the #WebKitWebView corresponding to `web_page`. If `message` is floating, it's consumed.
+         *
+         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `callback`.
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_page_send_message_to_view_finish() to get the message reply.
+         * @param message a #WebKitUserMessage
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback (nullable): A #GAsyncReadyCallback to call when the request is satisfied or %NULL
          */
         send_message_to_view(
             message: UserMessage,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<UserMessage> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_page_send_message_to_view().
          * @param result a #GAsyncResult

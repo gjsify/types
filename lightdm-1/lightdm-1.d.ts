@@ -408,9 +408,31 @@ export namespace LightDM {
          *
          * See lightdm_greeter_connect_to_daemon_sync() for the synchronous version.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        connect_to_daemon(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously connects the greeter to the display manager.
+         *
+         * When the operation is finished, `callback` will be invoked. You can then call lightdm_greeter_connect_to_daemon_finish() to get the result of the operation.
+         *
+         * See lightdm_greeter_connect_to_daemon_sync() for the synchronous version.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when completed or %NULL.
          */
-        connect_to_daemon(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        connect_to_daemon(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously connects the greeter to the display manager.
+         *
+         * When the operation is finished, `callback` will be invoked. You can then call lightdm_greeter_connect_to_daemon_finish() to get the result of the operation.
+         *
+         * See lightdm_greeter_connect_to_daemon_sync() for the synchronous version.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when completed or %NULL.
+         */
+        connect_to_daemon(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with lightdm_greeter_connect_to_daemon().
          * @param result A #GAsyncResult.
@@ -435,13 +457,48 @@ export namespace LightDM {
          * the directory themselves.
          * @param username A username
          * @param cancellable A #GCancellable or %NULL.
+         */
+        ensure_shared_data_dir(username: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Ensure that a shared data dir for the given user is available.  Both the
+         * greeter user and `username` will have write access to that folder.  The
+         * intention is that larger pieces of shared data would be stored there (files
+         * that the greeter creates but wants to give to a user -- like camera
+         * photos -- or files that the user creates but wants the greeter to
+         * see -- like contact avatars).
+         *
+         * LightDM will automatically create these if the user actually logs in, so
+         * greeters only need to call this method if they want to store something in
+         * the directory themselves.
+         * @param username A username
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when completed or %NULL.
+         */
+        ensure_shared_data_dir(
+            username: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Ensure that a shared data dir for the given user is available.  Both the
+         * greeter user and `username` will have write access to that folder.  The
+         * intention is that larger pieces of shared data would be stored there (files
+         * that the greeter creates but wants to give to a user -- like camera
+         * photos -- or files that the user creates but wants the greeter to
+         * see -- like contact avatars).
+         *
+         * LightDM will automatically create these if the user actually logs in, so
+         * greeters only need to call this method if they want to store something in
+         * the directory themselves.
+         * @param username A username
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when completed or %NULL.
          */
         ensure_shared_data_dir(
             username: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Function to call from lightdm_greeter_ensure_shared_data_dir callback.
          * @param result A #GAsyncResult.
@@ -580,13 +637,38 @@ export namespace LightDM {
          * See lightdm_greeter_start_session_sync() for the synchronous version.
          * @param session The session to log into or #NULL to use the default.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        start_session(session?: string | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously start a session for the authenticated user.
+         *
+         * When the operation is finished, `callback` will be invoked. You can then call lightdm_greeter_start_session_finish() to get the result of the operation.
+         *
+         * See lightdm_greeter_start_session_sync() for the synchronous version.
+         * @param session The session to log into or #NULL to use the default.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when completed or %NULL.
+         */
+        start_session(
+            session: string | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously start a session for the authenticated user.
+         *
+         * When the operation is finished, `callback` will be invoked. You can then call lightdm_greeter_start_session_finish() to get the result of the operation.
+         *
+         * See lightdm_greeter_start_session_sync() for the synchronous version.
+         * @param session The session to log into or #NULL to use the default.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when completed or %NULL.
          */
         start_session(
             session?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Start a session for the authenticated user.
          * @param result A #GAsyncResult.

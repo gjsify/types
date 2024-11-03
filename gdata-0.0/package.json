@@ -1,7 +1,7 @@
 {
     "name": "@girs/gdata-0.0",
-    "version": "0.18.1-4.0.0-beta.16",
-    "description": "GJS TypeScript type definitions for GData-0.0, generated from library version 0.18.1",
+    "version": "0.19.0-4.0.0-beta.17",
+    "description": "GJS TypeScript type definitions for GData-0.0, generated from library version 0.19.0",
     "type": "module",
     "module": "gdata-0.0.js",
     "main": "gdata-0.0.js",

@@ -21993,15 +21993,7 @@ export namespace Mx {
          * be normally used by applications.
          */
         sort_depth_order(): void;
-        /**
-         * class handler for #ClutterContainer::actor-added
-         * @param actor
-         */
         vfunc_actor_added(actor: Clutter.Actor): void;
-        /**
-         * class handler for #ClutterContainer::actor-removed
-         * @param actor
-         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -25173,15 +25165,7 @@ export namespace Mx {
          * be normally used by applications.
          */
         sort_depth_order(): void;
-        /**
-         * class handler for #ClutterContainer::actor-added
-         * @param actor
-         */
         vfunc_actor_added(actor: Clutter.Actor): void;
-        /**
-         * class handler for #ClutterContainer::actor-removed
-         * @param actor
-         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the

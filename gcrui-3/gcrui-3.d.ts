@@ -402,16 +402,7 @@ export namespace GcrUi {
          * @param attrs attributes to set
          */
         set_attributes(attrs?: Gck.Attributes | null): void;
-        /**
-         * signal emitted when data being rendered changes
-         */
         vfunc_data_changed(): void;
-        /**
-         * method invoked to populate a popup menu with additional
-         *                  renderer options
-         * @param viewer
-         * @param menu
-         */
         vfunc_populate_popup(viewer: Viewer, menu: Gtk.Menu): void;
         /**
          * Render the contents of the renderer to the given viewer.
@@ -6878,16 +6869,7 @@ export namespace GcrUi {
          * @param attrs attributes to set
          */
         set_attributes(attrs?: Gck.Attributes | null): void;
-        /**
-         * signal emitted when data being rendered changes
-         */
         vfunc_data_changed(): void;
-        /**
-         * method invoked to populate a popup menu with additional
-         *                  renderer options
-         * @param viewer
-         * @param menu
-         */
         vfunc_populate_popup(viewer: Viewer, menu: Gtk.Menu): void;
         /**
          * Render the contents of the renderer to the given viewer.
@@ -7361,16 +7343,7 @@ export namespace GcrUi {
 
         // Virtual methods
 
-        /**
-         * Emitted when the import completes, or fails.
-         * @param importer
-         * @param error
-         */
         vfunc_imported(importer: Gcr.Importer, error: GLib.Error): void;
-        /**
-         * Emitted when the import begins.
-         * @param importer
-         */
         vfunc_importing(importer: Gcr.Importer): void;
 
         // Methods
@@ -11922,16 +11895,7 @@ export namespace GcrUi {
          * @param viewer The viewer to render to.
          */
         render_view(viewer: Viewer): void;
-        /**
-         * signal emitted when data being rendered changes
-         */
         vfunc_data_changed(): void;
-        /**
-         * method invoked to populate a popup menu with additional
-         *                  renderer options
-         * @param viewer
-         * @param menu
-         */
         vfunc_populate_popup(viewer: Viewer, menu: Gtk.Menu): void;
         /**
          * Render the contents of the renderer to the given viewer.
@@ -13606,9 +13570,31 @@ export namespace GcrUi {
          *
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
+         */
+        confirm_async(cancellable?: Gio.Cancellable | null): Promise<Gcr.PromptReply>;
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this method to
+         * represent the question correctly.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        confirm_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        confirm_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this method to
+         * represent the question correctly.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        confirm_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<Gcr.PromptReply> | void;
         /**
          * Complete an operation to prompt for confirmation.
          *
@@ -13751,9 +13737,29 @@ export namespace GcrUi {
          *
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
+         */
+        password_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        password_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        password_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        password_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<string> | void;
         /**
          * Complete an operation to prompt for a password.
          *
@@ -13877,9 +13883,6 @@ export namespace GcrUi {
          * @param warning the warning or %NULL
          */
         set_warning(warning?: string | null): void;
-        /**
-         * close a prompt
-         */
         vfunc_prompt_close(): void;
         /**
          * Prompts for confirmation asking a cancel/continue style question.
@@ -16180,16 +16183,7 @@ export namespace GcrUi {
 
         // Virtual methods
 
-        /**
-         * signal emitted when data being rendered changes
-         */
         vfunc_data_changed(): void;
-        /**
-         * method invoked to populate a popup menu with additional
-         *                  renderer options
-         * @param viewer
-         * @param menu
-         */
         vfunc_populate_popup(viewer: Viewer, menu: Gtk.Menu): void;
         /**
          * Render the contents of the renderer to the given viewer.

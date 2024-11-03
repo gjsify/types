@@ -566,11 +566,6 @@ export namespace PeasGtk {
 
         // Virtual methods
 
-        /**
-         * Signal class handler for the
-         *                  #PeasGtkPluginManagerView::populate-popup signal.
-         * @param menu
-         */
         vfunc_populate_popup(menu: Gtk.Menu): void;
 
         // Methods

@@ -20,11 +20,11 @@ export namespace UnityExtras {
      */
 
     function show_in_folder(uri: string): Promise<void>;
-    function show_in_folder(uri: string, _callback_: Gio.AsyncReadyCallback<string> | null): void;
-    function show_in_folder(uri: string, _callback_?: Gio.AsyncReadyCallback<string> | null): Promise<void> | void;
+    function show_in_folder(uri: string, _callback_: Gio.AsyncReadyCallback<string>): void;
+    function show_in_folder(uri: string, _callback_: Gio.AsyncReadyCallback<string>): Promise<void> | void;
     function show_in_folder_finish(_res_: Gio.AsyncResult): void;
     function dbus_name_has_owner(name: string): boolean;
-    function dbus_own_name(name: string, scope_creation_cb: CreateScopeCallback): Gio.Application | null;
+    function dbus_own_name(name: string, scope_creation_cb: CreateScopeCallback): Gio.Application;
     interface CreateScopeCallback {
         (): void;
     }
@@ -32,7 +32,7 @@ export namespace UnityExtras {
         // Signal callback interfaces
 
         interface Progress {
-            (uri: string, state: never, progress: number): void;
+            (uri: string, state: Unity.MusicPreviewTrackState, progress: number): void;
         }
 
         // Constructor properties interface
@@ -58,29 +58,46 @@ export namespace UnityExtras {
         emit(id: string, ...args: any[]): void;
         connect(
             signal: 'progress',
-            callback: (_source: this, uri: string, state: never, progress: number) => void,
+            callback: (_source: this, uri: string, state: Unity.MusicPreviewTrackState, progress: number) => void,
         ): number;
         connect_after(
             signal: 'progress',
-            callback: (_source: this, uri: string, state: never, progress: number) => void,
+            callback: (_source: this, uri: string, state: Unity.MusicPreviewTrackState, progress: number) => void,
         ): number;
-        emit(signal: 'progress', uri: string, state: never, progress: number): void;
+        emit(signal: 'progress', uri: string, state: Unity.MusicPreviewTrackState, progress: number): void;
 
         // Methods
 
-        play(uri: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        play(uri: string): Promise<void>;
+        play(uri: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        play(uri: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         play_finish(_res_: Gio.AsyncResult): void;
-        pause(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        pause(): Promise<void>;
+        pause(_callback_: Gio.AsyncReadyCallback<this>): void;
+        pause(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         pause_finish(_res_: Gio.AsyncResult): void;
-        pause_resume(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        pause_resume(): Promise<void>;
+        pause_resume(_callback_: Gio.AsyncReadyCallback<this>): void;
+        pause_resume(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         pause_resume_finish(_res_: Gio.AsyncResult): void;
-        resume(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        resume(): Promise<void>;
+        resume(_callback_: Gio.AsyncReadyCallback<this>): void;
+        resume(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         resume_finish(_res_: Gio.AsyncResult): void;
-        stop(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        stop(): Promise<void>;
+        stop(_callback_: Gio.AsyncReadyCallback<this>): void;
+        stop(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         stop_finish(_res_: Gio.AsyncResult): void;
-        close(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        close(): Promise<void>;
+        close(_callback_: Gio.AsyncReadyCallback<this>): void;
+        close(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         close_finish(_res_: Gio.AsyncResult): void;
-        video_properties(uri: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        video_properties(uri: string): Promise<GLib.HashTable<string, GLib.Variant>>;
+        video_properties(uri: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        video_properties(
+            uri: string,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<GLib.HashTable<string, GLib.Variant>> | void;
         video_properties_finish(_res_: Gio.AsyncResult): GLib.HashTable<string, GLib.Variant>;
     }
 

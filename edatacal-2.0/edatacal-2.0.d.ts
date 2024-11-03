@@ -56,7 +56,6 @@ export namespace EDataCal {
      * @param ptr an #ECalMetaBackendInfo
      */
     function cal_meta_backend_info_free(ptr?: any | null): void;
-    function cal_queue_free_strings(queue: GLib.Queue): void;
     interface CalBackendCustomOpFunc {
         (cal_backend: CalBackend, cancellable?: Gio.Cancellable | null): void;
     }
@@ -157,34 +156,13 @@ export namespace EDataCal {
 
         // Virtual methods
 
-        /**
-         * A signal notifying that the backend was closed
-         * @param sender
-         */
         vfunc_closed(sender: string): void;
-        /**
-         * FIXME: Document me
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param tzobject
-         */
         vfunc_impl_add_timezone(
             cal: DataCal,
             opid: number,
             cancellable: Gio.Cancellable | null,
             tzobject: string,
         ): void;
-        /**
-         * FIXME: Document me
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param uid
-         * @param rid
-         * @param auid
-         * @param opflags
-         */
         vfunc_impl_discard_alarm(
             cal: DataCal,
             opid: number,
@@ -194,14 +172,6 @@ export namespace EDataCal {
             auid: string,
             opflags: ECal.OperationFlags,
         ): void;
-        /**
-         * FIXME: Document me
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param uid
-         * @param rid
-         */
         vfunc_impl_get_attachment_uris(
             cal: DataCal,
             opid: number,
@@ -209,19 +179,7 @@ export namespace EDataCal {
             uid: string,
             rid: string,
         ): void;
-        /**
-         * Fetch a property value by name from the backend
-         * @param prop_name
-         */
         vfunc_impl_get_backend_property(prop_name: string): string;
-        /**
-         * Fetch a calendar object
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param uid
-         * @param rid
-         */
         vfunc_impl_get_object(
             cal: DataCal,
             opid: number,
@@ -229,37 +187,9 @@ export namespace EDataCal {
             uid: string,
             rid: string,
         ): void;
-        /**
-         * FIXME: Document me
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param sexp
-         */
         vfunc_impl_get_object_list(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, sexp: string): void;
-        /**
-         * FIXME: Document me
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param tzid
-         */
         vfunc_impl_get_timezone(cal: DataCal, opid: number, cancellable: Gio.Cancellable | null, tzid: string): void;
-        /**
-         * Open the backend
-         * @param cal
-         * @param opid
-         * @param cancellable
-         */
         vfunc_impl_open(cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null): void;
-        /**
-         * FIXME: Document me
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param calobj
-         * @param opflags
-         */
         vfunc_impl_receive_objects(
             cal: DataCal,
             opid: number,
@@ -267,21 +197,7 @@ export namespace EDataCal {
             calobj: string,
             opflags: ECal.OperationFlags,
         ): void;
-        /**
-         * Refresh the backend
-         * @param cal
-         * @param opid
-         * @param cancellable
-         */
         vfunc_impl_refresh(cal: DataCal, opid: number, cancellable?: Gio.Cancellable | null): void;
-        /**
-         * FIXME: Document me
-         * @param cal
-         * @param opid
-         * @param cancellable
-         * @param calobj
-         * @param opflags
-         */
         vfunc_impl_send_objects(
             cal: DataCal,
             opid: number,
@@ -289,23 +205,37 @@ export namespace EDataCal {
             calobj: string,
             opflags: ECal.OperationFlags,
         ): void;
-        /**
-         * Start up the specified view
-         * @param view
-         */
         vfunc_impl_start_view(view: DataCalView): void;
-        /**
-         * Stop the specified view
-         * @param view
-         */
         vfunc_impl_stop_view(view: DataCalView): void;
-        /**
-         * A signal notifying that the backend is being shut down
-         */
         vfunc_shutdown(): void;
 
         // Methods
 
+        /**
+         * Asynchronously adds the timezone described by `tzobject` to `backend`.
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_cal_backend_add_timezone_finish() to get the result of
+         * the operation.
+         * @param tzobject an iCalendar VTIMEZONE string
+         * @param cancellable optional #GCancellable object, or %NULL
+         */
+        add_timezone(tzobject: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously adds the timezone described by `tzobject` to `backend`.
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_cal_backend_add_timezone_finish() to get the result of
+         * the operation.
+         * @param tzobject an iCalendar VTIMEZONE string
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        add_timezone(
+            tzobject: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously adds the timezone described by `tzobject` to `backend`.
          *
@@ -320,7 +250,7 @@ export namespace EDataCal {
             tzobject: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         // Conflicted with ECal.TimezoneCache.add_timezone
         add_timezone(...args: never[]): any;
         /**
@@ -357,6 +287,38 @@ export namespace EDataCal {
          * @param calobjs a %NULL-terminated array of iCalendar strings
          * @param opflags bit-or of #ECalOperationFlags
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        create_objects(
+            calobjs: string,
+            opflags: ECal.OperationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously creates one or more new iCalendar objects from `calobjs`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_create_objects_finish() to get the result of the
+         * operation.
+         * @param calobjs a %NULL-terminated array of iCalendar strings
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisifed
+         */
+        create_objects(
+            calobjs: string,
+            opflags: ECal.OperationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously creates one or more new iCalendar objects from `calobjs`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_create_objects_finish() to get the result of the
+         * operation.
+         * @param calobjs a %NULL-terminated array of iCalendar strings
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisifed
          */
         create_objects(
@@ -364,7 +326,7 @@ export namespace EDataCal {
             opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_cal_backend_create_objects().
          *
@@ -408,6 +370,48 @@ export namespace EDataCal {
          * @param alarm_uid a unique ID for an iCalendar VALARM object
          * @param opflags bit-or of #ECalOperationFlags
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        discard_alarm(
+            uid: string,
+            rid: string | null,
+            alarm_uid: string,
+            opflags: ECal.OperationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously discards the VALARM object with a unique ID of `alarm_uid`
+         * from the iCalendar object identified by `uid` and, optionally, `rid`.
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_cal_backend_discard_alarm_finish() to get the result of
+         * the operation.
+         * @param uid a unique ID for an iCalendar object
+         * @param rid a recurrence ID, or %NULL
+         * @param alarm_uid a unique ID for an iCalendar VALARM object
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        discard_alarm(
+            uid: string,
+            rid: string | null,
+            alarm_uid: string,
+            opflags: ECal.OperationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously discards the VALARM object with a unique ID of `alarm_uid`
+         * from the iCalendar object identified by `uid` and, optionally, `rid`.
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_cal_backend_discard_alarm_finish() to get the result of
+         * the operation.
+         * @param uid a unique ID for an iCalendar object
+         * @param rid a recurrence ID, or %NULL
+         * @param alarm_uid a unique ID for an iCalendar VALARM object
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         discard_alarm(
@@ -417,7 +421,7 @@ export namespace EDataCal {
             opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_cal_backend_discard_alarm().
          *
@@ -477,6 +481,36 @@ export namespace EDataCal {
          * @param uid a unique ID for an iCalendar object
          * @param rid a recurrence ID, or %NULL
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        get_attachment_uris(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously inspects the iCalendar object specified by `uid` and,
+         * optionally, `rid` for attachments.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_get_attachment_uris_finish() to get the result of the
+         * operation.
+         * @param uid a unique ID for an iCalendar object
+         * @param rid a recurrence ID, or %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_attachment_uris(
+            uid: string,
+            rid: string | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously inspects the iCalendar object specified by `uid` and,
+         * optionally, `rid` for attachments.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_get_attachment_uris_finish() to get the result of the
+         * operation.
+         * @param uid a unique ID for an iCalendar object
+         * @param rid a recurrence ID, or %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         get_attachment_uris(
@@ -484,7 +518,7 @@ export namespace EDataCal {
             rid?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_cal_backend_get_attachment_uris().
          *
@@ -541,15 +575,53 @@ export namespace EDataCal {
          * @param end end time
          * @param users a %NULL-terminated array of user strings
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        get_free_busy(
+            start: number,
+            end: number,
+            users: string[],
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously obtains a free/busy object for the list of `users` in the
+         * time interval between `start` and `end`.
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_cal_backend_get_free_busy_finish() to get the result of
+         * the operation.
+         * @param start start time
+         * @param end end time
+         * @param users a %NULL-terminated array of user strings
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         get_free_busy(
-            start: never,
-            end: never,
+            start: number,
+            end: number,
+            users: string[],
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously obtains a free/busy object for the list of `users` in the
+         * time interval between `start` and `end`.
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_cal_backend_get_free_busy_finish() to get the result of
+         * the operation.
+         * @param start start time
+         * @param end end time
+         * @param users a %NULL-terminated array of user strings
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_free_busy(
+            start: number,
+            end: number,
             users: string[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_cal_backend_get_free_busy().
          *
@@ -582,8 +654,8 @@ export namespace EDataCal {
          * @returns %TRUE on success, %FALSE on failure.
          */
         get_free_busy_sync(
-            start: never,
-            end: never,
+            start: number,
+            end: number,
             users: string[],
             out_freebusy: string[],
             cancellable?: Gio.Cancellable | null,
@@ -601,6 +673,32 @@ export namespace EDataCal {
          * @param uid a unique ID for an iCalendar object
          * @param rid a recurrence ID, or %NULL
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        get_object(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Asynchronously obtains an #ECalComponent by its `uid` and, optionally, `rid`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_get_object_finish() to get the result of the operation.
+         * @param uid a unique ID for an iCalendar object
+         * @param rid a recurrence ID, or %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_object(
+            uid: string,
+            rid: string | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously obtains an #ECalComponent by its `uid` and, optionally, `rid`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_get_object_finish() to get the result of the operation.
+         * @param uid a unique ID for an iCalendar object
+         * @param rid a recurrence ID, or %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         get_object(
@@ -608,7 +706,7 @@ export namespace EDataCal {
             rid?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Finishes the operation started with e_cal_backend_get_object().
          *
@@ -630,13 +728,40 @@ export namespace EDataCal {
          * operation.
          * @param query a search query in S-expression format
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        get_object_list(query: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously obtains a set of iCalendar instances which satisfy
+         * the criteria specified in `query`.
+         *
+         * When the operation in finished, `callback` will be called.  You can then
+         * call e_cal_backend_get_object_list_finish() to get the result of the
+         * operation.
+         * @param query a search query in S-expression format
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_object_list(
+            query: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously obtains a set of iCalendar instances which satisfy
+         * the criteria specified in `query`.
+         *
+         * When the operation in finished, `callback` will be called.  You can then
+         * call e_cal_backend_get_object_list_finish() to get the result of the
+         * operation.
+         * @param query a search query in S-expression format
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         get_object_list(
             query: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_cal_backend_get_object_list().
          *
@@ -690,13 +815,38 @@ export namespace EDataCal {
          * the operation.
          * @param tzid a unique ID for an iCalendar VTIMEZONE object
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        get_timezone(tzid: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Asynchronously obtains the VTIMEZONE object identified by `tzid`.
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_cal_backend_get_timezone_finish() to get the result of
+         * the operation.
+         * @param tzid a unique ID for an iCalendar VTIMEZONE object
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_timezone(
+            tzid: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously obtains the VTIMEZONE object identified by `tzid`.
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_cal_backend_get_timezone_finish() to get the result of
+         * the operation.
+         * @param tzid a unique ID for an iCalendar VTIMEZONE object
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         get_timezone(
             tzid: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         // Conflicted with ECal.TimezoneCache.get_timezone
         get_timezone(...args: never[]): any;
         /**
@@ -762,6 +912,44 @@ export namespace EDataCal {
          * @param mod modification type for recurrences
          * @param opflags bit-or of #ECalOperationFlags
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        modify_objects(
+            calobjs: string,
+            mod: ECal.ObjModType,
+            opflags: ECal.OperationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously modifies one or more iCalendar objects according to
+         * `calobjs` and `mod`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_modify_objects_finish() to get the result of the
+         * operation.
+         * @param calobjs a %NULL-terminated array of iCalendar strings
+         * @param mod modification type for recurrences
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        modify_objects(
+            calobjs: string,
+            mod: ECal.ObjModType,
+            opflags: ECal.OperationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously modifies one or more iCalendar objects according to
+         * `calobjs` and `mod`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_modify_objects_finish() to get the result of the
+         * operation.
+         * @param calobjs a %NULL-terminated array of iCalendar strings
+         * @param mod modification type for recurrences
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         modify_objects(
@@ -770,7 +958,7 @@ export namespace EDataCal {
             opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_cal_backend_modify_objects().
          *
@@ -846,9 +1034,35 @@ export namespace EDataCal {
          * When the operation is finished, `callback` will be called.  You can then
          * call e_cal_backend_open_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        open(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously "opens" the `backend`.  Opening a backend is something of
+         * an outdated concept, but the operation is hanging around for a little
+         * while longer.  This usually involves some custom initialization logic,
+         * and testing of remote authentication if applicable.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_open_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        open(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        open(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously "opens" the `backend`.  Opening a backend is something of
+         * an outdated concept, but the operation is hanging around for a little
+         * while longer.  This usually involves some custom initialization logic,
+         * and testing of remote authentication if applicable.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_open_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        open(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_cal_backend_open().
          *
@@ -869,7 +1083,8 @@ export namespace EDataCal {
          */
         open_sync(cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Obtains the #GTask for `opid`.
+         * Obtains the #GSimpleAsyncResult for `opid` and sets `result_queue` as a
+         * place to deposit results prior to completing the #GSimpleAsyncResult.
          *
          * <note>
          *   <para>
@@ -879,9 +1094,46 @@ export namespace EDataCal {
          *   </para>
          * </note>
          * @param opid an operation ID given to #EDataCal
-         * @returns a #GTask
+         * @param result_queue return location for a #GQueue, or %NULL
+         * @returns a #GSimpleAsyncResult
          */
-        prepare_for_completion(opid: number): Gio.Task;
+        prepare_for_completion(opid: number, result_queue: GLib.Queue): Gio.SimpleAsyncResult;
+        /**
+         * Asynchronously receives the set of iCalendar objects specified by
+         * `calobj`.  This is used for iTIP confirmation and cancellation messages
+         * for scheduled meetings.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_receive_objects_finish() to get the result of the
+         * operation.
+         * @param calobj an iCalendar string
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
+         */
+        receive_objects(
+            calobj: string,
+            opflags: ECal.OperationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously receives the set of iCalendar objects specified by
+         * `calobj`.  This is used for iTIP confirmation and cancellation messages
+         * for scheduled meetings.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_receive_objects_finish() to get the result of the
+         * operation.
+         * @param calobj an iCalendar string
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        receive_objects(
+            calobj: string,
+            opflags: ECal.OperationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously receives the set of iCalendar objects specified by
          * `calobj`.  This is used for iTIP confirmation and cancellation messages
@@ -900,7 +1152,7 @@ export namespace EDataCal {
             opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_cal_backend_receive_objects().
          *
@@ -955,9 +1207,35 @@ export namespace EDataCal {
          * Once the refresh is initiated, `callback` will be called.  You can then
          * call e_cal_backend_refresh_finish() to get the result of the initiation.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        refresh(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously initiates a refresh for `backend,` if the `backend` supports
+         * refreshing.  The actual refresh operation completes on its own time.  This
+         * function, along with e_cal_backend_refresh_finish(), merely initiates the
+         * operation.
+         *
+         * Once the refresh is initiated, `callback` will be called.  You can then
+         * call e_cal_backend_refresh_finish() to get the result of the initiation.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        refresh(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        refresh(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously initiates a refresh for `backend,` if the `backend` supports
+         * refreshing.  The actual refresh operation completes on its own time.  This
+         * function, along with e_cal_backend_refresh_finish(), merely initiates the
+         * operation.
+         *
+         * Once the refresh is initiated, `callback` will be called.  You can then
+         * call e_cal_backend_refresh_finish() to get the result of the initiation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        refresh(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes the refresh initiation started with e_cal_backend_refresh().
          *
@@ -993,6 +1271,44 @@ export namespace EDataCal {
          * @param mod modification type for recurrences
          * @param opflags bit-or of #ECalOperationFlags
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        remove_objects(
+            component_ids: ECal.ComponentId[],
+            mod: ECal.ObjModType,
+            opflags: ECal.OperationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously removes one or more iCalendar objects according to
+         * `component_ids` and `mod`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_remove_objects_finish() to get the result of the
+         * operation.
+         * @param component_ids a #GList of #ECalComponentId structs
+         * @param mod modification type for recurrences
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        remove_objects(
+            component_ids: ECal.ComponentId[],
+            mod: ECal.ObjModType,
+            opflags: ECal.OperationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously removes one or more iCalendar objects according to
+         * `component_ids` and `mod`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_remove_objects_finish() to get the result of the
+         * operation.
+         * @param component_ids a #GList of #ECalComponentId structs
+         * @param mod modification type for recurrences
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         remove_objects(
@@ -1001,7 +1317,7 @@ export namespace EDataCal {
             opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_cal_backend_remove_objects().
          *
@@ -1058,6 +1374,38 @@ export namespace EDataCal {
          * @param calobj an iCalendar string
          * @param opflags bit-or of #ECalOperationFlags
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        send_objects(
+            calobj: string,
+            opflags: ECal.OperationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<string>;
+        /**
+         * Asynchronously sends meeting information in `calobj`.  The `backend` may
+         * modify `calobj` and send meeting information only to particular users.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_send_objects_finish() to get the result of the operation.
+         * @param calobj an iCalendar string
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        send_objects(
+            calobj: string,
+            opflags: ECal.OperationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends meeting information in `calobj`.  The `backend` may
+         * modify `calobj` and send meeting information only to particular users.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_cal_backend_send_objects_finish() to get the result of the operation.
+         * @param calobj an iCalendar string
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         send_objects(
@@ -1065,7 +1413,7 @@ export namespace EDataCal {
             opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Finishes the operation started with e_cal_backend_send_objects().
          *
@@ -1598,7 +1946,7 @@ export namespace EDataCal {
          * @param end End of the time window will be stored here.
          * @returns %TRUE on success, %FALSE otherwise
          */
-        evaluate_occur_times(start: never, end: never): boolean;
+        evaluate_occur_times(start: number, end: number): boolean;
         /**
          * Locks the `sexp`. Other threads cannot use it until
          * it's unlocked with e_cal_backend_sexp_unlock().
@@ -1650,22 +1998,7 @@ export namespace EDataCal {
 
         // Virtual methods
 
-        /**
-         * Add specified timezone
-         * @param cal
-         * @param cancellable
-         * @param tzobject
-         */
         vfunc_add_timezone_sync(cal: DataCal, cancellable: Gio.Cancellable | null, tzobject: string): void;
-        /**
-         * Discard alarm
-         * @param cal
-         * @param cancellable
-         * @param uid
-         * @param rid
-         * @param auid
-         * @param opflags
-         */
         vfunc_discard_alarm_sync(
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
@@ -1674,14 +2007,6 @@ export namespace EDataCal {
             auid: string,
             opflags: ECal.OperationFlags,
         ): void;
-        /**
-         * Get single object
-         * @param cal
-         * @param cancellable
-         * @param uid
-         * @param rid
-         * @param calobj
-         */
         vfunc_get_object_sync(
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
@@ -1689,43 +2014,19 @@ export namespace EDataCal {
             rid: string,
             calobj: string,
         ): void;
-        /**
-         * Get specified timezone
-         * @param cal
-         * @param cancellable
-         * @param tzid
-         * @param tzobject
-         */
         vfunc_get_timezone_sync(
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
             tzid: string,
             tzobject: string,
         ): void;
-        /**
-         * Open the calendar
-         * @param cal
-         * @param cancellable
-         */
         vfunc_open_sync(cal: DataCal, cancellable?: Gio.Cancellable | null): void;
-        /**
-         * Receive objects
-         * @param cal
-         * @param cancellable
-         * @param calobj
-         * @param opflags
-         */
         vfunc_receive_objects_sync(
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
             calobj: string,
             opflags: ECal.OperationFlags,
         ): void;
-        /**
-         * Refresh the calendar
-         * @param cal
-         * @param cancellable
-         */
         vfunc_refresh_sync(cal: DataCal, cancellable?: Gio.Cancellable | null): void;
 
         // Methods
@@ -1802,8 +2103,8 @@ export namespace EDataCal {
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
             users: string[],
-            start: never,
-            end: never,
+            start: number,
+            end: number,
         ): string[];
         // Conflicted with EDataCal.CalBackend.get_free_busy
         get_free_busy(...args: never[]): any;
@@ -2536,8 +2837,8 @@ export namespace EDataCal {
          * @returns Whether succeeded.
          */
         get_components_in_range(
-            range_start: never,
-            range_end: never,
+            range_start: number,
+            range_end: number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, ECal.Component[]];
         /**
@@ -2548,8 +2849,8 @@ export namespace EDataCal {
          * @returns Whether succeeded.
          */
         get_components_in_range_as_strings(
-            range_start: never,
-            range_end: never,
+            range_start: number,
+            range_end: number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string[]];
         /**
@@ -4425,7 +4726,7 @@ export namespace EDataCal {
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_add_timezone(opid: number, error?: GLib.Error | null): void;
+        respond_add_timezone(opid: number, error: GLib.Error): void;
         /**
          * Notifies listeners of the completion of the create_objects method call.
          * @param opid associated operation id
@@ -4433,25 +4734,20 @@ export namespace EDataCal {
          * @param uids UIDs of the objects created.
          * @param new_components The newly created #ECalComponent objects.
          */
-        respond_create_objects(
-            opid: number,
-            error: GLib.Error | null,
-            uids: string[],
-            new_components: ECal.Component[],
-        ): void;
+        respond_create_objects(opid: number, error: GLib.Error, uids: string[], new_components: ECal.Component[]): void;
         /**
          * Notifies listeners of the completion of the discard_alarm method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_discard_alarm(opid: number, error?: GLib.Error | null): void;
+        respond_discard_alarm(opid: number, error: GLib.Error): void;
         /**
          * Notifies listeners of the completion of the get_attachment_uris method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          * @param attachment_uris List of retrieved attachment uri's.
          */
-        respond_get_attachment_uris(opid: number, error: GLib.Error | null, attachment_uris: string[]): void;
+        respond_get_attachment_uris(opid: number, error: GLib.Error, attachment_uris: string[]): void;
         /**
          * Notifies listeners of the completion of the get_free_busy method call.
          * To pass actual free/busy objects to the client asynchronously
@@ -4461,28 +4757,28 @@ export namespace EDataCal {
          * @param error Operation error, if any, automatically freed if passed it.
          * @param freebusy a #GSList of iCalendar strings with all gathered free/busy components.
          */
-        respond_get_free_busy(opid: number, error: GLib.Error | null, freebusy: string[]): void;
+        respond_get_free_busy(opid: number, error: GLib.Error, freebusy: string[]): void;
         /**
          * Notifies listeners of the completion of the get_object method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          * @param object The object retrieved as an iCalendar string.
          */
-        respond_get_object(opid: number, error: GLib.Error | null, object: string): void;
+        respond_get_object(opid: number, error: GLib.Error, object: string): void;
         /**
          * Notifies listeners of the completion of the get_object_list method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          * @param objects List of retrieved objects.
          */
-        respond_get_object_list(opid: number, error: GLib.Error | null, objects: string[]): void;
+        respond_get_object_list(opid: number, error: GLib.Error, objects: string[]): void;
         /**
          * Notifies listeners of the completion of the get_timezone method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          * @param tzobject The requested timezone as an iCalendar string.
          */
-        respond_get_timezone(opid: number, error: GLib.Error | null, tzobject: string): void;
+        respond_get_timezone(opid: number, error: GLib.Error, tzobject: string): void;
         /**
          * Notifies listeners of the completion of the modify_objects method call.
          * @param opid associated operation id
@@ -4492,7 +4788,7 @@ export namespace EDataCal {
          */
         respond_modify_objects(
             opid: number,
-            error: GLib.Error | null,
+            error: GLib.Error,
             old_components: ECal.Component[],
             new_components: ECal.Component[],
         ): void;
@@ -4501,19 +4797,19 @@ export namespace EDataCal {
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_open(opid: number, error?: GLib.Error | null): void;
+        respond_open(opid: number, error: GLib.Error): void;
         /**
          * Notifies listeners of the completion of the receive_objects method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_receive_objects(opid: number, error?: GLib.Error | null): void;
+        respond_receive_objects(opid: number, error: GLib.Error): void;
         /**
          * Notifies listeners of the completion of the refresh method call.
          * @param opid associated operation id
          * @param error Operation error, if any, automatically freed if passed it.
          */
-        respond_refresh(opid: number, error?: GLib.Error | null): void;
+        respond_refresh(opid: number, error: GLib.Error): void;
         /**
          * Notifies listeners of the completion of the remove_objects method call.
          * @param opid associated operation id
@@ -4524,7 +4820,7 @@ export namespace EDataCal {
          */
         respond_remove_objects(
             opid: number,
-            error: GLib.Error | null,
+            error: GLib.Error,
             ids: ECal.ComponentId[],
             old_components: ECal.Component[],
             new_components: ECal.Component[],
@@ -4536,7 +4832,7 @@ export namespace EDataCal {
          * @param users List of users.
          * @param calobj An iCalendar string representing the object sent.
          */
-        respond_send_objects(opid: number, error: GLib.Error | null, users: string[], calobj: string): void;
+        respond_send_objects(opid: number, error: GLib.Error, users: string[], calobj: string): void;
 
         // Inherited methods
         /**
@@ -6209,9 +6505,9 @@ export namespace EDataCal {
 
         destroy(): void;
         dump(): void;
-        insert(start: never, end: never, comp: ECal.Component): boolean;
+        insert(start: number, end: number, comp: ECal.Component): boolean;
         remove(uid: string, rid: string): boolean;
-        search(start: never, end: never): ECal.Component[] | null;
+        search(start: number, end: number): ECal.Component[] | null;
     }
 
     module SubprocessCalFactory {
@@ -6910,27 +7206,6 @@ export namespace EDataCal {
         // Constructors
 
         _init(...args: any[]): void;
-    }
-
-    class CalQueueTuple {
-        static $gtype: GObject.GType<CalQueueTuple>;
-
-        // Fields
-
-        first: GLib.Queue;
-        second: GLib.Queue;
-        third: GLib.Queue;
-        first_free_func: GLib.DestroyNotify;
-        second_free_func: GLib.DestroyNotify;
-        third_free_func: GLib.DestroyNotify;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-
-        // Methods
-
-        free(): void;
     }
 
     type DataCalClass = typeof DataCal;

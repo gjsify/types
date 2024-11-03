@@ -550,6 +550,36 @@ export namespace Wp {
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
+         */
+        enum_params(
+            id?: string | null,
+            filter?: SpaPod | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Iterator | null>;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
         enum_params(
@@ -557,7 +587,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -959,10 +989,34 @@ export namespace Wp {
          * Since methods are handled in-order and events are delivered in-order, this can be used as a barrier to ensure all previous methods and the resulting events have been handled.
          * In both success and error cases, `callback` is always called. Use wp_core_sync_finish() from within the `callback` to determine whether the operation completed successfully or if an error occurred.
          * @param cancellable a GCancellable to cancel the operation
+         * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
+         */
+        sync(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asks the PipeWire server to call the `callback` via an event.
+         *
+         *
+         * Since methods are handled in-order and events are delivered in-order, this can be used as a barrier to ensure all previous methods and the resulting events have been handled.
+         * In both success and error cases, `callback` is always called. Use wp_core_sync_finish() from within the `callback` to determine whether the operation completed successfully or if an error occurred.
+         * @param cancellable a GCancellable to cancel the operation
          * @param callback a function to call when the operation is done
          * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
          */
-        sync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): boolean;
+        sync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asks the PipeWire server to call the `callback` via an event.
+         *
+         *
+         * Since methods are handled in-order and events are delivered in-order, this can be used as a barrier to ensure all previous methods and the resulting events have been handled.
+         * In both success and error cases, `callback` is always called. Use wp_core_sync_finish() from within the `callback` to determine whether the operation completed successfully or if an error occurred.
+         * @param cancellable a GCancellable to cancel the operation
+         * @param callback a function to call when the operation is done
+         * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
+         */
+        sync(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Asks the PipeWire server to invoke the `closure` via an event.
          *
@@ -1086,6 +1140,36 @@ export namespace Wp {
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
+         */
+        enum_params(
+            id?: string | null,
+            filter?: SpaPod | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Iterator | null>;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
         enum_params(
@@ -1093,7 +1177,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -1346,6 +1430,36 @@ export namespace Wp {
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
+         */
+        enum_params(
+            id?: string | null,
+            filter?: SpaPod | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Iterator | null>;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
         enum_params(
@@ -1353,7 +1467,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -1567,6 +1681,36 @@ export namespace Wp {
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
+         */
+        enum_params(
+            id?: string | null,
+            filter?: SpaPod | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Iterator | null>;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
         enum_params(
@@ -1574,7 +1718,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -2333,6 +2477,36 @@ export namespace Wp {
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
+         */
+        enum_params(
+            id?: string | null,
+            filter?: SpaPod | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Iterator | null>;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
         enum_params(
@@ -2340,7 +2514,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -2657,6 +2831,36 @@ export namespace Wp {
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
+         */
+        enum_params(
+            id?: string | null,
+            filter?: SpaPod | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Iterator | null>;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
         enum_params(
@@ -2664,7 +2868,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -2919,6 +3123,36 @@ export namespace Wp {
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
+         */
+        enum_params(
+            id?: string | null,
+            filter?: SpaPod | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Iterator | null>;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
         enum_params(
@@ -2926,7 +3160,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -3339,6 +3573,36 @@ export namespace Wp {
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
+         */
+        enum_params(
+            id?: string | null,
+            filter?: SpaPod | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Iterator | null>;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
         enum_params(
@@ -3346,7 +3610,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -3592,13 +3856,30 @@ export namespace Wp {
          * Callback version of wp_object_activate_closure()
          * @param features the features to enable
          * @param cancellable a cancellable for the async operation
+         */
+        activate(features: ObjectFeatures, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Callback version of wp_object_activate_closure()
+         * @param features the features to enable
+         * @param cancellable a cancellable for the async operation
+         * @param callback a function to call when activation is complete
+         */
+        activate(
+            features: ObjectFeatures,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Callback version of wp_object_activate_closure()
+         * @param features the features to enable
+         * @param cancellable a cancellable for the async operation
          * @param callback a function to call when activation is complete
          */
         activate(
             features: ObjectFeatures,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Activates the requested `features` and invokes `closure` when this is done. `features` may contain unsupported or already active features. The operation will filter them and activate only ones that are supported and inactive.
          *
@@ -3875,6 +4156,36 @@ export namespace Wp {
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
+         */
+        enum_params(
+            id?: string | null,
+            filter?: SpaPod | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Iterator | null>;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
         enum_params(
@@ -3882,7 +4193,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -6395,6 +6706,36 @@ export namespace Wp {
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
+         */
+        enum_params(
+            id?: string | null,
+            filter?: SpaPod | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Iterator | null>;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(
+            id: string | null,
+            filter: SpaPod | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
         enum_params(
@@ -6402,7 +6743,7 @@ export namespace Wp {
             filter?: SpaPod | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Iterator | null> | void;
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
@@ -6572,9 +6913,34 @@ export namespace Wp {
          * When a link needs to be delayed for a short amount of time (ex. to apply a fade out effect on another item), this operation should finish with a delay. It is safe to assume that after this operation completes, the item will be linked immediately.
          * @param acquisitor the link that is trying to acquire a port info item
          * @param item the item that is being acquired
+         */
+        acquire(acquisitor: SiLink, item: SiLinkable): Promise<boolean>;
+        /**
+         * Acquires the `item` for linking by `acquisitor`.
+         *
+         *
+         * When a link is not allowed by policy, this operation should return an error.
+         * When a link needs to be delayed for a short amount of time (ex. to apply a fade out effect on another item), this operation should finish with a delay. It is safe to assume that after this operation completes, the item will be linked immediately.
+         * @param acquisitor the link that is trying to acquire a port info item
+         * @param item the item that is being acquired
          * @param callback the callback to call when the operation is done
          */
-        acquire(acquisitor: SiLink, item: SiLinkable, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        acquire(acquisitor: SiLink, item: SiLinkable, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Acquires the `item` for linking by `acquisitor`.
+         *
+         *
+         * When a link is not allowed by policy, this operation should return an error.
+         * When a link needs to be delayed for a short amount of time (ex. to apply a fade out effect on another item), this operation should finish with a delay. It is safe to assume that after this operation completes, the item will be linked immediately.
+         * @param acquisitor the link that is trying to acquire a port info item
+         * @param item the item that is being acquired
+         * @param callback the callback to call when the operation is done
+         */
+        acquire(
+            acquisitor: SiLink,
+            item: SiLinkable,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started by wp_si_acquisition_acquire(). This is meant to be called in the callback that was passed to that method.
          * @param res the async result
@@ -6646,13 +7012,36 @@ export namespace Wp {
          * The result of the operation can be checked using the wp_si_adapter_set_ports_format_finish() API. If format is NULL, the adapter will be configured with the default format. If mode is NULL, the adapter will use "dsp" mode.
          * @param format the format to be set
          * @param mode the mode
+         */
+        set_ports_format(format?: SpaPod | null, mode?: string | null): Promise<boolean>;
+        /**
+         * Sets the format and configures the adapter session item ports using the given format.
+         *
+         *
+         * The result of the operation can be checked using the wp_si_adapter_set_ports_format_finish() API. If format is NULL, the adapter will be configured with the default format. If mode is NULL, the adapter will use "dsp" mode.
+         * @param format the format to be set
+         * @param mode the mode
+         * @param callback the callback to call when the operation is done
+         */
+        set_ports_format(
+            format: SpaPod | null,
+            mode: string | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Sets the format and configures the adapter session item ports using the given format.
+         *
+         *
+         * The result of the operation can be checked using the wp_si_adapter_set_ports_format_finish() API. If format is NULL, the adapter will be configured with the default format. If mode is NULL, the adapter will use "dsp" mode.
+         * @param format the format to be set
+         * @param mode the mode
          * @param callback the callback to call when the operation is done
          */
         set_ports_format(
             format?: SpaPod | null,
             mode?: string | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started by wp_si_adapter_set_format(). This is meant to be called in the callback that was passed to that method.
          * @param res the async result

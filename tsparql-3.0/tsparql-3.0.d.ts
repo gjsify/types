@@ -535,9 +535,25 @@ export namespace Tsparql {
          * Executes the batch. This operation happens asynchronously, when
          * finished `callback` will be executed.
          * @param cancellable Optional [type@Gio.Cancellable]
+         */
+        execute_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Executes the batch. This operation happens asynchronously, when
+         * finished `callback` will be executed.
+         * @param cancellable Optional [type@Gio.Cancellable]
          * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
          */
-        execute_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        execute_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Executes the batch. This operation happens asynchronously, when
+         * finished `callback` will be executed.
+         * @param cancellable Optional [type@Gio.Cancellable]
+         * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
+         */
+        execute_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with [method`Batch`.execute_async].
          * @param res A [type@Gio.AsyncResult] with the result of the operation
@@ -2733,9 +2749,27 @@ export namespace Tsparql {
          *
          * No other API calls than g_object_unref() should happen after this call.
          * @param cancellable Optional [type@Gio.Cancellable]
+         */
+        close_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Closes a SPARQL connection asynchronously.
+         *
+         * No other API calls than g_object_unref() should happen after this call.
+         * @param cancellable Optional [type@Gio.Cancellable]
          * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
          */
-        close_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        close_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Closes a SPARQL connection asynchronously.
+         *
+         * No other API calls than g_object_unref() should happen after this call.
+         * @param cancellable Optional [type@Gio.Cancellable]
+         * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
+         */
+        close_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with [method`SparqlConnection`.close_async].
          * @param res A [type@Gio.AsyncResult] with the result of the operation
@@ -2777,6 +2811,60 @@ export namespace Tsparql {
          * @param default_graph Default graph that will receive the RDF data
          * @param stream Input stream with RDF data
          * @param cancellable Optional [type@Gio.Cancellable]
+         */
+        deserialize_async(
+            flags: DeserializeFlags,
+            format: RdfFormat,
+            default_graph: string,
+            stream: Gio.InputStream,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Loads the RDF data contained in `stream` into the given `connection`.
+         *
+         * This is an asynchronous operation, `callback` will be invoked when the
+         * data has been fully inserted to `connection`.
+         *
+         * The RDF data will be inserted in the given `default_graph` if one is provided,
+         * or the anonymous graph if `default_graph` is %NULL. Any RDF data that has a
+         * graph specified (e.g. using the `GRAPH` clause in the Trig format) will
+         * be inserted in the specified graph instead of `default_graph`.
+         *
+         * The `flags` argument is reserved for future expansions, currently
+         * %TRACKER_DESERIALIZE_FLAGS_NONE must be passed.
+         * @param flags Deserialization flags
+         * @param format RDF format of data in stream
+         * @param default_graph Default graph that will receive the RDF data
+         * @param stream Input stream with RDF data
+         * @param cancellable Optional [type@Gio.Cancellable]
+         * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
+         */
+        deserialize_async(
+            flags: DeserializeFlags,
+            format: RdfFormat,
+            default_graph: string,
+            stream: Gio.InputStream,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Loads the RDF data contained in `stream` into the given `connection`.
+         *
+         * This is an asynchronous operation, `callback` will be invoked when the
+         * data has been fully inserted to `connection`.
+         *
+         * The RDF data will be inserted in the given `default_graph` if one is provided,
+         * or the anonymous graph if `default_graph` is %NULL. Any RDF data that has a
+         * graph specified (e.g. using the `GRAPH` clause in the Trig format) will
+         * be inserted in the specified graph instead of `default_graph`.
+         *
+         * The `flags` argument is reserved for future expansions, currently
+         * %TRACKER_DESERIALIZE_FLAGS_NONE must be passed.
+         * @param flags Deserialization flags
+         * @param format RDF format of data in stream
+         * @param default_graph Default graph that will receive the RDF data
+         * @param stream Input stream with RDF data
+         * @param cancellable Optional [type@Gio.Cancellable]
          * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
          */
         deserialize_async(
@@ -2786,7 +2874,7 @@ export namespace Tsparql {
             stream: Gio.InputStream,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with [method`SparqlConnection`.deserialize_async].
          * @param result A [type@Gio.AsyncResult] with the result of the operation
@@ -2873,13 +2961,44 @@ export namespace Tsparql {
          * but its use is not recommended.
          * @param sparql String containing the SPARQL query
          * @param cancellable Optional [type@Gio.Cancellable]
+         */
+        query_async(sparql: string, cancellable?: Gio.Cancellable | null): Promise<SparqlCursor>;
+        /**
+         * Executes asynchronously a SPARQL query on `connection`
+         *
+         * If the query is partially built from user input or other
+         * untrusted sources, special care is required about possible
+         * SPARQL injection. In order to avoid it entirely, it is recommended
+         * to use [class`SparqlStatement]`. The function
+         * [func`sparql_escape_string]` exists as a last resort,
+         * but its use is not recommended.
+         * @param sparql String containing the SPARQL query
+         * @param cancellable Optional [type@Gio.Cancellable]
+         * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
+         */
+        query_async(
+            sparql: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Executes asynchronously a SPARQL query on `connection`
+         *
+         * If the query is partially built from user input or other
+         * untrusted sources, special care is required about possible
+         * SPARQL injection. In order to avoid it entirely, it is recommended
+         * to use [class`SparqlStatement]`. The function
+         * [func`sparql_escape_string]` exists as a last resort,
+         * but its use is not recommended.
+         * @param sparql String containing the SPARQL query
+         * @param cancellable Optional [type@Gio.Cancellable]
          * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
          */
         query_async(
             sparql: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<SparqlCursor> | void;
         /**
          * Finishes the operation started with [method`SparqlConnection`.query_async].
          * @param res A [type@Gio.AsyncResult] with the result of the operation
@@ -2912,6 +3031,52 @@ export namespace Tsparql {
          * @param format Output RDF format
          * @param query SPARQL query
          * @param cancellable Optional [type@Gio.Cancellable]
+         */
+        serialize_async(
+            flags: SerializeFlags,
+            format: RdfFormat,
+            query: string,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Gio.InputStream>;
+        /**
+         * Serializes a `DESCRIBE` or `CONSTRUCT` query into the specified RDF format.
+         *
+         * This is an asynchronous operation, `callback` will be invoked when
+         * the data is available for reading.
+         *
+         * The SPARQL endpoint may not support the specified format, in that case
+         * an error will be raised.
+         *
+         * The `flags` argument is reserved for future expansions, currently
+         * %TRACKER_SERIALIZE_FLAGS_NONE must be passed.
+         * @param flags Serialization flags
+         * @param format Output RDF format
+         * @param query SPARQL query
+         * @param cancellable Optional [type@Gio.Cancellable]
+         * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
+         */
+        serialize_async(
+            flags: SerializeFlags,
+            format: RdfFormat,
+            query: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Serializes a `DESCRIBE` or `CONSTRUCT` query into the specified RDF format.
+         *
+         * This is an asynchronous operation, `callback` will be invoked when
+         * the data is available for reading.
+         *
+         * The SPARQL endpoint may not support the specified format, in that case
+         * an error will be raised.
+         *
+         * The `flags` argument is reserved for future expansions, currently
+         * %TRACKER_SERIALIZE_FLAGS_NONE must be passed.
+         * @param flags Serialization flags
+         * @param format Output RDF format
+         * @param query SPARQL query
+         * @param cancellable Optional [type@Gio.Cancellable]
          * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
          */
         serialize_async(
@@ -2920,7 +3085,7 @@ export namespace Tsparql {
             query: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Gio.InputStream> | void;
         /**
          * Finishes the operation started with [method`SparqlConnection`.serialize_async].
          * @param result A [type@Gio.AsyncResult] with the result of the operation
@@ -2963,6 +3128,48 @@ export namespace Tsparql {
          * @param sparql An array of strings containing the SPARQL update queries
          * @param sparql_length The amount of strings you pass as @sparql
          * @param cancellable Optional [type@Gio.Cancellable]
+         */
+        update_array_async(
+            sparql: string,
+            sparql_length: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Executes asynchronously an array of SPARQL updates. All updates in the
+         * array are handled within a single transaction.
+         *
+         * If the query is partially built from user input or other
+         * untrusted sources, special care is required about possible
+         * SPARQL injection. In order to avoid it entirely, it is recommended
+         * to use [class`SparqlStatement]`, or to build the SPARQL
+         * input through [class`Resource]`. The function
+         * [func`sparql_escape_string]` exists as a last resort,
+         * but its use is not recommended.
+         * @param sparql An array of strings containing the SPARQL update queries
+         * @param sparql_length The amount of strings you pass as @sparql
+         * @param cancellable Optional [type@Gio.Cancellable]
+         * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
+         */
+        update_array_async(
+            sparql: string,
+            sparql_length: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Executes asynchronously an array of SPARQL updates. All updates in the
+         * array are handled within a single transaction.
+         *
+         * If the query is partially built from user input or other
+         * untrusted sources, special care is required about possible
+         * SPARQL injection. In order to avoid it entirely, it is recommended
+         * to use [class`SparqlStatement]`, or to build the SPARQL
+         * input through [class`Resource]`. The function
+         * [func`sparql_escape_string]` exists as a last resort,
+         * but its use is not recommended.
+         * @param sparql An array of strings containing the SPARQL update queries
+         * @param sparql_length The amount of strings you pass as @sparql
+         * @param cancellable Optional [type@Gio.Cancellable]
          * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
          */
         update_array_async(
@@ -2970,7 +3177,7 @@ export namespace Tsparql {
             sparql_length: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with [method`SparqlConnection`.update_array_async].
          * @param res A [type@Gio.AsyncResult] with the result of the operation
@@ -2993,13 +3200,54 @@ export namespace Tsparql {
          * but its use is not recommended.
          * @param sparql String containing the SPARQL update query
          * @param cancellable Optional [type@Gio.Cancellable]
+         */
+        update_async(sparql: string, cancellable?: Gio.Cancellable | null): Promise<void>;
+        /**
+         * Executes asynchronously a SPARQL update.
+         *
+         * It is recommented to consider the usage of [class`Batch]`
+         * to cluster database updates. Frequent isolated SPARQL updates
+         * through this method will have a degraded performance in comparison.
+         *
+         * If the query is partially built from user input or other
+         * untrusted sources, special care is required about possible
+         * SPARQL injection. In order to avoid it entirely, it is recommended
+         * to use [class`SparqlStatement]`, or to build the SPARQL
+         * input through [class`Resource]`. The function
+         * [func`sparql_escape_string]` exists as a last resort,
+         * but its use is not recommended.
+         * @param sparql String containing the SPARQL update query
+         * @param cancellable Optional [type@Gio.Cancellable]
+         * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
+         */
+        update_async(
+            sparql: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Executes asynchronously a SPARQL update.
+         *
+         * It is recommented to consider the usage of [class`Batch]`
+         * to cluster database updates. Frequent isolated SPARQL updates
+         * through this method will have a degraded performance in comparison.
+         *
+         * If the query is partially built from user input or other
+         * untrusted sources, special care is required about possible
+         * SPARQL injection. In order to avoid it entirely, it is recommended
+         * to use [class`SparqlStatement]`, or to build the SPARQL
+         * input through [class`Resource]`. The function
+         * [func`sparql_escape_string]` exists as a last resort,
+         * but its use is not recommended.
+         * @param sparql String containing the SPARQL update query
+         * @param cancellable Optional [type@Gio.Cancellable]
          * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
          */
         update_async(
             sparql: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<void> | void;
         /**
          * Executes a SPARQL update and returns the names of the generated blank nodes.
          *
@@ -3029,13 +3277,36 @@ export namespace Tsparql {
          * learn the differences with [method`SparqlConnection`.update].
          * @param sparql String containing the SPARQL update query
          * @param cancellable Optional [type@Gio.Cancellable]
+         */
+        update_blank_async(sparql: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant>;
+        /**
+         * Executes asynchronously a SPARQL update and returns the names of the generated blank nodes.
+         *
+         * See the [method`SparqlConnection`.update_blank] documentation to
+         * learn the differences with [method`SparqlConnection`.update].
+         * @param sparql String containing the SPARQL update query
+         * @param cancellable Optional [type@Gio.Cancellable]
+         * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
+         */
+        update_blank_async(
+            sparql: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Executes asynchronously a SPARQL update and returns the names of the generated blank nodes.
+         *
+         * See the [method`SparqlConnection`.update_blank] documentation to
+         * learn the differences with [method`SparqlConnection`.update].
+         * @param sparql String containing the SPARQL update query
+         * @param cancellable Optional [type@Gio.Cancellable]
          * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
          */
         update_blank_async(
             sparql: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Variant> | void;
         /**
          * Finishes the operation started with [method`SparqlConnection`.update_blank_async].
          *
@@ -3076,6 +3347,38 @@ export namespace Tsparql {
          * @param graph RDF graph where the resource should be inserted/updated, or %NULL for the default graph
          * @param resource A [class@Resource]
          * @param cancellable Optional [type@Gio.Cancellable]
+         */
+        update_resource_async(
+            graph: string | null,
+            resource: Resource,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Inserts asynchronously a resource as described by `resource` on the given `graph`.
+         *
+         * It is recommented to consider the usage of [class`Batch]`
+         * to cluster database updates. Frequent isolated SPARQL updates
+         * through this method will have a degraded performance in comparison.
+         * @param graph RDF graph where the resource should be inserted/updated, or %NULL for the default graph
+         * @param resource A [class@Resource]
+         * @param cancellable Optional [type@Gio.Cancellable]
+         * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
+         */
+        update_resource_async(
+            graph: string | null,
+            resource: Resource,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Inserts asynchronously a resource as described by `resource` on the given `graph`.
+         *
+         * It is recommented to consider the usage of [class`Batch]`
+         * to cluster database updates. Frequent isolated SPARQL updates
+         * through this method will have a degraded performance in comparison.
+         * @param graph RDF graph where the resource should be inserted/updated, or %NULL for the default graph
+         * @param resource A [class@Resource]
+         * @param cancellable Optional [type@Gio.Cancellable]
          * @param callback User-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
          */
         update_resource_async(
@@ -3083,7 +3386,7 @@ export namespace Tsparql {
             resource: Resource,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with [method`SparqlConnection`.update_resource_async].
          * @param res A [type@Gio.AsyncResult] with the result of the operation
@@ -3294,9 +3597,39 @@ export namespace Tsparql {
          * should not be used, nor their results trusted. The cursor should only
          * be iterated once at a time.
          * @param cancellable Optional [type@Gio.Cancellable]
+         */
+        next_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Iterates the cursor asyncronously to the next result.
+         *
+         * If the cursor was not started, it will point to the first result after
+         * this operation completes.
+         *
+         * In the period between this call and the corresponding
+         * [method`SparqlCursor`.next_finish] call, the other cursor methods
+         * should not be used, nor their results trusted. The cursor should only
+         * be iterated once at a time.
+         * @param cancellable Optional [type@Gio.Cancellable]
          * @param callback user-defined [type@Gio.AsyncReadyCallback] to be called when            asynchronous operation is finished.
          */
-        next_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        next_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Iterates the cursor asyncronously to the next result.
+         *
+         * If the cursor was not started, it will point to the first result after
+         * this operation completes.
+         *
+         * In the period between this call and the corresponding
+         * [method`SparqlCursor`.next_finish] call, the other cursor methods
+         * should not be used, nor their results trusted. The cursor should only
+         * be iterated once at a time.
+         * @param cancellable Optional [type@Gio.Cancellable]
+         * @param callback user-defined [type@Gio.AsyncReadyCallback] to be called when            asynchronous operation is finished.
+         */
+        next_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes the asynchronous iteration to the next result started with
          * [method`SparqlCursor`.next_async].
@@ -3448,9 +3781,45 @@ export namespace Tsparql {
          * An error will be raised if this method is called on a `INSERT` or `DELETE`
          * SPARQL query.
          * @param cancellable Optional [type@Gio.Cancellable]
+         */
+        execute_async(cancellable?: Gio.Cancellable | null): Promise<SparqlCursor>;
+        /**
+         * Executes asynchronously the `SELECT` or `ASK` SPARQL query with the currently bound values.
+         *
+         * This function also works for `DESCRIBE` and `CONSTRUCT` queries that
+         * retrieve data from the triple store. These query forms that return
+         * RDF data are however more useful together with [method`SparqlStatement`.serialize_async].
+         *
+         * This function should only be called on `TrackerSparqlStatement` objects
+         * obtained through [method`SparqlConnection`.query_statement] or
+         * SELECT/CONSTRUCT/DESCRIBE statements loaded through
+         * [method`SparqlConnection`.load_statement_from_gresource].
+         * An error will be raised if this method is called on a `INSERT` or `DELETE`
+         * SPARQL query.
+         * @param cancellable Optional [type@Gio.Cancellable]
          * @param callback user-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
          */
-        execute_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        execute_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Executes asynchronously the `SELECT` or `ASK` SPARQL query with the currently bound values.
+         *
+         * This function also works for `DESCRIBE` and `CONSTRUCT` queries that
+         * retrieve data from the triple store. These query forms that return
+         * RDF data are however more useful together with [method`SparqlStatement`.serialize_async].
+         *
+         * This function should only be called on `TrackerSparqlStatement` objects
+         * obtained through [method`SparqlConnection`.query_statement] or
+         * SELECT/CONSTRUCT/DESCRIBE statements loaded through
+         * [method`SparqlConnection`.load_statement_from_gresource].
+         * An error will be raised if this method is called on a `INSERT` or `DELETE`
+         * SPARQL query.
+         * @param cancellable Optional [type@Gio.Cancellable]
+         * @param callback user-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
+         */
+        execute_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<SparqlCursor> | void;
         /**
          * Finishes the asynchronous operation started through
          * [method`SparqlStatement`.execute_async].
@@ -3485,6 +3854,54 @@ export namespace Tsparql {
          * @param flags serialization flags
          * @param format RDF format of the serialized data
          * @param cancellable Optional [type@Gio.Cancellable]
+         */
+        serialize_async(
+            flags: SerializeFlags,
+            format: RdfFormat,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Gio.InputStream>;
+        /**
+         * Serializes a `DESCRIBE` or `CONSTRUCT` query into the given RDF `format`.
+         *
+         * The query `stmt` was created from must be either a `DESCRIBE` or `CONSTRUCT`
+         * query, an error will be raised otherwise.
+         *
+         * This is an asynchronous operation, `callback` will be invoked when the
+         * data is available for reading.
+         *
+         * The SPARQL endpoint may not support the specified format, in that case
+         * an error will be raised.
+         *
+         * The `flags` argument is reserved for future expansions, currently
+         * #TRACKER_SERIALIZE_FLAGS_NONE must be passed.
+         * @param flags serialization flags
+         * @param format RDF format of the serialized data
+         * @param cancellable Optional [type@Gio.Cancellable]
+         * @param callback user-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
+         */
+        serialize_async(
+            flags: SerializeFlags,
+            format: RdfFormat,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Serializes a `DESCRIBE` or `CONSTRUCT` query into the given RDF `format`.
+         *
+         * The query `stmt` was created from must be either a `DESCRIBE` or `CONSTRUCT`
+         * query, an error will be raised otherwise.
+         *
+         * This is an asynchronous operation, `callback` will be invoked when the
+         * data is available for reading.
+         *
+         * The SPARQL endpoint may not support the specified format, in that case
+         * an error will be raised.
+         *
+         * The `flags` argument is reserved for future expansions, currently
+         * #TRACKER_SERIALIZE_FLAGS_NONE must be passed.
+         * @param flags serialization flags
+         * @param format RDF format of the serialized data
+         * @param cancellable Optional [type@Gio.Cancellable]
          * @param callback user-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
          */
         serialize_async(
@@ -3492,7 +3909,7 @@ export namespace Tsparql {
             format: RdfFormat,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Gio.InputStream> | void;
         /**
          * Finishes the asynchronous operation started through
          * [method`SparqlStatement`.serialize_async].
@@ -3523,9 +3940,37 @@ export namespace Tsparql {
          * An error will be raised if this method is called on
          * `SELECT`/`ASK`/`DESCRIBE`/`CONSTRUCT` SPARQL queries.
          * @param cancellable Optional [type@Gio.Cancellable]
+         */
+        update_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Executes asynchronously the `INSERT`/`DELETE` SPARQL query series with the currently bound values.
+         *
+         * This function should only be called on `TrackerSparqlStatement` objects
+         * obtained through [method`SparqlConnection`.update_statement] or
+         * `INSERT`/`DELETE` statements loaded through
+         * [method`SparqlConnection`.load_statement_from_gresource].
+         * An error will be raised if this method is called on
+         * `SELECT`/`ASK`/`DESCRIBE`/`CONSTRUCT` SPARQL queries.
+         * @param cancellable Optional [type@Gio.Cancellable]
          * @param callback user-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
          */
-        update_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        update_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Executes asynchronously the `INSERT`/`DELETE` SPARQL query series with the currently bound values.
+         *
+         * This function should only be called on `TrackerSparqlStatement` objects
+         * obtained through [method`SparqlConnection`.update_statement] or
+         * `INSERT`/`DELETE` statements loaded through
+         * [method`SparqlConnection`.load_statement_from_gresource].
+         * An error will be raised if this method is called on
+         * `SELECT`/`ASK`/`DESCRIBE`/`CONSTRUCT` SPARQL queries.
+         * @param cancellable Optional [type@Gio.Cancellable]
+         * @param callback user-defined [type@Gio.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
+         */
+        update_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes the asynchronous update started through
          * [method`SparqlStatement`.update_async].

@@ -396,13 +396,53 @@ export namespace GSound {
          * This function is intented to be used by language bindings.
          * @param attrs Attributes
          * @param cancellable A #GCancellable, or %NULL
+         */
+        play_full(
+            attrs: { [key: string]: any } | GLib.HashTable<string, string>,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously request a sound to be played. When playback is finished
+         * (or if an error occurs) then `callback` will be called, following the
+         * normal GIO async pattern.
+         *
+         * If playback is cancelled via `cancellable,` then `callback` will be called
+         * with #G_IO_ERROR_CANCELLED.
+         *
+         * If you do not need notification of when playback is complete, you should
+         * use gsound_context_play_simple().
+         *
+         * This function is intented to be used by language bindings.
+         * @param attrs Attributes
+         * @param cancellable A #GCancellable, or %NULL
+         * @param callback callback
+         */
+        play_full(
+            attrs: { [key: string]: any } | GLib.HashTable<string, string>,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously request a sound to be played. When playback is finished
+         * (or if an error occurs) then `callback` will be called, following the
+         * normal GIO async pattern.
+         *
+         * If playback is cancelled via `cancellable,` then `callback` will be called
+         * with #G_IO_ERROR_CANCELLED.
+         *
+         * If you do not need notification of when playback is complete, you should
+         * use gsound_context_play_simple().
+         *
+         * This function is intented to be used by language bindings.
+         * @param attrs Attributes
+         * @param cancellable A #GCancellable, or %NULL
          * @param callback callback
          */
         play_full(
             attrs: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * The basic "fire-and-forget" play command. This function will not block, and
          * just sends a request to the sound server before immediately returning.

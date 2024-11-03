@@ -1191,44 +1191,90 @@ export namespace Tracker {
         // Methods
 
         query(sparql: string, cancellable?: Gio.Cancellable | null): SparqlCursor;
+        query_async(sparql: string, cancellable?: Gio.Cancellable | null): Promise<SparqlCursor>;
+        query_async(
+            sparql: string,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         query_async(
             sparql: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<SparqlCursor> | void;
         query_finish(_res_: Gio.AsyncResult): SparqlCursor;
         update(sparql: string, priority: number, cancellable?: Gio.Cancellable | null): void;
+        update_async(sparql: string, priority: number, cancellable?: Gio.Cancellable | null): Promise<void>;
+        update_async(
+            sparql: string,
+            priority: number,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         update_async(
             sparql: string,
             priority: number,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<void> | void;
         update_finish(_res_: Gio.AsyncResult): void;
         update_array_async(
             sparql: string[],
             priority: number,
             cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<SparqlError[] | null>;
+        update_array_async(
+            sparql: string[],
+            priority: number,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        update_array_async(
+            sparql: string[],
+            priority: number,
+            cancellable?: Gio.Cancellable | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<SparqlError[] | null> | void;
         update_array_finish(_res_: Gio.AsyncResult): SparqlError[] | null;
         update_blank(sparql: string, priority: number, cancellable?: Gio.Cancellable | null): GLib.Variant | null;
         update_blank_async(
             sparql: string,
             priority: number,
             cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<GLib.Variant | null>;
+        update_blank_async(
+            sparql: string,
+            priority: number,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        update_blank_async(
+            sparql: string,
+            priority: number,
+            cancellable?: Gio.Cancellable | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<GLib.Variant | null> | void;
         update_blank_finish(_res_: Gio.AsyncResult): GLib.Variant | null;
         load(file: Gio.File, cancellable?: Gio.Cancellable | null): void;
+        load_async(file: Gio.File, cancellable?: Gio.Cancellable | null): Promise<void>;
+        load_async(
+            file: Gio.File,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         load_async(
             file: Gio.File,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<void> | void;
         load_finish(_res_: Gio.AsyncResult): void;
         statistics(cancellable?: Gio.Cancellable | null): SparqlCursor | null;
-        statistics_async(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        statistics_async(cancellable?: Gio.Cancellable | null): Promise<SparqlCursor | null>;
+        statistics_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        statistics_async(
+            cancellable?: Gio.Cancellable | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<SparqlCursor | null> | void;
         statistics_finish(_res_: Gio.AsyncResult): SparqlCursor | null;
         get_namespace_manager(): NamespaceManager | null;
         query_statement(sparql: string, cancellable?: Gio.Cancellable | null): SparqlStatement | null;
@@ -1282,7 +1328,12 @@ export namespace Tracker {
         get_variable_name(column: number): string | null;
         get_string(column: number): [string | null, number];
         next(cancellable?: Gio.Cancellable | null): boolean;
-        next_async(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        next_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        next_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        next_async(
+            cancellable?: Gio.Cancellable | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         next_finish(_res_: Gio.AsyncResult): boolean;
         rewind(): void;
         close(): void;
@@ -1340,7 +1391,12 @@ export namespace Tracker {
         bind_string(name: string, value: string): void;
         bind_double(name: string, value: number): void;
         execute(cancellable?: Gio.Cancellable | null): SparqlCursor;
-        execute_async(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        execute_async(cancellable?: Gio.Cancellable | null): Promise<SparqlCursor>;
+        execute_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        execute_async(
+            cancellable?: Gio.Cancellable | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<SparqlCursor> | void;
         execute_finish(_res_: Gio.AsyncResult): SparqlCursor;
         get_sparql(): string;
         set_sparql(value: string): void;

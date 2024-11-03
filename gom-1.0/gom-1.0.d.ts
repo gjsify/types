@@ -99,7 +99,9 @@ export namespace Gom {
 
         // Methods
 
-        close_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        close_async(): Promise<boolean>;
+        close_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        close_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         close_finish(result: Gio.AsyncResult): boolean;
         close_sync(): boolean;
         /**
@@ -122,9 +124,24 @@ export namespace Gom {
          * by SQLite. See <ulink type="http" url="http://www.sqlite.org/c3ref/open.html">http://www.sqlite.org/c3ref/open.html</ulink>
          * for details.
          * @param uri a URI understood by SQLite
+         */
+        open_async(uri: string): Promise<boolean>;
+        /**
+         * Opens the database pointed to by `uri`. `uri` can be in any format understood
+         * by SQLite. See <ulink type="http" url="http://www.sqlite.org/c3ref/open.html">http://www.sqlite.org/c3ref/open.html</ulink>
+         * for details.
+         * @param uri a URI understood by SQLite
          * @param callback the function to call when the operation finished, or %NULL
          */
-        open_async(uri: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        open_async(uri: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Opens the database pointed to by `uri`. `uri` can be in any format understood
+         * by SQLite. See <ulink type="http" url="http://www.sqlite.org/c3ref/open.html">http://www.sqlite.org/c3ref/open.html</ulink>
+         * for details.
+         * @param uri a URI understood by SQLite
+         * @param callback the function to call when the operation finished, or %NULL
+         */
+        open_async(uri: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         open_finish(result: Gio.AsyncResult): boolean;
         open_sync(uri: string): boolean;
         /**
@@ -405,13 +422,38 @@ export namespace Gom {
          * gom_repository_automatic_migrate_finish().
          * @param version The version to migrate to.
          * @param object_types a #GList of #GType
+         */
+        automatic_migrate_async(version: number, object_types: GObject.GType[]): Promise<boolean>;
+        /**
+         * Performs an automatic migration on the underlying database. See
+         * gom_repository_automatic_migrate_sync() for details.
+         *
+         * Upon completion, `callback` will be executed and it must call
+         * gom_repository_automatic_migrate_finish().
+         * @param version The version to migrate to.
+         * @param object_types a #GList of #GType
+         * @param callback A callback to execute upon completion.
+         */
+        automatic_migrate_async(
+            version: number,
+            object_types: GObject.GType[],
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Performs an automatic migration on the underlying database. See
+         * gom_repository_automatic_migrate_sync() for details.
+         *
+         * Upon completion, `callback` will be executed and it must call
+         * gom_repository_automatic_migrate_finish().
+         * @param version The version to migrate to.
+         * @param object_types a #GList of #GType
          * @param callback A callback to execute upon completion.
          */
         automatic_migrate_async(
             version: number,
             object_types: GObject.GType[],
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         automatic_migrate_finish(result: Gio.AsyncResult): boolean;
         /**
          * Performs an automatic migration on the underlying database. For
@@ -423,18 +465,30 @@ export namespace Gom {
          * @returns #TRUE in case of success.
          */
         automatic_migrate_sync(version: number, object_types: GObject.GType[]): boolean;
-        find_async(resource_type: GObject.GType, filter: Filter, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        find_async(resource_type: GObject.GType, filter: Filter): Promise<ResourceGroup>;
+        find_async(resource_type: GObject.GType, filter: Filter, callback: Gio.AsyncReadyCallback<this> | null): void;
+        find_async(
+            resource_type: GObject.GType,
+            filter: Filter,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<ResourceGroup> | void;
         /**
          * Completes an asynchronous request to fetch a group of resources.
          * @param result A #GAsyncResult.
          * @returns A #GomResourceGroup.
          */
         find_finish(result: Gio.AsyncResult): ResourceGroup;
+        find_one_async(resource_type: GObject.GType, filter: Filter): Promise<Resource>;
+        find_one_async(
+            resource_type: GObject.GType,
+            filter: Filter,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         find_one_async(
             resource_type: GObject.GType,
             filter: Filter,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Resource> | void;
         /**
          * Completes an asynchronous request to find a single resource in the
          * repository. See gom_repository_find_one_async() for more info.
@@ -487,13 +541,38 @@ export namespace Gom {
          * gom_repository_migrate_finish().
          * @param version The version to migrate to.
          * @param migrator A function to perform the migrations.
+         */
+        migrate_async(version: number, migrator: RepositoryMigrator): Promise<boolean>;
+        /**
+         * Asynchronously performs a migration on the underlying database. This will
+         * call `migrator` from the SQLite thread for each migration to perform.
+         *
+         * Upon completion, `callback` will be executed and it must call
+         * gom_repository_migrate_finish().
+         * @param version The version to migrate to.
+         * @param migrator A function to perform the migrations.
+         * @param callback A callback to execute upon completion.
+         */
+        migrate_async(
+            version: number,
+            migrator: RepositoryMigrator,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously performs a migration on the underlying database. This will
+         * call `migrator` from the SQLite thread for each migration to perform.
+         *
+         * Upon completion, `callback` will be executed and it must call
+         * gom_repository_migrate_finish().
+         * @param version The version to migrate to.
+         * @param migrator A function to perform the migrations.
          * @param callback A callback to execute upon completion.
          */
         migrate_async(
             version: number,
             migrator: RepositoryMigrator,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         migrate_finish(result: Gio.AsyncResult): boolean;
         /**
          * Performs a migration on the underlying database. This will
@@ -549,7 +628,9 @@ export namespace Gom {
 
         // Methods
 
-        delete_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        delete_async(): Promise<boolean>;
+        delete_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        delete_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         delete_finish(result: Gio.AsyncResult): boolean;
         /**
          * Synchronously deletes a resource. This may only be called from inside a
@@ -557,12 +638,19 @@ export namespace Gom {
          * @returns %TRUE if successful; otherwise %FALSE and @error is set.
          */
         delete_sync(): boolean;
+        fetch_m2m_async(resource_type: GObject.GType, m2m_table: string, filter: Filter): Promise<ResourceGroup>;
+        fetch_m2m_async(
+            resource_type: GObject.GType,
+            m2m_table: string,
+            filter: Filter,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         fetch_m2m_async(
             resource_type: GObject.GType,
             m2m_table: string,
             filter: Filter,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<ResourceGroup> | void;
         /**
          * Completes the asynchronous request to fetch a group of resources that
          * are related to the resource through a many-to-many table.
@@ -570,7 +658,9 @@ export namespace Gom {
          * @returns A #GomResourceGroup.
          */
         fetch_m2m_finish(result: Gio.AsyncResult): ResourceGroup;
-        save_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        save_async(): Promise<boolean>;
+        save_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        save_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         save_finish(result: Gio.AsyncResult): boolean;
         save_sync(): boolean;
     }
@@ -623,10 +713,18 @@ export namespace Gom {
         // Methods
 
         append(resource: Resource): boolean;
-        delete_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        delete_async(): Promise<boolean>;
+        delete_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        delete_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         delete_finish(result: Gio.AsyncResult): boolean;
         delete_sync(): boolean;
-        fetch_async(index_: number, count: number, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        fetch_async(index_: number, count: number): Promise<boolean>;
+        fetch_async(index_: number, count: number, callback: Gio.AsyncReadyCallback<this> | null): void;
+        fetch_async(
+            index_: number,
+            count: number,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         fetch_finish(result: Gio.AsyncResult): boolean;
         /**
          * Fetches a sequence of resources from the group synchronously. This must
@@ -646,7 +744,9 @@ export namespace Gom {
          */
         get_index(index_: number): Resource;
         get_m2m_table(): string;
-        write_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        write_async(): Promise<boolean>;
+        write_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        write_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         write_finish(result: Gio.AsyncResult): boolean;
         write_sync(): boolean;
     }

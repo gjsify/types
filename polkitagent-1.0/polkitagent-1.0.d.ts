@@ -156,6 +156,78 @@ export namespace PolkitAgent {
          * @param cookie The cookie for the authentication request.
          * @param identities A list of #PolkitIdentity objects that the user can choose to authenticate as.
          * @param cancellable A #GCancellable.
+         */
+        initiate_authentication(
+            action_id: string,
+            message: string,
+            icon_name: string,
+            details: Polkit.Details,
+            cookie: string,
+            identities: Polkit.Identity[],
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Called on a registered authentication agent (see
+         * polkit_agent_listener_register()) when the user owning the session
+         * needs to prove he is one of the identities listed in `identities`.
+         *
+         * When the user is done authenticating (for example by dismissing an
+         * authentication dialog or by successfully entering a password or
+         * otherwise proving the user is one of the identities in
+         * `identities)`, `callback` will be invoked. The caller then calls
+         * polkit_agent_listener_initiate_authentication_finish() to get the
+         * result.
+         *
+         * #PolkitAgentListener derived subclasses imlementing this method
+         * <emphasis>MUST</emphasis> not ignore `cancellable;` callers of this
+         * function can and will use it. Additionally, `callback` must be
+         * invoked in the <link
+         * linkend="g-main-context-push-thread-default">thread-default main
+         * loop</link> of the thread that this method is called from.
+         * @param action_id The action to authenticate for.
+         * @param message The message to present to the user.
+         * @param icon_name A themed icon name representing the action or %NULL.
+         * @param details Details describing the action.
+         * @param cookie The cookie for the authentication request.
+         * @param identities A list of #PolkitIdentity objects that the user can choose to authenticate as.
+         * @param cancellable A #GCancellable.
+         * @param callback Function to call when the user is done authenticating.
+         */
+        initiate_authentication(
+            action_id: string,
+            message: string,
+            icon_name: string,
+            details: Polkit.Details,
+            cookie: string,
+            identities: Polkit.Identity[],
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Called on a registered authentication agent (see
+         * polkit_agent_listener_register()) when the user owning the session
+         * needs to prove he is one of the identities listed in `identities`.
+         *
+         * When the user is done authenticating (for example by dismissing an
+         * authentication dialog or by successfully entering a password or
+         * otherwise proving the user is one of the identities in
+         * `identities)`, `callback` will be invoked. The caller then calls
+         * polkit_agent_listener_initiate_authentication_finish() to get the
+         * result.
+         *
+         * #PolkitAgentListener derived subclasses imlementing this method
+         * <emphasis>MUST</emphasis> not ignore `cancellable;` callers of this
+         * function can and will use it. Additionally, `callback` must be
+         * invoked in the <link
+         * linkend="g-main-context-push-thread-default">thread-default main
+         * loop</link> of the thread that this method is called from.
+         * @param action_id The action to authenticate for.
+         * @param message The message to present to the user.
+         * @param icon_name A themed icon name representing the action or %NULL.
+         * @param details Details describing the action.
+         * @param cookie The cookie for the authentication request.
+         * @param identities A list of #PolkitIdentity objects that the user can choose to authenticate as.
+         * @param cancellable A #GCancellable.
          * @param callback Function to call when the user is done authenticating.
          */
         initiate_authentication(
@@ -167,7 +239,7 @@ export namespace PolkitAgent {
             identities: Polkit.Identity[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an authentication request from the PolicyKit daemon, see
          * polkit_agent_listener_initiate_authentication() for details.
@@ -340,21 +412,9 @@ export namespace PolkitAgent {
     }
 
     module TextListener {
-        // Signal callback interfaces
-
-        interface TtyAttrsChanged {
-            (object: boolean): void;
-        }
-
         // Constructor properties interface
 
-        interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {
-            delay: number;
-            use_alternate_buffer: boolean;
-            useAlternateBuffer: boolean;
-            use_color: boolean;
-            useColor: boolean;
-        }
+        interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -364,14 +424,6 @@ export namespace PolkitAgent {
     class TextListener extends Listener implements Gio.Initable {
         static $gtype: GObject.GType<TextListener>;
 
-        // Properties
-
-        get delay(): number;
-        get use_alternate_buffer(): boolean;
-        get useAlternateBuffer(): boolean;
-        get use_color(): boolean;
-        get useColor(): boolean;
-
         // Constructors
 
         constructor(properties?: Partial<TextListener.ConstructorProps>, ...args: any[]);
@@ -379,15 +431,6 @@ export namespace PolkitAgent {
         _init(...args: any[]): void;
 
         static ['new'](cancellable?: Gio.Cancellable | null): TextListener;
-
-        // Signals
-
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'tty-attrs-changed', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'tty-attrs-changed', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'tty-attrs-changed', object: boolean): void;
 
         // Inherited methods
         /**

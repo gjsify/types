@@ -101,13 +101,46 @@ export namespace Builder {
          * provided to retrieve the result.
          * @param plugin_name The name of the plugin.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        get_worker_async(plugin_name: string, cancellable?: Gio.Cancellable | null): Promise<Gio.DBusProxy>;
+        /**
+         * Asynchronously requests a #GDBusProxy to a service provided in a worker
+         * process. The worker should be an #IdeWorker implemented by the plugin named
+         * `plugin_name`. The #IdeWorker is responsible for created both the service
+         * registered on the bus and the proxy to it.
+         *
+         * The #GbApplication is responsible for spawning a subprocess for the worker.
+         *
+         * `callback` should call gb_application_get_worker_finish() with the result
+         * provided to retrieve the result.
+         * @param plugin_name The name of the plugin.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback or %NULL.
+         */
+        get_worker_async(
+            plugin_name: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously requests a #GDBusProxy to a service provided in a worker
+         * process. The worker should be an #IdeWorker implemented by the plugin named
+         * `plugin_name`. The #IdeWorker is responsible for created both the service
+         * registered on the bus and the proxy to it.
+         *
+         * The #GbApplication is responsible for spawning a subprocess for the worker.
+         *
+         * `callback` should call gb_application_get_worker_finish() with the result
+         * provided to retrieve the result.
+         * @param plugin_name The name of the plugin.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback or %NULL.
          */
         get_worker_async(
             plugin_name: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Gio.DBusProxy> | void;
         /**
          * Completes an asynchronous request to get a proxy to a worker process.
          * @param result A #GAsyncResult
@@ -118,8 +151,19 @@ export namespace Builder {
             file: Gio.File,
             additional_files?: Gio.File[] | null,
             cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean>;
+        open_project_async(
+            file: Gio.File,
+            additional_files: Gio.File[] | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        open_project_async(
+            file: Gio.File,
+            additional_files?: Gio.File[] | null,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         open_project_finish(result: Gio.AsyncResult): boolean;
         show_projects_window(): void;
 
@@ -3416,11 +3460,17 @@ export namespace Builder {
         // Methods
 
         add_temporary_buffer(): void;
+        build_async(force_rebuild: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        build_async(
+            force_rebuild: boolean,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         build_async(
             force_rebuild: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         build_finish(result: Gio.AsyncResult): boolean;
         get_active_view(): Gtk.Widget;
         get_closing(): boolean;
@@ -4473,17 +4523,29 @@ export namespace Builder {
         get_read_only(): boolean;
         get_title(): string;
         is_untitled(): boolean;
+        save_as_async(toplevel: Gtk.Widget, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        save_as_async(
+            toplevel: Gtk.Widget,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         save_as_async(
             toplevel: Gtk.Widget,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         save_as_finish(result: Gio.AsyncResult): boolean;
+        save_async(toplevel: Gtk.Widget, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        save_async(
+            toplevel: Gtk.Widget,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         save_async(
             toplevel: Gtk.Widget,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         save_finish(result: Gio.AsyncResult): boolean;
 
         // Virtual methods

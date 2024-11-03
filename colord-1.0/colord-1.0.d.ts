@@ -1146,9 +1146,23 @@ export namespace Colord {
         /**
          * Connects to the colord daemon.
          * @param cancellable a #GCancellable or %NULL
+         */
+        connect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Connects to the colord daemon.
+         * @param cancellable a #GCancellable or %NULL
          * @param callback the function to run on completion
          */
-        connect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        connect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Connects to the colord daemon.
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback the function to run on completion
+         */
+        connect(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         connect(...args: never[]): any;
         /**
          * Gets the result from the asynchronous function.
@@ -1171,6 +1185,34 @@ export namespace Colord {
          * @param scope the scope of the device
          * @param properties properties to   set on the device, or %NULL
          * @param cancellable a #GCancellable, or %NULL
+         */
+        create_device(
+            id: string,
+            scope: ObjectScope,
+            properties?: GLib.HashTable<string, string> | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Device>;
+        /**
+         * Creates a color device.
+         * @param id identifier for the device
+         * @param scope the scope of the device
+         * @param properties properties to   set on the device, or %NULL
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        create_device(
+            id: string,
+            scope: ObjectScope,
+            properties: GLib.HashTable<string, string> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Creates a color device.
+         * @param id identifier for the device
+         * @param scope the scope of the device
+         * @param properties properties to   set on the device, or %NULL
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         create_device(
@@ -1179,7 +1221,7 @@ export namespace Colord {
             properties?: GLib.HashTable<string, string> | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Device> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -1209,6 +1251,34 @@ export namespace Colord {
          * @param scope the scope of the profile
          * @param properties properties to   set on the profile, or %NULL
          * @param cancellable a #GCancellable, or %NULL
+         */
+        create_profile(
+            id: string,
+            scope: ObjectScope,
+            properties?: GLib.HashTable<string, string> | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Profile>;
+        /**
+         * Creates a color profile.
+         * @param id identifier for the profile
+         * @param scope the scope of the profile
+         * @param properties properties to   set on the profile, or %NULL
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        create_profile(
+            id: string,
+            scope: ObjectScope,
+            properties: GLib.HashTable<string, string> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Creates a color profile.
+         * @param id identifier for the profile
+         * @param scope the scope of the profile
+         * @param properties properties to   set on the profile, or %NULL
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         create_profile(
@@ -1217,13 +1287,33 @@ export namespace Colord {
             properties?: GLib.HashTable<string, string> | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Profile> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
          * @returns a #CdProfile or %NULL
          */
         create_profile_finish(res: Gio.AsyncResult): Profile;
+        /**
+         * Creates a color profile for an #CdIcc Object.
+         * @param icc #CdIcc object
+         * @param scope the scope of the profile
+         * @param cancellable a #GCancellable, or %NULL
+         */
+        create_profile_for_icc(icc: Icc, scope: ObjectScope, cancellable?: Gio.Cancellable | null): Promise<Profile>;
+        /**
+         * Creates a color profile for an #CdIcc Object.
+         * @param icc #CdIcc object
+         * @param scope the scope of the profile
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        create_profile_for_icc(
+            icc: Icc,
+            scope: ObjectScope,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Creates a color profile for an #CdIcc Object.
          * @param icc #CdIcc object
@@ -1236,7 +1326,7 @@ export namespace Colord {
             scope: ObjectScope,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Profile> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -1275,13 +1365,30 @@ export namespace Colord {
          * Deletes a device.
          * @param device a #CdDevice
          * @param cancellable a #GCancellable, or %NULL
+         */
+        delete_device(device: Device, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Deletes a device.
+         * @param device a #CdDevice
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        delete_device(
+            device: Device,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Deletes a device.
+         * @param device a #CdDevice
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         delete_device(
             device: Device,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -1302,13 +1409,30 @@ export namespace Colord {
          * Deletes a profile.
          * @param profile a #CdProfile
          * @param cancellable a #GCancellable, or %NULL
+         */
+        delete_profile(profile: Profile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Deletes a profile.
+         * @param profile a #CdProfile
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        delete_profile(
+            profile: Profile,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Deletes a profile.
+         * @param profile a #CdProfile
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         delete_profile(
             profile: Profile,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -1329,12 +1453,49 @@ export namespace Colord {
          * Finds a device by an ID.
          * @param id a device id
          * @param cancellable a #GCancellable, or %NULL
+         */
+        find_device(id: string, cancellable?: Gio.Cancellable | null): Promise<Device>;
+        /**
+         * Finds a device by an ID.
+         * @param id a device id
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        find_device(
+            id: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finds a device by an ID.
+         * @param id a device id
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         find_device(
             id: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<Device> | void;
+        /**
+         * Finds a color device that has a property value.
+         * @param key the device property key
+         * @param value the device property value
+         * @param cancellable a #GCancellable, or %NULL
+         */
+        find_device_by_property(key: string, value: string, cancellable?: Gio.Cancellable | null): Promise<Device>;
+        /**
+         * Finds a color device that has a property value.
+         * @param key the device property key
+         * @param value the device property value
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        find_device_by_property(
+            key: string,
+            value: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finds a color device that has a property value.
@@ -1348,7 +1509,7 @@ export namespace Colord {
             value: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Device> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -1386,12 +1547,46 @@ export namespace Colord {
          * Finds a profile by an ID.
          * @param id a profile id
          * @param cancellable a #GCancellable, or %NULL
+         */
+        find_profile(id: string, cancellable?: Gio.Cancellable | null): Promise<Profile>;
+        /**
+         * Finds a profile by an ID.
+         * @param id a profile id
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        find_profile(
+            id: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finds a profile by an ID.
+         * @param id a profile id
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         find_profile(
             id: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<Profile> | void;
+        /**
+         * Finds a profile by a filename.
+         * @param filename a profile filename
+         * @param cancellable a #GCancellable, or %NULL
+         */
+        find_profile_by_filename(filename: string, cancellable?: Gio.Cancellable | null): Promise<Profile>;
+        /**
+         * Finds a profile by a filename.
+         * @param filename a profile filename
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        find_profile_by_filename(
+            filename: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Finds a profile by a filename.
@@ -1403,7 +1598,7 @@ export namespace Colord {
             filename: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Profile> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -1425,6 +1620,26 @@ export namespace Colord {
          * @param key the profile property key
          * @param value the profile property value
          * @param cancellable a #GCancellable, or %NULL
+         */
+        find_profile_by_property(key: string, value: string, cancellable?: Gio.Cancellable | null): Promise<Profile>;
+        /**
+         * Finds a color profile that has a property value.
+         * @param key the profile property key
+         * @param value the profile property value
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        find_profile_by_property(
+            key: string,
+            value: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finds a color profile that has a property value.
+         * @param key the profile property key
+         * @param value the profile property value
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         find_profile_by_property(
@@ -1432,7 +1647,7 @@ export namespace Colord {
             value: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Profile> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -1470,13 +1685,30 @@ export namespace Colord {
          * Finds a sensor by an ID.
          * @param id a sensor id
          * @param cancellable a #GCancellable, or %NULL
+         */
+        find_sensor(id: string, cancellable?: Gio.Cancellable | null): Promise<Sensor>;
+        /**
+         * Finds a sensor by an ID.
+         * @param id a sensor id
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        find_sensor(
+            id: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finds a sensor by an ID.
+         * @param id a sensor id
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         find_sensor(
             id: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Sensor> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -1506,9 +1738,40 @@ export namespace Colord {
         /**
          * Gets an array of color devices.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        get_devices(cancellable?: Gio.Cancellable | null): Promise<Device[]>;
+        /**
+         * Gets an array of color devices.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
-        get_devices(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_devices(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Gets an array of color devices.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        get_devices(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<Device[]> | void;
+        /**
+         * Gets an array of color devices.
+         * @param kind the type of device.
+         * @param cancellable a #GCancellable, or %NULL
+         */
+        get_devices_by_kind(kind: DeviceKind, cancellable?: Gio.Cancellable | null): Promise<Device[]>;
+        /**
+         * Gets an array of color devices.
+         * @param kind the type of device.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        get_devices_by_kind(
+            kind: DeviceKind,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Gets an array of color devices.
          * @param kind the type of device.
@@ -1519,7 +1782,7 @@ export namespace Colord {
             kind: DeviceKind,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Device[]> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -1561,9 +1824,23 @@ export namespace Colord {
         /**
          * Gets an array of color profiles.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        get_profiles(cancellable?: Gio.Cancellable | null): Promise<Profile[]>;
+        /**
+         * Gets an array of color profiles.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
-        get_profiles(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_profiles(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Gets an array of color profiles.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        get_profiles(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<Profile[]> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -1582,9 +1859,23 @@ export namespace Colord {
         /**
          * Gets an array of color sensors.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        get_sensors(cancellable?: Gio.Cancellable | null): Promise<Sensor[]>;
+        /**
+         * Gets an array of color sensors.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
-        get_sensors(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_sensors(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Gets an array of color sensors.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        get_sensors(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<Sensor[]> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -1604,13 +1895,30 @@ export namespace Colord {
          * Finds a standard profile space.
          * @param standard_space a profile id
          * @param cancellable a #GCancellable, or %NULL
+         */
+        get_standard_space(standard_space: StandardSpace, cancellable?: Gio.Cancellable | null): Promise<Profile>;
+        /**
+         * Finds a standard profile space.
+         * @param standard_space a profile id
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        get_standard_space(
+            standard_space: StandardSpace,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finds a standard profile space.
+         * @param standard_space a profile id
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         get_standard_space(
             standard_space: StandardSpace,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Profile> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -1644,13 +1952,36 @@ export namespace Colord {
          * cd_profile_install_system_wide() on the result.
          * @param file a #GFile
          * @param cancellable a #GCancellable, or %NULL
+         */
+        import_profile(file: Gio.File, cancellable?: Gio.Cancellable | null): Promise<Profile>;
+        /**
+         * Imports a color profile into the users home directory.
+         *
+         * If the profile should be accessible for all users, then call
+         * cd_profile_install_system_wide() on the result.
+         * @param file a #GFile
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        import_profile(
+            file: Gio.File,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Imports a color profile into the users home directory.
+         *
+         * If the profile should be accessible for all users, then call
+         * cd_profile_install_system_wide() on the result.
+         * @param file a #GFile
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         import_profile(
             file: Gio.File,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Profile> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -1845,6 +2176,26 @@ export namespace Colord {
          * @param relation a #CdDeviceRelation, e.g. #CD_DEVICE_RELATION_HARD
          * @param profile a #CdProfile instance
          * @param cancellable a #GCancellable, or %NULL
+         */
+        add_profile(relation: DeviceRelation, profile: Profile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Adds a profile to a device.
+         * @param relation a #CdDeviceRelation, e.g. #CD_DEVICE_RELATION_HARD
+         * @param profile a #CdProfile instance
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        add_profile(
+            relation: DeviceRelation,
+            profile: Profile,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Adds a profile to a device.
+         * @param relation a #CdDeviceRelation, e.g. #CD_DEVICE_RELATION_HARD
+         * @param profile a #CdProfile instance
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         add_profile(
@@ -1852,7 +2203,7 @@ export namespace Colord {
             profile: Profile,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -1873,9 +2224,23 @@ export namespace Colord {
         /**
          * Connects to the object and fills up initial properties.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        connect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Connects to the object and fills up initial properties.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
-        connect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        connect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Connects to the object and fills up initial properties.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        connect(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         connect(...args: never[]): any;
         /**
          * Gets the result from the asynchronous function.
@@ -1985,13 +2350,30 @@ export namespace Colord {
          * Gets the preferred profile for some qualifiers.
          * @param qualifiers a set of qualifiers that can included wildcards
          * @param cancellable a #GCancellable, or %NULL
+         */
+        get_profile_for_qualifiers(qualifiers: string, cancellable?: Gio.Cancellable | null): Promise<Profile>;
+        /**
+         * Gets the preferred profile for some qualifiers.
+         * @param qualifiers a set of qualifiers that can included wildcards
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        get_profile_for_qualifiers(
+            qualifiers: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Gets the preferred profile for some qualifiers.
+         * @param qualifiers a set of qualifiers that can included wildcards
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         get_profile_for_qualifiers(
             qualifiers: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Profile> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -2012,13 +2394,30 @@ export namespace Colord {
          * Gets the property relationship to the device.
          * @param profile a #CdProfile instance
          * @param cancellable a #GCancellable, or %NULL
+         */
+        get_profile_relation(profile: Profile, cancellable?: Gio.Cancellable | null): Promise<DeviceRelation>;
+        /**
+         * Gets the property relationship to the device.
+         * @param profile a #CdProfile instance
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        get_profile_relation(
+            profile: Profile,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Gets the property relationship to the device.
+         * @param profile a #CdProfile instance
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         get_profile_relation(
             profile: Profile,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<DeviceRelation> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -2069,13 +2468,30 @@ export namespace Colord {
          * Makes an already added profile default for a device.
          * @param profile a #CdProfile instance
          * @param cancellable a #GCancellable, or %NULL
+         */
+        make_profile_default(profile: Profile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Makes an already added profile default for a device.
+         * @param profile a #CdProfile instance
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        make_profile_default(
+            profile: Profile,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Makes an already added profile default for a device.
+         * @param profile a #CdProfile instance
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         make_profile_default(
             profile: Profile,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -2096,9 +2512,25 @@ export namespace Colord {
          * Sets up the device for profiling and causes no profiles to be
          * returned if cd_device_get_profile_for_qualifiers_sync() is used.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        profiling_inhibit(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Sets up the device for profiling and causes no profiles to be
+         * returned if cd_device_get_profile_for_qualifiers_sync() is used.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
-        profiling_inhibit(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        profiling_inhibit(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Sets up the device for profiling and causes no profiles to be
+         * returned if cd_device_get_profile_for_qualifiers_sync() is used.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        profiling_inhibit(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -2119,9 +2551,25 @@ export namespace Colord {
          * Restores the device after profiling and causes normal profiles to be
          * returned if cd_device_get_profile_for_qualifiers_sync() is used.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        profiling_uninhibit(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Restores the device after profiling and causes normal profiles to be
+         * returned if cd_device_get_profile_for_qualifiers_sync() is used.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
-        profiling_uninhibit(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        profiling_uninhibit(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Restores the device after profiling and causes normal profiles to be
+         * returned if cd_device_get_profile_for_qualifiers_sync() is used.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        profiling_uninhibit(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -2142,13 +2590,30 @@ export namespace Colord {
          * Removes a profile from a device.
          * @param profile a #CdProfile instance
          * @param cancellable a #GCancellable, or %NULL
+         */
+        remove_profile(profile: Profile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Removes a profile from a device.
+         * @param profile a #CdProfile instance
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        remove_profile(
+            profile: Profile,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Removes a profile from a device.
+         * @param profile a #CdProfile instance
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         remove_profile(
             profile: Profile,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -2179,13 +2644,30 @@ export namespace Colord {
          * Enables or disables a device.
          * @param enabled the enabled state
          * @param cancellable a #GCancellable, or %NULL
+         */
+        set_enabled(enabled: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Enables or disables a device.
+         * @param enabled the enabled state
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        set_enabled(
+            enabled: boolean,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Enables or disables a device.
+         * @param enabled the enabled state
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         set_enabled(
             enabled: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -2242,6 +2724,26 @@ export namespace Colord {
          * @param key a property key
          * @param value a property key
          * @param cancellable a #GCancellable, or %NULL
+         */
+        set_property(key: string, value: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Sets a property on the device.
+         * @param key a property key
+         * @param value a property key
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        set_property(
+            key: string,
+            value: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Sets a property on the device.
+         * @param key a property key
+         * @param value a property key
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         set_property(
@@ -2249,7 +2751,7 @@ export namespace Colord {
             value: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
         /**
@@ -3249,9 +3751,23 @@ export namespace Colord {
         /**
          * Connects to the object and fills up initial properties.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        connect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Connects to the object and fills up initial properties.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
-        connect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        connect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Connects to the object and fills up initial properties.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        connect(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         connect(...args: never[]): any;
         /**
          * Gets the result from the asynchronous function.
@@ -3374,9 +3890,23 @@ export namespace Colord {
         /**
          * Sets the profile system wide.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        install_system_wide(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Sets the profile system wide.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
-        install_system_wide(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        install_system_wide(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Sets the profile system wide.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        install_system_wide(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -3409,6 +3939,26 @@ export namespace Colord {
          * @param key a key name
          * @param value a key value
          * @param cancellable a #GCancellable, or %NULL
+         */
+        set_property(key: string, value: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Deletes a color device.
+         * @param key a key name
+         * @param value a key value
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        set_property(
+            key: string,
+            value: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Deletes a color device.
+         * @param key a key name
+         * @param value a key value
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         set_property(
@@ -3416,7 +3966,7 @@ export namespace Colord {
             value: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
         /**
@@ -3599,9 +4149,23 @@ export namespace Colord {
         /**
          * Connects to the sensor.
          * @param cancellable a #GCancellable or %NULL
+         */
+        connect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Connects to the sensor.
+         * @param cancellable a #GCancellable or %NULL
          * @param callback the function to run on completion
          */
-        connect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        connect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Connects to the sensor.
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback the function to run on completion
+         */
+        connect(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         connect(...args: never[]): any;
         /**
          * Gets the result from the asynchronous function.
@@ -3700,13 +4264,30 @@ export namespace Colord {
          * Gets a color sample from a sensor
          * @param cap a #CdSensorCap
          * @param cancellable a #GCancellable, or %NULL
+         */
+        get_sample(cap: SensorCap, cancellable?: Gio.Cancellable | null): Promise<ColorXYZ>;
+        /**
+         * Gets a color sample from a sensor
+         * @param cap a #CdSensorCap
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        get_sample(
+            cap: SensorCap,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Gets a color sample from a sensor
+         * @param cap a #CdSensorCap
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         get_sample(
             cap: SensorCap,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<ColorXYZ> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -3732,13 +4313,30 @@ export namespace Colord {
          * Gets a color spectrum from a sensor
          * @param cap a #CdSensorCap
          * @param cancellable a #GCancellable, or %NULL
+         */
+        get_spectrum(cap: SensorCap, cancellable?: Gio.Cancellable | null): Promise<Spectrum>;
+        /**
+         * Gets a color spectrum from a sensor
+         * @param cap a #CdSensorCap
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        get_spectrum(
+            cap: SensorCap,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Gets a color spectrum from a sensor
+         * @param cap a #CdSensorCap
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         get_spectrum(
             cap: SensorCap,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Spectrum> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -3774,9 +4372,23 @@ export namespace Colord {
         /**
          * Locks the device so we can use it.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        lock(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Locks the device so we can use it.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
-        lock(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        lock(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Locks the device so we can use it.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        lock(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -3801,13 +4413,33 @@ export namespace Colord {
          * Sets options on the sensor device.
          * @param values the options
          * @param cancellable a #GCancellable, or %NULL
+         */
+        set_options(
+            values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Sets options on the sensor device.
+         * @param values the options
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        set_options(
+            values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Sets options on the sensor device.
+         * @param values the options
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
         set_options(
             values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -3831,9 +4463,23 @@ export namespace Colord {
         /**
          * Unlocks the sensor for use by other programs.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        unlock(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Unlocks the sensor for use by other programs.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to run on completion
          */
-        unlock(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        unlock(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Unlocks the sensor for use by other programs.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to run on completion
+         */
+        unlock(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult

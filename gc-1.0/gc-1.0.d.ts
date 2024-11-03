@@ -103,11 +103,17 @@ export namespace Gc {
         // Methods
 
         is_finished(): boolean;
+        search(max_matches: number, cancellable?: Gio.Cancellable | null): Promise<SearchResult>;
+        search(
+            max_matches: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         search(
             max_matches: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<SearchResult> | void;
         search_finish(result: Gio.AsyncResult): SearchResult;
     }
 

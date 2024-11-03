@@ -2082,13 +2082,30 @@ export namespace ColorHug {
          * Processes all commands in the command queue.
          * @param process_flags
          * @param cancellable A #GCancellable, or %NULL
+         */
+        process_async(process_flags: DeviceQueueProcessFlags, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Processes all commands in the command queue.
+         * @param process_flags
+         * @param cancellable A #GCancellable, or %NULL
+         * @param callback A #GAsyncReadyCallback that will be called when finished.
+         */
+        process_async(
+            process_flags: DeviceQueueProcessFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Processes all commands in the command queue.
+         * @param process_flags
+         * @param cancellable A #GCancellable, or %NULL
          * @param callback A #GAsyncReadyCallback that will be called when finished.
          */
         process_async(
             process_flags: DeviceQueueProcessFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult

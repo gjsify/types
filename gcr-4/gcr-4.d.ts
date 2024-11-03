@@ -1250,6 +1250,90 @@ export namespace Gcr {
          * @param peer the peer the certificate chain will be used with, or %NULL
          * @param flags chain completion flags
          * @param cancellable a #GCancellable or %NULL
+         */
+        build_async(
+            purpose: string,
+            peer: string | null,
+            flags: CertificateChainFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Complete a certificate chain. Once a certificate chain has been built
+         * its status can be examined.
+         *
+         * This will lookup missing certificates in PKCS#11
+         * modules and also that each certificate in the chain is the signer of the
+         * previous one. If a trust anchor, pinned certificate, or self-signed certificate
+         * is found, then the chain is considered built. Any extra certificates are
+         * removed from the chain.
+         *
+         * It's important to understand that building of a certificate chain does not
+         * constitute verifying that chain. This is merely the first step towards
+         * trust verification.
+         *
+         * The `purpose` is a string like %GCR_PURPOSE_CLIENT_AUTH and is the purpose
+         * for which the certificate chain will be used. Trust anchors are looked up
+         * for this purpose. This argument is required.
+         *
+         * The `peer` is usually the host name of the peer whith which this certificate
+         * chain is being used. It is used to look up pinned certificates that have
+         * been stored for this peer. If %NULL then no pinned certificates will
+         * be considered.
+         *
+         * If the %GCR_CERTIFICATE_CHAIN_NO_LOOKUPS flag is specified then no
+         * lookups for anchors or pinned certificates are done, and the resulting chain
+         * will be neither anchored or pinned. Additionally no missing certificate
+         * authorities are looked up in PKCS#11
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * gcr_certificate_chain_build_finish() to get the result of the operation.
+         * @param purpose the purpose the certificate chain will be used for
+         * @param peer the peer the certificate chain will be used with, or %NULL
+         * @param flags chain completion flags
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback this will be called when the operation completes.
+         */
+        build_async(
+            purpose: string,
+            peer: string | null,
+            flags: CertificateChainFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Complete a certificate chain. Once a certificate chain has been built
+         * its status can be examined.
+         *
+         * This will lookup missing certificates in PKCS#11
+         * modules and also that each certificate in the chain is the signer of the
+         * previous one. If a trust anchor, pinned certificate, or self-signed certificate
+         * is found, then the chain is considered built. Any extra certificates are
+         * removed from the chain.
+         *
+         * It's important to understand that building of a certificate chain does not
+         * constitute verifying that chain. This is merely the first step towards
+         * trust verification.
+         *
+         * The `purpose` is a string like %GCR_PURPOSE_CLIENT_AUTH and is the purpose
+         * for which the certificate chain will be used. Trust anchors are looked up
+         * for this purpose. This argument is required.
+         *
+         * The `peer` is usually the host name of the peer whith which this certificate
+         * chain is being used. It is used to look up pinned certificates that have
+         * been stored for this peer. If %NULL then no pinned certificates will
+         * be considered.
+         *
+         * If the %GCR_CERTIFICATE_CHAIN_NO_LOOKUPS flag is specified then no
+         * lookups for anchors or pinned certificates are done, and the resulting chain
+         * will be neither anchored or pinned. Additionally no missing certificate
+         * authorities are looked up in PKCS#11
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * gcr_certificate_chain_build_finish() to get the result of the operation.
+         * @param purpose the purpose the certificate chain will be used for
+         * @param peer the peer the certificate chain will be used with, or %NULL
+         * @param flags chain completion flags
+         * @param cancellable a #GCancellable or %NULL
          * @param callback this will be called when the operation completes.
          */
         build_async(
@@ -1258,7 +1342,7 @@ export namespace Gcr {
             flags: CertificateChainFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous operation started by
          * gcr_certificate_chain_build_async().
@@ -1449,9 +1533,29 @@ export namespace Gcr {
          *
          * This call will return immediately and complete later.
          * @param cancellable a cancellation object
+         */
+        complete_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously complete and sign a certificate request, so that it can
+         * be encoded and sent to a certificate authority.
+         *
+         * This call will return immediately and complete later.
+         * @param cancellable a cancellation object
          * @param callback called when the operation completes
          */
-        complete_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        complete_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously complete and sign a certificate request, so that it can
+         * be encoded and sent to a certificate authority.
+         *
+         * This call will return immediately and complete later.
+         * @param cancellable a cancellation object
+         * @param callback called when the operation completes
+         */
+        complete_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finish an asynchronous operation to complete and sign a certificate
          * request.
@@ -1748,13 +1852,38 @@ export namespace Gcr {
          * may fire during the parsing.
          * @param input The input stream
          * @param cancellable An optional cancellation object
+         */
+        parse_stream_async(input: Gio.InputStream, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Parse items from the data in a #GInputStream. This function completes
+         * asyncronously and doesn't block.
+         *
+         * The [signal`Parser:`:parsed] and [signal`Parser:`:authenticate] signals
+         * may fire during the parsing.
+         * @param input The input stream
+         * @param cancellable An optional cancellation object
+         * @param callback Called when the operation result is ready.
+         */
+        parse_stream_async(
+            input: Gio.InputStream,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Parse items from the data in a #GInputStream. This function completes
+         * asyncronously and doesn't block.
+         *
+         * The [signal`Parser:`:parsed] and [signal`Parser:`:authenticate] signals
+         * may fire during the parsing.
+         * @param input The input stream
+         * @param cancellable An optional cancellation object
          * @param callback Called when the operation result is ready.
          */
         parse_stream_async(
             input: Gio.InputStream,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Complete an operation to parse a stream.
          * @param result The operation result
@@ -3483,9 +3612,31 @@ export namespace Gcr {
          *
          * This call returns immediately and completes asynchronously.
          * @param cancellable an optional cancellation object
+         */
+        close_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Close this prompt asynchronously. After calling this function, no further
+         * methods may be called on this object. The prompt object is not unreferenced
+         * by this function, and you must unreference it once done.
+         *
+         * This call returns immediately and completes asynchronously.
+         * @param cancellable an optional cancellation object
          * @param callback called when the operation completes
          */
-        close_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        close_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Close this prompt asynchronously. After calling this function, no further
+         * methods may be called on this object. The prompt object is not unreferenced
+         * by this function, and you must unreference it once done.
+         *
+         * This call returns immediately and completes asynchronously.
+         * @param cancellable an optional cancellation object
+         * @param callback called when the operation completes
+         */
+        close_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Complete operation to close this prompt.
          *
@@ -3676,9 +3827,31 @@ export namespace Gcr {
          *
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
+         */
+        confirm_async(cancellable?: Gio.Cancellable | null): Promise<PromptReply>;
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this method to
+         * represent the question correctly.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        confirm_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        confirm_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this method to
+         * represent the question correctly.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        confirm_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<PromptReply> | void;
         /**
          * Complete an operation to prompt for confirmation.
          *
@@ -3819,9 +3992,29 @@ export namespace Gcr {
          *
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
+         */
+        password_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        password_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        password_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        password_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<string> | void;
         /**
          * Complete an operation to prompt for a password.
          *
@@ -4034,13 +4227,100 @@ export namespace Gcr {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -5110,13 +5390,38 @@ export namespace Gcr {
          * This method prompts the user and fills in the attributes.
          * @param builder supplemented attributes
          * @param cancellable optional cancellable object
+         */
+        supplement_async(builder: Gck.Builder, cancellable?: Gio.Cancellable | null): Promise<Gio.TlsInteractionResult>;
+        /**
+         * Asynchronously supplement attributes before import. This means prompting the
+         * user for things like labels and the like. The needed attributes will have
+         * been passed to gcr_import_interaction_supplement_prep().
+         *
+         * This method prompts the user and fills in the attributes.
+         * @param builder supplemented attributes
+         * @param cancellable optional cancellable object
+         * @param callback called when the operation completes
+         */
+        supplement_async(
+            builder: Gck.Builder,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously supplement attributes before import. This means prompting the
+         * user for things like labels and the like. The needed attributes will have
+         * been passed to gcr_import_interaction_supplement_prep().
+         *
+         * This method prompts the user and fills in the attributes.
+         * @param builder supplemented attributes
+         * @param cancellable optional cancellable object
          * @param callback called when the operation completes
          */
         supplement_async(
             builder: Gck.Builder,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Gio.TlsInteractionResult> | void;
         /**
          * Complete operation to asynchronously supplement attributes before import.
          *
@@ -5261,9 +5566,25 @@ export namespace Gcr {
          * Import the queued items in the importer. This function returns immediately
          * and completes asynchronously.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        import_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Import the queued items in the importer. This function returns immediately
+         * and completes asynchronously.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback called when the operation completes
          */
-        import_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        import_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Import the queued items in the importer. This function returns immediately
+         * and completes asynchronously.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback called when the operation completes
+         */
+        import_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Complete an asynchronous operation to import queued items.
          * @param result an asynchronous result
@@ -5530,9 +5851,31 @@ export namespace Gcr {
          *
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
+         */
+        confirm_async(cancellable?: Gio.Cancellable | null): Promise<PromptReply>;
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this method to
+         * represent the question correctly.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        confirm_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        confirm_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this method to
+         * represent the question correctly.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        confirm_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<PromptReply> | void;
         /**
          * Complete an operation to prompt for confirmation.
          *
@@ -5673,9 +6016,29 @@ export namespace Gcr {
          *
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
+         */
+        password_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        password_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        password_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        password_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<string> | void;
         /**
          * Complete an operation to prompt for a password.
          *

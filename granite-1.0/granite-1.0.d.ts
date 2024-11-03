@@ -3527,19 +3527,37 @@ export namespace Granite {
 
         get_gicon_async(): Gio.Icon | null;
         get_size_async(): number;
+        set_from_gicon_async(icon: Gio.Icon, size: number, cancellable?: Gio.Cancellable | null): Promise<void>;
+        set_from_gicon_async(
+            icon: Gio.Icon,
+            size: number,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         set_from_gicon_async(
             icon: Gio.Icon,
             size: number,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<void> | void;
         set_from_gicon_finish(_res_: Gio.AsyncResult): void;
         set_from_icon_name_async(
             icon_name: string,
             icon_size: Gtk.IconSize,
             cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<void>;
+        set_from_icon_name_async(
+            icon_name: string,
+            icon_size: Gtk.IconSize,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        set_from_icon_name_async(
+            icon_name: string,
+            icon_size: Gtk.IconSize,
+            cancellable?: Gio.Cancellable | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<void> | void;
         set_from_icon_name_finish(_res_: Gio.AsyncResult): void;
         set_from_file_async(
             file: Gio.File,
@@ -3547,8 +3565,23 @@ export namespace Granite {
             height: number,
             preserve_aspect_ratio: boolean,
             cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<void>;
+        set_from_file_async(
+            file: Gio.File,
+            width: number,
+            height: number,
+            preserve_aspect_ratio: boolean,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        set_from_file_async(
+            file: Gio.File,
+            width: number,
+            height: number,
+            preserve_aspect_ratio: boolean,
+            cancellable?: Gio.Cancellable | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<void> | void;
         set_from_file_finish(_res_: Gio.AsyncResult): void;
     }
 

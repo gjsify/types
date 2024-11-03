@@ -927,7 +927,7 @@ export namespace ColordGtk {
         // Signal callback interfaces
 
         interface Changed {
-            (profile: Colord.Profile): void;
+            (object: Colord.Profile): void;
         }
 
         // Constructor properties interface
@@ -957,9 +957,9 @@ export namespace ColordGtk {
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, profile: Colord.Profile) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, profile: Colord.Profile) => void): number;
-        emit(signal: 'changed', profile: Colord.Profile): void;
+        connect(signal: 'changed', callback: (_source: this, object: Colord.Profile) => void): number;
+        connect_after(signal: 'changed', callback: (_source: this, object: Colord.Profile) => void): number;
+        emit(signal: 'changed', object: Colord.Profile): void;
 
         // Static methods
 
@@ -987,13 +987,44 @@ export namespace ColordGtk {
          * has already been connected to, as is ready to use.
          * @param widget a #GtkWidget
          * @param cancellable a #GCancellable or %NULL
+         */
+        get_profile(widget: Gtk.Widget, cancellable?: Gio.Cancellable | null): Promise<Colord.Profile>;
+        /**
+         * Gets the screen profile that should be used for the widget,
+         * which corresponds to the screen output the widget most covers.
+         *
+         * This method should be called when the widget has mapped, i.e.
+         * g_signal_connect (dialog, "map", G_CALLBACK (map_cb), priv);
+         *
+         * Note, the returned profile from cd_client_get_profile_for_widget_finish()
+         * has already been connected to, as is ready to use.
+         * @param widget a #GtkWidget
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback the function to run on completion
+         */
+        get_profile(
+            widget: Gtk.Widget,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Gets the screen profile that should be used for the widget,
+         * which corresponds to the screen output the widget most covers.
+         *
+         * This method should be called when the widget has mapped, i.e.
+         * g_signal_connect (dialog, "map", G_CALLBACK (map_cb), priv);
+         *
+         * Note, the returned profile from cd_client_get_profile_for_widget_finish()
+         * has already been connected to, as is ready to use.
+         * @param widget a #GtkWidget
+         * @param cancellable a #GCancellable or %NULL
          * @param callback the function to run on completion
          */
         get_profile(
             widget: Gtk.Widget,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Colord.Profile> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult

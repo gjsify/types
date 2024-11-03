@@ -6155,13 +6155,34 @@ export namespace St {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        load_async(size: number, cancellable?: Gio.Cancellable | null): Promise<[Gio.InputStream, string]>;
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * g_loadable_icon_load_finish(). For the synchronous, blocking
+         * version of this function, see g_loadable_icon_load().
+         * @param size an integer.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        load_async(
+            size: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * g_loadable_icon_load_finish(). For the synchronous, blocking
+         * version of this function, see g_loadable_icon_load().
+         * @param size an integer.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         load_async(
             size: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[Gio.InputStream, string]> | void;
         /**
          * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
          * @param res a #GAsyncResult.

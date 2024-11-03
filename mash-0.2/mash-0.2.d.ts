@@ -8,20 +8,23 @@
  */
 
 // Module dependencies
-import type Clutter from '@girs/clutter-1.0';
+import type freetype2 from '@girs/freetype2-2.0';
+import type fontconfig from '@girs/fontconfig-2.0';
 import type cairo from '@girs/cairo-1.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type Json from '@girs/json-1.0';
-import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type GL from '@girs/gl-1.0';
-import type CoglPango from '@girs/coglpango-1.0';
-import type PangoCairo from '@girs/pangocairo-1.0';
+import type PangoFT2 from '@girs/pangoft2-1.0';
+import type PangoFc from '@girs/pangofc-1.0';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
-import type freetype2 from '@girs/freetype2-2.0';
+import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
+import type PangoCairo from '@girs/pangocairo-1.0';
+import type Json from '@girs/json-1.0';
+import type GL from '@girs/gl-1.0';
+import type CoglPango from '@girs/coglpango-1.0';
 import type Cogl from '@girs/cogl-1.0';
+import type Clutter from '@girs/clutter-1.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Mash {
@@ -41,30 +44,10 @@ export namespace Mash {
     }
 
     enum DataError {
-        /**
-         * The file has an unknown format.
-         */
         UNKNOWN_FORMAT,
-        /**
-         * The underlying library reported an error.
-         */
         UNKNOWN,
-        /**
-         * A property that is needed
-         *  by #MashData is not present in the file. For example, this
-         *  will happen if the file does not contain the x, y and z properties.
-         */
         MISSING_PROPERTY,
-        /**
-         * The file is not valid.
-         */
         INVALID,
-        /**
-         * The file is not supported
-         *  by your GL driver. This will happen if your driver can't support
-         *  GL_UNSIGNED_INT indices but the model has more than 65,536
-         *  vertices.
-         */
         UNSUPPORTED,
     }
     /**
@@ -113,21 +96,9 @@ export namespace Mash {
     }
 
     enum DataFlags {
-        /**
-         * No flags
-         */
         NONE,
-        /**
-         * Negate the X axis
-         */
         NEGATE_X,
-        /**
-         * Negate the Y axis
-         */
         NEGATE_Y,
-        /**
-         * Negate the Z axis
-         */
         NEGATE_Z,
     }
     module Data {
@@ -208,10 +179,6 @@ export namespace Mash {
 
         // Virtual methods
 
-        /**
-         * Virtual used to get the loaded data
-         * @param loader_data
-         */
         vfunc_get_data(loader_data: DataLoaderData): void;
         /**
          * Obtains the loaded data after calling mash_data_loader_load().
@@ -1281,15 +1248,7 @@ export namespace Mash {
          * be normally used by applications.
          */
         sort_depth_order(): void;
-        /**
-         * class handler for #ClutterContainer::actor-added
-         * @param actor
-         */
         vfunc_actor_added(actor: Clutter.Actor): void;
-        /**
-         * class handler for #ClutterContainer::actor-removed
-         * @param actor
-         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -1901,25 +1860,6 @@ export namespace Mash {
          */
         add_light(light: Light): void;
         /**
-         * This function should only be needed by custom actors that wish to
-         * use the lighting model of Mash. The function should be called every
-         * time the actor is painted. The `material` parameter is used to
-         * specify the lighting material properties. The material is not
-         * otherwise read or modified. The material properties that are used
-         * are: the emission color, the ambient color, the diffuse color, the
-         * specular color and the shininess.
-         *
-         * The return value is a CoglProgram that should be used to paint the
-         * actor. The actor should attach this to its material using
-         * cogl_material_set_user_program().
-         *
-         * #MashModel<!-- -->s are already designed to use this function when
-         * a light set is passed to mash_model_set_light_set().
-         * @param material The material that will be used to paint
-         * @returns a CoglProgram to use for rendering.
-         */
-        begin_paint(material: Cogl.Handle): Cogl.Handle;
-        /**
          * Removes a light from the set.
          * @param light A #MashLight
          */
@@ -1978,13 +1918,6 @@ export namespace Mash {
         // Methods
 
         get_fit_to_allocation(): boolean;
-        /**
-         * Gets the material that will be used to render the model. The
-         * material can be modified to affect the appearence of the model. By
-         * default the material will be solid white.
-         * @returns a handle to the Cogl material used by the model.
-         */
-        get_material(): Cogl.Handle;
         /**
          * Replaces the data used by the actor with `data`. A reference is
          * taken on `data` so if you no longer need it you should unref it with
@@ -2311,15 +2244,7 @@ export namespace Mash {
          * be normally used by applications.
          */
         sort_depth_order(): void;
-        /**
-         * class handler for #ClutterContainer::actor-added
-         * @param actor
-         */
         vfunc_actor_added(actor: Clutter.Actor): void;
-        /**
-         * class handler for #ClutterContainer::actor-removed
-         * @param actor
-         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the

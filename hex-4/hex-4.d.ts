@@ -444,9 +444,33 @@ export namespace Hex {
          * applicable to the document object above and beyond the buffer, when
          * the operation completes.
          * @param cancellable a #GCancellable
+         */
+        read_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Read the #GFile into the buffer connected to the #HexDocument object.
+         *
+         * This method is mostly a wrapper around [method`Hex`.Buffer.read_async]
+         * but will allow additional steps and appropriate signals to be emitted
+         * applicable to the document object above and beyond the buffer, when
+         * the operation completes.
+         * @param cancellable a #GCancellable
          * @param callback function to be called when the operation is   complete
          */
-        read_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        read_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Read the #GFile into the buffer connected to the #HexDocument object.
+         *
+         * This method is mostly a wrapper around [method`Hex`.Buffer.read_async]
+         * but will allow additional steps and appropriate signals to be emitted
+         * applicable to the document object above and beyond the buffer, when
+         * the operation completes.
+         * @param cancellable a #GCancellable
+         * @param callback function to be called when the operation is   complete
+         */
+        read_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Obtain the result of a completed file read operation.
          *
@@ -533,9 +557,37 @@ export namespace Hex {
          * [method`Hex`.Document.write_finish] is the method to retrieve the return
          * value in your #GAsyncReadyCallback function.
          * @param cancellable a #GCancellable
+         */
+        write_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Write the buffer to the pre-existing #GFile connected to the #HexDocument
+         * object. This can be used for a 'Save (in place)' operation. This is the
+         * non-blocking version of [method`Hex`.Document.write].
+         *
+         * Note that for both this method and
+         * [method`Hex`.Document.write_to_file_async],
+         * [method`Hex`.Document.write_finish] is the method to retrieve the return
+         * value in your #GAsyncReadyCallback function.
+         * @param cancellable a #GCancellable
          * @param callback function to be called when the operation is   complete
          */
-        write_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        write_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Write the buffer to the pre-existing #GFile connected to the #HexDocument
+         * object. This can be used for a 'Save (in place)' operation. This is the
+         * non-blocking version of [method`Hex`.Document.write].
+         *
+         * Note that for both this method and
+         * [method`Hex`.Document.write_to_file_async],
+         * [method`Hex`.Document.write_finish] is the method to retrieve the return
+         * value in your #GAsyncReadyCallback function.
+         * @param cancellable a #GCancellable
+         * @param callback function to be called when the operation is   complete
+         */
+        write_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Obtain the result of a completed write-to-file operation.
          *
@@ -1786,9 +1838,25 @@ export namespace Hex {
          * Read the #GFile, previously set, into the buffer. This is the non-blocking
          * version of [method`Hex`.Buffer.read].
          * @param cancellable a #GCancellable
+         */
+        read_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Read the #GFile, previously set, into the buffer. This is the non-blocking
+         * version of [method`Hex`.Buffer.read].
+         * @param cancellable a #GCancellable
          * @param callback function to be called when the operation is   complete
          */
-        read_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        read_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Read the #GFile, previously set, into the buffer. This is the non-blocking
+         * version of [method`Hex`.Buffer.read].
+         * @param cancellable a #GCancellable
+         * @param callback function to be called when the operation is   complete
+         */
+        read_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Obtain the result of a completed file read operation.
          *
@@ -1833,13 +1901,32 @@ export namespace Hex {
          * version of [method`Hex`.Buffer.write_to_file].
          * @param file #GFile to write to
          * @param cancellable a #GCancellable
+         */
+        write_to_file_async(file: Gio.File, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Write the buffer to the #GFile specified. This is the non-blocking
+         * version of [method`Hex`.Buffer.write_to_file].
+         * @param file #GFile to write to
+         * @param cancellable a #GCancellable
+         * @param callback function to be called when the operation is   complete
+         */
+        write_to_file_async(
+            file: Gio.File,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Write the buffer to the #GFile specified. This is the non-blocking
+         * version of [method`Hex`.Buffer.write_to_file].
+         * @param file #GFile to write to
+         * @param cancellable a #GCancellable
          * @param callback function to be called when the operation is   complete
          */
         write_to_file_async(
             file: Gio.File,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Obtain the result of a completed write-to-file operation.
          *

@@ -1688,6 +1688,44 @@ export namespace Shumate {
          * @param y the Y coordinate to fetch
          * @param zoom_level the Z coordinate to fetch
          * @param cancellable a #GCancellable
+         */
+        get_tile_data_async(
+            x: number,
+            y: number,
+            zoom_level: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<GLib.Bytes | null>;
+        /**
+         * Gets the data for the tile at the given coordinates.
+         *
+         * Some data sources may return data multiple times. For example,
+         * [class`TileDownloader]` may return data from a cache, then return updated
+         * data from the network. [signal`ShumateDataSource:`:received-data] is emitted
+         * each time data is received, then `callback` is called after the last update.
+         * @param x the X coordinate to fetch
+         * @param y the Y coordinate to fetch
+         * @param zoom_level the Z coordinate to fetch
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to execute upon completion
+         */
+        get_tile_data_async(
+            x: number,
+            y: number,
+            zoom_level: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Gets the data for the tile at the given coordinates.
+         *
+         * Some data sources may return data multiple times. For example,
+         * [class`TileDownloader]` may return data from a cache, then return updated
+         * data from the network. [signal`ShumateDataSource:`:received-data] is emitted
+         * each time data is received, then `callback` is called after the last update.
+         * @param x the X coordinate to fetch
+         * @param y the Y coordinate to fetch
+         * @param zoom_level the Z coordinate to fetch
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         get_tile_data_async(
@@ -1696,7 +1734,7 @@ export namespace Shumate {
             zoom_level: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Bytes | null> | void;
         /**
          * Gets the final result of a request started with
          * shumate_data_source_get_tile_data_async().
@@ -1971,6 +2009,34 @@ export namespace Shumate {
          * @param y the Y coordinate of the tile
          * @param zoom_level the zoom level of the tile
          * @param cancellable a #GCancellable
+         */
+        get_tile_async(
+            x: number,
+            y: number,
+            zoom_level: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<[GLib.Bytes, string, GLib.DateTime | null]>;
+        /**
+         * Gets tile data from the cache, if it is available.
+         * @param x the X coordinate of the tile
+         * @param y the Y coordinate of the tile
+         * @param zoom_level the zoom level of the tile
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to execute upon completion
+         */
+        get_tile_async(
+            x: number,
+            y: number,
+            zoom_level: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Gets tile data from the cache, if it is available.
+         * @param x the X coordinate of the tile
+         * @param y the Y coordinate of the tile
+         * @param zoom_level the zoom level of the tile
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         get_tile_async(
@@ -1979,7 +2045,7 @@ export namespace Shumate {
             zoom_level: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[GLib.Bytes, string, GLib.DateTime | null]> | void;
         /**
          * Gets the tile data from a completed shumate_file_cache_get_tile_async()
          * operation.
@@ -2006,9 +2072,25 @@ export namespace Shumate {
          * Removes less used tiles from the cache, if necessary, until it fits in
          * the size limit.
          * @param cancellable a #GCancellable
+         */
+        purge_cache_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Removes less used tiles from the cache, if necessary, until it fits in
+         * the size limit.
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
-        purge_cache_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        purge_cache_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Removes less used tiles from the cache, if necessary, until it fits in
+         * the size limit.
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to execute upon completion
+         */
+        purge_cache_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Gets the result of an async operation started using
          * shumate_file_cache_purge_cache_async().
@@ -2029,6 +2111,42 @@ export namespace Shumate {
          * @param bytes a #GBytes
          * @param etag an ETag string, or %NULL
          * @param cancellable a #GCancellable
+         */
+        store_tile_async(
+            x: number,
+            y: number,
+            zoom_level: number,
+            bytes: GLib.Bytes | Uint8Array,
+            etag?: string | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Stores a tile in the cache.
+         * @param x the X coordinate of the tile
+         * @param y the Y coordinate of the tile
+         * @param zoom_level the zoom level of the tile
+         * @param bytes a #GBytes
+         * @param etag an ETag string, or %NULL
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to execute upon completion
+         */
+        store_tile_async(
+            x: number,
+            y: number,
+            zoom_level: number,
+            bytes: GLib.Bytes | Uint8Array,
+            etag: string | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Stores a tile in the cache.
+         * @param x the X coordinate of the tile
+         * @param y the Y coordinate of the tile
+         * @param zoom_level the zoom level of the tile
+         * @param bytes a #GBytes
+         * @param etag an ETag string, or %NULL
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         store_tile_async(
@@ -2039,7 +2157,7 @@ export namespace Shumate {
             etag?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the success value of a completed shumate_file_cache_store_tile_async()
          * operation.
@@ -5027,13 +5145,30 @@ export namespace Shumate {
          * Asynchronous version of shumate_map_source_fill_tile().
          * @param tile a #ShumateTile
          * @param cancellable a #GCancellable
+         */
+        fill_tile_async(tile: Tile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronous version of shumate_map_source_fill_tile().
+         * @param tile a #ShumateTile
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to execute upon completion
+         */
+        fill_tile_async(
+            tile: Tile,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronous version of shumate_map_source_fill_tile().
+         * @param tile a #ShumateTile
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         fill_tile_async(
             tile: Tile,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the success value of a completed shumate_map_source_fill_tile_async()
          * operation.

@@ -193,6 +193,34 @@ export namespace Qrtr {
          * @param node_id the QRTR bus node ID to lookup.
          * @param timeout_ms the timeout, in milliseconds, to wait for the node to appear in  the bus.
          * @param cancellable a #GCancellable, or #NULL.
+         */
+        wait_for_node(node_id: number, timeout_ms: number, cancellable?: Gio.Cancellable | null): Promise<Node>;
+        /**
+         * Asynchronously waits for the node with ID `node_id`.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qrtr_bus_wait_for_node_finish() to get the result of the
+         * operation.
+         * @param node_id the QRTR bus node ID to lookup.
+         * @param timeout_ms the timeout, in milliseconds, to wait for the node to appear in  the bus.
+         * @param cancellable a #GCancellable, or #NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        wait_for_node(
+            node_id: number,
+            timeout_ms: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously waits for the node with ID `node_id`.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qrtr_bus_wait_for_node_finish() to get the result of the
+         * operation.
+         * @param node_id the QRTR bus node ID to lookup.
+         * @param timeout_ms the timeout, in milliseconds, to wait for the node to appear in  the bus.
+         * @param cancellable a #GCancellable, or #NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         wait_for_node(
@@ -200,7 +228,7 @@ export namespace Qrtr {
             timeout_ms: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Node> | void;
         /**
          * Finishes an operation started with qrtr_bus_wait_for_node().
          * @param res a #GAsyncResult.
@@ -248,13 +276,100 @@ export namespace Qrtr {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -1403,6 +1518,46 @@ export namespace Qrtr {
          * @param services a #GArray of service types
          * @param timeout_ms the timeout, in milliseconds, to wait for the the services to  be exposed in the node.
          * @param cancellable a #GCancellable, or #NULL.
+         */
+        wait_for_services(
+            services: number[],
+            timeout_ms: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously waits until all the services listed in `services` are present
+         * on the node.
+         *
+         * The operation may fail if any of the requested services isn't notified, or
+         * if the node is removed from the bus while waiting.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qrtr_node_wait_for_services_finish() to get the result of the
+         * operation.
+         * @param services a #GArray of service types
+         * @param timeout_ms the timeout, in milliseconds, to wait for the the services to  be exposed in the node.
+         * @param cancellable a #GCancellable, or #NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        wait_for_services(
+            services: number[],
+            timeout_ms: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously waits until all the services listed in `services` are present
+         * on the node.
+         *
+         * The operation may fail if any of the requested services isn't notified, or
+         * if the node is removed from the bus while waiting.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qrtr_node_wait_for_services_finish() to get the result of the
+         * operation.
+         * @param services a #GArray of service types
+         * @param timeout_ms the timeout, in milliseconds, to wait for the the services to  be exposed in the node.
+         * @param cancellable a #GCancellable, or #NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         wait_for_services(
@@ -1410,7 +1565,7 @@ export namespace Qrtr {
             timeout_ms: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with qrtr_node_wait_for_services().
          * @param result a #GAsyncResult.

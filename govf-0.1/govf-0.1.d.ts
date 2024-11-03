@@ -117,6 +117,26 @@ export namespace Govf {
          * @param disk a #GovfDisk
          * @param save_path a file path
          * @param cancellable a #GCancellable or %NULL
+         */
+        extract_disk(disk: Disk, save_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Extracts a disk...
+         * @param disk a #GovfDisk
+         * @param save_path a file path
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback a #GAsyncReadyCallback to call      when the request is satisfied
+         */
+        extract_disk(
+            disk: Disk,
+            save_path: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Extracts a disk...
+         * @param disk a #GovfDisk
+         * @param save_path a file path
+         * @param cancellable a #GCancellable or %NULL
          * @param callback a #GAsyncReadyCallback to call      when the request is satisfied
          */
         extract_disk(
@@ -124,7 +144,7 @@ export namespace Govf {
             save_path: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         extract_disk_finish(result: Gio.AsyncResult): boolean;
         /**
          * Returns an array with all the disks associated with the OVF package.
@@ -151,13 +171,36 @@ export namespace Govf {
          * to get the result of this asynchronous operation.
          * @param filename an .ova file name
          * @param cancellable a #GCancellable or %NULL
+         */
+        load_from_ova_file(filename: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Loads an OVF package from a compressed .ova file.
+         *
+         * `callback` should call govf_package_load_from_ova_file_finish()
+         * to get the result of this asynchronous operation.
+         * @param filename an .ova file name
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback a #GAsyncReadyCallback to call when      the request is satisfied
+         */
+        load_from_ova_file(
+            filename: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Loads an OVF package from a compressed .ova file.
+         *
+         * `callback` should call govf_package_load_from_ova_file_finish()
+         * to get the result of this asynchronous operation.
+         * @param filename an .ova file name
+         * @param cancellable a #GCancellable or %NULL
          * @param callback a #GAsyncReadyCallback to call when      the request is satisfied
          */
         load_from_ova_file(
             filename: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         load_from_ova_file_finish(result: Gio.AsyncResult): boolean;
         /**
          * Saves the OVF package to an uncompressed .ovf file.

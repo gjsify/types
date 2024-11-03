@@ -62,23 +62,23 @@ export namespace GstDxva {
             coded_height: number,
             max_dpb_size: number,
         ): Gst.FlowReturn;
-        vfunc_duplicate_picture(src: GstCodecs.CodecPicture, dst: GstCodecs.CodecPicture): Gst.FlowReturn;
+        vfunc_duplicate_picture(src: never, dst: never): Gst.FlowReturn;
         // Conflicted with GstCodecs.AV1Decoder.vfunc_duplicate_picture
         vfunc_duplicate_picture(...args: never[]): any;
-        vfunc_get_picture_id(picture: GstCodecs.CodecPicture): number;
-        vfunc_new_picture(picture: GstCodecs.CodecPicture): Gst.FlowReturn;
+        vfunc_get_picture_id(picture: never): number;
+        vfunc_new_picture(picture: never): Gst.FlowReturn;
         // Conflicted with GstCodecs.AV1Decoder.vfunc_new_picture
         vfunc_new_picture(...args: never[]): any;
         vfunc_output_picture(
             frame: GstVideo.VideoCodecFrame,
-            picture: GstCodecs.CodecPicture,
+            picture: never,
             buffer_flags: GstVideo.VideoBufferFlags,
             display_width: number,
             display_height: number,
         ): Gst.FlowReturn;
         // Conflicted with GstCodecs.AV1Decoder.vfunc_output_picture
         vfunc_output_picture(...args: never[]): any;
-        vfunc_start_picture(picture: GstCodecs.CodecPicture, picture_id: number): Gst.FlowReturn;
+        vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
         // Conflicted with GstCodecs.AV1Decoder.vfunc_start_picture
         vfunc_start_picture(...args: never[]): any;
     }
@@ -109,21 +109,21 @@ export namespace GstDxva {
             coded_height: number,
             max_dpb_size: number,
         ): Gst.FlowReturn;
-        vfunc_duplicate_picture(src: GstCodecs.CodecPicture, dst: GstCodecs.CodecPicture): Gst.FlowReturn;
-        vfunc_get_picture_id(picture: GstCodecs.CodecPicture): number;
-        vfunc_new_picture(picture: GstCodecs.CodecPicture): Gst.FlowReturn;
+        vfunc_duplicate_picture(src: never, dst: never): Gst.FlowReturn;
+        vfunc_get_picture_id(picture: never): number;
+        vfunc_new_picture(picture: never): Gst.FlowReturn;
         // Conflicted with GstCodecs.H264Decoder.vfunc_new_picture
         vfunc_new_picture(...args: never[]): any;
         vfunc_output_picture(
             frame: GstVideo.VideoCodecFrame,
-            picture: GstCodecs.CodecPicture,
+            picture: never,
             buffer_flags: GstVideo.VideoBufferFlags,
             display_width: number,
             display_height: number,
         ): Gst.FlowReturn;
         // Conflicted with GstCodecs.H264Decoder.vfunc_output_picture
         vfunc_output_picture(...args: never[]): any;
-        vfunc_start_picture(picture: GstCodecs.CodecPicture, picture_id: number): Gst.FlowReturn;
+        vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
         // Conflicted with GstCodecs.H264Decoder.vfunc_start_picture
         vfunc_start_picture(...args: never[]): any;
     }
@@ -154,20 +154,20 @@ export namespace GstDxva {
             coded_height: number,
             max_dpb_size: number,
         ): Gst.FlowReturn;
-        vfunc_get_picture_id(picture: GstCodecs.CodecPicture): number;
-        vfunc_new_picture(picture: GstCodecs.CodecPicture): Gst.FlowReturn;
+        vfunc_get_picture_id(picture: never): number;
+        vfunc_new_picture(picture: never): Gst.FlowReturn;
         // Conflicted with GstCodecs.H265Decoder.vfunc_new_picture
         vfunc_new_picture(...args: never[]): any;
         vfunc_output_picture(
             frame: GstVideo.VideoCodecFrame,
-            picture: GstCodecs.CodecPicture,
+            picture: never,
             buffer_flags: GstVideo.VideoBufferFlags,
             display_width: number,
             display_height: number,
         ): Gst.FlowReturn;
         // Conflicted with GstCodecs.H265Decoder.vfunc_output_picture
         vfunc_output_picture(...args: never[]): any;
-        vfunc_start_picture(picture: GstCodecs.CodecPicture, picture_id: number): Gst.FlowReturn;
+        vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
         // Conflicted with GstCodecs.H265Decoder.vfunc_start_picture
         vfunc_start_picture(...args: never[]): any;
     }
@@ -198,21 +198,21 @@ export namespace GstDxva {
             coded_height: number,
             max_dpb_size: number,
         ): Gst.FlowReturn;
-        vfunc_duplicate_picture(src: GstCodecs.CodecPicture, dst: GstCodecs.CodecPicture): Gst.FlowReturn;
-        vfunc_get_picture_id(picture: GstCodecs.CodecPicture): number;
-        vfunc_new_picture(picture: GstCodecs.CodecPicture): Gst.FlowReturn;
+        vfunc_duplicate_picture(src: never, dst: never): Gst.FlowReturn;
+        vfunc_get_picture_id(picture: never): number;
+        vfunc_new_picture(picture: never): Gst.FlowReturn;
         // Conflicted with GstCodecs.Mpeg2Decoder.vfunc_new_picture
         vfunc_new_picture(...args: never[]): any;
         vfunc_output_picture(
             frame: GstVideo.VideoCodecFrame,
-            picture: GstCodecs.CodecPicture,
+            picture: never,
             buffer_flags: GstVideo.VideoBufferFlags,
             display_width: number,
             display_height: number,
         ): Gst.FlowReturn;
         // Conflicted with GstCodecs.Mpeg2Decoder.vfunc_output_picture
         vfunc_output_picture(...args: never[]): any;
-        vfunc_start_picture(picture: GstCodecs.CodecPicture, picture_id: number): Gst.FlowReturn;
+        vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
         // Conflicted with GstCodecs.Mpeg2Decoder.vfunc_start_picture
         vfunc_start_picture(...args: never[]): any;
 
@@ -247,20 +247,20 @@ export namespace GstDxva {
             coded_height: number,
             max_dpb_size: number,
         ): Gst.FlowReturn;
-        vfunc_get_picture_id(picture: GstCodecs.CodecPicture): number;
-        vfunc_new_picture(picture: GstCodecs.CodecPicture): Gst.FlowReturn;
+        vfunc_get_picture_id(picture: never): number;
+        vfunc_new_picture(picture: never): Gst.FlowReturn;
         // Conflicted with GstCodecs.Vp8Decoder.vfunc_new_picture
         vfunc_new_picture(...args: never[]): any;
         vfunc_output_picture(
             frame: GstVideo.VideoCodecFrame,
-            picture: GstCodecs.CodecPicture,
+            picture: never,
             buffer_flags: GstVideo.VideoBufferFlags,
             display_width: number,
             display_height: number,
         ): Gst.FlowReturn;
         // Conflicted with GstCodecs.Vp8Decoder.vfunc_output_picture
         vfunc_output_picture(...args: never[]): any;
-        vfunc_start_picture(picture: GstCodecs.CodecPicture, picture_id: number): Gst.FlowReturn;
+        vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
         // Conflicted with GstCodecs.Vp8Decoder.vfunc_start_picture
         vfunc_start_picture(...args: never[]): any;
     }
@@ -291,23 +291,23 @@ export namespace GstDxva {
             coded_height: number,
             max_dpb_size: number,
         ): Gst.FlowReturn;
-        vfunc_duplicate_picture(src: GstCodecs.CodecPicture, dst: GstCodecs.CodecPicture): Gst.FlowReturn;
+        vfunc_duplicate_picture(src: never, dst: never): Gst.FlowReturn;
         // Conflicted with GstCodecs.Vp9Decoder.vfunc_duplicate_picture
         vfunc_duplicate_picture(...args: never[]): any;
-        vfunc_get_picture_id(picture: GstCodecs.CodecPicture): number;
-        vfunc_new_picture(picture: GstCodecs.CodecPicture): Gst.FlowReturn;
+        vfunc_get_picture_id(picture: never): number;
+        vfunc_new_picture(picture: never): Gst.FlowReturn;
         // Conflicted with GstCodecs.Vp9Decoder.vfunc_new_picture
         vfunc_new_picture(...args: never[]): any;
         vfunc_output_picture(
             frame: GstVideo.VideoCodecFrame,
-            picture: GstCodecs.CodecPicture,
+            picture: never,
             buffer_flags: GstVideo.VideoBufferFlags,
             display_width: number,
             display_height: number,
         ): Gst.FlowReturn;
         // Conflicted with GstCodecs.Vp9Decoder.vfunc_output_picture
         vfunc_output_picture(...args: never[]): any;
-        vfunc_start_picture(picture: GstCodecs.CodecPicture, picture_id: number): Gst.FlowReturn;
+        vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
         // Conflicted with GstCodecs.Vp9Decoder.vfunc_start_picture
         vfunc_start_picture(...args: never[]): any;
     }

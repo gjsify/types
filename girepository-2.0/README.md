@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/girepository-2.0)
 
 
-GJS TypeScript type definitions for GIRepository-2.0, generated from library version 1.80.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.16.
+GJS TypeScript type definitions for GIRepository-2.0, generated from library version 1.82.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.17.
 
 
 ## Install

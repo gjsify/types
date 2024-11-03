@@ -1020,13 +1020,30 @@ export namespace Mks {
          * Presses `keycode`.
          * @param keycode the hardware keycode
          * @param cancellable a #GCancellable
+         */
+        press(keycode: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Presses `keycode`.
+         * @param keycode the hardware keycode
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to execute upon completion
+         */
+        press(
+            keycode: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Presses `keycode`.
+         * @param keycode the hardware keycode
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         press(
             keycode: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Completes a call to [method`Mks`.Keyboard.press].
          * @param result a #GAsyncResult provided to callback
@@ -1044,13 +1061,30 @@ export namespace Mks {
          * Releases `keycode`.
          * @param keycode the hardware keycode
          * @param cancellable a #GCancellable
+         */
+        release(keycode: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Releases `keycode`.
+         * @param keycode the hardware keycode
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to execute upon completion
+         */
+        release(
+            keycode: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Releases `keycode`.
+         * @param keycode the hardware keycode
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         release(
             keycode: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Completes a call to [method`Mks`.Keyboard.release].
          * @param result a #GAsyncResult provided to callback
@@ -1109,6 +1143,26 @@ export namespace Mks {
          * @param delta_x the x coordinate delta
          * @param delta_y the y coordinate delta
          * @param cancellable a #GCancellable
+         */
+        move_by(delta_x: number, delta_y: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Moves the mouse by delta_x and delta_y.
+         * @param delta_x the x coordinate delta
+         * @param delta_y the y coordinate delta
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to execute upon completion
+         */
+        move_by(
+            delta_x: number,
+            delta_y: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Moves the mouse by delta_x and delta_y.
+         * @param delta_x the x coordinate delta
+         * @param delta_y the y coordinate delta
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         move_by(
@@ -1116,7 +1170,7 @@ export namespace Mks {
             delta_y: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Completes a call to [method`Mks`.Mouse.move_by].
          * @param result a #GAsyncResult provided to callback
@@ -1136,6 +1190,26 @@ export namespace Mks {
          * @param x the x coordinate
          * @param y the y coordinate
          * @param cancellable a #GCancellable
+         */
+        move_to(x: number, y: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Moves to the absolute position at coordinates (x,y).
+         * @param x the x coordinate
+         * @param y the y coordinate
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to execute upon completion
+         */
+        move_to(
+            x: number,
+            y: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Moves to the absolute position at coordinates (x,y).
+         * @param x the x coordinate
+         * @param y the y coordinate
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         move_to(
@@ -1143,7 +1217,7 @@ export namespace Mks {
             y: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Completes a call to [method`Mks`.Mouse.move_to].
          * @param result a #GAsyncResult provided to callback
@@ -1162,13 +1236,30 @@ export namespace Mks {
          * Presses a mouse button.
          * @param button the #MksMouseButton that was pressed
          * @param cancellable a #GCancellable
+         */
+        press(button: MouseButton, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Presses a mouse button.
+         * @param button the #MksMouseButton that was pressed
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to execute upon completion
+         */
+        press(
+            button: MouseButton,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Presses a mouse button.
+         * @param button the #MksMouseButton that was pressed
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         press(
             button: MouseButton,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Completes a call to [method`Mks`.Mouse.press].
          * @param result a #GAsyncResult provided to callback
@@ -1186,13 +1277,30 @@ export namespace Mks {
          * Releases a mouse button.
          * @param button the #MksMouseButton that was released
          * @param cancellable a #GCancellable
+         */
+        release(button: MouseButton, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Releases a mouse button.
+         * @param button the #MksMouseButton that was released
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to execute upon completion
+         */
+        release(
+            button: MouseButton,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Releases a mouse button.
+         * @param button the #MksMouseButton that was released
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         release(
             button: MouseButton,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Completes a call to [method`Mks`.Mouse.release].
          * @param result a #GAsyncResult provided to callback
@@ -1254,9 +1362,35 @@ export namespace Mks {
          * propagated to the resulting #GdkPainable which can be retrieved
          * using mks_screen_attach_finish() from `callback`.
          * @param cancellable a #GCancellable
+         */
+        attach(cancellable?: Gio.Cancellable | null): Promise<Gdk.Paintable>;
+        /**
+         * Asynchronously creates a #GdkPaintable that is updated with the
+         * contents of the screen.
+         *
+         * This function registers a new `socketpair()` which is shared with
+         * the QEMU instance to receive rendering updates. Those updates are
+         * propagated to the resulting #GdkPainable which can be retrieved
+         * using mks_screen_attach_finish() from `callback`.
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
-        attach(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        attach(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously creates a #GdkPaintable that is updated with the
+         * contents of the screen.
+         *
+         * This function registers a new `socketpair()` which is shared with
+         * the QEMU instance to receive rendering updates. Those updates are
+         * propagated to the resulting #GdkPainable which can be retrieved
+         * using mks_screen_attach_finish() from `callback`.
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to execute upon completion
+         */
+        attach(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<Gdk.Paintable> | void;
         /**
          * Completes an asynchronous request to create a [iface`Gdk`.Paintable] containing
          * the contents of #MksScreen in the QEMU instance.
@@ -1275,11 +1409,17 @@ export namespace Mks {
          * @returns a #GdkPaintable if successful; otherwise %NULL   and @error is set.
          */
         attach_sync(cancellable?: Gio.Cancellable | null): Gdk.Paintable;
+        configure(attributes: ScreenAttributes, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        configure(
+            attributes: ScreenAttributes,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         configure(
             attributes: ScreenAttributes,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Completes a call to mks_screen_configure().
          * @param result a #GAsyncResult provided to callback
@@ -1499,13 +1639,100 @@ export namespace Mks {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -2104,6 +2331,38 @@ export namespace Mks {
          * @param x the x absolute coordinate
          * @param y the y absolute coordinate
          * @param cancellable a #GCancellable
+         */
+        send_event(
+            kind: TouchEventKind,
+            num_slot: number,
+            x: number,
+            y: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Send a touch event.
+         * @param kind
+         * @param num_slot the slot number
+         * @param x the x absolute coordinate
+         * @param y the y absolute coordinate
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to execute upon completion
+         */
+        send_event(
+            kind: TouchEventKind,
+            num_slot: number,
+            x: number,
+            y: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Send a touch event.
+         * @param kind
+         * @param num_slot the slot number
+         * @param x the x absolute coordinate
+         * @param y the y absolute coordinate
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         send_event(
@@ -2113,7 +2372,7 @@ export namespace Mks {
             y: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Completes a call to [method`Mks`.Touchable.send_event].
          * @param result a #GAsyncResult provided to callback

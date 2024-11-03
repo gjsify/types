@@ -1,7 +1,7 @@
 {
     "name": "@girs/gio-2.0",
-    "version": "2.82.0-4.0.0-beta.16",
-    "description": "GJS TypeScript type definitions for Gio-2.0, generated from library version 2.82.0",
+    "version": "2.82.2-4.0.0-beta.17",
+    "description": "GJS TypeScript type definitions for Gio-2.0, generated from library version 2.82.2",
     "type": "module",
     "module": "gio-2.0.js",
     "main": "gio-2.0.js",

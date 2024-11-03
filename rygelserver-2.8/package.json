@@ -1,6 +1,6 @@
 {
     "name": "@girs/rygelserver-2.8",
-    "version": "2.8.0-4.0.0-beta.16",
+    "version": "2.8.0-4.0.0-beta.17",
     "description": "GJS TypeScript type definitions for RygelServer-2.8, generated from library version 2.8.0",
     "type": "module",
     "module": "rygelserver-2.8.js",

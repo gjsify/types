@@ -193,36 +193,74 @@ export namespace Tracker {
         // Methods
 
         query(sparql: string, cancellable: Gio.Cancellable): SparqlCursor;
+        query_async(sparql: string, cancellable: Gio.Cancellable): Promise<SparqlCursor>;
         query_async(sparql: string, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+        query_async(
+            sparql: string,
+            cancellable: Gio.Cancellable,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<SparqlCursor> | void;
         query_finish(_res_: Gio.AsyncResult): SparqlCursor;
         update(sparql: string, priority: number, cancellable: Gio.Cancellable): void;
+        update_async(sparql: string, priority: number, cancellable: Gio.Cancellable): Promise<void>;
         update_async(
             sparql: string,
             priority: number,
             cancellable: Gio.Cancellable,
             _callback_: Gio.AsyncReadyCallback<this>,
         ): void;
+        update_async(
+            sparql: string,
+            priority: number,
+            cancellable: Gio.Cancellable,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<void> | void;
         update_finish(_res_: Gio.AsyncResult): void;
+        update_array_async(sparql: string[], priority: number, cancellable: Gio.Cancellable): Promise<SparqlError[]>;
         update_array_async(
             sparql: string[],
             priority: number,
             cancellable: Gio.Cancellable,
             _callback_: Gio.AsyncReadyCallback<this>,
         ): void;
+        update_array_async(
+            sparql: string[],
+            priority: number,
+            cancellable: Gio.Cancellable,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<SparqlError[]> | void;
         update_array_finish(_res_: Gio.AsyncResult): SparqlError[];
         update_blank(sparql: string, priority: number, cancellable: Gio.Cancellable): GLib.Variant;
+        update_blank_async(sparql: string, priority: number, cancellable: Gio.Cancellable): Promise<GLib.Variant>;
         update_blank_async(
             sparql: string,
             priority: number,
             cancellable: Gio.Cancellable,
             _callback_: Gio.AsyncReadyCallback<this>,
         ): void;
+        update_blank_async(
+            sparql: string,
+            priority: number,
+            cancellable: Gio.Cancellable,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<GLib.Variant> | void;
         update_blank_finish(_res_: Gio.AsyncResult): GLib.Variant;
         load(file: Gio.File, cancellable: Gio.Cancellable): void;
+        load_async(file: Gio.File, cancellable: Gio.Cancellable): Promise<void>;
         load_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+        load_async(
+            file: Gio.File,
+            cancellable: Gio.Cancellable,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<void> | void;
         load_finish(_res_: Gio.AsyncResult): void;
         statistics(cancellable: Gio.Cancellable): SparqlCursor;
+        statistics_async(cancellable: Gio.Cancellable): Promise<SparqlCursor>;
         statistics_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+        statistics_async(
+            cancellable: Gio.Cancellable,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<SparqlCursor> | void;
         statistics_finish(_res_: Gio.AsyncResult): SparqlCursor;
     }
 
@@ -274,7 +312,9 @@ export namespace Tracker {
         get_variable_name(column: number): string;
         get_string(column: number): [string, number];
         next(cancellable: Gio.Cancellable): boolean;
+        next_async(cancellable: Gio.Cancellable): Promise<boolean>;
         next_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+        next_async(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): Promise<boolean> | void;
         next_finish(_res_: Gio.AsyncResult): boolean;
         rewind(): void;
         close(): void;

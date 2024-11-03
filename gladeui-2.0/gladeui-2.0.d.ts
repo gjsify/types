@@ -580,7 +580,7 @@ export namespace Gladeui {
      * @param filename A filename
      * @returns The mtime of the file, or %0 if the file attributes          could not be read.
      */
-    function util_get_file_mtime(filename: string): never;
+    function util_get_file_mtime(filename: string): number;
     function util_get_placeholder_from_pointer(container: Gtk.Container): Gtk.Widget;
     /**
      * Returns the type using the "get type" function name based on `name`.
@@ -65959,7 +65959,7 @@ export namespace Gladeui {
         display_dependencies(): string;
         get_add_item(): WidgetAdaptor;
         get_css_provider_path(): string;
-        get_file_mtime(): never;
+        get_file_mtime(): number;
         get_has_selection(): boolean;
         get_license(): string;
         /**

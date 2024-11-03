@@ -4292,8 +4292,23 @@ export namespace RygelCore {
             path: string,
             address: string,
             agent?: string | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean>;
+        is_allowed(
+            device: { [key: string]: any } | GLib.HashTable<string, string>,
+            service: { [key: string]: any } | GLib.HashTable<string, string>,
+            path: string,
+            address: string,
+            agent: string | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        is_allowed(
+            device: { [key: string]: any } | GLib.HashTable<string, string>,
+            service: { [key: string]: any } | GLib.HashTable<string, string>,
+            path: string,
+            address: string,
+            agent?: string | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         is_allowed_finish(_res_: Gio.AsyncResult): boolean;
 
         // Virtual methods
@@ -4391,7 +4406,9 @@ export namespace RygelCore {
 
         // Methods
 
-        run(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        run(): Promise<void>;
+        run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        run(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         run_finish(_res_: Gio.AsyncResult): void;
         get_cancellable(): Gio.Cancellable;
         set_cancellable(value: Gio.Cancellable): void;

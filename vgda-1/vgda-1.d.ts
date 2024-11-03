@@ -51,11 +51,20 @@ export namespace Vgda {
         get connectionString(): string;
 
         // Inherited methods
+        close(): Promise<void>;
         close(_callback_: Gio.AsyncReadyCallback<this>): void;
+        close(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         close_finish(_res_: Gio.AsyncResult): void;
+        open(): Promise<Vda.ConnectionStatus>;
         open(_callback_: Gio.AsyncReadyCallback<this>): void;
+        open(_callback_?: Gio.AsyncReadyCallback<this>): Promise<Vda.ConnectionStatus> | void;
         open_finish(_res_: Gio.AsyncResult): Vda.ConnectionStatus;
+        open_from_string(cnc_string: string): Promise<Vda.ConnectionStatus>;
         open_from_string(cnc_string: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        open_from_string(
+            cnc_string: string,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<Vda.ConnectionStatus> | void;
         open_from_string_finish(_res_: Gio.AsyncResult): Vda.ConnectionStatus;
         parse_string(sql: string): Vda.Query;
         parse_string_prepared(name: string, sql: string): Vda.PreparedQuery;

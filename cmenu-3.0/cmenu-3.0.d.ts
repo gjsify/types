@@ -395,6 +395,40 @@ export namespace CMenu {
          * @param uris a list of URIs to launch.
          * @param context the launch context
          * @param cancellable a [class@Gio.Cancellable]
+         */
+        launch_uris_async(
+            uris?: string[] | null,
+            context?: Gio.AppLaunchContext | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Async version of [method`Gio`.AppInfo.launch_uris].
+         *
+         * The `callback` is invoked immediately after the application launch, but it
+         * waits for activation in case of D-Bus–activated applications and also provides
+         * extended error information for sandboxed applications, see notes for
+         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @param cancellable a [class@Gio.Cancellable]
+         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         */
+        launch_uris_async(
+            uris: string[] | null,
+            context: Gio.AppLaunchContext | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Async version of [method`Gio`.AppInfo.launch_uris].
+         *
+         * The `callback` is invoked immediately after the application launch, but it
+         * waits for activation in case of D-Bus–activated applications and also provides
+         * extended error information for sandboxed applications, see notes for
+         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @param cancellable a [class@Gio.Cancellable]
          * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
          */
         launch_uris_async(
@@ -402,7 +436,7 @@ export namespace CMenu {
             context?: Gio.AppLaunchContext | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
          * @param result the async result

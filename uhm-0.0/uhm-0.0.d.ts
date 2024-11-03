@@ -404,13 +404,30 @@ export namespace Uhm {
          * Asynchronous version of uhm_server_load_trace(). In `callback,` call uhm_server_load_trace_finish() to complete the operation.
          * @param trace_file trace file to load
          * @param cancellable a #GCancellable, or %NULL
+         */
+        load_trace_async(trace_file: Gio.File, cancellable?: Gio.Cancellable | null): Promise<void>;
+        /**
+         * Asynchronous version of uhm_server_load_trace(). In `callback,` call uhm_server_load_trace_finish() to complete the operation.
+         * @param trace_file trace file to load
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback function to call once the async operation is complete
+         */
+        load_trace_async(
+            trace_file: Gio.File,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronous version of uhm_server_load_trace(). In `callback,` call uhm_server_load_trace_finish() to complete the operation.
+         * @param trace_file trace file to load
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback function to call once the async operation is complete
          */
         load_trace_async(
             trace_file: Gio.File,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<void> | void;
         /**
          * Finishes an asynchronous operation started by uhm_server_load_trace_async().
          *

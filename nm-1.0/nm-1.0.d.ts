@@ -7822,6 +7822,64 @@ export namespace NM {
          * @param device the #NMDevice
          * @param specific_object the object path of a connection-type-specific   object this activation should use. This parameter is currently ignored for   wired and mobile broadband connections, and the value of %NULL should be used   (ie, no specific object).  For Wi-Fi or WiMAX connections, pass the object   path of a #NMAccessPoint or #NMWimaxNsp owned by @device, which you can   get using nm_object_get_path(), and which will be used to complete the   details of the newly added connection.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        activate_connection_async(
+            connection?: Connection | null,
+            device?: Device | null,
+            specific_object?: string | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<ActiveConnection>;
+        /**
+         * Asynchronously starts a connection to a particular network using the
+         * configuration settings from `connection` and the network device `device`.
+         * Certain connection types also take a "specific object" which is the object
+         * path of a connection- specific object, like an #NMAccessPoint for Wi-Fi
+         * connections, or an #NMWimaxNsp for WiMAX connections, to which you wish to
+         * connect.  If the specific object is not given, NetworkManager can, in some
+         * cases, automatically determine which network to connect to given the settings
+         * in `connection`.
+         *
+         * If `connection` is not given for a device-based activation, NetworkManager
+         * picks the best available connection for the device and activates it.
+         *
+         * Note that the callback is invoked when NetworkManager has started activating
+         * the new connection, not when it finishes. You can use the returned
+         * #NMActiveConnection object (in particular, #NMActiveConnection:state) to
+         * track the activation to its completion.
+         * @param connection an #NMConnection
+         * @param device the #NMDevice
+         * @param specific_object the object path of a connection-type-specific   object this activation should use. This parameter is currently ignored for   wired and mobile broadband connections, and the value of %NULL should be used   (ie, no specific object).  For Wi-Fi or WiMAX connections, pass the object   path of a #NMAccessPoint or #NMWimaxNsp owned by @device, which you can   get using nm_object_get_path(), and which will be used to complete the   details of the newly added connection.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the activation has started
+         */
+        activate_connection_async(
+            connection: Connection | null,
+            device: Device | null,
+            specific_object: string | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously starts a connection to a particular network using the
+         * configuration settings from `connection` and the network device `device`.
+         * Certain connection types also take a "specific object" which is the object
+         * path of a connection- specific object, like an #NMAccessPoint for Wi-Fi
+         * connections, or an #NMWimaxNsp for WiMAX connections, to which you wish to
+         * connect.  If the specific object is not given, NetworkManager can, in some
+         * cases, automatically determine which network to connect to given the settings
+         * in `connection`.
+         *
+         * If `connection` is not given for a device-based activation, NetworkManager
+         * picks the best available connection for the device and activates it.
+         *
+         * Note that the callback is invoked when NetworkManager has started activating
+         * the new connection, not when it finishes. You can use the returned
+         * #NMActiveConnection object (in particular, #NMActiveConnection:state) to
+         * track the activation to its completion.
+         * @param connection an #NMConnection
+         * @param device the #NMDevice
+         * @param specific_object the object path of a connection-type-specific   object this activation should use. This parameter is currently ignored for   wired and mobile broadband connections, and the value of %NULL should be used   (ie, no specific object).  For Wi-Fi or WiMAX connections, pass the object   path of a #NMAccessPoint or #NMWimaxNsp owned by @device, which you can   get using nm_object_get_path(), and which will be used to complete the   details of the newly added connection.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the activation has started
          */
         activate_connection_async(
@@ -7830,13 +7888,85 @@ export namespace NM {
             specific_object?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<ActiveConnection> | void;
         /**
          * Gets the result of a call to nm_client_activate_connection_async().
          * @param result the result passed to the #GAsyncReadyCallback
          * @returns the new #NMActiveConnection on success, %NULL on   failure, in which case @error will be set.
          */
         activate_connection_finish(result: Gio.AsyncResult): ActiveConnection;
+        /**
+         * Adds a new connection using the given details (if any) as a template,
+         * automatically filling in missing settings with the capabilities of the given
+         * device and specific object.  The new connection is then asynchronously
+         * activated as with nm_client_activate_connection_async(). Cannot be used for
+         * VPN connections at this time.
+         *
+         * Note that the callback is invoked when NetworkManager has started activating
+         * the new connection, not when it finishes. You can used the returned
+         * #NMActiveConnection object (in particular, #NMActiveConnection:state) to
+         * track the activation to its completion.
+         *
+         * This is identical to nm_client_add_and_activate_connection_async() but takes
+         * a further `options` parameter. Currently, the following options are supported
+         * by the daemon:
+         *  * "persist": A string describing how the connection should be stored.
+         *               The default is "disk", but it can be modified to "memory" (until
+         *               the daemon quits) or "volatile" (will be deleted on disconnect).
+         *  * "bind-activation": Bind the connection lifetime to something. The default is "none",
+         *            meaning an explicit disconnect is needed. The value "dbus-client"
+         *            means the connection will automatically be deactivated when the calling
+         *            D-Bus client disappears from the system bus.
+         * @param partial an #NMConnection to add; the connection may be   partially filled (or even %NULL) and will be completed by NetworkManager   using the given @device and @specific_object before being added
+         * @param device the #NMDevice
+         * @param specific_object the object path of a connection-type-specific   object this activation should use. This parameter is currently ignored for   wired and mobile broadband connections, and the value of %NULL should be used   (i.e., no specific object).  For Wi-Fi or WiMAX connections, pass the object   path of a #NMAccessPoint or #NMWimaxNsp owned by @device, which you can   get using nm_object_get_path(), and which will be used to complete the   details of the newly added connection.
+         * @param options a #GVariant containing a dictionary with options, or %NULL
+         * @param cancellable a #GCancellable, or %NULL
+         */
+        add_and_activate_connection2(
+            partial: Connection | null,
+            device: Device | null,
+            specific_object: string | null,
+            options: GLib.Variant,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<[ActiveConnection, GLib.Variant | null]>;
+        /**
+         * Adds a new connection using the given details (if any) as a template,
+         * automatically filling in missing settings with the capabilities of the given
+         * device and specific object.  The new connection is then asynchronously
+         * activated as with nm_client_activate_connection_async(). Cannot be used for
+         * VPN connections at this time.
+         *
+         * Note that the callback is invoked when NetworkManager has started activating
+         * the new connection, not when it finishes. You can used the returned
+         * #NMActiveConnection object (in particular, #NMActiveConnection:state) to
+         * track the activation to its completion.
+         *
+         * This is identical to nm_client_add_and_activate_connection_async() but takes
+         * a further `options` parameter. Currently, the following options are supported
+         * by the daemon:
+         *  * "persist": A string describing how the connection should be stored.
+         *               The default is "disk", but it can be modified to "memory" (until
+         *               the daemon quits) or "volatile" (will be deleted on disconnect).
+         *  * "bind-activation": Bind the connection lifetime to something. The default is "none",
+         *            meaning an explicit disconnect is needed. The value "dbus-client"
+         *            means the connection will automatically be deactivated when the calling
+         *            D-Bus client disappears from the system bus.
+         * @param partial an #NMConnection to add; the connection may be   partially filled (or even %NULL) and will be completed by NetworkManager   using the given @device and @specific_object before being added
+         * @param device the #NMDevice
+         * @param specific_object the object path of a connection-type-specific   object this activation should use. This parameter is currently ignored for   wired and mobile broadband connections, and the value of %NULL should be used   (i.e., no specific object).  For Wi-Fi or WiMAX connections, pass the object   path of a #NMAccessPoint or #NMWimaxNsp owned by @device, which you can   get using nm_object_get_path(), and which will be used to complete the   details of the newly added connection.
+         * @param options a #GVariant containing a dictionary with options, or %NULL
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the activation has started
+         */
+        add_and_activate_connection2(
+            partial: Connection | null,
+            device: Device | null,
+            specific_object: string | null,
+            options: GLib.Variant,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Adds a new connection using the given details (if any) as a template,
          * automatically filling in missing settings with the capabilities of the given
@@ -7873,7 +8003,7 @@ export namespace NM {
             options: GLib.Variant,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[ActiveConnection, GLib.Variant | null]> | void;
         /**
          * Gets the result of a call to nm_client_add_and_activate_connection2().
          *
@@ -7898,6 +8028,52 @@ export namespace NM {
          * @param device the #NMDevice
          * @param specific_object the object path of a connection-type-specific   object this activation should use. This parameter is currently ignored for   wired and mobile broadband connections, and the value of %NULL should be used   (ie, no specific object).  For Wi-Fi or WiMAX connections, pass the object   path of a #NMAccessPoint or #NMWimaxNsp owned by @device, which you can   get using nm_object_get_path(), and which will be used to complete the   details of the newly added connection.   If the variant is floating, it will be consumed.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        add_and_activate_connection_async(
+            partial?: Connection | null,
+            device?: Device | null,
+            specific_object?: string | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<ActiveConnection>;
+        /**
+         * Adds a new connection using the given details (if any) as a template,
+         * automatically filling in missing settings with the capabilities of the given
+         * device and specific object.  The new connection is then asynchronously
+         * activated as with nm_client_activate_connection_async(). Cannot be used for
+         * VPN connections at this time.
+         *
+         * Note that the callback is invoked when NetworkManager has started activating
+         * the new connection, not when it finishes. You can used the returned
+         * #NMActiveConnection object (in particular, #NMActiveConnection:state) to
+         * track the activation to its completion.
+         * @param partial an #NMConnection to add; the connection may be   partially filled (or even %NULL) and will be completed by NetworkManager   using the given @device and @specific_object before being added
+         * @param device the #NMDevice
+         * @param specific_object the object path of a connection-type-specific   object this activation should use. This parameter is currently ignored for   wired and mobile broadband connections, and the value of %NULL should be used   (ie, no specific object).  For Wi-Fi or WiMAX connections, pass the object   path of a #NMAccessPoint or #NMWimaxNsp owned by @device, which you can   get using nm_object_get_path(), and which will be used to complete the   details of the newly added connection.   If the variant is floating, it will be consumed.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the activation has started
+         */
+        add_and_activate_connection_async(
+            partial: Connection | null,
+            device: Device | null,
+            specific_object: string | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Adds a new connection using the given details (if any) as a template,
+         * automatically filling in missing settings with the capabilities of the given
+         * device and specific object.  The new connection is then asynchronously
+         * activated as with nm_client_activate_connection_async(). Cannot be used for
+         * VPN connections at this time.
+         *
+         * Note that the callback is invoked when NetworkManager has started activating
+         * the new connection, not when it finishes. You can used the returned
+         * #NMActiveConnection object (in particular, #NMActiveConnection:state) to
+         * track the activation to its completion.
+         * @param partial an #NMConnection to add; the connection may be   partially filled (or even %NULL) and will be completed by NetworkManager   using the given @device and @specific_object before being added
+         * @param device the #NMDevice
+         * @param specific_object the object path of a connection-type-specific   object this activation should use. This parameter is currently ignored for   wired and mobile broadband connections, and the value of %NULL should be used   (ie, no specific object).  For Wi-Fi or WiMAX connections, pass the object   path of a #NMAccessPoint or #NMWimaxNsp owned by @device, which you can   get using nm_object_get_path(), and which will be used to complete the   details of the newly added connection.   If the variant is floating, it will be consumed.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the activation has started
          */
         add_and_activate_connection_async(
@@ -7906,7 +8082,7 @@ export namespace NM {
             specific_object?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<ActiveConnection> | void;
         /**
          * Gets the result of a call to nm_client_add_and_activate_connection_async().
          *
@@ -7923,6 +8099,38 @@ export namespace NM {
          * @param args the "a{sv}" #GVariant with extra argument or %NULL   for no extra arguments.
          * @param ignore_out_result this function wraps AddConnection2(), which has an   additional result "a{sv}" output parameter. By setting this to %TRUE,   you signal that you are not interested in that output parameter.   This allows the function to fall back to AddConnection() and AddConnectionUnsaved(),   which is interesting if you run against an older server version that does   not yet provide AddConnection2(). By setting this to %FALSE, the function   under the hood always calls AddConnection2().
          * @param cancellable a #GCancellable, or %NULL
+         */
+        add_connection2(
+            settings: GLib.Variant,
+            flags: SettingsAddConnection2Flags,
+            args: GLib.Variant | null,
+            ignore_out_result: boolean,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<[RemoteConnection, GLib.Variant | null]>;
+        /**
+         * Call AddConnection2() D-Bus API asynchronously.
+         * @param settings the "a{sa{sv}}" #GVariant with the content of the setting.
+         * @param flags the %NMSettingsAddConnection2Flags argument.
+         * @param args the "a{sv}" #GVariant with extra argument or %NULL   for no extra arguments.
+         * @param ignore_out_result this function wraps AddConnection2(), which has an   additional result "a{sv}" output parameter. By setting this to %TRUE,   you signal that you are not interested in that output parameter.   This allows the function to fall back to AddConnection() and AddConnectionUnsaved(),   which is interesting if you run against an older server version that does   not yet provide AddConnection2(). By setting this to %FALSE, the function   under the hood always calls AddConnection2().
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the add operation completes
+         */
+        add_connection2(
+            settings: GLib.Variant,
+            flags: SettingsAddConnection2Flags,
+            args: GLib.Variant | null,
+            ignore_out_result: boolean,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Call AddConnection2() D-Bus API asynchronously.
+         * @param settings the "a{sa{sv}}" #GVariant with the content of the setting.
+         * @param flags the %NMSettingsAddConnection2Flags argument.
+         * @param args the "a{sv}" #GVariant with extra argument or %NULL   for no extra arguments.
+         * @param ignore_out_result this function wraps AddConnection2(), which has an   additional result "a{sv}" output parameter. By setting this to %TRUE,   you signal that you are not interested in that output parameter.   This allows the function to fall back to AddConnection() and AddConnectionUnsaved(),   which is interesting if you run against an older server version that does   not yet provide AddConnection2(). By setting this to %FALSE, the function   under the hood always calls AddConnection2().
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the add operation completes
          */
         add_connection2(
@@ -7932,8 +8140,58 @@ export namespace NM {
             ignore_out_result: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[RemoteConnection, GLib.Variant | null]> | void;
         add_connection2_finish(result: Gio.AsyncResult): [RemoteConnection, GLib.Variant | null];
+        /**
+         * Requests that the remote settings service add the given settings to a new
+         * connection.  If `save_to_disk` is %TRUE, the connection is immediately written
+         * to disk; otherwise it is initially only stored in memory, but may be saved
+         * later by calling the connection's nm_remote_connection_commit_changes()
+         * method.
+         *
+         * `connection` is untouched by this function and only serves as a template of
+         * the settings to add.  The #NMRemoteConnection object that represents what
+         * NetworkManager actually added is returned to `callback` when the addition
+         * operation is complete.
+         *
+         * Note that the #NMRemoteConnection returned in `callback` may not contain
+         * identical settings to `connection` as NetworkManager may perform automatic
+         * completion and/or normalization of connection properties.
+         * @param connection the connection to add. Note that this object's settings will be   added, not the object itself
+         * @param save_to_disk whether to immediately save the connection to disk
+         * @param cancellable a #GCancellable, or %NULL
+         */
+        add_connection_async(
+            connection: Connection,
+            save_to_disk: boolean,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<RemoteConnection>;
+        /**
+         * Requests that the remote settings service add the given settings to a new
+         * connection.  If `save_to_disk` is %TRUE, the connection is immediately written
+         * to disk; otherwise it is initially only stored in memory, but may be saved
+         * later by calling the connection's nm_remote_connection_commit_changes()
+         * method.
+         *
+         * `connection` is untouched by this function and only serves as a template of
+         * the settings to add.  The #NMRemoteConnection object that represents what
+         * NetworkManager actually added is returned to `callback` when the addition
+         * operation is complete.
+         *
+         * Note that the #NMRemoteConnection returned in `callback` may not contain
+         * identical settings to `connection` as NetworkManager may perform automatic
+         * completion and/or normalization of connection properties.
+         * @param connection the connection to add. Note that this object's settings will be   added, not the object itself
+         * @param save_to_disk whether to immediately save the connection to disk
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the add operation completes
+         */
+        add_connection_async(
+            connection: Connection,
+            save_to_disk: boolean,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Requests that the remote settings service add the given settings to a new
          * connection.  If `save_to_disk` is %TRUE, the connection is immediately written
@@ -7959,7 +8217,7 @@ export namespace NM {
             save_to_disk: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<RemoteConnection> | void;
         /**
          * Gets the result of a call to nm_client_add_connection_async().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -7983,12 +8241,32 @@ export namespace NM {
          * which (immediately) returns the most recent known state without
          * re-checking, and nm_client_check_connectivity(), which blocks.
          * @param cancellable a #GCancellable
+         */
+        check_connectivity_async(cancellable?: Gio.Cancellable | null): Promise<ConnectivityState>;
+        /**
+         * Asynchronously updates the network connectivity state and invokes
+         * `callback` when complete. Contrast nm_client_get_connectivity(),
+         * which (immediately) returns the most recent known state without
+         * re-checking, and nm_client_check_connectivity(), which blocks.
+         * @param cancellable a #GCancellable
+         * @param callback callback to call with the result
+         */
+        check_connectivity_async(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously updates the network connectivity state and invokes
+         * `callback` when complete. Contrast nm_client_get_connectivity(),
+         * which (immediately) returns the most recent known state without
+         * re-checking, and nm_client_check_connectivity(), which blocks.
+         * @param cancellable a #GCancellable
          * @param callback callback to call with the result
          */
         check_connectivity_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<ConnectivityState> | void;
         /**
          * Retrieves the result of an nm_client_check_connectivity_async()
          * call.
@@ -8002,6 +8280,32 @@ export namespace NM {
          * @param checkpoint_path a D-Bus path to a checkpoint
          * @param add_timeout the timeout in seconds counting from now.   Set to zero, to disable the timeout.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        checkpoint_adjust_rollback_timeout(
+            checkpoint_path: string,
+            add_timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Resets the timeout for the checkpoint with path `checkpoint_path`
+         * to `timeout_add`.
+         * @param checkpoint_path a D-Bus path to a checkpoint
+         * @param add_timeout the timeout in seconds counting from now.   Set to zero, to disable the timeout.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the add operation completes
+         */
+        checkpoint_adjust_rollback_timeout(
+            checkpoint_path: string,
+            add_timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Resets the timeout for the checkpoint with path `checkpoint_path`
+         * to `timeout_add`.
+         * @param checkpoint_path a D-Bus path to a checkpoint
+         * @param add_timeout the timeout in seconds counting from now.   Set to zero, to disable the timeout.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the add operation completes
          */
         checkpoint_adjust_rollback_timeout(
@@ -8009,13 +8313,47 @@ export namespace NM {
             add_timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result of a call to nm_client_checkpoint_adjust_rollback_timeout().
          * @param result the result passed to the #GAsyncReadyCallback
          * @returns %TRUE on success or %FALSE on failure.
          */
         checkpoint_adjust_rollback_timeout_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Creates a checkpoint of the current networking configuration
+         * for given interfaces. An empty `devices` argument means all
+         * devices. If `rollback_timeout` is not zero, a rollback is
+         * automatically performed after the given timeout.
+         * @param devices a list of devices for which a   checkpoint should be created.
+         * @param rollback_timeout the rollback timeout in seconds
+         * @param flags creation flags
+         * @param cancellable a #GCancellable, or %NULL
+         */
+        checkpoint_create(
+            devices: Device[],
+            rollback_timeout: number,
+            flags: CheckpointCreateFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Checkpoint>;
+        /**
+         * Creates a checkpoint of the current networking configuration
+         * for given interfaces. An empty `devices` argument means all
+         * devices. If `rollback_timeout` is not zero, a rollback is
+         * automatically performed after the given timeout.
+         * @param devices a list of devices for which a   checkpoint should be created.
+         * @param rollback_timeout the rollback timeout in seconds
+         * @param flags creation flags
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the add operation completes
+         */
+        checkpoint_create(
+            devices: Device[],
+            rollback_timeout: number,
+            flags: CheckpointCreateFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Creates a checkpoint of the current networking configuration
          * for given interfaces. An empty `devices` argument means all
@@ -8033,7 +8371,7 @@ export namespace NM {
             flags: CheckpointCreateFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Checkpoint> | void;
         /**
          * Gets the result of a call to nm_client_checkpoint_create().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -8044,13 +8382,30 @@ export namespace NM {
          * Destroys an existing checkpoint without performing a rollback.
          * @param checkpoint_path the D-Bus path for the checkpoint
          * @param cancellable a #GCancellable, or %NULL
+         */
+        checkpoint_destroy(checkpoint_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Destroys an existing checkpoint without performing a rollback.
+         * @param checkpoint_path the D-Bus path for the checkpoint
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the add operation completes
+         */
+        checkpoint_destroy(
+            checkpoint_path: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Destroys an existing checkpoint without performing a rollback.
+         * @param checkpoint_path the D-Bus path for the checkpoint
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the add operation completes
          */
         checkpoint_destroy(
             checkpoint_path: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result of a call to nm_client_checkpoint_destroy().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -8061,13 +8416,33 @@ export namespace NM {
          * Performs the rollback of a checkpoint before the timeout is reached.
          * @param checkpoint_path the D-Bus path to the checkpoint
          * @param cancellable a #GCancellable, or %NULL
+         */
+        checkpoint_rollback(
+            checkpoint_path: string,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<GLib.HashTable<string, number>>;
+        /**
+         * Performs the rollback of a checkpoint before the timeout is reached.
+         * @param checkpoint_path the D-Bus path to the checkpoint
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the add operation completes
+         */
+        checkpoint_rollback(
+            checkpoint_path: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Performs the rollback of a checkpoint before the timeout is reached.
+         * @param checkpoint_path the D-Bus path to the checkpoint
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the add operation completes
          */
         checkpoint_rollback(
             checkpoint_path: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.HashTable<string, number>> | void;
         /**
          * Gets the result of a call to nm_client_checkpoint_rollback().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -8115,6 +8490,60 @@ export namespace NM {
          * @param reply_type the expected type of the reply (which will be a     tuple), or %NULL
          * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or %G_MAXINT for no timeout
          * @param cancellable a #GCancellable or %NULL
+         */
+        dbus_call(
+            object_path: string,
+            interface_name: string,
+            method_name: string,
+            parameters: GLib.Variant | null,
+            reply_type: GLib.VariantType | null,
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<GLib.Variant>;
+        /**
+         * Call g_dbus_connection_call() on the current name owner with the specified
+         * arguments. Most importantly, this invokes g_dbus_connection_call() with the
+         * client's #GMainContext, so that the response is always in order with other
+         * events D-Bus events. Of course, the call uses #GTask and will invoke the
+         * callback on the current g_main_context_get_thread_default().
+         *
+         * This API is merely a convenient wrapper for g_dbus_connection_call(). You can
+         * also use g_dbus_connection_call() directly, with the same effect.
+         * @param object_path path of remote object
+         * @param interface_name D-Bus interface to invoke method on
+         * @param method_name the name of the method to invoke
+         * @param parameters a #GVariant tuple with parameters for the method     or %NULL if not passing parameters
+         * @param reply_type the expected type of the reply (which will be a     tuple), or %NULL
+         * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or %G_MAXINT for no timeout
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request     is satisfied or %NULL if you don't care about the result of the     method invocation
+         */
+        dbus_call(
+            object_path: string,
+            interface_name: string,
+            method_name: string,
+            parameters: GLib.Variant | null,
+            reply_type: GLib.VariantType | null,
+            timeout_msec: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Call g_dbus_connection_call() on the current name owner with the specified
+         * arguments. Most importantly, this invokes g_dbus_connection_call() with the
+         * client's #GMainContext, so that the response is always in order with other
+         * events D-Bus events. Of course, the call uses #GTask and will invoke the
+         * callback on the current g_main_context_get_thread_default().
+         *
+         * This API is merely a convenient wrapper for g_dbus_connection_call(). You can
+         * also use g_dbus_connection_call() directly, with the same effect.
+         * @param object_path path of remote object
+         * @param interface_name D-Bus interface to invoke method on
+         * @param method_name the name of the method to invoke
+         * @param parameters a #GVariant tuple with parameters for the method     or %NULL if not passing parameters
+         * @param reply_type the expected type of the reply (which will be a     tuple), or %NULL
+         * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or %G_MAXINT for no timeout
+         * @param cancellable a #GCancellable or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request     is satisfied or %NULL if you don't care about the result of the     method invocation
          */
         dbus_call(
@@ -8126,13 +8555,51 @@ export namespace NM {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Variant> | void;
         /**
          * Gets the result of a call to nm_client_dbus_call().
          * @param result the result passed to the #GAsyncReadyCallback
          * @returns the result #GVariant or %NULL on error.
          */
         dbus_call_finish(result: Gio.AsyncResult): GLib.Variant;
+        /**
+         * Like nm_client_dbus_call() but calls "Set" on the standard "org.freedesktop.DBus.Properties"
+         * D-Bus interface.
+         * @param object_path path of remote object
+         * @param interface_name D-Bus interface for the property to set.
+         * @param property_name the name of the property to set
+         * @param value a #GVariant with the value to set.
+         * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or %G_MAXINT for no timeout
+         * @param cancellable a #GCancellable or %NULL
+         */
+        dbus_set_property(
+            object_path: string,
+            interface_name: string,
+            property_name: string,
+            value: GLib.Variant,
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Like nm_client_dbus_call() but calls "Set" on the standard "org.freedesktop.DBus.Properties"
+         * D-Bus interface.
+         * @param object_path path of remote object
+         * @param interface_name D-Bus interface for the property to set.
+         * @param property_name the name of the property to set
+         * @param value a #GVariant with the value to set.
+         * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or %G_MAXINT for no timeout
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request     is satisfied or %NULL if you don't care about the result of the     method invocation
+         */
+        dbus_set_property(
+            object_path: string,
+            interface_name: string,
+            property_name: string,
+            value: GLib.Variant,
+            timeout_msec: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Like nm_client_dbus_call() but calls "Set" on the standard "org.freedesktop.DBus.Properties"
          * D-Bus interface.
@@ -8152,7 +8619,7 @@ export namespace NM {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result of a call to nm_client_dbus_set_property().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -8170,13 +8637,30 @@ export namespace NM {
          * Asynchronously deactivates an active #NMActiveConnection.
          * @param active the #NMActiveConnection to deactivate
          * @param cancellable a #GCancellable, or %NULL
+         */
+        deactivate_connection_async(active: ActiveConnection, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously deactivates an active #NMActiveConnection.
+         * @param active the #NMActiveConnection to deactivate
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the deactivation has completed
+         */
+        deactivate_connection_async(
+            active: ActiveConnection,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously deactivates an active #NMActiveConnection.
+         * @param active the #NMActiveConnection to deactivate
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the deactivation has completed
          */
         deactivate_connection_async(
             active: ActiveConnection,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result of a call to nm_client_deactivate_connection_async().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -8387,13 +8871,36 @@ export namespace NM {
          * See nm_client_load_connections() for more details.
          * @param filenames %NULL-terminated array of filenames to load
          * @param cancellable a #GCancellable, or %NULL
+         */
+        load_connections_async(filenames: string[], cancellable?: Gio.Cancellable | null): Promise<string[]>;
+        /**
+         * Requests that the remote settings service asynchronously load or reload the
+         * given files, adding or updating the connections described within.
+         *
+         * See nm_client_load_connections() for more details.
+         * @param filenames %NULL-terminated array of filenames to load
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the operation completes
+         */
+        load_connections_async(
+            filenames: string[],
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests that the remote settings service asynchronously load or reload the
+         * given files, adding or updating the connections described within.
+         *
+         * See nm_client_load_connections() for more details.
+         * @param filenames %NULL-terminated array of filenames to load
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the operation completes
          */
         load_connections_async(
             filenames: string[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string[]> | void;
         /**
          * Gets the result of an nm_client_load_connections_async() call.
          *
@@ -8423,13 +8930,38 @@ export namespace NM {
          * PolicyKit and contrary to signals it is synchronous.
          * @param flags flags indicating what to reload.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        reload(flags: ManagerReloadFlags, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Reload NetworkManager's configuration and perform certain updates, like
+         * flushing caches or rewriting external state to disk. This is similar to
+         * sending SIGHUP to NetworkManager but it allows for more fine-grained control
+         * over what to reload (see `flags)`. It also allows non-root access via
+         * PolicyKit and contrary to signals it is synchronous.
+         * @param flags flags indicating what to reload.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the add operation completes
+         */
+        reload(
+            flags: ManagerReloadFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Reload NetworkManager's configuration and perform certain updates, like
+         * flushing caches or rewriting external state to disk. This is similar to
+         * sending SIGHUP to NetworkManager but it allows for more fine-grained control
+         * over what to reload (see `flags)`. It also allows non-root access via
+         * PolicyKit and contrary to signals it is synchronous.
+         * @param flags flags indicating what to reload.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the add operation completes
          */
         reload(
             flags: ManagerReloadFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Requests that the remote settings service reload all connection
          * files from disk, adding, updating, and removing connections until
@@ -8443,12 +8975,30 @@ export namespace NM {
          * files from disk, adding, updating, and removing connections until the
          * in-memory state matches the on-disk state.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        reload_connections_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Requests that the remote settings service begin reloading all connection
+         * files from disk, adding, updating, and removing connections until the
+         * in-memory state matches the on-disk state.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the reload operation completes
+         */
+        reload_connections_async(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests that the remote settings service begin reloading all connection
+         * files from disk, adding, updating, and removing connections until the
+         * in-memory state matches the on-disk state.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the reload operation completes
          */
         reload_connections_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result of an nm_client_reload_connections_async() call.
          * @param result the result passed to the #GAsyncReadyCallback
@@ -8474,13 +9024,32 @@ export namespace NM {
          * or cleared.
          * @param hostname the new persistent hostname to set, or %NULL to   clear any existing persistent hostname
          * @param cancellable a #GCancellable, or %NULL
+         */
+        save_hostname_async(hostname?: string | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Requests that the machine's persistent hostname be set to the specified value
+         * or cleared.
+         * @param hostname the new persistent hostname to set, or %NULL to   clear any existing persistent hostname
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the operation completes
+         */
+        save_hostname_async(
+            hostname: string | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests that the machine's persistent hostname be set to the specified value
+         * or cleared.
+         * @param hostname the new persistent hostname to set, or %NULL to   clear any existing persistent hostname
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the operation completes
          */
         save_hostname_async(
             hostname?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result of an nm_client_save_hostname_async() call.
          * @param result the result passed to the #GAsyncReadyCallback
@@ -8637,13 +9206,100 @@ export namespace NM {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -9569,9 +10225,25 @@ export namespace NM {
          * Asynchronously begins deleting the software device. Hardware devices can't
          * be deleted.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        delete_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously begins deleting the software device. Hardware devices can't
+         * be deleted.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when delete operation completes
          */
-        delete_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        delete_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously begins deleting the software device. Hardware devices can't
+         * be deleted.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when delete operation completes
+         */
+        delete_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Gets the result of a call to nm_device_delete_async().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -9593,9 +10265,27 @@ export namespace NM {
          * prevents the device from automatically connecting to networks until the next
          * manual network connection request.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        disconnect_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously begins disconnecting the device if currently connected, and
+         * prevents the device from automatically connecting to networks until the next
+         * manual network connection request.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the disconnect operation completes
          */
-        disconnect_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        disconnect_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously begins disconnecting the device if currently connected, and
+         * prevents the device from automatically connecting to networks until the next
+         * manual network connection request.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the disconnect operation completes
+         */
+        disconnect_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Gets the result of a call to nm_device_disconnect_async().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -9631,13 +10321,33 @@ export namespace NM {
          * Asynchronously begins and gets the currently applied connection.
          * @param flags the flags argument. See #NMDeviceReapplyFlags.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        get_applied_connection_async(
+            flags: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<[Connection, number]>;
+        /**
+         * Asynchronously begins and gets the currently applied connection.
+         * @param flags the flags argument. See #NMDeviceReapplyFlags.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the reapply operation completes
+         */
+        get_applied_connection_async(
+            flags: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously begins and gets the currently applied connection.
+         * @param flags the flags argument. See #NMDeviceReapplyFlags.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the reapply operation completes
          */
         get_applied_connection_async(
             flags: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[Connection, number]> | void;
         /**
          * Gets the result of a call to nm_device_get_applied_connection_async().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -9860,6 +10570,36 @@ export namespace NM {
          * @param version_id zero or the expected version id of the applied   connection. If specified and the version id mismatches, the call   fails without modification. This allows to catch concurrent   accesses.
          * @param flags always set this to zero
          * @param cancellable a #GCancellable, or %NULL
+         */
+        reapply_async(
+            connection: Connection | null,
+            version_id: number,
+            flags: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously begins an attempt to update device with changes to the
+         * currently active connection made since it was last applied.
+         * @param connection the #NMConnection to replace the applied   settings with or %NULL to reuse existing
+         * @param version_id zero or the expected version id of the applied   connection. If specified and the version id mismatches, the call   fails without modification. This allows to catch concurrent   accesses.
+         * @param flags always set this to zero
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the reapply operation completes
+         */
+        reapply_async(
+            connection: Connection | null,
+            version_id: number,
+            flags: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously begins an attempt to update device with changes to the
+         * currently active connection made since it was last applied.
+         * @param connection the #NMConnection to replace the applied   settings with or %NULL to reuse existing
+         * @param version_id zero or the expected version id of the applied   connection. If specified and the version id mismatches, the call   fails without modification. This allows to catch concurrent   accesses.
+         * @param flags always set this to zero
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the reapply operation completes
          */
         reapply_async(
@@ -9868,7 +10608,7 @@ export namespace NM {
             flags: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result of a call to nm_device_reapply_async().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -11532,9 +12272,27 @@ export namespace NM {
          * called immediately after requesting the scan, and it may take some time after
          * that for the scan to complete.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        request_scan_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Request NM to scan for access points on `device`. Note that `callback` will be
+         * called immediately after requesting the scan, and it may take some time after
+         * that for the scan to complete.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the scan has been requested
          */
-        request_scan_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        request_scan_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Request NM to scan for access points on `device`. Note that `callback` will be
+         * called immediately after requesting the scan, and it may take some time after
+         * that for the scan to complete.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the scan has been requested
+         */
+        request_scan_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Gets the result of a call to nm_device_wifi_request_scan_async() and
          * nm_device_wifi_request_scan_options_async().
@@ -11644,13 +12402,40 @@ export namespace NM {
          * using nm_device_p2p_wifi_stop_find().
          * @param options optional options passed to StartFind.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        start_find(options?: GLib.Variant | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Request NM to search for Wi-Fi P2P peers on `device`. Note that the call
+         * returns immediately after requesting the find, and it may take some time
+         * after that for peers to be found.
+         *
+         * The find operation will run for 30s by default. You can stop it earlier
+         * using nm_device_p2p_wifi_stop_find().
+         * @param options optional options passed to StartFind.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback, or %NULL
+         */
+        start_find(
+            options: GLib.Variant | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request NM to search for Wi-Fi P2P peers on `device`. Note that the call
+         * returns immediately after requesting the find, and it may take some time
+         * after that for peers to be found.
+         *
+         * The find operation will run for 30s by default. You can stop it earlier
+         * using nm_device_p2p_wifi_stop_find().
+         * @param options optional options passed to StartFind.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback, or %NULL
          */
         start_find(
             options?: GLib.Variant | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finish an operation started by nm_device_wifi_p2p_start_find().
          * @param result the #GAsyncResult
@@ -11660,9 +12445,23 @@ export namespace NM {
         /**
          * Request NM to stop any ongoing find operation for Wi-Fi P2P peers on `device`.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        stop_find(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Request NM to stop any ongoing find operation for Wi-Fi P2P peers on `device`.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback, or %NULL
          */
-        stop_find(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        stop_find(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Request NM to stop any ongoing find operation for Wi-Fi P2P peers on `device`.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback, or %NULL
+         */
+        stop_find(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finish an operation started by nm_device_wifi_p2p_stop_find().
          * @param result the #GAsyncResult
@@ -12224,13 +13023,36 @@ export namespace NM {
          * changed.
          * @param save_to_disk whether to save the changes to persistent storage
          * @param cancellable a #GCancellable, or %NULL
+         */
+        commit_changes_async(save_to_disk: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously sends any local changes to the settings and properties of
+         * `connection` to NetworkManager. If `save` is %TRUE, the updated connection will
+         * be saved to disk; if %FALSE, then only the in-memory representation will be
+         * changed.
+         * @param save_to_disk whether to save the changes to persistent storage
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the commit operation completes
+         */
+        commit_changes_async(
+            save_to_disk: boolean,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends any local changes to the settings and properties of
+         * `connection` to NetworkManager. If `save` is %TRUE, the updated connection will
+         * be saved to disk; if %FALSE, then only the in-memory representation will be
+         * changed.
+         * @param save_to_disk whether to save the changes to persistent storage
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the commit operation completes
          */
         commit_changes_async(
             save_to_disk: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result of a call to nm_remote_connection_commit_changes_async().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -12246,9 +13068,23 @@ export namespace NM {
         /**
          * Asynchronously deletes the connection.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        delete_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously deletes the connection.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the delete operation completes
          */
-        delete_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        delete_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously deletes the connection.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the delete operation completes
+         */
+        delete_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Gets the result of a call to nm_remote_connection_delete_async().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -12269,13 +13105,30 @@ export namespace NM {
          * Asynchronously requests the connection's secrets.
          * @param setting_name the #NMSetting object name to get secrets for
          * @param cancellable a #GCancellable, or %NULL
+         */
+        get_secrets_async(setting_name: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant>;
+        /**
+         * Asynchronously requests the connection's secrets.
+         * @param setting_name the #NMSetting object name to get secrets for
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the secret request completes
+         */
+        get_secrets_async(
+            setting_name: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously requests the connection's secrets.
+         * @param setting_name the #NMSetting object name to get secrets for
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the secret request completes
          */
         get_secrets_async(
             setting_name: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Variant> | void;
         /**
          * Gets the result of a call to nm_remote_connection_get_secrets_async().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -12307,15 +13160,59 @@ export namespace NM {
          * Saves the connection to disk if the connection has changes that have not yet
          * been written to disk, or if the connection has never been saved.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        save_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Saves the connection to disk if the connection has changes that have not yet
+         * been written to disk, or if the connection has never been saved.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to be called when the save operation completes
          */
-        save_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        save_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Saves the connection to disk if the connection has changes that have not yet
+         * been written to disk, or if the connection has never been saved.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the save operation completes
+         */
+        save_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Gets the result of a call to nm_remote_connection_save_async().
          * @param result the result passed to the #GAsyncReadyCallback
          * @returns %TRUE on success, %FALSE on error, in which case @error will be set.
          */
         save_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Asynchronously calls the Update2() D-Bus method.
+         * @param settings optional connection to update the settings.
+         * @param flags update-flags
+         * @param args optional arguments.
+         * @param cancellable a #GCancellable, or %NULL
+         */
+        update2(
+            settings: GLib.Variant | null,
+            flags: SettingsUpdate2Flags,
+            args?: GLib.Variant | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<GLib.Variant>;
+        /**
+         * Asynchronously calls the Update2() D-Bus method.
+         * @param settings optional connection to update the settings.
+         * @param flags update-flags
+         * @param args optional arguments.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to be called when the commit operation completes
+         */
+        update2(
+            settings: GLib.Variant | null,
+            flags: SettingsUpdate2Flags,
+            args: GLib.Variant | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously calls the Update2() D-Bus method.
          * @param settings optional connection to update the settings.
@@ -12330,7 +13227,7 @@ export namespace NM {
             args?: GLib.Variant | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Variant> | void;
         /**
          * Gets the result of a call to nm_remote_connection_commit_changes_async().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -13412,9 +14309,49 @@ export namespace NM {
          * try to recover, it might be ready in a moment afterwards). Use this function if
          * you want to check and ensure that the agent is registered.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        register_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously registers the #NMSecretAgentOld with the NetworkManager secret
+         * manager, indicating to NetworkManager that the agent is able to provide and
+         * save secrets for connections on behalf of its user.
+         *
+         * Since 1.24, registration cannot fail and is idempotent. It has
+         * the same effect as setting %NM_SECRET_AGENT_OLD_AUTO_REGISTER to %TRUE
+         * or nm_secret_agent_old_enable().
+         *
+         * Since 1.24, the asynchronous result indicates whether the instance is successfully
+         * registered. In any case, this call enables the agent and it will automatically
+         * try to register and handle secret requests. A failure of this function only indicates
+         * that currently the instance might not be ready (but since it will automatically
+         * try to recover, it might be ready in a moment afterwards). Use this function if
+         * you want to check and ensure that the agent is registered.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the agent is registered
          */
-        register_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        register_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously registers the #NMSecretAgentOld with the NetworkManager secret
+         * manager, indicating to NetworkManager that the agent is able to provide and
+         * save secrets for connections on behalf of its user.
+         *
+         * Since 1.24, registration cannot fail and is idempotent. It has
+         * the same effect as setting %NM_SECRET_AGENT_OLD_AUTO_REGISTER to %TRUE
+         * or nm_secret_agent_old_enable().
+         *
+         * Since 1.24, the asynchronous result indicates whether the instance is successfully
+         * registered. In any case, this call enables the agent and it will automatically
+         * try to register and handle secret requests. A failure of this function only indicates
+         * that currently the instance might not be ready (but since it will automatically
+         * try to recover, it might be ready in a moment afterwards). Use this function if
+         * you want to check and ensure that the agent is registered.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call when the agent is registered
+         */
+        register_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Gets the result of a call to nm_secret_agent_old_register_async().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -13445,9 +14382,35 @@ export namespace NM {
          * the same effect as setting %NM_SECRET_AGENT_OLD_AUTO_REGISTER to %FALSE
          * or nm_secret_agent_old_enable().
          * @param cancellable a #GCancellable, or %NULL
+         */
+        unregister_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously unregisters the #NMSecretAgentOld with the NetworkManager secret
+         * manager, indicating to NetworkManager that the agent will no longer provide
+         * or store secrets on behalf of this user.
+         *
+         * Since 1.24, registration cannot fail and is idempotent. It has
+         * the same effect as setting %NM_SECRET_AGENT_OLD_AUTO_REGISTER to %FALSE
+         * or nm_secret_agent_old_enable().
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the agent is unregistered
          */
-        unregister_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        unregister_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously unregisters the #NMSecretAgentOld with the NetworkManager secret
+         * manager, indicating to NetworkManager that the agent will no longer provide
+         * or store secrets on behalf of this user.
+         *
+         * Since 1.24, registration cannot fail and is idempotent. It has
+         * the same effect as setting %NM_SECRET_AGENT_OLD_AUTO_REGISTER to %FALSE
+         * or nm_secret_agent_old_enable().
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call when the agent is unregistered
+         */
+        unregister_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Gets the result of a call to nm_secret_agent_old_unregister_async().
          * @param result the result passed to the #GAsyncReadyCallback
@@ -13495,13 +14458,100 @@ export namespace NM {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().

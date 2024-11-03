@@ -2541,6 +2541,54 @@ export namespace GUPnP {
          * @param address IP address of the peer
          * @param agent The User-Agent header of the peer or %NULL if not unknown.
          * @param cancellable A #GCancellable which can be used to cancel the operation.
+         */
+        is_allowed_async(
+            device: any | null,
+            service: any | null,
+            path: string,
+            address: string,
+            agent?: string | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Optional. Check asynchronously whether an IP address is allowed to access
+         * this resource. Use this function if the process of verifying the access right
+         * is expected to take some time, for example when using D-Bus etc.
+         *
+         * If this function is supported, gupnp_acl_can_sync() should return %TRUE.
+         *
+         * Use gupnp_acl_is_allowed_finish() to retrieve the result.
+         * @param device The #GUPnPDevice associated with @path or %NULL if unknown.
+         * @param service The #GUPnPService associated with @path or %NULL if unknown.
+         * @param path The path being served.
+         * @param address IP address of the peer
+         * @param agent The User-Agent header of the peer or %NULL if not unknown.
+         * @param cancellable A #GCancellable which can be used to cancel the operation.
+         * @param callback Callback to call after the function is done.
+         */
+        is_allowed_async(
+            device: any | null,
+            service: any | null,
+            path: string,
+            address: string,
+            agent: string | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Optional. Check asynchronously whether an IP address is allowed to access
+         * this resource. Use this function if the process of verifying the access right
+         * is expected to take some time, for example when using D-Bus etc.
+         *
+         * If this function is supported, gupnp_acl_can_sync() should return %TRUE.
+         *
+         * Use gupnp_acl_is_allowed_finish() to retrieve the result.
+         * @param device The #GUPnPDevice associated with @path or %NULL if unknown.
+         * @param service The #GUPnPService associated with @path or %NULL if unknown.
+         * @param path The path being served.
+         * @param address IP address of the peer
+         * @param agent The User-Agent header of the peer or %NULL if not unknown.
+         * @param cancellable A #GCancellable which can be used to cancel the operation.
          * @param callback Callback to call after the function is done.
          */
         is_allowed_async(
@@ -2551,7 +2599,7 @@ export namespace GUPnP {
             agent?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         is_allowed_finish(res: Gio.AsyncResult): boolean;
 
         // Virtual methods

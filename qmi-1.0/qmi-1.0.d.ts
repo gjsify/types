@@ -19281,6 +19281,38 @@ export namespace Qmi {
          * @param input a #QmiMessageAtrSendInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        send(
+            input: MessageAtrSendInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageAtrSendOutput>;
+        /**
+         * Asynchronously sends a Send request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_atr_send_finish() to get the result of the operation.
+         * @param input a #QmiMessageAtrSendInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        send(
+            input: MessageAtrSendInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Send request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_atr_send_finish() to get the result of the operation.
+         * @param input a #QmiMessageAtrSendInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         send(
@@ -19288,7 +19320,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageAtrSendOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_atr_send().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_atr_send().
@@ -19348,6 +19380,38 @@ export namespace Qmi {
          * @param input a #QmiMessageDmsActivateAutomaticInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        activate_automatic(
+            input: MessageDmsActivateAutomaticInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsActivateAutomaticOutput>;
+        /**
+         * Asynchronously sends a Activate Automatic request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_activate_automatic_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsActivateAutomaticInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        activate_automatic(
+            input: MessageDmsActivateAutomaticInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Activate Automatic request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_activate_automatic_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsActivateAutomaticInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         activate_automatic(
@@ -19355,13 +19419,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsActivateAutomaticOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_activate_automatic().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_activate_automatic().
          * @returns a #QmiMessageDmsActivateAutomaticOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_activate_automatic_output_unref().
          */
         activate_automatic_finish(res: Gio.AsyncResult): MessageDmsActivateAutomaticOutput;
+        /**
+         * Asynchronously sends a Activate Manual request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_activate_manual_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsActivateManualInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        activate_manual(
+            input: MessageDmsActivateManualInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsActivateManualOutput>;
+        /**
+         * Asynchronously sends a Activate Manual request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_activate_manual_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsActivateManualInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        activate_manual(
+            input: MessageDmsActivateManualInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Activate Manual request to the device.
          *
@@ -19378,13 +19474,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsActivateManualOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_activate_manual().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_activate_manual().
          * @returns a #QmiMessageDmsActivateManualOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_activate_manual_output_unref().
          */
         activate_manual_finish(res: Gio.AsyncResult): MessageDmsActivateManualOutput;
+        /**
+         * Asynchronously sends a Delete Stored Image request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_delete_stored_image_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsDeleteStoredImageInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        delete_stored_image(
+            input: MessageDmsDeleteStoredImageInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsDeleteStoredImageOutput>;
+        /**
+         * Asynchronously sends a Delete Stored Image request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_delete_stored_image_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsDeleteStoredImageInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        delete_stored_image(
+            input: MessageDmsDeleteStoredImageInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Delete Stored Image request to the device.
          *
@@ -19401,13 +19529,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsDeleteStoredImageOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_delete_stored_image().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_delete_stored_image().
          * @returns a #QmiMessageDmsDeleteStoredImageOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_delete_stored_image_output_unref().
          */
         delete_stored_image_finish(res: Gio.AsyncResult): MessageDmsDeleteStoredImageOutput;
+        /**
+         * Asynchronously sends a Foxconn Change Device Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_foxconn_change_device_mode_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsFoxconnChangeDeviceModeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        foxconn_change_device_mode(
+            input: MessageDmsFoxconnChangeDeviceModeInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsFoxconnChangeDeviceModeOutput>;
+        /**
+         * Asynchronously sends a Foxconn Change Device Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_foxconn_change_device_mode_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsFoxconnChangeDeviceModeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        foxconn_change_device_mode(
+            input: MessageDmsFoxconnChangeDeviceModeInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Foxconn Change Device Mode request to the device.
          *
@@ -19424,13 +19584,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsFoxconnChangeDeviceModeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_foxconn_change_device_mode().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_foxconn_change_device_mode().
          * @returns a #QmiMessageDmsFoxconnChangeDeviceModeOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_foxconn_change_device_mode_output_unref().
          */
         foxconn_change_device_mode_finish(res: Gio.AsyncResult): MessageDmsFoxconnChangeDeviceModeOutput;
+        /**
+         * Asynchronously sends a Foxconn Get Firmware Version request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_foxconn_get_firmware_version_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsFoxconnGetFirmwareVersionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        foxconn_get_firmware_version(
+            input: MessageDmsFoxconnGetFirmwareVersionInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsFoxconnGetFirmwareVersionOutput>;
+        /**
+         * Asynchronously sends a Foxconn Get Firmware Version request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_foxconn_get_firmware_version_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsFoxconnGetFirmwareVersionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        foxconn_get_firmware_version(
+            input: MessageDmsFoxconnGetFirmwareVersionInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Foxconn Get Firmware Version request to the device.
          *
@@ -19447,13 +19639,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsFoxconnGetFirmwareVersionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_foxconn_get_firmware_version().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_foxconn_get_firmware_version().
          * @returns a #QmiMessageDmsFoxconnGetFirmwareVersionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_foxconn_get_firmware_version_output_unref().
          */
         foxconn_get_firmware_version_finish(res: Gio.AsyncResult): MessageDmsFoxconnGetFirmwareVersionOutput;
+        /**
+         * Asynchronously sends a Foxconn Set FCC Authentication request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_foxconn_set_fcc_authentication_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsFoxconnSetFccAuthenticationInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        foxconn_set_fcc_authentication(
+            input: MessageDmsFoxconnSetFccAuthenticationInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsFoxconnSetFccAuthenticationOutput>;
+        /**
+         * Asynchronously sends a Foxconn Set FCC Authentication request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_foxconn_set_fcc_authentication_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsFoxconnSetFccAuthenticationInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        foxconn_set_fcc_authentication(
+            input: MessageDmsFoxconnSetFccAuthenticationInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Foxconn Set FCC Authentication request to the device.
          *
@@ -19470,13 +19694,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsFoxconnSetFccAuthenticationOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_foxconn_set_fcc_authentication().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_foxconn_set_fcc_authentication().
          * @returns a #QmiMessageDmsFoxconnSetFccAuthenticationOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_foxconn_set_fcc_authentication_output_unref().
          */
         foxconn_set_fcc_authentication_finish(res: Gio.AsyncResult): MessageDmsFoxconnSetFccAuthenticationOutput;
+        /**
+         * Asynchronously sends a Foxconn Set FCC Authentication v2 request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_foxconn_set_fcc_authentication_v2_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsFoxconnSetFccAuthenticationV2Input.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        foxconn_set_fcc_authentication_v2(
+            input: MessageDmsFoxconnSetFccAuthenticationV2Input,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsFoxconnSetFccAuthenticationV2Output>;
+        /**
+         * Asynchronously sends a Foxconn Set FCC Authentication v2 request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_foxconn_set_fcc_authentication_v2_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsFoxconnSetFccAuthenticationV2Input.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        foxconn_set_fcc_authentication_v2(
+            input: MessageDmsFoxconnSetFccAuthenticationV2Input,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Foxconn Set FCC Authentication v2 request to the device.
          *
@@ -19493,13 +19749,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsFoxconnSetFccAuthenticationV2Output> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_foxconn_set_fcc_authentication_v2().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_foxconn_set_fcc_authentication_v2().
          * @returns a #QmiMessageDmsFoxconnSetFccAuthenticationV2Output, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_foxconn_set_fcc_authentication_v2_output_unref().
          */
         foxconn_set_fcc_authentication_v2_finish(res: Gio.AsyncResult): MessageDmsFoxconnSetFccAuthenticationV2Output;
+        /**
+         * Asynchronously sends a Get Activation State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_activation_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_activation_state(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetActivationStateOutput>;
+        /**
+         * Asynchronously sends a Get Activation State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_activation_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_activation_state(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Activation State request to the device.
          *
@@ -19516,13 +19804,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetActivationStateOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_activation_state().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_activation_state().
          * @returns a #QmiMessageDmsGetActivationStateOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_activation_state_output_unref().
          */
         get_activation_state_finish(res: Gio.AsyncResult): MessageDmsGetActivationStateOutput;
+        /**
+         * Asynchronously sends a Get Alt Net Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_alt_net_config_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_alt_net_config(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetAltNetConfigOutput>;
+        /**
+         * Asynchronously sends a Get Alt Net Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_alt_net_config_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_alt_net_config(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Alt Net Config request to the device.
          *
@@ -19539,13 +19859,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetAltNetConfigOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_alt_net_config().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_alt_net_config().
          * @returns a #QmiMessageDmsGetAltNetConfigOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_alt_net_config_output_unref().
          */
         get_alt_net_config_finish(res: Gio.AsyncResult): MessageDmsGetAltNetConfigOutput;
+        /**
+         * Asynchronously sends a Get Band Capabilities request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_band_capabilities_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_band_capabilities(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetBandCapabilitiesOutput>;
+        /**
+         * Asynchronously sends a Get Band Capabilities request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_band_capabilities_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_band_capabilities(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Band Capabilities request to the device.
          *
@@ -19562,13 +19914,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetBandCapabilitiesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_band_capabilities().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_band_capabilities().
          * @returns a #QmiMessageDmsGetBandCapabilitiesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_band_capabilities_output_unref().
          */
         get_band_capabilities_finish(res: Gio.AsyncResult): MessageDmsGetBandCapabilitiesOutput;
+        /**
+         * Asynchronously sends a Get Boot Image Download Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_boot_image_download_mode_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_boot_image_download_mode(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetBootImageDownloadModeOutput>;
+        /**
+         * Asynchronously sends a Get Boot Image Download Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_boot_image_download_mode_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_boot_image_download_mode(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Boot Image Download Mode request to the device.
          *
@@ -19585,13 +19969,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetBootImageDownloadModeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_boot_image_download_mode().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_boot_image_download_mode().
          * @returns a #QmiMessageDmsGetBootImageDownloadModeOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_boot_image_download_mode_output_unref().
          */
         get_boot_image_download_mode_finish(res: Gio.AsyncResult): MessageDmsGetBootImageDownloadModeOutput;
+        /**
+         * Asynchronously sends a Get Capabilities request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_capabilities_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_capabilities(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetCapabilitiesOutput>;
+        /**
+         * Asynchronously sends a Get Capabilities request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_capabilities_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_capabilities(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Capabilities request to the device.
          *
@@ -19608,13 +20024,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetCapabilitiesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_capabilities().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_capabilities().
          * @returns a #QmiMessageDmsGetCapabilitiesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_capabilities_output_unref().
          */
         get_capabilities_finish(res: Gio.AsyncResult): MessageDmsGetCapabilitiesOutput;
+        /**
+         * Asynchronously sends a Get Factory SKU request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_factory_sku_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_factory_sku(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetFactorySkuOutput>;
+        /**
+         * Asynchronously sends a Get Factory SKU request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_factory_sku_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_factory_sku(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Factory SKU request to the device.
          *
@@ -19631,13 +20079,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetFactorySkuOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_factory_sku().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_factory_sku().
          * @returns a #QmiMessageDmsGetFactorySkuOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_factory_sku_output_unref().
          */
         get_factory_sku_finish(res: Gio.AsyncResult): MessageDmsGetFactorySkuOutput;
+        /**
+         * Asynchronously sends a Get Firmware Preference request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_firmware_preference_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_firmware_preference(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetFirmwarePreferenceOutput>;
+        /**
+         * Asynchronously sends a Get Firmware Preference request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_firmware_preference_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_firmware_preference(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Firmware Preference request to the device.
          *
@@ -19654,13 +20134,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetFirmwarePreferenceOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_firmware_preference().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_firmware_preference().
          * @returns a #QmiMessageDmsGetFirmwarePreferenceOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_firmware_preference_output_unref().
          */
         get_firmware_preference_finish(res: Gio.AsyncResult): MessageDmsGetFirmwarePreferenceOutput;
+        /**
+         * Asynchronously sends a Get Hardware Revision request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_hardware_revision_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_hardware_revision(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetHardwareRevisionOutput>;
+        /**
+         * Asynchronously sends a Get Hardware Revision request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_hardware_revision_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_hardware_revision(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Hardware Revision request to the device.
          *
@@ -19677,13 +20189,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetHardwareRevisionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_hardware_revision().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_hardware_revision().
          * @returns a #QmiMessageDmsGetHardwareRevisionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_hardware_revision_output_unref().
          */
         get_hardware_revision_finish(res: Gio.AsyncResult): MessageDmsGetHardwareRevisionOutput;
+        /**
+         * Asynchronously sends a Get IDs request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_ids_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_ids(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetIdsOutput>;
+        /**
+         * Asynchronously sends a Get IDs request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_ids_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_ids(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get IDs request to the device.
          *
@@ -19700,13 +20244,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetIdsOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_ids().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_ids().
          * @returns a #QmiMessageDmsGetIdsOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_ids_output_unref().
          */
         get_ids_finish(res: Gio.AsyncResult): MessageDmsGetIdsOutput;
+        /**
+         * Asynchronously sends a Get MAC Address request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_mac_address_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsGetMacAddressInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_mac_address(
+            input: MessageDmsGetMacAddressInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetMacAddressOutput>;
+        /**
+         * Asynchronously sends a Get MAC Address request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_mac_address_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsGetMacAddressInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_mac_address(
+            input: MessageDmsGetMacAddressInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get MAC Address request to the device.
          *
@@ -19723,13 +20299,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetMacAddressOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_mac_address().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_mac_address().
          * @returns a #QmiMessageDmsGetMacAddressOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_mac_address_output_unref().
          */
         get_mac_address_finish(res: Gio.AsyncResult): MessageDmsGetMacAddressOutput;
+        /**
+         * Asynchronously sends a Get Manufacturer request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_manufacturer_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_manufacturer(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetManufacturerOutput>;
+        /**
+         * Asynchronously sends a Get Manufacturer request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_manufacturer_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_manufacturer(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Manufacturer request to the device.
          *
@@ -19746,13 +20354,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetManufacturerOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_manufacturer().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_manufacturer().
          * @returns a #QmiMessageDmsGetManufacturerOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_manufacturer_output_unref().
          */
         get_manufacturer_finish(res: Gio.AsyncResult): MessageDmsGetManufacturerOutput;
+        /**
+         * Asynchronously sends a Get Model request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_model_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_model(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetModelOutput>;
+        /**
+         * Asynchronously sends a Get Model request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_model_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_model(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Model request to the device.
          *
@@ -19769,13 +20409,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetModelOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_model().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_model().
          * @returns a #QmiMessageDmsGetModelOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_model_output_unref().
          */
         get_model_finish(res: Gio.AsyncResult): MessageDmsGetModelOutput;
+        /**
+         * Asynchronously sends a Get MSISDN request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_msisdn_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_msisdn(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetMsisdnOutput>;
+        /**
+         * Asynchronously sends a Get MSISDN request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_msisdn_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_msisdn(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get MSISDN request to the device.
          *
@@ -19792,13 +20464,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetMsisdnOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_msisdn().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_msisdn().
          * @returns a #QmiMessageDmsGetMsisdnOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_msisdn_output_unref().
          */
         get_msisdn_finish(res: Gio.AsyncResult): MessageDmsGetMsisdnOutput;
+        /**
+         * Asynchronously sends a Get Operating Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_operating_mode_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_operating_mode(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetOperatingModeOutput>;
+        /**
+         * Asynchronously sends a Get Operating Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_operating_mode_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_operating_mode(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Operating Mode request to the device.
          *
@@ -19815,13 +20519,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetOperatingModeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_operating_mode().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_operating_mode().
          * @returns a #QmiMessageDmsGetOperatingModeOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_operating_mode_output_unref().
          */
         get_operating_mode_finish(res: Gio.AsyncResult): MessageDmsGetOperatingModeOutput;
+        /**
+         * Asynchronously sends a Get Power State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_power_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_power_state(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetPowerStateOutput>;
+        /**
+         * Asynchronously sends a Get Power State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_power_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_power_state(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Power State request to the device.
          *
@@ -19838,13 +20574,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetPowerStateOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_power_state().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_power_state().
          * @returns a #QmiMessageDmsGetPowerStateOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_power_state_output_unref().
          */
         get_power_state_finish(res: Gio.AsyncResult): MessageDmsGetPowerStateOutput;
+        /**
+         * Asynchronously sends a Get PRL Version request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_prl_version_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_prl_version(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetPrlVersionOutput>;
+        /**
+         * Asynchronously sends a Get PRL Version request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_prl_version_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_prl_version(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get PRL Version request to the device.
          *
@@ -19861,13 +20629,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetPrlVersionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_prl_version().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_prl_version().
          * @returns a #QmiMessageDmsGetPrlVersionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_prl_version_output_unref().
          */
         get_prl_version_finish(res: Gio.AsyncResult): MessageDmsGetPrlVersionOutput;
+        /**
+         * Asynchronously sends a Get Revision request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_revision_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_revision(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetRevisionOutput>;
+        /**
+         * Asynchronously sends a Get Revision request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_revision_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_revision(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Revision request to the device.
          *
@@ -19884,13 +20684,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetRevisionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_revision().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_revision().
          * @returns a #QmiMessageDmsGetRevisionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_revision_output_unref().
          */
         get_revision_finish(res: Gio.AsyncResult): MessageDmsGetRevisionOutput;
+        /**
+         * Asynchronously sends a Get Software Version request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_software_version_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_software_version(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetSoftwareVersionOutput>;
+        /**
+         * Asynchronously sends a Get Software Version request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_software_version_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_software_version(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Software Version request to the device.
          *
@@ -19907,13 +20739,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetSoftwareVersionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_software_version().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_software_version().
          * @returns a #QmiMessageDmsGetSoftwareVersionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_software_version_output_unref().
          */
         get_software_version_finish(res: Gio.AsyncResult): MessageDmsGetSoftwareVersionOutput;
+        /**
+         * Asynchronously sends a Get Stored Image Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_stored_image_info_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsGetStoredImageInfoInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_stored_image_info(
+            input: MessageDmsGetStoredImageInfoInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetStoredImageInfoOutput>;
+        /**
+         * Asynchronously sends a Get Stored Image Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_stored_image_info_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsGetStoredImageInfoInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_stored_image_info(
+            input: MessageDmsGetStoredImageInfoInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Stored Image Info request to the device.
          *
@@ -19930,13 +20794,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetStoredImageInfoOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_stored_image_info().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_stored_image_info().
          * @returns a #QmiMessageDmsGetStoredImageInfoOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_stored_image_info_output_unref().
          */
         get_stored_image_info_finish(res: Gio.AsyncResult): MessageDmsGetStoredImageInfoOutput;
+        /**
+         * Asynchronously sends a Get Supported Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_supported_messages_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_supported_messages(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetSupportedMessagesOutput>;
+        /**
+         * Asynchronously sends a Get Supported Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_supported_messages_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_supported_messages(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Supported Messages request to the device.
          *
@@ -19953,13 +20849,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetSupportedMessagesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_supported_messages().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_supported_messages().
          * @returns a #QmiMessageDmsGetSupportedMessagesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_supported_messages_output_unref().
          */
         get_supported_messages_finish(res: Gio.AsyncResult): MessageDmsGetSupportedMessagesOutput;
+        /**
+         * Asynchronously sends a Get Time request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_time_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_time(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetTimeOutput>;
+        /**
+         * Asynchronously sends a Get Time request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_time_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_time(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Time request to the device.
          *
@@ -19976,13 +20904,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetTimeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_time().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_time().
          * @returns a #QmiMessageDmsGetTimeOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_time_output_unref().
          */
         get_time_finish(res: Gio.AsyncResult): MessageDmsGetTimeOutput;
+        /**
+         * Asynchronously sends a Get User Lock State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_user_lock_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_user_lock_state(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsGetUserLockStateOutput>;
+        /**
+         * Asynchronously sends a Get User Lock State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_get_user_lock_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_user_lock_state(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get User Lock State request to the device.
          *
@@ -19999,13 +20959,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsGetUserLockStateOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_get_user_lock_state().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_get_user_lock_state().
          * @returns a #QmiMessageDmsGetUserLockStateOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_get_user_lock_state_output_unref().
          */
         get_user_lock_state_finish(res: Gio.AsyncResult): MessageDmsGetUserLockStateOutput;
+        /**
+         * Asynchronously sends a HP Change Device Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_hp_change_device_mode_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsHpChangeDeviceModeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        hp_change_device_mode(
+            input: MessageDmsHpChangeDeviceModeInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsHpChangeDeviceModeOutput>;
+        /**
+         * Asynchronously sends a HP Change Device Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_hp_change_device_mode_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsHpChangeDeviceModeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        hp_change_device_mode(
+            input: MessageDmsHpChangeDeviceModeInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a HP Change Device Mode request to the device.
          *
@@ -20022,13 +21014,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsHpChangeDeviceModeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_hp_change_device_mode().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_hp_change_device_mode().
          * @returns a #QmiMessageDmsHpChangeDeviceModeOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_hp_change_device_mode_output_unref().
          */
         hp_change_device_mode_finish(res: Gio.AsyncResult): MessageDmsHpChangeDeviceModeOutput;
+        /**
+         * Asynchronously sends a List Stored Images request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_list_stored_images_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        list_stored_images(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsListStoredImagesOutput>;
+        /**
+         * Asynchronously sends a List Stored Images request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_list_stored_images_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        list_stored_images(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a List Stored Images request to the device.
          *
@@ -20045,13 +21069,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsListStoredImagesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_list_stored_images().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_list_stored_images().
          * @returns a #QmiMessageDmsListStoredImagesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_list_stored_images_output_unref().
          */
         list_stored_images_finish(res: Gio.AsyncResult): MessageDmsListStoredImagesOutput;
+        /**
+         * Asynchronously sends a Read ERI File request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_read_eri_file_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        read_eri_file(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsReadEriFileOutput>;
+        /**
+         * Asynchronously sends a Read ERI File request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_read_eri_file_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        read_eri_file(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Read ERI File request to the device.
          *
@@ -20068,13 +21124,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsReadEriFileOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_read_eri_file().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_read_eri_file().
          * @returns a #QmiMessageDmsReadEriFileOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_read_eri_file_output_unref().
          */
         read_eri_file_finish(res: Gio.AsyncResult): MessageDmsReadEriFileOutput;
+        /**
+         * Asynchronously sends a Read User Data request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_read_user_data_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        read_user_data(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsReadUserDataOutput>;
+        /**
+         * Asynchronously sends a Read User Data request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_read_user_data_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        read_user_data(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Read User Data request to the device.
          *
@@ -20091,13 +21179,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsReadUserDataOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_read_user_data().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_read_user_data().
          * @returns a #QmiMessageDmsReadUserDataOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_read_user_data_output_unref().
          */
         read_user_data_finish(res: Gio.AsyncResult): MessageDmsReadUserDataOutput;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsResetOutput>;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Reset request to the device.
          *
@@ -20114,13 +21234,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsResetOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_reset().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_reset().
          * @returns a #QmiMessageDmsResetOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_reset_output_unref().
          */
         reset_finish(res: Gio.AsyncResult): MessageDmsResetOutput;
+        /**
+         * Asynchronously sends a Restore Factory Defaults request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_restore_factory_defaults_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsRestoreFactoryDefaultsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        restore_factory_defaults(
+            input: MessageDmsRestoreFactoryDefaultsInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsRestoreFactoryDefaultsOutput>;
+        /**
+         * Asynchronously sends a Restore Factory Defaults request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_restore_factory_defaults_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsRestoreFactoryDefaultsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        restore_factory_defaults(
+            input: MessageDmsRestoreFactoryDefaultsInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Restore Factory Defaults request to the device.
          *
@@ -20137,13 +21289,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsRestoreFactoryDefaultsOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_restore_factory_defaults().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_restore_factory_defaults().
          * @returns a #QmiMessageDmsRestoreFactoryDefaultsOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_restore_factory_defaults_output_unref().
          */
         restore_factory_defaults_finish(res: Gio.AsyncResult): MessageDmsRestoreFactoryDefaultsOutput;
+        /**
+         * Asynchronously sends a Set Alt Net Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_alt_net_config_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetAltNetConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_alt_net_config(
+            input: MessageDmsSetAltNetConfigInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsSetAltNetConfigOutput>;
+        /**
+         * Asynchronously sends a Set Alt Net Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_alt_net_config_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetAltNetConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_alt_net_config(
+            input: MessageDmsSetAltNetConfigInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Alt Net Config request to the device.
          *
@@ -20160,13 +21344,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsSetAltNetConfigOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_set_alt_net_config().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_alt_net_config().
          * @returns a #QmiMessageDmsSetAltNetConfigOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_set_alt_net_config_output_unref().
          */
         set_alt_net_config_finish(res: Gio.AsyncResult): MessageDmsSetAltNetConfigOutput;
+        /**
+         * Asynchronously sends a Set Boot Image Download Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_boot_image_download_mode_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetBootImageDownloadModeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_boot_image_download_mode(
+            input: MessageDmsSetBootImageDownloadModeInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsSetBootImageDownloadModeOutput>;
+        /**
+         * Asynchronously sends a Set Boot Image Download Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_boot_image_download_mode_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetBootImageDownloadModeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_boot_image_download_mode(
+            input: MessageDmsSetBootImageDownloadModeInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Boot Image Download Mode request to the device.
          *
@@ -20183,13 +21399,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsSetBootImageDownloadModeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_set_boot_image_download_mode().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_boot_image_download_mode().
          * @returns a #QmiMessageDmsSetBootImageDownloadModeOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_set_boot_image_download_mode_output_unref().
          */
         set_boot_image_download_mode_finish(res: Gio.AsyncResult): MessageDmsSetBootImageDownloadModeOutput;
+        /**
+         * Asynchronously sends a Set Event Report request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_event_report_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetEventReportInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_event_report(
+            input: MessageDmsSetEventReportInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsSetEventReportOutput>;
+        /**
+         * Asynchronously sends a Set Event Report request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_event_report_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetEventReportInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_event_report(
+            input: MessageDmsSetEventReportInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Event Report request to the device.
          *
@@ -20206,13 +21454,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsSetEventReportOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_set_event_report().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_event_report().
          * @returns a #QmiMessageDmsSetEventReportOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_set_event_report_output_unref().
          */
         set_event_report_finish(res: Gio.AsyncResult): MessageDmsSetEventReportOutput;
+        /**
+         * Asynchronously sends a Set FCC Authentication request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_fcc_authentication_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_fcc_authentication(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsSetFccAuthenticationOutput>;
+        /**
+         * Asynchronously sends a Set FCC Authentication request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_fcc_authentication_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_fcc_authentication(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set FCC Authentication request to the device.
          *
@@ -20229,13 +21509,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsSetFccAuthenticationOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_set_fcc_authentication().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_fcc_authentication().
          * @returns a #QmiMessageDmsSetFccAuthenticationOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_set_fcc_authentication_output_unref().
          */
         set_fcc_authentication_finish(res: Gio.AsyncResult): MessageDmsSetFccAuthenticationOutput;
+        /**
+         * Asynchronously sends a Set Firmware ID request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_firmware_id_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_firmware_id(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsSetFirmwareIdOutput>;
+        /**
+         * Asynchronously sends a Set Firmware ID request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_firmware_id_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_firmware_id(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Firmware ID request to the device.
          *
@@ -20252,13 +21564,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsSetFirmwareIdOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_set_firmware_id().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_firmware_id().
          * @returns a #QmiMessageDmsSetFirmwareIdOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_set_firmware_id_output_unref().
          */
         set_firmware_id_finish(res: Gio.AsyncResult): MessageDmsSetFirmwareIdOutput;
+        /**
+         * Asynchronously sends a Set Firmware Preference request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_firmware_preference_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetFirmwarePreferenceInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_firmware_preference(
+            input: MessageDmsSetFirmwarePreferenceInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsSetFirmwarePreferenceOutput>;
+        /**
+         * Asynchronously sends a Set Firmware Preference request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_firmware_preference_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetFirmwarePreferenceInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_firmware_preference(
+            input: MessageDmsSetFirmwarePreferenceInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Firmware Preference request to the device.
          *
@@ -20275,13 +21619,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsSetFirmwarePreferenceOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_set_firmware_preference().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_firmware_preference().
          * @returns a #QmiMessageDmsSetFirmwarePreferenceOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_set_firmware_preference_output_unref().
          */
         set_firmware_preference_finish(res: Gio.AsyncResult): MessageDmsSetFirmwarePreferenceOutput;
+        /**
+         * Asynchronously sends a Set Operating Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_operating_mode_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetOperatingModeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_operating_mode(
+            input: MessageDmsSetOperatingModeInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsSetOperatingModeOutput>;
+        /**
+         * Asynchronously sends a Set Operating Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_operating_mode_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetOperatingModeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_operating_mode(
+            input: MessageDmsSetOperatingModeInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Operating Mode request to the device.
          *
@@ -20298,13 +21674,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsSetOperatingModeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_set_operating_mode().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_operating_mode().
          * @returns a #QmiMessageDmsSetOperatingModeOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_set_operating_mode_output_unref().
          */
         set_operating_mode_finish(res: Gio.AsyncResult): MessageDmsSetOperatingModeOutput;
+        /**
+         * Asynchronously sends a Set Service Programming Code request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_service_programming_code_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetServiceProgrammingCodeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_service_programming_code(
+            input: MessageDmsSetServiceProgrammingCodeInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsSetServiceProgrammingCodeOutput>;
+        /**
+         * Asynchronously sends a Set Service Programming Code request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_service_programming_code_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetServiceProgrammingCodeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_service_programming_code(
+            input: MessageDmsSetServiceProgrammingCodeInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Service Programming Code request to the device.
          *
@@ -20321,13 +21729,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsSetServiceProgrammingCodeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_set_service_programming_code().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_service_programming_code().
          * @returns a #QmiMessageDmsSetServiceProgrammingCodeOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_set_service_programming_code_output_unref().
          */
         set_service_programming_code_finish(res: Gio.AsyncResult): MessageDmsSetServiceProgrammingCodeOutput;
+        /**
+         * Asynchronously sends a Set Time request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_time_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetTimeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_time(
+            input: MessageDmsSetTimeInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsSetTimeOutput>;
+        /**
+         * Asynchronously sends a Set Time request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_time_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetTimeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_time(
+            input: MessageDmsSetTimeInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Time request to the device.
          *
@@ -20344,13 +21784,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsSetTimeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_set_time().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_time().
          * @returns a #QmiMessageDmsSetTimeOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_set_time_output_unref().
          */
         set_time_finish(res: Gio.AsyncResult): MessageDmsSetTimeOutput;
+        /**
+         * Asynchronously sends a Set User Lock Code request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_user_lock_code_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetUserLockCodeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_user_lock_code(
+            input: MessageDmsSetUserLockCodeInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsSetUserLockCodeOutput>;
+        /**
+         * Asynchronously sends a Set User Lock Code request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_user_lock_code_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetUserLockCodeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_user_lock_code(
+            input: MessageDmsSetUserLockCodeInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set User Lock Code request to the device.
          *
@@ -20367,13 +21839,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsSetUserLockCodeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_set_user_lock_code().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_user_lock_code().
          * @returns a #QmiMessageDmsSetUserLockCodeOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_set_user_lock_code_output_unref().
          */
         set_user_lock_code_finish(res: Gio.AsyncResult): MessageDmsSetUserLockCodeOutput;
+        /**
+         * Asynchronously sends a Set User Lock State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_user_lock_state_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetUserLockStateInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_user_lock_state(
+            input: MessageDmsSetUserLockStateInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsSetUserLockStateOutput>;
+        /**
+         * Asynchronously sends a Set User Lock State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_set_user_lock_state_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSetUserLockStateInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_user_lock_state(
+            input: MessageDmsSetUserLockStateInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set User Lock State request to the device.
          *
@@ -20390,13 +21894,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsSetUserLockStateOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_set_user_lock_state().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_set_user_lock_state().
          * @returns a #QmiMessageDmsSetUserLockStateOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_set_user_lock_state_output_unref().
          */
         set_user_lock_state_finish(res: Gio.AsyncResult): MessageDmsSetUserLockStateOutput;
+        /**
+         * Asynchronously sends a Swi Get Current Firmware request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_swi_get_current_firmware_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        swi_get_current_firmware(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsSwiGetCurrentFirmwareOutput>;
+        /**
+         * Asynchronously sends a Swi Get Current Firmware request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_swi_get_current_firmware_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        swi_get_current_firmware(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Swi Get Current Firmware request to the device.
          *
@@ -20413,13 +21949,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsSwiGetCurrentFirmwareOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_swi_get_current_firmware().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_swi_get_current_firmware().
          * @returns a #QmiMessageDmsSwiGetCurrentFirmwareOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_swi_get_current_firmware_output_unref().
          */
         swi_get_current_firmware_finish(res: Gio.AsyncResult): MessageDmsSwiGetCurrentFirmwareOutput;
+        /**
+         * Asynchronously sends a Swi Get USB Composition request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_swi_get_usb_composition_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        swi_get_usb_composition(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsSwiGetUsbCompositionOutput>;
+        /**
+         * Asynchronously sends a Swi Get USB Composition request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_swi_get_usb_composition_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        swi_get_usb_composition(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Swi Get USB Composition request to the device.
          *
@@ -20436,13 +22004,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsSwiGetUsbCompositionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_swi_get_usb_composition().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_swi_get_usb_composition().
          * @returns a #QmiMessageDmsSwiGetUsbCompositionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_swi_get_usb_composition_output_unref().
          */
         swi_get_usb_composition_finish(res: Gio.AsyncResult): MessageDmsSwiGetUsbCompositionOutput;
+        /**
+         * Asynchronously sends a Swi Set USB Composition request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_swi_set_usb_composition_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSwiSetUsbCompositionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        swi_set_usb_composition(
+            input: MessageDmsSwiSetUsbCompositionInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsSwiSetUsbCompositionOutput>;
+        /**
+         * Asynchronously sends a Swi Set USB Composition request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_swi_set_usb_composition_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsSwiSetUsbCompositionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        swi_set_usb_composition(
+            input: MessageDmsSwiSetUsbCompositionInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Swi Set USB Composition request to the device.
          *
@@ -20459,13 +22059,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsSwiSetUsbCompositionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_swi_set_usb_composition().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_swi_set_usb_composition().
          * @returns a #QmiMessageDmsSwiSetUsbCompositionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_swi_set_usb_composition_output_unref().
          */
         swi_set_usb_composition_finish(res: Gio.AsyncResult): MessageDmsSwiSetUsbCompositionOutput;
+        /**
+         * Asynchronously sends a UIM Change PIN request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_change_pin_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsUimChangePinInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        uim_change_pin(
+            input: MessageDmsUimChangePinInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsUimChangePinOutput>;
+        /**
+         * Asynchronously sends a UIM Change PIN request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_change_pin_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsUimChangePinInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        uim_change_pin(
+            input: MessageDmsUimChangePinInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a UIM Change PIN request to the device.
          *
@@ -20482,13 +22114,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsUimChangePinOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_uim_change_pin().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_change_pin().
          * @returns a #QmiMessageDmsUimChangePinOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_uim_change_pin_output_unref().
          */
         uim_change_pin_finish(res: Gio.AsyncResult): MessageDmsUimChangePinOutput;
+        /**
+         * Asynchronously sends a UIM Get CK Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_get_ck_status_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsUimGetCkStatusInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        uim_get_ck_status(
+            input: MessageDmsUimGetCkStatusInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsUimGetCkStatusOutput>;
+        /**
+         * Asynchronously sends a UIM Get CK Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_get_ck_status_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsUimGetCkStatusInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        uim_get_ck_status(
+            input: MessageDmsUimGetCkStatusInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a UIM Get CK Status request to the device.
          *
@@ -20505,13 +22169,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsUimGetCkStatusOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_uim_get_ck_status().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_get_ck_status().
          * @returns a #QmiMessageDmsUimGetCkStatusOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_uim_get_ck_status_output_unref().
          */
         uim_get_ck_status_finish(res: Gio.AsyncResult): MessageDmsUimGetCkStatusOutput;
+        /**
+         * Asynchronously sends a UIM Get ICCID request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_get_iccid_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        uim_get_iccid(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsUimGetIccidOutput>;
+        /**
+         * Asynchronously sends a UIM Get ICCID request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_get_iccid_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        uim_get_iccid(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a UIM Get ICCID request to the device.
          *
@@ -20528,13 +22224,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsUimGetIccidOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_uim_get_iccid().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_get_iccid().
          * @returns a #QmiMessageDmsUimGetIccidOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_uim_get_iccid_output_unref().
          */
         uim_get_iccid_finish(res: Gio.AsyncResult): MessageDmsUimGetIccidOutput;
+        /**
+         * Asynchronously sends a UIM Get IMSI request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_get_imsi_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        uim_get_imsi(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsUimGetImsiOutput>;
+        /**
+         * Asynchronously sends a UIM Get IMSI request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_get_imsi_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        uim_get_imsi(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a UIM Get IMSI request to the device.
          *
@@ -20551,13 +22279,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsUimGetImsiOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_uim_get_imsi().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_get_imsi().
          * @returns a #QmiMessageDmsUimGetImsiOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_uim_get_imsi_output_unref().
          */
         uim_get_imsi_finish(res: Gio.AsyncResult): MessageDmsUimGetImsiOutput;
+        /**
+         * Asynchronously sends a UIM Get PIN Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_get_pin_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        uim_get_pin_status(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsUimGetPinStatusOutput>;
+        /**
+         * Asynchronously sends a UIM Get PIN Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_get_pin_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        uim_get_pin_status(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a UIM Get PIN Status request to the device.
          *
@@ -20574,13 +22334,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsUimGetPinStatusOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_uim_get_pin_status().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_get_pin_status().
          * @returns a #QmiMessageDmsUimGetPinStatusOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_uim_get_pin_status_output_unref().
          */
         uim_get_pin_status_finish(res: Gio.AsyncResult): MessageDmsUimGetPinStatusOutput;
+        /**
+         * Asynchronously sends a UIM Get State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_get_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        uim_get_state(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsUimGetStateOutput>;
+        /**
+         * Asynchronously sends a UIM Get State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_get_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        uim_get_state(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a UIM Get State request to the device.
          *
@@ -20597,13 +22389,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsUimGetStateOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_uim_get_state().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_get_state().
          * @returns a #QmiMessageDmsUimGetStateOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_uim_get_state_output_unref().
          */
         uim_get_state_finish(res: Gio.AsyncResult): MessageDmsUimGetStateOutput;
+        /**
+         * Asynchronously sends a UIM Set CK Protection request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_set_ck_protection_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsUimSetCkProtectionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        uim_set_ck_protection(
+            input: MessageDmsUimSetCkProtectionInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsUimSetCkProtectionOutput>;
+        /**
+         * Asynchronously sends a UIM Set CK Protection request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_set_ck_protection_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsUimSetCkProtectionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        uim_set_ck_protection(
+            input: MessageDmsUimSetCkProtectionInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a UIM Set CK Protection request to the device.
          *
@@ -20620,13 +22444,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsUimSetCkProtectionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_uim_set_ck_protection().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_set_ck_protection().
          * @returns a #QmiMessageDmsUimSetCkProtectionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_uim_set_ck_protection_output_unref().
          */
         uim_set_ck_protection_finish(res: Gio.AsyncResult): MessageDmsUimSetCkProtectionOutput;
+        /**
+         * Asynchronously sends a UIM Set PIN Protection request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_set_pin_protection_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsUimSetPinProtectionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        uim_set_pin_protection(
+            input: MessageDmsUimSetPinProtectionInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsUimSetPinProtectionOutput>;
+        /**
+         * Asynchronously sends a UIM Set PIN Protection request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_set_pin_protection_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsUimSetPinProtectionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        uim_set_pin_protection(
+            input: MessageDmsUimSetPinProtectionInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a UIM Set PIN Protection request to the device.
          *
@@ -20643,13 +22499,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsUimSetPinProtectionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_uim_set_pin_protection().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_set_pin_protection().
          * @returns a #QmiMessageDmsUimSetPinProtectionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_uim_set_pin_protection_output_unref().
          */
         uim_set_pin_protection_finish(res: Gio.AsyncResult): MessageDmsUimSetPinProtectionOutput;
+        /**
+         * Asynchronously sends a UIM Unblock CK request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_unblock_ck_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsUimUnblockCkInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        uim_unblock_ck(
+            input: MessageDmsUimUnblockCkInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsUimUnblockCkOutput>;
+        /**
+         * Asynchronously sends a UIM Unblock CK request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_unblock_ck_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsUimUnblockCkInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        uim_unblock_ck(
+            input: MessageDmsUimUnblockCkInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a UIM Unblock CK request to the device.
          *
@@ -20666,13 +22554,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsUimUnblockCkOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_uim_unblock_ck().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_unblock_ck().
          * @returns a #QmiMessageDmsUimUnblockCkOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_uim_unblock_ck_output_unref().
          */
         uim_unblock_ck_finish(res: Gio.AsyncResult): MessageDmsUimUnblockCkOutput;
+        /**
+         * Asynchronously sends a UIM Unblock PIN request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_unblock_pin_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsUimUnblockPinInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        uim_unblock_pin(
+            input: MessageDmsUimUnblockPinInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsUimUnblockPinOutput>;
+        /**
+         * Asynchronously sends a UIM Unblock PIN request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_unblock_pin_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsUimUnblockPinInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        uim_unblock_pin(
+            input: MessageDmsUimUnblockPinInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a UIM Unblock PIN request to the device.
          *
@@ -20689,13 +22609,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsUimUnblockPinOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_uim_unblock_pin().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_unblock_pin().
          * @returns a #QmiMessageDmsUimUnblockPinOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_uim_unblock_pin_output_unref().
          */
         uim_unblock_pin_finish(res: Gio.AsyncResult): MessageDmsUimUnblockPinOutput;
+        /**
+         * Asynchronously sends a UIM Verify PIN request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_verify_pin_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsUimVerifyPinInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        uim_verify_pin(
+            input: MessageDmsUimVerifyPinInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsUimVerifyPinOutput>;
+        /**
+         * Asynchronously sends a UIM Verify PIN request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_uim_verify_pin_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsUimVerifyPinInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        uim_verify_pin(
+            input: MessageDmsUimVerifyPinInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a UIM Verify PIN request to the device.
          *
@@ -20712,13 +22664,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsUimVerifyPinOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_uim_verify_pin().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_uim_verify_pin().
          * @returns a #QmiMessageDmsUimVerifyPinOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_uim_verify_pin_output_unref().
          */
         uim_verify_pin_finish(res: Gio.AsyncResult): MessageDmsUimVerifyPinOutput;
+        /**
+         * Asynchronously sends a Validate Service Programming Code request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_validate_service_programming_code_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsValidateServiceProgrammingCodeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        validate_service_programming_code(
+            input: MessageDmsValidateServiceProgrammingCodeInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsValidateServiceProgrammingCodeOutput>;
+        /**
+         * Asynchronously sends a Validate Service Programming Code request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_validate_service_programming_code_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsValidateServiceProgrammingCodeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        validate_service_programming_code(
+            input: MessageDmsValidateServiceProgrammingCodeInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Validate Service Programming Code request to the device.
          *
@@ -20735,13 +22719,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsValidateServiceProgrammingCodeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_validate_service_programming_code().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_validate_service_programming_code().
          * @returns a #QmiMessageDmsValidateServiceProgrammingCodeOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dms_validate_service_programming_code_output_unref().
          */
         validate_service_programming_code_finish(res: Gio.AsyncResult): MessageDmsValidateServiceProgrammingCodeOutput;
+        /**
+         * Asynchronously sends a Write User Data request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_write_user_data_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsWriteUserDataInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        write_user_data(
+            input: MessageDmsWriteUserDataInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDmsWriteUserDataOutput>;
+        /**
+         * Asynchronously sends a Write User Data request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dms_write_user_data_finish() to get the result of the operation.
+         * @param input a #QmiMessageDmsWriteUserDataInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        write_user_data(
+            input: MessageDmsWriteUserDataInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Write User Data request to the device.
          *
@@ -20758,7 +22774,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDmsWriteUserDataOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dms_write_user_data().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dms_write_user_data().
@@ -20797,6 +22813,38 @@ export namespace Qmi {
          * @param unused %NULL. This message doesn't have any input bundle.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        close_port(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDpmClosePortOutput>;
+        /**
+         * Asynchronously sends a Close Port request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dpm_close_port_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        close_port(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Close Port request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dpm_close_port_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         close_port(
@@ -20804,13 +22852,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDpmClosePortOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dpm_close_port().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dpm_close_port().
          * @returns a #QmiMessageDpmClosePortOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dpm_close_port_output_unref().
          */
         close_port_finish(res: Gio.AsyncResult): MessageDpmClosePortOutput;
+        /**
+         * Asynchronously sends a Open Port request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dpm_open_port_finish() to get the result of the operation.
+         * @param input a #QmiMessageDpmOpenPortInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        open_port(
+            input: MessageDpmOpenPortInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDpmOpenPortOutput>;
+        /**
+         * Asynchronously sends a Open Port request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dpm_open_port_finish() to get the result of the operation.
+         * @param input a #QmiMessageDpmOpenPortInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        open_port(
+            input: MessageDpmOpenPortInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Open Port request to the device.
          *
@@ -20827,7 +22907,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDpmOpenPortOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dpm_open_port().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dpm_open_port().
@@ -20887,6 +22967,38 @@ export namespace Qmi {
          * @param input a #QmiMessageDsdGetApnInfoInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        get_apn_info(
+            input: MessageDsdGetApnInfoInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDsdGetApnInfoOutput>;
+        /**
+         * Asynchronously sends a Get APN Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dsd_get_apn_info_finish() to get the result of the operation.
+         * @param input a #QmiMessageDsdGetApnInfoInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_apn_info(
+            input: MessageDsdGetApnInfoInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Get APN Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dsd_get_apn_info_finish() to get the result of the operation.
+         * @param input a #QmiMessageDsdGetApnInfoInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         get_apn_info(
@@ -20894,13 +23006,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDsdGetApnInfoOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dsd_get_apn_info().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dsd_get_apn_info().
          * @returns a #QmiMessageDsdGetApnInfoOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dsd_get_apn_info_output_unref().
          */
         get_apn_info_finish(res: Gio.AsyncResult): MessageDsdGetApnInfoOutput;
+        /**
+         * Asynchronously sends a Get System Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dsd_get_system_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_system_status(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDsdGetSystemStatusOutput>;
+        /**
+         * Asynchronously sends a Get System Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dsd_get_system_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_system_status(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get System Status request to the device.
          *
@@ -20917,13 +23061,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDsdGetSystemStatusOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dsd_get_system_status().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dsd_get_system_status().
          * @returns a #QmiMessageDsdGetSystemStatusOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dsd_get_system_status_output_unref().
          */
         get_system_status_finish(res: Gio.AsyncResult): MessageDsdGetSystemStatusOutput;
+        /**
+         * Asynchronously sends a Set APN Type request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dsd_set_apn_type_finish() to get the result of the operation.
+         * @param input a #QmiMessageDsdSetApnTypeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_apn_type(
+            input: MessageDsdSetApnTypeInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDsdSetApnTypeOutput>;
+        /**
+         * Asynchronously sends a Set APN Type request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dsd_set_apn_type_finish() to get the result of the operation.
+         * @param input a #QmiMessageDsdSetApnTypeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_apn_type(
+            input: MessageDsdSetApnTypeInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set APN Type request to the device.
          *
@@ -20940,13 +23116,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDsdSetApnTypeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dsd_set_apn_type().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dsd_set_apn_type().
          * @returns a #QmiMessageDsdSetApnTypeOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_dsd_set_apn_type_output_unref().
          */
         set_apn_type_finish(res: Gio.AsyncResult): MessageDsdSetApnTypeOutput;
+        /**
+         * Asynchronously sends a System Status Change request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dsd_system_status_change_finish() to get the result of the operation.
+         * @param input a #QmiMessageDsdSystemStatusChangeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        system_status_change(
+            input: MessageDsdSystemStatusChangeInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageDsdSystemStatusChangeOutput>;
+        /**
+         * Asynchronously sends a System Status Change request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_dsd_system_status_change_finish() to get the result of the operation.
+         * @param input a #QmiMessageDsdSystemStatusChangeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        system_status_change(
+            input: MessageDsdSystemStatusChangeInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a System Status Change request to the device.
          *
@@ -20963,7 +23171,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageDsdSystemStatusChangeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_dsd_system_status_change().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_dsd_system_status_change().
@@ -21002,6 +23210,38 @@ export namespace Qmi {
          * @param input a #QmiMessageFoxGetFirmwareVersionInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        get_firmware_version(
+            input: MessageFoxGetFirmwareVersionInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageFoxGetFirmwareVersionOutput>;
+        /**
+         * Asynchronously sends a Get Firmware Version request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_fox_get_firmware_version_finish() to get the result of the operation.
+         * @param input a #QmiMessageFoxGetFirmwareVersionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_firmware_version(
+            input: MessageFoxGetFirmwareVersionInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Get Firmware Version request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_fox_get_firmware_version_finish() to get the result of the operation.
+         * @param input a #QmiMessageFoxGetFirmwareVersionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         get_firmware_version(
@@ -21009,7 +23249,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageFoxGetFirmwareVersionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_fox_get_firmware_version().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_fox_get_firmware_version().
@@ -21048,6 +23288,38 @@ export namespace Qmi {
          * @param input a #QmiMessageGasDmsGetFirmwareListInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        dms_get_firmware_list(
+            input: MessageGasDmsGetFirmwareListInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageGasDmsGetFirmwareListOutput>;
+        /**
+         * Asynchronously sends a DMS Get Firmware List request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_gas_dms_get_firmware_list_finish() to get the result of the operation.
+         * @param input a #QmiMessageGasDmsGetFirmwareListInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        dms_get_firmware_list(
+            input: MessageGasDmsGetFirmwareListInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a DMS Get Firmware List request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_gas_dms_get_firmware_list_finish() to get the result of the operation.
+         * @param input a #QmiMessageGasDmsGetFirmwareListInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         dms_get_firmware_list(
@@ -21055,13 +23327,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageGasDmsGetFirmwareListOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_gas_dms_get_firmware_list().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_gas_dms_get_firmware_list().
          * @returns a #QmiMessageGasDmsGetFirmwareListOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_gas_dms_get_firmware_list_output_unref().
          */
         dms_get_firmware_list_finish(res: Gio.AsyncResult): MessageGasDmsGetFirmwareListOutput;
+        /**
+         * Asynchronously sends a DMS Get USB Composition request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_gas_dms_get_usb_composition_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        dms_get_usb_composition(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageGasDmsGetUsbCompositionOutput>;
+        /**
+         * Asynchronously sends a DMS Get USB Composition request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_gas_dms_get_usb_composition_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        dms_get_usb_composition(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a DMS Get USB Composition request to the device.
          *
@@ -21078,13 +23382,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageGasDmsGetUsbCompositionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_gas_dms_get_usb_composition().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_gas_dms_get_usb_composition().
          * @returns a #QmiMessageGasDmsGetUsbCompositionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_gas_dms_get_usb_composition_output_unref().
          */
         dms_get_usb_composition_finish(res: Gio.AsyncResult): MessageGasDmsGetUsbCompositionOutput;
+        /**
+         * Asynchronously sends a DMS Set Active Firmware request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_gas_dms_set_active_firmware_finish() to get the result of the operation.
+         * @param input a #QmiMessageGasDmsSetActiveFirmwareInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        dms_set_active_firmware(
+            input: MessageGasDmsSetActiveFirmwareInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageGasDmsSetActiveFirmwareOutput>;
+        /**
+         * Asynchronously sends a DMS Set Active Firmware request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_gas_dms_set_active_firmware_finish() to get the result of the operation.
+         * @param input a #QmiMessageGasDmsSetActiveFirmwareInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        dms_set_active_firmware(
+            input: MessageGasDmsSetActiveFirmwareInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a DMS Set Active Firmware request to the device.
          *
@@ -21101,13 +23437,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageGasDmsSetActiveFirmwareOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_gas_dms_set_active_firmware().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_gas_dms_set_active_firmware().
          * @returns a #QmiMessageGasDmsSetActiveFirmwareOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_gas_dms_set_active_firmware_output_unref().
          */
         dms_set_active_firmware_finish(res: Gio.AsyncResult): MessageGasDmsSetActiveFirmwareOutput;
+        /**
+         * Asynchronously sends a DMS Set USB Composition request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_gas_dms_set_usb_composition_finish() to get the result of the operation.
+         * @param input a #QmiMessageGasDmsSetUsbCompositionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        dms_set_usb_composition(
+            input: MessageGasDmsSetUsbCompositionInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageGasDmsSetUsbCompositionOutput>;
+        /**
+         * Asynchronously sends a DMS Set USB Composition request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_gas_dms_set_usb_composition_finish() to get the result of the operation.
+         * @param input a #QmiMessageGasDmsSetUsbCompositionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        dms_set_usb_composition(
+            input: MessageGasDmsSetUsbCompositionInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a DMS Set USB Composition request to the device.
          *
@@ -21124,7 +23492,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageGasDmsSetUsbCompositionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_gas_dms_set_usb_composition().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_gas_dms_set_usb_composition().
@@ -21163,6 +23531,38 @@ export namespace Qmi {
          * @param unused %NULL. This message doesn't have any input bundle.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        test_get_value(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageGmsTestGetValueOutput>;
+        /**
+         * Asynchronously sends a Test Get Value request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_gms_test_get_value_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        test_get_value(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Test Get Value request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_gms_test_get_value_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         test_get_value(
@@ -21170,13 +23570,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageGmsTestGetValueOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_gms_test_get_value().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_gms_test_get_value().
          * @returns a #QmiMessageGmsTestGetValueOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_gms_test_get_value_output_unref().
          */
         test_get_value_finish(res: Gio.AsyncResult): MessageGmsTestGetValueOutput;
+        /**
+         * Asynchronously sends a Test Set Value request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_gms_test_set_value_finish() to get the result of the operation.
+         * @param input a #QmiMessageGmsTestSetValueInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        test_set_value(
+            input: MessageGmsTestSetValueInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageGmsTestSetValueOutput>;
+        /**
+         * Asynchronously sends a Test Set Value request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_gms_test_set_value_finish() to get the result of the operation.
+         * @param input a #QmiMessageGmsTestSetValueInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        test_set_value(
+            input: MessageGmsTestSetValueInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Test Set Value request to the device.
          *
@@ -21193,7 +23625,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageGmsTestSetValueOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_gms_test_set_value().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_gms_test_set_value().
@@ -21232,6 +23664,38 @@ export namespace Qmi {
          * @param unused %NULL. This message doesn't have any input bundle.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        get_ims_services_enabled_setting(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageImsGetImsServicesEnabledSettingOutput>;
+        /**
+         * Asynchronously sends a Get IMS Services Enabled Setting request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_ims_get_ims_services_enabled_setting_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_ims_services_enabled_setting(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Get IMS Services Enabled Setting request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_ims_get_ims_services_enabled_setting_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         get_ims_services_enabled_setting(
@@ -21239,7 +23703,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageImsGetImsServicesEnabledSettingOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_ims_get_ims_services_enabled_setting().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_ims_get_ims_services_enabled_setting().
@@ -21278,6 +23742,38 @@ export namespace Qmi {
          * @param unused %NULL. This message doesn't have any input bundle.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        get_ims_registration_status(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageImsaGetImsRegistrationStatusOutput>;
+        /**
+         * Asynchronously sends a Get IMS Registration Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_imsa_get_ims_registration_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_ims_registration_status(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Get IMS Registration Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_imsa_get_ims_registration_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         get_ims_registration_status(
@@ -21285,13 +23781,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageImsaGetImsRegistrationStatusOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_imsa_get_ims_registration_status().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_imsa_get_ims_registration_status().
          * @returns a #QmiMessageImsaGetImsRegistrationStatusOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_imsa_get_ims_registration_status_output_unref().
          */
         get_ims_registration_status_finish(res: Gio.AsyncResult): MessageImsaGetImsRegistrationStatusOutput;
+        /**
+         * Asynchronously sends a Get IMS Services Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_imsa_get_ims_services_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_ims_services_status(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageImsaGetImsServicesStatusOutput>;
+        /**
+         * Asynchronously sends a Get IMS Services Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_imsa_get_ims_services_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_ims_services_status(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get IMS Services Status request to the device.
          *
@@ -21308,7 +23836,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageImsaGetImsServicesStatusOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_imsa_get_ims_services_status().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_imsa_get_ims_services_status().
@@ -21347,6 +23875,38 @@ export namespace Qmi {
          * @param unused %NULL. This message doesn't have any input bundle.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        get_enabler_state(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageImspGetEnablerStateOutput>;
+        /**
+         * Asynchronously sends a Get Enabler State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_imsp_get_enabler_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_enabler_state(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Get Enabler State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_imsp_get_enabler_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         get_enabler_state(
@@ -21354,7 +23914,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageImspGetEnablerStateOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_imsp_get_enabler_state().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_imsp_get_enabler_state().
@@ -21610,6 +24170,38 @@ export namespace Qmi {
          * @param input a #QmiMessageLocDeleteAssistanceDataInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        delete_assistance_data(
+            input: MessageLocDeleteAssistanceDataInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageLocDeleteAssistanceDataOutput>;
+        /**
+         * Asynchronously sends a Delete Assistance Data request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_delete_assistance_data_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocDeleteAssistanceDataInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        delete_assistance_data(
+            input: MessageLocDeleteAssistanceDataInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Delete Assistance Data request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_delete_assistance_data_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocDeleteAssistanceDataInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         delete_assistance_data(
@@ -21617,13 +24209,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageLocDeleteAssistanceDataOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_loc_delete_assistance_data().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_delete_assistance_data().
          * @returns a #QmiMessageLocDeleteAssistanceDataOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_loc_delete_assistance_data_output_unref().
          */
         delete_assistance_data_finish(res: Gio.AsyncResult): MessageLocDeleteAssistanceDataOutput;
+        /**
+         * Asynchronously sends a Get Engine Lock request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_get_engine_lock_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_engine_lock(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageLocGetEngineLockOutput>;
+        /**
+         * Asynchronously sends a Get Engine Lock request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_get_engine_lock_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_engine_lock(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Engine Lock request to the device.
          *
@@ -21640,13 +24264,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageLocGetEngineLockOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_loc_get_engine_lock().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_get_engine_lock().
          * @returns a #QmiMessageLocGetEngineLockOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_loc_get_engine_lock_output_unref().
          */
         get_engine_lock_finish(res: Gio.AsyncResult): MessageLocGetEngineLockOutput;
+        /**
+         * Asynchronously sends a Get NMEA Types request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_get_nmea_types_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_nmea_types(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageLocGetNmeaTypesOutput>;
+        /**
+         * Asynchronously sends a Get NMEA Types request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_get_nmea_types_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_nmea_types(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get NMEA Types request to the device.
          *
@@ -21663,13 +24319,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageLocGetNmeaTypesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_loc_get_nmea_types().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_get_nmea_types().
          * @returns a #QmiMessageLocGetNmeaTypesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_loc_get_nmea_types_output_unref().
          */
         get_nmea_types_finish(res: Gio.AsyncResult): MessageLocGetNmeaTypesOutput;
+        /**
+         * Asynchronously sends a Get Operation Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_get_operation_mode_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_operation_mode(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageLocGetOperationModeOutput>;
+        /**
+         * Asynchronously sends a Get Operation Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_get_operation_mode_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_operation_mode(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Operation Mode request to the device.
          *
@@ -21686,13 +24374,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageLocGetOperationModeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_loc_get_operation_mode().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_get_operation_mode().
          * @returns a #QmiMessageLocGetOperationModeOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_loc_get_operation_mode_output_unref().
          */
         get_operation_mode_finish(res: Gio.AsyncResult): MessageLocGetOperationModeOutput;
+        /**
+         * Asynchronously sends a Get Predicted Orbits Data Source request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_get_predicted_orbits_data_source_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_predicted_orbits_data_source(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageLocGetPredictedOrbitsDataSourceOutput>;
+        /**
+         * Asynchronously sends a Get Predicted Orbits Data Source request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_get_predicted_orbits_data_source_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_predicted_orbits_data_source(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Predicted Orbits Data Source request to the device.
          *
@@ -21709,13 +24429,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageLocGetPredictedOrbitsDataSourceOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_loc_get_predicted_orbits_data_source().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_get_predicted_orbits_data_source().
          * @returns a #QmiMessageLocGetPredictedOrbitsDataSourceOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_loc_get_predicted_orbits_data_source_output_unref().
          */
         get_predicted_orbits_data_source_finish(res: Gio.AsyncResult): MessageLocGetPredictedOrbitsDataSourceOutput;
+        /**
+         * Asynchronously sends a Get Server request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_get_server_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocGetServerInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_server(
+            input: MessageLocGetServerInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageLocGetServerOutput>;
+        /**
+         * Asynchronously sends a Get Server request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_get_server_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocGetServerInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_server(
+            input: MessageLocGetServerInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Server request to the device.
          *
@@ -21732,13 +24484,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageLocGetServerOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_loc_get_server().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_get_server().
          * @returns a #QmiMessageLocGetServerOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_loc_get_server_output_unref().
          */
         get_server_finish(res: Gio.AsyncResult): MessageLocGetServerOutput;
+        /**
+         * Asynchronously sends a Inject Predicted Orbits Data request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_inject_predicted_orbits_data_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocInjectPredictedOrbitsDataInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        inject_predicted_orbits_data(
+            input: MessageLocInjectPredictedOrbitsDataInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageLocInjectPredictedOrbitsDataOutput>;
+        /**
+         * Asynchronously sends a Inject Predicted Orbits Data request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_inject_predicted_orbits_data_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocInjectPredictedOrbitsDataInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        inject_predicted_orbits_data(
+            input: MessageLocInjectPredictedOrbitsDataInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Inject Predicted Orbits Data request to the device.
          *
@@ -21755,13 +24539,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageLocInjectPredictedOrbitsDataOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_loc_inject_predicted_orbits_data().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_inject_predicted_orbits_data().
          * @returns a #QmiMessageLocInjectPredictedOrbitsDataOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_loc_inject_predicted_orbits_data_output_unref().
          */
         inject_predicted_orbits_data_finish(res: Gio.AsyncResult): MessageLocInjectPredictedOrbitsDataOutput;
+        /**
+         * Asynchronously sends a Inject Xtra Data request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_inject_xtra_data_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocInjectXtraDataInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        inject_xtra_data(
+            input: MessageLocInjectXtraDataInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageLocInjectXtraDataOutput>;
+        /**
+         * Asynchronously sends a Inject Xtra Data request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_inject_xtra_data_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocInjectXtraDataInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        inject_xtra_data(
+            input: MessageLocInjectXtraDataInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Inject Xtra Data request to the device.
          *
@@ -21778,13 +24594,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageLocInjectXtraDataOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_loc_inject_xtra_data().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_inject_xtra_data().
          * @returns a #QmiMessageLocInjectXtraDataOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_loc_inject_xtra_data_output_unref().
          */
         inject_xtra_data_finish(res: Gio.AsyncResult): MessageLocInjectXtraDataOutput;
+        /**
+         * Asynchronously sends a Register Events request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_register_events_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocRegisterEventsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        register_events(
+            input: MessageLocRegisterEventsInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageLocRegisterEventsOutput>;
+        /**
+         * Asynchronously sends a Register Events request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_register_events_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocRegisterEventsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        register_events(
+            input: MessageLocRegisterEventsInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Register Events request to the device.
          *
@@ -21801,13 +24649,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageLocRegisterEventsOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_loc_register_events().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_register_events().
          * @returns a #QmiMessageLocRegisterEventsOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_loc_register_events_output_unref().
          */
         register_events_finish(res: Gio.AsyncResult): MessageLocRegisterEventsOutput;
+        /**
+         * Asynchronously sends a Set Engine Lock request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_set_engine_lock_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocSetEngineLockInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_engine_lock(
+            input: MessageLocSetEngineLockInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageLocSetEngineLockOutput>;
+        /**
+         * Asynchronously sends a Set Engine Lock request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_set_engine_lock_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocSetEngineLockInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_engine_lock(
+            input: MessageLocSetEngineLockInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Engine Lock request to the device.
          *
@@ -21824,13 +24704,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageLocSetEngineLockOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_loc_set_engine_lock().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_set_engine_lock().
          * @returns a #QmiMessageLocSetEngineLockOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_loc_set_engine_lock_output_unref().
          */
         set_engine_lock_finish(res: Gio.AsyncResult): MessageLocSetEngineLockOutput;
+        /**
+         * Asynchronously sends a Set NMEA Types request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_set_nmea_types_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocSetNmeaTypesInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_nmea_types(
+            input: MessageLocSetNmeaTypesInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageLocSetNmeaTypesOutput>;
+        /**
+         * Asynchronously sends a Set NMEA Types request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_set_nmea_types_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocSetNmeaTypesInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_nmea_types(
+            input: MessageLocSetNmeaTypesInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set NMEA Types request to the device.
          *
@@ -21847,13 +24759,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageLocSetNmeaTypesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_loc_set_nmea_types().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_set_nmea_types().
          * @returns a #QmiMessageLocSetNmeaTypesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_loc_set_nmea_types_output_unref().
          */
         set_nmea_types_finish(res: Gio.AsyncResult): MessageLocSetNmeaTypesOutput;
+        /**
+         * Asynchronously sends a Set Operation Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_set_operation_mode_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocSetOperationModeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_operation_mode(
+            input: MessageLocSetOperationModeInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageLocSetOperationModeOutput>;
+        /**
+         * Asynchronously sends a Set Operation Mode request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_set_operation_mode_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocSetOperationModeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_operation_mode(
+            input: MessageLocSetOperationModeInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Operation Mode request to the device.
          *
@@ -21870,13 +24814,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageLocSetOperationModeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_loc_set_operation_mode().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_set_operation_mode().
          * @returns a #QmiMessageLocSetOperationModeOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_loc_set_operation_mode_output_unref().
          */
         set_operation_mode_finish(res: Gio.AsyncResult): MessageLocSetOperationModeOutput;
+        /**
+         * Asynchronously sends a Set Server request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_set_server_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocSetServerInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_server(
+            input: MessageLocSetServerInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageLocSetServerOutput>;
+        /**
+         * Asynchronously sends a Set Server request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_set_server_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocSetServerInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_server(
+            input: MessageLocSetServerInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Server request to the device.
          *
@@ -21893,13 +24869,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageLocSetServerOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_loc_set_server().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_set_server().
          * @returns a #QmiMessageLocSetServerOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_loc_set_server_output_unref().
          */
         set_server_finish(res: Gio.AsyncResult): MessageLocSetServerOutput;
+        /**
+         * Asynchronously sends a Start request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_start_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocStartInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        start(
+            input: MessageLocStartInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageLocStartOutput>;
+        /**
+         * Asynchronously sends a Start request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_start_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocStartInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        start(
+            input: MessageLocStartInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Start request to the device.
          *
@@ -21916,13 +24924,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageLocStartOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_loc_start().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_start().
          * @returns a #QmiMessageLocStartOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_loc_start_output_unref().
          */
         start_finish(res: Gio.AsyncResult): MessageLocStartOutput;
+        /**
+         * Asynchronously sends a Stop request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_stop_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocStopInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        stop(
+            input: MessageLocStopInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageLocStopOutput>;
+        /**
+         * Asynchronously sends a Stop request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_loc_stop_finish() to get the result of the operation.
+         * @param input a #QmiMessageLocStopInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        stop(
+            input: MessageLocStopInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Stop request to the device.
          *
@@ -21939,7 +24979,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageLocStopOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_loc_stop().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_loc_stop().
@@ -22077,6 +25117,38 @@ export namespace Qmi {
          * @param input a #QmiMessageNasAttachDetachInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        attach_detach(
+            input: MessageNasAttachDetachInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasAttachDetachOutput>;
+        /**
+         * Asynchronously sends a Attach Detach request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_attach_detach_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasAttachDetachInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        attach_detach(
+            input: MessageNasAttachDetachInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Attach Detach request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_attach_detach_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasAttachDetachInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         attach_detach(
@@ -22084,13 +25156,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasAttachDetachOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_attach_detach().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_attach_detach().
          * @returns a #QmiMessageNasAttachDetachOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_attach_detach_output_unref().
          */
         attach_detach_finish(res: Gio.AsyncResult): MessageNasAttachDetachOutput;
+        /**
+         * Asynchronously sends a Config Signal Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_config_signal_info_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasConfigSignalInfoInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        config_signal_info(
+            input: MessageNasConfigSignalInfoInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasConfigSignalInfoOutput>;
+        /**
+         * Asynchronously sends a Config Signal Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_config_signal_info_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasConfigSignalInfoInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        config_signal_info(
+            input: MessageNasConfigSignalInfoInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Config Signal Info request to the device.
          *
@@ -22107,13 +25211,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasConfigSignalInfoOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_config_signal_info().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_config_signal_info().
          * @returns a #QmiMessageNasConfigSignalInfoOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_config_signal_info_output_unref().
          */
         config_signal_info_finish(res: Gio.AsyncResult): MessageNasConfigSignalInfoOutput;
+        /**
+         * Asynchronously sends a Config Signal Info v2 request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_config_signal_info_v2_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasConfigSignalInfoV2Input.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        config_signal_info_v2(
+            input: MessageNasConfigSignalInfoV2Input,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasConfigSignalInfoV2Output>;
+        /**
+         * Asynchronously sends a Config Signal Info v2 request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_config_signal_info_v2_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasConfigSignalInfoV2Input.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        config_signal_info_v2(
+            input: MessageNasConfigSignalInfoV2Input,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Config Signal Info v2 request to the device.
          *
@@ -22130,13 +25266,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasConfigSignalInfoV2Output> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_config_signal_info_v2().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_config_signal_info_v2().
          * @returns a #QmiMessageNasConfigSignalInfoV2Output, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_config_signal_info_v2_output_unref().
          */
         config_signal_info_v2_finish(res: Gio.AsyncResult): MessageNasConfigSignalInfoV2Output;
+        /**
+         * Asynchronously sends a Force Network Search request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_force_network_search_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        force_network_search(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasForceNetworkSearchOutput>;
+        /**
+         * Asynchronously sends a Force Network Search request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_force_network_search_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        force_network_search(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Force Network Search request to the device.
          *
@@ -22153,13 +25321,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasForceNetworkSearchOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_force_network_search().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_force_network_search().
          * @returns a #QmiMessageNasForceNetworkSearchOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_force_network_search_output_unref().
          */
         force_network_search_finish(res: Gio.AsyncResult): MessageNasForceNetworkSearchOutput;
+        /**
+         * Asynchronously sends a Get CDMA Position Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_cdma_position_info_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_cdma_position_info(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetCdmaPositionInfoOutput>;
+        /**
+         * Asynchronously sends a Get CDMA Position Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_cdma_position_info_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_cdma_position_info(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get CDMA Position Info request to the device.
          *
@@ -22176,13 +25376,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetCdmaPositionInfoOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_cdma_position_info().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_cdma_position_info().
          * @returns a #QmiMessageNasGetCdmaPositionInfoOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_cdma_position_info_output_unref().
          */
         get_cdma_position_info_finish(res: Gio.AsyncResult): MessageNasGetCdmaPositionInfoOutput;
+        /**
+         * Asynchronously sends a Get Cell Location Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_cell_location_info_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_cell_location_info(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetCellLocationInfoOutput>;
+        /**
+         * Asynchronously sends a Get Cell Location Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_cell_location_info_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_cell_location_info(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Cell Location Info request to the device.
          *
@@ -22199,13 +25431,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetCellLocationInfoOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_cell_location_info().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_cell_location_info().
          * @returns a #QmiMessageNasGetCellLocationInfoOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_cell_location_info_output_unref().
          */
         get_cell_location_info_finish(res: Gio.AsyncResult): MessageNasGetCellLocationInfoOutput;
+        /**
+         * Asynchronously sends a Get DRX request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_drx_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_drx(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetDrxOutput>;
+        /**
+         * Asynchronously sends a Get DRX request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_drx_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_drx(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get DRX request to the device.
          *
@@ -22222,13 +25486,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetDrxOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_drx().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_drx().
          * @returns a #QmiMessageNasGetDrxOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_drx_output_unref().
          */
         get_drx_finish(res: Gio.AsyncResult): MessageNasGetDrxOutput;
+        /**
+         * Asynchronously sends a Get Home Network request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_home_network_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_home_network(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetHomeNetworkOutput>;
+        /**
+         * Asynchronously sends a Get Home Network request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_home_network_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_home_network(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Home Network request to the device.
          *
@@ -22245,13 +25541,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetHomeNetworkOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_home_network().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_home_network().
          * @returns a #QmiMessageNasGetHomeNetworkOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_home_network_output_unref().
          */
         get_home_network_finish(res: Gio.AsyncResult): MessageNasGetHomeNetworkOutput;
+        /**
+         * Asynchronously sends a Get LTE Cphy CA Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_lte_cphy_ca_info_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_lte_cphy_ca_info(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetLteCphyCaInfoOutput>;
+        /**
+         * Asynchronously sends a Get LTE Cphy CA Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_lte_cphy_ca_info_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_lte_cphy_ca_info(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get LTE Cphy CA Info request to the device.
          *
@@ -22268,13 +25596,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetLteCphyCaInfoOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_lte_cphy_ca_info().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_lte_cphy_ca_info().
          * @returns a #QmiMessageNasGetLteCphyCaInfoOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_lte_cphy_ca_info_output_unref().
          */
         get_lte_cphy_ca_info_finish(res: Gio.AsyncResult): MessageNasGetLteCphyCaInfoOutput;
+        /**
+         * Asynchronously sends a Get Operator Name request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_operator_name_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_operator_name(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetOperatorNameOutput>;
+        /**
+         * Asynchronously sends a Get Operator Name request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_operator_name_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_operator_name(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Operator Name request to the device.
          *
@@ -22291,13 +25651,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetOperatorNameOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_operator_name().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_operator_name().
          * @returns a #QmiMessageNasGetOperatorNameOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_operator_name_output_unref().
          */
         get_operator_name_finish(res: Gio.AsyncResult): MessageNasGetOperatorNameOutput;
+        /**
+         * Asynchronously sends a Get PLMN Name request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_plmn_name_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasGetPlmnNameInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_plmn_name(
+            input: MessageNasGetPlmnNameInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetPlmnNameOutput>;
+        /**
+         * Asynchronously sends a Get PLMN Name request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_plmn_name_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasGetPlmnNameInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_plmn_name(
+            input: MessageNasGetPlmnNameInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get PLMN Name request to the device.
          *
@@ -22314,13 +25706,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetPlmnNameOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_plmn_name().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_plmn_name().
          * @returns a #QmiMessageNasGetPlmnNameOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_plmn_name_output_unref().
          */
         get_plmn_name_finish(res: Gio.AsyncResult): MessageNasGetPlmnNameOutput;
+        /**
+         * Asynchronously sends a Get Preferred Networks request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_preferred_networks_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_preferred_networks(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetPreferredNetworksOutput>;
+        /**
+         * Asynchronously sends a Get Preferred Networks request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_preferred_networks_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_preferred_networks(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Preferred Networks request to the device.
          *
@@ -22337,13 +25761,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetPreferredNetworksOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_preferred_networks().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_preferred_networks().
          * @returns a #QmiMessageNasGetPreferredNetworksOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_preferred_networks_output_unref().
          */
         get_preferred_networks_finish(res: Gio.AsyncResult): MessageNasGetPreferredNetworksOutput;
+        /**
+         * Asynchronously sends a Get RF Band Information request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_rf_band_information_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_rf_band_information(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetRfBandInformationOutput>;
+        /**
+         * Asynchronously sends a Get RF Band Information request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_rf_band_information_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_rf_band_information(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get RF Band Information request to the device.
          *
@@ -22360,13 +25816,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetRfBandInformationOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_rf_band_information().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_rf_band_information().
          * @returns a #QmiMessageNasGetRfBandInformationOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_rf_band_information_output_unref().
          */
         get_rf_band_information_finish(res: Gio.AsyncResult): MessageNasGetRfBandInformationOutput;
+        /**
+         * Asynchronously sends a Get Serving System request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_serving_system_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_serving_system(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetServingSystemOutput>;
+        /**
+         * Asynchronously sends a Get Serving System request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_serving_system_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_serving_system(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Serving System request to the device.
          *
@@ -22383,13 +25871,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetServingSystemOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_serving_system().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_serving_system().
          * @returns a #QmiMessageNasGetServingSystemOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_serving_system_output_unref().
          */
         get_serving_system_finish(res: Gio.AsyncResult): MessageNasGetServingSystemOutput;
+        /**
+         * Asynchronously sends a Get Signal Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_signal_info_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_signal_info(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetSignalInfoOutput>;
+        /**
+         * Asynchronously sends a Get Signal Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_signal_info_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_signal_info(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Signal Info request to the device.
          *
@@ -22406,13 +25926,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetSignalInfoOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_signal_info().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_signal_info().
          * @returns a #QmiMessageNasGetSignalInfoOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_signal_info_output_unref().
          */
         get_signal_info_finish(res: Gio.AsyncResult): MessageNasGetSignalInfoOutput;
+        /**
+         * Asynchronously sends a Get Signal Strength request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_signal_strength_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasGetSignalStrengthInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_signal_strength(
+            input: MessageNasGetSignalStrengthInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetSignalStrengthOutput>;
+        /**
+         * Asynchronously sends a Get Signal Strength request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_signal_strength_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasGetSignalStrengthInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_signal_strength(
+            input: MessageNasGetSignalStrengthInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Signal Strength request to the device.
          *
@@ -22429,13 +25981,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetSignalStrengthOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_signal_strength().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_signal_strength().
          * @returns a #QmiMessageNasGetSignalStrengthOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_signal_strength_output_unref().
          */
         get_signal_strength_finish(res: Gio.AsyncResult): MessageNasGetSignalStrengthOutput;
+        /**
+         * Asynchronously sends a Get Supported Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_supported_messages_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_supported_messages(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetSupportedMessagesOutput>;
+        /**
+         * Asynchronously sends a Get Supported Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_supported_messages_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_supported_messages(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Supported Messages request to the device.
          *
@@ -22452,13 +26036,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetSupportedMessagesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_supported_messages().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_supported_messages().
          * @returns a #QmiMessageNasGetSupportedMessagesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_supported_messages_output_unref().
          */
         get_supported_messages_finish(res: Gio.AsyncResult): MessageNasGetSupportedMessagesOutput;
+        /**
+         * Asynchronously sends a Get System Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_system_info_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_system_info(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetSystemInfoOutput>;
+        /**
+         * Asynchronously sends a Get System Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_system_info_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_system_info(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get System Info request to the device.
          *
@@ -22475,13 +26091,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetSystemInfoOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_system_info().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_system_info().
          * @returns a #QmiMessageNasGetSystemInfoOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_system_info_output_unref().
          */
         get_system_info_finish(res: Gio.AsyncResult): MessageNasGetSystemInfoOutput;
+        /**
+         * Asynchronously sends a Get System Selection Preference request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_system_selection_preference_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_system_selection_preference(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetSystemSelectionPreferenceOutput>;
+        /**
+         * Asynchronously sends a Get System Selection Preference request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_system_selection_preference_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_system_selection_preference(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get System Selection Preference request to the device.
          *
@@ -22498,13 +26146,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetSystemSelectionPreferenceOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_system_selection_preference().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_system_selection_preference().
          * @returns a #QmiMessageNasGetSystemSelectionPreferenceOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_system_selection_preference_output_unref().
          */
         get_system_selection_preference_finish(res: Gio.AsyncResult): MessageNasGetSystemSelectionPreferenceOutput;
+        /**
+         * Asynchronously sends a Get Technology Preference request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_technology_preference_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_technology_preference(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetTechnologyPreferenceOutput>;
+        /**
+         * Asynchronously sends a Get Technology Preference request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_technology_preference_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_technology_preference(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Technology Preference request to the device.
          *
@@ -22521,13 +26201,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetTechnologyPreferenceOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_technology_preference().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_technology_preference().
          * @returns a #QmiMessageNasGetTechnologyPreferenceOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_technology_preference_output_unref().
          */
         get_technology_preference_finish(res: Gio.AsyncResult): MessageNasGetTechnologyPreferenceOutput;
+        /**
+         * Asynchronously sends a Get Tx Rx Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_tx_rx_info_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasGetTxRxInfoInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_tx_rx_info(
+            input: MessageNasGetTxRxInfoInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasGetTxRxInfoOutput>;
+        /**
+         * Asynchronously sends a Get Tx Rx Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_get_tx_rx_info_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasGetTxRxInfoInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_tx_rx_info(
+            input: MessageNasGetTxRxInfoInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Tx Rx Info request to the device.
          *
@@ -22544,13 +26256,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasGetTxRxInfoOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_get_tx_rx_info().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_get_tx_rx_info().
          * @returns a #QmiMessageNasGetTxRxInfoOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_get_tx_rx_info_output_unref().
          */
         get_tx_rx_info_finish(res: Gio.AsyncResult): MessageNasGetTxRxInfoOutput;
+        /**
+         * Asynchronously sends a Initiate Network Register request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_initiate_network_register_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasInitiateNetworkRegisterInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        initiate_network_register(
+            input: MessageNasInitiateNetworkRegisterInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasInitiateNetworkRegisterOutput>;
+        /**
+         * Asynchronously sends a Initiate Network Register request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_initiate_network_register_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasInitiateNetworkRegisterInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        initiate_network_register(
+            input: MessageNasInitiateNetworkRegisterInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Initiate Network Register request to the device.
          *
@@ -22567,13 +26311,59 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasInitiateNetworkRegisterOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_initiate_network_register().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_initiate_network_register().
          * @returns a #QmiMessageNasInitiateNetworkRegisterOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_initiate_network_register_output_unref().
          */
         initiate_network_register_finish(res: Gio.AsyncResult): MessageNasInitiateNetworkRegisterOutput;
+        /**
+         * Asynchronously sends a Network Scan request to the device.
+         *
+         * This message is abortable. If `cancellable` is cancelled or if `timeout` expires,
+         * an abort request will be sent to the device, and the asynchronous operation will
+         * not return until the abort response is received. It is not an error if a successful
+         * response is returned for the asynchronous operation even after the user has cancelled
+         * the cancellable, because it may happen that the response is received before the
+         * modem had a chance to run the abort.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_network_scan_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasNetworkScanInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        network_scan(
+            input: MessageNasNetworkScanInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasNetworkScanOutput>;
+        /**
+         * Asynchronously sends a Network Scan request to the device.
+         *
+         * This message is abortable. If `cancellable` is cancelled or if `timeout` expires,
+         * an abort request will be sent to the device, and the asynchronous operation will
+         * not return until the abort response is received. It is not an error if a successful
+         * response is returned for the asynchronous operation even after the user has cancelled
+         * the cancellable, because it may happen that the response is received before the
+         * modem had a chance to run the abort.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_network_scan_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasNetworkScanInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        network_scan(
+            input: MessageNasNetworkScanInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Network Scan request to the device.
          *
@@ -22597,13 +26387,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasNetworkScanOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_network_scan().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_network_scan().
          * @returns a #QmiMessageNasNetworkScanOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_network_scan_output_unref().
          */
         network_scan_finish(res: Gio.AsyncResult): MessageNasNetworkScanOutput;
+        /**
+         * Asynchronously sends a Register Indications request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_register_indications_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasRegisterIndicationsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        register_indications(
+            input: MessageNasRegisterIndicationsInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasRegisterIndicationsOutput>;
+        /**
+         * Asynchronously sends a Register Indications request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_register_indications_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasRegisterIndicationsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        register_indications(
+            input: MessageNasRegisterIndicationsInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Register Indications request to the device.
          *
@@ -22620,13 +26442,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasRegisterIndicationsOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_register_indications().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_register_indications().
          * @returns a #QmiMessageNasRegisterIndicationsOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_register_indications_output_unref().
          */
         register_indications_finish(res: Gio.AsyncResult): MessageNasRegisterIndicationsOutput;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasResetOutput>;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Reset request to the device.
          *
@@ -22643,13 +26497,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasResetOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_reset().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_reset().
          * @returns a #QmiMessageNasResetOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_reset_output_unref().
          */
         reset_finish(res: Gio.AsyncResult): MessageNasResetOutput;
+        /**
+         * Asynchronously sends a Set Event Report request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_set_event_report_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasSetEventReportInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_event_report(
+            input: MessageNasSetEventReportInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasSetEventReportOutput>;
+        /**
+         * Asynchronously sends a Set Event Report request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_set_event_report_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasSetEventReportInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_event_report(
+            input: MessageNasSetEventReportInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Event Report request to the device.
          *
@@ -22666,13 +26552,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasSetEventReportOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_set_event_report().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_set_event_report().
          * @returns a #QmiMessageNasSetEventReportOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_set_event_report_output_unref().
          */
         set_event_report_finish(res: Gio.AsyncResult): MessageNasSetEventReportOutput;
+        /**
+         * Asynchronously sends a Set Preferred Networks request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_set_preferred_networks_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasSetPreferredNetworksInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_preferred_networks(
+            input: MessageNasSetPreferredNetworksInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasSetPreferredNetworksOutput>;
+        /**
+         * Asynchronously sends a Set Preferred Networks request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_set_preferred_networks_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasSetPreferredNetworksInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_preferred_networks(
+            input: MessageNasSetPreferredNetworksInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Preferred Networks request to the device.
          *
@@ -22689,13 +26607,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasSetPreferredNetworksOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_set_preferred_networks().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_set_preferred_networks().
          * @returns a #QmiMessageNasSetPreferredNetworksOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_set_preferred_networks_output_unref().
          */
         set_preferred_networks_finish(res: Gio.AsyncResult): MessageNasSetPreferredNetworksOutput;
+        /**
+         * Asynchronously sends a Set System Selection Preference request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_set_system_selection_preference_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasSetSystemSelectionPreferenceInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_system_selection_preference(
+            input: MessageNasSetSystemSelectionPreferenceInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasSetSystemSelectionPreferenceOutput>;
+        /**
+         * Asynchronously sends a Set System Selection Preference request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_set_system_selection_preference_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasSetSystemSelectionPreferenceInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_system_selection_preference(
+            input: MessageNasSetSystemSelectionPreferenceInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set System Selection Preference request to the device.
          *
@@ -22712,13 +26662,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasSetSystemSelectionPreferenceOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_set_system_selection_preference().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_set_system_selection_preference().
          * @returns a #QmiMessageNasSetSystemSelectionPreferenceOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_set_system_selection_preference_output_unref().
          */
         set_system_selection_preference_finish(res: Gio.AsyncResult): MessageNasSetSystemSelectionPreferenceOutput;
+        /**
+         * Asynchronously sends a Set Technology Preference request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_set_technology_preference_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasSetTechnologyPreferenceInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_technology_preference(
+            input: MessageNasSetTechnologyPreferenceInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasSetTechnologyPreferenceOutput>;
+        /**
+         * Asynchronously sends a Set Technology Preference request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_set_technology_preference_finish() to get the result of the operation.
+         * @param input a #QmiMessageNasSetTechnologyPreferenceInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_technology_preference(
+            input: MessageNasSetTechnologyPreferenceInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Technology Preference request to the device.
          *
@@ -22735,13 +26717,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasSetTechnologyPreferenceOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_set_technology_preference().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_set_technology_preference().
          * @returns a #QmiMessageNasSetTechnologyPreferenceOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_nas_set_technology_preference_output_unref().
          */
         set_technology_preference_finish(res: Gio.AsyncResult): MessageNasSetTechnologyPreferenceOutput;
+        /**
+         * Asynchronously sends a Swi Get Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_swi_get_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        swi_get_status(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageNasSwiGetStatusOutput>;
+        /**
+         * Asynchronously sends a Swi Get Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_nas_swi_get_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        swi_get_status(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Swi Get Status request to the device.
          *
@@ -22758,7 +26772,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageNasSwiGetStatusOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_nas_swi_get_status().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_nas_swi_get_status().
@@ -22818,6 +26832,38 @@ export namespace Qmi {
          * @param unused %NULL. This message doesn't have any input bundle.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        cancel_session(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageOmaCancelSessionOutput>;
+        /**
+         * Asynchronously sends a Cancel Session request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_cancel_session_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        cancel_session(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Cancel Session request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_cancel_session_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         cancel_session(
@@ -22825,13 +26871,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageOmaCancelSessionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_oma_cancel_session().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_cancel_session().
          * @returns a #QmiMessageOmaCancelSessionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_oma_cancel_session_output_unref().
          */
         cancel_session_finish(res: Gio.AsyncResult): MessageOmaCancelSessionOutput;
+        /**
+         * Asynchronously sends a Get Feature Setting request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_get_feature_setting_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_feature_setting(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageOmaGetFeatureSettingOutput>;
+        /**
+         * Asynchronously sends a Get Feature Setting request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_get_feature_setting_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_feature_setting(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Feature Setting request to the device.
          *
@@ -22848,13 +26926,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageOmaGetFeatureSettingOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_oma_get_feature_setting().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_get_feature_setting().
          * @returns a #QmiMessageOmaGetFeatureSettingOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_oma_get_feature_setting_output_unref().
          */
         get_feature_setting_finish(res: Gio.AsyncResult): MessageOmaGetFeatureSettingOutput;
+        /**
+         * Asynchronously sends a Get Session Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_get_session_info_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_session_info(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageOmaGetSessionInfoOutput>;
+        /**
+         * Asynchronously sends a Get Session Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_get_session_info_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_session_info(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Session Info request to the device.
          *
@@ -22871,13 +26981,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageOmaGetSessionInfoOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_oma_get_session_info().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_get_session_info().
          * @returns a #QmiMessageOmaGetSessionInfoOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_oma_get_session_info_output_unref().
          */
         get_session_info_finish(res: Gio.AsyncResult): MessageOmaGetSessionInfoOutput;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageOmaResetOutput>;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Reset request to the device.
          *
@@ -22894,13 +27036,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageOmaResetOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_oma_reset().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_reset().
          * @returns a #QmiMessageOmaResetOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_oma_reset_output_unref().
          */
         reset_finish(res: Gio.AsyncResult): MessageOmaResetOutput;
+        /**
+         * Asynchronously sends a Send Selection request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_send_selection_finish() to get the result of the operation.
+         * @param input a #QmiMessageOmaSendSelectionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        send_selection(
+            input: MessageOmaSendSelectionInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageOmaSendSelectionOutput>;
+        /**
+         * Asynchronously sends a Send Selection request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_send_selection_finish() to get the result of the operation.
+         * @param input a #QmiMessageOmaSendSelectionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        send_selection(
+            input: MessageOmaSendSelectionInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Send Selection request to the device.
          *
@@ -22917,13 +27091,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageOmaSendSelectionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_oma_send_selection().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_send_selection().
          * @returns a #QmiMessageOmaSendSelectionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_oma_send_selection_output_unref().
          */
         send_selection_finish(res: Gio.AsyncResult): MessageOmaSendSelectionOutput;
+        /**
+         * Asynchronously sends a Set Event Report request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_set_event_report_finish() to get the result of the operation.
+         * @param input a #QmiMessageOmaSetEventReportInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_event_report(
+            input: MessageOmaSetEventReportInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageOmaSetEventReportOutput>;
+        /**
+         * Asynchronously sends a Set Event Report request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_set_event_report_finish() to get the result of the operation.
+         * @param input a #QmiMessageOmaSetEventReportInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_event_report(
+            input: MessageOmaSetEventReportInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Event Report request to the device.
          *
@@ -22940,13 +27146,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageOmaSetEventReportOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_oma_set_event_report().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_set_event_report().
          * @returns a #QmiMessageOmaSetEventReportOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_oma_set_event_report_output_unref().
          */
         set_event_report_finish(res: Gio.AsyncResult): MessageOmaSetEventReportOutput;
+        /**
+         * Asynchronously sends a Set Feature Setting request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_set_feature_setting_finish() to get the result of the operation.
+         * @param input a #QmiMessageOmaSetFeatureSettingInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_feature_setting(
+            input: MessageOmaSetFeatureSettingInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageOmaSetFeatureSettingOutput>;
+        /**
+         * Asynchronously sends a Set Feature Setting request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_set_feature_setting_finish() to get the result of the operation.
+         * @param input a #QmiMessageOmaSetFeatureSettingInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_feature_setting(
+            input: MessageOmaSetFeatureSettingInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Feature Setting request to the device.
          *
@@ -22963,13 +27201,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageOmaSetFeatureSettingOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_oma_set_feature_setting().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_set_feature_setting().
          * @returns a #QmiMessageOmaSetFeatureSettingOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_oma_set_feature_setting_output_unref().
          */
         set_feature_setting_finish(res: Gio.AsyncResult): MessageOmaSetFeatureSettingOutput;
+        /**
+         * Asynchronously sends a Start Session request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_start_session_finish() to get the result of the operation.
+         * @param input a #QmiMessageOmaStartSessionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        start_session(
+            input: MessageOmaStartSessionInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageOmaStartSessionOutput>;
+        /**
+         * Asynchronously sends a Start Session request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_oma_start_session_finish() to get the result of the operation.
+         * @param input a #QmiMessageOmaStartSessionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        start_session(
+            input: MessageOmaStartSessionInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Start Session request to the device.
          *
@@ -22986,7 +27256,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageOmaStartSessionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_oma_start_session().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_oma_start_session().
@@ -23025,6 +27295,38 @@ export namespace Qmi {
          * @param unused %NULL. This message doesn't have any input bundle.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        get_all_capabilities(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePbmGetAllCapabilitiesOutput>;
+        /**
+         * Asynchronously sends a Get All Capabilities request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pbm_get_all_capabilities_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_all_capabilities(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Get All Capabilities request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pbm_get_all_capabilities_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         get_all_capabilities(
@@ -23032,13 +27334,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePbmGetAllCapabilitiesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pbm_get_all_capabilities().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pbm_get_all_capabilities().
          * @returns a #QmiMessagePbmGetAllCapabilitiesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pbm_get_all_capabilities_output_unref().
          */
         get_all_capabilities_finish(res: Gio.AsyncResult): MessagePbmGetAllCapabilitiesOutput;
+        /**
+         * Asynchronously sends a Get Capabilities request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pbm_get_capabilities_finish() to get the result of the operation.
+         * @param input a #QmiMessagePbmGetCapabilitiesInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_capabilities(
+            input: MessagePbmGetCapabilitiesInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePbmGetCapabilitiesOutput>;
+        /**
+         * Asynchronously sends a Get Capabilities request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pbm_get_capabilities_finish() to get the result of the operation.
+         * @param input a #QmiMessagePbmGetCapabilitiesInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_capabilities(
+            input: MessagePbmGetCapabilitiesInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Capabilities request to the device.
          *
@@ -23055,13 +27389,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePbmGetCapabilitiesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pbm_get_capabilities().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pbm_get_capabilities().
          * @returns a #QmiMessagePbmGetCapabilitiesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pbm_get_capabilities_output_unref().
          */
         get_capabilities_finish(res: Gio.AsyncResult): MessagePbmGetCapabilitiesOutput;
+        /**
+         * Asynchronously sends a Indication Register request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pbm_indication_register_finish() to get the result of the operation.
+         * @param input a #QmiMessagePbmIndicationRegisterInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        indication_register(
+            input: MessagePbmIndicationRegisterInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePbmIndicationRegisterOutput>;
+        /**
+         * Asynchronously sends a Indication Register request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pbm_indication_register_finish() to get the result of the operation.
+         * @param input a #QmiMessagePbmIndicationRegisterInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        indication_register(
+            input: MessagePbmIndicationRegisterInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Indication Register request to the device.
          *
@@ -23078,7 +27444,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePbmIndicationRegisterOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pbm_indication_register().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pbm_indication_register().
@@ -23223,6 +27589,38 @@ export namespace Qmi {
          * @param input a #QmiMessagePdcActivateConfigInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        activate_config(
+            input: MessagePdcActivateConfigInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdcActivateConfigOutput>;
+        /**
+         * Asynchronously sends a Activate Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_activate_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcActivateConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        activate_config(
+            input: MessagePdcActivateConfigInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Activate Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_activate_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcActivateConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         activate_config(
@@ -23230,13 +27628,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdcActivateConfigOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pdc_activate_config().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_activate_config().
          * @returns a #QmiMessagePdcActivateConfigOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pdc_activate_config_output_unref().
          */
         activate_config_finish(res: Gio.AsyncResult): MessagePdcActivateConfigOutput;
+        /**
+         * Asynchronously sends a Config Change request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_config_change_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcConfigChangeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        config_change(
+            input: MessagePdcConfigChangeInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdcConfigChangeOutput>;
+        /**
+         * Asynchronously sends a Config Change request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_config_change_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcConfigChangeInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        config_change(
+            input: MessagePdcConfigChangeInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Config Change request to the device.
          *
@@ -23253,13 +27683,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdcConfigChangeOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pdc_config_change().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_config_change().
          * @returns a #QmiMessagePdcConfigChangeOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pdc_config_change_output_unref().
          */
         config_change_finish(res: Gio.AsyncResult): MessagePdcConfigChangeOutput;
+        /**
+         * Asynchronously sends a Deactivate Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_deactivate_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcDeactivateConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        deactivate_config(
+            input: MessagePdcDeactivateConfigInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdcDeactivateConfigOutput>;
+        /**
+         * Asynchronously sends a Deactivate Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_deactivate_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcDeactivateConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        deactivate_config(
+            input: MessagePdcDeactivateConfigInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Deactivate Config request to the device.
          *
@@ -23276,13 +27738,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdcDeactivateConfigOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pdc_deactivate_config().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_deactivate_config().
          * @returns a #QmiMessagePdcDeactivateConfigOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pdc_deactivate_config_output_unref().
          */
         deactivate_config_finish(res: Gio.AsyncResult): MessagePdcDeactivateConfigOutput;
+        /**
+         * Asynchronously sends a Delete Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_delete_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcDeleteConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        delete_config(
+            input: MessagePdcDeleteConfigInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdcDeleteConfigOutput>;
+        /**
+         * Asynchronously sends a Delete Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_delete_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcDeleteConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        delete_config(
+            input: MessagePdcDeleteConfigInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Delete Config request to the device.
          *
@@ -23299,13 +27793,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdcDeleteConfigOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pdc_delete_config().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_delete_config().
          * @returns a #QmiMessagePdcDeleteConfigOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pdc_delete_config_output_unref().
          */
         delete_config_finish(res: Gio.AsyncResult): MessagePdcDeleteConfigOutput;
+        /**
+         * Asynchronously sends a Get Config Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_get_config_info_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcGetConfigInfoInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_config_info(
+            input: MessagePdcGetConfigInfoInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdcGetConfigInfoOutput>;
+        /**
+         * Asynchronously sends a Get Config Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_get_config_info_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcGetConfigInfoInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_config_info(
+            input: MessagePdcGetConfigInfoInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Config Info request to the device.
          *
@@ -23322,13 +27848,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdcGetConfigInfoOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pdc_get_config_info().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_get_config_info().
          * @returns a #QmiMessagePdcGetConfigInfoOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pdc_get_config_info_output_unref().
          */
         get_config_info_finish(res: Gio.AsyncResult): MessagePdcGetConfigInfoOutput;
+        /**
+         * Asynchronously sends a Get Config Limits request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_get_config_limits_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcGetConfigLimitsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_config_limits(
+            input: MessagePdcGetConfigLimitsInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdcGetConfigLimitsOutput>;
+        /**
+         * Asynchronously sends a Get Config Limits request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_get_config_limits_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcGetConfigLimitsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_config_limits(
+            input: MessagePdcGetConfigLimitsInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Config Limits request to the device.
          *
@@ -23345,13 +27903,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdcGetConfigLimitsOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pdc_get_config_limits().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_get_config_limits().
          * @returns a #QmiMessagePdcGetConfigLimitsOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pdc_get_config_limits_output_unref().
          */
         get_config_limits_finish(res: Gio.AsyncResult): MessagePdcGetConfigLimitsOutput;
+        /**
+         * Asynchronously sends a Get Default Config Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_get_default_config_info_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcGetDefaultConfigInfoInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_default_config_info(
+            input: MessagePdcGetDefaultConfigInfoInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdcGetDefaultConfigInfoOutput>;
+        /**
+         * Asynchronously sends a Get Default Config Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_get_default_config_info_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcGetDefaultConfigInfoInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_default_config_info(
+            input: MessagePdcGetDefaultConfigInfoInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Default Config Info request to the device.
          *
@@ -23368,13 +27958,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdcGetDefaultConfigInfoOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pdc_get_default_config_info().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_get_default_config_info().
          * @returns a #QmiMessagePdcGetDefaultConfigInfoOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pdc_get_default_config_info_output_unref().
          */
         get_default_config_info_finish(res: Gio.AsyncResult): MessagePdcGetDefaultConfigInfoOutput;
+        /**
+         * Asynchronously sends a Get Selected Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_get_selected_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcGetSelectedConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_selected_config(
+            input: MessagePdcGetSelectedConfigInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdcGetSelectedConfigOutput>;
+        /**
+         * Asynchronously sends a Get Selected Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_get_selected_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcGetSelectedConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_selected_config(
+            input: MessagePdcGetSelectedConfigInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Selected Config request to the device.
          *
@@ -23391,13 +28013,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdcGetSelectedConfigOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pdc_get_selected_config().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_get_selected_config().
          * @returns a #QmiMessagePdcGetSelectedConfigOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pdc_get_selected_config_output_unref().
          */
         get_selected_config_finish(res: Gio.AsyncResult): MessagePdcGetSelectedConfigOutput;
+        /**
+         * Asynchronously sends a List Configs request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_list_configs_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcListConfigsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        list_configs(
+            input: MessagePdcListConfigsInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdcListConfigsOutput>;
+        /**
+         * Asynchronously sends a List Configs request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_list_configs_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcListConfigsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        list_configs(
+            input: MessagePdcListConfigsInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a List Configs request to the device.
          *
@@ -23414,13 +28068,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdcListConfigsOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pdc_list_configs().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_list_configs().
          * @returns a #QmiMessagePdcListConfigsOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pdc_list_configs_output_unref().
          */
         list_configs_finish(res: Gio.AsyncResult): MessagePdcListConfigsOutput;
+        /**
+         * Asynchronously sends a Load Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_load_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcLoadConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        load_config(
+            input: MessagePdcLoadConfigInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdcLoadConfigOutput>;
+        /**
+         * Asynchronously sends a Load Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_load_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcLoadConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        load_config(
+            input: MessagePdcLoadConfigInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Load Config request to the device.
          *
@@ -23437,13 +28123,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdcLoadConfigOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pdc_load_config().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_load_config().
          * @returns a #QmiMessagePdcLoadConfigOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pdc_load_config_output_unref().
          */
         load_config_finish(res: Gio.AsyncResult): MessagePdcLoadConfigOutput;
+        /**
+         * Asynchronously sends a Register request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_register_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcRegisterInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        register(
+            input: MessagePdcRegisterInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdcRegisterOutput>;
+        /**
+         * Asynchronously sends a Register request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_register_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcRegisterInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        register(
+            input: MessagePdcRegisterInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Register request to the device.
          *
@@ -23460,13 +28178,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdcRegisterOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pdc_register().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_register().
          * @returns a #QmiMessagePdcRegisterOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pdc_register_output_unref().
          */
         register_finish(res: Gio.AsyncResult): MessagePdcRegisterOutput;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdcResetOutput>;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Reset request to the device.
          *
@@ -23483,13 +28233,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdcResetOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pdc_reset().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_reset().
          * @returns a #QmiMessagePdcResetOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pdc_reset_output_unref().
          */
         reset_finish(res: Gio.AsyncResult): MessagePdcResetOutput;
+        /**
+         * Asynchronously sends a Set Selected Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_set_selected_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcSetSelectedConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_selected_config(
+            input: MessagePdcSetSelectedConfigInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdcSetSelectedConfigOutput>;
+        /**
+         * Asynchronously sends a Set Selected Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pdc_set_selected_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdcSetSelectedConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_selected_config(
+            input: MessagePdcSetSelectedConfigInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Selected Config request to the device.
          *
@@ -23506,7 +28288,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdcSetSelectedConfigOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pdc_set_selected_config().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pdc_set_selected_config().
@@ -23573,6 +28355,38 @@ export namespace Qmi {
          * @param input a #QmiMessagePdsGetAgpsConfigInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        get_agps_config(
+            input: MessagePdsGetAgpsConfigInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdsGetAgpsConfigOutput>;
+        /**
+         * Asynchronously sends a Get AGPS Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_get_agps_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdsGetAgpsConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_agps_config(
+            input: MessagePdsGetAgpsConfigInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Get AGPS Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_get_agps_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdsGetAgpsConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         get_agps_config(
@@ -23580,13 +28394,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdsGetAgpsConfigOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pds_get_agps_config().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_get_agps_config().
          * @returns a #QmiMessagePdsGetAgpsConfigOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pds_get_agps_config_output_unref().
          */
         get_agps_config_finish(res: Gio.AsyncResult): MessagePdsGetAgpsConfigOutput;
+        /**
+         * Asynchronously sends a Get Auto Tracking State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_get_auto_tracking_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_auto_tracking_state(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdsGetAutoTrackingStateOutput>;
+        /**
+         * Asynchronously sends a Get Auto Tracking State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_get_auto_tracking_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_auto_tracking_state(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Auto Tracking State request to the device.
          *
@@ -23603,13 +28449,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdsGetAutoTrackingStateOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pds_get_auto_tracking_state().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_get_auto_tracking_state().
          * @returns a #QmiMessagePdsGetAutoTrackingStateOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pds_get_auto_tracking_state_output_unref().
          */
         get_auto_tracking_state_finish(res: Gio.AsyncResult): MessagePdsGetAutoTrackingStateOutput;
+        /**
+         * Asynchronously sends a Get Default Tracking Session request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_get_default_tracking_session_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_default_tracking_session(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdsGetDefaultTrackingSessionOutput>;
+        /**
+         * Asynchronously sends a Get Default Tracking Session request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_get_default_tracking_session_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_default_tracking_session(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Default Tracking Session request to the device.
          *
@@ -23626,13 +28504,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdsGetDefaultTrackingSessionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pds_get_default_tracking_session().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_get_default_tracking_session().
          * @returns a #QmiMessagePdsGetDefaultTrackingSessionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pds_get_default_tracking_session_output_unref().
          */
         get_default_tracking_session_finish(res: Gio.AsyncResult): MessagePdsGetDefaultTrackingSessionOutput;
+        /**
+         * Asynchronously sends a Get GPS Service State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_get_gps_service_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_gps_service_state(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdsGetGpsServiceStateOutput>;
+        /**
+         * Asynchronously sends a Get GPS Service State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_get_gps_service_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_gps_service_state(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get GPS Service State request to the device.
          *
@@ -23649,13 +28559,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdsGetGpsServiceStateOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pds_get_gps_service_state().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_get_gps_service_state().
          * @returns a #QmiMessagePdsGetGpsServiceStateOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pds_get_gps_service_state_output_unref().
          */
         get_gps_service_state_finish(res: Gio.AsyncResult): MessagePdsGetGpsServiceStateOutput;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdsResetOutput>;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Reset request to the device.
          *
@@ -23672,13 +28614,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdsResetOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pds_reset().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_reset().
          * @returns a #QmiMessagePdsResetOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pds_reset_output_unref().
          */
         reset_finish(res: Gio.AsyncResult): MessagePdsResetOutput;
+        /**
+         * Asynchronously sends a Set AGPS Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_set_agps_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdsSetAgpsConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_agps_config(
+            input: MessagePdsSetAgpsConfigInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdsSetAgpsConfigOutput>;
+        /**
+         * Asynchronously sends a Set AGPS Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_set_agps_config_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdsSetAgpsConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_agps_config(
+            input: MessagePdsSetAgpsConfigInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set AGPS Config request to the device.
          *
@@ -23695,13 +28669,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdsSetAgpsConfigOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pds_set_agps_config().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_set_agps_config().
          * @returns a #QmiMessagePdsSetAgpsConfigOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pds_set_agps_config_output_unref().
          */
         set_agps_config_finish(res: Gio.AsyncResult): MessagePdsSetAgpsConfigOutput;
+        /**
+         * Asynchronously sends a Set Auto Tracking State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_set_auto_tracking_state_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdsSetAutoTrackingStateInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_auto_tracking_state(
+            input: MessagePdsSetAutoTrackingStateInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdsSetAutoTrackingStateOutput>;
+        /**
+         * Asynchronously sends a Set Auto Tracking State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_set_auto_tracking_state_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdsSetAutoTrackingStateInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_auto_tracking_state(
+            input: MessagePdsSetAutoTrackingStateInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Auto Tracking State request to the device.
          *
@@ -23718,13 +28724,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdsSetAutoTrackingStateOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pds_set_auto_tracking_state().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_set_auto_tracking_state().
          * @returns a #QmiMessagePdsSetAutoTrackingStateOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pds_set_auto_tracking_state_output_unref().
          */
         set_auto_tracking_state_finish(res: Gio.AsyncResult): MessagePdsSetAutoTrackingStateOutput;
+        /**
+         * Asynchronously sends a Set Default Tracking Session request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_set_default_tracking_session_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdsSetDefaultTrackingSessionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_default_tracking_session(
+            input: MessagePdsSetDefaultTrackingSessionInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdsSetDefaultTrackingSessionOutput>;
+        /**
+         * Asynchronously sends a Set Default Tracking Session request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_set_default_tracking_session_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdsSetDefaultTrackingSessionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_default_tracking_session(
+            input: MessagePdsSetDefaultTrackingSessionInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Default Tracking Session request to the device.
          *
@@ -23741,13 +28779,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdsSetDefaultTrackingSessionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pds_set_default_tracking_session().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_set_default_tracking_session().
          * @returns a #QmiMessagePdsSetDefaultTrackingSessionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pds_set_default_tracking_session_output_unref().
          */
         set_default_tracking_session_finish(res: Gio.AsyncResult): MessagePdsSetDefaultTrackingSessionOutput;
+        /**
+         * Asynchronously sends a Set Event Report request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_set_event_report_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdsSetEventReportInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_event_report(
+            input: MessagePdsSetEventReportInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdsSetEventReportOutput>;
+        /**
+         * Asynchronously sends a Set Event Report request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_set_event_report_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdsSetEventReportInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_event_report(
+            input: MessagePdsSetEventReportInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Event Report request to the device.
          *
@@ -23764,13 +28834,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdsSetEventReportOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pds_set_event_report().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_set_event_report().
          * @returns a #QmiMessagePdsSetEventReportOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_pds_set_event_report_output_unref().
          */
         set_event_report_finish(res: Gio.AsyncResult): MessagePdsSetEventReportOutput;
+        /**
+         * Asynchronously sends a Set GPS Service State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_set_gps_service_state_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdsSetGpsServiceStateInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_gps_service_state(
+            input: MessagePdsSetGpsServiceStateInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessagePdsSetGpsServiceStateOutput>;
+        /**
+         * Asynchronously sends a Set GPS Service State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_pds_set_gps_service_state_finish() to get the result of the operation.
+         * @param input a #QmiMessagePdsSetGpsServiceStateInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_gps_service_state(
+            input: MessagePdsSetGpsServiceStateInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set GPS Service State request to the device.
          *
@@ -23787,7 +28889,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessagePdsSetGpsServiceStateOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_pds_set_gps_service_state().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_pds_set_gps_service_state().
@@ -23860,6 +28962,38 @@ export namespace Qmi {
          * @param input a #QmiMessageQosGetFlowStatusInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        get_flow_status(
+            input: MessageQosGetFlowStatusInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageQosGetFlowStatusOutput>;
+        /**
+         * Asynchronously sends a Get Flow Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_qos_get_flow_status_finish() to get the result of the operation.
+         * @param input a #QmiMessageQosGetFlowStatusInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_flow_status(
+            input: MessageQosGetFlowStatusInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Get Flow Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_qos_get_flow_status_finish() to get the result of the operation.
+         * @param input a #QmiMessageQosGetFlowStatusInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         get_flow_status(
@@ -23867,13 +29001,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageQosGetFlowStatusOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_qos_get_flow_status().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_qos_get_flow_status().
          * @returns a #QmiMessageQosGetFlowStatusOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_qos_get_flow_status_output_unref().
          */
         get_flow_status_finish(res: Gio.AsyncResult): MessageQosGetFlowStatusOutput;
+        /**
+         * Asynchronously sends a Get Network Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_qos_get_network_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_network_status(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageQosGetNetworkStatusOutput>;
+        /**
+         * Asynchronously sends a Get Network Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_qos_get_network_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_network_status(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Network Status request to the device.
          *
@@ -23890,13 +29056,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageQosGetNetworkStatusOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_qos_get_network_status().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_qos_get_network_status().
          * @returns a #QmiMessageQosGetNetworkStatusOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_qos_get_network_status_output_unref().
          */
         get_network_status_finish(res: Gio.AsyncResult): MessageQosGetNetworkStatusOutput;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_qos_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageQosResetOutput>;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_qos_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Reset request to the device.
          *
@@ -23913,13 +29111,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageQosResetOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_qos_reset().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_qos_reset().
          * @returns a #QmiMessageQosResetOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_qos_reset_output_unref().
          */
         reset_finish(res: Gio.AsyncResult): MessageQosResetOutput;
+        /**
+         * Asynchronously sends a Swi Read Data Stats request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_qos_swi_read_data_stats_finish() to get the result of the operation.
+         * @param input a #QmiMessageQosSwiReadDataStatsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        swi_read_data_stats(
+            input: MessageQosSwiReadDataStatsInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageQosSwiReadDataStatsOutput>;
+        /**
+         * Asynchronously sends a Swi Read Data Stats request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_qos_swi_read_data_stats_finish() to get the result of the operation.
+         * @param input a #QmiMessageQosSwiReadDataStatsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        swi_read_data_stats(
+            input: MessageQosSwiReadDataStatsInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Swi Read Data Stats request to the device.
          *
@@ -23936,7 +29166,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageQosSwiReadDataStatsOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_qos_swi_read_data_stats().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_qos_swi_read_data_stats().
@@ -23975,6 +29205,38 @@ export namespace Qmi {
          * @param unused %NULL. This message doesn't have any input bundle.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        rf_get_state(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageSarRfGetStateOutput>;
+        /**
+         * Asynchronously sends a RF Get State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_sar_rf_get_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        rf_get_state(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a RF Get State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_sar_rf_get_state_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         rf_get_state(
@@ -23982,13 +29244,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageSarRfGetStateOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_sar_rf_get_state().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_sar_rf_get_state().
          * @returns a #QmiMessageSarRfGetStateOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_sar_rf_get_state_output_unref().
          */
         rf_get_state_finish(res: Gio.AsyncResult): MessageSarRfGetStateOutput;
+        /**
+         * Asynchronously sends a RF Set State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_sar_rf_set_state_finish() to get the result of the operation.
+         * @param input a #QmiMessageSarRfSetStateInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        rf_set_state(
+            input: MessageSarRfSetStateInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageSarRfSetStateOutput>;
+        /**
+         * Asynchronously sends a RF Set State request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_sar_rf_set_state_finish() to get the result of the operation.
+         * @param input a #QmiMessageSarRfSetStateInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        rf_set_state(
+            input: MessageSarRfSetStateInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a RF Set State request to the device.
          *
@@ -24005,7 +29299,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageSarRfSetStateOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_sar_rf_set_state().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_sar_rf_set_state().
@@ -24078,6 +29372,38 @@ export namespace Qmi {
          * @param input a #QmiMessageSscControlInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        control(
+            input: MessageSscControlInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageSscControlOutput>;
+        /**
+         * Asynchronously sends a Control request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_ssc_control_finish() to get the result of the operation.
+         * @param input a #QmiMessageSscControlInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        control(
+            input: MessageSscControlInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Control request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_ssc_control_finish() to get the result of the operation.
+         * @param input a #QmiMessageSscControlInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         control(
@@ -24085,7 +29411,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageSscControlOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_ssc_control().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_ssc_control().
@@ -24165,6 +29491,38 @@ export namespace Qmi {
          * @param input a #QmiMessageUimChangePinInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        change_pin(
+            input: MessageUimChangePinInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimChangePinOutput>;
+        /**
+         * Asynchronously sends a Change PIN request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_change_pin_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimChangePinInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        change_pin(
+            input: MessageUimChangePinInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Change PIN request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_change_pin_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimChangePinInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         change_pin(
@@ -24172,13 +29530,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimChangePinOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_change_pin().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_change_pin().
          * @returns a #QmiMessageUimChangePinOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_change_pin_output_unref().
          */
         change_pin_finish(res: Gio.AsyncResult): MessageUimChangePinOutput;
+        /**
+         * Asynchronously sends a Change Provisioning Session request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_change_provisioning_session_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimChangeProvisioningSessionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        change_provisioning_session(
+            input: MessageUimChangeProvisioningSessionInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimChangeProvisioningSessionOutput>;
+        /**
+         * Asynchronously sends a Change Provisioning Session request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_change_provisioning_session_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimChangeProvisioningSessionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        change_provisioning_session(
+            input: MessageUimChangeProvisioningSessionInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Change Provisioning Session request to the device.
          *
@@ -24195,13 +29585,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimChangeProvisioningSessionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_change_provisioning_session().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_change_provisioning_session().
          * @returns a #QmiMessageUimChangeProvisioningSessionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_change_provisioning_session_output_unref().
          */
         change_provisioning_session_finish(res: Gio.AsyncResult): MessageUimChangeProvisioningSessionOutput;
+        /**
+         * Asynchronously sends a Depersonalization request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_depersonalization_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimDepersonalizationInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        depersonalization(
+            input: MessageUimDepersonalizationInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimDepersonalizationOutput>;
+        /**
+         * Asynchronously sends a Depersonalization request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_depersonalization_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimDepersonalizationInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        depersonalization(
+            input: MessageUimDepersonalizationInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Depersonalization request to the device.
          *
@@ -24218,13 +29640,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimDepersonalizationOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_depersonalization().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_depersonalization().
          * @returns a #QmiMessageUimDepersonalizationOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_depersonalization_output_unref().
          */
         depersonalization_finish(res: Gio.AsyncResult): MessageUimDepersonalizationOutput;
+        /**
+         * Asynchronously sends a Get Card Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_get_card_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_card_status(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimGetCardStatusOutput>;
+        /**
+         * Asynchronously sends a Get Card Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_get_card_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_card_status(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Card Status request to the device.
          *
@@ -24241,13 +29695,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimGetCardStatusOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_get_card_status().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_get_card_status().
          * @returns a #QmiMessageUimGetCardStatusOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_get_card_status_output_unref().
          */
         get_card_status_finish(res: Gio.AsyncResult): MessageUimGetCardStatusOutput;
+        /**
+         * Asynchronously sends a Get Configuration request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_get_configuration_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimGetConfigurationInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_configuration(
+            input: MessageUimGetConfigurationInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimGetConfigurationOutput>;
+        /**
+         * Asynchronously sends a Get Configuration request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_get_configuration_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimGetConfigurationInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_configuration(
+            input: MessageUimGetConfigurationInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Configuration request to the device.
          *
@@ -24264,13 +29750,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimGetConfigurationOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_get_configuration().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_get_configuration().
          * @returns a #QmiMessageUimGetConfigurationOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_get_configuration_output_unref().
          */
         get_configuration_finish(res: Gio.AsyncResult): MessageUimGetConfigurationOutput;
+        /**
+         * Asynchronously sends a Get File Attributes request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_get_file_attributes_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimGetFileAttributesInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_file_attributes(
+            input: MessageUimGetFileAttributesInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimGetFileAttributesOutput>;
+        /**
+         * Asynchronously sends a Get File Attributes request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_get_file_attributes_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimGetFileAttributesInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_file_attributes(
+            input: MessageUimGetFileAttributesInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get File Attributes request to the device.
          *
@@ -24287,13 +29805,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimGetFileAttributesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_get_file_attributes().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_get_file_attributes().
          * @returns a #QmiMessageUimGetFileAttributesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_get_file_attributes_output_unref().
          */
         get_file_attributes_finish(res: Gio.AsyncResult): MessageUimGetFileAttributesOutput;
+        /**
+         * Asynchronously sends a Get Slot Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_get_slot_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_slot_status(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimGetSlotStatusOutput>;
+        /**
+         * Asynchronously sends a Get Slot Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_get_slot_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_slot_status(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Slot Status request to the device.
          *
@@ -24310,13 +29860,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimGetSlotStatusOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_get_slot_status().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_get_slot_status().
          * @returns a #QmiMessageUimGetSlotStatusOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_get_slot_status_output_unref().
          */
         get_slot_status_finish(res: Gio.AsyncResult): MessageUimGetSlotStatusOutput;
+        /**
+         * Asynchronously sends a Get Supported Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_get_supported_messages_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_supported_messages(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimGetSupportedMessagesOutput>;
+        /**
+         * Asynchronously sends a Get Supported Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_get_supported_messages_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_supported_messages(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Supported Messages request to the device.
          *
@@ -24333,13 +29915,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimGetSupportedMessagesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_get_supported_messages().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_get_supported_messages().
          * @returns a #QmiMessageUimGetSupportedMessagesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_get_supported_messages_output_unref().
          */
         get_supported_messages_finish(res: Gio.AsyncResult): MessageUimGetSupportedMessagesOutput;
+        /**
+         * Asynchronously sends a Power Off SIM request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_power_off_sim_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimPowerOffSimInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        power_off_sim(
+            input: MessageUimPowerOffSimInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimPowerOffSimOutput>;
+        /**
+         * Asynchronously sends a Power Off SIM request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_power_off_sim_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimPowerOffSimInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        power_off_sim(
+            input: MessageUimPowerOffSimInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Power Off SIM request to the device.
          *
@@ -24356,13 +29970,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimPowerOffSimOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_power_off_sim().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_power_off_sim().
          * @returns a #QmiMessageUimPowerOffSimOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_power_off_sim_output_unref().
          */
         power_off_sim_finish(res: Gio.AsyncResult): MessageUimPowerOffSimOutput;
+        /**
+         * Asynchronously sends a Power On SIM request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_power_on_sim_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimPowerOnSimInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        power_on_sim(
+            input: MessageUimPowerOnSimInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimPowerOnSimOutput>;
+        /**
+         * Asynchronously sends a Power On SIM request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_power_on_sim_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimPowerOnSimInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        power_on_sim(
+            input: MessageUimPowerOnSimInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Power On SIM request to the device.
          *
@@ -24379,13 +30025,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimPowerOnSimOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_power_on_sim().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_power_on_sim().
          * @returns a #QmiMessageUimPowerOnSimOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_power_on_sim_output_unref().
          */
         power_on_sim_finish(res: Gio.AsyncResult): MessageUimPowerOnSimOutput;
+        /**
+         * Asynchronously sends a Read Record request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_read_record_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimReadRecordInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        read_record(
+            input: MessageUimReadRecordInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimReadRecordOutput>;
+        /**
+         * Asynchronously sends a Read Record request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_read_record_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimReadRecordInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        read_record(
+            input: MessageUimReadRecordInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Read Record request to the device.
          *
@@ -24402,13 +30080,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimReadRecordOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_read_record().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_read_record().
          * @returns a #QmiMessageUimReadRecordOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_read_record_output_unref().
          */
         read_record_finish(res: Gio.AsyncResult): MessageUimReadRecordOutput;
+        /**
+         * Asynchronously sends a Read Transparent request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_read_transparent_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimReadTransparentInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        read_transparent(
+            input: MessageUimReadTransparentInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimReadTransparentOutput>;
+        /**
+         * Asynchronously sends a Read Transparent request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_read_transparent_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimReadTransparentInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        read_transparent(
+            input: MessageUimReadTransparentInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Read Transparent request to the device.
          *
@@ -24425,13 +30135,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimReadTransparentOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_read_transparent().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_read_transparent().
          * @returns a #QmiMessageUimReadTransparentOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_read_transparent_output_unref().
          */
         read_transparent_finish(res: Gio.AsyncResult): MessageUimReadTransparentOutput;
+        /**
+         * Asynchronously sends a Refresh Complete request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_refresh_complete_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimRefreshCompleteInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        refresh_complete(
+            input: MessageUimRefreshCompleteInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimRefreshCompleteOutput>;
+        /**
+         * Asynchronously sends a Refresh Complete request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_refresh_complete_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimRefreshCompleteInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        refresh_complete(
+            input: MessageUimRefreshCompleteInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Refresh Complete request to the device.
          *
@@ -24448,13 +30190,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimRefreshCompleteOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_refresh_complete().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_refresh_complete().
          * @returns a #QmiMessageUimRefreshCompleteOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_refresh_complete_output_unref().
          */
         refresh_complete_finish(res: Gio.AsyncResult): MessageUimRefreshCompleteOutput;
+        /**
+         * Asynchronously sends a Refresh Register request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_refresh_register_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimRefreshRegisterInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        refresh_register(
+            input: MessageUimRefreshRegisterInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimRefreshRegisterOutput>;
+        /**
+         * Asynchronously sends a Refresh Register request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_refresh_register_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimRefreshRegisterInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        refresh_register(
+            input: MessageUimRefreshRegisterInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Refresh Register request to the device.
          *
@@ -24471,6 +30245,38 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<MessageUimRefreshRegisterOutput> | void;
+        /**
+         * Asynchronously sends a Refresh Register All request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_refresh_register_all_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimRefreshRegisterAllInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        refresh_register_all(
+            input: MessageUimRefreshRegisterAllInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimRefreshRegisterAllOutput>;
+        /**
+         * Asynchronously sends a Refresh Register All request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_refresh_register_all_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimRefreshRegisterAllInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        refresh_register_all(
+            input: MessageUimRefreshRegisterAllInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Asynchronously sends a Refresh Register All request to the device.
@@ -24488,7 +30294,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimRefreshRegisterAllOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_refresh_register_all().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_refresh_register_all().
@@ -24510,6 +30316,38 @@ export namespace Qmi {
          * @param input a #QmiMessageUimRegisterEventsInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        register_events(
+            input: MessageUimRegisterEventsInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimRegisterEventsOutput>;
+        /**
+         * Asynchronously sends a Register Events request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_register_events_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimRegisterEventsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        register_events(
+            input: MessageUimRegisterEventsInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Register Events request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_register_events_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimRegisterEventsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         register_events(
@@ -24517,13 +30355,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimRegisterEventsOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_register_events().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_register_events().
          * @returns a #QmiMessageUimRegisterEventsOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_register_events_output_unref().
          */
         register_events_finish(res: Gio.AsyncResult): MessageUimRegisterEventsOutput;
+        /**
+         * Asynchronously sends a Remote Unlock request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_remote_unlock_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimRemoteUnlockInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        remote_unlock(
+            input: MessageUimRemoteUnlockInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimRemoteUnlockOutput>;
+        /**
+         * Asynchronously sends a Remote Unlock request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_remote_unlock_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimRemoteUnlockInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        remote_unlock(
+            input: MessageUimRemoteUnlockInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Remote Unlock request to the device.
          *
@@ -24540,13 +30410,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimRemoteUnlockOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_remote_unlock().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_remote_unlock().
          * @returns a #QmiMessageUimRemoteUnlockOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_remote_unlock_output_unref().
          */
         remote_unlock_finish(res: Gio.AsyncResult): MessageUimRemoteUnlockOutput;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimResetOutput>;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Reset request to the device.
          *
@@ -24563,13 +30465,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimResetOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_reset().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_reset().
          * @returns a #QmiMessageUimResetOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_reset_output_unref().
          */
         reset_finish(res: Gio.AsyncResult): MessageUimResetOutput;
+        /**
+         * Asynchronously sends a Set PIN Protection request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_set_pin_protection_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimSetPinProtectionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_pin_protection(
+            input: MessageUimSetPinProtectionInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimSetPinProtectionOutput>;
+        /**
+         * Asynchronously sends a Set PIN Protection request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_set_pin_protection_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimSetPinProtectionInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_pin_protection(
+            input: MessageUimSetPinProtectionInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set PIN Protection request to the device.
          *
@@ -24586,13 +30520,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimSetPinProtectionOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_set_pin_protection().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_set_pin_protection().
          * @returns a #QmiMessageUimSetPinProtectionOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_set_pin_protection_output_unref().
          */
         set_pin_protection_finish(res: Gio.AsyncResult): MessageUimSetPinProtectionOutput;
+        /**
+         * Asynchronously sends a Switch Slot request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_switch_slot_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimSwitchSlotInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        switch_slot(
+            input: MessageUimSwitchSlotInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimSwitchSlotOutput>;
+        /**
+         * Asynchronously sends a Switch Slot request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_switch_slot_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimSwitchSlotInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        switch_slot(
+            input: MessageUimSwitchSlotInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Switch Slot request to the device.
          *
@@ -24609,13 +30575,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimSwitchSlotOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_switch_slot().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_switch_slot().
          * @returns a #QmiMessageUimSwitchSlotOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_switch_slot_output_unref().
          */
         switch_slot_finish(res: Gio.AsyncResult): MessageUimSwitchSlotOutput;
+        /**
+         * Asynchronously sends a Unblock PIN request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_unblock_pin_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimUnblockPinInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        unblock_pin(
+            input: MessageUimUnblockPinInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimUnblockPinOutput>;
+        /**
+         * Asynchronously sends a Unblock PIN request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_unblock_pin_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimUnblockPinInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        unblock_pin(
+            input: MessageUimUnblockPinInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Unblock PIN request to the device.
          *
@@ -24632,13 +30630,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimUnblockPinOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_unblock_pin().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_unblock_pin().
          * @returns a #QmiMessageUimUnblockPinOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_uim_unblock_pin_output_unref().
          */
         unblock_pin_finish(res: Gio.AsyncResult): MessageUimUnblockPinOutput;
+        /**
+         * Asynchronously sends a Verify PIN request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_verify_pin_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimVerifyPinInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        verify_pin(
+            input: MessageUimVerifyPinInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageUimVerifyPinOutput>;
+        /**
+         * Asynchronously sends a Verify PIN request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_uim_verify_pin_finish() to get the result of the operation.
+         * @param input a #QmiMessageUimVerifyPinInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        verify_pin(
+            input: MessageUimVerifyPinInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Verify PIN request to the device.
          *
@@ -24655,7 +30685,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageUimVerifyPinOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_uim_verify_pin().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_uim_verify_pin().
@@ -24755,6 +30785,38 @@ export namespace Qmi {
          * @param input a #QmiMessageVoiceAnswerCallInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        answer_call(
+            input: MessageVoiceAnswerCallInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceAnswerCallOutput>;
+        /**
+         * Asynchronously sends a Answer Call request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_answer_call_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceAnswerCallInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        answer_call(
+            input: MessageVoiceAnswerCallInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Answer Call request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_answer_call_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceAnswerCallInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         answer_call(
@@ -24762,13 +30824,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceAnswerCallOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_answer_call().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_answer_call().
          * @returns a #QmiMessageVoiceAnswerCallOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_answer_call_output_unref().
          */
         answer_call_finish(res: Gio.AsyncResult): MessageVoiceAnswerCallOutput;
+        /**
+         * Asynchronously sends a Answer USSD request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_answer_ussd_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceAnswerUssdInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        answer_ussd(
+            input: MessageVoiceAnswerUssdInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceAnswerUssdOutput>;
+        /**
+         * Asynchronously sends a Answer USSD request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_answer_ussd_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceAnswerUssdInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        answer_ussd(
+            input: MessageVoiceAnswerUssdInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Answer USSD request to the device.
          *
@@ -24785,13 +30879,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceAnswerUssdOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_answer_ussd().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_answer_ussd().
          * @returns a #QmiMessageVoiceAnswerUssdOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_answer_ussd_output_unref().
          */
         answer_ussd_finish(res: Gio.AsyncResult): MessageVoiceAnswerUssdOutput;
+        /**
+         * Asynchronously sends a Burst DTMF request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_burst_dtmf_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceBurstDtmfInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        burst_dtmf(
+            input: MessageVoiceBurstDtmfInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceBurstDtmfOutput>;
+        /**
+         * Asynchronously sends a Burst DTMF request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_burst_dtmf_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceBurstDtmfInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        burst_dtmf(
+            input: MessageVoiceBurstDtmfInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Burst DTMF request to the device.
          *
@@ -24808,13 +30934,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceBurstDtmfOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_burst_dtmf().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_burst_dtmf().
          * @returns a #QmiMessageVoiceBurstDtmfOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_burst_dtmf_output_unref().
          */
         burst_dtmf_finish(res: Gio.AsyncResult): MessageVoiceBurstDtmfOutput;
+        /**
+         * Asynchronously sends a Cancel USSD request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_cancel_ussd_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        cancel_ussd(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceCancelUssdOutput>;
+        /**
+         * Asynchronously sends a Cancel USSD request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_cancel_ussd_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        cancel_ussd(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Cancel USSD request to the device.
          *
@@ -24831,13 +30989,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceCancelUssdOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_cancel_ussd().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_cancel_ussd().
          * @returns a #QmiMessageVoiceCancelUssdOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_cancel_ussd_output_unref().
          */
         cancel_ussd_finish(res: Gio.AsyncResult): MessageVoiceCancelUssdOutput;
+        /**
+         * Asynchronously sends a Dial Call request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_dial_call_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceDialCallInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        dial_call(
+            input: MessageVoiceDialCallInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceDialCallOutput>;
+        /**
+         * Asynchronously sends a Dial Call request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_dial_call_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceDialCallInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        dial_call(
+            input: MessageVoiceDialCallInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Dial Call request to the device.
          *
@@ -24854,13 +31044,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceDialCallOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_dial_call().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_dial_call().
          * @returns a #QmiMessageVoiceDialCallOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_dial_call_output_unref().
          */
         dial_call_finish(res: Gio.AsyncResult): MessageVoiceDialCallOutput;
+        /**
+         * Asynchronously sends a End Call request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_end_call_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceEndCallInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        end_call(
+            input: MessageVoiceEndCallInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceEndCallOutput>;
+        /**
+         * Asynchronously sends a End Call request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_end_call_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceEndCallInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        end_call(
+            input: MessageVoiceEndCallInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a End Call request to the device.
          *
@@ -24877,13 +31099,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceEndCallOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_end_call().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_end_call().
          * @returns a #QmiMessageVoiceEndCallOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_end_call_output_unref().
          */
         end_call_finish(res: Gio.AsyncResult): MessageVoiceEndCallOutput;
+        /**
+         * Asynchronously sends a Get All Call Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_get_all_call_info_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_all_call_info(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceGetAllCallInfoOutput>;
+        /**
+         * Asynchronously sends a Get All Call Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_get_all_call_info_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_all_call_info(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get All Call Info request to the device.
          *
@@ -24900,13 +31154,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceGetAllCallInfoOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_get_all_call_info().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_get_all_call_info().
          * @returns a #QmiMessageVoiceGetAllCallInfoOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_get_all_call_info_output_unref().
          */
         get_all_call_info_finish(res: Gio.AsyncResult): MessageVoiceGetAllCallInfoOutput;
+        /**
+         * Asynchronously sends a Get Call Waiting request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_get_call_waiting_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceGetCallWaitingInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_call_waiting(
+            input: MessageVoiceGetCallWaitingInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceGetCallWaitingOutput>;
+        /**
+         * Asynchronously sends a Get Call Waiting request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_get_call_waiting_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceGetCallWaitingInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_call_waiting(
+            input: MessageVoiceGetCallWaitingInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Call Waiting request to the device.
          *
@@ -24923,13 +31209,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceGetCallWaitingOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_get_call_waiting().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_get_call_waiting().
          * @returns a #QmiMessageVoiceGetCallWaitingOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_get_call_waiting_output_unref().
          */
         get_call_waiting_finish(res: Gio.AsyncResult): MessageVoiceGetCallWaitingOutput;
+        /**
+         * Asynchronously sends a Get Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_get_config_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceGetConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_config(
+            input: MessageVoiceGetConfigInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceGetConfigOutput>;
+        /**
+         * Asynchronously sends a Get Config request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_get_config_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceGetConfigInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_config(
+            input: MessageVoiceGetConfigInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Config request to the device.
          *
@@ -24946,13 +31264,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceGetConfigOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_get_config().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_get_config().
          * @returns a #QmiMessageVoiceGetConfigOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_get_config_output_unref().
          */
         get_config_finish(res: Gio.AsyncResult): MessageVoiceGetConfigOutput;
+        /**
+         * Asynchronously sends a Get Supported Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_get_supported_messages_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_supported_messages(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceGetSupportedMessagesOutput>;
+        /**
+         * Asynchronously sends a Get Supported Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_get_supported_messages_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_supported_messages(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Supported Messages request to the device.
          *
@@ -24969,13 +31319,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceGetSupportedMessagesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_get_supported_messages().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_get_supported_messages().
          * @returns a #QmiMessageVoiceGetSupportedMessagesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_get_supported_messages_output_unref().
          */
         get_supported_messages_finish(res: Gio.AsyncResult): MessageVoiceGetSupportedMessagesOutput;
+        /**
+         * Asynchronously sends a Indication Register request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_indication_register_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceIndicationRegisterInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        indication_register(
+            input: MessageVoiceIndicationRegisterInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceIndicationRegisterOutput>;
+        /**
+         * Asynchronously sends a Indication Register request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_indication_register_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceIndicationRegisterInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        indication_register(
+            input: MessageVoiceIndicationRegisterInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Indication Register request to the device.
          *
@@ -24992,13 +31374,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceIndicationRegisterOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_indication_register().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_indication_register().
          * @returns a #QmiMessageVoiceIndicationRegisterOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_indication_register_output_unref().
          */
         indication_register_finish(res: Gio.AsyncResult): MessageVoiceIndicationRegisterOutput;
+        /**
+         * Asynchronously sends a Manage Calls request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_manage_calls_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceManageCallsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        manage_calls(
+            input: MessageVoiceManageCallsInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceManageCallsOutput>;
+        /**
+         * Asynchronously sends a Manage Calls request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_manage_calls_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceManageCallsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        manage_calls(
+            input: MessageVoiceManageCallsInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Manage Calls request to the device.
          *
@@ -25015,13 +31429,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceManageCallsOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_manage_calls().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_manage_calls().
          * @returns a #QmiMessageVoiceManageCallsOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_manage_calls_output_unref().
          */
         manage_calls_finish(res: Gio.AsyncResult): MessageVoiceManageCallsOutput;
+        /**
+         * Asynchronously sends a Originate USSD request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_originate_ussd_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceOriginateUssdInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        originate_ussd(
+            input: MessageVoiceOriginateUssdInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceOriginateUssdOutput>;
+        /**
+         * Asynchronously sends a Originate USSD request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_originate_ussd_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceOriginateUssdInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        originate_ussd(
+            input: MessageVoiceOriginateUssdInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Originate USSD request to the device.
          *
@@ -25038,13 +31484,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceOriginateUssdOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_originate_ussd().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_originate_ussd().
          * @returns a #QmiMessageVoiceOriginateUssdOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_originate_ussd_output_unref().
          */
         originate_ussd_finish(res: Gio.AsyncResult): MessageVoiceOriginateUssdOutput;
+        /**
+         * Asynchronously sends a Originate USSD No Wait request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_originate_ussd_no_wait_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceOriginateUssdNoWaitInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        originate_ussd_no_wait(
+            input: MessageVoiceOriginateUssdNoWaitInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceOriginateUssdNoWaitOutput>;
+        /**
+         * Asynchronously sends a Originate USSD No Wait request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_originate_ussd_no_wait_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceOriginateUssdNoWaitInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        originate_ussd_no_wait(
+            input: MessageVoiceOriginateUssdNoWaitInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Originate USSD No Wait request to the device.
          *
@@ -25061,13 +31539,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceOriginateUssdNoWaitOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_originate_ussd_no_wait().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_originate_ussd_no_wait().
          * @returns a #QmiMessageVoiceOriginateUssdNoWaitOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_originate_ussd_no_wait_output_unref().
          */
         originate_ussd_no_wait_finish(res: Gio.AsyncResult): MessageVoiceOriginateUssdNoWaitOutput;
+        /**
+         * Asynchronously sends a Set Supplementary Service request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_set_supplementary_service_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceSetSupplementaryServiceInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_supplementary_service(
+            input: MessageVoiceSetSupplementaryServiceInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceSetSupplementaryServiceOutput>;
+        /**
+         * Asynchronously sends a Set Supplementary Service request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_set_supplementary_service_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceSetSupplementaryServiceInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_supplementary_service(
+            input: MessageVoiceSetSupplementaryServiceInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Supplementary Service request to the device.
          *
@@ -25084,13 +31594,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceSetSupplementaryServiceOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_set_supplementary_service().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_set_supplementary_service().
          * @returns a #QmiMessageVoiceSetSupplementaryServiceOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_set_supplementary_service_output_unref().
          */
         set_supplementary_service_finish(res: Gio.AsyncResult): MessageVoiceSetSupplementaryServiceOutput;
+        /**
+         * Asynchronously sends a Start Continuous DTMF request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_start_continuous_dtmf_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceStartContinuousDtmfInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        start_continuous_dtmf(
+            input: MessageVoiceStartContinuousDtmfInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceStartContinuousDtmfOutput>;
+        /**
+         * Asynchronously sends a Start Continuous DTMF request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_start_continuous_dtmf_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceStartContinuousDtmfInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        start_continuous_dtmf(
+            input: MessageVoiceStartContinuousDtmfInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Start Continuous DTMF request to the device.
          *
@@ -25107,13 +31649,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceStartContinuousDtmfOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_start_continuous_dtmf().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_start_continuous_dtmf().
          * @returns a #QmiMessageVoiceStartContinuousDtmfOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_voice_start_continuous_dtmf_output_unref().
          */
         start_continuous_dtmf_finish(res: Gio.AsyncResult): MessageVoiceStartContinuousDtmfOutput;
+        /**
+         * Asynchronously sends a Stop Continuous DTMF request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_stop_continuous_dtmf_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceStopContinuousDtmfInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        stop_continuous_dtmf(
+            input: MessageVoiceStopContinuousDtmfInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageVoiceStopContinuousDtmfOutput>;
+        /**
+         * Asynchronously sends a Stop Continuous DTMF request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_voice_stop_continuous_dtmf_finish() to get the result of the operation.
+         * @param input a #QmiMessageVoiceStopContinuousDtmfInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        stop_continuous_dtmf(
+            input: MessageVoiceStopContinuousDtmfInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Stop Continuous DTMF request to the device.
          *
@@ -25130,7 +31704,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageVoiceStopContinuousDtmfOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_voice_stop_continuous_dtmf().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_voice_stop_continuous_dtmf().
@@ -25169,6 +31743,38 @@ export namespace Qmi {
          * @param input a #QmiMessageWdaGetDataFormatInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        get_data_format(
+            input: MessageWdaGetDataFormatInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdaGetDataFormatOutput>;
+        /**
+         * Asynchronously sends a Get Data Format request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wda_get_data_format_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdaGetDataFormatInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_data_format(
+            input: MessageWdaGetDataFormatInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Get Data Format request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wda_get_data_format_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdaGetDataFormatInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         get_data_format(
@@ -25176,13 +31782,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdaGetDataFormatOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wda_get_data_format().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wda_get_data_format().
          * @returns a #QmiMessageWdaGetDataFormatOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wda_get_data_format_output_unref().
          */
         get_data_format_finish(res: Gio.AsyncResult): MessageWdaGetDataFormatOutput;
+        /**
+         * Asynchronously sends a Get Supported Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wda_get_supported_messages_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_supported_messages(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdaGetSupportedMessagesOutput>;
+        /**
+         * Asynchronously sends a Get Supported Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wda_get_supported_messages_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_supported_messages(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Supported Messages request to the device.
          *
@@ -25199,13 +31837,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdaGetSupportedMessagesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wda_get_supported_messages().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wda_get_supported_messages().
          * @returns a #QmiMessageWdaGetSupportedMessagesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wda_get_supported_messages_output_unref().
          */
         get_supported_messages_finish(res: Gio.AsyncResult): MessageWdaGetSupportedMessagesOutput;
+        /**
+         * Asynchronously sends a Set Data Format request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wda_set_data_format_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdaSetDataFormatInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_data_format(
+            input: MessageWdaSetDataFormatInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdaSetDataFormatOutput>;
+        /**
+         * Asynchronously sends a Set Data Format request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wda_set_data_format_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdaSetDataFormatInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_data_format(
+            input: MessageWdaSetDataFormatInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Data Format request to the device.
          *
@@ -25222,7 +31892,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdaSetDataFormatOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wda_set_data_format().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wda_set_data_format().
@@ -25334,6 +32004,38 @@ export namespace Qmi {
          * @param input a #QmiMessageWdsBindDataPortInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        bind_data_port(
+            input: MessageWdsBindDataPortInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsBindDataPortOutput>;
+        /**
+         * Asynchronously sends a Bind Data Port request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_bind_data_port_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsBindDataPortInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        bind_data_port(
+            input: MessageWdsBindDataPortInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Bind Data Port request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_bind_data_port_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsBindDataPortInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         bind_data_port(
@@ -25341,13 +32043,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsBindDataPortOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_bind_data_port().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_bind_data_port().
          * @returns a #QmiMessageWdsBindDataPortOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_bind_data_port_output_unref().
          */
         bind_data_port_finish(res: Gio.AsyncResult): MessageWdsBindDataPortOutput;
+        /**
+         * Asynchronously sends a Bind Mux Data Port request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_bind_mux_data_port_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsBindMuxDataPortInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        bind_mux_data_port(
+            input: MessageWdsBindMuxDataPortInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsBindMuxDataPortOutput>;
+        /**
+         * Asynchronously sends a Bind Mux Data Port request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_bind_mux_data_port_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsBindMuxDataPortInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        bind_mux_data_port(
+            input: MessageWdsBindMuxDataPortInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Bind Mux Data Port request to the device.
          *
@@ -25364,13 +32098,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsBindMuxDataPortOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_bind_mux_data_port().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_bind_mux_data_port().
          * @returns a #QmiMessageWdsBindMuxDataPortOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_bind_mux_data_port_output_unref().
          */
         bind_mux_data_port_finish(res: Gio.AsyncResult): MessageWdsBindMuxDataPortOutput;
+        /**
+         * Asynchronously sends a Configure Profile Event List request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_configure_profile_event_list_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsConfigureProfileEventListInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        configure_profile_event_list(
+            input: MessageWdsConfigureProfileEventListInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsConfigureProfileEventListOutput>;
+        /**
+         * Asynchronously sends a Configure Profile Event List request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_configure_profile_event_list_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsConfigureProfileEventListInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        configure_profile_event_list(
+            input: MessageWdsConfigureProfileEventListInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Configure Profile Event List request to the device.
          *
@@ -25387,13 +32153,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsConfigureProfileEventListOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_configure_profile_event_list().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_configure_profile_event_list().
          * @returns a #QmiMessageWdsConfigureProfileEventListOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_configure_profile_event_list_output_unref().
          */
         configure_profile_event_list_finish(res: Gio.AsyncResult): MessageWdsConfigureProfileEventListOutput;
+        /**
+         * Asynchronously sends a Create Profile request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_create_profile_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsCreateProfileInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        create_profile(
+            input: MessageWdsCreateProfileInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsCreateProfileOutput>;
+        /**
+         * Asynchronously sends a Create Profile request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_create_profile_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsCreateProfileInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        create_profile(
+            input: MessageWdsCreateProfileInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Create Profile request to the device.
          *
@@ -25410,13 +32208,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsCreateProfileOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_create_profile().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_create_profile().
          * @returns a #QmiMessageWdsCreateProfileOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_create_profile_output_unref().
          */
         create_profile_finish(res: Gio.AsyncResult): MessageWdsCreateProfileOutput;
+        /**
+         * Asynchronously sends a Delete Profile request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_delete_profile_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsDeleteProfileInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        delete_profile(
+            input: MessageWdsDeleteProfileInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsDeleteProfileOutput>;
+        /**
+         * Asynchronously sends a Delete Profile request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_delete_profile_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsDeleteProfileInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        delete_profile(
+            input: MessageWdsDeleteProfileInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Delete Profile request to the device.
          *
@@ -25433,13 +32263,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsDeleteProfileOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_delete_profile().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_delete_profile().
          * @returns a #QmiMessageWdsDeleteProfileOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_delete_profile_output_unref().
          */
         delete_profile_finish(res: Gio.AsyncResult): MessageWdsDeleteProfileOutput;
+        /**
+         * Asynchronously sends a Get Autoconnect Settings request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_autoconnect_settings_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_autoconnect_settings(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetAutoconnectSettingsOutput>;
+        /**
+         * Asynchronously sends a Get Autoconnect Settings request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_autoconnect_settings_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_autoconnect_settings(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Autoconnect Settings request to the device.
          *
@@ -25456,13 +32318,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetAutoconnectSettingsOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_autoconnect_settings().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_autoconnect_settings().
          * @returns a #QmiMessageWdsGetAutoconnectSettingsOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_autoconnect_settings_output_unref().
          */
         get_autoconnect_settings_finish(res: Gio.AsyncResult): MessageWdsGetAutoconnectSettingsOutput;
+        /**
+         * Asynchronously sends a Get Channel Rates request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_channel_rates_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_channel_rates(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetChannelRatesOutput>;
+        /**
+         * Asynchronously sends a Get Channel Rates request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_channel_rates_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_channel_rates(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Channel Rates request to the device.
          *
@@ -25479,13 +32373,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetChannelRatesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_channel_rates().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_channel_rates().
          * @returns a #QmiMessageWdsGetChannelRatesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_channel_rates_output_unref().
          */
         get_channel_rates_finish(res: Gio.AsyncResult): MessageWdsGetChannelRatesOutput;
+        /**
+         * Asynchronously sends a Get Current Data Bearer Technology request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_current_data_bearer_technology_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_current_data_bearer_technology(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetCurrentDataBearerTechnologyOutput>;
+        /**
+         * Asynchronously sends a Get Current Data Bearer Technology request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_current_data_bearer_technology_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_current_data_bearer_technology(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Current Data Bearer Technology request to the device.
          *
@@ -25502,13 +32428,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetCurrentDataBearerTechnologyOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_current_data_bearer_technology().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_current_data_bearer_technology().
          * @returns a #QmiMessageWdsGetCurrentDataBearerTechnologyOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_current_data_bearer_technology_output_unref().
          */
         get_current_data_bearer_technology_finish(res: Gio.AsyncResult): MessageWdsGetCurrentDataBearerTechnologyOutput;
+        /**
+         * Asynchronously sends a Get Current Settings request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_current_settings_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsGetCurrentSettingsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_current_settings(
+            input: MessageWdsGetCurrentSettingsInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetCurrentSettingsOutput>;
+        /**
+         * Asynchronously sends a Get Current Settings request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_current_settings_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsGetCurrentSettingsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_current_settings(
+            input: MessageWdsGetCurrentSettingsInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Current Settings request to the device.
          *
@@ -25525,13 +32483,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetCurrentSettingsOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_current_settings().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_current_settings().
          * @returns a #QmiMessageWdsGetCurrentSettingsOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_current_settings_output_unref().
          */
         get_current_settings_finish(res: Gio.AsyncResult): MessageWdsGetCurrentSettingsOutput;
+        /**
+         * Asynchronously sends a Get Data Bearer Technology request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_data_bearer_technology_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_data_bearer_technology(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetDataBearerTechnologyOutput>;
+        /**
+         * Asynchronously sends a Get Data Bearer Technology request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_data_bearer_technology_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_data_bearer_technology(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Data Bearer Technology request to the device.
          *
@@ -25548,13 +32538,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetDataBearerTechnologyOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_data_bearer_technology().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_data_bearer_technology().
          * @returns a #QmiMessageWdsGetDataBearerTechnologyOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_data_bearer_technology_output_unref().
          */
         get_data_bearer_technology_finish(res: Gio.AsyncResult): MessageWdsGetDataBearerTechnologyOutput;
+        /**
+         * Asynchronously sends a Get Default Profile Number request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_default_profile_number_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsGetDefaultProfileNumberInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_default_profile_number(
+            input: MessageWdsGetDefaultProfileNumberInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetDefaultProfileNumberOutput>;
+        /**
+         * Asynchronously sends a Get Default Profile Number request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_default_profile_number_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsGetDefaultProfileNumberInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_default_profile_number(
+            input: MessageWdsGetDefaultProfileNumberInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Default Profile Number request to the device.
          *
@@ -25571,13 +32593,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetDefaultProfileNumberOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_default_profile_number().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_default_profile_number().
          * @returns a #QmiMessageWdsGetDefaultProfileNumberOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_default_profile_number_output_unref().
          */
         get_default_profile_number_finish(res: Gio.AsyncResult): MessageWdsGetDefaultProfileNumberOutput;
+        /**
+         * Asynchronously sends a Get Default Settings request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_default_settings_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsGetDefaultSettingsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_default_settings(
+            input: MessageWdsGetDefaultSettingsInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetDefaultSettingsOutput>;
+        /**
+         * Asynchronously sends a Get Default Settings request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_default_settings_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsGetDefaultSettingsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_default_settings(
+            input: MessageWdsGetDefaultSettingsInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Default Settings request to the device.
          *
@@ -25594,13 +32648,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetDefaultSettingsOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_default_settings().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_default_settings().
          * @returns a #QmiMessageWdsGetDefaultSettingsOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_default_settings_output_unref().
          */
         get_default_settings_finish(res: Gio.AsyncResult): MessageWdsGetDefaultSettingsOutput;
+        /**
+         * Asynchronously sends a Get Dormancy Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_dormancy_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_dormancy_status(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetDormancyStatusOutput>;
+        /**
+         * Asynchronously sends a Get Dormancy Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_dormancy_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_dormancy_status(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Dormancy Status request to the device.
          *
@@ -25617,13 +32703,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetDormancyStatusOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_dormancy_status().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_dormancy_status().
          * @returns a #QmiMessageWdsGetDormancyStatusOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_dormancy_status_output_unref().
          */
         get_dormancy_status_finish(res: Gio.AsyncResult): MessageWdsGetDormancyStatusOutput;
+        /**
+         * Asynchronously sends a Get LTE Attach Parameters request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_lte_attach_parameters_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_lte_attach_parameters(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetLteAttachParametersOutput>;
+        /**
+         * Asynchronously sends a Get LTE Attach Parameters request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_lte_attach_parameters_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_lte_attach_parameters(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get LTE Attach Parameters request to the device.
          *
@@ -25640,13 +32758,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetLteAttachParametersOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_lte_attach_parameters().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_lte_attach_parameters().
          * @returns a #QmiMessageWdsGetLteAttachParametersOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_lte_attach_parameters_output_unref().
          */
         get_lte_attach_parameters_finish(res: Gio.AsyncResult): MessageWdsGetLteAttachParametersOutput;
+        /**
+         * Asynchronously sends a Get LTE Attach PDN List request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_lte_attach_pdn_list_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_lte_attach_pdn_list(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetLteAttachPdnListOutput>;
+        /**
+         * Asynchronously sends a Get LTE Attach PDN List request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_lte_attach_pdn_list_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_lte_attach_pdn_list(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get LTE Attach PDN List request to the device.
          *
@@ -25663,13 +32813,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetLteAttachPdnListOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_lte_attach_pdn_list().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_lte_attach_pdn_list().
          * @returns a #QmiMessageWdsGetLteAttachPdnListOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_lte_attach_pdn_list_output_unref().
          */
         get_lte_attach_pdn_list_finish(res: Gio.AsyncResult): MessageWdsGetLteAttachPdnListOutput;
+        /**
+         * Asynchronously sends a Get Max LTE Attach PDN Number request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_max_lte_attach_pdn_number_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_max_lte_attach_pdn_number(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetMaxLteAttachPdnNumberOutput>;
+        /**
+         * Asynchronously sends a Get Max LTE Attach PDN Number request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_max_lte_attach_pdn_number_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_max_lte_attach_pdn_number(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Max LTE Attach PDN Number request to the device.
          *
@@ -25686,13 +32868,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetMaxLteAttachPdnNumberOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_max_lte_attach_pdn_number().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_max_lte_attach_pdn_number().
          * @returns a #QmiMessageWdsGetMaxLteAttachPdnNumberOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_max_lte_attach_pdn_number_output_unref().
          */
         get_max_lte_attach_pdn_number_finish(res: Gio.AsyncResult): MessageWdsGetMaxLteAttachPdnNumberOutput;
+        /**
+         * Asynchronously sends a Get Packet Service Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_packet_service_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_packet_service_status(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetPacketServiceStatusOutput>;
+        /**
+         * Asynchronously sends a Get Packet Service Status request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_packet_service_status_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_packet_service_status(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Packet Service Status request to the device.
          *
@@ -25709,13 +32923,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetPacketServiceStatusOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_packet_service_status().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_packet_service_status().
          * @returns a #QmiMessageWdsGetPacketServiceStatusOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_packet_service_status_output_unref().
          */
         get_packet_service_status_finish(res: Gio.AsyncResult): MessageWdsGetPacketServiceStatusOutput;
+        /**
+         * Asynchronously sends a Get Packet Statistics request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_packet_statistics_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsGetPacketStatisticsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_packet_statistics(
+            input: MessageWdsGetPacketStatisticsInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetPacketStatisticsOutput>;
+        /**
+         * Asynchronously sends a Get Packet Statistics request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_packet_statistics_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsGetPacketStatisticsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_packet_statistics(
+            input: MessageWdsGetPacketStatisticsInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Packet Statistics request to the device.
          *
@@ -25732,13 +32978,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetPacketStatisticsOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_packet_statistics().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_packet_statistics().
          * @returns a #QmiMessageWdsGetPacketStatisticsOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_packet_statistics_output_unref().
          */
         get_packet_statistics_finish(res: Gio.AsyncResult): MessageWdsGetPacketStatisticsOutput;
+        /**
+         * Asynchronously sends a Get PDN Throttle Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_pdn_throttle_info_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsGetPdnThrottleInfoInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_pdn_throttle_info(
+            input: MessageWdsGetPdnThrottleInfoInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetPdnThrottleInfoOutput>;
+        /**
+         * Asynchronously sends a Get PDN Throttle Info request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_pdn_throttle_info_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsGetPdnThrottleInfoInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_pdn_throttle_info(
+            input: MessageWdsGetPdnThrottleInfoInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get PDN Throttle Info request to the device.
          *
@@ -25755,13 +33033,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetPdnThrottleInfoOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_pdn_throttle_info().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_pdn_throttle_info().
          * @returns a #QmiMessageWdsGetPdnThrottleInfoOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_pdn_throttle_info_output_unref().
          */
         get_pdn_throttle_info_finish(res: Gio.AsyncResult): MessageWdsGetPdnThrottleInfoOutput;
+        /**
+         * Asynchronously sends a Get Profile List request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_profile_list_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsGetProfileListInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_profile_list(
+            input: MessageWdsGetProfileListInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetProfileListOutput>;
+        /**
+         * Asynchronously sends a Get Profile List request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_profile_list_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsGetProfileListInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_profile_list(
+            input: MessageWdsGetProfileListInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Profile List request to the device.
          *
@@ -25778,13 +33088,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetProfileListOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_profile_list().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_profile_list().
          * @returns a #QmiMessageWdsGetProfileListOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_profile_list_output_unref().
          */
         get_profile_list_finish(res: Gio.AsyncResult): MessageWdsGetProfileListOutput;
+        /**
+         * Asynchronously sends a Get Profile Settings request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_profile_settings_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsGetProfileSettingsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_profile_settings(
+            input: MessageWdsGetProfileSettingsInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetProfileSettingsOutput>;
+        /**
+         * Asynchronously sends a Get Profile Settings request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_profile_settings_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsGetProfileSettingsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_profile_settings(
+            input: MessageWdsGetProfileSettingsInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Profile Settings request to the device.
          *
@@ -25801,13 +33143,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetProfileSettingsOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_profile_settings().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_profile_settings().
          * @returns a #QmiMessageWdsGetProfileSettingsOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_profile_settings_output_unref().
          */
         get_profile_settings_finish(res: Gio.AsyncResult): MessageWdsGetProfileSettingsOutput;
+        /**
+         * Asynchronously sends a Get Supported Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_supported_messages_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_supported_messages(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGetSupportedMessagesOutput>;
+        /**
+         * Asynchronously sends a Get Supported Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_get_supported_messages_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_supported_messages(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Supported Messages request to the device.
          *
@@ -25824,13 +33198,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGetSupportedMessagesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_get_supported_messages().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_get_supported_messages().
          * @returns a #QmiMessageWdsGetSupportedMessagesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_get_supported_messages_output_unref().
          */
         get_supported_messages_finish(res: Gio.AsyncResult): MessageWdsGetSupportedMessagesOutput;
+        /**
+         * Asynchronously sends a Go Active request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_go_active_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        go_active(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGoActiveOutput>;
+        /**
+         * Asynchronously sends a Go Active request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_go_active_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        go_active(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Go Active request to the device.
          *
@@ -25847,13 +33253,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGoActiveOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_go_active().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_go_active().
          * @returns a #QmiMessageWdsGoActiveOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_go_active_output_unref().
          */
         go_active_finish(res: Gio.AsyncResult): MessageWdsGoActiveOutput;
+        /**
+         * Asynchronously sends a Go Dormant request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_go_dormant_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        go_dormant(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsGoDormantOutput>;
+        /**
+         * Asynchronously sends a Go Dormant request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_go_dormant_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        go_dormant(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Go Dormant request to the device.
          *
@@ -25870,13 +33308,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsGoDormantOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_go_dormant().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_go_dormant().
          * @returns a #QmiMessageWdsGoDormantOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_go_dormant_output_unref().
          */
         go_dormant_finish(res: Gio.AsyncResult): MessageWdsGoDormantOutput;
+        /**
+         * Asynchronously sends a Indication Register request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_indication_register_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsIndicationRegisterInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        indication_register(
+            input: MessageWdsIndicationRegisterInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsIndicationRegisterOutput>;
+        /**
+         * Asynchronously sends a Indication Register request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_indication_register_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsIndicationRegisterInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        indication_register(
+            input: MessageWdsIndicationRegisterInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Indication Register request to the device.
          *
@@ -25893,13 +33363,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsIndicationRegisterOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_indication_register().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_indication_register().
          * @returns a #QmiMessageWdsIndicationRegisterOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_indication_register_output_unref().
          */
         indication_register_finish(res: Gio.AsyncResult): MessageWdsIndicationRegisterOutput;
+        /**
+         * Asynchronously sends a Modify Profile request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_modify_profile_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsModifyProfileInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        modify_profile(
+            input: MessageWdsModifyProfileInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsModifyProfileOutput>;
+        /**
+         * Asynchronously sends a Modify Profile request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_modify_profile_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsModifyProfileInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        modify_profile(
+            input: MessageWdsModifyProfileInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Modify Profile request to the device.
          *
@@ -25916,13 +33418,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsModifyProfileOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_modify_profile().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_modify_profile().
          * @returns a #QmiMessageWdsModifyProfileOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_modify_profile_output_unref().
          */
         modify_profile_finish(res: Gio.AsyncResult): MessageWdsModifyProfileOutput;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsResetOutput>;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Reset request to the device.
          *
@@ -25939,13 +33473,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsResetOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_reset().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_reset().
          * @returns a #QmiMessageWdsResetOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_reset_output_unref().
          */
         reset_finish(res: Gio.AsyncResult): MessageWdsResetOutput;
+        /**
+         * Asynchronously sends a Set Autoconnect Settings request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_set_autoconnect_settings_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsSetAutoconnectSettingsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_autoconnect_settings(
+            input: MessageWdsSetAutoconnectSettingsInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsSetAutoconnectSettingsOutput>;
+        /**
+         * Asynchronously sends a Set Autoconnect Settings request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_set_autoconnect_settings_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsSetAutoconnectSettingsInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_autoconnect_settings(
+            input: MessageWdsSetAutoconnectSettingsInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Autoconnect Settings request to the device.
          *
@@ -25962,13 +33528,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsSetAutoconnectSettingsOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_set_autoconnect_settings().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_set_autoconnect_settings().
          * @returns a #QmiMessageWdsSetAutoconnectSettingsOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_set_autoconnect_settings_output_unref().
          */
         set_autoconnect_settings_finish(res: Gio.AsyncResult): MessageWdsSetAutoconnectSettingsOutput;
+        /**
+         * Asynchronously sends a Set Default Profile Number request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_set_default_profile_number_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsSetDefaultProfileNumberInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_default_profile_number(
+            input: MessageWdsSetDefaultProfileNumberInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsSetDefaultProfileNumberOutput>;
+        /**
+         * Asynchronously sends a Set Default Profile Number request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_set_default_profile_number_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsSetDefaultProfileNumberInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_default_profile_number(
+            input: MessageWdsSetDefaultProfileNumberInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Default Profile Number request to the device.
          *
@@ -25985,13 +33583,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsSetDefaultProfileNumberOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_set_default_profile_number().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_set_default_profile_number().
          * @returns a #QmiMessageWdsSetDefaultProfileNumberOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_set_default_profile_number_output_unref().
          */
         set_default_profile_number_finish(res: Gio.AsyncResult): MessageWdsSetDefaultProfileNumberOutput;
+        /**
+         * Asynchronously sends a Set Event Report request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_set_event_report_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsSetEventReportInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_event_report(
+            input: MessageWdsSetEventReportInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsSetEventReportOutput>;
+        /**
+         * Asynchronously sends a Set Event Report request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_set_event_report_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsSetEventReportInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_event_report(
+            input: MessageWdsSetEventReportInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Event Report request to the device.
          *
@@ -26008,13 +33638,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsSetEventReportOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_set_event_report().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_set_event_report().
          * @returns a #QmiMessageWdsSetEventReportOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_set_event_report_output_unref().
          */
         set_event_report_finish(res: Gio.AsyncResult): MessageWdsSetEventReportOutput;
+        /**
+         * Asynchronously sends a Set IP Family request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_set_ip_family_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsSetIpFamilyInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_ip_family(
+            input: MessageWdsSetIpFamilyInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsSetIpFamilyOutput>;
+        /**
+         * Asynchronously sends a Set IP Family request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_set_ip_family_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsSetIpFamilyInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_ip_family(
+            input: MessageWdsSetIpFamilyInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set IP Family request to the device.
          *
@@ -26031,13 +33693,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsSetIpFamilyOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_set_ip_family().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_set_ip_family().
          * @returns a #QmiMessageWdsSetIpFamilyOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_set_ip_family_output_unref().
          */
         set_ip_family_finish(res: Gio.AsyncResult): MessageWdsSetIpFamilyOutput;
+        /**
+         * Asynchronously sends a Set LTE Attach PDN List request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_set_lte_attach_pdn_list_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsSetLteAttachPdnListInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_lte_attach_pdn_list(
+            input: MessageWdsSetLteAttachPdnListInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsSetLteAttachPdnListOutput>;
+        /**
+         * Asynchronously sends a Set LTE Attach PDN List request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_set_lte_attach_pdn_list_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsSetLteAttachPdnListInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_lte_attach_pdn_list(
+            input: MessageWdsSetLteAttachPdnListInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set LTE Attach PDN List request to the device.
          *
@@ -26054,13 +33748,59 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsSetLteAttachPdnListOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_set_lte_attach_pdn_list().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_set_lte_attach_pdn_list().
          * @returns a #QmiMessageWdsSetLteAttachPdnListOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_set_lte_attach_pdn_list_output_unref().
          */
         set_lte_attach_pdn_list_finish(res: Gio.AsyncResult): MessageWdsSetLteAttachPdnListOutput;
+        /**
+         * Asynchronously sends a Start Network request to the device.
+         *
+         * This message is abortable. If `cancellable` is cancelled or if `timeout` expires,
+         * an abort request will be sent to the device, and the asynchronous operation will
+         * not return until the abort response is received. It is not an error if a successful
+         * response is returned for the asynchronous operation even after the user has cancelled
+         * the cancellable, because it may happen that the response is received before the
+         * modem had a chance to run the abort.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_start_network_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsStartNetworkInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        start_network(
+            input: MessageWdsStartNetworkInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsStartNetworkOutput>;
+        /**
+         * Asynchronously sends a Start Network request to the device.
+         *
+         * This message is abortable. If `cancellable` is cancelled or if `timeout` expires,
+         * an abort request will be sent to the device, and the asynchronous operation will
+         * not return until the abort response is received. It is not an error if a successful
+         * response is returned for the asynchronous operation even after the user has cancelled
+         * the cancellable, because it may happen that the response is received before the
+         * modem had a chance to run the abort.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_start_network_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsStartNetworkInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        start_network(
+            input: MessageWdsStartNetworkInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Start Network request to the device.
          *
@@ -26084,13 +33824,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsStartNetworkOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_start_network().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_start_network().
          * @returns a #QmiMessageWdsStartNetworkOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_start_network_output_unref().
          */
         start_network_finish(res: Gio.AsyncResult): MessageWdsStartNetworkOutput;
+        /**
+         * Asynchronously sends a Stop Network request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_stop_network_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsStopNetworkInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        stop_network(
+            input: MessageWdsStopNetworkInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsStopNetworkOutput>;
+        /**
+         * Asynchronously sends a Stop Network request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_stop_network_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsStopNetworkInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        stop_network(
+            input: MessageWdsStopNetworkInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Stop Network request to the device.
          *
@@ -26107,13 +33879,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsStopNetworkOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_stop_network().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_stop_network().
          * @returns a #QmiMessageWdsStopNetworkOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wds_stop_network_output_unref().
          */
         stop_network_finish(res: Gio.AsyncResult): MessageWdsStopNetworkOutput;
+        /**
+         * Asynchronously sends a Swi Create Profile Indexed request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_swi_create_profile_indexed_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsSwiCreateProfileIndexedInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        swi_create_profile_indexed(
+            input: MessageWdsSwiCreateProfileIndexedInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWdsSwiCreateProfileIndexedOutput>;
+        /**
+         * Asynchronously sends a Swi Create Profile Indexed request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wds_swi_create_profile_indexed_finish() to get the result of the operation.
+         * @param input a #QmiMessageWdsSwiCreateProfileIndexedInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        swi_create_profile_indexed(
+            input: MessageWdsSwiCreateProfileIndexedInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Swi Create Profile Indexed request to the device.
          *
@@ -26130,7 +33934,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWdsSwiCreateProfileIndexedOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wds_swi_create_profile_indexed().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wds_swi_create_profile_indexed().
@@ -26203,6 +34007,38 @@ export namespace Qmi {
          * @param input a #QmiMessageWmsDeleteInput.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        ['delete'](
+            input: MessageWmsDeleteInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWmsDeleteOutput>;
+        /**
+         * Asynchronously sends a Delete request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_delete_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsDeleteInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        ['delete'](
+            input: MessageWmsDeleteInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a Delete request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_delete_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsDeleteInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         ['delete'](
@@ -26210,13 +34046,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWmsDeleteOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wms_delete().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_delete().
          * @returns a #QmiMessageWmsDeleteOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wms_delete_output_unref().
          */
         delete_finish(res: Gio.AsyncResult): MessageWmsDeleteOutput;
+        /**
+         * Asynchronously sends a Get Message Protocol request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_get_message_protocol_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_message_protocol(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWmsGetMessageProtocolOutput>;
+        /**
+         * Asynchronously sends a Get Message Protocol request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_get_message_protocol_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_message_protocol(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Message Protocol request to the device.
          *
@@ -26233,13 +34101,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWmsGetMessageProtocolOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wms_get_message_protocol().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_get_message_protocol().
          * @returns a #QmiMessageWmsGetMessageProtocolOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wms_get_message_protocol_output_unref().
          */
         get_message_protocol_finish(res: Gio.AsyncResult): MessageWmsGetMessageProtocolOutput;
+        /**
+         * Asynchronously sends a Get Routes request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_get_routes_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_routes(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWmsGetRoutesOutput>;
+        /**
+         * Asynchronously sends a Get Routes request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_get_routes_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_routes(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Routes request to the device.
          *
@@ -26256,13 +34156,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWmsGetRoutesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wms_get_routes().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_get_routes().
          * @returns a #QmiMessageWmsGetRoutesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wms_get_routes_output_unref().
          */
         get_routes_finish(res: Gio.AsyncResult): MessageWmsGetRoutesOutput;
+        /**
+         * Asynchronously sends a Get Supported Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_get_supported_messages_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        get_supported_messages(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWmsGetSupportedMessagesOutput>;
+        /**
+         * Asynchronously sends a Get Supported Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_get_supported_messages_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_supported_messages(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Get Supported Messages request to the device.
          *
@@ -26279,13 +34211,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWmsGetSupportedMessagesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wms_get_supported_messages().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_get_supported_messages().
          * @returns a #QmiMessageWmsGetSupportedMessagesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wms_get_supported_messages_output_unref().
          */
         get_supported_messages_finish(res: Gio.AsyncResult): MessageWmsGetSupportedMessagesOutput;
+        /**
+         * Asynchronously sends a List Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_list_messages_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsListMessagesInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        list_messages(
+            input: MessageWmsListMessagesInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWmsListMessagesOutput>;
+        /**
+         * Asynchronously sends a List Messages request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_list_messages_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsListMessagesInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        list_messages(
+            input: MessageWmsListMessagesInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a List Messages request to the device.
          *
@@ -26302,13 +34266,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWmsListMessagesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wms_list_messages().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_list_messages().
          * @returns a #QmiMessageWmsListMessagesOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wms_list_messages_output_unref().
          */
         list_messages_finish(res: Gio.AsyncResult): MessageWmsListMessagesOutput;
+        /**
+         * Asynchronously sends a Modify Tag request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_modify_tag_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsModifyTagInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        modify_tag(
+            input: MessageWmsModifyTagInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWmsModifyTagOutput>;
+        /**
+         * Asynchronously sends a Modify Tag request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_modify_tag_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsModifyTagInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        modify_tag(
+            input: MessageWmsModifyTagInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Modify Tag request to the device.
          *
@@ -26325,13 +34321,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWmsModifyTagOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wms_modify_tag().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_modify_tag().
          * @returns a #QmiMessageWmsModifyTagOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wms_modify_tag_output_unref().
          */
         modify_tag_finish(res: Gio.AsyncResult): MessageWmsModifyTagOutput;
+        /**
+         * Asynchronously sends a Raw Read request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_raw_read_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsRawReadInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        raw_read(
+            input: MessageWmsRawReadInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWmsRawReadOutput>;
+        /**
+         * Asynchronously sends a Raw Read request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_raw_read_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsRawReadInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        raw_read(
+            input: MessageWmsRawReadInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Raw Read request to the device.
          *
@@ -26348,13 +34376,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWmsRawReadOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wms_raw_read().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_raw_read().
          * @returns a #QmiMessageWmsRawReadOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wms_raw_read_output_unref().
          */
         raw_read_finish(res: Gio.AsyncResult): MessageWmsRawReadOutput;
+        /**
+         * Asynchronously sends a Raw Send request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_raw_send_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsRawSendInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        raw_send(
+            input: MessageWmsRawSendInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWmsRawSendOutput>;
+        /**
+         * Asynchronously sends a Raw Send request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_raw_send_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsRawSendInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        raw_send(
+            input: MessageWmsRawSendInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Raw Send request to the device.
          *
@@ -26371,13 +34431,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWmsRawSendOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wms_raw_send().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_raw_send().
          * @returns a #QmiMessageWmsRawSendOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wms_raw_send_output_unref().
          */
         raw_send_finish(res: Gio.AsyncResult): MessageWmsRawSendOutput;
+        /**
+         * Asynchronously sends a Raw Write request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_raw_write_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsRawWriteInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        raw_write(
+            input: MessageWmsRawWriteInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWmsRawWriteOutput>;
+        /**
+         * Asynchronously sends a Raw Write request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_raw_write_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsRawWriteInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        raw_write(
+            input: MessageWmsRawWriteInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Raw Write request to the device.
          *
@@ -26394,13 +34486,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWmsRawWriteOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wms_raw_write().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_raw_write().
          * @returns a #QmiMessageWmsRawWriteOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wms_raw_write_output_unref().
          */
         raw_write_finish(res: Gio.AsyncResult): MessageWmsRawWriteOutput;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWmsResetOutput>;
+        /**
+         * Asynchronously sends a Reset request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_reset_finish() to get the result of the operation.
+         * @param unused %NULL. This message doesn't have any input bundle.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        reset(
+            unused: any | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Reset request to the device.
          *
@@ -26417,13 +34541,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWmsResetOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wms_reset().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_reset().
          * @returns a #QmiMessageWmsResetOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wms_reset_output_unref().
          */
         reset_finish(res: Gio.AsyncResult): MessageWmsResetOutput;
+        /**
+         * Asynchronously sends a Send Ack request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_send_ack_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsSendAckInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        send_ack(
+            input: MessageWmsSendAckInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWmsSendAckOutput>;
+        /**
+         * Asynchronously sends a Send Ack request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_send_ack_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsSendAckInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        send_ack(
+            input: MessageWmsSendAckInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Send Ack request to the device.
          *
@@ -26440,13 +34596,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWmsSendAckOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wms_send_ack().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_send_ack().
          * @returns a #QmiMessageWmsSendAckOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wms_send_ack_output_unref().
          */
         send_ack_finish(res: Gio.AsyncResult): MessageWmsSendAckOutput;
+        /**
+         * Asynchronously sends a Send From Memory Storage request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_send_from_memory_storage_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsSendFromMemoryStorageInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        send_from_memory_storage(
+            input: MessageWmsSendFromMemoryStorageInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWmsSendFromMemoryStorageOutput>;
+        /**
+         * Asynchronously sends a Send From Memory Storage request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_send_from_memory_storage_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsSendFromMemoryStorageInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        send_from_memory_storage(
+            input: MessageWmsSendFromMemoryStorageInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Send From Memory Storage request to the device.
          *
@@ -26463,13 +34651,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWmsSendFromMemoryStorageOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wms_send_from_memory_storage().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_send_from_memory_storage().
          * @returns a #QmiMessageWmsSendFromMemoryStorageOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wms_send_from_memory_storage_output_unref().
          */
         send_from_memory_storage_finish(res: Gio.AsyncResult): MessageWmsSendFromMemoryStorageOutput;
+        /**
+         * Asynchronously sends a Set Event Report request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_set_event_report_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsSetEventReportInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_event_report(
+            input: MessageWmsSetEventReportInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWmsSetEventReportOutput>;
+        /**
+         * Asynchronously sends a Set Event Report request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_set_event_report_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsSetEventReportInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_event_report(
+            input: MessageWmsSetEventReportInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Event Report request to the device.
          *
@@ -26486,13 +34706,45 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWmsSetEventReportOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wms_set_event_report().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_set_event_report().
          * @returns a #QmiMessageWmsSetEventReportOutput, or %NULL if @error is set. The returned value should be freed with qmi_message_wms_set_event_report_output_unref().
          */
         set_event_report_finish(res: Gio.AsyncResult): MessageWmsSetEventReportOutput;
+        /**
+         * Asynchronously sends a Set Routes request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_set_routes_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsSetRoutesInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         */
+        set_routes(
+            input: MessageWmsSetRoutesInput,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<MessageWmsSetRoutesOutput>;
+        /**
+         * Asynchronously sends a Set Routes request to the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_client_wms_set_routes_finish() to get the result of the operation.
+         * @param input a #QmiMessageWmsSetRoutesInput.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_routes(
+            input: MessageWmsSetRoutesInput,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously sends a Set Routes request to the device.
          *
@@ -26509,7 +34761,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<MessageWmsSetRoutesOutput> | void;
         /**
          * Finishes an async operation started with qmi_client_wms_set_routes().
          * @param res the #GAsyncResult obtained from the #GAsyncReadyCallback passed to qmi_client_wms_set_routes().
@@ -26671,6 +34923,106 @@ export namespace Qmi {
          * @param base_ifname the interface which the new link will be created on.
          * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
          * @param cancellable a #GCancellable, or %NULL.
+         */
+        add_link(
+            mux_id: number,
+            base_ifname: string,
+            ifname_prefix: string,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<string>;
+        /**
+         * Asynchronously creates a new virtual network device node with a custom prefix
+         * on top of `base_ifname`. This allows having multiple net interfaces running on
+         * top of another using multiplexing.
+         *
+         * If the kernel driver doesn't allow this functionality, a
+         * %QMI_CORE_ERROR_UNSUPPORTED error will be returned.
+         *
+         * The operation may fail if the given interface name is not associated to the
+         * QMI control port managed by the #QmiDevice.
+         *
+         * Depending on the kernel driver in use and the multiplexing method, the given
+         * `ifname_prefix` may be ignored. The user should not assume that the returned
+         * link interface name is prefixed with `ifname_prefix` as it may not be the
+         * case.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_add_link_finish() to get the result of the operation.
+         *
+         * <note><para>
+         * When using the qmi_wwan kernel driver, the configured expected kernel data
+         * format will be used to select the type of multiplexing method. If the
+         * format is %QMI_DEVICE_EXPECTED_DATA_FORMAT_RAW_IP the qmi_wwan specific
+         * add_mux/del_mux operations will be used. If the format is
+         * %QMI_DEVICE_EXPECTED_DATA_FORMAT_QMAP_PASS_THROUGH, the generic rmnet netlink
+         * operations will be used. No multiplexing support exists when the format is
+         * %QMI_DEVICE_EXPECTED_DATA_FORMAT_802_3.
+         * </para><para>
+         * For every other kernel driver (e.g. ipa), rmnet netlink operations are
+         * assumed to be supported.
+         * </para></note>
+         *
+         * <note><para>
+         * When using the qmi_wwan driver from a kernel older than v5.12, some of the
+         * multiplexing features like using %QMI_DEVICE_MUX_ID_AUTOMATIC may not be fully
+         * available for programs that use ephimeral #QmiDevice objects for single
+         * operations.
+         * </para></note>
+         * @param mux_id the mux id for the link, in the   [%QMI_DEVICE_MUX_ID_MIN,%QMI_DEVICE_MUX_ID_MAX] range, or   %QMI_DEVICE_MUX_ID_AUTOMATIC to find the first available mux id.
+         * @param base_ifname the interface which the new link will be created on.
+         * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
+         * @param cancellable a #GCancellable, or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        add_link(
+            mux_id: number,
+            base_ifname: string,
+            ifname_prefix: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously creates a new virtual network device node with a custom prefix
+         * on top of `base_ifname`. This allows having multiple net interfaces running on
+         * top of another using multiplexing.
+         *
+         * If the kernel driver doesn't allow this functionality, a
+         * %QMI_CORE_ERROR_UNSUPPORTED error will be returned.
+         *
+         * The operation may fail if the given interface name is not associated to the
+         * QMI control port managed by the #QmiDevice.
+         *
+         * Depending on the kernel driver in use and the multiplexing method, the given
+         * `ifname_prefix` may be ignored. The user should not assume that the returned
+         * link interface name is prefixed with `ifname_prefix` as it may not be the
+         * case.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_add_link_finish() to get the result of the operation.
+         *
+         * <note><para>
+         * When using the qmi_wwan kernel driver, the configured expected kernel data
+         * format will be used to select the type of multiplexing method. If the
+         * format is %QMI_DEVICE_EXPECTED_DATA_FORMAT_RAW_IP the qmi_wwan specific
+         * add_mux/del_mux operations will be used. If the format is
+         * %QMI_DEVICE_EXPECTED_DATA_FORMAT_QMAP_PASS_THROUGH, the generic rmnet netlink
+         * operations will be used. No multiplexing support exists when the format is
+         * %QMI_DEVICE_EXPECTED_DATA_FORMAT_802_3.
+         * </para><para>
+         * For every other kernel driver (e.g. ipa), rmnet netlink operations are
+         * assumed to be supported.
+         * </para></note>
+         *
+         * <note><para>
+         * When using the qmi_wwan driver from a kernel older than v5.12, some of the
+         * multiplexing features like using %QMI_DEVICE_MUX_ID_AUTOMATIC may not be fully
+         * available for programs that use ephimeral #QmiDevice objects for single
+         * operations.
+         * </para></note>
+         * @param mux_id the mux id for the link, in the   [%QMI_DEVICE_MUX_ID_MIN,%QMI_DEVICE_MUX_ID_MAX] range, or   %QMI_DEVICE_MUX_ID_AUTOMATIC to find the first available mux id.
+         * @param base_ifname the interface which the new link will be created on.
+         * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
+         * @param cancellable a #GCancellable, or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         add_link(
@@ -26679,7 +35031,7 @@ export namespace Qmi {
             ifname_prefix: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Finishes an operation started with qmi_device_add_link().
          * @param res a #GAsyncResult.
@@ -26687,6 +35039,66 @@ export namespace Qmi {
          * @returns The name of the net interface created, %NULL if @error is set.
          */
         add_link_finish(res: Gio.AsyncResult, mux_id: number): string;
+        /**
+         * Asynchronously creates a new virtual network device in the same way as
+         * qmi_device_add_link() does, but passing the additional `flags` to the kernel
+         * during the operation.
+         *
+         * Using %QMI_DEVICE_ADD_LINK_FLAGS_NONE as `flags` is equivalent to calling
+         * qmi_device_add_link() directly.
+         *
+         * If the link creation with the given set of `flags` is unsupported by the
+         * backend, the operation may fail.
+         *
+         * <note><para>
+         * None of the `flags` supported are applicable when using the multiplexing
+         * support provided by the qmi_wwan kernel driver, they are only used if using
+         * the rmnet backend for link management support.
+         * </para></note>
+         * @param mux_id the mux id for the link, in the   [%QMI_DEVICE_MUX_ID_MIN,%QMI_DEVICE_MUX_ID_MAX] range, or   %QMI_DEVICE_MUX_ID_AUTOMATIC to find the first available mux id.
+         * @param base_ifname the interface which the new link will be created on.
+         * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
+         * @param flags bitmask of %QmiDeviceAddLinkFlags values to pass to the kernel when   creating the new link.
+         * @param cancellable a #GCancellable, or %NULL.
+         */
+        add_link_with_flags(
+            mux_id: number,
+            base_ifname: string,
+            ifname_prefix: string,
+            flags: DeviceAddLinkFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<string>;
+        /**
+         * Asynchronously creates a new virtual network device in the same way as
+         * qmi_device_add_link() does, but passing the additional `flags` to the kernel
+         * during the operation.
+         *
+         * Using %QMI_DEVICE_ADD_LINK_FLAGS_NONE as `flags` is equivalent to calling
+         * qmi_device_add_link() directly.
+         *
+         * If the link creation with the given set of `flags` is unsupported by the
+         * backend, the operation may fail.
+         *
+         * <note><para>
+         * None of the `flags` supported are applicable when using the multiplexing
+         * support provided by the qmi_wwan kernel driver, they are only used if using
+         * the rmnet backend for link management support.
+         * </para></note>
+         * @param mux_id the mux id for the link, in the   [%QMI_DEVICE_MUX_ID_MIN,%QMI_DEVICE_MUX_ID_MAX] range, or   %QMI_DEVICE_MUX_ID_AUTOMATIC to find the first available mux id.
+         * @param base_ifname the interface which the new link will be created on.
+         * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
+         * @param flags bitmask of %QmiDeviceAddLinkFlags values to pass to the kernel when   creating the new link.
+         * @param cancellable a #GCancellable, or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        add_link_with_flags(
+            mux_id: number,
+            base_ifname: string,
+            ifname_prefix: string,
+            flags: DeviceAddLinkFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously creates a new virtual network device in the same way as
          * qmi_device_add_link() does, but passing the additional `flags` to the kernel
@@ -26717,7 +35129,7 @@ export namespace Qmi {
             flags: DeviceAddLinkFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Finishes an operation started with qmi_device_add_link_finish().
          * @param res a #GAsyncResult.
@@ -26725,6 +35137,52 @@ export namespace Qmi {
          * @returns The name of the net interface created, %NULL if @error is set.
          */
         add_link_with_flags_finish(res: Gio.AsyncResult, mux_id: number): string;
+        /**
+         * Asynchronously allocates a new #QmiClient in `self`.
+         *
+         * If %QMI_CID_NONE is given in `cid,` a new client ID will be allocated;
+         * otherwise a client with the given `cid` will be generated.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_allocate_client_finish() to get the result of the operation.
+         *
+         * Note: Clients for the %QMI_SERVICE_CTL cannot be created with this method;
+         * instead get/peek the implicit one from `self`.
+         * @param service a valid #QmiService.
+         * @param cid a valid client ID, or %QMI_CID_NONE.
+         * @param timeout maximum time to wait.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        allocate_client(
+            service: Service,
+            cid: number,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Client>;
+        /**
+         * Asynchronously allocates a new #QmiClient in `self`.
+         *
+         * If %QMI_CID_NONE is given in `cid,` a new client ID will be allocated;
+         * otherwise a client with the given `cid` will be generated.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_allocate_client_finish() to get the result of the operation.
+         *
+         * Note: Clients for the %QMI_SERVICE_CTL cannot be created with this method;
+         * instead get/peek the implicit one from `self`.
+         * @param service a valid #QmiService.
+         * @param cid a valid client ID, or %QMI_CID_NONE.
+         * @param timeout maximum time to wait.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        allocate_client(
+            service: Service,
+            cid: number,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously allocates a new #QmiClient in `self`.
          *
@@ -26748,7 +35206,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Client> | void;
         /**
          * Finishes an operation started with qmi_device_allocate_client().
          * @param res a #GAsyncResult.
@@ -26784,13 +35242,48 @@ export namespace Qmi {
          * qmi_device_close_finish() to get the result of the operation.
          * @param timeout maximum time, in seconds, to wait for the device to be closed.
          * @param cancellable a #GCancellable, or %NULL.
+         */
+        close_async(timeout: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously closes a #QmiDevice, preventing any further I/O.
+         *
+         * If this device was opened with `QMI_DEVICE_OPEN_FLAGS_MBIM,` this
+         * operation will wait for the response of the underlying MBIM close
+         * sequence.
+         *
+         * Closing a #QmiDevice multiple times will not return an error.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_close_finish() to get the result of the operation.
+         * @param timeout maximum time, in seconds, to wait for the device to be closed.
+         * @param cancellable a #GCancellable, or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        close_async(
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously closes a #QmiDevice, preventing any further I/O.
+         *
+         * If this device was opened with `QMI_DEVICE_OPEN_FLAGS_MBIM,` this
+         * operation will wait for the response of the underlying MBIM close
+         * sequence.
+         *
+         * Closing a #QmiDevice multiple times will not return an error.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_close_finish() to get the result of the operation.
+         * @param timeout maximum time, in seconds, to wait for the device to be closed.
+         * @param cancellable a #GCancellable, or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         close_async(
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with qmi_device_close_async().
          * @param res a #GAsyncResult.
@@ -26823,6 +35316,62 @@ export namespace Qmi {
          * @param message_context the context of the message.
          * @param timeout maximum time, in seconds, to wait for the response.
          * @param cancellable a #GCancellable, or %NULL.
+         */
+        command_full(
+            message: Message,
+            message_context: MessageContext,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Message>;
+        /**
+         * Asynchronously sends a #QmiMessage to the device.
+         *
+         * The message will be processed according to the specific `message_context`
+         * given. If no `context` given, the behavior is the same as qmi_device_command().
+         *
+         * If the operation is cancelled via `cancellable,` a %QMI_PROTOCOL_ERROR_ABORTED
+         * error will be returned always. If the QMI method may be aborted, there is
+         * no guarantee that the operation is truly aborted before the error is returned
+         * so it may really happen that the operation really succeeded and the method
+         * would still return %QMI_PROTOCOL_ERROR_ABORTED. In order to use abortable
+         * methods and make sure the response is the correct one, use
+         * qmi_device_command_abortable().
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_command_full_finish() to get the result of the operation.
+         * @param message the message to send.
+         * @param message_context the context of the message.
+         * @param timeout maximum time, in seconds, to wait for the response.
+         * @param cancellable a #GCancellable, or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        command_full(
+            message: Message,
+            message_context: MessageContext,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a #QmiMessage to the device.
+         *
+         * The message will be processed according to the specific `message_context`
+         * given. If no `context` given, the behavior is the same as qmi_device_command().
+         *
+         * If the operation is cancelled via `cancellable,` a %QMI_PROTOCOL_ERROR_ABORTED
+         * error will be returned always. If the QMI method may be aborted, there is
+         * no guarantee that the operation is truly aborted before the error is returned
+         * so it may really happen that the operation really succeeded and the method
+         * would still return %QMI_PROTOCOL_ERROR_ABORTED. In order to use abortable
+         * methods and make sure the response is the correct one, use
+         * qmi_device_command_abortable().
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_command_full_finish() to get the result of the operation.
+         * @param message the message to send.
+         * @param message_context the context of the message.
+         * @param timeout maximum time, in seconds, to wait for the response.
+         * @param cancellable a #GCancellable, or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         command_full(
@@ -26831,7 +35380,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Message> | void;
         /**
          * Finishes an operation started with qmi_device_command_full().
          * @param res a #GAsyncResult.
@@ -26853,19 +35402,106 @@ export namespace Qmi {
          * </para></note>
          * @param base_ifname the interface where all links are available.
          * @param cancellable a #GCancellable, or %NULL.
+         */
+        delete_all_links(base_ifname: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously deletes all virtual network interfaces that have been previously
+         * created with qmi_device_add_link() in `base_ifname`.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_delete_link_finish() to get the result of the operation.
+         *
+         * <note><para>
+         * There is no guarantee that other processes haven't created new links by the
+         * time this method returns. This method should be used with caution, or in setups
+         * where only one single process is expected to do QMI network interface link
+         * management.
+         * </para></note>
+         * @param base_ifname the interface where all links are available.
+         * @param cancellable a #GCancellable, or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        delete_all_links(
+            base_ifname: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously deletes all virtual network interfaces that have been previously
+         * created with qmi_device_add_link() in `base_ifname`.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_delete_link_finish() to get the result of the operation.
+         *
+         * <note><para>
+         * There is no guarantee that other processes haven't created new links by the
+         * time this method returns. This method should be used with caution, or in setups
+         * where only one single process is expected to do QMI network interface link
+         * management.
+         * </para></note>
+         * @param base_ifname the interface where all links are available.
+         * @param cancellable a #GCancellable, or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         delete_all_links(
             base_ifname: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with qmi_device_delete_all_links().
          * @param res a #GAsyncResult.
          * @returns %TRUE if successful, %FALSE if @error is set.
          */
         delete_all_links_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Asynchronously deletes a virtual network interface that has been previously
+         * created with qmi_device_add_link().
+         *
+         * If the kernel driver doesn't allow this functionality, a
+         * %QMI_CORE_ERROR_UNSUPPORTED error will be returned.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_delete_link_finish() to get the result of the operation.
+         *
+         * <note><para>
+         * The %QMI_DEVICE_MUX_ID_UNBOUND value may be given as `mux_id` if the user
+         * can guarantee that the underlying kernel support doesn't require the
+         * mux id info to delete the link. When using the qmi_wwan driver from a kernel
+         * older than v5.12, a valid `mux_id` is required.
+         * </para></note>
+         * @param ifname the name of the link to remove.
+         * @param mux_id the mux ID of the link to remove.
+         * @param cancellable a #GCancellable, or %NULL.
+         */
+        delete_link(ifname: string, mux_id: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously deletes a virtual network interface that has been previously
+         * created with qmi_device_add_link().
+         *
+         * If the kernel driver doesn't allow this functionality, a
+         * %QMI_CORE_ERROR_UNSUPPORTED error will be returned.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_delete_link_finish() to get the result of the operation.
+         *
+         * <note><para>
+         * The %QMI_DEVICE_MUX_ID_UNBOUND value may be given as `mux_id` if the user
+         * can guarantee that the underlying kernel support doesn't require the
+         * mux id info to delete the link. When using the qmi_wwan driver from a kernel
+         * older than v5.12, a valid `mux_id` is required.
+         * </para></note>
+         * @param ifname the name of the link to remove.
+         * @param mux_id the mux ID of the link to remove.
+         * @param cancellable a #GCancellable, or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        delete_link(
+            ifname: string,
+            mux_id: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously deletes a virtual network interface that has been previously
          * created with qmi_device_add_link().
@@ -26892,7 +35528,7 @@ export namespace Qmi {
             mux_id: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with qmi_device_delete_link().
          * @param res a #GAsyncResult.
@@ -26950,13 +35586,41 @@ export namespace Qmi {
          * You can then call qmi_device_get_service_version_info_finish() to get the result of the operation.
          * @param timeout maximum time to wait for the method to complete, in seconds.
          * @param cancellable a #GCancellable or %NULL.
+         */
+        get_service_version_info(
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<DeviceServiceVersionInfo[]>;
+        /**
+         * Asynchronously requests the service version information of the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_device_get_service_version_info_finish() to get the result of the operation.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         */
+        get_service_version_info(
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously requests the service version information of the device.
+         *
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+         *
+         * You can then call qmi_device_get_service_version_info_finish() to get the result of the operation.
+         * @param timeout maximum time to wait for the method to complete, in seconds.
+         * @param cancellable a #GCancellable or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
          */
         get_service_version_info(
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<DeviceServiceVersionInfo[]> | void;
         /**
          * Finishes an operation started with qmi_device_get_service_version_info().
          * @param res a #GAsyncResult.
@@ -26993,6 +35657,32 @@ export namespace Qmi {
          * @param flags mask of #QmiDeviceOpenFlags specifying how the device should be opened.
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        open(flags: DeviceOpenFlags, timeout: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously opens a #QmiDevice for I/O.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_open_finish() to get the result of the operation.
+         * @param flags mask of #QmiDeviceOpenFlags specifying how the device should be opened.
+         * @param timeout maximum time, in seconds, to wait for the device to be opened.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        open(
+            flags: DeviceOpenFlags,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously opens a #QmiDevice for I/O.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_open_finish() to get the result of the operation.
+         * @param flags mask of #QmiDeviceOpenFlags specifying how the device should be opened.
+         * @param timeout maximum time, in seconds, to wait for the device to be opened.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         open(
@@ -27000,7 +35690,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous open operation started with qmi_device_open().
          * @param res a #GAsyncResult.
@@ -27036,6 +35726,48 @@ export namespace Qmi {
          * @param flags mask of #QmiDeviceReleaseClientFlags specifying how the client should be released.
          * @param timeout maximum time to wait.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        release_client(
+            client: Client,
+            flags: DeviceReleaseClientFlags,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously releases the #QmiClient from the #QmiDevice.
+         *
+         * Once the #QmiClient has been released, it cannot be used any more to
+         * perform operations.
+         *
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_release_client_finish() to get the result of the operation.
+         * @param client the #QmiClient to release.
+         * @param flags mask of #QmiDeviceReleaseClientFlags specifying how the client should be released.
+         * @param timeout maximum time to wait.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        release_client(
+            client: Client,
+            flags: DeviceReleaseClientFlags,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously releases the #QmiClient from the #QmiDevice.
+         *
+         * Once the #QmiClient has been released, it cannot be used any more to
+         * perform operations.
+         *
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_release_client_finish() to get the result of the operation.
+         * @param client the #QmiClient to release.
+         * @param flags mask of #QmiDeviceReleaseClientFlags specifying how the client should be released.
+         * @param timeout maximum time to wait.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         release_client(
@@ -27044,7 +35776,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with qmi_device_release_client().
          *
@@ -27073,6 +35805,32 @@ export namespace Qmi {
          * @param instance_id the instance ID.
          * @param timeout maximum time to wait.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        set_instance_id(instance_id: number, timeout: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Sets the instance ID of the #QmiDevice.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_set_instance_id_finish() to get the result of the operation.
+         * @param instance_id the instance ID.
+         * @param timeout maximum time to wait.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        set_instance_id(
+            instance_id: number,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Sets the instance ID of the #QmiDevice.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * qmi_device_set_instance_id_finish() to get the result of the operation.
+         * @param instance_id the instance ID.
+         * @param timeout maximum time to wait.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         set_instance_id(
@@ -27080,7 +35838,7 @@ export namespace Qmi {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with qmi_device_set_instance_id().
          * @param res a #GAsyncResult.
@@ -27129,13 +35887,100 @@ export namespace Qmi {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().

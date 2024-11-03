@@ -92,9 +92,18 @@ export namespace Grss {
         fetch_all(): FeedItem[];
         /**
          * Similar to grss_feed_channel_fetch_all(), but asyncronous.
+         */
+        fetch_all_async(): Promise<FeedItem[]>;
+        /**
+         * Similar to grss_feed_channel_fetch_all(), but asyncronous.
          * @param callback function to invoke at the end of the download.
          */
-        fetch_all_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        fetch_all_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Similar to grss_feed_channel_fetch_all(), but asyncronous.
+         * @param callback function to invoke at the end of the download.
+         */
+        fetch_all_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<FeedItem[]> | void;
         /**
          * Finalizes an asyncronous operation started with
          * grss_feed_channel_fetch_all_async().
@@ -104,9 +113,18 @@ export namespace Grss {
         fetch_all_finish(res: Gio.AsyncResult): FeedItem[];
         /**
          * Similar to grss_feed_channel_fetch(), but asyncronous.
+         */
+        fetch_async(): Promise<boolean>;
+        /**
+         * Similar to grss_feed_channel_fetch(), but asyncronous.
          * @param callback function to invoke at the end of the download.
          */
-        fetch_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        fetch_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Similar to grss_feed_channel_fetch(), but asyncronous.
+         * @param callback function to invoke at the end of the download.
+         */
+        fetch_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * If a fetch operation was scheduled with grss_feed_channel_fetch_async() or
          * grss_feed_channel_fetch_all_async(), cancel it.
@@ -192,7 +210,7 @@ export namespace Grss {
          * Retrieves the publishing time of `channel`.
          * @returns time of feed's publish.
          */
-        get_publish_time(): never;
+        get_publish_time(): number;
         /**
          * Retrieves information about the PubSubHubbub hub of the channel.
          * @param hub location for the hub string, or %NULL.
@@ -228,7 +246,7 @@ export namespace Grss {
          * Retrieves the update time of `channel`.
          * @returns time of the feed's latest update. If this value was not set (with grss_feed_channel_set_update_time()) returns grss_feed_channel_get_publish_time().
          */
-        get_update_time(): never;
+        get_update_time(): number;
         /**
          * Retrieves reference to the webmaster of the feed.
          * @returns webmaster of @channel, or %NULL.
@@ -296,7 +314,7 @@ export namespace Grss {
          * To set the time of publishing for the feed.
          * @param publish timestamp of publishing.
          */
-        set_publish_time(publish: never): void;
+        set_publish_time(publish: number): void;
         /**
          * To set information about PubSubHubbub for the channel. To unset the hub,
          * pass %NULL as parameter.
@@ -330,7 +348,7 @@ export namespace Grss {
          * To set the latest update time of `channel`.
          * @param update update time of the feed.
          */
-        set_update_time(update: never): void;
+        set_update_time(update: number): void;
         /**
          * To assign a webmaster to the `channel`.
          * @param webmaster webmaster of the feed.
@@ -366,9 +384,18 @@ export namespace Grss {
         fetch(): Gio.File;
         /**
          * Similar to grss_feed_enclosure_fetch(), but asyncronous.
+         */
+        fetch_async(): Promise<Gio.File>;
+        /**
+         * Similar to grss_feed_enclosure_fetch(), but asyncronous.
          * @param callback function to invoke at the end of the download.
          */
-        fetch_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        fetch_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Similar to grss_feed_enclosure_fetch(), but asyncronous.
+         * @param callback function to invoke at the end of the download.
+         */
+        fetch_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<Gio.File> | void;
         /**
          * Finalizes an asyncronous operation started with
          * grss_feed_enclosure_fetch_async().
@@ -543,11 +570,9 @@ export namespace Grss {
         get_enclosures(): FeedEnclosure[];
         /**
          * Retrieves the geo reference of the `item`.
-         * @param latitude will be assigned to the latitude of the point, or %NULL.
-         * @param longitude will be assigned to the longitude of the point, or %NULL.
          * @returns %TRUE if @item has geographic coordinates assigned and @latitude and @longitude have been set, %FALSE if @item has not geo reference.
          */
-        get_geo_point(latitude: number, longitude: number): boolean;
+        get_geo_point(): [boolean, number, number];
         /**
          * Retrieves the ID assigned to the `item`. If no ID was set with
          * grss_feed_item_set_id() this returns the same of grss_feed_item_get_source().
@@ -567,7 +592,7 @@ export namespace Grss {
          * changed with grss_feed_item_set_publish_time().
          * @returns publish time of @item.
          */
-        get_publish_time(): never;
+        get_publish_time(): number;
         /**
          * Retrieves references to the real source of `item`.
          * @param realsource will be assigned to the URL of the real source, or %NULL.
@@ -629,7 +654,7 @@ export namespace Grss {
          * To set the publish time of the item.
          * @param publish publishing timestamp of the item.
          */
-        set_publish_time(publish: never): void;
+        set_publish_time(publish: number): void;
         /**
          * To set an alternative real source for `item`. This parameter is used by web
          * aggregators to explicit the origin of a content reproduced in them.
@@ -732,8 +757,8 @@ export namespace Grss {
         // Methods
 
         /**
-         * Creates a new file with the list of `channels` rappresented in the required
-         * `format`. It a file already exists at the `uri` location, it is overwritten.
+         * Creates a new file with the list of `channels` represented in the required
+         * `format`. If the file already exists at the `uri` location, it is overwritten.
          * @param channels list of #GrssFeedChannels.
          * @param format string rappresenting the desired export format, as returnes by          grss_feeds_group_get_formats().
          * @param uri URI of the file to write.

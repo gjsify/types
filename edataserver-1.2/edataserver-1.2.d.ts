@@ -3041,13 +3041,34 @@ export namespace EDataServer {
          * from the `callback`.
          * @param prop_name property name, whose value to retrieve; cannot be %NULL
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        get_backend_property(prop_name: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Queries `client'`s backend for a property of name `prop_name`.
+         * The call is finished by e_client_get_backend_property_finish()
+         * from the `callback`.
+         * @param prop_name property name, whose value to retrieve; cannot be %NULL
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        get_backend_property(
+            prop_name: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Queries `client'`s backend for a property of name `prop_name`.
+         * The call is finished by e_client_get_backend_property_finish()
+         * from the `callback`.
+         * @param prop_name property name, whose value to retrieve; cannot be %NULL
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         get_backend_property(
             prop_name: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Finishes previous call of e_client_get_backend_property().
          * @param result a #GAsyncResult
@@ -3097,13 +3118,32 @@ export namespace EDataServer {
          * The call is finished by e_client_open_finish() from the `callback`.
          * @param only_if_exists this parameter is not used anymore
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        open(only_if_exists: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Opens the `client,` making it ready for queries and other operations.
+         * The call is finished by e_client_open_finish() from the `callback`.
+         * @param only_if_exists this parameter is not used anymore
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        open(
+            only_if_exists: boolean,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Opens the `client,` making it ready for queries and other operations.
+         * The call is finished by e_client_open_finish() from the `callback`.
+         * @param only_if_exists this parameter is not used anymore
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         open(
             only_if_exists: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes previous call of e_client_open().
          * @param result a #GAsyncResult
@@ -3133,9 +3173,31 @@ export namespace EDataServer {
          * whether the backend supports this method.
          * The call is finished by e_client_refresh_finish() from the `callback`.
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        refresh(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Initiates refresh on the `client`. Finishing the method doesn't mean
+         * that the refresh is done, backend only notifies whether it started
+         * refreshing or not. Use e_client_check_refresh_supported() to check
+         * whether the backend supports this method.
+         * The call is finished by e_client_refresh_finish() from the `callback`.
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
-        refresh(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        refresh(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Initiates refresh on the `client`. Finishing the method doesn't mean
+         * that the refresh is done, backend only notifies whether it started
+         * refreshing or not. Use e_client_check_refresh_supported() to check
+         * whether the backend supports this method.
+         * The call is finished by e_client_refresh_finish() from the `callback`.
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        refresh(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes previous call of e_client_refresh().
          * @param result a #GAsyncResult
@@ -3156,9 +3218,27 @@ export namespace EDataServer {
          * backend this deletes the database file. You cannot get it back!
          * The call is finished by e_client_remove_finish() from the `callback`.
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        remove(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Removes the backing data for this #EClient. For example, with the file
+         * backend this deletes the database file. You cannot get it back!
+         * The call is finished by e_client_remove_finish() from the `callback`.
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
-        remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        remove(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Removes the backing data for this #EClient. For example, with the file
+         * backend this deletes the database file. You cannot get it back!
+         * The call is finished by e_client_remove_finish() from the `callback`.
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        remove(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes previous call of e_client_remove().
          * @param result a #GAsyncResult
@@ -3180,12 +3260,33 @@ export namespace EDataServer {
          * The call is finished by e_client_retrieve_capabilities_finish()
          * from the `callback`.
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        retrieve_capabilities(cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Initiates retrieval of capabilities on the `client`. This is usually
+         * required only once, after the `client` is opened. The returned value
+         * is cached and any subsequent call of e_client_get_capabilities() and
+         * e_client_check_capability() is using the cached value.
+         * The call is finished by e_client_retrieve_capabilities_finish()
+         * from the `callback`.
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        retrieve_capabilities(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Initiates retrieval of capabilities on the `client`. This is usually
+         * required only once, after the `client` is opened. The returned value
+         * is cached and any subsequent call of e_client_get_capabilities() and
+         * e_client_check_capability() is using the cached value.
+         * The call is finished by e_client_retrieve_capabilities_finish()
+         * from the `callback`.
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         retrieve_capabilities(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Finishes previous call of e_client_retrieve_capabilities().
          * Returned value of `capabilities` should be freed with g_free(),
@@ -3211,9 +3312,31 @@ export namespace EDataServer {
          * When the operation is finished, `callback` will be called. You can then
          * call e_client_retrieve_properties_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        retrieve_properties(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously retrieves `client` properties to match server-side values,
+         * without waiting for the D-Bus property change notifications delivery.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_client_retrieve_properties_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        retrieve_properties(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        retrieve_properties(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously retrieves `client` properties to match server-side values,
+         * without waiting for the D-Bus property change notifications delivery.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_client_retrieve_properties_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        retrieve_properties(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_client_retrieve_properties().
          *
@@ -3238,6 +3361,34 @@ export namespace EDataServer {
          * @param prop_name property name, whose value to change; cannot be %NULL
          * @param prop_value property value, to set; cannot be %NULL
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        set_backend_property(
+            prop_name: string,
+            prop_value: string,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Sets `client'`s backend property of name `prop_name`
+         * to value `prop_value`. The call is finished
+         * by e_client_set_backend_property_finish() from the `callback`.
+         * @param prop_name property name, whose value to change; cannot be %NULL
+         * @param prop_value property value, to set; cannot be %NULL
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        set_backend_property(
+            prop_name: string,
+            prop_value: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Sets `client'`s backend property of name `prop_name`
+         * to value `prop_value`. The call is finished
+         * by e_client_set_backend_property_finish() from the `callback`.
+         * @param prop_name property name, whose value to change; cannot be %NULL
+         * @param prop_value property value, to set; cannot be %NULL
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         set_backend_property(
@@ -3245,7 +3396,7 @@ export namespace EDataServer {
             prop_value: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes previous call of e_client_set_backend_property().
          * @param result a #GAsyncResult
@@ -3281,13 +3432,38 @@ export namespace EDataServer {
          * the `callback`.
          * @param timeout_seconds a timeout for the wait, in seconds
          * @param cancellable a #GCancellable; or %NULL
+         */
+        wait_for_connected(timeout_seconds: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously waits until the `client` is connected (according
+         * to `ESource:`:connection-status property), but not longer than `timeout_seconds`.
+         *
+         * The call is finished by e_client_wait_for_connected_finish() from
+         * the `callback`.
+         * @param timeout_seconds a timeout for the wait, in seconds
+         * @param cancellable a #GCancellable; or %NULL
+         * @param callback callback to call when a result is ready
+         */
+        wait_for_connected(
+            timeout_seconds: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously waits until the `client` is connected (according
+         * to `ESource:`:connection-status property), but not longer than `timeout_seconds`.
+         *
+         * The call is finished by e_client_wait_for_connected_finish() from
+         * the `callback`.
+         * @param timeout_seconds a timeout for the wait, in seconds
+         * @param cancellable a #GCancellable; or %NULL
          * @param callback callback to call when a result is ready
          */
         wait_for_connected(
             timeout_seconds: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes previous call of e_client_wait_for_connected().
          * @param result a #GAsyncResult
@@ -4393,13 +4569,46 @@ export namespace EDataServer {
          * to get the result of the operation.
          * @param connectable a #GSocketConnectable
          * @param cancellable a #GCancellable, or %NULL
+         */
+        can_reach_async(connectable: Gio.SocketConnectable, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously attempts to determine whether or not the host
+         * pointed to by `connectable` can be reached, without actually
+         * trying to connect to it.
+         *
+         * For more details, see g_network_monitor_can_reach().
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_network_monitor_can_reach_finish()
+         * to get the result of the operation.
+         * @param connectable a #GSocketConnectable
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        can_reach_async(
+            connectable: Gio.SocketConnectable,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously attempts to determine whether or not the host
+         * pointed to by `connectable` can be reached, without actually
+         * trying to connect to it.
+         *
+         * For more details, see g_network_monitor_can_reach().
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_network_monitor_can_reach_finish()
+         * to get the result of the operation.
+         * @param connectable a #GSocketConnectable
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         can_reach_async(
             connectable: Gio.SocketConnectable,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an async network connectivity test.
          * See g_network_monitor_can_reach_async().
@@ -8344,6 +8553,44 @@ export namespace EDataServer {
          * @param io_priority the I/O priority of the request, like %G_PRIORITY_DEFAULT
          * @param prepare_data data returned from e_soup_session_prepare_message_send_sync()
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        send_message(
+            message: Soup.Message,
+            io_priority: number,
+            prepare_data?: any | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<[Gio.InputStream | null, string, Gio.TlsCertificateFlags | null]>;
+        /**
+         * Asynchronously sends the `message`. Finish the call with
+         * e_soup_session_send_message_finish().
+         *
+         * The `prepare_data` is a result of the e_soup_session_prepare_message_send_sync()
+         * and this function assumes ownership of it. The `prepare_data` cannot be used
+         * again after this call.
+         * @param message a #SoupMessage to send
+         * @param io_priority the I/O priority of the request, like %G_PRIORITY_DEFAULT
+         * @param prepare_data data returned from e_soup_session_prepare_message_send_sync()
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback the callback to invoke once the request is finished
+         */
+        send_message(
+            message: Soup.Message,
+            io_priority: number,
+            prepare_data: any | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends the `message`. Finish the call with
+         * e_soup_session_send_message_finish().
+         *
+         * The `prepare_data` is a result of the e_soup_session_prepare_message_send_sync()
+         * and this function assumes ownership of it. The `prepare_data` cannot be used
+         * again after this call.
+         * @param message a #SoupMessage to send
+         * @param io_priority the I/O priority of the request, like %G_PRIORITY_DEFAULT
+         * @param prepare_data data returned from e_soup_session_prepare_message_send_sync()
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback the callback to invoke once the request is finished
          */
         send_message(
@@ -8352,7 +8599,7 @@ export namespace EDataServer {
             prepare_data?: any | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[Gio.InputStream | null, string, Gio.TlsCertificateFlags | null]> | void;
         /**
          * Finishes the call of e_soup_session_send_message(). This is supposed to
          * be called from the callback passed to the e_soup_session_send_message().
@@ -8802,9 +9049,33 @@ export namespace EDataServer {
          * When the operation is finished, `callback` will be called.  You can then
          * call e_source_delete_password_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        delete_password(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously deletes the password for `source` from either the default
+         * keyring or session keyring.  This operation does not rely on the registry
+         * service and therefore works for any #ESource -- registered or "scratch".
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_delete_password_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        delete_password(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        delete_password(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously deletes the password for `source` from either the default
+         * keyring or session keyring.  This operation does not rely on the registry
+         * service and therefore works for any #ESource -- registered or "scratch".
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_delete_password_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        delete_password(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_delete_password().
          *
@@ -8935,12 +9206,42 @@ export namespace EDataServer {
          * call e_source_get_last_credentials_required_arguments_finish() to get
          * the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        get_last_credentials_required_arguments(
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<[boolean, SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error]>;
+        /**
+         * Asynchronously calls the GetLastCredentialsRequiredArguments method
+         * on the server side, to get the last values used for the 'credentials-required'
+         * signal. See e_source_get_last_credentials_required_arguments_sync() for
+         * more information.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_get_last_credentials_required_arguments_finish() to get
+         * the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_last_credentials_required_arguments(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously calls the GetLastCredentialsRequiredArguments method
+         * on the server side, to get the last values used for the 'credentials-required'
+         * signal. See e_source_get_last_credentials_required_arguments_sync() for
+         * more information.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_get_last_credentials_required_arguments_finish() to get
+         * the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         get_last_credentials_required_arguments(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error]> | void;
         /**
          * Finishes the operation started with e_source_get_last_credentials_required_arguments().
          * See e_source_get_last_credentials_required_arguments_sync() for more information
@@ -8975,12 +9276,36 @@ export namespace EDataServer {
          * call e_source_get_oauth2_access_token_finish() to get the result of the
          * operation.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        get_oauth2_access_token(cancellable?: Gio.Cancellable | null): Promise<[boolean, string, number]>;
+        /**
+         * Asynchronously obtains the OAuth 2.0 access token for `source` along
+         * with its expiry in seconds from the current time (or 0 if unknown).
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_get_oauth2_access_token_finish() to get the result of the
+         * operation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request            is satisfied
+         */
+        get_oauth2_access_token(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously obtains the OAuth 2.0 access token for `source` along
+         * with its expiry in seconds from the current time (or 0 if unknown).
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_get_oauth2_access_token_finish() to get the result of the
+         * operation.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request            is satisfied
          */
         get_oauth2_access_token(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, string, number]> | void;
         /**
          * Finishes the operation started with e_source_get_oauth2_access_token().
          *
@@ -9067,13 +9392,43 @@ export namespace EDataServer {
          * call e_source_invoke_authenticate_finish() to get the result of the operation.
          * @param credentials an #ENamedParameters structure with credentials to use; can be %NULL    to use those from the last call
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        invoke_authenticate(
+            credentials?: NamedParameters | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously calls the InvokeAuthenticate method on the server side,
+         * thus the backend knows what credentials to use to connect to its (possibly
+         * remote) data store.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_invoke_authenticate_finish() to get the result of the operation.
+         * @param credentials an #ENamedParameters structure with credentials to use; can be %NULL    to use those from the last call
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        invoke_authenticate(
+            credentials: NamedParameters | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously calls the InvokeAuthenticate method on the server side,
+         * thus the backend knows what credentials to use to connect to its (possibly
+         * remote) data store.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_invoke_authenticate_finish() to get the result of the operation.
+         * @param credentials an #ENamedParameters structure with credentials to use; can be %NULL    to use those from the last call
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         invoke_authenticate(
             credentials?: NamedParameters | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_invoke_authenticate().
          *
@@ -9103,6 +9458,46 @@ export namespace EDataServer {
          * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
          * @param op_error a #GError with a description of the previous credentials error, or %NULL
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        invoke_credentials_required(
+            reason: SourceCredentialsReason,
+            certificate_pem: string,
+            certificate_errors: Gio.TlsCertificateFlags,
+            op_error?: GLib.Error | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously calls the InvokeCredentialsRequired method on the server side,
+         * to inform clients that credentials are required.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_invoke_credentials_required_finish() to get the result of the operation.
+         * @param reason an #ESourceCredentialsReason, why the credentials are required
+         * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
+         * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
+         * @param op_error a #GError with a description of the previous credentials error, or %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        invoke_credentials_required(
+            reason: SourceCredentialsReason,
+            certificate_pem: string,
+            certificate_errors: Gio.TlsCertificateFlags,
+            op_error: GLib.Error | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously calls the InvokeCredentialsRequired method on the server side,
+         * to inform clients that credentials are required.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_invoke_credentials_required_finish() to get the result of the operation.
+         * @param reason an #ESourceCredentialsReason, why the credentials are required
+         * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
+         * @param certificate_errors a bit-or of #GTlsCertificateFlags for secure connection certificate
+         * @param op_error a #GError with a description of the previous credentials error, or %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         invoke_credentials_required(
@@ -9112,7 +9507,7 @@ export namespace EDataServer {
             op_error?: GLib.Error | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_invoke_credentials_required().
          *
@@ -9163,9 +9558,35 @@ export namespace EDataServer {
          * When the operation is finished, `callback` will be called.  You can then
          * call e_source_lookup_password_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        lookup_password(cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Asynchronously looks up a password for `source`.  Both the default and
+         * session keyrings are queried.  This operation does not rely on the
+         * registry service and therefore works for any #ESource -- registered
+         * or "scratch".
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_lookup_password_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        lookup_password(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        lookup_password(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously looks up a password for `source`.  Both the default and
+         * session keyrings are queried.  This operation does not rely on the
+         * registry service and therefore works for any #ESource -- registered
+         * or "scratch".
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_lookup_password_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        lookup_password(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<string> | void;
         /**
          * Finishes the operation started with e_source_lookup_password().
          *
@@ -9205,13 +9626,51 @@ export namespace EDataServer {
          * the operation.
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        mail_signature_load(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<[boolean, string, number]>;
+        /**
+         * Asynchronously loads a signature from the signature file for `source,`
+         * which is given by e_source_mail_signature_get_file().
+         *
+         * If the signature file is executable, it will be executed and its output
+         * captured as the email signature content.  If the signature file is not
+         * executable, the email signature content is read directly from the file.
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_source_mail_signature_load_finish() to get the result of
+         * the operation.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        mail_signature_load(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously loads a signature from the signature file for `source,`
+         * which is given by e_source_mail_signature_get_file().
+         *
+         * If the signature file is executable, it will be executed and its output
+         * captured as the email signature content.  If the signature file is not
+         * executable, the email signature content is read directly from the file.
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_source_mail_signature_load_finish() to get the result of
+         * the operation.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         mail_signature_load(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, string, number]> | void;
         /**
          * Finishes an operation started with e_source_mail_signature_load().  The
          * signature file contents are placed in `contents,` and `length` is set to
@@ -9247,6 +9706,46 @@ export namespace EDataServer {
          * @param length the length of @contents in bytes
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        mail_signature_replace(
+            contents: string,
+            length: number,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchrously replaces the signature file for `source` with the given
+         * `contents` of `length` bytes.  The signature file for `source` is given
+         * by e_source_mail_signature_get_file().
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_source_mail_signature_replace_finish() to get the result
+         * of the operation.
+         * @param contents the signature contents
+         * @param length the length of @contents in bytes
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        mail_signature_replace(
+            contents: string,
+            length: number,
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchrously replaces the signature file for `source` with the given
+         * `contents` of `length` bytes.  The signature file for `source` is given
+         * by e_source_mail_signature_get_file().
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_source_mail_signature_replace_finish() to get the result
+         * of the operation.
+         * @param contents the signature contents
+         * @param length the length of @contents in bytes
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         mail_signature_replace(
@@ -9255,7 +9754,7 @@ export namespace EDataServer {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with e_source_mail_signature_replace().
          * @param result a #GAsyncResult
@@ -9284,6 +9783,44 @@ export namespace EDataServer {
          * @param symlink_target executable filename to link to
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        mail_signature_symlink(
+            symlink_target: string,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously replaces the signature file for `source` with a symbolic
+         * link to `symlink_target,` which should be an executable file that prints
+         * a mail signature to standard output.  The signature file for `source`
+         * is given by e_source_mail_signature_get_file().
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_source_mail_signature_symlink_finish() to get the result
+         * of the operation.
+         * @param symlink_target executable filename to link to
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        mail_signature_symlink(
+            symlink_target: string,
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously replaces the signature file for `source` with a symbolic
+         * link to `symlink_target,` which should be an executable file that prints
+         * a mail signature to standard output.  The signature file for `source`
+         * is given by e_source_mail_signature_get_file().
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_source_mail_signature_symlink_finish() to get the result
+         * of the operation.
+         * @param symlink_target executable filename to link to
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         mail_signature_symlink(
@@ -9291,7 +9828,7 @@ export namespace EDataServer {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with e_source_mail_signature_symlink().
          * @param result a #GAsyncResult
@@ -9316,13 +9853,38 @@ export namespace EDataServer {
          * call e_source_proxy_lookup_finish() to get the result of the operation.
          * @param uri a URI representing the destination to connect to
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        proxy_lookup(uri: string, cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+        /**
+         * Asynchronously determines what proxy, if any, to use to connect to `uri`.
+         * See e_source_proxy_lookup_sync() for more details.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_proxy_lookup_finish() to get the result of the operation.
+         * @param uri a URI representing the destination to connect to
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        proxy_lookup(
+            uri: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously determines what proxy, if any, to use to connect to `uri`.
+         * See e_source_proxy_lookup_sync() for more details.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_proxy_lookup_finish() to get the result of the operation.
+         * @param uri a URI representing the destination to connect to
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         proxy_lookup(
             uri: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string[] | null> | void;
         /**
          * Finishes the operation started with e_source_proxy_lookup().
          *
@@ -9437,13 +9999,50 @@ export namespace EDataServer {
          * call e_source_remote_create_finish() to get the result of the operation.
          * @param scratch_source an #ESource describing the resource to create
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        remote_create(scratch_source: Source, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously creates a new remote resource by picking out relevant
+         * details from `scratch_source`.  The `scratch_source` must be an #ESource
+         * with no #GDBusObject.  The `source` must be #ESource:remote-creatable.
+         *
+         * The details required to create the resource vary by #ECollectionBackend,
+         * but in most cases the `scratch_source` need only define the resource type
+         * (address book, calendar, etc.), a display name for the resource, and
+         * possibly a server-side path or ID for the resource.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_remote_create_finish() to get the result of the operation.
+         * @param scratch_source an #ESource describing the resource to create
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        remote_create(
+            scratch_source: Source,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously creates a new remote resource by picking out relevant
+         * details from `scratch_source`.  The `scratch_source` must be an #ESource
+         * with no #GDBusObject.  The `source` must be #ESource:remote-creatable.
+         *
+         * The details required to create the resource vary by #ECollectionBackend,
+         * but in most cases the `scratch_source` need only define the resource type
+         * (address book, calendar, etc.), a display name for the resource, and
+         * possibly a server-side path or ID for the resource.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_remote_create_finish() to get the result of the operation.
+         * @param scratch_source an #ESource describing the resource to create
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         remote_create(
             scratch_source: Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_remote_create().  If
          * an error occurred, the function will set `error` and return %FALSE.
@@ -9476,9 +10075,35 @@ export namespace EDataServer {
          * When the operation is finished, `callback` will be called.  You can then
          * call e_source_remote_delete_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        remote_delete(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously deletes the resource represented by `source` from a remote
+         * server.  The `source` must be #ESource:remote-deletable.  This will also
+         * delete the key file for `source` and broadcast its removal to all clients,
+         * similar to e_source_remove().
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_remote_delete_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        remote_delete(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        remote_delete(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously deletes the resource represented by `source` from a remote
+         * server.  The `source` must be #ESource:remote-deletable.  This will also
+         * delete the key file for `source` and broadcast its removal to all clients,
+         * similar to e_source_remove().
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_remote_delete_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        remote_delete(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_remote_delete().  If
          * an error occurred, the function will set `error` and return %FALSE.
@@ -9505,9 +10130,33 @@ export namespace EDataServer {
          * When the operation is finished, `callback` will be called.  You can then
          * call e_source_remove_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        remove(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously requests the D-Bus service to delete the key files for
+         * `source` and all of its descendants and broadcast their removal to all
+         * clients.  The `source` must be #ESource:removable.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_remove_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        remove(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        remove(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously requests the D-Bus service to delete the key files for
+         * `source` and all of its descendants and broadcast their removal to all
+         * clients.  The `source` must be #ESource:removable.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_remove_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        remove(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_remove().  If an
          * error occurred, the function will set `error` and return %FALSE.
@@ -9573,6 +10222,44 @@ export namespace EDataServer {
          * @param password the password to store
          * @param permanently store permanently or just for the session
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        store_password(password: string, permanently: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously stores a password for `source`.  This operation does
+         * not rely on the registry service and therefore works for any #ESource
+         * -- registered or "scratch".
+         *
+         * If `permanently` is %TRUE, the password is stored in the default keyring.
+         * Otherwise the password is stored in the memory-only session keyring.  If
+         * an error occurs, the function sets `error` and returns %FALSE.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_store_password_finish() to get the result of the operation.
+         * @param password the password to store
+         * @param permanently store permanently or just for the session
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        store_password(
+            password: string,
+            permanently: boolean,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously stores a password for `source`.  This operation does
+         * not rely on the registry service and therefore works for any #ESource
+         * -- registered or "scratch".
+         *
+         * If `permanently` is %TRUE, the password is stored in the default keyring.
+         * Otherwise the password is stored in the memory-only session keyring.  If
+         * an error occurs, the function sets `error` and returns %FALSE.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_store_password_finish() to get the result of the operation.
+         * @param password the password to store
+         * @param permanently store permanently or just for the session
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         store_password(
@@ -9580,7 +10267,7 @@ export namespace EDataServer {
             permanently: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_store_password().
          * @param result a #GAsyncResult
@@ -9616,12 +10303,38 @@ export namespace EDataServer {
          * call e_source_unset_last_credentials_required_arguments_finish() to get
          * the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        unset_last_credentials_required_arguments(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously calls the UnsetLastCredentialsRequiredArguments method
+         * on the server side, to unset the last values used for the 'credentials-required'
+         * signal.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_unset_last_credentials_required_arguments_finish() to get
+         * the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        unset_last_credentials_required_arguments(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously calls the UnsetLastCredentialsRequiredArguments method
+         * on the server side, to unset the last values used for the 'credentials-required'
+         * signal.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_unset_last_credentials_required_arguments_finish() to get
+         * the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         unset_last_credentials_required_arguments(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_unset_last_credentials_required_arguments().
          *
@@ -9646,9 +10359,33 @@ export namespace EDataServer {
          * When the operation is finished, `callback` will be called.  You can then
          * call e_source_write_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        write(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously submits the current contents of `source` to the D-Bus
+         * service to be written to disk and broadcast to other clients.  The
+         * `source` must be #ESource:writable.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_write_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        write(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        write(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously submits the current contents of `source` to the D-Bus
+         * service to be written to disk and broadcast to other clients.  The
+         * `source` must be #ESource:writable.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_write_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        write(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_write().  If an
          * error occurred, the function will set `error` and return %FALSE.
@@ -9786,13 +10523,32 @@ export namespace EDataServer {
          * details.
          * @param uri a URI representing the destination to connect to
          * @param cancellable a #GCancellable, or %NULL
+         */
+        lookup_async(uri: string, cancellable?: Gio.Cancellable | null): Promise<string[]>;
+        /**
+         * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
+         * details.
+         * @param uri a URI representing the destination to connect to
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call after resolution completes
+         */
+        lookup_async(
+            uri: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
+         * details.
+         * @param uri a URI representing the destination to connect to
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call after resolution completes
          */
         lookup_async(
             uri: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string[]> | void;
         /**
          * Call this function to obtain the array of proxy URIs when
          * g_proxy_resolver_lookup_async() is complete. See
@@ -11211,13 +11967,38 @@ export namespace EDataServer {
          * of the operation.
          * @param source an #ESource, to lookup credentials for
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        ['delete'](source: Source, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously deletes any previously stored credentials for `source`.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_credentials_provider_delete_finish() to get the result
+         * of the operation.
+         * @param source an #ESource, to lookup credentials for
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        ['delete'](
+            source: Source,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously deletes any previously stored credentials for `source`.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_credentials_provider_delete_finish() to get the result
+         * of the operation.
+         * @param source an #ESource, to lookup credentials for
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         ['delete'](
             source: Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_credentials_provider_delete().
          *
@@ -11243,13 +12024,38 @@ export namespace EDataServer {
          * of the operation.
          * @param source an #ESource, to lookup credentials for
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        lookup(source: Source, cancellable?: Gio.Cancellable | null): Promise<NamedParameters>;
+        /**
+         * Asynchronously looks up for credentials for `source`.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_credentials_provider_lookup_finish() to get the result
+         * of the operation.
+         * @param source an #ESource, to lookup credentials for
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        lookup(
+            source: Source,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously looks up for credentials for `source`.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_credentials_provider_lookup_finish() to get the result
+         * of the operation.
+         * @param source an #ESource, to lookup credentials for
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         lookup(
             source: Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<NamedParameters> | void;
         /**
          * Finishes the operation started with e_source_credentials_provider_lookup().
          *
@@ -11307,6 +12113,46 @@ export namespace EDataServer {
          * @param credentials an #ENamedParameters with credentials to store
          * @param permanently store permanently or just for the session
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        store(
+            source: Source,
+            credentials: NamedParameters,
+            permanently: boolean,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously stores the `credentials` for `source`. Note the actual stored
+         * values can differ for each storage. In other words, not all named parameters
+         * are stored for each `source`.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_credentials_provider_store_finish() to get the result
+         * of the operation.
+         * @param source an #ESource, to lookup credentials for
+         * @param credentials an #ENamedParameters with credentials to store
+         * @param permanently store permanently or just for the session
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        store(
+            source: Source,
+            credentials: NamedParameters,
+            permanently: boolean,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously stores the `credentials` for `source`. Note the actual stored
+         * values can differ for each storage. In other words, not all named parameters
+         * are stored for each `source`.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_credentials_provider_store_finish() to get the result
+         * of the operation.
+         * @param source an #ESource, to lookup credentials for
+         * @param credentials an #ENamedParameters with credentials to store
+         * @param permanently store permanently or just for the session
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         store(
@@ -11315,7 +12161,7 @@ export namespace EDataServer {
             permanently: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_credentials_provider_store().
          *
@@ -14212,13 +15058,38 @@ export namespace EDataServer {
          * operation.
          * @param source an #ESource with changes to commit
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        commit_source(source: Source, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * See e_source_registry_commit_source_sync() for details.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_registry_commit_source_finish() to get the result of the
+         * operation.
+         * @param source an #ESource with changes to commit
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        commit_source(
+            source: Source,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * See e_source_registry_commit_source_sync() for details.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_registry_commit_source_finish() to get the result of the
+         * operation.
+         * @param source an #ESource with changes to commit
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         commit_source(
             source: Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_registry_commit_source().
          *
@@ -14257,13 +15128,42 @@ export namespace EDataServer {
          * operation.
          * @param list_of_sources a list of #ESource instances with no #GDBusObject
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        create_sources(list_of_sources: Source[], cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously requests the D-Bus service create new key files for each
+         * #ESource in `list_of_sources`.  Each list element must be a scratch
+         * #ESource with no #GDBusObject.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_registry_create_sources_finish() to get the result of the
+         * operation.
+         * @param list_of_sources a list of #ESource instances with no #GDBusObject
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        create_sources(
+            list_of_sources: Source[],
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously requests the D-Bus service create new key files for each
+         * #ESource in `list_of_sources`.  Each list element must be a scratch
+         * #ESource with no #GDBusObject.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_source_registry_create_sources_finish() to get the result of the
+         * operation.
+         * @param list_of_sources a list of #ESource instances with no #GDBusObject
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         create_sources(
             list_of_sources: Source[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_registry_create_sources().
          *
@@ -14549,13 +15449,44 @@ export namespace EDataServer {
          * the operation.
          * @param source_uid UID of a collection #ESource whose backend to refresh
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        refresh_backend(source_uid: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously requests the D-Bus service to refresh collection backend
+         * for an #ESource with UID `source_uid`. The result means that the refresh
+         * had been scheduled not whether the refresh itself succeeded. The refresh
+         * is not initiated when the collection backend is offline.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_registry_refresh_backend_finish() to get the result of
+         * the operation.
+         * @param source_uid UID of a collection #ESource whose backend to refresh
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        refresh_backend(
+            source_uid: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously requests the D-Bus service to refresh collection backend
+         * for an #ESource with UID `source_uid`. The result means that the refresh
+         * had been scheduled not whether the refresh itself succeeded. The refresh
+         * is not initiated when the collection backend is offline.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_source_registry_refresh_backend_finish() to get the result of
+         * the operation.
+         * @param source_uid UID of a collection #ESource whose backend to refresh
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         refresh_backend(
             source_uid: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_source_registry_refresh_backend().
          *
@@ -14693,13 +15624,100 @@ export namespace EDataServer {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().

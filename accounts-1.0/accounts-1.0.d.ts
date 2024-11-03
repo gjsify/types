@@ -104,15 +104,7 @@ export namespace Accounts {
     const MANAGER_INTERFACE: string;
     const MANAGER_OBJECT_PATH: string;
     const MANAGER_SERVICE_NAME: string;
-    /**
-     * Return the libaccounts-glib error domain.
-     * @returns the libaccounts-glib error domain.
-     */
     function accounts_error_quark(): GLib.Quark;
-    /**
-     * Return the libaccounts-glib error domain.
-     * @returns the libaccounts-glib error domain.
-     */
     function errors_quark(): GLib.Quark;
     /**
      * Frees the list `list`.
@@ -353,9 +345,25 @@ export namespace Accounts {
          * Commit the changed account settings to the account database, and invoke
          * `callback` when the operation has been completed.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        store_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Commit the changed account settings to the account database, and invoke
+         * `callback` when the operation has been completed.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback function to be called when the settings have been written.
          */
-        store_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        store_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Commit the changed account settings to the account database, and invoke
+         * `callback` when the operation has been completed.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback function to be called when the settings have been written.
+         */
+        store_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Commit the changed account settings to the account database, and invoke
          * `callback` when the operation has been completed.
@@ -1316,12 +1324,6 @@ export namespace Accounts {
          */
         list_services(): Service[];
         /**
-         * Get the list of services that are supported by `application`.
-         * @param application a #AgApplication.
-         * @returns a #GList of #AgService items representing all the services which are supported. Must be free'd with ag_service_list_free().
-         */
-        list_services_by_application(application: Application): Service[];
-        /**
          * Gets a list of all the installed services where the service type name is
          * `service_type`.
          * @param service_type the type of the service.
@@ -1912,7 +1914,7 @@ export namespace Accounts {
     /**
      * Opaque structure. Use related accessor functions.
      */
-    abstract class Application {
+    class Application {
         static $gtype: GObject.GType<Application>;
 
         // Constructors
@@ -1954,12 +1956,6 @@ export namespace Accounts {
          */
         ref(): Application;
         /**
-         * Check whether the application supports the given service.
-         * @param service an #AgService.
-         * @returns %TRUE if @service is supported, %FALSE otherwise.
-         */
-        supports_service(service: Service): boolean;
-        /**
          * Decrements the reference count of `self`. The item is destroyed when the
          * count gets to 0.
          */
@@ -1969,7 +1965,7 @@ export namespace Accounts {
     /**
      * Opaque structure. Use related accessor functions.
      */
-    abstract class AuthData {
+    class AuthData {
         static $gtype: GObject.GType<AuthData>;
 
         // Constructors
@@ -2035,7 +2031,7 @@ export namespace Accounts {
     /**
      * Opaque structure. Use related accessor functions.
      */
-    abstract class Provider {
+    class Provider {
         static $gtype: GObject.GType<Provider>;
 
         // Constructors
@@ -2108,11 +2104,6 @@ export namespace Accounts {
          */
         get_single_account(): boolean;
         /**
-         * Get list of tags specified for the #AgProvider.
-         * @returns #GList of tags for @provider. The list must be freed with g_list_free(). Entries are owned by the #AgProvider type and must not be free'd.
-         */
-        get_tags(): string[];
-        /**
          * Check whether `domain` is supported by this provider, by matching it with the
          * regex returned by ag_provider_get_domains_regex().
          * If the provider does not define a regular expression to match the supported
@@ -2135,7 +2126,7 @@ export namespace Accounts {
     /**
      * Opaque structure. Use related accessor functions.
      */
-    abstract class Service {
+    class Service {
         static $gtype: GObject.GType<Service>;
 
         // Constructors
@@ -2223,7 +2214,7 @@ export namespace Accounts {
     /**
      * Opaque structure. Use related accessor functions.
      */
-    abstract class ServiceType {
+    class ServiceType {
         static $gtype: GObject.GType<ServiceType>;
 
         // Constructors

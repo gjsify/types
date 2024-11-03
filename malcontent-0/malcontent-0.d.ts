@@ -282,6 +282,38 @@ export namespace Malcontent {
          * @param user_id ID of the user to query, typically coming from getuid()
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a #GCancellable, or %NULL
+         */
+        get_app_filter_async(
+            user_id: number,
+            flags: ManagerGetValueFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<AppFilter>;
+        /**
+         * Asynchronously get a snapshot of the app filter settings for the given
+         * `user_id`.
+         *
+         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
+         * returned.
+         * @param user_id ID of the user to query, typically coming from getuid()
+         * @param flags flags to affect the behaviour of the call
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback
+         */
+        get_app_filter_async(
+            user_id: number,
+            flags: ManagerGetValueFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously get a snapshot of the app filter settings for the given
+         * `user_id`.
+         *
+         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
+         * returned.
+         * @param user_id ID of the user to query, typically coming from getuid()
+         * @param flags flags to affect the behaviour of the call
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback
          */
         get_app_filter_async(
@@ -289,7 +321,7 @@ export namespace Malcontent {
             flags: ManagerGetValueFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<AppFilter> | void;
         /**
          * Finish an asynchronous operation to get the app filter for a user, started
          * with mct_manager_get_app_filter_async().
@@ -318,6 +350,38 @@ export namespace Malcontent {
          * @param user_id ID of the user to query, typically coming from getuid()
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a #GCancellable, or %NULL
+         */
+        get_session_limits_async(
+            user_id: number,
+            flags: ManagerGetValueFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<SessionLimits>;
+        /**
+         * Asynchronously get a snapshot of the session limit settings for the given
+         * `user_id`.
+         *
+         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
+         * returned via mct_manager_get_session_limits_finish().
+         * @param user_id ID of the user to query, typically coming from getuid()
+         * @param flags flags to affect the behaviour of the call
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback
+         */
+        get_session_limits_async(
+            user_id: number,
+            flags: ManagerGetValueFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously get a snapshot of the session limit settings for the given
+         * `user_id`.
+         *
+         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
+         * returned via mct_manager_get_session_limits_finish().
+         * @param user_id ID of the user to query, typically coming from getuid()
+         * @param flags flags to affect the behaviour of the call
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback
          */
         get_session_limits_async(
@@ -325,7 +389,7 @@ export namespace Malcontent {
             flags: ManagerGetValueFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<SessionLimits> | void;
         /**
          * Finish an asynchronous operation to get the session limits for a user,
          * started with mct_manager_get_session_limits_async().
@@ -357,6 +421,42 @@ export namespace Malcontent {
          * @param app_filter the app filter to set for the user
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a #GCancellable, or %NULL
+         */
+        set_app_filter_async(
+            user_id: number,
+            app_filter: AppFilter,
+            flags: ManagerSetValueFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously set the app filter settings for the given `user_id` to the
+         * given `app_filter` instance. This will set all fields of the app filter.
+         *
+         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
+         * returned. The user’s app filter settings will be left in an undefined state.
+         * @param user_id ID of the user to set the filter for, typically coming from getuid()
+         * @param app_filter the app filter to set for the user
+         * @param flags flags to affect the behaviour of the call
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback
+         */
+        set_app_filter_async(
+            user_id: number,
+            app_filter: AppFilter,
+            flags: ManagerSetValueFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously set the app filter settings for the given `user_id` to the
+         * given `app_filter` instance. This will set all fields of the app filter.
+         *
+         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
+         * returned. The user’s app filter settings will be left in an undefined state.
+         * @param user_id ID of the user to set the filter for, typically coming from getuid()
+         * @param app_filter the app filter to set for the user
+         * @param flags flags to affect the behaviour of the call
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback
          */
         set_app_filter_async(
@@ -365,7 +465,7 @@ export namespace Malcontent {
             flags: ManagerSetValueFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finish an asynchronous operation to set the app filter for a user, started
          * with mct_manager_set_app_filter_async().
@@ -398,6 +498,44 @@ export namespace Malcontent {
          * @param session_limits the session limits to set for the user
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a #GCancellable, or %NULL
+         */
+        set_session_limits_async(
+            user_id: number,
+            session_limits: SessionLimits,
+            flags: ManagerSetValueFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously set the session limits settings for the given `user_id` to the
+         * given `session_limits` instance.
+         *
+         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
+         * returned via mct_manager_set_session_limits_finish(). The user’s session
+         * limits settings will be left in an undefined state.
+         * @param user_id ID of the user to set the limits for, typically coming from getuid()
+         * @param session_limits the session limits to set for the user
+         * @param flags flags to affect the behaviour of the call
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback
+         */
+        set_session_limits_async(
+            user_id: number,
+            session_limits: SessionLimits,
+            flags: ManagerSetValueFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously set the session limits settings for the given `user_id` to the
+         * given `session_limits` instance.
+         *
+         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
+         * returned via mct_manager_set_session_limits_finish(). The user’s session
+         * limits settings will be left in an undefined state.
+         * @param user_id ID of the user to set the limits for, typically coming from getuid()
+         * @param session_limits the session limits to set for the user
+         * @param flags flags to affect the behaviour of the call
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback
          */
         set_session_limits_async(
@@ -406,7 +544,7 @@ export namespace Malcontent {
             flags: ManagerSetValueFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finish an asynchronous operation to set the session limits for a user,
          * started with mct_manager_set_session_limits_async().

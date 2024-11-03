@@ -39,6 +39,20 @@ export namespace Rest {
          */
         COPY,
     }
+    class OAuth2Error extends GLib.Error {
+        static $gtype: GObject.GType<OAuth2Error>;
+
+        // Static fields
+
+        static NO_REFRESH_TOKEN: number;
+        static ACCESS_TOKEN_EXPIRED: number;
+
+        // Constructors
+
+        constructor(options: { message: string; code: number });
+        _init(...args: any[]): void;
+    }
+
     /**
      * Error domain used when returning errors from #RestProxyCall.
      */
@@ -356,8 +370,19 @@ export namespace Rest {
             authorization_code: string,
             code_verifier: string,
             cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean>;
+        fetch_access_token_async(
+            authorization_code: string,
+            code_verifier: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        fetch_access_token_async(
+            authorization_code: string,
+            code_verifier: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         fetch_access_token_finish(result: Gio.AsyncResult): boolean;
         get_access_token(): string;
         get_auth_url(): string;
@@ -368,10 +393,15 @@ export namespace Rest {
         get_refresh_token(): string;
         get_token_url(): string;
         refresh_access_token(): boolean;
+        refresh_access_token_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        refresh_access_token_async(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         refresh_access_token_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         refresh_access_token_finish(result: Gio.AsyncResult): boolean;
         set_access_token(access_token: string): void;
         set_auth_url(tokenurl: string): void;
@@ -472,11 +502,6 @@ export namespace Rest {
 
         // Virtual methods
 
-        /**
-         * class handler for the #RestProxy::authenticate signal
-         * @param auth
-         * @param retrying
-         */
         vfunc_authenticate(auth: ProxyAuth, retrying: boolean): boolean;
         /**
          * Create a new #RestProxyCall for making a call to the web service.  This call
@@ -580,10 +605,6 @@ export namespace Rest {
 
         // Virtual methods
 
-        /**
-         * Virtual function called before making the request, This allows the
-         * call to be modified, for example to add a signature.
-         */
         vfunc_prepare(): boolean;
         /**
          * Invoker for a virtual method to serialize the parameters for this
@@ -652,7 +673,12 @@ export namespace Rest {
          * @returns The status message. This string is owned by #RestProxyCall and should not be freed.
          */
         get_status_message(): string;
-        invoke_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        invoke_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        invoke_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        invoke_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         invoke_finish(result: Gio.AsyncResult): boolean;
         /**
          * Get the value of the header called `header`.
@@ -932,8 +958,8 @@ export namespace Rest {
         init(params: Params): void;
         /**
          * Advances `iter` and retrieves the name and/or parameter that are now pointed
-         * at as a result of this advancement.  If FALSE is returned, `name` and `param`
-         * are not set and the iterator becomes invalid.
+         * at as a result of this advancement.  If %FALSE is returned, `name` and `param`
+         * are set to %NULL and the iterator becomes invalid.
          * @returns %FALSE if the end of the #RestParams has been reached, %TRUE otherwise.
          */
         next(): [boolean, string, Param | null];

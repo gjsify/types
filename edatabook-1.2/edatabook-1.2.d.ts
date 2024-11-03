@@ -478,39 +478,14 @@ export namespace EDataBook {
 
         // Virtual methods
 
-        /**
-         * A signal notifying that the backend was closed
-         * @param sender
-         */
         vfunc_closed(sender: string): void;
-        /**
-         * For addressbook backends which support Direct Read Access, configure a
-         *                    backend instantiated on the client side for Direct Read Access, using data
-         *                    reported from the server via the `get_direct_book` method.
-         * @param config
-         */
         vfunc_impl_configure_direct(config: string): void;
-        /**
-         * Checkes whether the backend contains an email address
-         * @param book
-         * @param opid
-         * @param cancellable
-         * @param email_address
-         */
         vfunc_impl_contains_email(
             book: DataBook,
             opid: number,
             cancellable: Gio.Cancellable | null,
             email_address: string,
         ): void;
-        /**
-         * Add and store the passed vcards
-         * @param book
-         * @param opid
-         * @param cancellable
-         * @param vcards
-         * @param opflags
-         */
         vfunc_impl_create_contacts(
             book: DataBook,
             opid: number,
@@ -518,74 +493,24 @@ export namespace EDataBook {
             vcards: string,
             opflags: number,
         ): void;
-        /**
-         * Delete an #EDataBookCursor previously created by this backend
-         * @param cursor
-         */
         vfunc_impl_delete_cursor(cursor: DataBookCursor): boolean;
-        /**
-         * Return the currently set locale setting (must be a string duplicate, for thread safety).
-         */
         vfunc_impl_dup_locale(): string;
-        /**
-         * retrieve indexes into an alphabet for contacts in the "manual query" view; default
-         *    implementation returns value set by e_book_backend_set_view_indices(). Since: 3.50
-         * @param view_id
-         */
         vfunc_impl_dup_view_indices(view_id: number): EBookContacts.BookIndices;
-        /**
-         * Fetch a property value by name from the backend
-         * @param prop_name
-         */
         vfunc_impl_get_backend_property(prop_name: string): string;
-        /**
-         * Fetch a contact by UID
-         * @param book
-         * @param opid
-         * @param cancellable
-         * @param id
-         */
         vfunc_impl_get_contact(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, id: string): void;
-        /**
-         * Fetch a list of contacts based on a search expression
-         * @param book
-         * @param opid
-         * @param cancellable
-         * @param query
-         */
         vfunc_impl_get_contact_list(
             book: DataBook,
             opid: number,
             cancellable: Gio.Cancellable | null,
             query: string,
         ): void;
-        /**
-         * Fetch a list of contact UIDs based on a search expression
-         * @param book
-         * @param opid
-         * @param cancellable
-         * @param query
-         */
         vfunc_impl_get_contact_list_uids(
             book: DataBook,
             opid: number,
             cancellable: Gio.Cancellable | null,
             query: string,
         ): void;
-        /**
-         * retrieve how many contacts a "manual query" view has; default implementation
-         *    returns value set by e_book_backend_set_view_n_total(). Since: 3.50
-         * @param view_id
-         */
         vfunc_impl_get_view_n_total(view_id: number): number;
-        /**
-         * Modify the existing contacts using the passed vcards
-         * @param book
-         * @param opid
-         * @param cancellable
-         * @param vcards
-         * @param opflags
-         */
         vfunc_impl_modify_contacts(
             book: DataBook,
             opid: number,
@@ -593,33 +518,9 @@ export namespace EDataBook {
             vcards: string,
             opflags: number,
         ): void;
-        /**
-         * Notify changes which might have occured for a given contact
-         * @param contact
-         */
         vfunc_impl_notify_update(contact: EBookContacts.Contact): void;
-        /**
-         * Open the backend
-         * @param book
-         * @param opid
-         * @param cancellable
-         */
         vfunc_impl_open(book: DataBook, opid: number, cancellable?: Gio.Cancellable | null): void;
-        /**
-         * Refresh the backend
-         * @param book
-         * @param opid
-         * @param cancellable
-         */
         vfunc_impl_refresh(book: DataBook, opid: number, cancellable?: Gio.Cancellable | null): void;
-        /**
-         * Remove the contacts specified by the passed UIDs
-         * @param book
-         * @param opid
-         * @param cancellable
-         * @param uids
-         * @param opflags
-         */
         vfunc_impl_remove_contacts(
             book: DataBook,
             opid: number,
@@ -627,32 +528,10 @@ export namespace EDataBook {
             uids: string,
             opflags: number,
         ): void;
-        /**
-         * Store & remember the passed locale setting
-         * @param locale
-         * @param cancellable
-         */
         vfunc_impl_set_locale(locale: string, cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * sets sort fields for "manual query" views; default implementation saves
-         *    the values into internal structures, which can be read back with e_book_backend_dup_view_sort_fields(). Since 3.50
-         * @param view_id
-         * @param fields
-         */
         vfunc_impl_set_view_sort_fields(view_id: number, fields: EBookContacts.BookClientViewSortFields): void;
-        /**
-         * Start up the specified view
-         * @param view
-         */
         vfunc_impl_start_view(view: DataBookView): void;
-        /**
-         * Stop the specified view
-         * @param view
-         */
         vfunc_impl_stop_view(view: DataBookView): void;
-        /**
-         * A signal notifying that the backend is being shut down
-         */
         vfunc_shutdown(): void;
 
         // Methods
@@ -684,13 +563,42 @@ export namespace EDataBook {
          * operation.
          * @param email_address an email address
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        contains_email(email_address: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously checks whether contains an `email_address`. When the `email_address`
+         * contains multiple addresses, then returns %TRUE when at least one
+         * address exists in the address book.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_book_backend_contains_email_finish() to get the result of the
+         * operation.
+         * @param email_address an email address
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        contains_email(
+            email_address: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously checks whether contains an `email_address`. When the `email_address`
+         * contains multiple addresses, then returns %TRUE when at least one
+         * address exists in the address book.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_book_backend_contains_email_finish() to get the result of the
+         * operation.
+         * @param email_address an email address
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         contains_email(
             email_address: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_book_backend_contains_email().
          *
@@ -719,6 +627,34 @@ export namespace EDataBook {
          * @param vcards a %NULL-terminated array of vCard strings
          * @param opflags bit-or of #EBookOperationFlags
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        create_contacts(vcards: string, opflags: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously creates one or more new contacts from `vcards`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_book_backend_create_contacts_finish() to get the result of the
+         * operation.
+         * @param vcards a %NULL-terminated array of vCard strings
+         * @param opflags bit-or of #EBookOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        create_contacts(
+            vcards: string,
+            opflags: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously creates one or more new contacts from `vcards`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_book_backend_create_contacts_finish() to get the result of the
+         * operation.
+         * @param vcards a %NULL-terminated array of vCard strings
+         * @param opflags bit-or of #EBookOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         create_contacts(
@@ -726,7 +662,7 @@ export namespace EDataBook {
             opflags: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_book_backend_create_contacts().
          *
@@ -885,13 +821,38 @@ export namespace EDataBook {
          * operation.
          * @param uid a contact ID
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        get_contact(uid: string, cancellable?: Gio.Cancellable | null): Promise<EBookContacts.Contact>;
+        /**
+         * Asynchronously obtains an #EContact for `uid`.
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_book_backend_get_contact_finish() to get the result of the
+         * operation.
+         * @param uid a contact ID
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_contact(
+            uid: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously obtains an #EContact for `uid`.
+         *
+         * When the operation is finished, `callback` will be called.  You can
+         * then call e_book_backend_get_contact_finish() to get the result of the
+         * operation.
+         * @param uid a contact ID
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         get_contact(
             uid: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<EBookContacts.Contact> | void;
         /**
          * Finishes the operation started with e_book_backend_get_contact_finish().
          *
@@ -912,13 +873,40 @@ export namespace EDataBook {
          * operation.
          * @param query a search query in S-expression format
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        get_contact_list(query: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously obtains a set of #EContact instances which satisfy the
+         * criteria specified in `query`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_book_backend_get_contact_list_finish() to get the result of the
+         * operation.
+         * @param query a search query in S-expression format
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_contact_list(
+            query: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously obtains a set of #EContact instances which satisfy the
+         * criteria specified in `query`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_book_backend_get_contact_list_finish() to get the result of the
+         * operation.
+         * @param query a search query in S-expression format
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         get_contact_list(
             query: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_book_backend_get_contact_list().
          *
@@ -957,13 +945,40 @@ export namespace EDataBook {
          * the operation.
          * @param query a search query in S-expression format
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        get_contact_list_uids(query: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously obtains a set of ID strings for contacts which satisfy
+         * the criteria specified in `query`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_book_backend_get_contact_list_uids_finish() to get the result of
+         * the operation.
+         * @param query a search query in S-expression format
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_contact_list_uids(
+            query: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously obtains a set of ID strings for contacts which satisfy
+         * the criteria specified in `query`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_book_backend_get_contact_list_uids_finish() to get the result of
+         * the operation.
+         * @param query a search query in S-expression format
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         get_contact_list_uids(
             query: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with
          * e_book_backend_get_contact_list_uids_finish().
@@ -1073,6 +1088,34 @@ export namespace EDataBook {
          * @param vcards a %NULL-terminated array of vCard strings
          * @param opflags bit-or of #EBookOperationFlags
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        modify_contacts(vcards: string, opflags: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously modifies one or more contacts according to `vcards`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_book_backend_modify_contacts_finish() to get the result of the
+         * operation.
+         * @param vcards a %NULL-terminated array of vCard strings
+         * @param opflags bit-or of #EBookOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        modify_contacts(
+            vcards: string,
+            opflags: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously modifies one or more contacts according to `vcards`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_book_backend_modify_contacts_finish() to get the result of the
+         * operation.
+         * @param vcards a %NULL-terminated array of vCard strings
+         * @param opflags bit-or of #EBookOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         modify_contacts(
@@ -1080,7 +1123,7 @@ export namespace EDataBook {
             opflags: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_book_backend_modify_contacts().
          *
@@ -1147,9 +1190,35 @@ export namespace EDataBook {
          * When the operation is finished, `callback` will be called.  You can then
          * call e_book_backend_open_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        open(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously "opens" the `backend`.  Opening a backend is something of
+         * an outdated concept, but the operation is hanging around for a little
+         * while longer.  This usually involves some custom initialization logic,
+         * and testing of remote authentication if applicable.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_book_backend_open_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        open(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        open(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously "opens" the `backend`.  Opening a backend is something of
+         * an outdated concept, but the operation is hanging around for a little
+         * while longer.  This usually involves some custom initialization logic,
+         * and testing of remote authentication if applicable.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_book_backend_open_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        open(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_book_backend_open().
          *
@@ -1170,7 +1239,8 @@ export namespace EDataBook {
          */
         open_sync(cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Obtains the #GTask for `opid`.
+         * Obtains the #GSimpleAsyncResult for `opid` and sets `result_queue` as a
+         * place to deposit results prior to completing the #GSimpleAsyncResult.
          *
          * <note>
          *   <para>
@@ -1180,9 +1250,10 @@ export namespace EDataBook {
          *   </para>
          * </note>
          * @param opid an operation ID given to #EDataBook
-         * @returns a #GTask
+         * @param result_queue return location for a #GQueue, or %NULL
+         * @returns a #GSimpleAsyncResult
          */
-        prepare_for_completion(opid: number): Gio.Task;
+        prepare_for_completion(opid: number, result_queue: GLib.Queue): Gio.SimpleAsyncResult;
         /**
          * Returns the #EDataBook for `backend`.  The #EDataBook is essentially
          * the glue between incoming D-Bus requests and `backend'`s native API.
@@ -1233,9 +1304,35 @@ export namespace EDataBook {
          * Once the refresh is initiated, `callback` will be called.  You can then
          * call e_book_backend_refresh_finish() to get the result of the initiation.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        refresh(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously initiates a refresh for `backend,` if the `backend` supports
+         * refreshing.  The actual refresh operation completes on its own time.  This
+         * function, along with e_book_backend_refresh_finish(), merely initiates the
+         * operation.
+         *
+         * Once the refresh is initiated, `callback` will be called.  You can then
+         * call e_book_backend_refresh_finish() to get the result of the initiation.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        refresh(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        refresh(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously initiates a refresh for `backend,` if the `backend` supports
+         * refreshing.  The actual refresh operation completes on its own time.  This
+         * function, along with e_book_backend_refresh_finish(), merely initiates the
+         * operation.
+         *
+         * Once the refresh is initiated, `callback` will be called.  You can then
+         * call e_book_backend_refresh_finish() to get the result of the initiation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        refresh(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes the refresh initiation started with e_book_backend_refresh().
          *
@@ -1269,6 +1366,34 @@ export namespace EDataBook {
          * @param uids a %NULL-terminated array of contact ID strings
          * @param opflags bit-or of #EBookOperationFlags
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        remove_contacts(uids: string[], opflags: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously removes one or more contacts according to `uids`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_book_backend_remove_contacts_finish() to get the result of the
+         * operation.
+         * @param uids a %NULL-terminated array of contact ID strings
+         * @param opflags bit-or of #EBookOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        remove_contacts(
+            uids: string[],
+            opflags: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously removes one or more contacts according to `uids`.
+         *
+         * When the operation is finished, `callback` will be called.  You can then
+         * call e_book_backend_remove_contacts_finish() to get the result of the
+         * operation.
+         * @param uids a %NULL-terminated array of contact ID strings
+         * @param opflags bit-or of #EBookOperationFlags
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         remove_contacts(
@@ -1276,7 +1401,7 @@ export namespace EDataBook {
             opflags: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_book_backend_remove_contacts().
          *
@@ -1516,15 +1641,7 @@ export namespace EDataBook {
         // Virtual methods
 
         vfunc_contains_email_sync(email_address: string, cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Open the backend
-         * @param cancellable
-         */
         vfunc_open_sync(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Refresh the backend
-         * @param cancellable
-         */
         vfunc_refresh_sync(cancellable?: Gio.Cancellable | null): boolean;
 
         // Methods
@@ -4789,30 +4906,10 @@ export namespace EDataBook {
 
         // Virtual methods
 
-        /**
-         * The #EDataBookCursorCompareContactFunc delegate to compare an #EContact with the cursor position
-         * @param contact the #EContact to compare with @cursor
-         */
         vfunc_compare_contact(contact: EBookContacts.Contact): [number, boolean];
-        /**
-         * The #EDataBookCursorGetPositionFunc delegate to calculate the current total and position values
-         * @param cancellable A #GCancellable
-         */
         vfunc_get_position(cancellable?: Gio.Cancellable | null): [boolean, number, number];
-        /**
-         * The #EDataBookCursorLoadLocaleFunc delegate used to reload the locale setting
-         */
         vfunc_load_locale(): [boolean, string];
-        /**
-         * The #EDataBookCursorSetAlphabetIndexFunc delegate to set the alphabetic position
-         * @param index the alphabetic index
-         * @param locale the locale in which @index is expected to be a valid alphabetic index
-         */
         vfunc_set_alphabetic_index(index: number, locale: string): boolean;
-        /**
-         * The #EDataBookCursorSetSexpFunc delegate to set the search expression
-         * @param sexp the search expression to set, or %NULL for unfiltered results
-         */
         vfunc_set_sexp(sexp?: string | null): boolean;
         /**
          * Steps `cursor` through its sorted query by a maximum of `count` contacts

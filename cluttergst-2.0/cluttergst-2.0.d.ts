@@ -1013,14 +1013,7 @@ export namespace ClutterGst {
          * @param uri the URI of the media stream
          */
         set_uri(uri: string): void;
-        /**
-         * handler for the #ClutterMedia::eos signal
-         */
         vfunc_eos(): void;
-        /**
-         * handler for the #ClutterMedia::error signal
-         * @param error
-         */
         vfunc_error(error: GLib.Error): void;
         /**
          * Frees the resources created by clutter_gst_player_init(). After

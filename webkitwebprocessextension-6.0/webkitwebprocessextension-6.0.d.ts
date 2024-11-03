@@ -31,72 +31,6 @@ export namespace WebKitWebProcessExtension {
      */
 
     /**
-     * Enum values used to denote the various levels of console messages.
-     */
-
-    /**
-     * Enum values used to denote the various levels of console messages.
-     */
-    export namespace ConsoleMessageLevel {
-        export const $gtype: GObject.GType<ConsoleMessageLevel>;
-    }
-
-    enum ConsoleMessageLevel {
-        /**
-         * Information message.
-         */
-        INFO,
-        /**
-         * Log message.
-         */
-        LOG,
-        /**
-         * Warning message.
-         */
-        WARNING,
-        /**
-         * Error message.
-         */
-        ERROR,
-        /**
-         * Debug message.
-         */
-        DEBUG,
-    }
-    /**
-     * Enum values used to denote the various sources of console messages.
-     */
-
-    /**
-     * Enum values used to denote the various sources of console messages.
-     */
-    export namespace ConsoleMessageSource {
-        export const $gtype: GObject.GType<ConsoleMessageSource>;
-    }
-
-    enum ConsoleMessageSource {
-        /**
-         * Message produced by JavaScript.
-         */
-        JAVASCRIPT,
-        /**
-         * Network messages.
-         */
-        NETWORK,
-        /**
-         * Messages produced by console API.
-         */
-        CONSOLE_API,
-        /**
-         * Security messages.
-         */
-        SECURITY,
-        /**
-         * Other messages.
-         */
-        OTHER,
-    }
-    /**
      * Enum values used to denote the stock actions for
      * #WebKitContextMenuItem<!-- -->s
      */
@@ -1395,10 +1329,6 @@ export namespace WebKitWebProcessExtension {
     module WebPage {
         // Signal callback interfaces
 
-        interface ConsoleMessageSent {
-            (console_message: ConsoleMessage): void;
-        }
-
         interface ContextMenu {
             (context_menu: ContextMenu, hit_test_result: WebHitTestResult): boolean;
         }
@@ -1446,15 +1376,6 @@ export namespace WebKitWebProcessExtension {
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'console-message-sent',
-            callback: (_source: this, console_message: ConsoleMessage) => void,
-        ): number;
-        connect_after(
-            signal: 'console-message-sent',
-            callback: (_source: this, console_message: ConsoleMessage) => void,
-        ): number;
-        emit(signal: 'console-message-sent', console_message: ConsoleMessage): void;
         connect(
             signal: 'context-menu',
             callback: (_source: this, context_menu: ContextMenu, hit_test_result: WebHitTestResult) => boolean,
@@ -1522,13 +1443,38 @@ export namespace WebKitWebProcessExtension {
          * webkit_web_page_send_message_to_view_finish() to get the message reply.
          * @param message a #WebKitUserMessage
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        send_message_to_view(message: UserMessage, cancellable?: Gio.Cancellable | null): Promise<UserMessage>;
+        /**
+         * Send `message` to the #WebKitWebView corresponding to `web_page`. If `message` is floating, it's consumed.
+         *
+         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `callback`.
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_page_send_message_to_view_finish() to get the message reply.
+         * @param message a #WebKitUserMessage
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL
+         */
+        send_message_to_view(
+            message: UserMessage,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Send `message` to the #WebKitWebView corresponding to `web_page`. If `message` is floating, it's consumed.
+         *
+         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `callback`.
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_page_send_message_to_view_finish() to get the message reply.
+         * @param message a #WebKitUserMessage
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL
          */
         send_message_to_view(
             message: UserMessage,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<UserMessage> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_page_send_message_to_view().
          * @param result a #GAsyncResult
@@ -1663,64 +1609,44 @@ export namespace WebKitWebProcessExtension {
          * webkit_web_process_extension_send_message_to_context_finish() to get the message reply.
          * @param message a #WebKitUserMessage
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        send_message_to_context(message: UserMessage, cancellable?: Gio.Cancellable | null): Promise<UserMessage>;
+        /**
+         * Send `message` to the #WebKitWebContext corresponding to `extension`. If `message` is floating, it's consumed.
+         *
+         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `calback`.
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_process_extension_send_message_to_context_finish() to get the message reply.
+         * @param message a #WebKitUserMessage
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL
+         */
+        send_message_to_context(
+            message: UserMessage,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Send `message` to the #WebKitWebContext corresponding to `extension`. If `message` is floating, it's consumed.
+         *
+         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `calback`.
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_process_extension_send_message_to_context_finish() to get the message reply.
+         * @param message a #WebKitUserMessage
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL
          */
         send_message_to_context(
             message: UserMessage,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<UserMessage> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_process_extension_send_message_to_context().
          * @param result a #GAsyncResult
          * @returns a #WebKitUserMessage with the reply or %NULL in case of error.
          */
         send_message_to_context_finish(result: Gio.AsyncResult): UserMessage;
-    }
-
-    abstract class ConsoleMessage {
-        static $gtype: GObject.GType<ConsoleMessage>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Make a copy of `console_message`.
-         * @returns A copy of passed in #WebKitConsoleMessage
-         */
-        copy(): ConsoleMessage;
-        /**
-         * Free the #WebKitConsoleMessage
-         */
-        free(): void;
-        /**
-         * Gets the log level of a #WebKitConsoleMessage
-         * @returns a #WebKitConsoleMessageLevel indicating the log level of @console_message
-         */
-        get_level(): ConsoleMessageLevel;
-        /**
-         * Gets the line number of a #WebKitConsoleMessage
-         * @returns the line number of @console_message
-         */
-        get_line(): number;
-        /**
-         * Gets the source of a #WebKitConsoleMessage
-         * @returns a #WebKitConsoleMessageSource indicating the source of @console_message
-         */
-        get_source(): ConsoleMessageSource;
-        /**
-         * Gets the source identifier of a #WebKitConsoleMessage
-         * @returns the source identifier of @console_message
-         */
-        get_source_id(): string;
-        /**
-         * Gets the text message of a #WebKitConsoleMessage
-         * @returns the text message of @console_message
-         */
-        get_text(): string;
     }
 
     type ContextMenuClass = typeof ContextMenu;

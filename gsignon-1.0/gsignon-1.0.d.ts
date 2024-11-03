@@ -513,6 +513,54 @@ export namespace gSignon {
          * @param session_data a dictionary of parameters.
          * @param mechanism the authentication mechanism to be used.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        process_async(
+            session_data: GLib.Variant,
+            mechanism: string,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<GLib.Variant>;
+        /**
+         * Performs one step of the authentication process.
+         * `session_data` should be used to add additional authentication parameters to the
+         * session.
+         *
+         * What specific parameters should be used can be found from authentication plugins'
+         * documentation (look for parameters that are expected in gsignond_plugin_request_initial()
+         * for the first step, and parameters that are expected in gsignond_plugin_request() for
+         * the subsequent steps). See, for example, #GSignondPasswordPlugin and #GSignondDigestPlugin.
+         *
+         * If the #SignonIdentity that this session belongs to contains a username and a password,
+         * the daemon will pass them to the authentication plugin, otherwise they should be set directly in
+         * `session_data`. The daemon also passes a list of identity's allowed realms to the plugin,
+         * and they cannot be overriden.
+         * @param session_data a dictionary of parameters.
+         * @param mechanism the authentication mechanism to be used.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a callback which will be called when the authentication reply is available.
+         */
+        process_async(
+            session_data: GLib.Variant,
+            mechanism: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Performs one step of the authentication process.
+         * `session_data` should be used to add additional authentication parameters to the
+         * session.
+         *
+         * What specific parameters should be used can be found from authentication plugins'
+         * documentation (look for parameters that are expected in gsignond_plugin_request_initial()
+         * for the first step, and parameters that are expected in gsignond_plugin_request() for
+         * the subsequent steps). See, for example, #GSignondPasswordPlugin and #GSignondDigestPlugin.
+         *
+         * If the #SignonIdentity that this session belongs to contains a username and a password,
+         * the daemon will pass them to the authentication plugin, otherwise they should be set directly in
+         * `session_data`. The daemon also passes a list of identity's allowed realms to the plugin,
+         * and they cannot be overriden.
+         * @param session_data a dictionary of parameters.
+         * @param mechanism the authentication mechanism to be used.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a callback which will be called when the authentication reply is available.
          */
         process_async(
@@ -520,7 +568,7 @@ export namespace gSignon {
             mechanism: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Variant> | void;
         /**
          * Collect the result of the signon_auth_session_process_async() operation.
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to signon_auth_session_process_async().

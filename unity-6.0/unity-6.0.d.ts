@@ -334,9 +334,24 @@ export namespace Unity {
          * including the .desktop extension.</para>
          * <para>If the AppInfo is not already cached this method will do asynchronous IO to look it up.</para>
          * @param id
+         */
+        lookup_async(id: string): Promise<Gio.AppInfo>;
+        /**
+         * <para>Look up an AppInfo given its desktop id or absolute path. The desktop id is the base filename of the .desktop file for the application
+         * including the .desktop extension.</para>
+         * <para>If the AppInfo is not already cached this method will do asynchronous IO to look it up.</para>
+         * @param id
          * @param _callback_
          */
         lookup_async(id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        /**
+         * <para>Look up an AppInfo given its desktop id or absolute path. The desktop id is the base filename of the .desktop file for the application
+         * including the .desktop extension.</para>
+         * <para>If the AppInfo is not already cached this method will do asynchronous IO to look it up.</para>
+         * @param id
+         * @param _callback_
+         */
+        lookup_async(id: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<Gio.AppInfo> | void;
         lookup_finish(_res_: Gio.AsyncResult): Gio.AppInfo;
         clear(): void;
     }

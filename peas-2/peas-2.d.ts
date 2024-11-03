@@ -2075,7 +2075,7 @@ export namespace Peas {
      * Authors=Steve Frécinaux &lt;code`istique`.net&gt;
      * Copyright=Copyright © 2009-10 Steve Frécinaux
      * Website=https://wiki.gnome.org/Projects/Libpeas
-     * Help=https://gitlab.gnome.org/GNOME/libpeas
+     * Help=http://library.gnome.org/devel/libpeas/stable/
      * Hidden=false
      * ```
      */

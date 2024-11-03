@@ -277,35 +277,6 @@ export namespace ECal {
         TIMEZONE,
     }
     /**
-     * Declares interval units.
-     */
-
-    /**
-     * Declares interval units.
-     */
-    export namespace IntervalUnits {
-        export const $gtype: GObject.GType<IntervalUnits>;
-    }
-
-    enum IntervalUnits {
-        /**
-         * No unit is set
-         */
-        NONE,
-        /**
-         * interval is in minutes
-         */
-        MINUTES,
-        /**
-         * interval is in hours
-         */
-        HOURS,
-        /**
-         * interval is in days
-         */
-        DAYS,
-    }
-    /**
      * An email address preferred for e-mail reminders by the calendar.
      */
     const BACKEND_PROPERTY_ALARM_EMAIL_ADDRESS: string;
@@ -404,7 +375,8 @@ export namespace ECal {
     const STATIC_CAPABILITY_REQ_SEND_OPTIONS: string;
     /**
      * Set, when the backend supports retract. That's a way to ask for a meeting
-     * deletion with a comment, which is stored in a component as the COMMENT property.
+     * deletion with a comment, which is stored in a component as
+     * X-EVOLUTION-RETRACT-COMMENT property.
      */
     const STATIC_CAPABILITY_RETRACT_SUPPORTED: string;
     const STATIC_CAPABILITY_SAVE_SCHEDULES: string;
@@ -449,7 +421,7 @@ export namespace ECal {
      * @param t A time value.
      * @returns String with the ISO 8601 representation of the UTC time.
      */
-    function isodate_from_time_t(t: never): string;
+    function isodate_from_time_t(t: number): string;
     /**
      * Matches `tzid` against the system timezone definitions
      * and returns the matching TZID, or %NULL if none found
@@ -559,7 +531,7 @@ export namespace ECal {
         prop: ICalGLib.Property,
         zone: ICalGLib.Timezone,
         convert_end_date: boolean,
-    ): never;
+    ): number;
     /**
      * Fetches the system timezone location string.
      *
@@ -582,7 +554,7 @@ export namespace ECal {
      * @param days Number of days to add.
      * @returns a time_t value containing @time plus the days added.
      */
-    function time_add_day(time: never, days: number): never;
+    function time_add_day(time: number, days: number): number;
     /**
      * Adds or subtracts a number of days to/from the given time_t value, using
      * the given timezone.
@@ -594,7 +566,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns a time_t value containing @time plus the days added.
      */
-    function time_add_day_with_zone(time: never, days: number, zone: ICalGLib.Timezone): never;
+    function time_add_day_with_zone(time: number, days: number, zone: ICalGLib.Timezone): number;
     /**
      * Adds or subtracts a number of months to/from the given time_t value, using
      * the given timezone.
@@ -611,14 +583,14 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns a time_t value containing @time plus the months added.
      */
-    function time_add_month_with_zone(time: never, months: number, zone: ICalGLib.Timezone): never;
+    function time_add_month_with_zone(time: number, months: number, zone: ICalGLib.Timezone): number;
     /**
      * Adds the given number of weeks to a time value.
      * @param time A time_t value.
      * @param weeks Number of weeks to add.
      * @returns a time_t value containing @time plus the weeks added.
      */
-    function time_add_week(time: never, weeks: number): never;
+    function time_add_week(time: number, weeks: number): number;
     /**
      * Adds or subtracts a number of weeks to/from the given time_t value, using
      * the given timezone.
@@ -630,13 +602,13 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns a time_t value containing @time plus the weeks added.
      */
-    function time_add_week_with_zone(time: never, weeks: number, zone: ICalGLib.Timezone): never;
+    function time_add_week_with_zone(time: number, weeks: number, zone: ICalGLib.Timezone): number;
     /**
      * Returns the start of the day, according to the local time.
      * @param t A time_t value.
      * @returns the time corresponding to the beginning of the day.
      */
-    function time_day_begin(t: never): never;
+    function time_day_begin(t: number): number;
     /**
      * Returns the start of the day containing the given time_t, using the given
      * timezone.
@@ -647,13 +619,13 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the day.
      */
-    function time_day_begin_with_zone(time: never, zone: ICalGLib.Timezone): never;
+    function time_day_begin_with_zone(time: number, zone: ICalGLib.Timezone): number;
     /**
      * Returns the end of the day, according to the local time.
      * @param t A time_t value.
      * @returns the time corresponding to the end of the day.
      */
-    function time_day_end(t: never): never;
+    function time_day_end(t: number): number;
     /**
      * Returns the end of the day containing the given time_t, using the given
      * timezone. (The end of the day is the start of the next day.)
@@ -664,7 +636,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the end of the day.
      */
-    function time_day_end_with_zone(time: never, zone: ICalGLib.Timezone): never;
+    function time_day_end_with_zone(time: number, zone: ICalGLib.Timezone): number;
     /**
      * Returns the day of the week for the specified date, 0 (Sun) to 6 (Sat).
      * For the days that were removed on the Gregorian reformation, it returns
@@ -697,7 +669,7 @@ export namespace ECal {
      * @param str Date/time value in ISO 8601 format.
      * @returns Time_t corresponding to the specified ISO string. Note that we only allow UTC times at present.
      */
-    function time_from_isodate(str: string): never;
+    function time_from_isodate(str: string): number;
     /**
      * Returns whether the specified year is a leap year. Year is the normal year,
      * e.g. 2001.
@@ -722,7 +694,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the month.
      */
-    function time_month_begin_with_zone(time: never, zone: ICalGLib.Timezone): never;
+    function time_month_begin_with_zone(time: number, zone: ICalGLib.Timezone): number;
     /**
      * Converts a time_t value to a #GDate structure using the specified timezone.
      * This is analogous to g_date_set_time() but takes the timezone into account.
@@ -730,7 +702,7 @@ export namespace ECal {
      * @param time A time value.
      * @param zone Desired timezone for destination @date, or %NULL if    the UTC timezone is desired.
      */
-    function time_to_gdate_with_zone(date: GLib.Date, time: never, zone?: ICalGLib.Timezone | null): void;
+    function time_to_gdate_with_zone(date: GLib.Date, time: number, zone?: ICalGLib.Timezone | null): void;
     /**
      * Returns the start of the week containing the given time_t, using the given
      * timezone. week_start_day should use the same values as mktime(),
@@ -743,7 +715,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the week.
      */
-    function time_week_begin_with_zone(time: never, week_start_day: number, zone: ICalGLib.Timezone): never;
+    function time_week_begin_with_zone(time: number, week_start_day: number, zone: ICalGLib.Timezone): number;
     /**
      * Returns the start of the year containing the given time_t, using the given
      * timezone.
@@ -754,7 +726,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the year.
      */
-    function time_year_begin_with_zone(time: never, zone: ICalGLib.Timezone): never;
+    function time_year_begin_with_zone(time: number, zone: ICalGLib.Timezone): number;
     /**
      * Adds VTIMEZONE components to a VCALENDAR for all tzid's
      * in the given `icalcomp`.
@@ -811,30 +783,6 @@ export namespace ECal {
         icalcomp: ICalGLib.Component,
         prop_kind: ICalGLib.PropertyKind,
         locale?: string | null,
-    ): ICalGLib.Property | null;
-    /**
-     * Searches properties of kind `prop_kind` in the `icalcomp,` which can
-     * be filtered by the `func,` and returns one, which is usable for the `locale`.
-     * When `locale` is %NULL, the current locale is assumed. If no such property
-     * for the locale exists either the one with no language parameter or the first
-     * found is returned.
-     *
-     * The `func` is called before checking of the applicability for the `locale`.
-     * When the `func` is %NULL, all the properties of the `prop_kind` are considered.
-     *
-     * Free the returned non-NULL #ICalProperty with g_object_unref(),
-     * when no longer needed.
-     * @param icalcomp an #ICalComponent
-     * @param prop_kind an #ICalPropertyKind to traverse
-     * @param locale a locale identifier, or %NULL
-     * @param func an #ECalUtilFilterPropertyFunc, to determine whether a property can be considered
-     * @returns a property of kind @prop_kind for the @locale,    %NULL if no such property is set on the @comp.
-     */
-    function util_component_find_property_for_locale_filtered(
-        icalcomp: ICalGLib.Component,
-        prop_kind: ICalGLib.PropertyKind,
-        locale?: string | null,
-        func?: UtilFilterPropertyFunc | null,
     ): ICalGLib.Property | null;
     /**
      * Searches for an X property named `x_name` within X properties
@@ -1012,8 +960,8 @@ export namespace ECal {
      */
     function util_generate_alarms_for_comp(
         comp: Component,
-        start: never,
-        end: never,
+        start: number,
+        end: number,
         omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
@@ -1035,8 +983,8 @@ export namespace ECal {
      */
     function util_generate_alarms_for_list(
         comps: Component[],
-        start: never,
-        end: never,
+        start: number,
+        end: number,
         omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
@@ -1045,9 +993,6 @@ export namespace ECal {
      * Generates alarm instances for a calendar component with UID `uid,`
      * which is stored within the `client`. In contrast to e_cal_util_generate_alarms_for_comp(),
      * this function handles detached instances of recurring events properly.
-     *
-     * The `def_reminder_before_start_seconds,` if not negative, causes addition of an alarm,
-     * which will trigger a "display" alarm these seconds before start of the event.
      *
      * Returns the instances structure, or %NULL if no alarm instances occurred in the specified
      * time range. Free the returned structure with e_cal_component_alarms_free(),
@@ -1059,19 +1004,17 @@ export namespace ECal {
      * @param omit alarm types to omit
      * @param resolve_tzid Callback for resolving timezones
      * @param default_timezone The timezone used to resolve DATE and floating DATE-TIME values
-     * @param def_reminder_before_start_seconds add default reminder before start in seconds, when not negative value
-     * @param cancellable optional #GCancellable object, or %NULL
+     * @param cancellable
      * @returns a list of all the alarms found    for the given component in the given time range.
      */
     function util_generate_alarms_for_uid_sync(
         client: any | null,
         uid: string,
-        start: never,
-        end: never,
+        start: number,
+        end: number,
         omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
-        def_reminder_before_start_seconds: number,
         cancellable?: Gio.Cancellable | null,
     ): ComponentAlarms | null;
     /**
@@ -1095,7 +1038,7 @@ export namespace ECal {
         tz_cb: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
         kind: ICalGLib.ComponentKind,
-    ): [never, never];
+    ): [number, number];
     /**
      * Returns the real name and email address of the default mail identity,
      * if available.  If no default mail identity is available, `out_name` and
@@ -1147,8 +1090,8 @@ export namespace ECal {
      */
     function util_has_alarms_in_range(
         comp: Component,
-        start: never,
-        end: never,
+        start: number,
+        end: number,
         omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
@@ -1238,7 +1181,7 @@ export namespace ECal {
      */
     function util_mark_task_complete_sync(
         vtodo: ICalGLib.Component,
-        completed_time: never,
+        completed_time: number,
         cal_client: Client,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
@@ -1434,9 +1377,6 @@ export namespace ECal {
     }
     interface RecurResolveTimezoneCb {
         (tzid: string, cancellable?: Gio.Cancellable | null): ICalGLib.Timezone | null;
-    }
-    interface UtilFilterPropertyFunc {
-        (prop: ICalGLib.Property): boolean;
     }
     interface UtilForeachCategoryFunc {
         (comp: ICalGLib.Component, inout_category: string): boolean;
@@ -1817,13 +1757,34 @@ export namespace ECal {
          * the `callback`.
          * @param zone The timezone to add
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        add_timezone(zone: ICalGLib.Timezone, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Add a VTIMEZONE object to the given calendar client.
+         * The call is finished by e_cal_client_add_timezone_finish() from
+         * the `callback`.
+         * @param zone The timezone to add
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        add_timezone(
+            zone: ICalGLib.Timezone,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Add a VTIMEZONE object to the given calendar client.
+         * The call is finished by e_cal_client_add_timezone_finish() from
+         * the `callback`.
+         * @param zone The timezone to add
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         add_timezone(
             zone: ICalGLib.Timezone,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         // Conflicted with ECal.TimezoneCache.add_timezone
         add_timezone(...args: never[]): any;
         /**
@@ -1874,6 +1835,38 @@ export namespace ECal {
          * @param icalcomp The component to create
          * @param opflags bit-or of #ECalOperationFlags
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        create_object(
+            icalcomp: ICalGLib.Component,
+            opflags: OperationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<string>;
+        /**
+         * Requests the calendar backend to create the object specified by the `icalcomp`
+         * argument. Some backends would assign a specific UID to the newly created object,
+         * but this function does not modify the original `icalcomp` if its UID changes.
+         * The call is finished by e_cal_client_create_object_finish() from
+         * the `callback`.
+         * @param icalcomp The component to create
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        create_object(
+            icalcomp: ICalGLib.Component,
+            opflags: OperationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests the calendar backend to create the object specified by the `icalcomp`
+         * argument. Some backends would assign a specific UID to the newly created object,
+         * but this function does not modify the original `icalcomp` if its UID changes.
+         * The call is finished by e_cal_client_create_object_finish() from
+         * the `callback`.
+         * @param icalcomp The component to create
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         create_object(
@@ -1881,7 +1874,7 @@ export namespace ECal {
             opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Finishes previous call of e_cal_client_create_object() and
          * sets `out_uid` to newly assigned UID for the created object.
@@ -1915,6 +1908,38 @@ export namespace ECal {
          * @param icalcomps The components to create
          * @param opflags bit-or of #ECalOperationFlags
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        create_objects(
+            icalcomps: ICalGLib.Component[],
+            opflags: OperationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<string[] | null>;
+        /**
+         * Requests the calendar backend to create the objects specified by the `icalcomps`
+         * argument. Some backends would assign a specific UID to the newly created object,
+         * but this function does not modify the original `icalcomps` if their UID changes.
+         * The call is finished by e_cal_client_create_objects_finish() from
+         * the `callback`.
+         * @param icalcomps The components to create
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        create_objects(
+            icalcomps: ICalGLib.Component[],
+            opflags: OperationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests the calendar backend to create the objects specified by the `icalcomps`
+         * argument. Some backends would assign a specific UID to the newly created object,
+         * but this function does not modify the original `icalcomps` if their UID changes.
+         * The call is finished by e_cal_client_create_objects_finish() from
+         * the `callback`.
+         * @param icalcomps The components to create
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         create_objects(
@@ -1922,7 +1947,7 @@ export namespace ECal {
             opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string[] | null> | void;
         /**
          * Finishes previous call of e_cal_client_create_objects() and
          * sets `out_uids` to newly assigned UIDs for the created objects.
@@ -1957,6 +1982,42 @@ export namespace ECal {
          * @param auid Alarm identifier to discard
          * @param opflags bit-or of #ECalOperationFlags
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        discard_alarm(
+            uid: string,
+            rid: string | null,
+            auid: string,
+            opflags: OperationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Discards alarm `auid` from a given component identified by `uid` and `rid`.
+         * The call is finished by e_cal_client_discard_alarm_finish() from
+         * the `callback`.
+         * @param uid Unique identifier for a calendar component
+         * @param rid Recurrence identifier
+         * @param auid Alarm identifier to discard
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        discard_alarm(
+            uid: string,
+            rid: string | null,
+            auid: string,
+            opflags: OperationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Discards alarm `auid` from a given component identified by `uid` and `rid`.
+         * The call is finished by e_cal_client_discard_alarm_finish() from
+         * the `callback`.
+         * @param uid Unique identifier for a calendar component
+         * @param rid Recurrence identifier
+         * @param auid Alarm identifier to discard
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         discard_alarm(
@@ -1966,7 +2027,7 @@ export namespace ECal {
             opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes previous call of e_cal_client_discard_alarm().
          * @param result a #GAsyncResult
@@ -2003,7 +2064,7 @@ export namespace ECal {
          * @param cancellable a #GCancellable; can be %NULL
          * @param cb Callback for each generated instance.
          */
-        generate_instances(start: never, end: never, cancellable: Gio.Cancellable | null, cb: RecurInstanceCb): void;
+        generate_instances(start: number, end: number, cancellable: Gio.Cancellable | null, cb: RecurInstanceCb): void;
         /**
          * Does a combination of e_cal_client_get_object_list() and
          * e_cal_recur_generate_instances_sync(), like
@@ -2022,8 +2083,8 @@ export namespace ECal {
          */
         generate_instances_for_object(
             icalcomp: ICalGLib.Component,
-            start: never,
-            end: never,
+            start: number,
+            end: number,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
         ): void;
@@ -2043,8 +2104,8 @@ export namespace ECal {
          */
         generate_instances_for_object_sync(
             icalcomp: ICalGLib.Component,
-            start: never,
-            end: never,
+            start: number,
+            end: number,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
         ): void;
@@ -2064,8 +2125,8 @@ export namespace ECal {
          */
         generate_instances_for_uid_sync(
             uid: string,
-            start: never,
-            end: never,
+            start: number,
+            end: number,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
         ): void;
@@ -2082,10 +2143,34 @@ export namespace ECal {
          * @param cb Callback for each generated instance
          */
         generate_instances_sync(
-            start: never,
-            end: never,
+            start: number,
+            end: number,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
+        ): void;
+        /**
+         * Queries a calendar for a specified component's object attachment uris.
+         * The call is finished by e_cal_client_get_attachment_uris_finish() from
+         * the `callback`.
+         * @param uid Unique identifier for a calendar component
+         * @param rid Recurrence identifier
+         * @param cancellable a #GCancellable; can be %NULL
+         */
+        get_attachment_uris(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null): Promise<string[]>;
+        /**
+         * Queries a calendar for a specified component's object attachment uris.
+         * The call is finished by e_cal_client_get_attachment_uris_finish() from
+         * the `callback`.
+         * @param uid Unique identifier for a calendar component
+         * @param rid Recurrence identifier
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        get_attachment_uris(
+            uid: string,
+            rid: string | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Queries a calendar for a specified component's object attachment uris.
@@ -2101,7 +2186,7 @@ export namespace ECal {
             rid?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string[]> | void;
         /**
          * Finishes previous call of e_cal_client_get_attachment_uris() and
          * sets `out_attachment_uris` to uris for component's attachments.
@@ -2135,9 +2220,27 @@ export namespace ECal {
          * values for properties needed. The call is finished
          * by e_cal_client_get_default_object_finish() from the `callback`.
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        get_default_object(cancellable?: Gio.Cancellable | null): Promise<ICalGLib.Component>;
+        /**
+         * Retrives an #ICalComponent from the backend that contains the default
+         * values for properties needed. The call is finished
+         * by e_cal_client_get_default_object_finish() from the `callback`.
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
-        get_default_object(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_default_object(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Retrives an #ICalComponent from the backend that contains the default
+         * values for properties needed. The call is finished
+         * by e_cal_client_get_default_object_finish() from the `callback`.
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        get_default_object(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<ICalGLib.Component> | void;
         /**
          * Finishes previous call of e_cal_client_get_default_object() and
          * sets `out_icalcomp` to an #ICalComponent from the backend that contains
@@ -2172,15 +2275,51 @@ export namespace ECal {
          * @param end End time for query
          * @param users List of users to retrieve free/busy information for
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        get_free_busy(
+            start: number,
+            end: number,
+            users: string[],
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Component[]>;
+        /**
+         * Begins retrieval of free/busy information from the calendar server
+         * as a list of #ECalComponent-s. Connect to "free-busy-data" signal
+         * to receive chunks of free/busy components.
+         * The call is finished by e_cal_client_get_free_busy_finish() from
+         * the `callback`.
+         * @param start Start time for query
+         * @param end End time for query
+         * @param users List of users to retrieve free/busy information for
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         get_free_busy(
-            start: never,
-            end: never,
+            start: number,
+            end: number,
+            users: string[],
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Begins retrieval of free/busy information from the calendar server
+         * as a list of #ECalComponent-s. Connect to "free-busy-data" signal
+         * to receive chunks of free/busy components.
+         * The call is finished by e_cal_client_get_free_busy_finish() from
+         * the `callback`.
+         * @param start Start time for query
+         * @param end End time for query
+         * @param users List of users to retrieve free/busy information for
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        get_free_busy(
+            start: number,
+            end: number,
             users: string[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Component[]> | void;
         /**
          * Finishes previous call of e_cal_client_get_free_busy().
          * The `out_freebusy` contains all VFREEBUSY #ECalComponent-s, which could be also
@@ -2202,8 +2341,8 @@ export namespace ECal {
          * @returns %TRUE if successful, %FALSE otherwise.
          */
         get_free_busy_sync(
-            start: never,
-            end: never,
+            start: number,
+            end: number,
             users: string[],
             cancellable?: Gio.Cancellable | null,
         ): [boolean, Component[]];
@@ -2227,6 +2366,38 @@ export namespace ECal {
          * @param uid Unique identifier for a calendar component.
          * @param rid Recurrence identifier.
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        get_object(uid: string, rid?: string | null, cancellable?: Gio.Cancellable | null): Promise<ICalGLib.Component>;
+        /**
+         * Queries a calendar for a calendar component object based on its unique
+         * identifier. The call is finished by e_cal_client_get_object_finish()
+         * from the `callback`.
+         *
+         * Use e_cal_client_get_objects_for_uid() to get list of all
+         * objects for the given uid, which includes master object and
+         * all detached instances.
+         * @param uid Unique identifier for a calendar component.
+         * @param rid Recurrence identifier.
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        get_object(
+            uid: string,
+            rid: string | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Queries a calendar for a calendar component object based on its unique
+         * identifier. The call is finished by e_cal_client_get_object_finish()
+         * from the `callback`.
+         *
+         * Use e_cal_client_get_objects_for_uid() to get list of all
+         * objects for the given uid, which includes master object and
+         * all detached instances.
+         * @param uid Unique identifier for a calendar component.
+         * @param rid Recurrence identifier.
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         get_object(
@@ -2234,7 +2405,7 @@ export namespace ECal {
             rid?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<ICalGLib.Component> | void;
         /**
          * Finishes previous call of e_cal_client_get_object() and
          * sets `out_icalcomp` to queried component. This function always returns
@@ -2255,12 +2426,58 @@ export namespace ECal {
          * the `callback`.
          * @param sexp an S-expression representing the query
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        get_object_list(sexp: string, cancellable?: Gio.Cancellable | null): Promise<ICalGLib.Component[]>;
+        /**
+         * Gets a list of objects from the calendar that match the query specified
+         * by the `sexp` argument, returning matching objects as a list of #ICalComponent-s.
+         * The call is finished by e_cal_client_get_object_list_finish() from
+         * the `callback`.
+         * @param sexp an S-expression representing the query
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        get_object_list(
+            sexp: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Gets a list of objects from the calendar that match the query specified
+         * by the `sexp` argument, returning matching objects as a list of #ICalComponent-s.
+         * The call is finished by e_cal_client_get_object_list_finish() from
+         * the `callback`.
+         * @param sexp an S-expression representing the query
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         get_object_list(
             sexp: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<ICalGLib.Component[]> | void;
+        /**
+         * Gets a list of objects from the calendar that match the query specified
+         * by the `sexp` argument, returning matching objects as a list of #ECalComponent-s.
+         * The call is finished by e_cal_client_get_object_list_as_comps_finish() from
+         * the `callback`.
+         * @param sexp an S-expression representing the query
+         * @param cancellable a #GCancellable; can be %NULL
+         */
+        get_object_list_as_comps(sexp: string, cancellable?: Gio.Cancellable | null): Promise<Component[]>;
+        /**
+         * Gets a list of objects from the calendar that match the query specified
+         * by the `sexp` argument, returning matching objects as a list of #ECalComponent-s.
+         * The call is finished by e_cal_client_get_object_list_as_comps_finish() from
+         * the `callback`.
+         * @param sexp an S-expression representing the query
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        get_object_list_as_comps(
+            sexp: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Gets a list of objects from the calendar that match the query specified
@@ -2275,7 +2492,7 @@ export namespace ECal {
             sexp: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Component[]> | void;
         /**
          * Finishes previous call of e_cal_client_get_object_list_as_comps() and
          * sets `out_ecalcomps` to a matching list of #ECalComponent-s.
@@ -2340,13 +2557,38 @@ export namespace ECal {
          * the `callback`.
          * @param uid Unique identifier for a calendar component
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        get_objects_for_uid(uid: string, cancellable?: Gio.Cancellable | null): Promise<Component[]>;
+        /**
+         * Queries a calendar for all calendar components with the given unique
+         * ID. This will return any recurring event and all its detached recurrences.
+         * For non-recurring events, it will just return the object with that ID.
+         * The call is finished by e_cal_client_get_objects_for_uid_finish() from
+         * the `callback`.
+         * @param uid Unique identifier for a calendar component
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        get_objects_for_uid(
+            uid: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Queries a calendar for all calendar components with the given unique
+         * ID. This will return any recurring event and all its detached recurrences.
+         * For non-recurring events, it will just return the object with that ID.
+         * The call is finished by e_cal_client_get_objects_for_uid_finish() from
+         * the `callback`.
+         * @param uid Unique identifier for a calendar component
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         get_objects_for_uid(
             uid: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Component[]> | void;
         /**
          * Finishes previous call of e_cal_client_get_objects_for_uid() and
          * sets `out_ecalcomps` to a list of #ECalComponent<!-- -->s corresponding to
@@ -2377,13 +2619,34 @@ export namespace ECal {
          * the `callback`.
          * @param tzid ID of the timezone to retrieve
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        get_timezone(tzid: string, cancellable?: Gio.Cancellable | null): Promise<ICalGLib.Timezone>;
+        /**
+         * Retrieves a timezone object from the calendar backend.
+         * The call is finished by e_cal_client_get_timezone_finish() from
+         * the `callback`.
+         * @param tzid ID of the timezone to retrieve
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        get_timezone(
+            tzid: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Retrieves a timezone object from the calendar backend.
+         * The call is finished by e_cal_client_get_timezone_finish() from
+         * the `callback`.
+         * @param tzid ID of the timezone to retrieve
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         get_timezone(
             tzid: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<ICalGLib.Timezone> | void;
         // Conflicted with ECal.TimezoneCache.get_timezone
         get_timezone(...args: never[]): any;
         /**
@@ -2408,13 +2671,34 @@ export namespace ECal {
          * from the `callback`.
          * @param sexp an S-expression representing the query.
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        get_view(sexp: string, cancellable?: Gio.Cancellable | null): Promise<ClientView>;
+        /**
+         * Query `client` with `sexp,` creating an #ECalClientView.
+         * The call is finished by e_cal_client_get_view_finish()
+         * from the `callback`.
+         * @param sexp an S-expression representing the query.
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        get_view(
+            sexp: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Query `client` with `sexp,` creating an #ECalClientView.
+         * The call is finished by e_cal_client_get_view_finish()
+         * from the `callback`.
+         * @param sexp an S-expression representing the query.
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         get_view(
             sexp: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<ClientView> | void;
         /**
          * Finishes previous call of e_cal_client_get_view().
          * If successful, then the `out_view` is set to newly allocated #ECalClientView,
@@ -2447,6 +2731,52 @@ export namespace ECal {
          * @param mod Type of modification
          * @param opflags bit-or of #ECalOperationFlags
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        modify_object(
+            icalcomp: ICalGLib.Component,
+            mod: ObjModType,
+            opflags: OperationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Requests the calendar backend to modify an existing object. If the object
+         * does not exist on the calendar, an error will be returned.
+         *
+         * For recurrent appointments, the `mod` argument specifies what to modify,
+         * if all instances (#E_CAL_OBJ_MOD_ALL), a single instance (#E_CAL_OBJ_MOD_THIS),
+         * or a specific set of instances (#E_CAL_OBJ_MOD_THIS_AND_PRIOR and
+         * #E_CAL_OBJ_MOD_THIS_AND_FUTURE).
+         *
+         * The call is finished by e_cal_client_modify_object_finish() from
+         * the `callback`.
+         * @param icalcomp Component to modify
+         * @param mod Type of modification
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        modify_object(
+            icalcomp: ICalGLib.Component,
+            mod: ObjModType,
+            opflags: OperationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests the calendar backend to modify an existing object. If the object
+         * does not exist on the calendar, an error will be returned.
+         *
+         * For recurrent appointments, the `mod` argument specifies what to modify,
+         * if all instances (#E_CAL_OBJ_MOD_ALL), a single instance (#E_CAL_OBJ_MOD_THIS),
+         * or a specific set of instances (#E_CAL_OBJ_MOD_THIS_AND_PRIOR and
+         * #E_CAL_OBJ_MOD_THIS_AND_FUTURE).
+         *
+         * The call is finished by e_cal_client_modify_object_finish() from
+         * the `callback`.
+         * @param icalcomp Component to modify
+         * @param mod Type of modification
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         modify_object(
@@ -2455,7 +2785,7 @@ export namespace ECal {
             opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes previous call of e_cal_client_modify_object().
          * @param result a #GAsyncResult
@@ -2497,6 +2827,52 @@ export namespace ECal {
          * @param mod Type of modification
          * @param opflags bit-or of #ECalOperationFlags
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        modify_objects(
+            icalcomps: ICalGLib.Component[],
+            mod: ObjModType,
+            opflags: OperationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Requests the calendar backend to modify existing objects. If an object
+         * does not exist on the calendar, an error will be returned.
+         *
+         * For recurrent appointments, the `mod` argument specifies what to modify,
+         * if all instances (#E_CAL_OBJ_MOD_ALL), a single instance (#E_CAL_OBJ_MOD_THIS),
+         * or a specific set of instances (#E_CAL_OBJ_MOD_THIS_AND_PRIOR and
+         * #E_CAL_OBJ_MOD_THIS_AND_FUTURE).
+         *
+         * The call is finished by e_cal_client_modify_objects_finish() from
+         * the `callback`.
+         * @param icalcomps Components to modify
+         * @param mod Type of modification
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        modify_objects(
+            icalcomps: ICalGLib.Component[],
+            mod: ObjModType,
+            opflags: OperationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests the calendar backend to modify existing objects. If an object
+         * does not exist on the calendar, an error will be returned.
+         *
+         * For recurrent appointments, the `mod` argument specifies what to modify,
+         * if all instances (#E_CAL_OBJ_MOD_ALL), a single instance (#E_CAL_OBJ_MOD_THIS),
+         * or a specific set of instances (#E_CAL_OBJ_MOD_THIS_AND_PRIOR and
+         * #E_CAL_OBJ_MOD_THIS_AND_FUTURE).
+         *
+         * The call is finished by e_cal_client_modify_objects_finish() from
+         * the `callback`.
+         * @param icalcomps Components to modify
+         * @param mod Type of modification
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         modify_objects(
@@ -2505,7 +2881,7 @@ export namespace ECal {
             opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes previous call of e_cal_client_modify_objects().
          * @param result a #GAsyncResult
@@ -2542,6 +2918,40 @@ export namespace ECal {
          * @param icalcomp An #ICalComponent
          * @param opflags bit-or of #ECalOperationFlags
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        receive_objects(
+            icalcomp: ICalGLib.Component,
+            opflags: OperationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Makes the backend receive the set of iCalendar objects specified in the
+         * `icalcomp` argument. This is used for iTIP confirmation/cancellation
+         * messages for scheduled meetings.
+         *
+         * The call is finished by e_cal_client_receive_objects_finish() from
+         * the `callback`.
+         * @param icalcomp An #ICalComponent
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        receive_objects(
+            icalcomp: ICalGLib.Component,
+            opflags: OperationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Makes the backend receive the set of iCalendar objects specified in the
+         * `icalcomp` argument. This is used for iTIP confirmation/cancellation
+         * messages for scheduled meetings.
+         *
+         * The call is finished by e_cal_client_receive_objects_finish() from
+         * the `callback`.
+         * @param icalcomp An #ICalComponent
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         receive_objects(
@@ -2549,7 +2959,7 @@ export namespace ECal {
             opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes previous call of e_cal_client_receive_objects().
          * @param result a #GAsyncResult
@@ -2584,6 +2994,52 @@ export namespace ECal {
          * @param mod Type of the removal
          * @param opflags bit-or of #ECalOperationFlags
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        remove_object(
+            uid: string,
+            rid: string | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * This function allows the removal of instances of a recurrent
+         * appointment. By using a combination of the `uid,` `rid` and `mod`
+         * arguments, you can remove specific instances. If what you want
+         * is to remove all instances, use %NULL `rid` and #E_CAL_OBJ_MOD_ALL
+         * for the `mod`.
+         *
+         * The call is finished by e_cal_client_remove_object_finish() from
+         * the `callback`.
+         * @param uid UID of the object to remove
+         * @param rid Recurrence ID of the specific recurrence to remove
+         * @param mod Type of the removal
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        remove_object(
+            uid: string,
+            rid: string | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * This function allows the removal of instances of a recurrent
+         * appointment. By using a combination of the `uid,` `rid` and `mod`
+         * arguments, you can remove specific instances. If what you want
+         * is to remove all instances, use %NULL `rid` and #E_CAL_OBJ_MOD_ALL
+         * for the `mod`.
+         *
+         * The call is finished by e_cal_client_remove_object_finish() from
+         * the `callback`.
+         * @param uid UID of the object to remove
+         * @param rid Recurrence ID of the specific recurrence to remove
+         * @param mod Type of the removal
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         remove_object(
@@ -2593,7 +3049,7 @@ export namespace ECal {
             opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes previous call of e_cal_client_remove_object().
          * @param result a #GAsyncResult
@@ -2632,6 +3088,46 @@ export namespace ECal {
          * @param mod Type of the removal
          * @param opflags bit-or of #ECalOperationFlags
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        remove_objects(
+            ids: ComponentId[],
+            mod: ObjModType,
+            opflags: OperationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * This function allows the removal of instances of recurrent appointments.
+         * #ECalComponentId objects can identify specific instances (if rid is not
+         * %NULL).  If what you want is to remove all instances, use a %NULL rid in
+         * the #ECalComponentId and #E_CAL_OBJ_MOD_ALL for the `mod`.
+         *
+         * The call is finished by e_cal_client_remove_objects_finish() from
+         * the `callback`.
+         * @param ids A list of #ECalComponentId objects identifying the objects to remove
+         * @param mod Type of the removal
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        remove_objects(
+            ids: ComponentId[],
+            mod: ObjModType,
+            opflags: OperationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * This function allows the removal of instances of recurrent appointments.
+         * #ECalComponentId objects can identify specific instances (if rid is not
+         * %NULL).  If what you want is to remove all instances, use a %NULL rid in
+         * the #ECalComponentId and #E_CAL_OBJ_MOD_ALL for the `mod`.
+         *
+         * The call is finished by e_cal_client_remove_objects_finish() from
+         * the `callback`.
+         * @param ids A list of #ECalComponentId objects identifying the objects to remove
+         * @param mod Type of the removal
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         remove_objects(
@@ -2640,7 +3136,7 @@ export namespace ECal {
             opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes previous call of e_cal_client_remove_objects().
          * @param result a #GAsyncResult
@@ -2672,6 +3168,36 @@ export namespace ECal {
          * @param icalcomp An #ICalComponent to be sent
          * @param opflags bit-or of #ECalOperationFlags
          * @param cancellable a #GCancellable; can be %NULL
+         */
+        send_objects(
+            icalcomp: ICalGLib.Component,
+            opflags: OperationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<[boolean, string[], ICalGLib.Component]>;
+        /**
+         * Requests a calendar backend to send meeting information stored in `icalcomp`.
+         * The backend can modify this component and request a send to particular users.
+         * The call is finished by e_cal_client_send_objects_finish() from
+         * the `callback`.
+         * @param icalcomp An #ICalComponent to be sent
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
+         * @param callback callback to call when a result is ready
+         */
+        send_objects(
+            icalcomp: ICalGLib.Component,
+            opflags: OperationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests a calendar backend to send meeting information stored in `icalcomp`.
+         * The backend can modify this component and request a send to particular users.
+         * The call is finished by e_cal_client_send_objects_finish() from
+         * the `callback`.
+         * @param icalcomp An #ICalComponent to be sent
+         * @param opflags bit-or of #ECalOperationFlags
+         * @param cancellable a #GCancellable; can be %NULL
          * @param callback callback to call when a result is ready
          */
         send_objects(
@@ -2679,7 +3205,7 @@ export namespace ECal {
             opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, string[], ICalGLib.Component]> | void;
         /**
          * Finishes previous call of e_cal_client_send_objects() and
          * populates `out_users` with a list of users to send `out_modified_icalcomp` to.
@@ -2768,13 +3294,100 @@ export namespace ECal {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -3422,16 +4035,7 @@ export namespace ECal {
 
         // Virtual methods
 
-        /**
-         * A signal emitted when the backend finished initial view population
-         * @param error
-         */
         vfunc_complete(error: GLib.Error): void;
-        /**
-         * A signal emitted when the backend notifies about the progress
-         * @param percent
-         * @param message
-         */
         vfunc_progress(percent: number, message: string): void;
 
         // Methods
@@ -4798,13 +5402,47 @@ export namespace ECal {
          * the operation.
          * @param rd an #EReminderData to dismiss
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        dismiss(rd: ReminderData, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously dismiss single reminder in the past or snoozed reminders.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call e_reminder_watcher_dismiss_finish() to get the result of
+         * the operation.
+         * @param rd an #EReminderData to dismiss
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        dismiss(
+            rd: ReminderData,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously dismiss single reminder in the past or snoozed reminders.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call e_reminder_watcher_dismiss_finish() to get the result of
+         * the operation.
+         * @param rd an #EReminderData to dismiss
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         dismiss(
             rd: ReminderData,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
+        /**
+         * Asynchronously dismiss all past reminders.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call e_reminder_watcher_dismiss_all_finish() to get the result
+         * of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         */
+        dismiss_all(cancellable?: Gio.Cancellable | null): Promise<boolean>;
         /**
          * Asynchronously dismiss all past reminders.
          *
@@ -4814,7 +5452,20 @@ export namespace ECal {
          * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        dismiss_all(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        dismiss_all(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously dismiss all past reminders.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call e_reminder_watcher_dismiss_all_finish() to get the result
+         * of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        dismiss_all(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_reminder_watcher_dismiss_all().
          * @param result a #GAsyncResult
@@ -5125,10 +5776,15 @@ export namespace ECal {
 
         // Constructors
 
-        constructor(uid: string, instance_time: never, occur_start: never, occur_end: never);
+        constructor(uid: string, instance_time: number, occur_start: number, occur_end: number);
         _init(...args: any[]): void;
 
-        static ['new'](uid: string, instance_time: never, occur_start: never, occur_end: never): ComponentAlarmInstance;
+        static ['new'](
+            uid: string,
+            instance_time: number,
+            occur_start: number,
+            occur_end: number,
+        ): ComponentAlarmInstance;
 
         // Methods
 
@@ -5139,10 +5795,10 @@ export namespace ECal {
          */
         copy(): ComponentAlarmInstance;
         get_component(): any | null;
-        get_occur_end(): never;
-        get_occur_start(): never;
+        get_occur_end(): number;
+        get_occur_start(): number;
         get_rid(): string | null;
-        get_time(): never;
+        get_time(): number;
         get_uid(): string;
         /**
          * Sets `component` as the component associated with the `instance`.
@@ -5154,12 +5810,12 @@ export namespace ECal {
          * Set the actual event occurrence end to which this `instance` corresponds.
          * @param occur_end event occurence end to set
          */
-        set_occur_end(occur_end: never): void;
+        set_occur_end(occur_end: number): void;
         /**
          * Set the actual event occurrence start to which this `instance` corresponds.
          * @param occur_start event occurence start to set
          */
-        set_occur_start(occur_start: never): void;
+        set_occur_start(occur_start: number): void;
         /**
          * Set the Recurrence ID of the component this `instance` was generated for.
          * @param rid recurrence UID to set, or %NULL
@@ -5169,7 +5825,7 @@ export namespace ECal {
          * Set the instance time, i.e. "5 minutes before the appointment".
          * @param instance_time instance time to set
          */
-        set_time(instance_time: never): void;
+        set_time(instance_time: number): void;
         /**
          * Set the alarm UID.
          * @param uid alarm UID to set

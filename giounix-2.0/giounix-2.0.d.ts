@@ -8,10 +8,9 @@
  */
 
 // Module dependencies
-import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
+import type Gio from '@girs/gio-2.0';
 import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
 
 export namespace GioUnix {
     /**
@@ -25,17 +24,16 @@ export namespace GioUnix {
     const DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME: string;
     /**
      * Gets the default application for launching applications
-     * using this URI scheme for a particular [iface`Gio`.DesktopAppInfoLookup]
+     * using this URI scheme for a particular #GDesktopAppInfoLookup
      * implementation.
      *
-     * The [iface`Gio`.DesktopAppInfoLookup] interface and this function is used
-     * to implement [func`Gio`.AppInfo.get_default_for_uri_scheme] backends
+     * The #GDesktopAppInfoLookup interface and this function is used
+     * to implement g_app_info_get_default_for_uri_scheme() backends
      * in a GIO module. There is no reason for applications to use it
-     * directly. Applications should use
-     * [func`Gio`.AppInfo.get_default_for_uri_scheme].
-     * @param lookup a [iface@Gio.DesktopAppInfoLookup]
+     * directly. Applications should use g_app_info_get_default_for_uri_scheme().
+     * @param lookup a #GDesktopAppInfoLookup
      * @param uri_scheme a string containing a URI scheme.
-     * @returns [iface@Gio.AppInfo] for given   @uri_scheme or `NULL` on error.
+     * @returns #GAppInfo for given @uri_scheme or    %NULL on error.
      */
     function desktop_app_info_lookup_get_default_for_uri_scheme(
         lookup: Gio.DesktopAppInfoLookup,
@@ -323,21 +321,6 @@ export namespace GioUnix {
      */
     function mount_points_get(): [Gio.UnixMountPoint[], number];
     /**
-     * Gets an array of [struct`Gio`.UnixMountPoint]s containing the Unix mount
-     * points listed in `table_path`.
-     *
-     * This is a generalized version of g_unix_mount_points_get(), mainly intended
-     * for internal testing use. Note that g_unix_mount_points_get() may parse
-     * multiple hierarchical table files, so this function is not a direct superset
-     * of its functionality.
-     *
-     * If there is an error reading or parsing the file, `NULL` will be returned
-     * and both out parameters will be set to `0`.
-     * @param table_path path to the mount points table file (for example `/etc/fstab`)
-     * @returns mount   points, or `NULL` if there was an error loading them
-     */
-    function mount_points_get_from_file(table_path: string): [Gio.UnixMountPoint[] | null, number];
-    /**
      * Checks if the unix mounts have changed since a given unix time.
      * @param time guint64 to contain a timestamp.
      * @returns %TRUE if the mounts have changed since @time.
@@ -351,21 +334,6 @@ export namespace GioUnix {
      * @returns a #GList of the UNIX mounts.
      */
     function mounts_get(): [Gio.UnixMountEntry[], number];
-    /**
-     * Gets an array of [struct`Gio`.UnixMountEntry]s containing the Unix mounts
-     * listed in `table_path`.
-     *
-     * This is a generalized version of g_unix_mounts_get(), mainly intended for
-     * internal testing use. Note that g_unix_mounts_get() may parse multiple
-     * hierarchical table files, so this function is not a direct superset of its
-     * functionality.
-     *
-     * If there is an error reading or parsing the file, `NULL` will be returned
-     * and both out parameters will be set to `0`.
-     * @param table_path path to the mounts table file (for example `/proc/self/mountinfo`)
-     * @returns mount   entries, or `NULL` if there was an error loading them
-     */
-    function mounts_get_from_file(table_path: string): [Gio.UnixMountEntry[] | null, number];
     interface DesktopAppLaunchCallback {
         (appinfo: Gio.DesktopAppInfo, pid: GLib.Pid): void;
     }
@@ -391,7 +359,7 @@ export namespace GioUnix {
         // Properties
 
         /**
-         * The origin filename of this [class`Gio`.DesktopAppInfo]
+         * The origin filename of this #GDesktopAppInfo
          */
         get filename(): string;
 
@@ -410,123 +378,118 @@ export namespace GioUnix {
         // Static methods
 
         /**
-         * Gets the user-visible display name of the
-         * [‘additional application actions’](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html)
-         * specified by `action_name`.
+         * Gets the user-visible display name of the "additional application
+         * action" specified by `action_name`.
          *
-         * This corresponds to the `Name` key within the keyfile group for the
+         * This corresponds to the "Name" key within the keyfile group for the
          * action.
-         * @param info a [class@Gio.DesktopAppInfo]
-         * @param action_name the name of the action as from   [method@Gio.DesktopAppInfo.list_actions]
+         * @param info a #GDesktopAppInfo
+         * @param action_name the name of the action as from   g_desktop_app_info_list_actions()
          */
         static get_action_name(info: Gio.DesktopAppInfo, action_name: string): string;
         /**
          * Looks up a boolean value in the keyfile backing `info`.
          *
-         * The `key` is looked up in the `Desktop Entry` group.
-         * @param info a [class@Gio.DesktopAppInfo]
+         * The `key` is looked up in the "Desktop Entry" group.
+         * @param info a #GDesktopAppInfo
          * @param key the key to look up
          */
         static get_boolean(info: Gio.DesktopAppInfo, key: string): boolean;
         /**
          * Gets the categories from the desktop file.
-         * @param info a [class@Gio.DesktopAppInfo]
+         * @param info a #GDesktopAppInfo
          */
         static get_categories(info: Gio.DesktopAppInfo): string | null;
         /**
          * When `info` was created from a known filename, return it.  In some
-         * situations such as a [class`Gio`.DesktopAppInfo] returned from
-         * [ctor`Gio`.DesktopAppInfo.new_from_keyfile], this function will return `NULL`.
-         * @param info a [class@Gio.DesktopAppInfo]
+         * situations such as the #GDesktopAppInfo returned from
+         * g_desktop_app_info_new_from_keyfile(), this function will return %NULL.
+         * @param info a #GDesktopAppInfo
          */
         static get_filename(info: Gio.DesktopAppInfo): string | null;
         /**
          * Gets the generic name from the desktop file.
-         * @param info a [class@Gio.DesktopAppInfo]
+         * @param info a #GDesktopAppInfo
          */
         static get_generic_name(info: Gio.DesktopAppInfo): string | null;
         /**
          * Gets all applications that implement `interface`.
          *
          * An application implements an interface if that interface is listed in
-         * the `Implements` line of the desktop file of the application.
+         * the Implements= line of the desktop file of the application.
          * @param _interface the name of the interface
          */
         static get_implementations(_interface: string): Gio.DesktopAppInfo[];
         /**
-         * A desktop file is hidden if the
-         * [`Hidden` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-hidden)
-         * in it is set to `True`.
-         * @param info a [class@Gio.DesktopAppInfo].
+         * A desktop file is hidden if the Hidden key in it is
+         * set to True.
+         * @param info a #GDesktopAppInfo.
          */
         static get_is_hidden(info: Gio.DesktopAppInfo): boolean;
         /**
          * Gets the keywords from the desktop file.
-         * @param info a [class@Gio.DesktopAppInfo]
+         * @param info a #GDesktopAppInfo
          */
         static get_keywords(info: Gio.DesktopAppInfo): string[];
         /**
          * Looks up a localized string value in the keyfile backing `info`
          * translated to the current locale.
          *
-         * The `key` is looked up in the `Desktop Entry` group.
-         * @param info a [class@Gio.DesktopAppInfo]
+         * The `key` is looked up in the "Desktop Entry" group.
+         * @param info a #GDesktopAppInfo
          * @param key the key to look up
          */
         static get_locale_string(info: Gio.DesktopAppInfo, key: string): string | null;
         /**
-         * Gets the value of the
-         * [`NoDisplay` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-nodisplay)
-         *  which helps determine if the application info should be shown in menus. See
-         * `G_KEY_FILE_DESKTOP_KEY_NO_DISPLAY` and [method`Gio`.AppInfo.should_show].
-         * @param info a [class@Gio.DesktopAppInfo]
+         * Gets the value of the NoDisplay key, which helps determine if the
+         * application info should be shown in menus. See
+         * %G_KEY_FILE_DESKTOP_KEY_NO_DISPLAY and g_app_info_should_show().
+         * @param info a #GDesktopAppInfo
          */
         static get_nodisplay(info: Gio.DesktopAppInfo): boolean;
         /**
          * Checks if the application info should be shown in menus that list available
          * applications for a specific name of the desktop, based on the
-         * [`OnlyShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-onlyshowin)
-         * and [`NotShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-notshowin)
-         * keys.
+         * `OnlyShowIn` and `NotShowIn` keys.
          *
-         * `desktop_env` should typically be given as `NULL`, in which case the
+         * `desktop_env` should typically be given as %NULL, in which case the
          * `XDG_CURRENT_DESKTOP` environment variable is consulted.  If you want
          * to override the default mechanism then you may specify `desktop_env,`
          * but this is not recommended.
          *
-         * Note that [method`Gio`.AppInfo.should_show] for `info` will include this check
-         * (with `NULL` for `desktop_env)` as well as additional checks.
-         * @param info a [class@Gio.DesktopAppInfo]
+         * Note that g_app_info_should_show() for `info` will include this check (with
+         * %NULL for `desktop_env)` as well as additional checks.
+         * @param info a #GDesktopAppInfo
          * @param desktop_env a string specifying a desktop name
          */
         static get_show_in(info: Gio.DesktopAppInfo, desktop_env?: string | null): boolean;
         /**
-         * Retrieves the `StartupWMClass` field from `info`. This represents the
-         * `WM_CLASS` property of the main window of the application, if launched
+         * Retrieves the StartupWMClass field from `info`. This represents the
+         * WM_CLASS property of the main window of the application, if launched
          * through `info`.
-         * @param info a [class@Gio.DesktopAppInfo] that supports startup notify
+         * @param info a #GDesktopAppInfo that supports startup notify
          */
         static get_startup_wm_class(info: Gio.DesktopAppInfo): string | null;
         /**
          * Looks up a string value in the keyfile backing `info`.
          *
-         * The `key` is looked up in the `Desktop Entry` group.
-         * @param info a [class@Gio.DesktopAppInfo]
+         * The `key` is looked up in the "Desktop Entry" group.
+         * @param info a #GDesktopAppInfo
          * @param key the key to look up
          */
         static get_string(info: Gio.DesktopAppInfo, key: string): string | null;
         /**
          * Looks up a string list value in the keyfile backing `info`.
          *
-         * The `key` is looked up in the `Desktop Entry` group.
-         * @param info a [class@Gio.DesktopAppInfo]
+         * The `key` is looked up in the "Desktop Entry" group.
+         * @param info a #GDesktopAppInfo
          * @param key the key to look up
          */
         static get_string_list(info: Gio.DesktopAppInfo, key: string): string[];
         /**
-         * Returns whether `key` exists in the `Desktop Entry` group
+         * Returns whether `key` exists in the "Desktop Entry" group
          * of the keyfile backing `info`.
-         * @param info a [class@Gio.DesktopAppInfo]
+         * @param info a #GDesktopAppInfo
          * @param key the key to look up
          */
         static has_key(info: Gio.DesktopAppInfo, key: string): boolean;
@@ -534,22 +497,21 @@ export namespace GioUnix {
          * Activates the named application action.
          *
          * You may only call this function on action names that were
-         * returned from [method`Gio`.DesktopAppInfo.list_actions].
+         * returned from g_desktop_app_info_list_actions().
          *
          * Note that if the main entry of the desktop file indicates that the
          * application supports startup notification, and `launch_context` is
-         * non-`NULL`, then startup notification will be used when activating the
+         * non-%NULL, then startup notification will be used when activating the
          * action (and as such, invocation of the action on the receiving side
          * must signal the end of startup notification when it is completed).
          * This is the expected behaviour of applications declaring additional
-         * actions, as per the
-         * [desktop file specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html).
+         * actions, as per the desktop file specification.
          *
-         * As with [method`Gio`.AppInfo.launch] there is no way to detect failures that
+         * As with g_app_info_launch() there is no way to detect failures that
          * occur while using this function.
-         * @param info a [class@Gio.DesktopAppInfo]
-         * @param action_name the name of the action as from   [method@Gio.DesktopAppInfo.list_actions]
-         * @param launch_context a [class@Gio.AppLaunchContext]
+         * @param info a #GDesktopAppInfo
+         * @param action_name the name of the action as from   g_desktop_app_info_list_actions()
+         * @param launch_context a #GAppLaunchContext
          */
         static launch_action(
             info: Gio.DesktopAppInfo,
@@ -557,26 +519,25 @@ export namespace GioUnix {
             launch_context?: Gio.AppLaunchContext | null,
         ): void;
         /**
-         * This function performs the equivalent of [method`Gio`.AppInfo.launch_uris],
+         * This function performs the equivalent of g_app_info_launch_uris(),
          * but is intended primarily for operating system components that
          * launch applications.  Ordinary applications should use
-         * [method`Gio`.AppInfo.launch_uris].
+         * g_app_info_launch_uris().
          *
          * If the application is launched via GSpawn, then `spawn_flags,` `user_setup`
-         * and `user_setup_data` are used for the call to [func`GLib`.spawn_async].
+         * and `user_setup_data` are used for the call to g_spawn_async().
          * Additionally, `pid_callback` (with `pid_callback_data)` will be called to
-         * inform about the PID of the created process. See
-         * [func`GLib`.spawn_async_with_pipes] for information on certain parameter
-         * conditions that can enable an optimized [`posix_spawn()`](man:posix_spawn(3))
-         * code path to be used.
+         * inform about the PID of the created process. See g_spawn_async_with_pipes()
+         * for information on certain parameter conditions that can enable an
+         * optimized posix_spawn() codepath to be used.
          *
-         * If application launching occurs via some other mechanism (for example, D-Bus
+         * If application launching occurs via some other mechanism (eg: D-Bus
          * activation) then `spawn_flags,` `user_setup,` `user_setup_data,`
          * `pid_callback` and `pid_callback_data` are ignored.
-         * @param appinfo a [class@Gio.DesktopAppInfo]
+         * @param appinfo a #GDesktopAppInfo
          * @param uris List of URIs
-         * @param launch_context a [class@Gio.AppLaunchContext]
-         * @param spawn_flags [flags@GLib.SpawnFlags], used for each process
+         * @param launch_context a #GAppLaunchContext
+         * @param spawn_flags #GSpawnFlags, used for each process
          */
         static launch_uris_as_manager(
             appinfo: Gio.DesktopAppInfo,
@@ -585,21 +546,21 @@ export namespace GioUnix {
             spawn_flags: GLib.SpawnFlags,
         ): boolean;
         /**
-         * Equivalent to [method`Gio`.DesktopAppInfo.launch_uris_as_manager] but allows
+         * Equivalent to g_desktop_app_info_launch_uris_as_manager() but allows
          * you to pass in file descriptors for the stdin, stdout and stderr streams
          * of the launched process.
          *
          * If application launching occurs via some non-spawn mechanism (e.g. D-Bus
          * activation) then `stdin_fd,` `stdout_fd` and `stderr_fd` are ignored.
-         * @param appinfo a [class@Gio.DesktopAppInfo]
+         * @param appinfo a #GDesktopAppInfo
          * @param uris List of URIs
-         * @param launch_context a [class@Gio.AppLaunchContext]
-         * @param spawn_flags [flags@GLib.SpawnFlags], used for each process
-         * @param user_setup a   [callback@GLib.SpawnChildSetupFunc], used once for each process.
+         * @param launch_context a #GAppLaunchContext
+         * @param spawn_flags #GSpawnFlags, used for each process
+         * @param user_setup a #GSpawnChildSetupFunc, used once     for each process.
          * @param pid_callback Callback for child processes
-         * @param stdin_fd file descriptor to use for child’s stdin, or `-1`
-         * @param stdout_fd file descriptor to use for child’s stdout, or `-1`
-         * @param stderr_fd file descriptor to use for child’s stderr, or `-1`
+         * @param stdin_fd file descriptor to use for child's stdin, or -1
+         * @param stdout_fd file descriptor to use for child's stdout, or -1
+         * @param stderr_fd file descriptor to use for child's stderr, or -1
          */
         static launch_uris_as_manager_with_fds(
             appinfo: Gio.DesktopAppInfo,
@@ -613,13 +574,12 @@ export namespace GioUnix {
             stderr_fd: number,
         ): boolean;
         /**
-         * Returns the list of
-         * [‘additional application actions’](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html)
-         * supported on the desktop file, as per the desktop file specification.
+         * Returns the list of "additional application actions" supported on the
+         * desktop file, as per the desktop file specification.
          *
          * As per the specification, this is the list of actions that are
-         * explicitly listed in the `Actions` key of the `Desktop Entry` group.
-         * @param info a [class@Gio.DesktopAppInfo]
+         * explicitly listed in the "Actions" key of the [Desktop Entry] group.
+         * @param info a #GDesktopAppInfo
          */
         static list_actions(info: Gio.DesktopAppInfo): string[];
         /**
@@ -633,22 +593,20 @@ export namespace GioUnix {
          * any time.
          *
          * None of the search results are subjected to the normal validation
-         * checks performed by [ctor`Gio`.DesktopAppInfo.new] (for example, checking that
+         * checks performed by g_desktop_app_info_new() (for example, checking that
          * the executable referenced by a result exists), and so it is possible for
-         * [ctor`Gio`.DesktopAppInfo.new] to return `NULL` when passed an app ID returned
-         * by this function. It is expected that calling code will do this when
-         * subsequently creating a [class`Gio`.DesktopAppInfo] for each result.
+         * g_desktop_app_info_new() to return %NULL when passed an app ID returned by
+         * this function. It is expected that calling code will do this when
+         * subsequently creating a #GDesktopAppInfo for each result.
          * @param search_string the search string to use
          */
         static search(search_string: string): string[][];
         /**
          * Sets the name of the desktop that the application is running in.
-         *
-         * This is used by [method`Gio`.AppInfo.should_show] and
-         * [method`Gio`.DesktopAppInfo.get_show_in] to evaluate the
-         * [`OnlyShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-onlyshowin)
-         * and [`NotShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-notshowin)
-         * keys.
+         * This is used by g_app_info_should_show() and
+         * g_desktop_app_info_get_show_in() to evaluate the
+         * `OnlyShowIn` and `NotShowIn`
+         * desktop entry fields.
          *
          * Should be called only once; subsequent calls are ignored.
          * @param desktop_env a string specifying what desktop this is
@@ -816,6 +774,40 @@ export namespace GioUnix {
          * @param uris a list of URIs to launch.
          * @param context the launch context
          * @param cancellable a [class@Gio.Cancellable]
+         */
+        launch_uris_async(
+            uris?: string[] | null,
+            context?: Gio.AppLaunchContext | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Async version of [method`Gio`.AppInfo.launch_uris].
+         *
+         * The `callback` is invoked immediately after the application launch, but it
+         * waits for activation in case of D-Bus–activated applications and also provides
+         * extended error information for sandboxed applications, see notes for
+         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @param cancellable a [class@Gio.Cancellable]
+         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         */
+        launch_uris_async(
+            uris: string[] | null,
+            context: Gio.AppLaunchContext | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Async version of [method`Gio`.AppInfo.launch_uris].
+         *
+         * The `callback` is invoked immediately after the application launch, but it
+         * waits for activation in case of D-Bus–activated applications and also provides
+         * extended error information for sandboxed applications, see notes for
+         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @param cancellable a [class@Gio.Cancellable]
          * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
          */
         launch_uris_async(
@@ -823,7 +815,7 @@ export namespace GioUnix {
             context?: Gio.AppLaunchContext | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
          * @param result the async result
@@ -1797,13 +1789,48 @@ export namespace GioUnix {
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
+         */
+        close_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Requests an asynchronous closes of the stream, releasing resources related to it.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_close_finish() to get the result of the
+         * operation.
+         *
+         * For behaviour details see g_input_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional cancellable object
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        close_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous closes of the stream, releasing resources related to it.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_close_finish() to get the result of the
+         * operation.
+         *
+         * For behaviour details see g_input_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
          * @param result a #GAsyncResult.
@@ -1883,13 +1910,48 @@ export namespace GioUnix {
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        read_all_async(io_priority: number, cancellable?: Gio.Cancellable | null): [Promise<number>, Uint8Array];
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the
+         * buffer starting at `buffer`.
+         *
+         * This is the asynchronous equivalent of g_input_stream_read_all().
+         *
+         * Call g_input_stream_read_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_all_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): Uint8Array;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the
+         * buffer starting at `buffer`.
+         *
+         * This is the asynchronous equivalent of g_input_stream_read_all().
+         *
+         * Call g_input_stream_read_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_all_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Uint8Array;
+        ): [Promise<number> | void, Uint8Array];
         /**
          * Finishes an asynchronous stream read operation started with
          * g_input_stream_read_all_async().
@@ -1930,13 +1992,74 @@ export namespace GioUnix {
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        read_async(io_priority: number, cancellable?: Gio.Cancellable | null): [Promise<number>, Uint8Array];
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the buffer
+         * starting at `buffer`. When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_read_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed on `stream,` and will
+         * result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes read into the buffer will be passed to the
+         * callback. It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to read
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero),  but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value) will
+         * be executed before an outstanding request with lower priority. Default
+         * priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): Uint8Array;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the buffer
+         * starting at `buffer`. When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_read_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed on `stream,` and will
+         * result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes read into the buffer will be passed to the
+         * callback. It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to read
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero),  but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value) will
+         * be executed before an outstanding request with lower priority. Default
+         * priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Uint8Array;
+        ): [Promise<number> | void, Uint8Array];
         /**
          * Like g_input_stream_read(), this tries to read `count` bytes from
          * the stream in a blocking fashion. However, rather than reading into
@@ -1990,6 +2113,64 @@ export namespace GioUnix {
          * @param count the number of bytes that will be read from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        read_bytes_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<GLib.Bytes>;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into a
+         * new #GBytes. When the operation is finished `callback` will be
+         * called. You can then call g_input_stream_read_bytes_finish() to get the
+         * result of the operation.
+         *
+         * During an async request no other sync and async calls are allowed
+         * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the new #GBytes will be passed to the callback. It is
+         * not an error if this is smaller than the requested size, as it can
+         * happen e.g. near the end of a file, but generally we try to read as
+         * many bytes as requested. Zero is returned on end of file (or if
+         * `count` is zero), but never otherwise.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param count the number of bytes that will be read from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_bytes_async(
+            count: number,
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into a
+         * new #GBytes. When the operation is finished `callback` will be
+         * called. You can then call g_input_stream_read_bytes_finish() to get the
+         * result of the operation.
+         *
+         * During an async request no other sync and async calls are allowed
+         * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the new #GBytes will be passed to the callback. It is
+         * not an error if this is smaller than the requested size, as it can
+         * happen e.g. near the end of a file, but generally we try to read as
+         * many bytes as requested. Zero is returned on end of file (or if
+         * `count` is zero), but never otherwise.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param count the number of bytes that will be read from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_bytes_async(
@@ -1997,7 +2178,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Bytes> | void;
         /**
          * Finishes an asynchronous stream read-into-#GBytes operation.
          * @param result a #GAsyncResult.
@@ -2064,6 +2245,70 @@ export namespace GioUnix {
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        skip_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<number>;
+        /**
+         * Request an asynchronous skip of `count` bytes from the stream.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_skip_finish() to get the result
+         * of the operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes skipped will be passed to the callback.
+         * It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to skip
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero), but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value)
+         * will be executed before an outstanding request with lower priority.
+         * Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to
+         * implement asynchronicity, so they are optional for inheriting classes.
+         * However, if you override one, you must override all.
+         * @param count the number of bytes that will be skipped from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        skip_async(
+            count: number,
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous skip of `count` bytes from the stream.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_skip_finish() to get the result
+         * of the operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes skipped will be passed to the callback.
+         * It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to skip
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero), but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value)
+         * will be executed before an outstanding request with lower priority.
+         * Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to
+         * implement asynchronicity, so they are optional for inheriting classes.
+         * However, if you override one, you must override all.
+         * @param count the number of bytes that will be skipped from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         skip_async(
@@ -2071,7 +2316,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes a stream skip operation.
          * @param result a #GAsyncResult.
@@ -2977,13 +3222,48 @@ export namespace GioUnix {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request.
          * @param cancellable optional cancellable object
+         */
+        close_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Requests an asynchronous close of the stream, releasing resources
+         * related to it. When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_close_finish() to get
+         * the result of the operation.
+         *
+         * For behaviour details see g_output_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional cancellable object
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        close_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous close of the stream, releasing resources
+         * related to it. When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_close_finish() to get
+         * the result of the operation.
+         *
+         * For behaviour details see g_output_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Closes an output stream.
          * @param result a #GAsyncResult.
@@ -3014,13 +3294,42 @@ export namespace GioUnix {
          * result of the operation.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        flush_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Forces an asynchronous write of all user-space buffered data for
+         * the given `stream`.
+         * For behaviour details see g_output_stream_flush().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_flush_finish() to get the
+         * result of the operation.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        flush_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Forces an asynchronous write of all user-space buffered data for
+         * the given `stream`.
+         * For behaviour details see g_output_stream_flush().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_flush_finish() to get the
+         * result of the operation.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         flush_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes flushing an output stream.
          * @param result a GAsyncResult.
@@ -3076,6 +3385,46 @@ export namespace GioUnix {
          * @param flags a set of #GOutputStreamSpliceFlags.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        splice_async(
+            source: Gio.InputStream,
+            flags: Gio.OutputStreamSpliceFlags,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Splices a stream asynchronously.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_splice_finish() to get the
+         * result of the operation.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_splice().
+         * @param source a #GInputStream.
+         * @param flags a set of #GOutputStreamSpliceFlags.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        splice_async(
+            source: Gio.InputStream,
+            flags: Gio.OutputStreamSpliceFlags,
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Splices a stream asynchronously.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_splice_finish() to get the
+         * result of the operation.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_splice().
+         * @param source a #GInputStream.
+         * @param flags a set of #GOutputStreamSpliceFlags.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         splice_async(
@@ -3084,7 +3433,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous stream splice operation.
          * @param result a #GAsyncResult.
@@ -3161,6 +3510,58 @@ export namespace GioUnix {
          * @param buffer the buffer containing the data to write
          * @param io_priority the io priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        write_all_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_write_all().
+         *
+         * Call g_output_stream_write_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param buffer the buffer containing the data to write
+         * @param io_priority the io priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        write_all_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_write_all().
+         *
+         * Call g_output_stream_write_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param buffer the buffer containing the data to write
+         * @param io_priority the io priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_all_async(
@@ -3168,7 +3569,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous stream write operation started with
          * g_output_stream_write_all_async().
@@ -3223,6 +3624,98 @@ export namespace GioUnix {
          * @param buffer the buffer containing the data to write.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        write_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK - if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write().
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called. See g_output_stream_write_bytes_async()
+         * for a #GBytes version that will automatically hold a reference to
+         * the contents (without copying) for the duration of the call.
+         * @param buffer the buffer containing the data to write.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        write_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK - if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write().
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called. See g_output_stream_write_bytes_async()
+         * for a #GBytes version that will automatically hold a reference to
+         * the contents (without copying) for the duration of the call.
+         * @param buffer the buffer containing the data to write.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_async(
@@ -3230,7 +3723,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * A wrapper function for g_output_stream_write() which takes a
          * #GBytes as input.  This can be more convenient for use by language
@@ -3265,6 +3758,54 @@ export namespace GioUnix {
          * @param bytes The bytes to write
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        write_bytes_async(
+            bytes: GLib.Bytes | Uint8Array,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<number>;
+        /**
+         * This function is similar to g_output_stream_write_async(), but
+         * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
+         * this allows the stream to avoid taking a copy of the data.
+         *
+         * However, note that this function may still perform partial writes,
+         * just like g_output_stream_write_async(). If that occurs, to continue
+         * writing, you will need to create a new #GBytes containing just the
+         * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
+         * #GBytes instance multiple times potentially can result in duplicated
+         * data in the output stream.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write_bytes().
+         * @param bytes The bytes to write
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        write_bytes_async(
+            bytes: GLib.Bytes | Uint8Array,
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * This function is similar to g_output_stream_write_async(), but
+         * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
+         * this allows the stream to avoid taking a copy of the data.
+         *
+         * However, note that this function may still perform partial writes,
+         * just like g_output_stream_write_async(). If that occurs, to continue
+         * writing, you will need to create a new #GBytes containing just the
+         * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
+         * #GBytes instance multiple times potentially can result in duplicated
+         * data in the output stream.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write_bytes().
+         * @param bytes The bytes to write
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         write_bytes_async(
@@ -3272,7 +3813,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes a stream write-from-#GBytes operation.
          * @param result a #GAsyncResult.
@@ -3362,6 +3903,60 @@ export namespace GioUnix {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        writev_all_async(
+            vectors: Gio.OutputVector[],
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_writev_all().
+         *
+         * Call g_output_stream_writev_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called. The content of the individual elements
+         * of `vectors` might be changed by this function.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        writev_all_async(
+            vectors: Gio.OutputVector[],
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_writev_all().
+         *
+         * Call g_output_stream_writev_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called. The content of the individual elements
+         * of `vectors` might be changed by this function.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_all_async(
@@ -3369,7 +3964,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous stream write operation started with
          * g_output_stream_writev_all_async().
@@ -3419,6 +4014,88 @@ export namespace GioUnix {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        writev_async(
+            vectors: Gio.OutputVector[],
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK — if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_writev().
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        writev_async(
+            vectors: Gio.OutputVector[],
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK — if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_writev().
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_async(
@@ -3426,7 +4103,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes a stream writev operation.
          * @param result a #GAsyncResult.
@@ -4107,7 +4784,7 @@ export namespace GioUnix {
     }
 
     /**
-     * Defines a Unix mount entry (e.g. `/media/cdrom`).
+     * Defines a Unix mount entry (e.g. <filename>/media/cdrom</filename>).
      * This corresponds roughly to a mtab entry.
      */
     abstract class MountEntry {
@@ -4120,7 +4797,7 @@ export namespace GioUnix {
 
     type MountMonitorClass = typeof MountMonitor;
     /**
-     * Defines a Unix mount point (e.g. `/dev`).
+     * Defines a Unix mount point (e.g. <filename>/dev</filename>).
      * This corresponds roughly to a fstab entry.
      */
     abstract class MountPoint {
@@ -4237,15 +4914,14 @@ export namespace GioUnix {
 
         /**
          * Gets the default application for launching applications
-         * using this URI scheme for a particular [iface`Gio`.DesktopAppInfoLookup]
+         * using this URI scheme for a particular #GDesktopAppInfoLookup
          * implementation.
          *
-         * The [iface`Gio`.DesktopAppInfoLookup] interface and this function is used
-         * to implement [func`Gio`.AppInfo.get_default_for_uri_scheme] backends
+         * The #GDesktopAppInfoLookup interface and this function is used
+         * to implement g_app_info_get_default_for_uri_scheme() backends
          * in a GIO module. There is no reason for applications to use it
-         * directly. Applications should use
-         * [func`Gio`.AppInfo.get_default_for_uri_scheme].
-         * @param lookup a [iface@Gio.DesktopAppInfoLookup]
+         * directly. Applications should use g_app_info_get_default_for_uri_scheme().
+         * @param lookup a #GDesktopAppInfoLookup
          * @param uri_scheme a string containing a URI scheme.
          */
         get_default_for_uri_scheme(lookup: Gio.DesktopAppInfoLookup, uri_scheme: string): Gio.AppInfo | null;

@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gtksource-5)
 
 
-GJS TypeScript type definitions for GtkSource-5, generated from library version 5.13.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.16.
+GJS TypeScript type definitions for GtkSource-5, generated from library version 5.14.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.17.
 
 
 ## Install

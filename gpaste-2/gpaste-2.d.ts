@@ -426,9 +426,18 @@ export namespace GPaste {
 
         /**
          * Display the about dialog
+         */
+        about(): Promise<void>;
+        /**
+         * Display the about dialog
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        about(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        about(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Display the about dialog
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        about(callback?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         /**
          * Display the about dialog
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -441,15 +450,37 @@ export namespace GPaste {
         /**
          * Add an item to the #GPasteDaemon
          * @param text the text to add
+         */
+        add(text: string): Promise<void>;
+        /**
+         * Add an item to the #GPasteDaemon
+         * @param text the text to add
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        add(text: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        add(text: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Add an item to the #GPasteDaemon
+         * @param text the text to add
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        add(text: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        /**
+         * Add the file contents to the #GPasteDaemon
+         * @param file the file to add
+         */
+        add_file(file: string): Promise<void>;
         /**
          * Add the file contents to the #GPasteDaemon
          * @param file the file to add
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        add_file(file: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        add_file(file: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Add the file contents to the #GPasteDaemon
+         * @param file the file to add
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        add_file(file: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         /**
          * Add the file contents to the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -469,9 +500,26 @@ export namespace GPaste {
          * Add the password to the #GPasteDaemon
          * @param name the name to identify the password to add
          * @param password the password to add
+         */
+        add_password(name: string, password: string): Promise<void>;
+        /**
+         * Add the password to the #GPasteDaemon
+         * @param name the name to identify the password to add
+         * @param password the password to add
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        add_password(name: string, password: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        add_password(name: string, password: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Add the password to the #GPasteDaemon
+         * @param name the name to identify the password to add
+         * @param password the password to add
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        add_password(
+            name: string,
+            password: string,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<void> | void;
         /**
          * Add the password to the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -492,9 +540,26 @@ export namespace GPaste {
          * Backup the current history
          * @param history the name of the history
          * @param backup the name of the backup
+         */
+        backup_history(history: string, backup: string): Promise<void>;
+        /**
+         * Backup the current history
+         * @param history the name of the history
+         * @param backup the name of the backup
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        backup_history(history: string, backup: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        backup_history(history: string, backup: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Backup the current history
+         * @param history the name of the history
+         * @param backup the name of the backup
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        backup_history(
+            history: string,
+            backup: string,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<void> | void;
         /**
          * Backup the current history
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -509,9 +574,20 @@ export namespace GPaste {
         /**
          * Delete an item from the #GPasteDaemon
          * @param uuid the uuid of the element we want to delete
+         */
+        ['delete'](uuid: string): Promise<void>;
+        /**
+         * Delete an item from the #GPasteDaemon
+         * @param uuid the uuid of the element we want to delete
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        ['delete'](uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        ['delete'](uuid: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Delete an item from the #GPasteDaemon
+         * @param uuid the uuid of the element we want to delete
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        ['delete'](uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         /**
          * Delete an item from the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -520,9 +596,20 @@ export namespace GPaste {
         /**
          * Delete a history
          * @param name the name of the history to delete
+         */
+        delete_history(name: string): Promise<void>;
+        /**
+         * Delete a history
+         * @param name the name of the history to delete
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        delete_history(name: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        delete_history(name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Delete a history
+         * @param name the name of the history to delete
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        delete_history(name: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         /**
          * Delete a history
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -536,9 +623,20 @@ export namespace GPaste {
         /**
          * Delete the password from the #GPasteDaemon
          * @param name the name of the password to delete
+         */
+        delete_password(name: string): Promise<void>;
+        /**
+         * Delete the password from the #GPasteDaemon
+         * @param name the name of the password to delete
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        delete_password(name: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        delete_password(name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Delete the password from the #GPasteDaemon
+         * @param name the name of the password to delete
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        delete_password(name: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         /**
          * Delete the password from the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -557,9 +655,20 @@ export namespace GPaste {
         /**
          * Empty the history from the #GPasteDaemon
          * @param name the name of the history to empty
+         */
+        empty_history(name: string): Promise<void>;
+        /**
+         * Empty the history from the #GPasteDaemon
+         * @param name the name of the history to empty
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        empty_history(name: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        empty_history(name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Empty the history from the #GPasteDaemon
+         * @param name the name of the history to empty
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        empty_history(name: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         /**
          * Empty the history from the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -573,15 +682,37 @@ export namespace GPaste {
         /**
          * Get an item from the #GPasteDaemon
          * @param uuid the uuid of the element we want to get
+         */
+        get_element(uuid: string): Promise<string>;
+        /**
+         * Get an item from the #GPasteDaemon
+         * @param uuid the uuid of the element we want to get
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        get_element(uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_element(uuid: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Get an item from the #GPasteDaemon
+         * @param uuid the uuid of the element we want to get
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        get_element(uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<string> | void;
+        /**
+         * Get an item from the #GPasteDaemon
+         * @param index the index of the element we want to get
+         */
+        get_element_at_index(index: number): Promise<ClientItem>;
         /**
          * Get an item from the #GPasteDaemon
          * @param index the index of the element we want to get
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        get_element_at_index(index: number, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_element_at_index(index: number, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Get an item from the #GPasteDaemon
+         * @param index the index of the element we want to get
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        get_element_at_index(index: number, callback?: Gio.AsyncReadyCallback<this> | null): Promise<ClientItem> | void;
         /**
          * Get an item from the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -603,9 +734,20 @@ export namespace GPaste {
         /**
          * Get the kind of an item from the #GPasteDaemon
          * @param uuid the uuid of the element we want to get
+         */
+        get_element_kind(uuid: string): Promise<ItemKind>;
+        /**
+         * Get the kind of an item from the #GPasteDaemon
+         * @param uuid the uuid of the element we want to get
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        get_element_kind(uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_element_kind(uuid: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Get the kind of an item from the #GPasteDaemon
+         * @param uuid the uuid of the element we want to get
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        get_element_kind(uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<ItemKind> | void;
         /**
          * Get this kind of an item from the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -627,9 +769,20 @@ export namespace GPaste {
         /**
          * Get some items from the #GPasteDaemon
          * @param uuids the uuids of the elements we want to get
+         */
+        get_elements(uuids: string[]): Promise<ClientItem[]>;
+        /**
+         * Get some items from the #GPasteDaemon
+         * @param uuids the uuids of the elements we want to get
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        get_elements(uuids: string[], callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_elements(uuids: string[], callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Get some items from the #GPasteDaemon
+         * @param uuids the uuids of the elements we want to get
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        get_elements(uuids: string[], callback?: Gio.AsyncReadyCallback<this> | null): Promise<ClientItem[]> | void;
         /**
          * Get some items from the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -644,9 +797,18 @@ export namespace GPaste {
         get_elements_sync(uuids: string[]): ClientItem[];
         /**
          * Get the history from the #GPasteDaemon
+         */
+        get_history(): Promise<ClientItem[]>;
+        /**
+         * Get the history from the #GPasteDaemon
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        get_history(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_history(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Get the history from the #GPasteDaemon
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        get_history(callback?: Gio.AsyncReadyCallback<this> | null): Promise<ClientItem[]> | void;
         /**
          * Get the history from the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -655,9 +817,18 @@ export namespace GPaste {
         get_history_finish(result: Gio.AsyncResult): ClientItem[];
         /**
          * Get the name of the history from the #GPasteDaemon
+         */
+        get_history_name(): Promise<string>;
+        /**
+         * Get the name of the history from the #GPasteDaemon
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        get_history_name(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_history_name(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Get the name of the history from the #GPasteDaemon
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        get_history_name(callback?: Gio.AsyncReadyCallback<this> | null): Promise<string> | void;
         /**
          * Get the name of the history from the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -672,9 +843,20 @@ export namespace GPaste {
         /**
          * Get the history isize from the #GPasteDaemon
          * @param name the name of the history
+         */
+        get_history_size(name: string): Promise<number>;
+        /**
+         * Get the history isize from the #GPasteDaemon
+         * @param name the name of the history
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        get_history_size(name: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_history_size(name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Get the history isize from the #GPasteDaemon
+         * @param name the name of the history
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        get_history_size(name: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<number> | void;
         /**
          * Get the history size from the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -695,9 +877,20 @@ export namespace GPaste {
         /**
          * Get an item from the #GPasteDaemon
          * @param uuid the uuid of the element we want to get
+         */
+        get_raw_element(uuid: string): Promise<string>;
+        /**
+         * Get an item from the #GPasteDaemon
+         * @param uuid the uuid of the element we want to get
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        get_raw_element(uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_raw_element(uuid: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Get an item from the #GPasteDaemon
+         * @param uuid the uuid of the element we want to get
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        get_raw_element(uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<string> | void;
         /**
          * Get an item from the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -712,9 +905,18 @@ export namespace GPaste {
         get_raw_element_sync(uuid: string): string;
         /**
          * Get the history from the #GPasteDaemon
+         */
+        get_raw_history(): Promise<ClientItem[]>;
+        /**
+         * Get the history from the #GPasteDaemon
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        get_raw_history(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_raw_history(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Get the history from the #GPasteDaemon
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        get_raw_history(callback?: Gio.AsyncReadyCallback<this> | null): Promise<ClientItem[]> | void;
         /**
          * Get the history from the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -738,9 +940,18 @@ export namespace GPaste {
         is_active(): boolean;
         /**
          * List all available hisotries
+         */
+        list_histories(): Promise<string[]>;
+        /**
+         * List all available hisotries
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        list_histories(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        list_histories(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * List all available hisotries
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        list_histories(callback?: Gio.AsyncReadyCallback<this> | null): Promise<string[]> | void;
         /**
          * List all available hisotries
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -760,6 +971,32 @@ export namespace GPaste {
          * @param decoration the decoration to apply to each entry
          * @param separator the separator to add between each entry
          * @param uuids the uuids of the elements we want to get
+         */
+        merge(decoration: string | null, separator: string | null, uuids: string[]): Promise<void>;
+        /**
+         * Merge some history entries
+         *
+         * If decoration is " and separator is , and entries are foo bar baz
+         * result will be "foo","bar","baz"
+         * @param decoration the decoration to apply to each entry
+         * @param separator the separator to add between each entry
+         * @param uuids the uuids of the elements we want to get
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        merge(
+            decoration: string | null,
+            separator: string | null,
+            uuids: string[],
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Merge some history entries
+         *
+         * If decoration is " and separator is , and entries are foo bar baz
+         * result will be "foo","bar","baz"
+         * @param decoration the decoration to apply to each entry
+         * @param separator the separator to add between each entry
+         * @param uuids the uuids of the elements we want to get
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
         merge(
@@ -767,7 +1004,7 @@ export namespace GPaste {
             separator: string | null,
             uuids: string[],
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<void> | void;
         /**
          * Merge some history entries
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -786,9 +1023,23 @@ export namespace GPaste {
         /**
          * Call this when the extension changes its state
          * @param state the new state of the extension
+         */
+        on_extension_state_changed(state: boolean): Promise<void>;
+        /**
+         * Call this when the extension changes its state
+         * @param state the new state of the extension
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        on_extension_state_changed(state: boolean, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        on_extension_state_changed(state: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Call this when the extension changes its state
+         * @param state the new state of the extension
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        on_extension_state_changed(
+            state: boolean,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<void> | void;
         /**
          * Call this when the extension changes its state
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -801,9 +1052,18 @@ export namespace GPaste {
         on_extension_state_changed_sync(state: boolean): void;
         /**
          * Reexecute the #GPasteDaemon
+         */
+        reexecute(): Promise<void>;
+        /**
+         * Reexecute the #GPasteDaemon
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        reexecute(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        reexecute(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Reexecute the #GPasteDaemon
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        reexecute(callback?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         /**
          * Reexecute the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -817,9 +1077,26 @@ export namespace GPaste {
          * Rename the password in the #GPasteDaemon
          * @param old_name the old name of the password to rename
          * @param new_name the new name to give it
+         */
+        rename_password(old_name: string, new_name: string): Promise<void>;
+        /**
+         * Rename the password in the #GPasteDaemon
+         * @param old_name the old name of the password to rename
+         * @param new_name the new name to give it
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        rename_password(old_name: string, new_name: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        rename_password(old_name: string, new_name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Rename the password in the #GPasteDaemon
+         * @param old_name the old name of the password to rename
+         * @param new_name the new name to give it
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        rename_password(
+            old_name: string,
+            new_name: string,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<void> | void;
         /**
          * Rename the password in the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -835,9 +1112,22 @@ export namespace GPaste {
          * Replace the contents of an item
          * @param uuid the uuid of the element we want to replace
          * @param contents the replacement contents
+         */
+        replace(uuid: string, contents: string): Promise<void>;
+        /**
+         * Replace the contents of an item
+         * @param uuid the uuid of the element we want to replace
+         * @param contents the replacement contents
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        replace(uuid: string, contents: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        replace(uuid: string, contents: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Replace the contents of an item
+         * @param uuid the uuid of the element we want to replace
+         * @param contents the replacement contents
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        replace(uuid: string, contents: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         /**
          * Replace the contents of an item
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -852,9 +1142,20 @@ export namespace GPaste {
         /**
          * Search for items matching `pattern` in history
          * @param pattern the pattern to look for in history
+         */
+        search(pattern: string): Promise<string[]>;
+        /**
+         * Search for items matching `pattern` in history
+         * @param pattern the pattern to look for in history
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        search(pattern: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        search(pattern: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Search for items matching `pattern` in history
+         * @param pattern the pattern to look for in history
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        search(pattern: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<string[]> | void;
         /**
          * Search for items matching `pattern` in history
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -870,9 +1171,20 @@ export namespace GPaste {
         /**
          * Select an item from the #GPasteDaemon
          * @param uuid the uuid of the element we want to select
+         */
+        select(uuid: string): Promise<void>;
+        /**
+         * Select an item from the #GPasteDaemon
+         * @param uuid the uuid of the element we want to select
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        select(uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        select(uuid: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Select an item from the #GPasteDaemon
+         * @param uuid the uuid of the element we want to select
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        select(uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         /**
          * Select an item from the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -887,9 +1199,22 @@ export namespace GPaste {
          * Set the item as password
          * @param uuid the uuid of the element we want to set as password
          * @param name the name to identify the password
+         */
+        set_password(uuid: string, name: string): Promise<void>;
+        /**
+         * Set the item as password
+         * @param uuid the uuid of the element we want to set as password
+         * @param name the name to identify the password
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        set_password(uuid: string, name: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        set_password(uuid: string, name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Set the item as password
+         * @param uuid the uuid of the element we want to set as password
+         * @param name the name to identify the password
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        set_password(uuid: string, name: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         /**
          * Set the item as password
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -903,9 +1228,18 @@ export namespace GPaste {
         set_password_sync(uuid: string, name: string): void;
         /**
          * Emit the ShowHistory signal
+         */
+        show_history(): Promise<void>;
+        /**
+         * Emit the ShowHistory signal
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        show_history(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        show_history(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Emit the ShowHistory signal
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        show_history(callback?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         /**
          * Emit the ShowHistory signal
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -918,9 +1252,20 @@ export namespace GPaste {
         /**
          * Switch to another history
          * @param name the name of the history to switch to
+         */
+        switch_history(name: string): Promise<void>;
+        /**
+         * Switch to another history
+         * @param name the name of the history to switch to
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        switch_history(name: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        switch_history(name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Switch to another history
+         * @param name the name of the history to switch to
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        switch_history(name: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         /**
          * Switch to another history
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -934,9 +1279,20 @@ export namespace GPaste {
         /**
          * Change the tracking state of the #GPasteDaemon
          * @param state the new tracking state of the #GPasteDaemon
+         */
+        track(state: boolean): Promise<void>;
+        /**
+         * Change the tracking state of the #GPasteDaemon
+         * @param state the new tracking state of the #GPasteDaemon
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        track(state: boolean, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        track(state: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Change the tracking state of the #GPasteDaemon
+         * @param state the new tracking state of the #GPasteDaemon
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        track(state: boolean, callback?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         /**
          * Change the tracking state of the #GPasteDaemon
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -950,9 +1306,20 @@ export namespace GPaste {
         /**
          * Upload an item to a pastebin service
          * @param uuid the uuid of the element we want to upload
+         */
+        upload(uuid: string): Promise<void>;
+        /**
+         * Upload an item to a pastebin service
+         * @param uuid the uuid of the element we want to upload
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        upload(uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        upload(uuid: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Upload an item to a pastebin service
+         * @param uuid the uuid of the element we want to upload
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        upload(uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         /**
          * Upload an item to a pastebin service
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -1004,13 +1371,100 @@ export namespace GPaste {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -1688,9 +2142,23 @@ export namespace GPaste {
         /**
          * Grab a keybinding
          * @param accelerator a #GPasteGnomeShellAccelerator instance
+         */
+        grab_accelerator(accelerator: GnomeShellAccelerator): Promise<number>;
+        /**
+         * Grab a keybinding
+         * @param accelerator a #GPasteGnomeShellAccelerator instance
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        grab_accelerator(accelerator: GnomeShellAccelerator, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        grab_accelerator(accelerator: GnomeShellAccelerator, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Grab a keybinding
+         * @param accelerator a #GPasteGnomeShellAccelerator instance
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        grab_accelerator(
+            accelerator: GnomeShellAccelerator,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<number> | void;
         /**
          * Grab a keybinding
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -1706,9 +2174,23 @@ export namespace GPaste {
         /**
          * Grab some keybindings
          * @param accelerators an array of #GPasteGnomeShellAccelerator instances
+         */
+        grab_accelerators(accelerators: GnomeShellAccelerator[]): Promise<number>;
+        /**
+         * Grab some keybindings
+         * @param accelerators an array of #GPasteGnomeShellAccelerator instances
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        grab_accelerators(accelerators: GnomeShellAccelerator[], callback?: Gio.AsyncReadyCallback<this> | null): void;
+        grab_accelerators(accelerators: GnomeShellAccelerator[], callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Grab some keybindings
+         * @param accelerators an array of #GPasteGnomeShellAccelerator instances
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        grab_accelerators(
+            accelerators: GnomeShellAccelerator[],
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<number> | void;
         /**
          * Grab some keybindings
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -1724,9 +2206,20 @@ export namespace GPaste {
         /**
          * Ungrab a keybinding
          * @param action the action id corresponding to the keybinding
+         */
+        ungrab_accelerator(action: number): Promise<boolean>;
+        /**
+         * Ungrab a keybinding
+         * @param action the action id corresponding to the keybinding
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
-        ungrab_accelerator(action: number, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        ungrab_accelerator(action: number, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Ungrab a keybinding
+         * @param action the action id corresponding to the keybinding
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        ungrab_accelerator(action: number, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Ungrab a keybinding
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
@@ -1780,13 +2273,100 @@ export namespace GPaste {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -2470,13 +3050,100 @@ export namespace GPaste {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().

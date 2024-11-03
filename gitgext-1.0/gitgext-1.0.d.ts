@@ -452,7 +452,9 @@ export namespace GitgExt {
         // Methods
 
         populate_menu(menu: Gtk.Menu): void;
-        fetch(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        fetch(): Promise<boolean>;
+        fetch(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        fetch(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         fetch_finish(_res_: Gio.AsyncResult): boolean;
 
         // Virtual methods
@@ -531,7 +533,12 @@ export namespace GitgExt {
         get_activity_by_id(id: string): Activity | null;
         set_activity_by_id(id: string): Activity | null;
         user_query(query: UserQuery): void;
-        user_query_async(query: UserQuery, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        user_query_async(query: UserQuery): Promise<Gtk.ResponseType>;
+        user_query_async(query: UserQuery, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        user_query_async(
+            query: UserQuery,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<Gtk.ResponseType> | void;
         user_query_finish(_res_: Gio.AsyncResult): Gtk.ResponseType;
         show_infobar(primary_msg: string, secondary_msg: string, type: Gtk.MessageType): void;
         open_new(repository: Ggit.Repository, hint?: string | null): Application;

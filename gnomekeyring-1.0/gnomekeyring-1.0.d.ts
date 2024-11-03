@@ -211,7 +211,7 @@ export namespace GnomeKeyring {
      * function will be called with a result of %GNOME_KEYRING_RESULT_CANCELLED
      * @param request The request returned from the asynchronous call function.
      */
-    function cancel_request(request?: any | null): void;
+    function cancel_request(request: any): void;
     /**
      * Change the password for `keyring`. In most cases you would specify %NULL for
      * both the `original` and `password` arguments and allow the user to type the
@@ -852,7 +852,7 @@ export namespace GnomeKeyring {
         free(): void;
     }
 
-    abstract class Info {
+    class Info {
         static $gtype: GObject.GType<Info>;
 
         // Constructors
@@ -875,7 +875,7 @@ export namespace GnomeKeyring {
          * Get the time at which the keyring was created.
          * @returns The created time.
          */
-        get_ctime(): never;
+        get_ctime(): number;
         /**
          * Get whether the keyring is locked or not.
          * @returns Whether the keyring is locked or not.
@@ -899,7 +899,7 @@ export namespace GnomeKeyring {
          * Get the time at which the keyring was last modified.
          * @returns The last modified time.
          */
-        get_mtime(): never;
+        get_mtime(): number;
         /**
          * Set whether or not to lock a keyring after a certain amount of idle time.
          *
@@ -943,7 +943,7 @@ export namespace GnomeKeyring {
          * Get the item created time.
          * @returns The item created time.
          */
-        get_ctime(): never;
+        get_ctime(): number;
         /**
          * Get the item display name.
          * @returns The newly allocated string containing the item display name.
@@ -953,7 +953,7 @@ export namespace GnomeKeyring {
          * Get the item last modified time.
          * @returns The item last modified time.
          */
-        get_mtime(): never;
+        get_mtime(): number;
         /**
          * Get the item secret.
          * @returns The newly allocated string containing the item secret.

@@ -1,6 +1,6 @@
 {
     "name": "@girs/keybinder-0.0",
-    "version": "0.0.0-4.0.0-beta.16",
+    "version": "0.0.0-4.0.0-beta.17",
     "description": "GJS TypeScript type definitions for Keybinder-0.0, generated from library version 0.0.0",
     "type": "module",
     "module": "keybinder-0.0.js",

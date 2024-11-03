@@ -5866,6 +5866,64 @@ export namespace Mbim {
          * @param base_ifname the interface which the new link will be created on.
          * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
          * @param cancellable a #GCancellable, or %NULL.
+         */
+        add_link(
+            session_id: number,
+            base_ifname: string,
+            ifname_prefix: string,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<string>;
+        /**
+         * Asynchronously creates a new virtual network device node on top of
+         * `base_ifname`. This allows having multiple net interfaces running on top of
+         * another using multiplexing.
+         *
+         * If the kernel driver doesn't allow this functionality, a
+         * %MBIM_CORE_ERROR_UNSUPPORTED error will be returned.
+         *
+         * The operation may fail if the given interface name is not associated to the
+         * MBIM control port managed by the #MbimDevice.
+         *
+         * Depending on the kernel driver in use, the given `ifname_prefix` may be
+         * ignored. The user should not assume that the returned link interface name is
+         * prefixed with `ifname_prefix` as it may not be the case.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * mbim_device_add_link_finish() to get the result of the operation.
+         * @param session_id the session id for the link, in the   [#MBIM_DEVICE_SESSION_ID_MIN,#MBIM_DEVICE_SESSION_ID_MAX] range, or   #MBIM_DEVICE_SESSION_ID_AUTOMATIC to find the first available session id.
+         * @param base_ifname the interface which the new link will be created on.
+         * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
+         * @param cancellable a #GCancellable, or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        add_link(
+            session_id: number,
+            base_ifname: string,
+            ifname_prefix: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously creates a new virtual network device node on top of
+         * `base_ifname`. This allows having multiple net interfaces running on top of
+         * another using multiplexing.
+         *
+         * If the kernel driver doesn't allow this functionality, a
+         * %MBIM_CORE_ERROR_UNSUPPORTED error will be returned.
+         *
+         * The operation may fail if the given interface name is not associated to the
+         * MBIM control port managed by the #MbimDevice.
+         *
+         * Depending on the kernel driver in use, the given `ifname_prefix` may be
+         * ignored. The user should not assume that the returned link interface name is
+         * prefixed with `ifname_prefix` as it may not be the case.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * mbim_device_add_link_finish() to get the result of the operation.
+         * @param session_id the session id for the link, in the   [#MBIM_DEVICE_SESSION_ID_MIN,#MBIM_DEVICE_SESSION_ID_MAX] range, or   #MBIM_DEVICE_SESSION_ID_AUTOMATIC to find the first available session id.
+         * @param base_ifname the interface which the new link will be created on.
+         * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
+         * @param cancellable a #GCancellable, or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         add_link(
@@ -5874,7 +5932,7 @@ export namespace Mbim {
             ifname_prefix: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Finishes an operation started with mbim_device_add_link().
          * @param res a #GAsyncResult.
@@ -5902,13 +5960,36 @@ export namespace Mbim {
          * mbim_device_close_finish() to get the result of the operation.
          * @param timeout maximum time, in seconds, to wait for the device to be closed.
          * @param cancellable optional #GCancellable object, #NULL to ignore.
+         */
+        close(timeout: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously closes a #MbimDevice for I/O.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * mbim_device_close_finish() to get the result of the operation.
+         * @param timeout maximum time, in seconds, to wait for the device to be closed.
+         * @param cancellable optional #GCancellable object, #NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        close(
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously closes a #MbimDevice for I/O.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * mbim_device_close_finish() to get the result of the operation.
+         * @param timeout maximum time, in seconds, to wait for the device to be closed.
+         * @param cancellable optional #GCancellable object, #NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         close(
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous close operation started with mbim_device_close().
          * @param res a #GAsyncResult.
@@ -5928,6 +6009,32 @@ export namespace Mbim {
          * @param message the message to send.
          * @param timeout maximum time, in seconds, to wait for the response.
          * @param cancellable a #GCancellable, or %NULL.
+         */
+        command(message: Message, timeout: number, cancellable?: Gio.Cancellable | null): Promise<Message>;
+        /**
+         * Asynchronously sends a #MbimMessage to the device.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * mbim_device_command_finish() to get the result of the operation.
+         * @param message the message to send.
+         * @param timeout maximum time, in seconds, to wait for the response.
+         * @param cancellable a #GCancellable, or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        command(
+            message: Message,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends a #MbimMessage to the device.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * mbim_device_command_finish() to get the result of the operation.
+         * @param message the message to send.
+         * @param timeout maximum time, in seconds, to wait for the response.
+         * @param cancellable a #GCancellable, or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         command(
@@ -5935,7 +6042,7 @@ export namespace Mbim {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Message> | void;
         /**
          * Finishes an operation started with mbim_device_command().
          *
@@ -5960,13 +6067,52 @@ export namespace Mbim {
          * </para></note>
          * @param base_ifname the interface where all links are available.
          * @param cancellable a #GCancellable, or %NULL.
+         */
+        delete_all_links(base_ifname: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously deletes all virtual network interfaces that have been previously
+         * created with mbim_device_add_link() in `base_ifname`.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * mbim_device_delete_link_finish() to get the result of the operation.
+         *
+         * <note><para>
+         * There is no guarantee that other processes haven't created new links by the
+         * time this method returns. This method should be used with caution, or in setups
+         * where only one single process is expected to do MBIM network interface link
+         * management.
+         * </para></note>
+         * @param base_ifname the interface where all links are available.
+         * @param cancellable a #GCancellable, or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        delete_all_links(
+            base_ifname: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously deletes all virtual network interfaces that have been previously
+         * created with mbim_device_add_link() in `base_ifname`.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * mbim_device_delete_link_finish() to get the result of the operation.
+         *
+         * <note><para>
+         * There is no guarantee that other processes haven't created new links by the
+         * time this method returns. This method should be used with caution, or in setups
+         * where only one single process is expected to do MBIM network interface link
+         * management.
+         * </para></note>
+         * @param base_ifname the interface where all links are available.
+         * @param cancellable a #GCancellable, or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         delete_all_links(
             base_ifname: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with mbim_device_delete_all_links().
          * @param res a #GAsyncResult.
@@ -5984,13 +6130,44 @@ export namespace Mbim {
          * mbim_device_delete_link_finish() to get the result of the operation.
          * @param ifname the name of the link to remove.
          * @param cancellable a #GCancellable, or %NULL.
+         */
+        delete_link(ifname: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously deletes a virtual network interface that has been previously
+         * created with mbim_device_add_link().
+         *
+         * If the kernel driver doesn't allow this functionality, a
+         * %MBIM_CORE_ERROR_UNSUPPORTED error will be returned.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * mbim_device_delete_link_finish() to get the result of the operation.
+         * @param ifname the name of the link to remove.
+         * @param cancellable a #GCancellable, or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        delete_link(
+            ifname: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously deletes a virtual network interface that has been previously
+         * created with mbim_device_add_link().
+         *
+         * If the kernel driver doesn't allow this functionality, a
+         * %MBIM_CORE_ERROR_UNSUPPORTED error will be returned.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * mbim_device_delete_link_finish() to get the result of the operation.
+         * @param ifname the name of the link to remove.
+         * @param cancellable a #GCancellable, or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         delete_link(
             ifname: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with mbim_device_delete_link().
          * @param res a #GAsyncResult.
@@ -6054,19 +6231,70 @@ export namespace Mbim {
          * mbim_device_open_finish() to get the result of the operation.
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
          * @param cancellable optional #GCancellable object, #NULL to ignore.
+         */
+        open(timeout: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously opens a #MbimDevice for I/O.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * mbim_device_open_finish() to get the result of the operation.
+         * @param timeout maximum time, in seconds, to wait for the device to be opened.
+         * @param cancellable optional #GCancellable object, #NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        open(timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously opens a #MbimDevice for I/O.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * mbim_device_open_finish() to get the result of the operation.
+         * @param timeout maximum time, in seconds, to wait for the device to be opened.
+         * @param cancellable optional #GCancellable object, #NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         open(
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous open operation started with mbim_device_open().
          * @param res a #GAsyncResult.
          * @returns %TRUE if successful, %FALSE if @error is set.
          */
         open_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Asynchronously opens a #MbimDevice for I/O.
+         *
+         * This method is an extension of the generic mbim_device_open(), which allows
+         * launching the #MbimDevice with proxy support.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * mbim_device_open_full_finish() to get the result of the operation.
+         * @param flags a set of #MbimDeviceOpenFlags.
+         * @param timeout maximum time, in seconds, to wait for the device to be opened.
+         * @param cancellable optional #GCancellable object, #NULL to ignore.
+         */
+        open_full(flags: DeviceOpenFlags, timeout: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously opens a #MbimDevice for I/O.
+         *
+         * This method is an extension of the generic mbim_device_open(), which allows
+         * launching the #MbimDevice with proxy support.
+         *
+         * When the operation is finished `callback` will be called. You can then call
+         * mbim_device_open_full_finish() to get the result of the operation.
+         * @param flags a set of #MbimDeviceOpenFlags.
+         * @param timeout maximum time, in seconds, to wait for the device to be opened.
+         * @param cancellable optional #GCancellable object, #NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        open_full(
+            flags: DeviceOpenFlags,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously opens a #MbimDevice for I/O.
          *
@@ -6085,7 +6313,7 @@ export namespace Mbim {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous open operation started with mbim_device_open_full().
          * @param res a #GAsyncResult.
@@ -6150,13 +6378,100 @@ export namespace Mbim {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().

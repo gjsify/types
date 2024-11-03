@@ -2767,13 +2767,30 @@ export namespace Poppler {
          * Sign #document using #signing_data.
          * @param signing_data a #PopplerSigningData
          * @param cancellable a #GCancellable
+         */
+        sign(signing_data: SigningData, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Sign #document using #signing_data.
+         * @param signing_data a #PopplerSigningData
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback
+         */
+        sign(
+            signing_data: SigningData,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Sign #document using #signing_data.
+         * @param signing_data a #PopplerSigningData
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback
          */
         sign(
             signing_data: SigningData,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finish poppler_sign_document and get return status or error.
          * @param result a #GAsyncResult
@@ -2990,13 +3007,33 @@ export namespace Poppler {
          * Asynchronously validates the cryptographic signature contained in `signature_field`.
          * @param flags #PopplerSignatureValidationFlags flags influencing process of validation of the field signature
          * @param cancellable optional #GCancellable object
+         */
+        signature_validate_async(
+            flags: SignatureValidationFlags,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<SignatureInfo>;
+        /**
+         * Asynchronously validates the cryptographic signature contained in `signature_field`.
+         * @param flags #PopplerSignatureValidationFlags flags influencing process of validation of the field signature
+         * @param cancellable optional #GCancellable object
+         * @param callback a #GAsyncReadyCallback to call when the signature is validated
+         */
+        signature_validate_async(
+            flags: SignatureValidationFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously validates the cryptographic signature contained in `signature_field`.
+         * @param flags #PopplerSignatureValidationFlags flags influencing process of validation of the field signature
+         * @param cancellable optional #GCancellable object
          * @param callback a #GAsyncReadyCallback to call when the signature is validated
          */
         signature_validate_async(
             flags: SignatureValidationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<SignatureInfo> | void;
         /**
          * Finishes validation of the cryptographic signature contained in `signature_field`.
          * See poppler_form_field_signature_validate_async().

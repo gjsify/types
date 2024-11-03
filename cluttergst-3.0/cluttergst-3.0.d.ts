@@ -210,17 +210,7 @@ export namespace ClutterGst {
          * actor state.
          */
         invalidate(): void;
-        /**
-         * virtual function; called each time a #ClutterContent is attached
-         *   to a #ClutterActor.
-         * @param actor
-         */
         vfunc_attached(actor: Clutter.Actor): void;
-        /**
-         * virtual function; called each time a #ClutterContent is detached
-         *   from a #ClutterActor.
-         * @param actor
-         */
         vfunc_detached(actor: Clutter.Actor): void;
         /**
          * Retrieves the natural size of the `content,` if any.
@@ -238,12 +228,6 @@ export namespace ClutterGst {
          * actor state.
          */
         vfunc_invalidate(): void;
-        /**
-         * virtual function; called each time the content needs to
-         *   paint itself
-         * @param actor
-         * @param node
-         */
         vfunc_paint_content(actor: Clutter.Actor, node: Clutter.PaintNode): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -972,14 +956,7 @@ export namespace ClutterGst {
          * @param playing %TRUE to start playing
          */
         set_playing(playing: boolean): void;
-        /**
-         * signal class closure for #ClutterGstPlayer::eos
-         */
         vfunc_eos(): void;
-        /**
-         * signal class closure for #ClutterGstPlayer::error
-         * @param error
-         */
         vfunc_error(error: GLib.Error): void;
         /**
          * Retrieves the playback volume of `self`.
@@ -1006,14 +983,7 @@ export namespace ClutterGst {
          * Retrieves the #ClutterGstVideoSink used by the `self`.
          */
         vfunc_get_video_sink(): VideoSink;
-        /**
-         * signal class closure for #ClutterGstPlayer::new-frame
-         * @param frame
-         */
         vfunc_new_frame(frame: Frame): void;
-        /**
-         * signal class closure for #ClutterGstPlayer::ready
-         */
         vfunc_ready(): void;
         /**
          * Sets the playback volume of `self` to `volume`.
@@ -1031,11 +1001,6 @@ export namespace ClutterGst {
          * @param playing %TRUE to start playing
          */
         vfunc_set_playing(playing: boolean): void;
-        /**
-         * signal class closure for #ClutterGstPlayer::size-change
-         * @param width
-         * @param height
-         */
         vfunc_size_change(width: number, height: number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -1700,17 +1665,7 @@ export namespace ClutterGst {
          * actor state.
          */
         invalidate(): void;
-        /**
-         * virtual function; called each time a #ClutterContent is attached
-         *   to a #ClutterActor.
-         * @param actor
-         */
         vfunc_attached(actor: Clutter.Actor): void;
-        /**
-         * virtual function; called each time a #ClutterContent is detached
-         *   from a #ClutterActor.
-         * @param actor
-         */
         vfunc_detached(actor: Clutter.Actor): void;
         /**
          * Retrieves the natural size of the `content,` if any.
@@ -1728,12 +1683,6 @@ export namespace ClutterGst {
          * actor state.
          */
         vfunc_invalidate(): void;
-        /**
-         * virtual function; called each time the content needs to
-         *   paint itself
-         * @param actor
-         * @param node
-         */
         vfunc_paint_content(actor: Clutter.Actor, node: Clutter.PaintNode): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -2234,17 +2183,7 @@ export namespace ClutterGst {
          * actor state.
          */
         invalidate(): void;
-        /**
-         * virtual function; called each time a #ClutterContent is attached
-         *   to a #ClutterActor.
-         * @param actor
-         */
         vfunc_attached(actor: Clutter.Actor): void;
-        /**
-         * virtual function; called each time a #ClutterContent is detached
-         *   from a #ClutterActor.
-         * @param actor
-         */
         vfunc_detached(actor: Clutter.Actor): void;
         /**
          * Retrieves the natural size of the `content,` if any.
@@ -2262,12 +2201,6 @@ export namespace ClutterGst {
          * actor state.
          */
         vfunc_invalidate(): void;
-        /**
-         * virtual function; called each time the content needs to
-         *   paint itself
-         * @param actor
-         * @param node
-         */
         vfunc_paint_content(actor: Clutter.Actor, node: Clutter.PaintNode): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -3103,14 +3036,7 @@ export namespace ClutterGst {
          * @param playing %TRUE to start playing
          */
         set_playing(playing: boolean): void;
-        /**
-         * signal class closure for #ClutterGstPlayer::eos
-         */
         vfunc_eos(): void;
-        /**
-         * signal class closure for #ClutterGstPlayer::error
-         * @param error
-         */
         vfunc_error(error: GLib.Error): void;
         /**
          * Retrieves the playback volume of `self`.
@@ -3137,14 +3063,7 @@ export namespace ClutterGst {
          * Retrieves the #ClutterGstVideoSink used by the `self`.
          */
         vfunc_get_video_sink(): VideoSink;
-        /**
-         * signal class closure for #ClutterGstPlayer::new-frame
-         * @param frame
-         */
         vfunc_new_frame(frame: Frame): void;
-        /**
-         * signal class closure for #ClutterGstPlayer::ready
-         */
         vfunc_ready(): void;
         /**
          * Sets the playback volume of `self` to `volume`.
@@ -3162,11 +3081,6 @@ export namespace ClutterGst {
          * @param playing %TRUE to start playing
          */
         vfunc_set_playing(playing: boolean): void;
-        /**
-         * signal class closure for #ClutterGstPlayer::size-change
-         * @param width
-         * @param height
-         */
         vfunc_size_change(width: number, height: number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -3635,14 +3549,8 @@ export namespace ClutterGst {
 
         // Virtual methods
 
-        /**
-         * handler for the #ClutterGstVideoSink::new-frame signal
-         */
         vfunc_new_frame(): void;
         vfunc_new_overlays(): void;
-        /**
-         * handler for the #ClutterGstVideoSink::pipeline-ready signal
-         */
         vfunc_pipeline_ready(): void;
 
         // Methods
@@ -4501,14 +4409,7 @@ export namespace ClutterGst {
 
         // Virtual methods
 
-        /**
-         * signal class closure for #ClutterGstPlayer::eos
-         */
         vfunc_eos(): void;
-        /**
-         * signal class closure for #ClutterGstPlayer::error
-         * @param error
-         */
         vfunc_error(error: GLib.Error): void;
         /**
          * Retrieves the playback volume of `self`.
@@ -4535,14 +4436,7 @@ export namespace ClutterGst {
          * Retrieves the #ClutterGstVideoSink used by the `self`.
          */
         vfunc_get_video_sink(): VideoSink;
-        /**
-         * signal class closure for #ClutterGstPlayer::new-frame
-         * @param frame
-         */
         vfunc_new_frame(frame: Frame): void;
-        /**
-         * signal class closure for #ClutterGstPlayer::ready
-         */
         vfunc_ready(): void;
         /**
          * Sets the playback volume of `self` to `volume`.
@@ -4560,11 +4454,6 @@ export namespace ClutterGst {
          * @param playing %TRUE to start playing
          */
         vfunc_set_playing(playing: boolean): void;
-        /**
-         * signal class closure for #ClutterGstPlayer::size-change
-         * @param width
-         * @param height
-         */
         vfunc_size_change(width: number, height: number): void;
     }
 

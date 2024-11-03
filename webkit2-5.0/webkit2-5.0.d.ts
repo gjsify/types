@@ -2517,13 +2517,36 @@ export namespace WebKit2 {
          * webkit_cookie_manager_add_cookie_finish() to get the result of the operation.
          * @param cookie the #SoupCookie to be added
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        add_cookie(cookie: Soup.Cookie, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously add a #SoupCookie to the underlying storage.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_cookie_manager_add_cookie_finish() to get the result of the operation.
+         * @param cookie the #SoupCookie to be added
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        add_cookie(
+            cookie: Soup.Cookie,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously add a #SoupCookie to the underlying storage.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_cookie_manager_add_cookie_finish() to get the result of the operation.
+         * @param cookie the #SoupCookie to be added
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         add_cookie(
             cookie: Soup.Cookie,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_add_cookie().
          * @param result a #GAsyncResult
@@ -2541,13 +2564,36 @@ export namespace WebKit2 {
          * webkit_cookie_manager_delete_cookie_finish() to get the result of the operation.
          * @param cookie the #SoupCookie to be deleted
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        delete_cookie(cookie: Soup.Cookie, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously delete a #SoupCookie from the current session.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_cookie_manager_delete_cookie_finish() to get the result of the operation.
+         * @param cookie the #SoupCookie to be deleted
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        delete_cookie(
+            cookie: Soup.Cookie,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously delete a #SoupCookie from the current session.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_cookie_manager_delete_cookie_finish() to get the result of the operation.
+         * @param cookie the #SoupCookie to be deleted
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         delete_cookie(
             cookie: Soup.Cookie,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_delete_cookie().
          * @param result a #GAsyncResult
@@ -2569,9 +2615,37 @@ export namespace WebKit2 {
          * When the operation is finished, `callback` will be called. You can then call
          * webkit_cookie_manager_get_accept_policy_finish() to get the result of the operation.
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        get_accept_policy(cancellable?: Gio.Cancellable | null): Promise<CookieAcceptPolicy>;
+        /**
+         * Asynchronously get the cookie acceptance policy of `cookie_manager`.
+         *
+         * Note that when policy was set to %WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY and
+         * ITP is enabled, this will return %WEBKIT_COOKIE_POLICY_ACCEPT_ALWAYS.
+         * See also webkit_website_data_manager_set_itp_enabled().
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_cookie_manager_get_accept_policy_finish() to get the result of the operation.
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        get_accept_policy(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_accept_policy(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously get the cookie acceptance policy of `cookie_manager`.
+         *
+         * Note that when policy was set to %WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY and
+         * ITP is enabled, this will return %WEBKIT_COOKIE_POLICY_ACCEPT_ALWAYS.
+         * See also webkit_website_data_manager_set_itp_enabled().
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_cookie_manager_get_accept_policy_finish() to get the result of the operation.
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_accept_policy(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<CookieAcceptPolicy> | void;
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_get_accept_policy().
          * @param result a #GAsyncResult
@@ -2588,13 +2662,42 @@ export namespace WebKit2 {
          * webkit_cookie_manager_get_cookies_finish() to get the result of the operation.
          * @param uri the URI associated to the cookies to be retrieved
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        get_cookies(uri: string, cancellable?: Gio.Cancellable | null): Promise<Soup.Cookie[]>;
+        /**
+         * Asynchronously get a list of #SoupCookie from `cookie_manager`.
+         *
+         * Asynchronously get a list of #SoupCookie from `cookie_manager` associated with `uri,` which
+         * must be either an HTTP or an HTTPS URL.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_cookie_manager_get_cookies_finish() to get the result of the operation.
+         * @param uri the URI associated to the cookies to be retrieved
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_cookies(
+            uri: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously get a list of #SoupCookie from `cookie_manager`.
+         *
+         * Asynchronously get a list of #SoupCookie from `cookie_manager` associated with `uri,` which
+         * must be either an HTTP or an HTTPS URL.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_cookie_manager_get_cookies_finish() to get the result of the operation.
+         * @param uri the URI associated to the cookies to be retrieved
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         get_cookies(
             uri: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Soup.Cookie[]> | void;
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_get_cookies().
          *
@@ -2610,12 +2713,32 @@ export namespace WebKit2 {
          * When the operation is finished, `callback` will be called. You can then call
          * webkit_cookie_manager_get_domains_with_cookies_finish() to get the result of the operation.
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        get_domains_with_cookies(cancellable?: Gio.Cancellable | null): Promise<string[]>;
+        /**
+         * Asynchronously get the list of domains for which `cookie_manager` contains cookies.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_cookie_manager_get_domains_with_cookies_finish() to get the result of the operation.
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_domains_with_cookies(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously get the list of domains for which `cookie_manager` contains cookies.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_cookie_manager_get_domains_with_cookies_finish() to get the result of the operation.
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         get_domains_with_cookies(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string[]> | void;
         /**
          * Finish an asynchronous operation started with webkit_cookie_manager_get_domains_with_cookies().
          *
@@ -3474,13 +3597,58 @@ export namespace WebKit2 {
          * %WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED.
          * @param page_uri URI of the page for which we want to retrieve the favicon
          * @param cancellable A #GCancellable or %NULL.
+         */
+        get_favicon(page_uri: string, cancellable?: Gio.Cancellable | null): Promise<cairo.Surface>;
+        /**
+         * Asynchronously obtains a #cairo_surface_t of the favicon.
+         *
+         * Asynchronously obtains a #cairo_surface_t of the favicon for the
+         * given page URI. It returns the cached icon if it's in the database
+         * asynchronously waiting for the icon to be read from the database.
+         *
+         * This is an asynchronous method. When the operation is finished, callback will
+         * be invoked. You can then call webkit_favicon_database_get_favicon_finish()
+         * to get the result of the operation.
+         *
+         * You must call webkit_web_context_set_favicon_database_directory() for
+         * the #WebKitWebContext associated with this #WebKitFaviconDatabase
+         * before attempting to use this function; otherwise,
+         * webkit_favicon_database_get_favicon_finish() will return
+         * %WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED.
+         * @param page_uri URI of the page for which we want to retrieve the favicon
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is            satisfied or %NULL if you don't care about the result.
+         */
+        get_favicon(
+            page_uri: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously obtains a #cairo_surface_t of the favicon.
+         *
+         * Asynchronously obtains a #cairo_surface_t of the favicon for the
+         * given page URI. It returns the cached icon if it's in the database
+         * asynchronously waiting for the icon to be read from the database.
+         *
+         * This is an asynchronous method. When the operation is finished, callback will
+         * be invoked. You can then call webkit_favicon_database_get_favicon_finish()
+         * to get the result of the operation.
+         *
+         * You must call webkit_web_context_set_favicon_database_directory() for
+         * the #WebKitWebContext associated with this #WebKitFaviconDatabase
+         * before attempting to use this function; otherwise,
+         * webkit_favicon_database_get_favicon_finish() will return
+         * %WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED.
+         * @param page_uri URI of the page for which we want to retrieve the favicon
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is            satisfied or %NULL if you don't care about the result.
          */
         get_favicon(
             page_uri: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<cairo.Surface> | void;
         /**
          * Finishes an operation started with webkit_favicon_database_get_favicon().
          * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to webkit_favicon_database_get_favicon()
@@ -9593,9 +9761,31 @@ export namespace WebKit2 {
          * webkit_user_content_filter_store_fetch_identifiers_finish() to obtain the list of
          * filter identifiers.
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        fetch_identifiers(cancellable?: Gio.Cancellable | null): Promise<string[]>;
+        /**
+         * Asynchronously retrieve a list of the identifiers for all the stored filters.
+         *
+         * When the operation is finished, `callback` will be invoked, which then can use
+         * webkit_user_content_filter_store_fetch_identifiers_finish() to obtain the list of
+         * filter identifiers.
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the removal is completed
          */
-        fetch_identifiers(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        fetch_identifiers(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously retrieve a list of the identifiers for all the stored filters.
+         *
+         * When the operation is finished, `callback` will be invoked, which then can use
+         * webkit_user_content_filter_store_fetch_identifiers_finish() to obtain the list of
+         * filter identifiers.
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the removal is completed
+         */
+        fetch_identifiers(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<string[]> | void;
         /**
          * Finishes an asynchronous fetch of the list of stored filters.
          *
@@ -9620,13 +9810,42 @@ export namespace WebKit2 {
          * webkit_user_content_filter_store_load_finish() to obtain the resulting filter.
          * @param identifier a filter identifier
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        load(identifier: string, cancellable?: Gio.Cancellable | null): Promise<UserContentFilter>;
+        /**
+         * Asynchronously load a content filter given its `identifier`.
+         *
+         * The filter must have been
+         * previously stored using webkit_user_content_filter_store_save().
+         *
+         * When the operation is finished, `callback` will be invoked, which then can use
+         * webkit_user_content_filter_store_load_finish() to obtain the resulting filter.
+         * @param identifier a filter identifier
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the load is completed
+         */
+        load(
+            identifier: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously load a content filter given its `identifier`.
+         *
+         * The filter must have been
+         * previously stored using webkit_user_content_filter_store_save().
+         *
+         * When the operation is finished, `callback` will be invoked, which then can use
+         * webkit_user_content_filter_store_load_finish() to obtain the resulting filter.
+         * @param identifier a filter identifier
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the load is completed
          */
         load(
             identifier: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<UserContentFilter> | void;
         /**
          * Finishes an asynchronous filter load previously started with
          * webkit_user_content_filter_store_load().
@@ -9642,13 +9861,38 @@ export namespace WebKit2 {
          * successful.
          * @param identifier a filter identifier
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        remove(identifier: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously remove a content filter given its `identifier`.
+         *
+         * When the operation is finished, `callback` will be invoked, which then can use
+         * webkit_user_content_filter_store_remove_finish() to check whether the removal was
+         * successful.
+         * @param identifier a filter identifier
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the removal is completed
+         */
+        remove(
+            identifier: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously remove a content filter given its `identifier`.
+         *
+         * When the operation is finished, `callback` will be invoked, which then can use
+         * webkit_user_content_filter_store_remove_finish() to check whether the removal was
+         * successful.
+         * @param identifier a filter identifier
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the removal is completed
          */
         remove(
             identifier: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous filter removal previously started with
          * webkit_user_content_filter_store_remove().
@@ -9672,6 +9916,52 @@ export namespace WebKit2 {
          * @param identifier a string used to identify the saved filter
          * @param source #GBytes containing the rule set in JSON format
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        save(
+            identifier: string,
+            source: GLib.Bytes | Uint8Array,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<UserContentFilter>;
+        /**
+         * Asynchronously save a content filter from a set source rule.
+         *
+         * Asynchronously save a content filter from a source rule set in the
+         * [WebKit content extesions JSON format](https://webkit.org/blog/3476/content-blockers-first-look/).
+         *
+         * The `identifier` can be used afterwards to refer to the filter when using
+         * webkit_user_content_filter_store_remove() and webkit_user_content_filter_store_load().
+         * When the `identifier` has been used in the past, the new filter source will replace
+         * the one saved beforehand for the same identifier.
+         *
+         * When the operation is finished, `callback` will be invoked, which then can use
+         * webkit_user_content_filter_store_save_finish() to obtain the resulting filter.
+         * @param identifier a string used to identify the saved filter
+         * @param source #GBytes containing the rule set in JSON format
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when saving is completed
+         */
+        save(
+            identifier: string,
+            source: GLib.Bytes | Uint8Array,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously save a content filter from a set source rule.
+         *
+         * Asynchronously save a content filter from a source rule set in the
+         * [WebKit content extesions JSON format](https://webkit.org/blog/3476/content-blockers-first-look/).
+         *
+         * The `identifier` can be used afterwards to refer to the filter when using
+         * webkit_user_content_filter_store_remove() and webkit_user_content_filter_store_load().
+         * When the `identifier` has been used in the past, the new filter source will replace
+         * the one saved beforehand for the same identifier.
+         *
+         * When the operation is finished, `callback` will be invoked, which then can use
+         * webkit_user_content_filter_store_save_finish() to obtain the resulting filter.
+         * @param identifier a string used to identify the saved filter
+         * @param source #GBytes containing the rule set in JSON format
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when saving is completed
          */
         save(
@@ -9679,7 +9969,7 @@ export namespace WebKit2 {
             source: GLib.Bytes | Uint8Array,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<UserContentFilter> | void;
         /**
          * Finishes an asynchronous filter save previously started with
          * webkit_user_content_filter_store_save().
@@ -9699,6 +9989,44 @@ export namespace WebKit2 {
          * @param identifier a string used to identify the saved filter
          * @param file a #GFile containing the rule set in JSON format
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        save_from_file(
+            identifier: string,
+            file: Gio.File,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<UserContentFilter>;
+        /**
+         * Asynchronously save a content filter from the contents of a file.
+         *
+         * Asynchronously save a content filter from the contents of a file, which must be
+         * native to the platform, as checked by g_file_is_native(). See
+         * webkit_user_content_filter_store_save() for more details.
+         *
+         * When the operation is finished, `callback` will be invoked, which then can use
+         * webkit_user_content_filter_store_save_finish() to obtain the resulting filter.
+         * @param identifier a string used to identify the saved filter
+         * @param file a #GFile containing the rule set in JSON format
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when saving is completed
+         */
+        save_from_file(
+            identifier: string,
+            file: Gio.File,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously save a content filter from the contents of a file.
+         *
+         * Asynchronously save a content filter from the contents of a file, which must be
+         * native to the platform, as checked by g_file_is_native(). See
+         * webkit_user_content_filter_store_save() for more details.
+         *
+         * When the operation is finished, `callback` will be invoked, which then can use
+         * webkit_user_content_filter_store_save_finish() to obtain the resulting filter.
+         * @param identifier a string used to identify the saved filter
+         * @param file a #GFile containing the rule set in JSON format
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when saving is completed
          */
         save_from_file(
@@ -9706,7 +10034,7 @@ export namespace WebKit2 {
             file: Gio.File,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<UserContentFilter> | void;
         /**
          * Finishes and asynchronous filter save previously started with
          * webkit_user_content_filter_store_save_from_file().
@@ -10741,9 +11069,29 @@ export namespace WebKit2 {
          * When the operation is finished, `callback` will be called. You can then call
          * webkit_web_context_get_plugins_finish() to get the result of the operation.
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        get_plugins(cancellable?: Gio.Cancellable | null): Promise<Plugin[]>;
+        /**
+         * Asynchronously get the list of installed plugins.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_context_get_plugins_finish() to get the result of the operation.
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        get_plugins(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_plugins(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously get the list of installed plugins.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_context_get_plugins_finish() to get the result of the operation.
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_plugins(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<Plugin[]> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_context_get_plugins.
          * @param result a #GAsyncResult
@@ -11388,9 +11736,29 @@ export namespace WebKit2 {
          * When the operation is finished, `callback` will be called. You can then call
          * webkit_web_resource_get_data_finish() to get the result of the operation.
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        get_data(cancellable?: Gio.Cancellable | null): Promise<Uint8Array>;
+        /**
+         * Asynchronously get the raw data for `resource`.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_resource_get_data_finish() to get the result of the operation.
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        get_data(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_data(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously get the raw data for `resource`.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_resource_get_data_finish() to get the result of the operation.
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_data(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<Uint8Array> | void;
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
@@ -12216,13 +12584,36 @@ export namespace WebKit2 {
          * webkit_web_view_can_execute_editing_command_finish() to get the result of the operation.
          * @param command the command to check
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        can_execute_editing_command(command: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously check if it is possible to execute the given editing command.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_view_can_execute_editing_command_finish() to get the result of the operation.
+         * @param command the command to check
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        can_execute_editing_command(
+            command: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously check if it is possible to execute the given editing command.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_view_can_execute_editing_command_finish() to get the result of the operation.
+         * @param command the command to check
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         can_execute_editing_command(
             command: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_can_execute_editing_command().
          * @param result a #GAsyncResult
@@ -12418,6 +12809,42 @@ export namespace WebKit2 {
          * @param region the #WebKitSnapshotRegion for this snapshot
          * @param options #WebKitSnapshotOptions for the snapshot
          * @param cancellable a #GCancellable
+         */
+        get_snapshot(
+            region: SnapshotRegion,
+            options: SnapshotOptions,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<cairo.Surface>;
+        /**
+         * Asynchronously retrieves a snapshot of `web_view` for `region`.
+         *
+         * `options` specifies how the snapshot should be rendered.
+         *
+         * When the operation is finished, `callback` will be called. You must
+         * call webkit_web_view_get_snapshot_finish() to get the result of the
+         * operation.
+         * @param region the #WebKitSnapshotRegion for this snapshot
+         * @param options #WebKitSnapshotOptions for the snapshot
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback
+         */
+        get_snapshot(
+            region: SnapshotRegion,
+            options: SnapshotOptions,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously retrieves a snapshot of `web_view` for `region`.
+         *
+         * `options` specifies how the snapshot should be rendered.
+         *
+         * When the operation is finished, `callback` will be called. You must
+         * call webkit_web_view_get_snapshot_finish() to get the result of the
+         * operation.
+         * @param region the #WebKitSnapshotRegion for this snapshot
+         * @param options #WebKitSnapshotOptions for the snapshot
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback
          */
         get_snapshot(
@@ -12425,7 +12852,7 @@ export namespace WebKit2 {
             options: SnapshotOptions,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<cairo.Surface> | void;
         /**
          * Finishes an asynchronous operation started with webkit_web_view_get_snapshot().
          * @param result a #GAsyncResult
@@ -12695,13 +13122,42 @@ export namespace WebKit2 {
          * webkit_web_view_run_javascript_finish() to get the result of the operation.
          * @param script the script to run
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        run_javascript(script: string, cancellable?: Gio.Cancellable | null): Promise<JavascriptResult>;
+        /**
+         * Asynchronously run `script` in the context of the current page in `web_view`.
+         *
+         * If
+         * WebKitSettings:enable-javascript is FALSE, this method will do nothing.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_view_run_javascript_finish() to get the result of the operation.
+         * @param script the script to run
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the script finished
+         */
+        run_javascript(
+            script: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously run `script` in the context of the current page in `web_view`.
+         *
+         * If
+         * WebKitSettings:enable-javascript is FALSE, this method will do nothing.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_view_run_javascript_finish() to get the result of the operation.
+         * @param script the script to run
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the script finished
          */
         run_javascript(
             script: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<JavascriptResult> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_run_javascript().
          *
@@ -12764,13 +13220,47 @@ export namespace WebKit2 {
          * of the operation.
          * @param resource the location of the resource to load
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        run_javascript_from_gresource(
+            resource: string,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<JavascriptResult>;
+        /**
+         * Asynchronously run the script from `resource`.
+         *
+         * Asynchronously run the script from `resource` in the context of the
+         * current page in `web_view`.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call webkit_web_view_run_javascript_from_gresource_finish() to get the result
+         * of the operation.
+         * @param resource the location of the resource to load
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the script finished
+         */
+        run_javascript_from_gresource(
+            resource: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously run the script from `resource`.
+         *
+         * Asynchronously run the script from `resource` in the context of the
+         * current page in `web_view`.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call webkit_web_view_run_javascript_from_gresource_finish() to get the result
+         * of the operation.
+         * @param resource the location of the resource to load
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the script finished
          */
         run_javascript_from_gresource(
             resource: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<JavascriptResult> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_run_javascript_from_gresource().
          *
@@ -12790,6 +13280,42 @@ export namespace WebKit2 {
          * @param script the script to run
          * @param world_name the name of a #WebKitScriptWorld
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        run_javascript_in_world(
+            script: string,
+            world_name: string,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<JavascriptResult>;
+        /**
+         * Asynchronously run `script` in the script world.
+         *
+         * Asynchronously run `script` in the script world with name `world_name` of the current page context in `web_view`.
+         * If WebKitSettings:enable-javascript is FALSE, this method will do nothing.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_view_run_javascript_in_world_finish() to get the result of the operation.
+         * @param script the script to run
+         * @param world_name the name of a #WebKitScriptWorld
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the script finished
+         */
+        run_javascript_in_world(
+            script: string,
+            world_name: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously run `script` in the script world.
+         *
+         * Asynchronously run `script` in the script world with name `world_name` of the current page context in `web_view`.
+         * If WebKitSettings:enable-javascript is FALSE, this method will do nothing.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_view_run_javascript_in_world_finish() to get the result of the operation.
+         * @param script the script to run
+         * @param world_name the name of a #WebKitScriptWorld
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the script finished
          */
         run_javascript_in_world(
@@ -12797,7 +13323,7 @@ export namespace WebKit2 {
             world_name: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<JavascriptResult> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_run_javascript_in_world().
          * @param result a #GAsyncResult
@@ -12816,19 +13342,88 @@ export namespace WebKit2 {
          * operation.
          * @param save_mode the #WebKitSaveMode specifying how the web page should be saved.
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        save(save_mode: SaveMode, cancellable?: Gio.Cancellable | null): Promise<Gio.InputStream>;
+        /**
+         * Asynchronously save the current web page.
+         *
+         * Asynchronously save the current web page associated to the
+         * #WebKitWebView into a self-contained format using the mode
+         * specified in `save_mode`.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call webkit_web_view_save_finish() to get the result of the
+         * operation.
+         * @param save_mode the #WebKitSaveMode specifying how the web page should be saved.
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        save(
+            save_mode: SaveMode,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously save the current web page.
+         *
+         * Asynchronously save the current web page associated to the
+         * #WebKitWebView into a self-contained format using the mode
+         * specified in `save_mode`.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call webkit_web_view_save_finish() to get the result of the
+         * operation.
+         * @param save_mode the #WebKitSaveMode specifying how the web page should be saved.
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         save(
             save_mode: SaveMode,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Gio.InputStream> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_save().
          * @param result a #GAsyncResult
          * @returns a #GInputStream with the result of saving    the current web page or %NULL in case of error.
          */
         save_finish(result: Gio.AsyncResult): Gio.InputStream;
+        /**
+         * Asynchronously save the current web page.
+         *
+         * Asynchronously save the current web page associated to the
+         * #WebKitWebView into a self-contained format using the mode
+         * specified in `save_mode` and writing it to `file`.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call webkit_web_view_save_to_file_finish() to get the result of the
+         * operation.
+         * @param file the #GFile where the current web page should be saved to.
+         * @param save_mode the #WebKitSaveMode specifying how the web page should be saved.
+         * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        save_to_file(file: Gio.File, save_mode: SaveMode, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously save the current web page.
+         *
+         * Asynchronously save the current web page associated to the
+         * #WebKitWebView into a self-contained format using the mode
+         * specified in `save_mode` and writing it to `file`.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call webkit_web_view_save_to_file_finish() to get the result of the
+         * operation.
+         * @param file the #GFile where the current web page should be saved to.
+         * @param save_mode the #WebKitSaveMode specifying how the web page should be saved.
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        save_to_file(
+            file: Gio.File,
+            save_mode: SaveMode,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously save the current web page.
          *
@@ -12849,7 +13444,7 @@ export namespace WebKit2 {
             save_mode: SaveMode,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_save_to_file().
          * @param result a #GAsyncResult
@@ -12865,13 +13460,40 @@ export namespace WebKit2 {
          * webkit_web_view_send_message_to_page_finish() to get the message reply.
          * @param message a #WebKitUserMessage
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        send_message_to_page(message: UserMessage, cancellable?: Gio.Cancellable | null): Promise<UserMessage>;
+        /**
+         * Send `message` to the #WebKitWebPage corresponding to `web_view`.
+         *
+         * If `message` is floating, it's consumed.
+         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `callback`.
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_view_send_message_to_page_finish() to get the message reply.
+         * @param message a #WebKitUserMessage
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback (nullable): A #GAsyncReadyCallback to call when the request is satisfied or %NULL
+         */
+        send_message_to_page(
+            message: UserMessage,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Send `message` to the #WebKitWebPage corresponding to `web_view`.
+         *
+         * If `message` is floating, it's consumed.
+         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `callback`.
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_web_view_send_message_to_page_finish() to get the message reply.
+         * @param message a #WebKitUserMessage
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback (nullable): A #GAsyncReadyCallback to call when the request is satisfied or %NULL
          */
         send_message_to_page(
             message: UserMessage,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<UserMessage> | void;
         /**
          * Finish an asynchronous operation started with webkit_web_view_send_message_to_page().
          * @param result a #GAsyncResult
@@ -14825,6 +15447,44 @@ export namespace WebKit2 {
          * @param types #WebKitWebsiteDataTypes
          * @param timespan a #GTimeSpan
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        clear(types: WebsiteDataTypes, timespan: GLib.TimeSpan, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously clear the website data of the given `types` modified in the past `timespan`.
+         *
+         * If `timespan` is 0, all website data will be removed.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_website_data_manager_clear_finish() to get the result of the operation.
+         *
+         * Due to implementation limitations, this function does not currently delete
+         * any stored cookies if `timespan` is nonzero. This behavior may change in the
+         * future.
+         * @param types #WebKitWebsiteDataTypes
+         * @param timespan a #GTimeSpan
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        clear(
+            types: WebsiteDataTypes,
+            timespan: GLib.TimeSpan,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously clear the website data of the given `types` modified in the past `timespan`.
+         *
+         * If `timespan` is 0, all website data will be removed.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_website_data_manager_clear_finish() to get the result of the operation.
+         *
+         * Due to implementation limitations, this function does not currently delete
+         * any stored cookies if `timespan` is nonzero. This behavior may change in the
+         * future.
+         * @param types #WebKitWebsiteDataTypes
+         * @param timespan a #GTimeSpan
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         clear(
@@ -14832,7 +15492,7 @@ export namespace WebKit2 {
             timespan: GLib.TimeSpan,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finish an asynchronous operation started with webkit_website_data_manager_clear()
          * @param result a #GAsyncResult
@@ -14846,13 +15506,36 @@ export namespace WebKit2 {
          * webkit_website_data_manager_fetch_finish() to get the result of the operation.
          * @param types #WebKitWebsiteDataTypes
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        fetch(types: WebsiteDataTypes, cancellable?: Gio.Cancellable | null): Promise<WebsiteData[]>;
+        /**
+         * Asynchronously get the list of #WebKitWebsiteData for the given `types`.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_website_data_manager_fetch_finish() to get the result of the operation.
+         * @param types #WebKitWebsiteDataTypes
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        fetch(
+            types: WebsiteDataTypes,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously get the list of #WebKitWebsiteData for the given `types`.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_website_data_manager_fetch_finish() to get the result of the operation.
+         * @param types #WebKitWebsiteDataTypes
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         fetch(
             types: WebsiteDataTypes,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<WebsiteData[]> | void;
         /**
          * Finish an asynchronous operation started with webkit_website_data_manager_fetch().
          * @param result a #GAsyncResult
@@ -14913,9 +15596,35 @@ export namespace WebKit2 {
          * When the operation is finished, `callback` will be called. You can then call
          * webkit_website_data_manager_get_itp_summary_finish() to get the result of the operation.
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        get_itp_summary(cancellable?: Gio.Cancellable | null): Promise<ITPThirdParty[]>;
+        /**
+         * Asynchronously get the list of #WebKitITPThirdParty seen for `manager`.
+         *
+         * Every #WebKitITPThirdParty
+         * contains the list of #WebKitITPFirstParty under which it has been seen.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_website_data_manager_get_itp_summary_finish() to get the result of the operation.
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        get_itp_summary(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_itp_summary(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously get the list of #WebKitITPThirdParty seen for `manager`.
+         *
+         * Every #WebKitITPThirdParty
+         * contains the list of #WebKitITPFirstParty under which it has been seen.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_website_data_manager_get_itp_summary_finish() to get the result of the operation.
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_itp_summary(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<ITPThirdParty[]> | void;
         /**
          * Finish an asynchronous operation started with webkit_website_data_manager_get_itp_summary().
          * @param result a #GAsyncResult
@@ -14965,6 +15674,42 @@ export namespace WebKit2 {
          * @param types #WebKitWebsiteDataTypes
          * @param website_data a #GList of #WebKitWebsiteData
          * @param cancellable a #GCancellable or %NULL to ignore
+         */
+        remove(
+            types: WebsiteDataTypes,
+            website_data: WebsiteData[],
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously removes the website data in the given `website_data` list.
+         *
+         * Asynchronously removes the website data of the given `types` for websites in the given `website_data` list.
+         * Use webkit_website_data_manager_clear() if you want to remove the website data for all sites.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_website_data_manager_remove_finish() to get the result of the operation.
+         * @param types #WebKitWebsiteDataTypes
+         * @param website_data a #GList of #WebKitWebsiteData
+         * @param cancellable a #GCancellable or %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        remove(
+            types: WebsiteDataTypes,
+            website_data: WebsiteData[],
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously removes the website data in the given `website_data` list.
+         *
+         * Asynchronously removes the website data of the given `types` for websites in the given `website_data` list.
+         * Use webkit_website_data_manager_clear() if you want to remove the website data for all sites.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * webkit_website_data_manager_remove_finish() to get the result of the operation.
+         * @param types #WebKitWebsiteDataTypes
+         * @param website_data a #GList of #WebKitWebsiteData
+         * @param cancellable a #GCancellable or %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         remove(
@@ -14972,7 +15717,7 @@ export namespace WebKit2 {
             website_data: WebsiteData[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finish an asynchronous operation started with webkit_website_data_manager_remove().
          * @param result a #GAsyncResult

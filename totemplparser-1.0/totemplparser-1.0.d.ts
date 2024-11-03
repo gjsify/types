@@ -194,9 +194,15 @@ export namespace TotemPlParser {
      */
     const PARSER_FIELD_FILESIZE: string;
     /**
-     * Metadata field for an entry's genre.
+     * Metadata field for an entry's primary genre. This is a string of
+     * the form 'Genre1' or 'Genre1/SubGenre1".
      */
     const PARSER_FIELD_GENRE: string;
+    /**
+     * Metadata field for an entry's full genre. This is a concatenated
+     * string of the form 'Genre1/SubGenre1,Genre2/SubGenre2" etc.
+     */
+    const PARSER_FIELD_GENRES: string;
     /**
      * Metadata field for an entry's identifier. Its use is dependent on the format
      * of the playlist parsed, and its origin.
@@ -415,25 +421,8 @@ export namespace TotemPlParser {
 
         // Virtual methods
 
-        /**
-         * the generic signal handler for the #TotemPlParser::entry-parsed signal,
-         * which can be overridden by inheriting classes
-         * @param uri
-         * @param metadata
-         */
         vfunc_entry_parsed(uri: string, metadata: { [key: string]: any } | GLib.HashTable<any, any>): void;
-        /**
-         * the generic signal handler for the #TotemPlParser::playlist-ended signal,
-         * which can be overridden by inheriting classes
-         * @param uri
-         */
         vfunc_playlist_ended(uri: string): void;
-        /**
-         * the generic signal handler for the #TotemPlParser::playlist-started signal,
-         * which can be overridden by inheriting classes
-         * @param uri
-         * @param metadata
-         */
         vfunc_playlist_started(uri: string, metadata: { [key: string]: any } | GLib.HashTable<any, any>): void;
 
         // Methods
@@ -478,6 +467,38 @@ export namespace TotemPlParser {
          * @param uri the URI of the playlist to parse
          * @param fallback %TRUE if the parser should add the playlist URI to the end of the playlist on parse failure
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        parse_async(uri: string, fallback: boolean, cancellable?: Gio.Cancellable | null): Promise<ParserResult>;
+        /**
+         * Starts asynchronous parsing of a playlist given by the absolute URI `uri`. `parser` and `uri` are both reffed/copied
+         * when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see totem_pl_parser_parse(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call totem_pl_parser_parse_finish()
+         * to get the results of the operation.
+         * @param uri the URI of the playlist to parse
+         * @param fallback %TRUE if the parser should add the playlist URI to the end of the playlist on parse failure
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when parsing is finished
+         */
+        parse_async(
+            uri: string,
+            fallback: boolean,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous parsing of a playlist given by the absolute URI `uri`. `parser` and `uri` are both reffed/copied
+         * when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see totem_pl_parser_parse(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call totem_pl_parser_parse_finish()
+         * to get the results of the operation.
+         * @param uri the URI of the playlist to parse
+         * @param fallback %TRUE if the parser should add the playlist URI to the end of the playlist on parse failure
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when parsing is finished
          */
         parse_async(
@@ -485,7 +506,7 @@ export namespace TotemPlParser {
             fallback: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<ParserResult> | void;
         /**
          * Finishes an asynchronous playlist parsing operation started with totem_pl_parser_parse_async()
          * or totem_pl_parser_parse_with_base_async().
@@ -562,6 +583,46 @@ export namespace TotemPlParser {
          * @param title the playlist title
          * @param type a #TotemPlParserType for the outputted playlist
          * @param cancellable a #GCancellable, or %NULL
+         */
+        save_async(
+            playlist: Playlist,
+            dest: Gio.File,
+            title: string,
+            type: ParserType,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Starts asynchronous version of totem_pl_parser_save(). For more details
+         * see totem_pl_parser_save().
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * totem_pl_parser_save_finish() to get the results of the operation.
+         * @param playlist a #TotemPlPlaylist
+         * @param dest output #GFile
+         * @param title the playlist title
+         * @param type a #TotemPlParserType for the outputted playlist
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when saving has finished
+         */
+        save_async(
+            playlist: Playlist,
+            dest: Gio.File,
+            title: string,
+            type: ParserType,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous version of totem_pl_parser_save(). For more details
+         * see totem_pl_parser_save().
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * totem_pl_parser_save_finish() to get the results of the operation.
+         * @param playlist a #TotemPlPlaylist
+         * @param dest output #GFile
+         * @param title the playlist title
+         * @param type a #TotemPlParserType for the outputted playlist
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback to call when saving has finished
          */
         save_async(
@@ -571,7 +632,7 @@ export namespace TotemPlParser {
             type: ParserType,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous playlist saving operation started with totem_pl_parser_save_async().
          *

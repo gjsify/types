@@ -1288,7 +1288,9 @@ export namespace Midori {
 
         // Methods
 
-        ['delete'](_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        ['delete'](): Promise<boolean>;
+        ['delete'](_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        ['delete'](_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         delete_finish(_res_: Gio.AsyncResult): boolean;
         get_database(): Database | null;
         set_database(value?: Database | null): void;
@@ -1386,23 +1388,44 @@ export namespace Midori {
         exec_script(filename: string): boolean;
         transaction(callback: DatabaseCallback): boolean;
         exec(query: string): boolean;
-        ['delete'](item: DatabaseItem, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        ['delete'](item: DatabaseItem): Promise<boolean>;
+        ['delete'](item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        ['delete'](item: DatabaseItem, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         delete_finish(_res_: Gio.AsyncResult): boolean;
-        lookup(uri: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        lookup(uri: string): Promise<DatabaseItem | null>;
+        lookup(uri: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        lookup(uri: string, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<DatabaseItem | null> | void;
         lookup_finish(_res_: Gio.AsyncResult): DatabaseItem | null;
         contains(item: DatabaseItem): boolean;
         query(
             filter: string | null,
             max_items: number,
             cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<DatabaseItem[] | null>;
+        query(
+            filter: string | null,
+            max_items: number,
+            cancellable: Gio.Cancellable | null,
+            _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        query(
+            filter: string | null,
+            max_items: number,
+            cancellable?: Gio.Cancellable | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<DatabaseItem[] | null> | void;
         query_finish(_res_: Gio.AsyncResult): DatabaseItem[] | null;
-        update(item: DatabaseItem, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        update(item: DatabaseItem): Promise<boolean>;
+        update(item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        update(item: DatabaseItem, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         update_finish(_res_: Gio.AsyncResult): boolean;
-        insert(item: DatabaseItem, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        insert(item: DatabaseItem): Promise<boolean>;
+        insert(item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        insert(item: DatabaseItem, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         insert_finish(_res_: Gio.AsyncResult): boolean;
-        clear(timespan: GLib.TimeSpan, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        clear(timespan: GLib.TimeSpan): Promise<boolean>;
+        clear(timespan: GLib.TimeSpan, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        clear(timespan: GLib.TimeSpan, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         clear_finish(_res_: Gio.AsyncResult): boolean;
         get_table(): string | null;
         set_table(value?: string | null): void;
@@ -3567,7 +3590,9 @@ export namespace Midori {
         // Methods
 
         activate(): void;
-        clear(timespan: GLib.TimeSpan, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        clear(timespan: GLib.TimeSpan): Promise<void>;
+        clear(timespan: GLib.TimeSpan, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        clear(timespan: GLib.TimeSpan, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         clear_finish(_res_: Gio.AsyncResult): void;
         get_box(): Gtk.Box;
         set_box(value: Gtk.Box): void;

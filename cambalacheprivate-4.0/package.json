@@ -1,6 +1,6 @@
 {
     "name": "@girs/cambalacheprivate-4.0",
-    "version": "4.0.0-4.0.0-beta.16",
+    "version": "4.0.0-4.0.0-beta.17",
     "description": "GJS TypeScript type definitions for CambalachePrivate-4.0, generated from library version 4.0.0",
     "type": "module",
     "module": "cambalacheprivate-4.0.js",

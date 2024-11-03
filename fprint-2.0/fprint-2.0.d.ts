@@ -483,13 +483,34 @@ export namespace FPrint {
          * fp_device_capture_finish().
          * @param wait_for_finger Whether to wait for a finger or not
          * @param cancellable a #GCancellable, or %NULL
+         */
+        capture(wait_for_finger: boolean, cancellable?: Gio.Cancellable | null): Promise<Image>;
+        /**
+         * Start an asynchronous operation to capture an image. The callback will
+         * be called once the operation has finished. Retrieve the result with
+         * fp_device_capture_finish().
+         * @param wait_for_finger Whether to wait for a finger or not
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to call on completion
+         */
+        capture(
+            wait_for_finger: boolean,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Start an asynchronous operation to capture an image. The callback will
+         * be called once the operation has finished. Retrieve the result with
+         * fp_device_capture_finish().
+         * @param wait_for_finger Whether to wait for a finger or not
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to call on completion
          */
         capture(
             wait_for_finger: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Image> | void;
         /**
          * Finish an asynchronous operation to capture an image. You should check
          * for an error of type %FP_DEVICE_RETRY to prompt the user again if there
@@ -515,9 +536,33 @@ export namespace FPrint {
          * This only makes sense on devices that store prints on-chip, but is safe
          * to always call.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        clear_storage(cancellable?: Gio.Cancellable | null): Promise<void>;
+        /**
+         * Start an asynchronous operation to delete all prints from the device.
+         * The callback will be called once the operation has finished. Retrieve
+         * the result with fp_device_clear_storage_finish().
+         *
+         * This only makes sense on devices that store prints on-chip, but is safe
+         * to always call.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to call on completion
          */
-        clear_storage(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        clear_storage(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Start an asynchronous operation to delete all prints from the device.
+         * The callback will be called once the operation has finished. Retrieve
+         * the result with fp_device_clear_storage_finish().
+         *
+         * This only makes sense on devices that store prints on-chip, but is safe
+         * to always call.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to call on completion
+         */
+        clear_storage(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<void> | void;
         /**
          * Finish an asynchronous operation to delete all enrolled prints.
          *
@@ -537,9 +582,27 @@ export namespace FPrint {
          * be called once the operation has finished. Retrieve the result with
          * fp_device_close_finish().
          * @param cancellable a #GCancellable, or %NULL
+         */
+        close(cancellable?: Gio.Cancellable | null): Promise<void>;
+        /**
+         * Start an asynchronous operation to close the device. The callback will
+         * be called once the operation has finished. Retrieve the result with
+         * fp_device_close_finish().
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to call on completion
          */
-        close(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        close(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Start an asynchronous operation to close the device. The callback will
+         * be called once the operation has finished. Retrieve the result with
+         * fp_device_close_finish().
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to call on completion
+         */
+        close(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<void> | void;
         /**
          * Finish an asynchronous operation to close the device.
          * See fp_device_close().
@@ -562,13 +625,40 @@ export namespace FPrint {
          * to always call.
          * @param enrolled_print a #FpPrint to delete
          * @param cancellable a #GCancellable, or %NULL
+         */
+        delete_print(enrolled_print: Print, cancellable?: Gio.Cancellable | null): Promise<void>;
+        /**
+         * Start an asynchronous operation to delete a print from the device.
+         * The callback will be called once the operation has finished. Retrieve
+         * the result with fp_device_delete_print_finish().
+         *
+         * This only makes sense on devices that store prints on-chip, but is safe
+         * to always call.
+         * @param enrolled_print a #FpPrint to delete
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to call on completion
+         */
+        delete_print(
+            enrolled_print: Print,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Start an asynchronous operation to delete a print from the device.
+         * The callback will be called once the operation has finished. Retrieve
+         * the result with fp_device_delete_print_finish().
+         *
+         * This only makes sense on devices that store prints on-chip, but is safe
+         * to always call.
+         * @param enrolled_print a #FpPrint to delete
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to call on completion
          */
         delete_print(
             enrolled_print: Print,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<void> | void;
         /**
          * Finish an asynchronous operation to delete an enrolled print.
          *
@@ -597,13 +687,48 @@ export namespace FPrint {
          * driver will return a newly created print after enrollment succeeded.
          * @param template_print a #FpPrint
          * @param cancellable a #GCancellable, or %NULL
+         */
+        enroll(template_print: Print, cancellable?: Gio.Cancellable | null): Promise<Print>;
+        /**
+         * Start an asynchronous operation to enroll a print. The callback will
+         * be called once the operation has finished. Retrieve the result with
+         * fp_device_enroll_finish().
+         *
+         * The `template_print` parameter is a #FpPrint with available metadata filled
+         * in and, optionally, with existing fingerprint data to be updated with newly
+         * enrolled fingerprints if a device driver supports it. The driver may make use
+         * of the metadata, when e.g. storing the print on device memory. It is undefined
+         * whether this print is filled in by the driver and returned, or whether the
+         * driver will return a newly created print after enrollment succeeded.
+         * @param template_print a #FpPrint
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to call on completion
+         */
+        enroll(
+            template_print: Print,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Start an asynchronous operation to enroll a print. The callback will
+         * be called once the operation has finished. Retrieve the result with
+         * fp_device_enroll_finish().
+         *
+         * The `template_print` parameter is a #FpPrint with available metadata filled
+         * in and, optionally, with existing fingerprint data to be updated with newly
+         * enrolled fingerprints if a device driver supports it. The driver may make use
+         * of the metadata, when e.g. storing the print on device memory. It is undefined
+         * whether this print is filled in by the driver and returned, or whether the
+         * driver will return a newly created print after enrollment succeeded.
+         * @param template_print a #FpPrint
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to call on completion
          */
         enroll(
             template_print: Print,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Print> | void;
         /**
          * Finish an asynchronous operation to enroll a print. You should check
          * for an error of type %FP_DEVICE_RETRY to prompt the user again if there
@@ -677,13 +802,34 @@ export namespace FPrint {
          * fp_device_identify_finish().
          * @param prints #GPtrArray of #FpPrint
          * @param cancellable a #GCancellable, or %NULL
+         */
+        identify(prints: Print[], cancellable?: Gio.Cancellable | null): Promise<[void, Print | null, Print | null]>;
+        /**
+         * Start an asynchronous operation to identify prints. The callback will
+         * be called once the operation has finished. Retrieve the result with
+         * fp_device_identify_finish().
+         * @param prints #GPtrArray of #FpPrint
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to call on completion
+         */
+        identify(
+            prints: Print[],
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Start an asynchronous operation to identify prints. The callback will
+         * be called once the operation has finished. Retrieve the result with
+         * fp_device_identify_finish().
+         * @param prints #GPtrArray of #FpPrint
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to call on completion
          */
         identify(
             prints: Print[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[void, Print | null, Print | null]> | void;
         /**
          * Finish an asynchronous operation to identify a print. You should check
          * for an error of type %FP_DEVICE_RETRY to prompt the user again if there
@@ -711,9 +857,29 @@ export namespace FPrint {
          *
          * Retrieve the result with fp_device_list_prints_finish().
          * @param cancellable a #GCancellable, or %NULL
+         */
+        list_prints(cancellable?: Gio.Cancellable | null): Promise<Print[]>;
+        /**
+         * Start an asynchronous operation to list all prints stored on the device.
+         * This only makes sense on devices that store prints on-chip.
+         *
+         * Retrieve the result with fp_device_list_prints_finish().
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to call on completion
          */
-        list_prints(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        list_prints(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Start an asynchronous operation to list all prints stored on the device.
+         * This only makes sense on devices that store prints on-chip.
+         *
+         * Retrieve the result with fp_device_list_prints_finish().
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to call on completion
+         */
+        list_prints(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<Print[]> | void;
         /**
          * Finish an asynchronous operation to list all device stored prints.
          *
@@ -749,9 +915,33 @@ export namespace FPrint {
          * error). You must be ready to handle this before, during or after the
          * resume operation.
          * @param cancellable a #GCancellable, or %NULL, currently not used
+         */
+        resume(cancellable?: Gio.Cancellable | null): Promise<void>;
+        /**
+         * Resume device after system suspend. Retrieve the result with
+         * fp_device_suspend_finish().
+         *
+         * Note that it is not defined when any ongoing operation may return (success or
+         * error). You must be ready to handle this before, during or after the
+         * resume operation.
+         * @param cancellable a #GCancellable, or %NULL, currently not used
          * @param callback the function to call on completion
          */
-        resume(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        resume(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Resume device after system suspend. Retrieve the result with
+         * fp_device_suspend_finish().
+         *
+         * Note that it is not defined when any ongoing operation may return (success or
+         * error). You must be ready to handle this before, during or after the
+         * resume operation.
+         * @param cancellable a #GCancellable, or %NULL, currently not used
+         * @param callback the function to call on completion
+         */
+        resume(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<void> | void;
         /**
          * Finish an asynchronous operation to resume the device after suspend.
          * See fp_device_resume().
@@ -794,9 +984,51 @@ export namespace FPrint {
          * Any operation started while the device is suspended will fail with
          * #FP_DEVICE_ERROR_BUSY, this includes calls to open or close the device.
          * @param cancellable a #GCancellable, or %NULL, currently not used
+         */
+        suspend(cancellable?: Gio.Cancellable | null): Promise<void>;
+        /**
+         * Prepare the device for system suspend. Retrieve the result with
+         * fp_device_suspend_finish().
+         *
+         * The suspend method can be called at any time (even if the device is not
+         * opened) and must be paired with a corresponding resume call. It is undefined
+         * when or how any ongoing operation is finished. This call might wait for an
+         * ongoing operation to finish, might cancel the ongoing operation or may
+         * prepare the device so that the host is resumed when the operation can be
+         * finished.
+         *
+         * If an ongoing operation must be cancelled then it will complete with an error
+         * code of #FP_DEVICE_ERROR_BUSY before the suspend async routine finishes.
+         *
+         * Any operation started while the device is suspended will fail with
+         * #FP_DEVICE_ERROR_BUSY, this includes calls to open or close the device.
+         * @param cancellable a #GCancellable, or %NULL, currently not used
          * @param callback the function to call on completion
          */
-        suspend(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        suspend(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Prepare the device for system suspend. Retrieve the result with
+         * fp_device_suspend_finish().
+         *
+         * The suspend method can be called at any time (even if the device is not
+         * opened) and must be paired with a corresponding resume call. It is undefined
+         * when or how any ongoing operation is finished. This call might wait for an
+         * ongoing operation to finish, might cancel the ongoing operation or may
+         * prepare the device so that the host is resumed when the operation can be
+         * finished.
+         *
+         * If an ongoing operation must be cancelled then it will complete with an error
+         * code of #FP_DEVICE_ERROR_BUSY before the suspend async routine finishes.
+         *
+         * Any operation started while the device is suspended will fail with
+         * #FP_DEVICE_ERROR_BUSY, this includes calls to open or close the device.
+         * @param cancellable a #GCancellable, or %NULL, currently not used
+         * @param callback the function to call on completion
+         */
+        suspend(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<void> | void;
         /**
          * Finish an asynchronous operation to prepare the device for suspend.
          * See fp_device_suspend().
@@ -818,13 +1050,34 @@ export namespace FPrint {
          * fp_device_verify_finish().
          * @param enrolled_print a #FpPrint to verify
          * @param cancellable a #GCancellable, or %NULL
+         */
+        verify(enrolled_print: Print, cancellable?: Gio.Cancellable | null): Promise<[void, boolean, Print | null]>;
+        /**
+         * Start an asynchronous operation to verify a print. The callback will
+         * be called once the operation has finished. Retrieve the result with
+         * fp_device_verify_finish().
+         * @param enrolled_print a #FpPrint to verify
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to call on completion
+         */
+        verify(
+            enrolled_print: Print,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Start an asynchronous operation to verify a print. The callback will
+         * be called once the operation has finished. Retrieve the result with
+         * fp_device_verify_finish().
+         * @param enrolled_print a #FpPrint to verify
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to call on completion
          */
         verify(
             enrolled_print: Print,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[void, boolean, Print | null]> | void;
         /**
          * Finish an asynchronous operation to verify an enrolled print. You should check
          * for an error of type %FP_DEVICE_RETRY to prompt the user again if there
@@ -885,13 +1138,100 @@ export namespace FPrint {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -1390,9 +1730,23 @@ export namespace FPrint {
         /**
          * Detects the minutiae found in an image.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        detect_minutiae(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Detects the minutiae found in an image.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the function to call on completion
          */
-        detect_minutiae(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        detect_minutiae(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Detects the minutiae found in an image.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the function to call on completion
+         */
+        detect_minutiae(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finish minutiae detection in an image
          * @param result A #GAsyncResult
@@ -1515,13 +1869,100 @@ export namespace FPrint {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().

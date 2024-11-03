@@ -1358,9 +1358,31 @@ export namespace Shell {
          *
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
+         */
+        confirm_async(cancellable?: Gio.Cancellable | null): Promise<Gcr.PromptReply>;
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this method to
+         * represent the question correctly.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        confirm_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        confirm_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this method to
+         * represent the question correctly.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        confirm_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<Gcr.PromptReply> | void;
         /**
          * Complete an operation to prompt for confirmation.
          *
@@ -1501,9 +1523,29 @@ export namespace Shell {
          *
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
+         */
+        password_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        password_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        password_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        password_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<string> | void;
         /**
          * Complete an operation to prompt for a password.
          *
@@ -2168,11 +2210,103 @@ export namespace Shell {
 
         add_vpn_secret(request_id: string, setting_key: string, setting_value: string): void;
         respond(request_id: string, response: NetworkAgentResponse): void;
-        search_vpn_plugin(service: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        search_vpn_plugin(service: string): Promise<NM.VpnPluginInfo | null>;
+        search_vpn_plugin(service: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        search_vpn_plugin(
+            service: string,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<NM.VpnPluginInfo | null> | void;
         search_vpn_plugin_finish(result: Gio.AsyncResult): NM.VpnPluginInfo | null;
         set_password(request_id: string, setting_key: string, setting_value: string): void;
 
         // Inherited methods
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -2218,7 +2352,7 @@ export namespace Shell {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -3036,9 +3170,22 @@ export namespace Shell {
          * Picks the pixel at `x,` `y` and returns its color as #ClutterColor.
          * @param x The X coordinate to pick
          * @param y The Y coordinate to pick
+         */
+        pick_color(x: number, y: number): Promise<Clutter.Color>;
+        /**
+         * Picks the pixel at `x,` `y` and returns its color as #ClutterColor.
+         * @param x The X coordinate to pick
+         * @param y The Y coordinate to pick
          * @param callback function to call returning success or failure of the async grabbing
          */
-        pick_color(x: number, y: number, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        pick_color(x: number, y: number, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Picks the pixel at `x,` `y` and returns its color as #ClutterColor.
+         * @param x The X coordinate to pick
+         * @param y The Y coordinate to pick
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        pick_color(x: number, y: number, callback?: Gio.AsyncReadyCallback<this> | null): Promise<Clutter.Color> | void;
         /**
          * Finish the asynchronous operation started by shell_screenshot_pick_color()
          * and obtain its result.
@@ -3051,12 +3198,65 @@ export namespace Shell {
          * in `stream` as png image.
          * @param include_cursor Whether to include the cursor or not
          * @param stream The stream for the screenshot
+         */
+        screenshot(include_cursor: boolean, stream: Gio.OutputStream): Promise<Mtk.Rectangle>;
+        /**
+         * Takes a screenshot of the whole screen
+         * in `stream` as png image.
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        screenshot(
+            include_cursor: boolean,
+            stream: Gio.OutputStream,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Takes a screenshot of the whole screen
+         * in `stream` as png image.
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
          * @param callback function to call returning success or failure of the async grabbing
          */
         screenshot(
             include_cursor: boolean,
             stream: Gio.OutputStream,
             callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<Mtk.Rectangle> | void;
+        /**
+         * Takes a screenshot of the passed in area and saves it
+         * in `stream` as png image.
+         * @param x The X coordinate of the area
+         * @param y The Y coordinate of the area
+         * @param width The width of the area
+         * @param height The height of the area
+         * @param stream The stream for the screenshot
+         */
+        screenshot_area(
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+            stream: Gio.OutputStream,
+        ): Promise<Mtk.Rectangle>;
+        /**
+         * Takes a screenshot of the passed in area and saves it
+         * in `stream` as png image.
+         * @param x The X coordinate of the area
+         * @param y The Y coordinate of the area
+         * @param width The width of the area
+         * @param height The height of the area
+         * @param stream The stream for the screenshot
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        screenshot_area(
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+            stream: Gio.OutputStream,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Takes a screenshot of the passed in area and saves it
@@ -3075,7 +3275,7 @@ export namespace Shell {
             height: number,
             stream: Gio.OutputStream,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Mtk.Rectangle> | void;
         /**
          * Finish the asynchronous operation started by shell_screenshot_screenshot_area()
          * and obtain its result.
@@ -3092,9 +3292,22 @@ export namespace Shell {
         screenshot_finish(result: Gio.AsyncResult): [boolean, Mtk.Rectangle];
         /**
          * Takes a screenshot of the whole screen as #ClutterContent.
+         */
+        screenshot_stage_to_content(): Promise<
+            [Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number]
+        >;
+        /**
+         * Takes a screenshot of the whole screen as #ClutterContent.
          * @param callback function to call returning success or failure of the async grabbing
          */
-        screenshot_stage_to_content(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        screenshot_stage_to_content(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Takes a screenshot of the whole screen as #ClutterContent.
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        screenshot_stage_to_content(
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<[Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number]> | void;
         /**
          * Finish the asynchronous operation started by
          * shell_screenshot_screenshot_stage_to_content() and obtain its result.
@@ -3110,6 +3323,32 @@ export namespace Shell {
          * @param include_frame Whether to include the frame or not
          * @param include_cursor Whether to include the cursor or not
          * @param stream The stream for the screenshot
+         */
+        screenshot_window(
+            include_frame: boolean,
+            include_cursor: boolean,
+            stream: Gio.OutputStream,
+        ): Promise<Mtk.Rectangle>;
+        /**
+         * Takes a screenshot of the focused window (optionally omitting the frame)
+         * in `stream` as png image.
+         * @param include_frame Whether to include the frame or not
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        screenshot_window(
+            include_frame: boolean,
+            include_cursor: boolean,
+            stream: Gio.OutputStream,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Takes a screenshot of the focused window (optionally omitting the frame)
+         * in `stream` as png image.
+         * @param include_frame Whether to include the frame or not
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
          * @param callback function to call returning success or failure of the async grabbing
          */
         screenshot_window(
@@ -3117,7 +3356,7 @@ export namespace Shell {
             include_cursor: boolean,
             stream: Gio.OutputStream,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Mtk.Rectangle> | void;
         /**
          * Finish the asynchronous operation started by shell_screenshot_screenshot_window()
          * and obtain its result.

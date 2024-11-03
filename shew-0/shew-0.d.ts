@@ -86,7 +86,9 @@ export namespace Shew {
 
         // Methods
 
-        ['export'](callback?: Gio.AsyncReadyCallback<this> | null): void;
+        ['export'](): Promise<string>;
+        ['export'](callback: Gio.AsyncReadyCallback<this> | null): void;
+        ['export'](callback?: Gio.AsyncReadyCallback<this> | null): Promise<string> | void;
         export_finish(result: Gio.AsyncResult): string;
         unexport(handle: string): void;
     }

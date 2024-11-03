@@ -305,9 +305,33 @@ export namespace TrackerMiner {
          * This function will give a #GError if the miner is paused at the
          * time it is called.
          * @param cancellable a #GCancellable.
+         */
+        next(cancellable?: Gio.Cancellable | null): Promise<DecoratorInfo>;
+        /**
+         * Processes the next resource in the queue to have extended metadata
+         * extracted. If the item in the queue has been completed already, it
+         * signals it's completion instead.
+         *
+         * This function will give a #GError if the miner is paused at the
+         * time it is called.
+         * @param cancellable a #GCancellable.
          * @param callback a #GAsyncReadyCallback.
          */
-        next(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        next(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Processes the next resource in the queue to have extended metadata
+         * extracted. If the item in the queue has been completed already, it
+         * signals it's completion instead.
+         *
+         * This function will give a #GError if the miner is paused at the
+         * time it is called.
+         * @param cancellable a #GCancellable.
+         * @param callback a #GAsyncReadyCallback.
+         */
+        next(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<DecoratorInfo> | void;
         /**
          * Should be called in the callback function provided to
          * tracker_decorator_next() to return the result of the task be it an
@@ -3873,6 +3897,76 @@ export namespace TrackerMiner {
          * @param flags a set of #TrackerDirectoryFlags
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        begin_async(
+            url: Gio.File,
+            attributes: string,
+            flags: DirectoryFlags,
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Enumerator>;
+        /**
+         * Precisely the same operation as tracker_data_provider_begin()
+         * is performing, but asynchronously.
+         *
+         * When all i/o for the operation is finished the `callback` will be
+         * called with the requested information.
+         *
+         * See the documentation of #TrackerDataProvider for information about the
+         * order of returned files.
+         *
+         * In case of a partial error the callback will be called with any
+         * succeeding items and no error, and on the next request the error
+         * will be reported. If a request is cancelled the callback will be
+         * called with %G_IO_ERROR_CANCELLED.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param url a #GFile to enumerate
+         * @param attributes an attribute query string
+         * @param flags a set of #TrackerDirectoryFlags
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        begin_async(
+            url: Gio.File,
+            attributes: string,
+            flags: DirectoryFlags,
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Precisely the same operation as tracker_data_provider_begin()
+         * is performing, but asynchronously.
+         *
+         * When all i/o for the operation is finished the `callback` will be
+         * called with the requested information.
+         *
+         * See the documentation of #TrackerDataProvider for information about the
+         * order of returned files.
+         *
+         * In case of a partial error the callback will be called with any
+         * succeeding items and no error, and on the next request the error
+         * will be reported. If a request is cancelled the callback will be
+         * called with %G_IO_ERROR_CANCELLED.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param url a #GFile to enumerate
+         * @param attributes an attribute query string
+         * @param flags a set of #TrackerDirectoryFlags
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         begin_async(
@@ -3882,7 +3976,7 @@ export namespace TrackerMiner {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Enumerator> | void;
         /**
          * Finishes the asynchronous operation started with
          * tracker_data_provider_begin_async().
@@ -3933,6 +4027,64 @@ export namespace TrackerMiner {
          * @param enumerator a #TrackerEnumerator originally created by tracker_data_provider_begin().
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        end_async(enumerator: Enumerator, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Precisely the same operation as tracker_data_provider_end()
+         * is performing, but asynchronously.
+         *
+         * When all i/o for the operation is finished the `callback` will be
+         * called with the requested information.
+         *
+         * See the documentation of #TrackerDataProvider for information about the
+         * order of returned files.
+         *
+         * In case of a partial error the callback will be called with any
+         * succeeding items and no error, and on the next request the error
+         * will be reported. If a request is cancelled the callback will be
+         * called with %G_IO_ERROR_CANCELLED.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param enumerator a #TrackerEnumerator originally created by tracker_data_provider_begin().
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        end_async(
+            enumerator: Enumerator,
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Precisely the same operation as tracker_data_provider_end()
+         * is performing, but asynchronously.
+         *
+         * When all i/o for the operation is finished the `callback` will be
+         * called with the requested information.
+         *
+         * See the documentation of #TrackerDataProvider for information about the
+         * order of returned files.
+         *
+         * In case of a partial error the callback will be called with any
+         * succeeding items and no error, and on the next request the error
+         * will be reported. If a request is cancelled the callback will be
+         * called with %G_IO_ERROR_CANCELLED.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param enumerator a #TrackerEnumerator originally created by tracker_data_provider_begin().
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         end_async(
@@ -3940,7 +4092,7 @@ export namespace TrackerMiner {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the asynchronous operation started with
          * tracker_data_provider_end_async().
@@ -4118,13 +4270,62 @@ export namespace TrackerMiner {
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        next_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<any | null>;
+        /**
+         * Precisely the same operation as tracker_enumerator_next()
+         * is performing, but asynchronously.
+         *
+         * When all i/o for the operation is finished the `callback` will be
+         * called with the requested information.
+         *
+         * In case of a partial error the callback will be called with any
+         * succeeding items and no error, and on the next request the error
+         * will be reported. If a request is cancelled the callback will be
+         * called with %G_IO_ERROR_CANCELLED.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        next_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Precisely the same operation as tracker_enumerator_next()
+         * is performing, but asynchronously.
+         *
+         * When all i/o for the operation is finished the `callback` will be
+         * called with the requested information.
+         *
+         * In case of a partial error the callback will be called with any
+         * succeeding items and no error, and on the next request the error
+         * will be reported. If a request is cancelled the callback will be
+         * called with %G_IO_ERROR_CANCELLED.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         next_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<any | null> | void;
         /**
          * Finishes the asynchronous operation started with
          * tracker_enumerator_next_async().

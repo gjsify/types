@@ -1,6 +1,6 @@
 {
     "name": "@girs/modemmanager-1.0",
-    "version": "1.22.0-4.0.0-beta.16",
+    "version": "1.22.0-4.0.0-beta.17",
     "description": "GJS TypeScript type definitions for ModemManager-1.0, generated from library version 1.22.0",
     "type": "module",
     "module": "modemmanager-1.0.js",

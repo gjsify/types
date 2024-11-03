@@ -9808,6 +9808,36 @@ export namespace Gio {
          * @param count the number of bytes that will be read from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional [class@Gio.Cancellable] object
+         */
+        fill_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<number>;
+        /**
+         * Reads data into `stream'`s buffer asynchronously, up to `count` size.
+         * `io_priority` can be used to prioritize reads. For the synchronous
+         * version of this function, see [method`Gio`.BufferedInputStream.fill].
+         *
+         * If `count` is `-1` then the attempted read size is equal to the number
+         * of bytes that are required to fill the buffer.
+         * @param count the number of bytes that will be read from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional [class@Gio.Cancellable] object
+         * @param callback a [callback@Gio.AsyncReadyCallback]
+         */
+        fill_async(
+            count: number,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Reads data into `stream'`s buffer asynchronously, up to `count` size.
+         * `io_priority` can be used to prioritize reads. For the synchronous
+         * version of this function, see [method`Gio`.BufferedInputStream.fill].
+         *
+         * If `count` is `-1` then the attempted read size is equal to the number
+         * of bytes that are required to fill the buffer.
+         * @param count the number of bytes that will be read from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional [class@Gio.Cancellable] object
          * @param callback a [callback@Gio.AsyncReadyCallback]
          */
         fill_async(
@@ -9815,7 +9845,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous read.
          * @param result a [iface@Gio.AsyncResult]
@@ -11083,9 +11113,30 @@ export namespace Gio {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        load_async(size: number, cancellable?: Cancellable | null): Promise<[InputStream, string]>;
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * g_loadable_icon_load_finish(). For the synchronous, blocking
+         * version of this function, see g_loadable_icon_load().
+         * @param size an integer.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
-        load_async(size: number, cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        load_async(size: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * g_loadable_icon_load_finish(). For the synchronous, blocking
+         * version of this function, see g_loadable_icon_load().
+         * @param size an integer.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        load_async(
+            size: number,
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<[InputStream, string]> | void;
         /**
          * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
          * @param res a #GAsyncResult.
@@ -12712,13 +12763,48 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
+         */
+        close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Requests an asynchronous closes of the stream, releasing resources related to it.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_close_finish() to get the result of the
+         * operation.
+         *
+         * For behaviour details see g_input_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional cancellable object
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        close_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous closes of the stream, releasing resources related to it.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_close_finish() to get the result of the
+         * operation.
+         *
+         * For behaviour details see g_input_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
          * @param result a #GAsyncResult.
@@ -12798,13 +12884,48 @@ export namespace Gio {
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        read_all_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the
+         * buffer starting at `buffer`.
+         *
+         * This is the asynchronous equivalent of g_input_stream_read_all().
+         *
+         * Call g_input_stream_read_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_all_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): Uint8Array;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the
+         * buffer starting at `buffer`.
+         *
+         * This is the asynchronous equivalent of g_input_stream_read_all().
+         *
+         * Call g_input_stream_read_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_all_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): Uint8Array;
+        ): [Promise<number> | void, Uint8Array];
         /**
          * Finishes an asynchronous stream read operation started with
          * g_input_stream_read_all_async().
@@ -12845,13 +12966,74 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        read_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the buffer
+         * starting at `buffer`. When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_read_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed on `stream,` and will
+         * result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes read into the buffer will be passed to the
+         * callback. It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to read
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero),  but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value) will
+         * be executed before an outstanding request with lower priority. Default
+         * priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): Uint8Array;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the buffer
+         * starting at `buffer`. When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_read_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed on `stream,` and will
+         * result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes read into the buffer will be passed to the
+         * callback. It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to read
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero),  but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value) will
+         * be executed before an outstanding request with lower priority. Default
+         * priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): Uint8Array;
+        ): [Promise<number> | void, Uint8Array];
         /**
          * Like g_input_stream_read(), this tries to read `count` bytes from
          * the stream in a blocking fashion. However, rather than reading into
@@ -12905,6 +13087,64 @@ export namespace Gio {
          * @param count the number of bytes that will be read from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        read_bytes_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<GLib.Bytes>;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into a
+         * new #GBytes. When the operation is finished `callback` will be
+         * called. You can then call g_input_stream_read_bytes_finish() to get the
+         * result of the operation.
+         *
+         * During an async request no other sync and async calls are allowed
+         * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the new #GBytes will be passed to the callback. It is
+         * not an error if this is smaller than the requested size, as it can
+         * happen e.g. near the end of a file, but generally we try to read as
+         * many bytes as requested. Zero is returned on end of file (or if
+         * `count` is zero), but never otherwise.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param count the number of bytes that will be read from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_bytes_async(
+            count: number,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into a
+         * new #GBytes. When the operation is finished `callback` will be
+         * called. You can then call g_input_stream_read_bytes_finish() to get the
+         * result of the operation.
+         *
+         * During an async request no other sync and async calls are allowed
+         * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the new #GBytes will be passed to the callback. It is
+         * not an error if this is smaller than the requested size, as it can
+         * happen e.g. near the end of a file, but generally we try to read as
+         * many bytes as requested. Zero is returned on end of file (or if
+         * `count` is zero), but never otherwise.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param count the number of bytes that will be read from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_bytes_async(
@@ -12912,7 +13152,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Bytes> | void;
         /**
          * Finishes an asynchronous stream read-into-#GBytes operation.
          * @param result a #GAsyncResult.
@@ -12979,6 +13219,70 @@ export namespace Gio {
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        skip_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<number>;
+        /**
+         * Request an asynchronous skip of `count` bytes from the stream.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_skip_finish() to get the result
+         * of the operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes skipped will be passed to the callback.
+         * It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to skip
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero), but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value)
+         * will be executed before an outstanding request with lower priority.
+         * Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to
+         * implement asynchronicity, so they are optional for inheriting classes.
+         * However, if you override one, you must override all.
+         * @param count the number of bytes that will be skipped from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        skip_async(
+            count: number,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous skip of `count` bytes from the stream.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_skip_finish() to get the result
+         * of the operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes skipped will be passed to the callback.
+         * It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to skip
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero), but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value)
+         * will be executed before an outstanding request with lower priority.
+         * Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to
+         * implement asynchronicity, so they are optional for inheriting classes.
+         * However, if you override one, you must override all.
+         * @param count the number of bytes that will be skipped from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         skip_async(
@@ -12986,7 +13290,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes a stream skip operation.
          * @param result a #GAsyncResult.
@@ -13387,13 +13691,48 @@ export namespace Gio {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request.
          * @param cancellable optional cancellable object
+         */
+        close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Requests an asynchronous close of the stream, releasing resources
+         * related to it. When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_close_finish() to get
+         * the result of the operation.
+         *
+         * For behaviour details see g_output_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional cancellable object
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        close_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous close of the stream, releasing resources
+         * related to it. When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_close_finish() to get
+         * the result of the operation.
+         *
+         * For behaviour details see g_output_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Closes an output stream.
          * @param result a #GAsyncResult.
@@ -13424,13 +13763,42 @@ export namespace Gio {
          * result of the operation.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        flush_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Forces an asynchronous write of all user-space buffered data for
+         * the given `stream`.
+         * For behaviour details see g_output_stream_flush().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_flush_finish() to get the
+         * result of the operation.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        flush_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Forces an asynchronous write of all user-space buffered data for
+         * the given `stream`.
+         * For behaviour details see g_output_stream_flush().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_flush_finish() to get the
+         * result of the operation.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         flush_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes flushing an output stream.
          * @param result a GAsyncResult.
@@ -13482,6 +13850,46 @@ export namespace Gio {
          * @param flags a set of #GOutputStreamSpliceFlags.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        splice_async(
+            source: InputStream,
+            flags: OutputStreamSpliceFlags,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Splices a stream asynchronously.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_splice_finish() to get the
+         * result of the operation.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_splice().
+         * @param source a #GInputStream.
+         * @param flags a set of #GOutputStreamSpliceFlags.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        splice_async(
+            source: InputStream,
+            flags: OutputStreamSpliceFlags,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Splices a stream asynchronously.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_splice_finish() to get the
+         * result of the operation.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_splice().
+         * @param source a #GInputStream.
+         * @param flags a set of #GOutputStreamSpliceFlags.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         splice_async(
@@ -13490,7 +13898,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous stream splice operation.
          * @param result a #GAsyncResult.
@@ -13567,6 +13975,58 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write
          * @param io_priority the io priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        write_all_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_write_all().
+         *
+         * Call g_output_stream_write_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param buffer the buffer containing the data to write
+         * @param io_priority the io priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        write_all_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_write_all().
+         *
+         * Call g_output_stream_write_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param buffer the buffer containing the data to write
+         * @param io_priority the io priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_all_async(
@@ -13574,7 +14034,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous stream write operation started with
          * g_output_stream_write_all_async().
@@ -13629,6 +14089,98 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        write_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK - if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write().
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called. See g_output_stream_write_bytes_async()
+         * for a #GBytes version that will automatically hold a reference to
+         * the contents (without copying) for the duration of the call.
+         * @param buffer the buffer containing the data to write.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        write_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK - if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write().
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called. See g_output_stream_write_bytes_async()
+         * for a #GBytes version that will automatically hold a reference to
+         * the contents (without copying) for the duration of the call.
+         * @param buffer the buffer containing the data to write.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_async(
@@ -13636,7 +14188,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * A wrapper function for g_output_stream_write() which takes a
          * #GBytes as input.  This can be more convenient for use by language
@@ -13671,6 +14223,54 @@ export namespace Gio {
          * @param bytes The bytes to write
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        write_bytes_async(
+            bytes: GLib.Bytes | Uint8Array,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * This function is similar to g_output_stream_write_async(), but
+         * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
+         * this allows the stream to avoid taking a copy of the data.
+         *
+         * However, note that this function may still perform partial writes,
+         * just like g_output_stream_write_async(). If that occurs, to continue
+         * writing, you will need to create a new #GBytes containing just the
+         * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
+         * #GBytes instance multiple times potentially can result in duplicated
+         * data in the output stream.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write_bytes().
+         * @param bytes The bytes to write
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        write_bytes_async(
+            bytes: GLib.Bytes | Uint8Array,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * This function is similar to g_output_stream_write_async(), but
+         * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
+         * this allows the stream to avoid taking a copy of the data.
+         *
+         * However, note that this function may still perform partial writes,
+         * just like g_output_stream_write_async(). If that occurs, to continue
+         * writing, you will need to create a new #GBytes containing just the
+         * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
+         * #GBytes instance multiple times potentially can result in duplicated
+         * data in the output stream.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write_bytes().
+         * @param bytes The bytes to write
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         write_bytes_async(
@@ -13678,7 +14278,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes a stream write-from-#GBytes operation.
          * @param result a #GAsyncResult.
@@ -13768,6 +14368,60 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        writev_all_async(
+            vectors: OutputVector[],
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_writev_all().
+         *
+         * Call g_output_stream_writev_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called. The content of the individual elements
+         * of `vectors` might be changed by this function.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        writev_all_async(
+            vectors: OutputVector[],
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_writev_all().
+         *
+         * Call g_output_stream_writev_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called. The content of the individual elements
+         * of `vectors` might be changed by this function.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_all_async(
@@ -13775,7 +14429,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous stream write operation started with
          * g_output_stream_writev_all_async().
@@ -13825,6 +14479,84 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        writev_async(vectors: OutputVector[], io_priority: number, cancellable?: Cancellable | null): Promise<number>;
+        /**
+         * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK — if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_writev().
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        writev_async(
+            vectors: OutputVector[],
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK — if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_writev().
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_async(
@@ -13832,7 +14564,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes a stream writev operation.
          * @param result a #GAsyncResult.
@@ -14152,7 +14884,7 @@ export namespace Gio {
          * about the UNIX process ID.
          * @returns The UNIX process ID, or `-1` if @error is set.
          */
-        get_unix_pid(): number;
+        get_unix_pid(): never;
         /**
          * Tries to get the UNIX user identifier from `credentials`. This
          * method is only available on UNIX platforms.
@@ -14162,7 +14894,7 @@ export namespace Gio {
          * about the UNIX user.
          * @returns The UNIX user identifier or `-1` if @error is set.
          */
-        get_unix_user(): number;
+        get_unix_user(): never;
         /**
          * Checks if `credentials` and `other_credentials` is the same user.
          *
@@ -14194,7 +14926,7 @@ export namespace Gio {
          * @param uid The UNIX user identifier to set.
          * @returns %TRUE if @uid was set, %FALSE if error is set.
          */
-        set_unix_user(uid: number): boolean;
+        set_unix_user(uid: never): boolean;
         /**
          * Creates a human-readable textual representation of `credentials`
          * that can be used in logging and debug messages. The format of the
@@ -15672,6 +16404,146 @@ export namespace Gio {
          * @param flags flags from the #GDBusCallFlags enumeration
          * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or %G_MAXINT for no timeout
          * @param cancellable a #GCancellable or %NULL
+         */
+        call<T extends string = any>(
+            bus_name: string | null,
+            object_path: string,
+            interface_name: string,
+            method_name: string,
+            parameters: GLib.Variant | null,
+            reply_type: GLib.VariantType<T> | null,
+            flags: DBusCallFlags,
+            timeout_msec: number,
+            cancellable?: Cancellable | null,
+        ): Promise<GLib.Variant<T>>;
+        /**
+         * Asynchronously invokes the `method_name` method on the
+         * `interface_name` D-Bus interface on the remote object at
+         * `object_path` owned by `bus_name`.
+         *
+         * If `connection` is closed then the operation will fail with
+         * %G_IO_ERROR_CLOSED. If `cancellable` is canceled, the operation will
+         * fail with %G_IO_ERROR_CANCELLED. If `parameters` contains a value
+         * not compatible with the D-Bus protocol, the operation fails with
+         * %G_IO_ERROR_INVALID_ARGUMENT.
+         *
+         * If `reply_type` is non-%NULL then the reply will be checked for having this type and an
+         * error will be raised if it does not match.  Said another way, if you give a `reply_type`
+         * then any non-%NULL return value will be of this type. Unless it’s
+         * %G_VARIANT_TYPE_UNIT, the `reply_type` will be a tuple containing one or more
+         * values.
+         *
+         * If the `parameters` #GVariant is floating, it is consumed. This allows
+         * convenient 'inline' use of g_variant_new(), e.g.:
+         *
+         * ```c
+         *  g_dbus_connection_call (connection,
+         *                          "org.freedesktop.StringThings",
+         *                          "/org/freedesktop/StringThings",
+         *                          "org.freedesktop.StringThings",
+         *                          "TwoStrings",
+         *                          g_variant_new ("(ss)",
+         *                                         "Thing One",
+         *                                         "Thing Two"),
+         *                          NULL,
+         *                          G_DBUS_CALL_FLAGS_NONE,
+         *                          -1,
+         *                          NULL,
+         *                          (GAsyncReadyCallback) two_strings_done,
+         *                          NULL);
+         * ```
+         *
+         *
+         * This is an asynchronous method. When the operation is finished,
+         * `callback` will be invoked in the
+         * [thread-default main context][g-main-context-push-thread-default]
+         * of the thread you are calling this method from. You can then call
+         * g_dbus_connection_call_finish() to get the result of the operation.
+         * See g_dbus_connection_call_sync() for the synchronous version of this
+         * function.
+         *
+         * If `callback` is %NULL then the D-Bus method call message will be sent with
+         * the %G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED flag set.
+         * @param bus_name a unique or well-known bus name or %NULL if     @connection is not a message bus connection
+         * @param object_path path of remote object
+         * @param interface_name D-Bus interface to invoke method on
+         * @param method_name the name of the method to invoke
+         * @param parameters a #GVariant tuple with parameters for the method     or %NULL if not passing parameters
+         * @param reply_type the expected type of the reply (which will be a     tuple), or %NULL
+         * @param flags flags from the #GDBusCallFlags enumeration
+         * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or %G_MAXINT for no timeout
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request     is satisfied or %NULL if you don't care about the result of the     method invocation
+         */
+        call<T extends string = any>(
+            bus_name: string | null,
+            object_path: string,
+            interface_name: string,
+            method_name: string,
+            parameters: GLib.Variant | null,
+            reply_type: GLib.VariantType<T> | null,
+            flags: DBusCallFlags,
+            timeout_msec: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the `method_name` method on the
+         * `interface_name` D-Bus interface on the remote object at
+         * `object_path` owned by `bus_name`.
+         *
+         * If `connection` is closed then the operation will fail with
+         * %G_IO_ERROR_CLOSED. If `cancellable` is canceled, the operation will
+         * fail with %G_IO_ERROR_CANCELLED. If `parameters` contains a value
+         * not compatible with the D-Bus protocol, the operation fails with
+         * %G_IO_ERROR_INVALID_ARGUMENT.
+         *
+         * If `reply_type` is non-%NULL then the reply will be checked for having this type and an
+         * error will be raised if it does not match.  Said another way, if you give a `reply_type`
+         * then any non-%NULL return value will be of this type. Unless it’s
+         * %G_VARIANT_TYPE_UNIT, the `reply_type` will be a tuple containing one or more
+         * values.
+         *
+         * If the `parameters` #GVariant is floating, it is consumed. This allows
+         * convenient 'inline' use of g_variant_new(), e.g.:
+         *
+         * ```c
+         *  g_dbus_connection_call (connection,
+         *                          "org.freedesktop.StringThings",
+         *                          "/org/freedesktop/StringThings",
+         *                          "org.freedesktop.StringThings",
+         *                          "TwoStrings",
+         *                          g_variant_new ("(ss)",
+         *                                         "Thing One",
+         *                                         "Thing Two"),
+         *                          NULL,
+         *                          G_DBUS_CALL_FLAGS_NONE,
+         *                          -1,
+         *                          NULL,
+         *                          (GAsyncReadyCallback) two_strings_done,
+         *                          NULL);
+         * ```
+         *
+         *
+         * This is an asynchronous method. When the operation is finished,
+         * `callback` will be invoked in the
+         * [thread-default main context][g-main-context-push-thread-default]
+         * of the thread you are calling this method from. You can then call
+         * g_dbus_connection_call_finish() to get the result of the operation.
+         * See g_dbus_connection_call_sync() for the synchronous version of this
+         * function.
+         *
+         * If `callback` is %NULL then the D-Bus method call message will be sent with
+         * the %G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED flag set.
+         * @param bus_name a unique or well-known bus name or %NULL if     @connection is not a message bus connection
+         * @param object_path path of remote object
+         * @param interface_name D-Bus interface to invoke method on
+         * @param method_name the name of the method to invoke
+         * @param parameters a #GVariant tuple with parameters for the method     or %NULL if not passing parameters
+         * @param reply_type the expected type of the reply (which will be a     tuple), or %NULL
+         * @param flags flags from the #GDBusCallFlags enumeration
+         * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or %G_MAXINT for no timeout
+         * @param cancellable a #GCancellable or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request     is satisfied or %NULL if you don't care about the result of the     method invocation
          */
         call<T extends string = any>(
@@ -15685,7 +16557,7 @@ export namespace Gio {
             timeout_msec: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Variant<T>> | void;
         /**
          * Finishes an operation started with g_dbus_connection_call().
          * @param res a #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_connection_call()
@@ -15779,6 +16651,86 @@ export namespace Gio {
          * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or %G_MAXINT for no timeout
          * @param fd_list a #GUnixFDList or %NULL
          * @param cancellable a #GCancellable or %NULL
+         */
+        call_with_unix_fd_list(
+            bus_name: string | null,
+            object_path: string,
+            interface_name: string,
+            method_name: string,
+            parameters: GLib.Variant | null,
+            reply_type: GLib.VariantType | null,
+            flags: DBusCallFlags,
+            timeout_msec: number,
+            fd_list?: UnixFDList | null,
+            cancellable?: Cancellable | null,
+        ): Promise<[GLib.Variant, UnixFDList | null]>;
+        /**
+         * Like g_dbus_connection_call() but also takes a #GUnixFDList object.
+         *
+         * The file descriptors normally correspond to %G_VARIANT_TYPE_HANDLE
+         * values in the body of the message. For example, if a message contains
+         * two file descriptors, `fd_list` would have length 2, and
+         * `g_variant_new_handle (0)` and `g_variant_new_handle (1)` would appear
+         * somewhere in the body of the message (not necessarily in that order!)
+         * to represent the file descriptors at indexes 0 and 1 respectively.
+         *
+         * When designing D-Bus APIs that are intended to be interoperable,
+         * please note that non-GDBus implementations of D-Bus can usually only
+         * access file descriptors if they are referenced in this way by a
+         * value of type %G_VARIANT_TYPE_HANDLE in the body of the message.
+         *
+         * This method is only available on UNIX.
+         * @param bus_name a unique or well-known bus name or %NULL if     @connection is not a message bus connection
+         * @param object_path path of remote object
+         * @param interface_name D-Bus interface to invoke method on
+         * @param method_name the name of the method to invoke
+         * @param parameters a #GVariant tuple with parameters for the method     or %NULL if not passing parameters
+         * @param reply_type the expected type of the reply, or %NULL
+         * @param flags flags from the #GDBusCallFlags enumeration
+         * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or %G_MAXINT for no timeout
+         * @param fd_list a #GUnixFDList or %NULL
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is     satisfied or %NULL if you don't * care about the result of the     method invocation
+         */
+        call_with_unix_fd_list(
+            bus_name: string | null,
+            object_path: string,
+            interface_name: string,
+            method_name: string,
+            parameters: GLib.Variant | null,
+            reply_type: GLib.VariantType | null,
+            flags: DBusCallFlags,
+            timeout_msec: number,
+            fd_list: UnixFDList | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Like g_dbus_connection_call() but also takes a #GUnixFDList object.
+         *
+         * The file descriptors normally correspond to %G_VARIANT_TYPE_HANDLE
+         * values in the body of the message. For example, if a message contains
+         * two file descriptors, `fd_list` would have length 2, and
+         * `g_variant_new_handle (0)` and `g_variant_new_handle (1)` would appear
+         * somewhere in the body of the message (not necessarily in that order!)
+         * to represent the file descriptors at indexes 0 and 1 respectively.
+         *
+         * When designing D-Bus APIs that are intended to be interoperable,
+         * please note that non-GDBus implementations of D-Bus can usually only
+         * access file descriptors if they are referenced in this way by a
+         * value of type %G_VARIANT_TYPE_HANDLE in the body of the message.
+         *
+         * This method is only available on UNIX.
+         * @param bus_name a unique or well-known bus name or %NULL if     @connection is not a message bus connection
+         * @param object_path path of remote object
+         * @param interface_name D-Bus interface to invoke method on
+         * @param method_name the name of the method to invoke
+         * @param parameters a #GVariant tuple with parameters for the method     or %NULL if not passing parameters
+         * @param reply_type the expected type of the reply, or %NULL
+         * @param flags flags from the #GDBusCallFlags enumeration
+         * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or %G_MAXINT for no timeout
+         * @param fd_list a #GUnixFDList or %NULL
+         * @param cancellable a #GCancellable or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is     satisfied or %NULL if you don't * care about the result of the     method invocation
          */
         call_with_unix_fd_list(
@@ -15793,7 +16745,7 @@ export namespace Gio {
             fd_list?: UnixFDList | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[GLib.Variant, UnixFDList | null]> | void;
         /**
          * Finishes an operation started with g_dbus_connection_call_with_unix_fd_list().
          *
@@ -15867,9 +16819,66 @@ export namespace Gio {
          * operation. See g_dbus_connection_close_sync() for the synchronous
          * version.
          * @param cancellable a #GCancellable or %NULL
+         */
+        close(cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Closes `connection`. Note that this never causes the process to
+         * exit (this might only happen if the other end of a shared message
+         * bus connection disconnects, see #GDBusConnection:exit-on-close).
+         *
+         * Once the connection is closed, operations such as sending a message
+         * will return with the error %G_IO_ERROR_CLOSED. Closing a connection
+         * will not automatically flush the connection so queued messages may
+         * be lost. Use g_dbus_connection_flush() if you need such guarantees.
+         *
+         * If `connection` is already closed, this method fails with
+         * %G_IO_ERROR_CLOSED.
+         *
+         * When `connection` has been closed, the #GDBusConnection::closed
+         * signal is emitted in the
+         * [thread-default main context][g-main-context-push-thread-default]
+         * of the thread that `connection` was constructed in.
+         *
+         * This is an asynchronous method. When the operation is finished,
+         * `callback` will be invoked in the
+         * [thread-default main context][g-main-context-push-thread-default]
+         * of the thread you are calling this method from. You can
+         * then call g_dbus_connection_close_finish() to get the result of the
+         * operation. See g_dbus_connection_close_sync() for the synchronous
+         * version.
+         * @param cancellable a #GCancellable or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is     satisfied or %NULL if you don't care about the result
          */
-        close(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        close(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Closes `connection`. Note that this never causes the process to
+         * exit (this might only happen if the other end of a shared message
+         * bus connection disconnects, see #GDBusConnection:exit-on-close).
+         *
+         * Once the connection is closed, operations such as sending a message
+         * will return with the error %G_IO_ERROR_CLOSED. Closing a connection
+         * will not automatically flush the connection so queued messages may
+         * be lost. Use g_dbus_connection_flush() if you need such guarantees.
+         *
+         * If `connection` is already closed, this method fails with
+         * %G_IO_ERROR_CLOSED.
+         *
+         * When `connection` has been closed, the #GDBusConnection::closed
+         * signal is emitted in the
+         * [thread-default main context][g-main-context-push-thread-default]
+         * of the thread that `connection` was constructed in.
+         *
+         * This is an asynchronous method. When the operation is finished,
+         * `callback` will be invoked in the
+         * [thread-default main context][g-main-context-push-thread-default]
+         * of the thread you are calling this method from. You can
+         * then call g_dbus_connection_close_finish() to get the result of the
+         * operation. See g_dbus_connection_close_sync() for the synchronous
+         * version.
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is     satisfied or %NULL if you don't care about the result
+         */
+        close(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes an operation started with g_dbus_connection_close().
          * @param res a #GAsyncResult obtained from the #GAsyncReadyCallback passed     to g_dbus_connection_close()
@@ -15972,9 +16981,46 @@ export namespace Gio {
          * operation. See g_dbus_connection_flush_sync() for the synchronous
          * version.
          * @param cancellable a #GCancellable or %NULL
+         */
+        flush(cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously flushes `connection,` that is, writes all queued
+         * outgoing message to the transport and then flushes the transport
+         * (using g_output_stream_flush_async()). This is useful in programs
+         * that wants to emit a D-Bus signal and then exit immediately. Without
+         * flushing the connection, there is no guaranteed that the message has
+         * been sent to the networking buffers in the OS kernel.
+         *
+         * This is an asynchronous method. When the operation is finished,
+         * `callback` will be invoked in the
+         * [thread-default main context][g-main-context-push-thread-default]
+         * of the thread you are calling this method from. You can
+         * then call g_dbus_connection_flush_finish() to get the result of the
+         * operation. See g_dbus_connection_flush_sync() for the synchronous
+         * version.
+         * @param cancellable a #GCancellable or %NULL
          * @param callback a #GAsyncReadyCallback to call when the     request is satisfied or %NULL if you don't care about the result
          */
-        flush(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        flush(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously flushes `connection,` that is, writes all queued
+         * outgoing message to the transport and then flushes the transport
+         * (using g_output_stream_flush_async()). This is useful in programs
+         * that wants to emit a D-Bus signal and then exit immediately. Without
+         * flushing the connection, there is no guaranteed that the message has
+         * been sent to the networking buffers in the OS kernel.
+         *
+         * This is an asynchronous method. When the operation is finished,
+         * `callback` will be invoked in the
+         * [thread-default main context][g-main-context-push-thread-default]
+         * of the thread you are calling this method from. You can
+         * then call g_dbus_connection_flush_finish() to get the result of the
+         * operation. See g_dbus_connection_flush_sync() for the synchronous
+         * version.
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the     request is satisfied or %NULL if you don't care about the result
+         */
+        flush(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes an operation started with g_dbus_connection_flush().
          * @param res a #GAsyncResult obtained from the #GAsyncReadyCallback passed     to g_dbus_connection_flush()
@@ -16244,6 +17290,90 @@ export namespace Gio {
          * @param flags flags affecting how the message is sent
          * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or %G_MAXINT for no timeout
          * @param cancellable a #GCancellable or %NULL
+         */
+        send_message_with_reply(
+            message: DBusMessage,
+            flags: DBusSendMessageFlags,
+            timeout_msec: number,
+            cancellable?: Cancellable | null,
+        ): [Promise<DBusMessage>, number];
+        /**
+         * Asynchronously sends `message` to the peer represented by `connection`.
+         *
+         * Unless `flags` contain the
+         * %G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL flag, the serial number
+         * will be assigned by `connection` and set on `message` via
+         * g_dbus_message_set_serial(). If `out_serial` is not %NULL, then the
+         * serial number used will be written to this location prior to
+         * submitting the message to the underlying transport. While it has a `volatile`
+         * qualifier, this is a historical artifact and the argument passed to it should
+         * not be `volatile`.
+         *
+         * If `connection` is closed then the operation will fail with
+         * %G_IO_ERROR_CLOSED. If `cancellable` is canceled, the operation will
+         * fail with %G_IO_ERROR_CANCELLED. If `message` is not well-formed,
+         * the operation fails with %G_IO_ERROR_INVALID_ARGUMENT.
+         *
+         * This is an asynchronous method. When the operation is finished, `callback`
+         * will be invoked in the
+         * [thread-default main context][g-main-context-push-thread-default]
+         * of the thread you are calling this method from. You can then call
+         * g_dbus_connection_send_message_with_reply_finish() to get the result of the operation.
+         * See g_dbus_connection_send_message_with_reply_sync() for the synchronous version.
+         *
+         * Note that `message` must be unlocked, unless `flags` contain the
+         * %G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL flag.
+         *
+         * See this [server][gdbus-server] and [client][gdbus-unix-fd-client]
+         * for an example of how to use this low-level API to send and receive
+         * UNIX file descriptors.
+         * @param message a #GDBusMessage
+         * @param flags flags affecting how the message is sent
+         * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or %G_MAXINT for no timeout
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request     is satisfied or %NULL if you don't care about the result
+         */
+        send_message_with_reply(
+            message: DBusMessage,
+            flags: DBusSendMessageFlags,
+            timeout_msec: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): number;
+        /**
+         * Asynchronously sends `message` to the peer represented by `connection`.
+         *
+         * Unless `flags` contain the
+         * %G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL flag, the serial number
+         * will be assigned by `connection` and set on `message` via
+         * g_dbus_message_set_serial(). If `out_serial` is not %NULL, then the
+         * serial number used will be written to this location prior to
+         * submitting the message to the underlying transport. While it has a `volatile`
+         * qualifier, this is a historical artifact and the argument passed to it should
+         * not be `volatile`.
+         *
+         * If `connection` is closed then the operation will fail with
+         * %G_IO_ERROR_CLOSED. If `cancellable` is canceled, the operation will
+         * fail with %G_IO_ERROR_CANCELLED. If `message` is not well-formed,
+         * the operation fails with %G_IO_ERROR_INVALID_ARGUMENT.
+         *
+         * This is an asynchronous method. When the operation is finished, `callback`
+         * will be invoked in the
+         * [thread-default main context][g-main-context-push-thread-default]
+         * of the thread you are calling this method from. You can then call
+         * g_dbus_connection_send_message_with_reply_finish() to get the result of the operation.
+         * See g_dbus_connection_send_message_with_reply_sync() for the synchronous version.
+         *
+         * Note that `message` must be unlocked, unless `flags` contain the
+         * %G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL flag.
+         *
+         * See this [server][gdbus-server] and [client][gdbus-unix-fd-client]
+         * for an example of how to use this low-level API to send and receive
+         * UNIX file descriptors.
+         * @param message a #GDBusMessage
+         * @param flags flags affecting how the message is sent
+         * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or %G_MAXINT for no timeout
+         * @param cancellable a #GCancellable or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request     is satisfied or %NULL if you don't care about the result
          */
         send_message_with_reply(
@@ -16252,7 +17382,7 @@ export namespace Gio {
             timeout_msec: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): number;
+        ): [Promise<DBusMessage> | void, number];
         /**
          * Finishes an operation started with g_dbus_connection_send_message_with_reply().
          *
@@ -16505,13 +17635,100 @@ export namespace Gio {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -18705,13 +19922,100 @@ export namespace Gio {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -21422,6 +22726,124 @@ export namespace Gio {
          * @param flags Flags from the #GDBusCallFlags enumeration.
          * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call(
+            method_name: string,
+            parameters: GLib.Variant | null,
+            flags: DBusCallFlags,
+            timeout_msec: number,
+            cancellable?: Cancellable | null,
+        ): Promise<GLib.Variant>;
+        /**
+         * Asynchronously invokes the `method_name` method on `proxy`.
+         *
+         * If `method_name` contains any dots, then `name` is split into interface and
+         * method name parts. This allows using `proxy` for invoking methods on
+         * other interfaces.
+         *
+         * If the #GDBusConnection associated with `proxy` is closed then
+         * the operation will fail with %G_IO_ERROR_CLOSED. If
+         * `cancellable` is canceled, the operation will fail with
+         * %G_IO_ERROR_CANCELLED. If `parameters` contains a value not
+         * compatible with the D-Bus protocol, the operation fails with
+         * %G_IO_ERROR_INVALID_ARGUMENT.
+         *
+         * If the `parameters` #GVariant is floating, it is consumed. This allows
+         * convenient 'inline' use of g_variant_new(), e.g.:
+         *
+         * ```c
+         *  g_dbus_proxy_call (proxy,
+         *                     "TwoStrings",
+         *                     g_variant_new ("(ss)",
+         *                                    "Thing One",
+         *                                    "Thing Two"),
+         *                     G_DBUS_CALL_FLAGS_NONE,
+         *                     -1,
+         *                     NULL,
+         *                     (GAsyncReadyCallback) two_strings_done,
+         *                     &data);
+         * ```
+         *
+         *
+         * If `proxy` has an expected interface (see
+         * #GDBusProxy:g-interface-info) and `method_name` is referenced by it,
+         * then the return value is checked against the return type.
+         *
+         * This is an asynchronous method. When the operation is finished,
+         * `callback` will be invoked in the
+         * [thread-default main context][g-main-context-push-thread-default]
+         * of the thread you are calling this method from.
+         * You can then call g_dbus_proxy_call_finish() to get the result of
+         * the operation. See g_dbus_proxy_call_sync() for the synchronous
+         * version of this method.
+         *
+         * If `callback` is %NULL then the D-Bus method call message will be sent with
+         * the %G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED flag set.
+         * @param method_name Name of method to invoke.
+         * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+         * @param flags Flags from the #GDBusCallFlags enumeration.
+         * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        call(
+            method_name: string,
+            parameters: GLib.Variant | null,
+            flags: DBusCallFlags,
+            timeout_msec: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously invokes the `method_name` method on `proxy`.
+         *
+         * If `method_name` contains any dots, then `name` is split into interface and
+         * method name parts. This allows using `proxy` for invoking methods on
+         * other interfaces.
+         *
+         * If the #GDBusConnection associated with `proxy` is closed then
+         * the operation will fail with %G_IO_ERROR_CLOSED. If
+         * `cancellable` is canceled, the operation will fail with
+         * %G_IO_ERROR_CANCELLED. If `parameters` contains a value not
+         * compatible with the D-Bus protocol, the operation fails with
+         * %G_IO_ERROR_INVALID_ARGUMENT.
+         *
+         * If the `parameters` #GVariant is floating, it is consumed. This allows
+         * convenient 'inline' use of g_variant_new(), e.g.:
+         *
+         * ```c
+         *  g_dbus_proxy_call (proxy,
+         *                     "TwoStrings",
+         *                     g_variant_new ("(ss)",
+         *                                    "Thing One",
+         *                                    "Thing Two"),
+         *                     G_DBUS_CALL_FLAGS_NONE,
+         *                     -1,
+         *                     NULL,
+         *                     (GAsyncReadyCallback) two_strings_done,
+         *                     &data);
+         * ```
+         *
+         *
+         * If `proxy` has an expected interface (see
+         * #GDBusProxy:g-interface-info) and `method_name` is referenced by it,
+         * then the return value is checked against the return type.
+         *
+         * This is an asynchronous method. When the operation is finished,
+         * `callback` will be invoked in the
+         * [thread-default main context][g-main-context-push-thread-default]
+         * of the thread you are calling this method from.
+         * You can then call g_dbus_proxy_call_finish() to get the result of
+         * the operation. See g_dbus_proxy_call_sync() for the synchronous
+         * version of this method.
+         *
+         * If `callback` is %NULL then the D-Bus method call message will be sent with
+         * the %G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED flag set.
+         * @param method_name Name of method to invoke.
+         * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+         * @param flags Flags from the #GDBusCallFlags enumeration.
+         * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
         call(
@@ -21431,7 +22853,7 @@ export namespace Gio {
             timeout_msec: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Variant> | void;
         /**
          * Finishes an operation started with g_dbus_proxy_call().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call().
@@ -21499,6 +22921,46 @@ export namespace Gio {
          * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
          * @param fd_list A #GUnixFDList or %NULL.
          * @param cancellable A #GCancellable or %NULL.
+         */
+        call_with_unix_fd_list(
+            method_name: string,
+            parameters: GLib.Variant | null,
+            flags: DBusCallFlags,
+            timeout_msec: number,
+            fd_list?: UnixFDList | null,
+            cancellable?: Cancellable | null,
+        ): Promise<[GLib.Variant, UnixFDList | null]>;
+        /**
+         * Like g_dbus_proxy_call() but also takes a #GUnixFDList object.
+         *
+         * This method is only available on UNIX.
+         * @param method_name Name of method to invoke.
+         * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+         * @param flags Flags from the #GDBusCallFlags enumeration.
+         * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+         * @param fd_list A #GUnixFDList or %NULL.
+         * @param cancellable A #GCancellable or %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         */
+        call_with_unix_fd_list(
+            method_name: string,
+            parameters: GLib.Variant | null,
+            flags: DBusCallFlags,
+            timeout_msec: number,
+            fd_list: UnixFDList | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Like g_dbus_proxy_call() but also takes a #GUnixFDList object.
+         *
+         * This method is only available on UNIX.
+         * @param method_name Name of method to invoke.
+         * @param parameters A #GVariant tuple with parameters for the signal or %NULL if not passing parameters.
+         * @param flags Flags from the #GDBusCallFlags enumeration.
+         * @param timeout_msec The timeout in milliseconds (with %G_MAXINT meaning                "infinite") or -1 to use the proxy default timeout.
+         * @param fd_list A #GUnixFDList or %NULL.
+         * @param cancellable A #GCancellable or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
          */
         call_with_unix_fd_list(
@@ -21509,7 +22971,7 @@ export namespace Gio {
             fd_list?: UnixFDList | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[GLib.Variant, UnixFDList | null]> | void;
         /**
          * Finishes an operation started with g_dbus_proxy_call_with_unix_fd_list().
          * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call_with_unix_fd_list().
@@ -21704,13 +23166,100 @@ export namespace Gio {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -23059,13 +24608,40 @@ export namespace Gio {
          * the result of the operation.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        read_line_async(io_priority: number, cancellable?: Cancellable | null): Promise<[Uint8Array | null, number]>;
+        /**
+         * The asynchronous version of g_data_input_stream_read_line().  It is
+         * an error to have two outstanding calls to this function.
+         *
+         * When the operation is finished, `callback` will be called. You
+         * can then call g_data_input_stream_read_line_finish() to get
+         * the result of the operation.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback callback to call when the request is satisfied.
+         */
+        read_line_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * The asynchronous version of g_data_input_stream_read_line().  It is
+         * an error to have two outstanding calls to this function.
+         *
+         * When the operation is finished, `callback` will be called. You
+         * can then call g_data_input_stream_read_line_finish() to get
+         * the result of the operation.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback callback to call when the request is satisfied.
          */
         read_line_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[Uint8Array | null, number]> | void;
         /**
          * Finish an asynchronous call started by
          * g_data_input_stream_read_line_async().  Note the warning about
@@ -23163,6 +24739,58 @@ export namespace Gio {
          * @param stop_chars characters to terminate the read.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        read_until_async(
+            stop_chars: string,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<[string, number]>;
+        /**
+         * The asynchronous version of g_data_input_stream_read_until().
+         * It is an error to have two outstanding calls to this function.
+         *
+         * Note that, in contrast to g_data_input_stream_read_until(),
+         * this function does not consume the stop character that it finds.  You
+         * must read it for yourself.
+         *
+         * When the operation is finished, `callback` will be called. You
+         * can then call g_data_input_stream_read_until_finish() to get
+         * the result of the operation.
+         *
+         * Don't use this function in new code.  Its functionality is
+         * inconsistent with g_data_input_stream_read_until().  Both functions
+         * will be marked as deprecated in a future release.  Use
+         * g_data_input_stream_read_upto_async() instead.
+         * @param stop_chars characters to terminate the read.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback callback to call when the request is satisfied.
+         */
+        read_until_async(
+            stop_chars: string,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * The asynchronous version of g_data_input_stream_read_until().
+         * It is an error to have two outstanding calls to this function.
+         *
+         * Note that, in contrast to g_data_input_stream_read_until(),
+         * this function does not consume the stop character that it finds.  You
+         * must read it for yourself.
+         *
+         * When the operation is finished, `callback` will be called. You
+         * can then call g_data_input_stream_read_until_finish() to get
+         * the result of the operation.
+         *
+         * Don't use this function in new code.  Its functionality is
+         * inconsistent with g_data_input_stream_read_until().  Both functions
+         * will be marked as deprecated in a future release.  Use
+         * g_data_input_stream_read_upto_async() instead.
+         * @param stop_chars characters to terminate the read.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback callback to call when the request is satisfied.
          */
         read_until_async(
@@ -23170,7 +24798,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[string, number]> | void;
         /**
          * Finish an asynchronous call started by
          * g_data_input_stream_read_until_async().
@@ -23216,6 +24844,60 @@ export namespace Gio {
          * @param stop_chars_len length of @stop_chars. May be -1 if @stop_chars is     nul-terminated
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        read_upto_async(
+            stop_chars: string,
+            stop_chars_len: number,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<[string, number]>;
+        /**
+         * The asynchronous version of g_data_input_stream_read_upto().
+         * It is an error to have two outstanding calls to this function.
+         *
+         * In contrast to g_data_input_stream_read_until(), this function
+         * does not consume the stop character. You have to use
+         * g_data_input_stream_read_byte() to get it before calling
+         * g_data_input_stream_read_upto() again.
+         *
+         * Note that `stop_chars` may contain '\0' if `stop_chars_len` is
+         * specified.
+         *
+         * When the operation is finished, `callback` will be called. You
+         * can then call g_data_input_stream_read_upto_finish() to get
+         * the result of the operation.
+         * @param stop_chars characters to terminate the read
+         * @param stop_chars_len length of @stop_chars. May be -1 if @stop_chars is     nul-terminated
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback callback to call when the request is satisfied
+         */
+        read_upto_async(
+            stop_chars: string,
+            stop_chars_len: number,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * The asynchronous version of g_data_input_stream_read_upto().
+         * It is an error to have two outstanding calls to this function.
+         *
+         * In contrast to g_data_input_stream_read_until(), this function
+         * does not consume the stop character. You have to use
+         * g_data_input_stream_read_byte() to get it before calling
+         * g_data_input_stream_read_upto() again.
+         *
+         * Note that `stop_chars` may contain '\0' if `stop_chars_len` is
+         * specified.
+         *
+         * When the operation is finished, `callback` will be called. You
+         * can then call g_data_input_stream_read_upto_finish() to get
+         * the result of the operation.
+         * @param stop_chars characters to terminate the read
+         * @param stop_chars_len length of @stop_chars. May be -1 if @stop_chars is     nul-terminated
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback callback to call when the request is satisfied
          */
         read_upto_async(
@@ -23224,7 +24906,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[string, number]> | void;
         /**
          * Finish an asynchronous call started by
          * g_data_input_stream_read_upto_async().
@@ -25308,12 +26990,16 @@ export namespace Gio {
          * @param uris List of URIs
          * @param launch_context a [class@Gio.AppLaunchContext]
          * @param spawn_flags [flags@GLib.SpawnFlags], used for each process
+         * @param user_setup a [callback@GLib.SpawnChildSetupFunc],   used once  for each process.
+         * @param pid_callback Callback for child processes
          * @returns `TRUE` on successful launch, `FALSE` otherwise.
          */
         launch_uris_as_manager(
             uris: string[],
             launch_context: AppLaunchContext | null,
             spawn_flags: GLib.SpawnFlags,
+            user_setup?: GLib.SpawnChildSetupFunc | null,
+            pid_callback?: DesktopAppLaunchCallback | null,
         ): boolean;
         /**
          * Equivalent to [method`Gio`.DesktopAppInfo.launch_uris_as_manager] but allows
@@ -25514,6 +27200,40 @@ export namespace Gio {
          * @param uris a list of URIs to launch.
          * @param context the launch context
          * @param cancellable a [class@Gio.Cancellable]
+         */
+        launch_uris_async(
+            uris?: string[] | null,
+            context?: AppLaunchContext | null,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Async version of [method`Gio`.AppInfo.launch_uris].
+         *
+         * The `callback` is invoked immediately after the application launch, but it
+         * waits for activation in case of D-Bus–activated applications and also provides
+         * extended error information for sandboxed applications, see notes for
+         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @param cancellable a [class@Gio.Cancellable]
+         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         */
+        launch_uris_async(
+            uris: string[] | null,
+            context: AppLaunchContext | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Async version of [method`Gio`.AppInfo.launch_uris].
+         *
+         * The `callback` is invoked immediately after the application launch, but it
+         * waits for activation in case of D-Bus–activated applications and also provides
+         * extended error information for sandboxed applications, see notes for
+         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @param cancellable a [class@Gio.Cancellable]
          * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
          */
         launch_uris_async(
@@ -25521,7 +27241,7 @@ export namespace Gio {
             context?: AppLaunchContext | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
          * @param result the async result
@@ -27412,13 +29132,40 @@ export namespace Gio {
          * g_file_enumerator_close_finish().
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously closes the file enumerator.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned in
+         * g_file_enumerator_close_finish().
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        close_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously closes the file enumerator.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned in
+         * g_file_enumerator_close_finish().
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes closing a file enumerator, started from g_file_enumerator_close_async().
          *
@@ -27599,6 +29346,156 @@ export namespace Gio {
          * @param num_files the number of file info objects to request
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        next_files_async(num_files: number, io_priority: number, cancellable?: Cancellable | null): Promise<FileInfo[]>;
+        /**
+         * Request information for a number of files from the enumerator asynchronously.
+         * When all I/O for the operation is finished the `callback` will be called with
+         * the requested information.
+         *
+         * See the documentation of #GFileEnumerator for information about the
+         * order of returned files.
+         *
+         * Once the end of the enumerator is reached, or if an error occurs, the
+         * `callback` will be called with an empty list. In this case, the previous call
+         * to g_file_enumerator_next_files_async() will typically have returned fewer
+         * than `num_files` items.
+         *
+         * If a request is cancelled the callback will be called with
+         * %G_IO_ERROR_CANCELLED.
+         *
+         * This leads to the following pseudo-code usage:
+         *
+         * ```
+         * g_autoptr(GFile) dir = get_directory ();
+         * g_autoptr(GFileEnumerator) enumerator = NULL;
+         * g_autolist(GFileInfo) files = NULL;
+         * g_autoptr(GError) local_error = NULL;
+         *
+         * enumerator = yield g_file_enumerate_children_async (dir,
+         *                                                     G_FILE_ATTRIBUTE_STANDARD_NAME ","
+         *                                                     G_FILE_ATTRIBUTE_STANDARD_TYPE,
+         *                                                     G_FILE_QUERY_INFO_NONE,
+         *                                                     G_PRIORITY_DEFAULT,
+         *                                                     cancellable,
+         *                                                     …,
+         *                                                     &local_error);
+         * if (enumerator == NULL)
+         *   g_error ("Error enumerating: %s", local_error->message);
+         *
+         * // Loop until no files are returned, either because the end of the enumerator
+         * // has been reached, or an error was returned.
+         * do
+         *   {
+         *     files = yield g_file_enumerator_next_files_async (enumerator,
+         *                                                       5,  // number of files to request
+         *                                                       G_PRIORITY_DEFAULT,
+         *                                                       cancellable,
+         *                                                       …,
+         *                                                       &local_error);
+         *
+         *     // Process the returned files, but don’t assume that exactly 5 were returned.
+         *     for (GList *l = files; l != NULL; l = l->next)
+         *       {
+         *         GFileInfo *info = l->data;
+         *         handle_file_info (info);
+         *       }
+         *   }
+         * while (files != NULL);
+         *
+         * if (local_error != NULL &&
+         *     !g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
+         *   g_error ("Error while enumerating: %s", local_error->message);
+         * ```
+         *
+         *
+         * During an async request no other sync and async calls are allowed, and will
+         * result in %G_IO_ERROR_PENDING errors.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical value) will
+         * be executed before an outstanding request with lower priority. Default
+         * priority is %G_PRIORITY_DEFAULT.
+         * @param num_files the number of file info objects to request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        next_files_async(
+            num_files: number,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request information for a number of files from the enumerator asynchronously.
+         * When all I/O for the operation is finished the `callback` will be called with
+         * the requested information.
+         *
+         * See the documentation of #GFileEnumerator for information about the
+         * order of returned files.
+         *
+         * Once the end of the enumerator is reached, or if an error occurs, the
+         * `callback` will be called with an empty list. In this case, the previous call
+         * to g_file_enumerator_next_files_async() will typically have returned fewer
+         * than `num_files` items.
+         *
+         * If a request is cancelled the callback will be called with
+         * %G_IO_ERROR_CANCELLED.
+         *
+         * This leads to the following pseudo-code usage:
+         *
+         * ```
+         * g_autoptr(GFile) dir = get_directory ();
+         * g_autoptr(GFileEnumerator) enumerator = NULL;
+         * g_autolist(GFileInfo) files = NULL;
+         * g_autoptr(GError) local_error = NULL;
+         *
+         * enumerator = yield g_file_enumerate_children_async (dir,
+         *                                                     G_FILE_ATTRIBUTE_STANDARD_NAME ","
+         *                                                     G_FILE_ATTRIBUTE_STANDARD_TYPE,
+         *                                                     G_FILE_QUERY_INFO_NONE,
+         *                                                     G_PRIORITY_DEFAULT,
+         *                                                     cancellable,
+         *                                                     …,
+         *                                                     &local_error);
+         * if (enumerator == NULL)
+         *   g_error ("Error enumerating: %s", local_error->message);
+         *
+         * // Loop until no files are returned, either because the end of the enumerator
+         * // has been reached, or an error was returned.
+         * do
+         *   {
+         *     files = yield g_file_enumerator_next_files_async (enumerator,
+         *                                                       5,  // number of files to request
+         *                                                       G_PRIORITY_DEFAULT,
+         *                                                       cancellable,
+         *                                                       …,
+         *                                                       &local_error);
+         *
+         *     // Process the returned files, but don’t assume that exactly 5 were returned.
+         *     for (GList *l = files; l != NULL; l = l->next)
+         *       {
+         *         GFileInfo *info = l->data;
+         *         handle_file_info (info);
+         *       }
+         *   }
+         * while (files != NULL);
+         *
+         * if (local_error != NULL &&
+         *     !g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
+         *   g_error ("Error while enumerating: %s", local_error->message);
+         * ```
+         *
+         *
+         * During an async request no other sync and async calls are allowed, and will
+         * result in %G_IO_ERROR_PENDING errors.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical value) will
+         * be executed before an outstanding request with lower priority. Default
+         * priority is %G_PRIORITY_DEFAULT.
+         * @param num_files the number of file info objects to request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         next_files_async(
@@ -27606,7 +29503,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<FileInfo[]> | void;
         /**
          * Finishes the asynchronous operation started with g_file_enumerator_next_files_async().
          * @param result a #GAsyncResult.
@@ -27758,6 +29655,36 @@ export namespace Gio {
          * @param attributes a file attribute query string.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the   request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        query_info_async(attributes: string, io_priority: number, cancellable?: Cancellable | null): Promise<FileInfo>;
+        /**
+         * Asynchronously queries the `stream` for a #GFileInfo. When completed,
+         * `callback` will be called with a #GAsyncResult which can be used to
+         * finish the operation with g_file_io_stream_query_info_finish().
+         *
+         * For the synchronous version of this function, see
+         * g_file_io_stream_query_info().
+         * @param attributes a file attribute query string.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the   request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        query_info_async(
+            attributes: string,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously queries the `stream` for a #GFileInfo. When completed,
+         * `callback` will be called with a #GAsyncResult which can be used to
+         * finish the operation with g_file_io_stream_query_info_finish().
+         *
+         * For the synchronous version of this function, see
+         * g_file_io_stream_query_info().
+         * @param attributes a file attribute query string.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the   request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         query_info_async(
@@ -27765,7 +29692,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<FileInfo> | void;
         /**
          * Finalizes the asynchronous query started
          * by g_file_io_stream_query_info_async().
@@ -28349,9 +30276,30 @@ export namespace Gio {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        load_async(size: number, cancellable?: Cancellable | null): Promise<[InputStream, string]>;
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * g_loadable_icon_load_finish(). For the synchronous, blocking
+         * version of this function, see g_loadable_icon_load().
+         * @param size an integer.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
-        load_async(size: number, cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        load_async(size: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * g_loadable_icon_load_finish(). For the synchronous, blocking
+         * version of this function, see g_loadable_icon_load().
+         * @param size an integer.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        load_async(
+            size: number,
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<[InputStream, string]> | void;
         /**
          * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
          * @param res a #GAsyncResult.
@@ -29473,6 +31421,46 @@ export namespace Gio {
          * @param attributes a file attribute query string.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        query_info_async(attributes: string, io_priority: number, cancellable?: Cancellable | null): Promise<FileInfo>;
+        /**
+         * Queries the stream information asynchronously.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_file_input_stream_query_info_finish()
+         * to get the result of the operation.
+         *
+         * For the synchronous version of this function,
+         * see g_file_input_stream_query_info().
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be set
+         * @param attributes a file attribute query string.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        query_info_async(
+            attributes: string,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Queries the stream information asynchronously.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_file_input_stream_query_info_finish()
+         * to get the result of the operation.
+         *
+         * For the synchronous version of this function,
+         * see g_file_input_stream_query_info().
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be set
+         * @param attributes a file attribute query string.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         query_info_async(
@@ -29480,7 +31468,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<FileInfo> | void;
         /**
          * Finishes an asynchronous info query operation.
          * @param result a #GAsyncResult.
@@ -30208,6 +32196,36 @@ export namespace Gio {
          * @param attributes a file attribute query string.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the   request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        query_info_async(attributes: string, io_priority: number, cancellable?: Cancellable | null): Promise<FileInfo>;
+        /**
+         * Asynchronously queries the `stream` for a #GFileInfo. When completed,
+         * `callback` will be called with a #GAsyncResult which can be used to
+         * finish the operation with g_file_output_stream_query_info_finish().
+         *
+         * For the synchronous version of this function, see
+         * g_file_output_stream_query_info().
+         * @param attributes a file attribute query string.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the   request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback callback to call when the request is satisfied
+         */
+        query_info_async(
+            attributes: string,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously queries the `stream` for a #GFileInfo. When completed,
+         * `callback` will be called with a #GAsyncResult which can be used to
+         * finish the operation with g_file_output_stream_query_info_finish().
+         *
+         * For the synchronous version of this function, see
+         * g_file_output_stream_query_info().
+         * @param attributes a file attribute query string.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the   request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback callback to call when the request is satisfied
          */
         query_info_async(
@@ -30215,7 +32233,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<FileInfo> | void;
         /**
          * Finalizes the asynchronous query started
          * by g_file_output_stream_query_info_async().
@@ -31564,13 +33582,48 @@ export namespace Gio {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request
          * @param cancellable optional cancellable object
+         */
+        close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Requests an asynchronous close of the stream, releasing resources
+         * related to it. When the operation is finished `callback` will be
+         * called. You can then call g_io_stream_close_finish() to get
+         * the result of the operation.
+         *
+         * For behaviour details see g_io_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         * @param io_priority the io priority of the request
+         * @param cancellable optional cancellable object
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        close_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous close of the stream, releasing resources
+         * related to it. When the operation is finished `callback` will be
+         * called. You can then call g_io_stream_close_finish() to get
+         * the result of the operation.
+         *
+         * For behaviour details see g_io_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         * @param io_priority the io priority of the request
+         * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Closes a stream.
          * @param result a #GAsyncResult
@@ -33193,13 +35246,48 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
+         */
+        close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Requests an asynchronous closes of the stream, releasing resources related to it.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_close_finish() to get the result of the
+         * operation.
+         *
+         * For behaviour details see g_input_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional cancellable object
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        close_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous closes of the stream, releasing resources related to it.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_close_finish() to get the result of the
+         * operation.
+         *
+         * For behaviour details see g_input_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
          * @param result a #GAsyncResult.
@@ -33279,13 +35367,48 @@ export namespace Gio {
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        read_all_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the
+         * buffer starting at `buffer`.
+         *
+         * This is the asynchronous equivalent of g_input_stream_read_all().
+         *
+         * Call g_input_stream_read_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_all_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): Uint8Array;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the
+         * buffer starting at `buffer`.
+         *
+         * This is the asynchronous equivalent of g_input_stream_read_all().
+         *
+         * Call g_input_stream_read_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_all_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): Uint8Array;
+        ): [Promise<number> | void, Uint8Array];
         /**
          * Finishes an asynchronous stream read operation started with
          * g_input_stream_read_all_async().
@@ -33326,13 +35449,74 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        read_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the buffer
+         * starting at `buffer`. When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_read_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed on `stream,` and will
+         * result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes read into the buffer will be passed to the
+         * callback. It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to read
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero),  but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value) will
+         * be executed before an outstanding request with lower priority. Default
+         * priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): Uint8Array;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the buffer
+         * starting at `buffer`. When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_read_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed on `stream,` and will
+         * result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes read into the buffer will be passed to the
+         * callback. It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to read
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero),  but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value) will
+         * be executed before an outstanding request with lower priority. Default
+         * priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): Uint8Array;
+        ): [Promise<number> | void, Uint8Array];
         /**
          * Like g_input_stream_read(), this tries to read `count` bytes from
          * the stream in a blocking fashion. However, rather than reading into
@@ -33386,6 +35570,64 @@ export namespace Gio {
          * @param count the number of bytes that will be read from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        read_bytes_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<GLib.Bytes>;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into a
+         * new #GBytes. When the operation is finished `callback` will be
+         * called. You can then call g_input_stream_read_bytes_finish() to get the
+         * result of the operation.
+         *
+         * During an async request no other sync and async calls are allowed
+         * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the new #GBytes will be passed to the callback. It is
+         * not an error if this is smaller than the requested size, as it can
+         * happen e.g. near the end of a file, but generally we try to read as
+         * many bytes as requested. Zero is returned on end of file (or if
+         * `count` is zero), but never otherwise.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param count the number of bytes that will be read from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_bytes_async(
+            count: number,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into a
+         * new #GBytes. When the operation is finished `callback` will be
+         * called. You can then call g_input_stream_read_bytes_finish() to get the
+         * result of the operation.
+         *
+         * During an async request no other sync and async calls are allowed
+         * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the new #GBytes will be passed to the callback. It is
+         * not an error if this is smaller than the requested size, as it can
+         * happen e.g. near the end of a file, but generally we try to read as
+         * many bytes as requested. Zero is returned on end of file (or if
+         * `count` is zero), but never otherwise.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param count the number of bytes that will be read from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_bytes_async(
@@ -33393,7 +35635,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Bytes> | void;
         /**
          * Finishes an asynchronous stream read-into-#GBytes operation.
          * @param result a #GAsyncResult.
@@ -33460,6 +35702,70 @@ export namespace Gio {
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        skip_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<number>;
+        /**
+         * Request an asynchronous skip of `count` bytes from the stream.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_skip_finish() to get the result
+         * of the operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes skipped will be passed to the callback.
+         * It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to skip
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero), but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value)
+         * will be executed before an outstanding request with lower priority.
+         * Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to
+         * implement asynchronicity, so they are optional for inheriting classes.
+         * However, if you override one, you must override all.
+         * @param count the number of bytes that will be skipped from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        skip_async(
+            count: number,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous skip of `count` bytes from the stream.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_skip_finish() to get the result
+         * of the operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes skipped will be passed to the callback.
+         * It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to skip
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero), but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value)
+         * will be executed before an outstanding request with lower priority.
+         * Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to
+         * implement asynchronicity, so they are optional for inheriting classes.
+         * However, if you override one, you must override all.
+         * @param count the number of bytes that will be skipped from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         skip_async(
@@ -33467,7 +35773,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes a stream skip operation.
          * @param result a #GAsyncResult.
@@ -34450,13 +36756,48 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
+         */
+        close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Requests an asynchronous closes of the stream, releasing resources related to it.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_close_finish() to get the result of the
+         * operation.
+         *
+         * For behaviour details see g_input_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional cancellable object
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        close_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous closes of the stream, releasing resources related to it.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_close_finish() to get the result of the
+         * operation.
+         *
+         * For behaviour details see g_input_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
          * @param result a #GAsyncResult.
@@ -34536,13 +36877,48 @@ export namespace Gio {
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        read_all_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the
+         * buffer starting at `buffer`.
+         *
+         * This is the asynchronous equivalent of g_input_stream_read_all().
+         *
+         * Call g_input_stream_read_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_all_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): Uint8Array;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the
+         * buffer starting at `buffer`.
+         *
+         * This is the asynchronous equivalent of g_input_stream_read_all().
+         *
+         * Call g_input_stream_read_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_all_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): Uint8Array;
+        ): [Promise<number> | void, Uint8Array];
         /**
          * Finishes an asynchronous stream read operation started with
          * g_input_stream_read_all_async().
@@ -34583,13 +36959,74 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        read_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the buffer
+         * starting at `buffer`. When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_read_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed on `stream,` and will
+         * result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes read into the buffer will be passed to the
+         * callback. It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to read
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero),  but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value) will
+         * be executed before an outstanding request with lower priority. Default
+         * priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): Uint8Array;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the buffer
+         * starting at `buffer`. When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_read_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed on `stream,` and will
+         * result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes read into the buffer will be passed to the
+         * callback. It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to read
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero),  but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value) will
+         * be executed before an outstanding request with lower priority. Default
+         * priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): Uint8Array;
+        ): [Promise<number> | void, Uint8Array];
         /**
          * Like g_input_stream_read(), this tries to read `count` bytes from
          * the stream in a blocking fashion. However, rather than reading into
@@ -34643,6 +37080,64 @@ export namespace Gio {
          * @param count the number of bytes that will be read from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        read_bytes_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<GLib.Bytes>;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into a
+         * new #GBytes. When the operation is finished `callback` will be
+         * called. You can then call g_input_stream_read_bytes_finish() to get the
+         * result of the operation.
+         *
+         * During an async request no other sync and async calls are allowed
+         * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the new #GBytes will be passed to the callback. It is
+         * not an error if this is smaller than the requested size, as it can
+         * happen e.g. near the end of a file, but generally we try to read as
+         * many bytes as requested. Zero is returned on end of file (or if
+         * `count` is zero), but never otherwise.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param count the number of bytes that will be read from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_bytes_async(
+            count: number,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into a
+         * new #GBytes. When the operation is finished `callback` will be
+         * called. You can then call g_input_stream_read_bytes_finish() to get the
+         * result of the operation.
+         *
+         * During an async request no other sync and async calls are allowed
+         * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the new #GBytes will be passed to the callback. It is
+         * not an error if this is smaller than the requested size, as it can
+         * happen e.g. near the end of a file, but generally we try to read as
+         * many bytes as requested. Zero is returned on end of file (or if
+         * `count` is zero), but never otherwise.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param count the number of bytes that will be read from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_bytes_async(
@@ -34650,7 +37145,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Bytes> | void;
         /**
          * Finishes an asynchronous stream read-into-#GBytes operation.
          * @param result a #GAsyncResult.
@@ -34717,6 +37212,70 @@ export namespace Gio {
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        skip_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<number>;
+        /**
+         * Request an asynchronous skip of `count` bytes from the stream.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_skip_finish() to get the result
+         * of the operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes skipped will be passed to the callback.
+         * It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to skip
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero), but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value)
+         * will be executed before an outstanding request with lower priority.
+         * Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to
+         * implement asynchronicity, so they are optional for inheriting classes.
+         * However, if you override one, you must override all.
+         * @param count the number of bytes that will be skipped from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        skip_async(
+            count: number,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous skip of `count` bytes from the stream.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_skip_finish() to get the result
+         * of the operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes skipped will be passed to the callback.
+         * It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to skip
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero), but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value)
+         * will be executed before an outstanding request with lower priority.
+         * Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to
+         * implement asynchronicity, so they are optional for inheriting classes.
+         * However, if you override one, you must override all.
+         * @param count the number of bytes that will be skipped from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         skip_async(
@@ -34724,7 +37283,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes a stream skip operation.
          * @param result a #GAsyncResult.
@@ -35686,13 +38245,48 @@ export namespace Gio {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request.
          * @param cancellable optional cancellable object
+         */
+        close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Requests an asynchronous close of the stream, releasing resources
+         * related to it. When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_close_finish() to get
+         * the result of the operation.
+         *
+         * For behaviour details see g_output_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional cancellable object
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        close_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous close of the stream, releasing resources
+         * related to it. When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_close_finish() to get
+         * the result of the operation.
+         *
+         * For behaviour details see g_output_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Closes an output stream.
          * @param result a #GAsyncResult.
@@ -35723,13 +38317,42 @@ export namespace Gio {
          * result of the operation.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        flush_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Forces an asynchronous write of all user-space buffered data for
+         * the given `stream`.
+         * For behaviour details see g_output_stream_flush().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_flush_finish() to get the
+         * result of the operation.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        flush_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Forces an asynchronous write of all user-space buffered data for
+         * the given `stream`.
+         * For behaviour details see g_output_stream_flush().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_flush_finish() to get the
+         * result of the operation.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         flush_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes flushing an output stream.
          * @param result a GAsyncResult.
@@ -35781,6 +38404,46 @@ export namespace Gio {
          * @param flags a set of #GOutputStreamSpliceFlags.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        splice_async(
+            source: InputStream,
+            flags: OutputStreamSpliceFlags,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Splices a stream asynchronously.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_splice_finish() to get the
+         * result of the operation.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_splice().
+         * @param source a #GInputStream.
+         * @param flags a set of #GOutputStreamSpliceFlags.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        splice_async(
+            source: InputStream,
+            flags: OutputStreamSpliceFlags,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Splices a stream asynchronously.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_splice_finish() to get the
+         * result of the operation.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_splice().
+         * @param source a #GInputStream.
+         * @param flags a set of #GOutputStreamSpliceFlags.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         splice_async(
@@ -35789,7 +38452,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous stream splice operation.
          * @param result a #GAsyncResult.
@@ -35866,6 +38529,58 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write
          * @param io_priority the io priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        write_all_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_write_all().
+         *
+         * Call g_output_stream_write_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param buffer the buffer containing the data to write
+         * @param io_priority the io priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        write_all_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_write_all().
+         *
+         * Call g_output_stream_write_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param buffer the buffer containing the data to write
+         * @param io_priority the io priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_all_async(
@@ -35873,7 +38588,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous stream write operation started with
          * g_output_stream_write_all_async().
@@ -35928,6 +38643,98 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        write_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK - if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write().
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called. See g_output_stream_write_bytes_async()
+         * for a #GBytes version that will automatically hold a reference to
+         * the contents (without copying) for the duration of the call.
+         * @param buffer the buffer containing the data to write.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        write_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK - if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write().
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called. See g_output_stream_write_bytes_async()
+         * for a #GBytes version that will automatically hold a reference to
+         * the contents (without copying) for the duration of the call.
+         * @param buffer the buffer containing the data to write.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_async(
@@ -35935,7 +38742,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * A wrapper function for g_output_stream_write() which takes a
          * #GBytes as input.  This can be more convenient for use by language
@@ -35970,6 +38777,54 @@ export namespace Gio {
          * @param bytes The bytes to write
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        write_bytes_async(
+            bytes: GLib.Bytes | Uint8Array,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * This function is similar to g_output_stream_write_async(), but
+         * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
+         * this allows the stream to avoid taking a copy of the data.
+         *
+         * However, note that this function may still perform partial writes,
+         * just like g_output_stream_write_async(). If that occurs, to continue
+         * writing, you will need to create a new #GBytes containing just the
+         * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
+         * #GBytes instance multiple times potentially can result in duplicated
+         * data in the output stream.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write_bytes().
+         * @param bytes The bytes to write
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        write_bytes_async(
+            bytes: GLib.Bytes | Uint8Array,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * This function is similar to g_output_stream_write_async(), but
+         * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
+         * this allows the stream to avoid taking a copy of the data.
+         *
+         * However, note that this function may still perform partial writes,
+         * just like g_output_stream_write_async(). If that occurs, to continue
+         * writing, you will need to create a new #GBytes containing just the
+         * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
+         * #GBytes instance multiple times potentially can result in duplicated
+         * data in the output stream.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write_bytes().
+         * @param bytes The bytes to write
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         write_bytes_async(
@@ -35977,7 +38832,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes a stream write-from-#GBytes operation.
          * @param result a #GAsyncResult.
@@ -36067,6 +38922,60 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        writev_all_async(
+            vectors: OutputVector[],
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_writev_all().
+         *
+         * Call g_output_stream_writev_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called. The content of the individual elements
+         * of `vectors` might be changed by this function.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        writev_all_async(
+            vectors: OutputVector[],
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_writev_all().
+         *
+         * Call g_output_stream_writev_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called. The content of the individual elements
+         * of `vectors` might be changed by this function.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_all_async(
@@ -36074,7 +38983,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous stream write operation started with
          * g_output_stream_writev_all_async().
@@ -36124,6 +39033,84 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        writev_async(vectors: OutputVector[], io_priority: number, cancellable?: Cancellable | null): Promise<number>;
+        /**
+         * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK — if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_writev().
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        writev_async(
+            vectors: OutputVector[],
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK — if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_writev().
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_async(
@@ -36131,7 +39118,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes a stream writev operation.
          * @param result a #GAsyncResult.
@@ -40066,13 +43053,48 @@ export namespace Gio {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request.
          * @param cancellable optional cancellable object
+         */
+        close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Requests an asynchronous close of the stream, releasing resources
+         * related to it. When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_close_finish() to get
+         * the result of the operation.
+         *
+         * For behaviour details see g_output_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional cancellable object
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        close_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous close of the stream, releasing resources
+         * related to it. When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_close_finish() to get
+         * the result of the operation.
+         *
+         * For behaviour details see g_output_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Closes an output stream.
          * @param result a #GAsyncResult.
@@ -40103,13 +43125,42 @@ export namespace Gio {
          * result of the operation.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        flush_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Forces an asynchronous write of all user-space buffered data for
+         * the given `stream`.
+         * For behaviour details see g_output_stream_flush().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_flush_finish() to get the
+         * result of the operation.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        flush_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Forces an asynchronous write of all user-space buffered data for
+         * the given `stream`.
+         * For behaviour details see g_output_stream_flush().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_flush_finish() to get the
+         * result of the operation.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         flush_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes flushing an output stream.
          * @param result a GAsyncResult.
@@ -40161,6 +43212,46 @@ export namespace Gio {
          * @param flags a set of #GOutputStreamSpliceFlags.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        splice_async(
+            source: InputStream,
+            flags: OutputStreamSpliceFlags,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Splices a stream asynchronously.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_splice_finish() to get the
+         * result of the operation.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_splice().
+         * @param source a #GInputStream.
+         * @param flags a set of #GOutputStreamSpliceFlags.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        splice_async(
+            source: InputStream,
+            flags: OutputStreamSpliceFlags,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Splices a stream asynchronously.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_splice_finish() to get the
+         * result of the operation.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_splice().
+         * @param source a #GInputStream.
+         * @param flags a set of #GOutputStreamSpliceFlags.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         splice_async(
@@ -40169,7 +43260,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous stream splice operation.
          * @param result a #GAsyncResult.
@@ -40246,6 +43337,58 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write
          * @param io_priority the io priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        write_all_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_write_all().
+         *
+         * Call g_output_stream_write_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param buffer the buffer containing the data to write
+         * @param io_priority the io priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        write_all_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_write_all().
+         *
+         * Call g_output_stream_write_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param buffer the buffer containing the data to write
+         * @param io_priority the io priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_all_async(
@@ -40253,7 +43396,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous stream write operation started with
          * g_output_stream_write_all_async().
@@ -40308,6 +43451,98 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        write_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK - if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write().
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called. See g_output_stream_write_bytes_async()
+         * for a #GBytes version that will automatically hold a reference to
+         * the contents (without copying) for the duration of the call.
+         * @param buffer the buffer containing the data to write.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        write_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK - if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write().
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called. See g_output_stream_write_bytes_async()
+         * for a #GBytes version that will automatically hold a reference to
+         * the contents (without copying) for the duration of the call.
+         * @param buffer the buffer containing the data to write.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_async(
@@ -40315,7 +43550,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * A wrapper function for g_output_stream_write() which takes a
          * #GBytes as input.  This can be more convenient for use by language
@@ -40350,6 +43585,54 @@ export namespace Gio {
          * @param bytes The bytes to write
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        write_bytes_async(
+            bytes: GLib.Bytes | Uint8Array,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * This function is similar to g_output_stream_write_async(), but
+         * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
+         * this allows the stream to avoid taking a copy of the data.
+         *
+         * However, note that this function may still perform partial writes,
+         * just like g_output_stream_write_async(). If that occurs, to continue
+         * writing, you will need to create a new #GBytes containing just the
+         * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
+         * #GBytes instance multiple times potentially can result in duplicated
+         * data in the output stream.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write_bytes().
+         * @param bytes The bytes to write
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        write_bytes_async(
+            bytes: GLib.Bytes | Uint8Array,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * This function is similar to g_output_stream_write_async(), but
+         * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
+         * this allows the stream to avoid taking a copy of the data.
+         *
+         * However, note that this function may still perform partial writes,
+         * just like g_output_stream_write_async(). If that occurs, to continue
+         * writing, you will need to create a new #GBytes containing just the
+         * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
+         * #GBytes instance multiple times potentially can result in duplicated
+         * data in the output stream.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write_bytes().
+         * @param bytes The bytes to write
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         write_bytes_async(
@@ -40357,7 +43640,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes a stream write-from-#GBytes operation.
          * @param result a #GAsyncResult.
@@ -40447,6 +43730,60 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        writev_all_async(
+            vectors: OutputVector[],
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_writev_all().
+         *
+         * Call g_output_stream_writev_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called. The content of the individual elements
+         * of `vectors` might be changed by this function.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        writev_all_async(
+            vectors: OutputVector[],
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_writev_all().
+         *
+         * Call g_output_stream_writev_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called. The content of the individual elements
+         * of `vectors` might be changed by this function.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_all_async(
@@ -40454,7 +43791,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous stream write operation started with
          * g_output_stream_writev_all_async().
@@ -40504,6 +43841,84 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        writev_async(vectors: OutputVector[], io_priority: number, cancellable?: Cancellable | null): Promise<number>;
+        /**
+         * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK — if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_writev().
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        writev_async(
+            vectors: OutputVector[],
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK — if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_writev().
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_async(
@@ -40511,7 +43926,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes a stream writev operation.
          * @param result a #GAsyncResult.
@@ -40691,9 +44106,29 @@ export namespace Gio {
          * This is the first half of the asynchronous version of
          * g_permission_acquire().
          * @param cancellable a #GCancellable, or %NULL
+         */
+        acquire_async(cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Attempts to acquire the permission represented by `permission`.
+         *
+         * This is the first half of the asynchronous version of
+         * g_permission_acquire().
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the #GAsyncReadyCallback to call when done
          */
-        acquire_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        acquire_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Attempts to acquire the permission represented by `permission`.
+         *
+         * This is the first half of the asynchronous version of
+         * g_permission_acquire().
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the #GAsyncReadyCallback to call when done
+         */
+        acquire_async(
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Collects the result of attempting to acquire the permission
          * represented by `permission`.
@@ -40762,9 +44197,29 @@ export namespace Gio {
          * This is the first half of the asynchronous version of
          * g_permission_release().
          * @param cancellable a #GCancellable, or %NULL
+         */
+        release_async(cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Attempts to release the permission represented by `permission`.
+         *
+         * This is the first half of the asynchronous version of
+         * g_permission_release().
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback the #GAsyncReadyCallback to call when done
          */
-        release_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        release_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Attempts to release the permission represented by `permission`.
+         *
+         * This is the first half of the asynchronous version of
+         * g_permission_release().
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback the #GAsyncReadyCallback to call when done
+         */
+        release_async(
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Collects the result of attempting to release the permission
          * represented by `permission`.
@@ -42431,13 +45886,34 @@ export namespace Gio {
          * call g_resolver_lookup_by_address_finish() to get the final result.
          * @param address the address to reverse-resolve
          * @param cancellable a #GCancellable, or %NULL
+         */
+        lookup_by_address_async(address: InetAddress, cancellable?: Cancellable | null): Promise<string>;
+        /**
+         * Begins asynchronously reverse-resolving `address` to determine its
+         * associated hostname, and eventually calls `callback,` which must
+         * call g_resolver_lookup_by_address_finish() to get the final result.
+         * @param address the address to reverse-resolve
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call after resolution completes
+         */
+        lookup_by_address_async(
+            address: InetAddress,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Begins asynchronously reverse-resolving `address` to determine its
+         * associated hostname, and eventually calls `callback,` which must
+         * call g_resolver_lookup_by_address_finish() to get the final result.
+         * @param address the address to reverse-resolve
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call after resolution completes
          */
         lookup_by_address_async(
             address: InetAddress,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Retrieves the result of a previous call to
          * g_resolver_lookup_by_address_async().
@@ -42485,13 +45961,36 @@ export namespace Gio {
          * See g_resolver_lookup_by_name() for more details.
          * @param hostname the hostname to look up the address of
          * @param cancellable a #GCancellable, or %NULL
+         */
+        lookup_by_name_async(hostname: string, cancellable?: Cancellable | null): Promise<InetAddress[]>;
+        /**
+         * Begins asynchronously resolving `hostname` to determine its
+         * associated IP address(es), and eventually calls `callback,` which
+         * must call g_resolver_lookup_by_name_finish() to get the result.
+         * See g_resolver_lookup_by_name() for more details.
+         * @param hostname the hostname to look up the address of
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call after resolution completes
+         */
+        lookup_by_name_async(
+            hostname: string,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Begins asynchronously resolving `hostname` to determine its
+         * associated IP address(es), and eventually calls `callback,` which
+         * must call g_resolver_lookup_by_name_finish() to get the result.
+         * See g_resolver_lookup_by_name() for more details.
+         * @param hostname the hostname to look up the address of
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call after resolution completes
          */
         lookup_by_name_async(
             hostname: string,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<InetAddress[]> | void;
         /**
          * Retrieves the result of a call to
          * g_resolver_lookup_by_name_async().
@@ -42525,6 +46024,36 @@ export namespace Gio {
          * @param hostname the hostname to look up the address of
          * @param flags extra #GResolverNameLookupFlags for the lookup
          * @param cancellable a #GCancellable, or %NULL
+         */
+        lookup_by_name_with_flags_async(
+            hostname: string,
+            flags: ResolverNameLookupFlags,
+            cancellable?: Cancellable | null,
+        ): Promise<InetAddress[]>;
+        /**
+         * Begins asynchronously resolving `hostname` to determine its
+         * associated IP address(es), and eventually calls `callback,` which
+         * must call g_resolver_lookup_by_name_with_flags_finish() to get the result.
+         * See g_resolver_lookup_by_name() for more details.
+         * @param hostname the hostname to look up the address of
+         * @param flags extra #GResolverNameLookupFlags for the lookup
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call after resolution completes
+         */
+        lookup_by_name_with_flags_async(
+            hostname: string,
+            flags: ResolverNameLookupFlags,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Begins asynchronously resolving `hostname` to determine its
+         * associated IP address(es), and eventually calls `callback,` which
+         * must call g_resolver_lookup_by_name_with_flags_finish() to get the result.
+         * See g_resolver_lookup_by_name() for more details.
+         * @param hostname the hostname to look up the address of
+         * @param flags extra #GResolverNameLookupFlags for the lookup
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call after resolution completes
          */
         lookup_by_name_with_flags_async(
@@ -42532,7 +46061,7 @@ export namespace Gio {
             flags: ResolverNameLookupFlags,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<InetAddress[]> | void;
         /**
          * Retrieves the result of a call to
          * g_resolver_lookup_by_name_with_flags_async().
@@ -42573,6 +46102,36 @@ export namespace Gio {
          * @param rrname the DNS name to look up the record for
          * @param record_type the type of DNS record to look up
          * @param cancellable a #GCancellable, or %NULL
+         */
+        lookup_records_async(
+            rrname: string,
+            record_type: ResolverRecordType,
+            cancellable?: Cancellable | null,
+        ): Promise<GLib.Variant[]>;
+        /**
+         * Begins asynchronously performing a DNS lookup for the given
+         * `rrname,` and eventually calls `callback,` which must call
+         * g_resolver_lookup_records_finish() to get the final result. See
+         * g_resolver_lookup_records() for more details.
+         * @param rrname the DNS name to look up the record for
+         * @param record_type the type of DNS record to look up
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call after resolution completes
+         */
+        lookup_records_async(
+            rrname: string,
+            record_type: ResolverRecordType,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Begins asynchronously performing a DNS lookup for the given
+         * `rrname,` and eventually calls `callback,` which must call
+         * g_resolver_lookup_records_finish() to get the final result. See
+         * g_resolver_lookup_records() for more details.
+         * @param rrname the DNS name to look up the record for
+         * @param record_type the type of DNS record to look up
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call after resolution completes
          */
         lookup_records_async(
@@ -42580,7 +46139,7 @@ export namespace Gio {
             record_type: ResolverRecordType,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Variant[]> | void;
         /**
          * Retrieves the result of a previous call to
          * g_resolver_lookup_records_async(). Returns a non-empty list of records as
@@ -42638,6 +46197,42 @@ export namespace Gio {
          * @param protocol the networking protocol to use for @service (eg, "tcp")
          * @param domain the DNS domain to look up the service in
          * @param cancellable a #GCancellable, or %NULL
+         */
+        lookup_service_async(
+            service: string,
+            protocol: string,
+            domain: string,
+            cancellable?: Cancellable | null,
+        ): Promise<SrvTarget[]>;
+        /**
+         * Begins asynchronously performing a DNS SRV lookup for the given
+         * `service` and `protocol` in the given `domain,` and eventually calls
+         * `callback,` which must call g_resolver_lookup_service_finish() to
+         * get the final result. See g_resolver_lookup_service() for more
+         * details.
+         * @param service the service type to look up (eg, "ldap")
+         * @param protocol the networking protocol to use for @service (eg, "tcp")
+         * @param domain the DNS domain to look up the service in
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call after resolution completes
+         */
+        lookup_service_async(
+            service: string,
+            protocol: string,
+            domain: string,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Begins asynchronously performing a DNS SRV lookup for the given
+         * `service` and `protocol` in the given `domain,` and eventually calls
+         * `callback,` which must call g_resolver_lookup_service_finish() to
+         * get the final result. See g_resolver_lookup_service() for more
+         * details.
+         * @param service the service type to look up (eg, "ldap")
+         * @param protocol the networking protocol to use for @service (eg, "tcp")
+         * @param domain the DNS domain to look up the service in
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call after resolution completes
          */
         lookup_service_async(
@@ -42646,7 +46241,7 @@ export namespace Gio {
             domain: string,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<SrvTarget[]> | void;
         /**
          * Retrieves the result of a previous call to
          * g_resolver_lookup_service_async().
@@ -46725,9 +50320,28 @@ export namespace Gio {
          * details.
          * @param uri a URI representing the destination to connect to
          * @param cancellable a #GCancellable, or %NULL
+         */
+        lookup_async(uri: string, cancellable?: Cancellable | null): Promise<string[]>;
+        /**
+         * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
+         * details.
+         * @param uri a URI representing the destination to connect to
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call after resolution completes
          */
-        lookup_async(uri: string, cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        lookup_async(uri: string, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
+         * details.
+         * @param uri a URI representing the destination to connect to
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call after resolution completes
+         */
+        lookup_async(
+            uri: string,
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<string[]> | void;
         /**
          * Call this function to obtain the array of proxy URIs when
          * g_proxy_resolver_lookup_async() is complete. See
@@ -49678,9 +53292,31 @@ export namespace Gio {
          *
          * It is an error to call this multiple times before the previous callback has finished.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        next_async(cancellable?: Cancellable | null): Promise<SocketAddress | null>;
+        /**
+         * Asynchronously retrieves the next #GSocketAddress from `enumerator`
+         * and then calls `callback,` which must call
+         * g_socket_address_enumerator_next_finish() to get the result.
+         *
+         * It is an error to call this multiple times before the previous callback has finished.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
-        next_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        next_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously retrieves the next #GSocketAddress from `enumerator`
+         * and then calls `callback,` which must call
+         * g_socket_address_enumerator_next_finish() to get the result.
+         *
+         * It is an error to call this multiple times before the previous callback has finished.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         */
+        next_async(
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<SocketAddress | null> | void;
         /**
          * Retrieves the result of a completed call to
          * g_socket_address_enumerator_next_async(). See
@@ -49933,13 +53569,56 @@ export namespace Gio {
          * the result of the operation.
          * @param connectable a #GSocketConnectable specifying the remote address.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        connect_async(connectable: SocketConnectable, cancellable?: Cancellable | null): Promise<SocketConnection>;
+        /**
+         * This is the asynchronous version of g_socket_client_connect().
+         *
+         * You may wish to prefer the asynchronous version even in synchronous
+         * command line programs because, since 2.60, it implements
+         * [RFC 8305](https://tools.ietf.org/html/rfc8305) "Happy Eyeballs"
+         * recommendations to work around long connection timeouts in networks
+         * where IPv6 is broken by performing an IPv4 connection simultaneously
+         * without waiting for IPv6 to time out, which is not supported by the
+         * synchronous call. (This is not an API guarantee, and may change in
+         * the future.)
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_socket_client_connect_finish() to get
+         * the result of the operation.
+         * @param connectable a #GSocketConnectable specifying the remote address.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback
+         */
+        connect_async(
+            connectable: SocketConnectable,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * This is the asynchronous version of g_socket_client_connect().
+         *
+         * You may wish to prefer the asynchronous version even in synchronous
+         * command line programs because, since 2.60, it implements
+         * [RFC 8305](https://tools.ietf.org/html/rfc8305) "Happy Eyeballs"
+         * recommendations to work around long connection timeouts in networks
+         * where IPv6 is broken by performing an IPv4 connection simultaneously
+         * without waiting for IPv6 to time out, which is not supported by the
+         * synchronous call. (This is not an API guarantee, and may change in
+         * the future.)
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_socket_client_connect_finish() to get
+         * the result of the operation.
+         * @param connectable a #GSocketConnectable specifying the remote address.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback
          */
         connect_async(
             connectable: SocketConnectable,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<SocketConnection> | void;
         /**
          * Finishes an async connect operation. See g_socket_client_connect_async()
          * @param result a #GAsyncResult.
@@ -49996,6 +53675,38 @@ export namespace Gio {
          * @param host_and_port the name and optionally the port of the host to connect to
          * @param default_port the default port to connect to
          * @param cancellable a #GCancellable, or %NULL
+         */
+        connect_to_host_async(
+            host_and_port: string,
+            default_port: number,
+            cancellable?: Cancellable | null,
+        ): Promise<SocketConnection>;
+        /**
+         * This is the asynchronous version of g_socket_client_connect_to_host().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_socket_client_connect_to_host_finish() to get
+         * the result of the operation.
+         * @param host_and_port the name and optionally the port of the host to connect to
+         * @param default_port the default port to connect to
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback
+         */
+        connect_to_host_async(
+            host_and_port: string,
+            default_port: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * This is the asynchronous version of g_socket_client_connect_to_host().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_socket_client_connect_to_host_finish() to get
+         * the result of the operation.
+         * @param host_and_port the name and optionally the port of the host to connect to
+         * @param default_port the default port to connect to
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback
          */
         connect_to_host_async(
@@ -50003,7 +53714,7 @@ export namespace Gio {
             default_port: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<SocketConnection> | void;
         /**
          * Finishes an async connect operation. See g_socket_client_connect_to_host_async()
          * @param result a #GAsyncResult.
@@ -50037,6 +53748,32 @@ export namespace Gio {
          * @param domain a domain name
          * @param service the name of the service to connect to
          * @param cancellable a #GCancellable, or %NULL
+         */
+        connect_to_service_async(
+            domain: string,
+            service: string,
+            cancellable?: Cancellable | null,
+        ): Promise<SocketConnection>;
+        /**
+         * This is the asynchronous version of
+         * g_socket_client_connect_to_service().
+         * @param domain a domain name
+         * @param service the name of the service to connect to
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback
+         */
+        connect_to_service_async(
+            domain: string,
+            service: string,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * This is the asynchronous version of
+         * g_socket_client_connect_to_service().
+         * @param domain a domain name
+         * @param service the name of the service to connect to
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback
          */
         connect_to_service_async(
@@ -50044,7 +53781,7 @@ export namespace Gio {
             service: string,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<SocketConnection> | void;
         /**
          * Finishes an async connect operation. See g_socket_client_connect_to_service_async()
          * @param result a #GAsyncResult.
@@ -50088,6 +53825,38 @@ export namespace Gio {
          * @param uri a network uri
          * @param default_port the default port to connect to
          * @param cancellable a #GCancellable, or %NULL
+         */
+        connect_to_uri_async(
+            uri: string,
+            default_port: number,
+            cancellable?: Cancellable | null,
+        ): Promise<SocketConnection>;
+        /**
+         * This is the asynchronous version of g_socket_client_connect_to_uri().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_socket_client_connect_to_uri_finish() to get
+         * the result of the operation.
+         * @param uri a network uri
+         * @param default_port the default port to connect to
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback
+         */
+        connect_to_uri_async(
+            uri: string,
+            default_port: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * This is the asynchronous version of g_socket_client_connect_to_uri().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_socket_client_connect_to_uri_finish() to get
+         * the result of the operation.
+         * @param uri a network uri
+         * @param default_port the default port to connect to
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback
          */
         connect_to_uri_async(
@@ -50095,7 +53864,7 @@ export namespace Gio {
             default_port: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<SocketConnection> | void;
         /**
          * Finishes an async connect operation. See g_socket_client_connect_to_uri_async()
          * @param result a #GAsyncResult.
@@ -50367,13 +54136,48 @@ export namespace Gio {
          * Use g_socket_connection_connect_finish() to retrieve the result.
          * @param address a #GSocketAddress specifying the remote address.
          * @param cancellable a %GCancellable or %NULL
+         */
+        connect_async(address: SocketAddress, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously connect `connection` to the specified remote address.
+         *
+         * This clears the #GSocket:blocking flag on `connection'`s underlying
+         * socket if it is currently set.
+         *
+         * If #GSocket:timeout is set, the operation will time out and return
+         * %G_IO_ERROR_TIMED_OUT after that period. Otherwise, it will continue
+         * indefinitely until operating system timeouts (if any) are hit.
+         *
+         * Use g_socket_connection_connect_finish() to retrieve the result.
+         * @param address a #GSocketAddress specifying the remote address.
+         * @param cancellable a %GCancellable or %NULL
+         * @param callback a #GAsyncReadyCallback
+         */
+        connect_async(
+            address: SocketAddress,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously connect `connection` to the specified remote address.
+         *
+         * This clears the #GSocket:blocking flag on `connection'`s underlying
+         * socket if it is currently set.
+         *
+         * If #GSocket:timeout is set, the operation will time out and return
+         * %G_IO_ERROR_TIMED_OUT after that period. Otherwise, it will continue
+         * indefinitely until operating system timeouts (if any) are hit.
+         *
+         * Use g_socket_connection_connect_finish() to retrieve the result.
+         * @param address a #GSocketAddress specifying the remote address.
+         * @param cancellable a %GCancellable or %NULL
          * @param callback a #GAsyncReadyCallback
          */
         connect_async(
             address: SocketAddress,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Gets the result of a g_socket_connection_connect_async() call.
          * @param result the #GAsyncResult
@@ -50625,9 +54429,31 @@ export namespace Gio {
          * called. You can then call g_socket_listener_accept_finish()
          * to get the result of the operation.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        accept_async(cancellable?: Cancellable | null): Promise<[SocketConnection, GObject.Object | null]>;
+        /**
+         * This is the asynchronous version of g_socket_listener_accept().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_socket_listener_accept_finish()
+         * to get the result of the operation.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback
          */
-        accept_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        accept_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * This is the asynchronous version of g_socket_listener_accept().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_socket_listener_accept_finish()
+         * to get the result of the operation.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback
+         */
+        accept_async(
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<[SocketConnection, GObject.Object | null]> | void;
         /**
          * Finishes an async accept operation. See g_socket_listener_accept_async()
          * @param result a #GAsyncResult.
@@ -50660,9 +54486,31 @@ export namespace Gio {
          * called. You can then call g_socket_listener_accept_socket_finish()
          * to get the result of the operation.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        accept_socket_async(cancellable?: Cancellable | null): Promise<[Socket, GObject.Object | null]>;
+        /**
+         * This is the asynchronous version of g_socket_listener_accept_socket().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_socket_listener_accept_socket_finish()
+         * to get the result of the operation.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback
          */
-        accept_socket_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        accept_socket_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * This is the asynchronous version of g_socket_listener_accept_socket().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_socket_listener_accept_socket_finish()
+         * to get the result of the operation.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback
+         */
+        accept_socket_async(
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<[Socket, GObject.Object | null]> | void;
         /**
          * Finishes an async accept operation. See g_socket_listener_accept_socket_async()
          * @param result a #GAsyncResult.
@@ -51050,13 +54898,35 @@ export namespace Gio {
          * invocation with g_subprocess_communicate_finish().
          * @param stdin_buf Input data, or %NULL
          * @param cancellable Cancellable
+         */
+        communicate_async(
+            stdin_buf?: GLib.Bytes | null,
+            cancellable?: Cancellable | null,
+        ): Promise<[boolean, GLib.Bytes | null, GLib.Bytes | null]>;
+        /**
+         * Asynchronous version of g_subprocess_communicate().  Complete
+         * invocation with g_subprocess_communicate_finish().
+         * @param stdin_buf Input data, or %NULL
+         * @param cancellable Cancellable
+         * @param callback Callback
+         */
+        communicate_async(
+            stdin_buf: GLib.Bytes | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronous version of g_subprocess_communicate().  Complete
+         * invocation with g_subprocess_communicate_finish().
+         * @param stdin_buf Input data, or %NULL
+         * @param cancellable Cancellable
          * @param callback Callback
          */
         communicate_async(
             stdin_buf?: GLib.Bytes | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, GLib.Bytes | null, GLib.Bytes | null]> | void;
         /**
          * Complete an invocation of g_subprocess_communicate_async().
          * @param result Result
@@ -51077,13 +54947,35 @@ export namespace Gio {
          * invocation with g_subprocess_communicate_utf8_finish().
          * @param stdin_buf Input data, or %NULL
          * @param cancellable Cancellable
+         */
+        communicate_utf8_async(
+            stdin_buf?: string | null,
+            cancellable?: Cancellable | null,
+        ): Promise<[boolean, string, string]>;
+        /**
+         * Asynchronous version of g_subprocess_communicate_utf8().  Complete
+         * invocation with g_subprocess_communicate_utf8_finish().
+         * @param stdin_buf Input data, or %NULL
+         * @param cancellable Cancellable
+         * @param callback Callback
+         */
+        communicate_utf8_async(
+            stdin_buf: string | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronous version of g_subprocess_communicate_utf8().  Complete
+         * invocation with g_subprocess_communicate_utf8_finish().
+         * @param stdin_buf Input data, or %NULL
+         * @param cancellable Cancellable
          * @param callback Callback
          */
         communicate_utf8_async(
             stdin_buf?: string | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, string, string]> | void;
         /**
          * Complete an invocation of g_subprocess_communicate_utf8_async().
          * @param result Result
@@ -51234,9 +55126,27 @@ export namespace Gio {
          *
          * This is the asynchronous version of g_subprocess_wait().
          * @param cancellable a #GCancellable, or %NULL
+         */
+        wait_async(cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Wait for the subprocess to terminate.
+         *
+         * This is the asynchronous version of g_subprocess_wait().
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the operation is complete
          */
-        wait_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        wait_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Wait for the subprocess to terminate.
+         *
+         * This is the asynchronous version of g_subprocess_wait().
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the operation is complete
+         */
+        wait_async(
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Combines g_subprocess_wait() with g_spawn_check_wait_status().
          * @param cancellable a #GCancellable
@@ -51248,9 +55158,27 @@ export namespace Gio {
          *
          * This is the asynchronous version of g_subprocess_wait_check().
          * @param cancellable a #GCancellable, or %NULL
+         */
+        wait_check_async(cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Combines g_subprocess_wait_async() with g_spawn_check_wait_status().
+         *
+         * This is the asynchronous version of g_subprocess_wait_check().
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the operation is complete
          */
-        wait_check_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        wait_check_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Combines g_subprocess_wait_async() with g_spawn_check_wait_status().
+         *
+         * This is the asynchronous version of g_subprocess_wait_check().
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the operation is complete
+         */
+        wait_check_async(
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Collects the result of a previous call to
          * g_subprocess_wait_check_async().
@@ -55273,13 +59201,32 @@ export namespace Gio {
          * g_tls_connection_handshake() for more information.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable a #GCancellable, or %NULL
+         */
+        handshake_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously performs a TLS handshake on `conn`. See
+         * g_tls_connection_handshake() for more information.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call when the handshake is complete
+         */
+        handshake_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously performs a TLS handshake on `conn`. See
+         * g_tls_connection_handshake() for more information.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the handshake is complete
          */
         handshake_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finish an asynchronous TLS handshake operation. See
          * g_tls_connection_handshake() for more information.
@@ -55745,6 +59692,36 @@ export namespace Gio {
          * @param interaction used to interact with the user if necessary
          * @param flags Flags which affect the lookup.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        lookup_certificate_for_handle_async(
+            handle: string,
+            interaction: TlsInteraction | null,
+            flags: TlsDatabaseLookupFlags,
+            cancellable?: Cancellable | null,
+        ): Promise<TlsCertificate>;
+        /**
+         * Asynchronously look up a certificate by its handle in the database. See
+         * g_tls_database_lookup_certificate_for_handle() for more information.
+         * @param handle a certificate handle
+         * @param interaction used to interact with the user if necessary
+         * @param flags Flags which affect the lookup.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call when the operation completes
+         */
+        lookup_certificate_for_handle_async(
+            handle: string,
+            interaction: TlsInteraction | null,
+            flags: TlsDatabaseLookupFlags,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously look up a certificate by its handle in the database. See
+         * g_tls_database_lookup_certificate_for_handle() for more information.
+         * @param handle a certificate handle
+         * @param interaction used to interact with the user if necessary
+         * @param flags Flags which affect the lookup.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the operation completes
          */
         lookup_certificate_for_handle_async(
@@ -55753,7 +59730,7 @@ export namespace Gio {
             flags: TlsDatabaseLookupFlags,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<TlsCertificate> | void;
         /**
          * Finish an asynchronous lookup of a certificate by its handle. See
          * g_tls_database_lookup_certificate_for_handle() for more information.
@@ -55804,6 +59781,36 @@ export namespace Gio {
          * @param interaction used to interact with the user if necessary
          * @param flags flags which affect the lookup operation
          * @param cancellable a #GCancellable, or %NULL
+         */
+        lookup_certificate_issuer_async(
+            certificate: TlsCertificate,
+            interaction: TlsInteraction | null,
+            flags: TlsDatabaseLookupFlags,
+            cancellable?: Cancellable | null,
+        ): Promise<TlsCertificate>;
+        /**
+         * Asynchronously look up the issuer of `certificate` in the database. See
+         * g_tls_database_lookup_certificate_issuer() for more information.
+         * @param certificate a #GTlsCertificate
+         * @param interaction used to interact with the user if necessary
+         * @param flags flags which affect the lookup operation
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call when the operation completes
+         */
+        lookup_certificate_issuer_async(
+            certificate: TlsCertificate,
+            interaction: TlsInteraction | null,
+            flags: TlsDatabaseLookupFlags,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously look up the issuer of `certificate` in the database. See
+         * g_tls_database_lookup_certificate_issuer() for more information.
+         * @param certificate a #GTlsCertificate
+         * @param interaction used to interact with the user if necessary
+         * @param flags flags which affect the lookup operation
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the operation completes
          */
         lookup_certificate_issuer_async(
@@ -55812,7 +59819,7 @@ export namespace Gio {
             flags: TlsDatabaseLookupFlags,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<TlsCertificate> | void;
         /**
          * Finish an asynchronous lookup issuer operation. See
          * g_tls_database_lookup_certificate_issuer() for more information.
@@ -55848,6 +59855,44 @@ export namespace Gio {
          * @param interaction used to interact with the user if necessary
          * @param flags Flags which affect the lookup operation.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        lookup_certificates_issued_by_async(
+            issuer_raw_dn: Uint8Array | string,
+            interaction: TlsInteraction | null,
+            flags: TlsDatabaseLookupFlags,
+            cancellable?: Cancellable | null,
+        ): Promise<TlsCertificate[]>;
+        /**
+         * Asynchronously look up certificates issued by this issuer in the database. See
+         * g_tls_database_lookup_certificates_issued_by() for more information.
+         *
+         * The database may choose to hold a reference to the issuer byte array for the duration
+         * of this asynchronous operation. The byte array should not be modified during
+         * this time.
+         * @param issuer_raw_dn a #GByteArray which holds the DER encoded issuer DN.
+         * @param interaction used to interact with the user if necessary
+         * @param flags Flags which affect the lookup operation.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call when the operation completes
+         */
+        lookup_certificates_issued_by_async(
+            issuer_raw_dn: Uint8Array | string,
+            interaction: TlsInteraction | null,
+            flags: TlsDatabaseLookupFlags,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously look up certificates issued by this issuer in the database. See
+         * g_tls_database_lookup_certificates_issued_by() for more information.
+         *
+         * The database may choose to hold a reference to the issuer byte array for the duration
+         * of this asynchronous operation. The byte array should not be modified during
+         * this time.
+         * @param issuer_raw_dn a #GByteArray which holds the DER encoded issuer DN.
+         * @param interaction used to interact with the user if necessary
+         * @param flags Flags which affect the lookup operation.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the operation completes
          */
         lookup_certificates_issued_by_async(
@@ -55856,7 +59901,7 @@ export namespace Gio {
             flags: TlsDatabaseLookupFlags,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<TlsCertificate[]> | void;
         /**
          * Finish an asynchronous lookup of certificates. See
          * g_tls_database_lookup_certificates_issued_by() for more information.
@@ -55951,6 +59996,46 @@ export namespace Gio {
          * @param interaction used to interact with the user if necessary
          * @param flags additional verify flags
          * @param cancellable a #GCancellable, or %NULL
+         */
+        verify_chain_async(
+            chain: TlsCertificate,
+            purpose: string,
+            identity: SocketConnectable | null,
+            interaction: TlsInteraction | null,
+            flags: TlsDatabaseVerifyFlags,
+            cancellable?: Cancellable | null,
+        ): Promise<TlsCertificateFlags>;
+        /**
+         * Asynchronously determines the validity of a certificate chain after
+         * looking up and adding any missing certificates to the chain. See
+         * g_tls_database_verify_chain() for more information.
+         * @param chain a #GTlsCertificate chain
+         * @param purpose the purpose that this certificate chain will be used for.
+         * @param identity the expected peer identity
+         * @param interaction used to interact with the user if necessary
+         * @param flags additional verify flags
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call when the operation completes
+         */
+        verify_chain_async(
+            chain: TlsCertificate,
+            purpose: string,
+            identity: SocketConnectable | null,
+            interaction: TlsInteraction | null,
+            flags: TlsDatabaseVerifyFlags,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously determines the validity of a certificate chain after
+         * looking up and adding any missing certificates to the chain. See
+         * g_tls_database_verify_chain() for more information.
+         * @param chain a #GTlsCertificate chain
+         * @param purpose the purpose that this certificate chain will be used for.
+         * @param identity the expected peer identity
+         * @param interaction used to interact with the user if necessary
+         * @param flags additional verify flags
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the operation completes
          */
         verify_chain_async(
@@ -55961,7 +60046,7 @@ export namespace Gio {
             flags: TlsDatabaseVerifyFlags,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<TlsCertificateFlags> | void;
         /**
          * Finish an asynchronous verify chain operation. See
          * g_tls_database_verify_chain() for more information.
@@ -56175,13 +60260,58 @@ export namespace Gio {
          * Certain implementations may not support immediate cancellation.
          * @param password a #GTlsPassword object
          * @param cancellable an optional #GCancellable cancellation object
+         */
+        ask_password_async(password: TlsPassword, cancellable?: Cancellable | null): Promise<TlsInteractionResult>;
+        /**
+         * Run asynchronous interaction to ask the user for a password. In general,
+         * g_tls_interaction_invoke_ask_password() should be used instead of this
+         * function.
+         *
+         * Derived subclasses usually implement a password prompt, although they may
+         * also choose to provide a password from elsewhere. The `password` value will
+         * be filled in and then `callback` will be called. Alternatively the user may
+         * abort this password request, which will usually abort the TLS connection.
+         *
+         * If the interaction is cancelled by the cancellation object, or by the
+         * user then %G_TLS_INTERACTION_FAILED will be returned with an error that
+         * contains a %G_IO_ERROR_CANCELLED error code. Certain implementations may
+         * not support immediate cancellation.
+         *
+         * Certain implementations may not support immediate cancellation.
+         * @param password a #GTlsPassword object
+         * @param cancellable an optional #GCancellable cancellation object
+         * @param callback will be called when the interaction completes
+         */
+        ask_password_async(
+            password: TlsPassword,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Run asynchronous interaction to ask the user for a password. In general,
+         * g_tls_interaction_invoke_ask_password() should be used instead of this
+         * function.
+         *
+         * Derived subclasses usually implement a password prompt, although they may
+         * also choose to provide a password from elsewhere. The `password` value will
+         * be filled in and then `callback` will be called. Alternatively the user may
+         * abort this password request, which will usually abort the TLS connection.
+         *
+         * If the interaction is cancelled by the cancellation object, or by the
+         * user then %G_TLS_INTERACTION_FAILED will be returned with an error that
+         * contains a %G_IO_ERROR_CANCELLED error code. Certain implementations may
+         * not support immediate cancellation.
+         *
+         * Certain implementations may not support immediate cancellation.
+         * @param password a #GTlsPassword object
+         * @param cancellable an optional #GCancellable cancellation object
          * @param callback will be called when the interaction completes
          */
         ask_password_async(
             password: TlsPassword,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<TlsInteractionResult> | void;
         /**
          * Complete an ask password user interaction request. This should be once
          * the g_tls_interaction_ask_password_async() completion callback is called.
@@ -56291,6 +60421,44 @@ export namespace Gio {
          * @param connection a #GTlsConnection object
          * @param flags flags providing more information about the request
          * @param cancellable an optional #GCancellable cancellation object
+         */
+        request_certificate_async(
+            connection: TlsConnection,
+            flags: TlsCertificateRequestFlags,
+            cancellable?: Cancellable | null,
+        ): Promise<TlsInteractionResult>;
+        /**
+         * Run asynchronous interaction to ask the user for a certificate to use with
+         * the connection. In general, g_tls_interaction_invoke_request_certificate() should
+         * be used instead of this function.
+         *
+         * Derived subclasses usually implement a certificate selector, although they may
+         * also choose to provide a certificate from elsewhere. `callback` will be called
+         * when the operation completes. Alternatively the user may abort this certificate
+         * request, which will usually abort the TLS connection.
+         * @param connection a #GTlsConnection object
+         * @param flags flags providing more information about the request
+         * @param cancellable an optional #GCancellable cancellation object
+         * @param callback will be called when the interaction completes
+         */
+        request_certificate_async(
+            connection: TlsConnection,
+            flags: TlsCertificateRequestFlags,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Run asynchronous interaction to ask the user for a certificate to use with
+         * the connection. In general, g_tls_interaction_invoke_request_certificate() should
+         * be used instead of this function.
+         *
+         * Derived subclasses usually implement a certificate selector, although they may
+         * also choose to provide a certificate from elsewhere. `callback` will be called
+         * when the operation completes. Alternatively the user may abort this certificate
+         * request, which will usually abort the TLS connection.
+         * @param connection a #GTlsConnection object
+         * @param flags flags providing more information about the request
+         * @param cancellable an optional #GCancellable cancellation object
          * @param callback will be called when the interaction completes
          */
         request_certificate_async(
@@ -56298,7 +60466,7 @@ export namespace Gio {
             flags: TlsCertificateRequestFlags,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<TlsInteractionResult> | void;
         /**
          * Complete a request certificate user interaction request. This should be once
          * the g_tls_interaction_request_certificate_async() completion callback is called.
@@ -56524,9 +60692,35 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called. You can then call
          * g_unix_connection_receive_credentials_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        receive_credentials_async(cancellable?: Cancellable | null): Promise<Credentials>;
+        /**
+         * Asynchronously receive credentials.
+         *
+         * For more details, see g_unix_connection_receive_credentials() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * g_unix_connection_receive_credentials_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
-        receive_credentials_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        receive_credentials_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously receive credentials.
+         *
+         * For more details, see g_unix_connection_receive_credentials() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * g_unix_connection_receive_credentials_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        receive_credentials_async(
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<Credentials> | void;
         /**
          * Finishes an asynchronous receive credentials operation started with
          * g_unix_connection_receive_credentials_async().
@@ -56579,9 +60773,35 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called. You can then call
          * g_unix_connection_send_credentials_finish() to get the result of the operation.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        send_credentials_async(cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously send credentials.
+         *
+         * For more details, see g_unix_connection_send_credentials() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * g_unix_connection_send_credentials_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
-        send_credentials_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        send_credentials_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously send credentials.
+         *
+         * For more details, see g_unix_connection_send_credentials() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * g_unix_connection_send_credentials_finish() to get the result of the operation.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        send_credentials_async(
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous send credentials operation started with
          * g_unix_connection_send_credentials_async().
@@ -57519,13 +61739,48 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
+         */
+        close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Requests an asynchronous closes of the stream, releasing resources related to it.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_close_finish() to get the result of the
+         * operation.
+         *
+         * For behaviour details see g_input_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional cancellable object
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        close_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous closes of the stream, releasing resources related to it.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_close_finish() to get the result of the
+         * operation.
+         *
+         * For behaviour details see g_input_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
          * @param result a #GAsyncResult.
@@ -57605,13 +61860,48 @@ export namespace Gio {
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        read_all_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the
+         * buffer starting at `buffer`.
+         *
+         * This is the asynchronous equivalent of g_input_stream_read_all().
+         *
+         * Call g_input_stream_read_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_all_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): Uint8Array;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the
+         * buffer starting at `buffer`.
+         *
+         * This is the asynchronous equivalent of g_input_stream_read_all().
+         *
+         * Call g_input_stream_read_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_all_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): Uint8Array;
+        ): [Promise<number> | void, Uint8Array];
         /**
          * Finishes an asynchronous stream read operation started with
          * g_input_stream_read_all_async().
@@ -57652,13 +61942,74 @@ export namespace Gio {
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        read_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the buffer
+         * starting at `buffer`. When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_read_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed on `stream,` and will
+         * result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes read into the buffer will be passed to the
+         * callback. It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to read
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero),  but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value) will
+         * be executed before an outstanding request with lower priority. Default
+         * priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): Uint8Array;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into the buffer
+         * starting at `buffer`. When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_read_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed on `stream,` and will
+         * result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes read into the buffer will be passed to the
+         * callback. It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to read
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero),  but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value) will
+         * be executed before an outstanding request with lower priority. Default
+         * priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to implement
+         * asynchronicity, so they are optional for inheriting classes. However, if you
+         * override one you must override all.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): Uint8Array;
+        ): [Promise<number> | void, Uint8Array];
         /**
          * Like g_input_stream_read(), this tries to read `count` bytes from
          * the stream in a blocking fashion. However, rather than reading into
@@ -57712,6 +62063,64 @@ export namespace Gio {
          * @param count the number of bytes that will be read from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        read_bytes_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<GLib.Bytes>;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into a
+         * new #GBytes. When the operation is finished `callback` will be
+         * called. You can then call g_input_stream_read_bytes_finish() to get the
+         * result of the operation.
+         *
+         * During an async request no other sync and async calls are allowed
+         * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the new #GBytes will be passed to the callback. It is
+         * not an error if this is smaller than the requested size, as it can
+         * happen e.g. near the end of a file, but generally we try to read as
+         * many bytes as requested. Zero is returned on end of file (or if
+         * `count` is zero), but never otherwise.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param count the number of bytes that will be read from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_bytes_async(
+            count: number,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous read of `count` bytes from the stream into a
+         * new #GBytes. When the operation is finished `callback` will be
+         * called. You can then call g_input_stream_read_bytes_finish() to get the
+         * result of the operation.
+         *
+         * During an async request no other sync and async calls are allowed
+         * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the new #GBytes will be passed to the callback. It is
+         * not an error if this is smaller than the requested size, as it can
+         * happen e.g. near the end of a file, but generally we try to read as
+         * many bytes as requested. Zero is returned on end of file (or if
+         * `count` is zero), but never otherwise.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * @param count the number of bytes that will be read from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_bytes_async(
@@ -57719,7 +62128,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<GLib.Bytes> | void;
         /**
          * Finishes an asynchronous stream read-into-#GBytes operation.
          * @param result a #GAsyncResult.
@@ -57786,6 +62195,70 @@ export namespace Gio {
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        skip_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<number>;
+        /**
+         * Request an asynchronous skip of `count` bytes from the stream.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_skip_finish() to get the result
+         * of the operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes skipped will be passed to the callback.
+         * It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to skip
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero), but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value)
+         * will be executed before an outstanding request with lower priority.
+         * Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to
+         * implement asynchronicity, so they are optional for inheriting classes.
+         * However, if you override one, you must override all.
+         * @param count the number of bytes that will be skipped from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        skip_async(
+            count: number,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous skip of `count` bytes from the stream.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_input_stream_skip_finish() to get the result
+         * of the operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes skipped will be passed to the callback.
+         * It is not an error if this is not the same as the requested size, as it
+         * can happen e.g. near the end of a file, but generally we try to skip
+         * as many bytes as requested. Zero is returned on end of file
+         * (or if `count` is zero), but never otherwise.
+         *
+         * Any outstanding i/o request with higher priority (lower numerical value)
+         * will be executed before an outstanding request with lower priority.
+         * Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads to
+         * implement asynchronicity, so they are optional for inheriting classes.
+         * However, if you override one, you must override all.
+         * @param count the number of bytes that will be skipped from the stream
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         skip_async(
@@ -57793,7 +62266,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes a stream skip operation.
          * @param result a #GAsyncResult.
@@ -58701,13 +63174,48 @@ export namespace Gio {
          * classes. However, if you override one you must override all.
          * @param io_priority the io priority of the request.
          * @param cancellable optional cancellable object
+         */
+        close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Requests an asynchronous close of the stream, releasing resources
+         * related to it. When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_close_finish() to get
+         * the result of the operation.
+         *
+         * For behaviour details see g_output_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional cancellable object
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        close_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous close of the stream, releasing resources
+         * related to it. When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_close_finish() to get
+         * the result of the operation.
+         *
+         * For behaviour details see g_output_stream_close().
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Closes an output stream.
          * @param result a #GAsyncResult.
@@ -58738,13 +63246,42 @@ export namespace Gio {
          * result of the operation.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        flush_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Forces an asynchronous write of all user-space buffered data for
+         * the given `stream`.
+         * For behaviour details see g_output_stream_flush().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_flush_finish() to get the
+         * result of the operation.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        flush_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Forces an asynchronous write of all user-space buffered data for
+         * the given `stream`.
+         * For behaviour details see g_output_stream_flush().
+         *
+         * When the operation is finished `callback` will be
+         * called. You can then call g_output_stream_flush_finish() to get the
+         * result of the operation.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         flush_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes flushing an output stream.
          * @param result a GAsyncResult.
@@ -58796,6 +63333,46 @@ export namespace Gio {
          * @param flags a set of #GOutputStreamSpliceFlags.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        splice_async(
+            source: InputStream,
+            flags: OutputStreamSpliceFlags,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Splices a stream asynchronously.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_splice_finish() to get the
+         * result of the operation.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_splice().
+         * @param source a #GInputStream.
+         * @param flags a set of #GOutputStreamSpliceFlags.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        splice_async(
+            source: InputStream,
+            flags: OutputStreamSpliceFlags,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Splices a stream asynchronously.
+         * When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_splice_finish() to get the
+         * result of the operation.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_splice().
+         * @param source a #GInputStream.
+         * @param flags a set of #GOutputStreamSpliceFlags.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         splice_async(
@@ -58804,7 +63381,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous stream splice operation.
          * @param result a #GAsyncResult.
@@ -58881,6 +63458,58 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write
          * @param io_priority the io priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        write_all_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_write_all().
+         *
+         * Call g_output_stream_write_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param buffer the buffer containing the data to write
+         * @param io_priority the io priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        write_all_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_write_all().
+         *
+         * Call g_output_stream_write_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param buffer the buffer containing the data to write
+         * @param io_priority the io priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_all_async(
@@ -58888,7 +63517,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous stream write operation started with
          * g_output_stream_write_all_async().
@@ -58943,6 +63572,98 @@ export namespace Gio {
          * @param buffer the buffer containing the data to write.
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        write_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK - if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write().
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called. See g_output_stream_write_bytes_async()
+         * for a #GBytes version that will automatically hold a reference to
+         * the contents (without copying) for the duration of the call.
+         * @param buffer the buffer containing the data to write.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        write_async(
+            buffer: Uint8Array | string,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of `count` bytes from `buffer` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_write_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * A value of `count` larger than %G_MAXSSIZE will cause a
+         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK - if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write().
+         *
+         * Note that no copy of `buffer` will be made, so it must stay valid
+         * until `callback` is called. See g_output_stream_write_bytes_async()
+         * for a #GBytes version that will automatically hold a reference to
+         * the contents (without copying) for the duration of the call.
+         * @param buffer the buffer containing the data to write.
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         write_async(
@@ -58950,7 +63671,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * A wrapper function for g_output_stream_write() which takes a
          * #GBytes as input.  This can be more convenient for use by language
@@ -58985,6 +63706,54 @@ export namespace Gio {
          * @param bytes The bytes to write
          * @param io_priority the io priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        write_bytes_async(
+            bytes: GLib.Bytes | Uint8Array,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * This function is similar to g_output_stream_write_async(), but
+         * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
+         * this allows the stream to avoid taking a copy of the data.
+         *
+         * However, note that this function may still perform partial writes,
+         * just like g_output_stream_write_async(). If that occurs, to continue
+         * writing, you will need to create a new #GBytes containing just the
+         * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
+         * #GBytes instance multiple times potentially can result in duplicated
+         * data in the output stream.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write_bytes().
+         * @param bytes The bytes to write
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        write_bytes_async(
+            bytes: GLib.Bytes | Uint8Array,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * This function is similar to g_output_stream_write_async(), but
+         * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
+         * this allows the stream to avoid taking a copy of the data.
+         *
+         * However, note that this function may still perform partial writes,
+         * just like g_output_stream_write_async(). If that occurs, to continue
+         * writing, you will need to create a new #GBytes containing just the
+         * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
+         * #GBytes instance multiple times potentially can result in duplicated
+         * data in the output stream.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_write_bytes().
+         * @param bytes The bytes to write
+         * @param io_priority the io priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         write_bytes_async(
@@ -58992,7 +63761,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes a stream write-from-#GBytes operation.
          * @param result a #GAsyncResult.
@@ -59082,6 +63851,60 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        writev_all_async(
+            vectors: OutputVector[],
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<number>;
+        /**
+         * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_writev_all().
+         *
+         * Call g_output_stream_writev_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called. The content of the individual elements
+         * of `vectors` might be changed by this function.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        writev_all_async(
+            vectors: OutputVector[],
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_all_finish() to get the result of the
+         * operation.
+         *
+         * This is the asynchronous version of g_output_stream_writev_all().
+         *
+         * Call g_output_stream_writev_all_finish() to collect the result.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called. The content of the individual elements
+         * of `vectors` might be changed by this function.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_all_async(
@@ -59089,7 +63912,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes an asynchronous stream write operation started with
          * g_output_stream_writev_all_async().
@@ -59139,6 +63962,84 @@ export namespace Gio {
          * @param vectors the buffer containing the #GOutputVectors to write.
          * @param io_priority the I/O priority of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        writev_async(vectors: OutputVector[], io_priority: number, cancellable?: Cancellable | null): Promise<number>;
+        /**
+         * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK — if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_writev().
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        writev_async(
+            vectors: OutputVector[],
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
+         * the stream. When the operation is finished `callback` will be called.
+         * You can then call g_output_stream_writev_finish() to get the result of the
+         * operation.
+         *
+         * During an async request no other sync and async calls are allowed,
+         * and will result in %G_IO_ERROR_PENDING errors.
+         *
+         * On success, the number of bytes written will be passed to the
+         * `callback`. It is not an error if this is not the same as the
+         * requested size, as it can happen e.g. on a partial I/O error,
+         * but generally we try to write as many bytes as requested.
+         *
+         * You are guaranteed that this method will never fail with
+         * %G_IO_ERROR_WOULD_BLOCK — if `stream` can't accept more data, the
+         * method will just wait until this changes.
+         *
+         * Any outstanding I/O request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         *
+         * The asynchronous methods have a default fallback that uses threads
+         * to implement asynchronicity, so they are optional for inheriting
+         * classes. However, if you override one you must override all.
+         *
+         * For the synchronous, blocking version of this function, see
+         * g_output_stream_writev().
+         *
+         * Note that no copy of `vectors` will be made, so it must stay valid
+         * until `callback` is called.
+         * @param vectors the buffer containing the #GOutputVectors to write.
+         * @param io_priority the I/O priority of the request.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         writev_async(
@@ -59146,7 +64047,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<number> | void;
         /**
          * Finishes a stream writev operation.
          * @param result a #GAsyncResult.
@@ -65475,6 +70376,40 @@ export namespace Gio {
          * @param uris a list of URIs to launch.
          * @param context the launch context
          * @param cancellable a [class@Gio.Cancellable]
+         */
+        launch_uris_async(
+            uris?: string[] | null,
+            context?: AppLaunchContext | null,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Async version of [method`Gio`.AppInfo.launch_uris].
+         *
+         * The `callback` is invoked immediately after the application launch, but it
+         * waits for activation in case of D-Bus–activated applications and also provides
+         * extended error information for sandboxed applications, see notes for
+         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @param cancellable a [class@Gio.Cancellable]
+         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         */
+        launch_uris_async(
+            uris: string[] | null,
+            context: AppLaunchContext | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Async version of [method`Gio`.AppInfo.launch_uris].
+         *
+         * The `callback` is invoked immediately after the application launch, but it
+         * waits for activation in case of D-Bus–activated applications and also provides
+         * extended error information for sandboxed applications, see notes for
+         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @param cancellable a [class@Gio.Cancellable]
          * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
          */
         launch_uris_async(
@@ -65482,7 +70417,7 @@ export namespace Gio {
             context?: AppLaunchContext | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
          * @param result the async result
@@ -65807,13 +70742,100 @@ export namespace Gio {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -66911,19 +71933,72 @@ export namespace Gio {
          * result of the operation.
          * @param flags flags affecting the unmount if required for eject
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        eject(flags: MountUnmountFlags, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously ejects a drive.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_drive_eject_finish() to obtain the
+         * result of the operation.
+         * @param flags flags affecting the unmount if required for eject
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback, or %NULL.
+         */
+        eject(
+            flags: MountUnmountFlags,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously ejects a drive.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_drive_eject_finish() to obtain the
+         * result of the operation.
+         * @param flags flags affecting the unmount if required for eject
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         eject(
             flags: MountUnmountFlags,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes ejecting a drive.
          * @param result a #GAsyncResult.
          * @returns %TRUE if the drive has been ejected successfully,     %FALSE otherwise.
          */
         eject_finish(result: AsyncResult): boolean;
+        /**
+         * Ejects a drive. This is an asynchronous operation, and is
+         * finished by calling g_drive_eject_with_operation_finish() with the `drive`
+         * and #GAsyncResult data returned in the `callback`.
+         * @param flags flags affecting the unmount if required for eject
+         * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        eject_with_operation(
+            flags: MountUnmountFlags,
+            mount_operation?: MountOperation | null,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Ejects a drive. This is an asynchronous operation, and is
+         * finished by calling g_drive_eject_with_operation_finish() with the `drive`
+         * and #GAsyncResult data returned in the `callback`.
+         * @param flags flags affecting the unmount if required for eject
+         * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback, or %NULL.
+         */
+        eject_with_operation(
+            flags: MountUnmountFlags,
+            mount_operation: MountOperation | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Ejects a drive. This is an asynchronous operation, and is
          * finished by calling g_drive_eject_with_operation_finish() with the `drive`
@@ -66938,7 +72013,7 @@ export namespace Gio {
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes ejecting a drive. If any errors occurred during the operation,
          * `error` will be set to contain the errors and %FALSE will be returned.
@@ -67029,15 +72104,69 @@ export namespace Gio {
          * You can then call g_drive_poll_for_media_finish() to obtain the
          * result of the operation.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        poll_for_media(cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously polls `drive` to see if media has been inserted or removed.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_drive_poll_for_media_finish() to obtain the
+         * result of the operation.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
-        poll_for_media(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        poll_for_media(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously polls `drive` to see if media has been inserted or removed.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_drive_poll_for_media_finish() to obtain the
+         * result of the operation.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback, or %NULL.
+         */
+        poll_for_media(
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes an operation started with g_drive_poll_for_media() on a drive.
          * @param result a #GAsyncResult.
          * @returns %TRUE if the drive has been poll_for_mediaed successfully,     %FALSE otherwise.
          */
         poll_for_media_finish(result: AsyncResult): boolean;
+        /**
+         * Asynchronously starts a drive.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_drive_start_finish() to obtain the
+         * result of the operation.
+         * @param flags flags affecting the start operation.
+         * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        start(
+            flags: DriveStartFlags,
+            mount_operation?: MountOperation | null,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously starts a drive.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_drive_start_finish() to obtain the
+         * result of the operation.
+         * @param flags flags affecting the start operation.
+         * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback, or %NULL.
+         */
+        start(
+            flags: DriveStartFlags,
+            mount_operation: MountOperation | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously starts a drive.
          *
@@ -67054,13 +72183,45 @@ export namespace Gio {
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes starting a drive.
          * @param result a #GAsyncResult.
          * @returns %TRUE if the drive has been started successfully,     %FALSE otherwise.
          */
         start_finish(result: AsyncResult): boolean;
+        /**
+         * Asynchronously stops a drive.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_drive_stop_finish() to obtain the
+         * result of the operation.
+         * @param flags flags affecting the unmount if required for stopping.
+         * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        stop(
+            flags: MountUnmountFlags,
+            mount_operation?: MountOperation | null,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously stops a drive.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_drive_stop_finish() to obtain the
+         * result of the operation.
+         * @param flags flags affecting the unmount if required for stopping.
+         * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback, or %NULL.
+         */
+        stop(
+            flags: MountUnmountFlags,
+            mount_operation: MountOperation | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Asynchronously stops a drive.
          *
@@ -67077,7 +72238,7 @@ export namespace Gio {
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes stopping a drive.
          * @param result a #GAsyncResult.
@@ -67691,13 +72852,32 @@ export namespace Gio {
          * more information.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable a #GCancellable, or %NULL
+         */
+        close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously close the DTLS connection. See g_dtls_connection_close() for
+         * more information.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call when the close operation is complete
+         */
+        close_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously close the DTLS connection. See g_dtls_connection_close() for
+         * more information.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the close operation is complete
          */
         close_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finish an asynchronous TLS close operation. See g_dtls_connection_close()
          * for more information.
@@ -67844,13 +73024,32 @@ export namespace Gio {
          * g_dtls_connection_handshake() for more information.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable a #GCancellable, or %NULL
+         */
+        handshake_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously performs a TLS handshake on `conn`. See
+         * g_dtls_connection_handshake() for more information.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call when the handshake is complete
+         */
+        handshake_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously performs a TLS handshake on `conn`. See
+         * g_dtls_connection_handshake() for more information.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the handshake is complete
          */
         handshake_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finish an asynchronous TLS handshake operation. See
          * g_dtls_connection_handshake() for more information.
@@ -67986,6 +73185,36 @@ export namespace Gio {
          * @param shutdown_write %TRUE to stop sending outgoing datagrams
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable a #GCancellable, or %NULL
+         */
+        shutdown_async(
+            shutdown_read: boolean,
+            shutdown_write: boolean,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously shut down part or all of the DTLS connection. See
+         * g_dtls_connection_shutdown() for more information.
+         * @param shutdown_read %TRUE to stop reception of incoming datagrams
+         * @param shutdown_write %TRUE to stop sending outgoing datagrams
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call when the shutdown operation is complete
+         */
+        shutdown_async(
+            shutdown_read: boolean,
+            shutdown_write: boolean,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously shut down part or all of the DTLS connection. See
+         * g_dtls_connection_shutdown() for more information.
+         * @param shutdown_read %TRUE to stop reception of incoming datagrams
+         * @param shutdown_write %TRUE to stop sending outgoing datagrams
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the shutdown operation is complete
          */
         shutdown_async(
@@ -67994,7 +73223,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finish an asynchronous TLS shutdown operation. See
          * g_dtls_connection_shutdown() for more information.
@@ -68354,6 +73583,44 @@ export namespace Gio {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        append_to_async(
+            flags: FileCreateFlags,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<FileOutputStream>;
+        /**
+         * Asynchronously opens `file` for appending.
+         *
+         * For more details, see g_file_append_to() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_append_to_finish() to get the result
+         * of the operation.
+         * @param flags a set of #GFileCreateFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        append_to_async(
+            flags: FileCreateFlags,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously opens `file` for appending.
+         *
+         * For more details, see g_file_append_to() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_append_to_finish() to get the result
+         * of the operation.
+         * @param flags a set of #GFileCreateFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         append_to_async(
@@ -68361,7 +73628,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<FileOutputStream> | void;
         /**
          * Finishes an asynchronous file append operation started with
          * g_file_append_to_async().
@@ -68453,6 +73720,56 @@ export namespace Gio {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
+         */
+        copy_async(
+            destination: File,
+            flags: FileCopyFlags,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+            progress_callback?: FileProgressCallback | null,
+        ): Promise<boolean>;
+        /**
+         * Copies the file `source` to the location specified by `destination`
+         * asynchronously. For details of the behaviour, see g_file_copy().
+         *
+         * If `progress_callback` is not %NULL, then that function that will be called
+         * just like in g_file_copy(). The callback will run in the default main context
+         * of the thread calling g_file_copy_async() — the same context as `callback` is
+         * run in.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * g_file_copy_finish() to get the result of the operation.
+         * @param destination destination #GFile
+         * @param flags set of #GFileCopyFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        copy_async(
+            destination: File,
+            flags: FileCopyFlags,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            progress_callback: FileProgressCallback | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Copies the file `source` to the location specified by `destination`
+         * asynchronously. For details of the behaviour, see g_file_copy().
+         *
+         * If `progress_callback` is not %NULL, then that function that will be called
+         * just like in g_file_copy(). The callback will run in the default main context
+         * of the thread calling g_file_copy_async() — the same context as `callback` is
+         * run in.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * g_file_copy_finish() to get the result of the operation.
+         * @param destination destination #GFile
+         * @param flags set of #GFileCopyFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         copy_async(
@@ -68462,7 +73779,7 @@ export namespace Gio {
             cancellable?: Cancellable | null,
             progress_callback?: FileProgressCallback | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Version of [method`Gio`.File.copy_async] using closures instead of callbacks for
          * easier binding in other languages.
@@ -68540,6 +73857,46 @@ export namespace Gio {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        create_async(
+            flags: FileCreateFlags,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<FileOutputStream>;
+        /**
+         * Asynchronously creates a new file and returns an output stream
+         * for writing to it. The file must not already exist.
+         *
+         * For more details, see g_file_create() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_create_finish() to get the result
+         * of the operation.
+         * @param flags a set of #GFileCreateFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        create_async(
+            flags: FileCreateFlags,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously creates a new file and returns an output stream
+         * for writing to it. The file must not already exist.
+         *
+         * For more details, see g_file_create() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_create_finish() to get the result
+         * of the operation.
+         * @param flags a set of #GFileCreateFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         create_async(
@@ -68547,7 +73904,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<FileOutputStream> | void;
         /**
          * Finishes an asynchronous file create operation started with
          * g_file_create_async().
@@ -68597,6 +73954,46 @@ export namespace Gio {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        create_readwrite_async(
+            flags: FileCreateFlags,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<FileIOStream>;
+        /**
+         * Asynchronously creates a new file and returns a stream
+         * for reading and writing to it. The file must not already exist.
+         *
+         * For more details, see g_file_create_readwrite() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_create_readwrite_finish() to get
+         * the result of the operation.
+         * @param flags a set of #GFileCreateFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        create_readwrite_async(
+            flags: FileCreateFlags,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously creates a new file and returns a stream
+         * for reading and writing to it. The file must not already exist.
+         *
+         * For more details, see g_file_create_readwrite() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_create_readwrite_finish() to get
+         * the result of the operation.
+         * @param flags a set of #GFileCreateFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         create_readwrite_async(
@@ -68604,7 +74001,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<FileIOStream> | void;
         /**
          * Finishes an asynchronous file create operation started with
          * g_file_create_readwrite_async().
@@ -68646,13 +74043,34 @@ export namespace Gio {
          * g_unlink().
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        delete_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously delete a file. If the `file` is a directory, it will
+         * only be deleted if it is empty.  This has the same semantics as
+         * g_unlink().
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         */
+        delete_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously delete a file. If the `file` is a directory, it will
+         * only be deleted if it is empty.  This has the same semantics as
+         * g_unlink().
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         delete_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes deleting a file started with g_file_delete_async().
          * @param result a #GAsyncResult
@@ -68684,13 +74102,44 @@ export namespace Gio {
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        eject_mountable(flags: MountUnmountFlags, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Starts an asynchronous eject on a mountable.
+         * When this operation has completed, `callback` will be called with
+         * `user_user` data, and the operation can be finalized with
+         * g_file_eject_mountable_finish().
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         * @param flags flags affecting the operation
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        eject_mountable(
+            flags: MountUnmountFlags,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts an asynchronous eject on a mountable.
+         * When this operation has completed, `callback` will be called with
+         * `user_user` data, and the operation can be finalized with
+         * g_file_eject_mountable_finish().
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         * @param flags flags affecting the operation
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         eject_mountable(
             flags: MountUnmountFlags,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous eject operation started by
          * g_file_eject_mountable().
@@ -68710,6 +74159,44 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        eject_mountable_with_operation(
+            flags: MountUnmountFlags,
+            mount_operation?: MountOperation | null,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Starts an asynchronous eject on a mountable.
+         * When this operation has completed, `callback` will be called with
+         * `user_user` data, and the operation can be finalized with
+         * g_file_eject_mountable_with_operation_finish().
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        eject_mountable_with_operation(
+            flags: MountUnmountFlags,
+            mount_operation: MountOperation | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts an asynchronous eject on a mountable.
+         * When this operation has completed, `callback` will be called with
+         * `user_user` data, and the operation can be finalized with
+         * g_file_eject_mountable_with_operation_finish().
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         eject_mountable_with_operation(
@@ -68717,7 +74204,7 @@ export namespace Gio {
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous eject operation started by
          * g_file_eject_mountable_with_operation().
@@ -68776,6 +74263,52 @@ export namespace Gio {
          * @param flags a set of #GFileQueryInfoFlags
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        enumerate_children_async(
+            attributes: string,
+            flags: FileQueryInfoFlags,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<FileEnumerator>;
+        /**
+         * Asynchronously gets the requested information about the files
+         * in a directory. The result is a #GFileEnumerator object that will
+         * give out #GFileInfo objects for all the files in the directory.
+         *
+         * For more details, see g_file_enumerate_children() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call g_file_enumerate_children_finish() to get the result of
+         * the operation.
+         * @param attributes an attribute query string
+         * @param flags a set of #GFileQueryInfoFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        enumerate_children_async(
+            attributes: string,
+            flags: FileQueryInfoFlags,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously gets the requested information about the files
+         * in a directory. The result is a #GFileEnumerator object that will
+         * give out #GFileInfo objects for all the files in the directory.
+         *
+         * For more details, see g_file_enumerate_children() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call g_file_enumerate_children_finish() to get the result of
+         * the operation.
+         * @param attributes an attribute query string
+         * @param flags a set of #GFileQueryInfoFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         enumerate_children_async(
@@ -68784,7 +74317,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<FileEnumerator> | void;
         /**
          * Finishes an async enumerate children operation.
          * See g_file_enumerate_children_async().
@@ -68829,13 +74362,44 @@ export namespace Gio {
          * get the result of the operation.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        find_enclosing_mount_async(io_priority: number, cancellable?: Cancellable | null): Promise<Mount>;
+        /**
+         * Asynchronously gets the mount for the file.
+         *
+         * For more details, see g_file_find_enclosing_mount() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_find_enclosing_mount_finish() to
+         * get the result of the operation.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        find_enclosing_mount_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously gets the mount for the file.
+         *
+         * For more details, see g_file_find_enclosing_mount() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_find_enclosing_mount_finish() to
+         * get the result of the operation.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         find_enclosing_mount_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Mount> | void;
         /**
          * Finishes an asynchronous find mount request.
          * See g_file_find_enclosing_mount_async().
@@ -69039,9 +74603,41 @@ export namespace Gio {
          *
          * See g_file_load_bytes() for more information.
          * @param cancellable a #GCancellable or %NULL
+         */
+        load_bytes_async(cancellable?: Cancellable | null): Promise<[GLib.Bytes, string]>;
+        /**
+         * Asynchronously loads the contents of `file` as #GBytes.
+         *
+         * If `file` is a resource:// based URI, the resulting bytes will reference the
+         * embedded resource instead of a copy. Otherwise, this is equivalent to calling
+         * g_file_load_contents_async() and g_bytes_new_take().
+         *
+         * `callback` should call g_file_load_bytes_finish() to get the result of this
+         * asynchronous operation.
+         *
+         * See g_file_load_bytes() for more information.
+         * @param cancellable a #GCancellable or %NULL
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
-        load_bytes_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        load_bytes_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronously loads the contents of `file` as #GBytes.
+         *
+         * If `file` is a resource:// based URI, the resulting bytes will reference the
+         * embedded resource instead of a copy. Otherwise, this is equivalent to calling
+         * g_file_load_contents_async() and g_bytes_new_take().
+         *
+         * `callback` should call g_file_load_bytes_finish() to get the result of this
+         * asynchronous operation.
+         *
+         * See g_file_load_bytes() for more information.
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        load_bytes_async(
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<[GLib.Bytes, string]> | void;
         /**
          * Completes an asynchronous request to g_file_load_bytes_async().
          *
@@ -69084,9 +74680,47 @@ export namespace Gio {
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        load_contents_async(cancellable?: Cancellable | null): Promise<[boolean, Uint8Array, string]>;
+        /**
+         * Starts an asynchronous load of the `file'`s contents.
+         *
+         * For more details, see g_file_load_contents() which is
+         * the synchronous version of this call.
+         *
+         * When the load operation has completed, `callback` will be called
+         * with `user` data. To finish the operation, call
+         * g_file_load_contents_finish() with the #GAsyncResult returned by
+         * the `callback`.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        load_contents_async(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        load_contents_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Starts an asynchronous load of the `file'`s contents.
+         *
+         * For more details, see g_file_load_contents() which is
+         * the synchronous version of this call.
+         *
+         * When the load operation has completed, `callback` will be called
+         * with `user` data. To finish the operation, call
+         * g_file_load_contents_finish() with the #GAsyncResult returned by
+         * the `callback`.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        load_contents_async(
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<[boolean, Uint8Array, string]> | void;
         /**
          * Finishes an asynchronous load of the `file'`s contents.
          * The contents are placed in `contents,` and `length` is set to the
@@ -69130,13 +74764,30 @@ export namespace Gio {
          * Asynchronously creates a directory.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        make_directory_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously creates a directory.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         */
+        make_directory_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously creates a directory.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         make_directory_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous directory creation, started with
          * g_file_make_directory_async().
@@ -69180,6 +74831,32 @@ export namespace Gio {
          * @param symlink_value a string with the path for the target   of the new symlink
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        make_symbolic_link_async(
+            symlink_value: string,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously creates a symbolic link named `file` which contains the
+         * string `symlink_value`.
+         * @param symlink_value a string with the path for the target   of the new symlink
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         */
+        make_symbolic_link_async(
+            symlink_value: string,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously creates a symbolic link named `file` which contains the
+         * string `symlink_value`.
+         * @param symlink_value a string with the path for the target   of the new symlink
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         make_symbolic_link_async(
@@ -69187,7 +74864,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous symbolic link creation, started with
          * g_file_make_symbolic_link_async().
@@ -69296,6 +74973,48 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        mount_enclosing_volume(
+            flags: MountMountFlags,
+            mount_operation?: MountOperation | null,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Starts a `mount_operation,` mounting the volume that contains
+         * the file `location`.
+         *
+         * When this operation has completed, `callback` will be called with
+         * `user_user` data, and the operation can be finalized with
+         * g_file_mount_enclosing_volume_finish().
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation   or %NULL to avoid user interaction
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         */
+        mount_enclosing_volume(
+            flags: MountMountFlags,
+            mount_operation: MountOperation | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts a `mount_operation,` mounting the volume that contains
+         * the file `location`.
+         *
+         * When this operation has completed, `callback` will be called with
+         * `user_user` data, and the operation can be finalized with
+         * g_file_mount_enclosing_volume_finish().
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation   or %NULL to avoid user interaction
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         mount_enclosing_volume(
@@ -69303,13 +75022,57 @@ export namespace Gio {
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes a mount operation started by g_file_mount_enclosing_volume().
          * @param result a #GAsyncResult
          * @returns %TRUE if successful. If an error has occurred,   this function will return %FALSE and set @error   appropriately if present.
          */
         mount_enclosing_volume_finish(result: AsyncResult): boolean;
+        /**
+         * Mounts a file of type G_FILE_TYPE_MOUNTABLE.
+         * Using `mount_operation,` you can request callbacks when, for instance,
+         * passwords are needed during authentication.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_mount_mountable_finish() to get
+         * the result of the operation.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        mount_mountable(
+            flags: MountMountFlags,
+            mount_operation?: MountOperation | null,
+            cancellable?: Cancellable | null,
+        ): Promise<File>;
+        /**
+         * Mounts a file of type G_FILE_TYPE_MOUNTABLE.
+         * Using `mount_operation,` you can request callbacks when, for instance,
+         * passwords are needed during authentication.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_mount_mountable_finish() to get
+         * the result of the operation.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        mount_mountable(
+            flags: MountMountFlags,
+            mount_operation: MountOperation | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Mounts a file of type G_FILE_TYPE_MOUNTABLE.
          * Using `mount_operation,` you can request callbacks when, for instance,
@@ -69332,7 +75095,7 @@ export namespace Gio {
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<File> | void;
         /**
          * Finishes a mount operation. See g_file_mount_mountable() for details.
          *
@@ -69403,6 +75166,54 @@ export namespace Gio {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback #GFileProgressCallback function for updates
+         */
+        move_async(
+            destination: File,
+            flags: FileCopyFlags,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+            progress_callback?: FileProgressCallback | null,
+        ): Promise<boolean>;
+        /**
+         * Asynchronously moves a file `source` to the location of `destination`. For details of the behaviour, see g_file_move().
+         *
+         * If `progress_callback` is not %NULL, then that function that will be called
+         * just like in g_file_move(). The callback will run in the default main context
+         * of the thread calling g_file_move_async() — the same context as `callback` is
+         * run in.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * g_file_move_finish() to get the result of the operation.
+         * @param destination #GFile pointing to the destination location
+         * @param flags set of #GFileCopyFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param progress_callback #GFileProgressCallback function for updates
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        move_async(
+            destination: File,
+            flags: FileCopyFlags,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            progress_callback: FileProgressCallback | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously moves a file `source` to the location of `destination`. For details of the behaviour, see g_file_move().
+         *
+         * If `progress_callback` is not %NULL, then that function that will be called
+         * just like in g_file_move(). The callback will run in the default main context
+         * of the thread calling g_file_move_async() — the same context as `callback` is
+         * run in.
+         *
+         * When the operation is finished, `callback` will be called. You can then call
+         * g_file_move_finish() to get the result of the operation.
+         * @param destination #GFile pointing to the destination location
+         * @param flags set of #GFileCopyFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param progress_callback #GFileProgressCallback function for updates
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         move_async(
@@ -69412,7 +75223,7 @@ export namespace Gio {
             cancellable?: Cancellable | null,
             progress_callback?: FileProgressCallback | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Version of [method`Gio`.File.move_async] using closures instead of callbacks for
          * easier binding in other languages.
@@ -69470,13 +75281,44 @@ export namespace Gio {
          * the result of the operation.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        open_readwrite_async(io_priority: number, cancellable?: Cancellable | null): Promise<FileIOStream>;
+        /**
+         * Asynchronously opens `file` for reading and writing.
+         *
+         * For more details, see g_file_open_readwrite() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_open_readwrite_finish() to get
+         * the result of the operation.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        open_readwrite_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously opens `file` for reading and writing.
+         *
+         * For more details, see g_file_open_readwrite() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_open_readwrite_finish() to get
+         * the result of the operation.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         open_readwrite_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<FileIOStream> | void;
         /**
          * Finishes an asynchronous file read operation started with
          * g_file_open_readwrite_async().
@@ -69506,9 +75348,39 @@ export namespace Gio {
          * You can then call g_file_mount_mountable_finish() to get
          * the result of the operation.
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        poll_mountable(cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Polls a file of type %G_FILE_TYPE_MOUNTABLE.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_mount_mountable_finish() to get
+         * the result of the operation.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
-        poll_mountable(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        poll_mountable(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Polls a file of type %G_FILE_TYPE_MOUNTABLE.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_mount_mountable_finish() to get
+         * the result of the operation.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         */
+        poll_mountable(
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes a poll operation. See g_file_poll_mountable() for details.
          *
@@ -69533,13 +75405,30 @@ export namespace Gio {
          * Async version of g_file_query_default_handler().
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        query_default_handler_async(io_priority: number, cancellable?: Cancellable | null): Promise<AppInfo>;
+        /**
+         * Async version of g_file_query_default_handler().
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is done
+         */
+        query_default_handler_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Async version of g_file_query_default_handler().
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is done
          */
         query_default_handler_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<AppInfo> | void;
         /**
          * Finishes a g_file_query_default_handler_async() operation.
          * @param result a #GAsyncResult
@@ -69630,6 +75519,50 @@ export namespace Gio {
          * @param attributes an attribute query string
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        query_filesystem_info_async(
+            attributes: string,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<FileInfo>;
+        /**
+         * Asynchronously gets the requested information about the filesystem
+         * that the specified `file` is on. The result is a #GFileInfo object
+         * that contains key-value attributes (such as type or size for the
+         * file).
+         *
+         * For more details, see g_file_query_filesystem_info() which is the
+         * synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call g_file_query_info_finish() to get the result of the
+         * operation.
+         * @param attributes an attribute query string
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        query_filesystem_info_async(
+            attributes: string,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously gets the requested information about the filesystem
+         * that the specified `file` is on. The result is a #GFileInfo object
+         * that contains key-value attributes (such as type or size for the
+         * file).
+         *
+         * For more details, see g_file_query_filesystem_info() which is the
+         * synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call g_file_query_info_finish() to get the result of the
+         * operation.
+         * @param attributes an attribute query string
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         query_filesystem_info_async(
@@ -69637,7 +75570,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<FileInfo> | void;
         /**
          * Finishes an asynchronous filesystem info query.
          * See g_file_query_filesystem_info_async().
@@ -69696,6 +75629,50 @@ export namespace Gio {
          * @param flags a set of #GFileQueryInfoFlags
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        query_info_async(
+            attributes: string,
+            flags: FileQueryInfoFlags,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<FileInfo>;
+        /**
+         * Asynchronously gets the requested information about specified `file`.
+         * The result is a #GFileInfo object that contains key-value attributes
+         * (such as type or size for the file).
+         *
+         * For more details, see g_file_query_info() which is the synchronous
+         * version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call g_file_query_info_finish() to get the result of the operation.
+         * @param attributes an attribute query string
+         * @param flags a set of #GFileQueryInfoFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        query_info_async(
+            attributes: string,
+            flags: FileQueryInfoFlags,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously gets the requested information about specified `file`.
+         * The result is a #GFileInfo object that contains key-value attributes
+         * (such as type or size for the file).
+         *
+         * For more details, see g_file_query_info() which is the synchronous
+         * version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call g_file_query_info_finish() to get the result of the operation.
+         * @param attributes an attribute query string
+         * @param flags a set of #GFileQueryInfoFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         query_info_async(
@@ -69704,7 +75681,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<FileInfo> | void;
         /**
          * Finishes an asynchronous file info query.
          * See g_file_query_info_async().
@@ -69766,13 +75743,44 @@ export namespace Gio {
          * of the operation.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        read_async(io_priority: number, cancellable?: Cancellable | null): Promise<FileInputStream>;
+        /**
+         * Asynchronously opens `file` for reading.
+         *
+         * For more details, see g_file_read() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_read_finish() to get the result
+         * of the operation.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        read_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously opens `file` for reading.
+         *
+         * For more details, see g_file_read() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_read_finish() to get the result
+         * of the operation.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         read_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<FileInputStream> | void;
         /**
          * Finishes an asynchronous file read operation started with
          * g_file_read_async().
@@ -69849,6 +75857,54 @@ export namespace Gio {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        replace_async(
+            etag: string | null,
+            make_backup: boolean,
+            flags: FileCreateFlags,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<FileOutputStream>;
+        /**
+         * Asynchronously overwrites the file, replacing the contents,
+         * possibly creating a backup copy of the file first.
+         *
+         * For more details, see g_file_replace() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_replace_finish() to get the result
+         * of the operation.
+         * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
+         * @param make_backup %TRUE if a backup should be created
+         * @param flags a set of #GFileCreateFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        replace_async(
+            etag: string | null,
+            make_backup: boolean,
+            flags: FileCreateFlags,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously overwrites the file, replacing the contents,
+         * possibly creating a backup copy of the file first.
+         *
+         * For more details, see g_file_replace() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_replace_finish() to get the result
+         * of the operation.
+         * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
+         * @param make_backup %TRUE if a backup should be created
+         * @param flags a set of #GFileCreateFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         replace_async(
@@ -69858,7 +75914,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<FileOutputStream> | void;
         /**
          * Replaces the contents of `file` with `contents` of `length` bytes.
          *
@@ -69915,6 +75971,74 @@ export namespace Gio {
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        replace_contents_async(
+            contents: Uint8Array | string,
+            etag: string | null,
+            make_backup: boolean,
+            flags: FileCreateFlags,
+            cancellable?: Cancellable | null,
+        ): Promise<string>;
+        /**
+         * Starts an asynchronous replacement of `file` with the given
+         * `contents` of `length` bytes. `etag` will replace the document's
+         * current entity tag.
+         *
+         * When this operation has completed, `callback` will be called with
+         * `user_user` data, and the operation can be finalized with
+         * g_file_replace_contents_finish().
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         *
+         * If `make_backup` is %TRUE, this function will attempt to
+         * make a backup of `file`.
+         *
+         * Note that no copy of `contents` will be made, so it must stay valid
+         * until `callback` is called. See g_file_replace_contents_bytes_async()
+         * for a #GBytes version that will automatically hold a reference to the
+         * contents (without copying) for the duration of the call.
+         * @param contents string of contents to replace the file with
+         * @param etag a new [entity tag](#entity-tags) for the @file, or %NULL
+         * @param make_backup %TRUE if a backup should be created
+         * @param flags a set of #GFileCreateFlags
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        replace_contents_async(
+            contents: Uint8Array | string,
+            etag: string | null,
+            make_backup: boolean,
+            flags: FileCreateFlags,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts an asynchronous replacement of `file` with the given
+         * `contents` of `length` bytes. `etag` will replace the document's
+         * current entity tag.
+         *
+         * When this operation has completed, `callback` will be called with
+         * `user_user` data, and the operation can be finalized with
+         * g_file_replace_contents_finish().
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         *
+         * If `make_backup` is %TRUE, this function will attempt to
+         * make a backup of `file`.
+         *
+         * Note that no copy of `contents` will be made, so it must stay valid
+         * until `callback` is called. See g_file_replace_contents_bytes_async()
+         * for a #GBytes version that will automatically hold a reference to the
+         * contents (without copying) for the duration of the call.
+         * @param contents string of contents to replace the file with
+         * @param etag a new [entity tag](#entity-tags) for the @file, or %NULL
+         * @param make_backup %TRUE if a backup should be created
+         * @param flags a set of #GFileCreateFlags
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         replace_contents_async(
@@ -69924,7 +76048,7 @@ export namespace Gio {
             flags: FileCreateFlags,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Same as g_file_replace_contents_async() but takes a #GBytes input instead.
          * This function will keep a ref on `contents` until the operation is done.
@@ -70003,6 +76127,56 @@ export namespace Gio {
          * @param flags a set of #GFileCreateFlags
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        replace_readwrite_async(
+            etag: string | null,
+            make_backup: boolean,
+            flags: FileCreateFlags,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<FileIOStream>;
+        /**
+         * Asynchronously overwrites the file in read-write mode,
+         * replacing the contents, possibly creating a backup copy
+         * of the file first.
+         *
+         * For more details, see g_file_replace_readwrite() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_replace_readwrite_finish() to get
+         * the result of the operation.
+         * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
+         * @param make_backup %TRUE if a backup should be created
+         * @param flags a set of #GFileCreateFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        replace_readwrite_async(
+            etag: string | null,
+            make_backup: boolean,
+            flags: FileCreateFlags,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously overwrites the file in read-write mode,
+         * replacing the contents, possibly creating a backup copy
+         * of the file first.
+         *
+         * For more details, see g_file_replace_readwrite() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_replace_readwrite_finish() to get
+         * the result of the operation.
+         * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
+         * @param make_backup %TRUE if a backup should be created
+         * @param flags a set of #GFileCreateFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         replace_readwrite_async(
@@ -70012,7 +76186,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<FileIOStream> | void;
         /**
          * Finishes an asynchronous file replace operation started with
          * g_file_replace_readwrite_async().
@@ -70182,6 +76356,48 @@ export namespace Gio {
          * @param flags a #GFileQueryInfoFlags
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        set_attributes_async(
+            info: FileInfo,
+            flags: FileQueryInfoFlags,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<FileInfo>;
+        /**
+         * Asynchronously sets the attributes of `file` with `info`.
+         *
+         * For more details, see g_file_set_attributes_from_info(),
+         * which is the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_set_attributes_finish() to get
+         * the result of the operation.
+         * @param info a #GFileInfo
+         * @param flags a #GFileQueryInfoFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        set_attributes_async(
+            info: FileInfo,
+            flags: FileQueryInfoFlags,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sets the attributes of `file` with `info`.
+         *
+         * For more details, see g_file_set_attributes_from_info(),
+         * which is the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_set_attributes_finish() to get
+         * the result of the operation.
+         * @param info a #GFileInfo
+         * @param flags a #GFileQueryInfoFlags
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         set_attributes_async(
@@ -70190,7 +76406,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<FileInfo> | void;
         /**
          * Finishes setting an attribute started in g_file_set_attributes_async().
          * @param result a #GAsyncResult
@@ -70249,6 +76465,44 @@ export namespace Gio {
          * @param display_name a string
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        set_display_name_async(
+            display_name: string,
+            io_priority: number,
+            cancellable?: Cancellable | null,
+        ): Promise<File>;
+        /**
+         * Asynchronously sets the display name for a given #GFile.
+         *
+         * For more details, see g_file_set_display_name() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_set_display_name_finish() to get
+         * the result of the operation.
+         * @param display_name a string
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        set_display_name_async(
+            display_name: string,
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sets the display name for a given #GFile.
+         *
+         * For more details, see g_file_set_display_name() which is
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_set_display_name_finish() to get
+         * the result of the operation.
+         * @param display_name a string
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         set_display_name_async(
@@ -70256,7 +76510,7 @@ export namespace Gio {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<File> | void;
         /**
          * Finishes setting a display name started with
          * g_file_set_display_name_async().
@@ -70279,6 +76533,50 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param start_operation a #GMountOperation, or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        start_mountable(
+            flags: DriveStartFlags,
+            start_operation?: MountOperation | null,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Starts a file of type %G_FILE_TYPE_MOUNTABLE.
+         * Using `start_operation,` you can request callbacks when, for instance,
+         * passwords are needed during authentication.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_mount_mountable_finish() to get
+         * the result of the operation.
+         * @param flags flags affecting the operation
+         * @param start_operation a #GMountOperation, or %NULL to avoid user interaction
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied, or %NULL
+         */
+        start_mountable(
+            flags: DriveStartFlags,
+            start_operation: MountOperation | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts a file of type %G_FILE_TYPE_MOUNTABLE.
+         * Using `start_operation,` you can request callbacks when, for instance,
+         * passwords are needed during authentication.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_mount_mountable_finish() to get
+         * the result of the operation.
+         * @param flags flags affecting the operation
+         * @param start_operation a #GMountOperation, or %NULL to avoid user interaction
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied, or %NULL
          */
         start_mountable(
@@ -70286,7 +76584,7 @@ export namespace Gio {
             start_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes a start operation. See g_file_start_mountable() for details.
          *
@@ -70309,6 +76607,46 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction.
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        stop_mountable(
+            flags: MountUnmountFlags,
+            mount_operation?: MountOperation | null,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Stops a file of type %G_FILE_TYPE_MOUNTABLE.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_stop_mountable_finish() to get
+         * the result of the operation.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction.
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+         */
+        stop_mountable(
+            flags: MountUnmountFlags,
+            mount_operation: MountOperation | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Stops a file of type %G_FILE_TYPE_MOUNTABLE.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_stop_mountable_finish() to get
+         * the result of the operation.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction.
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         stop_mountable(
@@ -70316,7 +76654,7 @@ export namespace Gio {
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes a stop operation, see g_file_stop_mountable() for details.
          *
@@ -70356,13 +76694,30 @@ export namespace Gio {
          * Asynchronously sends `file` to the Trash location, if possible.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        trash_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously sends `file` to the Trash location, if possible.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+         */
+        trash_async(
+            io_priority: number,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously sends `file` to the Trash location, if possible.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
         trash_async(
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous file trashing operation, started with
          * g_file_trash_async().
@@ -70382,13 +76737,46 @@ export namespace Gio {
          * the result of the operation.
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        unmount_mountable(flags: MountUnmountFlags, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Unmounts a file of type G_FILE_TYPE_MOUNTABLE.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_unmount_mountable_finish() to get
+         * the result of the operation.
+         * @param flags flags affecting the operation
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        unmount_mountable(
+            flags: MountUnmountFlags,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Unmounts a file of type G_FILE_TYPE_MOUNTABLE.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_unmount_mountable_finish() to get
+         * the result of the operation.
+         * @param flags flags affecting the operation
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         unmount_mountable(
             flags: MountUnmountFlags,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an unmount operation, see g_file_unmount_mountable() for details.
          *
@@ -70411,6 +76799,46 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        unmount_mountable_with_operation(
+            flags: MountUnmountFlags,
+            mount_operation?: MountOperation | null,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Unmounts a file of type %G_FILE_TYPE_MOUNTABLE.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_unmount_mountable_finish() to get
+         * the result of the operation.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        unmount_mountable_with_operation(
+            flags: MountUnmountFlags,
+            mount_operation: MountOperation | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Unmounts a file of type %G_FILE_TYPE_MOUNTABLE.
+         *
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_file_unmount_mountable_finish() to get
+         * the result of the operation.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         unmount_mountable_with_operation(
@@ -70418,7 +76846,7 @@ export namespace Gio {
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an unmount operation,
          * see g_file_unmount_mountable_with_operation() for details.
@@ -72365,9 +78793,30 @@ export namespace Gio {
          * version of this function, see g_loadable_icon_load().
          * @param size an integer.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        load_async(size: number, cancellable?: Cancellable | null): Promise<[InputStream, string]>;
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * g_loadable_icon_load_finish(). For the synchronous, blocking
+         * version of this function, see g_loadable_icon_load().
+         * @param size an integer.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
-        load_async(size: number, cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        load_async(size: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * g_loadable_icon_load_finish(). For the synchronous, blocking
+         * version of this function, see g_loadable_icon_load().
+         * @param size an integer.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         */
+        load_async(
+            size: number,
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<[InputStream, string]> | void;
         /**
          * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
          * @param res a #GAsyncResult.
@@ -72463,13 +78912,34 @@ export namespace Gio {
          * and #GAsyncResult data returned in the `callback`.
          * @param flags flags affecting the unmount if required for eject
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        eject(flags: MountUnmountFlags, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Ejects a mount. This is an asynchronous operation, and is
+         * finished by calling g_mount_eject_finish() with the `mount`
+         * and #GAsyncResult data returned in the `callback`.
+         * @param flags flags affecting the unmount if required for eject
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback, or %NULL.
+         */
+        eject(
+            flags: MountUnmountFlags,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Ejects a mount. This is an asynchronous operation, and is
+         * finished by calling g_mount_eject_finish() with the `mount`
+         * and #GAsyncResult data returned in the `callback`.
+         * @param flags flags affecting the unmount if required for eject
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         eject(
             flags: MountUnmountFlags,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes ejecting a mount. If any errors occurred during the operation,
          * `error` will be set to contain the errors and %FALSE will be returned.
@@ -72484,6 +78954,34 @@ export namespace Gio {
          * @param flags flags affecting the unmount if required for eject
          * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        eject_with_operation(
+            flags: MountUnmountFlags,
+            mount_operation?: MountOperation | null,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Ejects a mount. This is an asynchronous operation, and is
+         * finished by calling g_mount_eject_with_operation_finish() with the `mount`
+         * and #GAsyncResult data returned in the `callback`.
+         * @param flags flags affecting the unmount if required for eject
+         * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback, or %NULL.
+         */
+        eject_with_operation(
+            flags: MountUnmountFlags,
+            mount_operation: MountOperation | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Ejects a mount. This is an asynchronous operation, and is
+         * finished by calling g_mount_eject_with_operation_finish() with the `mount`
+         * and #GAsyncResult data returned in the `callback`.
+         * @param flags flags affecting the unmount if required for eject
+         * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         eject_with_operation(
@@ -72491,7 +78989,7 @@ export namespace Gio {
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes ejecting a mount. If any errors occurred during the operation,
          * `error` will be set to contain the errors and %FALSE will be returned.
@@ -72566,13 +79064,50 @@ export namespace Gio {
          * `mount` and #GAsyncResult data returned in the `callback`.
          * @param force_rescan Whether to force a rescan of the content.     Otherwise a cached result will be used if available
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        guess_content_type(force_rescan: boolean, cancellable?: Cancellable | null): Promise<string[]>;
+        /**
+         * Tries to guess the type of content stored on `mount`. Returns one or
+         * more textual identifiers of well-known content types (typically
+         * prefixed with "x-content/"), e.g. x-content/image-dcf for camera
+         * memory cards. See the
+         * [shared-mime-info](http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec)
+         * specification for more on x-content types.
+         *
+         * This is an asynchronous operation (see
+         * g_mount_guess_content_type_sync() for the synchronous version), and
+         * is finished by calling g_mount_guess_content_type_finish() with the
+         * `mount` and #GAsyncResult data returned in the `callback`.
+         * @param force_rescan Whether to force a rescan of the content.     Otherwise a cached result will be used if available
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback
+         */
+        guess_content_type(
+            force_rescan: boolean,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Tries to guess the type of content stored on `mount`. Returns one or
+         * more textual identifiers of well-known content types (typically
+         * prefixed with "x-content/"), e.g. x-content/image-dcf for camera
+         * memory cards. See the
+         * [shared-mime-info](http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec)
+         * specification for more on x-content types.
+         *
+         * This is an asynchronous operation (see
+         * g_mount_guess_content_type_sync() for the synchronous version), and
+         * is finished by calling g_mount_guess_content_type_finish() with the
+         * `mount` and #GAsyncResult data returned in the `callback`.
+         * @param force_rescan Whether to force a rescan of the content.     Otherwise a cached result will be used if available
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback
          */
         guess_content_type(
             force_rescan: boolean,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string[]> | void;
         /**
          * Finishes guessing content types of `mount`. If any errors occurred
          * during the operation, `error` will be set to contain the errors and
@@ -72638,6 +79173,46 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        remount(
+            flags: MountMountFlags,
+            mount_operation?: MountOperation | null,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Remounts a mount. This is an asynchronous operation, and is
+         * finished by calling g_mount_remount_finish() with the `mount`
+         * and #GAsyncResults data returned in the `callback`.
+         *
+         * Remounting is useful when some setting affecting the operation
+         * of the volume has been changed, as these may need a remount to
+         * take affect. While this is semantically equivalent with unmounting
+         * and then remounting not all backends might need to actually be
+         * unmounted.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback, or %NULL.
+         */
+        remount(
+            flags: MountMountFlags,
+            mount_operation: MountOperation | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Remounts a mount. This is an asynchronous operation, and is
+         * finished by calling g_mount_remount_finish() with the `mount`
+         * and #GAsyncResults data returned in the `callback`.
+         *
+         * Remounting is useful when some setting affecting the operation
+         * of the volume has been changed, as these may need a remount to
+         * take affect. While this is semantically equivalent with unmounting
+         * and then remounting not all backends might need to actually be
+         * unmounted.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         remount(
@@ -72645,7 +79220,7 @@ export namespace Gio {
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes remounting a mount. If any errors occurred during the operation,
          * `error` will be set to contain the errors and %FALSE will be returned.
@@ -72666,13 +79241,34 @@ export namespace Gio {
          * and #GAsyncResult data returned in the `callback`.
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        unmount(flags: MountUnmountFlags, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Unmounts a mount. This is an asynchronous operation, and is
+         * finished by calling g_mount_unmount_finish() with the `mount`
+         * and #GAsyncResult data returned in the `callback`.
+         * @param flags flags affecting the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback, or %NULL.
+         */
+        unmount(
+            flags: MountUnmountFlags,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Unmounts a mount. This is an asynchronous operation, and is
+         * finished by calling g_mount_unmount_finish() with the `mount`
+         * and #GAsyncResult data returned in the `callback`.
+         * @param flags flags affecting the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         unmount(
             flags: MountUnmountFlags,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes unmounting a mount. If any errors occurred during the operation,
          * `error` will be set to contain the errors and %FALSE will be returned.
@@ -72687,6 +79283,34 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        unmount_with_operation(
+            flags: MountUnmountFlags,
+            mount_operation?: MountOperation | null,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Unmounts a mount. This is an asynchronous operation, and is
+         * finished by calling g_mount_unmount_with_operation_finish() with the `mount`
+         * and #GAsyncResult data returned in the `callback`.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback, or %NULL.
+         */
+        unmount_with_operation(
+            flags: MountUnmountFlags,
+            mount_operation: MountOperation | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Unmounts a mount. This is an asynchronous operation, and is
+         * finished by calling g_mount_unmount_with_operation_finish() with the `mount`
+         * and #GAsyncResult data returned in the `callback`.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         unmount_with_operation(
@@ -72694,7 +79318,7 @@ export namespace Gio {
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes unmounting a mount. If any errors occurred during the operation,
          * `error` will be set to contain the errors and %FALSE will be returned.
@@ -73087,13 +79711,46 @@ export namespace Gio {
          * to get the result of the operation.
          * @param connectable a #GSocketConnectable
          * @param cancellable a #GCancellable, or %NULL
+         */
+        can_reach_async(connectable: SocketConnectable, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously attempts to determine whether or not the host
+         * pointed to by `connectable` can be reached, without actually
+         * trying to connect to it.
+         *
+         * For more details, see g_network_monitor_can_reach().
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_network_monitor_can_reach_finish()
+         * to get the result of the operation.
+         * @param connectable a #GSocketConnectable
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+         */
+        can_reach_async(
+            connectable: SocketConnectable,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously attempts to determine whether or not the host
+         * pointed to by `connectable` can be reached, without actually
+         * trying to connect to it.
+         *
+         * For more details, see g_network_monitor_can_reach().
+         *
+         * When the operation is finished, `callback` will be called.
+         * You can then call g_network_monitor_can_reach_finish()
+         * to get the result of the operation.
+         * @param connectable a #GSocketConnectable
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
          */
         can_reach_async(
             connectable: SocketConnectable,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an async network connectivity test.
          * See g_network_monitor_can_reach_async().
@@ -73612,6 +80269,30 @@ export namespace Gio {
          * @param connection a #GIOStream
          * @param proxy_address a #GProxyAddress
          * @param cancellable a #GCancellable
+         */
+        connect_async(
+            connection: IOStream,
+            proxy_address: ProxyAddress,
+            cancellable?: Cancellable | null,
+        ): Promise<IOStream>;
+        /**
+         * Asynchronous version of g_proxy_connect().
+         * @param connection a #GIOStream
+         * @param proxy_address a #GProxyAddress
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback
+         */
+        connect_async(
+            connection: IOStream,
+            proxy_address: ProxyAddress,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronous version of g_proxy_connect().
+         * @param connection a #GIOStream
+         * @param proxy_address a #GProxyAddress
+         * @param cancellable a #GCancellable
          * @param callback a #GAsyncReadyCallback
          */
         connect_async(
@@ -73619,7 +80300,7 @@ export namespace Gio {
             proxy_address: ProxyAddress,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<IOStream> | void;
         /**
          * See g_proxy_connect().
          * @param result a #GAsyncResult
@@ -73733,9 +80414,28 @@ export namespace Gio {
          * details.
          * @param uri a URI representing the destination to connect to
          * @param cancellable a #GCancellable, or %NULL
+         */
+        lookup_async(uri: string, cancellable?: Cancellable | null): Promise<string[]>;
+        /**
+         * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
+         * details.
+         * @param uri a URI representing the destination to connect to
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call after resolution completes
          */
-        lookup_async(uri: string, cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
+        lookup_async(uri: string, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+        /**
+         * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
+         * details.
+         * @param uri a URI representing the destination to connect to
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback callback to call after resolution completes
+         */
+        lookup_async(
+            uri: string,
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<this> | null,
+        ): Promise<string[]> | void;
         /**
          * Call this function to obtain the array of proxy URIs when
          * g_proxy_resolver_lookup_async() is complete. See
@@ -74560,13 +81260,34 @@ export namespace Gio {
          * and #GAsyncResult returned in the `callback`.
          * @param flags flags affecting the unmount if required for eject
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        eject(flags: MountUnmountFlags, cancellable?: Cancellable | null): Promise<boolean>;
+        /**
+         * Ejects a volume. This is an asynchronous operation, and is
+         * finished by calling g_volume_eject_finish() with the `volume`
+         * and #GAsyncResult returned in the `callback`.
+         * @param flags flags affecting the unmount if required for eject
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback, or %NULL
+         */
+        eject(
+            flags: MountUnmountFlags,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Ejects a volume. This is an asynchronous operation, and is
+         * finished by calling g_volume_eject_finish() with the `volume`
+         * and #GAsyncResult returned in the `callback`.
+         * @param flags flags affecting the unmount if required for eject
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback, or %NULL
          */
         eject(
             flags: MountUnmountFlags,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes ejecting a volume. If any errors occurred during the operation,
          * `error` will be set to contain the errors and %FALSE will be returned.
@@ -74581,6 +81302,34 @@ export namespace Gio {
          * @param flags flags affecting the unmount if required for eject
          * @param mount_operation a #GMountOperation or %NULL to     avoid user interaction
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        eject_with_operation(
+            flags: MountUnmountFlags,
+            mount_operation?: MountOperation | null,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Ejects a volume. This is an asynchronous operation, and is
+         * finished by calling g_volume_eject_with_operation_finish() with the `volume`
+         * and #GAsyncResult data returned in the `callback`.
+         * @param flags flags affecting the unmount if required for eject
+         * @param mount_operation a #GMountOperation or %NULL to     avoid user interaction
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback, or %NULL
+         */
+        eject_with_operation(
+            flags: MountUnmountFlags,
+            mount_operation: MountOperation | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Ejects a volume. This is an asynchronous operation, and is
+         * finished by calling g_volume_eject_with_operation_finish() with the `volume`
+         * and #GAsyncResult data returned in the `callback`.
+         * @param flags flags affecting the unmount if required for eject
+         * @param mount_operation a #GMountOperation or %NULL to     avoid user interaction
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback, or %NULL
          */
         eject_with_operation(
@@ -74588,7 +81337,7 @@ export namespace Gio {
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes ejecting a volume. If any errors occurred during the operation,
          * `error` will be set to contain the errors and %FALSE will be returned.
@@ -74689,6 +81438,34 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param mount_operation a #GMountOperation or %NULL to avoid user interaction
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        mount(
+            flags: MountMountFlags,
+            mount_operation?: MountOperation | null,
+            cancellable?: Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Mounts a volume. This is an asynchronous operation, and is
+         * finished by calling g_volume_mount_finish() with the `volume`
+         * and #GAsyncResult returned in the `callback`.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation or %NULL to avoid user interaction
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback, or %NULL
+         */
+        mount(
+            flags: MountMountFlags,
+            mount_operation: MountOperation | null,
+            cancellable: Cancellable | null,
+            callback: AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Mounts a volume. This is an asynchronous operation, and is
+         * finished by calling g_volume_mount_finish() with the `volume`
+         * and #GAsyncResult returned in the `callback`.
+         * @param flags flags affecting the operation
+         * @param mount_operation a #GMountOperation or %NULL to avoid user interaction
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback, or %NULL
          */
         mount(
@@ -74696,7 +81473,7 @@ export namespace Gio {
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes mounting a volume. If any errors occurred during the operation,
          * `error` will be set to contain the errors and %FALSE will be returned.

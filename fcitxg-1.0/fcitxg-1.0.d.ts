@@ -210,6 +210,46 @@ export namespace FcitxG {
          * @param t timestamp
          * @param timeout_msec timeout in millisecond
          * @param cancellable cancellable
+         */
+        process_key(
+            keyval: number,
+            keycode: number,
+            state: number,
+            isRelease: boolean,
+            t: number,
+            timeout_msec: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * use this function with #fcitx_g_client_process_key_finish
+         * @param keyval key value
+         * @param keycode hardware key code
+         * @param state key state
+         * @param isRelease event type is key release
+         * @param t timestamp
+         * @param timeout_msec timeout in millisecond
+         * @param cancellable cancellable
+         * @param callback callback
+         */
+        process_key(
+            keyval: number,
+            keycode: number,
+            state: number,
+            isRelease: boolean,
+            t: number,
+            timeout_msec: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * use this function with #fcitx_g_client_process_key_finish
+         * @param keyval key value
+         * @param keycode hardware key code
+         * @param state key state
+         * @param isRelease event type is key release
+         * @param t timestamp
+         * @param timeout_msec timeout in millisecond
+         * @param cancellable cancellable
          * @param callback callback
          */
         process_key(
@@ -221,7 +261,7 @@ export namespace FcitxG {
             timeout_msec: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * use this function with #fcitx_g_client_process_key_async
          * @param res result

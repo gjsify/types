@@ -729,9 +729,37 @@ export namespace Entangle {
          * when complete, whereupon entangle_camera_autofocus_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
+         */
+        autofocus_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Trigger the autofocus mechanism on the camera, waiting
+         * until focus is achieved or fails.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_autofocus_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        autofocus_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        autofocus_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Trigger the autofocus mechanism on the camera, waiting
+         * until focus is achieved or fails.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_autofocus_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        autofocus_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_autofocus_async.
@@ -765,9 +793,43 @@ export namespace Entangle {
          * when complete, whereupon entangle_camera_capture_image_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
+         */
+        capture_image_async(cancellable?: Gio.Cancellable | null): Promise<CameraFile>;
+        /**
+         * Trigger the camera shutter and download the first resulting
+         * image. If the camera is shooting in multiple formats (eg JPEG
+         * and RAW) this method will only return the first format captured
+         * The caller should watch for signal notifications to detect any
+         * additional images
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_capture_image_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        capture_image_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        capture_image_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Trigger the camera shutter and download the first resulting
+         * image. If the camera is shooting in multiple formats (eg JPEG
+         * and RAW) this method will only return the first format captured
+         * The caller should watch for signal notifications to detect any
+         * additional images
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_capture_image_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        capture_image_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<CameraFile> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_capture_image_async.
@@ -791,9 +853,33 @@ export namespace Entangle {
          * when complete, whereupon entangle_camera_open_async
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
+         */
+        close_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Close from the camera, enabling it to be used by
+         * other applications.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_open_async
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        close_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        close_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Close from the camera, enabling it to be used by
+         * other applications.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_open_async
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        close_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_close_async
@@ -821,13 +907,42 @@ export namespace Entangle {
          * can be used to check the status
          * @param file the file to delete
          * @param cancellable optional GCancellable object, NULL to ignore.
+         */
+        delete_file_async(file: CameraFile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Delete `file` from the camera capture target.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_delete_file_finish
+         * can be used to check the status
+         * @param file the file to delete
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        delete_file_async(
+            file: CameraFile,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Delete `file` from the camera capture target.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_delete_file_finish
+         * can be used to check the status
+         * @param file the file to delete
+         * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         delete_file_async(
             file: CameraFile,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_delete_file_async.
@@ -857,13 +972,44 @@ export namespace Entangle {
          * can be used to check the status
          * @param file the file whose contents to download
          * @param cancellable optional GCancellable object, NULL to ignore.
+         */
+        download_file_async(file: CameraFile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Download the data associated with `file` and set the data
+         * on `file`.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_download_file_finish
+         * can be used to check the status
+         * @param file the file whose contents to download
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        download_file_async(
+            file: CameraFile,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Download the data associated with `file` and set the data
+         * on `file`.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_download_file_finish
+         * can be used to check the status
+         * @param file the file whose contents to download
+         * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         download_file_async(
             file: CameraFile,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_download_file_async.
@@ -961,9 +1107,35 @@ export namespace Entangle {
          * when complete, whereupon entangle_camera_load_controls_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
+         */
+        load_controls_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Loads the configuration controls from the camera.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_load_controls_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        load_controls_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        load_controls_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Loads the configuration controls from the camera.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_load_controls_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        load_controls_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_load_controls_async.
@@ -993,13 +1165,44 @@ export namespace Entangle {
          * can be used to check the status
          * @param step how much to change focus by
          * @param cancellable optional GCancellable object, NULL to ignore.
+         */
+        manualfocus_async(step: CameraManualFocusStep, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Trigger the focus mechanism on the camera, to move
+         * by `step`.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_manualfocus_finish
+         * can be used to check the status
+         * @param step how much to change focus by
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        manualfocus_async(
+            step: CameraManualFocusStep,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Trigger the focus mechanism on the camera, to move
+         * by `step`.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_manualfocus_finish
+         * can be used to check the status
+         * @param step how much to change focus by
+         * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         manualfocus_async(
             step: CameraManualFocusStep,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_manualfocus_async.
@@ -1007,7 +1210,12 @@ export namespace Entangle {
          * @returns TRUE if manual focus was performed, FALSE on error
          */
         manualfocus_finish(result: Gio.AsyncResult): boolean;
-        mount_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        mount_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        mount_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        mount_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         mount_finish(result: Gio.AsyncResult): boolean;
         /**
          * Attempt to open to and initialize the camera. This
@@ -1027,9 +1235,35 @@ export namespace Entangle {
          * when complete, whereupon entangle_camera_open_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
+         */
+        open_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Attempt to open to and initialize the camera. This
+         * may fail if the camera is in use by another application,
+         * has gone to sleep or has been disconnected from the port.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_open_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        open_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        open_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Attempt to open to and initialize the camera. This
+         * may fail if the camera is in use by another application,
+         * has gone to sleep or has been disconnected from the port.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_open_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        open_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_open_async
@@ -1059,9 +1293,39 @@ export namespace Entangle {
          * when complete, whereupon entangle_camera_preview_image_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
+         */
+        preview_image_async(cancellable?: Gio.Cancellable | null): Promise<CameraFile>;
+        /**
+         * Enable "live view", if not already enabled, and capture a
+         * low resolution preview image. The "live view" mode will
+         * remain enabled after execution.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_preview_image_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        preview_image_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        preview_image_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Enable "live view", if not already enabled, and capture a
+         * low resolution preview image. The "live view" mode will
+         * remain enabled after execution.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_preview_image_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        preview_image_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<CameraFile> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_preview_image_async.
@@ -1095,13 +1359,48 @@ export namespace Entangle {
          * can be used to check the status
          * @param waitms the number of milliseconds to wait
          * @param cancellable optional GCancellable object, NULL to ignore.
+         */
+        process_events_async(waitms: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Wait upto `waitms` milliseconds for events to arrive from
+         * the camera. Signals will be emitted for any interesting
+         * events that arrive. Multiple events will be processed
+         * until `waitms` is exceeded.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_process_events_finish
+         * can be used to check the status
+         * @param waitms the number of milliseconds to wait
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        process_events_async(
+            waitms: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Wait upto `waitms` milliseconds for events to arrive from
+         * the camera. Signals will be emitted for any interesting
+         * events that arrive. Multiple events will be processed
+         * until `waitms` is exceeded.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_process_events_finish
+         * can be used to check the status
+         * @param waitms the number of milliseconds to wait
+         * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         process_events_async(
             waitms: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_process_events_async.
@@ -1127,9 +1426,35 @@ export namespace Entangle {
          * when complete, whereupon entangle_camera_save_controls_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
+         */
+        save_controls_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Saves the configuration controls to the camera.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_save_controls_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        save_controls_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        save_controls_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Saves the configuration controls to the camera.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_save_controls_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        save_controls_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_save_controls_async.
@@ -1159,13 +1484,44 @@ export namespace Entangle {
          * can be used to check the status
          * @param target the capture target
          * @param cancellable optional GCancellable object, NULL to ignore.
+         */
+        set_capture_target_async(target: CameraCaptureTarget, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Set the destination for storing captured images
+         * to `target`.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_set_clock_finish
+         * can be used to check the status
+         * @param target the capture target
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_capture_target_async(
+            target: CameraCaptureTarget,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Set the destination for storing captured images
+         * to `target`.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_set_clock_finish
+         * can be used to check the status
+         * @param target the capture target
+         * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         set_capture_target_async(
             target: CameraCaptureTarget,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         set_capture_target_finish(result: Gio.AsyncResult): boolean;
         /**
          * Update the camera clock to be `epochsecs` seconds since
@@ -1189,13 +1545,44 @@ export namespace Entangle {
          * can be used to check the status
          * @param epochsecs new time in seconds since the epoch
          * @param cancellable optional GCancellable object, NULL to ignore.
+         */
+        set_clock_async(epochsecs: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Update the camera clock to be `epochsecs` seconds since
+         * the epoch.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_set_clock_finish
+         * can be used to check the status
+         * @param epochsecs new time in seconds since the epoch
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_clock_async(
+            epochsecs: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Update the camera clock to be `epochsecs` seconds since
+         * the epoch.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_set_clock_finish
+         * can be used to check the status
+         * @param epochsecs new time in seconds since the epoch
+         * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         set_clock_async(
             epochsecs: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_set_clock_async.
@@ -1233,13 +1620,46 @@ export namespace Entangle {
          * can be used to check the status
          * @param enabled TRUE to turn on the view finder
          * @param cancellable optional GCancellable object, NULL to ignore.
+         */
+        set_viewfinder_async(enabled: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * If `enabled` is TRUE, the view finder will be activated
+         * allowing preview images to be captured. If `enabled` is
+         * FALSE, the view finder will be deactivated.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_set_viewfinder_finish
+         * can be used to check the status
+         * @param enabled TRUE to turn on the view finder
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_viewfinder_async(
+            enabled: boolean,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * If `enabled` is TRUE, the view finder will be activated
+         * allowing preview images to be captured. If `enabled` is
+         * FALSE, the view finder will be deactivated.
+         *
+         * This can only be invoked when the camera is opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_set_viewfinder_finish
+         * can be used to check the status
+         * @param enabled TRUE to turn on the view finder
+         * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         set_viewfinder_async(
             enabled: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_set_viewfinder_async.
@@ -1255,9 +1675,33 @@ export namespace Entangle {
          * when complete, whereupon entangle_camera_unmount_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
+         */
+        unmount_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Unmount the camera virtual filesystem, allowing it to be
+         * opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_unmount_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        unmount_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        unmount_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Unmount the camera virtual filesystem, allowing it to be
+         * opened.
+         *
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_unmount_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        unmount_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Check the completion status of a previous call to
          * entangle_camera_unmount_async.
@@ -1324,7 +1768,12 @@ export namespace Entangle {
 
         // Methods
 
-        capture_async(cancel?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        capture_async(cancel?: Gio.Cancellable | null): Promise<boolean>;
+        capture_async(cancel: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        capture_async(
+            cancel?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         capture_finish(res: Gio.AsyncResult): boolean;
         /**
          * Get the camera associated with the automata
@@ -1337,11 +1786,17 @@ export namespace Entangle {
          * @returns the session or NULL
          */
         get_session(): Session;
+        preview_async(cancel?: Gio.Cancellable | null, confirm?: Gio.Cancellable | null): Promise<boolean>;
+        preview_async(
+            cancel: Gio.Cancellable | null,
+            confirm: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         preview_async(
             cancel?: Gio.Cancellable | null,
             confirm?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         preview_finish(res: Gio.AsyncResult): boolean;
         set_camera(camera: Camera): void;
         set_delete_file(value: boolean): void;
@@ -7919,11 +8374,17 @@ export namespace Entangle {
 
         // Methods
 
+        execute_async(automata: CameraAutomata, cancel?: Gio.Cancellable | null): Promise<boolean>;
+        execute_async(
+            automata: CameraAutomata,
+            cancel: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         execute_async(
             automata: CameraAutomata,
             cancel?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         execute_finish(result: Gio.AsyncResult): boolean;
         /**
          * Get the configuration controls for the script

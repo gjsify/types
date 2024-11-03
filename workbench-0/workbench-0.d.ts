@@ -207,13 +207,45 @@ export namespace Workbench {
          * to reduce latency until the user sees results.
          * @param context a #GtkSourceCompletionContext
          * @param cancellable a #GCancellable or %NULL
+         */
+        populate_async(
+            context: GtkSource.CompletionContext,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Gio.ListModel>;
+        /**
+         * Asynchronously requests that the provider populates the completion
+         * results for `context`.
+         *
+         * For providers that would like to populate a [iface`Gio`.ListModel] while those
+         * results are displayed to the user,
+         * [method`CompletionContext`.set_proposals_for_provider] may be used
+         * to reduce latency until the user sees results.
+         * @param context a #GtkSourceCompletionContext
+         * @param cancellable a #GCancellable or %NULL
+         * @param callback a callback to execute upon completion
+         */
+        populate_async(
+            context: GtkSource.CompletionContext,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously requests that the provider populates the completion
+         * results for `context`.
+         *
+         * For providers that would like to populate a [iface`Gio`.ListModel] while those
+         * results are displayed to the user,
+         * [method`CompletionContext`.set_proposals_for_provider] may be used
+         * to reduce latency until the user sees results.
+         * @param context a #GtkSourceCompletionContext
+         * @param cancellable a #GCancellable or %NULL
          * @param callback a callback to execute upon completion
          */
         populate_async(
             context: GtkSource.CompletionContext,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Gio.ListModel> | void;
         /**
          * Completes an asynchronous operation to populate a completion provider.
          * @param result a #GAsyncResult provided to callback

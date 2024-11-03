@@ -17,22 +17,6 @@ export namespace LibvirtGConfig {
      * LibvirtGConfig-1.0
      */
 
-    export namespace DomainAudioBackend {
-        export const $gtype: GObject.GType<DomainAudioBackend>;
-    }
-
-    enum DomainAudioBackend {
-        NONE,
-        ALSA,
-        COREAUDIO,
-        JACK,
-        OSS,
-        PULSEAUDIO,
-        SDL,
-        SPICE,
-        FILE,
-    }
-
     export namespace DomainChannelTargetType {
         export const $gtype: GObject.GType<DomainChannelTargetType>;
     }
@@ -927,7 +911,7 @@ export namespace LibvirtGConfig {
          * Sets the current amount of RAM allocated to `domain` in kilobytes (i.e.
          * blocks of 1024 bytes). This can be set to less than the maximum domain
          * memory to allow to balloon the guest memory on the fly. Be aware that
-         * libvirt will set it automatically if it's not explicitly set, which means
+         * libvirt will set it automatically if it's not explictly set, which means
          * you may need to set this value in addition to 'memory' if you want to
          * change the available domain memory after creation.
          * @param memory The current amount of RAM in kilobytes.
@@ -1038,34 +1022,6 @@ export namespace LibvirtGConfig {
 
         set_bus(bus: number): void;
         set_port(port: string): void;
-    }
-
-    module DomainAudio {
-        // Constructor properties interface
-
-        interface ConstructorProps extends DomainDevice.ConstructorProps {}
-    }
-
-    class DomainAudio extends DomainDevice {
-        static $gtype: GObject.GType<DomainAudio>;
-
-        // Constructors
-
-        constructor(properties?: Partial<DomainAudio.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): DomainAudio;
-
-        static new_from_xml(xml: string): DomainAudio;
-        // Conflicted with LibvirtGConfig.Object.new_from_xml
-
-        static new_from_xml(...args: never[]): any;
-
-        // Methods
-
-        set_backend(backend: DomainAudioBackend): void;
-        set_server_name(server_name: string): void;
     }
 
     module DomainCapabilities {
@@ -1684,35 +1640,6 @@ export namespace LibvirtGConfig {
         _init(...args: any[]): void;
     }
 
-    module DomainGraphicsDBus {
-        // Constructor properties interface
-
-        interface ConstructorProps extends DomainGraphics.ConstructorProps {}
-    }
-
-    class DomainGraphicsDBus extends DomainGraphics {
-        static $gtype: GObject.GType<DomainGraphicsDBus>;
-
-        // Constructors
-
-        constructor(properties?: Partial<DomainGraphicsDBus.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): DomainGraphicsDBus;
-
-        static new_from_xml(xml: string): DomainGraphicsDBus;
-        // Conflicted with LibvirtGConfig.Object.new_from_xml
-
-        static new_from_xml(...args: never[]): any;
-
-        // Methods
-
-        get_address(): string;
-        set_address(address: string): void;
-        set_gl(gl: boolean): void;
-    }
-
     module DomainGraphicsDesktop {
         // Constructor properties interface
 
@@ -2206,7 +2133,6 @@ export namespace LibvirtGConfig {
 
         bios_enable_serial(enable: boolean): void;
         enable_boot_menu(enable: boolean): void;
-        enable_firmware_feature(name: string, enable: boolean): void;
         get_arch(): string;
         /**
          * Gets the list of devices attached to `os`. The returned list should be
@@ -2485,7 +2411,7 @@ export namespace LibvirtGConfig {
         // Methods
 
         add_disk(disk: DomainSnapshotDisk): void;
-        get_creation_time(): never;
+        get_creation_time(): number;
         get_description(): string;
         /**
          * Gets the list of disks attached to `snapshot`.  The returned list should
@@ -3307,15 +3233,6 @@ export namespace LibvirtGConfig {
         _init(...args: any[]): void;
     }
 
-    type DomainAudioClass = typeof DomainAudio;
-    abstract class DomainAudioPrivate {
-        static $gtype: GObject.GType<DomainAudioPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
     type DomainCapabilitiesClass = typeof DomainCapabilities;
     type DomainCapabilitiesOsClass = typeof DomainCapabilitiesOs;
     abstract class DomainCapabilitiesOsPrivate {
@@ -3498,15 +3415,6 @@ export namespace LibvirtGConfig {
     }
 
     type DomainGraphicsClass = typeof DomainGraphics;
-    type DomainGraphicsDBusClass = typeof DomainGraphicsDBus;
-    abstract class DomainGraphicsDBusPrivate {
-        static $gtype: GObject.GType<DomainGraphicsDBusPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
     type DomainGraphicsDesktopClass = typeof DomainGraphicsDesktop;
     abstract class DomainGraphicsDesktopPrivate {
         static $gtype: GObject.GType<DomainGraphicsDesktopPrivate>;

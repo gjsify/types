@@ -5791,13 +5791,30 @@ export namespace AppStreamGlib {
          * Asynchronously loads the store from the default locations.
          * @param flags #AsStoreLoadFlags, e.g. %AS_STORE_LOAD_FLAG_APP_INFO_SYSTEM
          * @param cancellable a #GCancellable.
+         */
+        load_async(flags: StoreLoadFlags, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously loads the store from the default locations.
+         * @param flags #AsStoreLoadFlags, e.g. %AS_STORE_LOAD_FLAG_APP_INFO_SYSTEM
+         * @param cancellable a #GCancellable.
+         * @param callback A #GAsyncReadyCallback
+         */
+        load_async(
+            flags: StoreLoadFlags,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously loads the store from the default locations.
+         * @param flags #AsStoreLoadFlags, e.g. %AS_STORE_LOAD_FLAG_APP_INFO_SYSTEM
+         * @param cancellable a #GCancellable.
          * @param callback A #GAsyncReadyCallback
          */
         load_async(
             flags: StoreLoadFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Retrieve the result of as_store_load_async().
          * @param result A #GAsyncResult
@@ -5815,13 +5832,30 @@ export namespace AppStreamGlib {
          * Asynchronously loads the store from a specific path.
          * @param path A path to load
          * @param cancellable a #GCancellable.
+         */
+        load_path_async(path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously loads the store from a specific path.
+         * @param path A path to load
+         * @param cancellable a #GCancellable.
+         * @param callback A #GAsyncReadyCallback
+         */
+        load_path_async(
+            path: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously loads the store from a specific path.
+         * @param path A path to load
+         * @param cancellable a #GCancellable.
          * @param callback A #GAsyncReadyCallback
          */
         load_path_async(
             path: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Retrieve the result of as_store_load_path_async().
          * @param result A #GAsyncResult

@@ -308,11 +308,21 @@ export namespace Folks {
 
         // Methods
 
+        load_avatar(id: string): Promise<Gio.LoadableIcon>;
         load_avatar(id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        load_avatar(id: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<Gio.LoadableIcon> | void;
         load_avatar_finish(_res_: Gio.AsyncResult): Gio.LoadableIcon;
+        store_avatar(id: string, avatar: Gio.LoadableIcon): Promise<string>;
         store_avatar(id: string, avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
+        store_avatar(
+            id: string,
+            avatar: Gio.LoadableIcon,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<string> | void;
         store_avatar_finish(_res_: Gio.AsyncResult): string;
+        remove_avatar(id: string): Promise<void>;
         remove_avatar(id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        remove_avatar(id: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         remove_avatar_finish(_res_: Gio.AsyncResult): void;
         build_uri_for_avatar(id: string): string;
     }
@@ -373,16 +383,24 @@ export namespace Folks {
 
         // Methods
 
+        prepare(): Promise<void>;
         prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+        prepare(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         prepare_finish(_res_: Gio.AsyncResult): void;
+        load_backends(): Promise<void>;
         load_backends(_callback_: Gio.AsyncReadyCallback<this>): void;
+        load_backends(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         load_backends_finish(_res_: Gio.AsyncResult): void;
         add_backend(backend: Backend): void;
         dup_backend_by_name(name: string): Backend;
         list_backends(): Gee.Collection;
+        enable_backend(name: string): Promise<void>;
         enable_backend(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        enable_backend(name: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         enable_backend_finish(_res_: Gio.AsyncResult): void;
+        disable_backend(name: string): Promise<void>;
         disable_backend(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        disable_backend(name: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         disable_backend_finish(_res_: Gio.AsyncResult): void;
         get_enabled_backends(): Gee.Map;
         get_is_prepared(): boolean;
@@ -462,9 +480,13 @@ export namespace Folks {
         disable_persona_store(store: PersonaStore): void;
         enable_persona_store(store: PersonaStore): void;
         set_persona_stores(storeids: Gee.Set): void;
+        prepare(): Promise<void>;
         prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+        prepare(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         prepare_finish(_res_: Gio.AsyncResult): void;
+        unprepare(): Promise<void>;
         unprepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+        unprepare(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         unprepare_finish(_res_: Gio.AsyncResult): void;
         get_is_prepared(): boolean;
         get_is_quiescent(): boolean;
@@ -695,9 +717,13 @@ export namespace Folks {
 
         // Methods
 
+        prepare(): Promise<void>;
         prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+        prepare(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         prepare_finish(_res_: Gio.AsyncResult): void;
+        unprepare(): Promise<void>;
         unprepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+        unprepare(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         unprepare_finish(_res_: Gio.AsyncResult): void;
         get_potential_matches(matchee: Individual, min_threshold: MatchResult): Gee.Map;
         get_all_potential_matches(min_threshold: MatchResult): Gee.Map;
@@ -705,24 +731,51 @@ export namespace Folks {
             parent: Individual,
             persona_store: PersonaStore,
             details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        ): Promise<Persona>;
+        add_persona_from_details(
+            parent: Individual,
+            persona_store: PersonaStore,
+            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             _callback_: Gio.AsyncReadyCallback<this>,
         ): void;
+        add_persona_from_details(
+            parent: Individual,
+            persona_store: PersonaStore,
+            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<Persona> | void;
         add_persona_from_details_finish(_res_: Gio.AsyncResult): Persona;
+        remove_individual(individual: Individual): Promise<void>;
         remove_individual(individual: Individual, _callback_: Gio.AsyncReadyCallback<this>): void;
+        remove_individual(individual: Individual, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         remove_individual_finish(_res_: Gio.AsyncResult): void;
+        remove_persona(persona: Persona): Promise<void>;
         remove_persona(persona: Persona, _callback_: Gio.AsyncReadyCallback<this>): void;
+        remove_persona(persona: Persona, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         remove_persona_finish(_res_: Gio.AsyncResult): void;
+        link_personas(personas: Gee.Set): Promise<void>;
         link_personas(personas: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        link_personas(personas: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         link_personas_finish(_res_: Gio.AsyncResult): void;
+        unlink_individual(individual: Individual): Promise<void>;
         unlink_individual(individual: Individual, _callback_: Gio.AsyncReadyCallback<this>): void;
+        unlink_individual(individual: Individual, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         unlink_individual_finish(_res_: Gio.AsyncResult): void;
+        ensure_individual_property_writeable(individual: Individual, property_name: string): Promise<Persona>;
         ensure_individual_property_writeable(
             individual: Individual,
             property_name: string,
             _callback_: Gio.AsyncReadyCallback<this>,
         ): void;
+        ensure_individual_property_writeable(
+            individual: Individual,
+            property_name: string,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<Persona> | void;
         ensure_individual_property_writeable_finish(_res_: Gio.AsyncResult): Persona;
+        look_up_individual(id: string): Promise<Individual>;
         look_up_individual(id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        look_up_individual(id: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<Individual> | void;
         look_up_individual_finish(_res_: Gio.AsyncResult): Individual;
         get_is_prepared(): boolean;
         get_is_quiescent(): boolean;
@@ -945,7 +998,9 @@ export namespace Folks {
         set webServiceAddresses(val: Gee.MultiMap);
 
         // Inherited methods
+        change_alias(alias: string): Promise<void>;
         change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_alias(alias: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_alias_finish(_res_: Gio.AsyncResult): void;
         get_alias(): string;
         set_alias(value: string): void;
@@ -953,7 +1008,9 @@ export namespace Folks {
         vfunc_change_alias_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_alias(): string;
         vfunc_set_alias(value: string): void;
+        change_avatar(avatar: Gio.LoadableIcon): Promise<void>;
         change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_avatar(avatar: Gio.LoadableIcon, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_avatar_finish(_res_: Gio.AsyncResult): void;
         get_avatar(): Gio.LoadableIcon;
         set_avatar(value: Gio.LoadableIcon): void;
@@ -961,9 +1018,13 @@ export namespace Folks {
         vfunc_change_avatar_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_avatar(): Gio.LoadableIcon;
         vfunc_set_avatar(value: Gio.LoadableIcon): void;
+        change_birthday(birthday: GLib.DateTime): Promise<void>;
         change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_birthday(birthday: GLib.DateTime, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_birthday_finish(_res_: Gio.AsyncResult): void;
+        change_calendar_event_id(event_id: string): Promise<void>;
         change_calendar_event_id(event_id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_calendar_event_id(event_id: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
         get_birthday(): GLib.DateTime;
         set_birthday(value: GLib.DateTime): void;
@@ -977,7 +1038,12 @@ export namespace Folks {
         vfunc_set_birthday(value: GLib.DateTime): void;
         vfunc_get_calendar_event_id(): string;
         vfunc_set_calendar_event_id(value: string): void;
+        change_email_addresses(email_addresses: Gee.Set): Promise<void>;
         change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_email_addresses(
+            email_addresses: Gee.Set,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<void> | void;
         change_email_addresses_finish(_res_: Gio.AsyncResult): void;
         get_email_addresses(): Gee.Set;
         set_email_addresses(value: Gee.Set): void;
@@ -986,13 +1052,21 @@ export namespace Folks {
         vfunc_get_email_addresses(): Gee.Set;
         vfunc_set_email_addresses(value: Gee.Set): void;
         get_extended_field(name: string): ExtendedFieldDetails;
+        change_extended_field(name: string, value: ExtendedFieldDetails): Promise<void>;
         change_extended_field(
             name: string,
             value: ExtendedFieldDetails,
             _callback_: Gio.AsyncReadyCallback<this>,
         ): void;
+        change_extended_field(
+            name: string,
+            value: ExtendedFieldDetails,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<void> | void;
         change_extended_field_finish(_res_: Gio.AsyncResult): void;
+        remove_extended_field(name: string): Promise<void>;
         remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        remove_extended_field(name: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         remove_extended_field_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_extended_field(name: string): ExtendedFieldDetails;
         vfunc_change_extended_field(
@@ -1003,7 +1077,9 @@ export namespace Folks {
         vfunc_change_extended_field_finish(_res_: Gio.AsyncResult): void;
         vfunc_remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_remove_extended_field_finish(_res_: Gio.AsyncResult): void;
+        change_is_favourite(is_favourite: boolean): Promise<void>;
         change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_is_favourite(is_favourite: boolean, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_is_favourite_finish(_res_: Gio.AsyncResult): void;
         get_is_favourite(): boolean;
         set_is_favourite(value: boolean): void;
@@ -1011,7 +1087,9 @@ export namespace Folks {
         vfunc_change_is_favourite_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_is_favourite(): boolean;
         vfunc_set_is_favourite(value: boolean): void;
+        change_gender(gender: Gender): Promise<void>;
         change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_gender(gender: Gender, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_gender_finish(_res_: Gio.AsyncResult): void;
         get_gender(): Gender;
         set_gender(value: Gender): void;
@@ -1019,9 +1097,17 @@ export namespace Folks {
         vfunc_change_gender_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_gender(): Gender;
         vfunc_set_gender(value: Gender): void;
+        change_group(group: string, is_member: boolean): Promise<void>;
         change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_group(
+            group: string,
+            is_member: boolean,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<void> | void;
         change_group_finish(_res_: Gio.AsyncResult): void;
+        change_groups(groups: Gee.Set): Promise<void>;
         change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_groups(groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_groups_finish(_res_: Gio.AsyncResult): void;
         get_groups(): Gee.Set;
         set_groups(value: Gee.Set): void;
@@ -1031,7 +1117,12 @@ export namespace Folks {
         vfunc_change_groups_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_groups(): Gee.Set;
         vfunc_set_groups(value: Gee.Set): void;
+        change_im_addresses(im_addresses: Gee.MultiMap): Promise<void>;
         change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_im_addresses(
+            im_addresses: Gee.MultiMap,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<void> | void;
         change_im_addresses_finish(_res_: Gio.AsyncResult): void;
         get_im_addresses(): Gee.MultiMap;
         set_im_addresses(value: Gee.MultiMap): void;
@@ -1047,7 +1138,9 @@ export namespace Folks {
         vfunc_get_last_im_interaction_datetime(): GLib.DateTime;
         vfunc_get_call_interaction_count(): number;
         vfunc_get_last_call_interaction_datetime(): GLib.DateTime;
+        change_local_ids(local_ids: Gee.Set): Promise<void>;
         change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_local_ids(local_ids: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_local_ids_finish(_res_: Gio.AsyncResult): void;
         get_local_ids(): Gee.Set;
         set_local_ids(value: Gee.Set): void;
@@ -1055,7 +1148,9 @@ export namespace Folks {
         vfunc_change_local_ids_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_local_ids(): Gee.Set;
         vfunc_set_local_ids(value: Gee.Set): void;
+        change_location(location: Location): Promise<void>;
         change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_location(location: Location, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_location_finish(_res_: Gio.AsyncResult): void;
         get_location(): Location;
         set_location(value: Location): void;
@@ -1063,11 +1158,17 @@ export namespace Folks {
         vfunc_change_location_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_location(): Location;
         vfunc_set_location(value: Location): void;
+        change_structured_name(name: StructuredName): Promise<void>;
         change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_structured_name(name: StructuredName, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_structured_name_finish(_res_: Gio.AsyncResult): void;
+        change_full_name(full_name: string): Promise<void>;
         change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_full_name_finish(_res_: Gio.AsyncResult): void;
+        change_nickname(nickname: string): Promise<void>;
         change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_nickname_finish(_res_: Gio.AsyncResult): void;
         get_structured_name(): StructuredName;
         set_structured_name(value: StructuredName): void;
@@ -1087,7 +1188,9 @@ export namespace Folks {
         vfunc_set_full_name(value: string): void;
         vfunc_get_nickname(): string;
         vfunc_set_nickname(value: string): void;
+        change_notes(notes: Gee.Set): Promise<void>;
         change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_notes(notes: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_notes_finish(_res_: Gio.AsyncResult): void;
         get_notes(): Gee.Set;
         set_notes(value: Gee.Set): void;
@@ -1112,7 +1215,9 @@ export namespace Folks {
         vfunc_set_client_types(value: string[]): void;
         vfunc_get_presence_status(): string;
         vfunc_set_presence_status(value: string): void;
+        change_phone_numbers(phone_numbers: Gee.Set): Promise<void>;
         change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_phone_numbers(phone_numbers: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
         get_phone_numbers(): Gee.Set;
         set_phone_numbers(value: Gee.Set): void;
@@ -1120,7 +1225,12 @@ export namespace Folks {
         vfunc_change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_phone_numbers(): Gee.Set;
         vfunc_set_phone_numbers(value: Gee.Set): void;
+        change_postal_addresses(postal_addresses: Gee.Set): Promise<void>;
         change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_postal_addresses(
+            postal_addresses: Gee.Set,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<void> | void;
         change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
         get_postal_addresses(): Gee.Set;
         set_postal_addresses(value: Gee.Set): void;
@@ -1128,7 +1238,9 @@ export namespace Folks {
         vfunc_change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_postal_addresses(): Gee.Set;
         vfunc_set_postal_addresses(value: Gee.Set): void;
+        change_roles(roles: Gee.Set): Promise<void>;
         change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_roles(roles: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_roles_finish(_res_: Gio.AsyncResult): void;
         get_roles(): Gee.Set;
         set_roles(value: Gee.Set): void;
@@ -1136,7 +1248,9 @@ export namespace Folks {
         vfunc_change_roles_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_roles(): Gee.Set;
         vfunc_set_roles(value: Gee.Set): void;
+        change_urls(urls: Gee.Set): Promise<void>;
         change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_urls(urls: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_urls_finish(_res_: Gio.AsyncResult): void;
         get_urls(): Gee.Set;
         set_urls(value: Gee.Set): void;
@@ -1144,10 +1258,15 @@ export namespace Folks {
         vfunc_change_urls_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_urls(): Gee.Set;
         vfunc_set_urls(value: Gee.Set): void;
+        change_web_service_addresses(web_service_addresses: Gee.MultiMap): Promise<void>;
         change_web_service_addresses(
             web_service_addresses: Gee.MultiMap,
             _callback_: Gio.AsyncReadyCallback<this>,
         ): void;
+        change_web_service_addresses(
+            web_service_addresses: Gee.MultiMap,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<void> | void;
         change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
         get_web_service_addresses(): Gee.MultiMap;
         set_web_service_addresses(value: Gee.MultiMap): void;
@@ -1739,11 +1858,21 @@ export namespace Folks {
         get_serialised_object_version(): number;
         serialise_object(object: any): GLib.Variant;
         deserialise_object(variant: GLib.Variant, object_version: number): any;
+        load_objects(cancellable: Gio.Cancellable): Promise<Gee.Set>;
         load_objects(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+        load_objects(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): Promise<Gee.Set> | void;
         load_objects_finish(_res_: Gio.AsyncResult): Gee.Set;
+        store_objects(objects: Gee.Set, cancellable: Gio.Cancellable): Promise<void>;
         store_objects(objects: Gee.Set, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+        store_objects(
+            objects: Gee.Set,
+            cancellable: Gio.Cancellable,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<void> | void;
         store_objects_finish(_res_: Gio.AsyncResult): void;
+        clear_cache(): Promise<void>;
         clear_cache(_callback_: Gio.AsyncReadyCallback<this>): void;
+        clear_cache(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         clear_cache_finish(_res_: Gio.AsyncResult): void;
         get_type_id(): string;
         get_id(): string;
@@ -1917,16 +2046,29 @@ export namespace Folks {
             actor: Persona,
             reason: GroupDetailsChangeReason,
         ): void;
+        prepare(): Promise<void>;
         prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+        prepare(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         prepare_finish(_res_: Gio.AsyncResult): void;
+        flush(): Promise<void>;
         flush(_callback_: Gio.AsyncReadyCallback<this>): void;
+        flush(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         flush_finish(_res_: Gio.AsyncResult): void;
+        add_persona_from_details(
+            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        ): Promise<Persona>;
         add_persona_from_details(
             details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             _callback_: Gio.AsyncReadyCallback<this>,
         ): void;
+        add_persona_from_details(
+            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<Persona> | void;
         add_persona_from_details_finish(_res_: Gio.AsyncResult): Persona;
+        remove_persona(persona: Persona): Promise<void>;
         remove_persona(persona: Persona, _callback_: Gio.AsyncReadyCallback<this>): void;
+        remove_persona(persona: Persona, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         remove_persona_finish(_res_: Gio.AsyncResult): void;
         get_type_id(): string;
         get_display_name(): string;
@@ -2343,11 +2485,17 @@ export namespace Folks {
 
         // Methods
 
+        prepare(): Promise<void>;
         prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+        prepare(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         prepare_finish(_res_: Gio.AsyncResult): void;
+        unprepare(): Promise<void>;
         unprepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+        unprepare(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         unprepare_finish(_res_: Gio.AsyncResult): void;
+        refresh(): Promise<void>;
         refresh(_callback_: Gio.AsyncReadyCallback<this>): void;
+        refresh(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         refresh_finish(_res_: Gio.AsyncResult): void;
         get_aggregator(): IndividualAggregator;
         get_query(): Query;
@@ -2752,7 +2900,9 @@ export namespace Folks {
 
         // Methods
 
+        change_alias(alias: string): Promise<void>;
         change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_alias(alias: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_alias_finish(_res_: Gio.AsyncResult): void;
         get_alias(): string;
         set_alias(value: string): void;
@@ -2790,16 +2940,26 @@ export namespace Folks {
 
         // Methods
 
+        change_anti_links(anti_links: Gee.Set): Promise<void>;
         change_anti_links(anti_links: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_anti_links(anti_links: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_anti_links_finish(_res_: Gio.AsyncResult): void;
         has_anti_link_with_persona(other_persona: Persona): boolean;
+        add_anti_links(other_personas: Gee.Set): Promise<void>;
         add_anti_links(other_personas: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        add_anti_links(other_personas: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         add_anti_links_finish(_res_: Gio.AsyncResult): void;
+        remove_anti_links(other_personas: Gee.Set): Promise<void>;
         remove_anti_links(other_personas: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        remove_anti_links(other_personas: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         remove_anti_links_finish(_res_: Gio.AsyncResult): void;
+        add_global_anti_link(): Promise<void>;
         add_global_anti_link(_callback_: Gio.AsyncReadyCallback<this>): void;
+        add_global_anti_link(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         add_global_anti_link_finish(_res_: Gio.AsyncResult): void;
+        remove_global_anti_link(): Promise<void>;
         remove_global_anti_link(_callback_: Gio.AsyncReadyCallback<this>): void;
+        remove_global_anti_link(_callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         remove_global_anti_link_finish(_res_: Gio.AsyncResult): void;
         has_global_anti_link(): boolean;
         get_anti_links(): Gee.Set;
@@ -2835,7 +2995,9 @@ export namespace Folks {
 
         // Methods
 
+        change_avatar(avatar: Gio.LoadableIcon): Promise<void>;
         change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_avatar(avatar: Gio.LoadableIcon, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_avatar_finish(_res_: Gio.AsyncResult): void;
         get_avatar(): Gio.LoadableIcon;
         set_avatar(value: Gio.LoadableIcon): void;
@@ -2876,9 +3038,13 @@ export namespace Folks {
 
         // Methods
 
+        change_birthday(birthday: GLib.DateTime): Promise<void>;
         change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_birthday(birthday: GLib.DateTime, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_birthday_finish(_res_: Gio.AsyncResult): void;
+        change_calendar_event_id(event_id: string): Promise<void>;
         change_calendar_event_id(event_id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_calendar_event_id(event_id: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
         get_birthday(): GLib.DateTime;
         set_birthday(value: GLib.DateTime): void;
@@ -2922,7 +3088,12 @@ export namespace Folks {
 
         // Methods
 
+        change_email_addresses(email_addresses: Gee.Set): Promise<void>;
         change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_email_addresses(
+            email_addresses: Gee.Set,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<void> | void;
         change_email_addresses_finish(_res_: Gio.AsyncResult): void;
         get_email_addresses(): Gee.Set;
         set_email_addresses(value: Gee.Set): void;
@@ -2951,13 +3122,21 @@ export namespace Folks {
         // Methods
 
         get_extended_field(name: string): ExtendedFieldDetails;
+        change_extended_field(name: string, value: ExtendedFieldDetails): Promise<void>;
         change_extended_field(
             name: string,
             value: ExtendedFieldDetails,
             _callback_: Gio.AsyncReadyCallback<this>,
         ): void;
+        change_extended_field(
+            name: string,
+            value: ExtendedFieldDetails,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<void> | void;
         change_extended_field_finish(_res_: Gio.AsyncResult): void;
+        remove_extended_field(name: string): Promise<void>;
         remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        remove_extended_field(name: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         remove_extended_field_finish(_res_: Gio.AsyncResult): void;
 
         // Virtual methods
@@ -2998,7 +3177,9 @@ export namespace Folks {
 
         // Methods
 
+        change_is_favourite(is_favourite: boolean): Promise<void>;
         change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_is_favourite(is_favourite: boolean, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_is_favourite_finish(_res_: Gio.AsyncResult): void;
         get_is_favourite(): boolean;
         set_is_favourite(value: boolean): void;
@@ -3033,7 +3214,9 @@ export namespace Folks {
 
         // Methods
 
+        change_gender(gender: Gender): Promise<void>;
         change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_gender(gender: Gender, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_gender_finish(_res_: Gio.AsyncResult): void;
         get_gender(): Gender;
         set_gender(value: Gender): void;
@@ -3068,9 +3251,17 @@ export namespace Folks {
 
         // Methods
 
+        change_group(group: string, is_member: boolean): Promise<void>;
         change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_group(
+            group: string,
+            is_member: boolean,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<void> | void;
         change_group_finish(_res_: Gio.AsyncResult): void;
+        change_groups(groups: Gee.Set): Promise<void>;
         change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_groups(groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_groups_finish(_res_: Gio.AsyncResult): void;
         get_groups(): Gee.Set;
         set_groups(value: Gee.Set): void;
@@ -3112,7 +3303,12 @@ export namespace Folks {
 
         // Methods
 
+        change_im_addresses(im_addresses: Gee.MultiMap): Promise<void>;
         change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_im_addresses(
+            im_addresses: Gee.MultiMap,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<void> | void;
         change_im_addresses_finish(_res_: Gio.AsyncResult): void;
         get_im_addresses(): Gee.MultiMap;
         set_im_addresses(value: Gee.MultiMap): void;
@@ -3198,7 +3394,9 @@ export namespace Folks {
 
         // Methods
 
+        change_local_ids(local_ids: Gee.Set): Promise<void>;
         change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_local_ids(local_ids: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_local_ids_finish(_res_: Gio.AsyncResult): void;
         get_local_ids(): Gee.Set;
         set_local_ids(value: Gee.Set): void;
@@ -3233,7 +3431,9 @@ export namespace Folks {
 
         // Methods
 
+        change_location(location: Location): Promise<void>;
         change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_location(location: Location, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_location_finish(_res_: Gio.AsyncResult): void;
         get_location(): Location;
         set_location(value: Location): void;
@@ -3280,11 +3480,17 @@ export namespace Folks {
 
         // Methods
 
+        change_structured_name(name: StructuredName): Promise<void>;
         change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_structured_name(name: StructuredName, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_structured_name_finish(_res_: Gio.AsyncResult): void;
+        change_full_name(full_name: string): Promise<void>;
         change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_full_name_finish(_res_: Gio.AsyncResult): void;
+        change_nickname(nickname: string): Promise<void>;
         change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_nickname_finish(_res_: Gio.AsyncResult): void;
         get_structured_name(): StructuredName;
         set_structured_name(value: StructuredName): void;
@@ -3331,7 +3537,9 @@ export namespace Folks {
 
         // Methods
 
+        change_notes(notes: Gee.Set): Promise<void>;
         change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_notes(notes: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_notes_finish(_res_: Gio.AsyncResult): void;
         get_notes(): Gee.Set;
         set_notes(value: Gee.Set): void;
@@ -3369,7 +3577,9 @@ export namespace Folks {
 
         // Methods
 
+        change_phone_numbers(phone_numbers: Gee.Set): Promise<void>;
         change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_phone_numbers(phone_numbers: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
         get_phone_numbers(): Gee.Set;
         set_phone_numbers(value: Gee.Set): void;
@@ -3407,7 +3617,12 @@ export namespace Folks {
 
         // Methods
 
+        change_postal_addresses(postal_addresses: Gee.Set): Promise<void>;
         change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_postal_addresses(
+            postal_addresses: Gee.Set,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<void> | void;
         change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
         get_postal_addresses(): Gee.Set;
         set_postal_addresses(value: Gee.Set): void;
@@ -3510,7 +3725,9 @@ export namespace Folks {
 
         // Methods
 
+        change_roles(roles: Gee.Set): Promise<void>;
         change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_roles(roles: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_roles_finish(_res_: Gio.AsyncResult): void;
         get_roles(): Gee.Set;
         set_roles(value: Gee.Set): void;
@@ -3545,7 +3762,9 @@ export namespace Folks {
 
         // Methods
 
+        change_urls(urls: Gee.Set): Promise<void>;
         change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_urls(urls: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_urls_finish(_res_: Gio.AsyncResult): void;
         get_urls(): Gee.Set;
         set_urls(value: Gee.Set): void;
@@ -3583,10 +3802,15 @@ export namespace Folks {
 
         // Methods
 
+        change_web_service_addresses(web_service_addresses: Gee.MultiMap): Promise<void>;
         change_web_service_addresses(
             web_service_addresses: Gee.MultiMap,
             _callback_: Gio.AsyncReadyCallback<this>,
         ): void;
+        change_web_service_addresses(
+            web_service_addresses: Gee.MultiMap,
+            _callback_?: Gio.AsyncReadyCallback<this>,
+        ): Promise<void> | void;
         change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
         get_web_service_addresses(): Gee.MultiMap;
         set_web_service_addresses(value: Gee.MultiMap): void;

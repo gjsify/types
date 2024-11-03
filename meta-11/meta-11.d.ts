@@ -6386,6 +6386,40 @@ export namespace Meta {
          * @param size Maximum size to transfer, -1 for unlimited
          * @param output Output stream to write contents to
          * @param cancellable Cancellable
+         */
+        transfer_async(
+            selection_type: SelectionType,
+            mimetype: string,
+            size: number,
+            output: Gio.OutputStream,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Requests a transfer of `mimetype` on the selection given by
+         * `selection_type`.
+         * @param selection_type Selection type
+         * @param mimetype Mimetype to transfer
+         * @param size Maximum size to transfer, -1 for unlimited
+         * @param output Output stream to write contents to
+         * @param cancellable Cancellable
+         * @param callback User callback
+         */
+        transfer_async(
+            selection_type: SelectionType,
+            mimetype: string,
+            size: number,
+            output: Gio.OutputStream,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests a transfer of `mimetype` on the selection given by
+         * `selection_type`.
+         * @param selection_type Selection type
+         * @param mimetype Mimetype to transfer
+         * @param size Maximum size to transfer, -1 for unlimited
+         * @param output Output stream to write contents to
+         * @param cancellable Cancellable
          * @param callback User callback
          */
         transfer_async(
@@ -6395,7 +6429,7 @@ export namespace Meta {
             output: Gio.OutputStream,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the transfer of a queried mimetype.
          * @param result The async result
@@ -6479,11 +6513,17 @@ export namespace Meta {
          * @returns #TRUE if the source owns a selection.
          */
         is_active(): boolean;
+        read_async(mimetype: string, cancellable?: Gio.Cancellable | null): Promise<Gio.InputStream>;
+        read_async(
+            mimetype: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         read_async(
             mimetype: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Gio.InputStream> | void;
         /**
          * Finishes a read from the selection source.
          * @param result The async result

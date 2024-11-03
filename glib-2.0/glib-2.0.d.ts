@@ -7464,8 +7464,9 @@ export namespace GLib {
      * log messages are formatted and outputted.
      *
      * There can only be one writer function. It is an error to set more than one.
+     * @param func log writer function, which must not be `NULL`
      */
-    function log_set_writer_func(): void;
+    function log_set_writer_func(func: LogWriterFunc): void;
     /**
      * Log a message with structured data.
      *

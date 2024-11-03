@@ -356,6 +356,46 @@ export namespace GnomeBluetooth {
          * @param path the object path on which to operate
          * @param connect Whether try to connect or disconnect from services on a device
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        connect_service(path: string, connect: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * This will start the process of connecting to one of the known-connectable
+         * services on the device. This means that it could connect to all the audio
+         * services on a headset, but just to the input service on a keyboard.
+         *
+         * Broadly speaking, this will only have an effect on devices with audio and HID
+         * services, and do nothing if the device doesn't have the "connectable"
+         * property set.
+         *
+         * When the connection operation is finished, `callback` will be called. You can
+         * then call bluetooth_client_connect_service_finish() to get the result of the
+         * operation.
+         * @param path the object path on which to operate
+         * @param connect Whether try to connect or disconnect from services on a device
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the connection is complete
+         */
+        connect_service(
+            path: string,
+            connect: boolean,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * This will start the process of connecting to one of the known-connectable
+         * services on the device. This means that it could connect to all the audio
+         * services on a headset, but just to the input service on a keyboard.
+         *
+         * Broadly speaking, this will only have an effect on devices with audio and HID
+         * services, and do nothing if the device doesn't have the "connectable"
+         * property set.
+         *
+         * When the connection operation is finished, `callback` will be called. You can
+         * then call bluetooth_client_connect_service_finish() to get the result of the
+         * operation.
+         * @param path the object path on which to operate
+         * @param connect Whether try to connect or disconnect from services on a device
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the connection is complete
          */
         connect_service(
@@ -363,7 +403,7 @@ export namespace GnomeBluetooth {
             connect: boolean,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the connection operation. See bluetooth_client_connect_service().
          * @param res a #GAsyncResult

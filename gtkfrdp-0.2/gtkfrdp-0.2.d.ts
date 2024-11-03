@@ -798,12 +798,19 @@ export namespace GtkFrdp {
         // Methods
 
         close(): void;
+        connect(hostname: string, port: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        connect(
+            hostname: string,
+            port: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         connect(
             hostname: string,
             port: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         connect(...args: never[]): any;
         connect_finish(result: Gio.AsyncResult): boolean;
         is_open(): boolean;

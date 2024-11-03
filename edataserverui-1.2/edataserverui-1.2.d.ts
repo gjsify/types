@@ -874,6 +874,40 @@ export namespace EDataServerUI {
          * @param source an #ESource, which prompt the credentials for
          * @param error_text Additional error text to show to a user, or %NULL
          * @param flags a bit-or of #ECredentialsPrompterPromptFlags
+         */
+        prompt(
+            source: EDataServer.Source,
+            error_text: string | null,
+            flags: CredentialsPrompterPromptFlags,
+        ): Promise<[boolean, EDataServer.Source | null, EDataServer.NamedParameters | null]>;
+        /**
+         * Asks the `prompter` to prompt for credentials, which are returned
+         * to the caller through `callback,` when available.The `flags` are ignored,
+         * when the `callback` is %NULL; the credentials are passed to the `source`
+         * with e_source_invoke_authenticate() directly, in this case.
+         * Call e_credentials_prompter_prompt_finish() in `callback` to get to
+         * the provided credentials.
+         * @param source an #ESource, which prompt the credentials for
+         * @param error_text Additional error text to show to a user, or %NULL
+         * @param flags a bit-or of #ECredentialsPrompterPromptFlags
+         * @param callback a callback to call when the credentials are ready, or %NULL
+         */
+        prompt(
+            source: EDataServer.Source,
+            error_text: string | null,
+            flags: CredentialsPrompterPromptFlags,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asks the `prompter` to prompt for credentials, which are returned
+         * to the caller through `callback,` when available.The `flags` are ignored,
+         * when the `callback` is %NULL; the credentials are passed to the `source`
+         * with e_source_invoke_authenticate() directly, in this case.
+         * Call e_credentials_prompter_prompt_finish() in `callback` to get to
+         * the provided credentials.
+         * @param source an #ESource, which prompt the credentials for
+         * @param error_text Additional error text to show to a user, or %NULL
+         * @param flags a bit-or of #ECredentialsPrompterPromptFlags
          * @param callback a callback to call when the credentials are ready, or %NULL
          */
         prompt(
@@ -881,7 +915,7 @@ export namespace EDataServerUI {
             error_text: string | null,
             flags: CredentialsPrompterPromptFlags,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, EDataServer.Source | null, EDataServer.NamedParameters | null]> | void;
         /**
          * Finishes a credentials prompt previously started with e_credentials_prompter_prompt().
          * The `out_source` will have set a referenced #ESource, for which the prompt
@@ -2123,13 +2157,46 @@ export namespace EDataServerUI {
          * call e_webdav_discover_content_refresh_finish() to get the result of the operation.
          * @param display_name optional display name to use for scratch sources
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        refresh(display_name?: string | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously starts refresh of the `content`. This means to access the server
+         * and search it for available sources. The `content` shows a feedback and a Cancel
+         * button during the operation.
+         *
+         * The `display_name` is used only if the `content` wasn't created with an #ESource and
+         * it's shown in the password prompts, if there are required any.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_webdav_discover_content_refresh_finish() to get the result of the operation.
+         * @param display_name optional display name to use for scratch sources
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        refresh(
+            display_name: string | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously starts refresh of the `content`. This means to access the server
+         * and search it for available sources. The `content` shows a feedback and a Cancel
+         * button during the operation.
+         *
+         * The `display_name` is used only if the `content` wasn't created with an #ESource and
+         * it's shown in the password prompts, if there are required any.
+         *
+         * When the operation is finished, `callback` will be called. You can then
+         * call e_webdav_discover_content_refresh_finish() to get the result of the operation.
+         * @param display_name optional display name to use for scratch sources
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         refresh(
             display_name?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes the operation started with e_webdav_discover_content_refresh(). If an
          * error occurred, the function will set `error` and return %FALSE. There is

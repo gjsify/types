@@ -187,7 +187,6 @@ export namespace Guestfs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            blocksize: number;
             cachemode: string;
             copyonread: Tristate;
             discard: string;
@@ -210,11 +209,6 @@ export namespace Guestfs {
 
         // Properties
 
-        /**
-         * A 32-bit integer.
-         */
-        get blocksize(): number;
-        set blocksize(val: number);
         /**
          * A string.
          */
@@ -284,7 +278,6 @@ export namespace Guestfs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            blocksize: number;
             label: string;
             name: string;
         }
@@ -298,11 +291,6 @@ export namespace Guestfs {
 
         // Properties
 
-        /**
-         * A 32-bit integer.
-         */
-        get blocksize(): number;
-        set blocksize(val: number);
         /**
          * A string.
          */
@@ -985,49 +973,6 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): CpioOut;
-    }
-
-    module CryptsetupOpen {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            cipher: string;
-            crypttype: string;
-            readonly: Tristate;
-        }
-    }
-
-    /**
-     * An object encapsulating optional arguments for guestfs_session_cryptsetup_open.
-     */
-    class CryptsetupOpen extends GObject.Object {
-        static $gtype: GObject.GType<CryptsetupOpen>;
-
-        // Properties
-
-        /**
-         * A string.
-         */
-        get cipher(): string;
-        set cipher(val: string);
-        /**
-         * A string.
-         */
-        get crypttype(): string;
-        set crypttype(val: string);
-        /**
-         * A boolean.
-         */
-        get readonly(): Tristate;
-        set readonly(val: Tristate);
-
-        // Constructors
-
-        constructor(properties?: Partial<CryptsetupOpen.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): CryptsetupOpen;
     }
 
     module DiskCreate {
@@ -3146,17 +3091,21 @@ export namespace Guestfs {
          *
          * Disks must be accessible locally. This often means that adding disks
          * from a remote libvirt connection (see <ulink
-         * url='https://libvirt.org/remote.html'> http://libvirt.org/remote.html
+         * url='http://libvirt.org/remote.html'> http://libvirt.org/remote.html
          * </ulink>) will fail unless those disks are accessible via the same
          * device path locally too.
          *
          * The optional `libvirturi` parameter sets the libvirt URI (see <ulink
-         * url='https://libvirt.org/uri.html'> http://libvirt.org/uri.html
+         * url='http://libvirt.org/uri.html'> http://libvirt.org/uri.html
          * </ulink>). If this is not set then we connect to the default libvirt URI
          * (or one set through an environment variable, see the libvirt
          * documentation for full details).
          *
-         * The optional `live` flag is ignored in libguestfs &ge; 1.48.
+         * The optional `live` flag controls whether this call will try to connect
+         * to a running virtual machine `guestfsd` process if it sees a suitable
+         * &lt;channel&gt; element in the libvirt XML definition. The default (if
+         * the flag is omitted) is never to try. See "ATTACHING TO RUNNING DAEMONS"
+         * in guestfs(3) for more information.
          *
          * If the `allowuuid` flag is true (default is false) then a UUID *may* be
          * passed instead of the domain name. The `dom` string is treated as a UUID
@@ -3200,10 +3149,6 @@ export namespace Guestfs {
          *
          * Disks with the &lt;readonly/&gt; flag are skipped.
          *
-         * If present, the value of `logical_block_size` attribute of
-         * &lt;blockio/&gt; tag in libvirt XML will be passed as `blocksize`
-         * parameter to guestfs_session_add_drive_opts().
-         *
          * The other optional parameters are passed directly through to
          * guestfs_session_add_drive_opts().
          * @param dom
@@ -3220,6 +3165,11 @@ export namespace Guestfs {
          * When this function is called before guestfs_session_launch() (the usual
          * case) then the first time you call this function, the disk appears in
          * the API as /dev/sda, the second time as /dev/sdb, and so on.
+         *
+         * In libguestfs &ge; 1.20 you can also call this function after launch
+         * (with some restrictions). This is called "hotplugging". When
+         * hotplugging, you must specify a `label` so that the new disk gets a
+         * predictable name. For more information see "HOTPLUGGING" in guestfs(3).
          *
          * You don't necessarily need to be root when using libguestfs. However you
          * obviously do need sufficient permissions to access the filename for
@@ -3256,8 +3206,8 @@ export namespace Guestfs {
          * deprecated guestfs_session_add_drive_with_if() call (q.v.)
          *
          * `name`
-         * This field used to be passed as a hint for guest inspection, but it
-         * is no longer used.
+         * The name the drive had in the original guest, e.g. /dev/sdb. This is
+         * used as a hint to the guest inspection process if it is available.
          *
          * `label`
          * Give the disk a label. The label should be a unique, short string
@@ -3277,11 +3227,17 @@ export namespace Guestfs {
          * filename is interpreted as a local file or device. This is the
          * default if the optional protocol parameter is omitted.
          *
-         * "protocol = "ftp"|"ftps"|"http"|"https""
-         * Connect to a remote FTP or HTTP server. The `server` parameter
-         * must also be supplied - see below.
+         * "protocol = "ftp"|"ftps"|"http"|"https"|"tftp""
+         * Connect to a remote FTP, HTTP or TFTP server. The `server`
+         * parameter must also be supplied - see below.
          *
-         * See also: "FTP AND HTTP" in guestfs(3)
+         * See also: "FTP, HTTP AND TFTP" in guestfs(3)
+         *
+         * "protocol = "gluster""
+         * Connect to the GlusterFS server. The `server` parameter must also
+         * be supplied - see below.
+         *
+         * See also: "GLUSTER" in guestfs(3)
          *
          * "protocol = "iscsi""
          * Connect to the iSCSI server. The `server` parameter must also be
@@ -3304,6 +3260,12 @@ export namespace Guestfs {
          *
          * See also: "CEPH" in guestfs(3).
          *
+         * "protocol = "sheepdog""
+         * Connect to the Sheepdog server. The `server` parameter may also
+         * be supplied - see below.
+         *
+         * See also: "SHEEPDOG" in guestfs(3).
+         *
          * "protocol = "ssh""
          * Connect to the Secure Shell (ssh) server.
          *
@@ -3322,13 +3284,17 @@ export namespace Guestfs {
          *
          * <![CDATA[file           List must be empty or param not used at all]]>
          *
-         * <![CDATA[ftp|ftps|http|https  Exactly one]]>
+         * <![CDATA[ftp|ftps|http|https|tftp  Exactly one]]>
+         *
+         * <![CDATA[gluster        Exactly one]]>
          *
          * <![CDATA[iscsi          Exactly one]]>
          *
          * <![CDATA[nbd            Exactly one]]>
          *
          * <![CDATA[rbd            Zero or more]]>
+         *
+         * <![CDATA[sheepdog       Zero or more]]>
          *
          * <![CDATA[ssh            Exactly one]]>
          *
@@ -3349,8 +3315,8 @@ export namespace Guestfs {
          * protocol is used (see /etc/services).
          *
          * `username`
-         * For the `ftp,` `ftps,` `http,` `https,` `iscsi,` `rbd` and `ssh` protocols,
-         * this specifies the remote username.
+         * For the `ftp,` `ftps,` `http,` `https,` `iscsi,` `rbd,` `ssh` and `tftp`
+         * protocols, this specifies the remote username.
          *
          * If not given, then the local username is used for `ssh,` and no
          * authentication is attempted for ceph. But note this sometimes may
@@ -3418,16 +3384,6 @@ export namespace Guestfs {
          * same area of disk.
          *
          * The default is false.
-         *
-         * `blocksize`
-         * This parameter sets the sector size of the disk. Possible values are
-         * `5`12 (the default if the parameter is omitted) or `4`096. Use `4`096
-         * when handling an "Advanced Format" disk that uses 4K sector size
-         * (<ulink url='https://en.wikipedia.org/wiki/Advanced_Format'>
-         * http://en.wikipedia.org/wiki/Advanced_Format </ulink>).
-         *
-         * Only a subset of the backends support this parameter (currently only
-         * the libvirt and direct backends do).
          * @param filename
          * @param optargs a GuestfsAddDrive containing optional arguments
          * @returns true on success, false on error
@@ -3448,8 +3404,7 @@ export namespace Guestfs {
          * add a drive read-only specifying the QEMU block emulation to use
          *
          * This is the same as guestfs_session_add_drive_ro() but it allows you to
-         * specify the QEMU interface emulation to use at run time. Both the direct
-         * and the libvirt backends ignore `iface`.
+         * specify the QEMU interface emulation to use at run time.
          * @param filename
          * @param iface
          * @returns true on success, false on error
@@ -3463,8 +3418,8 @@ export namespace Guestfs {
          * initially (all reads return zeroes until you start writing to it). The
          * drive is deleted when the handle is closed.
          *
-         * The optional arguments `name,` `label` and `blocksize` are passed through
-         * to guestfs_session_add_drive_opts().
+         * The optional arguments `name` and `label` are passed through to
+         * guestfs_session_add_drive().
          * @param size
          * @param optargs a GuestfsAddDriveScratch containing optional arguments
          * @returns true on success, false on error
@@ -3474,8 +3429,7 @@ export namespace Guestfs {
          * add a drive specifying the QEMU block emulation to use
          *
          * This is the same as guestfs_session_add_drive() but it allows you to
-         * specify the QEMU interface emulation to use at run time. Both the direct
-         * and the libvirt backends ignore `iface`.
+         * specify the QEMU interface emulation to use at run time.
          * @param filename
          * @param iface
          * @returns true on success, false on error
@@ -3500,19 +3454,19 @@ export namespace Guestfs {
          *
          * Disks must be accessible locally. This often means that adding disks
          * from a remote libvirt connection (see <ulink
-         * url='https://libvirt.org/remote.html'> http://libvirt.org/remote.html
+         * url='http://libvirt.org/remote.html'> http://libvirt.org/remote.html
          * </ulink>) will fail unless those disks are accessible via the same
          * device path locally too.
          *
-         * The optional `live` flag is ignored in libguestfs &ge; 1.48.
+         * The optional `live` flag controls whether this call will try to connect
+         * to a running virtual machine `guestfsd` process if it sees a suitable
+         * &lt;channel&gt; element in the libvirt XML definition. The default (if
+         * the flag is omitted) is never to try. See "ATTACHING TO RUNNING DAEMONS"
+         * in guestfs(3) for more information.
          *
          * The optional `readonlydisk` parameter controls what we do for disks which
          * are marked &lt;readonly/&gt; in the libvirt XML. See
          * guestfs_session_add_domain() for possible values.
-         *
-         * If present, the value of `logical_block_size` attribute of
-         * &lt;blockio/&gt; tag in libvirt XML will be passed as `blocksize`
-         * parameter to guestfs_session_add_drive_opts().
          *
          * The other optional parameters are passed directly through to
          * guestfs_session_add_drive_opts().
@@ -3545,8 +3499,8 @@ export namespace Guestfs {
          * Defines a variable `name` whose value is the result of evaluating `expr`.
          *
          * If `expr` evaluates to an empty nodeset, a node is created, equivalent to
-         * calling guestfs_session_aug_set() `expr,` `val`. `name` will be the nodeset
-         * containing that single node.
+         * calling guestfs_session_aug_set() `expr,` `value`. `name` will be the
+         * nodeset containing that single node.
          *
          * On success this returns a pair containing the number of nodes in the
          * nodeset, and a boolean flag if a node was created.
@@ -3710,7 +3664,7 @@ export namespace Guestfs {
         /**
          * set Augeas path to value
          *
-         * Set the value associated with `augpath` to `val`.
+         * Set the value associated with `path` to `val`.
          *
          * In the Augeas API, it is possible to clear a node by setting the value
          * to NULL. Due to an oversight in the libguestfs API you cannot do that
@@ -4609,7 +4563,7 @@ export namespace Guestfs {
          * not be a problem.
          *
          * Bug or feature? You decide: <ulink
-         * url='https://www.tuxera.com/community/ntfs-3g-faq/#posixfilenames1'>
+         * url='http://www.tuxera.com/community/ntfs-3g-faq/#posixfilenames1'>
          * http://www.tuxera.com/community/ntfs-3g-faq/#posixfilenames1 </ulink>
          *
          * guestfs_session_case_sensitive_path() attempts to resolve the true case
@@ -4665,28 +4619,23 @@ export namespace Guestfs {
          * Compute the cyclic redundancy check (CRC) specified by POSIX for the
          * `cksum` command.
          *
-         * `gost`
-         * `gost1`2
-         * Compute the checksum using GOST R34.11-94 or GOST R34.11-2012
-         * message digest.
-         *
          * `md5`
-         * Compute the MD5 hash (using the md5sum(1) program).
+         * Compute the MD5 hash (using the `md5`sum program).
          *
          * `sha1`
-         * Compute the SHA1 hash (using the sha1sum(1) program).
+         * Compute the SHA1 hash (using the `sha1`sum program).
          *
          * `sha2`24
-         * Compute the SHA224 hash (using the sha224sum(1) program).
+         * Compute the SHA224 hash (using the `sha2`24sum program).
          *
          * `sha2`56
-         * Compute the SHA256 hash (using the sha256sum(1) program).
+         * Compute the SHA256 hash (using the `sha2`56sum program).
          *
          * `sha3`84
-         * Compute the SHA384 hash (using the sha384sum(1) program).
+         * Compute the SHA384 hash (using the `sha3`84sum program).
          *
          * `sha5`12
-         * Compute the SHA512 hash (using the sha512sum(1) program).
+         * Compute the SHA512 hash (using the `sha5`12sum program).
          *
          * The checksum is returned as a printable string.
          *
@@ -4778,47 +4727,6 @@ export namespace Guestfs {
          * @returns the returned value, or -1 on error
          */
         clear_backend_setting(name: string): number;
-        /**
-         * open an encrypted LUKS block device with Clevis and Tang
-         *
-         * This command opens a block device that has been encrypted according to
-         * the Linux Unified Key Setup (LUKS) standard, using network-bound disk
-         * encryption (NBDE).
-         *
-         * `device` is the encrypted block device.
-         *
-         * The appliance will connect to the Tang servers noted in the tree of
-         * Clevis pins that is bound to a keyslot of the LUKS header. The Clevis
-         * pin tree may comprise `sss` (redudancy) pins as internal nodes
-         * (optionally), and `tang` pins as leaves. `tpm2` pins are not supported.
-         * The appliance unlocks the encrypted block device by combining responses
-         * from the Tang servers with metadata from the LUKS header; there is no
-         * `key` parameter.
-         *
-         * This command will fail if networking has not been enabled for the
-         * appliance. Refer to guestfs_session_set_network().
-         *
-         * The command creates a new block device called /dev/mapper/mapname. Reads
-         * and writes to this block device are decrypted from and encrypted to the
-         * underlying `device` respectively. Close the decrypted block device with
-         * guestfs_session_cryptsetup_close().
-         *
-         * `mapname` cannot be "control" because that name is reserved by
-         * device-mapper.
-         *
-         * If this block device contains LVM volume groups, then calling
-         * guestfs_session_lvm_scan() with the `activate` parameter `true` will make
-         * them visible.
-         *
-         * Use guestfs_session_list_dm_devices() to list all device mapper devices.
-         *
-         * This function depends on the feature "clevisluks".
-         * See also guestfs_session_feature_available().
-         * @param device
-         * @param mapname
-         * @returns true on success, false on error
-         */
-        clevis_luks_unlock(device: string, mapname: string): boolean;
         /**
          * Close a libguestfs session.
          * @returns true on success, false on error
@@ -4938,7 +4846,7 @@ export namespace Guestfs {
          * Copy the attributes of a path (which can be a file or a directory) to
          * another path.
          *
-         * By default no attribute is copied, so make sure to specify any (or `all`
+         * By default `no` attribute is copied, so make sure to specify any (or `all`
          * to copy everything).
          *
          * The optional arguments specify which attributes can be copied:
@@ -5147,69 +5055,6 @@ export namespace Guestfs {
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
-         * close an encrypted device
-         *
-         * This closes an encrypted device that was created earlier by
-         * guestfs_session_cryptsetup_open(). The `device` parameter must be the
-         * name of the mapping device (ie. /dev/mapper/mapname) and *not* the name
-         * of the underlying block device.
-         *
-         * This function depends on the feature "luks".
-         * See also guestfs_session_feature_available().
-         * @param device
-         * @returns true on success, false on error
-         */
-        cryptsetup_close(device: string): boolean;
-        /**
-         * open an encrypted block device
-         *
-         * This command opens a block device which has been encrypted according to
-         * the Linux Unified Key Setup (LUKS) standard, Windows BitLocker, or some
-         * other types.
-         *
-         * `device` is the encrypted block device or partition.
-         *
-         * The caller must supply one of the keys associated with the encrypted
-         * block device, in the `key` parameter.
-         *
-         * This creates a new block device called /dev/mapper/mapname. Reads and
-         * writes to this block device are decrypted from and encrypted to the
-         * underlying `device` respectively.
-         *
-         * `mapname` cannot be "control" because that name is reserved by
-         * device-mapper.
-         *
-         * If the optional `crypttype` parameter is not present then libguestfs
-         * tries to guess the correct type (for example LUKS or BitLocker). However
-         * you can override this by specifying one of the following types:
-         *
-         * `luks`
-         * A Linux LUKS device.
-         *
-         * `bitlk`
-         * A Windows BitLocker device.
-         *
-         * The optional `readonly` flag, if set to true, creates a read-only
-         * mapping.
-         *
-         * The optional `cipher` parameter allows specifying which cipher to use.
-         *
-         * If this block device contains LVM volume groups, then calling
-         * guestfs_session_lvm_scan() with the `activate` parameter `true` will make
-         * them visible.
-         *
-         * Use guestfs_session_list_dm_devices() to list all device mapper devices.
-         *
-         * This function depends on the feature "luks".
-         * See also guestfs_session_feature_available().
-         * @param device
-         * @param key
-         * @param mapname
-         * @param optargs a GuestfsCryptsetupOpen containing optional arguments
-         * @returns true on success, false on error
-         */
-        cryptsetup_open(device: string, key: string, mapname: string, optargs?: CryptsetupOpen | null): boolean;
-        /**
          * copy from source to destination using dd
          *
          * This command copies from one source device or file `src` to another
@@ -5270,30 +5115,15 @@ export namespace Guestfs {
          * Index numbers start from 0. The named device must exist, for example as
          * a string returned from guestfs_session_list_devices().
          *
-         * See also guestfs_session_list_devices(), guestfs_session_part_to_dev(),
-         * guestfs_session_device_name().
+         * See also guestfs_session_list_devices(), guestfs_session_part_to_dev().
          * @param device
          * @returns the returned value, or -1 on error
          */
         device_index(device: string): number;
         /**
-         * convert device index to name
-         *
-         * This function takes a device index and returns the device name. For
-         * example index `0` will return the string "/dev/sda".
-         *
-         * The drive index must have been added to the handle.
-         *
-         * See also guestfs_session_list_devices(), guestfs_session_part_to_dev(),
-         * guestfs_session_device_index().
-         * @param index
-         * @returns the returned string, or NULL on error
-         */
-        device_name(index: number): string;
-        /**
          * report file system disk space usage
          *
-         * This command runs the df(1) command to report disk space used.
+         * This command runs the `df` command to report disk space used.
          *
          * This command is mostly useful for interactive sessions. It is *not*
          * intended that you try to parse the output string. Use
@@ -5398,8 +5228,8 @@ export namespace Guestfs {
         /**
          * return kernel messages
          *
-         * This returns the kernel messages (dmesg(1) output) from the guest
-         * kernel. This is sometimes useful for extended debugging of problems.
+         * This returns the kernel messages (`dmesg` output) from the guest kernel.
+         * This is sometimes useful for extended debugging of problems.
          *
          * Another way to get the same information is to enable verbose messages
          * with guestfs_session_set_verbose() or by setting the environment
@@ -5511,7 +5341,7 @@ export namespace Guestfs {
          *
          * This instructs the guest kernel to drop its page cache, and/or dentries
          * and inode caches. The parameter `whattodrop` tells the kernel what
-         * precisely to drop, see <ulink url='https://linux-mm.org/Drop_Caches'>
+         * precisely to drop, see <ulink url='http://linux-mm.org/Drop_Caches'>
          * http://linux-mm.org/Drop_Caches </ulink>
          *
          * Setting `whattodrop` to 3 should drop everything.
@@ -5589,7 +5419,7 @@ export namespace Guestfs {
         /**
          * return lines matching a pattern
          *
-         * This calls the external egrep(1) program and returns the matching lines.
+         * This calls the external `egrep` program and returns the matching lines.
          * @param regex
          * @param path
          * @returns an array of returned strings, or NULL on error
@@ -5718,7 +5548,7 @@ export namespace Guestfs {
         /**
          * return lines matching a pattern
          *
-         * This calls the external fgrep(1) program and returns the matching lines.
+         * This calls the external `fgrep` program and returns the matching lines.
          * @param pattern
          * @param path
          * @returns an array of returned strings, or NULL on error
@@ -5743,8 +5573,8 @@ export namespace Guestfs {
          * This call will also transparently look inside various types of
          * compressed file.
          *
-         * The filename is not prepended to the output (like the file command *-b*
-         * option).
+         * The exact command which runs is "file -zb path". Note in particular that
+         * the filename is not prepended to the output (the *-b* option).
          *
          * The output depends on the output of the underlying file(1) command and
          * it can change in future in ways beyond our control. In other words, the
@@ -5787,9 +5617,6 @@ export namespace Guestfs {
          *
          * "ppc64le"
          * 64 bit Power PC (little endian).
-         *
-         * "loongarch64"
-         * 64 bit LoongArch64 (little endian).
          *
          * "riscv32"
          * "riscv64"
@@ -6106,31 +5933,6 @@ export namespace Guestfs {
          * @returns the returned string, or NULL on error
          */
         findfs_label(label: string): string;
-        /**
-         * find a partition by label
-         *
-         * This command searches the partitions and returns the one which has the
-         * given label. An error is returned if no such partition can be found.
-         *
-         * To find the label of a partition, use guestfs_session_blkid()
-         * (`PART_ENTRY_NAME)`.
-         * @param label
-         * @returns the returned string, or NULL on error
-         */
-        findfs_partlabel(label: string): string;
-        /**
-         * find a partition by UUID
-         *
-         * This command searches the partitions and returns the one which has the
-         * given partition UUID. An error is returned if no such partition can be
-         * found.
-         *
-         * To find the UUID of a partition, use guestfs_session_blkid()
-         * (`PART_ENTRY_UUID)`.
-         * @param uuid
-         * @returns the returned string, or NULL on error
-         */
-        findfs_partuuid(uuid: string): string;
         /**
          * find a filesystem by UUID
          *
@@ -6540,17 +6342,13 @@ export namespace Guestfs {
          */
         get_smp(): number;
         /**
-         * get the temporary directory for sockets and PID files
+         * get the temporary directory for sockets
          *
-         * Get the directory used by the handle to store temporary socket and PID
-         * files.
+         * Get the directory used by the handle to store temporary socket files.
          *
-         * This is different from guestfs_session_get_tmpdir(), as we need shorter
+         * This is different from guestfs_session_tmpdir(), as we need shorter
          * paths for sockets (due to the limited buffers of filenames for UNIX
-         * sockets), and guestfs_session_get_tmpdir() may be too long for them.
-         * Furthermore, sockets and PID files must be accessible to such background
-         * services started by libguestfs that may not have permission to access
-         * the temporary directory returned by guestfs_session_get_tmpdir().
+         * sockets), and guestfs_session_tmpdir() may be too long for them.
          *
          * The environment variable `XDG_RUNTIME_DIR` controls the default value: If
          * `XDG_RUNTIME_DIR` is set, then that is the default. Else /tmp is the
@@ -6679,7 +6477,7 @@ export namespace Guestfs {
         /**
          * return lines matching a pattern
          *
-         * This calls the external grep(1) program and returns the matching lines.
+         * This calls the external `grep` program and returns the matching lines.
          *
          * The optional flags are:
          *
@@ -6695,8 +6493,8 @@ export namespace Guestfs {
          * Match case-insensitive. This is the same as using the *-i* flag.
          *
          * `compressed`
-         * Use zgrep(1) instead of grep(1). This allows the input to be
-         * compress- or gzip-compressed.
+         * Use `zgrep` instead of `grep`. This allows the input to be compress-
+         * or gzip-compressed.
          * @param regex
          * @param path
          * @param optargs a GuestfsGrep containing optional arguments
@@ -6726,7 +6524,7 @@ export namespace Guestfs {
          * from the guest, although see the caveats in "RUNNING COMMANDS" in
          * guestfs(3).
          *
-         * *   This uses grub-install(8) from the host. Unfortunately grub is not
+         * *   This uses `grub-install` from the host. Unfortunately grub is not
          * always compatible with itself, so this only works in rather narrow
          * circumstances. Careful testing with each guest version is advisable.
          *
@@ -7203,26 +7001,6 @@ export namespace Guestfs {
          */
         inspect_get_arch(root: string): string;
         /**
-         * get the system build ID
-         *
-         * This returns the build ID of the system, or the string "unknown" if the
-         * system does not have a build ID.
-         *
-         * For Windows, this gets the build number. Although it is returned as a
-         * string, it is (so far) always a number. See <ulink
-         * url='https://en.wikipedia.org/wiki/List_of_Microsoft_Windows_versions'>
-         * http://en.wikipedia.org/wiki/List_of_Microsoft_Windows_versions </ulink>
-         * for some possible values.
-         *
-         * For Linux, this returns the `BUILD_ID` string from /etc/os-release,
-         * although this is not often used.
-         *
-         * Please read "INSPECTION" in guestfs(3) for more details.
-         * @param root
-         * @returns the returned string, or NULL on error
-         */
-        inspect_get_build_id(root: string): string;
-        /**
          * get distro of inspected operating system
          *
          * This returns the distro (distribution) of the inspected operating
@@ -7244,9 +7022,6 @@ export namespace Guestfs {
          *
          * "centos"
          * CentOS.
-         *
-         * "circle"
-         * Circle Linux.
          *
          * "cirros"
          * Cirros.
@@ -7275,9 +7050,6 @@ export namespace Guestfs {
          * "kalilinux"
          * Kali Linux.
          *
-         * "kylin"
-         * Kylin.
-         *
          * "linuxmint"
          * Linux Mint.
          *
@@ -7302,9 +7074,6 @@ export namespace Guestfs {
          * "openbsd"
          * OpenBSD.
          *
-         * "openmandriva"
-         * OpenMandriva Lx.
-         *
          * "opensuse"
          * OpenSUSE.
          *
@@ -7322,9 +7091,6 @@ export namespace Guestfs {
          *
          * "rhel"
          * Red Hat Enterprise Linux.
-         *
-         * "rocky"
-         * Rocky Linux.
          *
          * "scientificlinux"
          * Scientific Linux.
@@ -7421,14 +7187,14 @@ export namespace Guestfs {
          * Before libguestfs 1.38, there was some unreliable support for detecting
          * installer CDs. This API would return:
          *
-         * `installed`
+         * "installed"
          * This is an installed operating system.
          *
-         * `installer`
+         * "installer"
          * The disk image being inspected is not an installed operating system,
          * but a *bootable* install disk, live CD, or similar.
          *
-         * `unknown`
+         * "unknown"
          * The format of this disk image is not known.
          *
          * In libguestfs &ge; 1.38, this only returns `installed`. Use libosinfo
@@ -7491,10 +7257,10 @@ export namespace Guestfs {
          * Libguestfs tries to return the largest, highest quality icon
          * available. The application must scale the icon to the required size.
          *
-         * *   Extracting icons from Windows guests requires the external
-         * wrestool(1) program from the `icoutils` package, and several programs
-         * (bmptopnm(1), pnmtopng(1), pamcut(1)) from the `netpbm` package.
-         * These must be installed separately.
+         * *   Extracting icons from Windows guests requires the external `wrestool`
+         * program from the `icoutils` package, and several programs (`bmptopnm,`
+         * `pnmtopng,` `pamcut)` from the `netpbm` package. These must be
+         * installed separately.
          *
          * *   Operating system icons are usually trademarks. Seek legal advice
          * before using trademarks in applications.
@@ -7830,8 +7596,8 @@ export namespace Guestfs {
          * The application structure contains the following fields:
          *
          * `app_name`
-         * The name of the application. For Linux guests, this is the package
-         * name.
+         * The name of the application. For Red Hat-derived and Debian-derived
+         * Linux guests, this is the package name.
          *
          * `app_display_name`
          * The display name of the application, sometimes localized to the
@@ -7910,8 +7676,8 @@ export namespace Guestfs {
          * The application structure contains the following fields:
          *
          * `app2`_name
-         * The name of the application. For Linux guests, this is the package
-         * name.
+         * The name of the application. For Red Hat-derived and Debian-derived
+         * Linux guests, this is the package name.
          *
          * `app2`_display_name
          * The display name of the application, sometimes localized to the
@@ -8629,7 +8395,7 @@ export namespace Guestfs {
          * libguestfs.
          *
          * For information on the primary volume descriptor fields, see <ulink
-         * url='https://wiki.osdev.org/ISO_9660#The_Primary_Volume_Descriptor'>
+         * url='http://wiki.osdev.org/ISO_9660#The_Primary_Volume_Descriptor'>
          * http://wiki.osdev.org/ISO_9660#The_Primary_Volume_Descriptor </ulink>
          * @param device
          * @returns a ISOInfo object, or NULL on error
@@ -8750,10 +8516,10 @@ export namespace Guestfs {
          * Skip forwards ("skip &ge; 0") or backwards ("skip &lt; 0") in the
          * journal.
          *
-         * The number of entries actually skipped is returned (note
-         * "rskip &ge; 0"). If this is not the same as the absolute value of the
-         * skip parameter ("|skip|") you passed in then it means you have reached
-         * the end or the start of the journal.
+         * The number of entries actually skipped is returned (note "rskip &ge;
+         * 0"). If this is not the same as the absolute value of the skip parameter
+         * ("|skip|") you passed in then it means you have reached the end or the
+         * start of the journal.
          *
          * This function depends on the feature "journal".
          * See also guestfs_session_feature_available().
@@ -8809,7 +8575,9 @@ export namespace Guestfs {
          * guestfs_session_list_ldm_partitions() to return all devices.
          *
          * Note that you don't normally need to call this explicitly, since it is
-         * done automatically at guestfs_session_launch() time.
+         * done automatically at guestfs_session_launch() time. However you might
+         * want to call this function if you have hotplugged disks or have just
+         * created a Windows dynamic disk.
          *
          * This function depends on the feature "ldm".
          * See also guestfs_session_feature_available().
@@ -8985,7 +8753,8 @@ export namespace Guestfs {
         /**
          * list 9p filesystems
          *
-         * This call does nothing and returns an error.
+         * List all 9p filesystems attached to the guest. A list of mount tags is
+         * returned.
          * @returns an array of returned strings, or NULL on error
          */
         list_9p(): string[];
@@ -9115,7 +8884,7 @@ export namespace Guestfs {
          * list the files in a directory (long format)
          *
          * List the files in directory (relative to the root directory, there is no
-         * cwd) in the format of "ls -la".
+         * cwd) in the format of 'ls -la'.
          *
          * This command is mostly useful for interactive sessions. It is *not*
          * intended that you try to parse the output string.
@@ -9126,7 +8895,7 @@ export namespace Guestfs {
         /**
          * list the files in a directory (long format with SELinux contexts)
          *
-         * List the files in directory in the format of "ls -laZ".
+         * List the files in directory in the format of 'ls -laZ'.
          *
          * This command is mostly useful for interactive sessions. It is *not*
          * intended that you try to parse the output string.
@@ -9137,7 +8906,7 @@ export namespace Guestfs {
         /**
          * create a hard link
          *
-         * This command creates a hard link.
+         * This command creates a hard link using the `ln` command.
          * @param target
          * @param linkname
          * @returns true on success, false on error
@@ -9146,8 +8915,8 @@ export namespace Guestfs {
         /**
          * create a hard link
          *
-         * This command creates a hard link, removing the link `linkname` if it
-         * exists already.
+         * This command creates a hard link using the "ln -f" command. The *-f*
+         * option removes the link (`linkname)` if it exists already.
          * @param target
          * @param linkname
          * @returns true on success, false on error
@@ -9189,7 +8958,7 @@ export namespace Guestfs {
          * list the files in a directory
          *
          * List the files in directory (relative to the root directory, there is no
-         * cwd). The "." and ".." entries are not returned, but hidden files are
+         * cwd). The '.' and '..' entries are not returned, but hidden files are
          * shown.
          * @param directory
          * @returns an array of returned strings, or NULL on error
@@ -9330,7 +9099,7 @@ export namespace Guestfs {
          *
          * This command erases existing data on `device` and formats the device as a
          * LUKS encrypted device. `key` is the initial key, which is added to key
-         * slot `keyslot`. (LUKS supports 8 key slots, numbered 0-7).
+         * slot `slot`. (LUKS supports 8 key slots, numbered 0-7).
          *
          * This function depends on the feature "luks".
          * See also guestfs_session_feature_available().
@@ -9413,17 +9182,6 @@ export namespace Guestfs {
          */
         luks_open_ro(device: string, key: string, mapname: string): boolean;
         /**
-         * get the UUID of a LUKS device
-         *
-         * This returns the UUID of the LUKS device `device`.
-         *
-         * This function depends on the feature "luks".
-         * See also guestfs_session_feature_available().
-         * @param device
-         * @returns the returned string, or NULL on error
-         */
-        luks_uuid(device: string): string;
-        /**
          * create an LVM logical volume
          *
          * This creates an LVM logical volume called `logvol` on the volume group
@@ -9461,7 +9219,7 @@ export namespace Guestfs {
          * /dev/VG/LV.
          *
          * This command returns an error if the `lvname` parameter does not refer to
-         * a logical volume. In this case errno will be set to `EINVAL`.
+         * a logical volume.
          *
          * See also guestfs_session_is_lv(),
          * guestfs_session_canonical_device_name().
@@ -9576,9 +9334,9 @@ export namespace Guestfs {
         /**
          * expand an LV to fill free space
          *
-         * This expands an existing logical volume `lv` so that it fills `pc` % of
-         * the remaining free space in the volume group. Commonly you would call
-         * this with pc = 100 which expands the logical volume as much as possible,
+         * This expands an existing logical volume `lv` so that it fills `pc%` of the
+         * remaining free space in the volume group. Commonly you would call this
+         * with pc = 100 which expands the logical volume as much as possible,
          * using all remaining free space in the volume group.
          *
          * This function depends on the feature "lvm2".
@@ -9633,11 +9391,11 @@ export namespace Guestfs {
          * On return you get a flat list of xattr structs which must be interpreted
          * sequentially. The first xattr struct always has a zero-length `attrname`.
          * `attrval` in this struct is zero-length to indicate there was an error
-         * doing guestfs_session_lgetxattr() for this file, *or* is a C string
-         * which is a decimal number (the number of following attributes for this
-         * file, which could be "0"). Then after the first xattr struct are the
-         * zero or more attributes for the first named file. This repeats for the
-         * second and subsequent files.
+         * doing `lgetxattr` for this file, *or* is a C string which is a decimal
+         * number (the number of following attributes for this file, which could be
+         * "0"). Then after the first xattr struct are the zero or more attributes
+         * for the first named file. This repeats for the second and subsequent
+         * files.
          *
          * This call is intended for programs that want to efficiently list a
          * directory contents without making many round-trips. See also
@@ -9705,14 +9463,11 @@ export namespace Guestfs {
          * `chunk`
          * The chunk size in bytes.
          *
-         * The `chunk` parameter does not make sense, and should not be
-         * specified, when `level` is `raid1` (which is the default; see below).
-         *
          * `level`
-         * The RAID level, which can be one of: `linear,` `raid0`, `0`, `stripe,`
-         * `raid1`, `1`, `mirror,` `raid4`, `4`, `raid5`, `5`, `raid6`, `6`, `raid1`0,
-         * `1`0. Some of these are synonymous, and more levels may be added in
-         * future.
+         * The RAID level, which can be one of: *linear*, *raid0*, *0*,
+         * *stripe*, *raid1*, *1*, *mirror*, *raid4*, *4*, *raid5*, *5*,
+         * *raid6*, *6*, *raid10*, *10*. Some of these are synonymous, and more
+         * levels may be added in future.
          *
          * If not set, this defaults to `raid1`.
          *
@@ -9727,7 +9482,7 @@ export namespace Guestfs {
         /**
          * obtain metadata for an MD device
          *
-         * This command exposes the output of "mdadm -DY &lt;md&gt;". The following
+         * This command exposes the output of 'mdadm -DY &lt;md&gt;'. The following
          * fields are usually present in the returned hash. Other fields may also
          * be present.
          *
@@ -10327,7 +10082,12 @@ export namespace Guestfs {
         /**
          * mount 9p filesystem
          *
-         * This call does nothing and returns an error.
+         * Mount the virtio-9p filesystem with the tag `mounttag` on the directory
+         * `mountpoint`.
+         *
+         * If required, "trans=virtio" will be automatically added to the options.
+         * Any other options required can be passed in the optional `options`
+         * parameter.
          * @param mounttag
          * @param mountpoint
          * @param optargs a GuestfsMount9P containing optional arguments
@@ -10769,6 +10529,9 @@ export namespace Guestfs {
          *
          * Return the disk identifier (GUID) of a GPT-partitioned `device`.
          * Behaviour is undefined for other partition types.
+         *
+         * This function depends on the feature "gdisk".
+         * See also guestfs_session_feature_available().
          * @param device
          * @returns the returned string, or NULL on error
          */
@@ -10778,6 +10541,9 @@ export namespace Guestfs {
          *
          * Return the attribute flags of numbered GPT partition `partnum`. An error
          * is returned for MBR partitions.
+         *
+         * This function depends on the feature "gdisk".
+         * See also guestfs_session_feature_available().
          * @param device
          * @param partnum
          * @returns the returned value, or -1 on error
@@ -10787,6 +10553,9 @@ export namespace Guestfs {
          * get the GUID of a GPT partition
          *
          * Return the GUID of numbered GPT partition `partnum`.
+         *
+         * This function depends on the feature "gdisk".
+         * See also guestfs_session_feature_available().
          * @param device
          * @param partnum
          * @returns the returned string, or NULL on error
@@ -10795,7 +10564,12 @@ export namespace Guestfs {
         /**
          * get the type GUID of a GPT partition
          *
-         * Return the type GUID of numbered GPT partition `partnum`.
+         * Return the type GUID of numbered GPT partition `partnum`. For MBR
+         * partitions, return an appropriate GUID corresponding to the MBR type.
+         * Behaviour is undefined for other partition types.
+         *
+         * This function depends on the feature "gdisk".
+         * See also guestfs_session_feature_available().
          * @param device
          * @param partnum
          * @returns the returned string, or NULL on error
@@ -10866,46 +10640,39 @@ export namespace Guestfs {
          *
          * Possible values for `parttype` are:
          *
-         * `efi`
-         * `gpt`
-         * Intel EFI / GPT partition table.
+         * efi
+         * gpt Intel EFI / GPT partition table.
          *
          * This is recommended for >= 2 TB partitions that will be accessed
          * from Linux and Intel-based Mac OS X. It also has limited backwards
          * compatibility with the `mbr` format.
          *
-         * `mbr`
-         * `msdos`
+         * mbr
+         * msdos
          * The standard PC "Master Boot Record" (MBR) format used by MS-DOS and
          * Windows. This partition type will only work for device sizes up to 2
          * TB. For large disks we recommend using `gpt`.
          *
          * Other partition table types that may work but are not supported include:
          *
-         * `aix`
-         * AIX disk labels.
+         * aix AIX disk labels.
          *
-         * `amiga`
-         * `rdb`
-         * Amiga "Rigid Disk Block" format.
+         * amiga
+         * rdb Amiga "Rigid Disk Block" format.
          *
-         * `bsd`
-         * BSD disk labels.
+         * bsd BSD disk labels.
          *
-         * `dasd`
+         * dasd
          * DASD, used on IBM mainframes.
          *
-         * `dvh`
-         * MIPS/SGI volumes.
+         * dvh MIPS/SGI volumes.
          *
-         * `mac`
-         * Old Mac partition format. Modern Macs use `gpt`.
+         * mac Old Mac partition format. Modern Macs use `gpt`.
          *
-         * `pc9`8
+         * pc98
          * NEC PC-98 format, common in Japan apparently.
          *
-         * `sun`
-         * Sun disk labels.
+         * sun Sun disk labels.
          * @param device
          * @param parttype
          * @returns true on success, false on error
@@ -10919,17 +10686,17 @@ export namespace Guestfs {
          *
          * The fields in the returned structure are:
          *
-         * `part_num`
+         * part_num
          * Partition number, counting from 1.
          *
-         * `part_start`
+         * part_start
          * Start of the partition *in bytes*. To get sectors you have to divide
          * by the device’s sector size, see guestfs_session_blockdev_getss().
          *
-         * `part_end`
+         * part_end
          * End of the partition in bytes.
          *
-         * `part_size`
+         * part_size
          * Size of the partition in bytes.
          * @param device
          * @returns an array of Partition objects, or NULL on error
@@ -10975,6 +10742,9 @@ export namespace Guestfs {
          * Set the disk identifier (GUID) of a GPT-partitioned `device` to `guid`.
          * Return an error if the partition table of `device` isn't GPT, or if `guid`
          * is not a valid GUID.
+         *
+         * This function depends on the feature "gdisk".
+         * See also guestfs_session_feature_available().
          * @param device
          * @param guid
          * @returns true on success, false on error
@@ -10986,6 +10756,9 @@ export namespace Guestfs {
          * Set the disk identifier (GUID) of a GPT-partitioned `device` to a
          * randomly generated value. Return an error if the partition table of
          * `device` isn't GPT.
+         *
+         * This function depends on the feature "gdisk".
+         * See also guestfs_session_feature_available().
          * @param device
          * @returns true on success, false on error
          */
@@ -11001,6 +10774,9 @@ export namespace Guestfs {
          * url='https://en.wikipedia.org/wiki/GUID_Partition_Table#Partition_entrie
          * s'> http://en.wikipedia.org/wiki/GUID_Partition_Table#Partition_entries
          * </ulink> for a useful list of partition attributes.
+         *
+         * This function depends on the feature "gdisk".
+         * See also guestfs_session_feature_available().
          * @param device
          * @param partnum
          * @param attributes
@@ -11013,6 +10789,9 @@ export namespace Guestfs {
          * Set the GUID of numbered GPT partition `partnum` to `guid`. Return an
          * error if the partition table of `device` isn't GPT, or if `guid` is not a
          * valid GUID.
+         *
+         * This function depends on the feature "gdisk".
+         * See also guestfs_session_feature_available().
          * @param device
          * @param partnum
          * @param guid
@@ -11027,10 +10806,13 @@ export namespace Guestfs {
          * valid GUID.
          *
          * See <ulink
-         * url='https://en.wikipedia.org/wiki/GUID_Partition_Table#Partition_type_G
-         * UIDs'>
+         * url='http://en.wikipedia.org/wiki/GUID_Partition_Table#Partition_type_GU
+         * IDs'>
          * http://en.wikipedia.org/wiki/GUID_Partition_Table#Partition_type_GUIDs
          * </ulink> for a useful list of type GUIDs.
+         *
+         * This function depends on the feature "gdisk".
+         * See also guestfs_session_feature_available().
          * @param device
          * @param partnum
          * @param guid
@@ -11178,7 +10960,7 @@ export namespace Guestfs {
          * This wipes a physical volume `device` so that LVM will no longer
          * recognise it.
          *
-         * The implementation uses the pvremove(8) command which refuses to wipe
+         * The implementation uses the `pvremove` command which refuses to wipe
          * physical volumes that contain any volume groups, so you have to remove
          * those first.
          *
@@ -11347,10 +11129,9 @@ export namespace Guestfs {
          * list of names, use guestfs_session_ls(). To get a printable directory
          * for human consumption, use guestfs_session_ll().
          * @param dir
-         * @param cancellable A GCancellable object
          * @returns an array of Dirent objects, or NULL on error
          */
-        readdir(dir: string, cancellable?: Gio.Cancellable | null): Dirent[];
+        readdir(dir: string): Dirent[];
         /**
          * read the target of a symbolic link
          *
@@ -11408,7 +11189,19 @@ export namespace Guestfs {
         /**
          * remove a disk image
          *
-         * This call does nothing and returns an error.
+         * This function is conceptually the opposite of
+         * guestfs_session_add_drive_opts(). It removes the drive that was
+         * previously added with label `label`.
+         *
+         * Note that in order to remove drives, you have to add them with labels
+         * (see the optional `label` argument to guestfs_session_add_drive_opts()).
+         * If you didn't use a label, then they cannot be removed.
+         *
+         * You can call this function before or after launching the handle. If
+         * called after launch, if the backend supports it, we try to hot unplug
+         * the drive: see "HOTPLUGGING" in guestfs(3). The disk must not be in use
+         * (eg. mounted) when you do this. We try to detect if the disk is in use
+         * and stop you from doing this.
          * @param label
          * @returns true on success, false on error
          */
@@ -11454,7 +11247,7 @@ export namespace Guestfs {
          *
          * This command is the same as guestfs_session_resize2fs(), but the
          * filesystem is resized to its minimum size. This works like the *-M*
-         * option to the resize2fs(8) command.
+         * option to the `resize2`fs command.
          *
          * To get the resulting size of the filesystem you should call
          * guestfs_session_tune2fs_l() and read the "Block size" and "Block count"
@@ -11883,7 +11676,8 @@ export namespace Guestfs {
          * set the hypervisor binary
          *
          * Set the hypervisor binary that we will use. The hypervisor depends on
-         * the backend, but is usually the location of the qemu/KVM hypervisor.
+         * the backend, but is usually the location of the qemu/KVM hypervisor. For
+         * the uml backend, it is the location of the `linux` or `vmlinux` binary.
          *
          * The default is chosen when the library was compiled by the configure
          * script.
@@ -12267,15 +12061,15 @@ export namespace Guestfs {
          * `device` should be a block device, for example /dev/sda.
          *
          * `cyls,` `heads` and `sectors` are the number of cylinders, heads and
-         * sectors on the device, which are passed directly to sfdisk(8) as the
-         * *-C*, *-H* and *-S* parameters. If you pass `0` for any of these, then
-         * the corresponding parameter is omitted. Usually for ‘large’ disks, you
-         * can just pass `0` for these, but for small (floppy-sized) disks,
-         * sfdisk(8) (or rather, the kernel) cannot work out the right geometry and
-         * you will need to tell it.
+         * sectors on the device, which are passed directly to sfdisk as the *-C*,
+         * *-H* and *-S* parameters. If you pass `0` for any of these, then the
+         * corresponding parameter is omitted. Usually for ‘large’ disks, you can
+         * just pass `0` for these, but for small (floppy-sized) disks, sfdisk (or
+         * rather, the kernel) cannot work out the right geometry and you will need
+         * to tell it.
          *
-         * `lines` is a list of lines that we feed to sfdisk(8). For more
-         * information refer to the sfdisk(8) manpage.
+         * `lines` is a list of lines that we feed to `sfdisk`. For more information
+         * refer to the sfdisk(8) manpage.
          *
          * To create a single partition occupying the whole disk, you would pass
          * `lines` as a single element list, when the single element being the
@@ -12643,7 +12437,7 @@ export namespace Guestfs {
          * `nrlines` lines of the file `path`.
          *
          * If the parameter `nrlines` is a negative number, this returns lines from
-         * the file `path,` starting with the `-nrlines'`th line.
+         * the file `path,` starting with the `-nrlinesth` line.
          *
          * If the parameter `nrlines` is zero, this returns an empty list.
          * @param nrlines
@@ -12659,8 +12453,8 @@ export namespace Guestfs {
          * The optional `compress` flag controls compression. If not given, then the
          * input should be an uncompressed tar file. Otherwise one of the following
          * strings may be given to select the compression type of the input file:
-         * `compress,` `gzip,` `bzip2`, `xz,` `lzop,` `lzma,` `zstd`. (Note that not all
-         * builds of libguestfs will support all of these compression types).
+         * `compress,` `gzip,` `bzip2`, `xz,` `lzop`. (Note that not all builds of
+         * libguestfs will support all of these compression types).
          *
          * The other optional arguments are:
          *
@@ -12693,8 +12487,8 @@ export namespace Guestfs {
          * The optional `compress` flag controls compression. If not given, then the
          * output will be an uncompressed tar file. Otherwise one of the following
          * strings may be given to select the compression type of the output file:
-         * `compress,` `gzip,` `bzip2`, `xz,` `lzop,` `lzma,` `zstd`. (Note that not all
-         * builds of libguestfs will support all of these compression types).
+         * `compress,` `gzip,` `bzip2`, `xz,` `lzop`. (Note that not all builds of
+         * libguestfs will support all of these compression types).
          *
          * The other optional arguments are:
          *
@@ -12795,16 +12589,16 @@ export namespace Guestfs {
          *
          * `force`
          * Force tune2fs to complete the operation even in the face of errors.
-         * This is the same as the tune2fs(8) `-f` option.
+         * This is the same as the tune2fs `-f` option.
          *
          * `maxmountcount`
          * Set the number of mounts after which the filesystem is checked by
          * e2fsck(8). If this is `0` then the number of mounts is disregarded.
-         * This is the same as the tune2fs(8) `-c` option.
+         * This is the same as the tune2fs `-c` option.
          *
          * `mountcount`
          * Set the number of times the filesystem has been mounted. This is the
-         * same as the tune2fs(8) `-C` option.
+         * same as the tune2fs `-C` option.
          *
          * `errorbehavior`
          * Change the behavior of the kernel code when errors are detected.
@@ -12812,34 +12606,34 @@ export namespace Guestfs {
          * practice these options don't really make any difference,
          * particularly for write errors.
          *
-         * This is the same as the tune2fs(8) `-e` option.
+         * This is the same as the tune2fs `-e` option.
          *
          * `group`
          * Set the group which can use reserved filesystem blocks. This is the
-         * same as the tune2fs(8) `-g` option except that it can only be
-         * specified as a number.
+         * same as the tune2fs `-g` option except that it can only be specified
+         * as a number.
          *
          * `intervalbetweenchecks`
          * Adjust the maximal time between two filesystem checks (in seconds).
          * If the option is passed as `0` then time-dependent checking is
          * disabled.
          *
-         * This is the same as the tune2fs(8) `-i` option.
+         * This is the same as the tune2fs `-i` option.
          *
          * `reservedblockspercentage`
          * Set the percentage of the filesystem which may only be allocated by
-         * privileged processes. This is the same as the tune2fs(8) `-m` option.
+         * privileged processes. This is the same as the tune2fs `-m` option.
          *
          * `lastmounteddirectory`
-         * Set the last mounted directory. This is the same as the tune2fs(8)
-         * `-M` option.
+         * Set the last mounted directory. This is the same as the tune2fs `-M`
+         * option.
          *
          * `reservedblockscount` Set the number of reserved filesystem blocks. This
-         * is the same as the tune2fs(8) `-r` option.
+         * is the same as the tune2fs `-r` option.
          * `user`
          * Set the user who can use the reserved filesystem blocks. This is the
-         * same as the tune2fs(8) `-u` option except that it can only be
-         * specified as a number.
+         * same as the tune2fs `-u` option except that it can only be specified
+         * as a number.
          *
          * To get the current values of filesystem parameters, see
          * guestfs_session_tune2fs_l(). For precise details of how tune2fs works,
@@ -13009,8 +12803,8 @@ export namespace Guestfs {
          *
          * In an interactive text-based program, you might call it from a `SIGINT`
          * signal handler so that pressing "^C" cancels the current operation. (You
-         * also need to call guestfs_session_set_pgroup() so that child processes
-         * don't receive the "^C" signal).
+         * also need to call "guestfs_set_pgroup" so that child processes don't
+         * receive the "^C" signal).
          *
          * In a graphical program, when the main thread is displaying a progress
          * bar with a cancel button, wire up the cancel button to call this
@@ -13023,10 +12817,10 @@ export namespace Guestfs {
          *
          * This command sets the timestamps of a file with nanosecond precision.
          *
-         * `atsecs,` `atnsecs` are the last access time (atime) in secs and
+         * "atsecs, atnsecs" are the last access time (atime) in secs and
          * nanoseconds from the epoch.
          *
-         * `mtsecs,` `mtnsecs` are the last modification time (mtime) in secs and
+         * "mtsecs, mtnsecs" are the last modification time (mtime) in secs and
          * nanoseconds from the epoch.
          *
          * If the *nsecs field contains the special value `-1` then the
@@ -13429,9 +13223,6 @@ export namespace Guestfs {
          * modified using the guestfs_session_xfs_info() and
          * guestfs_session_xfs_growfs() calls.
          *
-         * Beginning with XFS version 5, it is no longer possible to modify the
-         * lazy-counters setting (ie. `lazycounter` parameter has no effect).
-         *
          * This function depends on the feature "xfs".
          * See also guestfs_session_feature_available().
          * @param device
@@ -13659,9 +13450,9 @@ export namespace Guestfs {
         /**
          * determine file type inside a compressed file
          *
-         * This command runs file(1) after first decompressing `path` using `meth`.
+         * This command runs file after first decompressing `path` using `method`.
          *
-         * `meth` must be one of `gzip,` `compress` or `bzip2`.
+         * `method` must be one of `gzip,` `compress` or `bzip2`.
          *
          * Since 1.0.63, use guestfs_session_file() instead which can now process
          * compressed files.
@@ -13673,7 +13464,7 @@ export namespace Guestfs {
         /**
          * return lines matching a pattern
          *
-         * This calls the external zgrep(1) program and returns the matching lines.
+         * This calls the external `zgrep` program and returns the matching lines.
          * @param regex
          * @param path
          * @returns an array of returned strings, or NULL on error
@@ -14600,15 +14391,6 @@ export namespace Guestfs {
     type CpioOutClass = typeof CpioOut;
     abstract class CpioOutPrivate {
         static $gtype: GObject.GType<CpioOutPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    type CryptsetupOpenClass = typeof CryptsetupOpen;
-    abstract class CryptsetupOpenPrivate {
-        static $gtype: GObject.GType<CryptsetupOpenPrivate>;
 
         // Constructors
 

@@ -1,6 +1,6 @@
 {
     "name": "@girs/malcontentui-1",
-    "version": "1.0.0-4.0.0-beta.16",
+    "version": "1.0.0-4.0.0-beta.17",
     "description": "GJS TypeScript type definitions for MalcontentUi-1, generated from library version 1.0.0",
     "type": "module",
     "module": "malcontentui-1.js",

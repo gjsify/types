@@ -4032,6 +4032,38 @@ export namespace GtkSource {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
          * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
+         */
+        load_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            progress_callback?: Gio.FileProgressCallback | null,
+            progress_callback_notify?: GLib.DestroyNotify | null,
+        ): Promise<boolean>;
+        /**
+         * Loads asynchronously the file or input stream contents into the
+         * #GtkSourceBuffer. See the #GAsyncResult documentation to know how to use this
+         * function.
+         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+         * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         */
+        load_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileProgressCallback | null,
+            progress_callback_notify: GLib.DestroyNotify | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Loads asynchronously the file or input stream contents into the
+         * #GtkSourceBuffer. See the #GAsyncResult documentation to know how to use this
+         * function.
+         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+         * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
          */
         load_async(
@@ -4040,7 +4072,7 @@ export namespace GtkSource {
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes a file loading started with gtk_source_file_loader_load_async().
          *
@@ -4165,6 +4197,36 @@ export namespace GtkSource {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
          * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
+         */
+        save_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            progress_callback?: Gio.FileProgressCallback | null,
+            progress_callback_notify?: GLib.DestroyNotify | null,
+        ): Promise<boolean>;
+        /**
+         * Saves asynchronously the buffer into the file. See the #GAsyncResult
+         * documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+         * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         */
+        save_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: Gio.FileProgressCallback | null,
+            progress_callback_notify: GLib.DestroyNotify | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Saves asynchronously the buffer into the file. See the #GAsyncResult
+         * documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+         * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
          */
         save_async(
@@ -4173,7 +4235,7 @@ export namespace GtkSource {
             progress_callback?: Gio.FileProgressCallback | null,
             progress_callback_notify?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes a file saving started with gtk_source_file_saver_save_async().
          *
@@ -6672,13 +6734,51 @@ export namespace GtkSource {
          * ownership of `cancellable,` so you can unref it after calling this function.
          * @param iter start of search.
          * @param cancellable a #GCancellable, or %NULL.
+         */
+        backward_async(
+            iter: Gtk.TextIter,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<[boolean, Gtk.TextIter | null, Gtk.TextIter | null]>;
+        /**
+         * The asynchronous version of gtk_source_search_context_backward2().
+         *
+         * See the documentation of gtk_source_search_context_backward2() for more
+         * details.
+         *
+         * See the #GAsyncResult documentation to know how to use this function.
+         *
+         * If the operation is cancelled, the `callback` will only be called if
+         * `cancellable` was not %NULL. gtk_source_search_context_backward_async() takes
+         * ownership of `cancellable,` so you can unref it after calling this function.
+         * @param iter start of search.
+         * @param cancellable a #GCancellable, or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        backward_async(
+            iter: Gtk.TextIter,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * The asynchronous version of gtk_source_search_context_backward2().
+         *
+         * See the documentation of gtk_source_search_context_backward2() for more
+         * details.
+         *
+         * See the #GAsyncResult documentation to know how to use this function.
+         *
+         * If the operation is cancelled, the `callback` will only be called if
+         * `cancellable` was not %NULL. gtk_source_search_context_backward_async() takes
+         * ownership of `cancellable,` so you can unref it after calling this function.
+         * @param iter start of search.
+         * @param cancellable a #GCancellable, or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         backward_async(
             iter: Gtk.TextIter,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, Gtk.TextIter | null, Gtk.TextIter | null]> | void;
         /**
          * Finishes a backward search started with
          * gtk_source_search_context_backward_async().
@@ -6735,13 +6835,51 @@ export namespace GtkSource {
          * ownership of `cancellable,` so you can unref it after calling this function.
          * @param iter start of search.
          * @param cancellable a #GCancellable, or %NULL.
+         */
+        forward_async(
+            iter: Gtk.TextIter,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<[boolean, Gtk.TextIter | null, Gtk.TextIter | null]>;
+        /**
+         * The asynchronous version of gtk_source_search_context_forward2().
+         *
+         * See the documentation of gtk_source_search_context_forward2() for more
+         * details.
+         *
+         * See the #GAsyncResult documentation to know how to use this function.
+         *
+         * If the operation is cancelled, the `callback` will only be called if
+         * `cancellable` was not %NULL. gtk_source_search_context_forward_async() takes
+         * ownership of `cancellable,` so you can unref it after calling this function.
+         * @param iter start of search.
+         * @param cancellable a #GCancellable, or %NULL.
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         */
+        forward_async(
+            iter: Gtk.TextIter,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * The asynchronous version of gtk_source_search_context_forward2().
+         *
+         * See the documentation of gtk_source_search_context_forward2() for more
+         * details.
+         *
+         * See the #GAsyncResult documentation to know how to use this function.
+         *
+         * If the operation is cancelled, the `callback` will only be called if
+         * `cancellable` was not %NULL. gtk_source_search_context_forward_async() takes
+         * ownership of `cancellable,` so you can unref it after calling this function.
+         * @param iter start of search.
+         * @param cancellable a #GCancellable, or %NULL.
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         forward_async(
             iter: Gtk.TextIter,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, Gtk.TextIter | null, Gtk.TextIter | null]> | void;
         /**
          * Finishes a forward search started with
          * gtk_source_search_context_forward_async().

@@ -1108,13 +1108,44 @@ export namespace Json {
          * of the operation.
          * @param stream the input stream with the JSON data
          * @param cancellable a #GCancellable
+         */
+        load_from_stream_async(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously reads the contents of a stream.
+         *
+         * For more details, see [method`Json`.Parser.load_from_stream], which is the
+         * synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You should
+         * then call [method`Json`.Parser.load_from_stream_finish] to get the result
+         * of the operation.
+         * @param stream the input stream with the JSON data
+         * @param cancellable a #GCancellable
+         * @param callback the function to call when the request is satisfied
+         */
+        load_from_stream_async(
+            stream: Gio.InputStream,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously reads the contents of a stream.
+         *
+         * For more details, see [method`Json`.Parser.load_from_stream], which is the
+         * synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You should
+         * then call [method`Json`.Parser.load_from_stream_finish] to get the result
+         * of the operation.
+         * @param stream the input stream with the JSON data
+         * @param cancellable a #GCancellable
          * @param callback the function to call when the request is satisfied
          */
         load_from_stream_async(
             stream: Gio.InputStream,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous stream loading started with
          * [method`Json`.Parser.load_from_stream_async].
@@ -2413,7 +2444,8 @@ export namespace Json {
         /**
          * Convenience function that retrieves the array
          * stored in `member_name` of `object`. It is an error to specify a
-         * `member_name` which does not exist.
+         * `member_name` which does not exist or which holds a non-`null`, non-array
+         * value.
          *
          * If `member_name` contains `null`, then this function will return `NULL`.
          *
@@ -2425,7 +2457,8 @@ export namespace Json {
         /**
          * Convenience function that retrieves the boolean value
          * stored in `member_name` of `object`. It is an error to specify a
-         * `member_name` which does not exist.
+         * `member_name` which does not exist or which holds a non-scalar,
+         * non-`null` value.
          *
          * See also: [method`Json`.Object.get_boolean_member_with_default],
          *   [method`Json`.Object.get_member], [method`Json`.Object.has_member]
@@ -2438,7 +2471,9 @@ export namespace Json {
          * stored in `member_name` of `object`.
          *
          * If `member_name` does not exist, does not contain a scalar value,
-         * or contains `null`, then `default_value` is returned instead.
+         * or contains `null`, then `default_value` is returned instead. If
+         * `member_name` contains a non-boolean, non-`null` scalar value, then
+         * whatever json_node_get_boolean() would return is returned.
          * @param member_name the name of the @object member
          * @param default_value the value to return if @member_name is not valid
          * @returns the boolean value of the object's member, or the   given default
@@ -2447,7 +2482,8 @@ export namespace Json {
         /**
          * Convenience function that retrieves the floating point value
          * stored in `member_name` of `object`. It is an error to specify a
-         * `member_name` which does not exist.
+         * `member_name` which does not exist or which holds a non-scalar,
+         * non-`null` value.
          *
          * See also: [method`Json`.Object.get_double_member_with_default],
          *   [method`Json`.Object.get_member], [method`Json`.Object.has_member]
@@ -2460,7 +2496,9 @@ export namespace Json {
          * stored in `member_name` of `object`.
          *
          * If `member_name` does not exist, does not contain a scalar value,
-         * or contains `null`, then `default_value` is returned instead.
+         * or contains `null`, then `default_value` is returned instead. If
+         * `member_name` contains a non-double, non-`null` scalar value, then
+         * whatever json_node_get_double() would return is returned.
          * @param member_name the name of the @object member
          * @param default_value the value to return if @member_name is not valid
          * @returns the floating point value of the object's member, or the   given default
@@ -2469,7 +2507,8 @@ export namespace Json {
         /**
          * Convenience function that retrieves the integer value
          * stored in `member_name` of `object`. It is an error to specify a
-         * `member_name` which does not exist.
+         * `member_name` which does not exist or which holds a non-scalar,
+         * non-`null` value.
          *
          * See also: [method`Json`.Object.get_int_member_with_default],
          *   [method`Json`.Object.get_member], [method`Json`.Object.has_member]
@@ -2482,7 +2521,9 @@ export namespace Json {
          * stored in `member_name` of `object`.
          *
          * If `member_name` does not exist, does not contain a scalar value,
-         * or contains `null`, then `default_value` is returned instead.
+         * or contains `null`, then `default_value` is returned instead. If
+         * `member_name` contains a non-integer, non-`null` scalar value, then whatever
+         * json_node_get_int() would return is returned.
          * @param member_name the name of the object member
          * @param default_value the value to return if @member_name is not valid
          * @returns the integer value of the object's member, or the   given default
@@ -2515,7 +2556,7 @@ export namespace Json {
         /**
          * Convenience function that retrieves the object
          * stored in `member_name` of `object`. It is an error to specify a `member_name`
-         * which does not exist.
+         * which does not exist or which holds a non-`null`, non-object value.
          *
          * If `member_name` contains `null`, then this function will return `NULL`.
          *
@@ -2532,7 +2573,8 @@ export namespace Json {
         /**
          * Convenience function that retrieves the string value
          * stored in `member_name` of `object`. It is an error to specify a
-         * `member_name` that does not exist.
+         * `member_name` that does not exist or which holds a non-scalar,
+         * non-`null` value.
          *
          * See also: [method`Json`.Object.get_string_member_with_default],
          *   [method`Json`.Object.get_member], [method`Json`.Object.has_member]
@@ -2545,7 +2587,9 @@ export namespace Json {
          * stored in `member_name` of `object`.
          *
          * If `member_name` does not exist, does not contain a scalar value,
-         * or contains `null`, then `default_value` is returned instead.
+         * or contains `null`, then `default_value` is returned instead. If
+         * `member_name` contains a non-string, non-`null` scalar value, then
+         * %NULL is returned.
          * @param member_name the name of the @object member
          * @param default_value the value to return if @member_name is not valid
          * @returns the string value of the object's member, or the   given default

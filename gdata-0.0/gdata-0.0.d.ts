@@ -52,68 +52,6 @@ export namespace GData {
         DELETION,
     }
     /**
-     * Error codes for authentication and authorization operations on #GDataClientLoginAuthorizer. See the
-     * <ulink type="http" url="http://code.google.com/apis/accounts/docs/AuthForInstalledApps.html#Errors">online ClientLogin documentation</ulink> for
-     * more information.
-     */
-    class ClientLoginAuthorizerError extends GLib.Error {
-        static $gtype: GObject.GType<ClientLoginAuthorizerError>;
-
-        // Static fields
-
-        /**
-         * The login request used a username or password that is not recognized.
-         */
-        static BAD_AUTHENTICATION: number;
-        /**
-         * The account email address has not been verified. The user will need to access their Google
-         * account directly to resolve the issue before logging in using a non-Google application.
-         */
-        static NOT_VERIFIED: number;
-        /**
-         * The user has not agreed to terms. The user will need to access their Google account directly
-         * to resolve the issue before logging in using a non-Google application.
-         */
-        static TERMS_NOT_AGREED: number;
-        /**
-         * A CAPTCHA is required. (A response with this error code will also contain an image URI and a
-         * CAPTCHA token.)
-         */
-        static CAPTCHA_REQUIRED: number;
-        /**
-         * The user account has been deleted.
-         */
-        static ACCOUNT_DELETED: number;
-        /**
-         * The user account has been disabled.
-         */
-        static ACCOUNT_DISABLED: number;
-        /**
-         * The user's access to the specified service has been disabled. (The user account may still be
-         * valid.)
-         */
-        static SERVICE_DISABLED: number;
-        /**
-         * The user's account login details have been migrated to a new system. (This is used for the
-         * transition from the old YouTube login details to the new ones.)
-         */
-        static ACCOUNT_MIGRATED: number;
-        /**
-         * The user's account requires an application-specific password to be used.
-         */
-        static INVALID_SECOND_FACTOR: number;
-
-        // Constructors
-
-        constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
-
-        // Static methods
-
-        static quark(): GLib.Quark;
-    }
-
-    /**
      * Error codes for #GDataDocumentsService operations.
      */
     class DocumentsServiceError extends GLib.Error {
@@ -136,31 +74,6 @@ export namespace GData {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * Search filter container types.
-     */
-
-    /**
-     * Search filter container types.
-     */
-    export namespace FreebaseSearchFilterType {
-        export const $gtype: GObject.GType<FreebaseSearchFilterType>;
-    }
-
-    enum FreebaseSearchFilterType {
-        /**
-         * all enclosed elements must match, logically an AND
-         */
-        ALL,
-        /**
-         * any of the enclosed elements must match, logically an OR
-         */
-        ANY,
-        /**
-         * the match is inverted.
-         */
-        NOT,
-    }
     /**
      * An enum representing the possible values of #GDataMediaContent:expression.
      */
@@ -419,37 +332,6 @@ export namespace GData {
         THIS_MONTH,
     }
     /**
-     * Video formats available on YouTube. For more information, see the
-     * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#formatsp">online documentation</ulink>.
-     */
-
-    /**
-     * Video formats available on YouTube. For more information, see the
-     * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#formatsp">online documentation</ulink>.
-     */
-    export namespace YouTubeFormat {
-        export const $gtype: GObject.GType<YouTubeFormat>;
-    }
-
-    enum YouTubeFormat {
-        /**
-         * retrieve videos in all formats when querying the service
-         */
-        UNKNOWN,
-        /**
-         * RTSP streaming URI for mobile video playback; H.263 video (up to 176×144) and AMR audio
-         */
-        RTSP_H263_AMR,
-        /**
-         * HTTP URI to the embeddable player (SWF) for this video
-         */
-        HTTP_SWF,
-        /**
-         * RTSP streaming URI for mobile video playback; MPEG-4 SP video (up to 176×144) and AAC audio
-         */
-        RTSP_MPEG4_AAC,
-    }
-    /**
      * Permissions for actions which can be set on a #GDataYouTubeVideo using gdata_youtube_video_set_access_control().
      *
      * The only actions which can have the %GDATA_YOUTUBE_PERMISSION_MODERATED permission are
@@ -542,31 +424,6 @@ export namespace GData {
     }
 
     /**
-     * Sort orders for the search results from queries. They specify the order of the designated order field.
-     */
-
-    /**
-     * Sort orders for the search results from queries. They specify the order of the designated order field.
-     */
-    export namespace YouTubeSortOrder {
-        export const $gtype: GObject.GType<YouTubeSortOrder>;
-    }
-
-    enum YouTubeSortOrder {
-        /**
-         * do not explicitly sort in any sense
-         */
-        NONE,
-        /**
-         * sort results in ascending order of the order field
-         */
-        ASCENDING,
-        /**
-         * sort results in descending order of the order field
-         */
-        DESCENDING,
-    }
-    /**
      * Standard feed types for standard feed queries with
      * gdata_youtube_service_query_standard_feed(). For more information, see the
      * <ulink type="http" url="https://developers.google.com/youtube/2.0/developers_guide_protocol_video_feeds#Standard_feeds">online
@@ -585,96 +442,12 @@ export namespace GData {
 
     enum YouTubeStandardFeedType {
         /**
-         * This feed contains the most highly rated
-         *   YouTube videos. Deprecated: 0.17.0: Google no longer supports this feed
-         *   type, and it will return results equivalent to
-         *   %GDATA_YOUTUBE_MOST_POPULAR_FEED.
-         */
-        TOP_RATED_FEED,
-        /**
-         * This feed contains videos most frequently
-         *   flagged as favorite videos. Deprecated: 0.17.0: Google no longer
-         *   supports this feed type, and it will return results equivalent to
-         *   %GDATA_YOUTUBE_MOST_POPULAR_FEED.
-         */
-        TOP_FAVORITES_FEED,
-        /**
-         * This feed contains the most frequently
-         *   watched YouTube videos. Deprecated: 0.17.0: Google no longer supports
-         *   this feed type, and it will return results equivalent to
-         *   %GDATA_YOUTUBE_MOST_POPULAR_FEED.
-         */
-        MOST_VIEWED_FEED,
-        /**
          * This feed contains the most popular YouTube
          *   videos, selected using an algorithm that combines many different signals to
          *   determine overall popularity. As of version 0.17.0, this is the only
          *   supported feed type.
          */
-        MOST_POPULAR_FEED,
-        /**
-         * This feed contains the videos most recently
-         *   submitted to YouTube. Deprecated: 0.17.0: Google no longer supports
-         *   this feed type, and it will return results equivalent to
-         *   %GDATA_YOUTUBE_MOST_POPULAR_FEED.
-         */
-        MOST_RECENT_FEED,
-        /**
-         * This feed contains the YouTube videos
-         *   that have received the most comments. Deprecated: 0.17.0: Google no
-         *   longer supports this feed type, and it will return results equivalent to
-         *   %GDATA_YOUTUBE_MOST_POPULAR_FEED.
-         */
-        MOST_DISCUSSED_FEED,
-        /**
-         * This feed contains the YouTube videos that
-         *   receive the most links from other websites. Deprecated: 0.17.0: Google
-         *   no longer supports this feed type, and it will return results equivalent to
-         *   %GDATA_YOUTUBE_MOST_POPULAR_FEED.
-         */
-        MOST_LINKED_FEED,
-        /**
-         * This feed contains YouTube videos that
-         *   receive the most video responses. Deprecated: 0.17.0: Google no longer
-         *   supports this feed type, and it will return results equivalent to
-         *   %GDATA_YOUTUBE_MOST_POPULAR_FEED.
-         */
-        MOST_RESPONDED_FEED,
-        /**
-         * This feed contains videos recently
-         *   featured on the YouTube home page or featured videos tab. Deprecated:
-         *   0.17.0: Google no longer supports this feed type, and it will return
-         *   results equivalent to %GDATA_YOUTUBE_MOST_POPULAR_FEED.
-         */
-        RECENTLY_FEATURED_FEED,
-        /**
-         * This feed contains videos suitable for
-         *   playback on mobile devices. Deprecated: 0.17.0: Google no longer
-         *   supports this feed type, and it will return results equivalent to
-         *   %GDATA_YOUTUBE_MOST_POPULAR_FEED.
-         */
-        WATCH_ON_MOBILE_FEED,
-    }
-    /**
-     * Video uploaders, allowing queries to be limited to returning videos uploaded by YouTube partners.
-     */
-
-    /**
-     * Video uploaders, allowing queries to be limited to returning videos uploaded by YouTube partners.
-     */
-    export namespace YouTubeUploader {
-        export const $gtype: GObject.GType<YouTubeUploader>;
-    }
-
-    enum YouTubeUploader {
-        /**
-         * retrieve all videos, regardless of who uploaded them
-         */
-        ALL,
-        /**
-         * retrieve only videos uploaded by YouTube partners
-         */
-        PARTNER,
+        FEED,
     }
     /**
      * The users specified by the #GDataAccessRule have no rights.
@@ -723,58 +496,6 @@ export namespace GData {
      * (such as %GDATA_CATEGORY_SCHEMA_LABELS_STARRED) are service-specific.
      */
     const CATEGORY_SCHEMA_LABELS: string;
-    /**
-     * The contact is female.
-     */
-    const CONTACTS_GENDER_FEMALE: string;
-    /**
-     * The contact is male.
-     */
-    const CONTACTS_GENDER_MALE: string;
-    /**
-     * The system group ID for the "My Contacts" system group.
-     */
-    const CONTACTS_GROUP_CONTACTS: string;
-    /**
-     * The system group ID for the "Coworkers" system group.
-     */
-    const CONTACTS_GROUP_COWORKERS: string;
-    /**
-     * The system group ID for the "Family" system group.
-     */
-    const CONTACTS_GROUP_FAMILY: string;
-    /**
-     * The system group ID for the "Friends" system group.
-     */
-    const CONTACTS_GROUP_FRIENDS: string;
-    /**
-     * The contact is of high importance.
-     */
-    const CONTACTS_PRIORITY_HIGH: string;
-    /**
-     * The contact is of low importance.
-     */
-    const CONTACTS_PRIORITY_LOW: string;
-    /**
-     * The contact is of normal importance.
-     */
-    const CONTACTS_PRIORITY_NORMAL: string;
-    /**
-     * The contact's data is confidential.
-     */
-    const CONTACTS_SENSITIVITY_CONFIDENTIAL: string;
-    /**
-     * The contact's data is of normal sensitivity.
-     */
-    const CONTACTS_SENSITIVITY_NORMAL: string;
-    /**
-     * The contact's data is personal.
-     */
-    const CONTACTS_SENSITIVITY_PERSONAL: string;
-    /**
-     * The contact's data is private.
-     */
-    const CONTACTS_SENSITIVITY_PRIVATE: string;
     /**
      * The users specified by the #GDataAccessRule have full owner access to the document. This allows them to modify the access rules and delete
      * the document, amongst other things.
@@ -844,14 +565,6 @@ export namespace GData {
      * GData protocol specification</ulink>.
      */
     const DOCUMENTS_PRESENTATION_PPT: string;
-    /**
-     * The export format for Adobe Flash (SWF) format.
-     *
-     * For more information, see the
-     * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_formats_for_presentations">
-     * GData protocol specification</ulink>.
-     */
-    const DOCUMENTS_PRESENTATION_SWF: string;
     /**
      * The export format for plain text format.
      *
@@ -1683,10 +1396,6 @@ export namespace GData {
      */
     const YOUTUBE_ASPECT_RATIO_WIDESCREEN: string;
     /**
-     * The credited entity is a YouTube partner.
-     */
-    const YOUTUBE_CREDIT_ENTITY_PARTNER: string;
-    /**
      * Value for #GDataYouTubeQuery:license to restrict search results to only videos which are Creative Commons licensed. Specifically, the license
      * is the Creative Commons Attribution 3.0 Unported license; see the
      * <ulink type="http" url="http://www.google.com/support/youtube/bin/answer.py?hl=en&answer=1284989">YouTube Help</ulink> for more information.
@@ -1703,18 +1412,12 @@ export namespace GData {
      */
     const YOUTUBE_RATING_TYPE_MPAA: string;
     /**
-     * A rating type to pass to gdata_youtube_video_get_media_rating() for “simple” ratings. The values which can be returned for such ratings are:
-     * <code class="literal">adult</code> and <code class="literal">nonadult</code>.
-     */
-    const YOUTUBE_RATING_TYPE_SIMPLE: string;
-    /**
      * A rating type to pass to gdata_youtube_video_get_media_rating() for ratings following the FCC
      * <ulink type="http" url="http://www.fcc.gov/vchip/">V-Chip</ulink> system. The values which can be returned for such ratings are:
      * <code class="literal">tv-y</code>, <code class="literal">tv-y7</code>, <code class="literal">tv-y7-fv</code>, <code class="literal">tv-g</code>,
      * <code class="literal">tv-pg</code>, <code class="literal">tv-14</code> and <code class="literal">tv-ma</code>.
      */
     const YOUTUBE_RATING_TYPE_V_CHIP: string;
-    function client_login_authorizer_error_quark(): GLib.Quark;
     /**
      * Parses `hexadecimal` and returns a #GDataColor describing it in `color`.
      *
@@ -2013,12 +1716,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -2632,9 +2329,37 @@ export namespace GData {
          * When the entire batch operation is finished, `callback` will be called. You can then call gdata_batch_operation_run_finish() to get the results of
          * the batch operation.
          * @param cancellable a #GCancellable, or %NULL
+         */
+        run_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Run the #GDataBatchOperation asynchronously. This will send all the operations in the batch operation to the server, and call their respective
+         * callbacks asynchronously (i.e. in idle functions in the main thread, usually after gdata_batch_operation_run_async() has returned) as the
+         * server returns results for each operation. `self` is reffed when this function is called, so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_batch_operation_run(), which is the synchronous version of this function.
+         *
+         * When the entire batch operation is finished, `callback` will be called. You can then call gdata_batch_operation_run_finish() to get the results of
+         * the batch operation.
+         * @param cancellable a #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the batch operation is finished, or %NULL
          */
-        run_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        run_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Run the #GDataBatchOperation asynchronously. This will send all the operations in the batch operation to the server, and call their respective
+         * callbacks asynchronously (i.e. in idle functions in the main thread, usually after gdata_batch_operation_run_async() has returned) as the
+         * server returns results for each operation. `self` is reffed when this function is called, so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_batch_operation_run(), which is the synchronous version of this function.
+         *
+         * When the entire batch operation is finished, `callback` will be called. You can then call gdata_batch_operation_run_finish() to get the results of
+         * the batch operation.
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the batch operation is finished, or %NULL
+         */
+        run_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous batch operation run with gdata_batch_operation_run_async().
          *
@@ -2677,13 +2402,10 @@ export namespace GData {
             access_level: string;
             accessLevel: string;
             color: Color;
-            edited: number;
             is_hidden: boolean;
             isHidden: boolean;
             is_selected: boolean;
             isSelected: boolean;
-            times_cleaned: number;
-            timesCleaned: number;
             timezone: string;
         }
     }
@@ -2716,13 +2438,6 @@ export namespace GData {
         get color(): Color;
         set color(val: Color);
         /**
-         * The last time the calendar was edited. If the calendar has not been edited yet, the content indicates the time it was created.
-         *
-         * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/protocol/#appEdited">
-         * Atom Publishing Protocol specification</ulink>.
-         */
-        get edited(): number;
-        /**
          * Indicates whether the calendar is visible.
          */
         get is_hidden(): boolean;
@@ -2742,14 +2457,6 @@ export namespace GData {
          */
         get isSelected(): boolean;
         set isSelected(val: boolean);
-        /**
-         * The number of times the calendar has been cleared of events.
-         */
-        get times_cleaned(): number;
-        /**
-         * The number of times the calendar has been cleared of events.
-         */
-        get timesCleaned(): number;
         /**
          * The timezone in which the calendar's times are given. This is a timezone name in tz database notation: <ulink type="http"
          * url="http://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones">reference</ulink>.
@@ -2776,16 +2483,6 @@ export namespace GData {
          * Gets the #GDataCalendarCalendar:color property and puts it in `color`.
          */
         get_color(): Color;
-        /**
-         * Gets the #GDataCalendarCalendar:edited property. If the property is unset, <code class="literal">-1</code> will be returned.
-         * @returns the UNIX timestamp for the time the calendar was last edited, or <code class="literal">-1</code>
-         */
-        get_edited(): number;
-        /**
-         * Gets the #GDataCalendarCalendar:times-cleaned property.
-         * @returns the number of times the calendar has been totally emptied
-         */
-        get_times_cleaned(): number;
         /**
          * Gets the #GDataCalendarCalendar:timezone property.
          * @returns the calendar's timezone, or %NULL
@@ -3477,11 +3174,7 @@ export namespace GData {
     module CalendarFeed {
         // Constructor properties interface
 
-        interface ConstructorProps extends Feed.ConstructorProps {
-            times_cleaned: number;
-            timesCleaned: number;
-            timezone: string;
-        }
+        interface ConstructorProps extends Feed.ConstructorProps {}
     }
 
     /**
@@ -3490,40 +3183,11 @@ export namespace GData {
     class CalendarFeed extends Feed {
         static $gtype: GObject.GType<CalendarFeed>;
 
-        // Properties
-
-        /**
-         * The number of times the feed has been completely cleared of entries.
-         */
-        get times_cleaned(): number;
-        /**
-         * The number of times the feed has been completely cleared of entries.
-         */
-        get timesCleaned(): number;
-        /**
-         * The timezone in which the feed's times are given. This is a timezone name in tz database notation: <ulink type="http"
-         * url="http://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones">reference</ulink>.
-         */
-        get timezone(): string;
-
         // Constructors
 
         constructor(properties?: Partial<CalendarFeed.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Gets the #GDataCalendarFeed:times-cleaned property.
-         * @returns the number of times the feed has been totally emptied
-         */
-        get_times_cleaned(): number;
-        /**
-         * Gets the #GDataCalendarFeed:timezone property.
-         * @returns the feed's timezone, or %NULL
-         */
-        get_timezone(): string;
     }
 
     module CalendarQuery {
@@ -3536,16 +3200,10 @@ export namespace GData {
             maxAttendees: number;
             order_by: string;
             orderBy: string;
-            recurrence_expansion_end: number;
-            recurrenceExpansionEnd: number;
-            recurrence_expansion_start: number;
-            recurrenceExpansionStart: number;
             show_deleted: boolean;
             showDeleted: boolean;
             single_events: boolean;
             singleEvents: boolean;
-            sort_order: string;
-            sortOrder: string;
             start_max: number;
             startMax: number;
             start_min: number;
@@ -3564,14 +3222,12 @@ export namespace GData {
 
         /**
          * A shortcut to request all events scheduled for the future. Overrides the
-         * #GDataCalendarQuery:recurrence-expansion-start, #GDataCalendarQuery:recurrence-expansion-end,
          * #GDataCalendarQuery:start-min and #GDataCalendarQuery:start-max properties.
          */
         get future_events(): boolean;
         set future_events(val: boolean);
         /**
          * A shortcut to request all events scheduled for the future. Overrides the
-         * #GDataCalendarQuery:recurrence-expansion-start, #GDataCalendarQuery:recurrence-expansion-end,
          * #GDataCalendarQuery:start-min and #GDataCalendarQuery:start-max properties.
          */
         get futureEvents(): boolean;
@@ -3601,26 +3257,6 @@ export namespace GData {
         get orderBy(): string;
         set orderBy(val: string);
         /**
-         * Specifies the end of the time period to expand recurring events for, exclusive.
-         */
-        get recurrence_expansion_end(): number;
-        set recurrence_expansion_end(val: number);
-        /**
-         * Specifies the end of the time period to expand recurring events for, exclusive.
-         */
-        get recurrenceExpansionEnd(): number;
-        set recurrenceExpansionEnd(val: number);
-        /**
-         * Specifies the beginning of the time period to expand recurring events for, inclusive.
-         */
-        get recurrence_expansion_start(): number;
-        set recurrence_expansion_start(val: number);
-        /**
-         * Specifies the beginning of the time period to expand recurring events for, inclusive.
-         */
-        get recurrenceExpansionStart(): number;
-        set recurrenceExpansionStart(val: number);
-        /**
          * Whether to include deleted/cancelled events in the query feed. Deleted events have their #GDataCalendarEvent:status property set to
          * %GDATA_GD_EVENT_STATUS_CANCELED. They do not normally appear in query results.
          */
@@ -3642,22 +3278,6 @@ export namespace GData {
          */
         get singleEvents(): boolean;
         set singleEvents(val: boolean);
-        /**
-         * Specifies direction of sorting. Supported values are <literal>ascending</literal> and
-         * <literal>descending</literal>.
-         *
-         * By default, results are returned in ascending order.
-         */
-        get sort_order(): string;
-        set sort_order(val: string);
-        /**
-         * Specifies direction of sorting. Supported values are <literal>ascending</literal> and
-         * <literal>descending</literal>.
-         *
-         * By default, results are returned in ascending order.
-         */
-        get sortOrder(): string;
-        set sortOrder(val: string);
         /**
          * Together with #GDataCalendarQuery:start-min, creates a timespan such that only events within the timespan are returned
          *
@@ -3732,25 +3352,10 @@ export namespace GData {
          */
         get_order_by(): string;
         /**
-         * Gets the #GDataCalendarQuery:recurrence-expansion-end property. If the property is unset, <code class="literal">-1</code> will be returned.
-         * @returns the UNIX timestamp for the recurrence-expansion-end property, or <code class="literal">-1</code>
-         */
-        get_recurrence_expansion_end(): number;
-        /**
-         * Gets the #GDataCalendarQuery:recurrence-expansion-start property. If the property is unset, <code class="literal">-1</code> will be returned.
-         * @returns the UNIX timestamp for the recurrence-expansion-start property, or <code class="literal">-1</code>
-         */
-        get_recurrence_expansion_start(): number;
-        /**
          * Gets the #GDataCalendarQuery:single-events property.
          * @returns the single events property
          */
         get_single_events(): boolean;
-        /**
-         * Gets the #GDataCalendarQuery:sort-order property.
-         * @returns the sort order property, or %NULL if it is unset
-         */
-        get_sort_order(): string;
         /**
          * Gets the #GDataCalendarQuery:start-max property. If the property is unset, <code class="literal">-1</code> will be returned.
          * @returns the UNIX timestamp (in seconds) for the start-max property, or <code class="literal">-1</code>
@@ -3786,22 +3391,6 @@ export namespace GData {
          */
         set_order_by(order_by?: string | null): void;
         /**
-         * Sets the #GDataCalendarQuery:recurrence-expansion-end property of the #GDataCalendarQuery
-         * to the new time/date, `end`.
-         *
-         * Set `end` to <code class="literal">-1</code> to unset the property in the query URI.
-         * @param end a new end time, or <code class="literal">-1</code>
-         */
-        set_recurrence_expansion_end(end: number): void;
-        /**
-         * Sets the #GDataCalendarQuery:recurrence-expansion-start property of the #GDataCalendarQuery
-         * to the new time/date, `start`.
-         *
-         * Set `start` to <code class="literal">-1</code> to unset the property in the query URI.
-         * @param start a new start time, or <code class="literal">-1</code>
-         */
-        set_recurrence_expansion_start(start: number): void;
-        /**
          * Sets the #GDataCalendarQuery:show-deleted property of the #GDataCalendarQuery.
          * @param show_deleted %TRUE to show deleted events, %FALSE otherwise
          */
@@ -3811,13 +3400,6 @@ export namespace GData {
          * @param single_events %TRUE to show recurring events as single events, %FALSE otherwise
          */
         set_single_events(single_events: boolean): void;
-        /**
-         * Sets the #GDataCalendarQuery:sort-order property of the #GDataCalendarQuery to the new sort order string, `sort_order`.
-         *
-         * Set `sort_order` to %NULL to unset the property in the query URI.
-         * @param sort_order a new sort order string, or %NULL
-         */
-        set_sort_order(sort_order?: string | null): void;
         /**
          * Sets the #GDataCalendarQuery:start-max property of the #GDataCalendarQuery
          * to the new time/date, `start_max`.
@@ -3910,33 +3492,6 @@ export namespace GData {
          */
         insert_calendar_event_async(
             calendar: CalendarCalendar,
-            event: CalendarEvent,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Inserts `event` by uploading it to the online calendar service.
-         *
-         * For more details, see gdata_service_insert_entry().
-         * @param event the #GDataCalendarEvent to insert
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns an updated #GDataCalendarEvent, or %NULL; unref with g_object_unref()
-         */
-        insert_event(event: CalendarEvent, cancellable?: Gio.Cancellable | null): CalendarEvent;
-        /**
-         * Inserts `event` by uploading it to the online calendar service. `self` and `event` are both reffed when this function is called, so can safely be
-         * unreffed after this function returns.
-         *
-         * `callback` should call gdata_service_insert_entry_finish() to obtain a #GDataCalendarEvent representing the inserted event and to check for possible
-         * errors.
-         *
-         * For more details, see gdata_calendar_service_insert_event(), which is the synchronous version of this function, and
-         * gdata_service_insert_entry_async(), which is the base asynchronous insertion function.
-         * @param event the #GDataCalendarEvent to insert
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when insertion is finished
-         */
-        insert_event_async(
             event: CalendarEvent,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -4082,29 +3637,15 @@ export namespace GData {
         get locale(): string;
         set locale(val: string);
         /**
-         * The #GProxyResolver used to determine a proxy URI.  Setting this will clear the #GDataService:proxy-uri property.
+         * The #GProxyResolver used to determine a proxy URI.
          */
         get proxy_resolver(): Gio.ProxyResolver;
         set proxy_resolver(val: Gio.ProxyResolver);
         /**
-         * The #GProxyResolver used to determine a proxy URI.  Setting this will clear the #GDataService:proxy-uri property.
+         * The #GProxyResolver used to determine a proxy URI.
          */
         get proxyResolver(): Gio.ProxyResolver;
         set proxyResolver(val: Gio.ProxyResolver);
-        /**
-         * The proxy URI used internally for all network requests.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its proxy URI setting.
-         */
-        get proxy_uri(): Soup.URI;
-        set proxy_uri(val: Soup.URI);
-        /**
-         * The proxy URI used internally for all network requests.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its proxy URI setting.
-         */
-        get proxyUri(): Soup.URI;
-        set proxyUri(val: Soup.URI);
         /**
          * A timeout, in seconds, for network operations. If the timeout is exceeded, the operation will be cancelled and
          * %GDATA_SERVICE_ERROR_NETWORK_ERROR will be returned.
@@ -4157,6 +3698,42 @@ export namespace GData {
          * @param domain the #GDataAuthorizationDomain the deletion falls under, or %NULL
          * @param entry the #GDataEntry to delete
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        delete_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Deletes `entry` from the server. `self` and `entry` are both reffed when this function is called,
+         * so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_delete_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_delete_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the deletion falls under, or %NULL
+         * @param entry the #GDataEntry to delete
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when deletion is finished, or %NULL
+         */
+        delete_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Deletes `entry` from the server. `self` and `entry` are both reffed when this function is called,
+         * so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_delete_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_delete_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the deletion falls under, or %NULL
+         * @param entry the #GDataEntry to delete
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when deletion is finished, or %NULL
          */
         delete_entry_async(
@@ -4164,7 +3741,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous entry deletion operation started with gdata_service_delete_entry_async().
          * @param async_result a #GAsyncResult
@@ -4186,11 +3763,6 @@ export namespace GData {
          * @returns a #GProxyResolver, or %NULL
          */
         get_proxy_resolver(): Gio.ProxyResolver | null;
-        /**
-         * Gets the proxy URI on the #GDataService's #SoupSession.
-         * @returns the proxy URI, or %NULL
-         */
-        get_proxy_uri(): Soup.URI;
         /**
          * Gets the #GDataService:timeout property; the network timeout, in seconds.
          * @returns the timeout, or <code class="literal">0</code>
@@ -4238,6 +3810,46 @@ export namespace GData {
          * @param upload_uri the URI to which the upload should be sent
          * @param entry the #GDataEntry to insert
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        insert_entry_async(
+            domain: AuthorizationDomain | null,
+            upload_uri: string,
+            entry: Entry,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Entry>;
+        /**
+         * Inserts `entry` by uploading it to the online service at `upload_uri`. `self,` `upload_uri` and
+         * `entry` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_insert_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_insert_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the insertion operation falls under, or %NULL
+         * @param upload_uri the URI to which the upload should be sent
+         * @param entry the #GDataEntry to insert
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when insertion is finished, or %NULL
+         */
+        insert_entry_async(
+            domain: AuthorizationDomain | null,
+            upload_uri: string,
+            entry: Entry,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Inserts `entry` by uploading it to the online service at `upload_uri`. `self,` `upload_uri` and
+         * `entry` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_insert_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_insert_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the insertion operation falls under, or %NULL
+         * @param upload_uri the URI to which the upload should be sent
+         * @param entry the #GDataEntry to insert
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when insertion is finished, or %NULL
          */
         insert_entry_async(
@@ -4246,7 +3858,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry insertion operation started with gdata_service_insert_entry_async().
          * @param async_result a #GAsyncResult
@@ -4313,6 +3925,58 @@ export namespace GData {
          * @param cancellable optional #GCancellable object, or %NULL
          * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
          * @param destroy_progress_user_data the function to call when @progress_callback will not be called any more, or %NULL. This function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it.
+         */
+        query_async(
+            domain: AuthorizationDomain | null,
+            feed_uri: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable?: Gio.Cancellable | null,
+            progress_callback?: QueryProgressCallback | null,
+            destroy_progress_user_data?: GLib.DestroyNotify | null,
+        ): Promise<Feed>;
+        /**
+         * Queries the service's `feed_uri` feed to build a #GDataFeed. `self,` `feed_uri` and
+         * `query` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param feed_uri the feed URI to query, including the host name and protocol
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntrys to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
+         * @param destroy_progress_user_data the function to call when @progress_callback will not be called any more, or %NULL. This function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it.
+         * @param callback a #GAsyncReadyCallback to call when the query is finished
+         */
+        query_async(
+            domain: AuthorizationDomain | null,
+            feed_uri: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: QueryProgressCallback | null,
+            destroy_progress_user_data: GLib.DestroyNotify | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Queries the service's `feed_uri` feed to build a #GDataFeed. `self,` `feed_uri` and
+         * `query` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param feed_uri the feed URI to query, including the host name and protocol
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntrys to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
+         * @param destroy_progress_user_data the function to call when @progress_callback will not be called any more, or %NULL. This function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it.
          * @param callback a #GAsyncReadyCallback to call when the query is finished
          */
         query_async(
@@ -4324,7 +3988,7 @@ export namespace GData {
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Feed> | void;
         /**
          * Finishes an asynchronous query operation started with gdata_service_query_async().
          * @param async_result a #GAsyncResult
@@ -4368,6 +4032,52 @@ export namespace GData {
          * @param query a #GDataQuery with the query parameters, or %NULL
          * @param entry_type a #GType for the #GDataEntry to build from the XML
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        query_single_entry_async(
+            domain: AuthorizationDomain | null,
+            entry_id: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Entry>;
+        /**
+         * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
+         * gdata_entry_get_id(). `self,` `query` and `entry_id` are reffed/copied when this
+         * function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query_single_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_single_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param entry_id the entry ID of the desired entry
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntry to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the query is finished
+         */
+        query_single_entry_async(
+            domain: AuthorizationDomain | null,
+            entry_id: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
+         * gdata_entry_get_id(). `self,` `query` and `entry_id` are reffed/copied when this
+         * function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query_single_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_single_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param entry_id the entry ID of the desired entry
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntry to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the query is finished
          */
         query_single_entry_async(
@@ -4377,7 +4087,7 @@ export namespace GData {
             entry_type: GObject.GType,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Entry> | void;
         /**
          * Finishes an asynchronous query operation for a single entry, as started with gdata_service_query_single_entry_async().
          * @param async_result a #GAsyncResult
@@ -4400,21 +4110,9 @@ export namespace GData {
         set_locale(locale?: string | null): void;
         /**
          * Sets the #GProxyResolver on the #SoupSession used internally by the given #GDataService.
-         *
-         * Setting this will clear the #GDataService:proxy-uri property.
          * @param proxy_resolver a #GProxyResolver, or %NULL
          */
         set_proxy_resolver(proxy_resolver?: Gio.ProxyResolver | null): void;
-        /**
-         * Sets the proxy URI on the #SoupSession used internally by the given #GDataService.
-         * This forces all requests through the given proxy.
-         *
-         * If `proxy_uri` is %NULL, no proxy will be used.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its proxy URI setting.
-         * @param proxy_uri the proxy URI, or %NULL
-         */
-        set_proxy_uri(proxy_uri?: Soup.URI | null): void;
         /**
          * Sets the #GDataService:timeout property; the network timeout, in seconds.
          *
@@ -4456,6 +4154,42 @@ export namespace GData {
          * @param domain the #GDataAuthorizationDomain the update operation falls under, or %NULL
          * @param entry the #GDataEntry to update
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        update_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Entry>;
+        /**
+         * Updates `entry` by PUTting it to its <literal>edit</literal> link's URI. `self` and
+         * `entry` are both reffed when this function is called, so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_update_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_update_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the update operation falls under, or %NULL
+         * @param entry the #GDataEntry to update
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the update is finished, or %NULL
+         */
+        update_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Updates `entry` by PUTting it to its <literal>edit</literal> link's URI. `self` and
+         * `entry` are both reffed when this function is called, so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_update_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_update_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the update operation falls under, or %NULL
+         * @param entry the #GDataEntry to update
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the update is finished, or %NULL
          */
         update_entry_async(
@@ -4463,29 +4197,14 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry update operation started with gdata_service_update_entry_async().
          * @param async_result a #GAsyncResult
          * @returns an updated #GDataEntry, or %NULL; unref with g_object_unref()
          */
         update_entry_finish(async_result: Gio.AsyncResult): Entry;
-        /**
-         * a function to allow subclasses to append their own headers to queries before they are submitted to the online service,
-         * using the given authorization domain; new in version 0.9.0
-         * @param domain
-         * @param message
-         */
         vfunc_append_query_headers(domain: AuthorizationDomain, message: Soup.Message): void;
-        /**
-         * a function to parse error responses to queries from the online service. It should set the error
-         * from the status, reason phrase and response body it is passed.
-         * @param operation_type
-         * @param status
-         * @param reason_phrase
-         * @param response_body
-         * @param length
-         */
         vfunc_parse_error_response(
             operation_type: OperationType,
             status: number,
@@ -4599,818 +4318,7 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
-         * instance.
-         *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
-         *
-         * Removing the binding by calling g_object_unref() on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
-         *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of g_object_bind_property().
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
-         * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
-         */
-        get_data(key: string): any | null;
-        get_property(property_name: string): any;
-        /**
-         * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
-         * called.
-         * @param property_name the name of a property installed on the class of @object.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
-         *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
-         * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same @object
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure #GClosure to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by g_object_new() as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
-         * called.
-         * @param pspec
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-        disconnect(id: number): void;
-        set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
-    }
-
-    module ClientLoginAuthorizer {
-        // Signal callback interfaces
-
-        interface CaptchaChallenge {
-            (uri: string): string;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
-            client_id: string;
-            clientId: string;
-            password: string;
-            proxy_resolver: Gio.ProxyResolver;
-            proxyResolver: Gio.ProxyResolver;
-            proxy_uri: Soup.URI;
-            proxyUri: Soup.URI;
-            timeout: number;
-            username: string;
-        }
-    }
-
-    /**
-     * All the fields in the #GDataClientLoginAuthorizer structure are private and should never be accessed directly.
-     */
-    class ClientLoginAuthorizer extends GObject.Object implements Authorizer {
-        static $gtype: GObject.GType<ClientLoginAuthorizer>;
-
-        // Properties
-
-        /**
-         * A client ID for your application (see the
-         * <ulink url="http://code.google.com/apis/accounts/docs/AuthForInstalledApps.html#Request" type="http">reference documentation</ulink>).
-         *
-         * It is recommended that the ID is of the form <literal><replaceable>company name</replaceable>-<replaceable>application name</replaceable>-
-         * <replaceable>version ID</replaceable></literal>.
-         */
-        get client_id(): string;
-        /**
-         * A client ID for your application (see the
-         * <ulink url="http://code.google.com/apis/accounts/docs/AuthForInstalledApps.html#Request" type="http">reference documentation</ulink>).
-         *
-         * It is recommended that the ID is of the form <literal><replaceable>company name</replaceable>-<replaceable>application name</replaceable>-
-         * <replaceable>version ID</replaceable></literal>.
-         */
-        get clientId(): string;
-        /**
-         * The user's account password for authentication.
-         *
-         * This will only be set after authentication using gdata_client_login_authorizer_authenticate() is completed successfully. It will
-         * then be set to the password passed to gdata_client_login_authorizer_authenticate(), and a #GObject::notify signal will be emitted. If
-         * authentication fails, it will be set to %NULL.
-         *
-         * If libgdata is compiled with libgcr support, the password will be stored in non-pageable memory. However, if it is retrieved
-         * using g_object_get() (or related functions) it will be copied to non-pageable memory and could end up being written to disk. Accessing
-         * the password using gdata_client_login_authorizer_get_password() will not perform any copies, and so maintains privacy.
-         */
-        get password(): string;
-        /**
-         * The #GProxyResolver used to determine a proxy URI.  Setting this will clear the #GDataClientLoginAuthorizer:proxy-uri property.
-         */
-        get proxy_resolver(): Gio.ProxyResolver;
-        set proxy_resolver(val: Gio.ProxyResolver);
-        /**
-         * The #GProxyResolver used to determine a proxy URI.  Setting this will clear the #GDataClientLoginAuthorizer:proxy-uri property.
-         */
-        get proxyResolver(): Gio.ProxyResolver;
-        set proxyResolver(val: Gio.ProxyResolver);
-        /**
-         * The proxy URI used internally for all network requests.
-         */
-        get proxy_uri(): Soup.URI;
-        set proxy_uri(val: Soup.URI);
-        /**
-         * The proxy URI used internally for all network requests.
-         */
-        get proxyUri(): Soup.URI;
-        set proxyUri(val: Soup.URI);
-        /**
-         * A timeout, in seconds, for network operations. If the timeout is exceeded, the operation will be cancelled and
-         * %GDATA_SERVICE_ERROR_NETWORK_ERROR will be returned.
-         *
-         * If the timeout is <code class="literal">0</code>, operations will never time out.
-         */
-        get timeout(): number;
-        set timeout(val: number);
-        /**
-         * The user's Google username for authentication. This will always be a full e-mail address.
-         *
-         * This will only be set after authentication using gdata_client_login_authorizer_authenticate() is completed successfully. It will
-         * then be set to the username passed to gdata_client_login_authorizer_authenticate(), and a #GObject::notify signal will be emitted. If
-         * authentication fails, it will be set to %NULL.
-         */
-        get username(): string;
-
-        // Constructors
-
-        constructor(properties?: Partial<ClientLoginAuthorizer.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](client_id: string, service_type: GObject.GType): ClientLoginAuthorizer;
-
-        static new_for_authorization_domains(
-            client_id: string,
-            authorization_domains: AuthorizationDomain[],
-        ): ClientLoginAuthorizer;
-
-        // Signals
-
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'captcha-challenge', callback: (_source: this, uri: string) => string): number;
-        connect_after(signal: 'captcha-challenge', callback: (_source: this, uri: string) => string): number;
-        emit(signal: 'captcha-challenge', uri: string): void;
-
-        // Methods
-
-        /**
-         * Authenticates the #GDataClientLoginAuthorizer with the Google Accounts service using `username` and `password` and authorizes it against all the
-         * service types passed to gdata_client_login_authorizer_new(); i.e. logs into the service with the given user account. `username` should be a full
-         * e-mail address (e.g. <literal>john.smith\`gmail`.com</literal>). If a full e-mail address is not given, `username` will have
-         * <literal>\`gmail`.com</literal> appended to create an e-mail address
-         *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by triggering the `cancellable` object from another thread.
-         * If the operation was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-         *
-         * If the operation errors or is cancelled part-way through, gdata_authorizer_is_authorized_for_domain() is guaranteed to return %FALSE
-         * for all #GDataAuthorizationDomains, even if authentication has succeeded for some of them already.
-         *
-         * A %GDATA_CLIENT_LOGIN_AUTHORIZER_ERROR_BAD_AUTHENTICATION will be returned if authentication failed due to an incorrect username or password.
-         * Other #GDataClientLoginAuthorizerError errors can be returned for other conditions.
-         *
-         * If the service requires a CAPTCHA to be completed, the #GDataClientLoginAuthorizer::captcha-challenge signal will be emitted.
-         * The return value from a signal handler for the signal should be a newly allocated string containing the text from the image. If the text is %NULL
-         * or empty, authentication will fail with a %GDATA_CLIENT_LOGIN_AUTHORIZER_ERROR_CAPTCHA_REQUIRED error. Otherwise, authentication will be
-         * automatically and transparently restarted with the new CAPTCHA details.
-         *
-         * A %GDATA_SERVICE_ERROR_PROTOCOL_ERROR will be returned if the server's responses were invalid.
-         * @param username the user's username
-         * @param password the user's password
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns %TRUE if authentication and authorization was successful against all the services, %FALSE otherwise
-         */
-        authenticate(username: string, password: string, cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Authenticates the #GDataClientLoginAuthorizer with the Google accounts service using the given `username` and `password`. `self,` `username` and
-         * `password` are all reffed/copied when this function is called, so can safely be freed after this function returns.
-         *
-         * For more details, see gdata_client_login_authorizer_authenticate(), which is the synchronous version of this function.
-         *
-         * When the operation is finished, `callback` will be called. You can then call gdata_client_login_authorizer_authenticate_finish()
-         * to get the results of the operation.
-         * @param username the user's username
-         * @param password the user's password
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when authentication is finished
-         */
-        authenticate_async(
-            username: string,
-            password: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an asynchronous authentication operation started with gdata_client_login_authorizer_authenticate_async().
-         * @param async_result a #GAsyncResult
-         * @returns %TRUE if authentication was successful, %FALSE otherwise
-         */
-        authenticate_finish(async_result: Gio.AsyncResult): boolean;
-        /**
-         * Returns the authorizer's client ID, as specified on constructing the #GDataClientLoginAuthorizer.
-         * @returns the authorizer's client ID
-         */
-        get_client_id(): string;
-        /**
-         * Returns the password of the currently authenticated user, or %NULL if nobody is authenticated.
-         *
-         * It is not safe to call this while an authentication operation is ongoing.
-         *
-         * If libgdata is compiled with libgcr support, the password will be stored in non-pageable memory. Since this function doesn't return
-         * a copy of the password, the returned value is guaranteed to not hit disk. It's advised that any copies of the password made in client programs
-         * also use non-pageable memory.
-         * @returns the password of the currently authenticated user, or %NULL
-         */
-        get_password(): string;
-        /**
-         * Gets the #GProxyResolver on the #GDataClientLoginAuthorizer's #SoupSession.
-         * @returns a #GProxyResolver, or %NULL
-         */
-        get_proxy_resolver(): Gio.ProxyResolver | null;
-        /**
-         * Gets the proxy URI on the #GDataClientLoginAuthorizer's #SoupSession.
-         * @returns the proxy URI, or %NULL; free with soup_uri_free()
-         */
-        get_proxy_uri(): Soup.URI;
-        /**
-         * Gets the #GDataClientLoginAuthorizer:timeout property; the network timeout, in seconds.
-         * @returns the timeout, or <code class="literal">0</code>
-         */
-        get_timeout(): number;
-        /**
-         * Returns the username of the currently authenticated user, or %NULL if nobody is authenticated.
-         *
-         * It is not safe to call this while an authentication operation is ongoing.
-         * @returns the username of the currently authenticated user, or %NULL
-         */
-        get_username(): string;
-        /**
-         * Sets the #GProxyResolver on the #SoupSession used internally by the given #GDataClientLoginAuthorizer.
-         *
-         * Setting this will clear the #GDataClientLoginAuthorizer:proxy-uri property.
-         * @param proxy_resolver a #GProxyResolver, or %NULL
-         */
-        set_proxy_resolver(proxy_resolver?: Gio.ProxyResolver | null): void;
-        /**
-         * Sets the proxy URI on the #SoupSession used internally by the #GDataClientLoginAuthorizer. This forces all requests through the given proxy.
-         *
-         * If `proxy_uri` is %NULL, no proxy will be used.
-         * @param proxy_uri the proxy URI, or %NULL
-         */
-        set_proxy_uri(proxy_uri?: Soup.URI | null): void;
-        /**
-         * Sets the #GDataClientLoginAuthorizer:timeout property; the network timeout, in seconds.
-         *
-         * If `timeout` is <code class="literal">0</code>, network operations will never time out.
-         * @param timeout the timeout, or <code class="literal">0</code>
-         */
-        set_timeout(timeout: number): void;
-
-        // Inherited methods
-        /**
-         * Returns whether the #GDataAuthorizer instance believes it's currently authorized to access the given `domain`. Note that this will not perform any
-         * network requests, and will just look up the result in the #GDataAuthorizer's local cache of authorizations. This means that the result may be out
-         * of date, as the server may have since invalidated the authorization. If the #GDataAuthorizer class supports timeouts and TTLs on authorizations,
-         * they will not be taken into account; this method effectively returns whether the last successful authorization operation performed on the
-         * #GDataAuthorizer included `domain` in the list of requested authorization domains.
-         *
-         * Note that %NULL may be passed as the #GDataAuthorizer, in which case %FALSE will always be returned, regardless of the `domain`. This is for
-         * convenience of checking whether a domain is authorized by the #GDataAuthorizer returned by gdata_service_get_authorizer(), which may be %NULL.
-         * For example:
-         *
-         * ```
-         * if (gdata_authorizer_is_authorized_for_domain (gdata_service_get_authorizer (my_service), my_domain) == TRUE) {
-         * 	/<!-- -->* Code to execute only if we're authorized for the given domain *<!-- -->/
-         * }
-         * ```
-         *
-         *
-         * This method is thread safe.
-         * @param domain the #GDataAuthorizationDomain to check against
-         * @returns %TRUE if the #GDataAuthorizer has been authorized to access @domain, %FALSE otherwise
-         */
-        is_authorized_for_domain(domain: AuthorizationDomain): boolean;
-        /**
-         * Processes `message,` adding all the necessary extra headers and parameters to ensure that it's correctly authenticated and authorized under the
-         * given `domain` for the online service. Basically, if a query is not processed by calling this method on it, it will be sent to the online service as
-         * if it's a query from a non-logged-in user. Similarly, if the #GDataAuthorizer isn't authenticated or authorized (for `domain)`, no changes will
-         * be made to the `message`.
-         *
-         * `domain` may be %NULL if the request doesn't require authorization.
-         *
-         * This modifies `message` in place.
-         *
-         * This method is thread safe.
-         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
-         * @param message the query to process
-         */
-        process_request(domain: AuthorizationDomain | null, message: Soup.Message): void;
-        /**
-         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. This should typically be called when a
-         * #GDataService query returns %GDATA_SERVICE_ERROR_AUTHENTICATION_REQUIRED, and is already called transparently by methods such as
-         * gdata_service_query() and gdata_service_insert_entry() (see their documentation for more details).
-         *
-         * If re-authorization is successful, it's guaranteed that by the time this method returns, the properties containing the relevant authorization
-         * tokens on the #GDataAuthorizer instance will have been updated.
-         *
-         * If %FALSE is returned, `error` will be set if (and only if) it's due to a refresh being attempted and failing. If a refresh is not attempted, %FALSE
-         * will be returned but `error` will not be set.
-         *
-         * If the #GDataAuthorizer has not been previously authenticated or authorized (using the class' specific methods), no authorization will be
-         * attempted, %FALSE will be returned immediately and `error` will not be set.
-         *
-         * Some #GDataAuthorizer implementations may not support refreshing authorization tokens at all; for example if doing so requires user interaction.
-         * %FALSE will be returned immediately in that case and `error` will not be set.
-         *
-         * This method is thread safe.
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns %TRUE if an authorization refresh was attempted and was successful, %FALSE if a refresh wasn't attempted or was unsuccessful
-         */
-        refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
-         * method is called, so can safely be freed after this method returns.
-         *
-         * For more details, see gdata_authorizer_refresh_authorization(), which is the synchronous version of this method. If the #GDataAuthorizer class
-         * doesn't implement #GDataAuthorizerInterface.refresh_authorization_async but does implement #GDataAuthorizerInterface.refresh_authorization, the
-         * latter will be called from a new thread to make it asynchronous.
-         *
-         * When the authorization refresh operation is finished, `callback` will be called. You can then call gdata_authorizer_refresh_authorization_finish()
-         * to get the results of the operation.
-         *
-         * This method is thread safe.
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the authorization refresh operation is finished, or %NULL
-         */
-        refresh_authorization_async(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an asynchronous authorization refresh operation for the #GDataAuthorizer, as started with gdata_authorizer_refresh_authorization_async().
-         *
-         * This method is thread safe.
-         * @param async_result a #GAsyncResult
-         * @returns %TRUE if an authorization refresh was attempted and was successful, %FALSE if a refresh wasn't attempted or was unsuccessful
-         */
-        refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
-        /**
-         * Returns whether the #GDataAuthorizer instance believes it's currently authorized to access the given `domain`. Note that this will not perform any
-         * network requests, and will just look up the result in the #GDataAuthorizer's local cache of authorizations. This means that the result may be out
-         * of date, as the server may have since invalidated the authorization. If the #GDataAuthorizer class supports timeouts and TTLs on authorizations,
-         * they will not be taken into account; this method effectively returns whether the last successful authorization operation performed on the
-         * #GDataAuthorizer included `domain` in the list of requested authorization domains.
-         *
-         * Note that %NULL may be passed as the #GDataAuthorizer, in which case %FALSE will always be returned, regardless of the `domain`. This is for
-         * convenience of checking whether a domain is authorized by the #GDataAuthorizer returned by gdata_service_get_authorizer(), which may be %NULL.
-         * For example:
-         *
-         * ```
-         * if (gdata_authorizer_is_authorized_for_domain (gdata_service_get_authorizer (my_service), my_domain) == TRUE) {
-         * 	/<!-- -->* Code to execute only if we're authorized for the given domain *<!-- -->/
-         * }
-         * ```
-         *
-         *
-         * This method is thread safe.
-         * @param domain the #GDataAuthorizationDomain to check against
-         */
-        vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean;
-        /**
-         * Processes `message,` adding all the necessary extra headers and parameters to ensure that it's correctly authenticated and authorized under the
-         * given `domain` for the online service. Basically, if a query is not processed by calling this method on it, it will be sent to the online service as
-         * if it's a query from a non-logged-in user. Similarly, if the #GDataAuthorizer isn't authenticated or authorized (for `domain)`, no changes will
-         * be made to the `message`.
-         *
-         * `domain` may be %NULL if the request doesn't require authorization.
-         *
-         * This modifies `message` in place.
-         *
-         * This method is thread safe.
-         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
-         * @param message the query to process
-         */
-        vfunc_process_request(domain: AuthorizationDomain | null, message: Soup.Message): void;
-        /**
-         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. This should typically be called when a
-         * #GDataService query returns %GDATA_SERVICE_ERROR_AUTHENTICATION_REQUIRED, and is already called transparently by methods such as
-         * gdata_service_query() and gdata_service_insert_entry() (see their documentation for more details).
-         *
-         * If re-authorization is successful, it's guaranteed that by the time this method returns, the properties containing the relevant authorization
-         * tokens on the #GDataAuthorizer instance will have been updated.
-         *
-         * If %FALSE is returned, `error` will be set if (and only if) it's due to a refresh being attempted and failing. If a refresh is not attempted, %FALSE
-         * will be returned but `error` will not be set.
-         *
-         * If the #GDataAuthorizer has not been previously authenticated or authorized (using the class' specific methods), no authorization will be
-         * attempted, %FALSE will be returned immediately and `error` will not be set.
-         *
-         * Some #GDataAuthorizer implementations may not support refreshing authorization tokens at all; for example if doing so requires user interaction.
-         * %FALSE will be returned immediately in that case and `error` will not be set.
-         *
-         * This method is thread safe.
-         * @param cancellable optional #GCancellable object, or %NULL
-         */
-        vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
-         * method is called, so can safely be freed after this method returns.
-         *
-         * For more details, see gdata_authorizer_refresh_authorization(), which is the synchronous version of this method. If the #GDataAuthorizer class
-         * doesn't implement #GDataAuthorizerInterface.refresh_authorization_async but does implement #GDataAuthorizerInterface.refresh_authorization, the
-         * latter will be called from a new thread to make it asynchronous.
-         *
-         * When the authorization refresh operation is finished, `callback` will be called. You can then call gdata_authorizer_refresh_authorization_finish()
-         * to get the results of the operation.
-         *
-         * This method is thread safe.
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the authorization refresh operation is finished, or %NULL
-         */
-        vfunc_refresh_authorization_async(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an asynchronous authorization refresh operation for the #GDataAuthorizer, as started with gdata_authorizer_refresh_authorization_async().
-         *
-         * This method is thread safe.
-         * @param async_result a #GAsyncResult
-         */
-        vfunc_refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5830,1671 +4738,6 @@ export namespace GData {
         constructor(properties?: Partial<Comment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
-    }
-
-    module ContactsContact {
-        // Constructor properties interface
-
-        interface ConstructorProps extends Entry.ConstructorProps {
-            billing_information: string;
-            billingInformation: string;
-            birthday: GLib.Date;
-            birthday_has_year: boolean;
-            birthdayHasYear: boolean;
-            deleted: boolean;
-            directory_server: string;
-            directoryServer: string;
-            edited: number;
-            file_as: string;
-            fileAs: string;
-            gender: string;
-            initials: string;
-            maiden_name: string;
-            maidenName: string;
-            mileage: string;
-            name: GDName;
-            nickname: string;
-            occupation: string;
-            photo_etag: string;
-            photoEtag: string;
-            priority: string;
-            sensitivity: string;
-            short_name: string;
-            shortName: string;
-            subject: string;
-        }
-    }
-
-    /**
-     * All the fields in the #GDataContactsContact structure are private and should never be accessed directly.
-     */
-    class ContactsContact extends Entry {
-        static $gtype: GObject.GType<ContactsContact>;
-
-        // Properties
-
-        /**
-         * Billing information for the contact, such as their billing name and address.
-         */
-        get billing_information(): string;
-        set billing_information(val: string);
-        /**
-         * Billing information for the contact, such as their billing name and address.
-         */
-        get billingInformation(): string;
-        set billingInformation(val: string);
-        /**
-         * The contact's birthday.
-         */
-        get birthday(): GLib.Date;
-        set birthday(val: GLib.Date);
-        /**
-         * Whether the contact's birthday includes their year of birth.
-         */
-        get birthday_has_year(): boolean;
-        set birthday_has_year(val: boolean);
-        /**
-         * Whether the contact's birthday includes their year of birth.
-         */
-        get birthdayHasYear(): boolean;
-        set birthdayHasYear(val: boolean);
-        /**
-         * Whether the entry has been deleted.
-         */
-        get deleted(): boolean;
-        /**
-         * The name or address of a directory server associated with the contact.
-         */
-        get directory_server(): string;
-        set directory_server(val: string);
-        /**
-         * The name or address of a directory server associated with the contact.
-         */
-        get directoryServer(): string;
-        set directoryServer(val: string);
-        /**
-         * The last time the contact was edited. If the contact has not been edited yet, the content indicates the time it was created.
-         *
-         * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/protocol/#appEdited">
-         * Atom Publishing Protocol specification</ulink>.
-         */
-        get edited(): number;
-        /**
-         * The name to file the contact under for sorting purposes.
-         */
-        get file_as(): string;
-        set file_as(val: string);
-        /**
-         * The name to file the contact under for sorting purposes.
-         */
-        get fileAs(): string;
-        set fileAs(val: string);
-        /**
-         * The gender of the contact. For example: %GDATA_CONTACTS_GENDER_MALE or %GDATA_CONTACTS_GENDER_FEMALE.
-         */
-        get gender(): string;
-        set gender(val: string);
-        /**
-         * The initials of the contact.
-         */
-        get initials(): string;
-        set initials(val: string);
-        /**
-         * The maiden name of the contact.
-         */
-        get maiden_name(): string;
-        set maiden_name(val: string);
-        /**
-         * The maiden name of the contact.
-         */
-        get maidenName(): string;
-        set maidenName(val: string);
-        /**
-         * A mileage associated with the contact, such as one for reimbursement purposes. It can be in any format.
-         */
-        get mileage(): string;
-        set mileage(val: string);
-        /**
-         * The contact's name in a structured representation.
-         */
-        get name(): GDName;
-        set name(val: GDName);
-        /**
-         * The contact's chosen nickname.
-         */
-        get nickname(): string;
-        set nickname(val: string);
-        /**
-         * The contact's occupation.
-         */
-        get occupation(): string;
-        set occupation(val: string);
-        /**
-         * The ETag of the contact's photo, if the contact has a photo; %NULL otherwise.
-         */
-        get photo_etag(): string;
-        /**
-         * The ETag of the contact's photo, if the contact has a photo; %NULL otherwise.
-         */
-        get photoEtag(): string;
-        /**
-         * The contact's importance. For example: %GDATA_CONTACTS_PRIORITY_NORMAL or %GDATA_CONTACTS_PRIORITY_HIGH.
-         */
-        get priority(): string;
-        set priority(val: string);
-        /**
-         * The sensitivity of the contact's data. For example: %GDATA_CONTACTS_SENSITIVITY_NORMAL or %GDATA_CONTACTS_SENSITIVITY_PRIVATE.
-         */
-        get sensitivity(): string;
-        set sensitivity(val: string);
-        /**
-         * A short name for the contact. This should be used for contracted versions of the contact's actual name,
-         * whereas #GDataContactsContact:nickname should be used for nicknames.
-         */
-        get short_name(): string;
-        set short_name(val: string);
-        /**
-         * A short name for the contact. This should be used for contracted versions of the contact's actual name,
-         * whereas #GDataContactsContact:nickname should be used for nicknames.
-         */
-        get shortName(): string;
-        set shortName(val: string);
-        /**
-         * The subject of the contact. (i.e. The contact's relevance to the address book.)
-         */
-        get subject(): string;
-        set subject(val: string);
-
-        // Constructors
-
-        constructor(properties?: Partial<ContactsContact.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](id?: string | null): ContactsContact;
-
-        // Methods
-
-        /**
-         * Adds a calendar to the contact's list of calendars and increments its reference count.
-         *
-         * Duplicate calendars will not be added to the list, though the same URI may appear in several #GDataGContactCalendars with different
-         * relation types or labels.
-         * @param calendar a #GDataGContactCalendar to add
-         */
-        add_calendar(calendar: GContactCalendar): void;
-        /**
-         * Adds an e-mail address to the contact's list of e-mail addresses and increments its reference count.
-         *
-         * Note that only one e-mail address per contact may be marked as "primary". Insertion and update operations
-         * (with gdata_contacts_service_insert_contact()) will return an error if more than one e-mail address
-         * is marked as primary.
-         *
-         * Duplicate e-mail addresses will not be added to the list.
-         * @param email_address a #GDataGDEmailAddress to add
-         */
-        add_email_address(email_address: GDEmailAddress): void;
-        /**
-         * Adds an event to the contact's list of events and increments its reference count.
-         *
-         * Duplicate events will be added to the list, and multiple events with the same event type can be added to a single contact.
-         * Though it may not make sense for some event types to be repeated, adding them is allowed.
-         * @param event a #GDataGContactEvent to add
-         */
-        add_event(event: GContactEvent): void;
-        /**
-         * Adds an external ID to the contact's list of external IDs and increments its reference count.
-         *
-         * Duplicate IDs will not be added to the list.
-         * @param external_id a #GDataGContactExternalID to add
-         */
-        add_external_id(external_id: GContactExternalID): void;
-        /**
-         * Adds the contact to the given group. `href` should be a URI.
-         * @param href the group's ID URI
-         */
-        add_group(href: string): void;
-        /**
-         * Adds a hobby to the contact's list of hobbies, copying it in the process.
-         *
-         * Duplicate hobbies will not be added to the list.
-         * @param hobby a hobby to add
-         */
-        add_hobby(hobby: string): void;
-        /**
-         * Adds an IM (instant messaging) address to the contact's list of IM addresses and increments its reference count.
-         *
-         * Note that only one IM address per contact may be marked as "primary". Insertion and update operations
-         * (with gdata_contacts_service_insert_contact()) will return an error if more than one IM address
-         * is marked as primary.
-         *
-         * Duplicate IM addresses will not be added to the list.
-         * @param im_address a #GDataGDIMAddress to add
-         */
-        add_im_address(im_address: GDIMAddress): void;
-        /**
-         * Adds a jot to the contact's list of jots and increments its reference count.
-         *
-         * Duplicate jots will be added to the list, and multiple jots with the same relation type can be added to a single contact.
-         * @param jot a #GDataGContactJot to add
-         */
-        add_jot(jot: GContactJot): void;
-        /**
-         * Adds a language to the contact's list of languages and increments its reference count.
-         *
-         * Duplicate languages will not be added to the list.
-         * @param language a #GDataGContactLanguage to add
-         */
-        add_language(language: GContactLanguage): void;
-        /**
-         * Adds an organization to the contact's list of organizations (e.g. employers) and increments its reference count.
-         *
-         * Note that only one organization per contact may be marked as "primary". Insertion and update operations
-         * (with gdata_contacts_service_insert_contact()) will return an error if more than one organization
-         * is marked as primary.
-         *
-         * Duplicate organizations will not be added to the list.
-         * @param organization a #GDataGDOrganization to add
-         */
-        add_organization(organization: GDOrganization): void;
-        /**
-         * Adds a phone number to the contact's list of phone numbers and increments its reference count
-         *
-         * Note that only one phone number per contact may be marked as "primary". Insertion and update operations
-         * (with gdata_contacts_service_insert_contact()) will return an error if more than one phone number
-         * is marked as primary.
-         *
-         * Duplicate phone numbers will not be added to the list.
-         * @param phone_number a #GDataGDPhoneNumber to add
-         */
-        add_phone_number(phone_number: GDPhoneNumber): void;
-        /**
-         * Adds a postal address to the contact's list of postal addresses and increments its reference count.
-         *
-         * Note that only one postal address per contact may be marked as "primary". Insertion and update operations
-         * (with gdata_contacts_service_insert_contact()) will return an error if more than one postal address
-         * is marked as primary.
-         *
-         * Duplicate postal addresses will not be added to the list.
-         * @param postal_address a #GDataGDPostalAddress to add
-         */
-        add_postal_address(postal_address: GDPostalAddress): void;
-        /**
-         * Adds a relation to the contact's list of relations and increments its reference count.
-         *
-         * Duplicate relations will be added to the list, and multiple relations with the same relation type can be added to a single contact.
-         * Though it may not make sense for some relation types to be repeated, adding them is allowed.
-         * @param relation a #GDataGContactRelation to add
-         */
-        add_relation(relation: GContactRelation): void;
-        /**
-         * Adds a website to the contact's list of websites and increments its reference count.
-         *
-         * Duplicate websites will not be added to the list, though the same URI may appear in several #GDataGContactWebsites with different
-         * relation types or labels.
-         * @param website a #GDataGContactWebsite to add
-         */
-        add_website(website: GContactWebsite): void;
-        /**
-         * Gets the #GDataContactsContact:billing-information property.
-         * @returns the contact's billing information, or %NULL
-         */
-        get_billing_information(): string;
-        /**
-         * Gets the #GDataContactsContact:birthday and #GDataContactsContact:birthday-has-year properties. If `birthday` is non-%NULL,
-         * #GDataContactsContact:birthday is returned in it. The function returns the value of #GDataContactsContact:birthday-has-year,
-         * which specifies whether the year in `birthday` is meaningful. Contacts may not have the year of their birth set, in which
-         * case, the function would return %FALSE, and the year in `birthday` should be ignored.
-         * @returns whether the contact's birthday has the year set
-         */
-        get_birthday(): [boolean, GLib.Date | null];
-        /**
-         * Gets a list of the calendars of the contact.
-         * @returns a #GList of #GDataGContactCalendars, or %NULL
-         */
-        get_calendars(): GContactCalendar[];
-        /**
-         * Gets the #GDataContactsContact:directory-server property.
-         * @returns the name or address of a directory server associated with the contact, or %NULL
-         */
-        get_directory_server(): string;
-        /**
-         * Gets the #GDataContactsContact:edited property. If the property is unset, <code class="literal">-1</code> will be returned.
-         * @returns the UNIX timestamp for the time the contact was last edited, or <code class="literal">-1</code>
-         */
-        get_edited(): number;
-        /**
-         * Gets a list of the e-mail addresses owned by the contact.
-         * @returns a #GList of #GDataGDEmailAddress<!-- -->es, or %NULL
-         */
-        get_email_addresses(): GDEmailAddress[];
-        /**
-         * Gets a list of the events of the contact.
-         * @returns a #GList of #GDataGContactEvents, or %NULL
-         */
-        get_events(): GContactEvent[];
-        /**
-         * Gets the full list of extended properties of the contact; a hash table mapping property name to value.
-         * @returns a #GHashTable of extended properties
-         */
-        get_extended_properties(): GLib.HashTable<any, any>;
-        /**
-         * Gets the value of an extended property of the contact. Each contact can have up to 10 client-set extended
-         * properties to store data of the client's choosing.
-         * @param name the property name; an arbitrary, unique string
-         * @returns the property's value, or %NULL
-         */
-        get_extended_property(name: string): string;
-        /**
-         * Gets a list of the external IDs of the contact.
-         * @returns a #GList of #GDataGContactExternalIDs, or %NULL
-         */
-        get_external_ids(): GContactExternalID[];
-        /**
-         * Gets the #GDataContactsContact:file-as property.
-         * @returns the name the contact's filed under, or %NULL
-         */
-        get_file_as(): string;
-        /**
-         * Gets the #GDataContactsContact:gender property.
-         * @returns the gender of the contact, or %NULL
-         */
-        get_gender(): string;
-        /**
-         * Gets a list of the groups to which the contact belongs.
-         * @returns a #GList of constant group ID URIs, or %NULL; free with g_list_free()
-         */
-        get_groups(): string[];
-        /**
-         * Gets a list of the hobbies of the contact.
-         * @returns a #GList of hobby strings, or %NULL
-         */
-        get_hobbies(): string[];
-        /**
-         * Gets a list of the IM addresses owned by the contact.
-         * @returns a #GList of #GDataGDIMAddress<!-- -->es, or %NULL
-         */
-        get_im_addresses(): GDIMAddress[];
-        /**
-         * Gets the #GDataContactsContact:initials property.
-         * @returns the initials of the contact, or %NULL
-         */
-        get_initials(): string;
-        /**
-         * Gets a list of the jots attached to the contact.
-         * @returns a #GList of #GDataGContactJots, or %NULL
-         */
-        get_jots(): GContactJot[];
-        /**
-         * Gets a list of the languages of the contact.
-         * @returns a #GList of #GDataGContactLanguages, or %NULL
-         */
-        get_languages(): GContactLanguage[];
-        /**
-         * Gets the #GDataContactsContact:maiden-name property.
-         * @returns the maiden name of the contact, or %NULL
-         */
-        get_maiden_name(): string;
-        /**
-         * Gets the #GDataContactsContact:mileage property.
-         * @returns a mileage associated with the contact, or %NULL
-         */
-        get_mileage(): string;
-        /**
-         * Gets the #GDataContactsContact:name property.
-         * @returns the contact's name, or %NULL
-         */
-        get_name(): GDName;
-        /**
-         * Gets the #GDataContactsContact:nickname property.
-         * @returns the contact's nickname, or %NULL
-         */
-        get_nickname(): string;
-        /**
-         * Gets the #GDataContactsContact:occupation property.
-         * @returns the contact's occupation, or %NULL
-         */
-        get_occupation(): string;
-        /**
-         * Gets a list of the organizations to which the contact belongs.
-         * @returns a #GList of #GDataGDOrganizations, or %NULL
-         */
-        get_organizations(): GDOrganization[];
-        /**
-         * Gets a list of the phone numbers owned by the contact.
-         * @returns a #GList of #GDataGDPhoneNumbers, or %NULL
-         */
-        get_phone_numbers(): GDPhoneNumber[];
-        /**
-         * Downloads and returns the contact's photo, if they have one. If the contact doesn't
-         * have a photo (i.e. gdata_contacts_contact_get_photo_etag() returns %NULL), %NULL is returned, but
-         * no error is set in `error`.
-         *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by triggering the `cancellable` object from another thread.
-         * If the operation was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-         *
-         * If there is an error getting the photo, a %GDATA_SERVICE_ERROR_PROTOCOL_ERROR error will be returned.
-         * @param service a #GDataContactsService
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns the image data, or %NULL; free with g_free()
-         */
-        get_photo(service: ContactsService, cancellable?: Gio.Cancellable | null): [Uint8Array, string];
-        /**
-         * Downloads and returns the contact's photo, if they have one, asynchronously. `self` and `service` are both reffed when this function is called, so
-         * can safely be unreffed after this function returns.
-         *
-         * When the operation is finished, `callback` will be called. You can then call gdata_contacts_contact_get_photo_finish() to get the results of the
-         * operation.
-         *
-         * For more details, see gdata_contacts_contact_get_photo(), which is the synchronous version of this function.
-         *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by triggering the `cancellable` object from another thread.
-         * If the operation was cancelled, the error %G_IO_ERROR_CANCELLED will be returned by gdata_contacts_contact_get_photo_finish().
-         *
-         * If there is an error getting the photo, a %GDATA_SERVICE_ERROR_PROTOCOL_ERROR error will be returned by gdata_contacts_contact_get_photo_finish().
-         * @param service a #GDataContactsService
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the photo has been retrieved, or %NULL
-         */
-        get_photo_async(
-            service: ContactsService,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Returns the ETag for the contact's attached photo, if it exists. If it does exist, the contact's photo can be retrieved using
-         * gdata_contacts_contact_get_photo(). If it doesn't exist, %NULL will be returned, and the contact doesn't have a photo (so calling
-         * gdata_contacts_contact_get_photo() will also return %NULL)
-         * @returns the contact's photo's ETag if it exists, %NULL otherwise
-         */
-        get_photo_etag(): string;
-        /**
-         * Finishes an asynchronous contact photo retrieval operation started with gdata_contacts_contact_get_photo_async(). If the contact doesn't have a
-         * photo (i.e. gdata_contacts_contact_get_photo_etag() returns %NULL), %NULL is returned, but no error is set in `error`.
-         *
-         * If there is an error getting the photo, a %GDATA_SERVICE_ERROR_PROTOCOL_ERROR error will be returned. `length` will be set to
-         * <code class="literal">0</code> and `content_type` will be set to %NULL.
-         * @param async_result a #GAsyncResult
-         * @returns the image data, or %NULL; free with g_free()
-         */
-        get_photo_finish(async_result: Gio.AsyncResult): [Uint8Array, string];
-        /**
-         * Gets a list of the postal addresses owned by the contact.
-         * @returns a #GList of #GDataGDPostalAddress<!-- -->es, or %NULL
-         */
-        get_postal_addresses(): GDPostalAddress[];
-        /**
-         * Gets the contact's primary calendar, if one exists.
-         * @returns a #GDataGContactCalendar, or %NULL
-         */
-        get_primary_calendar(): GContactCalendar;
-        /**
-         * Gets the contact's primary e-mail address, if one exists.
-         * @returns a #GDataGDEmailAddress, or %NULL
-         */
-        get_primary_email_address(): GDEmailAddress;
-        /**
-         * Gets the contact's primary IM address, if one exists.
-         * @returns a #GDataGDIMAddress, or %NULL
-         */
-        get_primary_im_address(): GDIMAddress;
-        /**
-         * Gets the contact's primary organization, if one exists.
-         * @returns a #GDataGDOrganization, or %NULL
-         */
-        get_primary_organization(): GDOrganization;
-        /**
-         * Gets the contact's primary phone number, if one exists.
-         * @returns a #GDataGDPhoneNumber, or %NULL
-         */
-        get_primary_phone_number(): GDPhoneNumber;
-        /**
-         * Gets the contact's primary postal address, if one exists.
-         * @returns a #GDataGDPostalAddress, or %NULL
-         */
-        get_primary_postal_address(): GDPostalAddress;
-        /**
-         * Gets the contact's primary website, if one exists.
-         * @returns a #GDataGContactWebsite, or %NULL
-         */
-        get_primary_website(): GContactWebsite;
-        /**
-         * Gets the #GDataContactsContact:priority property.
-         * @returns the contact's priority, or %NULL
-         */
-        get_priority(): string;
-        /**
-         * Gets a list of the relations of the contact.
-         * @returns a #GList of #GDataGContactRelations, or %NULL
-         */
-        get_relations(): GContactRelation[];
-        /**
-         * Gets the #GDataContactsContact:sensitivity property.
-         * @returns the contact's sensitivity, or %NULL
-         */
-        get_sensitivity(): string;
-        /**
-         * Gets the #GDataContactsContact:short-name property.
-         * @returns the contact's short name, or %NULL
-         */
-        get_short_name(): string;
-        /**
-         * Gets the #GDataContactsContact:subject property.
-         * @returns the contact's subject, or %NULL
-         */
-        get_subject(): string;
-        /**
-         * Gets the value of a user-defined field of the contact. User-defined fields are settable by the user through the Google Contacts web interface,
-         * in contrast to extended properties, which are visible and settable only through the GData interface.
-         *
-         * The `name` of the field may not be %NULL, but may be an empty string.
-         * @param name the field name; an arbitrary, case-sensitive, unique string
-         * @returns the field's value, or %NULL
-         */
-        get_user_defined_field(name: string): string;
-        /**
-         * Gets the full list of user-defined fields of the contact; a hash table mapping field name to value.
-         * @returns a #GHashTable of user-defined fields
-         */
-        get_user_defined_fields(): GLib.HashTable<any, any>;
-        /**
-         * Gets a list of the websites of the contact.
-         * @returns a #GList of #GDataGContactWebsites, or %NULL
-         */
-        get_websites(): GContactWebsite[];
-        /**
-         * Returns whether the contact has recently been deleted. This will always return
-         * %FALSE unless #GDataContactsQuery:show-deleted has been set to
-         * %TRUE for the query which returned the contact; then this function will return
-         * %TRUE only if the contact has been deleted.
-         *
-         * If a contact has been deleted, no other information is available about it. This
-         * is designed to allow contacts to be deleted from local address books using
-         * incremental updates from the server (e.g. with #GDataQuery:updated-min and
-         * #GDataContactsQuery:show-deleted).
-         * @returns %TRUE if the contact has been deleted, %FALSE otherwise
-         */
-        is_deleted(): boolean;
-        /**
-         * Returns whether the contact has recently been removed from the given group on the server. This
-         * will always return %FALSE unless #GDataContactsQuery:show-deleted has been set to
-         * %TRUE for the query which returned the contact.
-         *
-         * If you've just removed a contact from a group locally using gdata_contacts_contact_remove_group(), %FALSE will still be returned by this function,
-         * as the change hasn't been sent to the server.
-         * @param href the group's ID URI
-         * @returns %TRUE if the contact has recently been removed from the group, %FALSE otherwise
-         */
-        is_group_deleted(href: string): boolean;
-        /**
-         * Removes all calendars from the contact.
-         */
-        remove_all_calendars(): void;
-        /**
-         * Removes all e-mail addresses from the contact.
-         */
-        remove_all_email_addresses(): void;
-        /**
-         * Removes all events from the contact.
-         */
-        remove_all_events(): void;
-        /**
-         * Removes all external IDs from the contact.
-         */
-        remove_all_external_ids(): void;
-        /**
-         * Removes all hobbies from the contact.
-         */
-        remove_all_hobbies(): void;
-        /**
-         * Removes all IM addresses from the contact.
-         */
-        remove_all_im_addresses(): void;
-        /**
-         * Removes all jots from the contact.
-         */
-        remove_all_jots(): void;
-        /**
-         * Removes all languages from the contact.
-         */
-        remove_all_languages(): void;
-        /**
-         * Removes all organizations from the contact.
-         */
-        remove_all_organizations(): void;
-        /**
-         * Removes all phone numbers from the contact.
-         */
-        remove_all_phone_numbers(): void;
-        /**
-         * Removes all postal addresses from the contact.
-         */
-        remove_all_postal_addresses(): void;
-        /**
-         * Removes all relations from the contact.
-         */
-        remove_all_relations(): void;
-        /**
-         * Removes all websites from the contact.
-         */
-        remove_all_websites(): void;
-        /**
-         * Removes the contact from the given group. `href` should be a URI.
-         * @param href the group's ID URI
-         */
-        remove_group(href: string): void;
-        /**
-         * Sets the #GDataContactsContact:billing-information property to `billing_information`.
-         *
-         * If `billing_information` is %NULL, the contact's billing information will be removed.
-         * @param billing_information the new billing information for the contact, or %NULL
-         */
-        set_billing_information(billing_information?: string | null): void;
-        /**
-         * Sets the #GDataContactsContact:birthday property to `birthday` and the #GDataContactsContact:birthday-has-year property to `birthday_has_year`.
-         * See gdata_contacts_contact_get_birthday() for an explanation of the interaction between these two properties.
-         *
-         * If `birthday` is %NULL, the contact's birthday will be removed.
-         * @param birthday the new birthday, or %NULL
-         * @param birthday_has_year %TRUE if @birthday's year is relevant, %FALSE otherwise
-         */
-        set_birthday(birthday: GLib.Date | null, birthday_has_year: boolean): void;
-        /**
-         * Sets the #GDataContactsContact:directory-server property to `directory_server`.
-         *
-         * If `directory_server` is %NULL, the contact's directory server will be removed.
-         * @param directory_server the new name or address of a directory server associated with the contact, or %NULL
-         */
-        set_directory_server(directory_server?: string | null): void;
-        /**
-         * Sets the value of a contact's extended property. Extended property names are unique (but of the client's choosing),
-         * and reusing the same property name will result in the old value of that property being overwritten.
-         *
-         * To unset a property, set `value` to %NULL or an empty string.
-         *
-         * A contact may have up to 10 extended properties, and each should be reasonably small (i.e. not a photo or ringtone).
-         * For more information, see the <ulink type="http"
-         * url="http://code.google.com/apis/contacts/docs/2.0/reference.html#ProjectionsAndExtended">online documentation</ulink>.
-         * %FALSE will be returned if you attempt to add more than 10 extended properties.
-         * @param name the property name; an arbitrary, unique string
-         * @param value the property value, or %NULL
-         * @returns %TRUE if the property was updated or deleted successfully, %FALSE otherwise
-         */
-        set_extended_property(name: string, value?: string | null): boolean;
-        /**
-         * Sets the #GDataContactsContact:file-as property to `file_as`.
-         *
-         * If `file_as` is %NULL, the contact will be filed under their full name.
-         * @param file_as the new name to file the contact under, or %NULL
-         */
-        set_file_as(file_as?: string | null): void;
-        /**
-         * Sets the #GDataContactsContact:gender property to `gender`.
-         *
-         * If `gender` is %NULL, the contact's gender will be removed.
-         * @param gender the new gender of the contact, or %NULL
-         */
-        set_gender(gender?: string | null): void;
-        /**
-         * Sets the #GDataContactsContact:initials property to `initials`.
-         *
-         * If `initials` is %NULL, the contact's initials will be removed.
-         * @param initials the new initials of the contact, or %NULL
-         */
-        set_initials(initials?: string | null): void;
-        /**
-         * Sets the #GDataContactsContact:maiden-name property to `maiden_name`.
-         *
-         * If `maiden_name` is %NULL, the contact's maiden name will be removed.
-         * @param maiden_name the new maiden name of the contact, or %NULL
-         */
-        set_maiden_name(maiden_name?: string | null): void;
-        /**
-         * Sets the #GDataContactsContact:mileage property to `mileage`.
-         *
-         * If `mileage` is %NULL, the contact's mileage will be removed.
-         * @param mileage the new mileage associated with the contact, or %NULL
-         */
-        set_mileage(mileage?: string | null): void;
-        /**
-         * Sets the #GDataContactsContact:name property to `name,` and increments its reference count.
-         *
-         * `name` must not be %NULL, though all its properties may be %NULL.
-         * @param name the new #GDataGDName
-         */
-        set_name(name: GDName): void;
-        /**
-         * Sets the #GDataContactsContact:nickname property to `nickname`.
-         *
-         * If `nickname` is %NULL, the contact's nickname will be removed.
-         * @param nickname the new nickname, or %NULL
-         */
-        set_nickname(nickname?: string | null): void;
-        /**
-         * Sets the #GDataContactsContact:occupation property to `occupation`.
-         *
-         * If `occupation` is %NULL, the contact's occupation will be removed.
-         * @param occupation the contact's new occupation, or %NULL
-         */
-        set_occupation(occupation?: string | null): void;
-        /**
-         * Sets the contact's photo to `data` or, if `data` is %NULL, deletes the contact's photo. `content_type` must be specified if `data` is non-%NULL.
-         *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by triggering the `cancellable` object from another thread.
-         * If the operation was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-         *
-         * If there is an error setting the photo, a %GDATA_SERVICE_ERROR_PROTOCOL_ERROR error will be returned.
-         * @param service a #GDataContactsService
-         * @param data the image data, or %NULL
-         * @param length the image length, in bytes
-         * @param content_type the content type of the image, or %NULL
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns %TRUE on success, %FALSE otherwise
-         */
-        set_photo(
-            service: ContactsService,
-            data: number | null,
-            length: number,
-            content_type?: string | null,
-            cancellable?: Gio.Cancellable | null,
-        ): boolean;
-        /**
-         * Sets the contact's photo to `data` or, if `data` is %NULL, deletes the contact's photo. `content_type` must be specified if `data` is non-%NULL. `self,`
-         * `service,` `data` and `content_type` are all reffed and copied when this function is called, so can safely be unreffed after this function returns.
-         *
-         * When the operation is finished, `callback` will be called. You can then call gdata_contacts_contact_set_photo_finish() to get the results of the
-         * operation.
-         *
-         * For more details, see gdata_contacts_contact_set_photo(), which is the synchronous version of this function.
-         *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by triggering the `cancellable` object from another thread.
-         * If the operation was cancelled, the error %G_IO_ERROR_CANCELLED will be returned by gdata_contacts_contact_set_photo_finish().
-         *
-         * If there is an error setting the photo, a %GDATA_SERVICE_ERROR_PROTOCOL_ERROR error will be returned by gdata_contacts_contact_set_photo_finish().
-         * @param service a #GDataContactsService
-         * @param data the image data, or %NULL
-         * @param length the image length, in bytes
-         * @param content_type the content type of the image, or %NULL
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the photo has been set, or %NULL
-         */
-        set_photo_async(
-            service: ContactsService,
-            data: number | null,
-            length: number,
-            content_type?: string | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an asynchronous contact photo setting operation started with gdata_contacts_contact_set_photo_async().
-         *
-         * If there is an error setting the photo, a %GDATA_SERVICE_ERROR_PROTOCOL_ERROR error will be returned.
-         * @param async_result a #GAsyncResult
-         * @returns %TRUE on success, %FALSE otherwise
-         */
-        set_photo_finish(async_result: Gio.AsyncResult): boolean;
-        /**
-         * Sets the #GDataContactsContact:priority property to `priority`.
-         *
-         * If `priority` is %NULL, the contact's priority will be removed.
-         * @param priority the contact's new priority, or %NULL
-         */
-        set_priority(priority?: string | null): void;
-        /**
-         * Sets the #GDataContactsContact:sensitivity property to `sensitivity`.
-         *
-         * If `sensitivity` is %NULL, the contact's sensitivity will be removed.
-         * @param sensitivity the contact's new sensitivity, or %NULL
-         */
-        set_sensitivity(sensitivity?: string | null): void;
-        /**
-         * Sets the #GDataContactsContact:short-name property to `short_name`.
-         *
-         * If `short_name` is %NULL, the contact's short name will be removed.
-         * @param short_name the contact's new short name, or %NULL
-         */
-        set_short_name(short_name?: string | null): void;
-        /**
-         * Sets the #GDataContactsContact:subject property to `subject`.
-         *
-         * If `subject` is %NULL, the contact's subject will be removed.
-         * @param subject the contact's new subject, or %NULL
-         */
-        set_subject(subject?: string | null): void;
-        /**
-         * Sets the value of a contact's user-defined field. User-defined field names are unique (but of the client's choosing),
-         * and reusing the same field name will result in the old value of that field being overwritten.
-         *
-         * The `name` of the field may not be %NULL, but may be an empty string.
-         *
-         * To unset a field, set `value` to %NULL.
-         * @param name the field name; an arbitrary, case-sensitive, unique string
-         * @param value the field value, or %NULL
-         */
-        set_user_defined_field(name: string, value?: string | null): void;
-    }
-
-    module ContactsGroup {
-        // Constructor properties interface
-
-        interface ConstructorProps extends Entry.ConstructorProps {
-            deleted: boolean;
-            edited: number;
-            system_group_id: string;
-            systemGroupId: string;
-        }
-    }
-
-    /**
-     * All the fields in the #GDataContactsGroup structure are private and should never be accessed directly.
-     */
-    class ContactsGroup extends Entry {
-        static $gtype: GObject.GType<ContactsGroup>;
-
-        // Properties
-
-        /**
-         * Whether the entry has been deleted.
-         */
-        get deleted(): boolean;
-        /**
-         * The last time the group was edited. If the group has not been edited yet, the content indicates the time it was created.
-         *
-         * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/protocol/#appEdited">
-         * Atom Publishing Protocol specification</ulink>.
-         */
-        get edited(): number;
-        /**
-         * The system group ID for this group, if it's a system group. If the group is not a system group, this is %NULL. Otherwise, it is one of the
-         * four system group IDs: %GDATA_CONTACTS_GROUP_CONTACTS, %GDATA_CONTACTS_GROUP_FRIENDS, %GDATA_CONTACTS_GROUP_FAMILY and
-         * %GDATA_CONTACTS_GROUP_COWORKERS.
-         *
-         * If this is non-%NULL, the group name stored in #GDataEntry:title will not be localised, so clients should provide localised group names of
-         * their own for each of the system groups. Whether a group is a system group should be detected solely on the basis of the value of this
-         * property, not by comparing the group name (#GDataEntry:title) or entry ID (#GDataEntry:id). The entry ID is not the same as the system
-         * group ID.
-         */
-        get system_group_id(): string;
-        /**
-         * The system group ID for this group, if it's a system group. If the group is not a system group, this is %NULL. Otherwise, it is one of the
-         * four system group IDs: %GDATA_CONTACTS_GROUP_CONTACTS, %GDATA_CONTACTS_GROUP_FRIENDS, %GDATA_CONTACTS_GROUP_FAMILY and
-         * %GDATA_CONTACTS_GROUP_COWORKERS.
-         *
-         * If this is non-%NULL, the group name stored in #GDataEntry:title will not be localised, so clients should provide localised group names of
-         * their own for each of the system groups. Whether a group is a system group should be detected solely on the basis of the value of this
-         * property, not by comparing the group name (#GDataEntry:title) or entry ID (#GDataEntry:id). The entry ID is not the same as the system
-         * group ID.
-         */
-        get systemGroupId(): string;
-
-        // Constructors
-
-        constructor(properties?: Partial<ContactsGroup.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](id?: string | null): ContactsGroup;
-
-        // Methods
-
-        /**
-         * Gets the #GDataContactsGroup:edited property. If the property is unset, <code class="literal">-1</code> will be returned.
-         * @returns the UNIX timestamp for the time the file was last edited, or <code class="literal">-1</code>
-         */
-        get_edited(): number;
-        /**
-         * Gets the full list of extended properties of the group; a hash table mapping property name to value.
-         * @returns a #GHashTable of extended properties
-         */
-        get_extended_properties(): GLib.HashTable<any, any>;
-        /**
-         * Gets the value of an extended property of the group. Each group can have up to 10 client-set extended properties to store data of the client's
-         * choosing.
-         * @param name the property name; an arbitrary, unique string
-         * @returns the property's value, or %NULL
-         */
-        get_extended_property(name: string): string;
-        /**
-         * Gets the #GDataContactsGroup:system-group-id property. If the group is not a system group, %NULL will be returned.
-         * @returns the group's system group ID, or %NULL
-         */
-        get_system_group_id(): string;
-        /**
-         * Returns whether the group has recently been deleted. This will always return %FALSE unless #GDataContactsQuery:show-deleted has been set to %TRUE
-         * for the query which returned the group; then this function will return %TRUE only if the group has been deleted.
-         *
-         * If a group has been deleted, no other information is available about it. This is designed to allow groups to be deleted from local address
-         * books using incremental updates from the server (e.g. with #GDataQuery:updated-min and #GDataContactsQuery:show-deleted).
-         * @returns %TRUE if the group has been deleted, %FALSE otherwise
-         */
-        is_deleted(): boolean;
-        /**
-         * Sets the value of a group's extended property. Extended property names are unique (but of the client's choosing), and reusing the same property
-         * name will result in the old value of that property being overwritten.
-         *
-         * To unset a property, set `value` to %NULL or an empty string.
-         *
-         * A group may have up to 10 extended properties, and each should be reasonably small (i.e. not a photo or ringtone). For more information, see the
-         * <ulink type="http" url="http://code.google.com/apis/contacts/docs/2.0/reference.html#ProjectionsAndExtended">online documentation</ulink>.
-         * %FALSE will be returned if you attempt to add more than 10 extended properties.
-         * @param name the property name; an arbitrary, unique string
-         * @param value the property value, or %NULL
-         * @returns %TRUE if the property was updated or deleted successfully, %FALSE otherwise
-         */
-        set_extended_property(name: string, value?: string | null): boolean;
-    }
-
-    module ContactsQuery {
-        // Constructor properties interface
-
-        interface ConstructorProps extends Query.ConstructorProps {
-            group: string;
-            order_by: string;
-            orderBy: string;
-            show_deleted: boolean;
-            showDeleted: boolean;
-            sort_order: string;
-            sortOrder: string;
-        }
-    }
-
-    /**
-     * All the fields in the #GDataContactsQuery structure are private and should never be accessed directly.
-     */
-    class ContactsQuery extends Query {
-        static $gtype: GObject.GType<ContactsQuery>;
-
-        // Properties
-
-        /**
-         * Constrains the results to only those belonging to the group specified. The value of this parameter
-         * should be a group ID URI.
-         */
-        get group(): string;
-        set group(val: string);
-        /**
-         * Sorting criterion. The only supported value is <literal>lastmodified</literal>.
-         */
-        get order_by(): string;
-        set order_by(val: string);
-        /**
-         * Sorting criterion. The only supported value is <literal>lastmodified</literal>.
-         */
-        get orderBy(): string;
-        set orderBy(val: string);
-        /**
-         * Whether to include deleted contacts in the query feed. Deleted contacts return %TRUE
-         * from gdata_contacts_contact_is_deleted(), and have no other information. They do not
-         * normally appear in query results.
-         */
-        get show_deleted(): boolean;
-        set show_deleted(val: boolean);
-        /**
-         * Whether to include deleted contacts in the query feed. Deleted contacts return %TRUE
-         * from gdata_contacts_contact_is_deleted(), and have no other information. They do not
-         * normally appear in query results.
-         */
-        get showDeleted(): boolean;
-        set showDeleted(val: boolean);
-        /**
-         * Sorting order direction. Can be either <literal>ascending</literal> or <literal>descending</literal>.
-         */
-        get sort_order(): string;
-        set sort_order(val: string);
-        /**
-         * Sorting order direction. Can be either <literal>ascending</literal> or <literal>descending</literal>.
-         */
-        get sortOrder(): string;
-        set sortOrder(val: string);
-
-        // Constructors
-
-        constructor(properties?: Partial<ContactsQuery.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](q?: string | null): ContactsQuery;
-
-        static new_with_limits(q: string | null, start_index: number, max_results: number): ContactsQuery;
-
-        // Methods
-
-        /**
-         * Gets the #GDataContactsQuery:group property.
-         * @returns the group property, or %NULL if it is unset
-         */
-        get_group(): string;
-        /**
-         * Gets the #GDataContactsQuery:order-by property.
-         * @returns the order by property, or %NULL if it is unset
-         */
-        get_order_by(): string;
-        /**
-         * Gets the #GDataContactsQuery:sort-order property.
-         * @returns the sort order property, or %NULL if it is unset
-         */
-        get_sort_order(): string;
-        /**
-         * Sets the #GDataContactsQuery:group property of the #GDataContactsQuery to the new group ID URI, `group`.
-         *
-         * Set `group` to %NULL to unset the property in the query URI.
-         * @param group a new group ID URI, or %NULL
-         */
-        set_group(group?: string | null): void;
-        /**
-         * Sets the #GDataContactsQuery:order-by property of the #GDataContactsQuery to the new order by string, `order_by`.
-         *
-         * Set `order_by` to %NULL to unset the property in the query URI.
-         * @param order_by a new order by string, or %NULL
-         */
-        set_order_by(order_by?: string | null): void;
-        /**
-         * Sets the #GDataContactsQuery:show-deleted property of the #GDataContactsQuery.
-         * @param show_deleted %TRUE to show deleted contacts, %FALSE otherwise
-         */
-        set_show_deleted(show_deleted: boolean): void;
-        /**
-         * Sets the #GDataContactsQuery:sort-order property of the #GDataContactsQuery to the new sort order string, `sort_order`.
-         *
-         * Set `sort_order` to %NULL to unset the property in the query URI.
-         * @param sort_order a new sort order string, or %NULL
-         */
-        set_sort_order(sort_order?: string | null): void;
-    }
-
-    module ContactsService {
-        // Constructor properties interface
-
-        interface ConstructorProps extends Service.ConstructorProps, Batchable.ConstructorProps {}
-    }
-
-    /**
-     * All the fields in the #GDataContactsService structure are private and should never be accessed directly.
-     */
-    class ContactsService extends Service implements Batchable {
-        static $gtype: GObject.GType<ContactsService>;
-
-        // Constructors
-
-        constructor(properties?: Partial<ContactsService.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](authorizer?: Authorizer | null): ContactsService;
-
-        // Static methods
-
-        /**
-         * The primary #GDataAuthorizationDomain for interacting with Google Contacts. This will not normally need to be used, as it's used internally
-         * by the #GDataContactsService methods. However, if using the plain #GDataService methods to implement custom queries or requests which libgdata
-         * does not support natively, then this domain may be needed to authorize the requests.
-         *
-         * The domain never changes, and is interned so that pointer comparison can be used to differentiate it from other authorization domains.
-         */
-        static get_primary_authorization_domain(): AuthorizationDomain;
-
-        // Methods
-
-        /**
-         * Inserts `contact` by uploading it to the online contacts service.
-         *
-         * For more details, see gdata_service_insert_entry().
-         * @param contact the #GDataContactsContact to insert
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns an updated #GDataContactsContact, or %NULL; unref with g_object_unref()
-         */
-        insert_contact(contact: ContactsContact, cancellable?: Gio.Cancellable | null): ContactsContact;
-        /**
-         * Inserts `contact` by uploading it to the online contacts service. `self` and `contact` are both reffed when this function is called, so can safely be
-         * unreffed after this function returns.
-         *
-         * `callback` should call gdata_service_insert_entry_finish() to obtain a #GDataContactsContact representing the inserted contact and to check for
-         * possible errors.
-         *
-         * For more details, see gdata_contacts_service_insert_contact(), which is the synchronous version of this function,
-         * and gdata_service_insert_entry_async(), which is the base asynchronous insertion function.
-         * @param contact the #GDataContactsContact to insert
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when insertion is finished
-         */
-        insert_contact_async(
-            contact: ContactsContact,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Inserts a new contact group described by `group`. The user must be authenticated to use this function.
-         * @param group a #GDataContactsGroup to create on the server
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns the inserted #GDataContactsGroup; unref with g_object_unref()
-         */
-        insert_group(group: ContactsGroup, cancellable?: Gio.Cancellable | null): ContactsGroup;
-        /**
-         * Inserts a new contact group described by `group`. The user must be authenticated to use this function. `self` and `group` are both reffed when this
-         * function is called, so can safely be unreffed after this function returns.
-         *
-         * `callback` should call gdata_service_insert_entry_finish() to obtain a #GDataContactsGroup representing the inserted group and to check for possible
-         * errors.
-         *
-         * For more details, see gdata_contacts_service_insert_group(), which is the synchronous version of this function, and
-         * gdata_service_insert_entry_async(), which is the base asynchronous insertion function.
-         * @param group the #GDataContactsGroup to insert
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when insertion is finished
-         */
-        insert_group_async(
-            group: ContactsGroup,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Queries the service to return a list of contacts matching the given `query`.
-         *
-         * For more details, see gdata_service_query().
-         * @param query a #GDataQuery with the query parameters, or %NULL
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
-         * @returns a #GDataFeed of query results; unref with g_object_unref()
-         */
-        query_contacts(
-            query?: Query | null,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: QueryProgressCallback | null,
-        ): Feed;
-        /**
-         * Queries the service to return a list of contacts matching the given `query`. `self` and
-         * `query` are all reffed when this function is called, so can safely be unreffed after this function returns.
-         *
-         * For more details, see gdata_contacts_service_query_contacts(), which is the synchronous version of this function,
-         * and gdata_service_query_async(), which is the base asynchronous query function.
-         * @param query a #GDataQuery with the query parameters, or %NULL
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
-         * @param destroy_progress_user_data the function to call when @progress_callback will not be called any more, or %NULL. This function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it.
-         * @param callback a #GAsyncReadyCallback to call when the query is finished
-         */
-        query_contacts_async(
-            query?: Query | null,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: QueryProgressCallback | null,
-            destroy_progress_user_data?: GLib.DestroyNotify | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Queries the service to return a list of groups matching the given `query`.
-         *
-         * For more details, see gdata_service_query().
-         * @param query a #GDataQuery with the query parameters, or %NULL
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
-         * @returns a #GDataFeed of query results; unref with g_object_unref()
-         */
-        query_groups(
-            query?: Query | null,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: QueryProgressCallback | null,
-        ): Feed;
-        /**
-         * Queries the service to return a list of groups matching the given `query`. `self` and `query` are all reffed when this function is called, so can
-         * safely be unreffed after this function returns.
-         *
-         * For more details, see gdata_contacts_service_query_groups(), which is the synchronous version of this function, and gdata_service_query_async(),
-         * which is the base asynchronous query function.
-         * @param query a #GDataQuery with the query parameters, or %NULL
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
-         * @param destroy_progress_user_data the function to call when @progress_callback will not be called any more, or %NULL. This function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it.
-         * @param callback a #GAsyncReadyCallback to call when the query is finished
-         */
-        query_groups_async(
-            query?: Query | null,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: QueryProgressCallback | null,
-            destroy_progress_user_data?: GLib.DestroyNotify | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-
-        // Inherited properties
-        /**
-         * An object which implements #GDataAuthorizer. This should have previously been authenticated authorized against this service type (and
-         * potentially other service types). The service will use the authorizer to add an authorization token to each request it performs.
-         *
-         * Your application should call methods on the #GDataAuthorizer object itself in order to authenticate with the Google accounts service and
-         * authorize against this service type. See the documentation for the particular #GDataAuthorizer implementation being used for more details.
-         *
-         * The authorizer for a service can be changed at runtime for a different #GDataAuthorizer object or %NULL without affecting ongoing requests
-         * and operations.
-         *
-         * Note that it's only necessary to set an authorizer on the service if your application is going to make requests of the service which
-         * require authorization. For example, listing the current most popular videos on YouTube does not require authorization, but uploading a
-         * video to YouTube does. It's an unnecessary overhead to require the user to authorize against a service when not strictly required.
-         */
-        get authorizer(): Authorizer;
-        set authorizer(val: Authorizer);
-        /**
-         * The locale to use for network requests, in Unix locale format. (e.g. "en_GB", "cs", "de_DE".) Use %NULL for the default "C" locale
-         * (typically "en_US").
-         *
-         * Typically, this locale will be used by the server-side software to localise results, such as by translating category names, or by choosing
-         * geographically relevant search results. This will vary from service to service.
-         *
-         * The server-side behaviour is undefined if it doesn't support a given locale.
-         */
-        get locale(): string;
-        set locale(val: string);
-        /**
-         * The #GProxyResolver used to determine a proxy URI.  Setting this will clear the #GDataService:proxy-uri property.
-         */
-        get proxy_resolver(): Gio.ProxyResolver;
-        set proxy_resolver(val: Gio.ProxyResolver);
-        /**
-         * The #GProxyResolver used to determine a proxy URI.  Setting this will clear the #GDataService:proxy-uri property.
-         */
-        get proxyResolver(): Gio.ProxyResolver;
-        set proxyResolver(val: Gio.ProxyResolver);
-        /**
-         * The proxy URI used internally for all network requests.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its proxy URI setting.
-         */
-        get proxy_uri(): Soup.URI;
-        set proxy_uri(val: Soup.URI);
-        /**
-         * The proxy URI used internally for all network requests.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its proxy URI setting.
-         */
-        get proxyUri(): Soup.URI;
-        set proxyUri(val: Soup.URI);
-        /**
-         * A timeout, in seconds, for network operations. If the timeout is exceeded, the operation will be cancelled and
-         * %GDATA_SERVICE_ERROR_NETWORK_ERROR will be returned.
-         *
-         * If the timeout is <code class="literal">0</code>, operations will never time out.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its timeout setting.
-         */
-        get timeout(): number;
-        set timeout(val: number);
-
-        // Inherited methods
-        /**
-         * Creates a new #GDataBatchOperation for the given #GDataBatchable service, and with the given `feed_uri`. `feed_uri` is normally the %GDATA_LINK_BATCH
-         * link URI in the appropriate #GDataFeed from the service. If authorization will be required to perform any of the requests in the batch operation,
-         * `domain` must be non-%NULL, and must be an authorization domain which covers all of the requests. Otherwise, `domain` may be %NULL if authorization
-         * is not required.
-         * @param domain the #GDataAuthorizationDomain to authorize the operation, or %NULL
-         * @param feed_uri the URI to send the batch operation request to
-         * @returns a new #GDataBatchOperation; unref with g_object_unref()
-         */
-        create_operation(domain: AuthorizationDomain | null, feed_uri: string): BatchOperation;
-        /**
-         * Deletes `entry` from the server. For more information about the concept of deleting entries, see the
-         * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/basics.html#DeletingEntry">online documentation</ulink> for the GData
-         * protocol.
-         *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by triggering the `cancellable` object from another thread.
-         * If the operation was cancelled before or during network activity, the error %G_IO_ERROR_CANCELLED will be returned. Cancellation has no effect
-         * after network activity has finished, however, and the deletion will return successfully (or return an error sent by the server) if it is first
-         * cancelled after network activity has finished. See the <link linkend="cancellable-support">overview of cancellation</link> for
-         * more details.
-         *
-         * If there is an error deleting the entry, a %GDATA_SERVICE_ERROR_PROTOCOL_ERROR error will be returned. Currently, subclasses
-         * <emphasis>cannot</emphasis> cannot override this or provide more specific errors.
-         * @param domain the #GDataAuthorizationDomain the deletion falls under, or %NULL
-         * @param entry the #GDataEntry to delete
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns %TRUE on success, %FALSE otherwise
-         */
-        delete_entry(domain: AuthorizationDomain | null, entry: Entry, cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Deletes `entry` from the server. `self` and `entry` are both reffed when this function is called,
-         * so can safely be unreffed after this function returns.
-         *
-         * For more details, see gdata_service_delete_entry(), which is the synchronous version of this function.
-         *
-         * When the operation is finished, `callback` will be called. You can then call gdata_service_delete_entry_finish()
-         * to get the results of the operation.
-         * @param domain the #GDataAuthorizationDomain the deletion falls under, or %NULL
-         * @param entry the #GDataEntry to delete
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when deletion is finished, or %NULL
-         */
-        delete_entry_async(
-            domain: AuthorizationDomain | null,
-            entry: Entry,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an asynchronous entry deletion operation started with gdata_service_delete_entry_async().
-         * @param async_result a #GAsyncResult
-         * @returns %TRUE on success, %FALSE otherwise
-         */
-        delete_entry_finish(async_result: Gio.AsyncResult): boolean;
-        /**
-         * Gets the #GDataAuthorizer object currently in use by the service. See the documentation for #GDataService:authorizer for more details.
-         * @returns the authorizer object for this service, or %NULL
-         */
-        get_authorizer(): Authorizer;
-        /**
-         * Returns the locale currently being used for network requests, or %NULL if the locale is the default.
-         * @returns the current locale
-         */
-        get_locale(): string;
-        /**
-         * Gets the #GProxyResolver on the #GDataService's #SoupSession.
-         * @returns a #GProxyResolver, or %NULL
-         */
-        get_proxy_resolver(): Gio.ProxyResolver | null;
-        /**
-         * Gets the proxy URI on the #GDataService's #SoupSession.
-         * @returns the proxy URI, or %NULL
-         */
-        get_proxy_uri(): Soup.URI;
-        /**
-         * Gets the #GDataService:timeout property; the network timeout, in seconds.
-         * @returns the timeout, or <code class="literal">0</code>
-         */
-        get_timeout(): number;
-        /**
-         * Inserts `entry` by uploading it to the online service at `upload_uri`. For more information about the concept of inserting entries, see
-         * the <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/basics.html#InsertingEntry">online documentation</ulink> for the GData
-         * protocol.
-         *
-         * The service will return an updated version of the entry, which is the return value of this function on success.
-         *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by triggering the `cancellable` object from another thread.
-         * If the operation was cancelled before or during network activity, the error %G_IO_ERROR_CANCELLED will be returned. Cancellation has no effect
-         * after network activity has finished, however, and the insertion will return successfully (or return an error sent by the server) if it is first
-         * cancelled after network activity has finished. See the <link linkend="cancellable-support">overview of cancellation</link> for
-         * more details.
-         *
-         * If the entry is marked as already having been inserted a %GDATA_SERVICE_ERROR_ENTRY_ALREADY_INSERTED error will be returned immediately
-         * (there will be no network requests).
-         *
-         * If there is an error inserting the entry, a %GDATA_SERVICE_ERROR_PROTOCOL_ERROR error will be returned. Currently, subclasses
-         * <emphasis>cannot</emphasis> cannot override this or provide more specific errors.
-         * @param domain the #GDataAuthorizationDomain the insertion operation falls under, or %NULL
-         * @param upload_uri the URI to which the upload should be sent
-         * @param entry the #GDataEntry to insert
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns an updated #GDataEntry, or %NULL; unref with g_object_unref()
-         */
-        insert_entry(
-            domain: AuthorizationDomain | null,
-            upload_uri: string,
-            entry: Entry,
-            cancellable?: Gio.Cancellable | null,
-        ): Entry;
-        /**
-         * Inserts `entry` by uploading it to the online service at `upload_uri`. `self,` `upload_uri` and
-         * `entry` are all reffed/copied when this function is called, so can safely be freed after this function returns.
-         *
-         * For more details, see gdata_service_insert_entry(), which is the synchronous version of this function.
-         *
-         * When the operation is finished, `callback` will be called. You can then call gdata_service_insert_entry_finish()
-         * to get the results of the operation.
-         * @param domain the #GDataAuthorizationDomain the insertion operation falls under, or %NULL
-         * @param upload_uri the URI to which the upload should be sent
-         * @param entry the #GDataEntry to insert
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when insertion is finished, or %NULL
-         */
-        insert_entry_async(
-            domain: AuthorizationDomain | null,
-            upload_uri: string,
-            entry: Entry,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an asynchronous entry insertion operation started with gdata_service_insert_entry_async().
-         * @param async_result a #GAsyncResult
-         * @returns an updated #GDataEntry, or %NULL; unref with g_object_unref()
-         */
-        insert_entry_finish(async_result: Gio.AsyncResult): Entry;
-        /**
-         * Determines whether the service is authorized for all the #GDataAuthorizationDomains it belongs to (as returned by
-         * gdata_service_get_authorization_domains()). If the service's #GDataService:authorizer is %NULL, %FALSE is always returned.
-         *
-         * This is basically a convenience method for checking that the service's #GDataAuthorizer is authorized for all the service's
-         * #GDataAuthorizationDomains.
-         * @returns %TRUE if the service is authorized for all its domains, %FALSE otherwise
-         */
-        is_authorized(): boolean;
-        /**
-         * Queries the service's `feed_uri` feed to build a #GDataFeed.
-         *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by triggering the `cancellable` object from another thread.
-         * If the operation was cancelled before or during network activity, the error %G_IO_ERROR_CANCELLED will be returned. Cancellation has no effect
-         * after network activity has finished, however, and the query will return successfully (or return an error sent by the server) if it is first
-         * cancelled after network activity has finished. See the <link linkend="cancellable-support">overview of cancellation</link> for
-         * more details.
-         *
-         * A %GDATA_SERVICE_ERROR_PROTOCOL_ERROR will be returned if the server indicates there is a problem with the query, but subclasses may override
-         * this and return their own errors. See their documentation for more details.
-         *
-         * For each entry in the response feed, `progress_callback` will be called in the main thread. If there was an error parsing the XML response,
-         * a #GDataParserError will be returned.
-         *
-         * If the query is successful and the feed supports pagination, `query` will be updated with the pagination URIs, and the next or previous page
-         * can then be loaded by calling gdata_query_next_page() or gdata_query_previous_page() before running the query again.
-         *
-         * If the #GDataQuery's ETag is set and it finds a match on the server, %NULL will be returned, but `error` will remain unset. Otherwise,
-         * `query'`s ETag will be updated with the ETag from the returned feed, if available.
-         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
-         * @param feed_uri the feed URI to query, including the host name and protocol
-         * @param query a #GDataQuery with the query parameters, or %NULL
-         * @param entry_type a #GType for the #GDataEntrys to build from the XML
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
-         * @returns a #GDataFeed of query results, or %NULL; unref with g_object_unref()
-         */
-        query(
-            domain: AuthorizationDomain | null,
-            feed_uri: string,
-            query: Query | null,
-            entry_type: GObject.GType,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: QueryProgressCallback | null,
-        ): Feed;
-        /**
-         * Queries the service's `feed_uri` feed to build a #GDataFeed. `self,` `feed_uri` and
-         * `query` are all reffed/copied when this function is called, so can safely be freed after this function returns.
-         *
-         * For more details, see gdata_service_query(), which is the synchronous version of this function.
-         *
-         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_finish()
-         * to get the results of the operation.
-         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
-         * @param feed_uri the feed URI to query, including the host name and protocol
-         * @param query a #GDataQuery with the query parameters, or %NULL
-         * @param entry_type a #GType for the #GDataEntrys to build from the XML
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
-         * @param destroy_progress_user_data the function to call when @progress_callback will not be called any more, or %NULL. This function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it.
-         * @param callback a #GAsyncReadyCallback to call when the query is finished
-         */
-        query_async(
-            domain: AuthorizationDomain | null,
-            feed_uri: string,
-            query: Query | null,
-            entry_type: GObject.GType,
-            cancellable?: Gio.Cancellable | null,
-            progress_callback?: QueryProgressCallback | null,
-            destroy_progress_user_data?: GLib.DestroyNotify | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an asynchronous query operation started with gdata_service_query_async().
-         * @param async_result a #GAsyncResult
-         * @returns a #GDataFeed of query results, or %NULL; unref with g_object_unref()
-         */
-        query_finish(async_result: Gio.AsyncResult): Feed;
-        /**
-         * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
-         * gdata_entry_get_id().
-         *
-         * Parameters and errors are as for gdata_service_query(). Most of the properties of `query` aren't relevant, and
-         * will cause a server-side error if used. The most useful property to use is #GDataQuery:etag, which will cause the
-         * server to not return anything if the entry hasn't been modified since it was given the specified ETag; thus saving
-         * bandwidth. If the server does not return anything for this reason, gdata_service_query_single_entry() will return
-         * %NULL, but will not set an error in `error`.
-         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
-         * @param entry_id the entry ID of the desired entry
-         * @param query a #GDataQuery with the query parameters, or %NULL
-         * @param entry_type a #GType for the #GDataEntry to build from the XML
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns a #GDataEntry, or %NULL; unref with g_object_unref()
-         */
-        query_single_entry(
-            domain: AuthorizationDomain | null,
-            entry_id: string,
-            query: Query | null,
-            entry_type: GObject.GType,
-            cancellable?: Gio.Cancellable | null,
-        ): Entry;
-        /**
-         * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
-         * gdata_entry_get_id(). `self,` `query` and `entry_id` are reffed/copied when this
-         * function is called, so can safely be freed after this function returns.
-         *
-         * For more details, see gdata_service_query_single_entry(), which is the synchronous version of this function.
-         *
-         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_single_entry_finish()
-         * to get the results of the operation.
-         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
-         * @param entry_id the entry ID of the desired entry
-         * @param query a #GDataQuery with the query parameters, or %NULL
-         * @param entry_type a #GType for the #GDataEntry to build from the XML
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the query is finished
-         */
-        query_single_entry_async(
-            domain: AuthorizationDomain | null,
-            entry_id: string,
-            query: Query | null,
-            entry_type: GObject.GType,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an asynchronous query operation for a single entry, as started with gdata_service_query_single_entry_async().
-         * @param async_result a #GAsyncResult
-         * @returns a #GDataEntry, or %NULL; unref with g_object_unref()
-         */
-        query_single_entry_finish(async_result: Gio.AsyncResult): Entry;
-        /**
-         * Sets #GDataService:authorizer to `authorizer`. This may be %NULL if the service will only make requests in future which don't require authorization.
-         * See the documentation for #GDataService:authorizer for more information.
-         * @param authorizer a new authorizer object for the service, or %NULL
-         */
-        set_authorizer(authorizer: Authorizer): void;
-        /**
-         * Set the locale used for network requests to `locale,` given in standard Unix locale format. See #GDataService:locale for more details.
-         *
-         * Note that while it's possible to change the locale after sending network requests, it is unsupported, as the server-side software may behave
-         * unexpectedly. The only supported use of this function is after creation of a service, but before any network requests are made.
-         * @param locale the new locale in Unix locale format, or %NULL for the default locale
-         */
-        set_locale(locale?: string | null): void;
-        /**
-         * Sets the #GProxyResolver on the #SoupSession used internally by the given #GDataService.
-         *
-         * Setting this will clear the #GDataService:proxy-uri property.
-         * @param proxy_resolver a #GProxyResolver, or %NULL
-         */
-        set_proxy_resolver(proxy_resolver?: Gio.ProxyResolver | null): void;
-        /**
-         * Sets the proxy URI on the #SoupSession used internally by the given #GDataService.
-         * This forces all requests through the given proxy.
-         *
-         * If `proxy_uri` is %NULL, no proxy will be used.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its proxy URI setting.
-         * @param proxy_uri the proxy URI, or %NULL
-         */
-        set_proxy_uri(proxy_uri?: Soup.URI | null): void;
-        /**
-         * Sets the #GDataService:timeout property; the network timeout, in seconds.
-         *
-         * If `timeout` is <code class="literal">0</code>, network operations will never time out.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its timeout setting.
-         * @param timeout the timeout, or <code class="literal">0</code>
-         */
-        set_timeout(timeout: number): void;
-        /**
-         * Updates `entry` by PUTting it to its <literal>edit</literal> link's URI. For more information about the concept of updating entries, see
-         * the <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/basics.html#UpdatingEntry">online documentation</ulink> for the GData
-         * protocol.
-         *
-         * The service will return an updated version of the entry, which is the return value of this function on success.
-         *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by triggering the `cancellable` object from another thread.
-         * If the operation was cancelled before or during network activity, the error %G_IO_ERROR_CANCELLED will be returned. Cancellation has no effect
-         * after network activity has finished, however, and the update will return successfully (or return an error sent by the server) if it is first
-         * cancelled after network activity has finished. See the <link linkend="cancellable-support">overview of cancellation</link> for
-         * more details.
-         *
-         * If there is an error updating the entry, a %GDATA_SERVICE_ERROR_PROTOCOL_ERROR error will be returned. Currently, subclasses
-         * <emphasis>cannot</emphasis> cannot override this or provide more specific errors.
-         * @param domain the #GDataAuthorizationDomain the update operation falls under, or %NULL
-         * @param entry the #GDataEntry to update
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns an updated #GDataEntry, or %NULL; unref with g_object_unref()
-         */
-        update_entry(domain: AuthorizationDomain | null, entry: Entry, cancellable?: Gio.Cancellable | null): Entry;
-        /**
-         * Updates `entry` by PUTting it to its <literal>edit</literal> link's URI. `self` and
-         * `entry` are both reffed when this function is called, so can safely be unreffed after this function returns.
-         *
-         * For more details, see gdata_service_update_entry(), which is the synchronous version of this function.
-         *
-         * When the operation is finished, `callback` will be called. You can then call gdata_service_update_entry_finish()
-         * to get the results of the operation.
-         * @param domain the #GDataAuthorizationDomain the update operation falls under, or %NULL
-         * @param entry the #GDataEntry to update
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the update is finished, or %NULL
-         */
-        update_entry_async(
-            domain: AuthorizationDomain | null,
-            entry: Entry,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an asynchronous entry update operation started with gdata_service_update_entry_async().
-         * @param async_result a #GAsyncResult
-         * @returns an updated #GDataEntry, or %NULL; unref with g_object_unref()
-         */
-        update_entry_finish(async_result: Gio.AsyncResult): Entry;
-        /**
-         * a function to allow subclasses to append their own headers to queries before they are submitted to the online service,
-         * using the given authorization domain; new in version 0.9.0
-         * @param domain
-         * @param message
-         */
-        vfunc_append_query_headers(domain: AuthorizationDomain, message: Soup.Message): void;
-        /**
-         * a function to parse error responses to queries from the online service. It should set the error
-         * from the status, reason phrase and response body it is passed.
-         * @param operation_type
-         * @param status
-         * @param reason_phrase
-         * @param response_body
-         * @param length
-         */
-        vfunc_parse_error_response(
-            operation_type: OperationType,
-            status: number,
-            reason_phrase: string,
-            response_body: string,
-            length: number,
-        ): void;
     }
 
     module DocumentsAccessRule {
@@ -8225,9 +5468,6 @@ export namespace GData {
         interface ConstructorProps extends Entry.ConstructorProps, AccessHandler.ConstructorProps {
             can_edit: boolean;
             canEdit: boolean;
-            document_id: string;
-            documentId: string;
-            edited: number;
             file_size: number;
             fileSize: number;
             is_deleted: boolean;
@@ -8263,22 +5503,6 @@ export namespace GData {
          * Indicates whether the current user can edit this file.
          */
         get canEdit(): boolean;
-        /**
-         * The document ID of the document, which is different from its entry ID (GDataEntry:id). The
-         * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#terminology_used_in_this_guide">online GData
-         * Documentation</ulink> refers to these as “untyped resource IDs”.
-         */
-        get document_id(): string;
-        /**
-         * The document ID of the document, which is different from its entry ID (GDataEntry:id). The
-         * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#terminology_used_in_this_guide">online GData
-         * Documentation</ulink> refers to these as “untyped resource IDs”.
-         */
-        get documentId(): string;
-        /**
-         * The last time the document was edited. If the document has not been edited yet, the content indicates the time it was created.
-         */
-        get edited(): number;
         /**
          * The size of the document. This is only set for non-document files.
          * Standard formats, such as #GDataDocumentsText,
@@ -8401,22 +5625,10 @@ export namespace GData {
          */
         add_documents_property(property: DocumentsProperty): boolean;
         /**
-         * Gets the #GDataDocumentsEntry:document-id property. The
-         * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#terminology_used_in_this_guide">online GData Documentation</ulink>
-         * refers to these as “untyped resource IDs”.
-         * @returns the document's document ID
-         */
-        get_document_id(): string;
-        /**
          * Gets a list of the #GDataDocumentsPropertys for this entry.
          * @returns a #GList of pointers to #GDataDocumentsPropertys
          */
         get_document_properties(): DocumentsProperty[];
-        /**
-         * Gets the #GDataDocumentsEntry:edited property. If the property is unset, <code class="literal">-1</code> will be returned.
-         * @returns the UNIX timestamp for the time the document was last edited, or <code class="literal">-1</code>
-         */
-        get_edited(): number;
         /**
          * Gets the #GDataDocumentsEntry:file-size property.
          * @returns the size of the document in bytes
@@ -9749,12 +6961,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -10380,6 +7586,42 @@ export namespace GData {
          * @param entry the #GDataDocumentsEntry to add to @folder
          * @param folder the #GDataDocumentsFolder to add @entry to
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        add_entry_to_folder_async(
+            entry: DocumentsEntry,
+            folder: DocumentsFolder,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<DocumentsEntry>;
+        /**
+         * Add the given `entry` to the specified `folder`. `self,` `entry` and `folder` are all reffed when this function is called, so can safely be unreffed
+         * after this function returns.
+         *
+         * For more details, see gdata_documents_service_add_entry_to_folder(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_documents_service_add_entry_to_folder_finish() to get the results
+         * of the operation.
+         * @param entry the #GDataDocumentsEntry to add to @folder
+         * @param folder the #GDataDocumentsFolder to add @entry to
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished, or %NULL
+         */
+        add_entry_to_folder_async(
+            entry: DocumentsEntry,
+            folder: DocumentsFolder,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Add the given `entry` to the specified `folder`. `self,` `entry` and `folder` are all reffed when this function is called, so can safely be unreffed
+         * after this function returns.
+         *
+         * For more details, see gdata_documents_service_add_entry_to_folder(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_documents_service_add_entry_to_folder_finish() to get the results
+         * of the operation.
+         * @param entry the #GDataDocumentsEntry to add to @folder
+         * @param folder the #GDataDocumentsFolder to add @entry to
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the operation is finished, or %NULL
          */
         add_entry_to_folder_async(
@@ -10387,7 +7629,7 @@ export namespace GData {
             folder: DocumentsFolder,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<DocumentsEntry> | void;
         /**
          * Finish an asynchronous operation to add a #GDataDocumentsEntry to a folder started with gdata_documents_service_add_entry_to_folder_async().
          * @param async_result a #GAsyncResult
@@ -10413,13 +7655,45 @@ export namespace GData {
          * of the operation.
          * @param document the #GDataDocumentsDocument to copy
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        copy_document_async(
+            document: DocumentsDocument,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<DocumentsDocument>;
+        /**
+         * Copy the given `document,` producing a duplicate document in the same folder and returning its #GDataDocumentsDocument. `self` and `document` are
+         * both reffed when this function is called, so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_documents_service_copy_document(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_documents_service_copy_document_finish() to get the results
+         * of the operation.
+         * @param document the #GDataDocumentsDocument to copy
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished, or %NULL
+         */
+        copy_document_async(
+            document: DocumentsDocument,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Copy the given `document,` producing a duplicate document in the same folder and returning its #GDataDocumentsDocument. `self` and `document` are
+         * both reffed when this function is called, so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_documents_service_copy_document(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_documents_service_copy_document_finish() to get the results
+         * of the operation.
+         * @param document the #GDataDocumentsDocument to copy
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the operation is finished, or %NULL
          */
         copy_document_async(
             document: DocumentsDocument,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<DocumentsDocument> | void;
         /**
          * Finish an asynchronous operation to copy a #GDataDocumentsDocument started with gdata_documents_service_copy_document_async().
          * @param async_result a #GAsyncResult
@@ -10457,9 +7731,35 @@ export namespace GData {
          * When the operation is finished, `callback` will be called. You can then call gdata_documents_service_get_metadata_finish() to get the results
          * of the operation.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        get_metadata_async(cancellable?: Gio.Cancellable | null): Promise<DocumentsMetadata>;
+        /**
+         * Gets a #GDataDocumentsMetadata object containing metadata about the documents
+         * service itself, like how large the user quota is.
+         *
+         * For more details, see gdata_documents_service_get_metadata(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_documents_service_get_metadata_finish() to get the results
+         * of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the operation is finished, or %NULL
          */
-        get_metadata_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_metadata_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Gets a #GDataDocumentsMetadata object containing metadata about the documents
+         * service itself, like how large the user quota is.
+         *
+         * For more details, see gdata_documents_service_get_metadata(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_documents_service_get_metadata_finish() to get the results
+         * of the operation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished, or %NULL
+         */
+        get_metadata_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<DocumentsMetadata> | void;
         /**
          * Finish an asynchronous operation to get a #GDataDocumentsMetadata started with gdata_documents_service_get_metadata_async().
          * @param async_result a #GAsyncResult
@@ -10559,6 +7859,42 @@ export namespace GData {
          * @param entry the #GDataDocumentsEntry to remove from @folder
          * @param folder the #GDataDocumentsFolder to remove @entry from
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        remove_entry_from_folder_async(
+            entry: DocumentsEntry,
+            folder: DocumentsFolder,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<DocumentsEntry>;
+        /**
+         * Remove the given `entry` from the specified `folder`. `self,` `entry` and `folder` are all reffed when this function is called, so can safely be unreffed
+         * after this function returns.
+         *
+         * For more details, see gdata_documents_service_remove_entry_from_folder(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_documents_service_remove_entry_from_folder_finish() to get the
+         * results of the operation.
+         * @param entry the #GDataDocumentsEntry to remove from @folder
+         * @param folder the #GDataDocumentsFolder to remove @entry from
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished, or %NULL
+         */
+        remove_entry_from_folder_async(
+            entry: DocumentsEntry,
+            folder: DocumentsFolder,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Remove the given `entry` from the specified `folder`. `self,` `entry` and `folder` are all reffed when this function is called, so can safely be unreffed
+         * after this function returns.
+         *
+         * For more details, see gdata_documents_service_remove_entry_from_folder(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_documents_service_remove_entry_from_folder_finish() to get the
+         * results of the operation.
+         * @param entry the #GDataDocumentsEntry to remove from @folder
+         * @param folder the #GDataDocumentsFolder to remove @entry from
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the operation is finished, or %NULL
          */
         remove_entry_from_folder_async(
@@ -10566,7 +7902,7 @@ export namespace GData {
             folder: DocumentsFolder,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<DocumentsEntry> | void;
         /**
          * Finish an asynchronous operation to remove a #GDataDocumentsEntry from a folder started with
          * gdata_documents_service_remove_entry_from_folder_async().
@@ -10745,29 +8081,15 @@ export namespace GData {
         get locale(): string;
         set locale(val: string);
         /**
-         * The #GProxyResolver used to determine a proxy URI.  Setting this will clear the #GDataService:proxy-uri property.
+         * The #GProxyResolver used to determine a proxy URI.
          */
         get proxy_resolver(): Gio.ProxyResolver;
         set proxy_resolver(val: Gio.ProxyResolver);
         /**
-         * The #GProxyResolver used to determine a proxy URI.  Setting this will clear the #GDataService:proxy-uri property.
+         * The #GProxyResolver used to determine a proxy URI.
          */
         get proxyResolver(): Gio.ProxyResolver;
         set proxyResolver(val: Gio.ProxyResolver);
-        /**
-         * The proxy URI used internally for all network requests.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its proxy URI setting.
-         */
-        get proxy_uri(): Soup.URI;
-        set proxy_uri(val: Soup.URI);
-        /**
-         * The proxy URI used internally for all network requests.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its proxy URI setting.
-         */
-        get proxyUri(): Soup.URI;
-        set proxyUri(val: Soup.URI);
         /**
          * A timeout, in seconds, for network operations. If the timeout is exceeded, the operation will be cancelled and
          * %GDATA_SERVICE_ERROR_NETWORK_ERROR will be returned.
@@ -10820,6 +8142,42 @@ export namespace GData {
          * @param domain the #GDataAuthorizationDomain the deletion falls under, or %NULL
          * @param entry the #GDataEntry to delete
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        delete_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Deletes `entry` from the server. `self` and `entry` are both reffed when this function is called,
+         * so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_delete_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_delete_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the deletion falls under, or %NULL
+         * @param entry the #GDataEntry to delete
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when deletion is finished, or %NULL
+         */
+        delete_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Deletes `entry` from the server. `self` and `entry` are both reffed when this function is called,
+         * so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_delete_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_delete_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the deletion falls under, or %NULL
+         * @param entry the #GDataEntry to delete
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when deletion is finished, or %NULL
          */
         delete_entry_async(
@@ -10827,7 +8185,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous entry deletion operation started with gdata_service_delete_entry_async().
          * @param async_result a #GAsyncResult
@@ -10849,11 +8207,6 @@ export namespace GData {
          * @returns a #GProxyResolver, or %NULL
          */
         get_proxy_resolver(): Gio.ProxyResolver | null;
-        /**
-         * Gets the proxy URI on the #GDataService's #SoupSession.
-         * @returns the proxy URI, or %NULL
-         */
-        get_proxy_uri(): Soup.URI;
         /**
          * Gets the #GDataService:timeout property; the network timeout, in seconds.
          * @returns the timeout, or <code class="literal">0</code>
@@ -10901,6 +8254,46 @@ export namespace GData {
          * @param upload_uri the URI to which the upload should be sent
          * @param entry the #GDataEntry to insert
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        insert_entry_async(
+            domain: AuthorizationDomain | null,
+            upload_uri: string,
+            entry: Entry,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Entry>;
+        /**
+         * Inserts `entry` by uploading it to the online service at `upload_uri`. `self,` `upload_uri` and
+         * `entry` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_insert_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_insert_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the insertion operation falls under, or %NULL
+         * @param upload_uri the URI to which the upload should be sent
+         * @param entry the #GDataEntry to insert
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when insertion is finished, or %NULL
+         */
+        insert_entry_async(
+            domain: AuthorizationDomain | null,
+            upload_uri: string,
+            entry: Entry,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Inserts `entry` by uploading it to the online service at `upload_uri`. `self,` `upload_uri` and
+         * `entry` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_insert_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_insert_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the insertion operation falls under, or %NULL
+         * @param upload_uri the URI to which the upload should be sent
+         * @param entry the #GDataEntry to insert
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when insertion is finished, or %NULL
          */
         insert_entry_async(
@@ -10909,7 +8302,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry insertion operation started with gdata_service_insert_entry_async().
          * @param async_result a #GAsyncResult
@@ -10976,6 +8369,58 @@ export namespace GData {
          * @param cancellable optional #GCancellable object, or %NULL
          * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
          * @param destroy_progress_user_data the function to call when @progress_callback will not be called any more, or %NULL. This function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it.
+         */
+        query_async(
+            domain: AuthorizationDomain | null,
+            feed_uri: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable?: Gio.Cancellable | null,
+            progress_callback?: QueryProgressCallback | null,
+            destroy_progress_user_data?: GLib.DestroyNotify | null,
+        ): Promise<Feed>;
+        /**
+         * Queries the service's `feed_uri` feed to build a #GDataFeed. `self,` `feed_uri` and
+         * `query` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param feed_uri the feed URI to query, including the host name and protocol
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntrys to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
+         * @param destroy_progress_user_data the function to call when @progress_callback will not be called any more, or %NULL. This function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it.
+         * @param callback a #GAsyncReadyCallback to call when the query is finished
+         */
+        query_async(
+            domain: AuthorizationDomain | null,
+            feed_uri: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: QueryProgressCallback | null,
+            destroy_progress_user_data: GLib.DestroyNotify | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Queries the service's `feed_uri` feed to build a #GDataFeed. `self,` `feed_uri` and
+         * `query` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param feed_uri the feed URI to query, including the host name and protocol
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntrys to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
+         * @param destroy_progress_user_data the function to call when @progress_callback will not be called any more, or %NULL. This function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it.
          * @param callback a #GAsyncReadyCallback to call when the query is finished
          */
         query_async(
@@ -10987,7 +8432,7 @@ export namespace GData {
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Feed> | void;
         /**
          * Finishes an asynchronous query operation started with gdata_service_query_async().
          * @param async_result a #GAsyncResult
@@ -11031,6 +8476,52 @@ export namespace GData {
          * @param query a #GDataQuery with the query parameters, or %NULL
          * @param entry_type a #GType for the #GDataEntry to build from the XML
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        query_single_entry_async(
+            domain: AuthorizationDomain | null,
+            entry_id: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Entry>;
+        /**
+         * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
+         * gdata_entry_get_id(). `self,` `query` and `entry_id` are reffed/copied when this
+         * function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query_single_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_single_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param entry_id the entry ID of the desired entry
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntry to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the query is finished
+         */
+        query_single_entry_async(
+            domain: AuthorizationDomain | null,
+            entry_id: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
+         * gdata_entry_get_id(). `self,` `query` and `entry_id` are reffed/copied when this
+         * function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query_single_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_single_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param entry_id the entry ID of the desired entry
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntry to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the query is finished
          */
         query_single_entry_async(
@@ -11040,7 +8531,7 @@ export namespace GData {
             entry_type: GObject.GType,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Entry> | void;
         /**
          * Finishes an asynchronous query operation for a single entry, as started with gdata_service_query_single_entry_async().
          * @param async_result a #GAsyncResult
@@ -11063,21 +8554,9 @@ export namespace GData {
         set_locale(locale?: string | null): void;
         /**
          * Sets the #GProxyResolver on the #SoupSession used internally by the given #GDataService.
-         *
-         * Setting this will clear the #GDataService:proxy-uri property.
          * @param proxy_resolver a #GProxyResolver, or %NULL
          */
         set_proxy_resolver(proxy_resolver?: Gio.ProxyResolver | null): void;
-        /**
-         * Sets the proxy URI on the #SoupSession used internally by the given #GDataService.
-         * This forces all requests through the given proxy.
-         *
-         * If `proxy_uri` is %NULL, no proxy will be used.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its proxy URI setting.
-         * @param proxy_uri the proxy URI, or %NULL
-         */
-        set_proxy_uri(proxy_uri?: Soup.URI | null): void;
         /**
          * Sets the #GDataService:timeout property; the network timeout, in seconds.
          *
@@ -11119,6 +8598,42 @@ export namespace GData {
          * @param domain the #GDataAuthorizationDomain the update operation falls under, or %NULL
          * @param entry the #GDataEntry to update
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        update_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Entry>;
+        /**
+         * Updates `entry` by PUTting it to its <literal>edit</literal> link's URI. `self` and
+         * `entry` are both reffed when this function is called, so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_update_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_update_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the update operation falls under, or %NULL
+         * @param entry the #GDataEntry to update
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the update is finished, or %NULL
+         */
+        update_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Updates `entry` by PUTting it to its <literal>edit</literal> link's URI. `self` and
+         * `entry` are both reffed when this function is called, so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_update_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_update_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the update operation falls under, or %NULL
+         * @param entry the #GDataEntry to update
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the update is finished, or %NULL
          */
         update_entry_async(
@@ -11126,29 +8641,14 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry update operation started with gdata_service_update_entry_async().
          * @param async_result a #GAsyncResult
          * @returns an updated #GDataEntry, or %NULL; unref with g_object_unref()
          */
         update_entry_finish(async_result: Gio.AsyncResult): Entry;
-        /**
-         * a function to allow subclasses to append their own headers to queries before they are submitted to the online service,
-         * using the given authorization domain; new in version 0.9.0
-         * @param domain
-         * @param message
-         */
         vfunc_append_query_headers(domain: AuthorizationDomain, message: Soup.Message): void;
-        /**
-         * a function to parse error responses to queries from the online service. It should set the error
-         * from the status, reason phrase and response body it is passed.
-         * @param operation_type
-         * @param status
-         * @param reason_phrase
-         * @param response_body
-         * @param length
-         */
         vfunc_parse_error_response(
             operation_type: OperationType,
             status: number,
@@ -12930,460 +10430,6 @@ export namespace GData {
         look_up_link(rel: string): Link;
     }
 
-    module FreebaseQuery {
-        // Constructor properties interface
-
-        interface ConstructorProps extends Query.ConstructorProps {
-            variant: GLib.Variant;
-        }
-    }
-
-    /**
-     * All the fields in the #GDataFreebaseQuery structure are private and should never be accessed directly.
-     */
-    class FreebaseQuery extends Query {
-        static $gtype: GObject.GType<FreebaseQuery>;
-
-        // Properties
-
-        /**
-         * Variant containing the MQL query. The variant is a very generic container of type "a{smv}",
-         * containing (possibly nested) Freebase schema types and values.
-         */
-        get variant(): GLib.Variant;
-
-        // Constructors
-
-        constructor(properties?: Partial<FreebaseQuery.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](mql: string): FreebaseQuery;
-        // Conflicted with GData.Query.new
-
-        static ['new'](...args: never[]): any;
-
-        static new_from_variant(variant: GLib.Variant): FreebaseQuery;
-    }
-
-    module FreebaseResult {
-        // Constructor properties interface
-
-        interface ConstructorProps extends Entry.ConstructorProps {
-            variant: GLib.Variant;
-        }
-    }
-
-    /**
-     * All the fields in the #GDataFreebaseResult structure are private and should never be accessed directly.
-     */
-    class FreebaseResult extends Entry {
-        static $gtype: GObject.GType<FreebaseResult>;
-
-        // Properties
-
-        /**
-         * Variant containing the MQL result. The variant is a very generic container of type "a{smv}",
-         * containing (possibly nested) Freebase schema types and values.
-         */
-        get variant(): GLib.Variant;
-
-        // Constructors
-
-        constructor(properties?: Partial<FreebaseResult.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): FreebaseResult;
-
-        // Methods
-
-        /**
-         * Gets the result serialized as a #GVariant of type "a{smv}", containing the JSON
-         * data tree. This variant can be alternatively processed through json_gvariant_serialize().
-         * @returns the serialized result, or %NULL; unref with g_variant_unref()
-         */
-        dup_variant(): GLib.Variant | null;
-    }
-
-    module FreebaseSearchQuery {
-        // Constructor properties interface
-
-        interface ConstructorProps extends Query.ConstructorProps {
-            language: string;
-            stemmed: boolean;
-        }
-    }
-
-    /**
-     * All the fields in the #GDataFreebaseSearchQuery structure are private and should never be accessed directly.
-     */
-    class FreebaseSearchQuery extends Query {
-        static $gtype: GObject.GType<FreebaseSearchQuery>;
-
-        // Properties
-
-        /**
-         * Language used for search results, in ISO-639-1 format.
-         */
-        get language(): string;
-        set language(val: string);
-        /**
-         * Whether word stemming should happen on the search terms. If this property is enabled,
-         * words like eg. "natural", "naturally" or "nature" would be all reduced to the root "natur"
-         * for search purposes.
-         */
-        get stemmed(): boolean;
-        set stemmed(val: boolean);
-
-        // Constructors
-
-        constructor(properties?: Partial<FreebaseSearchQuery.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](search_terms: string): FreebaseSearchQuery;
-        // Conflicted with GData.Query.new
-
-        static ['new'](...args: never[]): any;
-
-        // Methods
-
-        /**
-         * Adds a property filter to the query. property filters are always nested in
-         * containers, opened and closed through gdata_freebase_search_query_open_filter()
-         * and gdata_freebase_search_query_close_filter().
-         * @param property Freebase property ID
-         * @param value match string
-         */
-        add_filter(property: string, value: string): void;
-        /**
-         * Adds a geolocation filter to the query. location filters are always nested in
-         * containers, opened and closed through gdata_freebase_search_query_open_filter()
-         * and gdata_freebase_search_query_close_filter().
-         * @param radius radius in meters
-         * @param lat latitude
-         * @param lon longitude
-         */
-        add_location(radius: number, lat: number, lon: number): void;
-        /**
-         * Closes a filter level.
-         */
-        close_filter(): void;
-        /**
-         * Gets the language set on the search query, or %NULL if unset.
-         * @returns The language used on the query.
-         */
-        get_language(): string | null;
-        /**
-         * Returns whether the #GDataFreebaseSearchQuery will perform stemming on the search terms.
-         * @returns %TRUE if the #GDataFreebaseSearchQuery performs stemming
-         */
-        get_stemmed(): boolean;
-        /**
-         * Opens a container of filter rules, those are applied according to the behavior specified by `filter_type`.
-         * Every call to this function must be paired by a call to gdata_freebase_search_query_close_filter().
-         * @param filter_type filter type
-         */
-        open_filter(filter_type: FreebaseSearchFilterType): void;
-        /**
-         * Sets the language used, both on the search terms and the results. If unset,
-         * the locale preferences will be respected.
-         * @param lang Language used on the search terms and results, in ISO-639-1 format, or %NULL to unset.
-         */
-        set_language(lang?: string | null): void;
-        /**
-         * Sets whether stemming is performed on the provided search terms. If `stemmed` is %TRUE,
-         * words like eg. "natural", "naturally" or "nature" would be all reduced to the root "natur"
-         * for search purposes.
-         * @param stemmed %TRUE to perform stemming on the search results
-         */
-        set_stemmed(stemmed: boolean): void;
-    }
-
-    module FreebaseSearchResult {
-        // Constructor properties interface
-
-        interface ConstructorProps extends FreebaseResult.ConstructorProps {}
-    }
-
-    /**
-     * All the fields in the #GDataFreebaseSearchResult structure are private and should never be accessed directly.
-     */
-    class FreebaseSearchResult extends FreebaseResult {
-        static $gtype: GObject.GType<FreebaseSearchResult>;
-
-        // Constructors
-
-        constructor(properties?: Partial<FreebaseSearchResult.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): FreebaseSearchResult;
-
-        // Methods
-
-        /**
-         * Gets an item from the search result.
-         * @param i number of item to retrieve
-         * @returns a search result item, or %NULL on invalid item.
-         */
-        get_item(i: number): FreebaseSearchResultItem | null;
-        /**
-         * Returns the number of items contained in this result.
-         * @returns The number of items
-         */
-        get_num_items(): number;
-        /**
-         * Returns the total number of hits found for the search query.
-         * @returns the total number of hits.
-         */
-        get_total_hits(): number;
-    }
-
-    module FreebaseService {
-        // Constructor properties interface
-
-        interface ConstructorProps extends Service.ConstructorProps {
-            developer_key: string;
-            developerKey: string;
-        }
-    }
-
-    /**
-     * All the fields in the #GDataFreebaseService structure are private and should never be accessed directly.
-     */
-    class FreebaseService extends Service {
-        static $gtype: GObject.GType<FreebaseService>;
-
-        // Properties
-
-        /**
-         * The developer key your application has registered with the Freebase API. For more information, see the <ulink type="http"
-         * url="https://developers.google.com/freebase/v1/how-tos/authorizing">online documentation</ulink>.
-         */
-        get developer_key(): string;
-        /**
-         * The developer key your application has registered with the Freebase API. For more information, see the <ulink type="http"
-         * url="https://developers.google.com/freebase/v1/how-tos/authorizing">online documentation</ulink>.
-         */
-        get developerKey(): string;
-
-        // Constructors
-
-        constructor(properties?: Partial<FreebaseService.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](developer_key?: string | null, authorizer?: Authorizer | null): FreebaseService;
-
-        // Static methods
-
-        /**
-         * The primary #GDataAuthorizationDomain for interacting with Freebase. This will not normally need to be used, as it's used internally
-         * by the #GDataFreebaseService methods. However, if using the plain #GDataService methods to implement custom queries or requests which libgdata
-         * does not support natively, then this domain may be needed to authorize the requests.
-         *
-         * The domain never changes, and is interned so that pointer comparison can be used to differentiate it from other authorization domains.
-         */
-        static get_primary_authorization_domain(): AuthorizationDomain;
-
-        // Methods
-
-        /**
-         * Creates an input stream to an image object returned in a topic query. If `max_width` and `max_height`
-         * are unspecified (i.e. set to 0), the image returned will be the smallest available.
-         * @param value a #GDataFreebaseTopicValue from a topic result
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param max_width maximum width of the image returned, or 0
-         * @param max_height maximum height of the image returned, or 0
-         * @returns a #GInputStream opened to the image; unref with g_object_unref()
-         */
-        get_image(
-            value: FreebaseTopicValue,
-            cancellable: Gio.Cancellable | null,
-            max_width: number,
-            max_height: number,
-        ): Gio.InputStream;
-        /**
-         * Queries information about a topic, identified through a Freebase ID. You can find out more about topic queries in the
-         * <ulink type="http" url="https://developers.google.com/freebase/v1/topic-response">online documentation</ulink>.
-         * @param query a #GDataFreebaseTopicQuery containing the topic ID
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns a #GDataFreebaseTopicResult containing information about the topic; unref with g_object_unref()
-         */
-        get_topic(query: FreebaseTopicQuery, cancellable?: Gio.Cancellable | null): FreebaseTopicResult;
-        /**
-         * Queries information about a topic, identified through a Freebase ID. `self` and `query` are all reffed when this
-         * function is called, so can safely be unreffed after this function returns. When the query is replied, or fails,
-         * `callback` will be executed, and the result can be obtained through gdata_service_query_single_entry_finish().
-         *
-         * For more details, see gdata_freebase_service_get_topic(), which is the synchronous version of
-         * this function.
-         * @param query a #GDataFreebaseQuery with the MQL query
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when authentication is finished
-         */
-        get_topic_async(
-            query: FreebaseTopicQuery,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Performs a MQL query on the service, you can find out more about MQL in the <ulink type="http" url="http://mql.freebaseapps.com/index.html">online MQL documentation</ulink>.
-         * @param query a #GDataFreebaseQuery with the MQL query
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns a #GDataFreebaseResult containing the query result; unref with g_object_unref()
-         */
-        query(query: FreebaseQuery, cancellable?: Gio.Cancellable | null): FreebaseResult;
-        // Conflicted with GData.Service.query
-        query(...args: never[]): any;
-        /**
-         * Performs a MQL query on the service. `self` and `query` are all reffed when this function is called, so can safely
-         * be unreffed after this function returns. When the query is replied, or fails, `callback` will be executed, and
-         * the result can be obtained through gdata_service_query_single_entry_finish().
-         *
-         * For more details, see gdata_freebase_service_query(), which is the synchronous version of
-         * this function.
-         * @param query a #GDataFreebaseQuery with the MQL query
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when authentication is finished
-         */
-        query_async(
-            query: FreebaseQuery,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        // Conflicted with GData.Service.query_async
-        query_async(...args: never[]): any;
-        /**
-         * Performs a search for any given search term, filters can be set on `query` to narrow down the results. The results returned
-         * are ordered by relevance. You can find out more about topic queries in the
-         * <ulink type="http" url="https://developers.google.com/freebase/v1/search-cookbook">online documentation</ulink>.
-         * @param query a #GDataFreebaseSearchQuery containing the topic ID
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns a #GDataFreebaseSearchResult containing the results for the given search query; unref with g_object_unref()
-         */
-        search(query: FreebaseSearchQuery, cancellable?: Gio.Cancellable | null): FreebaseSearchResult;
-        /**
-         * Performs a search for any given search term. `self` and `query` are all reffed when this
-         * function is called, so can safely be unreffed after this function returns.
-         *
-         * For more details, see gdata_freebase_service_search(), which is the synchronous version of
-         * this function.
-         * @param query a #GDataFreebaseQuery with the MQL query
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when authentication is finished
-         */
-        search_async(
-            query: FreebaseSearchQuery,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-    }
-
-    module FreebaseTopicQuery {
-        // Constructor properties interface
-
-        interface ConstructorProps extends Query.ConstructorProps {
-            filter: string[];
-            language: string;
-        }
-    }
-
-    /**
-     * All the fields in the #GDataFreebaseTopicQuery structure are private and should never be accessed directly.
-     */
-    class FreebaseTopicQuery extends Query {
-        static $gtype: GObject.GType<FreebaseTopicQuery>;
-
-        // Properties
-
-        /**
-         * Array of properties (eg. "/common/topic/description", or "/computer/software/first_released"), or property
-         * domains (eg. "/common/topic", or "/computer") to be used as filter.
-         */
-        get filter(): string[];
-        set filter(val: string[]);
-        /**
-         * Language used for topic values in the result, in ISO-639-1 format.
-         */
-        get language(): string;
-        set language(val: string);
-
-        // Constructors
-
-        constructor(properties?: Partial<FreebaseTopicQuery.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](id: string): FreebaseTopicQuery;
-        // Conflicted with GData.Query.new
-
-        static ['new'](...args: never[]): any;
-
-        // Methods
-
-        /**
-         * Gets the filter set on the topic query, or %NULL if unset.
-         * @returns The filter used on the query.
-         */
-        get_filter(): string[] | null;
-        /**
-         * Gets the language set on the topic query, or %NULL if unset.
-         * @returns The language used on the query.
-         */
-        get_language(): string | null;
-        /**
-         * Sets a filter on the properties to be returned by the #GDataFreebaseTopicQuery, a filter string usually contains either
-         * a specific property (eg. "/common/topic/description", or "/computer/software/first_released"), or a property domain
-         * (eg. "/common/topic", or "/computer"), all properties pertaining to the domain will be returned through the
-         * #GDataFreebaseTopicResult in the latter case. Other special strings can be passed as filter strings, those are documented
-         * in the <ulink type="http" url="https://developers.google.com/freebase/v1/topic-overview#filter">Topic API overview</ulink>
-         *
-         * If multiple filter strings are set, the result will contain all information necessary to satisfy each of those individually.
-         * If no filter is set, the "commons" special value will be implicitly assumed, which returns a reasonably complete data set.
-         * @param filter %NULL-terminated array of filter strings, or %NULL to unset
-         */
-        set_filter(filter?: string[] | null): void;
-        /**
-         * Sets the language used in the topic query. If unset,
-         * the locale preferences will be respected.
-         * @param lang language used on the topic query, in ISO-639-1 format, or %NULL to unset the language
-         */
-        set_language(lang?: string | null): void;
-    }
-
-    module FreebaseTopicResult {
-        // Constructor properties interface
-
-        interface ConstructorProps extends FreebaseResult.ConstructorProps {}
-    }
-
-    /**
-     * All the fields in the #GDataFreebaseTopicResult structure are private and should never be accessed directly.
-     */
-    class FreebaseTopicResult extends FreebaseResult {
-        static $gtype: GObject.GType<FreebaseTopicResult>;
-
-        // Constructors
-
-        constructor(properties?: Partial<FreebaseTopicResult.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): FreebaseTopicResult;
-
-        // Methods
-
-        /**
-         * Returns a reference to the root #GDataFreebaseTopicObject containing the
-         * topic query results.
-         * @returns A new reference on the result object, unref with   gdata_freebase_topic_object_unref()
-         */
-        dup_object(): FreebaseTopicObject;
-    }
-
     module GContactCalendar {
         // Constructor properties interface
 
@@ -13527,12 +10573,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -14154,12 +11194,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -14723,12 +11757,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -15374,12 +12402,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -15951,12 +12973,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -16518,12 +13534,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -17119,12 +14129,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -17784,12 +14788,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -18353,12 +15351,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -19205,12 +16197,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -19751,12 +16737,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -20327,12 +17307,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -20859,12 +17833,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -21404,12 +18372,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -21893,12 +18855,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -22418,12 +19374,46 @@ export namespace GData {
          *
          * This method is thread safe.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        refresh_authorization_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
+         * method is called, so can safely be freed after this method returns.
+         *
+         * For more details, see gdata_authorizer_refresh_authorization(), which is the synchronous version of this method. If the #GDataAuthorizer class
+         * doesn't implement #GDataAuthorizerInterface.refresh_authorization_async but does implement #GDataAuthorizerInterface.refresh_authorization, the
+         * latter will be called from a new thread to make it asynchronous.
+         *
+         * When the authorization refresh operation is finished, `callback` will be called. You can then call gdata_authorizer_refresh_authorization_finish()
+         * to get the results of the operation.
+         *
+         * This method is thread safe.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the authorization refresh operation is finished, or %NULL
+         */
+        refresh_authorization_async(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
+         * method is called, so can safely be freed after this method returns.
+         *
+         * For more details, see gdata_authorizer_refresh_authorization(), which is the synchronous version of this method. If the #GDataAuthorizer class
+         * doesn't implement #GDataAuthorizerInterface.refresh_authorization_async but does implement #GDataAuthorizerInterface.refresh_authorization, the
+         * latter will be called from a new thread to make it asynchronous.
+         *
+         * When the authorization refresh operation is finished, `callback` will be called. You can then call gdata_authorizer_refresh_authorization_finish()
+         * to get the results of the operation.
+         *
+         * This method is thread safe.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the authorization refresh operation is finished, or %NULL
          */
         refresh_authorization_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous authorization refresh operation for the #GDataAuthorizer, as started with gdata_authorizer_refresh_authorization_async().
          *
@@ -23110,12 +20100,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -23915,851 +20899,6 @@ export namespace GData {
         get_width(): number;
     }
 
-    module OAuth1Authorizer {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
-            application_name: string;
-            applicationName: string;
-            locale: string;
-            proxy_resolver: Gio.ProxyResolver;
-            proxyResolver: Gio.ProxyResolver;
-            proxy_uri: Soup.URI;
-            proxyUri: Soup.URI;
-            timeout: number;
-        }
-    }
-
-    /**
-     * All the fields in the #GDataOAuth1Authorizer structure are private and should never be accessed directly.
-     */
-    class OAuth1Authorizer extends GObject.Object implements Authorizer {
-        static $gtype: GObject.GType<OAuth1Authorizer>;
-
-        // Properties
-
-        /**
-         * The human-readable, translated application name for the client, to be presented to the user on the authentication page at the URI
-         * returned by gdata_oauth1_authorizer_request_authentication_uri().
-         *
-         * If %NULL is provided in the constructor to #GDataOAuth1Authorizer, the value returned by g_get_application_name() will be used as a
-         * fallback. Note that this may also be %NULL: in this case, the authentication page will use the application name “anonymous”.
-         */
-        get application_name(): string;
-        /**
-         * The human-readable, translated application name for the client, to be presented to the user on the authentication page at the URI
-         * returned by gdata_oauth1_authorizer_request_authentication_uri().
-         *
-         * If %NULL is provided in the constructor to #GDataOAuth1Authorizer, the value returned by g_get_application_name() will be used as a
-         * fallback. Note that this may also be %NULL: in this case, the authentication page will use the application name “anonymous”.
-         */
-        get applicationName(): string;
-        /**
-         * The locale to use for network requests, in Unix locale format. (e.g. "en_GB", "cs", "de_DE".) Use %NULL for the default "C" locale
-         * (typically "en_US").
-         *
-         * This locale will be used by the server-side software to localise the authentication and authorization pages at the URI returned by
-         * gdata_oauth1_authorizer_request_authentication_uri().
-         *
-         * The server-side behaviour is undefined if it doesn't support a given locale.
-         */
-        get locale(): string;
-        set locale(val: string);
-        /**
-         * The #GProxyResolver used to determine a proxy URI.  Setting this will clear the #GDataOAuth1Authorizer:proxy-uri property.
-         */
-        get proxy_resolver(): Gio.ProxyResolver;
-        set proxy_resolver(val: Gio.ProxyResolver);
-        /**
-         * The #GProxyResolver used to determine a proxy URI.  Setting this will clear the #GDataOAuth1Authorizer:proxy-uri property.
-         */
-        get proxyResolver(): Gio.ProxyResolver;
-        set proxyResolver(val: Gio.ProxyResolver);
-        /**
-         * The proxy URI used internally for all network requests.
-         */
-        get proxy_uri(): Soup.URI;
-        set proxy_uri(val: Soup.URI);
-        /**
-         * The proxy URI used internally for all network requests.
-         */
-        get proxyUri(): Soup.URI;
-        set proxyUri(val: Soup.URI);
-        /**
-         * A timeout, in seconds, for network operations. If the timeout is exceeded, the operation will be cancelled and
-         * %GDATA_SERVICE_ERROR_NETWORK_ERROR will be returned.
-         *
-         * If the timeout is <code class="literal">0</code>, operations will never time out.
-         */
-        get timeout(): number;
-        set timeout(val: number);
-
-        // Constructors
-
-        constructor(properties?: Partial<OAuth1Authorizer.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](application_name: string | null, service_type: GObject.GType): OAuth1Authorizer;
-
-        static new_for_authorization_domains(
-            application_name: string | null,
-            authorization_domains: AuthorizationDomain[],
-        ): OAuth1Authorizer;
-
-        // Methods
-
-        /**
-         * Returns the application name being used on the authentication page at the URI returned by gdata_oauth1_authorizer_request_authentication_uri();
-         * i.e. the value of #GDataOAuth1Authorizer:application-name.
-         * @returns the application name, or %NULL if one isn't set
-         */
-        get_application_name(): string | null;
-        /**
-         * Returns the locale currently being used for network requests, or %NULL if the locale is the default.
-         * @returns the current locale
-         */
-        get_locale(): string | null;
-        /**
-         * Gets the #GProxyResolver on the #GDataOAuth1Authorizer's #SoupSession.
-         * @returns a #GProxyResolver, or %NULL
-         */
-        get_proxy_resolver(): Gio.ProxyResolver | null;
-        /**
-         * Gets the proxy URI on the #GDataOAuth1Authorizer's #SoupSession.
-         * @returns the proxy URI, or %NULL; free with soup_uri_free()
-         */
-        get_proxy_uri(): Soup.URI | null;
-        /**
-         * Gets the #GDataOAuth1Authorizer:timeout property; the network timeout, in seconds.
-         * @returns the timeout, or <code class="literal">0</code>
-         */
-        get_timeout(): number;
-        /**
-         * Requests a fresh unauthenticated token from the Google accounts service and builds and returns the URI of an authentication page for that token.
-         * This should then be presented to the user (e.g. in an embedded or stand alone web browser). The authentication page will ask the user to log in
-         * using their Google account, then ask them to grant access to the #GDataAuthorizationDomains passed to the constructor of the
-         * #GDataOAuth1Authorizer. If the user grants access, they will be given a verifier, which can then be passed to
-         * gdata_oauth1_authorizer_request_authorization() (along with the `token` and `token_secret` values returned by this method) to authorize the token.
-         *
-         * This method can fail if the server returns an error, but this is unlikely. If it does happen, a %GDATA_SERVICE_ERROR_PROTOCOL_ERROR will be
-         * raised, `token` and `token_secret` will be set to %NULL and %NULL will be returned.
-         *
-         * This method implements <ulink type="http" url="http://tools.ietf.org/html/rfc5849#section-2.1">Section 2.1</ulink> and
-         * <ulink type="http" url="http://tools.ietf.org/html/rfc5849#section-2.2">Section 2.2</ulink> of the
-         * <ulink type="http" url="http://tools.ietf.org/html/rfc5849">OAuth 1.0 protocol</ulink>.
-         *
-         * When freeing `token_secret,` it's advisable to set it to all zeros first, to reduce the chance of the sensitive token being recoverable from the
-         * free memory pool and (accidentally) leaked by a different part of the process. This can be achieved with the following code:
-         *
-         * ```
-         * if (token_secret != NULL) {
-         * 	memset (token_secret, 0, strlen (token_secret));
-         * 	g_free (token_secret);
-         * }
-         * ```
-         *
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns the URI of an authentication page for the user to use; free with g_free()
-         */
-        request_authentication_uri(cancellable?: Gio.Cancellable | null): [string, string, string];
-        /**
-         * Requests a fresh unauthenticated token from the Google accounts service and builds and returns the URI of an authentication page for that token.
-         * `self` is reffed when this method is called, so can safely be unreffed after this method returns.
-         *
-         * For more details, see gdata_oauth1_authorizer_request_authentication_uri(), which is the synchronous version of this method.
-         *
-         * When the operation is finished, `callback` will be called. You can then call gdata_oauth1_authorizer_request_authentication_uri_finish() to get the
-         * results of the operation.
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when building the URI is finished
-         */
-        request_authentication_uri_async(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an asynchronous authentication URI building operation started with gdata_oauth1_authorizer_request_authentication_uri_async().
-         *
-         * This method can fail if the server has returned an error, but this is unlikely. If it does happen, a %GDATA_SERVICE_ERROR_PROTOCOL_ERROR will be
-         * raised, `token` and `token_secret` will be set to %NULL and %NULL will be returned.
-         *
-         * When freeing `token_secret,` it's advisable to set it to all zeros first, to reduce the chance of the sensitive token being recoverable from the
-         * free memory pool and (accidentally) leaked by a different part of the process. This can be achieved with the following code:
-         *
-         * ```
-         * if (token_secret != NULL) {
-         * 	memset (token_secret, 0, strlen (token_secret));
-         * 	g_free (token_secret);
-         * }
-         * ```
-         *
-         * @param async_result a #GAsyncResult
-         * @returns the URI of an authentication page for the user to use; free with g_free()
-         */
-        request_authentication_uri_finish(async_result: Gio.AsyncResult): [string, string, string];
-        /**
-         * Requests authorization of the given request `token` from the Google accounts service using the given `verifier` as entered by the user from the
-         * authentication page at the URI returned by gdata_oauth1_authorizer_request_authentication_uri(). `token` and `token_secret` must be the same values
-         * as were returned by gdata_oauth1_authorizer_request_authentication_uri() if it was successful.
-         *
-         * If the verifier is valid (i.e. the user granted access to the application and the Google accounts service has no reason to distrust the client),
-         * %TRUE will be returned and any operations performed from that point onwards on #GDataServices using this #GDataAuthorizer will be
-         * authorized.
-         *
-         * If the user denies access to the application or the Google accounts service distrusts it, a bogus verifier could be returned. In this case, %FALSE
-         * will be returned and a %GDATA_SERVICE_ERROR_FORBIDDEN error will be raised.
-         *
-         * Note that if the user denies access to the application, it may be the case that they have no verifier to enter. In this case, the client can simply
-         * not call this method. The #GDataOAuth1Authorizer stores no state for authentication operations which have succeeded in calling
-         * gdata_oauth1_authorizer_request_authentication_uri() but not yet successfully called gdata_oauth1_authorizer_request_authorization().
-         *
-         * This method implements <ulink type="http" url="http://tools.ietf.org/html/rfc5849#section-2.3">Section 2.3</ulink> of the
-         * <ulink type="http" url="http://tools.ietf.org/html/rfc5849">OAuth 1.0 protocol</ulink>.
-         * @param token the request token returned by gdata_oauth1_authorizer_request_authentication_uri()
-         * @param token_secret the request token secret returned by gdata_oauth1_authorizer_request_authentication_uri()
-         * @param verifier the verifier entered by the user from the authentication page
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns %TRUE if authorization was successful, %FALSE otherwise
-         */
-        request_authorization(
-            token: string,
-            token_secret: string,
-            verifier: string,
-            cancellable?: Gio.Cancellable | null,
-        ): boolean;
-        /**
-         * Requests authorization of the given request `token` from the Google accounts service using the given `verifier` as entered by the user.
-         * `self,` `token,` `token_secret` and `verifier` are reffed/copied when this method is called, so can safely be freed after this method returns.
-         *
-         * For more details, see gdata_oauth1_authorizer_request_authorization(), which is the synchronous version of this method.
-         *
-         * When the operation is finished, `callback` will be called. You can then call gdata_oauth1_authorizer_request_authorization_finish() to get the
-         * results of the operation.
-         * @param token the request token returned by gdata_oauth1_authorizer_request_authentication_uri()
-         * @param token_secret the request token secret returned by gdata_oauth1_authorizer_request_authentication_uri()
-         * @param verifier the verifier entered by the user from the authentication page
-         * @param cancellable an optional #GCancellable, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when authorization is finished
-         */
-        request_authorization_async(
-            token: string,
-            token_secret: string,
-            verifier: string,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an asynchronous authorization operation started with gdata_oauth1_authorizer_request_authorization_async().
-         * @param async_result a #GAsyncResult
-         * @returns %TRUE if authorization was successful, %FALSE otherwise
-         */
-        request_authorization_finish(async_result: Gio.AsyncResult): boolean;
-        /**
-         * Set the locale used for network requests to `locale,` given in standard Unix locale format. See #GDataOAuth1Authorizer:locale for more details.
-         *
-         * Note that while it's possible to change the locale after sending network requests (i.e. calling
-         * gdata_oauth1_authorizer_request_authentication_uri() for the first time), it is unsupported, as the server-side software may behave unexpectedly.
-         * The only supported use of this method is after creation of the authorizer, but before any network requests are made.
-         * @param locale the new locale in Unix locale format, or %NULL for the default locale
-         */
-        set_locale(locale?: string | null): void;
-        /**
-         * Sets the #GProxyResolver on the #SoupSession used internally by the given #GDataOAuth1Authorizer.
-         *
-         * Setting this will clear the #GDataOAuth1Authorizer:proxy-uri property.
-         * @param proxy_resolver a #GProxyResolver, or %NULL
-         */
-        set_proxy_resolver(proxy_resolver?: Gio.ProxyResolver | null): void;
-        /**
-         * Sets the proxy URI on the #SoupSession used internally by the #GDataOAuth1Authorizer. This forces all requests through the given proxy.
-         *
-         * If `proxy_uri` is %NULL, no proxy will be used.
-         * @param proxy_uri the proxy URI, or %NULL
-         */
-        set_proxy_uri(proxy_uri?: Soup.URI | null): void;
-        /**
-         * Sets the #GDataOAuth1Authorizer:timeout property; the network timeout, in seconds.
-         *
-         * If `timeout` is <code class="literal">0</code>, network operations will never time out.
-         * @param timeout the timeout, or <code class="literal">0</code>
-         */
-        set_timeout(timeout: number): void;
-
-        // Inherited methods
-        /**
-         * Returns whether the #GDataAuthorizer instance believes it's currently authorized to access the given `domain`. Note that this will not perform any
-         * network requests, and will just look up the result in the #GDataAuthorizer's local cache of authorizations. This means that the result may be out
-         * of date, as the server may have since invalidated the authorization. If the #GDataAuthorizer class supports timeouts and TTLs on authorizations,
-         * they will not be taken into account; this method effectively returns whether the last successful authorization operation performed on the
-         * #GDataAuthorizer included `domain` in the list of requested authorization domains.
-         *
-         * Note that %NULL may be passed as the #GDataAuthorizer, in which case %FALSE will always be returned, regardless of the `domain`. This is for
-         * convenience of checking whether a domain is authorized by the #GDataAuthorizer returned by gdata_service_get_authorizer(), which may be %NULL.
-         * For example:
-         *
-         * ```
-         * if (gdata_authorizer_is_authorized_for_domain (gdata_service_get_authorizer (my_service), my_domain) == TRUE) {
-         * 	/<!-- -->* Code to execute only if we're authorized for the given domain *<!-- -->/
-         * }
-         * ```
-         *
-         *
-         * This method is thread safe.
-         * @param domain the #GDataAuthorizationDomain to check against
-         * @returns %TRUE if the #GDataAuthorizer has been authorized to access @domain, %FALSE otherwise
-         */
-        is_authorized_for_domain(domain: AuthorizationDomain): boolean;
-        /**
-         * Processes `message,` adding all the necessary extra headers and parameters to ensure that it's correctly authenticated and authorized under the
-         * given `domain` for the online service. Basically, if a query is not processed by calling this method on it, it will be sent to the online service as
-         * if it's a query from a non-logged-in user. Similarly, if the #GDataAuthorizer isn't authenticated or authorized (for `domain)`, no changes will
-         * be made to the `message`.
-         *
-         * `domain` may be %NULL if the request doesn't require authorization.
-         *
-         * This modifies `message` in place.
-         *
-         * This method is thread safe.
-         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
-         * @param message the query to process
-         */
-        process_request(domain: AuthorizationDomain | null, message: Soup.Message): void;
-        /**
-         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. This should typically be called when a
-         * #GDataService query returns %GDATA_SERVICE_ERROR_AUTHENTICATION_REQUIRED, and is already called transparently by methods such as
-         * gdata_service_query() and gdata_service_insert_entry() (see their documentation for more details).
-         *
-         * If re-authorization is successful, it's guaranteed that by the time this method returns, the properties containing the relevant authorization
-         * tokens on the #GDataAuthorizer instance will have been updated.
-         *
-         * If %FALSE is returned, `error` will be set if (and only if) it's due to a refresh being attempted and failing. If a refresh is not attempted, %FALSE
-         * will be returned but `error` will not be set.
-         *
-         * If the #GDataAuthorizer has not been previously authenticated or authorized (using the class' specific methods), no authorization will be
-         * attempted, %FALSE will be returned immediately and `error` will not be set.
-         *
-         * Some #GDataAuthorizer implementations may not support refreshing authorization tokens at all; for example if doing so requires user interaction.
-         * %FALSE will be returned immediately in that case and `error` will not be set.
-         *
-         * This method is thread safe.
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @returns %TRUE if an authorization refresh was attempted and was successful, %FALSE if a refresh wasn't attempted or was unsuccessful
-         */
-        refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
-         * method is called, so can safely be freed after this method returns.
-         *
-         * For more details, see gdata_authorizer_refresh_authorization(), which is the synchronous version of this method. If the #GDataAuthorizer class
-         * doesn't implement #GDataAuthorizerInterface.refresh_authorization_async but does implement #GDataAuthorizerInterface.refresh_authorization, the
-         * latter will be called from a new thread to make it asynchronous.
-         *
-         * When the authorization refresh operation is finished, `callback` will be called. You can then call gdata_authorizer_refresh_authorization_finish()
-         * to get the results of the operation.
-         *
-         * This method is thread safe.
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the authorization refresh operation is finished, or %NULL
-         */
-        refresh_authorization_async(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an asynchronous authorization refresh operation for the #GDataAuthorizer, as started with gdata_authorizer_refresh_authorization_async().
-         *
-         * This method is thread safe.
-         * @param async_result a #GAsyncResult
-         * @returns %TRUE if an authorization refresh was attempted and was successful, %FALSE if a refresh wasn't attempted or was unsuccessful
-         */
-        refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
-        /**
-         * Returns whether the #GDataAuthorizer instance believes it's currently authorized to access the given `domain`. Note that this will not perform any
-         * network requests, and will just look up the result in the #GDataAuthorizer's local cache of authorizations. This means that the result may be out
-         * of date, as the server may have since invalidated the authorization. If the #GDataAuthorizer class supports timeouts and TTLs on authorizations,
-         * they will not be taken into account; this method effectively returns whether the last successful authorization operation performed on the
-         * #GDataAuthorizer included `domain` in the list of requested authorization domains.
-         *
-         * Note that %NULL may be passed as the #GDataAuthorizer, in which case %FALSE will always be returned, regardless of the `domain`. This is for
-         * convenience of checking whether a domain is authorized by the #GDataAuthorizer returned by gdata_service_get_authorizer(), which may be %NULL.
-         * For example:
-         *
-         * ```
-         * if (gdata_authorizer_is_authorized_for_domain (gdata_service_get_authorizer (my_service), my_domain) == TRUE) {
-         * 	/<!-- -->* Code to execute only if we're authorized for the given domain *<!-- -->/
-         * }
-         * ```
-         *
-         *
-         * This method is thread safe.
-         * @param domain the #GDataAuthorizationDomain to check against
-         */
-        vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean;
-        /**
-         * Processes `message,` adding all the necessary extra headers and parameters to ensure that it's correctly authenticated and authorized under the
-         * given `domain` for the online service. Basically, if a query is not processed by calling this method on it, it will be sent to the online service as
-         * if it's a query from a non-logged-in user. Similarly, if the #GDataAuthorizer isn't authenticated or authorized (for `domain)`, no changes will
-         * be made to the `message`.
-         *
-         * `domain` may be %NULL if the request doesn't require authorization.
-         *
-         * This modifies `message` in place.
-         *
-         * This method is thread safe.
-         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
-         * @param message the query to process
-         */
-        vfunc_process_request(domain: AuthorizationDomain | null, message: Soup.Message): void;
-        /**
-         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. This should typically be called when a
-         * #GDataService query returns %GDATA_SERVICE_ERROR_AUTHENTICATION_REQUIRED, and is already called transparently by methods such as
-         * gdata_service_query() and gdata_service_insert_entry() (see their documentation for more details).
-         *
-         * If re-authorization is successful, it's guaranteed that by the time this method returns, the properties containing the relevant authorization
-         * tokens on the #GDataAuthorizer instance will have been updated.
-         *
-         * If %FALSE is returned, `error` will be set if (and only if) it's due to a refresh being attempted and failing. If a refresh is not attempted, %FALSE
-         * will be returned but `error` will not be set.
-         *
-         * If the #GDataAuthorizer has not been previously authenticated or authorized (using the class' specific methods), no authorization will be
-         * attempted, %FALSE will be returned immediately and `error` will not be set.
-         *
-         * Some #GDataAuthorizer implementations may not support refreshing authorization tokens at all; for example if doing so requires user interaction.
-         * %FALSE will be returned immediately in that case and `error` will not be set.
-         *
-         * This method is thread safe.
-         * @param cancellable optional #GCancellable object, or %NULL
-         */
-        vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
-         * method is called, so can safely be freed after this method returns.
-         *
-         * For more details, see gdata_authorizer_refresh_authorization(), which is the synchronous version of this method. If the #GDataAuthorizer class
-         * doesn't implement #GDataAuthorizerInterface.refresh_authorization_async but does implement #GDataAuthorizerInterface.refresh_authorization, the
-         * latter will be called from a new thread to make it asynchronous.
-         *
-         * When the authorization refresh operation is finished, `callback` will be called. You can then call gdata_authorizer_refresh_authorization_finish()
-         * to get the results of the operation.
-         *
-         * This method is thread safe.
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the authorization refresh operation is finished, or %NULL
-         */
-        vfunc_refresh_authorization_async(
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Finishes an asynchronous authorization refresh operation for the #GDataAuthorizer, as started with gdata_authorizer_refresh_authorization_async().
-         *
-         * This method is thread safe.
-         * @param async_result a #GAsyncResult
-         */
-        vfunc_refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
-         * instance.
-         *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
-         *
-         * Removing the binding by calling g_object_unref() on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
-         *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of g_object_bind_property().
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
-         * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
-         */
-        get_data(key: string): any | null;
-        get_property(property_name: string): any;
-        /**
-         * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
-         * called.
-         * @param property_name the name of a property installed on the class of @object.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
-         *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
-         * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same @object
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure #GClosure to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by g_object_new() as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
-         * called.
-         * @param pspec
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-        disconnect(id: number): void;
-        set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
-    }
-
     module OAuth2Authorizer {
         // Constructor properties interface
 
@@ -25056,13 +21195,30 @@ export namespace GData {
          * Asynchronous version of gdata_oauth2_authorizer_request_authorization().
          * @param authorization_code code returned from the authentication page
          * @param cancellable an optional #GCancellable, or %NULL
+         */
+        request_authorization_async(authorization_code: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronous version of gdata_oauth2_authorizer_request_authorization().
+         * @param authorization_code code returned from the authentication page
+         * @param cancellable an optional #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when authorization is finished
+         */
+        request_authorization_async(
+            authorization_code: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronous version of gdata_oauth2_authorizer_request_authorization().
+         * @param authorization_code code returned from the authentication page
+         * @param cancellable an optional #GCancellable, or %NULL
          * @param callback a #GAsyncReadyCallback to call when authorization is finished
          */
         request_authorization_async(
             authorization_code: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous authorization operation started with
          * gdata_oauth2_authorizer_request_authorization_async().
@@ -25179,12 +21335,46 @@ export namespace GData {
          *
          * This method is thread safe.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        refresh_authorization_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
+         * method is called, so can safely be freed after this method returns.
+         *
+         * For more details, see gdata_authorizer_refresh_authorization(), which is the synchronous version of this method. If the #GDataAuthorizer class
+         * doesn't implement #GDataAuthorizerInterface.refresh_authorization_async but does implement #GDataAuthorizerInterface.refresh_authorization, the
+         * latter will be called from a new thread to make it asynchronous.
+         *
+         * When the authorization refresh operation is finished, `callback` will be called. You can then call gdata_authorizer_refresh_authorization_finish()
+         * to get the results of the operation.
+         *
+         * This method is thread safe.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the authorization refresh operation is finished, or %NULL
+         */
+        refresh_authorization_async(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
+         * method is called, so can safely be freed after this method returns.
+         *
+         * For more details, see gdata_authorizer_refresh_authorization(), which is the synchronous version of this method. If the #GDataAuthorizer class
+         * doesn't implement #GDataAuthorizerInterface.refresh_authorization_async but does implement #GDataAuthorizerInterface.refresh_authorization, the
+         * latter will be called from a new thread to make it asynchronous.
+         *
+         * When the authorization refresh operation is finished, `callback` will be called. You can then call gdata_authorizer_refresh_authorization_finish()
+         * to get the results of the operation.
+         *
+         * This method is thread safe.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the authorization refresh operation is finished, or %NULL
          */
         refresh_authorization_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous authorization refresh operation for the #GDataAuthorizer, as started with gdata_authorizer_refresh_authorization_async().
          *
@@ -25717,52 +21907,14 @@ export namespace GData {
 
         // Virtual methods
 
-        /**
-         * a function to build a JSON representation of the #GDataParsable in its current state, appending it to the provided #JsonBuilder
-         * @param builder
-         */
         vfunc_get_json(builder: Json.Builder): void;
-        /**
-         * a function to return a string containing the namespace declarations used by the `parsable` when represented in XML form
-         * @param namespaces
-         */
         vfunc_get_namespaces(namespaces: { [key: string]: any } | GLib.HashTable<any, any>): void;
-        /**
-         * a function to build an XML representation of the #GDataParsable in its current state, appending it to the provided #GString
-         * @param xml_string
-         */
         vfunc_get_xml(xml_string: GLib.String): void;
-        /**
-         * a function to parse a JSON representation of the #GDataParsable to set the properties of the `parsable`
-         * @param reader
-         */
         vfunc_parse_json(reader: Json.Reader): boolean;
-        /**
-         * a function to parse an XML representation of the #GDataParsable to set the properties of the `parsable`
-         * @param doc
-         * @param node
-         */
         vfunc_parse_xml(doc: libxml2.Doc, node: libxml2.Node): boolean;
-        /**
-         * a function called after parsing a JSON object, to allow the `parsable` to validate the parsed properties
-         */
         vfunc_post_parse_json(): boolean;
-        /**
-         * a function called after parsing an XML tree, to allow the `parsable` to validate the parsed properties
-         */
         vfunc_post_parse_xml(): boolean;
-        /**
-         * a function called before building the XML representation of the children of the #GDataParsable, which allows attributes of the root
-         * XML node to be added to `xml_string`
-         * @param xml_string
-         */
         vfunc_pre_get_xml(xml_string: GLib.String): void;
-        /**
-         * a function called before parsing of an XML tree is started, which allows properties from the root node to be extracted
-         * and used in `parsable`
-         * @param doc
-         * @param root_node
-         */
         vfunc_pre_parse_xml(doc: libxml2.Doc, root_node: libxml2.Node): boolean;
 
         // Methods
@@ -26768,6 +22920,42 @@ export namespace GData {
          * @param service a #GDataService with which the comment will be deleted
          * @param comment_ a comment to be deleted
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        delete_comment_async(
+            service: Service,
+            comment_: Comment,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Deletes `comment` from the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after
+         * this method returns.
+         *
+         * For more details, see gdata_commentable_delete_comment(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_delete_comment_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService with which the comment will be deleted
+         * @param comment_ a comment to be deleted
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished
+         */
+        delete_comment_async(
+            service: Service,
+            comment_: Comment,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Deletes `comment` from the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after
+         * this method returns.
+         *
+         * For more details, see gdata_commentable_delete_comment(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_delete_comment_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService with which the comment will be deleted
+         * @param comment_ a comment to be deleted
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the operation is finished
          */
         delete_comment_async(
@@ -26775,7 +22963,7 @@ export namespace GData {
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous comment deletion operation started with gdata_commentable_delete_comment_async().
          * @param result a #GAsyncResult
@@ -26803,6 +22991,42 @@ export namespace GData {
          * @param service a #GDataService with which the comment will be added
          * @param comment_ a new comment to be added to the #GDataCommentable
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        insert_comment_async(
+            service: Service,
+            comment_: Comment,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Comment | null>;
+        /**
+         * Adds `comment` to the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after this
+         * method returns.
+         *
+         * For more details, see gdata_commentable_insert_comment(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_insert_comment_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService with which the comment will be added
+         * @param comment_ a new comment to be added to the #GDataCommentable
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished
+         */
+        insert_comment_async(
+            service: Service,
+            comment_: Comment,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Adds `comment` to the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after this
+         * method returns.
+         *
+         * For more details, see gdata_commentable_insert_comment(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_insert_comment_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService with which the comment will be added
+         * @param comment_ a new comment to be added to the #GDataCommentable
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the operation is finished
          */
         insert_comment_async(
@@ -26810,7 +23034,7 @@ export namespace GData {
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Comment | null> | void;
         /**
          * Finishes an asynchronous comment insertion operation started with gdata_commentable_insert_comment_async().
          * @param result a #GAsyncResult
@@ -26848,6 +23072,50 @@ export namespace GData {
          * @param cancellable optional #GCancellable object, or %NULL
          * @param progress_callback a #GDataQueryProgressCallback to call when a comment is loaded, or %NULL
          * @param destroy_progress_user_data a function to call when @progress_callback will not be called any more, or %NULL; this function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it
+         */
+        query_comments_async(
+            service: Service,
+            query?: Query | null,
+            cancellable?: Gio.Cancellable | null,
+            progress_callback?: QueryProgressCallback | null,
+            destroy_progress_user_data?: GLib.DestroyNotify | null,
+        ): Promise<Feed | null>;
+        /**
+         * Retrieves a #GDataFeed containing the #GDataComments representing the comments on the #GDataCommentable which match the given `query`.
+         * `self,` `service` and `query` are all reffed when this method is called, so can safely be freed after this method returns.
+         *
+         * For more details, see gdata_commentable_query_comments(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_query_comments_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService representing the service with which the object's comments will be manipulated
+         * @param query a #GDataQuery with query parameters, or %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param progress_callback a #GDataQueryProgressCallback to call when a comment is loaded, or %NULL
+         * @param destroy_progress_user_data a function to call when @progress_callback will not be called any more, or %NULL; this function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it
+         * @param callback a #GAsyncReadyCallback to call when the query is finished
+         */
+        query_comments_async(
+            service: Service,
+            query: Query | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: QueryProgressCallback | null,
+            destroy_progress_user_data: GLib.DestroyNotify | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Retrieves a #GDataFeed containing the #GDataComments representing the comments on the #GDataCommentable which match the given `query`.
+         * `self,` `service` and `query` are all reffed when this method is called, so can safely be freed after this method returns.
+         *
+         * For more details, see gdata_commentable_query_comments(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_query_comments_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService representing the service with which the object's comments will be manipulated
+         * @param query a #GDataQuery with query parameters, or %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param progress_callback a #GDataQueryProgressCallback to call when a comment is loaded, or %NULL
+         * @param destroy_progress_user_data a function to call when @progress_callback will not be called any more, or %NULL; this function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it
          * @param callback a #GAsyncReadyCallback to call when the query is finished
          */
         query_comments_async(
@@ -26857,28 +23125,15 @@ export namespace GData {
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Feed | null> | void;
         /**
          * Finishes an asynchronous comment query operation started with gdata_commentable_query_comments_async().
          * @param result a #GAsyncResult
          * @returns a #GDataFeed of #GDataComments, or %NULL; unref with g_object_unref()
          */
         query_comments_finish(result: Gio.AsyncResult): Feed | null;
-        /**
-         * a function that returns the URI to add new comments to the commentable object, or %NULL if the given commentable object
-         * doesn't support adding comments; free with g_free()
-         * @param comment
-         */
         vfunc_get_insert_comment_uri(comment: Comment): string;
-        /**
-         * a function that returns the URI of a #GDataFeed of comments from a commentable object, or %NULL if the given commentable
-         * object doesn't support commenting; free with g_free()
-         */
         vfunc_get_query_comments_uri(): string;
-        /**
-         * a function that returns %TRUE if the given comment may be deleted, %FALSE otherwise
-         * @param comment
-         */
         vfunc_is_comment_deletable(comment: Comment): boolean;
         /**
          * Adds `author` to the list of authors in the given #GDataEntry and increments its reference count.
@@ -27227,13 +23482,40 @@ export namespace GData {
          * operation.
          * @param username the username of the user whose information you wish to retrieve, or %NULL for the currently authenticated user
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        get_user_async(username?: string | null, cancellable?: Gio.Cancellable | null): Promise<PicasaWebUser>;
+        /**
+         * Queries the service to return the user specified by `username`.
+         *
+         * For more details, see gdata_picasaweb_service_get_user() which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_picasaweb_service_get_user_finish() to get the results of the
+         * operation.
+         * @param username the username of the user whose information you wish to retrieve, or %NULL for the currently authenticated user
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the query is finished
+         */
+        get_user_async(
+            username: string | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Queries the service to return the user specified by `username`.
+         *
+         * For more details, see gdata_picasaweb_service_get_user() which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_picasaweb_service_get_user_finish() to get the results of the
+         * operation.
+         * @param username the username of the user whose information you wish to retrieve, or %NULL for the currently authenticated user
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the query is finished
          */
         get_user_async(
             username?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<PicasaWebUser> | void;
         /**
          * Finishes an asynchronous user retrieval operation started with gdata_picasaweb_service_get_user_async().
          * @param result a #GAsyncResult
@@ -27869,8 +24151,6 @@ export namespace GData {
             locale: string;
             proxy_resolver: Gio.ProxyResolver;
             proxyResolver: Gio.ProxyResolver;
-            proxy_uri: Soup.URI;
-            proxyUri: Soup.URI;
             timeout: number;
         }
     }
@@ -27911,29 +24191,15 @@ export namespace GData {
         get locale(): string;
         set locale(val: string);
         /**
-         * The #GProxyResolver used to determine a proxy URI.  Setting this will clear the #GDataService:proxy-uri property.
+         * The #GProxyResolver used to determine a proxy URI.
          */
         get proxy_resolver(): Gio.ProxyResolver;
         set proxy_resolver(val: Gio.ProxyResolver);
         /**
-         * The #GProxyResolver used to determine a proxy URI.  Setting this will clear the #GDataService:proxy-uri property.
+         * The #GProxyResolver used to determine a proxy URI.
          */
         get proxyResolver(): Gio.ProxyResolver;
         set proxyResolver(val: Gio.ProxyResolver);
-        /**
-         * The proxy URI used internally for all network requests.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its proxy URI setting.
-         */
-        get proxy_uri(): Soup.URI;
-        set proxy_uri(val: Soup.URI);
-        /**
-         * The proxy URI used internally for all network requests.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its proxy URI setting.
-         */
-        get proxyUri(): Soup.URI;
-        set proxyUri(val: Soup.URI);
         /**
          * A timeout, in seconds, for network operations. If the timeout is exceeded, the operation will be cancelled and
          * %GDATA_SERVICE_ERROR_NETWORK_ERROR will be returned.
@@ -27965,22 +24231,7 @@ export namespace GData {
 
         // Virtual methods
 
-        /**
-         * a function to allow subclasses to append their own headers to queries before they are submitted to the online service,
-         * using the given authorization domain; new in version 0.9.0
-         * @param domain
-         * @param message
-         */
         vfunc_append_query_headers(domain: AuthorizationDomain, message: Soup.Message): void;
-        /**
-         * a function to parse error responses to queries from the online service. It should set the error
-         * from the status, reason phrase and response body it is passed.
-         * @param operation_type
-         * @param status
-         * @param reason_phrase
-         * @param response_body
-         * @param length
-         */
         vfunc_parse_error_response(
             operation_type: OperationType,
             status: number,
@@ -28021,6 +24272,42 @@ export namespace GData {
          * @param domain the #GDataAuthorizationDomain the deletion falls under, or %NULL
          * @param entry the #GDataEntry to delete
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        delete_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Deletes `entry` from the server. `self` and `entry` are both reffed when this function is called,
+         * so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_delete_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_delete_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the deletion falls under, or %NULL
+         * @param entry the #GDataEntry to delete
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when deletion is finished, or %NULL
+         */
+        delete_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Deletes `entry` from the server. `self` and `entry` are both reffed when this function is called,
+         * so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_delete_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_delete_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the deletion falls under, or %NULL
+         * @param entry the #GDataEntry to delete
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when deletion is finished, or %NULL
          */
         delete_entry_async(
@@ -28028,7 +24315,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous entry deletion operation started with gdata_service_delete_entry_async().
          * @param async_result a #GAsyncResult
@@ -28050,11 +24337,6 @@ export namespace GData {
          * @returns a #GProxyResolver, or %NULL
          */
         get_proxy_resolver(): Gio.ProxyResolver | null;
-        /**
-         * Gets the proxy URI on the #GDataService's #SoupSession.
-         * @returns the proxy URI, or %NULL
-         */
-        get_proxy_uri(): Soup.URI;
         /**
          * Gets the #GDataService:timeout property; the network timeout, in seconds.
          * @returns the timeout, or <code class="literal">0</code>
@@ -28102,6 +24384,46 @@ export namespace GData {
          * @param upload_uri the URI to which the upload should be sent
          * @param entry the #GDataEntry to insert
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        insert_entry_async(
+            domain: AuthorizationDomain | null,
+            upload_uri: string,
+            entry: Entry,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Entry>;
+        /**
+         * Inserts `entry` by uploading it to the online service at `upload_uri`. `self,` `upload_uri` and
+         * `entry` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_insert_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_insert_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the insertion operation falls under, or %NULL
+         * @param upload_uri the URI to which the upload should be sent
+         * @param entry the #GDataEntry to insert
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when insertion is finished, or %NULL
+         */
+        insert_entry_async(
+            domain: AuthorizationDomain | null,
+            upload_uri: string,
+            entry: Entry,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Inserts `entry` by uploading it to the online service at `upload_uri`. `self,` `upload_uri` and
+         * `entry` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_insert_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_insert_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the insertion operation falls under, or %NULL
+         * @param upload_uri the URI to which the upload should be sent
+         * @param entry the #GDataEntry to insert
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when insertion is finished, or %NULL
          */
         insert_entry_async(
@@ -28110,7 +24432,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry insertion operation started with gdata_service_insert_entry_async().
          * @param async_result a #GAsyncResult
@@ -28177,6 +24499,58 @@ export namespace GData {
          * @param cancellable optional #GCancellable object, or %NULL
          * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
          * @param destroy_progress_user_data the function to call when @progress_callback will not be called any more, or %NULL. This function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it.
+         */
+        query_async(
+            domain: AuthorizationDomain | null,
+            feed_uri: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable?: Gio.Cancellable | null,
+            progress_callback?: QueryProgressCallback | null,
+            destroy_progress_user_data?: GLib.DestroyNotify | null,
+        ): Promise<Feed>;
+        /**
+         * Queries the service's `feed_uri` feed to build a #GDataFeed. `self,` `feed_uri` and
+         * `query` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param feed_uri the feed URI to query, including the host name and protocol
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntrys to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
+         * @param destroy_progress_user_data the function to call when @progress_callback will not be called any more, or %NULL. This function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it.
+         * @param callback a #GAsyncReadyCallback to call when the query is finished
+         */
+        query_async(
+            domain: AuthorizationDomain | null,
+            feed_uri: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: QueryProgressCallback | null,
+            destroy_progress_user_data: GLib.DestroyNotify | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Queries the service's `feed_uri` feed to build a #GDataFeed. `self,` `feed_uri` and
+         * `query` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param feed_uri the feed URI to query, including the host name and protocol
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntrys to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
+         * @param destroy_progress_user_data the function to call when @progress_callback will not be called any more, or %NULL. This function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it.
          * @param callback a #GAsyncReadyCallback to call when the query is finished
          */
         query_async(
@@ -28188,7 +24562,7 @@ export namespace GData {
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Feed> | void;
         /**
          * Finishes an asynchronous query operation started with gdata_service_query_async().
          * @param async_result a #GAsyncResult
@@ -28232,6 +24606,52 @@ export namespace GData {
          * @param query a #GDataQuery with the query parameters, or %NULL
          * @param entry_type a #GType for the #GDataEntry to build from the XML
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        query_single_entry_async(
+            domain: AuthorizationDomain | null,
+            entry_id: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Entry>;
+        /**
+         * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
+         * gdata_entry_get_id(). `self,` `query` and `entry_id` are reffed/copied when this
+         * function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query_single_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_single_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param entry_id the entry ID of the desired entry
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntry to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the query is finished
+         */
+        query_single_entry_async(
+            domain: AuthorizationDomain | null,
+            entry_id: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
+         * gdata_entry_get_id(). `self,` `query` and `entry_id` are reffed/copied when this
+         * function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query_single_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_single_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param entry_id the entry ID of the desired entry
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntry to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the query is finished
          */
         query_single_entry_async(
@@ -28241,7 +24661,7 @@ export namespace GData {
             entry_type: GObject.GType,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Entry> | void;
         /**
          * Finishes an asynchronous query operation for a single entry, as started with gdata_service_query_single_entry_async().
          * @param async_result a #GAsyncResult
@@ -28264,21 +24684,9 @@ export namespace GData {
         set_locale(locale?: string | null): void;
         /**
          * Sets the #GProxyResolver on the #SoupSession used internally by the given #GDataService.
-         *
-         * Setting this will clear the #GDataService:proxy-uri property.
          * @param proxy_resolver a #GProxyResolver, or %NULL
          */
         set_proxy_resolver(proxy_resolver?: Gio.ProxyResolver | null): void;
-        /**
-         * Sets the proxy URI on the #SoupSession used internally by the given #GDataService.
-         * This forces all requests through the given proxy.
-         *
-         * If `proxy_uri` is %NULL, no proxy will be used.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its proxy URI setting.
-         * @param proxy_uri the proxy URI, or %NULL
-         */
-        set_proxy_uri(proxy_uri?: Soup.URI | null): void;
         /**
          * Sets the #GDataService:timeout property; the network timeout, in seconds.
          *
@@ -28320,6 +24728,42 @@ export namespace GData {
          * @param domain the #GDataAuthorizationDomain the update operation falls under, or %NULL
          * @param entry the #GDataEntry to update
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        update_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Entry>;
+        /**
+         * Updates `entry` by PUTting it to its <literal>edit</literal> link's URI. `self` and
+         * `entry` are both reffed when this function is called, so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_update_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_update_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the update operation falls under, or %NULL
+         * @param entry the #GDataEntry to update
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the update is finished, or %NULL
+         */
+        update_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Updates `entry` by PUTting it to its <literal>edit</literal> link's URI. `self` and
+         * `entry` are both reffed when this function is called, so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_update_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_update_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the update operation falls under, or %NULL
+         * @param entry the #GDataEntry to update
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the update is finished, or %NULL
          */
         update_entry_async(
@@ -28327,7 +24771,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry update operation started with gdata_service_update_entry_async().
          * @param async_result a #GAsyncResult
@@ -29270,12 +25714,6 @@ export namespace GData {
          * @returns %TRUE on success, %FALSE otherwise
          */
         compare(other?: Comparable | null): number;
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -29742,95 +26180,6 @@ export namespace GData {
         set_parent_comment_uri(parent_comment_uri: string): void;
     }
 
-    module YouTubeContent {
-        // Constructor properties interface
-
-        interface ConstructorProps extends MediaContent.ConstructorProps {
-            format: YouTubeFormat;
-        }
-    }
-
-    /**
-     * All the fields in the #GDataYouTubeContent structure are private and should never be accessed directly.
-     */
-    class YouTubeContent extends MediaContent {
-        static $gtype: GObject.GType<YouTubeContent>;
-
-        // Properties
-
-        /**
-         * The video format of the video object.
-         *
-         * For more information, see the
-         * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_media:content">
-         * YouTube documentation</ulink>.
-         */
-        get format(): YouTubeFormat;
-
-        // Constructors
-
-        constructor(properties?: Partial<YouTubeContent.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Gets the #GDataYouTubeContent:format property.
-         * @returns the video format, or %GDATA_YOUTUBE_FORMAT_UNKNOWN
-         */
-        get_format(): YouTubeFormat;
-    }
-
-    module YouTubeCredit {
-        // Constructor properties interface
-
-        interface ConstructorProps extends MediaCredit.ConstructorProps {
-            entity_type: string;
-            entityType: string;
-        }
-    }
-
-    /**
-     * All the fields in the #GDataYouTubeCredit structure are private and should never be accessed directly.
-     */
-    class YouTubeCredit extends MediaCredit {
-        static $gtype: GObject.GType<YouTubeCredit>;
-
-        // Properties
-
-        /**
-         * The type of entity who is credited. Currently this can only be %GDATA_YOUTUBE_CREDIT_ENTITY_PARTNER, for a YouTube partner.
-         *
-         * For more information, see the
-         * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_media:credit">
-         * YouTube documentation</ulink>.
-         */
-        get entity_type(): string;
-        /**
-         * The type of entity who is credited. Currently this can only be %GDATA_YOUTUBE_CREDIT_ENTITY_PARTNER, for a YouTube partner.
-         *
-         * For more information, see the
-         * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_media:credit">
-         * YouTube documentation</ulink>.
-         */
-        get entityType(): string;
-
-        // Constructors
-
-        constructor(properties?: Partial<YouTubeCredit.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Gets the #GDataYouTubeCredit:entity-type property.
-         * @returns the type of the credited user (e.g. %GDATA_YOUTUBE_CREDIT_ENTITY_PARTNER), or %NULL
-         */
-        get_entity_type(): string;
-    }
-
     module YouTubeFeed {
         // Constructor properties interface
 
@@ -29856,10 +26205,6 @@ export namespace GData {
 
         interface ConstructorProps extends Query.ConstructorProps {
             age: YouTubeAge;
-            format: YouTubeFormat;
-            has_location: boolean;
-            hasLocation: boolean;
-            language: string;
             latitude: number;
             license: string;
             location_radius: number;
@@ -29870,9 +26215,6 @@ export namespace GData {
             restriction: string;
             safe_search: YouTubeSafeSearch;
             safeSearch: YouTubeSafeSearch;
-            sort_order: YouTubeSortOrder;
-            sortOrder: YouTubeSortOrder;
-            uploader: YouTubeUploader;
         }
     }
 
@@ -29891,42 +26233,6 @@ export namespace GData {
         get age(): YouTubeAge;
         set age(val: YouTubeAge);
         /**
-         * Specifies that videos must be available in a particular video format. Use %GDATA_YOUTUBE_FORMAT_UNKNOWN to
-         * retrieve videos irrespective of their format availability.
-         */
-        get format(): YouTubeFormat;
-        set format(val: YouTubeFormat);
-        /**
-         * Whether to restrict search results to videos with specific coordinates associated with them. If used with a given
-         * #GDataYouTubeQuery:latitude and #GDataYouTubeQuery:longitude, only videos with specific coordinates (not those with merely
-         * a descriptive address) will be returned. If used without a latitude and longitude set, only videos with specific coordinates
-         * (regardless of those coordinates) will be returned.
-         *
-         * For more information, see the documentation for #GDataYouTubeQuery:latitude.
-         */
-        get has_location(): boolean;
-        set has_location(val: boolean);
-        /**
-         * Whether to restrict search results to videos with specific coordinates associated with them. If used with a given
-         * #GDataYouTubeQuery:latitude and #GDataYouTubeQuery:longitude, only videos with specific coordinates (not those with merely
-         * a descriptive address) will be returned. If used without a latitude and longitude set, only videos with specific coordinates
-         * (regardless of those coordinates) will be returned.
-         *
-         * For more information, see the documentation for #GDataYouTubeQuery:latitude.
-         */
-        get hasLocation(): boolean;
-        set hasLocation(val: boolean);
-        /**
-         * Restricts the search to videos that have a title, description or keywords in a specified language. The language code should
-         * be a two-letter ISO 639-1 code; or you can use <literal>zh-Hans</literal> for simplified Chinese and <literal>zh-Hant</literal>
-         * for traditional Chinese.
-         *
-         * For more information, see the <ulink type="http"
-         * url="http://code.google.com/apis/youtube/2.0/reference.html#lrsp">online documentation</ulink>.
-         */
-        get language(): string;
-        set language(val: string);
-        /**
          * The latitude of a particular location of which videos should be found. This should be used in conjunction with
          * #GDataYouTubeQuery:longitude; if either property is outside the valid range, neither will be used. Valid latitudes
          * are between <code class="literal">-90</code> and <code class="literal">90</code>0 degrees; any values of this property outside that range
@@ -29934,9 +26240,6 @@ export namespace GData {
          *
          * If #GDataYouTubeQuery:location-radius is a non-<code class="literal">0</code> value, this will define a circle from which videos should be
          * found.
-         *
-         * As it is deprecated, the value of #GDataYouTubeQuery:has-location is
-         * ignored.
          *
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/search/list#location">online documentation</ulink>.
@@ -30038,22 +26341,6 @@ export namespace GData {
          */
         get safeSearch(): YouTubeSafeSearch;
         set safeSearch(val: YouTubeSafeSearch);
-        /**
-         * Specifies the direction of sorting. To use the default sort order, set the property to %GDATA_YOUTUBE_SORT_NONE.
-         */
-        get sort_order(): YouTubeSortOrder;
-        set sort_order(val: YouTubeSortOrder);
-        /**
-         * Specifies the direction of sorting. To use the default sort order, set the property to %GDATA_YOUTUBE_SORT_NONE.
-         */
-        get sortOrder(): YouTubeSortOrder;
-        set sortOrder(val: YouTubeSortOrder);
-        /**
-         * Restricts the search to videos from the specified type of uploader. Currently, this can only be used to restrict
-         * searches to videos from YouTube partners.
-         */
-        get uploader(): YouTubeUploader;
-        set uploader(val: YouTubeUploader);
 
         // Constructors
 
@@ -30071,16 +26358,6 @@ export namespace GData {
          */
         get_age(): YouTubeAge;
         /**
-         * Gets the #GDataYouTubeQuery:format property.
-         * @returns the format property
-         */
-        get_format(): YouTubeFormat;
-        /**
-         * Gets the #GDataYouTubeQuery:language property.
-         * @returns the language property, or %NULL if it is unset
-         */
-        get_language(): string;
-        /**
          * Gets the #GDataYouTubeQuery:license property.
          * @returns the license property, or %NULL if it is unset
          */
@@ -30089,7 +26366,7 @@ export namespace GData {
          * Gets the location-based properties of the #GDataYouTubeQuery<!-- -->: #GDataYouTubeQuery:latitude, #GDataYouTubeQuery:longitude,
          * #GDataYouTubeQuery:location-radius and #GDataYouTubeQuery:has-location.
          */
-        get_location(): [number, number, number, boolean];
+        get_location(): [number, number, number];
         /**
          * Gets the #GDataYouTubeQuery:order-by property.
          * @returns the order by property, or %NULL if it is unset
@@ -30106,32 +26383,10 @@ export namespace GData {
          */
         get_safe_search(): YouTubeSafeSearch;
         /**
-         * Gets the #GDataYouTubeQuery:sort-order property.
-         * @returns the sort order property
-         */
-        get_sort_order(): YouTubeSortOrder;
-        /**
-         * Gets the #GDataYouTubeQuery:uploader property.
-         * @returns the uploader property
-         */
-        get_uploader(): YouTubeUploader;
-        /**
          * Sets the #GDataYouTubeQuery:age property of the #GDataYouTubeQuery to `age`.
          * @param age the new age
          */
         set_age(age: YouTubeAge): void;
-        /**
-         * Sets the #GDataYouTubeQuery:format property of the #GDataYouTubeQuery to `format`.
-         * @param format the requested video format
-         */
-        set_format(format: YouTubeFormat): void;
-        /**
-         * Sets the #GDataYouTubeQuery:language property of the #GDataYouTubeQuery to the new language, `language`.
-         *
-         * Set `language` to %NULL to unset the property in the query URI.
-         * @param language a new language name, or %NULL
-         */
-        set_language(language?: string | null): void;
         /**
          * Sets the #GDataYouTubeQuery:license property of the #GDataYouTubeQuery to the new license value, `license`.
          *
@@ -30145,9 +26400,8 @@ export namespace GData {
          * @param latitude the new latitude, or %G_MAXDOUBLE
          * @param longitude the new longitude, or %G_MAXDOUBLE
          * @param radius the new location radius, or <code class="literal">0</code>
-         * @param has_location %TRUE if the query is for videos with a specific location, %FALSE otherwise
          */
-        set_location(latitude: number, longitude: number, radius: number, has_location: boolean): void;
+        set_location(latitude: number, longitude: number, radius: number): void;
         /**
          * Sets the #GDataYouTubeQuery:order-by property of the #GDataYouTubeQuery to the new order by string, `order_by`.
          *
@@ -30167,18 +26421,6 @@ export namespace GData {
          * @param safe_search a new safe search level
          */
         set_safe_search(safe_search: YouTubeSafeSearch): void;
-        /**
-         * Sets the #GDataYouTubeQuery:sort-order property of the #GDataYouTubeQuery to `sort_order`.
-         *
-         * Set `sort_order` to %GDATA_YOUTUBE_SORT_NONE to unset the property in the query URI.
-         * @param sort_order the new sort order
-         */
-        set_sort_order(sort_order: YouTubeSortOrder): void;
-        /**
-         * Sets the #GDataYouTubeQuery:uploader property of the #GDataYouTubeQuery to `uploader`.
-         * @param uploader the new uploader
-         */
-        set_uploader(uploader: YouTubeUploader): void;
     }
 
     module YouTubeService {
@@ -30266,12 +26508,35 @@ export namespace GData {
          * When the operation is finished, `callback` will be called. You can then call gdata_youtube_service_get_categories_finish() to get the results of the
          * operation.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        get_categories_async(cancellable?: Gio.Cancellable | null): Promise<APPCategories>;
+        /**
+         * Gets a list of the categories currently in use on YouTube. `self` is reffed when this function is called, so can safely be unreffed after this
+         * function returns.
+         *
+         * For more details, see gdata_youtube_service_get_categories(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_youtube_service_get_categories_finish() to get the results of the
+         * operation.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the request is finished
+         */
+        get_categories_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Gets a list of the categories currently in use on YouTube. `self` is reffed when this function is called, so can safely be unreffed after this
+         * function returns.
+         *
+         * For more details, see gdata_youtube_service_get_categories(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_youtube_service_get_categories_finish() to get the results of the
+         * operation.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is finished
          */
         get_categories_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<APPCategories> | void;
         /**
          * Finishes an asynchronous request for a list of categories on YouTube, as started with gdata_youtube_service_get_categories_async().
          * @param async_result a #GAsyncResult
@@ -30459,29 +26724,15 @@ export namespace GData {
         get locale(): string;
         set locale(val: string);
         /**
-         * The #GProxyResolver used to determine a proxy URI.  Setting this will clear the #GDataService:proxy-uri property.
+         * The #GProxyResolver used to determine a proxy URI.
          */
         get proxy_resolver(): Gio.ProxyResolver;
         set proxy_resolver(val: Gio.ProxyResolver);
         /**
-         * The #GProxyResolver used to determine a proxy URI.  Setting this will clear the #GDataService:proxy-uri property.
+         * The #GProxyResolver used to determine a proxy URI.
          */
         get proxyResolver(): Gio.ProxyResolver;
         set proxyResolver(val: Gio.ProxyResolver);
-        /**
-         * The proxy URI used internally for all network requests.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its proxy URI setting.
-         */
-        get proxy_uri(): Soup.URI;
-        set proxy_uri(val: Soup.URI);
-        /**
-         * The proxy URI used internally for all network requests.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its proxy URI setting.
-         */
-        get proxyUri(): Soup.URI;
-        set proxyUri(val: Soup.URI);
         /**
          * A timeout, in seconds, for network operations. If the timeout is exceeded, the operation will be cancelled and
          * %GDATA_SERVICE_ERROR_NETWORK_ERROR will be returned.
@@ -30534,6 +26785,42 @@ export namespace GData {
          * @param domain the #GDataAuthorizationDomain the deletion falls under, or %NULL
          * @param entry the #GDataEntry to delete
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        delete_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Deletes `entry` from the server. `self` and `entry` are both reffed when this function is called,
+         * so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_delete_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_delete_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the deletion falls under, or %NULL
+         * @param entry the #GDataEntry to delete
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when deletion is finished, or %NULL
+         */
+        delete_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Deletes `entry` from the server. `self` and `entry` are both reffed when this function is called,
+         * so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_delete_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_delete_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the deletion falls under, or %NULL
+         * @param entry the #GDataEntry to delete
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when deletion is finished, or %NULL
          */
         delete_entry_async(
@@ -30541,7 +26828,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous entry deletion operation started with gdata_service_delete_entry_async().
          * @param async_result a #GAsyncResult
@@ -30563,11 +26850,6 @@ export namespace GData {
          * @returns a #GProxyResolver, or %NULL
          */
         get_proxy_resolver(): Gio.ProxyResolver | null;
-        /**
-         * Gets the proxy URI on the #GDataService's #SoupSession.
-         * @returns the proxy URI, or %NULL
-         */
-        get_proxy_uri(): Soup.URI;
         /**
          * Gets the #GDataService:timeout property; the network timeout, in seconds.
          * @returns the timeout, or <code class="literal">0</code>
@@ -30615,6 +26897,46 @@ export namespace GData {
          * @param upload_uri the URI to which the upload should be sent
          * @param entry the #GDataEntry to insert
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        insert_entry_async(
+            domain: AuthorizationDomain | null,
+            upload_uri: string,
+            entry: Entry,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Entry>;
+        /**
+         * Inserts `entry` by uploading it to the online service at `upload_uri`. `self,` `upload_uri` and
+         * `entry` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_insert_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_insert_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the insertion operation falls under, or %NULL
+         * @param upload_uri the URI to which the upload should be sent
+         * @param entry the #GDataEntry to insert
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when insertion is finished, or %NULL
+         */
+        insert_entry_async(
+            domain: AuthorizationDomain | null,
+            upload_uri: string,
+            entry: Entry,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Inserts `entry` by uploading it to the online service at `upload_uri`. `self,` `upload_uri` and
+         * `entry` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_insert_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_insert_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the insertion operation falls under, or %NULL
+         * @param upload_uri the URI to which the upload should be sent
+         * @param entry the #GDataEntry to insert
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when insertion is finished, or %NULL
          */
         insert_entry_async(
@@ -30623,7 +26945,7 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry insertion operation started with gdata_service_insert_entry_async().
          * @param async_result a #GAsyncResult
@@ -30690,6 +27012,58 @@ export namespace GData {
          * @param cancellable optional #GCancellable object, or %NULL
          * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
          * @param destroy_progress_user_data the function to call when @progress_callback will not be called any more, or %NULL. This function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it.
+         */
+        query_async(
+            domain: AuthorizationDomain | null,
+            feed_uri: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable?: Gio.Cancellable | null,
+            progress_callback?: QueryProgressCallback | null,
+            destroy_progress_user_data?: GLib.DestroyNotify | null,
+        ): Promise<Feed>;
+        /**
+         * Queries the service's `feed_uri` feed to build a #GDataFeed. `self,` `feed_uri` and
+         * `query` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param feed_uri the feed URI to query, including the host name and protocol
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntrys to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
+         * @param destroy_progress_user_data the function to call when @progress_callback will not be called any more, or %NULL. This function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it.
+         * @param callback a #GAsyncReadyCallback to call when the query is finished
+         */
+        query_async(
+            domain: AuthorizationDomain | null,
+            feed_uri: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: QueryProgressCallback | null,
+            destroy_progress_user_data: GLib.DestroyNotify | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Queries the service's `feed_uri` feed to build a #GDataFeed. `self,` `feed_uri` and
+         * `query` are all reffed/copied when this function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param feed_uri the feed URI to query, including the host name and protocol
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntrys to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
+         * @param destroy_progress_user_data the function to call when @progress_callback will not be called any more, or %NULL. This function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it.
          * @param callback a #GAsyncReadyCallback to call when the query is finished
          */
         query_async(
@@ -30701,7 +27075,7 @@ export namespace GData {
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Feed> | void;
         /**
          * Finishes an asynchronous query operation started with gdata_service_query_async().
          * @param async_result a #GAsyncResult
@@ -30745,6 +27119,52 @@ export namespace GData {
          * @param query a #GDataQuery with the query parameters, or %NULL
          * @param entry_type a #GType for the #GDataEntry to build from the XML
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        query_single_entry_async(
+            domain: AuthorizationDomain | null,
+            entry_id: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Entry>;
+        /**
+         * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
+         * gdata_entry_get_id(). `self,` `query` and `entry_id` are reffed/copied when this
+         * function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query_single_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_single_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param entry_id the entry ID of the desired entry
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntry to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the query is finished
+         */
+        query_single_entry_async(
+            domain: AuthorizationDomain | null,
+            entry_id: string,
+            query: Query | null,
+            entry_type: GObject.GType,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
+         * gdata_entry_get_id(). `self,` `query` and `entry_id` are reffed/copied when this
+         * function is called, so can safely be freed after this function returns.
+         *
+         * For more details, see gdata_service_query_single_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_query_single_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the query falls under, or %NULL
+         * @param entry_id the entry ID of the desired entry
+         * @param query a #GDataQuery with the query parameters, or %NULL
+         * @param entry_type a #GType for the #GDataEntry to build from the XML
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the query is finished
          */
         query_single_entry_async(
@@ -30754,7 +27174,7 @@ export namespace GData {
             entry_type: GObject.GType,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Entry> | void;
         /**
          * Finishes an asynchronous query operation for a single entry, as started with gdata_service_query_single_entry_async().
          * @param async_result a #GAsyncResult
@@ -30777,21 +27197,9 @@ export namespace GData {
         set_locale(locale?: string | null): void;
         /**
          * Sets the #GProxyResolver on the #SoupSession used internally by the given #GDataService.
-         *
-         * Setting this will clear the #GDataService:proxy-uri property.
          * @param proxy_resolver a #GProxyResolver, or %NULL
          */
         set_proxy_resolver(proxy_resolver?: Gio.ProxyResolver | null): void;
-        /**
-         * Sets the proxy URI on the #SoupSession used internally by the given #GDataService.
-         * This forces all requests through the given proxy.
-         *
-         * If `proxy_uri` is %NULL, no proxy will be used.
-         *
-         * Note that if a #GDataAuthorizer is being used with this #GDataService, the authorizer might also need its proxy URI setting.
-         * @param proxy_uri the proxy URI, or %NULL
-         */
-        set_proxy_uri(proxy_uri?: Soup.URI | null): void;
         /**
          * Sets the #GDataService:timeout property; the network timeout, in seconds.
          *
@@ -30833,6 +27241,42 @@ export namespace GData {
          * @param domain the #GDataAuthorizationDomain the update operation falls under, or %NULL
          * @param entry the #GDataEntry to update
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        update_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Entry>;
+        /**
+         * Updates `entry` by PUTting it to its <literal>edit</literal> link's URI. `self` and
+         * `entry` are both reffed when this function is called, so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_update_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_update_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the update operation falls under, or %NULL
+         * @param entry the #GDataEntry to update
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the update is finished, or %NULL
+         */
+        update_entry_async(
+            domain: AuthorizationDomain | null,
+            entry: Entry,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Updates `entry` by PUTting it to its <literal>edit</literal> link's URI. `self` and
+         * `entry` are both reffed when this function is called, so can safely be unreffed after this function returns.
+         *
+         * For more details, see gdata_service_update_entry(), which is the synchronous version of this function.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_service_update_entry_finish()
+         * to get the results of the operation.
+         * @param domain the #GDataAuthorizationDomain the update operation falls under, or %NULL
+         * @param entry the #GDataEntry to update
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the update is finished, or %NULL
          */
         update_entry_async(
@@ -30840,29 +27284,14 @@ export namespace GData {
             entry: Entry,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Entry> | void;
         /**
          * Finishes an asynchronous entry update operation started with gdata_service_update_entry_async().
          * @param async_result a #GAsyncResult
          * @returns an updated #GDataEntry, or %NULL; unref with g_object_unref()
          */
         update_entry_finish(async_result: Gio.AsyncResult): Entry;
-        /**
-         * a function to allow subclasses to append their own headers to queries before they are submitted to the online service,
-         * using the given authorization domain; new in version 0.9.0
-         * @param domain
-         * @param message
-         */
         vfunc_append_query_headers(domain: AuthorizationDomain, message: Soup.Message): void;
-        /**
-         * a function to parse error responses to queries from the online service. It should set the error
-         * from the status, reason phrase and response body it is passed.
-         * @param operation_type
-         * @param status
-         * @param reason_phrase
-         * @param response_body
-         * @param length
-         */
         vfunc_parse_error_response(
             operation_type: OperationType,
             status: number,
@@ -30977,13 +27406,10 @@ export namespace GData {
             average_rating: number;
             averageRating: number;
             category: MediaCategory;
-            credit: YouTubeCredit;
             description: string;
             duration: number;
             favorite_count: number;
             favoriteCount: number;
-            is_draft: boolean;
-            isDraft: boolean;
             is_private: boolean;
             isPrivate: boolean;
             keywords: string[];
@@ -31001,8 +27427,6 @@ export namespace GData {
             recorded: number;
             state: YouTubeState;
             uploaded: number;
-            video_id: string;
-            videoId: string;
             view_count: number;
             viewCount: number;
         }
@@ -31051,10 +27475,6 @@ export namespace GData {
         get category(): MediaCategory;
         set category(val: MediaCategory);
         /**
-         * Identifies the owner of the video.
-         */
-        get credit(): YouTubeCredit;
-        /**
          * A summary or description of the video.
          *
          * For more information, see the <ulink type="http"
@@ -31083,16 +27503,6 @@ export namespace GData {
          * url="https://developers.google.com/youtube/v3/docs/videos#statistics.favoriteCount">online documentation</ulink>.
          */
         get favoriteCount(): number;
-        /**
-         * Indicates whether the video is in draft, or unpublished, status.
-         */
-        get is_draft(): boolean;
-        set is_draft(val: boolean);
-        /**
-         * Indicates whether the video is in draft, or unpublished, status.
-         */
-        get isDraft(): boolean;
-        set isDraft(val: boolean);
         get is_private(): boolean;
         set is_private(val: boolean);
         get isPrivate(): boolean;
@@ -31209,20 +27619,6 @@ export namespace GData {
          */
         get uploaded(): number;
         /**
-         * Specifies a unique ID which YouTube uses to identify the video. For example: <literal>qz8EfkS4KK0</literal>.
-         *
-         * For more information, see the <ulink type="http"
-         * url="https://developers.google.com/youtube/v3/docs/videos#id">online documentation</ulink>.
-         */
-        get video_id(): string;
-        /**
-         * Specifies a unique ID which YouTube uses to identify the video. For example: <literal>qz8EfkS4KK0</literal>.
-         *
-         * For more information, see the <ulink type="http"
-         * url="https://developers.google.com/youtube/v3/docs/videos#id">online documentation</ulink>.
-         */
-        get videoId(): string;
-        /**
          * The number of times the video has been viewed.
          *
          * For more information, see the <ulink type="http"
@@ -31289,11 +27685,6 @@ export namespace GData {
          * longitude is %NULL, that parameter will not be set. If the coordinates are unset, `latitude` and `longitude` will be set to %G_MAXDOUBLE.
          */
         get_coordinates(): [number, number];
-        /**
-         * Gets the #GDataYouTubeVideo:credit property.
-         * @returns a #GDataMediaCredit giving information on whom to credit for the video, or %NULL
-         */
-        get_credit(): YouTubeCredit;
         /**
          * Gets the #GDataYouTubeVideo:description property.
          * @returns the video's long text description, or %NULL
@@ -31369,11 +27760,6 @@ export namespace GData {
          */
         get_uploaded(): number;
         /**
-         * Gets the #GDataYouTubeVideo:video-id property.
-         * @returns the video's unique and permanent ID
-         */
-        get_video_id(): string;
-        /**
          * Gets the #GDataYouTubeVideo:view-count property.
          * @returns the number of times the video has been viewed
          */
@@ -31385,13 +27771,6 @@ export namespace GData {
          * @returns %TRUE if the video is restricted in @country, %FALSE otherwise
          */
         is_restricted_in_country(country: string): boolean;
-        /**
-         * Looks up a #GDataYouTubeContent from the video with the given MIME type. The video's list of contents is
-         * a list of URIs to various formats of the video itself, such as its SWF URI or RTSP stream.
-         * @param type the MIME type of the content desired
-         * @returns a #GDataYouTubeContent matching @type, or %NULL
-         */
-        look_up_content(type: string): YouTubeContent;
         /**
          * Sets the permission associated with `action` on the #GDataYouTubeVideo, allowing restriction or derestriction of various
          * operations on YouTube videos.
@@ -31428,11 +27807,6 @@ export namespace GData {
          * @param description the video's new description, or %NULL
          */
         set_description(description?: string | null): void;
-        /**
-         * Sets the #GDataYouTubeVideo:is-draft property to decide whether the video is a draft.
-         * @param is_draft whether the video is a draft
-         */
-        set_is_draft(is_draft: boolean): void;
         /**
          * Sets the #GDataYouTubeVideo:is-private property to decide whether the video is publicly viewable.
          * @param is_private whether the video is private
@@ -31574,6 +27948,42 @@ export namespace GData {
          * @param service a #GDataService with which the comment will be deleted
          * @param comment_ a comment to be deleted
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        delete_comment_async(
+            service: Service,
+            comment_: Comment,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Deletes `comment` from the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after
+         * this method returns.
+         *
+         * For more details, see gdata_commentable_delete_comment(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_delete_comment_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService with which the comment will be deleted
+         * @param comment_ a comment to be deleted
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished
+         */
+        delete_comment_async(
+            service: Service,
+            comment_: Comment,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Deletes `comment` from the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after
+         * this method returns.
+         *
+         * For more details, see gdata_commentable_delete_comment(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_delete_comment_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService with which the comment will be deleted
+         * @param comment_ a comment to be deleted
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the operation is finished
          */
         delete_comment_async(
@@ -31581,7 +27991,7 @@ export namespace GData {
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous comment deletion operation started with gdata_commentable_delete_comment_async().
          * @param result a #GAsyncResult
@@ -31609,6 +28019,42 @@ export namespace GData {
          * @param service a #GDataService with which the comment will be added
          * @param comment_ a new comment to be added to the #GDataCommentable
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        insert_comment_async(
+            service: Service,
+            comment_: Comment,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Comment | null>;
+        /**
+         * Adds `comment` to the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after this
+         * method returns.
+         *
+         * For more details, see gdata_commentable_insert_comment(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_insert_comment_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService with which the comment will be added
+         * @param comment_ a new comment to be added to the #GDataCommentable
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished
+         */
+        insert_comment_async(
+            service: Service,
+            comment_: Comment,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Adds `comment` to the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after this
+         * method returns.
+         *
+         * For more details, see gdata_commentable_insert_comment(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_insert_comment_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService with which the comment will be added
+         * @param comment_ a new comment to be added to the #GDataCommentable
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the operation is finished
          */
         insert_comment_async(
@@ -31616,7 +28062,7 @@ export namespace GData {
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Comment | null> | void;
         /**
          * Finishes an asynchronous comment insertion operation started with gdata_commentable_insert_comment_async().
          * @param result a #GAsyncResult
@@ -31654,6 +28100,50 @@ export namespace GData {
          * @param cancellable optional #GCancellable object, or %NULL
          * @param progress_callback a #GDataQueryProgressCallback to call when a comment is loaded, or %NULL
          * @param destroy_progress_user_data a function to call when @progress_callback will not be called any more, or %NULL; this function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it
+         */
+        query_comments_async(
+            service: Service,
+            query?: Query | null,
+            cancellable?: Gio.Cancellable | null,
+            progress_callback?: QueryProgressCallback | null,
+            destroy_progress_user_data?: GLib.DestroyNotify | null,
+        ): Promise<Feed | null>;
+        /**
+         * Retrieves a #GDataFeed containing the #GDataComments representing the comments on the #GDataCommentable which match the given `query`.
+         * `self,` `service` and `query` are all reffed when this method is called, so can safely be freed after this method returns.
+         *
+         * For more details, see gdata_commentable_query_comments(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_query_comments_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService representing the service with which the object's comments will be manipulated
+         * @param query a #GDataQuery with query parameters, or %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param progress_callback a #GDataQueryProgressCallback to call when a comment is loaded, or %NULL
+         * @param destroy_progress_user_data a function to call when @progress_callback will not be called any more, or %NULL; this function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it
+         * @param callback a #GAsyncReadyCallback to call when the query is finished
+         */
+        query_comments_async(
+            service: Service,
+            query: Query | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: QueryProgressCallback | null,
+            destroy_progress_user_data: GLib.DestroyNotify | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Retrieves a #GDataFeed containing the #GDataComments representing the comments on the #GDataCommentable which match the given `query`.
+         * `self,` `service` and `query` are all reffed when this method is called, so can safely be freed after this method returns.
+         *
+         * For more details, see gdata_commentable_query_comments(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_query_comments_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService representing the service with which the object's comments will be manipulated
+         * @param query a #GDataQuery with query parameters, or %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param progress_callback a #GDataQueryProgressCallback to call when a comment is loaded, or %NULL
+         * @param destroy_progress_user_data a function to call when @progress_callback will not be called any more, or %NULL; this function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it
          * @param callback a #GAsyncReadyCallback to call when the query is finished
          */
         query_comments_async(
@@ -31663,28 +28153,15 @@ export namespace GData {
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Feed | null> | void;
         /**
          * Finishes an asynchronous comment query operation started with gdata_commentable_query_comments_async().
          * @param result a #GAsyncResult
          * @returns a #GDataFeed of #GDataComments, or %NULL; unref with g_object_unref()
          */
         query_comments_finish(result: Gio.AsyncResult): Feed | null;
-        /**
-         * a function that returns the URI to add new comments to the commentable object, or %NULL if the given commentable object
-         * doesn't support adding comments; free with g_free()
-         * @param comment
-         */
         vfunc_get_insert_comment_uri(comment: Comment): string;
-        /**
-         * a function that returns the URI of a #GDataFeed of comments from a commentable object, or %NULL if the given commentable
-         * object doesn't support commenting; free with g_free()
-         */
         vfunc_get_query_comments_uri(): string;
-        /**
-         * a function that returns %TRUE if the given comment may be deleted, %FALSE otherwise
-         * @param comment
-         */
         vfunc_is_comment_deletable(comment: Comment): boolean;
         /**
          * Adds `author` to the list of authors in the given #GDataEntry and increments its reference count.
@@ -31924,15 +28401,6 @@ export namespace GData {
         _init(...args: any[]): void;
     }
 
-    type ClientLoginAuthorizerClass = typeof ClientLoginAuthorizer;
-    abstract class ClientLoginAuthorizerPrivate {
-        static $gtype: GObject.GType<ClientLoginAuthorizerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
     /**
      * Describes a color, such as used in the Google Calendar interface to
      * differentiate calendars.
@@ -31991,42 +28459,6 @@ export namespace GData {
 
     type CommentableInterface = typeof Commentable;
     type ComparableIface = typeof Comparable;
-    type ContactsContactClass = typeof ContactsContact;
-    abstract class ContactsContactPrivate {
-        static $gtype: GObject.GType<ContactsContactPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    type ContactsGroupClass = typeof ContactsGroup;
-    abstract class ContactsGroupPrivate {
-        static $gtype: GObject.GType<ContactsGroupPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    type ContactsQueryClass = typeof ContactsQuery;
-    abstract class ContactsQueryPrivate {
-        static $gtype: GObject.GType<ContactsQueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    type ContactsServiceClass = typeof ContactsService;
-    abstract class ContactsServicePrivate {
-        static $gtype: GObject.GType<ContactsServicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
     type DocumentsAccessRuleClass = typeof DocumentsAccessRule;
     type DocumentsDocumentClass = typeof DocumentsDocument;
     abstract class DocumentsDocumentPrivate {
@@ -32181,279 +28613,6 @@ export namespace GData {
         // Constructors
 
         _init(...args: any[]): void;
-    }
-
-    type FreebaseQueryClass = typeof FreebaseQuery;
-    abstract class FreebaseQueryPrivate {
-        static $gtype: GObject.GType<FreebaseQueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    type FreebaseResultClass = typeof FreebaseResult;
-    abstract class FreebaseResultPrivate {
-        static $gtype: GObject.GType<FreebaseResultPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    type FreebaseSearchQueryClass = typeof FreebaseSearchQuery;
-    abstract class FreebaseSearchQueryPrivate {
-        static $gtype: GObject.GType<FreebaseSearchQueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    type FreebaseSearchResultClass = typeof FreebaseSearchResult;
-    /**
-     * Opaque struct holding data for a single search result item.
-     */
-    abstract class FreebaseSearchResultItem {
-        static $gtype: GObject.GType<FreebaseSearchResultItem>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Returns the Freebase ID of the search result item.
-         * @returns The search result item Freebase ID.
-         */
-        get_id(): string;
-        /**
-         * Gets the language of this search result item, in ISO-639-1 format.
-         * @returns The language of the search result item.
-         */
-        get_language(): string;
-        /**
-         * Returns the machine-encoded ID (MID) of the search result item. Elements may
-         * have a single MID, as opposed to the potentially multiple Freebase IDs that
-         * may point to it. MIDs are usable interchangeably with Freebase IDs.
-         * @returns The result item MID.
-         */
-        get_mid(): string;
-        /**
-         * Returns the human readable name of the search result item.
-         * @returns The human readable name of the item.
-         */
-        get_name(): string;
-        /**
-         * If this search result item is notable in an specific topic, this function
-         * returns the Freebase ID of this topic.
-         * @returns The topic the result item is most notable of, or %NULL.
-         */
-        get_notable_id(): string | null;
-        /**
-         * If this search result item is notable in an specific topic, this function
-         * returns the human readable name of this topic.
-         * @returns The human readable topic name, or %NULL
-         */
-        get_notable_name(): string | null;
-        /**
-         * Returns the score of this search result item. The higher, the more relevant this
-         * item seems, given the search terms.
-         * @returns the result item score.
-         */
-        get_score(): number;
-    }
-
-    abstract class FreebaseSearchResultPrivate {
-        static $gtype: GObject.GType<FreebaseSearchResultPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    type FreebaseServiceClass = typeof FreebaseService;
-    abstract class FreebaseServicePrivate {
-        static $gtype: GObject.GType<FreebaseServicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    /**
-     * Opaque struct containing a Freebase topic object. This object may contain one or more
-     * #GDataFreebaseTopicValue structs, which may in turn contain nested #GDataFreebaseTopicObject
-     * structs to express complex data.
-     */
-    abstract class FreebaseTopicObject {
-        static $gtype: GObject.GType<FreebaseTopicObject>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Gets the Freebase ID for this specific object.
-         * @returns the Freebase ID of this object
-         */
-        get_id(): string;
-        /**
-         * Returns the number of values that `object` holds for the given `property`. If `object`
-         * contains no information about `property,` 0 is returned.
-         * @param property a property name contained in @object
-         * @returns The number of values contained for @property
-         */
-        get_property_count(property: string): number;
-        /**
-         * Returns the total number of hits that the Freebase database stores
-         * for this object, this number either equals or is greater than
-         * gdata_freebase_topic_object_get_property_count(), the query limit
-         * can be controlled through gdata_query_set_max_results() on the topic
-         * query.
-         *
-         * If `object` contains no information about `property,` 0 is returned.
-         * @param property a property name contained in @object
-         * @returns the total number of hits for this property
-         */
-        get_property_hits(property: string): number;
-        /**
-         * Gets the value that `object` stores for this `property/``item` pair, as a generic
-         * #GDataFreebaseTopicValue. If `object` contains no information about `property,`
-         * or `item` is outside the [0..gdata_freebase_topic_object_get_property_count() - 1]
-         * range, %NULL is returned.
-         * @param property a property name contained in @object
-         * @param item item number to retrieve from @property
-         * @returns the value for this property/item
-         */
-        get_property_value(property: string, item: number): FreebaseTopicValue | null;
-        /**
-         * Returns the list of Freebase properties described by `object`.
-         * @returns An array of property names, free with g_ptr_array_unref().
-         */
-        list_properties(): string[];
-        /**
-         * Creates and returns a new reference on `object`.
-         * @returns @object, with an extra reference.
-         */
-        ref(): FreebaseTopicObject;
-        /**
-         * Removes a reference from `object`. If the reference count drops to 0,
-         * the object is freed.
-         */
-        unref(): void;
-    }
-
-    type FreebaseTopicQueryClass = typeof FreebaseTopicQuery;
-    abstract class FreebaseTopicQueryPrivate {
-        static $gtype: GObject.GType<FreebaseTopicQueryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    type FreebaseTopicResultClass = typeof FreebaseTopicResult;
-    abstract class FreebaseTopicResultPrivate {
-        static $gtype: GObject.GType<FreebaseTopicResultPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    /**
-     * Opaque struct containing a value of a Freebase topic object. This struct may contain a simple
-     * value (integers, doubles, strings...) or complex values, expressed through a #GDataFreebaseTopicObject.
-     */
-    abstract class FreebaseTopicValue {
-        static $gtype: GObject.GType<FreebaseTopicValue>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Copies in `gvalue` the value held in `value`. the #GValue must be later freed through g_value_unset()
-         */
-        copy_value(): unknown;
-        /**
-         * Returns the Freebase ID of the user that created this value.
-         * @returns the creator of this value, as a Freebase ID
-         */
-        get_creator(): string;
-        /**
-         * Returns a #gdouble value held in `value`. It is only valid to call this if the #GType is a %G_TYPE_DOUBLE
-         * @returns the #gdouble value
-         */
-        get_double(): number;
-        /**
-         * Returns a #gint64 value held in `value`. It is only valid to call this if the #GType is a %G_TYPE_INT64
-         * @returns the #gint64 value
-         */
-        get_int(): number;
-        /**
-         * Returns the language used in the content of `value`
-         * @returns the language @value is written in
-         */
-        get_language(): string;
-        /**
-         * Returns a compound/complex object held in `value`. It is only valid to call this if the #GType is a
-         * %GDATA_TYPE_FREEBASE_TOPIC_OBJECT.
-         * @returns the compound value as a #GDataFreebaseTopicObject
-         */
-        get_object(): FreebaseTopicObject;
-        /**
-         * Returns the property name that this value describes
-         * @returns the property name of @value
-         */
-        get_property(): string;
-        /**
-         * Returns a string value held in `value`. It is only valid to call this if the #GType is a %G_TYPE_STRING
-         * @returns the string value
-         */
-        get_string(): string;
-        /**
-         * Returns a textual representation of this value, this is either
-         * the value contained transformed to a string, or a concatenation
-         * of subvalues for compound types.
-         * @returns a textual representation of @value
-         */
-        get_text(): string;
-        /**
-         * Returns the time at which this value was created in the Freebase database.
-         * It's a UNIX timestamp in seconds since the epoch. If `value` has no timestamp,
-         * -1 will be returned.
-         * @returns The creation time of @value, or -1
-         */
-        get_timestamp(): number;
-        /**
-         * Returns the #GType of the real value held in `value`.
-         * @returns the #GType of the contained value
-         */
-        get_value_type(): GObject.GType;
-        /**
-         * Returns true if `value` holds a freebase image object, on such values it
-         * will be valid to call gdata_freebase_service_get_image() to get a stream
-         * to the image itself.
-         * @returns Whether @value holds a Freebase image object
-         */
-        is_image(): boolean;
-        /**
-         * Creates and returns a new reference on `value`.
-         * @returns @value, with an extra reference.
-         */
-        ref(): FreebaseTopicValue;
-        /**
-         * Removes a reference from `value`. If the reference count drops to 0,
-         * the object is freed.
-         */
-        unref(): void;
     }
 
     type GContactCalendarClass = typeof GContactCalendar;
@@ -32672,15 +28831,6 @@ export namespace GData {
         _init(...args: any[]): void;
     }
 
-    type OAuth1AuthorizerClass = typeof OAuth1Authorizer;
-    abstract class OAuth1AuthorizerPrivate {
-        static $gtype: GObject.GType<OAuth1AuthorizerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
     type OAuth2AuthorizerClass = typeof OAuth2Authorizer;
     abstract class OAuth2AuthorizerPrivate {
         static $gtype: GObject.GType<OAuth2AuthorizerPrivate>;
@@ -32805,24 +28955,6 @@ export namespace GData {
     type YouTubeCommentClass = typeof YouTubeComment;
     abstract class YouTubeCommentPrivate {
         static $gtype: GObject.GType<YouTubeCommentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    type YouTubeContentClass = typeof YouTubeContent;
-    abstract class YouTubeContentPrivate {
-        static $gtype: GObject.GType<YouTubeContentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
-    type YouTubeCreditClass = typeof YouTubeCredit;
-    abstract class YouTubeCreditPrivate {
-        static $gtype: GObject.GType<YouTubeCreditPrivate>;
 
         // Constructors
 
@@ -33043,12 +29175,46 @@ export namespace GData {
          *
          * This method is thread safe.
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        refresh_authorization_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
+         * method is called, so can safely be freed after this method returns.
+         *
+         * For more details, see gdata_authorizer_refresh_authorization(), which is the synchronous version of this method. If the #GDataAuthorizer class
+         * doesn't implement #GDataAuthorizerInterface.refresh_authorization_async but does implement #GDataAuthorizerInterface.refresh_authorization, the
+         * latter will be called from a new thread to make it asynchronous.
+         *
+         * When the authorization refresh operation is finished, `callback` will be called. You can then call gdata_authorizer_refresh_authorization_finish()
+         * to get the results of the operation.
+         *
+         * This method is thread safe.
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the authorization refresh operation is finished, or %NULL
+         */
+        refresh_authorization_async(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Forces the #GDataAuthorizer to refresh any authorization tokens it holds with the online service. `self` and `cancellable` are reffed when this
+         * method is called, so can safely be freed after this method returns.
+         *
+         * For more details, see gdata_authorizer_refresh_authorization(), which is the synchronous version of this method. If the #GDataAuthorizer class
+         * doesn't implement #GDataAuthorizerInterface.refresh_authorization_async but does implement #GDataAuthorizerInterface.refresh_authorization, the
+         * latter will be called from a new thread to make it asynchronous.
+         *
+         * When the authorization refresh operation is finished, `callback` will be called. You can then call gdata_authorizer_refresh_authorization_finish()
+         * to get the results of the operation.
+         *
+         * This method is thread safe.
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the authorization refresh operation is finished, or %NULL
          */
         refresh_authorization_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous authorization refresh operation for the #GDataAuthorizer, as started with gdata_authorizer_refresh_authorization_async().
          *
@@ -33210,6 +29376,42 @@ export namespace GData {
          * @param service a #GDataService with which the comment will be deleted
          * @param comment_ a comment to be deleted
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        delete_comment_async(
+            service: Service,
+            comment_: Comment,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
+        /**
+         * Deletes `comment` from the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after
+         * this method returns.
+         *
+         * For more details, see gdata_commentable_delete_comment(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_delete_comment_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService with which the comment will be deleted
+         * @param comment_ a comment to be deleted
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished
+         */
+        delete_comment_async(
+            service: Service,
+            comment_: Comment,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Deletes `comment` from the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after
+         * this method returns.
+         *
+         * For more details, see gdata_commentable_delete_comment(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_delete_comment_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService with which the comment will be deleted
+         * @param comment_ a comment to be deleted
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the operation is finished
          */
         delete_comment_async(
@@ -33217,7 +29419,7 @@ export namespace GData {
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous comment deletion operation started with gdata_commentable_delete_comment_async().
          * @param result a #GAsyncResult
@@ -33245,6 +29447,42 @@ export namespace GData {
          * @param service a #GDataService with which the comment will be added
          * @param comment_ a new comment to be added to the #GDataCommentable
          * @param cancellable optional #GCancellable object, or %NULL
+         */
+        insert_comment_async(
+            service: Service,
+            comment_: Comment,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Comment | null>;
+        /**
+         * Adds `comment` to the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after this
+         * method returns.
+         *
+         * For more details, see gdata_commentable_insert_comment(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_insert_comment_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService with which the comment will be added
+         * @param comment_ a new comment to be added to the #GDataCommentable
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param callback a #GAsyncReadyCallback to call when the operation is finished
+         */
+        insert_comment_async(
+            service: Service,
+            comment_: Comment,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Adds `comment` to the #GDataCommentable. `self,` `service` and `comment_` are all reffed when this method is called, so can safely be freed after this
+         * method returns.
+         *
+         * For more details, see gdata_commentable_insert_comment(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_insert_comment_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService with which the comment will be added
+         * @param comment_ a new comment to be added to the #GDataCommentable
+         * @param cancellable optional #GCancellable object, or %NULL
          * @param callback a #GAsyncReadyCallback to call when the operation is finished
          */
         insert_comment_async(
@@ -33252,7 +29490,7 @@ export namespace GData {
             comment_: Comment,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Comment | null> | void;
         /**
          * Finishes an asynchronous comment insertion operation started with gdata_commentable_insert_comment_async().
          * @param result a #GAsyncResult
@@ -33290,6 +29528,50 @@ export namespace GData {
          * @param cancellable optional #GCancellable object, or %NULL
          * @param progress_callback a #GDataQueryProgressCallback to call when a comment is loaded, or %NULL
          * @param destroy_progress_user_data a function to call when @progress_callback will not be called any more, or %NULL; this function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it
+         */
+        query_comments_async(
+            service: Service,
+            query?: Query | null,
+            cancellable?: Gio.Cancellable | null,
+            progress_callback?: QueryProgressCallback | null,
+            destroy_progress_user_data?: GLib.DestroyNotify | null,
+        ): Promise<Feed | null>;
+        /**
+         * Retrieves a #GDataFeed containing the #GDataComments representing the comments on the #GDataCommentable which match the given `query`.
+         * `self,` `service` and `query` are all reffed when this method is called, so can safely be freed after this method returns.
+         *
+         * For more details, see gdata_commentable_query_comments(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_query_comments_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService representing the service with which the object's comments will be manipulated
+         * @param query a #GDataQuery with query parameters, or %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param progress_callback a #GDataQueryProgressCallback to call when a comment is loaded, or %NULL
+         * @param destroy_progress_user_data a function to call when @progress_callback will not be called any more, or %NULL; this function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it
+         * @param callback a #GAsyncReadyCallback to call when the query is finished
+         */
+        query_comments_async(
+            service: Service,
+            query: Query | null,
+            cancellable: Gio.Cancellable | null,
+            progress_callback: QueryProgressCallback | null,
+            destroy_progress_user_data: GLib.DestroyNotify | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Retrieves a #GDataFeed containing the #GDataComments representing the comments on the #GDataCommentable which match the given `query`.
+         * `self,` `service` and `query` are all reffed when this method is called, so can safely be freed after this method returns.
+         *
+         * For more details, see gdata_commentable_query_comments(), which is the synchronous version of this method.
+         *
+         * When the operation is finished, `callback` will be called. You can then call gdata_commentable_query_comments_finish() to get the results of the
+         * operation.
+         * @param service a #GDataService representing the service with which the object's comments will be manipulated
+         * @param query a #GDataQuery with query parameters, or %NULL
+         * @param cancellable optional #GCancellable object, or %NULL
+         * @param progress_callback a #GDataQueryProgressCallback to call when a comment is loaded, or %NULL
+         * @param destroy_progress_user_data a function to call when @progress_callback will not be called any more, or %NULL; this function will be called with @progress_user_data as a parameter and can be used to free any memory allocated for it
          * @param callback a #GAsyncReadyCallback to call when the query is finished
          */
         query_comments_async(
@@ -33299,7 +29581,7 @@ export namespace GData {
             progress_callback?: QueryProgressCallback | null,
             destroy_progress_user_data?: GLib.DestroyNotify | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Feed | null> | void;
         /**
          * Finishes an asynchronous comment query operation started with gdata_commentable_query_comments_async().
          * @param result a #GAsyncResult
@@ -33309,21 +29591,8 @@ export namespace GData {
 
         // Virtual methods
 
-        /**
-         * a function that returns the URI to add new comments to the commentable object, or %NULL if the given commentable object
-         * doesn't support adding comments; free with g_free()
-         * @param comment
-         */
         vfunc_get_insert_comment_uri(comment: Comment): string;
-        /**
-         * a function that returns the URI of a #GDataFeed of comments from a commentable object, or %NULL if the given commentable
-         * object doesn't support commenting; free with g_free()
-         */
         vfunc_get_query_comments_uri(): string;
-        /**
-         * a function that returns %TRUE if the given comment may be deleted, %FALSE otherwise
-         * @param comment
-         */
         vfunc_is_comment_deletable(comment: Comment): boolean;
     }
 
@@ -33357,12 +29626,6 @@ export namespace GData {
 
         // Virtual methods
 
-        /**
-         * compares the object with an `other` object of the same type, returning <code class="literal">-1</code> if the object is "less than"
-         * the other object, <code class="literal">0</code> if they're equal, or <code class="literal">1</code> if the object is "greater than" the other. The
-         * function can assume that neither `self` or `other` will be %NULL, and that both have correct types. The function must be pure.
-         * @param other
-         */
         vfunc_compare_with(other: Comparable): number;
     }
 

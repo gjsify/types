@@ -3662,6 +3662,13 @@ export namespace TelepathyGLib {
      */
     function handle_ensure(self: HandleRepoIface, id: string, context?: any | null): Handle;
     /**
+     * If the given handle type is valid, return %TRUE. If not, set `error`
+     * and return %FALSE.
+     * @param type A handle type, valid or not, to be checked
+     * @returns %TRUE if the handle type is valid.
+     */
+    function handle_type_is_valid(type: HandleType): boolean;
+    /**
      * <!---->
      * @param type A handle type, which need not be valid
      * @returns a human-readable string describing the handle type, e.g. "contact".  For invalid handle types, returns "(no handle)" for 0 or  "(invalid handle type)" for others.
@@ -5993,9 +6000,30 @@ export namespace TelepathyGLib {
          * When the operation is finished, `callback` will be called. You must then
          * call tp_account_dup_storage_specific_information_vardict_finish() to get the
          * result of the request.
+         */
+        dup_storage_specific_information_vardict_async(): Promise<GLib.Variant>;
+        /**
+         * Makes an asynchronous request of `self'`s StorageSpecificInformation
+         * property (part of the Account.Interface.Storage interface).
+         *
+         * When the operation is finished, `callback` will be called. You must then
+         * call tp_account_dup_storage_specific_information_vardict_finish() to get the
+         * result of the request.
          * @param callback a callback to call when the request is satisfied
          */
-        dup_storage_specific_information_vardict_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        dup_storage_specific_information_vardict_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Makes an asynchronous request of `self'`s StorageSpecificInformation
+         * property (part of the Account.Interface.Storage interface).
+         *
+         * When the operation is finished, `callback` will be called. You must then
+         * call tp_account_dup_storage_specific_information_vardict_finish() to get the
+         * result of the request.
+         * @param callback a callback to call when the request is satisfied
+         */
+        dup_storage_specific_information_vardict_async(
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<GLib.Variant> | void;
         /**
          * Retrieve the value of the request begun with
          * tp_account_dup_storage_specific_information_vardict_async().
@@ -6028,9 +6056,22 @@ export namespace TelepathyGLib {
          * Requests an asynchronous get of `account'`s avatar. When
          * the operation is finished, `callback` will be called. You can then call
          * tp_account_get_avatar_finish() to get the result of the operation.
+         */
+        get_avatar_async(): Promise<Uint8Array>;
+        /**
+         * Requests an asynchronous get of `account'`s avatar. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_account_get_avatar_finish() to get the result of the operation.
          * @param callback a callback to call when the request is satisfied
          */
-        get_avatar_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_avatar_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Requests an asynchronous get of `account'`s avatar. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_account_get_avatar_finish() to get the result of the operation.
+         * @param callback a callback to call when the request is satisfied
+         */
+        get_avatar_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<Uint8Array> | void;
         /**
          * Finishes an async get operation of `account'`s avatar.
          *
@@ -6179,9 +6220,30 @@ export namespace TelepathyGLib {
          * When the operation is finished, `callback` will be called. You must then
          * call tp_account_get_storage_specific_information_finish() to get the
          * result of the request.
+         */
+        get_storage_specific_information_async(): Promise<GLib.HashTable<string, GObject.Value>>;
+        /**
+         * Makes an asynchronous request of `self'`s StorageSpecificInformation
+         * property (part of the Account.Interface.Storage interface).
+         *
+         * When the operation is finished, `callback` will be called. You must then
+         * call tp_account_get_storage_specific_information_finish() to get the
+         * result of the request.
          * @param callback a callback to call when the request is satisfied
          */
-        get_storage_specific_information_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_storage_specific_information_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Makes an asynchronous request of `self'`s StorageSpecificInformation
+         * property (part of the Account.Interface.Storage interface).
+         *
+         * When the operation is finished, `callback` will be called. You must then
+         * call tp_account_get_storage_specific_information_finish() to get the
+         * result of the request.
+         * @param callback a callback to call when the request is satisfied
+         */
+        get_storage_specific_information_async(
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<GLib.HashTable<string, GObject.Value>> | void;
         /**
          * Retrieve the value of the request begun with
          * tp_account_get_storage_specific_information_async().
@@ -6220,9 +6282,22 @@ export namespace TelepathyGLib {
          * Requests an asynchronous reconnect of `account`. When the operation is
          * finished, `callback` will be called. You can then call
          * tp_account_reconnect_finish() to get the result of the operation.
+         */
+        reconnect_async(): Promise<boolean>;
+        /**
+         * Requests an asynchronous reconnect of `account`. When the operation is
+         * finished, `callback` will be called. You can then call
+         * tp_account_reconnect_finish() to get the result of the operation.
          * @param callback a callback to call when the request is satisfied
          */
-        reconnect_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        reconnect_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Requests an asynchronous reconnect of `account`. When the operation is
+         * finished, `callback` will be called. You can then call
+         * tp_account_reconnect_finish() to get the result of the operation.
+         * @param callback a callback to call when the request is satisfied
+         */
+        reconnect_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes an async reconnect of `account`.
          * @param result a #GAsyncResult
@@ -6233,15 +6308,52 @@ export namespace TelepathyGLib {
          * Requests an asynchronous removal of `account`. When the operation is
          * finished, `callback` will be called. You can then call
          * tp_account_remove_finish() to get the result of the operation.
+         */
+        remove_async(): Promise<boolean>;
+        /**
+         * Requests an asynchronous removal of `account`. When the operation is
+         * finished, `callback` will be called. You can then call
+         * tp_account_remove_finish() to get the result of the operation.
          * @param callback a callback to call when the request is satisfied
          */
-        remove_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        remove_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Requests an asynchronous removal of `account`. When the operation is
+         * finished, `callback` will be called. You can then call
+         * tp_account_remove_finish() to get the result of the operation.
+         * @param callback a callback to call when the request is satisfied
+         */
+        remove_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes an async removal of `account`.
          * @param result a #GAsyncResult
          * @returns %TRUE if the operation was successful, otherwise %FALSE
          */
         remove_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Requests an asynchronous change of presence on `account`. When the
+         * operation is finished, `callback` will be called. You can then call
+         * tp_account_request_presence_finish() to get the result of the operation.
+         * @param type the requested presence
+         * @param status a status message to set, or %NULL
+         * @param message a message for the change, or %NULL
+         */
+        request_presence_async(type: ConnectionPresenceType, status: string, message: string): Promise<boolean>;
+        /**
+         * Requests an asynchronous change of presence on `account`. When the
+         * operation is finished, `callback` will be called. You can then call
+         * tp_account_request_presence_finish() to get the result of the operation.
+         * @param type the requested presence
+         * @param status a status message to set, or %NULL
+         * @param message a message for the change, or %NULL
+         * @param callback a callback to call when the request is satisfied
+         */
+        request_presence_async(
+            type: ConnectionPresenceType,
+            status: string,
+            message: string,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Requests an asynchronous change of presence on `account`. When the
          * operation is finished, `callback` will be called. You can then call
@@ -6256,13 +6368,39 @@ export namespace TelepathyGLib {
             status: string,
             message: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an async presence change request on `account`.
          * @param result a #GAsyncResult
          * @returns %TRUE if the operation was successful, otherwise %FALSE
          */
         request_presence_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Requests an asynchronous change of `account'`s automatic presence. When the
+         * operation is finished, `callback` will be called. You can then call
+         * tp_account_set_automatic_presence_finish() to get the result of the
+         * operation.
+         * @param type the requested presence
+         * @param status a status message to set, or %NULL
+         * @param message a message for the change, or %NULL
+         */
+        set_automatic_presence_async(type: ConnectionPresenceType, status: string, message: string): Promise<boolean>;
+        /**
+         * Requests an asynchronous change of `account'`s automatic presence. When the
+         * operation is finished, `callback` will be called. You can then call
+         * tp_account_set_automatic_presence_finish() to get the result of the
+         * operation.
+         * @param type the requested presence
+         * @param status a status message to set, or %NULL
+         * @param message a message for the change, or %NULL
+         * @param callback a callback to call when the request is satisfied
+         */
+        set_automatic_presence_async(
+            type: ConnectionPresenceType,
+            status: string,
+            message: string,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Requests an asynchronous change of `account'`s automatic presence. When the
          * operation is finished, `callback` will be called. You can then call
@@ -6278,7 +6416,7 @@ export namespace TelepathyGLib {
             status: string,
             message: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an asynchronous request to change the automatic presence of
          * `account`.
@@ -6294,13 +6432,38 @@ export namespace TelepathyGLib {
          * If `len` equals 0, the avatar is cleared.
          * @param avatar a new avatar to set; can be %NULL  only if @len equals 0
          * @param mime_type the MIME type of the new avatar; can be %NULL  only if @len equals 0
+         */
+        set_avatar_async(avatar?: Uint8Array | null, mime_type?: string | null): Promise<boolean>;
+        /**
+         * Requests an asynchronous change of the Avatar parameter on `self`. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_account_set_avatar_finish() to get the result of the operation.
+         *
+         * If `len` equals 0, the avatar is cleared.
+         * @param avatar a new avatar to set; can be %NULL  only if @len equals 0
+         * @param mime_type the MIME type of the new avatar; can be %NULL  only if @len equals 0
+         * @param callback a callback to call when the request is satisfied
+         */
+        set_avatar_async(
+            avatar: Uint8Array | null,
+            mime_type: string | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous change of the Avatar parameter on `self`. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_account_set_avatar_finish() to get the result of the operation.
+         *
+         * If `len` equals 0, the avatar is cleared.
+         * @param avatar a new avatar to set; can be %NULL  only if @len equals 0
+         * @param mime_type the MIME type of the new avatar; can be %NULL  only if @len equals 0
          * @param callback a callback to call when the request is satisfied
          */
         set_avatar_async(
             avatar?: Uint8Array | null,
             mime_type?: string | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an async avatar change request on `account`.
          * @param result a #GAsyncResult
@@ -6313,12 +6476,32 @@ export namespace TelepathyGLib {
          * then call tp_account_set_display_name_finish() to get the result of the
          * operation.
          * @param connect_automatically new value for the parameter
+         */
+        set_connect_automatically_async(connect_automatically: boolean): Promise<boolean>;
+        /**
+         * Requests an asynchronous set of the ConnectAutomatically property of
+         * `account`. When the operation is finished, `callback` will be called. You can
+         * then call tp_account_set_display_name_finish() to get the result of the
+         * operation.
+         * @param connect_automatically new value for the parameter
+         * @param callback a callback to call when the request is satisfied
+         */
+        set_connect_automatically_async(
+            connect_automatically: boolean,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous set of the ConnectAutomatically property of
+         * `account`. When the operation is finished, `callback` will be called. You can
+         * then call tp_account_set_display_name_finish() to get the result of the
+         * operation.
+         * @param connect_automatically new value for the parameter
          * @param callback a callback to call when the request is satisfied
          */
         set_connect_automatically_async(
             connect_automatically: boolean,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an async set of the ConnectAutomatically property.
          * @param result a #GAsyncResult
@@ -6330,9 +6513,27 @@ export namespace TelepathyGLib {
          * the operation is finished, `callback` will be called. You can then call
          * tp_account_set_display_name_finish() to get the result of the operation.
          * @param display_name a new display name, or %NULL to unset the display name
+         */
+        set_display_name_async(display_name: string): Promise<boolean>;
+        /**
+         * Requests an asynchronous set of the DisplayName property of `account`. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_account_set_display_name_finish() to get the result of the operation.
+         * @param display_name a new display name, or %NULL to unset the display name
          * @param callback a callback to call when the request is satisfied
          */
-        set_display_name_async(display_name: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        set_display_name_async(display_name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Requests an asynchronous set of the DisplayName property of `account`. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_account_set_display_name_finish() to get the result of the operation.
+         * @param display_name a new display name, or %NULL to unset the display name
+         * @param callback a callback to call when the request is satisfied
+         */
+        set_display_name_async(
+            display_name: string,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes an async set of the DisplayName property.
          * @param result a #GAsyncResult
@@ -6344,9 +6545,24 @@ export namespace TelepathyGLib {
          * operation is finished, `callback` will be called. You can then call
          * tp_account_set_enabled_finish() to get the result of the operation.
          * @param enabled the new enabled value of @account
+         */
+        set_enabled_async(enabled: boolean): Promise<boolean>;
+        /**
+         * Requests an asynchronous set of the Enabled property of `account`. When the
+         * operation is finished, `callback` will be called. You can then call
+         * tp_account_set_enabled_finish() to get the result of the operation.
+         * @param enabled the new enabled value of @account
          * @param callback a callback to call when the request is satisfied
          */
-        set_enabled_async(enabled: boolean, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        set_enabled_async(enabled: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Requests an asynchronous set of the Enabled property of `account`. When the
+         * operation is finished, `callback` will be called. You can then call
+         * tp_account_set_enabled_finish() to get the result of the operation.
+         * @param enabled the new enabled value of @account
+         * @param callback a callback to call when the request is satisfied
+         */
+        set_enabled_async(enabled: boolean, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes an async set of the Enabled property.
          * @param result a #GAsyncResult
@@ -6358,9 +6574,24 @@ export namespace TelepathyGLib {
          * the operation is finished, `callback` will be called. You can then call
          * tp_account_set_icon_name_finish() to get the result of the operation.
          * @param icon_name a new icon name, or %NULL to unset the icon name
+         */
+        set_icon_name_async(icon_name: string): Promise<boolean>;
+        /**
+         * Requests an asynchronous set of the Icon property of `account`. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_account_set_icon_name_finish() to get the result of the operation.
+         * @param icon_name a new icon name, or %NULL to unset the icon name
          * @param callback a callback to call when the request is satisfied
          */
-        set_icon_name_async(icon_name: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        set_icon_name_async(icon_name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Requests an asynchronous set of the Icon property of `account`. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_account_set_icon_name_finish() to get the result of the operation.
+         * @param icon_name a new icon name, or %NULL to unset the icon name
+         * @param callback a callback to call when the request is satisfied
+         */
+        set_icon_name_async(icon_name: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes an async set of the Icon parameter.
          * @param result a #GAsyncResult
@@ -6372,9 +6603,24 @@ export namespace TelepathyGLib {
          * the operation is finished, `callback` will be called. You can then call
          * tp_account_set_nickname_finish() to get the result of the operation.
          * @param nickname a new nickname to set
+         */
+        set_nickname_async(nickname: string): Promise<boolean>;
+        /**
+         * Requests an asynchronous change of the Nickname parameter on `account`. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_account_set_nickname_finish() to get the result of the operation.
+         * @param nickname a new nickname to set
          * @param callback a callback to call when the request is satisfied
          */
-        set_nickname_async(nickname: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        set_nickname_async(nickname: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Requests an asynchronous change of the Nickname parameter on `account`. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_account_set_nickname_finish() to get the result of the operation.
+         * @param nickname a new nickname to set
+         * @param callback a callback to call when the request is satisfied
+         */
+        set_nickname_async(nickname: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes an async nickname change request on `account`.
          * @param result a #GAsyncResult
@@ -6386,9 +6632,24 @@ export namespace TelepathyGLib {
          * the operation is finished, `callback` will be called. You can then call
          * tp_account_set_service_finish() to get the result of the operation.
          * @param service a new service name, or %NULL or the empty string to unset the  service name (which will result in the #TpAccount:service property  becoming the same as #TpAccount:protocol)
+         */
+        set_service_async(service: string): Promise<boolean>;
+        /**
+         * Requests an asynchronous set of the Service property on `self`. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_account_set_service_finish() to get the result of the operation.
+         * @param service a new service name, or %NULL or the empty string to unset the  service name (which will result in the #TpAccount:service property  becoming the same as #TpAccount:protocol)
          * @param callback a callback to call when the request is satisfied
          */
-        set_service_async(service: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        set_service_async(service: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Requests an asynchronous set of the Service property on `self`. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_account_set_service_finish() to get the result of the operation.
+         * @param service a new service name, or %NULL or the empty string to unset the  service name (which will result in the #TpAccount:service property  becoming the same as #TpAccount:protocol)
+         * @param callback a callback to call when the request is satisfied
+         */
+        set_service_async(service: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes an async set of the Service parameter.
          * @param result a #GAsyncResult
@@ -6410,13 +6671,52 @@ export namespace TelepathyGLib {
          * unless that feature has been enabled.
          * @param scheme a non-%NULL URI scheme such as "tel"
          * @param associate %TRUE to use this account for @scheme, or %FALSE to not use it
+         */
+        set_uri_scheme_association_async(scheme: string, associate: boolean): Promise<boolean>;
+        /**
+         * Add `scheme` to the list of additional URI schemes that would be returned
+         * by tp_account_get_uri_schemes(), or remove it from that list.
+         *
+         * `scheme` should not be the primary URI scheme for the account's
+         * protocol (for instance, "xmpp" for XMPP, or "sip" or "sips" for SIP),
+         * since the account should be assumed to be useful for those schemes
+         * regardless of the contents of the list.
+         *
+         * Calling this method does not require the %TP_ACCOUNT_FEATURE_ADDRESSING
+         * feature to be enabled, but the change will not be reflected in the result
+         * of tp_account_get_uri_schemes() or tp_account_associated_with_uri_scheme()
+         * unless that feature has been enabled.
+         * @param scheme a non-%NULL URI scheme such as "tel"
+         * @param associate %TRUE to use this account for @scheme, or %FALSE to not use it
+         * @param callback a callback to call when the request is satisfied
+         */
+        set_uri_scheme_association_async(
+            scheme: string,
+            associate: boolean,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Add `scheme` to the list of additional URI schemes that would be returned
+         * by tp_account_get_uri_schemes(), or remove it from that list.
+         *
+         * `scheme` should not be the primary URI scheme for the account's
+         * protocol (for instance, "xmpp" for XMPP, or "sip" or "sips" for SIP),
+         * since the account should be assumed to be useful for those schemes
+         * regardless of the contents of the list.
+         *
+         * Calling this method does not require the %TP_ACCOUNT_FEATURE_ADDRESSING
+         * feature to be enabled, but the change will not be reflected in the result
+         * of tp_account_get_uri_schemes() or tp_account_associated_with_uri_scheme()
+         * unless that feature has been enabled.
+         * @param scheme a non-%NULL URI scheme such as "tel"
+         * @param associate %TRUE to use this account for @scheme, or %FALSE to not use it
          * @param callback a callback to call when the request is satisfied
          */
         set_uri_scheme_association_async(
             scheme: string,
             associate: boolean,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Interpret the result of tp_account_set_uri_scheme_association_async().
          * @param result a #GAsyncResult
@@ -6429,13 +6729,37 @@ export namespace TelepathyGLib {
          * tp_account_update_parameters_finish() to get the result of the operation.
          * @param parameters new  parameters to set on @account
          * @param unset_parameters list of parameters to unset on @account
+         */
+        update_parameters_async(
+            parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            unset_parameters: string,
+        ): Promise<string[]>;
+        /**
+         * Requests an asynchronous update of parameters of `account`. When the
+         * operation is finished, `callback` will be called. You can then call
+         * tp_account_update_parameters_finish() to get the result of the operation.
+         * @param parameters new  parameters to set on @account
+         * @param unset_parameters list of parameters to unset on @account
+         * @param callback a callback to call when the request is satisfied
+         */
+        update_parameters_async(
+            parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            unset_parameters: string,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous update of parameters of `account`. When the
+         * operation is finished, `callback` will be called. You can then call
+         * tp_account_update_parameters_finish() to get the result of the operation.
+         * @param parameters new  parameters to set on @account
+         * @param unset_parameters list of parameters to unset on @account
          * @param callback a callback to call when the request is satisfied
          */
         update_parameters_async(
             parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             unset_parameters: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string[]> | void;
         /**
          * Finishes an async update of the parameters on `account`.
          * @param result a #GAsyncResult
@@ -6453,13 +6777,44 @@ export namespace TelepathyGLib {
          * directly to this function without additional reference-count management.
          * @param parameters a variant of type %G_VARIANT_TYPE_VARDICT  containing new parameters to set on @account
          * @param unset_parameters list of parameters to unset on @account
+         */
+        update_parameters_vardict_async(parameters: GLib.Variant, unset_parameters: string[]): Promise<string[]>;
+        /**
+         * Requests an asynchronous update of parameters of `account`. When the
+         * operation is finished, `callback` will be called. You can then call
+         * tp_account_update_parameters_finish() to get the result of the operation.
+         *
+         * If `parameters` is a floating reference (see g_variant_ref_sink()),
+         * ownership of `parameters` is taken by this function. This means
+         * you can pass the result of g_variant_new() or g_variant_new_parsed()
+         * directly to this function without additional reference-count management.
+         * @param parameters a variant of type %G_VARIANT_TYPE_VARDICT  containing new parameters to set on @account
+         * @param unset_parameters list of parameters to unset on @account
+         * @param callback a callback to call when the request is satisfied
+         */
+        update_parameters_vardict_async(
+            parameters: GLib.Variant,
+            unset_parameters: string[],
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous update of parameters of `account`. When the
+         * operation is finished, `callback` will be called. You can then call
+         * tp_account_update_parameters_finish() to get the result of the operation.
+         *
+         * If `parameters` is a floating reference (see g_variant_ref_sink()),
+         * ownership of `parameters` is taken by this function. This means
+         * you can pass the result of g_variant_new() or g_variant_new_parsed()
+         * directly to this function without additional reference-count management.
+         * @param parameters a variant of type %G_VARIANT_TYPE_VARDICT  containing new parameters to set on @account
+         * @param unset_parameters list of parameters to unset on @account
          * @param callback a callback to call when the request is satisfied
          */
         update_parameters_vardict_async(
             parameters: GLib.Variant,
             unset_parameters: string[],
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string[]> | void;
         /**
          * Finishes an async update of the parameters on `account`.
          * @param result a #GAsyncResult
@@ -6680,12 +7035,52 @@ export namespace TelepathyGLib {
          * The caller is responsible for closing the channel with
          * tp_cli_channel_call_close() when it has finished handling it.
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        create_and_handle_channel_async(
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<[Channel | null, HandleChannelsContext | null]>;
+        /**
+         * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
+         * channel with the properties defined in #TpAccountChannelRequest:request
+         * that you are going to handle yourself.
+         * When the operation is finished, `callback` will be called. You can then call
+         * tp_account_channel_request_create_and_handle_channel_finish() to get the
+         * result of the operation.
+         *
+         * (Behind the scenes, this works by creating a temporary #TpBaseClient, then
+         * acting like tp_account_channel_request_create_channel_async() with the
+         * temporary #TpBaseClient as the `preferred_handler`.)
+         *
+         * The caller is responsible for closing the channel with
+         * tp_cli_channel_call_close() when it has finished handling it.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a callback to call when the request is satisfied
+         */
+        create_and_handle_channel_async(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
+         * channel with the properties defined in #TpAccountChannelRequest:request
+         * that you are going to handle yourself.
+         * When the operation is finished, `callback` will be called. You can then call
+         * tp_account_channel_request_create_and_handle_channel_finish() to get the
+         * result of the operation.
+         *
+         * (Behind the scenes, this works by creating a temporary #TpBaseClient, then
+         * acting like tp_account_channel_request_create_channel_async() with the
+         * temporary #TpBaseClient as the `preferred_handler`.)
+         *
+         * The caller is responsible for closing the channel with
+         * tp_cli_channel_call_close() when it has finished handling it.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a callback to call when the request is satisfied
          */
         create_and_handle_channel_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[Channel | null, HandleChannelsContext | null]> | void;
         /**
          * Finishes an async channel creation started using
          * tp_account_channel_request_create_and_handle_channel_async().
@@ -6714,13 +7109,55 @@ export namespace TelepathyGLib {
          * with channels.
          * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        create_and_observe_channel_async(
+            preferred_handler: string,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Channel>;
+        /**
+         * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
+         * channel with the properties defined in #TpAccountChannelRequest:request
+         * and let the ChannelDispatcher dispatch it to an handler.
+         * `callback` will be called when the channel has been created and dispatched,
+         * or the request has failed.
+         * You can then call tp_account_channel_request_create_channel_finish() to
+         * get the result of the operation and a #TpChannel representing the channel
+         * which has been created. Note that you are <emphasis>not</emphasis> handling
+         * this channel and so should interact with the channel as an Observer.
+         * See <ulink url="http://telepathy.freedesktop.org/doc/book/sect.channel-dispatcher.clients.html">
+         * the Telepathy book</ulink> for details about how clients should interact
+         * with channels.
+         * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a callback to call when the request is satisfied
+         */
+        create_and_observe_channel_async(
+            preferred_handler: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
+         * channel with the properties defined in #TpAccountChannelRequest:request
+         * and let the ChannelDispatcher dispatch it to an handler.
+         * `callback` will be called when the channel has been created and dispatched,
+         * or the request has failed.
+         * You can then call tp_account_channel_request_create_channel_finish() to
+         * get the result of the operation and a #TpChannel representing the channel
+         * which has been created. Note that you are <emphasis>not</emphasis> handling
+         * this channel and so should interact with the channel as an Observer.
+         * See <ulink url="http://telepathy.freedesktop.org/doc/book/sect.channel-dispatcher.clients.html">
+         * the Telepathy book</ulink> for details about how clients should interact
+         * with channels.
+         * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a callback to call when the request is satisfied
          */
         create_and_observe_channel_async(
             preferred_handler: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Channel> | void;
         /**
          * Finishes an async channel creation started using
          * tp_account_channel_request_create_and_observe_channel_async().
@@ -6738,13 +7175,42 @@ export namespace TelepathyGLib {
          * get the result of the operation.
          * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        create_channel_async(preferred_handler: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
+         * channel with the properties defined in #TpAccountChannelRequest:request
+         * and let the ChannelDispatcher dispatch it to an handler.
+         * `callback` will be called when the channel has been created and dispatched,
+         * or the request has failed.
+         * You can then call tp_account_channel_request_create_channel_finish() to
+         * get the result of the operation.
+         * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a callback to call when the request is satisfied
+         */
+        create_channel_async(
+            preferred_handler: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
+         * channel with the properties defined in #TpAccountChannelRequest:request
+         * and let the ChannelDispatcher dispatch it to an handler.
+         * `callback` will be called when the channel has been created and dispatched,
+         * or the request has failed.
+         * You can then call tp_account_channel_request_create_channel_finish() to
+         * get the result of the operation.
+         * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a callback to call when the request is satisfied
          */
         create_channel_async(
             preferred_handler: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an async channel creation started using
          * tp_account_channel_request_create_channel_async().
@@ -6778,12 +7244,62 @@ export namespace TelepathyGLib {
          * acting like tp_account_channel_request_ensure_channel_async() with the
          * temporary #TpBaseClient as the `preferred_handler`.)
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        ensure_and_handle_channel_async(
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<[Channel | null, HandleChannelsContext | null]>;
+        /**
+         * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
+         * channel with the properties defined in #TpAccountChannelRequest:request
+         * that you are going to handle yourself.
+         * When the operation is finished, `callback` will be called. You can then call
+         * tp_account_channel_request_ensure_and_handle_channel_finish() to get the
+         * result of the operation.
+         *
+         * If the channel already exists and is already being handled, or if a
+         * newly created channel is sent to a different handler, this operation
+         * will fail with the error %TP_ERROR_NOT_YOURS. The other handler
+         * will be notified that the channel was requested again (for instance
+         * with #TpAccountChannelRequest::re-handled,
+         * #TpBaseClientClassHandleChannelsImpl or #TpSimpleHandler:callback),
+         * and can move its window to the foreground, if applicable.
+         *
+         * (Behind the scenes, this works by creating a temporary #TpBaseClient, then
+         * acting like tp_account_channel_request_ensure_channel_async() with the
+         * temporary #TpBaseClient as the `preferred_handler`.)
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a callback to call when the request is satisfied
+         */
+        ensure_and_handle_channel_async(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
+         * channel with the properties defined in #TpAccountChannelRequest:request
+         * that you are going to handle yourself.
+         * When the operation is finished, `callback` will be called. You can then call
+         * tp_account_channel_request_ensure_and_handle_channel_finish() to get the
+         * result of the operation.
+         *
+         * If the channel already exists and is already being handled, or if a
+         * newly created channel is sent to a different handler, this operation
+         * will fail with the error %TP_ERROR_NOT_YOURS. The other handler
+         * will be notified that the channel was requested again (for instance
+         * with #TpAccountChannelRequest::re-handled,
+         * #TpBaseClientClassHandleChannelsImpl or #TpSimpleHandler:callback),
+         * and can move its window to the foreground, if applicable.
+         *
+         * (Behind the scenes, this works by creating a temporary #TpBaseClient, then
+         * acting like tp_account_channel_request_ensure_channel_async() with the
+         * temporary #TpBaseClient as the `preferred_handler`.)
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a callback to call when the request is satisfied
          */
         ensure_and_handle_channel_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[Channel | null, HandleChannelsContext | null]> | void;
         /**
          * Finishes an async channel creation started using
          * tp_account_channel_request_ensure_and_handle_channel_async().
@@ -6823,13 +7339,69 @@ export namespace TelepathyGLib {
          * Otherwise, a new channel will be created and dispatched to a handler.
          * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        ensure_and_observe_channel_async(
+            preferred_handler: string,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Channel>;
+        /**
+         * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
+         * channel with the properties defined in #TpAccountChannelRequest:request
+         * and let the ChannelDispatcher dispatch it to an handler.
+         * `callback` will be called when the channel has been created and dispatched,
+         * or the request has failed.
+         * You can then call tp_account_channel_request_create_channel_finish() to
+         * get the result of the operation and a #TpChannel representing the channel
+         * which has been created. Note that you are <emphasis>not</emphasis> handling
+         * this channel and so should interact with the channel as an Observer.
+         * See <ulink url="http://telepathy.freedesktop.org/doc/book/sect.channel-dispatcher.clients.html">
+         * the Telepathy book</ulink> for details about how clients should interact
+         * with channels.
+         *
+         * If a suitable channel already existed, its handler will be notified that
+         * the channel was requested again (for instance with
+         * #TpAccountChannelRequest::re-handled, #TpBaseClientClassHandleChannelsImpl
+         * or #TpSimpleHandler:callback, if it is implemented using Telepathy-GLib),
+         * so that it can re-present the window to the user, for example.
+         * Otherwise, a new channel will be created and dispatched to a handler.
+         * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a callback to call when the request is satisfied
+         */
+        ensure_and_observe_channel_async(
+            preferred_handler: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
+         * channel with the properties defined in #TpAccountChannelRequest:request
+         * and let the ChannelDispatcher dispatch it to an handler.
+         * `callback` will be called when the channel has been created and dispatched,
+         * or the request has failed.
+         * You can then call tp_account_channel_request_create_channel_finish() to
+         * get the result of the operation and a #TpChannel representing the channel
+         * which has been created. Note that you are <emphasis>not</emphasis> handling
+         * this channel and so should interact with the channel as an Observer.
+         * See <ulink url="http://telepathy.freedesktop.org/doc/book/sect.channel-dispatcher.clients.html">
+         * the Telepathy book</ulink> for details about how clients should interact
+         * with channels.
+         *
+         * If a suitable channel already existed, its handler will be notified that
+         * the channel was requested again (for instance with
+         * #TpAccountChannelRequest::re-handled, #TpBaseClientClassHandleChannelsImpl
+         * or #TpSimpleHandler:callback, if it is implemented using Telepathy-GLib),
+         * so that it can re-present the window to the user, for example.
+         * Otherwise, a new channel will be created and dispatched to a handler.
+         * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a callback to call when the request is satisfied
          */
         ensure_and_observe_channel_async(
             preferred_handler: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Channel> | void;
         /**
          * Finishes an async channel creation started using
          * tp_account_channel_request_create_and_observe_channel_async().
@@ -6856,13 +7428,60 @@ export namespace TelepathyGLib {
          * get the result of the operation.
          * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
          * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        ensure_channel_async(preferred_handler: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
+         * channel with the properties defined in #TpAccountChannelRequest:request
+         * and let the ChannelDispatcher dispatch it to an handler.
+         *
+         * If a suitable channel already existed, its handler will be notified that
+         * the channel was requested again (for instance with
+         * #TpAccountChannelRequest::re-handled, #TpBaseClientClassHandleChannelsImpl
+         * or #TpSimpleHandler:callback, if it is implemented using Telepathy-GLib),
+         * so that it can re-present the window to the user, for example.
+         * Otherwise, a new channel will be created and dispatched to a handler.
+         *
+         * `callback` will be called when an existing channel's handler has been
+         * notified, a new channel has been created and dispatched, or the request
+         * has failed.
+         * You can then call tp_account_channel_request_ensure_channel_finish() to
+         * get the result of the operation.
+         * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a callback to call when the request is satisfied
+         */
+        ensure_channel_async(
+            preferred_handler: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
+         * channel with the properties defined in #TpAccountChannelRequest:request
+         * and let the ChannelDispatcher dispatch it to an handler.
+         *
+         * If a suitable channel already existed, its handler will be notified that
+         * the channel was requested again (for instance with
+         * #TpAccountChannelRequest::re-handled, #TpBaseClientClassHandleChannelsImpl
+         * or #TpSimpleHandler:callback, if it is implemented using Telepathy-GLib),
+         * so that it can re-present the window to the user, for example.
+         * Otherwise, a new channel will be created and dispatched to a handler.
+         *
+         * `callback` will be called when an existing channel's handler has been
+         * notified, a new channel has been created and dispatched, or the request
+         * has failed.
+         * You can then call tp_account_channel_request_ensure_channel_finish() to
+         * get the result of the operation.
+         * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channel, or %NULL to indicate that any handler would be acceptable.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a callback to call when the request is satisfied
          */
         ensure_channel_async(
             preferred_handler: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an async channel creation started using
          * tp_account_channel_request_ensure_channel_async().
@@ -7282,6 +7901,62 @@ export namespace TelepathyGLib {
          * @param display_name the display name for the account
          * @param parameters parameters  for the new account
          * @param properties properties  for the new account
+         */
+        create_account_async(
+            connection_manager: string,
+            protocol: string,
+            display_name: string,
+            parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+        ): Promise<Account>;
+        /**
+         * Requests an asynchronous create of an account on the account manager
+         * `manager`. When the operation is finished, `callback` will be called. You can
+         * then call tp_account_manager_create_account_finish() to get the result of
+         * the operation.
+         *
+         * The #TpAccount returned by tp_account_manager_create_account_finish()
+         * will already have %TP_ACCOUNT_FEATURE_CORE prepared, along with all
+         * features previously passed to
+         * tp_simple_client_factory_add_account_features() for the account
+         * manager's #TpProxy:factory.
+         *
+         * It is usually better to use #TpAccountRequest instead, particularly when
+         * using high-level language bindings.
+         * @param connection_manager the name of a connection manager
+         * @param protocol the name of a protocol
+         * @param display_name the display name for the account
+         * @param parameters parameters  for the new account
+         * @param properties properties  for the new account
+         * @param callback a callback to call when the request is satisfied
+         */
+        create_account_async(
+            connection_manager: string,
+            protocol: string,
+            display_name: string,
+            parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous create of an account on the account manager
+         * `manager`. When the operation is finished, `callback` will be called. You can
+         * then call tp_account_manager_create_account_finish() to get the result of
+         * the operation.
+         *
+         * The #TpAccount returned by tp_account_manager_create_account_finish()
+         * will already have %TP_ACCOUNT_FEATURE_CORE prepared, along with all
+         * features previously passed to
+         * tp_simple_client_factory_add_account_features() for the account
+         * manager's #TpProxy:factory.
+         *
+         * It is usually better to use #TpAccountRequest instead, particularly when
+         * using high-level language bindings.
+         * @param connection_manager the name of a connection manager
+         * @param protocol the name of a protocol
+         * @param display_name the display name for the account
+         * @param parameters parameters  for the new account
+         * @param properties properties  for the new account
          * @param callback a callback to call when the request is satisfied
          */
         create_account_async(
@@ -7291,7 +7966,7 @@ export namespace TelepathyGLib {
             parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Account> | void;
         /**
          * Finishes an async create account operation, and returns a new #TpAccount
          * object. It has %TP_ACCOUNT_FEATURE_CORE prepared, along with all
@@ -7711,9 +8386,30 @@ export namespace TelepathyGLib {
          * the %TP_ACCOUNT_FEATURE_CORE feature ready on it, so when calling
          * tp_account_request_create_account_finish(), one can guarantee this
          * feature.
+         */
+        create_account_async(): Promise<Account>;
+        /**
+         * Start an asynchronous operation to create the account `self` on the
+         * account manager.
+         *
+         * `callback` will only be called when the newly created #TpAccount has
+         * the %TP_ACCOUNT_FEATURE_CORE feature ready on it, so when calling
+         * tp_account_request_create_account_finish(), one can guarantee this
+         * feature.
          * @param callback a function to call when the account has been created
          */
-        create_account_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        create_account_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Start an asynchronous operation to create the account `self` on the
+         * account manager.
+         *
+         * `callback` will only be called when the newly created #TpAccount has
+         * the %TP_ACCOUNT_FEATURE_CORE feature ready on it, so when calling
+         * tp_account_request_create_account_finish(), one can guarantee this
+         * feature.
+         * @param callback a function to call when the account has been created
+         */
+        create_account_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<Account> | void;
         /**
          * Finishes an asynchronous account creation operation and returns a
          * new ref to a #TpAccount object. The returned account will have the
@@ -8580,16 +9276,6 @@ export namespace TelepathyGLib {
 
         // Virtual methods
 
-        /**
-         * the function called to request user approval of
-         *  unrequested (incoming) channels matching this client's approver filter
-         *  (since 0.11.13)
-         * @param account a #TpAccount with %TP_ACCOUNT_FEATURE_CORE, and any other  features added via tp_base_client_add_account_features() or  tp_simple_client_factory_add_account_features(), prepared if  possible
-         * @param connection a #TpConnection with %TP_CONNECTION_FEATURE_CORE,  and any other features added via tp_base_client_add_connection_features(),  or tp_simple_client_factory_add_connection_features(), prepared if possible
-         * @param channels a #GList of #TpChannel,  each with %TP_CHANNEL_FEATURE_CORE, and any other features added via  tp_base_client_add_channel_features() or  tp_simple_client_factory_add_channel_features(), prepared if possible
-         * @param dispatch_operation a #TpChannelDispatchOperation having %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE prepared if possible
-         * @param context a #TpObserveChannelsContext representing the context of this  D-Bus call
-         */
         vfunc_add_dispatch_operation(
             account: Account,
             connection: Connection,
@@ -8597,16 +9283,6 @@ export namespace TelepathyGLib {
             dispatch_operation: ChannelDispatchOperation,
             context: AddDispatchOperationContext,
         ): void;
-        /**
-         * the function called to handle channels matching this
-         *  client's handler filter (since 0.11.13)
-         * @param account a #TpAccount with %TP_ACCOUNT_FEATURE_CORE, and any other  features added via tp_base_client_add_account_features() or  tp_simple_client_factory_add_account_features(), prepared if  possible
-         * @param connection a #TpConnection with %TP_CONNECTION_FEATURE_CORE,  and any other features added via tp_base_client_add_connection_features(),  or tp_simple_client_factory_add_connection_features(), prepared if possible
-         * @param channels a #GList of #TpChannel,  each with %TP_CHANNEL_FEATURE_CORE, and any other features added via  tp_base_client_add_channel_features() or  tp_simple_client_factory_add_channel_features(), prepared if possible
-         * @param requests_satisfied a #GList of  #TpChannelRequest having their object-path defined but are not guaranteed  to be prepared.
-         * @param user_action_time the time at which user action occurred, or one of the  special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or  %TP_USER_ACTION_TIME_CURRENT_TIME  (see #TpAccountChannelRequest:user-action-time for details)
-         * @param context a #TpHandleChannelsContext representing the context of this  D-Bus call
-         */
         vfunc_handle_channels(
             account: Account,
             connection: Connection,
@@ -8615,16 +9291,6 @@ export namespace TelepathyGLib {
             user_action_time: number,
             context: HandleChannelsContext,
         ): void;
-        /**
-         * the function called to observe newly-created channels
-         *  matching this client's observer filter (since 0.11.13)
-         * @param account a #TpAccount with %TP_ACCOUNT_FEATURE_CORE, and any other  features added via tp_base_client_add_account_features() or  tp_simple_client_factory_add_account_features(), prepared if  possible
-         * @param connection a #TpConnection with %TP_CONNECTION_FEATURE_CORE,  and any other features added via tp_base_client_add_connection_features(),  or tp_simple_client_factory_add_connection_features(), prepared if possible
-         * @param channels a #GList of #TpChannel,  each with %TP_CHANNEL_FEATURE_CORE, and any other features added via  tp_base_client_add_channel_features() or  tp_simple_client_factory_add_channel_features(), prepared if possible
-         * @param dispatch_operation a #TpChannelDispatchOperation or %NULL;  the dispatch_operation is not guaranteed to be prepared
-         * @param requests a #GList of  #TpChannelRequest having their object-path defined but are not guaranteed  to be prepared.
-         * @param context a #TpObserveChannelsContext representing the context of this  D-Bus call
-         */
         vfunc_observe_channels(
             account: Account,
             connection: Connection,
@@ -8791,6 +9457,36 @@ export namespace TelepathyGLib {
          * @param channels a #GList of #TpChannel handled by @self
          * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this delegation request is for some reason not involving user action.
          * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channels, or %NULL to indicate that any handler but @self would be acceptable.
+         */
+        delegate_channels_async(
+            channels: Channel[],
+            user_action_time: number,
+            preferred_handler: string,
+        ): Promise<[boolean, Channel[], GLib.HashTable<Channel, GLib.Error>]>;
+        /**
+         * Asynchronously calls DelegateChannels on the ChannelDispatcher to try
+         * stopping handling `channels` and pass them to another Handler.
+         * You can then call tp_base_client_delegate_channels_finish() to
+         * get the result of the operation.
+         * @param channels a #GList of #TpChannel handled by @self
+         * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this delegation request is for some reason not involving user action.
+         * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channels, or %NULL to indicate that any handler but @self would be acceptable.
+         * @param callback a callback to call when the request is satisfied
+         */
+        delegate_channels_async(
+            channels: Channel[],
+            user_action_time: number,
+            preferred_handler: string,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously calls DelegateChannels on the ChannelDispatcher to try
+         * stopping handling `channels` and pass them to another Handler.
+         * You can then call tp_base_client_delegate_channels_finish() to
+         * get the result of the operation.
+         * @param channels a #GList of #TpChannel handled by @self
+         * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this delegation request is for some reason not involving user action.
+         * @param preferred_handler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channels, or %NULL to indicate that any handler but @self would be acceptable.
          * @param callback a callback to call when the request is satisfied
          */
         delegate_channels_async(
@@ -8798,7 +9494,7 @@ export namespace TelepathyGLib {
             user_action_time: number,
             preferred_handler: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<[boolean, Channel[], GLib.HashTable<Channel, GLib.Error>]> | void;
         /**
          * Finishes an async channels delegation request started using
          * tp_base_client_delegate_channels_async().
@@ -9072,42 +9768,11 @@ export namespace TelepathyGLib {
 
         // Virtual methods
 
-        /**
-         * If set by subclasses, will be called just after the state
-         *  changes to CONNECTED. May be %NULL if nothing special needs to happen.
-         */
         vfunc_connected(): void;
-        /**
-         * If set by subclasses, will be called just after the state
-         *  changes to CONNECTING. May be %NULL if nothing special needs to happen.
-         */
         vfunc_connecting(): void;
-        /**
-         * If set by subclasses, will be called just after the state
-         *  changes to DISCONNECTED. May be %NULL if nothing special needs to happen.
-         */
         vfunc_disconnected(): void;
-        /**
-         * Construct a unique name for this connection
-         *  (for example using the protocol's format for usernames). If %NULL (the
-         *  default), a unique name will be generated. Subclasses should usually
-         *  override this to get more obvious names, to aid debugging and prevent
-         *  multiple connections to the same account.
-         */
         vfunc_get_unique_connection_name(): string;
-        /**
-         * Called after disconnected() is called, to clean up the
-         *  connection. Must start the shutdown process for the underlying
-         *  network connection, and arrange for tp_base_connection_finish_shutdown()
-         *  to be called after the underlying connection has been closed. May not
-         *  be left as %NULL.
-         */
         vfunc_shut_down(): void;
-        /**
-         * Asynchronously start connecting - called to implement
-         *  the Connect D-Bus method. See #TpBaseConnectionStartConnectingImpl for
-         *  details. May not be left as %NULL.
-         */
         vfunc_start_connecting(): boolean;
 
         // Methods
@@ -9996,14 +10661,65 @@ export namespace TelepathyGLib {
          * %TP_CALL_STATE_PENDING_INITIATOR, actually call the remote contact; this
          * changes #TpCallChannel:state to
          * %TP_CALL_STATE_INITIALISING.
+         */
+        accept_async(): Promise<boolean>;
+        /**
+         * For incoming calls with #TpCallChannel:state set to
+         * %TP_CALL_STATE_INITIALISED, accept the incoming call. This changes
+         * #TpCallChannel:state to %TP_CALL_STATE_ACCEPTED.
+         *
+         * For outgoing calls with #TpCallChannel:state set to
+         * %TP_CALL_STATE_PENDING_INITIATOR, actually call the remote contact; this
+         * changes #TpCallChannel:state to
+         * %TP_CALL_STATE_INITIALISING.
          * @param callback a callback to call when the operation finishes
          */
-        accept_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        accept_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * For incoming calls with #TpCallChannel:state set to
+         * %TP_CALL_STATE_INITIALISED, accept the incoming call. This changes
+         * #TpCallChannel:state to %TP_CALL_STATE_ACCEPTED.
+         *
+         * For outgoing calls with #TpCallChannel:state set to
+         * %TP_CALL_STATE_PENDING_INITIATOR, actually call the remote contact; this
+         * changes #TpCallChannel:state to
+         * %TP_CALL_STATE_INITIALISING.
+         * @param callback a callback to call when the operation finishes
+         */
+        accept_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_call_channel_accept_async().
          * @param result a #GAsyncResult
          */
         accept_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Request that a new Content of type `type` is added to `self`. Callers should
+         * check the value of the #TpCallChannel:mutable-contents property before trying
+         * to add another content as it might not be allowed.
+         * @param name the suggested name of the content to add
+         * @param type the media stream type of the content to be added to the call, from  #TpMediaStreamType
+         * @param initial_direction The initial direction of the content
+         */
+        add_content_async(
+            name: string,
+            type: MediaStreamType,
+            initial_direction: MediaStreamDirection,
+        ): Promise<CallContent>;
+        /**
+         * Request that a new Content of type `type` is added to `self`. Callers should
+         * check the value of the #TpCallChannel:mutable-contents property before trying
+         * to add another content as it might not be allowed.
+         * @param name the suggested name of the content to add
+         * @param type the media stream type of the content to be added to the call, from  #TpMediaStreamType
+         * @param initial_direction The initial direction of the content
+         * @param callback a callback to call when the operation finishes
+         */
+        add_content_async(
+            name: string,
+            type: MediaStreamType,
+            initial_direction: MediaStreamDirection,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Request that a new Content of type `type` is added to `self`. Callers should
          * check the value of the #TpCallChannel:mutable-contents property before trying
@@ -10018,7 +10734,7 @@ export namespace TelepathyGLib {
             type: MediaStreamType,
             initial_direction: MediaStreamDirection,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<CallContent> | void;
         /**
          * Finishes tp_call_channel_add_content_async().
          *
@@ -10053,6 +10769,28 @@ export namespace TelepathyGLib {
          * @param reason a TpCallStateChangeReason
          * @param detailed_reason a more specific reason for the call hangup, if one is  available, or an empty or %NULL string otherwise
          * @param message a human-readable message to be sent to the remote contact(s)
+         */
+        hangup_async(reason: CallStateChangeReason, detailed_reason: string, message: string): Promise<boolean>;
+        /**
+         * Request that the call is ended. All contents will be removed from `self` so
+         * that the #TpCallChannel:contents property will be the empty list.
+         * @param reason a TpCallStateChangeReason
+         * @param detailed_reason a more specific reason for the call hangup, if one is  available, or an empty or %NULL string otherwise
+         * @param message a human-readable message to be sent to the remote contact(s)
+         * @param callback a callback to call when the operation finishes
+         */
+        hangup_async(
+            reason: CallStateChangeReason,
+            detailed_reason: string,
+            message: string,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request that the call is ended. All contents will be removed from `self` so
+         * that the #TpCallChannel:contents property will be the empty list.
+         * @param reason a TpCallStateChangeReason
+         * @param detailed_reason a more specific reason for the call hangup, if one is  available, or an empty or %NULL string otherwise
+         * @param message a human-readable message to be sent to the remote contact(s)
          * @param callback a callback to call when the operation finishes
          */
         hangup_async(
@@ -10060,7 +10798,7 @@ export namespace TelepathyGLib {
             detailed_reason: string,
             message: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes tp_call_channel_hangup_async().
          * @param result a #GAsyncResult
@@ -10106,14 +10844,54 @@ export namespace TelepathyGLib {
          * hold or is unheld. Unholding may fail if the streaming implementation
          * can not obtain all the resources needed to restart the call.
          * @param hold Whether to request a hold or a unhold
+         */
+        request_hold_async(hold: boolean): Promise<boolean>;
+        /**
+         * Requests that the connection manager holds or unholds the call. Watch
+         * #TpCallChannel:hold-state property to know when the channel goes on
+         * hold or is unheld. Unholding may fail if the streaming implementation
+         * can not obtain all the resources needed to restart the call.
+         * @param hold Whether to request a hold or a unhold
          * @param callback a callback to call when the operation finishes
          */
-        request_hold_async(hold: boolean, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        request_hold_async(hold: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Requests that the connection manager holds or unholds the call. Watch
+         * #TpCallChannel:hold-state property to know when the channel goes on
+         * hold or is unheld. Unholding may fail if the streaming implementation
+         * can not obtain all the resources needed to restart the call.
+         * @param hold Whether to request a hold or a unhold
+         * @param callback a callback to call when the operation finishes
+         */
+        request_hold_async(hold: boolean, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_call_channel_request_hold_async
          * @param result a #GAsyncResult
          */
         request_hold_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Send `tones` on every of `self'`s contents which have the
+         * %TP_IFACE_CALL_CONTENT_INTERFACE_DTMF interface.
+         *
+         * For more details, see tp_call_content_send_tones_async().
+         * @param tones a string representation of one or more DTMF events.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        send_tones_async(tones: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Send `tones` on every of `self'`s contents which have the
+         * %TP_IFACE_CALL_CONTENT_INTERFACE_DTMF interface.
+         *
+         * For more details, see tp_call_content_send_tones_async().
+         * @param tones a string representation of one or more DTMF events.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a callback to call when the operation finishes
+         */
+        send_tones_async(
+            tones: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Send `tones` on every of `self'`s contents which have the
          * %TP_IFACE_CALL_CONTENT_INTERFACE_DTMF interface.
@@ -10127,7 +10905,7 @@ export namespace TelepathyGLib {
             tones: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes tp_call_channel_send_tones_async().
          * @param result a #GAsyncResult
@@ -10137,9 +10915,20 @@ export namespace TelepathyGLib {
         /**
          * Notifies the CM that the local user is already in a call, so this call has
          * been put in a call-waiting style queue.
+         */
+        set_queued_async(): Promise<boolean>;
+        /**
+         * Notifies the CM that the local user is already in a call, so this call has
+         * been put in a call-waiting style queue.
          * @param callback a callback to call when the operation finishes
          */
-        set_queued_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        set_queued_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Notifies the CM that the local user is already in a call, so this call has
+         * been put in a call-waiting style queue.
+         * @param callback a callback to call when the operation finishes
+         */
+        set_queued_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_call_channel_set_queued_async().
          * @param result a #GAsyncResult
@@ -10147,9 +10936,18 @@ export namespace TelepathyGLib {
         set_queued_finish(result: Gio.AsyncResult): boolean;
         /**
          * Indicate that the local user has been alerted about the incoming call.
+         */
+        set_ringing_async(): Promise<boolean>;
+        /**
+         * Indicate that the local user has been alerted about the incoming call.
          * @param callback a callback to call when the operation finishes
          */
-        set_ringing_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        set_ringing_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Indicate that the local user has been alerted about the incoming call.
+         * @param callback a callback to call when the operation finishes
+         */
+        set_ringing_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_call_channel_set_ringing_async().
          * @param result a #GAsyncResult
@@ -10291,14 +11089,48 @@ export namespace TelepathyGLib {
         /**
          * Remove the content from the call. This will cause #TpCallContent::removed
          * to be emitted.
+         */
+        remove_async(): Promise<boolean>;
+        /**
+         * Remove the content from the call. This will cause #TpCallContent::removed
+         * to be emitted.
          * @param callback a callback to call when the operation finishes
          */
-        remove_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        remove_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Remove the content from the call. This will cause #TpCallContent::removed
+         * to be emitted.
+         * @param callback a callback to call when the operation finishes
+         */
+        remove_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_call_content_remove_async().
          * @param result a #GAsyncResult
          */
         remove_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Send `tones` DTMF code on `self` content. `self` must have the
+         * %TP_IFACE_CALL_CONTENT_INTERFACE_DTMF interface.
+         *
+         * If DTMF tones are already being played, this request is queued.
+         * @param tones a string representation of one or more DTMF events.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         */
+        send_tones_async(tones: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Send `tones` DTMF code on `self` content. `self` must have the
+         * %TP_IFACE_CALL_CONTENT_INTERFACE_DTMF interface.
+         *
+         * If DTMF tones are already being played, this request is queued.
+         * @param tones a string representation of one or more DTMF events.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a callback to call when the operation finishes
+         */
+        send_tones_async(
+            tones: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Send `tones` DTMF code on `self` content. `self` must have the
          * %TP_IFACE_CALL_CONTENT_INTERFACE_DTMF interface.
@@ -10312,7 +11144,7 @@ export namespace TelepathyGLib {
             tones: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes tp_call_content_send_tones_async().
          * @param result a #GAsyncResult
@@ -10466,13 +11298,42 @@ export namespace TelepathyGLib {
          * If `receive` is %FALSE, request that the given contact stops sending media.
          * @param contact contact from which sending is requested
          * @param receive the requested receiving state
+         */
+        request_receiving_async(contact: Contact, receive: boolean): Promise<boolean>;
+        /**
+         * Request that a remote contact stops or starts sending on this stream.
+         *
+         * The #TpCallStream:can-request-receiving property defines whether the protocol
+         * allows the local user to request the other side start sending on this stream.
+         *
+         * If `receive` is %TRUE, request that the given contact starts to send media.
+         * If `receive` is %FALSE, request that the given contact stops sending media.
+         * @param contact contact from which sending is requested
+         * @param receive the requested receiving state
+         * @param callback a callback to call when the operation finishes
+         */
+        request_receiving_async(
+            contact: Contact,
+            receive: boolean,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request that a remote contact stops or starts sending on this stream.
+         *
+         * The #TpCallStream:can-request-receiving property defines whether the protocol
+         * allows the local user to request the other side start sending on this stream.
+         *
+         * If `receive` is %TRUE, request that the given contact starts to send media.
+         * If `receive` is %FALSE, request that the given contact stops sending media.
+         * @param contact contact from which sending is requested
+         * @param receive the requested receiving state
          * @param callback a callback to call when the operation finishes
          */
         request_receiving_async(
             contact: Contact,
             receive: boolean,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes tp_call_stream_request_receiving_async().
          * @param result a #GAsyncResult
@@ -10487,9 +11348,32 @@ export namespace TelepathyGLib {
          * If `send` is %FALSE, #TpCallStream:local-sending-state should change to
          * %TP_SENDING_STATE_NONE, if it isn't already.
          * @param send the requested sending state
+         */
+        set_sending_async(send: boolean): Promise<boolean>;
+        /**
+         * Set the stream to start or stop sending media from the local user to other
+         * contacts.
+         *
+         * If `send` is %TRUE, #TpCallStream:local-sending-state should change to
+         * %TP_SENDING_STATE_SENDING, if it isn't already.
+         * If `send` is %FALSE, #TpCallStream:local-sending-state should change to
+         * %TP_SENDING_STATE_NONE, if it isn't already.
+         * @param send the requested sending state
          * @param callback a callback to call when the operation finishes
          */
-        set_sending_async(send: boolean, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        set_sending_async(send: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Set the stream to start or stop sending media from the local user to other
+         * contacts.
+         *
+         * If `send` is %TRUE, #TpCallStream:local-sending-state should change to
+         * %TP_SENDING_STATE_SENDING, if it isn't already.
+         * If `send` is %FALSE, #TpCallStream:local-sending-state should change to
+         * %TP_SENDING_STATE_NONE, if it isn't already.
+         * @param send the requested sending state
+         * @param callback a callback to call when the operation finishes
+         */
+        set_sending_async(send: boolean, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_call_stream_set_sending_async().
          * @param result a #GAsyncResult
@@ -11314,9 +12198,28 @@ export namespace TelepathyGLib {
          * When the channel has been closed, `callback` will be called.
          * You can then call tp_channel_close_finish() to get the result of
          * the operation.
+         */
+        close_async(): Promise<boolean>;
+        /**
+         * Close channel `self`. In most cases, it's generally cleaner to use
+         * tp_channel_leave_async() instead to properly leave and close the channel.
+         *
+         * When the channel has been closed, `callback` will be called.
+         * You can then call tp_channel_close_finish() to get the result of
+         * the operation.
          * @param callback a callback to call when we closed the channel, or %NULL  to ignore any reply
          */
-        close_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        close_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Close channel `self`. In most cases, it's generally cleaner to use
+         * tp_channel_leave_async() instead to properly leave and close the channel.
+         *
+         * When the channel has been closed, `callback` will be called.
+         * You can then call tp_channel_close_finish() to get the result of
+         * the operation.
+         * @param callback a callback to call when we closed the channel, or %NULL  to ignore any reply
+         */
+        close_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes a call to tp_channel_leave_async().
          * @param result a #GAsyncResult passed to the callback for tp_channel_close_async().
@@ -11331,9 +12234,30 @@ export namespace TelepathyGLib {
          * When the channel has been destroyed or closed, `callback` will be called.
          * You can then call tp_channel_destroy_finish() to get the result of
          * the operation.
+         */
+        destroy_async(): Promise<boolean>;
+        /**
+         * Destroy channel `self`.
+         * If `self` doesn't implement #TP_IFACE_QUARK_CHANNEL_INTERFACE_DESTROYABLE
+         * or if for any reason we can't destroy the channel, we close it.
+         *
+         * When the channel has been destroyed or closed, `callback` will be called.
+         * You can then call tp_channel_destroy_finish() to get the result of
+         * the operation.
          * @param callback a callback to call when we left the channel
          */
-        destroy_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        destroy_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Destroy channel `self`.
+         * If `self` doesn't implement #TP_IFACE_QUARK_CHANNEL_INTERFACE_DESTROYABLE
+         * or if for any reason we can't destroy the channel, we close it.
+         *
+         * When the channel has been destroyed or closed, `callback` will be called.
+         * You can then call tp_channel_destroy_finish() to get the result of
+         * the operation.
+         * @param callback a callback to call when we left the channel
+         */
+        destroy_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Completes a call to tp_channel_destroy_async().
          * @param result a #GAsyncResult passed to the callback for tp_channel_destroy_async().
@@ -11640,9 +12564,34 @@ export namespace TelepathyGLib {
          * Note that unlike tp_channel_leave_async(), %TP_CHANNEL_FEATURE_GROUP feature
          * must be prepared before calling this function.
          * @param message the join message
+         */
+        join_async(message: string): Promise<boolean>;
+        /**
+         * Join channel `self` with `message` as join message.
+         *
+         * When we joined the channel, `callback` will be called.
+         * You can then call tp_channel_join_finish() to get the result of
+         * the operation.
+         *
+         * Note that unlike tp_channel_leave_async(), %TP_CHANNEL_FEATURE_GROUP feature
+         * must be prepared before calling this function.
+         * @param message the join message
          * @param callback a callback to call when we joined the channel
          */
-        join_async(message: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        join_async(message: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Join channel `self` with `message` as join message.
+         *
+         * When we joined the channel, `callback` will be called.
+         * You can then call tp_channel_join_finish() to get the result of
+         * the operation.
+         *
+         * Note that unlike tp_channel_leave_async(), %TP_CHANNEL_FEATURE_GROUP feature
+         * must be prepared before calling this function.
+         * @param message the join message
+         * @param callback a callback to call when we joined the channel
+         */
+        join_async(message: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Completes a call to tp_channel_join_async().
          * @param result a #GAsyncResult passed to the callback for tp_channel_join_async().
@@ -11663,13 +12612,50 @@ export namespace TelepathyGLib {
          * deprecated behaviour.
          * @param reason the leave reason
          * @param message the leave message
+         */
+        leave_async(reason: ChannelGroupChangeReason, message: string): Promise<boolean>;
+        /**
+         * Leave channel `self` with `reason` as reason and `message` as leave message.
+         * If `self` doesn't implement #TP_IFACE_QUARK_CHANNEL_INTERFACE_GROUP or if
+         * for any reason we can't properly leave the channel, we close it.
+         *
+         * When we left the channel, `callback` will be called.
+         * You can then call tp_channel_leave_finish() to get the result of
+         * the operation.
+         *
+         * Note that unlike tp_channel_join_async(), %TP_CHANNEL_FEATURE_GROUP feature
+         * does not have to be prepared and will be prepared for you. But this is a
+         * deprecated behaviour.
+         * @param reason the leave reason
+         * @param message the leave message
+         * @param callback a callback to call when we left the channel
+         */
+        leave_async(
+            reason: ChannelGroupChangeReason,
+            message: string,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Leave channel `self` with `reason` as reason and `message` as leave message.
+         * If `self` doesn't implement #TP_IFACE_QUARK_CHANNEL_INTERFACE_GROUP or if
+         * for any reason we can't properly leave the channel, we close it.
+         *
+         * When we left the channel, `callback` will be called.
+         * You can then call tp_channel_leave_finish() to get the result of
+         * the operation.
+         *
+         * Note that unlike tp_channel_join_async(), %TP_CHANNEL_FEATURE_GROUP feature
+         * does not have to be prepared and will be prepared for you. But this is a
+         * deprecated behaviour.
+         * @param reason the leave reason
+         * @param message the leave message
          * @param callback a callback to call when we left the channel
          */
         leave_async(
             reason: ChannelGroupChangeReason,
             message: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Completes a call to tp_channel_leave_async().
          * @param result a #GAsyncResult passed to the callback for tp_channel_leave_async().
@@ -11686,9 +12672,37 @@ export namespace TelepathyGLib {
          * called. You can then call tp_channel_provide_password_finish()
          * to get the result of the operation.
          * @param password the password
+         */
+        provide_password_async(password: string): Promise<boolean>;
+        /**
+         * Provide `password` so that `self` can be joined.
+         * This function must be called with the correct password in order for
+         * channel joining to proceed if the TpChannel:password-needed property
+         * is set.
+         *
+         * Once the password has been provided, `callback` will be
+         * called. You can then call tp_channel_provide_password_finish()
+         * to get the result of the operation.
+         * @param password the password
          * @param callback a callback to call when @password has been provided
          */
-        provide_password_async(password: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        provide_password_async(password: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Provide `password` so that `self` can be joined.
+         * This function must be called with the correct password in order for
+         * channel joining to proceed if the TpChannel:password-needed property
+         * is set.
+         *
+         * Once the password has been provided, `callback` will be
+         * called. You can then call tp_channel_provide_password_finish()
+         * to get the result of the operation.
+         * @param password the password
+         * @param callback a callback to call when @password has been provided
+         */
+        provide_password_async(
+            password: string,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Completes a call to tp_channel_provide_password_async().
          * If the password was rejected, the operation
@@ -11877,9 +12891,40 @@ export namespace TelepathyGLib {
          * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
          * for more details. The approver MUST NOT attempt to interact with
          * the channels further in this case.
+         */
+        claim_async(): Promise<boolean>;
+        /**
+         * Called by an approver to claim channels for handling internally.
+         * If this method is called successfully, the process calling this
+         * method becomes the handler for the channel.
+         *
+         * If successful, this method will cause the #TpProxy::invalidated signal
+         * to be emitted, in the same way as for
+         * tp_channel_dispatch_operation_handle_with_async().
+         *
+         * This method may fail because the dispatch operation has already
+         * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
+         * for more details. The approver MUST NOT attempt to interact with
+         * the channels further in this case.
          * @param callback a callback to call when the call returns
          */
-        claim_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        claim_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Called by an approver to claim channels for handling internally.
+         * If this method is called successfully, the process calling this
+         * method becomes the handler for the channel.
+         *
+         * If successful, this method will cause the #TpProxy::invalidated signal
+         * to be emitted, in the same way as for
+         * tp_channel_dispatch_operation_handle_with_async().
+         *
+         * This method may fail because the dispatch operation has already
+         * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
+         * for more details. The approver MUST NOT attempt to interact with
+         * the channels further in this case.
+         * @param callback a callback to call when the call returns
+         */
+        claim_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes an async call to Claim().
          * @param result a #GAsyncResult
@@ -11906,9 +12951,54 @@ export namespace TelepathyGLib {
          * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
          * calling this function.
          * @param client the #TpBaseClient claiming @self
+         */
+        claim_with_async(client: BaseClient): Promise<boolean>;
+        /**
+         * Called by an approver to claim channels for handling internally.
+         * If this method is called successfully, the process calling this
+         * method becomes the handler for the channel.
+         *
+         * If successful, this method will cause the #TpProxy::invalidated signal
+         * to be emitted, in the same way as for
+         * tp_channel_dispatch_operation_handle_with_async().
+         *
+         * This method may fail because the dispatch operation has already
+         * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
+         * for more details. The approver MUST NOT attempt to interact with
+         * the channels further in this case.
+         *
+         * This is an improved version of tp_channel_dispatch_operation_claim_async()
+         * as it tells `client` about the new channels being handled.
+         *
+         * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
+         * calling this function.
+         * @param client the #TpBaseClient claiming @self
          * @param callback a callback to call when the call returns
          */
-        claim_with_async(client: BaseClient, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        claim_with_async(client: BaseClient, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Called by an approver to claim channels for handling internally.
+         * If this method is called successfully, the process calling this
+         * method becomes the handler for the channel.
+         *
+         * If successful, this method will cause the #TpProxy::invalidated signal
+         * to be emitted, in the same way as for
+         * tp_channel_dispatch_operation_handle_with_async().
+         *
+         * This method may fail because the dispatch operation has already
+         * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
+         * for more details. The approver MUST NOT attempt to interact with
+         * the channels further in this case.
+         *
+         * This is an improved version of tp_channel_dispatch_operation_claim_async()
+         * as it tells `client` about the new channels being handled.
+         *
+         * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
+         * calling this function.
+         * @param client the #TpBaseClient claiming @self
+         * @param callback a callback to call when the call returns
+         */
+        claim_with_async(client: BaseClient, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes an async call to Claim() initiated using
          * tp_channel_dispatch_operation_claim_with_async().
@@ -11931,9 +13021,44 @@ export namespace TelepathyGLib {
          *
          * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
          * calling this function.
+         */
+        close_channels_async(): Promise<boolean>;
+        /**
+         * Called by an approver to claim channels and close them all right away.
+         * If this method is called successfully, `self` has been claimed and
+         * tp_channel_close_async() has been called on all of its channels.
+         *
+         * If successful, this method will cause the #TpProxy::invalidated signal
+         * to be emitted, in the same way as for
+         * tp_channel_dispatch_operation_handle_with_async().
+         *
+         * This method may fail because the dispatch operation has already
+         * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
+         * for more details.
+         *
+         * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
+         * calling this function.
          * @param callback a callback to call when the request has been satisfied
          */
-        close_channels_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        close_channels_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Called by an approver to claim channels and close them all right away.
+         * If this method is called successfully, `self` has been claimed and
+         * tp_channel_close_async() has been called on all of its channels.
+         *
+         * If successful, this method will cause the #TpProxy::invalidated signal
+         * to be emitted, in the same way as for
+         * tp_channel_dispatch_operation_handle_with_async().
+         *
+         * This method may fail because the dispatch operation has already
+         * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
+         * for more details.
+         *
+         * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
+         * calling this function.
+         * @param callback a callback to call when the request has been satisfied
+         */
+        close_channels_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes an async operation initiated using
          * tp_channel_dispatch_operation_close_channels_async().
@@ -11956,9 +13081,44 @@ export namespace TelepathyGLib {
          *
          * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
          * calling this function.
+         */
+        destroy_channels_async(): Promise<boolean>;
+        /**
+         * Called by an approver to claim channels and destroy them all right away.
+         * If this method is called successfully, `self` has been claimed and
+         * tp_channel_destroy_async() has been called on all of its channels.
+         *
+         * If successful, this method will cause the #TpProxy::invalidated signal
+         * to be emitted, in the same way as for
+         * tp_channel_dispatch_operation_handle_with_async().
+         *
+         * This method may fail because the dispatch operation has already
+         * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
+         * for more details.
+         *
+         * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
+         * calling this function.
          * @param callback a callback to call when the request has been satisfied
          */
-        destroy_channels_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        destroy_channels_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Called by an approver to claim channels and destroy them all right away.
+         * If this method is called successfully, `self` has been claimed and
+         * tp_channel_destroy_async() has been called on all of its channels.
+         *
+         * If successful, this method will cause the #TpProxy::invalidated signal
+         * to be emitted, in the same way as for
+         * tp_channel_dispatch_operation_handle_with_async().
+         *
+         * This method may fail because the dispatch operation has already
+         * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
+         * for more details.
+         *
+         * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
+         * calling this function.
+         * @param callback a callback to call when the request has been satisfied
+         */
+        destroy_channels_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes an async operation initiated using
          * tp_channel_dispatch_operation_destroy_channels_async().
@@ -11993,9 +13153,55 @@ export namespace TelepathyGLib {
          * of tp_channel_dispatch_operation_handle_with_async() to request
          * that they can handle a channel bundle themselves.
          * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or %NULL if the client has no preferred channel handler
+         */
+        handle_with_async(handler?: string | null): Promise<boolean>;
+        /**
+         * Called by an approver to accept a channel bundle and request that the
+         * given handler be used to handle it.
+         *
+         * If successful, this method will cause the #TpProxy::invalidated signal
+         * to be emitted with the TP_DBUS_ERROR_OBJECT_REMOVED error code.
+         *
+         * However, this method may fail because the dispatch has already been
+         * completed and the object has already gone. If this occurs, it indicates
+         * that another approver has asked for the bundle to be handled by a
+         * particular handler. The approver MUST NOT attempt to interact with
+         * the channels further in this case, unless it is separately
+         * invoked as the handler.
+         *
+         * Approvers which are also channel handlers SHOULD use
+         * tp_channel_dispatch_operation_claim_async() instead
+         * of tp_channel_dispatch_operation_handle_with_async() to request
+         * that they can handle a channel bundle themselves.
+         * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or %NULL if the client has no preferred channel handler
          * @param callback a callback to call when the call returns
          */
-        handle_with_async(handler?: string | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        handle_with_async(handler: string | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Called by an approver to accept a channel bundle and request that the
+         * given handler be used to handle it.
+         *
+         * If successful, this method will cause the #TpProxy::invalidated signal
+         * to be emitted with the TP_DBUS_ERROR_OBJECT_REMOVED error code.
+         *
+         * However, this method may fail because the dispatch has already been
+         * completed and the object has already gone. If this occurs, it indicates
+         * that another approver has asked for the bundle to be handled by a
+         * particular handler. The approver MUST NOT attempt to interact with
+         * the channels further in this case, unless it is separately
+         * invoked as the handler.
+         *
+         * Approvers which are also channel handlers SHOULD use
+         * tp_channel_dispatch_operation_claim_async() instead
+         * of tp_channel_dispatch_operation_handle_with_async() to request
+         * that they can handle a channel bundle themselves.
+         * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or %NULL if the client has no preferred channel handler
+         * @param callback a callback to call when the call returns
+         */
+        handle_with_async(
+            handler?: string | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes an async call to HandleWith().
          * @param result a #GAsyncResult
@@ -12019,13 +13225,56 @@ export namespace TelepathyGLib {
          * This method has been introduced in telepathy-mission-control 5.5.0.
          * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or %NULL if the client has no preferred channel handler
          * @param user_action_time the time at which user action occurred, or one of the  special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or  %TP_USER_ACTION_TIME_CURRENT_TIME
+         */
+        handle_with_time_async(handler: string | null, user_action_time: number): Promise<boolean>;
+        /**
+         * A variant of tp_channel_dispatch_operation_handle_with_async()
+         * allowing the approver to pass an user action time.
+         * This timestamp will be passed to the Handler when HandleChannels is called.
+         *
+         * If an X server timestamp for the user action causing this method call is
+         * available, `user_action_time` should be this timestamp (for instance, the
+         * result of gdk_event_get_time() if it is not %GDK_CURRENT_TIME). Otherwise, it
+         * may be %TP_USER_ACTION_TIME_NOT_USER_ACTION to behave as if there was no
+         * user action or it happened a long time ago, or
+         * %TP_USER_ACTION_TIME_CURRENT_TIME to have the Handler behave as though the
+         * user action had just happened (resembling, but not numerically equal to,
+         * %GDK_CURRENT_TIME).
+         *
+         * This method has been introduced in telepathy-mission-control 5.5.0.
+         * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or %NULL if the client has no preferred channel handler
+         * @param user_action_time the time at which user action occurred, or one of the  special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or  %TP_USER_ACTION_TIME_CURRENT_TIME
+         * @param callback a callback to call when the call returns
+         */
+        handle_with_time_async(
+            handler: string | null,
+            user_action_time: number,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * A variant of tp_channel_dispatch_operation_handle_with_async()
+         * allowing the approver to pass an user action time.
+         * This timestamp will be passed to the Handler when HandleChannels is called.
+         *
+         * If an X server timestamp for the user action causing this method call is
+         * available, `user_action_time` should be this timestamp (for instance, the
+         * result of gdk_event_get_time() if it is not %GDK_CURRENT_TIME). Otherwise, it
+         * may be %TP_USER_ACTION_TIME_NOT_USER_ACTION to behave as if there was no
+         * user action or it happened a long time ago, or
+         * %TP_USER_ACTION_TIME_CURRENT_TIME to have the Handler behave as though the
+         * user action had just happened (resembling, but not numerically equal to,
+         * %GDK_CURRENT_TIME).
+         *
+         * This method has been introduced in telepathy-mission-control 5.5.0.
+         * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or %NULL if the client has no preferred channel handler
+         * @param user_action_time the time at which user action occurred, or one of the  special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or  %TP_USER_ACTION_TIME_CURRENT_TIME
          * @param callback a callback to call when the call returns
          */
         handle_with_time_async(
             handler: string | null,
             user_action_time: number,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an async call to HandleWithTime().
          * @param result a #GAsyncResult
@@ -12049,13 +13298,56 @@ export namespace TelepathyGLib {
          * calling this function.
          * @param reason the leave reason
          * @param message the leave message
+         */
+        leave_channels_async(reason: ChannelGroupChangeReason, message: string): Promise<boolean>;
+        /**
+         * Called by an approver to claim channels and leave them all right away.
+         * If this method is called successfully, `self` has been claimed and
+         * tp_channel_leave_async() has been called on all of its channels.
+         *
+         * If successful, this method will cause the #TpProxy::invalidated signal
+         * to be emitted, in the same way as for
+         * tp_channel_dispatch_operation_handle_with_async().
+         *
+         * This method may fail because the dispatch operation has already
+         * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
+         * for more details.
+         *
+         * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
+         * calling this function.
+         * @param reason the leave reason
+         * @param message the leave message
+         * @param callback a callback to call when the request has been satisfied
+         */
+        leave_channels_async(
+            reason: ChannelGroupChangeReason,
+            message: string,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Called by an approver to claim channels and leave them all right away.
+         * If this method is called successfully, `self` has been claimed and
+         * tp_channel_leave_async() has been called on all of its channels.
+         *
+         * If successful, this method will cause the #TpProxy::invalidated signal
+         * to be emitted, in the same way as for
+         * tp_channel_dispatch_operation_handle_with_async().
+         *
+         * This method may fail because the dispatch operation has already
+         * been completed. Again, see tp_channel_dispatch_operation_handle_with_async()
+         * for more details.
+         *
+         * %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE feature must be prepared before
+         * calling this function.
+         * @param reason the leave reason
+         * @param message the leave message
          * @param callback a callback to call when the request has been satisfied
          */
         leave_channels_async(
             reason: ChannelGroupChangeReason,
             message: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an async operation initiated using
          * tp_channel_dispatch_operation_leave_channels_async().
@@ -12120,13 +13412,36 @@ export namespace TelepathyGLib {
          * get the result of the operation.
          * @param channel a #TpChannel
          * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this presentation request is for some reason not involving user action.
+         */
+        present_channel_async(channel: Channel, user_action_time: number): Promise<boolean>;
+        /**
+         * Asynchronously calls PresentChannel on the ChannelDispatcher to ask
+         * to the handler of `channel` to re-present it to the user.
+         * You can then call tp_channel_dispatcher_present_channel_finish() to
+         * get the result of the operation.
+         * @param channel a #TpChannel
+         * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this presentation request is for some reason not involving user action.
+         * @param callback a callback to call when the request is satisfied
+         */
+        present_channel_async(
+            channel: Channel,
+            user_action_time: number,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Asynchronously calls PresentChannel on the ChannelDispatcher to ask
+         * to the handler of `channel` to re-present it to the user.
+         * You can then call tp_channel_dispatcher_present_channel_finish() to
+         * get the result of the operation.
+         * @param channel a #TpChannel
+         * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this presentation request is for some reason not involving user action.
          * @param callback a callback to call when the request is satisfied
          */
         present_channel_async(
             channel: Channel,
             user_action_time: number,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an async channel presentation request started using
          * tp_channel_dispatcher_present_channel_async().
@@ -13025,9 +14340,32 @@ export namespace TelepathyGLib {
          * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
          * @param group the group to alter.
          * @param contacts An array of #TpContact objects to  include in the group.
+         */
+        add_to_group_async(group: string, contacts: Contact[]): Promise<boolean>;
+        /**
+         * Add the given `contacts` to the given `group,` creating it if necessary.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+         * @param group the group to alter.
+         * @param contacts An array of #TpContact objects to  include in the group.
          * @param callback a callback to call when the operation finishes
          */
-        add_to_group_async(group: string, contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): void;
+        add_to_group_async(group: string, contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Add the given `contacts` to the given `group,` creating it if necessary.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+         * @param group the group to alter.
+         * @param contacts An array of #TpContact objects to  include in the group.
+         * @param callback a callback to call when the operation finishes
+         */
+        add_to_group_async(
+            group: string,
+            contacts: Contact[],
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes tp_connection_add_to_group_async()
          * @param result a #GAsyncResult
@@ -13042,9 +14380,33 @@ export namespace TelepathyGLib {
          * For this to work properly `self` must have interface
          * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
          * @param contacts An array of #TpContact objects to  authorize
+         */
+        authorize_publication_async(contacts: Contact[]): Promise<boolean>;
+        /**
+         * For each of the given `contacts,` request that the local user's presence is
+         * sent to that contact, i.e. that their #TpContact:publish-state property
+         * becomes %TP_SUBSCRIPTION_STATE_YES.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+         * @param contacts An array of #TpContact objects to  authorize
          * @param callback a callback to call when the operation finishes
          */
-        authorize_publication_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): void;
+        authorize_publication_async(contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * For each of the given `contacts,` request that the local user's presence is
+         * sent to that contact, i.e. that their #TpContact:publish-state property
+         * becomes %TP_SUBSCRIPTION_STATE_YES.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+         * @param contacts An array of #TpContact objects to  authorize
+         * @param callback a callback to call when the operation finishes
+         */
+        authorize_publication_async(
+            contacts: Contact[],
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes tp_connection_authorize_publication_async()
          * @param result a #GAsyncResult
@@ -13077,13 +14439,30 @@ export namespace TelepathyGLib {
          * Direct the server to block `contacts`.
          * @param contacts An array of #TpContact objects to  block
          * @param report_abusive If %TRUE, report these contacts as abusive to the server administrators as well as blocking them. See #TpConnection:can-report-abusive to discover whether reporting abuse is supported. If #TpConnection:can-report-abusive is %FALSE, this parameter will be ignored.
+         */
+        block_contacts_async(contacts: Contact[], report_abusive: boolean): Promise<boolean>;
+        /**
+         * Direct the server to block `contacts`.
+         * @param contacts An array of #TpContact objects to  block
+         * @param report_abusive If %TRUE, report these contacts as abusive to the server administrators as well as blocking them. See #TpConnection:can-report-abusive to discover whether reporting abuse is supported. If #TpConnection:can-report-abusive is %FALSE, this parameter will be ignored.
+         * @param callback a callback to call when the operation finishes
+         */
+        block_contacts_async(
+            contacts: Contact[],
+            report_abusive: boolean,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Direct the server to block `contacts`.
+         * @param contacts An array of #TpContact objects to  block
+         * @param report_abusive If %TRUE, report these contacts as abusive to the server administrators as well as blocking them. See #TpConnection:can-report-abusive to discover whether reporting abuse is supported. If #TpConnection:can-report-abusive is %FALSE, this parameter will be ignored.
          * @param callback a callback to call when the operation finishes
          */
         block_contacts_async(
             contacts: Contact[],
             report_abusive: boolean,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes tp_connection_block_contacts_async()
          * @param result a #GAsyncResult
@@ -13099,9 +14478,30 @@ export namespace TelepathyGLib {
          * AccountManager, either use tp_account_request_presence_async()
          * or tp_account_set_enabled_async(), depending whether the intention is
          * to put the account offline temporarily, or disable it longer-term.
+         */
+        disconnect_async(): Promise<boolean>;
+        /**
+         * Disconnect the connection.
+         *
+         * This method is intended for use by AccountManager implementations,
+         * such as Mission Control. To disconnect a connection managed by an
+         * AccountManager, either use tp_account_request_presence_async()
+         * or tp_account_set_enabled_async(), depending whether the intention is
+         * to put the account offline temporarily, or disable it longer-term.
          * @param callback a callback to call when the request is satisfied
          */
-        disconnect_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        disconnect_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Disconnect the connection.
+         *
+         * This method is intended for use by AccountManager implementations,
+         * such as Mission Control. To disconnect a connection managed by an
+         * AccountManager, either use tp_account_request_presence_async()
+         * or tp_account_set_enabled_async(), depending whether the intention is
+         * to put the account offline temporarily, or disable it longer-term.
+         * @param callback a callback to call when the request is satisfied
+         */
+        disconnect_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Interpret the result of tp_connection_disconnect_async().
          * @param result a #GAsyncResult
@@ -13119,13 +14519,44 @@ export namespace TelepathyGLib {
          * connection managers.
          * @param id A strings representing the desired contact by its  identifier in the IM protocol (an XMPP JID, SIP URI, MSN Passport,  AOL screen-name etc.)
          * @param features An array of features  that must be ready for use (if supported)  before the callback is called (may be %NULL if @n_features is 0)
+         */
+        dup_contact_by_id_async(id: string, features?: ContactFeature[] | null): Promise<Contact>;
+        /**
+         * Create a #TpContact object and make any asynchronous method calls necessary
+         * to ensure that all the features specified in `features` are ready for use
+         * (if they are supported at all).
+         *
+         * It is not an error to put features in `features` even if the connection
+         * manager doesn't support them - users of this method should have a static
+         * list of features they would like to use if possible, and use it for all
+         * connection managers.
+         * @param id A strings representing the desired contact by its  identifier in the IM protocol (an XMPP JID, SIP URI, MSN Passport,  AOL screen-name etc.)
+         * @param features An array of features  that must be ready for use (if supported)  before the callback is called (may be %NULL if @n_features is 0)
+         * @param callback A user callback to call when the contact is ready
+         */
+        dup_contact_by_id_async(
+            id: string,
+            features: ContactFeature[] | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Create a #TpContact object and make any asynchronous method calls necessary
+         * to ensure that all the features specified in `features` are ready for use
+         * (if they are supported at all).
+         *
+         * It is not an error to put features in `features` even if the connection
+         * manager doesn't support them - users of this method should have a static
+         * list of features they would like to use if possible, and use it for all
+         * connection managers.
+         * @param id A strings representing the desired contact by its  identifier in the IM protocol (an XMPP JID, SIP URI, MSN Passport,  AOL screen-name etc.)
+         * @param features An array of features  that must be ready for use (if supported)  before the callback is called (may be %NULL if @n_features is 0)
          * @param callback A user callback to call when the contact is ready
          */
         dup_contact_by_id_async(
             id: string,
             features?: ContactFeature[] | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Contact> | void;
         /**
          * Finishes tp_connection_dup_contact_by_id_async().
          * @param result a #GAsyncResult
@@ -13518,9 +14949,31 @@ export namespace TelepathyGLib {
          * For this to work properly `self` must have interface
          * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
          * @param contacts An array of #TpContact objects to  remove
+         */
+        remove_contacts_async(contacts: Contact[]): Promise<boolean>;
+        /**
+         * Remove the given `contacts` from the contact list entirely. It is
+         * protocol-dependent whether this works, and under which circumstances.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+         * @param contacts An array of #TpContact objects to  remove
          * @param callback a callback to call when the operation finishes
          */
-        remove_contacts_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): void;
+        remove_contacts_async(contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Remove the given `contacts` from the contact list entirely. It is
+         * protocol-dependent whether this works, and under which circumstances.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+         * @param contacts An array of #TpContact objects to  remove
+         * @param callback a callback to call when the operation finishes
+         */
+        remove_contacts_async(
+            contacts: Contact[],
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes tp_connection_remove_contacts_async()
          * @param result a #GAsyncResult
@@ -13535,13 +14988,38 @@ export namespace TelepathyGLib {
          * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
          * @param group the group to alter.
          * @param contacts An array of #TpContact objects to  remove from the group.
+         */
+        remove_from_group_async(group: string, contacts: Contact[]): Promise<boolean>;
+        /**
+         * Remove the given `contacts` from the given `group`. If there are no members
+         * left in the group afterwards, the group MAY itself be removed.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+         * @param group the group to alter.
+         * @param contacts An array of #TpContact objects to  remove from the group.
+         * @param callback a callback to call when the operation finishes
+         */
+        remove_from_group_async(
+            group: string,
+            contacts: Contact[],
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Remove the given `contacts` from the given `group`. If there are no members
+         * left in the group afterwards, the group MAY itself be removed.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+         * @param group the group to alter.
+         * @param contacts An array of #TpContact objects to  remove from the group.
          * @param callback a callback to call when the operation finishes
          */
         remove_from_group_async(
             group: string,
             contacts: Contact[],
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes tp_connection_remove_from_group_async()
          * @param result a #GAsyncResult
@@ -13554,9 +15032,26 @@ export namespace TelepathyGLib {
          * For this to work properly `self` must have interface
          * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
          * @param group the group to remove.
+         */
+        remove_group_async(group: string): Promise<boolean>;
+        /**
+         * Remove all members from the given group, then remove the group itself.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+         * @param group the group to remove.
          * @param callback a callback to call when the operation finishes
          */
-        remove_group_async(group: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        remove_group_async(group: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Remove all members from the given group, then remove the group itself.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+         * @param group the group to remove.
+         * @param callback a callback to call when the operation finishes
+         */
+        remove_group_async(group: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_connection_remove_group_async()
          * @param result a #GAsyncResult
@@ -13574,9 +15069,40 @@ export namespace TelepathyGLib {
          * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
          * @param old_name the group to rename
          * @param new_name the new name for the group
+         */
+        rename_group_async(old_name: string, new_name: string): Promise<boolean>;
+        /**
+         * Rename the given `old_name`.
+         *
+         * On protocols where groups behave like tags, this is an API short-cut for
+         * adding all of the group's members to a group with the new name, then removing
+         * the old group.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+         * @param old_name the group to rename
+         * @param new_name the new name for the group
          * @param callback a callback to call when the operation finishes
          */
-        rename_group_async(old_name: string, new_name: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        rename_group_async(old_name: string, new_name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Rename the given `old_name`.
+         *
+         * On protocols where groups behave like tags, this is an API short-cut for
+         * adding all of the group's members to a group with the new name, then removing
+         * the old group.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+         * @param old_name the group to rename
+         * @param new_name the new name for the group
+         * @param callback a callback to call when the operation finishes
+         */
+        rename_group_async(
+            old_name: string,
+            new_name: string,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes tp_connection_rename_group_async()
          * @param result a #GAsyncResult
@@ -13612,13 +15138,40 @@ export namespace TelepathyGLib {
          * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
          * @param contacts An array of #TpContact objects to whom  requests are to be sent.
          * @param message an optional plain-text message from the user, to send to those  @contacts with the subscription request.
+         */
+        request_subscription_async(contacts: Contact[], message: string): Promise<boolean>;
+        /**
+         * Request that the given `contacts` allow the local user to subscribe to their
+         * presence, i.e. that their #TpContact:subscribe-state property becomes
+         * %TP_SUBSCRIPTION_STATE_YES.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+         * @param contacts An array of #TpContact objects to whom  requests are to be sent.
+         * @param message an optional plain-text message from the user, to send to those  @contacts with the subscription request.
+         * @param callback a callback to call when the operation finishes
+         */
+        request_subscription_async(
+            contacts: Contact[],
+            message: string,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Request that the given `contacts` allow the local user to subscribe to their
+         * presence, i.e. that their #TpContact:subscribe-state property becomes
+         * %TP_SUBSCRIPTION_STATE_YES.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+         * @param contacts An array of #TpContact objects to whom  requests are to be sent.
+         * @param message an optional plain-text message from the user, to send to those  @contacts with the subscription request.
          * @param callback a callback to call when the operation finishes
          */
         request_subscription_async(
             contacts: Contact[],
             message: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes tp_connection_request_subscription_async()
          * @param result a #GAsyncResult
@@ -13634,9 +15187,35 @@ export namespace TelepathyGLib {
          * tp_connection_get_contact_info_flags() does not include
          * %TP_CONTACT_INFO_FLAG_CAN_SET.
          * @param info a #GList of  #TpContactInfoField
+         */
+        set_contact_info_async(info: ContactInfoField[]): Promise<boolean>;
+        /**
+         * Requests an asynchronous set of the contact info of `self`. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_connection_set_contact_info_finish() to get the result of the operation.
+         *
+         * This method should not be expected to succeed if the result of
+         * tp_connection_get_contact_info_flags() does not include
+         * %TP_CONTACT_INFO_FLAG_CAN_SET.
+         * @param info a #GList of  #TpContactInfoField
          * @param callback a callback to call when the request is satisfied
          */
-        set_contact_info_async(info: ContactInfoField[], callback?: Gio.AsyncReadyCallback<this> | null): void;
+        set_contact_info_async(info: ContactInfoField[], callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Requests an asynchronous set of the contact info of `self`. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_connection_set_contact_info_finish() to get the result of the operation.
+         *
+         * This method should not be expected to succeed if the result of
+         * tp_connection_get_contact_info_flags() does not include
+         * %TP_CONTACT_INFO_FLAG_CAN_SET.
+         * @param info a #GList of  #TpContactInfoField
+         * @param callback a callback to call when the request is satisfied
+         */
+        set_contact_info_async(
+            info: ContactInfoField[],
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes an async set of `self` info.
          * @param result a #GAsyncResult
@@ -13651,13 +15230,38 @@ export namespace TelepathyGLib {
          * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
          * @param group the group to alter.
          * @param contacts An array of #TpContact objects members  for the group. If this set is empty, this method MAY remove the group.
+         */
+        set_group_members_async(group: string, contacts: Contact[]): Promise<boolean>;
+        /**
+         * Add the given `contacts` to the given `group` (creating it if necessary), and
+         * remove all other members.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+         * @param group the group to alter.
+         * @param contacts An array of #TpContact objects members  for the group. If this set is empty, this method MAY remove the group.
+         * @param callback a callback to call when the operation finishes
+         */
+        set_group_members_async(
+            group: string,
+            contacts: Contact[],
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Add the given `contacts` to the given `group` (creating it if necessary), and
+         * remove all other members.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS.
+         * @param group the group to alter.
+         * @param contacts An array of #TpContact objects members  for the group. If this set is empty, this method MAY remove the group.
          * @param callback a callback to call when the operation finishes
          */
         set_group_members_async(
             group: string,
             contacts: Contact[],
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes tp_connection_set_group_members_async()
          * @param result a #GAsyncResult
@@ -13667,9 +15271,23 @@ export namespace TelepathyGLib {
         /**
          * Direct the server to unblock `contacts`.
          * @param contacts An array of #TpContact objects to  block
+         */
+        unblock_contacts_async(contacts: Contact[]): Promise<boolean>;
+        /**
+         * Direct the server to unblock `contacts`.
+         * @param contacts An array of #TpContact objects to  block
          * @param callback a callback to call when the operation finishes
          */
-        unblock_contacts_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): void;
+        unblock_contacts_async(contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Direct the server to unblock `contacts`.
+         * @param contacts An array of #TpContact objects to  block
+         * @param callback a callback to call when the operation finishes
+         */
+        unblock_contacts_async(
+            contacts: Contact[],
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes tp_connection_unblock_contacts_async()
          * @param result a #GAsyncResult
@@ -13683,9 +15301,28 @@ export namespace TelepathyGLib {
          * For this to work properly `self` must have interface
          * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
          * @param contacts An array of #TpContact objects to  remove
+         */
+        unpublish_async(contacts: Contact[]): Promise<boolean>;
+        /**
+         * Attempt to set the given `contacts'` #TpContact:publish-state property to
+         * %TP_SUBSCRIPTION_STATE_NO, i.e. stop sending presence to them.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+         * @param contacts An array of #TpContact objects to  remove
          * @param callback a callback to call when the operation finishes
          */
-        unpublish_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): void;
+        unpublish_async(contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Attempt to set the given `contacts'` #TpContact:publish-state property to
+         * %TP_SUBSCRIPTION_STATE_NO, i.e. stop sending presence to them.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+         * @param contacts An array of #TpContact objects to  remove
+         * @param callback a callback to call when the operation finishes
+         */
+        unpublish_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_connection_unpublish_async()
          * @param result a #GAsyncResult
@@ -13706,9 +15343,28 @@ export namespace TelepathyGLib {
          * For this to work properly `self` must have interface
          * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
          * @param contacts An array of #TpContact objects to  remove
+         */
+        unsubscribe_async(contacts: Contact[]): Promise<boolean>;
+        /**
+         * Attempt to set the given `contacts'` #TpContact:subscribe-state property to
+         * %TP_SUBSCRIPTION_STATE_NO, i.e. stop receiving their presence.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+         * @param contacts An array of #TpContact objects to  remove
          * @param callback a callback to call when the operation finishes
          */
-        unsubscribe_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): void;
+        unsubscribe_async(contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Attempt to set the given `contacts'` #TpContact:subscribe-state property to
+         * %TP_SUBSCRIPTION_STATE_NO, i.e. stop receiving their presence.
+         *
+         * For this to work properly `self` must have interface
+         * %TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST.
+         * @param contacts An array of #TpContact objects to  remove
+         * @param callback a callback to call when the operation finishes
+         */
+        unsubscribe_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_connection_unsubscribe_async()
          * @param result a #GAsyncResult
@@ -13746,13 +15402,44 @@ export namespace TelepathyGLib {
          * connection managers.
          * @param contacts An array of #TpContact objects  associated with @self
          * @param features An array of features that must be  ready for use (if supported) before the callback is called
+         */
+        upgrade_contacts_async(contacts: Contact[], features: ContactFeature[]): Promise<Contact[] | null>;
+        /**
+         * Given several #TpContact objects, make asynchronous method calls
+         * ensure that all the features specified in `features` are ready for use
+         * (if they are supported at all).
+         *
+         * It is not an error to put features in `features` even if the connection
+         * manager doesn't support them - users of this method should have a static
+         * list of features they would like to use if possible, and use it for all
+         * connection managers.
+         * @param contacts An array of #TpContact objects  associated with @self
+         * @param features An array of features that must be  ready for use (if supported) before the callback is called
+         * @param callback A user callback to call when the contacts are ready
+         */
+        upgrade_contacts_async(
+            contacts: Contact[],
+            features: ContactFeature[],
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Given several #TpContact objects, make asynchronous method calls
+         * ensure that all the features specified in `features` are ready for use
+         * (if they are supported at all).
+         *
+         * It is not an error to put features in `features` even if the connection
+         * manager doesn't support them - users of this method should have a static
+         * list of features they would like to use if possible, and use it for all
+         * connection managers.
+         * @param contacts An array of #TpContact objects  associated with @self
+         * @param features An array of features that must be  ready for use (if supported) before the callback is called
          * @param callback A user callback to call when the contacts are ready
          */
         upgrade_contacts_async(
             contacts: Contact[],
             features: ContactFeature[],
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Contact[] | null> | void;
         /**
          * Finishes tp_connection_upgrade_contacts_async().
          * @param result a #GAsyncResult
@@ -14485,9 +16172,22 @@ export namespace TelepathyGLib {
          * Convenience wrapper for tp_connection_add_to_group_async()
          * on a single contact.
          * @param group the group to alter.
+         */
+        add_to_group_async(group: string): Promise<boolean>;
+        /**
+         * Convenience wrapper for tp_connection_add_to_group_async()
+         * on a single contact.
+         * @param group the group to alter.
          * @param callback a callback to call when the operation finishes
          */
-        add_to_group_async(group: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        add_to_group_async(group: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Convenience wrapper for tp_connection_add_to_group_async()
+         * on a single contact.
+         * @param group the group to alter.
+         * @param callback a callback to call when the operation finishes
+         */
+        add_to_group_async(group: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_contact_add_to_group_async()
          * @param result a #GAsyncResult
@@ -14497,9 +16197,20 @@ export namespace TelepathyGLib {
         /**
          * Convenience wrapper for tp_connection_authorize_publication_async()
          * on a single contact.
+         */
+        authorize_publication_async(): Promise<boolean>;
+        /**
+         * Convenience wrapper for tp_connection_authorize_publication_async()
+         * on a single contact.
          * @param callback a callback to call when the operation finishes
          */
-        authorize_publication_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        authorize_publication_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Convenience wrapper for tp_connection_authorize_publication_async()
+         * on a single contact.
+         * @param callback a callback to call when the operation finishes
+         */
+        authorize_publication_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_contact_authorize_publication_async()
          * @param result a #GAsyncResult
@@ -14511,9 +16222,24 @@ export namespace TelepathyGLib {
          * abusive to the server administrators. To block more than one contact at once,
          * see tp_connection_block_contacts_async().
          * @param report_abusive If %TRUE, report this contact as abusive to the server administrators as well as blocking him. See #TpConnection:can-report-abusive to discover whether reporting abuse is supported. If #TpConnection:can-report-abusive is %FALSE, this parameter will be ignored.
+         */
+        block_async(report_abusive: boolean): Promise<boolean>;
+        /**
+         * Block communications with a contact, optionally reporting the contact as
+         * abusive to the server administrators. To block more than one contact at once,
+         * see tp_connection_block_contacts_async().
+         * @param report_abusive If %TRUE, report this contact as abusive to the server administrators as well as blocking him. See #TpConnection:can-report-abusive to discover whether reporting abuse is supported. If #TpConnection:can-report-abusive is %FALSE, this parameter will be ignored.
          * @param callback a callback to call when the operation finishes
          */
-        block_async(report_abusive: boolean, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        block_async(report_abusive: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Block communications with a contact, optionally reporting the contact as
+         * abusive to the server administrators. To block more than one contact at once,
+         * see tp_connection_block_contacts_async().
+         * @param report_abusive If %TRUE, report this contact as abusive to the server administrators as well as blocking him. See #TpConnection:can-report-abusive to discover whether reporting abuse is supported. If #TpConnection:can-report-abusive is %FALSE, this parameter will be ignored.
+         * @param callback a callback to call when the operation finishes
+         */
+        block_async(report_abusive: boolean, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_contact_block_async()
          * @param result a #GAsyncResult
@@ -14701,9 +16427,20 @@ export namespace TelepathyGLib {
         /**
          * Convenience wrapper for tp_connection_remove_contacts_async()
          * on a single contact.
+         */
+        remove_async(): Promise<boolean>;
+        /**
+         * Convenience wrapper for tp_connection_remove_contacts_async()
+         * on a single contact.
          * @param callback a callback to call when the operation finishes
          */
-        remove_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        remove_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Convenience wrapper for tp_connection_remove_contacts_async()
+         * on a single contact.
+         * @param callback a callback to call when the operation finishes
+         */
+        remove_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_contact_remove_async()
          * @param result a #GAsyncResult
@@ -14714,9 +16451,22 @@ export namespace TelepathyGLib {
          * Convenience wrapper for tp_connection_remove_from_group_async()
          * on a single contact.
          * @param group the group to alter.
+         */
+        remove_from_group_async(group: string): Promise<boolean>;
+        /**
+         * Convenience wrapper for tp_connection_remove_from_group_async()
+         * on a single contact.
+         * @param group the group to alter.
          * @param callback a callback to call when the operation finishes
          */
-        remove_from_group_async(group: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        remove_from_group_async(group: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Convenience wrapper for tp_connection_remove_from_group_async()
+         * on a single contact.
+         * @param group the group to alter.
+         * @param callback a callback to call when the operation finishes
+         */
+        remove_from_group_async(group: string, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_contact_remove_from_group_async()
          * @param result a #GAsyncResult
@@ -14741,12 +16491,56 @@ export namespace TelepathyGLib {
          * If %TP_CONTACT_FEATURE_CONTACT_INFO is not yet set on `self,` it will be
          * set before its property gets updated and `callback` is called.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        request_contact_info_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Requests an asynchronous request of the contact info of `self`. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_contact_request_contact_info_finish() to get the result of the operation.
+         *
+         * If the operation is successful, the #TpContact:contact-info property will be
+         * updated (emitting "notify::contact-info" signal) before `callback` is called.
+         * That means you can call tp_contact_get_contact_info() to get the new vCard
+         * inside `callback`.
+         *
+         * Note that requesting the vCard from the network can take significant time, so
+         * a bigger timeout is set on the underlying D-Bus call. `cancellable` can be
+         * cancelled to free resources used in the D-Bus call if the caller is no longer
+         * interested in the vCard.
+         *
+         * If %TP_CONTACT_FEATURE_CONTACT_INFO is not yet set on `self,` it will be
+         * set before its property gets updated and `callback` is called.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a callback to call when the request is satisfied
+         */
+        request_contact_info_async(
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Requests an asynchronous request of the contact info of `self`. When
+         * the operation is finished, `callback` will be called. You can then call
+         * tp_contact_request_contact_info_finish() to get the result of the operation.
+         *
+         * If the operation is successful, the #TpContact:contact-info property will be
+         * updated (emitting "notify::contact-info" signal) before `callback` is called.
+         * That means you can call tp_contact_get_contact_info() to get the new vCard
+         * inside `callback`.
+         *
+         * Note that requesting the vCard from the network can take significant time, so
+         * a bigger timeout is set on the underlying D-Bus call. `cancellable` can be
+         * cancelled to free resources used in the D-Bus call if the caller is no longer
+         * interested in the vCard.
+         *
+         * If %TP_CONTACT_FEATURE_CONTACT_INFO is not yet set on `self,` it will be
+         * set before its property gets updated and `callback` is called.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a callback to call when the request is satisfied
          */
         request_contact_info_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes an async request of `self` info. If the operation was successful,
          * the contact's vCard can be accessed using tp_contact_get_contact_info().
@@ -14758,9 +16552,25 @@ export namespace TelepathyGLib {
          * Convenience wrapper for tp_connection_request_subscription_async()
          * on a single contact.
          * @param message an optional message
+         */
+        request_subscription_async(message: string): Promise<boolean>;
+        /**
+         * Convenience wrapper for tp_connection_request_subscription_async()
+         * on a single contact.
+         * @param message an optional message
          * @param callback a callback to call when the operation finishes
          */
-        request_subscription_async(message: string, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        request_subscription_async(message: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Convenience wrapper for tp_connection_request_subscription_async()
+         * on a single contact.
+         * @param message an optional message
+         * @param callback a callback to call when the operation finishes
+         */
+        request_subscription_async(
+            message: string,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes tp_contact_request_subscription_async()
          * @param result a #GAsyncResult
@@ -14781,9 +16591,45 @@ export namespace TelepathyGLib {
          * is called. That means you can call tp_contact_get_contact_groups() to get the
          * new contact groups inside `callback`.
          * @param groups the set of  groups which the contact should be in (may be %NULL if @n_groups is 0)
+         */
+        set_contact_groups_async(groups?: string[] | null): Promise<boolean>;
+        /**
+         * Add `self` to the given groups (creating new groups if necessary), and remove
+         * it from all other groups. If the user is removed from a group of which they
+         * were the only member, the group MAY be removed automatically. You can then
+         * call tp_contact_set_contact_groups_finish() to get the result of the
+         * operation.
+         *
+         * If the operation is successful and %TP_CONTACT_FEATURE_CONTACT_GROUPS is
+         * prepared, the #TpContact:contact-groups property will be
+         * updated (emitting "notify::contact-groups" signal) and
+         * #TpContact::contact-groups-changed signal will be emitted before `callback`
+         * is called. That means you can call tp_contact_get_contact_groups() to get the
+         * new contact groups inside `callback`.
+         * @param groups the set of  groups which the contact should be in (may be %NULL if @n_groups is 0)
          * @param callback a callback to call when the request is satisfied
          */
-        set_contact_groups_async(groups?: string[] | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        set_contact_groups_async(groups: string[] | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Add `self` to the given groups (creating new groups if necessary), and remove
+         * it from all other groups. If the user is removed from a group of which they
+         * were the only member, the group MAY be removed automatically. You can then
+         * call tp_contact_set_contact_groups_finish() to get the result of the
+         * operation.
+         *
+         * If the operation is successful and %TP_CONTACT_FEATURE_CONTACT_GROUPS is
+         * prepared, the #TpContact:contact-groups property will be
+         * updated (emitting "notify::contact-groups" signal) and
+         * #TpContact::contact-groups-changed signal will be emitted before `callback`
+         * is called. That means you can call tp_contact_get_contact_groups() to get the
+         * new contact groups inside `callback`.
+         * @param groups the set of  groups which the contact should be in (may be %NULL if @n_groups is 0)
+         * @param callback a callback to call when the request is satisfied
+         */
+        set_contact_groups_async(
+            groups?: string[] | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes an async set of `self` contact groups.
          * @param result a #GAsyncResult
@@ -14793,9 +16639,20 @@ export namespace TelepathyGLib {
         /**
          * Unblock communications with a contact. To unblock more than one contact
          * at once, see tp_connection_unblock_contacts_async().
+         */
+        unblock_async(): Promise<boolean>;
+        /**
+         * Unblock communications with a contact. To unblock more than one contact
+         * at once, see tp_connection_unblock_contacts_async().
          * @param callback a callback to call when the operation finishes
          */
-        unblock_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        unblock_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Unblock communications with a contact. To unblock more than one contact
+         * at once, see tp_connection_unblock_contacts_async().
+         * @param callback a callback to call when the operation finishes
+         */
+        unblock_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_contact_unblock_async()
          * @param result a #GAsyncResult
@@ -14805,9 +16662,20 @@ export namespace TelepathyGLib {
         /**
          * Convenience wrapper for tp_connection_unpublish_async()
          * on a single contact.
+         */
+        unpublish_async(): Promise<boolean>;
+        /**
+         * Convenience wrapper for tp_connection_unpublish_async()
+         * on a single contact.
          * @param callback a callback to call when the operation finishes
          */
-        unpublish_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        unpublish_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Convenience wrapper for tp_connection_unpublish_async()
+         * on a single contact.
+         * @param callback a callback to call when the operation finishes
+         */
+        unpublish_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_contact_unpublish_async()
          * @param result a #GAsyncResult
@@ -14817,9 +16685,20 @@ export namespace TelepathyGLib {
         /**
          * Convenience wrapper for tp_connection_unsubscribe_async()
          * on a single contact.
+         */
+        unsubscribe_async(): Promise<boolean>;
+        /**
+         * Convenience wrapper for tp_connection_unsubscribe_async()
+         * on a single contact.
          * @param callback a callback to call when the operation finishes
          */
-        unsubscribe_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        unsubscribe_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Convenience wrapper for tp_connection_unsubscribe_async()
+         * on a single contact.
+         * @param callback a callback to call when the operation finishes
+         */
+        unsubscribe_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_contact_unsubscribe_async()
          * @param result a #GAsyncResult
@@ -14960,9 +16839,32 @@ export namespace TelepathyGLib {
          * return an appropriate error.
          * @param server the server on which to search for contacts, or %NULL
          * @param limit The maximum number of results the server should return, or 0 for the server default.
+         */
+        reset_async(server: string, limit: number): Promise<string[]>;
+        /**
+         * Resets the contact search object so a new search can be performed.
+         * If another tp_contact_search_reset_async() call is in progress,
+         * it will be cancelled and tp_contact_search_reset_finish() will
+         * return an appropriate error.
+         * @param server the server on which to search for contacts, or %NULL
+         * @param limit The maximum number of results the server should return, or 0 for the server default.
          * @param callback a #GAsyncReadyCallback to call when the initialization is finished
          */
-        reset_async(server: string, limit: number, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        reset_async(server: string, limit: number, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Resets the contact search object so a new search can be performed.
+         * If another tp_contact_search_reset_async() call is in progress,
+         * it will be cancelled and tp_contact_search_reset_finish() will
+         * return an appropriate error.
+         * @param server the server on which to search for contacts, or %NULL
+         * @param limit The maximum number of results the server should return, or 0 for the server default.
+         * @param callback a #GAsyncReadyCallback to call when the initialization is finished
+         */
+        reset_async(
+            server: string,
+            limit: number,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<string[]> | void;
         /**
          * <!-- -->
          * @param result the #GAsyncResult from the callback
@@ -15020,13 +16922,100 @@ export namespace TelepathyGLib {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -15722,9 +17711,24 @@ export namespace TelepathyGLib {
          * `callback` will be called. You can then call
          * tp_dbus_tube_channel_accept_finish() to get the #GDBusConnection that will
          * be used to communicate through the tube.
+         */
+        accept_async(): Promise<Gio.DBusConnection>;
+        /**
+         * Accept an incoming D-Bus tube. When the tube has been accepted
+         * `callback` will be called. You can then call
+         * tp_dbus_tube_channel_accept_finish() to get the #GDBusConnection that will
+         * be used to communicate through the tube.
          * @param callback a callback to call when the tube has been offered
          */
-        accept_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        accept_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Accept an incoming D-Bus tube. When the tube has been accepted
+         * `callback` will be called. You can then call
+         * tp_dbus_tube_channel_accept_finish() to get the #GDBusConnection that will
+         * be used to communicate through the tube.
+         * @param callback a callback to call when the tube has been offered
+         */
+        accept_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<Gio.DBusConnection> | void;
         /**
          * Finishes to accept an incoming D-Bus tube. The returned #GDBusConnection
          * is ready to be used to exchange data through the tube.
@@ -15757,9 +17761,29 @@ export namespace TelepathyGLib {
          * tp_dbus_tube_channel_offer_finish() to get the #GDBusConnection that will
          * be used to communicate through the tube.
          * @param params parameters of the tube, or %NULL
+         */
+        offer_async(params?: GLib.HashTable<any, any> | null): Promise<Gio.DBusConnection>;
+        /**
+         * Offer an outgoing D-Bus tube. When the tube has been offered and accepted
+         * `callback` will be called. You can then call
+         * tp_dbus_tube_channel_offer_finish() to get the #GDBusConnection that will
+         * be used to communicate through the tube.
+         * @param params parameters of the tube, or %NULL
          * @param callback a callback to call when the tube has been offered
          */
-        offer_async(params?: GLib.HashTable<any, any> | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        offer_async(params: GLib.HashTable<any, any> | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Offer an outgoing D-Bus tube. When the tube has been offered and accepted
+         * `callback` will be called. You can then call
+         * tp_dbus_tube_channel_offer_finish() to get the #GDBusConnection that will
+         * be used to communicate through the tube.
+         * @param params parameters of the tube, or %NULL
+         * @param callback a callback to call when the tube has been offered
+         */
+        offer_async(
+            params?: GLib.HashTable<any, any> | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<Gio.DBusConnection> | void;
         /**
          * Finishes offering an outgoing D-Bus tube. The returned #GDBusConnection
          * is ready to be used to exchange data through the tube.
@@ -15835,9 +17859,22 @@ export namespace TelepathyGLib {
          * Retrieve buffered messages from `self`. Once `callback` is called,
          * use tp_debug_client_get_messages_finish() to retrieve the #TpDebugMessage
          * objects.
+         */
+        get_messages_async(): Promise<DebugMessage[]>;
+        /**
+         * Retrieve buffered messages from `self`. Once `callback` is called,
+         * use tp_debug_client_get_messages_finish() to retrieve the #TpDebugMessage
+         * objects.
          * @param callback callback to call when the messages have been retrieved
          */
-        get_messages_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_messages_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Retrieve buffered messages from `self`. Once `callback` is called,
+         * use tp_debug_client_get_messages_finish() to retrieve the #TpDebugMessage
+         * objects.
+         * @param callback callback to call when the messages have been retrieved
+         */
+        get_messages_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<DebugMessage[]> | void;
         /**
          * Finishes tp_debug_client_set_enabled_async().
          * @param result a #GAsyncResult
@@ -15853,9 +17890,22 @@ export namespace TelepathyGLib {
          * Enable or disable publishing of debug messages on the bus by the component
          * owning `self'`s bus name.
          * @param enabled %TRUE if debug messages should be published on the bus, %FALSE otherwise
+         */
+        set_enabled_async(enabled: boolean): Promise<boolean>;
+        /**
+         * Enable or disable publishing of debug messages on the bus by the component
+         * owning `self'`s bus name.
+         * @param enabled %TRUE if debug messages should be published on the bus, %FALSE otherwise
          * @param callback a callback to call when the request is satisfied
          */
-        set_enabled_async(enabled: boolean, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        set_enabled_async(enabled: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Enable or disable publishing of debug messages on the bus by the component
+         * owning `self'`s bus name.
+         * @param enabled %TRUE if debug messages should be published on the bus, %FALSE otherwise
+         * @param callback a callback to call when the request is satisfied
+         */
+        set_enabled_async(enabled: boolean, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes tp_debug_client_set_enabled_async().
          * @param result a #GAsyncResult
@@ -16148,9 +18198,34 @@ export namespace TelepathyGLib {
          * the operation.
          * @param file a #GFile where the file should be saved
          * @param offset Offset from the start of @file where transfer begins
+         */
+        accept_file_async(file: Gio.File, offset: number): Promise<boolean>;
+        /**
+         * Accept an incoming file transfer in the
+         * %TP_FILE_TRANSFER_STATE_PENDING state. Once the accept has been
+         * processed, `callback` will be called. You can then call
+         * tp_file_transfer_channel_accept_file_finish() to get the result of
+         * the operation.
+         * @param file a #GFile where the file should be saved
+         * @param offset Offset from the start of @file where transfer begins
          * @param callback a callback to call when the transfer has been accepted
          */
-        accept_file_async(file: Gio.File, offset: number, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        accept_file_async(file: Gio.File, offset: number, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Accept an incoming file transfer in the
+         * %TP_FILE_TRANSFER_STATE_PENDING state. Once the accept has been
+         * processed, `callback` will be called. You can then call
+         * tp_file_transfer_channel_accept_file_finish() to get the result of
+         * the operation.
+         * @param file a #GFile where the file should be saved
+         * @param offset Offset from the start of @file where transfer begins
+         * @param callback a callback to call when the transfer has been accepted
+         */
+        accept_file_async(
+            file: Gio.File,
+            offset: number,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes a call to tp_file_transfer_channel_accept_file_async().
          * @param result a #GAsyncResult
@@ -16218,9 +18293,40 @@ export namespace TelepathyGLib {
          * should then call tp_file_transfer_channel_provide_file_finish() to
          * get the result of the operation.
          * @param file a #GFile to send to the remote contact
+         */
+        provide_file_async(file: Gio.File): Promise<boolean>;
+        /**
+         * Provide a file transfer. This should be called when the file
+         * transfer state changes (tp_file_transfer_channel_get_state() and
+         * the "notify::state" signal) to
+         * %TP_FILE_TRANSFER_STATE_ACCEPTED or
+         * %TP_FILE_TRANSFER_STATE_PENDING. Once the file has been provided,
+         * the channel #TpFileTransferChannel:state will change to
+         * %TP_FILE_TRANSFER_STATE_OPEN.
+         *
+         * Once the file has been provided, `callback` will be called. You
+         * should then call tp_file_transfer_channel_provide_file_finish() to
+         * get the result of the operation.
+         * @param file a #GFile to send to the remote contact
          * @param callback a callback to call when the transfer has been accepted
          */
-        provide_file_async(file: Gio.File, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        provide_file_async(file: Gio.File, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Provide a file transfer. This should be called when the file
+         * transfer state changes (tp_file_transfer_channel_get_state() and
+         * the "notify::state" signal) to
+         * %TP_FILE_TRANSFER_STATE_ACCEPTED or
+         * %TP_FILE_TRANSFER_STATE_PENDING. Once the file has been provided,
+         * the channel #TpFileTransferChannel:state will change to
+         * %TP_FILE_TRANSFER_STATE_OPEN.
+         *
+         * Once the file has been provided, `callback` will be called. You
+         * should then call tp_file_transfer_channel_provide_file_finish() to
+         * get the result of the operation.
+         * @param file a #GFile to send to the remote contact
+         * @param callback a callback to call when the transfer has been accepted
+         */
+        provide_file_async(file: Gio.File, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes a call to tp_file_transfer_channel_provide_file_async().
          *
@@ -17131,13 +19237,38 @@ export namespace TelepathyGLib {
          * and must be combined with a server or network name.
          * @param vardict the account parameters as a #GVariant of  type %G_VARIANT_TYPE_VARDICT. If it is floating, ownership will  be taken, as if via g_variant_ref_sink().
          * @param cancellable may be used to cancel the async request
+         */
+        identify_account_async(vardict: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Return a string that could identify the account with the given
+         * parameters. In most protocols that string is a normalized 'account'
+         * parameter, but some protocols have more complex requirements;
+         * for instance, on IRC, the 'account' (nickname) is insufficient,
+         * and must be combined with a server or network name.
+         * @param vardict the account parameters as a #GVariant of  type %G_VARIANT_TYPE_VARDICT. If it is floating, ownership will  be taken, as if via g_variant_ref_sink().
+         * @param cancellable may be used to cancel the async request
+         * @param callback a callback to call when  the request is satisfied
+         */
+        identify_account_async(
+            vardict: GLib.Variant,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Return a string that could identify the account with the given
+         * parameters. In most protocols that string is a normalized 'account'
+         * parameter, but some protocols have more complex requirements;
+         * for instance, on IRC, the 'account' (nickname) is insufficient,
+         * and must be combined with a server or network name.
+         * @param vardict the account parameters as a #GVariant of  type %G_VARIANT_TYPE_VARDICT. If it is floating, ownership will  be taken, as if via g_variant_ref_sink().
+         * @param cancellable may be used to cancel the async request
          * @param callback a callback to call when  the request is satisfied
          */
         identify_account_async(
             vardict: GLib.Variant,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Interpret the result of tp_protocol_identify_account_async().
          * @param result a #GAsyncResult
@@ -17150,13 +19281,34 @@ export namespace TelepathyGLib {
          * but does not query servers or anything similar.
          * @param contact a contact identifier, possibly invalid
          * @param cancellable may be used to cancel the async request
+         */
+        normalize_contact_async(contact: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Perform best-effort offline contact normalization. This does syntactic
+         * normalization (e.g. transforming case-insensitive text to lower-case),
+         * but does not query servers or anything similar.
+         * @param contact a contact identifier, possibly invalid
+         * @param cancellable may be used to cancel the async request
+         * @param callback a callback to call when  the request is satisfied
+         */
+        normalize_contact_async(
+            contact: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Perform best-effort offline contact normalization. This does syntactic
+         * normalization (e.g. transforming case-insensitive text to lower-case),
+         * but does not query servers or anything similar.
+         * @param contact a contact identifier, possibly invalid
+         * @param cancellable may be used to cancel the async request
          * @param callback a callback to call when  the request is satisfied
          */
         normalize_contact_async(
             contact: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Interpret the result of tp_protocol_normalize_contact_async().
          * @param result a #GAsyncResult
@@ -17169,19 +19321,68 @@ export namespace TelepathyGLib {
          * scheme supported by this protocol or connection manager.
          * @param uri a contact URI, possibly invalid
          * @param cancellable may be used to cancel the async request
+         */
+        normalize_contact_uri_async(uri: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+        /**
+         * Perform best-effort offline contact normalization, for a contact in
+         * the form of a URI. This method will fail if the URI is not in a
+         * scheme supported by this protocol or connection manager.
+         * @param uri a contact URI, possibly invalid
+         * @param cancellable may be used to cancel the async request
+         * @param callback a callback to call when the request is satisfied
+         */
+        normalize_contact_uri_async(
+            uri: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Perform best-effort offline contact normalization, for a contact in
+         * the form of a URI. This method will fail if the URI is not in a
+         * scheme supported by this protocol or connection manager.
+         * @param uri a contact URI, possibly invalid
+         * @param cancellable may be used to cancel the async request
          * @param callback a callback to call when the request is satisfied
          */
         normalize_contact_uri_async(
             uri: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Interpret the result of tp_protocol_normalize_contact_uri_async().
          * @param result a #GAsyncResult
          * @returns the normalized form of @uri,  or %NULL on error
          */
         normalize_contact_uri_finish(result: Gio.AsyncResult): string;
+        /**
+         * Perform best-effort offline contact normalization, for a contact in
+         * the form of a vCard field. This method will fail if the vCard field
+         * is not supported by this protocol or connection manager.
+         * @param field a vCard field
+         * @param value an address that is a value of @field
+         * @param cancellable may be used to cancel the async request
+         */
+        normalize_vcard_address_async(
+            field: string,
+            value: string,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<string>;
+        /**
+         * Perform best-effort offline contact normalization, for a contact in
+         * the form of a vCard field. This method will fail if the vCard field
+         * is not supported by this protocol or connection manager.
+         * @param field a vCard field
+         * @param value an address that is a value of @field
+         * @param cancellable may be used to cancel the async request
+         * @param callback a callback to call when the request is satisfied
+         */
+        normalize_vcard_address_async(
+            field: string,
+            value: string,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
         /**
          * Perform best-effort offline contact normalization, for a contact in
          * the form of a vCard field. This method will fail if the vCard field
@@ -17196,7 +19397,7 @@ export namespace TelepathyGLib {
             value: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Interpret the result of tp_protocol_normalize_vcard_address_async().
          * @param result a #GAsyncResult
@@ -17424,9 +19625,119 @@ export namespace TelepathyGLib {
          * a side-effect of other actions, but to ensure that a feature is present you
          * must generally call tp_proxy_prepare_async() and wait for the result.
          * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+         */
+        prepare_async(features?: GLib.Quark[] | null): Promise<boolean>;
+        /**
+         * #TpProxy itself does not support any features, but subclasses like
+         * #TpChannel can support features, which can either be core functionality like
+         * %TP_CHANNEL_FEATURE_CORE, or extended functionality like
+         * %TP_CHANNEL_FEATURE_CHAT_STATES.
+         *
+         * Proxy instances start with no features prepared. When features are
+         * requested via tp_proxy_prepare_async(), the proxy starts to do the
+         * necessary setup to use those features.
+         *
+         * tp_proxy_prepare_async() always waits for core functionality of the proxy's
+         * class to be prepared, even if it is not specifically requested: for
+         * instance, because %TP_CHANNEL_FEATURE_CORE is core functionality of a
+         * #TpChannel,
+         *
+         *
+         * ```
+         * TpChannel *channel = ...;
+         *
+         * tp_proxy_prepare_async (channel, NULL, callback, user_data);
+         * ```
+         *
+         *
+         * is equivalent to
+         *
+         *
+         * ```
+         * TpChannel *channel = ...;
+         * GQuark features[] = { TP_CHANNEL_FEATURE_CORE, 0 };
+         *
+         * tp_proxy_prepare_async (channel, features, callback, user_data);
+         * ```
+         *
+         *
+         * If a feature represents core functionality (like %TP_CHANNEL_FEATURE_CORE),
+         * failure to prepare it will result in tp_proxy_prepare_async() finishing
+         * unsuccessfully: if failure to prepare the feature indicates that the proxy
+         * is no longer useful, it will also emit #TpProxy::invalidated.
+         *
+         * If a feature represents non-essential functionality
+         * (like %TP_CHANNEL_FEATURE_CHAT_STATES), or is not supported by the object
+         * at all, then failure to prepare it is not fatal:
+         * tp_proxy_prepare_async() will complete successfully, but
+         * tp_proxy_is_prepared() will still return %FALSE for the feature, and
+         * accessor methods for the feature will typically return a dummy value.
+         *
+         * Some #TpProxy subclasses automatically start to prepare their core
+         * features when instantiated, and features will sometimes become prepared as
+         * a side-effect of other actions, but to ensure that a feature is present you
+         * must generally call tp_proxy_prepare_async() and wait for the result.
+         * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
          * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
          */
-        prepare_async(features?: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        prepare_async(features: GLib.Quark[] | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * #TpProxy itself does not support any features, but subclasses like
+         * #TpChannel can support features, which can either be core functionality like
+         * %TP_CHANNEL_FEATURE_CORE, or extended functionality like
+         * %TP_CHANNEL_FEATURE_CHAT_STATES.
+         *
+         * Proxy instances start with no features prepared. When features are
+         * requested via tp_proxy_prepare_async(), the proxy starts to do the
+         * necessary setup to use those features.
+         *
+         * tp_proxy_prepare_async() always waits for core functionality of the proxy's
+         * class to be prepared, even if it is not specifically requested: for
+         * instance, because %TP_CHANNEL_FEATURE_CORE is core functionality of a
+         * #TpChannel,
+         *
+         *
+         * ```
+         * TpChannel *channel = ...;
+         *
+         * tp_proxy_prepare_async (channel, NULL, callback, user_data);
+         * ```
+         *
+         *
+         * is equivalent to
+         *
+         *
+         * ```
+         * TpChannel *channel = ...;
+         * GQuark features[] = { TP_CHANNEL_FEATURE_CORE, 0 };
+         *
+         * tp_proxy_prepare_async (channel, features, callback, user_data);
+         * ```
+         *
+         *
+         * If a feature represents core functionality (like %TP_CHANNEL_FEATURE_CORE),
+         * failure to prepare it will result in tp_proxy_prepare_async() finishing
+         * unsuccessfully: if failure to prepare the feature indicates that the proxy
+         * is no longer useful, it will also emit #TpProxy::invalidated.
+         *
+         * If a feature represents non-essential functionality
+         * (like %TP_CHANNEL_FEATURE_CHAT_STATES), or is not supported by the object
+         * at all, then failure to prepare it is not fatal:
+         * tp_proxy_prepare_async() will complete successfully, but
+         * tp_proxy_is_prepared() will still return %FALSE for the feature, and
+         * accessor methods for the feature will typically return a dummy value.
+         *
+         * Some #TpProxy subclasses automatically start to prepare their core
+         * features when instantiated, and features will sometimes become prepared as
+         * a side-effect of other actions, but to ensure that a feature is present you
+         * must generally call tp_proxy_prepare_async() and wait for the result.
+         * @param features an array  of desired features, ending with 0; %NULL is equivalent to an array  containing only 0
+         * @param callback if not %NULL, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
+         */
+        prepare_async(
+            features?: GLib.Quark[] | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Check for error in a call to tp_proxy_prepare_async(). An error here
          * generally indicates that either the asynchronous call was cancelled,
@@ -17659,13 +19970,100 @@ export namespace TelepathyGLib {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         init_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
          * See g_async_initable_init_async().
@@ -18468,13 +20866,34 @@ export namespace TelepathyGLib {
          * tp_simple_client_factory_add_contact_features().
          * @param connection a #TpConnection
          * @param identifier a string representing the contact's identifier
+         */
+        ensure_contact_by_id_async(connection: Connection, identifier: string): Promise<Contact>;
+        /**
+         * Same as tp_connection_dup_contact_by_id_async(), but prepare the
+         * contact with all features previously passed to
+         * tp_simple_client_factory_add_contact_features().
+         * @param connection a #TpConnection
+         * @param identifier a string representing the contact's identifier
+         * @param callback a callback to call when the operation finishes
+         */
+        ensure_contact_by_id_async(
+            connection: Connection,
+            identifier: string,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Same as tp_connection_dup_contact_by_id_async(), but prepare the
+         * contact with all features previously passed to
+         * tp_simple_client_factory_add_contact_features().
+         * @param connection a #TpConnection
+         * @param identifier a string representing the contact's identifier
          * @param callback a callback to call when the operation finishes
          */
         ensure_contact_by_id_async(
             connection: Connection,
             identifier: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Contact> | void;
         /**
          * Finishes tp_simple_client_factory_ensure_contact_by_id_async()
          * @param result a #GAsyncResult
@@ -18492,13 +20911,34 @@ export namespace TelepathyGLib {
          * tp_simple_client_factory_add_contact_features().
          * @param connection a #TpConnection whose #TpProxy:factory is this object
          * @param contacts An array of #TpContact objects  associated with @self
+         */
+        upgrade_contacts_async(connection: Connection, contacts: Contact[]): Promise<Contact[] | null>;
+        /**
+         * Same as tp_connection_upgrade_contacts_async(), but prepare contacts with all
+         * features previously passed to
+         * tp_simple_client_factory_add_contact_features().
+         * @param connection a #TpConnection whose #TpProxy:factory is this object
+         * @param contacts An array of #TpContact objects  associated with @self
+         * @param callback a callback to call when the operation finishes
+         */
+        upgrade_contacts_async(
+            connection: Connection,
+            contacts: Contact[],
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Same as tp_connection_upgrade_contacts_async(), but prepare contacts with all
+         * features previously passed to
+         * tp_simple_client_factory_add_contact_features().
+         * @param connection a #TpConnection whose #TpProxy:factory is this object
+         * @param contacts An array of #TpContact objects  associated with @self
          * @param callback a callback to call when the operation finishes
          */
         upgrade_contacts_async(
             connection: Connection,
             contacts: Contact[],
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<Contact[] | null> | void;
         /**
          * Finishes tp_simple_client_factory_upgrade_contacts_async()
          * @param result a #GAsyncResult
@@ -18748,9 +21188,22 @@ export namespace TelepathyGLib {
          * Accept an incoming stream tube. When the tube has been accepted, `callback`
          * will be called. You can then call tp_stream_tube_channel_accept_finish()
          * to get a #TpStreamTubeConnection connected to the tube.
+         */
+        accept_async(): Promise<StreamTubeConnection>;
+        /**
+         * Accept an incoming stream tube. When the tube has been accepted, `callback`
+         * will be called. You can then call tp_stream_tube_channel_accept_finish()
+         * to get a #TpStreamTubeConnection connected to the tube.
          * @param callback a callback to call when the tube has been accepted
          */
-        accept_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        accept_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Accept an incoming stream tube. When the tube has been accepted, `callback`
+         * will be called. You can then call tp_stream_tube_channel_accept_finish()
+         * to get a #TpStreamTubeConnection connected to the tube.
+         * @param callback a callback to call when the tube has been accepted
+         */
+        accept_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<StreamTubeConnection> | void;
         /**
          * Finishes accepting an incoming stream tube. The returned
          * #TpStreamTubeConnection can then be used to exchange data through the tube.
@@ -18786,9 +21239,35 @@ export namespace TelepathyGLib {
          * #TpStreamTubeConnection each time a contact establishes a connection to
          * the tube.
          * @param params parameters of the tube, or %NULL
+         */
+        offer_async(params?: GLib.HashTable<any, any> | null): Promise<boolean>;
+        /**
+         * Offer an outgoing stream tube. When the tube has been offered, `callback`
+         * will be called. You can then call tp_stream_tube_channel_offer_finish()
+         * to get the result of the operation.
+         *
+         * You have to connect to the #TpStreamTubeChannel::incoming signal to get a
+         * #TpStreamTubeConnection each time a contact establishes a connection to
+         * the tube.
+         * @param params parameters of the tube, or %NULL
          * @param callback a callback to call when the tube has been offered
          */
-        offer_async(params?: GLib.HashTable<any, any> | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        offer_async(params: GLib.HashTable<any, any> | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Offer an outgoing stream tube. When the tube has been offered, `callback`
+         * will be called. You can then call tp_stream_tube_channel_offer_finish()
+         * to get the result of the operation.
+         *
+         * You have to connect to the #TpStreamTubeChannel::incoming signal to get a
+         * #TpStreamTubeConnection each time a contact establishes a connection to
+         * the tube.
+         * @param params parameters of the tube, or %NULL
+         * @param callback a callback to call when the tube has been offered
+         */
+        offer_async(
+            params?: GLib.HashTable<any, any> | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes offering an outgoing stream tube.
          * @param result a #GAsyncResult
@@ -18987,9 +21466,26 @@ export namespace TelepathyGLib {
          *
          * #GObject::notify::state will also be emitted when the connection manager
          * signals that the certificate has been accepted.
+         */
+        accept_async(): Promise<boolean>;
+        /**
+         * Accept this certificate, asynchronously. In or after `callback,`
+         * you may call tp_tls_certificate_accept_finish() to check the result.
+         *
+         * #GObject::notify::state will also be emitted when the connection manager
+         * signals that the certificate has been accepted.
          * @param callback called on success or failure
          */
-        accept_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        accept_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Accept this certificate, asynchronously. In or after `callback,`
+         * you may call tp_tls_certificate_accept_finish() to check the result.
+         *
+         * #GObject::notify::state will also be emitted when the connection manager
+         * signals that the certificate has been accepted.
+         * @param callback called on success or failure
+         */
+        accept_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Check the result of tp_tls_certificate_accept_async().
          * @param result the result passed to the callback by  tp_tls_certificate_accept_async()
@@ -19061,9 +21557,40 @@ export namespace TelepathyGLib {
          *
          * #GObject::notify::state will also be emitted when the connection manager
          * signals that the certificate has been rejected.
+         */
+        reject_async(): Promise<boolean>;
+        /**
+         * Reject this certificate, asynchronously.
+         *
+         * Before calling this method, you must call
+         * tp_tls_certificate_add_rejection() at least once, to set the reason(s)
+         * for rejection (for instance, a certificate might be both self-signed and
+         * expired).
+         *
+         * In or after `callback,`
+         * you may call tp_tls_certificate_reject_finish() to check the result.
+         *
+         * #GObject::notify::state will also be emitted when the connection manager
+         * signals that the certificate has been rejected.
          * @param callback called on success or failure
          */
-        reject_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        reject_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Reject this certificate, asynchronously.
+         *
+         * Before calling this method, you must call
+         * tp_tls_certificate_add_rejection() at least once, to set the reason(s)
+         * for rejection (for instance, a certificate might be both self-signed and
+         * expired).
+         *
+         * In or after `callback,`
+         * you may call tp_tls_certificate_reject_finish() to check the result.
+         *
+         * #GObject::notify::state will also be emitted when the connection manager
+         * signals that the certificate has been rejected.
+         * @param callback called on success or failure
+         */
+        reject_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Check the result of tp_tls_certificate_reject_async().
          * @param result the result passed to the callback by  tp_tls_certificate_reject_async()
@@ -19323,9 +21850,34 @@ export namespace TelepathyGLib {
          * the result of the operation.
          *
          * See tp_text_channel_ack_message_async() about acknowledging messages.
+         */
+        ack_all_pending_messages_async(): Promise<boolean>;
+        /**
+         * Acknowledge all the pending messages. This is equivalent of calling
+         * tp_text_channel_ack_messages_async() with the list of #TpSignalledMessage
+         * returned by tp_text_channel_dup_pending_messages().
+         *
+         * Once the messages have been acked, `callback` will be called.
+         * You can then call tp_text_channel_ack_all_pending_messages_finish() to get
+         * the result of the operation.
+         *
+         * See tp_text_channel_ack_message_async() about acknowledging messages.
          * @param callback a callback to call when the messages have been acked
          */
-        ack_all_pending_messages_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
+        ack_all_pending_messages_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Acknowledge all the pending messages. This is equivalent of calling
+         * tp_text_channel_ack_messages_async() with the list of #TpSignalledMessage
+         * returned by tp_text_channel_dup_pending_messages().
+         *
+         * Once the messages have been acked, `callback` will be called.
+         * You can then call tp_text_channel_ack_all_pending_messages_finish() to get
+         * the result of the operation.
+         *
+         * See tp_text_channel_ack_message_async() about acknowledging messages.
+         * @param callback a callback to call when the messages have been acked
+         */
+        ack_all_pending_messages_async(callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finish an asynchronous acknowledgement operation of all messages.
          * @param result a #GAsyncResult
@@ -19348,9 +21900,46 @@ export namespace TelepathyGLib {
          * tp_text_channel_dup_pending_messages() or the
          * #TpTextChannel::message-received signal.
          * @param message a #TpSignalledMessage
+         */
+        ack_message_async(message: Message): Promise<boolean>;
+        /**
+         * Acknowledge `message`. Once the message has been acked, `callback` will be
+         * called. You can then call tp_text_channel_ack_message_finish() to get the
+         * result of the operation.
+         *
+         * A message should be acknowledged once it has been shown to the user by the
+         * Handler of the channel. So Observers and Approvers should NOT acknowledge
+         * messages themselves.
+         * Once a message has been acknowledged, it is removed from the
+         * pending-message queue and so the #TpTextChannel::pending-message-removed
+         * signal is fired.
+         *
+         * You should use the #TpSignalledMessage received from
+         * tp_text_channel_dup_pending_messages() or the
+         * #TpTextChannel::message-received signal.
+         * @param message a #TpSignalledMessage
          * @param callback a callback to call when the message have been acked
          */
-        ack_message_async(message: Message, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        ack_message_async(message: Message, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Acknowledge `message`. Once the message has been acked, `callback` will be
+         * called. You can then call tp_text_channel_ack_message_finish() to get the
+         * result of the operation.
+         *
+         * A message should be acknowledged once it has been shown to the user by the
+         * Handler of the channel. So Observers and Approvers should NOT acknowledge
+         * messages themselves.
+         * Once a message has been acknowledged, it is removed from the
+         * pending-message queue and so the #TpTextChannel::pending-message-removed
+         * signal is fired.
+         *
+         * You should use the #TpSignalledMessage received from
+         * tp_text_channel_dup_pending_messages() or the
+         * #TpTextChannel::message-received signal.
+         * @param message a #TpSignalledMessage
+         * @param callback a callback to call when the message have been acked
+         */
+        ack_message_async(message: Message, callback?: Gio.AsyncReadyCallback<this> | null): Promise<boolean> | void;
         /**
          * Finishes acknowledging a message.
          * @param result a #GAsyncResult passed to the callback for tp_text_channel_ack_message_async()
@@ -19369,9 +21958,41 @@ export namespace TelepathyGLib {
          *
          * See tp_text_channel_ack_message_async() about acknowledging messages.
          * @param messages a #GList of #TpSignalledMessage
+         */
+        ack_messages_async(messages: SignalledMessage[]): Promise<boolean>;
+        /**
+         * Acknowledge all the messages in `messages`.
+         * Once the messages have been acked, `callback` will be called.
+         * You can then call tp_text_channel_ack_messages_finish() to get the
+         * result of the operation.
+         *
+         * You should use the #TpSignalledMessage received from
+         * tp_text_channel_dup_pending_messages() or the
+         * #TpTextChannel::message-received signal.
+         *
+         * See tp_text_channel_ack_message_async() about acknowledging messages.
+         * @param messages a #GList of #TpSignalledMessage
          * @param callback a callback to call when the message have been acked
          */
-        ack_messages_async(messages: SignalledMessage[], callback?: Gio.AsyncReadyCallback<this> | null): void;
+        ack_messages_async(messages: SignalledMessage[], callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Acknowledge all the messages in `messages`.
+         * Once the messages have been acked, `callback` will be called.
+         * You can then call tp_text_channel_ack_messages_finish() to get the
+         * result of the operation.
+         *
+         * You should use the #TpSignalledMessage received from
+         * tp_text_channel_dup_pending_messages() or the
+         * #TpTextChannel::message-received signal.
+         *
+         * See tp_text_channel_ack_message_async() about acknowledging messages.
+         * @param messages a #GList of #TpSignalledMessage
+         * @param callback a callback to call when the message have been acked
+         */
+        ack_messages_async(
+            messages: SignalledMessage[],
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Finishes acknowledging a list of messages.
          * @param result a #GAsyncResult passed to the callback for tp_text_channel_ack_messages_async()
@@ -19438,9 +22059,37 @@ export namespace TelepathyGLib {
          * You can then call tp_text_channel_get_sms_length_finish() to get the
          * result of the operation.
          * @param message a #TpClientMessage
+         */
+        get_sms_length_async(message: Message): Promise<[boolean, number, number, number]>;
+        /**
+         * Starts an async call to get the number of 140 octet chunks required to
+         * send a #message via SMS on #self, as well as the number of remaining
+         * characters available in the final chunk and, if possible,
+         * an estimate of the cost.
+         *
+         * Once the request has been satisfied, `callback` will be called.
+         * You can then call tp_text_channel_get_sms_length_finish() to get the
+         * result of the operation.
+         * @param message a #TpClientMessage
          * @param callback a callback to call when the request has been satisfied
          */
-        get_sms_length_async(message: Message, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        get_sms_length_async(message: Message, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Starts an async call to get the number of 140 octet chunks required to
+         * send a #message via SMS on #self, as well as the number of remaining
+         * characters available in the final chunk and, if possible,
+         * an estimate of the cost.
+         *
+         * Once the request has been satisfied, `callback` will be called.
+         * You can then call tp_text_channel_get_sms_length_finish() to get the
+         * result of the operation.
+         * @param message a #TpClientMessage
+         * @param callback a callback to call when the request has been satisfied
+         */
+        get_sms_length_async(
+            message: Message,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<[boolean, number, number, number]> | void;
         /**
          * Finishes an async SMS length request.
          * @param result a #GAsyncResult
@@ -19458,13 +22107,34 @@ export namespace TelepathyGLib {
          * tp_text_channel_send_message_finish() to get the result of the operation.
          * @param message a #TpClientMessage
          * @param flags flags affecting how the message is sent
+         */
+        send_message_async(message: Message, flags: MessageSendingFlags): Promise<string>;
+        /**
+         * Submit a message to the server for sending. Once the message has been
+         * submitted to the sever, `callback` will be called. You can then call
+         * tp_text_channel_send_message_finish() to get the result of the operation.
+         * @param message a #TpClientMessage
+         * @param flags flags affecting how the message is sent
+         * @param callback a callback to call when the message has been submitted to the server
+         */
+        send_message_async(
+            message: Message,
+            flags: MessageSendingFlags,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Submit a message to the server for sending. Once the message has been
+         * submitted to the sever, `callback` will be called. You can then call
+         * tp_text_channel_send_message_finish() to get the result of the operation.
+         * @param message a #TpClientMessage
+         * @param flags flags affecting how the message is sent
          * @param callback a callback to call when the message has been submitted to the server
          */
         send_message_async(
             message: Message,
             flags: MessageSendingFlags,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        ): Promise<string> | void;
         /**
          * Completes a call to tp_text_channel_send_message_async().
          *
@@ -19482,9 +22152,29 @@ export namespace TelepathyGLib {
          * You can then call tp_text_channel_set_chat_state_finish() to get the
          * result of the operation.
          * @param state a #TpChannelChatState to set
+         */
+        set_chat_state_async(state: ChannelChatState): Promise<boolean>;
+        /**
+         * Set the local state on channel `self` to `state`.
+         * Once the state has been set, `callback` will be called.
+         * You can then call tp_text_channel_set_chat_state_finish() to get the
+         * result of the operation.
+         * @param state a #TpChannelChatState to set
          * @param callback a callback to call when the chat state has been set
          */
-        set_chat_state_async(state: ChannelChatState, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        set_chat_state_async(state: ChannelChatState, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Set the local state on channel `self` to `state`.
+         * Once the state has been set, `callback` will be called.
+         * You can then call tp_text_channel_set_chat_state_finish() to get the
+         * result of the operation.
+         * @param state a #TpChannelChatState to set
+         * @param callback a callback to call when the chat state has been set
+         */
+        set_chat_state_async(
+            state: ChannelChatState,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<boolean> | void;
         /**
          * Completes a call to tp_text_channel_set_chat_state_async().
          * @param result a #GAsyncResult passed to the callback for tp_text_channel_set_chat_state_async()
