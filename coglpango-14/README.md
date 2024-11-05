@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/coglpango-14)
 
 
-GJS TypeScript type definitions for CoglPango-14, generated from library version 14.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.17.
+GJS TypeScript type definitions for CoglPango-14, generated from library version 14.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.18.
 
 
 ## Install

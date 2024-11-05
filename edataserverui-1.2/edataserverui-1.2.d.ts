@@ -879,7 +879,7 @@ export namespace EDataServerUI {
             source: EDataServer.Source,
             error_text: string | null,
             flags: CredentialsPrompterPromptFlags,
-        ): Promise<[boolean, EDataServer.Source | null, EDataServer.NamedParameters | null]>;
+        ): Promise<[EDataServer.Source | null, EDataServer.NamedParameters | null]>;
         /**
          * Asks the `prompter` to prompt for credentials, which are returned
          * to the caller through `callback,` when available.The `flags` are ignored,
@@ -915,7 +915,7 @@ export namespace EDataServerUI {
             error_text: string | null,
             flags: CredentialsPrompterPromptFlags,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, EDataServer.Source | null, EDataServer.NamedParameters | null]> | void;
+        ): Promise<[EDataServer.Source | null, EDataServer.NamedParameters | null]> | void;
         /**
          * Finishes a credentials prompt previously started with e_credentials_prompter_prompt().
          * The `out_source` will have set a referenced #ESource, for which the prompt

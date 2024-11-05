@@ -1,6 +1,6 @@
 {
     "name": "@girs/farstream-0.2",
-    "version": "0.2.0-4.0.0-beta.17",
+    "version": "0.2.0-4.0.0-beta.18",
     "description": "GJS TypeScript type definitions for Farstream-0.2, generated from library version 0.2.0",
     "type": "module",
     "module": "farstream-0.2.js",

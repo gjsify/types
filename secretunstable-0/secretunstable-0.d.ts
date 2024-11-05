@@ -5176,7 +5176,7 @@ export namespace SecretUnstable {
             schema: Secret.Schema,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable: Gio.Cancellable,
-        ): Promise<[boolean, string[] | null, string[] | null]>;
+        ): Promise<[string[] | null, string[] | null]>;
         /**
          * Search for items matching the `attributes,` and return their D-Bus object paths.
          * All collections are searched. The `attributes` should be a table of string keys
@@ -5220,7 +5220,7 @@ export namespace SecretUnstable {
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
-        ): Promise<[boolean, string[] | null, string[] | null]> | void;
+        ): Promise<[string[] | null, string[] | null]> | void;
         /**
          * Complete asynchronous operation to search for items, and return their
          * D-Bus object paths.

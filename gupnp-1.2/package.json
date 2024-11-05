@@ -1,6 +1,6 @@
 {
     "name": "@girs/gupnp-1.2",
-    "version": "1.2.0-4.0.0-beta.17",
+    "version": "1.2.0-4.0.0-beta.18",
     "description": "GJS TypeScript type definitions for GUPnP-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "gupnp-1.2.js",

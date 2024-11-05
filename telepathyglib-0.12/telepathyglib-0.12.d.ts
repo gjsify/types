@@ -9462,7 +9462,7 @@ export namespace TelepathyGLib {
             channels: Channel[],
             user_action_time: number,
             preferred_handler: string,
-        ): Promise<[boolean, Channel[], GLib.HashTable<Channel, GLib.Error>]>;
+        ): Promise<[Channel[], GLib.HashTable<Channel, GLib.Error>]>;
         /**
          * Asynchronously calls DelegateChannels on the ChannelDispatcher to try
          * stopping handling `channels` and pass them to another Handler.
@@ -9494,7 +9494,7 @@ export namespace TelepathyGLib {
             user_action_time: number,
             preferred_handler: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, Channel[], GLib.HashTable<Channel, GLib.Error>]> | void;
+        ): Promise<[Channel[], GLib.HashTable<Channel, GLib.Error>]> | void;
         /**
          * Finishes an async channels delegation request started using
          * tp_base_client_delegate_channels_async().
@@ -22060,7 +22060,7 @@ export namespace TelepathyGLib {
          * result of the operation.
          * @param message a #TpClientMessage
          */
-        get_sms_length_async(message: Message): Promise<[boolean, number, number, number]>;
+        get_sms_length_async(message: Message): Promise<[number, number, number]>;
         /**
          * Starts an async call to get the number of 140 octet chunks required to
          * send a #message via SMS on #self, as well as the number of remaining
@@ -22089,7 +22089,7 @@ export namespace TelepathyGLib {
         get_sms_length_async(
             message: Message,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, number, number, number]> | void;
+        ): Promise<[number, number, number]> | void;
         /**
          * Finishes an async SMS length request.
          * @param result a #GAsyncResult

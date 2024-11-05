@@ -1,6 +1,6 @@
 {
     "name": "@girs/meta-13",
-    "version": "13.0.0-4.0.0-beta.17",
+    "version": "13.0.0-4.0.0-beta.18",
     "description": "GJS TypeScript type definitions for Meta-13, generated from library version 13.0.0",
     "type": "module",
     "module": "meta-13.js",

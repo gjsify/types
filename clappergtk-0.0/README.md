@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/clappergtk-0.0)
 
 
-GJS TypeScript type definitions for ClapperGtk-0.0, generated from library version 0.6.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.17.
+GJS TypeScript type definitions for ClapperGtk-0.0, generated from library version 0.6.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.18.
 
 
 ## Install

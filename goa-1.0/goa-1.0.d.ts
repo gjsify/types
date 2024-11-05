@@ -19046,7 +19046,7 @@ export namespace Goa {
          * See goa_oauth2_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[boolean, string, number]>;
+        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[string, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -19069,7 +19069,7 @@ export namespace Goa {
         call_get_access_token(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, string, number]> | void;
+        ): Promise<[string, number]> | void;
         /**
          * Finishes an operation started with goa_oauth2_based_call_get_access_token().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_oauth2_based_call_get_access_token().
@@ -19596,7 +19596,7 @@ export namespace Goa {
          * See goa_oauth2_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[boolean, string, number]>;
+        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[string, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -19619,7 +19619,7 @@ export namespace Goa {
         call_get_access_token(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, string, number]> | void;
+        ): Promise<[string, number]> | void;
         /**
          * Finishes an operation started with goa_oauth2_based_call_get_access_token().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_oauth2_based_call_get_access_token().
@@ -20515,7 +20515,7 @@ export namespace Goa {
          * See goa_oauth_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[boolean, string, string, number]>;
+        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[string, string, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -20538,7 +20538,7 @@ export namespace Goa {
         call_get_access_token(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, string, string, number]> | void;
+        ): Promise<[string, string, number]> | void;
         /**
          * Finishes an operation started with goa_oauth_based_call_get_access_token().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_oauth_based_call_get_access_token().
@@ -21071,7 +21071,7 @@ export namespace Goa {
          * See goa_oauth_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[boolean, string, string, number]>;
+        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[string, string, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -21094,7 +21094,7 @@ export namespace Goa {
         call_get_access_token(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, string, string, number]> | void;
+        ): Promise<[string, string, number]> | void;
         /**
          * Finishes an operation started with goa_oauth_based_call_get_access_token().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_oauth_based_call_get_access_token().
@@ -33877,7 +33877,7 @@ export namespace Goa {
          * See goa_oauth2_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[boolean, string, number]>;
+        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[string, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -33900,7 +33900,7 @@ export namespace Goa {
         call_get_access_token(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, string, number]> | void;
+        ): Promise<[string, number]> | void;
         /**
          * Finishes an operation started with goa_oauth2_based_call_get_access_token().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_oauth2_based_call_get_access_token().
@@ -34005,7 +34005,7 @@ export namespace Goa {
          * See goa_oauth_based_call_get_access_token_sync() for the synchronous, blocking version of this method.
          * @param cancellable A #GCancellable or %NULL.
          */
-        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[boolean, string, string, number]>;
+        call_get_access_token(cancellable?: Gio.Cancellable | null): Promise<[string, string, number]>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34028,7 +34028,7 @@ export namespace Goa {
         call_get_access_token(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, string, string, number]> | void;
+        ): Promise<[string, string, number]> | void;
         /**
          * Finishes an operation started with goa_oauth_based_call_get_access_token().
          * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_oauth_based_call_get_access_token().

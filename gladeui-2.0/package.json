@@ -1,6 +1,6 @@
 {
     "name": "@girs/gladeui-2.0",
-    "version": "2.0.0-4.0.0-beta.17",
+    "version": "2.0.0-4.0.0-beta.18",
     "description": "GJS TypeScript type definitions for Gladeui-2.0, generated from library version 2.0.0",
     "type": "module",
     "module": "gladeui-2.0.js",

@@ -5322,10 +5322,7 @@ export namespace EBackend {
          * @param source an #ESource
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_access_token(
-            source: EDataServer.Source,
-            cancellable?: Gio.Cancellable | null,
-        ): Promise<[boolean, string, number]>;
+        get_access_token(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): Promise<[string, number]>;
         /**
          * Asynchronously obtains the OAuth 2.0 access token for `source` along
          * with its expiry in seconds from the current time (or 0 if unknown).
@@ -5357,7 +5354,7 @@ export namespace EBackend {
             source: EDataServer.Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, string, number]> | void;
+        ): Promise<[string, number]> | void;
         /**
          * Finishes the operation started with e_oauth2_support_get_access_token().
          *
@@ -7761,10 +7758,7 @@ export namespace EBackend {
          * @param source an #ESource
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_access_token(
-            source: EDataServer.Source,
-            cancellable?: Gio.Cancellable | null,
-        ): Promise<[boolean, string, number]>;
+        get_access_token(source: EDataServer.Source, cancellable?: Gio.Cancellable | null): Promise<[string, number]>;
         /**
          * Asynchronously obtains the OAuth 2.0 access token for `source` along
          * with its expiry in seconds from the current time (or 0 if unknown).
@@ -7796,7 +7790,7 @@ export namespace EBackend {
             source: EDataServer.Source,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, string, number]> | void;
+        ): Promise<[string, number]> | void;
         /**
          * Finishes the operation started with e_oauth2_support_get_access_token().
          *

@@ -1838,7 +1838,7 @@ export namespace Gck {
             public_attrs: Attributes,
             private_attrs: Attributes,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[boolean, Object | null, Object | null]>;
+        ): Promise<[Object | null, Object | null]>;
         /**
          * Generate a new key pair of public and private keys. This call will
          * return immediately and complete asynchronously.
@@ -1876,7 +1876,7 @@ export namespace Gck {
             private_attrs: Attributes,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, Object | null, Object | null]> | void;
+        ): Promise<[Object | null, Object | null]> | void;
         /**
          * Get the result of a generate key pair operation.
          * @param result The async result passed to the callback.

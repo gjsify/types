@@ -5430,7 +5430,7 @@ export namespace GtkSource {
         backward_async(
             iter: Gtk.TextIter,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[boolean, Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
+        ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
         /**
          * The asynchronous version of gtk_source_search_context_backward().
          *
@@ -5470,7 +5470,7 @@ export namespace GtkSource {
             iter: Gtk.TextIter,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
+        ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
         /**
          * Finishes a backward search started with
          * gtk_source_search_context_backward_async().
@@ -5513,7 +5513,7 @@ export namespace GtkSource {
         forward_async(
             iter: Gtk.TextIter,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[boolean, Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
+        ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
         /**
          * The asynchronous version of gtk_source_search_context_forward().
          *
@@ -5553,7 +5553,7 @@ export namespace GtkSource {
             iter: Gtk.TextIter,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
+        ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
         /**
          * Finishes a forward search started with
          * gtk_source_search_context_forward_async().

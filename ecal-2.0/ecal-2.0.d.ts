@@ -3173,7 +3173,7 @@ export namespace ECal {
             icalcomp: ICalGLib.Component,
             opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[boolean, string[], ICalGLib.Component]>;
+        ): Promise<[string[], ICalGLib.Component]>;
         /**
          * Requests a calendar backend to send meeting information stored in `icalcomp`.
          * The backend can modify this component and request a send to particular users.
@@ -3205,7 +3205,7 @@ export namespace ECal {
             opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, string[], ICalGLib.Component]> | void;
+        ): Promise<[string[], ICalGLib.Component]> | void;
         /**
          * Finishes previous call of e_cal_client_send_objects() and
          * populates `out_users` with a list of users to send `out_modified_icalcomp` to.

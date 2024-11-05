@@ -59329,7 +59329,7 @@ export namespace Ide {
         communicate_async(
             stdin_buf?: GLib.Bytes | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[boolean, GLib.Bytes | null, GLib.Bytes | null]>;
+        ): Promise<[GLib.Bytes | null, GLib.Bytes | null]>;
         /**
          * Asynchronously communicates with the the child process.
          *
@@ -59365,7 +59365,7 @@ export namespace Ide {
             stdin_buf?: GLib.Bytes | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, GLib.Bytes | null, GLib.Bytes | null]> | void;
+        ): Promise<[GLib.Bytes | null, GLib.Bytes | null]> | void;
         /**
          * Finishes a request to ide_subprocess_communicate_async().
          * @param result A #GAsyncResult
@@ -59382,7 +59382,7 @@ export namespace Ide {
         communicate_utf8_async(
             stdin_buf?: string | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[boolean, string, string]>;
+        ): Promise<[string, string]>;
         communicate_utf8_async(
             stdin_buf: string | null,
             cancellable: Gio.Cancellable | null,
@@ -59392,7 +59392,7 @@ export namespace Ide {
             stdin_buf?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, string, string]> | void;
+        ): Promise<[string, string]> | void;
         communicate_utf8_finish(result: Gio.AsyncResult): [boolean, string, string];
         force_exit(): void;
         get_exit_status(): number;

@@ -2653,7 +2653,7 @@ export namespace Snapd {
             snap?: string | null,
             _interface?: string | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[boolean, Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null]>;
+        ): Promise<[Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null]>;
         /**
          * Asynchronously get the installed snap connections.
          * See snapd_client_get_connections_sync() for more information.
@@ -2685,7 +2685,7 @@ export namespace Snapd {
             _interface?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null]> | void;
+        ): Promise<[Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null]> | void;
         /**
          * Complete request started with snapd_client_get_connections_async().
          * See snapd_client_get_connections_sync() for more information.
@@ -2716,7 +2716,7 @@ export namespace Snapd {
          */
         get_connections_async(
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[boolean, Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null]>;
+        ): Promise<[Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null]>;
         /**
          * Asynchronously get the installed snap connections.
          * See snapd_client_get_connections_sync() for more information.
@@ -2733,7 +2733,7 @@ export namespace Snapd {
         get_connections_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null]> | void;
+        ): Promise<[Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null]> | void;
         /**
          * Complete request started with snapd_client_get_connections_async().
          * See snapd_client_get_connections_sync() for more information.
@@ -2860,7 +2860,7 @@ export namespace Snapd {
          * See snapd_client_get_interfaces_sync() for more information.
          * @param cancellable a #GCancellable or %NULL.
          */
-        get_interfaces_async(cancellable?: Gio.Cancellable | null): Promise<[boolean, Plug[] | null, Slot[] | null]>;
+        get_interfaces_async(cancellable?: Gio.Cancellable | null): Promise<[Plug[] | null, Slot[] | null]>;
         /**
          * Asynchronously get the installed snap interfaces.
          * See snapd_client_get_interfaces_sync() for more information.
@@ -2877,7 +2877,7 @@ export namespace Snapd {
         get_interfaces_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, Plug[] | null, Slot[] | null]> | void;
+        ): Promise<[Plug[] | null, Slot[] | null]> | void;
         /**
          * Complete request started with snapd_client_get_interfaces_async().
          * See snapd_client_get_interfaces_sync() for more information.
@@ -4053,7 +4053,7 @@ export namespace Snapd {
             context_id: string,
             args: string[],
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[boolean, string, string]>;
+        ): Promise<[string, string]>;
         /**
          * Asynchronously run a snapctl command.
          * See snapd_client_run_snapctl_sync() for more information.
@@ -4081,7 +4081,7 @@ export namespace Snapd {
             args: string[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, string, string]> | void;
+        ): Promise<[string, string]> | void;
         /**
          * Complete request started with snapd_client_run_snapctl_async().
          * See snapd_client_run_snapctl_sync() for more information.

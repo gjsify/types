@@ -4000,7 +4000,7 @@ export namespace OSTree {
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
-        load_contents_async(cancellable?: Gio.Cancellable | null): Promise<[boolean, Uint8Array, string]>;
+        load_contents_async(cancellable?: Gio.Cancellable | null): Promise<[Uint8Array, string]>;
         /**
          * Starts an asynchronous load of the `file'`s contents.
          *
@@ -4039,7 +4039,7 @@ export namespace OSTree {
         load_contents_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, Uint8Array, string]> | void;
+        ): Promise<[Uint8Array, string]> | void;
         /**
          * Finishes an asynchronous load of the `file'`s contents.
          * The contents are placed in `contents,` and `length` is set to the

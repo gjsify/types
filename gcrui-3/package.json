@@ -1,6 +1,6 @@
 {
     "name": "@girs/gcrui-3",
-    "version": "3.0.0-4.0.0-beta.17",
+    "version": "3.0.0-4.0.0-beta.18",
     "description": "GJS TypeScript type definitions for GcrUi-3, generated from library version 3.0.0",
     "type": "module",
     "module": "gcrui-3.js",

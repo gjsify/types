@@ -9209,7 +9209,7 @@ export namespace EDataServer {
          */
         get_last_credentials_required_arguments(
             cancellable?: Gio.Cancellable | null,
-        ): Promise<[boolean, SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error]>;
+        ): Promise<[SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error]>;
         /**
          * Asynchronously calls the GetLastCredentialsRequiredArguments method
          * on the server side, to get the last values used for the 'credentials-required'
@@ -9241,7 +9241,7 @@ export namespace EDataServer {
         get_last_credentials_required_arguments(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error]> | void;
+        ): Promise<[SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error]> | void;
         /**
          * Finishes the operation started with e_source_get_last_credentials_required_arguments().
          * See e_source_get_last_credentials_required_arguments_sync() for more information
@@ -9277,7 +9277,7 @@ export namespace EDataServer {
          * operation.
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        get_oauth2_access_token(cancellable?: Gio.Cancellable | null): Promise<[boolean, string, number]>;
+        get_oauth2_access_token(cancellable?: Gio.Cancellable | null): Promise<[string, number]>;
         /**
          * Asynchronously obtains the OAuth 2.0 access token for `source` along
          * with its expiry in seconds from the current time (or 0 if unknown).
@@ -9305,7 +9305,7 @@ export namespace EDataServer {
         get_oauth2_access_token(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, string, number]> | void;
+        ): Promise<[string, number]> | void;
         /**
          * Finishes the operation started with e_source_get_oauth2_access_token().
          *
@@ -9627,10 +9627,7 @@ export namespace EDataServer {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional #GCancellable object, or %NULL
          */
-        mail_signature_load(
-            io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-        ): Promise<[boolean, string, number]>;
+        mail_signature_load(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<[string, number]>;
         /**
          * Asynchronously loads a signature from the signature file for `source,`
          * which is given by e_source_mail_signature_get_file().
@@ -9670,7 +9667,7 @@ export namespace EDataServer {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, string, number]> | void;
+        ): Promise<[string, number]> | void;
         /**
          * Finishes an operation started with e_source_mail_signature_load().  The
          * signature file contents are placed in `contents,` and `length` is set to

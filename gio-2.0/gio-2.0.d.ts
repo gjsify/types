@@ -54902,7 +54902,7 @@ export namespace Gio {
         communicate_async(
             stdin_buf?: GLib.Bytes | null,
             cancellable?: Cancellable | null,
-        ): Promise<[boolean, GLib.Bytes | null, GLib.Bytes | null]>;
+        ): Promise<[GLib.Bytes | null, GLib.Bytes | null]>;
         /**
          * Asynchronous version of g_subprocess_communicate().  Complete
          * invocation with g_subprocess_communicate_finish().
@@ -54926,7 +54926,7 @@ export namespace Gio {
             stdin_buf?: GLib.Bytes | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, GLib.Bytes | null, GLib.Bytes | null]> | void;
+        ): Promise<[GLib.Bytes | null, GLib.Bytes | null]> | void;
         /**
          * Complete an invocation of g_subprocess_communicate_async().
          * @param result Result
@@ -54948,10 +54948,7 @@ export namespace Gio {
          * @param stdin_buf Input data, or %NULL
          * @param cancellable Cancellable
          */
-        communicate_utf8_async(
-            stdin_buf?: string | null,
-            cancellable?: Cancellable | null,
-        ): Promise<[boolean, string, string]>;
+        communicate_utf8_async(stdin_buf?: string | null, cancellable?: Cancellable | null): Promise<[string, string]>;
         /**
          * Asynchronous version of g_subprocess_communicate_utf8().  Complete
          * invocation with g_subprocess_communicate_utf8_finish().
@@ -54975,7 +54972,7 @@ export namespace Gio {
             stdin_buf?: string | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, string, string]> | void;
+        ): Promise<[string, string]> | void;
         /**
          * Complete an invocation of g_subprocess_communicate_utf8_async().
          * @param result Result
@@ -74681,7 +74678,7 @@ export namespace Gio {
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
-        load_contents_async(cancellable?: Cancellable | null): Promise<[boolean, Uint8Array, string]>;
+        load_contents_async(cancellable?: Cancellable | null): Promise<[Uint8Array, string]>;
         /**
          * Starts an asynchronous load of the `file'`s contents.
          *
@@ -74720,7 +74717,7 @@ export namespace Gio {
         load_contents_async(
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
-        ): Promise<[boolean, Uint8Array, string]> | void;
+        ): Promise<[Uint8Array, string]> | void;
         /**
          * Finishes an asynchronous load of the `file'`s contents.
          * The contents are placed in `contents,` and `length` is set to the
