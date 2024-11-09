@@ -274,7 +274,7 @@ export namespace Libmsi {
          * @param info a #LibmsiColInfo specifying the type of information to return
          * @returns a newly allocated #LibmsiRecord containing informations or %NULL on error.
          */
-        get_column_info(info: ColInfo): Record;
+        get_column_info(info: ColInfo | null): Record;
         /**
          * Call this to get more information on the last query error.
          */
@@ -394,11 +394,11 @@ export namespace Libmsi {
 
         // Methods
 
-        get_filetime(prop: Property): number;
-        get_int(prop: Property): number;
+        get_filetime(prop: Property | null): number;
+        get_int(prop: Property | null): number;
         get_properties(): Property[];
-        get_property_type(prop: Property): PropertyType;
-        get_string(prop: Property): string;
+        get_property_type(prop: Property | null): PropertyType;
+        get_string(prop: Property | null): string;
         /**
          * Save summary informations to the associated database.
          * @returns %TRUE on success
@@ -416,21 +416,21 @@ export namespace Libmsi {
          * @param value a value
          * @returns %TRUE on success
          */
-        set_filetime(prop: Property, value: number): boolean;
+        set_filetime(prop: Property | null, value: number): boolean;
         /**
          * Set integer property `prop`.
          * @param prop a #LibmsiProperty to set
          * @param value a value
          * @returns %TRUE on success
          */
-        set_int(prop: Property, value: number): boolean;
+        set_int(prop: Property | null, value: number): boolean;
         /**
          * Set string property `prop`.
          * @param prop a #LibmsiProperty to set
          * @param value a string value
          * @returns %TRUE on success
          */
-        set_string(prop: Property, value: string): boolean;
+        set_string(prop: Property | null, value: string): boolean;
     }
 
     type DatabaseClass = typeof Database;

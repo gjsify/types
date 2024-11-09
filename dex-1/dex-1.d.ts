@@ -84,7 +84,7 @@ export namespace Dex {
      * @param bus_type
      * @returns a #DexFuture that resolves to a #GDBusConnection   or rejects with error.
      */
-    function bus_get(bus_type: Gio.BusType): Future;
+    function bus_get(bus_type: Gio.BusType | null): Future;
     /**
      * Wrapper for g_dbus_connection_call().
      * @param connection
@@ -106,7 +106,7 @@ export namespace Dex {
         method_name: string,
         parameters: GLib.Variant,
         reply_type: GLib.VariantType,
-        flags: Gio.DBusCallFlags,
+        flags: Gio.DBusCallFlags | null,
         timeout_msec: number,
     ): Future;
     /**
@@ -131,7 +131,7 @@ export namespace Dex {
         method_name: string,
         parameters: GLib.Variant,
         reply_type: GLib.VariantType,
-        flags: Gio.DBusCallFlags,
+        flags: Gio.DBusCallFlags | null,
         timeout_msec: number,
         fd_list?: Gio.UnixFDList | null,
     ): Future;
@@ -146,7 +146,7 @@ export namespace Dex {
     function dbus_connection_send_message_with_reply(
         connection: Gio.DBusConnection,
         message: Gio.DBusMessage,
-        flags: Gio.DBusSendMessageFlags,
+        flags: Gio.DBusSendMessageFlags | null,
         timeout_msec: number,
     ): [Future, number];
     function error_quark(): GLib.Quark;
@@ -159,11 +159,16 @@ export namespace Dex {
      * @param io_priority IO priority such as %G_PRIORITY_DEFAULT
      * @returns a #DexFuture
      */
-    function file_copy(source: Gio.File, destination: Gio.File, flags: Gio.FileCopyFlags, io_priority: number): Future;
+    function file_copy(
+        source: Gio.File,
+        destination: Gio.File,
+        flags: Gio.FileCopyFlags | null,
+        io_priority: number,
+    ): Future;
     function file_enumerate_children(
         file: Gio.File,
         attributes: string,
-        flags: Gio.FileQueryInfoFlags,
+        flags: Gio.FileQueryInfoFlags | null,
         io_priority: number,
     ): Future;
     function file_enumerator_next_files(
@@ -183,7 +188,7 @@ export namespace Dex {
     function file_query_info(
         file: Gio.File,
         attributes: string,
-        flags: Gio.FileQueryInfoFlags,
+        flags: Gio.FileQueryInfoFlags | null,
         io_priority: number,
     ): Future;
     /**
@@ -197,7 +202,7 @@ export namespace Dex {
         file: Gio.File,
         etag: string,
         make_backup: boolean,
-        flags: Gio.FileCreateFlags,
+        flags: Gio.FileCreateFlags | null,
         io_priority: number,
     ): Future;
     function get_min_stack_size(): number;
@@ -212,7 +217,7 @@ export namespace Dex {
     function output_stream_splice(
         output: Gio.OutputStream,
         input: Gio.InputStream,
-        flags: Gio.OutputStreamSpliceFlags,
+        flags: Gio.OutputStreamSpliceFlags | null,
         io_priority: number,
     ): Future;
     function output_stream_write(
@@ -464,7 +469,7 @@ export namespace Dex {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -505,7 +510,7 @@ export namespace Dex {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

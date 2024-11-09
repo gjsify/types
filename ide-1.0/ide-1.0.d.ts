@@ -643,7 +643,7 @@ export namespace Ide {
     function completion_provider_context_in_comment(context: GtkSource.CompletionContext): boolean;
     function completion_provider_context_in_comment_or_string(context: GtkSource.CompletionContext): boolean;
     function device_error_quark(): GLib.Quark;
-    function diagnostic_severity_to_string(severity: DiagnosticSeverity): string;
+    function diagnostic_severity_to_string(severity: DiagnosticSeverity | null): string;
     function doap_error_quark(): GLib.Quark;
     function flatpak_get_app_path(path: string): string;
     /**
@@ -734,13 +734,13 @@ export namespace Ide {
         style: string,
         tag: Gtk.TextTag,
     ): boolean;
-    function symbol_kind_get_icon_name(kind: SymbolKind): string;
+    function symbol_kind_get_icon_name(kind: SymbolKind | null): string;
     /**
      * Runs the callback on the thread pool thread.
      * @param kind the threadpool kind to use.
      * @param func A function to call in the worker thread.
      */
-    function thread_pool_push(kind: ThreadPoolKind, func: ThreadFunc): void;
+    function thread_pool_push(kind: ThreadPoolKind | null, func: ThreadFunc): void;
     /**
      * This pushes a task to be executed on a worker thread based on the task kind as denoted by
      * `kind`. Some tasks will be placed on special work queues or throttled based on priority.
@@ -748,7 +748,7 @@ export namespace Ide {
      * @param task A #GTask to execute.
      * @param func The thread worker to execute for @task.
      */
-    function thread_pool_push_task(kind: ThreadPoolKind, task: Gio.Task, func: Gio.TaskThreadFunc): void;
+    function thread_pool_push_task(kind: ThreadPoolKind | null, task: Gio.Task, func: Gio.TaskThreadFunc): void;
     function uri_build(
         scheme: string,
         userinfo: string,
@@ -767,7 +767,7 @@ export namespace Ide {
      * @param flags flags for parsing @uri_string
      * @returns %TRUE on success, %FALSE on failure.
      */
-    function uri_parse_host(uri_string: string, flags: UriParseFlags): [boolean, string, string, number];
+    function uri_parse_host(uri_string: string, flags: UriParseFlags | null): [boolean, string, string, number];
     /**
      * Many URI schemes include one or more attribute/value pairs
      * as part of the URI value. This method can be used to parse them
@@ -1136,7 +1136,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1177,7 +1177,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2190,7 +2190,7 @@ export namespace Ide {
         load_file_async(
             file: File,
             force_reload: boolean,
-            flags: WorkbenchOpenFlags,
+            flags: WorkbenchOpenFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): [Promise<Buffer>, Progress | null];
         /**
@@ -2211,7 +2211,7 @@ export namespace Ide {
         load_file_async(
             file: File,
             force_reload: boolean,
-            flags: WorkbenchOpenFlags,
+            flags: WorkbenchOpenFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): Progress | null;
@@ -2233,7 +2233,7 @@ export namespace Ide {
         load_file_async(
             file: File,
             force_reload: boolean,
-            flags: WorkbenchOpenFlags,
+            flags: WorkbenchOpenFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): [Promise<Buffer> | void, Progress | null];
@@ -2460,7 +2460,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2501,7 +2501,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2959,14 +2959,14 @@ export namespace Ide {
          * by the #GActionGroup interface.
          */
         cancel(): void;
-        clean_async(phase: BuildPhase, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        clean_async(phase: BuildPhase | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
         clean_async(
-            phase: BuildPhase,
+            phase: BuildPhase | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         clean_async(
-            phase: BuildPhase,
+            phase: BuildPhase | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -2979,7 +2979,7 @@ export namespace Ide {
          * @param phase An #IdeBuildPhase or 0
          * @param cancellable A #GCancellable or %NULL
          */
-        execute_async(phase: BuildPhase, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        execute_async(phase: BuildPhase | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
         /**
          * This function will request that `phase` is completed in the underlying
          * build pipeline and execute a build. Upon completion, `callback` will be
@@ -2990,7 +2990,7 @@ export namespace Ide {
          * @param callback A callback to execute upon completion
          */
         execute_async(
-            phase: BuildPhase,
+            phase: BuildPhase | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -3004,7 +3004,7 @@ export namespace Ide {
          * @param callback A callback to execute upon completion
          */
         execute_async(
-            phase: BuildPhase,
+            phase: BuildPhase | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -3049,14 +3049,14 @@ export namespace Ide {
          * @returns A #GTimeSpan containing the elapsed time of the build.
          */
         get_running_time(): GLib.TimeSpan;
-        rebuild_async(phase: BuildPhase, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        rebuild_async(phase: BuildPhase | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
         rebuild_async(
-            phase: BuildPhase,
+            phase: BuildPhase | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         rebuild_async(
-            phase: BuildPhase,
+            phase: BuildPhase | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -3630,7 +3630,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3671,7 +3671,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4119,16 +4119,16 @@ export namespace Ide {
          * @param flags
          * @returns an error format id that may be passed to   ide_build_pipeline_remove_error_format().
          */
-        add_error_format(regex: string, flags: GLib.RegexCompileFlags): number;
+        add_error_format(regex: string, flags: GLib.RegexCompileFlags | null): number;
         add_log_observer(observer: BuildLogObserver): number;
-        clean_async(phase: BuildPhase, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        clean_async(phase: BuildPhase | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
         clean_async(
-            phase: BuildPhase,
+            phase: BuildPhase | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         clean_async(
-            phase: BuildPhase,
+            phase: BuildPhase | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -4143,7 +4143,7 @@ export namespace Ide {
          * @param stage An #IdeBuildStage
          * @returns A stage_id that may be passed to ide_build_pipeline_disconnect().
          */
-        connect(phase: BuildPhase, priority: number, stage: BuildStage): number;
+        connect(phase: BuildPhase | null, priority: number, stage: BuildStage): number;
         connect(...args: never[]): any;
         /**
          * This creates a new stage that will spawn a process using `launcher` and log
@@ -4156,7 +4156,7 @@ export namespace Ide {
          * @param launcher An #IdeSubprocessLauncher
          * @returns A stage_id that may be passed to ide_build_pipeline_remove().
          */
-        connect_launcher(phase: BuildPhase, priority: number, launcher: SubprocessLauncher): number;
+        connect_launcher(phase: BuildPhase | null, priority: number, launcher: SubprocessLauncher): number;
         /**
          * This is a convenience function to create a new #IdeSubprocessLauncher
          * using the configuration and runtime associated with the pipeline.
@@ -4266,15 +4266,15 @@ export namespace Ide {
          * projects autogen.sh file has been changed.
          * @param phases The phases to invalidate
          */
-        invalidate_phase(phases: BuildPhase): void;
-        rebuild_async(phase: BuildPhase, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        invalidate_phase(phases: BuildPhase | null): void;
+        rebuild_async(phase: BuildPhase | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
         rebuild_async(
-            phase: BuildPhase,
+            phase: BuildPhase | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         rebuild_async(
-            phase: BuildPhase,
+            phase: BuildPhase | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -4293,7 +4293,7 @@ export namespace Ide {
          * @param phase An #IdeBuildPhase
          * @returns %TRUE if a stage is known to require execution.
          */
-        request_phase(phase: BuildPhase): boolean;
+        request_phase(phase: BuildPhase | null): boolean;
 
         // Inherited methods
         /**
@@ -4425,7 +4425,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4466,7 +4466,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4973,7 +4973,7 @@ export namespace Ide {
         get_name(): string;
         get_stdout_path(): string;
         get_transient(): boolean;
-        log(stream: BuildLogStream, message: string, message_len: number): void;
+        log(stream: BuildLogStream | null, message: string, message_len: number): void;
         /**
          * This function will begin logging `subprocess` by reading from the
          * stdout and stderr streams of the subprocess. You must have created
@@ -5240,7 +5240,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5281,7 +5281,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5976,7 +5976,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6017,7 +6017,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6972,7 +6972,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7013,7 +7013,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7885,7 +7885,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7926,7 +7926,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8561,7 +8561,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8602,7 +8602,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9106,7 +9106,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9147,7 +9147,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9780,7 +9780,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9821,7 +9821,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10489,7 +10489,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10530,7 +10530,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11055,7 +11055,7 @@ export namespace Ide {
          * @param position
          * @returns A #DzlDockOverlayEdge
          */
-        get_overlay_edge(position: Gtk.PositionType): Dazzle.DockOverlayEdge;
+        get_overlay_edge(position: Gtk.PositionType | null): Dazzle.DockOverlayEdge;
         get_right_edge(): Gtk.Widget;
         get_top_edge(): Gtk.Widget;
         show_spellchecker(source_view: SourceView): void;
@@ -11500,7 +11500,7 @@ export namespace Ide {
          * @param position A location for a #GtkPositionType
          * @returns %TRUE if @child was minimized. Otherwise %FALSE and @position   may be updated to a suggested position.
          */
-        minimize(child: Dazzle.DockItem, position: Gtk.PositionType): [boolean, Gtk.PositionType];
+        minimize(child: Dazzle.DockItem, position: Gtk.PositionType | null): [boolean, Gtk.PositionType];
         /**
          * Emits the "needs-attention" signal.
          */
@@ -11792,7 +11792,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11833,7 +11833,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12404,7 +12404,7 @@ export namespace Ide {
          * or executed immediately.
          * @param resize_mode the new resize mode
          */
-        set_resize_mode(resize_mode: Gtk.ResizeMode): void;
+        set_resize_mode(resize_mode: Gtk.ResizeMode | null): void;
         /**
          * Removes a focus chain explicitly set with gtk_container_set_focus_chain().
          */
@@ -12539,8 +12539,8 @@ export namespace Ide {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -12548,7 +12548,7 @@ export namespace Ide {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -12626,7 +12626,7 @@ export namespace Ide {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
          * never uses a custom name set with gtk_widget_set_name().
@@ -12647,7 +12647,7 @@ export namespace Ide {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -12734,7 +12734,7 @@ export namespace Ide {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -12774,7 +12774,7 @@ export namespace Ide {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -12886,14 +12886,22 @@ export namespace Ide {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -12975,9 +12983,9 @@ export namespace Ide {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -13426,7 +13434,7 @@ export namespace Ide {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -14055,7 +14063,7 @@ export namespace Ide {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -14116,7 +14124,7 @@ export namespace Ide {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -14135,7 +14143,7 @@ export namespace Ide {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -14155,7 +14163,7 @@ export namespace Ide {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -14197,7 +14205,7 @@ export namespace Ide {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -14206,7 +14214,7 @@ export namespace Ide {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -14236,7 +14244,7 @@ export namespace Ide {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -14403,7 +14411,11 @@ export namespace Ide {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -14631,7 +14643,7 @@ export namespace Ide {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -14647,7 +14659,7 @@ export namespace Ide {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -14717,7 +14729,7 @@ export namespace Ide {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -14980,7 +14992,7 @@ export namespace Ide {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -14998,7 +15010,7 @@ export namespace Ide {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -15048,7 +15060,7 @@ export namespace Ide {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -15259,7 +15271,7 @@ export namespace Ide {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -16017,7 +16029,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16058,7 +16070,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16566,7 +16578,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16607,7 +16619,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17969,7 +17981,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -18010,7 +18022,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18559,7 +18571,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -18600,7 +18612,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19490,7 +19502,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -19531,7 +19543,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20318,7 +20330,7 @@ export namespace Ide {
          * @param position A location for a #GtkPositionType
          * @returns %TRUE if @child was minimized. Otherwise %FALSE and @position   may be updated to a suggested position.
          */
-        minimize(child: Dazzle.DockItem, position: Gtk.PositionType): [boolean, Gtk.PositionType];
+        minimize(child: Dazzle.DockItem, position: Gtk.PositionType | null): [boolean, Gtk.PositionType];
         /**
          * Emits the "needs-attention" signal.
          */
@@ -20474,7 +20486,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -20515,7 +20527,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -21086,7 +21098,7 @@ export namespace Ide {
          * or executed immediately.
          * @param resize_mode the new resize mode
          */
-        set_resize_mode(resize_mode: Gtk.ResizeMode): void;
+        set_resize_mode(resize_mode: Gtk.ResizeMode | null): void;
         /**
          * Removes a focus chain explicitly set with gtk_container_set_focus_chain().
          */
@@ -21221,8 +21233,8 @@ export namespace Ide {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -21230,7 +21242,7 @@ export namespace Ide {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -21308,7 +21320,7 @@ export namespace Ide {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Same as gtk_widget_path(), but always uses the name of a widget’s type,
          * never uses a custom name set with gtk_widget_set_name().
@@ -21329,7 +21341,7 @@ export namespace Ide {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -21416,7 +21428,7 @@ export namespace Ide {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -21456,7 +21468,7 @@ export namespace Ide {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -21568,14 +21580,22 @@ export namespace Ide {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -21657,9 +21677,9 @@ export namespace Ide {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -22108,7 +22128,7 @@ export namespace Ide {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -22737,7 +22757,7 @@ export namespace Ide {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -22798,7 +22818,7 @@ export namespace Ide {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -22817,7 +22837,7 @@ export namespace Ide {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -22837,7 +22857,7 @@ export namespace Ide {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -22879,7 +22899,7 @@ export namespace Ide {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -22888,7 +22908,7 @@ export namespace Ide {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -22918,7 +22938,7 @@ export namespace Ide {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -23085,7 +23105,11 @@ export namespace Ide {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -23313,7 +23337,7 @@ export namespace Ide {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -23329,7 +23353,7 @@ export namespace Ide {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -23399,7 +23423,7 @@ export namespace Ide {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -23662,7 +23686,7 @@ export namespace Ide {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -23680,7 +23704,7 @@ export namespace Ide {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -23730,7 +23754,7 @@ export namespace Ide {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -23941,7 +23965,7 @@ export namespace Ide {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -24712,7 +24736,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -24753,7 +24777,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -25516,7 +25540,7 @@ export namespace Ide {
          * @param position A location for a #GtkPositionType
          * @returns %TRUE if @child was minimized. Otherwise %FALSE and @position   may be updated to a suggested position.
          */
-        minimize(child: Dazzle.DockItem, position: Gtk.PositionType): [boolean, Gtk.PositionType];
+        minimize(child: Dazzle.DockItem, position: Gtk.PositionType | null): [boolean, Gtk.PositionType];
         /**
          * Emits the "needs-attention" signal.
          */
@@ -25672,7 +25696,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -25713,7 +25737,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -26055,8 +26079,8 @@ export namespace Ide {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -26064,7 +26088,7 @@ export namespace Ide {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -26142,7 +26166,7 @@ export namespace Ide {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -26176,7 +26200,7 @@ export namespace Ide {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -26263,7 +26287,7 @@ export namespace Ide {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -26303,7 +26327,7 @@ export namespace Ide {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -26415,14 +26439,22 @@ export namespace Ide {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -26504,9 +26536,9 @@ export namespace Ide {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -26955,7 +26987,7 @@ export namespace Ide {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -27584,7 +27616,7 @@ export namespace Ide {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -27645,7 +27677,7 @@ export namespace Ide {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -27664,7 +27696,7 @@ export namespace Ide {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -27684,7 +27716,7 @@ export namespace Ide {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -27726,7 +27758,7 @@ export namespace Ide {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -27735,7 +27767,7 @@ export namespace Ide {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -27765,7 +27797,7 @@ export namespace Ide {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -27932,7 +27964,11 @@ export namespace Ide {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -28160,7 +28196,7 @@ export namespace Ide {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -28176,7 +28212,7 @@ export namespace Ide {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -28246,7 +28282,7 @@ export namespace Ide {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -28509,7 +28545,7 @@ export namespace Ide {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -28527,7 +28563,7 @@ export namespace Ide {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -28577,7 +28613,7 @@ export namespace Ide {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -28788,7 +28824,7 @@ export namespace Ide {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -29567,7 +29603,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -29608,7 +29644,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -30044,7 +30080,7 @@ export namespace Ide {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -30089,7 +30125,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -30130,7 +30166,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -30580,7 +30616,7 @@ export namespace Ide {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -30625,7 +30661,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -30666,7 +30702,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -31056,7 +31092,7 @@ export namespace Ide {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -31101,7 +31137,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -31142,7 +31178,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -32181,7 +32217,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -32222,7 +32258,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -32564,8 +32600,8 @@ export namespace Ide {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -32573,7 +32609,7 @@ export namespace Ide {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -32651,7 +32687,7 @@ export namespace Ide {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -32683,7 +32719,7 @@ export namespace Ide {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -32770,7 +32806,7 @@ export namespace Ide {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -32810,7 +32846,7 @@ export namespace Ide {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -32922,14 +32958,22 @@ export namespace Ide {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -33011,9 +33055,9 @@ export namespace Ide {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -33472,7 +33516,7 @@ export namespace Ide {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -34106,7 +34150,7 @@ export namespace Ide {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -34167,7 +34211,7 @@ export namespace Ide {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -34186,7 +34230,7 @@ export namespace Ide {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -34206,7 +34250,7 @@ export namespace Ide {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -34248,7 +34292,7 @@ export namespace Ide {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -34257,7 +34301,7 @@ export namespace Ide {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -34287,7 +34331,7 @@ export namespace Ide {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -34454,7 +34498,11 @@ export namespace Ide {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -34703,7 +34751,7 @@ export namespace Ide {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -34719,7 +34767,7 @@ export namespace Ide {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -34789,7 +34837,7 @@ export namespace Ide {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -35052,7 +35100,7 @@ export namespace Ide {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -35070,7 +35118,7 @@ export namespace Ide {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -35120,7 +35168,7 @@ export namespace Ide {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -35331,7 +35379,7 @@ export namespace Ide {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -36085,7 +36133,7 @@ export namespace Ide {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -36130,7 +36178,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -36171,7 +36219,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -36567,7 +36615,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -36608,7 +36656,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -36988,7 +37036,7 @@ export namespace Ide {
             path: string,
             title: string,
             subtitle: string,
-            action: Gtk.FileChooserAction,
+            action: Gtk.FileChooserAction | null,
             keywords: string,
             priority: number,
         ): number;
@@ -37006,7 +37054,7 @@ export namespace Ide {
             page_name: string,
             group_name: string,
             title: string,
-            mode: Gtk.SelectionMode,
+            mode: Gtk.SelectionMode | null,
             priority: number,
         ): void;
         add_page(page_name: string, title: string, priority: number): void;
@@ -37327,7 +37375,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -37368,7 +37416,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -38316,7 +38364,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -38357,7 +38405,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -38712,7 +38760,7 @@ export namespace Ide {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -38757,7 +38805,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -38798,7 +38846,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -39776,7 +39824,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -39817,7 +39865,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -40263,7 +40311,7 @@ export namespace Ide {
         set_argv(argv: string): void;
         set_clear_env(clear_env: boolean): void;
         set_failed(failed: boolean): void;
-        set_flags(flags: Gio.SubprocessFlags): void;
+        set_flags(flags: Gio.SubprocessFlags | null): void;
         set_run_on_host(run_on_host: boolean): void;
         set_tty(tty_fd: number): void;
         /**
@@ -40676,7 +40724,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -40717,7 +40765,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -41248,7 +41296,7 @@ export namespace Ide {
 
         // Methods
 
-        bind(key: string, object: any | null, property: string, flags: Gio.SettingsBindFlags): void;
+        bind(key: string, object: any | null, property: string, flags: Gio.SettingsBindFlags | null): void;
         /**
          * Like ide_settings_bind() but allows transforming to and from settings storage using
          * `get_mapping` and `set_mapping` transformation functions.
@@ -41265,7 +41313,7 @@ export namespace Ide {
             key: string,
             object: any | null,
             property: string,
-            flags: Gio.SettingsBindFlags,
+            flags: Gio.SettingsBindFlags | null,
             get_mapping?: Gio.SettingsBindGetMapping | null,
             set_mapping?: Gio.SettingsBindSetMapping | null,
         ): void;
@@ -41375,7 +41423,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -41416,7 +41464,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -42798,7 +42846,7 @@ export namespace Ide {
          * movement is towards the beginning of the document.
          * @param direction the direction
          */
-        set_search_direction(direction: Gtk.DirectionType): void;
+        set_search_direction(direction: Gtk.DirectionType | null): void;
         set_show_grid_lines(show_grid_lines: boolean): void;
         set_show_line_changes(show_line_changes: boolean): void;
         set_show_line_diagnostics(show_line_changes: boolean): void;
@@ -42860,7 +42908,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -42901,7 +42949,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -44049,7 +44097,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -44090,7 +44138,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -44491,7 +44539,7 @@ export namespace Ide {
         set_clear_env(clear_env: boolean): void;
         set_cwd(cwd: string): void;
         set_environ(environ_: string): void;
-        set_flags(flags: Gio.SubprocessFlags): void;
+        set_flags(flags: Gio.SubprocessFlags | null): void;
         /**
          * Sets the #IdeSubprocessLauncher:run-on-host property. See
          * ide_subprocess_launcher_get_run_on_host() for more information.
@@ -45200,7 +45248,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -45241,7 +45289,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -45583,8 +45631,8 @@ export namespace Ide {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -45592,7 +45640,7 @@ export namespace Ide {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -45670,7 +45718,7 @@ export namespace Ide {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -45704,7 +45752,7 @@ export namespace Ide {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -45791,7 +45839,7 @@ export namespace Ide {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -45831,7 +45879,7 @@ export namespace Ide {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -45943,14 +45991,22 @@ export namespace Ide {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -46032,9 +46088,9 @@ export namespace Ide {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -46493,7 +46549,7 @@ export namespace Ide {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -47127,7 +47183,7 @@ export namespace Ide {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -47188,7 +47244,7 @@ export namespace Ide {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -47207,7 +47263,7 @@ export namespace Ide {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -47227,7 +47283,7 @@ export namespace Ide {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -47269,7 +47325,7 @@ export namespace Ide {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -47278,7 +47334,7 @@ export namespace Ide {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -47308,7 +47364,7 @@ export namespace Ide {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -47475,7 +47531,11 @@ export namespace Ide {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -47724,7 +47784,7 @@ export namespace Ide {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -47740,7 +47800,7 @@ export namespace Ide {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -47810,7 +47870,7 @@ export namespace Ide {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -48073,7 +48133,7 @@ export namespace Ide {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -48091,7 +48151,7 @@ export namespace Ide {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -48141,7 +48201,7 @@ export namespace Ide {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -48352,7 +48412,7 @@ export namespace Ide {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -49283,7 +49343,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -49324,7 +49384,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -49731,7 +49791,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -49772,7 +49832,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -50519,7 +50579,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -50560,7 +50620,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -50902,8 +50962,8 @@ export namespace Ide {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -50911,7 +50971,7 @@ export namespace Ide {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -50989,7 +51049,7 @@ export namespace Ide {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -51023,7 +51083,7 @@ export namespace Ide {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -51110,7 +51170,7 @@ export namespace Ide {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -51150,7 +51210,7 @@ export namespace Ide {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -51262,14 +51322,22 @@ export namespace Ide {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -51351,9 +51419,9 @@ export namespace Ide {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -51814,7 +51882,7 @@ export namespace Ide {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -52448,7 +52516,7 @@ export namespace Ide {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -52509,7 +52577,7 @@ export namespace Ide {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -52528,7 +52596,7 @@ export namespace Ide {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -52548,7 +52616,7 @@ export namespace Ide {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -52590,7 +52658,7 @@ export namespace Ide {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -52599,7 +52667,7 @@ export namespace Ide {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -52629,7 +52697,7 @@ export namespace Ide {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -52796,7 +52864,11 @@ export namespace Ide {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -53045,7 +53117,7 @@ export namespace Ide {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -53061,7 +53133,7 @@ export namespace Ide {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         // Conflicted with Gtk.MenuButton.set_direction
         set_direction(...args: never[]): any;
         /**
@@ -53133,7 +53205,7 @@ export namespace Ide {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -53396,7 +53468,7 @@ export namespace Ide {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -53414,7 +53486,7 @@ export namespace Ide {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -53464,7 +53536,7 @@ export namespace Ide {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -53675,7 +53747,7 @@ export namespace Ide {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -54420,7 +54492,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -54461,7 +54533,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -55000,7 +55072,7 @@ export namespace Ide {
             files: Gio.File,
             n_files: number,
             hint: string,
-            flags: WorkbenchOpenFlags,
+            flags: WorkbenchOpenFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
@@ -55017,7 +55089,7 @@ export namespace Ide {
             files: Gio.File,
             n_files: number,
             hint: string,
-            flags: WorkbenchOpenFlags,
+            flags: WorkbenchOpenFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -55035,7 +55107,7 @@ export namespace Ide {
             files: Gio.File,
             n_files: number,
             hint: string,
-            flags: WorkbenchOpenFlags,
+            flags: WorkbenchOpenFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -55055,20 +55127,20 @@ export namespace Ide {
         open_uri_async(
             uri: Uri,
             hint: string,
-            flags: WorkbenchOpenFlags,
+            flags: WorkbenchOpenFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         open_uri_async(
             uri: Uri,
             hint: string,
-            flags: WorkbenchOpenFlags,
+            flags: WorkbenchOpenFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         open_uri_async(
             uri: Uri,
             hint: string,
-            flags: WorkbenchOpenFlags,
+            flags: WorkbenchOpenFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -55692,7 +55764,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -55733,7 +55805,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -56074,8 +56146,8 @@ export namespace Ide {
 
         focus_search(): void;
         get_omni_bar(): OmniBar;
-        insert_left(widget: Gtk.Widget, pack_type: Gtk.PackType, priority: number): void;
-        insert_right(widget: Gtk.Widget, pack_type: Gtk.PackType, priority: number): void;
+        insert_left(widget: Gtk.Widget, pack_type: Gtk.PackType | null, priority: number): void;
+        insert_right(widget: Gtk.Widget, pack_type: Gtk.PackType | null, priority: number): void;
 
         // Inherited methods
         /**
@@ -56122,7 +56194,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -56163,7 +56235,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -56569,7 +56641,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -56610,7 +56682,7 @@ export namespace Ide {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -57689,7 +57761,7 @@ export namespace Ide {
          * @param flags flags describing how to parse @uri_string
          * @returns a new #IdeUri.
          */
-        new_relative(uri_string: string, flags: UriParseFlags): Uri;
+        new_relative(uri_string: string, flags: UriParseFlags | null): Uri;
         /**
          * Increments the reference count of `uri` by one.
          * @returns uri
@@ -57766,7 +57838,7 @@ export namespace Ide {
          * @param flags flags describing how to convert @uri
          * @returns a string representing @uri, which the caller must free.
          */
-        to_string(flags: UriToStringFlags): string;
+        to_string(flags: UriToStringFlags | null): string;
         /**
          * Decrements the reference count of `uri` by 1. If the reference count
          * reaches zero, the structure will be freed.
@@ -57865,7 +57937,9 @@ export namespace Ide {
         vfunc_unload(application: Application): void;
     }
 
-    export const ApplicationAddin: ApplicationAddinNamespace;
+    export const ApplicationAddin: ApplicationAddinNamespace & {
+        new (): ApplicationAddin; // This allows `obj instanceof ApplicationAddin`
+    };
 
     module ApplicationTool {
         // Constructor properties interface
@@ -57930,7 +58004,9 @@ export namespace Ide {
         vfunc_run_finish(result: Gio.AsyncResult): number;
     }
 
-    export const ApplicationTool: ApplicationToolNamespace;
+    export const ApplicationTool: ApplicationToolNamespace & {
+        new (): ApplicationTool; // This allows `obj instanceof ApplicationTool`
+    };
 
     module BuildPipelineAddin {
         // Constructor properties interface
@@ -57967,7 +58043,9 @@ export namespace Ide {
         vfunc_unload(pipeline: BuildPipeline): void;
     }
 
-    export const BuildPipelineAddin: BuildPipelineAddinNamespace;
+    export const BuildPipelineAddin: BuildPipelineAddinNamespace & {
+        new (): BuildPipelineAddin; // This allows `obj instanceof BuildPipelineAddin`
+    };
 
     module BuildSystem {
         // Constructor properties interface
@@ -58065,7 +58143,9 @@ export namespace Ide {
         vfunc_get_priority(): number;
     }
 
-    export const BuildSystem: BuildSystemNamespace;
+    export const BuildSystem: BuildSystemNamespace & {
+        new (): BuildSystem; // This allows `obj instanceof BuildSystem`
+    };
 
     module BuildSystemDiscovery {
         // Constructor properties interface
@@ -58104,7 +58184,9 @@ export namespace Ide {
         vfunc_discover(project_file: Gio.File, cancellable: Gio.Cancellable | null): [string, number];
     }
 
-    export const BuildSystemDiscovery: BuildSystemDiscoveryNamespace;
+    export const BuildSystemDiscovery: BuildSystemDiscoveryNamespace & {
+        new (): BuildSystemDiscovery; // This allows `obj instanceof BuildSystemDiscovery`
+    };
 
     module BuildTarget {
         // Constructor properties interface
@@ -58128,7 +58210,9 @@ export namespace Ide {
         vfunc_get_name(): string | null;
     }
 
-    export const BuildTarget: BuildTargetNamespace;
+    export const BuildTarget: BuildTargetNamespace & {
+        new (): BuildTarget; // This allows `obj instanceof BuildTarget`
+    };
 
     module CompletionProvider {
         // Constructor properties interface
@@ -58154,7 +58238,9 @@ export namespace Ide {
         vfunc_load(context: Context): void;
     }
 
-    export const CompletionProvider: CompletionProviderNamespace;
+    export const CompletionProvider: CompletionProviderNamespace & {
+        new (): CompletionProvider; // This allows `obj instanceof CompletionProvider`
+    };
 
     module ConfigurationProvider {
         // Constructor properties interface
@@ -58203,7 +58289,9 @@ export namespace Ide {
         vfunc_unload(manager: ConfigurationManager): void;
     }
 
-    export const ConfigurationProvider: ConfigurationProviderNamespace;
+    export const ConfigurationProvider: ConfigurationProviderNamespace & {
+        new (): ConfigurationProvider; // This allows `obj instanceof ConfigurationProvider`
+    };
 
     module DeviceProvider {
         // Constructor properties interface
@@ -58244,7 +58332,9 @@ export namespace Ide {
         vfunc_get_settled(): boolean;
     }
 
-    export const DeviceProvider: DeviceProviderNamespace;
+    export const DeviceProvider: DeviceProviderNamespace & {
+        new (): DeviceProvider; // This allows `obj instanceof DeviceProvider`
+    };
 
     module DiagnosticProvider {
         // Constructor properties interface
@@ -58297,7 +58387,9 @@ export namespace Ide {
         vfunc_load(): void;
     }
 
-    export const DiagnosticProvider: DiagnosticProviderNamespace;
+    export const DiagnosticProvider: DiagnosticProviderNamespace & {
+        new (): DiagnosticProvider; // This allows `obj instanceof DiagnosticProvider`
+    };
 
     module EditorViewAddin {
         // Constructor properties interface
@@ -58319,7 +58411,9 @@ export namespace Ide {
         vfunc_unload_source_view(source_view: SourceView): void;
     }
 
-    export const EditorViewAddin: EditorViewAddinNamespace;
+    export const EditorViewAddin: EditorViewAddinNamespace & {
+        new (): EditorViewAddin; // This allows `obj instanceof EditorViewAddin`
+    };
 
     module Formatter {
         // Constructor properties interface
@@ -58395,7 +58489,9 @@ export namespace Ide {
         vfunc_load(): void;
     }
 
-    export const Formatter: FormatterNamespace;
+    export const Formatter: FormatterNamespace & {
+        new (): Formatter; // This allows `obj instanceof Formatter`
+    };
 
     module GenesisAddin {
         // Constructor properties interface
@@ -58444,7 +58540,9 @@ export namespace Ide {
         vfunc_run_finish(result: Gio.AsyncResult): boolean;
     }
 
-    export const GenesisAddin: GenesisAddinNamespace;
+    export const GenesisAddin: GenesisAddinNamespace & {
+        new (): GenesisAddin; // This allows `obj instanceof GenesisAddin`
+    };
 
     module Highlighter {
         // Constructor properties interface
@@ -58497,7 +58595,9 @@ export namespace Ide {
         vfunc_update(callback: HighlightCallback, range_begin: Gtk.TextIter, range_end: Gtk.TextIter): Gtk.TextIter;
     }
 
-    export const Highlighter: HighlighterNamespace;
+    export const Highlighter: HighlighterNamespace & {
+        new (): Highlighter; // This allows `obj instanceof Highlighter`
+    };
 
     module Indenter {
         // Constructor properties interface
@@ -58569,7 +58669,9 @@ export namespace Ide {
         vfunc_is_trigger(event: Gdk.EventKey): boolean;
     }
 
-    export const Indenter: IndenterNamespace;
+    export const Indenter: IndenterNamespace & {
+        new (): Indenter; // This allows `obj instanceof Indenter`
+    };
 
     module LayoutStackAddin {
         // Constructor properties interface
@@ -58641,7 +58743,9 @@ export namespace Ide {
         vfunc_unload(stack: LayoutStack): void;
     }
 
-    export const LayoutStackAddin: LayoutStackAddinNamespace;
+    export const LayoutStackAddin: LayoutStackAddinNamespace & {
+        new (): LayoutStackAddin; // This allows `obj instanceof LayoutStackAddin`
+    };
 
     module Perspective {
         // Constructor properties interface
@@ -58821,7 +58925,9 @@ export namespace Ide {
         vfunc_views_foreach(callback: Gtk.Callback): void;
     }
 
-    export const Perspective: PerspectiveNamespace;
+    export const Perspective: PerspectiveNamespace & {
+        new (): Perspective; // This allows `obj instanceof Perspective`
+    };
 
     module PreferencesAddin {
         // Constructor properties interface
@@ -58875,7 +58981,9 @@ export namespace Ide {
         vfunc_unload(preferences: Dazzle.Preferences): void;
     }
 
-    export const PreferencesAddin: PreferencesAddinNamespace;
+    export const PreferencesAddin: PreferencesAddinNamespace & {
+        new (): PreferencesAddin; // This allows `obj instanceof PreferencesAddin`
+    };
 
     module ProjectMiner {
         // Constructor properties interface
@@ -58906,7 +59014,9 @@ export namespace Ide {
         vfunc_mine_finish(result: Gio.AsyncResult): boolean;
     }
 
-    export const ProjectMiner: ProjectMinerNamespace;
+    export const ProjectMiner: ProjectMinerNamespace & {
+        new (): ProjectMiner; // This allows `obj instanceof ProjectMiner`
+    };
 
     module ProjectTemplate {
         // Constructor properties interface
@@ -59018,7 +59128,9 @@ export namespace Ide {
         vfunc_get_widget(): Gtk.Widget;
     }
 
-    export const ProjectTemplate: ProjectTemplateNamespace;
+    export const ProjectTemplate: ProjectTemplateNamespace & {
+        new (): ProjectTemplate; // This allows `obj instanceof ProjectTemplate`
+    };
 
     module RenameProvider {
         // Constructor properties interface
@@ -59125,7 +59237,9 @@ export namespace Ide {
         vfunc_rename_finish(result: Gio.AsyncResult): [boolean, ProjectEdit[] | null];
     }
 
-    export const RenameProvider: RenameProviderNamespace;
+    export const RenameProvider: RenameProviderNamespace & {
+        new (): RenameProvider; // This allows `obj instanceof RenameProvider`
+    };
 
     module RunnerAddin {
         // Constructor properties interface
@@ -59170,7 +59284,9 @@ export namespace Ide {
         vfunc_unload(runner: Runner): void;
     }
 
-    export const RunnerAddin: RunnerAddinNamespace;
+    export const RunnerAddin: RunnerAddinNamespace & {
+        new (): RunnerAddin; // This allows `obj instanceof RunnerAddin`
+    };
 
     module RuntimeProvider {
         // Constructor properties interface
@@ -59214,7 +59330,9 @@ export namespace Ide {
         vfunc_unload(manager: RuntimeManager): void;
     }
 
-    export const RuntimeProvider: RuntimeProviderNamespace;
+    export const RuntimeProvider: RuntimeProviderNamespace & {
+        new (): RuntimeProvider; // This allows `obj instanceof RuntimeProvider`
+    };
 
     module SearchProvider {
         // Constructor properties interface
@@ -59265,7 +59383,9 @@ export namespace Ide {
         ): void;
     }
 
-    export const SearchProvider: SearchProviderNamespace;
+    export const SearchProvider: SearchProviderNamespace & {
+        new (): SearchProvider; // This allows `obj instanceof SearchProvider`
+    };
 
     module Service {
         // Constructor properties interface
@@ -59292,7 +59412,9 @@ export namespace Ide {
         vfunc_stop(): void;
     }
 
-    export const Service: ServiceNamespace;
+    export const Service: ServiceNamespace & {
+        new (): Service; // This allows `obj instanceof Service`
+    };
 
     module Subprocess {
         // Constructor properties interface
@@ -59486,7 +59608,9 @@ export namespace Ide {
         vfunc_wait_finish(result: Gio.AsyncResult): boolean;
     }
 
-    export const Subprocess: SubprocessNamespace;
+    export const Subprocess: SubprocessNamespace & {
+        new (): Subprocess; // This allows `obj instanceof Subprocess`
+    };
 
     module SymbolResolver {
         // Constructor properties interface
@@ -59656,7 +59780,9 @@ export namespace Ide {
         vfunc_lookup_symbol_finish(result: Gio.AsyncResult): Symbol | null;
     }
 
-    export const SymbolResolver: SymbolResolverNamespace;
+    export const SymbolResolver: SymbolResolverNamespace & {
+        new (): SymbolResolver; // This allows `obj instanceof SymbolResolver`
+    };
 
     module SymbolTree {
         // Constructor properties interface
@@ -59702,7 +59828,9 @@ export namespace Ide {
         vfunc_get_nth_child(node: SymbolNode | null, nth: number): SymbolNode | null;
     }
 
-    export const SymbolTree: SymbolTreeNamespace;
+    export const SymbolTree: SymbolTreeNamespace & {
+        new (): SymbolTree; // This allows `obj instanceof SymbolTree`
+    };
 
     module TagsBuilder {
         // Constructor properties interface
@@ -59747,7 +59875,9 @@ export namespace Ide {
         vfunc_build_finish(result: Gio.AsyncResult): boolean;
     }
 
-    export const TagsBuilder: TagsBuilderNamespace;
+    export const TagsBuilder: TagsBuilderNamespace & {
+        new (): TagsBuilder; // This allows `obj instanceof TagsBuilder`
+    };
 
     module TemplateProvider {
         // Constructor properties interface
@@ -59782,7 +59912,9 @@ export namespace Ide {
         vfunc_get_project_templates(): ProjectTemplate[];
     }
 
-    export const TemplateProvider: TemplateProviderNamespace;
+    export const TemplateProvider: TemplateProviderNamespace & {
+        new (): TemplateProvider; // This allows `obj instanceof TemplateProvider`
+    };
 
     module Vcs {
         // Constructor properties interface
@@ -59880,7 +60012,9 @@ export namespace Ide {
         vfunc_is_ignored(file: Gio.File): boolean;
     }
 
-    export const Vcs: VcsNamespace;
+    export const Vcs: VcsNamespace & {
+        new (): Vcs; // This allows `obj instanceof Vcs`
+    };
 
     module VcsConfig {
         // Constructor properties interface
@@ -59895,8 +60029,8 @@ export namespace Ide {
     interface VcsConfig extends GObject.Object {
         // Methods
 
-        get_config(type: VcsConfigType, value: GObject.Value | any): void;
-        set_config(type: VcsConfigType, value: GObject.Value | any): void;
+        get_config(type: VcsConfigType | null, value: GObject.Value | any): void;
+        set_config(type: VcsConfigType | null, value: GObject.Value | any): void;
 
         // Virtual methods
 
@@ -59904,7 +60038,9 @@ export namespace Ide {
         vfunc_set_config(type: VcsConfigType, value: GObject.Value | any): void;
     }
 
-    export const VcsConfig: VcsConfigNamespace;
+    export const VcsConfig: VcsConfigNamespace & {
+        new (): VcsConfig; // This allows `obj instanceof VcsConfig`
+    };
 
     module VcsInitializer {
         // Constructor properties interface
@@ -59944,7 +60080,9 @@ export namespace Ide {
         vfunc_initialize_finish(result: Gio.AsyncResult): boolean;
     }
 
-    export const VcsInitializer: VcsInitializerNamespace;
+    export const VcsInitializer: VcsInitializerNamespace & {
+        new (): VcsInitializer; // This allows `obj instanceof VcsInitializer`
+    };
 
     module WorkbenchAddin {
         // Constructor properties interface
@@ -59991,20 +60129,20 @@ export namespace Ide {
         open_async(
             uri: Uri,
             content_type: string,
-            flags: WorkbenchOpenFlags,
+            flags: WorkbenchOpenFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         open_async(
             uri: Uri,
             content_type: string,
-            flags: WorkbenchOpenFlags,
+            flags: WorkbenchOpenFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         open_async(
             uri: Uri,
             content_type: string,
-            flags: WorkbenchOpenFlags,
+            flags: WorkbenchOpenFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -60083,7 +60221,9 @@ export namespace Ide {
         vfunc_unload(workbench: Workbench): void;
     }
 
-    export const WorkbenchAddin: WorkbenchAddinNamespace;
+    export const WorkbenchAddin: WorkbenchAddinNamespace & {
+        new (): WorkbenchAddin; // This allows `obj instanceof WorkbenchAddin`
+    };
 
     module Worker {
         // Constructor properties interface
@@ -60118,7 +60258,9 @@ export namespace Ide {
         vfunc_register_service(connection: Gio.DBusConnection): void;
     }
 
-    export const Worker: WorkerNamespace;
+    export const Worker: WorkerNamespace & {
+        new (): Worker; // This allows `obj instanceof Worker`
+    };
 
     /**
      * Name of the imported GIR library

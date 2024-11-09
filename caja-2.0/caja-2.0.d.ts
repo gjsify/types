@@ -58,7 +58,7 @@ export namespace Caja {
         update_complete: GObject.Closure,
         provider: InfoProvider,
         handle: OperationHandle,
-        result: OperationResult,
+        result: OperationResult | null,
     ): void;
     function module_initialize(module: GObject.TypeModule): void;
     function module_list_types(types: GObject.GType, num_types: number): void;
@@ -328,7 +328,9 @@ export namespace Caja {
         vfunc_get_columns(): Column[];
     }
 
-    export const ColumnProvider: ColumnProviderNamespace;
+    export const ColumnProvider: ColumnProviderNamespace & {
+        new (): ColumnProvider; // This allows `obj instanceof ColumnProvider`
+    };
 
     module Configurable {
         // Constructor properties interface
@@ -350,7 +352,9 @@ export namespace Caja {
         vfunc_run_config(): void;
     }
 
-    export const Configurable: ConfigurableNamespace;
+    export const Configurable: ConfigurableNamespace & {
+        new (): Configurable; // This allows `obj instanceof Configurable`
+    };
 
     module FileInfo {
         // Constructor properties interface
@@ -496,7 +500,9 @@ export namespace Caja {
         vfunc_is_mime_type(mime_Type: string): boolean;
     }
 
-    export const FileInfo: FileInfoNamespace;
+    export const FileInfo: FileInfoNamespace & {
+        new (): FileInfo; // This allows `obj instanceof FileInfo`
+    };
 
     module InfoProvider {
         // Constructor properties interface
@@ -543,7 +549,9 @@ export namespace Caja {
         ): OperationResult;
     }
 
-    export const InfoProvider: InfoProviderNamespace;
+    export const InfoProvider: InfoProviderNamespace & {
+        new (): InfoProvider; // This allows `obj instanceof InfoProvider`
+    };
 
     module LocationWidgetProvider {
         // Constructor properties interface
@@ -571,7 +579,9 @@ export namespace Caja {
         vfunc_get_widget(uri: string, window: Gtk.Widget): Gtk.Widget;
     }
 
-    export const LocationWidgetProvider: LocationWidgetProviderNamespace;
+    export const LocationWidgetProvider: LocationWidgetProviderNamespace & {
+        new (): LocationWidgetProvider; // This allows `obj instanceof LocationWidgetProvider`
+    };
 
     module MenuProvider {
         // Constructor properties interface
@@ -616,7 +626,9 @@ export namespace Caja {
         vfunc_get_toolbar_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[];
     }
 
-    export const MenuProvider: MenuProviderNamespace;
+    export const MenuProvider: MenuProviderNamespace & {
+        new (): MenuProvider; // This allows `obj instanceof MenuProvider`
+    };
 
     module PropertyPageProvider {
         // Constructor properties interface
@@ -655,7 +667,9 @@ export namespace Caja {
         vfunc_get_pages(files: FileInfo[]): PropertyPage[];
     }
 
-    export const PropertyPageProvider: PropertyPageProviderNamespace;
+    export const PropertyPageProvider: PropertyPageProviderNamespace & {
+        new (): PropertyPageProvider; // This allows `obj instanceof PropertyPageProvider`
+    };
 
     module WidgetViewProvider {
         // Constructor properties interface
@@ -704,7 +718,7 @@ export namespace Caja {
          * @param mime_type The mimetype for the uri
          * @returns True to use custom widget view, False to ignore, and caja use normal view.
          */
-        supports_uri(uri: string, file_type: Gio.FileType, mime_type: string): boolean;
+        supports_uri(uri: string, file_type: Gio.FileType | null, mime_type: string): boolean;
 
         // Virtual methods
 
@@ -746,7 +760,9 @@ export namespace Caja {
         vfunc_supports_uri(uri: string, file_type: Gio.FileType, mime_type: string): boolean;
     }
 
-    export const WidgetViewProvider: WidgetViewProviderNamespace;
+    export const WidgetViewProvider: WidgetViewProviderNamespace & {
+        new (): WidgetViewProvider; // This allows `obj instanceof WidgetViewProvider`
+    };
 
     /**
      * Name of the imported GIR library

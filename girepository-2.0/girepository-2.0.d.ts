@@ -800,13 +800,13 @@ export namespace GIRepository {
      * @param offset TODO
      * @returns TODO
      */
-    function info_new(type: InfoType, container: BaseInfo, typelib: Typelib, offset: number): BaseInfo;
+    function info_new(type: InfoType | null, container: BaseInfo, typelib: Typelib, offset: number): BaseInfo;
     /**
      * Obtain a string representation of `type`
      * @param type the info type
      * @returns the string
      */
-    function info_type_to_string(type: InfoType): string;
+    function info_type_to_string(type: InfoType | null): string;
     /**
      * Obtain a method of the interface type given a `name`. %NULL will be
      * returned if there's no method available with that name.
@@ -1438,7 +1438,11 @@ export namespace GIRepository {
      * @param hash_pointer A pointer, such as a #GHashTable data pointer
      * @param arg A #GIArgument to fill in
      */
-    function type_tag_argument_from_hash_pointer(storage_type: TypeTag, hash_pointer: any | null, arg: Argument): void;
+    function type_tag_argument_from_hash_pointer(
+        storage_type: TypeTag | null,
+        hash_pointer: any | null,
+        arg: Argument,
+    ): void;
     /**
      * GLib data structures, such as #GList, #GSList, and #GHashTable, all store
      * data pointers.
@@ -1455,13 +1459,13 @@ export namespace GIRepository {
      * @param arg A #GIArgument with the value to stuff into a pointer
      * @returns A stuffed pointer, that can be stored in a #GHashTable, for example
      */
-    function type_tag_hash_pointer_from_argument(storage_type: TypeTag, arg: Argument): any | null;
+    function type_tag_hash_pointer_from_argument(storage_type: TypeTag | null, arg: Argument): any | null;
     /**
      * Obtain a string representation of `type`
      * @param type the type_tag
      * @returns the string
      */
-    function type_tag_to_string(type: TypeTag): string;
+    function type_tag_to_string(type: TypeTag | null): string;
     /**
      * Obtain the type information for method named `name`.
      * @param info a #GIUnionInfo
@@ -1928,7 +1932,7 @@ export namespace GIRepository {
          * @param typelib TODO
          * @param flags TODO
          */
-        load_typelib(typelib: Typelib, flags: RepositoryLoadFlags): string;
+        load_typelib(typelib: Typelib, flags: RepositoryLoadFlags | null): string;
         /**
          * Force the namespace `namespace_` to be loaded if it isn't already.
          * If `namespace_` is not loaded, this function will search for a
@@ -1940,7 +1944,7 @@ export namespace GIRepository {
          * @param flags Set of %GIRepositoryLoadFlags, may be 0
          * @returns a pointer to the #GITypelib if successful, %NULL otherwise
          */
-        require(namespace_: string, version: string | null, flags: RepositoryLoadFlags): Typelib;
+        require(namespace_: string, version: string | null, flags: RepositoryLoadFlags | null): Typelib;
         /**
          * Force the namespace `namespace_` to be loaded if it isn't already.
          * If `namespace_` is not loaded, this function will search for a
@@ -1957,7 +1961,7 @@ export namespace GIRepository {
             typelib_dir: string,
             namespace_: string,
             version: string | null,
-            flags: RepositoryLoadFlags,
+            flags: RepositoryLoadFlags | null,
         ): Typelib;
     }
 

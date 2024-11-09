@@ -38,7 +38,7 @@ export namespace Mtk {
     }
     const RECTANGLE_MAX_STACK_RECTS: number;
     const REGION_BUILDER_MAX_LEVELS: number;
-    function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy): Rectangle;
+    function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy | null): Rectangle;
     function region_create(): Region;
     function region_create_rectangle(rect: Rectangle): Region;
     function region_create_rectangles(rects: Rectangle, n_rects: number): Region;
@@ -105,7 +105,7 @@ export namespace Mtk {
          * @returns Whether the two rectangles overlap
          */
         overlap(rect2: Rectangle): boolean;
-        scale_double(scale: number, rounding_strategy: RoundingStrategy, dest: Rectangle): void;
+        scale_double(scale: number, rounding_strategy: RoundingStrategy | null, dest: Rectangle): void;
         to_graphene_rect(): Graphene.Rect;
         /**
          * Computes the union of the two rectangles

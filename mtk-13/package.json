@@ -1,6 +1,6 @@
 {
     "name": "@girs/mtk-13",
-    "version": "13.0.0-4.0.0-beta.18",
+    "version": "13.0.0-4.0.0-beta.19",
     "description": "GJS TypeScript type definitions for Mtk-13, generated from library version 13.0.0",
     "type": "module",
     "module": "mtk-13.js",

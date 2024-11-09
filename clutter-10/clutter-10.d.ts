@@ -4409,7 +4409,7 @@ export namespace Clutter {
      * @param color the named global color
      * @returns a pointer to a static color; the returned pointer   is owned by Clutter and it should never be modified or freed
      */
-    function color_get_static(color: StaticColor): Color;
+    function color_get_static(color: StaticColor | null): Color;
     /**
      * Looks up the #GParamSpec for a child property of `klass`.
      * @param klass a #GObjectClass implementing the #ClutterContainer interface.
@@ -4477,7 +4477,7 @@ export namespace Clutter {
      * @param feature a #ClutterFeatureFlags
      * @returns %TRUE if a feature is available
      */
-    function feature_available(feature: FeatureFlags): boolean;
+    function feature_available(feature: FeatureFlags | null): boolean;
     /**
      * Returns all the supported features.
      * @returns a logical OR of all the supported features.
@@ -4505,7 +4505,11 @@ export namespace Clutter {
      * @returns the event timestamp, or %CLUTTER_CURRENT_TIME
      */
     function get_current_event_time(): number;
-    function get_debug_flags(debug_flags: DebugFlag, draw_flags: DrawDebugFlag, pick_flags: PickDebugFlag): void;
+    function get_debug_flags(
+        debug_flags: DebugFlag | null,
+        draw_flags: DrawDebugFlag | null,
+        pick_flags: PickDebugFlag | null,
+    ): void;
     /**
      * Retrieves the default #ClutterBackend used by Clutter. The
      * #ClutterBackend holds backend-specific configuration options.
@@ -4684,7 +4688,7 @@ export namespace Clutter {
      * @param func the function to be called within the paint cycle
      * @returns the ID (greater than 0) of the repaint function. You   can use the returned integer to remove the repaint function by   calling clutter_threads_remove_repaint_func().
      */
-    function threads_add_repaint_func_full(flags: RepaintFlags, func: GLib.SourceFunc): number;
+    function threads_add_repaint_func_full(flags: RepaintFlags | null, func: GLib.SourceFunc): number;
     /**
      * Sets a function to be called at regular intervals holding the Clutter
      * threads lock, with the given priority. The function is called repeatedly
@@ -7154,7 +7158,7 @@ export namespace Clutter {
          * @param action a #ClutterAction
          */
         add_action(action: Action): void;
-        add_action_full(name: string, phase: EventPhase, action: Action): void;
+        add_action_full(name: string, phase: EventPhase | null, action: Action): void;
         /**
          * A convenience function for setting the name of a #ClutterAction
          * while adding it to the list of actions applied to `self`
@@ -8005,7 +8009,7 @@ export namespace Clutter {
          * @param axis the axis of the rotation
          * @returns the angle of rotation, in degrees
          */
-        get_rotation_angle(axis: RotateAxis): number;
+        get_rotation_angle(axis: RotateAxis | null): number;
         /**
          * Retrieves an actors scale factors.
          */
@@ -8439,7 +8443,7 @@ export namespace Clutter {
          * @param orientation the direction of expansion
          * @returns %TRUE if the actor should expand
          */
-        needs_expand(orientation: Orientation): boolean;
+        needs_expand(orientation: Orientation | null): boolean;
         /**
          * Renders the actor to display.
          *
@@ -8750,14 +8754,14 @@ export namespace Clutter {
          * The #ClutterActor:content-gravity property is animatable.
          * @param gravity the #ClutterContentGravity
          */
-        set_content_gravity(gravity: ContentGravity): void;
+        set_content_gravity(gravity: ContentGravity | null): void;
         /**
          * Sets the policy for repeating the #ClutterActor:content of a
          * #ClutterActor. The behaviour is deferred to the #ClutterContent
          * implementation.
          * @param repeat the repeat policy
          */
-        set_content_repeat(repeat: ContentRepeat): void;
+        set_content_repeat(repeat: ContentRepeat | null): void;
         /**
          * Sets the minification and magnification filter to be applied when
          * scaling the #ClutterActor:content of a #ClutterActor.
@@ -8768,7 +8772,7 @@ export namespace Clutter {
          * @param min_filter the minification filter for the content
          * @param mag_filter the magnification filter for the content
          */
-        set_content_scaling_filters(min_filter: ScalingFilter, mag_filter: ScalingFilter): void;
+        set_content_scaling_filters(min_filter: ScalingFilter | null, mag_filter: ScalingFilter | null): void;
         /**
          * Sets the delay that should be applied before tweening animatable
          * properties.
@@ -8786,7 +8790,7 @@ export namespace Clutter {
          * of `self`.
          * @param mode an easing mode, excluding %CLUTTER_CUSTOM_MODE
          */
-        set_easing_mode(mode: AnimationMode): void;
+        set_easing_mode(mode: AnimationMode | null): void;
         /**
          * Sets whether an actor has a fixed position set (and will thus be
          * unaffected by any layout manager).
@@ -8799,7 +8803,7 @@ export namespace Clutter {
          * This function will emit notifications for the changed properties
          * @param flags the flags to set
          */
-        set_flags(flags: ActorFlags): void;
+        set_flags(flags: ActorFlags | null): void;
         /**
          * Forces a height on an actor, causing the actor's preferred width
          * and height (if any) to be ignored.
@@ -8920,7 +8924,7 @@ export namespace Clutter {
          * for maximum efficiency.
          * @param redirect New offscreen redirect flags for the actor.
          */
-        set_offscreen_redirect(redirect: OffscreenRedirect): void;
+        set_offscreen_redirect(redirect: OffscreenRedirect | null): void;
         /**
          * Sets the actor's opacity, with zero being completely transparent and
          * 255 (0xff) being fully opaque.
@@ -8981,7 +8985,7 @@ export namespace Clutter {
          * clutter_actor_get_preferred_height()
          * @param mode the request mode
          */
-        set_request_mode(mode: RequestMode): void;
+        set_request_mode(mode: RequestMode | null): void;
         /**
          * Sets the `angle` of rotation of a #ClutterActor on the given `axis`.
          *
@@ -8994,7 +8998,7 @@ export namespace Clutter {
          * @param axis the axis to set the angle one
          * @param angle the angle of rotation, in degrees
          */
-        set_rotation_angle(axis: RotateAxis, angle: number): void;
+        set_rotation_angle(axis: RotateAxis | null, angle: number): void;
         /**
          * Scales an actor with the given factors.
          *
@@ -9043,7 +9047,7 @@ export namespace Clutter {
          * the #GObject::notify signal for the #ClutterActor:text-direction property
          * @param text_dir the text direction for @self
          */
-        set_text_direction(text_dir: TextDirection): void;
+        set_text_direction(text_dir: TextDirection | null): void;
         /**
          * Overrides the transformations of a #ClutterActor with a custom
          * matrix, which will be applied relative to the origin of the
@@ -9089,7 +9093,7 @@ export namespace Clutter {
          * See also the #ClutterActor:x-align property.
          * @param x_align the horizontal alignment policy
          */
-        set_x_align(x_align: ActorAlign): void;
+        set_x_align(x_align: ActorAlign | null): void;
         /**
          * Sets whether a #ClutterActor should expand horizontally; this means
          * that layout manager should allocate extra space for the actor, if
@@ -9118,7 +9122,7 @@ export namespace Clutter {
          * See also the #ClutterActor:y-align property.
          * @param y_align the vertical alignment policy
          */
-        set_y_align(y_align: ActorAlign): void;
+        set_y_align(y_align: ActorAlign | null): void;
         /**
          * Sets whether a #ClutterActor should expand horizontally; this means
          * that layout manager should allocate extra space for the actor, if
@@ -9239,7 +9243,7 @@ export namespace Clutter {
          * This function will emit notifications for the changed properties
          * @param flags the flags to unset
          */
-        unset_flags(flags: ActorFlags): void;
+        unset_flags(flags: ActorFlags | null): void;
 
         // Inherited methods
         /**
@@ -9581,7 +9585,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9622,7 +9626,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10152,7 +10156,7 @@ export namespace Clutter {
          * Sets the axis to which the alignment refers to
          * @param axis the axis to which the alignment refers to
          */
-        set_align_axis(axis: AlignAxis): void;
+        set_align_axis(axis: AlignAxis | null): void;
         /**
          * Sets the alignment factor of the constraint
          *
@@ -10406,7 +10410,7 @@ export namespace Clutter {
          * Sets the coordinate to bind in the constraint
          * @param coordinate the coordinate to bind
          */
-        set_coordinate(coordinate: BindCoordinate): void;
+        set_coordinate(coordinate: BindCoordinate | null): void;
         /**
          * Sets the offset to be applied to the constraint
          * @param offset the offset to apply, in pixels
@@ -10507,7 +10511,7 @@ export namespace Clutter {
          * @param gobject a #GObject
          * @returns %TRUE if an action was found and was activated
          */
-        activate(key_val: number, modifiers: ModifierType, gobject: GObject.Object): boolean;
+        activate(key_val: number, modifiers: ModifierType | null, gobject: GObject.Object): boolean;
         /**
          * Blocks all the actions with name `action_name` inside `pool`.
          * @param action_name an action name
@@ -10520,7 +10524,7 @@ export namespace Clutter {
          * @param modifiers a bitmask for the modifiers
          * @returns the name of the action, if found, or %NULL. The   returned string is owned by the binding pool and should never   be modified or freed
          */
-        find_action(key_val: number, modifiers: ModifierType): string;
+        find_action(key_val: number, modifiers: ModifierType | null): string;
         /**
          * Installs a new action inside a #ClutterBindingPool. The action
          * is bound to `key_val` and `modifiers`.
@@ -10541,7 +10545,7 @@ export namespace Clutter {
         install_action(
             action_name: string,
             key_val: number,
-            modifiers: ModifierType,
+            modifiers: ModifierType | null,
             callback: BindingActionFunc,
         ): void;
         /**
@@ -10563,7 +10567,12 @@ export namespace Clutter {
          * @param modifiers bitmask of modifiers
          * @param closure a #GClosure
          */
-        install_closure(action_name: string, key_val: number, modifiers: ModifierType, closure: GObject.Closure): void;
+        install_closure(
+            action_name: string,
+            key_val: number,
+            modifiers: ModifierType | null,
+            closure: GObject.Closure,
+        ): void;
         /**
          * Allows overriding the action for `key_val` and `modifiers` inside a
          * #ClutterBindingPool. See clutter_binding_pool_install_action().
@@ -10577,7 +10586,7 @@ export namespace Clutter {
          * @param modifiers bitmask of modifiers
          * @param callback function to be called when the action is activated
          */
-        override_action(key_val: number, modifiers: ModifierType, callback: GObject.Callback): void;
+        override_action(key_val: number, modifiers: ModifierType | null, callback: GObject.Callback): void;
         /**
          * A #GClosure variant of clutter_binding_pool_override_action().
          *
@@ -10593,14 +10602,14 @@ export namespace Clutter {
          * @param modifiers bitmask of modifiers
          * @param closure a #GClosure
          */
-        override_closure(key_val: number, modifiers: ModifierType, closure: GObject.Closure): void;
+        override_closure(key_val: number, modifiers: ModifierType | null, closure: GObject.Closure): void;
         /**
          * Removes the action matching the given `key_val,` `modifiers` pair,
          * if any exists.
          * @param key_val a key symbol
          * @param modifiers a bitmask for the modifiers
          */
-        remove_action(key_val: number, modifiers: ModifierType): void;
+        remove_action(key_val: number, modifiers: ModifierType | null): void;
         /**
          * Unblockes all the actions with name `action_name` inside `pool`.
          *
@@ -10761,7 +10770,7 @@ export namespace Clutter {
          * Sets the orientation of the #ClutterBoxLayout layout manager.
          * @param orientation the orientation of the #ClutterBoxLayout
          */
-        set_orientation(orientation: Orientation): void;
+        set_orientation(orientation: Orientation | null): void;
         set_pack_start(pack_start: boolean): void;
         /**
          * Sets the spacing between children of `layout`
@@ -11082,7 +11091,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11123,7 +11132,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12061,7 +12070,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -12102,7 +12111,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12530,7 +12539,7 @@ export namespace Clutter {
          */
         update_preferred_size(
             actor: Actor,
-            direction: Orientation,
+            direction: Orientation | null,
             for_size: number,
             minimum_size: number,
             natural_size: number,
@@ -12968,7 +12977,7 @@ export namespace Clutter {
          * orientation also controls the direction of the overflowing
          * @param orientation the orientation of the layout
          */
-        set_orientation(orientation: FlowOrientation): void;
+        set_orientation(orientation: FlowOrientation | null): void;
         /**
          * Sets the minimum and maximum heights that a row can have
          * @param min_height the minimum height of a row
@@ -13025,7 +13034,7 @@ export namespace Clutter {
         get_refresh_rate(): number;
         inhibit(): void;
         notify_ready(): void;
-        record_flip(flip_time_us: number, hints: FrameHint): void;
+        record_flip(flip_time_us: number, hints: FrameHint | null): void;
         remove_timeline(timeline: Timeline): void;
         schedule_update(): void;
         schedule_update_now(): void;
@@ -13263,7 +13272,7 @@ export namespace Clutter {
          * #ClutterGestureAction during their construction phase.
          * @param edge the %ClutterGestureTriggerEdge
          */
-        set_threshold_trigger_edge(edge: GestureTriggerEdge): void;
+        set_threshold_trigger_edge(edge: GestureTriggerEdge | null): void;
     }
 
     module GridLayout {
@@ -13376,7 +13385,13 @@ export namespace Clutter {
          * @param width the number of columns that @child will span
          * @param height the number of rows that @child will span
          */
-        attach_next_to(child: Actor, sibling: Actor | null, side: GridPosition, width: number, height: number): void;
+        attach_next_to(
+            child: Actor,
+            sibling: Actor | null,
+            side: GridPosition | null,
+            width: number,
+            height: number,
+        ): void;
         /**
          * Gets the child of `layout` whose area covers the grid
          * cell whose upper left corner is at `left,` `top`.
@@ -13430,7 +13445,7 @@ export namespace Clutter {
          * @param sibling the child of @layout that the new row or column will be     placed next to
          * @param side the side of @sibling that @child is positioned next to
          */
-        insert_next_to(sibling: Actor, side: GridPosition): void;
+        insert_next_to(sibling: Actor, side: GridPosition | null): void;
         /**
          * Inserts a row at the specified position.
          *
@@ -13459,7 +13474,7 @@ export namespace Clutter {
          * any effect on children that are already part of the layout.
          * @param orientation the orientation of the #ClutterGridLayout
          */
-        set_orientation(orientation: Orientation): void;
+        set_orientation(orientation: Orientation | null): void;
         /**
          * Sets whether all rows of `layout` will have the same height.
          * @param homogeneous %TRUE to make rows homogeneous
@@ -13533,7 +13548,7 @@ export namespace Clutter {
          */
         set_area(
             data: Uint8Array | string,
-            pixel_format: Cogl.PixelFormat,
+            pixel_format: Cogl.PixelFormat | null,
             rect: cairo.RectangleInt,
             row_stride: number,
         ): boolean;
@@ -13556,7 +13571,7 @@ export namespace Clutter {
          */
         set_bytes(
             data: GLib.Bytes | Uint8Array,
-            pixel_format: Cogl.PixelFormat,
+            pixel_format: Cogl.PixelFormat | null,
             width: number,
             height: number,
             row_stride: number,
@@ -13603,7 +13618,7 @@ export namespace Clutter {
          */
         set_data(
             data: Uint8Array | string,
-            pixel_format: Cogl.PixelFormat,
+            pixel_format: Cogl.PixelFormat | null,
             width: number,
             height: number,
             row_stride: number,
@@ -13708,7 +13723,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13749,7 +13764,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14200,7 +14215,7 @@ export namespace Clutter {
         get_n_mode_groups(): number;
         get_n_rings(): number;
         get_n_strips(): number;
-        get_pad_feature_group(feature: InputDevicePadFeature, n_feature: number): number;
+        get_pad_feature_group(feature: InputDevicePadFeature | null, n_feature: number): number;
         /**
          * Gets the product ID of this device.
          * @returns the product ID
@@ -14299,10 +14314,10 @@ export namespace Clutter {
         is_focused(): boolean;
         reset(): void;
         set_can_show_preedit(can_show_preedit: boolean): void;
-        set_content_hints(hint: InputContentHintFlags): void;
-        set_content_purpose(purpose: InputContentPurpose): void;
+        set_content_hints(hint: InputContentHintFlags | null): void;
+        set_content_purpose(purpose: InputContentPurpose | null): void;
         set_cursor_location(rect: Graphene.Rect): void;
-        set_input_panel_state(state: InputPanelState): void;
+        set_input_panel_state(state: InputPanelState | null): void;
         set_surrounding(text: string, cursor: number, anchor: number): void;
     }
 
@@ -14412,14 +14427,14 @@ export namespace Clutter {
         forward_key(keyval: number, keycode: number, state: number, time_: number, press: boolean): void;
         notify_key_event(event: Event, filtered: boolean): void;
         request_surrounding(): void;
-        set_input_panel_state(state: InputPanelState): void;
+        set_input_panel_state(state: InputPanelState | null): void;
         /**
          * Sets the preedit text on the current input focus.
          * @param preedit the preedit text, or %NULL
          * @param cursor the cursor
          * @param mode
          */
-        set_preedit_text(preedit: string | null, cursor: number, mode: PreeditResetMode): void;
+        set_preedit_text(preedit: string | null, cursor: number, mode: PreeditResetMode | null): void;
     }
 
     module Interval {
@@ -14681,7 +14696,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14722,7 +14737,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15092,7 +15107,7 @@ export namespace Clutter {
          * @param mode the easing mode of the key frame
          * @param value a #GValue containing the value of the key frame
          */
-        set_key_frame(index_: number, key: number, mode: AnimationMode, value: GObject.Value | any): void;
+        set_key_frame(index_: number, key: number, mode: AnimationMode | null, value: GObject.Value | any): void;
         /**
          * Sets the keys for each key frame inside `transition`.
          *
@@ -15110,7 +15125,7 @@ export namespace Clutter {
          * at least as many elements as the number of key frames.
          * @param modes an array of easing modes, one for   each key frame
          */
-        set_modes(modes: AnimationMode[]): void;
+        set_modes(modes: AnimationMode[] | null): void;
         /**
          * Sets the values for each key frame inside `transition`.
          *
@@ -15166,7 +15181,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -15207,7 +15222,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16260,7 +16275,7 @@ export namespace Clutter {
          * Restricts the panning action to a specific axis
          * @param axis the axis to constraint the panning to
          */
-        set_pan_axis(axis: PanAxis): void;
+        set_pan_axis(axis: PanAxis | null): void;
     }
 
     module Path {
@@ -16674,7 +16689,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16715,7 +16730,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17340,7 +17355,7 @@ export namespace Clutter {
          * Sets the #ClutterScrollActor:scroll-mode property.
          * @param mode a #ClutterScrollMode
          */
-        set_scroll_mode(mode: ScrollMode): void;
+        set_scroll_mode(mode: ScrollMode | null): void;
 
         // Inherited methods
         /**
@@ -17682,7 +17697,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -17723,7 +17738,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18224,7 +18239,7 @@ export namespace Clutter {
          * @param device_type the type of the virtual device
          * @returns a newly created virtual device
          */
-        create_virtual_device(device_type: InputDeviceType): VirtualInputDevice;
+        create_virtual_device(device_type: InputDeviceType | null): VirtualInputDevice;
         ensure_a11y_state(): void;
         /**
          * Returns the logical keyboard
@@ -18281,13 +18296,13 @@ export namespace Clutter {
             device: InputDevice,
             sequence: EventSequence,
             coords: Graphene.Point,
-            modifiers: ModifierType,
+            modifiers: ModifierType | null,
         ): boolean;
         /**
          * Sets the dwell click type
          * @param click_type type of click as #ClutterPointerA11yDwellClickType
          */
-        set_pointer_a11y_dwell_click_type(click_type: PointerA11yDwellClickType): void;
+        set_pointer_a11y_dwell_click_type(click_type: PointerA11yDwellClickType | null): void;
         /**
          * Sets the pointer accessibility settings
          * @param settings a pointer to a #ClutterPointerA11ySettings
@@ -18722,7 +18737,7 @@ export namespace Clutter {
          * @param from_edge the edge on the actor
          * @param to_edge the edge on the source
          */
-        set_edges(from_edge: SnapEdge, to_edge: SnapEdge): void;
+        set_edges(from_edge: SnapEdge | null, to_edge: SnapEdge | null): void;
         /**
          * Sets the offset to be applied to the constraint
          * @param offset the offset to apply, in pixels
@@ -18920,7 +18935,7 @@ export namespace Clutter {
          * @param y Y coordinate to check
          * @returns the actor at the specified coordinates,   if any
          */
-        get_actor_at_pos(pick_mode: PickMode, x: number, y: number): Actor;
+        get_actor_at_pos(pick_mode: PickMode | null, x: number, y: number): Actor;
         /**
          * Get the size of the framebuffer one must pass to
          * clutter_stage_paint_to_buffer() or clutter_stage_paint_to_framebuffer()
@@ -18993,8 +19008,8 @@ export namespace Clutter {
             scale: number,
             data: Uint8Array | string,
             stride: number,
-            format: Cogl.PixelFormat,
-            paint_flags: PaintFlag,
+            format: Cogl.PixelFormat | null,
+            paint_flags: PaintFlag | null,
         ): boolean;
         /**
          * Take a snapshot of the stage to a #ClutterContent.
@@ -19003,12 +19018,12 @@ export namespace Clutter {
          * @param paint_flags the #ClutterPaintFlag
          * @returns the #ClutterContent or %NULL on error.
          */
-        paint_to_content(rect: cairo.RectangleInt, scale: number, paint_flags: PaintFlag): Content;
+        paint_to_content(rect: cairo.RectangleInt, scale: number, paint_flags: PaintFlag | null): Content;
         paint_to_framebuffer(
             framebuffer: Cogl.Framebuffer,
             rect: cairo.RectangleInt,
             scale: number,
-            paint_flags: PaintFlag,
+            paint_flags: PaintFlag | null,
         ): void;
         /**
          * Makes a screenshot of the stage in RGBA 8bit data, returns a
@@ -19391,7 +19406,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -19432,7 +19447,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20820,7 +20835,7 @@ export namespace Clutter {
          * of a #ClutterText actor
          * @param mode a #PangoEllipsizeMode
          */
-        set_ellipsize(mode: Pango.EllipsizeMode): void;
+        set_ellipsize(mode: Pango.EllipsizeMode | null): void;
         /**
          * Sets `font_desc` as the font description for a #ClutterText
          *
@@ -20852,8 +20867,8 @@ export namespace Clutter {
          * @param font_name a font name, or %NULL to set the default font name
          */
         set_font_name(font_name?: string | null): void;
-        set_input_hints(hints: InputContentHintFlags): void;
-        set_input_purpose(purpose: InputContentPurpose): void;
+        set_input_hints(hints: InputContentHintFlags | null): void;
+        set_input_purpose(purpose: InputContentPurpose | null): void;
         /**
          * Sets whether the text of the #ClutterText actor should be justified
          * on both margins. This setting is ignored if Clutter is compiled
@@ -20870,7 +20885,7 @@ export namespace Clutter {
          * that supports alignment, or use the anchor point.
          * @param alignment A #PangoAlignment
          */
-        set_line_alignment(alignment: Pango.Alignment): void;
+        set_line_alignment(alignment: Pango.Alignment | null): void;
         /**
          * Sets whether the contents of a #ClutterText actor should wrap,
          * if they don't fit the size assigned to the actor.
@@ -20883,7 +20898,7 @@ export namespace Clutter {
          * %PANGO_WRAP_WORD which means wrap on word boundaries.
          * @param wrap_mode the line wrapping mode
          */
-        set_line_wrap_mode(wrap_mode: Pango.WrapMode): void;
+        set_line_wrap_mode(wrap_mode: Pango.WrapMode | null): void;
         /**
          * Sets `markup` as the contents of a #ClutterText.
          *
@@ -21352,7 +21367,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -21393,7 +21408,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22074,7 +22089,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -22115,7 +22130,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22885,7 +22900,7 @@ export namespace Clutter {
          * %CLUTTER_TIMELINE_BACKWARD.
          * @param direction the direction of the timeline
          */
-        set_direction(direction: TimelineDirection): void;
+        set_direction(direction: TimelineDirection | null): void;
         /**
          * Sets the duration of the timeline, in milliseconds. The speed
          * of the timeline depends on the ClutterTimeline:fps setting.
@@ -22913,7 +22928,7 @@ export namespace Clutter {
          * %CLUTTER_ANIMATION_LAST.
          * @param mode the progress mode, as a #ClutterAnimationMode
          */
-        set_progress_mode(mode: AnimationMode): void;
+        set_progress_mode(mode: AnimationMode | null): void;
         /**
          * Sets the number of times the `timeline` should repeat.
          *
@@ -22930,7 +22945,7 @@ export namespace Clutter {
          * @param n_steps the number of steps
          * @param step_mode whether the change should happen at the start   or at the end of the step
          */
-        set_step_progress(n_steps: number, step_mode: StepMode): void;
+        set_step_progress(n_steps: number, step_mode: StepMode | null): void;
         /**
          * Advance timeline by the requested time in milliseconds
          * @param msecs Amount of time to skip
@@ -23054,7 +23069,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -23095,7 +23110,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -23680,7 +23695,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -23721,7 +23736,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -24130,7 +24145,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -24171,7 +24186,7 @@ export namespace Clutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -24537,17 +24552,21 @@ export namespace Clutter {
         get_device_type(): number;
         get_seat(): Seat;
         notify_absolute_motion(time_us: number, x: number, y: number): void;
-        notify_button(time_us: number, button: number, button_state: ButtonState): void;
-        notify_discrete_scroll(time_us: number, direction: ScrollDirection, scroll_source: ScrollSource): void;
-        notify_key(time_us: number, key: number, key_state: KeyState): void;
-        notify_keyval(time_us: number, keyval: number, key_state: KeyState): void;
+        notify_button(time_us: number, button: number, button_state: ButtonState | null): void;
+        notify_discrete_scroll(
+            time_us: number,
+            direction: ScrollDirection | null,
+            scroll_source: ScrollSource | null,
+        ): void;
+        notify_key(time_us: number, key: number, key_state: KeyState | null): void;
+        notify_keyval(time_us: number, keyval: number, key_state: KeyState | null): void;
         notify_relative_motion(time_us: number, dx: number, dy: number): void;
         notify_scroll_continuous(
             time_us: number,
             dx: number,
             dy: number,
-            scroll_source: ScrollSource,
-            finish_flags: ScrollFinishFlags,
+            scroll_source: ScrollSource | null,
+            finish_flags: ScrollFinishFlags | null,
         ): void;
         notify_touch_down(time_us: number, slot: number, x: number, y: number): void;
         notify_touch_motion(time_us: number, slot: number, x: number, y: number): void;
@@ -25298,8 +25317,8 @@ export namespace Clutter {
 
         get_hints(): FrameHint;
         has_result(): boolean;
-        set_hint(hint: FrameHint): void;
-        set_result(result: FrameResult): void;
+        set_hint(hint: FrameHint | null): void;
+        set_result(result: FrameResult | null): void;
     }
 
     type FrameClockClass = typeof FrameClock;
@@ -26721,7 +26740,7 @@ export namespace Clutter {
          * Sets the #ClutterEventFlags of `event`
          * @param flags a binary OR of #ClutterEventFlags values
          */
-        set_flags(flags: EventFlags): void;
+        set_flags(flags: EventFlags | null): void;
         /**
          * Sets the keycode of the `event`.
          * @param key_code the keycode representing the key
@@ -26752,7 +26771,7 @@ export namespace Clutter {
          * Sets the direction of the scrolling of `event`
          * @param direction the scrolling direction
          */
-        set_scroll_direction(direction: ScrollDirection): void;
+        set_scroll_direction(direction: ScrollDirection | null): void;
         /**
          * Sets the source #ClutterActor of `event`.
          * @param actor a #ClutterActor, or %NULL
@@ -26774,7 +26793,7 @@ export namespace Clutter {
          * Sets the modifier state of the event.
          * @param state the modifier state to set
          */
-        set_state(state: ModifierType): void;
+        set_state(state: ModifierType | null): void;
         /**
          * Sets the time of the event.
          * @param time_ the time of the event
@@ -26880,7 +26899,9 @@ export namespace Clutter {
         vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
     }
 
-    export const Animatable: AnimatableNamespace;
+    export const Animatable: AnimatableNamespace & {
+        new (): Animatable; // This allows `obj instanceof Animatable`
+    };
 
     module Container {
         // Constructor properties interface
@@ -27068,7 +27089,9 @@ export namespace Clutter {
         vfunc_remove(actor: Actor): void;
     }
 
-    export const Container: ContainerNamespace;
+    export const Container: ContainerNamespace & {
+        new (): Container; // This allows `obj instanceof Container`
+    };
 
     module Content {
         // Constructor properties interface
@@ -27140,7 +27163,9 @@ export namespace Clutter {
         vfunc_paint_content(actor: Actor, node: PaintNode, paint_context: PaintContext): void;
     }
 
-    export const Content: ContentNamespace;
+    export const Content: ContentNamespace & {
+        new (): Content; // This allows `obj instanceof Content`
+    };
 
     module Scriptable {
         // Constructor properties interface
@@ -27224,7 +27249,9 @@ export namespace Clutter {
         vfunc_set_id(id_: string): void;
     }
 
-    export const Scriptable: ScriptableNamespace;
+    export const Scriptable: ScriptableNamespace & {
+        new (): Scriptable; // This allows `obj instanceof Scriptable`
+    };
 
     /**
      * Name of the imported GIR library

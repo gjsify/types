@@ -169,7 +169,7 @@ export namespace PangoCairo {
      * @param fonttype desired #cairo_font_type_t
      * @returns the newly allocated   `PangoFontMap` of suitable type which should be freed with   g_object_unref(), or %NULL if the requested cairo font backend   is not supported / compiled in.
      */
-    function font_map_new_for_font_type(fonttype: cairo.FontType): Pango.FontMap | null;
+    function font_map_new_for_font_type(fonttype: cairo.FontType | null): Pango.FontMap | null;
     /**
      * Adds the glyphs in `glyphs` to the current path in the specified
      * cairo context.
@@ -305,7 +305,9 @@ export namespace PangoCairo {
         get_scaled_font(): cairo.ScaledFont | null;
     }
 
-    export const Font: FontNamespace;
+    export const Font: FontNamespace & {
+        new (): Font; // This allows `obj instanceof Font`
+    };
 
     module FontMap {
         // Constructor properties interface
@@ -411,7 +413,9 @@ export namespace PangoCairo {
         set_resolution(dpi: number): void;
     }
 
-    export const FontMap: FontMapNamespace;
+    export const FontMap: FontMapNamespace & {
+        new (): FontMap; // This allows `obj instanceof FontMap`
+    };
 
     /**
      * Name of the imported GIR library

@@ -340,7 +340,7 @@ export namespace Wnck {
      * be ignored and a critical warning will be logged.
      * @param ewmh_sourceindication_client_type a role for the client.
      */
-    function set_client_type(ewmh_sourceindication_client_type: ClientType): void;
+    function set_client_type(ewmh_sourceindication_client_type: ClientType | null): void;
     /**
      * The default main icon size is %WNCK_DEFAULT_ICON_SIZE. This function allows
      * to change this value.
@@ -658,7 +658,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -699,7 +699,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2007,7 +2007,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2048,7 +2048,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2392,8 +2392,8 @@ export namespace Wnck {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -2401,7 +2401,7 @@ export namespace Wnck {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -2479,7 +2479,7 @@ export namespace Wnck {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -2513,7 +2513,7 @@ export namespace Wnck {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -2600,7 +2600,7 @@ export namespace Wnck {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -2640,7 +2640,7 @@ export namespace Wnck {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -2752,14 +2752,22 @@ export namespace Wnck {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -2841,9 +2849,9 @@ export namespace Wnck {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -3302,7 +3310,7 @@ export namespace Wnck {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -3936,7 +3944,7 @@ export namespace Wnck {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -3997,7 +4005,7 @@ export namespace Wnck {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -4016,7 +4024,7 @@ export namespace Wnck {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -4036,7 +4044,7 @@ export namespace Wnck {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -4078,7 +4086,7 @@ export namespace Wnck {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -4087,7 +4095,7 @@ export namespace Wnck {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -4117,7 +4125,7 @@ export namespace Wnck {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -4284,7 +4292,11 @@ export namespace Wnck {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -4535,7 +4547,7 @@ export namespace Wnck {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -4551,7 +4563,7 @@ export namespace Wnck {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -4621,7 +4633,7 @@ export namespace Wnck {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -4884,7 +4896,7 @@ export namespace Wnck {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -4902,7 +4914,7 @@ export namespace Wnck {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -4952,7 +4964,7 @@ export namespace Wnck {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -5163,7 +5175,7 @@ export namespace Wnck {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -5870,7 +5882,7 @@ export namespace Wnck {
          * Sets the display mode for `pager` to `mode`.
          * @param mode a display mode.
          */
-        set_display_mode(mode: PagerDisplayMode): void;
+        set_display_mode(mode: PagerDisplayMode | null): void;
         /**
          * Tries to change the number of rows in the layout of #WnckWorkspace on the
          * #WnckScreen `pager` is watching. Since no more than one application should
@@ -5909,20 +5921,20 @@ export namespace Wnck {
          * @param orientation orientation to use for the layout of #WnckWorkspace on the #WnckScreen @pager is watching.
          * @returns %TRUE if the layout of #WnckWorkspace has been successfully changed or did not need to be changed, %FALSE otherwise.
          */
-        set_orientation(orientation: Gtk.Orientation): boolean;
+        set_orientation(orientation: Gtk.Orientation | null): boolean;
         /**
          * Sets `pager` to react to input device scrolling in one of the
          * available scroll modes.
          * @param scroll_mode a scroll mode.
          */
-        set_scroll_mode(scroll_mode: PagerScrollMode): void;
+        set_scroll_mode(scroll_mode: PagerScrollMode | null): void;
         /**
          * Sets the shadow type for `pager` to `shadow_type`. The main use of this
          * function is proper integration of #WnckPager in panels with non-system
          * backgrounds.
          * @param shadow_type a shadow type.
          */
-        set_shadow_type(shadow_type: Gtk.ShadowType): void;
+        set_shadow_type(shadow_type: Gtk.ShadowType | null): void;
         /**
          * Sets `pager` to display all #WnckWorkspace or not, according to
          * `show_all_workspaces`.
@@ -6158,7 +6170,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6199,7 +6211,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6956,7 +6968,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6997,7 +7009,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7400,12 +7412,12 @@ export namespace Wnck {
          * non-system backgrounds.
          * @param relief a relief type.
          */
-        set_button_relief(relief: Gtk.ReliefStyle): void;
+        set_button_relief(relief: Gtk.ReliefStyle | null): void;
         /**
          * Sets the grouping policy for `tasklist` to `grouping`.
          * @param grouping a grouping policy.
          */
-        set_grouping(grouping: TasklistGroupingType): void;
+        set_grouping(grouping: TasklistGroupingType | null): void;
         /**
          * Sets the maximum size of buttons in `tasklist` before `tasklist` tries to
          * group #WnckWindow in the same #WnckApplication in only one button. This
@@ -7440,7 +7452,7 @@ export namespace Wnck {
          * This function can be used to integrate a #WnckTasklist in vertical panels.
          * @param orient a GtkOrientation.
          */
-        set_orientation(orient: Gtk.Orientation): void;
+        set_orientation(orient: Gtk.Orientation | null): void;
         /**
          * Sets the scroll behavior of the `tasklist`. When set to %TRUE, a scroll
          * event over the tasklist will change the current window accordingly.
@@ -7506,7 +7518,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7547,7 +7559,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8420,8 +8432,8 @@ export namespace Wnck {
          * @param height new height in pixels of @window.
          */
         set_geometry(
-            gravity: WindowGravity,
-            geometry_mask: WindowMoveResizeMask,
+            gravity: WindowGravity | null,
+            geometry_mask: WindowMoveResizeMask | null,
             x: number,
             y: number,
             width: number,
@@ -8457,7 +8469,7 @@ export namespace Wnck {
          * Sets the semantic type of `window` to `wintype`.
          * @param wintype a semantic type.
          */
-        set_window_type(wintype: WindowType): void;
+        set_window_type(wintype: WindowType | null): void;
         /**
          * Asks the window manager to shade `window`.
          */
@@ -8615,7 +8627,7 @@ export namespace Wnck {
          * @param direction direction in which to search the neighbor.
          * @returns the neighbor #WnckWorkspace of @space in the @direction direction, or %NULL if no such neighbor #WnckWorkspace exists. The returned #WnckWorkspace is owned by libwnck and must not be referenced or unreferenced.
          */
-        get_neighbor(direction: MotionDirection): Workspace;
+        get_neighbor(direction: MotionDirection | null): Workspace;
         /**
          * Gets the index of `space` on the #WnckScreen to which it belongs. The
          * first workspace has an index of 0.

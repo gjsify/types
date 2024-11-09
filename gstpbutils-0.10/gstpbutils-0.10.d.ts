@@ -57,7 +57,7 @@ export namespace GstPbutils {
         func: GstInstallPluginsResultFunc,
     ): GstInstallPluginsReturn;
     function gst_install_plugins_installation_in_progress(): boolean;
-    function gst_install_plugins_return_get_name(ret: GstInstallPluginsReturn): string;
+    function gst_install_plugins_return_get_name(ret: GstInstallPluginsReturn | null): string;
     function gst_install_plugins_supported(): boolean;
     function gst_install_plugins_sync(details: string[], ctx: GstInstallPluginsContext): GstInstallPluginsReturn;
     function gst_is_missing_plugin_message(msg: Gst.Message): boolean;

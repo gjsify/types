@@ -734,8 +734,8 @@ export namespace Folks {
         unprepare(_callback_: Gio.AsyncReadyCallback<this> | null): void;
         unprepare(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         unprepare_finish(_res_: Gio.AsyncResult): void;
-        get_potential_matches(matchee: Individual, min_threshold: MatchResult): Gee.Map;
-        get_all_potential_matches(min_threshold: MatchResult): Gee.Map;
+        get_potential_matches(matchee: Individual, min_threshold: MatchResult | null): Gee.Map;
+        get_all_potential_matches(min_threshold: MatchResult | null): Gee.Map;
         add_persona_from_details(
             parent: Individual | null,
             persona_store: PersonaStore,
@@ -1126,12 +1126,12 @@ export namespace Folks {
         vfunc_change_is_favourite_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_is_favourite(): boolean;
         vfunc_set_is_favourite(value: boolean): void;
-        change_gender(gender: Gender): Promise<void>;
-        change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        change_gender(gender: Gender, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        change_gender(gender: Gender | null): Promise<void>;
+        change_gender(gender: Gender | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        change_gender(gender: Gender | null, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         change_gender_finish(_res_: Gio.AsyncResult): void;
         get_gender(): Gender;
-        set_gender(value: Gender): void;
+        set_gender(value: Gender | null): void;
         vfunc_change_gender(gender: Gender, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
         vfunc_change_gender_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_gender(): Gender;
@@ -1248,7 +1248,7 @@ export namespace Folks {
         vfunc_set_notes(value: Gee.Set): void;
         is_online(): boolean;
         get_presence_type(): PresenceType;
-        set_presence_type(value: PresenceType): void;
+        set_presence_type(value: PresenceType | null): void;
         get_presence_message(): string;
         set_presence_message(value: string): void;
         get_client_types(): string[];
@@ -1375,7 +1375,7 @@ export namespace Folks {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1416,7 +1416,7 @@ export namespace Folks {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2111,7 +2111,7 @@ export namespace Folks {
             removed: Gee.Set | null,
             message: string | null,
             actor: Persona | null,
-            reason: GroupDetailsChangeReason,
+            reason: GroupDetailsChangeReason | null,
         ): void;
         prepare(): Promise<void>;
         prepare(_callback_: Gio.AsyncReadyCallback<this> | null): void;
@@ -2150,7 +2150,7 @@ export namespace Folks {
         get_is_writeable(): boolean;
         set_is_writeable(value: boolean): void;
         get_trust_level(): PersonaStoreTrust;
-        set_trust_level(value: PersonaStoreTrust): void;
+        set_trust_level(value: PersonaStoreTrust | null): void;
         get_always_writeable_properties(): string[];
         get_is_primary_store(): boolean;
         get_is_user_set_default(): boolean;
@@ -2982,7 +2982,9 @@ export namespace Folks {
         vfunc_set_alias(value: string): void;
     }
 
-    export const AliasDetails: AliasDetailsNamespace;
+    export const AliasDetails: AliasDetailsNamespace & {
+        new (): AliasDetails; // This allows `obj instanceof AliasDetails`
+    };
 
     module AntiLinkable {
         // Constructor properties interface
@@ -3043,7 +3045,9 @@ export namespace Folks {
         vfunc_set_anti_links(value: Gee.Set): void;
     }
 
-    export const AntiLinkable: AntiLinkableNamespace;
+    export const AntiLinkable: AntiLinkableNamespace & {
+        new (): AntiLinkable; // This allows `obj instanceof AntiLinkable`
+    };
 
     module AvatarDetails {
         // Constructor properties interface
@@ -3083,7 +3087,9 @@ export namespace Folks {
         vfunc_set_avatar(value?: Gio.LoadableIcon | null): void;
     }
 
-    export const AvatarDetails: AvatarDetailsNamespace;
+    export const AvatarDetails: AvatarDetailsNamespace & {
+        new (): AvatarDetails; // This allows `obj instanceof AvatarDetails`
+    };
 
     module BirthdayDetails {
         // Constructor properties interface
@@ -3145,7 +3151,9 @@ export namespace Folks {
         vfunc_set_calendar_event_id(value?: string | null): void;
     }
 
-    export const BirthdayDetails: BirthdayDetailsNamespace;
+    export const BirthdayDetails: BirthdayDetailsNamespace & {
+        new (): BirthdayDetails; // This allows `obj instanceof BirthdayDetails`
+    };
 
     module EmailDetails {
         // Constructor properties interface
@@ -3188,7 +3196,9 @@ export namespace Folks {
         vfunc_set_email_addresses(value: Gee.Set): void;
     }
 
-    export const EmailDetails: EmailDetailsNamespace;
+    export const EmailDetails: EmailDetailsNamespace & {
+        new (): EmailDetails; // This allows `obj instanceof EmailDetails`
+    };
 
     module ExtendedInfo {
         // Constructor properties interface
@@ -3234,7 +3244,9 @@ export namespace Folks {
         vfunc_remove_extended_field_finish(_res_: Gio.AsyncResult): void;
     }
 
-    export const ExtendedInfo: ExtendedInfoNamespace;
+    export const ExtendedInfo: ExtendedInfoNamespace & {
+        new (): ExtendedInfo; // This allows `obj instanceof ExtendedInfo`
+    };
 
     module FavouriteDetails {
         // Constructor properties interface
@@ -3277,7 +3289,9 @@ export namespace Folks {
         vfunc_set_is_favourite(value: boolean): void;
     }
 
-    export const FavouriteDetails: FavouriteDetailsNamespace;
+    export const FavouriteDetails: FavouriteDetailsNamespace & {
+        new (): FavouriteDetails; // This allows `obj instanceof FavouriteDetails`
+    };
 
     module GenderDetails {
         // Constructor properties interface
@@ -3299,12 +3313,12 @@ export namespace Folks {
 
         // Methods
 
-        change_gender(gender: Gender): Promise<void>;
-        change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        change_gender(gender: Gender, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+        change_gender(gender: Gender | null): Promise<void>;
+        change_gender(gender: Gender | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        change_gender(gender: Gender | null, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
         change_gender_finish(_res_: Gio.AsyncResult): void;
         get_gender(): Gender;
-        set_gender(value: Gender): void;
+        set_gender(value: Gender | null): void;
 
         // Virtual methods
 
@@ -3314,7 +3328,9 @@ export namespace Folks {
         vfunc_set_gender(value: Gender): void;
     }
 
-    export const GenderDetails: GenderDetailsNamespace;
+    export const GenderDetails: GenderDetailsNamespace & {
+        new (): GenderDetails; // This allows `obj instanceof GenderDetails`
+    };
 
     module GroupDetails {
         // Constructor properties interface
@@ -3361,7 +3377,9 @@ export namespace Folks {
         vfunc_set_groups(value: Gee.Set): void;
     }
 
-    export const GroupDetails: GroupDetailsNamespace;
+    export const GroupDetails: GroupDetailsNamespace & {
+        new (): GroupDetails; // This allows `obj instanceof GroupDetails`
+    };
 
     module ImDetails {
         // Constructor properties interface
@@ -3406,7 +3424,9 @@ export namespace Folks {
         vfunc_set_im_addresses(value: Gee.MultiMap): void;
     }
 
-    export const ImDetails: ImDetailsNamespace;
+    export const ImDetails: ImDetailsNamespace & {
+        new (): ImDetails; // This allows `obj instanceof ImDetails`
+    };
 
     module InteractionDetails {
         // Constructor properties interface
@@ -3454,7 +3474,9 @@ export namespace Folks {
         vfunc_get_last_call_interaction_datetime(): GLib.DateTime | null;
     }
 
-    export const InteractionDetails: InteractionDetailsNamespace;
+    export const InteractionDetails: InteractionDetailsNamespace & {
+        new (): InteractionDetails; // This allows `obj instanceof InteractionDetails`
+    };
 
     module LocalIdDetails {
         // Constructor properties interface
@@ -3494,7 +3516,9 @@ export namespace Folks {
         vfunc_set_local_ids(value: Gee.Set): void;
     }
 
-    export const LocalIdDetails: LocalIdDetailsNamespace;
+    export const LocalIdDetails: LocalIdDetailsNamespace & {
+        new (): LocalIdDetails; // This allows `obj instanceof LocalIdDetails`
+    };
 
     module LocationDetails {
         // Constructor properties interface
@@ -3534,7 +3558,9 @@ export namespace Folks {
         vfunc_set_location(value?: Location | null): void;
     }
 
-    export const LocationDetails: LocationDetailsNamespace;
+    export const LocationDetails: LocationDetailsNamespace & {
+        new (): LocationDetails; // This allows `obj instanceof LocationDetails`
+    };
 
     module NameDetails {
         // Constructor properties interface
@@ -3609,7 +3635,9 @@ export namespace Folks {
         vfunc_set_nickname(value: string): void;
     }
 
-    export const NameDetails: NameDetailsNamespace;
+    export const NameDetails: NameDetailsNamespace & {
+        new (): NameDetails; // This allows `obj instanceof NameDetails`
+    };
 
     module NoteDetails {
         // Constructor properties interface
@@ -3646,7 +3674,9 @@ export namespace Folks {
         vfunc_set_notes(value: Gee.Set): void;
     }
 
-    export const NoteDetails: NoteDetailsNamespace;
+    export const NoteDetails: NoteDetailsNamespace & {
+        new (): NoteDetails; // This allows `obj instanceof NoteDetails`
+    };
 
     module PhoneDetails {
         // Constructor properties interface
@@ -3689,7 +3719,9 @@ export namespace Folks {
         vfunc_set_phone_numbers(value: Gee.Set): void;
     }
 
-    export const PhoneDetails: PhoneDetailsNamespace;
+    export const PhoneDetails: PhoneDetailsNamespace & {
+        new (): PhoneDetails; // This allows `obj instanceof PhoneDetails`
+    };
 
     module PostalAddressDetails {
         // Constructor properties interface
@@ -3735,7 +3767,9 @@ export namespace Folks {
         vfunc_set_postal_addresses(value: Gee.Set): void;
     }
 
-    export const PostalAddressDetails: PostalAddressDetailsNamespace;
+    export const PostalAddressDetails: PostalAddressDetailsNamespace & {
+        new (): PostalAddressDetails; // This allows `obj instanceof PostalAddressDetails`
+    };
 
     module PresenceDetails {
         // Constructor properties interface
@@ -3783,7 +3817,7 @@ export namespace Folks {
 
         is_online(): boolean;
         get_presence_type(): PresenceType;
-        set_presence_type(value: PresenceType): void;
+        set_presence_type(value: PresenceType | null): void;
         get_presence_message(): string;
         set_presence_message(value: string): void;
         get_client_types(): string[];
@@ -3803,7 +3837,9 @@ export namespace Folks {
         vfunc_set_presence_status(value: string): void;
     }
 
-    export const PresenceDetails: PresenceDetailsNamespace;
+    export const PresenceDetails: PresenceDetailsNamespace & {
+        new (): PresenceDetails; // This allows `obj instanceof PresenceDetails`
+    };
 
     module RoleDetails {
         // Constructor properties interface
@@ -3840,7 +3876,9 @@ export namespace Folks {
         vfunc_set_roles(value: Gee.Set): void;
     }
 
-    export const RoleDetails: RoleDetailsNamespace;
+    export const RoleDetails: RoleDetailsNamespace & {
+        new (): RoleDetails; // This allows `obj instanceof RoleDetails`
+    };
 
     module UrlDetails {
         // Constructor properties interface
@@ -3877,7 +3915,9 @@ export namespace Folks {
         vfunc_set_urls(value: Gee.Set): void;
     }
 
-    export const UrlDetails: UrlDetailsNamespace;
+    export const UrlDetails: UrlDetailsNamespace & {
+        new (): UrlDetails; // This allows `obj instanceof UrlDetails`
+    };
 
     module WebServiceDetails {
         // Constructor properties interface
@@ -3926,7 +3966,9 @@ export namespace Folks {
         vfunc_set_web_service_addresses(value: Gee.MultiMap): void;
     }
 
-    export const WebServiceDetails: WebServiceDetailsNamespace;
+    export const WebServiceDetails: WebServiceDetailsNamespace & {
+        new (): WebServiceDetails; // This allows `obj instanceof WebServiceDetails`
+    };
 
     /**
      * Name of the imported GIR library

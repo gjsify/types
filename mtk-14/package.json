@@ -1,6 +1,6 @@
 {
     "name": "@girs/mtk-14",
-    "version": "14.0.0-4.0.0-beta.18",
+    "version": "14.0.0-4.0.0-beta.19",
     "description": "GJS TypeScript type definitions for Mtk-14, generated from library version 14.0.0",
     "type": "module",
     "module": "mtk-14.js",

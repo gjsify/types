@@ -103,7 +103,7 @@ export namespace P11Kit {
      * @param uri The blank URI to parse the values into
      * @returns %P11_KIT_URI_OK if the URI was parsed successfully. %P11_KIT_URI_BAD_SCHEME if this was not a PKCS\#11 URI. %P11_KIT_URI_BAD_SYNTAX if the URI syntax was bad. %P11_KIT_URI_NO_MEMORY if memory allocation failed. %P11_KIT_URI_BAD_VERSION if a version number was bad. %P11_KIT_URI_BAD_ENCODING if the URI encoding was invalid.
      */
-    function uri_parse(string: string, uri_type: UriType, uri: Uri): number;
+    function uri_parse(string: string, uri_type: UriType | null, uri: Uri): number;
     interface pin_destroy_func {
         (data: any): void;
     }
@@ -254,7 +254,7 @@ export namespace P11Kit {
          * @param string Location to store a newly allocated string.
          * @returns %P11_KIT_URI_OK if the URI was formatted successfully. %P11_KIT_URI_NO_MEMORY if memory allocation failed.
          */
-        format(uri_type: UriType, string: string): number;
+        format(uri_type: UriType | null, string: string): number;
         /**
          * Free a PKCS\#11 URI.
          */

@@ -791,7 +791,7 @@ export namespace Signon {
          * Specifies the type of this identity.
          * @param type the type of the identity.
          */
-        set_identity_type(type: IdentityType): void;
+        set_identity_type(type: IdentityType | null): void;
         /**
          * Adds a method to the list of allowed methods. If this method is not called
          * even once, then all methods are allowed.

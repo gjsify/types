@@ -1,6 +1,6 @@
 {
     "name": "@girs/modulemd-2.0",
-    "version": "2.0.0-4.0.0-beta.18",
+    "version": "2.0.0-4.0.0-beta.19",
     "description": "GJS TypeScript type definitions for Modulemd-2.0, generated from library version 2.0.0",
     "type": "module",
     "module": "modulemd-2.0.js",

@@ -553,7 +553,7 @@ export namespace Vte {
             working_directory: string | null,
             argv: string[],
             envv: string[] | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
@@ -607,7 +607,7 @@ export namespace Vte {
             envv: string[] | null,
             fds: number[] | null,
             map_fds: number[] | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
@@ -743,7 +743,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -784,7 +784,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1854,7 +1854,7 @@ export namespace Vte {
          * the start.
          * @param format a #VteFormat
          */
-        copy_clipboard_format(format: Format): void;
+        copy_clipboard_format(format: Format | null): void;
         /**
          * Places the selected text in the terminal in the #GDK_SELECTION_PRIMARY
          * selection.
@@ -2155,7 +2155,7 @@ export namespace Vte {
          * @param cancellable a #GCancellable, or %NULL
          * @returns a new #VtePty
          */
-        pty_new_sync(flags: PtyFlags, cancellable?: Gio.Cancellable | null): Pty;
+        pty_new_sync(flags: PtyFlags | null, cancellable?: Gio.Cancellable | null): Pty;
         /**
          * Resets as much of the terminal's internal state as possible, discarding any
          * unprocessed input data, resetting character attributes, cursor state,
@@ -2221,7 +2221,7 @@ export namespace Vte {
          * presses the backspace key.
          * @param binding a #VteEraseBinding for the backspace key
          */
-        set_backspace_binding(binding: EraseBinding): void;
+        set_backspace_binding(binding: EraseBinding | null): void;
         /**
          * Sets whether the SGR 1 attribute also switches to the bright counterpart
          * of the first 8 palette colors, in addition to making them bold (legacy behavior)
@@ -2321,12 +2321,12 @@ export namespace Vte {
          * will use the #GtkSettings::gtk-cursor-blink setting.
          * @param mode the #VteCursorBlinkMode to use
          */
-        set_cursor_blink_mode(mode: CursorBlinkMode): void;
+        set_cursor_blink_mode(mode: CursorBlinkMode | null): void;
         /**
          * Sets the shape of the cursor drawn.
          * @param shape the #VteCursorShape to use
          */
-        set_cursor_shape(shape: CursorShape): void;
+        set_cursor_shape(shape: CursorShape | null): void;
         /**
          * Reset the terminal palette to reasonable compiled-in default color.
          */
@@ -2337,7 +2337,7 @@ export namespace Vte {
          * presses the delete key.
          * @param binding a #VteEraseBinding for the delete key
          */
-        set_delete_binding(binding: EraseBinding): void;
+        set_delete_binding(binding: EraseBinding | null): void;
         /**
          * Controls whether or not the terminal will perform bidirectional text rendering.
          * @param enable_bidi %TRUE to enable BiDi support
@@ -2461,7 +2461,7 @@ export namespace Vte {
          * Controls whether or not the terminal will allow blinking text.
          * @param text_blink_mode the #VteTextBlinkMode to use
          */
-        set_text_blink_mode(text_blink_mode: TextBlinkMode): void;
+        set_text_blink_mode(text_blink_mode: TextBlinkMode | null): void;
         /**
          * With this function you can provide a set of characters which will
          * be considered parts of a word when doing word-wise selection, in
@@ -2483,7 +2483,7 @@ export namespace Vte {
          *   like %VTE_ALIGN_START.
          * @param align alignment value from #VteAlign
          */
-        set_xalign(align: Align): void;
+        set_xalign(align: Align | null): void;
         /**
          * Sets the horizontal fillment of `terminal` within its allocation.
          *
@@ -2496,7 +2496,7 @@ export namespace Vte {
          * Sets the vertical alignment of `terminal` within its allocation.
          * @param align alignment value from #VteAlign
          */
-        set_yalign(align: Align): void;
+        set_yalign(align: Align | null): void;
         /**
          * Sets the vertical fillment of `terminal` within its allocation.
          * @param fill fillment value from #VteFill
@@ -2518,11 +2518,11 @@ export namespace Vte {
          * @param cancellable a #GCancellable, or %NULL
          */
         spawn_async(
-            pty_flags: PtyFlags,
+            pty_flags: PtyFlags | null,
             working_directory: string | null,
             argv: string[],
             envv: string[] | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
@@ -2561,11 +2561,11 @@ export namespace Vte {
          * @returns %TRUE on success, or %FALSE on error with @error filled in
          */
         spawn_sync(
-            pty_flags: PtyFlags,
+            pty_flags: PtyFlags | null,
             working_directory: string | null,
             argv: string[],
             envv: string[] | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
             child_setup?: GLib.SpawnChildSetupFunc | null,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, GLib.Pid | null];
@@ -2626,13 +2626,13 @@ export namespace Vte {
          * @param cancellable a #GCancellable, or %NULL
          */
         spawn_with_fds_async(
-            pty_flags: PtyFlags,
+            pty_flags: PtyFlags | null,
             working_directory: string | null,
             argv: string[],
             envv: string[] | null,
             fds: number[] | null,
             map_fds: number[] | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
@@ -2674,7 +2674,11 @@ export namespace Vte {
          * @param cancellable a #GCancellable object, or %NULL
          * @returns %TRUE on success, %FALSE if there was an error
          */
-        write_contents_sync(stream: Gio.OutputStream, flags: WriteFlags, cancellable?: Gio.Cancellable | null): boolean;
+        write_contents_sync(
+            stream: Gio.OutputStream,
+            flags: WriteFlags | null,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
 
         // Inherited properties
         /**
@@ -2740,7 +2744,7 @@ export namespace Vte {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -2788,22 +2792,22 @@ export namespace Vte {
          * @param state platform state to query
          * @returns the value of @state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
         /**
          * Resets the accessible `property` to its default value.
          * @param property a `GtkAccessibleProperty`
          */
-        reset_property(property: Gtk.AccessibleProperty): void;
+        reset_property(property: Gtk.AccessibleProperty | null): void;
         /**
          * Resets the accessible `relation` to its default value.
          * @param relation a `GtkAccessibleRelation`
          */
-        reset_relation(relation: Gtk.AccessibleRelation): void;
+        reset_relation(relation: Gtk.AccessibleRelation | null): void;
         /**
          * Resets the accessible `state` to its default value.
          * @param state a `GtkAccessibleState`
          */
-        reset_state(state: Gtk.AccessibleState): void;
+        reset_state(state: Gtk.AccessibleState | null): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -2836,7 +2840,7 @@ export namespace Vte {
          * @param properties an array of `GtkAccessibleProperty`
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -2847,7 +2851,7 @@ export namespace Vte {
          * @param relations an array of `GtkAccessibleRelation`
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -2858,7 +2862,7 @@ export namespace Vte {
          * @param states an array of `GtkAccessibleState`
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -3031,7 +3035,7 @@ export namespace Vte {
          * below the minimum width or below the natural width.
          * @param policy the horizontal `GtkScrollablePolicy`
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
          * Sets the vertical adjustment of the `GtkScrollable`.
          * @param vadjustment a `GtkAdjustment`
@@ -3044,7 +3048,7 @@ export namespace Vte {
          * below the minimum height or below the natural height.
          * @param policy the vertical `GtkScrollablePolicy`
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable.
@@ -3098,7 +3102,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3139,7 +3143,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

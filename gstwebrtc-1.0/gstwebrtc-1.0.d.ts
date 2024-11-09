@@ -608,7 +608,7 @@ export namespace GstWebRTC {
         CERTIFICATE,
     }
     function webrtc_error_quark(): GLib.Quark;
-    function webrtc_sdp_type_to_string(type: WebRTCSDPType): string;
+    function webrtc_sdp_type_to_string(type: WebRTCSDPType | null): string;
     interface WebRTCICEOnCandidateFunc {
         (ice: WebRTCICE, stream_id: number, candidate: string): void;
     }
@@ -907,7 +907,7 @@ export namespace GstWebRTC {
         add_candidate(stream: WebRTCICEStream, candidate: string, promise?: Gst.Promise | null): void;
         add_stream(session_id: number): WebRTCICEStream | null;
         add_turn_server(uri: string): boolean;
-        find_transport(stream: WebRTCICEStream, component: WebRTCICEComponent): WebRTCICETransport | null;
+        find_transport(stream: WebRTCICEStream, component: WebRTCICEComponent | null): WebRTCICETransport | null;
         gather_candidates(stream: WebRTCICEStream): boolean;
         get_http_proxy(): string;
         get_is_controller(): boolean;
@@ -961,7 +961,7 @@ export namespace GstWebRTC {
 
         // Methods
 
-        find_transport(component: WebRTCICEComponent): WebRTCICETransport | null;
+        find_transport(component: WebRTCICEComponent | null): WebRTCICETransport | null;
         gather_candidates(): boolean;
     }
 
@@ -1026,9 +1026,9 @@ export namespace GstWebRTC {
 
         // Methods
 
-        connection_state_change(new_state: WebRTCICEConnectionState): void;
-        gathering_state_change(new_state: WebRTCICEGatheringState): void;
-        new_candidate(stream_id: number, component: WebRTCICEComponent, attr: string): void;
+        connection_state_change(new_state: WebRTCICEConnectionState | null): void;
+        gathering_state_change(new_state: WebRTCICEGatheringState | null): void;
+        new_candidate(stream_id: number, component: WebRTCICEComponent | null, attr: string): void;
         selected_pair_change(): void;
     }
 
@@ -1105,7 +1105,7 @@ export namespace GstWebRTC {
          * This also sets the Traffic Class field of IPv6.
          * @param priority The priority of this sender
          */
-        set_priority(priority: WebRTCPriorityType): void;
+        set_priority(priority: WebRTCPriorityType | null): void;
     }
 
     module WebRTCRTPTransceiver {

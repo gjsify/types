@@ -376,7 +376,7 @@ export namespace GFBGraph {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -417,7 +417,7 @@ export namespace GFBGraph {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1357,7 +1357,7 @@ export namespace GFBGraph {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1398,7 +1398,7 @@ export namespace GFBGraph {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1813,7 +1813,7 @@ export namespace GFBGraph {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1854,7 +1854,7 @@ export namespace GFBGraph {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2450,7 +2450,9 @@ export namespace GFBGraph {
         vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
     }
 
-    export const Authorizer: AuthorizerNamespace;
+    export const Authorizer: AuthorizerNamespace & {
+        new (): Authorizer; // This allows `obj instanceof Authorizer`
+    };
 
     module Connectable {
         // Constructor properties interface
@@ -2521,7 +2523,9 @@ export namespace GFBGraph {
         vfunc_parse_connected_data(payload: string): Node[];
     }
 
-    export const Connectable: ConnectableNamespace;
+    export const Connectable: ConnectableNamespace & {
+        new (): Connectable; // This allows `obj instanceof Connectable`
+    };
 
     /**
      * Name of the imported GIR library

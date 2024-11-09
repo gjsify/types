@@ -392,7 +392,10 @@ export namespace Gcr {
      * @param checksum_type the type of fingerprint to create
      * @returns the          fingerprint or %NULL if the input was invalid.
      */
-    function fingerprint_from_attributes(attrs: Gck.Attributes, checksum_type: GLib.ChecksumType): Uint8Array | null;
+    function fingerprint_from_attributes(
+        attrs: Gck.Attributes,
+        checksum_type: GLib.ChecksumType | null,
+    ): Uint8Array | null;
     /**
      * Create a key fingerprint for a DER encoded subjectPublicKeyInfo. The
      * fingerprint is created so that it will be identical for a key and its
@@ -407,7 +410,7 @@ export namespace Gcr {
      */
     function fingerprint_from_subject_public_key_info(
         key_info: Uint8Array | string,
-        checksum_type: GLib.ChecksumType,
+        checksum_type: GLib.ChecksumType | null,
     ): Uint8Array | null;
     /**
      * Get an appropriate icon for the token
@@ -1151,7 +1154,7 @@ export namespace Gcr {
         build(
             purpose: string,
             peer: string | null,
-            flags: CertificateChainFlags,
+            flags: CertificateChainFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -1192,7 +1195,7 @@ export namespace Gcr {
         build_async(
             purpose: string,
             peer: string | null,
-            flags: CertificateChainFlags,
+            flags: CertificateChainFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
@@ -1234,7 +1237,7 @@ export namespace Gcr {
         build_async(
             purpose: string,
             peer: string | null,
-            flags: CertificateChainFlags,
+            flags: CertificateChainFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1277,7 +1280,7 @@ export namespace Gcr {
         build_async(
             purpose: string,
             peer: string | null,
-            flags: CertificateChainFlags,
+            flags: CertificateChainFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -1625,7 +1628,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1666,7 +1669,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2095,18 +2098,18 @@ export namespace Gcr {
          * Disable parsing of the given format. Use %GCR_FORMAT_ALL to disable all the formats.
          * @param format The format identifier
          */
-        format_disable(format: DataFormat): void;
+        format_disable(format: DataFormat | null): void;
         /**
          * Enable parsing of the given format. Use %GCR_FORMAT_ALL to enable all the formats.
          * @param format The format identifier
          */
-        format_enable(format: DataFormat): void;
+        format_enable(format: DataFormat | null): void;
         /**
          * Check whether the given format is supported by the parser.
          * @param format The format identifier
          * @returns Whether the format is supported.
          */
-        format_supported(format: DataFormat): boolean;
+        format_supported(format: DataFormat | null): boolean;
         /**
          * Get the filename of the parser item.
          * @returns the filename set on the parser, or %NULL
@@ -2383,7 +2386,7 @@ export namespace Gcr {
          * @param type the type of algorithm for the fingerprint.
          * @returns the raw binary fingerprint
          */
-        get_fingerprint(type: GLib.ChecksumType): Uint8Array;
+        get_fingerprint(type: GLib.ChecksumType | null): Uint8Array;
         /**
          * Calculate the fingerprint for this certificate, and return it
          * as a hex string.
@@ -2393,7 +2396,7 @@ export namespace Gcr {
          * @param type the type of algorithm for the fingerprint.
          * @returns an allocated hex string which contains the fingerprint.
          */
-        get_fingerprint_hex(type: GLib.ChecksumType): string;
+        get_fingerprint_hex(type: GLib.ChecksumType | null): string;
         /**
          * Get the issued date of this certificate.
          *
@@ -2595,7 +2598,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2636,7 +2639,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3156,7 +3159,7 @@ export namespace Gcr {
          * @param type the type of algorithm for the fingerprint.
          * @returns the raw binary fingerprint
          */
-        get_fingerprint(type: GLib.ChecksumType): Uint8Array;
+        get_fingerprint(type: GLib.ChecksumType | null): Uint8Array;
         /**
          * Calculate the fingerprint for this certificate, and return it
          * as a hex string.
@@ -3166,7 +3169,7 @@ export namespace Gcr {
          * @param type the type of algorithm for the fingerprint.
          * @returns an allocated hex string which contains the fingerprint.
          */
-        get_fingerprint_hex(type: GLib.ChecksumType): string;
+        get_fingerprint_hex(type: GLib.ChecksumType | null): string;
         /**
          * Get the issued date of this certificate.
          *
@@ -3368,7 +3371,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3409,7 +3412,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3851,7 +3854,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3892,7 +3895,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5335,7 +5338,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5376,7 +5379,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5947,7 +5950,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5988,7 +5991,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6576,7 +6579,7 @@ export namespace Gcr {
          * @param type the type of algorithm for the fingerprint.
          * @returns the raw binary fingerprint
          */
-        get_fingerprint(type: GLib.ChecksumType): Uint8Array;
+        get_fingerprint(type: GLib.ChecksumType | null): Uint8Array;
         /**
          * Calculate the fingerprint for this certificate, and return it
          * as a hex string.
@@ -6586,7 +6589,7 @@ export namespace Gcr {
          * @param type the type of algorithm for the fingerprint.
          * @returns an allocated hex string which contains the fingerprint.
          */
-        get_fingerprint_hex(type: GLib.ChecksumType): string;
+        get_fingerprint_hex(type: GLib.ChecksumType | null): string;
         /**
          * Get the issued date of this certificate.
          *
@@ -6736,7 +6739,9 @@ export namespace Gcr {
         vfunc_get_der_data(): Uint8Array;
     }
 
-    export const Certificate: CertificateNamespace;
+    export const Certificate: CertificateNamespace & {
+        new (): Certificate; // This allows `obj instanceof Certificate`
+    };
 
     module Collection {
         // Constructor properties interface
@@ -6799,7 +6804,9 @@ export namespace Gcr {
         vfunc_removed(object: GObject.Object): void;
     }
 
-    export const Collection: CollectionNamespace;
+    export const Collection: CollectionNamespace & {
+        new (): Collection; // This allows `obj instanceof Collection`
+    };
 
     module Comparable {
         // Constructor properties interface
@@ -6832,7 +6839,9 @@ export namespace Gcr {
         vfunc_compare(other?: Comparable | null): number;
     }
 
-    export const Comparable: ComparableNamespace;
+    export const Comparable: ComparableNamespace & {
+        new (): Comparable; // This allows `obj instanceof Comparable`
+    };
 
     module ImportInteraction {
         // Constructor properties interface
@@ -6969,7 +6978,9 @@ export namespace Gcr {
         vfunc_supplement_prep(builder: Gck.Builder): void;
     }
 
-    export const ImportInteraction: ImportInteractionNamespace;
+    export const ImportInteraction: ImportInteractionNamespace & {
+        new (): ImportInteraction; // This allows `obj instanceof ImportInteraction`
+    };
 
     module Importer {
         // Constructor properties interface
@@ -7125,7 +7136,9 @@ export namespace Gcr {
         vfunc_queue_for_parsed(parsed: Parsed): boolean;
     }
 
-    export const Importer: ImporterNamespace;
+    export const Importer: ImporterNamespace & {
+        new (): Importer; // This allows `obj instanceof Importer`
+    };
 
     module Prompt {
         // Constructor properties interface
@@ -7706,7 +7719,9 @@ export namespace Gcr {
         vfunc_prompt_password_finish(result: Gio.AsyncResult): string;
     }
 
-    export const Prompt: PromptNamespace;
+    export const Prompt: PromptNamespace & {
+        new (): Prompt; // This allows `obj instanceof Prompt`
+    };
 
     /**
      * Name of the imported GIR library

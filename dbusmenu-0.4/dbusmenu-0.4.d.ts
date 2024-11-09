@@ -1194,7 +1194,7 @@ export namespace Dbusmenu {
          * Changes the status of the server.
          * @param status Status value to set on the server
          */
-        set_status(status: Status): void;
+        set_status(status: Status | null): void;
         /**
          * Sets the text direction that should be exported over DBus for
          * 	this server.  If the value is set to #DBUSMENU_TEXT_DIRECTION_NONE
@@ -1202,7 +1202,7 @@ export namespace Dbusmenu {
          * 	exported over DBus.
          * @param dir Direction of the text
          */
-        set_text_direction(dir: TextDirection): void;
+        set_text_direction(dir: TextDirection | null): void;
     }
 
     type ClientClass = typeof Client;

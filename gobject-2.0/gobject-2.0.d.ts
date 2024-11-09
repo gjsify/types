@@ -40,6 +40,7 @@ export namespace GObject {
         Template?: Uint8Array | GLib.Bytes | string;
         Children?: string[];
         InternalChildren?: string[];
+        Requires?: Object[];
     }
 
     // Correctly types interface checks.
@@ -941,7 +942,7 @@ export namespace GObject {
         nick: string | null,
         blurb: string | null,
         default_value: boolean,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecBoxed instance specifying a %G_TYPE_BOXED
@@ -960,7 +961,7 @@ export namespace GObject {
         nick: string | null,
         blurb: string | null,
         boxed_type: GType,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecChar instance specifying a %G_TYPE_CHAR property.
@@ -980,7 +981,7 @@ export namespace GObject {
         minimum: number,
         maximum: number,
         default_value: number,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecDouble instance specifying a %G_TYPE_DOUBLE
@@ -1003,7 +1004,7 @@ export namespace GObject {
         minimum: number,
         maximum: number,
         default_value: number,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecEnum instance specifying a %G_TYPE_ENUM
@@ -1024,7 +1025,7 @@ export namespace GObject {
         blurb: string | null,
         enum_type: GType,
         default_value: number,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecFlags instance specifying a %G_TYPE_FLAGS
@@ -1045,7 +1046,7 @@ export namespace GObject {
         blurb: string | null,
         flags_type: GType,
         default_value: number,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecFloat instance specifying a %G_TYPE_FLOAT property.
@@ -1067,7 +1068,7 @@ export namespace GObject {
         minimum: number,
         maximum: number,
         default_value: number,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecGType instance specifying a
@@ -1086,7 +1087,7 @@ export namespace GObject {
         nick: string | null,
         blurb: string | null,
         is_a_type: GType,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecInt instance specifying a %G_TYPE_INT property.
@@ -1108,7 +1109,7 @@ export namespace GObject {
         minimum: number,
         maximum: number,
         default_value: number,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecInt64 instance specifying a %G_TYPE_INT64 property.
@@ -1130,7 +1131,7 @@ export namespace GObject {
         minimum: number,
         maximum: number,
         default_value: number,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecLong instance specifying a %G_TYPE_LONG property.
@@ -1152,7 +1153,7 @@ export namespace GObject {
         minimum: number,
         maximum: number,
         default_value: number,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecBoxed instance specifying a %G_TYPE_OBJECT
@@ -1171,7 +1172,7 @@ export namespace GObject {
         nick: string | null,
         blurb: string | null,
         object_type: GType,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecParam instance specifying a %G_TYPE_PARAM
@@ -1190,7 +1191,7 @@ export namespace GObject {
         nick: string | null,
         blurb: string | null,
         param_type: GType,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecPointer instance specifying a pointer property.
@@ -1204,7 +1205,12 @@ export namespace GObject {
      * @param flags flags for the property specified
      * @returns a newly created parameter specification
      */
-    function param_spec_pointer(name: string, nick: string | null, blurb: string | null, flags: ParamFlags): ParamSpec;
+    function param_spec_pointer(
+        name: string,
+        nick: string | null,
+        blurb: string | null,
+        flags: ParamFlags | null,
+    ): ParamSpec;
     /**
      * Creates a new #GParamSpecString instance.
      *
@@ -1221,7 +1227,7 @@ export namespace GObject {
         nick: string | null,
         blurb: string | null,
         default_value: string | null,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecUChar instance specifying a %G_TYPE_UCHAR property.
@@ -1241,7 +1247,7 @@ export namespace GObject {
         minimum: number,
         maximum: number,
         default_value: number,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecUInt instance specifying a %G_TYPE_UINT property.
@@ -1263,7 +1269,7 @@ export namespace GObject {
         minimum: number,
         maximum: number,
         default_value: number,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecUInt64 instance specifying a %G_TYPE_UINT64
@@ -1286,7 +1292,7 @@ export namespace GObject {
         minimum: number,
         maximum: number,
         default_value: number,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecULong instance specifying a %G_TYPE_ULONG
@@ -1309,7 +1315,7 @@ export namespace GObject {
         minimum: number,
         maximum: number,
         default_value: number,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecUnichar instance specifying a %G_TYPE_UINT
@@ -1329,7 +1335,7 @@ export namespace GObject {
         nick: string | null,
         blurb: string | null,
         default_value: number,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Creates a new #GParamSpecVariant instance specifying a #GVariant
@@ -1352,7 +1358,7 @@ export namespace GObject {
         blurb: string | null,
         type: GLib.VariantType,
         default_value: GLib.Variant | null,
-        flags: ParamFlags,
+        flags: ParamFlags | null,
     ): ParamSpec;
     /**
      * Registers `name` as the name of a new static type derived
@@ -1634,7 +1640,7 @@ export namespace GObject {
      */
     function signal_handlers_block_matched(
         instance: Object,
-        mask: SignalMatchType,
+        mask: SignalMatchType | null,
         signal_id: number,
         detail: GLib.Quark,
         func?: any | null,
@@ -1672,7 +1678,7 @@ export namespace GObject {
      */
     function signal_handlers_disconnect_matched(
         instance: Object,
-        mask: SignalMatchType,
+        mask: SignalMatchType | null,
         signal_id: number,
         detail: GLib.Quark,
         func?: any | null,
@@ -1704,7 +1710,7 @@ export namespace GObject {
      */
     function signal_handlers_unblock_matched(
         instance: Object,
-        mask: SignalMatchType,
+        mask: SignalMatchType | null,
         signal_id: number,
         detail: GLib.Quark,
         func?: any | null,
@@ -1802,7 +1808,7 @@ export namespace GObject {
     function signal_newv(
         signal_name: string,
         itype: GType,
-        signal_flags: SignalFlags,
+        signal_flags: SignalFlags | null,
         class_closure: Closure | null,
         c_marshaller: SignalCMarshaller | null,
         return_type: GType,
@@ -2160,7 +2166,7 @@ export namespace GObject {
      * environment variable.
      * @param debug_flags bitwise combination of #GTypeDebugFlags values for     debugging purposes
      */
-    function type_init_with_debug_flags(debug_flags: TypeDebugFlags): void;
+    function type_init_with_debug_flags(debug_flags: TypeDebugFlags | null): void;
     /**
      * Adds `prerequisite_type` to the list of prerequisites of `interface_type`.
      * This means that any type implementing `interface_type` must also implement
@@ -2286,7 +2292,12 @@ export namespace GObject {
      * @param flags bitwise combination of #GTypeFlags values
      * @returns the new type identifier or %G_TYPE_INVALID if registration failed
      */
-    function type_register_dynamic(parent_type: GType, type_name: string, plugin: TypePlugin, flags: TypeFlags): GType;
+    function type_register_dynamic(
+        parent_type: GType,
+        type_name: string,
+        plugin: TypePlugin,
+        flags: TypeFlags | null,
+    ): GType;
     /**
      * Registers `type_id` as the predefined identifier and `type_name` as the
      * name of a fundamental type. If `type_id` is already registered, or a
@@ -2307,7 +2318,7 @@ export namespace GObject {
         type_name: string,
         info: TypeInfo,
         finfo: TypeFundamentalInfo,
-        flags: TypeFlags,
+        flags: TypeFlags | null,
     ): GType;
     /**
      * Registers `type_name` as the name of a new static type derived from
@@ -2321,7 +2332,12 @@ export namespace GObject {
      * @param flags bitwise combination of #GTypeFlags values
      * @returns the new type identifier
      */
-    function type_register_static(parent_type: GType, type_name: string, info: TypeInfo, flags: TypeFlags): GType;
+    function type_register_static(
+        parent_type: GType,
+        type_name: string,
+        info: TypeInfo,
+        flags: TypeFlags | null,
+    ): GType;
     /**
      * Attaches arbitrary data to a type.
      * @param type a #GType
@@ -3158,7 +3174,7 @@ export namespace GObject {
          * @param target_property the property on @target to bind
          * @param flags the flags used to create the #GBinding
          */
-        bind(source_property: string, target: Object, target_property: string, flags: BindingFlags): void;
+        bind(source_property: string, target: Object, target_property: string, flags: BindingFlags | null): void;
         /**
          * Creates a binding between `source_property` on the source object and
          * `target_property` on `target,` allowing you to set the transformation
@@ -3177,7 +3193,7 @@ export namespace GObject {
             source_property: string,
             target: Object,
             target_property: string,
-            flags: BindingFlags,
+            flags: BindingFlags | null,
             transform_to?: BindingTransformFunc | null,
             transform_from?: BindingTransformFunc | null,
         ): void;
@@ -3203,7 +3219,7 @@ export namespace GObject {
             source_property: string,
             target: Object,
             target_property: string,
-            flags: BindingFlags,
+            flags: BindingFlags | null,
             transform_to?: Closure | null,
             transform_from?: Closure | null,
         ): void;
@@ -3458,7 +3474,12 @@ export namespace GObject {
          * @param flags flags to pass to #GBinding
          * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
          */
-        bind_property(source_property: string, target: Object, target_property: string, flags: BindingFlags): Binding;
+        bind_property(
+            source_property: string,
+            target: Object,
+            target_property: string,
+            flags: BindingFlags | null,
+        ): Binding;
         /**
          * Complete version of g_object_bind_property().
          *
@@ -3498,7 +3519,7 @@ export namespace GObject {
             source_property: string,
             target: Object,
             target_property: string,
-            flags: BindingFlags,
+            flags: BindingFlags | null,
             transform_to?: BindingTransformFunc | null,
             transform_from?: BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3523,7 +3544,7 @@ export namespace GObject {
             source_property: string,
             target: Object,
             target_property: string,
-            flags: BindingFlags,
+            flags: BindingFlags | null,
             transform_to: Closure,
             transform_from: Closure,
         ): Binding;
@@ -4168,7 +4189,12 @@ export namespace GObject {
          * @param notify function to be called when disposing of @self
          * @param flags the flags used to create the signal connection
          */
-        connect_data(detailed_signal: string, c_handler: Callback, notify: ClosureNotify, flags: ConnectFlags): void;
+        connect_data(
+            detailed_signal: string,
+            c_handler: Callback,
+            notify: ClosureNotify,
+            flags: ConnectFlags | null,
+        ): void;
         /**
          * Connects `c_handler` to the signal `detailed_signal`
          * on the target instance of `self`.
@@ -4342,7 +4368,7 @@ export namespace GObject {
          * @param flags flags field providing details about the type
          * @returns the new or existing type ID
          */
-        register_type(parent_type: GType, type_name: string, type_info: TypeInfo, flags: TypeFlags): GType;
+        register_type(parent_type: GType, type_name: string, type_info: TypeInfo, flags: TypeFlags | null): GType;
         /**
          * Sets the name for a #GTypeModule
          * @param name a human-readable name to use in error messages.
@@ -4426,7 +4452,12 @@ export namespace GObject {
          * @param flags flags to pass to #GBinding
          * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
          */
-        bind_property(source_property: string, target: Object, target_property: string, flags: BindingFlags): Binding;
+        bind_property(
+            source_property: string,
+            target: Object,
+            target_property: string,
+            flags: BindingFlags | null,
+        ): Binding;
         /**
          * Complete version of g_object_bind_property().
          *
@@ -4466,7 +4497,7 @@ export namespace GObject {
             source_property: string,
             target: Object,
             target_property: string,
-            flags: BindingFlags,
+            flags: BindingFlags | null,
             transform_to?: BindingTransformFunc | null,
             transform_from?: BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6487,7 +6518,9 @@ export namespace GObject {
         use(): void;
     }
 
-    export const TypePlugin: TypePluginNamespace;
+    export const TypePlugin: TypePluginNamespace & {
+        new (): TypePlugin; // This allows `obj instanceof TypePlugin`
+    };
 
     type SignalCMarshaller = ClosureMarshal;
     type SignalCVaMarshaller = unknown;

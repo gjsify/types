@@ -273,7 +273,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -314,7 +314,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1046,7 +1046,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1087,7 +1087,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1728,7 +1728,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1769,7 +1769,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2246,7 +2246,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2287,7 +2287,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2905,7 +2905,7 @@ export namespace ClutterGst {
          * @param size The new size
          */
         set_buffer_size(size: number): void;
-        set_buffering_mode(mode: BufferingMode): void;
+        set_buffering_mode(mode: BufferingMode | null): void;
         /**
          * Sets the source of `self` using a file path.
          * @param filename A filename
@@ -2922,7 +2922,7 @@ export namespace ClutterGst {
          * to %CLUTTER_GST_SEEK_FLAG_NONE.
          * @param flags a combination of #ClutterGstSeekFlags
          */
-        set_seek_flags(flags: SeekFlags): void;
+        set_seek_flags(flags: SeekFlags | null): void;
         /**
          * Sets the font used by the subtitle renderer. The `font_name` string must be
          * either %NULL, which means that the default font name of the underlying
@@ -3126,7 +3126,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3167,7 +3167,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3663,7 +3663,7 @@ export namespace ClutterGst {
          * Sends the indicated command to the navigation interface.
          * @param command The command to issue
          */
-        send_command(command: GstVideo.NavigationCommand): void;
+        send_command(command: GstVideo.NavigationCommand | null): void;
         send_event(structure: Gst.Structure): void;
         // Conflicted with Gst.Element.send_event
         send_event(...args: never[]): any;
@@ -3751,7 +3751,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3792,7 +3792,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4457,7 +4457,9 @@ export namespace ClutterGst {
         vfunc_size_change(width: number, height: number): void;
     }
 
-    export const Player: PlayerNamespace;
+    export const Player: PlayerNamespace & {
+        new (): Player; // This allows `obj instanceof Player`
+    };
 
     /**
      * Name of the imported GIR library

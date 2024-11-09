@@ -370,7 +370,7 @@ export namespace Garcon {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -411,7 +411,7 @@ export namespace Garcon {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1159,7 +1159,7 @@ export namespace Garcon {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1200,7 +1200,7 @@ export namespace Garcon {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1689,7 +1689,7 @@ export namespace Garcon {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1730,7 +1730,7 @@ export namespace Garcon {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2100,7 +2100,7 @@ export namespace Garcon {
         get_node_type(): MenuNodeType;
         get_string(): string;
         set_merge_file_filename(filename: string): void;
-        set_merge_file_type(type: MenuMergeFileType): void;
+        set_merge_file_type(type: MenuMergeFileType | null): void;
         set_string(value: string): void;
     }
 
@@ -2178,7 +2178,7 @@ export namespace Garcon {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2219,7 +2219,7 @@ export namespace Garcon {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2612,7 +2612,7 @@ export namespace Garcon {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2653,7 +2653,7 @@ export namespace Garcon {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3086,7 +3086,9 @@ export namespace Garcon {
         vfunc_get_visible(): boolean;
     }
 
-    export const MenuElement: MenuElementNamespace;
+    export const MenuElement: MenuElementNamespace & {
+        new (): MenuElement; // This allows `obj instanceof MenuElement`
+    };
 
     module MenuTreeProvider {
         // Constructor properties interface
@@ -3108,7 +3110,9 @@ export namespace Garcon {
         vfunc_get_file(): Gio.File;
     }
 
-    export const MenuTreeProvider: MenuTreeProviderNamespace;
+    export const MenuTreeProvider: MenuTreeProviderNamespace & {
+        new (): MenuTreeProvider; // This allows `obj instanceof MenuTreeProvider`
+    };
 
     /**
      * Name of the imported GIR library

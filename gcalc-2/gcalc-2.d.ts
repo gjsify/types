@@ -250,7 +250,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -291,7 +291,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -759,7 +759,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -800,7 +800,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1183,7 +1183,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1224,7 +1224,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1608,7 +1608,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1649,7 +1649,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2038,7 +2038,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2079,7 +2079,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2471,7 +2471,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2512,7 +2512,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2912,7 +2912,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2953,7 +2953,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3464,7 +3464,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3505,7 +3505,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3964,7 +3964,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4005,7 +4005,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4618,7 +4618,7 @@ export namespace GCalc {
         // Inherited methods
         evaluate(): MathExpression;
         get_level(): MathGroupLevel;
-        set_level(value: MathGroupLevel): void;
+        set_level(value: MathGroupLevel | null): void;
         get_closed(): boolean;
         set_closed(value: boolean): void;
         vfunc_evaluate(): MathExpression;
@@ -4670,7 +4670,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4711,7 +4711,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5094,7 +5094,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5135,7 +5135,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5518,7 +5518,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5559,7 +5559,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5953,7 +5953,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5994,7 +5994,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6401,7 +6401,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6442,7 +6442,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6823,7 +6823,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6864,7 +6864,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7246,7 +7246,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7287,7 +7287,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7673,7 +7673,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7714,7 +7714,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8132,7 +8132,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8173,7 +8173,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8601,7 +8601,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8642,7 +8642,7 @@ export namespace GCalc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9363,7 +9363,9 @@ export namespace GCalc {
         vfunc_hash(): number;
     }
 
-    export const Hashable: HashableNamespace;
+    export const Hashable: HashableNamespace & {
+        new (): Hashable; // This allows `obj instanceof Hashable`
+    };
 
     module MathAssign {
         // Constructor properties interface
@@ -9381,7 +9383,9 @@ export namespace GCalc {
         evaluate(): MathExpression;
     }
 
-    export const MathAssign: MathAssignNamespace;
+    export const MathAssign: MathAssignNamespace & {
+        new (): MathAssign; // This allows `obj instanceof MathAssign`
+    };
 
     module MathBinaryOperator {
         // Constructor properties interface
@@ -9395,7 +9399,9 @@ export namespace GCalc {
     }
     interface MathBinaryOperator extends GObject.Object {}
 
-    export const MathBinaryOperator: MathBinaryOperatorNamespace;
+    export const MathBinaryOperator: MathBinaryOperatorNamespace & {
+        new (): MathBinaryOperator; // This allows `obj instanceof MathBinaryOperator`
+    };
 
     module MathConstant {
         // Constructor properties interface
@@ -9427,7 +9433,9 @@ export namespace GCalc {
         vfunc_pow(c: MathConstant): MathConstant;
     }
 
-    export const MathConstant: MathConstantNamespace;
+    export const MathConstant: MathConstantNamespace & {
+        new (): MathConstant; // This allows `obj instanceof MathConstant`
+    };
 
     module MathConstantComplex {
         // Constructor properties interface
@@ -9453,7 +9461,9 @@ export namespace GCalc {
         vfunc_zero(): void;
     }
 
-    export const MathConstantComplex: MathConstantComplexNamespace;
+    export const MathConstantComplex: MathConstantComplexNamespace & {
+        new (): MathConstantComplex; // This allows `obj instanceof MathConstantComplex`
+    };
 
     module MathConstantNumber {
         // Constructor properties interface
@@ -9475,7 +9485,9 @@ export namespace GCalc {
         vfunc_value(): number;
     }
 
-    export const MathConstantNumber: MathConstantNumberNamespace;
+    export const MathConstantNumber: MathConstantNumberNamespace & {
+        new (): MathConstantNumber; // This allows `obj instanceof MathConstantNumber`
+    };
 
     module MathConstantVector {
         // Constructor properties interface
@@ -9503,7 +9515,9 @@ export namespace GCalc {
         vfunc_y(): MathConstant;
     }
 
-    export const MathConstantVector: MathConstantVectorNamespace;
+    export const MathConstantVector: MathConstantVectorNamespace & {
+        new (): MathConstantVector; // This allows `obj instanceof MathConstantVector`
+    };
 
     module MathDivision {
         // Constructor properties interface
@@ -9517,7 +9531,9 @@ export namespace GCalc {
     }
     interface MathDivision extends GObject.Object {}
 
-    export const MathDivision: MathDivisionNamespace;
+    export const MathDivision: MathDivisionNamespace & {
+        new (): MathDivision; // This allows `obj instanceof MathDivision`
+    };
 
     module MathEquation {
         // Constructor properties interface
@@ -9545,7 +9561,9 @@ export namespace GCalc {
         vfunc_get_variables(): ExpressionHashMap;
     }
 
-    export const MathEquation: MathEquationNamespace;
+    export const MathEquation: MathEquationNamespace & {
+        new (): MathEquation; // This allows `obj instanceof MathEquation`
+    };
 
     module MathEquationManager {
         // Constructor properties interface
@@ -9579,7 +9597,9 @@ export namespace GCalc {
         vfunc_get_functions(): ExpressionContainer;
     }
 
-    export const MathEquationManager: MathEquationManagerNamespace;
+    export const MathEquationManager: MathEquationManagerNamespace & {
+        new (): MathEquationManager; // This allows `obj instanceof MathEquationManager`
+    };
 
     module MathErrorResult {
         // Constructor properties interface
@@ -9607,7 +9627,9 @@ export namespace GCalc {
         vfunc_get_message(): string;
     }
 
-    export const MathErrorResult: MathErrorResultNamespace;
+    export const MathErrorResult: MathErrorResultNamespace & {
+        new (): MathErrorResult; // This allows `obj instanceof MathErrorResult`
+    };
 
     module MathExpression {
         // Constructor properties interface
@@ -9646,7 +9668,9 @@ export namespace GCalc {
         vfunc_get_expressions(): ExpressionContainer;
     }
 
-    export const MathExpression: MathExpressionNamespace;
+    export const MathExpression: MathExpressionNamespace & {
+        new (): MathExpression; // This allows `obj instanceof MathExpression`
+    };
 
     module MathFunction {
         // Constructor properties interface
@@ -9704,7 +9728,9 @@ export namespace GCalc {
         vfunc_set_closed(value: boolean): void;
     }
 
-    export const MathFunction: MathFunctionNamespace;
+    export const MathFunction: MathFunctionNamespace & {
+        new (): MathFunction; // This allows `obj instanceof MathFunction`
+    };
 
     module MathGroup {
         // Constructor properties interface
@@ -9731,7 +9757,7 @@ export namespace GCalc {
 
         evaluate(): MathExpression;
         get_level(): MathGroupLevel;
-        set_level(value: MathGroupLevel): void;
+        set_level(value: MathGroupLevel | null): void;
         get_closed(): boolean;
         set_closed(value: boolean): void;
 
@@ -9744,7 +9770,9 @@ export namespace GCalc {
         vfunc_set_closed(value: boolean): void;
     }
 
-    export const MathGroup: MathGroupNamespace;
+    export const MathGroup: MathGroupNamespace & {
+        new (): MathGroup; // This allows `obj instanceof MathGroup`
+    };
 
     module MathMinus {
         // Constructor properties interface
@@ -9758,7 +9786,9 @@ export namespace GCalc {
     }
     interface MathMinus extends GObject.Object {}
 
-    export const MathMinus: MathMinusNamespace;
+    export const MathMinus: MathMinusNamespace & {
+        new (): MathMinus; // This allows `obj instanceof MathMinus`
+    };
 
     module MathMultiply {
         // Constructor properties interface
@@ -9772,7 +9802,9 @@ export namespace GCalc {
     }
     interface MathMultiply extends GObject.Object {}
 
-    export const MathMultiply: MathMultiplyNamespace;
+    export const MathMultiply: MathMultiplyNamespace & {
+        new (): MathMultiply; // This allows `obj instanceof MathMultiply`
+    };
 
     module MathOperator {
         // Constructor properties interface
@@ -9786,7 +9818,9 @@ export namespace GCalc {
     }
     interface MathOperator extends GObject.Object {}
 
-    export const MathOperator: MathOperatorNamespace;
+    export const MathOperator: MathOperatorNamespace & {
+        new (): MathOperator; // This allows `obj instanceof MathOperator`
+    };
 
     module MathParameter {
         // Constructor properties interface
@@ -9810,7 +9844,9 @@ export namespace GCalc {
         vfunc_get_value(): GObject.Value | null;
     }
 
-    export const MathParameter: MathParameterNamespace;
+    export const MathParameter: MathParameterNamespace & {
+        new (): MathParameter; // This allows `obj instanceof MathParameter`
+    };
 
     module MathPlus {
         // Constructor properties interface
@@ -9824,7 +9860,9 @@ export namespace GCalc {
     }
     interface MathPlus extends GObject.Object {}
 
-    export const MathPlus: MathPlusNamespace;
+    export const MathPlus: MathPlusNamespace & {
+        new (): MathPlus; // This allows `obj instanceof MathPlus`
+    };
 
     module MathPolynomial {
         // Constructor properties interface
@@ -9846,7 +9884,9 @@ export namespace GCalc {
         vfunc_evaluate(): MathExpression;
     }
 
-    export const MathPolynomial: MathPolynomialNamespace;
+    export const MathPolynomial: MathPolynomialNamespace & {
+        new (): MathPolynomial; // This allows `obj instanceof MathPolynomial`
+    };
 
     module MathPow {
         // Constructor properties interface
@@ -9860,7 +9900,9 @@ export namespace GCalc {
     }
     interface MathPow extends GObject.Object {}
 
-    export const MathPow: MathPowNamespace;
+    export const MathPow: MathPowNamespace & {
+        new (): MathPow; // This allows `obj instanceof MathPow`
+    };
 
     module MathResult {
         // Constructor properties interface
@@ -9890,7 +9932,9 @@ export namespace GCalc {
         vfunc_get_expression(): MathExpression;
     }
 
-    export const MathResult: MathResultNamespace;
+    export const MathResult: MathResultNamespace & {
+        new (): MathResult; // This allows `obj instanceof MathResult`
+    };
 
     module MathTerm {
         // Constructor properties interface
@@ -9916,7 +9960,9 @@ export namespace GCalc {
         vfunc_evaluate(): MathExpression;
     }
 
-    export const MathTerm: MathTermNamespace;
+    export const MathTerm: MathTermNamespace & {
+        new (): MathTerm; // This allows `obj instanceof MathTerm`
+    };
 
     module MathVariable {
         // Constructor properties interface
@@ -9965,7 +10011,9 @@ export namespace GCalc {
         vfunc_get_binded(): boolean;
     }
 
-    export const MathVariable: MathVariableNamespace;
+    export const MathVariable: MathVariableNamespace & {
+        new (): MathVariable; // This allows `obj instanceof MathVariable`
+    };
 
     /**
      * Name of the imported GIR library

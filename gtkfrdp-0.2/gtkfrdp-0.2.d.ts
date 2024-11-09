@@ -358,7 +358,7 @@ export namespace GtkFrdp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -399,7 +399,7 @@ export namespace GtkFrdp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -814,7 +814,7 @@ export namespace GtkFrdp {
         connect(...args: never[]): any;
         connect_finish(result: Gio.AsyncResult): boolean;
         is_open(): boolean;
-        mouse_event(event: MouseEvent, x: number, y: number): void;
+        mouse_event(event: MouseEvent | null, x: number, y: number): void;
         mouse_pointer(enter: boolean): void;
         mouse_smooth_scroll_event(x: number, y: number, delta_x: number, delta_y: number): void;
         send_key(key: Gdk.EventKey): void;

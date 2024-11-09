@@ -1704,7 +1704,7 @@ export namespace LibvirtGObject {
          * @param flags the flags
          * @returns #TRUE success, #FALSE otherwise
          */
-        resize(capacity: number, flags: StorageVolResizeFlags): boolean;
+        resize(capacity: number, flags: StorageVolResizeFlags | null): boolean;
         upload(stream: Stream, offset: number, length: number, flags: number): boolean;
     }
 
@@ -1738,7 +1738,7 @@ export namespace LibvirtGObject {
          * @param func the function to call when the condition is satisfied
          * @returns the event source id
          */
-        add_watch(priority: number, cond: StreamIOCondition, func: StreamIOFunc): number;
+        add_watch(priority: number, cond: StreamIOCondition | null, func: StreamIOFunc): number;
         /**
          * Receive data (up to `size` bytes) from a stream.
          * On error -1 is returned and `error` is set accordingly.

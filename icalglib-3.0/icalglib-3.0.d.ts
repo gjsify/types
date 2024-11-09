@@ -987,7 +987,7 @@ export namespace ICalGLib {
      * @param error The error to be checked
      * @returns The state of the @error
      */
-    function error_get_error_state(error: ErrorEnum): ErrorState;
+    function error_get_error_state(error: ErrorEnum | null): ErrorState;
     /**
      * Gets the #ICalErrorEnum in the string representation. This method called the icalerrorno_return to get
      * the current error.
@@ -999,25 +999,25 @@ export namespace ICalGLib {
      * @param error The error to be restored
      * @param es The error state to be restored
      */
-    function error_restore(error: string, es: ErrorState): void;
+    function error_restore(error: string, es: ErrorState | null): void;
     /**
      * Sets the errno.
      * @param x The error to be set
      */
-    function error_set_errno(x: ErrorEnum): void;
+    function error_set_errno(x: ErrorEnum | null): void;
     /**
      * Sets the state to the corresponding error in the library.
      * @param error The error enum
      * @param state The error state
      */
-    function error_set_error_state(error: ErrorEnum, state: ErrorState): void;
+    function error_set_error_state(error: ErrorEnum | null, state: ErrorState | null): void;
     function error_stop_here(): void;
     /**
      * Translates the #ICalErrorEnum to the string representation.
      * @param e The #ICalErrorEnum to be translated
      * @returns The string representation of @e
      */
-    function error_strerror(e: ErrorEnum): string;
+    function error_strerror(e: ErrorEnum | null): string;
     /**
      * Suppresses the error.
      * @param error The error to be suppressed
@@ -1110,13 +1110,13 @@ export namespace ICalGLib {
      * @param stat The #ICalRequestStatus to be queried
      * @returns The code for a request status
      */
-    function request_status_code(stat: RequestStatus): string;
+    function request_status_code(stat: RequestStatus | null): string;
     /**
      * Returns the descriptive text for a request status.
      * @param stat The #ICalRequestStatus to be translated
      * @returns The description of the @stat
      */
-    function request_status_desc(stat: RequestStatus): string;
+    function request_status_desc(stat: RequestStatus | null): string;
     /**
      * Returns a request status for major/minor status numbers.
      * @param major The major number
@@ -1129,13 +1129,13 @@ export namespace ICalGLib {
      * @param stat The #ICalRequestStatus to be queried
      * @returns The major number for a request status
      */
-    function request_status_major(stat: RequestStatus): number;
+    function request_status_major(stat: RequestStatus | null): number;
     /**
      * Returns the minor number for a request status.
      * @param stat The #ICalRequestStatus to be queried
      * @returns The minor number for a request status
      */
-    function request_status_minor(stat: RequestStatus): number;
+    function request_status_minor(stat: RequestStatus | null): number;
     /**
      * Checks whether the #ICalComponent is valid.
      * @param comp The component to be checked
@@ -1148,12 +1148,12 @@ export namespace ICalGLib {
      * @param count The number of restrictions
      * @returns Whether it is valid or not. -1 indicates invalid or more analysis. 1 indicates pass and 0 or 2+ indicates fail.
      */
-    function restriction_compare(restr: RestrictionKind, count: number): number;
+    function restriction_compare(restr: RestrictionKind | null, count: number): number;
     /**
      * Sets #ICalUnknowntokenhandling.
      * @param newSetting A #ICalUnknowntokenhandling
      */
-    function set_unknown_token_handling_setting(newSetting: Unknowntokenhandling): void;
+    function set_unknown_token_handling_setting(newSetting: Unknowntokenhandling | null): void;
     interface ComponentForeachRecurrenceFunc {
         (comp: Component, span: TimeSpan): void;
     }
@@ -1381,7 +1381,7 @@ export namespace ICalGLib {
          * @param kind A #ICalComponentKind
          * @returns A #ICalCompIter
          */
-        begin_component(kind: ComponentKind): CompIter;
+        begin_component(kind: ComponentKind | null): CompIter;
         /**
          * Checks the number of restrictions in #ICalComponent.
          * @returns The number of restrictions in @comp
@@ -1401,7 +1401,7 @@ export namespace ICalGLib {
          * @param kind The target #ICalComponentKind
          * @returns The count of child #ICalComponent in the parent one.
          */
-        count_components(kind: ComponentKind): number;
+        count_components(kind: ComponentKind | null): number;
         /**
          * Counts the number of errors in #ICalComponent.
          * @returns The count of errors.
@@ -1412,13 +1412,13 @@ export namespace ICalGLib {
          * @param kind A #ICalPropertyKind
          * @returns The number of #ICalProperty.
          */
-        count_properties(kind: PropertyKind): number;
+        count_properties(kind: PropertyKind | null): number;
         /**
          * Gets the #ICalCompIter pointing to the end child #ICalComponent.
          * @param kind A #ICalComponentKind
          * @returns A #ICalCompIter
          */
-        end_component(kind: ComponentKind): CompIter;
+        end_component(kind: ComponentKind | null): CompIter;
         /**
          * Cycles through all recurrences of an event. This function will call the specified callback function for
          * once for the base value of DTSTART, and foreach recurring date/time value. It will filter out events
@@ -1481,13 +1481,13 @@ export namespace ICalGLib {
          * @param kind A #ICalComponentKind
          * @returns The first #ICalComponent.
          */
-        get_first_component(kind: ComponentKind): Component | null;
+        get_first_component(kind: ComponentKind | null): Component | null;
         /**
          * Gets the first #ICalProperty with specific kind in #ICalComponent.
          * @param kind A #ICalPropertyKind
          * @returns The first #ICalProperty.
          */
-        get_first_property(kind: PropertyKind): Property | null;
+        get_first_property(kind: PropertyKind | null): Property | null;
         /**
          * For VCOMPONENT: Returns a reference to the first VEVENT, VTODO or VJOURNAL.
          * @returns A reference to the first VEVENT, VTODO or VJOURNAL
@@ -1513,13 +1513,13 @@ export namespace ICalGLib {
          * @param kind A #ICalComponentKind
          * @returns The next #ICalComponent.
          */
-        get_next_component(kind: ComponentKind): Component | null;
+        get_next_component(kind: ComponentKind | null): Component | null;
         /**
          * Gets the next #ICalProperty with specific kind in #ICalComponent.
          * @param kind A #ICalPropertyKind
          * @returns The next #ICalProperty.
          */
-        get_next_property(kind: PropertyKind): Property | null;
+        get_next_property(kind: PropertyKind | null): Property | null;
         /**
          * Gets the parent component of the `component`.
          * @returns The parent #ICalComponent of the @component.
@@ -1642,7 +1642,7 @@ export namespace ICalGLib {
          * Sets the method of the #ICalComponent.
          * @param method A #ICalPropertyMethod
          */
-        set_method(method: PropertyMethod): void;
+        set_method(method: PropertyMethod | null): void;
         /**
          * Sets the `parent` #ICalComponent of the specified `component`.
          * @param parent An #ICalComponent, a new parent
@@ -1667,7 +1667,7 @@ export namespace ICalGLib {
          * Sets the status of the #ICalComponent.
          * @param status A #ICalPropertyStatus
          */
-        set_status(status: PropertyStatus): void;
+        set_status(status: PropertyStatus | null): void;
         /**
          * Sets the summary of the #ICalComponent.
          * @param v A string representing summary
@@ -2280,20 +2280,20 @@ export namespace ICalGLib {
          * @returns 1 if the native part is of type icalparameter, 0 if not.
          */
         isa_parameter(): number;
-        set_actionparam(v: ParameterAction): void;
+        set_actionparam(v: ParameterAction | null): void;
         set_altrep(v: string): void;
         set_charset(v: string): void;
         set_cn(v: string): void;
-        set_cutype(v: ParameterCutype): void;
+        set_cutype(v: ParameterCutype | null): void;
         set_delegatedfrom(v: string): void;
         set_delegatedto(v: string): void;
         set_dir(v: string): void;
-        set_display(value: ParameterDisplay): void;
+        set_display(value: ParameterDisplay | null): void;
         set_email(value: string): void;
-        set_enable(v: ParameterEnable): void;
-        set_encoding(v: ParameterEncoding): void;
-        set_fbtype(v: ParameterFbtype): void;
-        set_feature(value: ParameterFeature): void;
+        set_enable(v: ParameterEnable | null): void;
+        set_encoding(v: ParameterEncoding | null): void;
+        set_fbtype(v: ParameterFbtype | null): void;
+        set_feature(value: ParameterFeature | null): void;
         set_filename(v: string): void;
         set_fmttype(v: string): void;
         set_iana(v: string): void;
@@ -2311,7 +2311,7 @@ export namespace ICalGLib {
         set_label(value: string): void;
         set_language(v: string): void;
         set_latency(v: string): void;
-        set_local(v: ParameterLocal): void;
+        set_local(v: ParameterLocal | null): void;
         set_localize(v: string): void;
         set_managedid(v: string): void;
         set_member(v: string): void;
@@ -2322,29 +2322,29 @@ export namespace ICalGLib {
          * @param property The parent #ICalProperty
          */
         set_parent(property?: Property | null): void;
-        set_partstat(v: ParameterPartstat): void;
-        set_patchaction(value: ParameterPatchaction): void;
+        set_partstat(v: ParameterPartstat | null): void;
+        set_patchaction(value: ParameterPatchaction | null): void;
         set_publiccomment(v: string): void;
-        set_range(v: ParameterRange): void;
+        set_range(v: ParameterRange | null): void;
         set_reason(v: string): void;
-        set_related(v: ParameterRelated): void;
-        set_reltype(v: ParameterReltype): void;
-        set_required(v: ParameterRequired): void;
+        set_related(v: ParameterRelated | null): void;
+        set_reltype(v: ParameterReltype | null): void;
+        set_required(v: ParameterRequired | null): void;
         set_response(v: number): void;
-        set_role(v: ParameterRole): void;
-        set_rsvp(v: ParameterRsvp): void;
-        set_scheduleagent(v: ParameterScheduleagent): void;
-        set_scheduleforcesend(v: ParameterScheduleforcesend): void;
+        set_role(v: ParameterRole | null): void;
+        set_rsvp(v: ParameterRsvp | null): void;
+        set_scheduleagent(v: ParameterScheduleagent | null): void;
+        set_scheduleforcesend(v: ParameterScheduleforcesend | null): void;
         set_schedulestatus(v: string): void;
         set_sentby(v: string): void;
         set_size(v: string): void;
-        set_stayinformed(v: ParameterStayinformed): void;
-        set_substate(v: ParameterSubstate): void;
+        set_stayinformed(v: ParameterStayinformed | null): void;
+        set_substate(v: ParameterSubstate | null): void;
         set_tzid(v: string): void;
-        set_value(v: ParameterValue): void;
+        set_value(v: ParameterValue | null): void;
         set_x(v: string): void;
-        set_xliccomparetype(v: ParameterXliccomparetype): void;
-        set_xlicerrortype(v: ParameterXlicerrortype): void;
+        set_xliccomparetype(v: ParameterXliccomparetype | null): void;
+        set_xlicerrortype(v: ParameterXlicerrortype | null): void;
         /**
          * Sets the xname property of the native part of the #ICalParameter.
          * @param v The name to be set into the @param
@@ -3058,7 +3058,7 @@ export namespace ICalGLib {
          * @param kind The target kind of #ICalParameter to be retrieved
          * @returns The first #ICalParameter of @prop.
          */
-        get_first_parameter(kind: ParameterKind): Parameter;
+        get_first_parameter(kind: ParameterKind | null): Parameter;
         /**
          * Gets the freebusy period type of #ICalProperty.
          * @returns Get the freebusy period type of #ICalProperty.
@@ -3134,7 +3134,7 @@ export namespace ICalGLib {
          * @param kind The target kind of #ICalParameter to be retrieved
          * @returns The next #ICalParameter of @prop.
          */
-        get_next_parameter(kind: ParameterKind): Parameter;
+        get_next_parameter(kind: ParameterKind | null): Parameter;
         /**
          * Gets the organizer of #ICalProperty.
          * @returns Get the organizer of #ICalProperty.
@@ -3478,7 +3478,7 @@ export namespace ICalGLib {
          * Removes the target kind of the parameters in the #ICalProperty.
          * @param kind The #ICalParameterKind to be removed
          */
-        remove_parameter_by_kind(kind: ParameterKind): void;
+        remove_parameter_by_kind(kind: ParameterKind | null): void;
         /**
          * Removes parameter in the #ICalProperty by name.
          * @param name The name of the parameter to be removed
@@ -3503,7 +3503,7 @@ export namespace ICalGLib {
          * Sets the action for the #ICalProperty.
          * @param v The action
          */
-        set_action(v: PropertyAction): void;
+        set_action(v: PropertyAction | null): void;
         /**
          * Sets the allowconflict for the #ICalProperty.
          * @param v The allowconflict
@@ -3523,7 +3523,7 @@ export namespace ICalGLib {
          * Sets the busytype for the #ICalProperty.
          * @param v The busytype
          */
-        set_busytype(v: PropertyBusytype): void;
+        set_busytype(v: PropertyBusytype | null): void;
         /**
          * Sets the calid for the #ICalProperty.
          * @param v The calid
@@ -3553,7 +3553,7 @@ export namespace ICalGLib {
          * Sets the carlevel for the #ICalProperty.
          * @param v The carlevel
          */
-        set_carlevel(v: PropertyCarlevel): void;
+        set_carlevel(v: PropertyCarlevel | null): void;
         /**
          * Sets the categories for the #ICalProperty.
          * @param v The categories
@@ -3563,12 +3563,12 @@ export namespace ICalGLib {
          * Sets the class for the #ICalProperty.
          * @param v The class
          */
-        set_class(v: Property_Class): void;
+        set_class(v: Property_Class | null): void;
         /**
          * Sets the cmd for the #ICalProperty.
          * @param v The cmd
          */
-        set_cmd(v: PropertyCmd): void;
+        set_cmd(v: PropertyCmd | null): void;
         /**
          * Sets the color for the `prop`.
          * @param v The color
@@ -3748,7 +3748,7 @@ export namespace ICalGLib {
          * Sets the method for the #ICalProperty.
          * @param v The method
          */
-        set_method(v: PropertyMethod): void;
+        set_method(v: PropertyMethod | null): void;
         /**
          * Sets the mindate time for the #ICalProperty.
          * @param v The mindate time
@@ -3807,7 +3807,7 @@ export namespace ICalGLib {
          * Sets the pollcompletion for the #ICalProperty.
          * @param v The pollcompletion
          */
-        set_pollcompletion(v: PropertyPollcompletion): void;
+        set_pollcompletion(v: PropertyPollcompletion | null): void;
         /**
          * Sets the pollitemid for the #ICalProperty.
          * @param v The pollitemid
@@ -3817,7 +3817,7 @@ export namespace ICalGLib {
          * Sets the pollmode for the #ICalProperty.
          * @param v The pollmode
          */
-        set_pollmode(v: PropertyPollmode): void;
+        set_pollmode(v: PropertyPollmode | null): void;
         /**
          * Sets the pollproperties for the #ICalProperty.
          * @param v The pollproperties
@@ -3852,7 +3852,7 @@ export namespace ICalGLib {
          * Sets the querylevel for the #ICalProperty.
          * @param v The querylevel
          */
-        set_querylevel(v: PropertyQuerylevel): void;
+        set_querylevel(v: PropertyQuerylevel | null): void;
         /**
          * Sets the queryname for the #ICalProperty.
          * @param v The queryname
@@ -3942,7 +3942,7 @@ export namespace ICalGLib {
          * Sets the status for the #ICalProperty.
          * @param v The status
          */
-        set_status(v: PropertyStatus): void;
+        set_status(v: PropertyStatus | null): void;
         /**
          * Sets the storesexpanded for the #ICalProperty.
          * @param v The storesexpanded
@@ -3962,12 +3962,12 @@ export namespace ICalGLib {
          * Sets the taskmode for the #ICalProperty.
          * @param v The taskmode
          */
-        set_taskmode(v: PropertyTaskmode): void;
+        set_taskmode(v: PropertyTaskmode | null): void;
         /**
          * Sets the transp for the #ICalProperty.
          * @param v The transp
          */
-        set_transp(v: PropertyTransp): void;
+        set_transp(v: PropertyTransp | null): void;
         /**
          * Sets the trigger time for the #ICalProperty.
          * @param v The trigger period type
@@ -4053,7 +4053,7 @@ export namespace ICalGLib {
          * Sets the xlicclass for the #ICalProperty.
          * @param v The xlicclass
          */
-        set_xlicclass(v: PropertyXlicclass): void;
+        set_xlicclass(v: PropertyXlicclass | null): void;
         /**
          * Sets the xlicclustercount for the #ICalProperty.
          * @param v The xlicclustercount
@@ -4459,7 +4459,7 @@ export namespace ICalGLib {
          * Sets the freq from #ICalRecurrence.
          * @param freq The freq of #ICalRecurrence
          */
-        set_freq(freq: RecurrenceFrequency): void;
+        set_freq(freq: RecurrenceFrequency | null): void;
         /**
          * Sets the interval from #ICalRecurrence.
          * @param interval The interval of #ICalRecurrence
@@ -4474,7 +4474,7 @@ export namespace ICalGLib {
          * Sets the week_start from #ICalRecurrence.
          * @param week_start The week_start of #ICalRecurrence
          */
-        set_week_start(week_start: RecurrenceWeekday): void;
+        set_week_start(week_start: RecurrenceWeekday | null): void;
         /**
          * Converts a #ICalRecurrence to a string.
          * @returns The string representation of @recur.
@@ -4523,7 +4523,7 @@ export namespace ICalGLib {
          * Sets the code of #ICalReqstat.
          * @param code The code of @reqstat
          */
-        set_code(code: RequestStatus): void;
+        set_code(code: RequestStatus | null): void;
         /**
          * Converts #ICalReqstat to a string representation.
          * @returns A string.
@@ -5501,7 +5501,7 @@ export namespace ICalGLib {
          * Sets the action in the #ICalValue.
          * @param v The action value
          */
-        set_action(v: PropertyAction): void;
+        set_action(v: PropertyAction | null): void;
         /**
          * Sets the attach in the #ICalValue.
          * @param v The attach value
@@ -5521,7 +5521,7 @@ export namespace ICalGLib {
          * Sets the busytype in the #ICalValue.
          * @param v The busytype value
          */
-        set_busytype(v: PropertyBusytype): void;
+        set_busytype(v: PropertyBusytype | null): void;
         /**
          * Sets the caladdress in the #ICalValue.
          * @param v The caladdress value
@@ -5531,17 +5531,17 @@ export namespace ICalGLib {
          * Sets the carlevel in the #ICalValue.
          * @param v The carlevel value
          */
-        set_carlevel(v: PropertyCarlevel): void;
+        set_carlevel(v: PropertyCarlevel | null): void;
         /**
          * Sets the class in the #ICalValue.
          * @param v The class value
          */
-        set_class(v: Property_Class): void;
+        set_class(v: Property_Class | null): void;
         /**
          * Sets the cmd in the #ICalValue.
          * @param v The cmd value
          */
-        set_cmd(v: PropertyCmd): void;
+        set_cmd(v: PropertyCmd | null): void;
         /**
          * Sets the date in the #ICalValue.
          * @param v The date value
@@ -5586,7 +5586,7 @@ export namespace ICalGLib {
          * Sets the method in the #ICalValue.
          * @param v The method value
          */
-        set_method(v: PropertyMethod): void;
+        set_method(v: PropertyMethod | null): void;
         /**
          * Sets the parent property of a value.
          * @param property The parent #ICalProperty
@@ -5601,12 +5601,12 @@ export namespace ICalGLib {
          * Sets the pollcompletion in the #ICalValue.
          * @param v The pollcompletion value
          */
-        set_pollcompletion(v: PropertyPollcompletion): void;
+        set_pollcompletion(v: PropertyPollcompletion | null): void;
         /**
          * Sets the pollmode in the #ICalValue.
          * @param v The pollmode value
          */
-        set_pollmode(v: PropertyPollmode): void;
+        set_pollmode(v: PropertyPollmode | null): void;
         /**
          * Sets the query in the #ICalValue.
          * @param v The query value
@@ -5616,7 +5616,7 @@ export namespace ICalGLib {
          * Sets the querylevel in the #ICalValue.
          * @param v The querylevel value
          */
-        set_querylevel(v: PropertyQuerylevel): void;
+        set_querylevel(v: PropertyQuerylevel | null): void;
         /**
          * Sets the recur in the #ICalValue.
          * @param v The recur value
@@ -5631,7 +5631,7 @@ export namespace ICalGLib {
          * Sets the status in the #ICalValue.
          * @param v The status value
          */
-        set_status(v: PropertyStatus): void;
+        set_status(v: PropertyStatus | null): void;
         /**
          * Sets the string in the #ICalValue.
          * @param v The string value
@@ -5641,7 +5641,7 @@ export namespace ICalGLib {
          * Sets the taskmode in the #ICalValue.
          * @param v The taskmode value
          */
-        set_taskmode(v: PropertyTaskmode): void;
+        set_taskmode(v: PropertyTaskmode | null): void;
         /**
          * Sets the text in the #ICalValue.
          * @param v The text value
@@ -5651,7 +5651,7 @@ export namespace ICalGLib {
          * Sets the transp in the #ICalValue.
          * @param v The transp value
          */
-        set_transp(v: PropertyTransp): void;
+        set_transp(v: PropertyTransp | null): void;
         /**
          * Sets the trigger in the #ICalValue.
          * @param v The trigger value
@@ -5676,7 +5676,7 @@ export namespace ICalGLib {
          * Sets the xlicclass in the #ICalValue.
          * @param v The xlicclass value
          */
-        set_xlicclass(v: PropertyXlicclass): void;
+        set_xlicclass(v: PropertyXlicclass | null): void;
     }
 
     type ArrayClass = typeof Array;

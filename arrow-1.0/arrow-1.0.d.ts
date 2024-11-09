@@ -924,7 +924,7 @@ export namespace Arrow {
         is_valid(i: number): boolean;
         run_end_encode(options?: RunEndEncodeOptions | null): RunEndEncodedArray | null;
         slice(offset: number, length: number): Array;
-        sort_indices(order: SortOrder): UInt64Array | null;
+        sort_indices(order: SortOrder | null): UInt64Array | null;
         sort_to_indices(): UInt64Array | null;
         take(indices: Array, options?: TakeOptions | null): Array | null;
         take_chunked_array(indices: ChunkedArray, options?: TakeOptions | null): ChunkedArray | null;
@@ -1458,7 +1458,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1499,7 +1499,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1891,7 +1891,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1932,7 +1932,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2673,7 +2673,7 @@ export namespace Arrow {
         get_value_data_type(): DataType;
         get_value_type(): Type;
         slice(offset: number, length: number): ChunkedArray;
-        sort_indices(order: SortOrder): UInt64Array | null;
+        sort_indices(order: SortOrder | null): UInt64Array | null;
         take(indices: Array, options?: TakeOptions | null): ChunkedArray | null;
         take_chunked_array(indices: ChunkedArray, options?: TakeOptions | null): ChunkedArray | null;
         to_string(): string | null;
@@ -2816,7 +2816,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2857,7 +2857,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3257,7 +3257,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3298,7 +3298,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5288,7 +5288,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5329,7 +5329,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5721,7 +5721,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5762,7 +5762,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6767,7 +6767,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6808,7 +6808,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7210,7 +7210,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7251,7 +7251,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7834,7 +7834,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7875,7 +7875,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9455,7 +9455,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9496,7 +9496,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10364,7 +10364,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10405,7 +10405,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11731,7 +11731,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11772,7 +11772,7 @@ export namespace Arrow {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14432,7 +14432,9 @@ export namespace Arrow {
         tell(): number;
     }
 
-    export const File: FileNamespace;
+    export const File: FileNamespace & {
+        new (): File; // This allows `obj instanceof File`
+    };
 
     module Readable {
         // Constructor properties interface
@@ -14451,7 +14453,9 @@ export namespace Arrow {
         read_bytes(n_bytes: number): GLib.Bytes | null;
     }
 
-    export const Readable: ReadableNamespace;
+    export const Readable: ReadableNamespace & {
+        new (): Readable; // This allows `obj instanceof Readable`
+    };
 
     module Writable {
         // Constructor properties interface
@@ -14474,7 +14478,9 @@ export namespace Arrow {
         write(data: Uint8Array | string): boolean;
     }
 
-    export const Writable: WritableNamespace;
+    export const Writable: WritableNamespace & {
+        new (): Writable; // This allows `obj instanceof Writable`
+    };
 
     module WritableFile {
         // Constructor properties interface
@@ -14492,7 +14498,9 @@ export namespace Arrow {
         write_at(position: number, data: Uint8Array | string): boolean;
     }
 
-    export const WritableFile: WritableFileNamespace;
+    export const WritableFile: WritableFileNamespace & {
+        new (): WritableFile; // This allows `obj instanceof WritableFile`
+    };
 
     type TimePoint = number;
     /**

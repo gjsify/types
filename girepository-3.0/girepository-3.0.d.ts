@@ -370,7 +370,7 @@ export namespace GIRepository {
      * @param storage_type a [type@GIRepository.TypeTag] obtained from   [method@GIRepository.TypeInfo.get_storage_type]
      * @param hash_pointer a pointer, such as a [struct@GLib.HashTable] data pointer
      */
-    function type_tag_argument_from_hash_pointer(storage_type: TypeTag, hash_pointer: any | null): Argument;
+    function type_tag_argument_from_hash_pointer(storage_type: TypeTag | null, hash_pointer: any | null): Argument;
     /**
      * Convert a [type`GIRepository`.Argument] to data pointer for use in a GLib
      * data structure.
@@ -391,13 +391,13 @@ export namespace GIRepository {
      * @param arg a [type@GIRepository.Argument] with the value to stuff into a pointer
      * @returns A stuffed pointer, that can be stored in a [struct@GLib.HashTable],   for example
      */
-    function type_tag_hash_pointer_from_argument(storage_type: TypeTag, arg: Argument): any | null;
+    function type_tag_hash_pointer_from_argument(storage_type: TypeTag | null, arg: Argument): any | null;
     /**
      * Obtain a string representation of `type`
      * @param type the type_tag
      * @returns the string
      */
-    function type_tag_to_string(type: TypeTag): string;
+    function type_tag_to_string(type: TypeTag | null): string;
     /**
      * Flags for a [class`GIRepository`.FieldInfo].
      */
@@ -1886,7 +1886,7 @@ export namespace GIRepository {
          * @param flags flags affecting the loading operation
          * @returns namespace of the loaded typelib
          */
-        load_typelib(typelib: Typelib, flags: RepositoryLoadFlags): string;
+        load_typelib(typelib: Typelib, flags: RepositoryLoadFlags | null): string;
         /**
          * Prepends `directory` to the search path that is used to
          * search shared libraries referenced by imported namespaces.
@@ -1924,7 +1924,7 @@ export namespace GIRepository {
          * @param flags Set of [flags@GIRepository.RepositoryLoadFlags], may be 0
          * @returns a pointer to the [type@GIRepository.Typelib] if   successful, `NULL` otherwise
          */
-        require(namespace_: string, version: string | null, flags: RepositoryLoadFlags): Typelib;
+        require(namespace_: string, version: string | null, flags: RepositoryLoadFlags | null): Typelib;
         /**
          * Force the namespace `namespace_` to be loaded if it isn’t already.
          *
@@ -1942,7 +1942,7 @@ export namespace GIRepository {
             typelib_dir: string,
             namespace_: string,
             version: string | null,
-            flags: RepositoryLoadFlags,
+            flags: RepositoryLoadFlags | null,
         ): Typelib;
     }
 

@@ -127,7 +127,7 @@ export namespace Gee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -168,7 +168,7 @@ export namespace Gee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -697,7 +697,7 @@ export namespace Gee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -738,7 +738,7 @@ export namespace Gee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1149,7 +1149,7 @@ export namespace Gee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1190,7 +1190,7 @@ export namespace Gee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2348,7 +2348,9 @@ export namespace Gee {
         vfunc_last(): boolean;
     }
 
-    export const BidirIterator: BidirIteratorNamespace;
+    export const BidirIterator: BidirIteratorNamespace & {
+        new (): BidirIterator; // This allows `obj instanceof BidirIterator`
+    };
 
     module Collection {
         // Constructor properties interface
@@ -2402,7 +2404,9 @@ export namespace Gee {
         vfunc_to_array(): any[];
     }
 
-    export const Collection: CollectionNamespace;
+    export const Collection: CollectionNamespace & {
+        new (): Collection; // This allows `obj instanceof Collection`
+    };
 
     module Comparable {
         // Constructor properties interface
@@ -2424,7 +2428,9 @@ export namespace Gee {
         vfunc_compare_to(object: any): number;
     }
 
-    export const Comparable: ComparableNamespace;
+    export const Comparable: ComparableNamespace & {
+        new (): Comparable; // This allows `obj instanceof Comparable`
+    };
 
     module Deque {
         // Constructor properties interface
@@ -2460,7 +2466,9 @@ export namespace Gee {
         vfunc_drain_tail(recipient: Collection, amount: number): number;
     }
 
-    export const Deque: DequeNamespace;
+    export const Deque: DequeNamespace & {
+        new (): Deque; // This allows `obj instanceof Deque`
+    };
 
     module Iterable {
         // Constructor properties interface
@@ -2490,7 +2498,9 @@ export namespace Gee {
         vfunc_iterator(): Iterator;
     }
 
-    export const Iterable: IterableNamespace;
+    export const Iterable: IterableNamespace & {
+        new (): Iterable; // This allows `obj instanceof Iterable`
+    };
 
     module Iterator {
         // Constructor properties interface
@@ -2520,7 +2530,9 @@ export namespace Gee {
         vfunc_remove(): void;
     }
 
-    export const Iterator: IteratorNamespace;
+    export const Iterator: IteratorNamespace & {
+        new (): Iterator; // This allows `obj instanceof Iterator`
+    };
 
     module List {
         // Constructor properties interface
@@ -2574,7 +2586,9 @@ export namespace Gee {
         vfunc_sort(compare_func: GLib.CompareFunc): void;
     }
 
-    export const List: ListNamespace;
+    export const List: ListNamespace & {
+        new (): List; // This allows `obj instanceof List`
+    };
 
     module ListIterator {
         // Constructor properties interface
@@ -2604,7 +2618,9 @@ export namespace Gee {
         vfunc_index(): number;
     }
 
-    export const ListIterator: ListIteratorNamespace;
+    export const ListIterator: ListIteratorNamespace & {
+        new (): ListIterator; // This allows `obj instanceof ListIterator`
+    };
 
     module Map {
         // Constructor properties interface
@@ -2684,7 +2700,9 @@ export namespace Gee {
         vfunc_contains_all(map: Map): boolean;
     }
 
-    export const Map: MapNamespace;
+    export const Map: MapNamespace & {
+        new (): Map; // This allows `obj instanceof Map`
+    };
 
     module MapIterator {
         // Constructor properties interface
@@ -2718,7 +2736,9 @@ export namespace Gee {
         vfunc_unset(): void;
     }
 
-    export const MapIterator: MapIteratorNamespace;
+    export const MapIterator: MapIteratorNamespace & {
+        new (): MapIterator; // This allows `obj instanceof MapIterator`
+    };
 
     module MultiMap {
         // Constructor properties interface
@@ -2764,7 +2784,9 @@ export namespace Gee {
         vfunc_clear(): void;
     }
 
-    export const MultiMap: MultiMapNamespace;
+    export const MultiMap: MultiMapNamespace & {
+        new (): MultiMap; // This allows `obj instanceof MultiMap`
+    };
 
     module MultiSet {
         // Constructor properties interface
@@ -2786,7 +2808,9 @@ export namespace Gee {
         vfunc_count(item: any): number;
     }
 
-    export const MultiSet: MultiSetNamespace;
+    export const MultiSet: MultiSetNamespace & {
+        new (): MultiSet; // This allows `obj instanceof MultiSet`
+    };
 
     module Queue {
         // Constructor properties interface
@@ -2828,7 +2852,9 @@ export namespace Gee {
         vfunc_drain(recipient: Collection, amount: number): number;
     }
 
-    export const Queue: QueueNamespace;
+    export const Queue: QueueNamespace & {
+        new (): Queue; // This allows `obj instanceof Queue`
+    };
 
     module Set {
         // Constructor properties interface
@@ -2852,7 +2878,9 @@ export namespace Gee {
         get readOnlyView(): Set;
     }
 
-    export const Set: SetNamespace;
+    export const Set: SetNamespace & {
+        new (): Set; // This allows `obj instanceof Set`
+    };
 
     module SortedSet {
         // Constructor properties interface
@@ -2894,7 +2922,9 @@ export namespace Gee {
         vfunc_sub_set(from: any, to: any): SortedSet;
     }
 
-    export const SortedSet: SortedSetNamespace;
+    export const SortedSet: SortedSetNamespace & {
+        new (): SortedSet; // This allows `obj instanceof SortedSet`
+    };
 
     /**
      * Name of the imported GIR library

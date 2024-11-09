@@ -286,7 +286,7 @@ export namespace Caribou {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -327,7 +327,7 @@ export namespace Caribou {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -768,7 +768,7 @@ export namespace Caribou {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -809,7 +809,7 @@ export namespace Caribou {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1219,7 +1219,7 @@ export namespace Caribou {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1260,7 +1260,7 @@ export namespace Caribou {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1668,7 +1668,7 @@ export namespace Caribou {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1709,7 +1709,7 @@ export namespace Caribou {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2202,7 +2202,7 @@ export namespace Caribou {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2243,7 +2243,7 @@ export namespace Caribou {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2652,7 +2652,7 @@ export namespace Caribou {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2693,7 +2693,7 @@ export namespace Caribou {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3148,7 +3148,7 @@ export namespace Caribou {
         get_step_path(): IScannableItem[];
         get_selected_path(): IScannableItem[];
         get_scan_grouping(): ScanGrouping;
-        set_scan_grouping(value: ScanGrouping): void;
+        set_scan_grouping(value: ScanGrouping | null): void;
         vfunc_scan_reset(): void;
         vfunc_child_step(cycles: number): IScannableItem;
         vfunc_get_step_path(): IScannableItem[];
@@ -3199,7 +3199,7 @@ export namespace Caribou {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3240,7 +3240,7 @@ export namespace Caribou {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3710,7 +3710,9 @@ export namespace Caribou {
         vfunc_set_scan_selected(value: boolean): void;
     }
 
-    export const IScannableItem: IScannableItemNamespace;
+    export const IScannableItem: IScannableItemNamespace & {
+        new (): IScannableItem; // This allows `obj instanceof IScannableItem`
+    };
 
     module IScannableGroup {
         // Constructor properties interface
@@ -3742,7 +3744,7 @@ export namespace Caribou {
         get_step_path(): IScannableItem[];
         get_selected_path(): IScannableItem[];
         get_scan_grouping(): ScanGrouping;
-        set_scan_grouping(value: ScanGrouping): void;
+        set_scan_grouping(value: ScanGrouping | null): void;
 
         // Virtual methods
 
@@ -3756,7 +3758,9 @@ export namespace Caribou {
         vfunc_set_scan_grouping(value: ScanGrouping): void;
     }
 
-    export const IScannableGroup: IScannableGroupNamespace;
+    export const IScannableGroup: IScannableGroupNamespace & {
+        new (): IScannableGroup; // This allows `obj instanceof IScannableGroup`
+    };
 
     module IKeyboardObject {
         // Constructor properties interface
@@ -3780,7 +3784,9 @@ export namespace Caribou {
         vfunc_get_keys(): KeyModel[];
     }
 
-    export const IKeyboardObject: IKeyboardObjectNamespace;
+    export const IKeyboardObject: IKeyboardObjectNamespace & {
+        new (): IKeyboardObject; // This allows `obj instanceof IKeyboardObject`
+    };
 
     /**
      * Name of the imported GIR library

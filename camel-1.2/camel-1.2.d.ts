@@ -1151,7 +1151,7 @@ export namespace Camel {
         source_property: string,
         target: GObject.Object,
         target_property: string,
-        flags: GObject.BindingFlags,
+        flags: GObject.BindingFlags | null,
     ): GObject.Binding;
     /**
      * Thread safe variant of g_object_bind_property_with_closures(). See its
@@ -1170,7 +1170,7 @@ export namespace Camel {
         source_property: string,
         target: GObject.Object,
         target_property: string,
-        flags: GObject.BindingFlags,
+        flags: GObject.BindingFlags | null,
         transform_to: GObject.Closure,
         transform_from: GObject.Closure,
     ): GObject.Binding;
@@ -1332,7 +1332,7 @@ export namespace Camel {
      * @param flags flags specifying filter behaviour
      * @returns a newly allocated string containing the enriched or richtext version of @in.
      */
-    function enriched_to_html(_in: string, flags: MimeFilterEnrichedFlags): string;
+    function enriched_to_html(_in: string, flags: MimeFilterEnrichedFlags | null): string;
     function error_quark(): GLib.Quark;
     /**
      * Retrieve a gint32.
@@ -1707,7 +1707,7 @@ export namespace Camel {
      * @param type a #CamelLockType
      * @returns -1 on error.
      */
-    function lock_fcntl(fd: number, type: LockType): number;
+    function lock_fcntl(fd: number, type: LockType | null): number;
     /**
      * Create a lock using flock(2).
      *
@@ -1720,7 +1720,7 @@ export namespace Camel {
      * @param type a #CamelLockType
      * @returns -1 on error.
      */
-    function lock_flock(fd: number, type: LockType): number;
+    function lock_flock(fd: number, type: LockType | null): number;
     /**
      * Attempt to lock a folder, multiple attempts will be made using all
      * locking strategies available.
@@ -1729,7 +1729,7 @@ export namespace Camel {
      * @param type Type of lock, CAMEL_LOCK_READ or CAMEL_LOCK_WRITE.
      * @returns -1 on error, @ex will describe the locking system that failed.
      */
-    function lock_folder(path: string, fd: number, type: LockType): number;
+    function lock_folder(path: string, fd: number, type: LockType | null): number;
     function lock_helper_lock(path: string): number;
     function lock_helper_unlock(lockid: number): number;
     /**
@@ -1949,8 +1949,8 @@ export namespace Camel {
     function search_header_match(
         value: string,
         match: string,
-        how: _search_match_t,
-        type: _search_t,
+        how: _search_match_t | null,
+        type: _search_t | null,
         default_charset: string,
     ): boolean;
     function search_words_free(words?: any | null): void;
@@ -1993,7 +1993,7 @@ export namespace Camel {
      * @param name name of the flag to check for
      * @returns %TRUE if the named flag is set or %FALSE otherwise
      */
-    function system_flag_get(flags: MessageFlags, name: string): boolean;
+    function system_flag_get(flags: MessageFlags | null, name: string): boolean;
     /**
      * Convert `in` from plain text into HTML.
      * @param _in input text
@@ -2001,7 +2001,7 @@ export namespace Camel {
      * @param color color to use when syntax highlighting
      * @returns a newly allocated string containing the HTMLified version of @in
      */
-    function text_to_html(_in: string, flags: MimeFilterToHTMLFlags, color: number): string;
+    function text_to_html(_in: string, flags: MimeFilterToHTMLFlags | null, color: number): string;
     /**
      * Applies the given time `value` in unit `unit` to the `src_time`.
      * Use negative value to subtract it. The time part is rounded
@@ -2011,9 +2011,9 @@ export namespace Camel {
      * @param value a value to apply
      * @returns @src_time modified by the given parameters as date, with    the time part being beginning of the day.
      */
-    function time_value_apply(src_time: number, unit: TimeUnit, value: number): number;
+    function time_value_apply(src_time: number, unit: TimeUnit | null, value: number): number;
     function transfer_encoding_from_string(string: string): TransferEncoding;
-    function transfer_encoding_to_string(encoding: TransferEncoding): string;
+    function transfer_encoding_to_string(encoding: TransferEncoding | null): string;
     /**
      * Convert a ucs2 string into a UTF-8 one. The ucs2 string is treated
      * as network byte ordered, and terminated with a 16-bit %NULL.
@@ -3521,7 +3521,7 @@ export namespace Camel {
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         get_session(): Session | null;
-        hash_to_id(hash: CipherHash): string;
+        hash_to_id(hash: CipherHash | null): string;
         id_to_hash(id: string): CipherHash;
         /**
          * Asynchronously converts the (unsigned) part `ipart` into a new
@@ -3539,7 +3539,7 @@ export namespace Camel {
          */
         sign(
             userid: string,
-            hash: CipherHash,
+            hash: CipherHash | null,
             ipart: MimePart,
             opart: MimePart,
             io_priority: number,
@@ -3562,7 +3562,7 @@ export namespace Camel {
          */
         sign(
             userid: string,
-            hash: CipherHash,
+            hash: CipherHash | null,
             ipart: MimePart,
             opart: MimePart,
             io_priority: number,
@@ -3586,7 +3586,7 @@ export namespace Camel {
          */
         sign(
             userid: string,
-            hash: CipherHash,
+            hash: CipherHash | null,
             ipart: MimePart,
             opart: MimePart,
             io_priority: number,
@@ -3612,7 +3612,7 @@ export namespace Camel {
          */
         sign_sync(
             userid: string,
-            hash: CipherHash,
+            hash: CipherHash | null,
             ipart: MimePart,
             opart: MimePart,
             cancellable?: Gio.Cancellable | null,
@@ -4531,7 +4531,7 @@ export namespace Camel {
          * It doesn't re-encode the content, if the encoding changes.
          * @param encoding an encoding to set
          */
-        set_encoding(encoding: TransferEncoding): void;
+        set_encoding(encoding: TransferEncoding | null): void;
         /**
          * This sets the data wrapper's MIME type.
          *
@@ -5869,7 +5869,7 @@ export namespace Camel {
          * global option.
          * @param mark_seen a #CamelThreeState as the value to set
          */
-        set_mark_seen(mark_seen: ThreeState): void;
+        set_mark_seen(mark_seen: ThreeState | null): void;
         /**
          * Sets the `timeout` in milliseconds for marking messages
          * as seen in this `folder`. Whether the timeout is used
@@ -6773,7 +6773,7 @@ export namespace Camel {
          * @param cancellable optional #GCancellable object, or %NULL
          * @returns whether succeeded
          */
-        set_key_trust_sync(keyid: string, trust: GpgTrust, cancellable?: Gio.Cancellable | null): boolean;
+        set_key_trust_sync(keyid: string, trust: GpgTrust | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Sets the `locate_keys` on the gpg context which is used to instruct
          * gpg to locate keys using Web Key Directory (WKD) lookup when encrypting
@@ -8486,7 +8486,7 @@ export namespace Camel {
          * @param required maximum level of output encoding allowed.
          * @returns the best encoding to use
          */
-        get_best_encoding(required: BestencEncoding): TransferEncoding;
+        get_best_encoding(required: BestencEncoding | null): TransferEncoding;
         /**
          * Set the flags for subsequent operations.
          * @param flags bestenc filter flags
@@ -8954,7 +8954,7 @@ export namespace Camel {
          * @param required a bitwise ORing of #CAMEL_BESTENC_GET_ENCODING and #CAMEL_BESTENC_GET_CHARSET
          * @param enctype an encoding to enforce
          */
-        set_best_encoding(required: BestencRequired, enctype: BestencEncoding): void;
+        set_best_encoding(required: BestencRequired | null, enctype: BestencEncoding | null): void;
         /**
          * Set the date on a message.
          *
@@ -9134,7 +9134,7 @@ export namespace Camel {
          * @param newstate New state
          * @param boundary Boundary marker for state.
          */
-        push_state(newstate: MimeParserState, boundary: string): void;
+        push_state(newstate: MimeParserState | null, boundary: string): void;
         /**
          * Read at most `len` bytes from the internal mime parser buffer.
          *
@@ -9482,7 +9482,7 @@ export namespace Camel {
          * Set the Content-Transfer-Encoding to use on a MIME part.
          * @param encoding a #CamelTransferEncoding
          */
-        set_encoding(encoding: TransferEncoding): void;
+        set_encoding(encoding: TransferEncoding | null): void;
         /**
          * Set the filename on a MIME part.
          * @param filename filename given to the MIME part
@@ -9881,7 +9881,7 @@ export namespace Camel {
          * The %CAMEL_THREE_STATE_INCONSISTENT means what the parent store has set.
          * @param offline_sync whether to synchronize for offline use, as a #CamelThreeState enum
          */
-        set_offline_sync(offline_sync: ThreeState): void;
+        set_offline_sync(offline_sync: ThreeState | null): void;
     }
 
     module OfflineSettings {
@@ -9961,7 +9961,7 @@ export namespace Camel {
          * Set the limit unit to use when interpreting 'limit-value'.
          * @param limit_unit a #CamelTimeUnit with a unit to use
          */
-        set_limit_unit(limit_unit: TimeUnit): void;
+        set_limit_unit(limit_unit: TimeUnit | null): void;
         /**
          * Set the limit, in 'limit-unit', to use when 'limit-by-age' is set to %TRUE.
          * @param limit_value a value to set
@@ -10150,7 +10150,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10191,7 +10191,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10730,7 +10730,7 @@ export namespace Camel {
 
         describe_part(part?: any | null): number;
         set_encrypt_key(use: boolean, key: string): void;
-        set_sign_mode(type: SMIMESign): void;
+        set_sign_mode(type: SMIMESign | null): void;
     }
 
     module Sasl {
@@ -11911,7 +11911,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11952,7 +11952,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12583,7 +12583,7 @@ export namespace Camel {
          * @param type the service type
          * @returns a #CamelService instance, or %NULL on error
          */
-        add_service(uid: string, protocol: string, type: ProviderType): Service;
+        add_service(uid: string, protocol: string, type: ProviderType | null): Service;
         /**
          * Look up in an address book `book_uid` for an address `email_address`
          * and returns whether any such contact exists.
@@ -12970,7 +12970,7 @@ export namespace Camel {
          * @param type a #CamelProviderType
          * @returns a #CamelService instance, or %NULL
          */
-        ref_service_by_url(url: URL, type: ProviderType): Service | null;
+        ref_service_by_url(url: URL, type: ProviderType | null): Service | null;
         /**
          * Removes a #CamelService previously added by camel_session_add_service().
          * @param service the #CamelService to remove
@@ -13042,7 +13042,11 @@ export namespace Camel {
          * @param errors the problems with @certificate
          * @returns the user's trust level for @certificate
          */
-        trust_prompt(service: Service, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): CertTrust;
+        trust_prompt(
+            service: Service,
+            certificate: Gio.TlsCertificate,
+            errors: Gio.TlsCertificateFlags | null,
+        ): CertTrust;
         /**
          * Emits a #CamelSession:user_alert signal from an idle source on the main
          * loop.  The idle source's priority is #G_PRIORITY_LOW.
@@ -13054,7 +13058,7 @@ export namespace Camel {
          * @param type a #CamelSessionAlertType
          * @param message the message for the user
          */
-        user_alert(service: Service, type: SessionAlertType, message: string): void;
+        user_alert(service: Service, type: SessionAlertType | null, message: string): void;
     }
 
     module Settings {
@@ -13581,7 +13585,7 @@ export namespace Camel {
          */
         get_folder(
             folder_name: string,
-            flags: StoreGetFolderFlags,
+            flags: StoreGetFolderFlags | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
         ): Promise<Folder | null>;
@@ -13598,7 +13602,7 @@ export namespace Camel {
          */
         get_folder(
             folder_name: string,
-            flags: StoreGetFolderFlags,
+            flags: StoreGetFolderFlags | null,
             io_priority: number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -13616,7 +13620,7 @@ export namespace Camel {
          */
         get_folder(
             folder_name: string,
-            flags: StoreGetFolderFlags,
+            flags: StoreGetFolderFlags | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -13642,7 +13646,7 @@ export namespace Camel {
          */
         get_folder_info(
             top: string | null,
-            flags: StoreGetFolderInfoFlags,
+            flags: StoreGetFolderInfoFlags | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
         ): Promise<FolderInfo | null>;
@@ -13662,7 +13666,7 @@ export namespace Camel {
          */
         get_folder_info(
             top: string | null,
-            flags: StoreGetFolderInfoFlags,
+            flags: StoreGetFolderInfoFlags | null,
             io_priority: number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -13683,7 +13687,7 @@ export namespace Camel {
          */
         get_folder_info(
             top: string | null,
-            flags: StoreGetFolderInfoFlags,
+            flags: StoreGetFolderInfoFlags | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -13725,7 +13729,7 @@ export namespace Camel {
          */
         get_folder_info_sync(
             top: string | null,
-            flags: StoreGetFolderInfoFlags,
+            flags: StoreGetFolderInfoFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): FolderInfo | null;
         /**
@@ -13737,7 +13741,7 @@ export namespace Camel {
          */
         get_folder_sync(
             folder_name: string,
-            flags: StoreGetFolderFlags,
+            flags: StoreGetFolderFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Folder | null;
         get_folders_bag(): ObjectBag;
@@ -14248,7 +14252,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14289,7 +14293,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14956,7 +14960,7 @@ export namespace Camel {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -15068,7 +15072,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -15109,7 +15113,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15510,7 +15514,7 @@ export namespace Camel {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -15622,7 +15626,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -15663,7 +15667,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16051,7 +16055,7 @@ export namespace Camel {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -16163,7 +16167,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16204,7 +16208,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16576,7 +16580,7 @@ export namespace Camel {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -16688,7 +16692,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16729,7 +16733,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17125,7 +17129,7 @@ export namespace Camel {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -17237,7 +17241,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -17278,7 +17282,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17649,7 +17653,7 @@ export namespace Camel {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -17761,7 +17765,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -17802,7 +17806,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18173,7 +18177,7 @@ export namespace Camel {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -18285,7 +18289,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -18326,7 +18330,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18985,7 +18989,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -19026,7 +19030,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19786,7 +19790,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -19827,7 +19831,7 @@ export namespace Camel {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20453,7 +20457,7 @@ export namespace Camel {
          * @param email an e-mail address to add
          * @returns Index of the added certinfo; -1 on error
          */
-        add_certinfo(mode: CipherValidityMode, name: string, email: string): number;
+        add_certinfo(mode: CipherValidityMode | null, name: string, email: string): number;
         /**
          * Add a cert info to the signer or encrypter info, with extended data set.
          * @param mode a #CamelCipherValidityMode, where to add the additional certificate information
@@ -20465,7 +20469,7 @@ export namespace Camel {
          * @returns Index of the added certinfo; -1 on error
          */
         add_certinfo_ex(
-            mode: CipherValidityMode,
+            mode: CipherValidityMode | null,
             name: string,
             email: string,
             cert_data?: any | null,
@@ -20488,7 +20492,7 @@ export namespace Camel {
          * @param name a property name
          * @returns Value of a named property of a #CamelCipherCertInfo, or %NULL when no such    property exists. The returned value is owned by the associated #CamelCipherCertInfo    and is valid until the cert info is freed.
          */
-        get_certinfo_property(mode: CipherValidityMode, info_index: number, name: string): any | null;
+        get_certinfo_property(mode: CipherValidityMode | null, info_index: number, name: string): any | null;
         get_description(): string;
         get_valid(): boolean;
         init(): void;
@@ -20505,7 +20509,7 @@ export namespace Camel {
          * @param value_clone a clone function for the @value
          */
         set_certinfo_property(
-            mode: CipherValidityMode,
+            mode: CipherValidityMode | null,
             info_index: number,
             name: string,
             value?: any | null,
@@ -21735,7 +21739,7 @@ export namespace Camel {
          * @param compare_type a compare type, one of #CamelCompareType
          * @returns Whether the two #CamelNameValueArray have the same content.
          */
-        equal(array_b: NameValueArray | null, compare_type: CompareType): boolean;
+        equal(array_b: NameValueArray | null, compare_type: CompareType | null): boolean;
         /**
          * Frees the `array,` previously allocated by camel_name_value_array_new(),
          * camel_name_value_array_new_sized() or camel_name_value_array_copy().
@@ -21764,7 +21768,7 @@ export namespace Camel {
          * @param name a name
          * @returns Value of the first element named @name, or %NULL. See: camel_name_value_array_get, camel_name_value_array_get_name
          */
-        get_named(compare_type: CompareType, name: string): string | null;
+        get_named(compare_type: CompareType | null, name: string): string | null;
         /**
          * Returns the value of the element at index `index`.
          * @param index an index
@@ -21787,7 +21791,7 @@ export namespace Camel {
          * @param all_occurrences whether to remove all occurrences of the @name
          * @returns How many elements had been removed.
          */
-        remove_named(compare_type: CompareType, name: string, all_occurrences: boolean): number;
+        remove_named(compare_type: CompareType | null, name: string, all_occurrences: boolean): number;
         /**
          * Sets both the `name` and the `value` of the element at index `index`.
          * @param index an index
@@ -21814,7 +21818,7 @@ export namespace Camel {
          * @param value a value
          * @returns Whether the @array changed. See: camel_name_value_array_append, camel_name_value_array_set
          */
-        set_named(compare_type: CompareType, name: string, value: string): boolean;
+        set_named(compare_type: CompareType | null, name: string, value: string): boolean;
         /**
          * Sets the `value` of the element at index `index`.
          * @param index an index
@@ -22894,7 +22898,7 @@ export namespace Camel {
          * @param flags additional translation options
          * @returns a string representing @url, which the caller must free
          */
-        to_string(flags: URLFlags): string;
+        to_string(flags: URLFlags | null): string;
     }
 
     class UrlMatch {
@@ -23243,7 +23247,9 @@ export namespace Camel {
         vfunc_synchronize(cancellable?: Gio.Cancellable | null): boolean;
     }
 
-    export const JunkFilter: JunkFilterNamespace;
+    export const JunkFilter: JunkFilterNamespace & {
+        new (): JunkFilter; // This allows `obj instanceof JunkFilter`
+    };
 
     module NetworkService {
         // Constructor properties interface
@@ -23354,7 +23360,7 @@ export namespace Camel {
          * @param method a #CamelNetworkSecurityMethod
          * @returns the default port number for @service and @method
          */
-        get_default_port(method: NetworkSecurityMethod): number;
+        get_default_port(method: NetworkSecurityMethod | null): number;
         /**
          * Returns %TRUE if `service` believes that the host pointed to by
          * #CamelNetworkService:connectable can be reached.  This property
@@ -23370,7 +23376,7 @@ export namespace Camel {
          * @param method a #CamelNetworkSecurityMethod
          * @returns the network service name for @service and @method, or %NULL
          */
-        get_service_name(method: NetworkSecurityMethod): string | null;
+        get_service_name(method: NetworkSecurityMethod | null): string | null;
         /**
          * Returns the socket endpoint for the network service to which `service`
          * is a client.
@@ -23430,7 +23436,9 @@ export namespace Camel {
         vfunc_get_service_name(method: NetworkSecurityMethod): string | null;
     }
 
-    export const NetworkService: NetworkServiceNamespace;
+    export const NetworkService: NetworkServiceNamespace & {
+        new (): NetworkService; // This allows `obj instanceof NetworkService`
+    };
 
     module NetworkSettings {
         // Constructor properties interface
@@ -23554,7 +23562,7 @@ export namespace Camel {
          * already-established network connection.
          * @param method the security method
          */
-        set_security_method(method: NetworkSecurityMethod): void;
+        set_security_method(method: NetworkSecurityMethod | null): void;
         /**
          * Sets the user name used to authenticate to a network service.  The
          * #CamelNetworkSettings:user property is automatically stripped of
@@ -23564,7 +23572,9 @@ export namespace Camel {
         set_user(user?: string | null): void;
     }
 
-    export const NetworkSettings: NetworkSettingsNamespace;
+    export const NetworkSettings: NetworkSettingsNamespace & {
+        new (): NetworkSettings; // This allows `obj instanceof NetworkSettings`
+    };
 
     module Subscribable {
         // Constructor properties interface
@@ -23763,7 +23773,9 @@ export namespace Camel {
         vfunc_unsubscribe_folder_sync(folder_name: string, cancellable?: Gio.Cancellable | null): boolean;
     }
 
-    export const Subscribable: SubscribableNamespace;
+    export const Subscribable: SubscribableNamespace & {
+        new (): Subscribable; // This allows `obj instanceof Subscribable`
+    };
 
     type _block_t = number;
     type _hash_t = number;

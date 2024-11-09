@@ -67,7 +67,7 @@ export namespace Nautilus {
         update_complete: GObject.Closure,
         provider: InfoProvider,
         handle: OperationHandle,
-        result: OperationResult,
+        result: OperationResult | null,
     ): void;
     module Column {
         // Constructor properties interface
@@ -337,7 +337,9 @@ export namespace Nautilus {
         get_columns(): Column[] | null;
     }
 
-    export const ColumnProvider: ColumnProviderNamespace;
+    export const ColumnProvider: ColumnProviderNamespace & {
+        new (): ColumnProvider; // This allows `obj instanceof ColumnProvider`
+    };
 
     module FileInfo {
         // Constructor properties interface
@@ -411,7 +413,9 @@ export namespace Nautilus {
         vfunc_is_mime_type(mime_type: string): boolean;
     }
 
-    export const FileInfo: FileInfoNamespace;
+    export const FileInfo: FileInfoNamespace & {
+        new (): FileInfo; // This allows `obj instanceof FileInfo`
+    };
 
     module InfoProvider {
         // Constructor properties interface
@@ -437,7 +441,9 @@ export namespace Nautilus {
         update_file_info(file: FileInfo, update_complete: GObject.Closure, handle: OperationHandle): OperationResult;
     }
 
-    export const InfoProvider: InfoProviderNamespace;
+    export const InfoProvider: InfoProviderNamespace & {
+        new (): InfoProvider; // This allows `obj instanceof InfoProvider`
+    };
 
     module LocationWidgetProvider {
         // Constructor properties interface
@@ -455,7 +461,9 @@ export namespace Nautilus {
         get_widget(uri: string, window: Gtk.Widget): Gtk.Widget | null;
     }
 
-    export const LocationWidgetProvider: LocationWidgetProviderNamespace;
+    export const LocationWidgetProvider: LocationWidgetProviderNamespace & {
+        new (): LocationWidgetProvider; // This allows `obj instanceof LocationWidgetProvider`
+    };
 
     module MenuProvider {
         // Constructor properties interface
@@ -478,7 +486,9 @@ export namespace Nautilus {
         get_file_items(window: Gtk.Widget, files: FileInfo[]): MenuItem[] | null;
     }
 
-    export const MenuProvider: MenuProviderNamespace;
+    export const MenuProvider: MenuProviderNamespace & {
+        new (): MenuProvider; // This allows `obj instanceof MenuProvider`
+    };
 
     module PropertyPageProvider {
         // Constructor properties interface
@@ -505,7 +515,9 @@ export namespace Nautilus {
         get_pages(files: FileInfo[]): PropertyPage[] | null;
     }
 
-    export const PropertyPageProvider: PropertyPageProviderNamespace;
+    export const PropertyPageProvider: PropertyPageProviderNamespace & {
+        new (): PropertyPageProvider; // This allows `obj instanceof PropertyPageProvider`
+    };
 
     /**
      * Name of the imported GIR library

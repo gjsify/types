@@ -121,7 +121,7 @@ export namespace CinnamonDesktop {
      * @param size a thumbnail size
      * @returns an absolute filename
      */
-    function desktop_thumbnail_path_for_uri(uri: string, size: DesktopThumbnailSize): string;
+    function desktop_thumbnail_path_for_uri(uri: string, size: DesktopThumbnailSize | null): string;
     /**
      * Scales the pixbuf to the desired size. This function
      * is a lot faster than gdk-pixbuf when scaling down by
@@ -398,7 +398,7 @@ export namespace CinnamonDesktop {
             dest_height: number,
         ): GdkPixbuf.Pixbuf;
         draw(dest: GdkPixbuf.Pixbuf, screen: Gdk.Screen, is_root: boolean): void;
-        get_color(type: CDesktopEnums.BackgroundShading, primary: Gdk.Color, secondary: Gdk.Color): void;
+        get_color(type: CDesktopEnums.BackgroundShading | null, primary: Gdk.Color, secondary: Gdk.Color): void;
         get_filename(): string;
         get_image_size(
             factory: DesktopThumbnailFactory,
@@ -412,9 +412,9 @@ export namespace CinnamonDesktop {
         is_dark(dest_width: number, dest_height: number): boolean;
         load_from_preferences(settings: Gio.Settings): void;
         save_to_preferences(settings: Gio.Settings): void;
-        set_color(type: CDesktopEnums.BackgroundShading, primary: Gdk.Color, secondary: Gdk.Color): void;
+        set_color(type: CDesktopEnums.BackgroundShading | null, primary: Gdk.Color, secondary: Gdk.Color): void;
         set_filename(filename: string): void;
-        set_placement(placement: CDesktopEnums.BackgroundStyle): void;
+        set_placement(placement: CDesktopEnums.BackgroundStyle | null): void;
     }
 
     module BGCrossfade {
@@ -756,7 +756,7 @@ export namespace CinnamonDesktop {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -797,7 +797,7 @@ export namespace CinnamonDesktop {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1273,7 +1273,7 @@ export namespace CinnamonDesktop {
         set_primary(primary: boolean): void;
         set_refresh_rate(rate: number): void;
         set_refresh_rate_f(rate: number): void;
-        set_rotation(rotation: RRRotation): void;
+        set_rotation(rotation: RRRotation | null): void;
         set_scale(scale: number): void;
     }
 
@@ -1337,7 +1337,7 @@ export namespace CinnamonDesktop {
         calculate_supported_scales(width: number, height: number, n_supported_scales: number): number;
         create_clone_modes(): RRMode;
         get_crtc_by_id(id: number): RRCrtc;
-        get_dpms_mode(mode: RRDpmsMode): boolean;
+        get_dpms_mode(mode: RRDpmsMode | null): boolean;
         get_global_scale(): number;
         get_global_scale_setting(): number;
         get_output_by_id(id: number): RROutput;
@@ -1381,7 +1381,7 @@ export namespace CinnamonDesktop {
          * This method also disables the DPMS timeouts.
          * @param mode
          */
-        set_dpms_mode(mode: RRDpmsMode): boolean;
+        set_dpms_mode(mode: RRDpmsMode | null): boolean;
         set_global_scale_setting(scale_factor: number): void;
         set_primary_output(output: RROutput): void;
         set_size(width: number, height: number, mm_width: number, mm_height: number): void;
@@ -1516,7 +1516,7 @@ export namespace CinnamonDesktop {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1557,7 +1557,7 @@ export namespace CinnamonDesktop {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2108,14 +2108,14 @@ export namespace CinnamonDesktop {
             x: number,
             y: number,
             mode: RRMode,
-            rotation: RRRotation,
+            rotation: RRRotation | null,
             outputs: RROutput,
             n_outputs: number,
             scale: number,
             global_scale: number,
         ): boolean;
         set_gamma(size: number, red: number, green: number, blue: number): void;
-        supports_rotation(rotation: RRRotation): boolean;
+        supports_rotation(rotation: RRRotation | null): boolean;
     }
 
     type RRLabelerClass = typeof RRLabeler;

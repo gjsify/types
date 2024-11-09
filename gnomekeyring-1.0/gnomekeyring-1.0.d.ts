@@ -262,7 +262,7 @@ export namespace GnomeKeyring {
      * @param attributes A list of attributes to search for. This cannot be an empty list.
      * @returns %GNOME_KEYRING_RESULT_OK if the operation was succcessful or an error result otherwise.
      */
-    function find_items_sync(type: ItemType, attributes: AttributeList): [Result, Found[]];
+    function find_items_sync(type: ItemType | null, attributes: AttributeList): [Result, Found[]];
     /**
      * Find a previously stored network password. Searches all keyrings.
      *
@@ -351,7 +351,7 @@ export namespace GnomeKeyring {
      * @param ac A #GnomeKeyringAccessControl pointer.
      * @param value The new access rights.
      */
-    function item_ac_set_access_type(ac: AccessControl, value: AccessType): void;
+    function item_ac_set_access_type(ac: AccessControl, value: AccessType | null): void;
     /**
      * Set the access control application's display name.
      * @param ac A #GnomeKeyringAccessControl pointer.
@@ -388,7 +388,7 @@ export namespace GnomeKeyring {
      */
     function item_create_sync(
         keyring: string | null,
-        type: ItemType,
+        type: ItemType | null,
         display_name: string,
         attributes: AttributeList,
         secret: string,
@@ -468,7 +468,7 @@ export namespace GnomeKeyring {
         display_name: string,
         full_path: string,
         id: number,
-        rights: AccessType,
+        rights: AccessType | null,
     ): Result;
     function item_set_acl_sync(keyring: string | null, id: number, acl: AccessControl[]): Result;
     /**
@@ -557,7 +557,7 @@ export namespace GnomeKeyring {
      * @param res A #GnomeKeyringResult
      * @returns a string suitable for display to the user for a given #GnomeKeyringResult, or an empty string if the message wouldn't make sense to a user.
      */
-    function result_to_message(res: Result): string;
+    function result_to_message(res: Result | null): string;
     /**
      * Change the default keyring.
      *
@@ -978,7 +978,7 @@ export namespace GnomeKeyring {
          * Set the type on an item info.
          * @param type The new item type
          */
-        set_type(type: ItemType): void;
+        set_type(type: ItemType | null): void;
     }
 
     /**

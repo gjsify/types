@@ -15,7 +15,9 @@
     "removeComments": false,
     "inlineSourceMap": false,
     "inlineSources": false,
-    "newLine": "LF"
+    "newLine": "LF",
+    // Show diagnostics
+    "diagnostics": true
   },
   "include": ["./grl-0.3.d.ts"]
 }

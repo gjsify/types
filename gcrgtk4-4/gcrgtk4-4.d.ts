@@ -101,7 +101,7 @@ export namespace GcrGtk4 {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -149,22 +149,22 @@ export namespace GcrGtk4 {
          * @param state platform state to query
          * @returns the value of @state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
         /**
          * Resets the accessible `property` to its default value.
          * @param property a `GtkAccessibleProperty`
          */
-        reset_property(property: Gtk.AccessibleProperty): void;
+        reset_property(property: Gtk.AccessibleProperty | null): void;
         /**
          * Resets the accessible `relation` to its default value.
          * @param relation a `GtkAccessibleRelation`
          */
-        reset_relation(relation: Gtk.AccessibleRelation): void;
+        reset_relation(relation: Gtk.AccessibleRelation | null): void;
         /**
          * Resets the accessible `state` to its default value.
          * @param state a `GtkAccessibleState`
          */
-        reset_state(state: Gtk.AccessibleState): void;
+        reset_state(state: Gtk.AccessibleState | null): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -197,7 +197,7 @@ export namespace GcrGtk4 {
          * @param properties an array of `GtkAccessibleProperty`
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -208,7 +208,7 @@ export namespace GcrGtk4 {
          * @param relations an array of `GtkAccessibleRelation`
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -219,7 +219,7 @@ export namespace GcrGtk4 {
          * @param states an array of `GtkAccessibleState`
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -394,7 +394,7 @@ export namespace GcrGtk4 {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -435,7 +435,7 @@ export namespace GcrGtk4 {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

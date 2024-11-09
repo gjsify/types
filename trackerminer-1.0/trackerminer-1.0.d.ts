@@ -487,7 +487,7 @@ export namespace TrackerMiner {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -528,7 +528,7 @@ export namespace TrackerMiner {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -921,7 +921,7 @@ export namespace TrackerMiner {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -962,7 +962,7 @@ export namespace TrackerMiner {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1371,18 +1371,18 @@ export namespace TrackerMiner {
          * @param directory #GFile pointing to a directory
          * @param flags Configuration flags for the directory
          */
-        add(directory: Gio.File, flags: DirectoryFlags): void;
+        add(directory: Gio.File, flags: DirectoryFlags | null): void;
         /**
          * Adds a new filter for basenames.
          * @param filter filter type
          * @param glob_string glob-style string for the filter
          */
-        add_filter(filter: FilterType, glob_string: string): void;
+        add_filter(filter: FilterType | null, glob_string: string): void;
         /**
          * Clears all filters of a given type.
          * @param type filter type to clear
          */
-        clear_filters(type: FilterType): void;
+        clear_filters(type: FilterType | null): void;
         /**
          * returns %TRUE if `file` should be indexed according to the
          * parameters given through tracker_indexing_tree_add() and
@@ -1394,7 +1394,7 @@ export namespace TrackerMiner {
          * @param file_type a #GFileType
          * @returns %TRUE if @file should be indexed.
          */
-        file_is_indexable(file: Gio.File, file_type: Gio.FileType): boolean;
+        file_is_indexable(file: Gio.File, file_type: Gio.FileType | null): boolean;
         /**
          * Evaluates if the URL represented by `file` is the same of that for
          * the root of the `tree`.
@@ -1408,7 +1408,7 @@ export namespace TrackerMiner {
          * @param file a #GFile
          * @returns %TRUE if @file is filtered.
          */
-        file_matches_filter(type: FilterType, file: Gio.File): boolean;
+        file_matches_filter(type: FilterType | null, file: Gio.File): boolean;
         /**
          * Get the default filtering policies for `tree` when indexing content.
          * Some content is black listed or white listed and the default policy
@@ -1418,7 +1418,7 @@ export namespace TrackerMiner {
          * @param filter a #TrackerFilterType
          * @returns Either #TRACKER_FILTER_POLICY_DENY or #TRACKER_FILTER_POLICY_ALLOW.
          */
-        get_default_policy(filter: FilterType): FilterPolicy;
+        get_default_policy(filter: FilterType | null): FilterPolicy;
         /**
          * Describes if the `tree` should index hidden content. To change this
          * setting, see tracker_indexing_tree_set_filter_hidden().
@@ -1504,7 +1504,7 @@ export namespace TrackerMiner {
          * @param filter a #TrackerFilterType
          * @param policy a #TrackerFilterPolicy
          */
-        set_default_policy(filter: FilterType, policy: FilterPolicy): void;
+        set_default_policy(filter: FilterType | null, policy: FilterPolicy | null): void;
         /**
          * When indexing content, sometimes it is preferable to ignore hidden
          * content, for example, files prefixed with &quot;.&quot;. This is
@@ -1842,7 +1842,7 @@ export namespace TrackerMiner {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1883,7 +1883,7 @@ export namespace TrackerMiner {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2838,7 +2838,7 @@ export namespace TrackerMiner {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2879,7 +2879,7 @@ export namespace TrackerMiner {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3387,7 +3387,7 @@ export namespace TrackerMiner {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3428,7 +3428,7 @@ export namespace TrackerMiner {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3868,7 +3868,7 @@ export namespace TrackerMiner {
         begin(
             url: Gio.File,
             attributes: string,
-            flags: DirectoryFlags,
+            flags: DirectoryFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Enumerator;
         /**
@@ -3901,7 +3901,7 @@ export namespace TrackerMiner {
         begin_async(
             url: Gio.File,
             attributes: string,
-            flags: DirectoryFlags,
+            flags: DirectoryFlags | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
         ): Promise<Enumerator>;
@@ -3936,7 +3936,7 @@ export namespace TrackerMiner {
         begin_async(
             url: Gio.File,
             attributes: string,
-            flags: DirectoryFlags,
+            flags: DirectoryFlags | null,
             io_priority: number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -3972,7 +3972,7 @@ export namespace TrackerMiner {
         begin_async(
             url: Gio.File,
             attributes: string,
-            flags: DirectoryFlags,
+            flags: DirectoryFlags | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -4228,7 +4228,9 @@ export namespace TrackerMiner {
         vfunc_end_finish(result: Gio.AsyncResult): boolean;
     }
 
-    export const DataProvider: DataProviderNamespace;
+    export const DataProvider: DataProviderNamespace & {
+        new (): DataProvider; // This allows `obj instanceof DataProvider`
+    };
 
     module Enumerator {
         // Constructor properties interface
@@ -4377,7 +4379,9 @@ export namespace TrackerMiner {
         vfunc_next_finish(result: Gio.AsyncResult): any | null;
     }
 
-    export const Enumerator: EnumeratorNamespace;
+    export const Enumerator: EnumeratorNamespace & {
+        new (): Enumerator; // This allows `obj instanceof Enumerator`
+    };
 
     /**
      * Name of the imported GIR library

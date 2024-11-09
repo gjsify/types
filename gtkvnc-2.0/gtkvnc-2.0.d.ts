@@ -310,7 +310,7 @@ export namespace GtkVnc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -351,7 +351,7 @@ export namespace GtkVnc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1147,7 +1147,7 @@ export namespace GtkVnc {
          * @param keyvals Keyval array
          * @param kind the type of event to send
          */
-        send_keys_ex(keyvals: number[], kind: DisplayKeyEvent): void;
+        send_keys_ex(keyvals: number[], kind: DisplayKeyEvent | null): void;
         /**
          * Move the remote pointer to position (`x,` `y)` and set the
          * button state to `button_mask`.  This method will only
@@ -1184,7 +1184,7 @@ export namespace GtkVnc {
          * remote server
          * @param depth the desired colour depth
          */
-        set_depth(depth: DisplayDepthColor): void;
+        set_depth(depth: DisplayDepthColor | null): void;
         /**
          * Set whether the widget size will be forced to match the
          * remote desktop size. If the widget size does not match
@@ -1333,7 +1333,7 @@ export namespace GtkVnc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1374,7 +1374,7 @@ export namespace GtkVnc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

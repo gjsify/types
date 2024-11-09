@@ -332,7 +332,7 @@ export namespace GstBadAudio {
          * @param sample_rate Integer to fill with a sample rate
          * @param num_channels Integer to fill with a channel count
          */
-        get_downstream_info(format: GstAudio.AudioFormat, sample_rate: number, num_channels: number): void;
+        get_downstream_info(format: GstAudio.AudioFormat | null, sample_rate: number, num_channels: number): void;
         /**
          * Reports that a loop has been completed and creates a new appropriate
          * segment for the next loop.
@@ -384,7 +384,7 @@ export namespace GstBadAudio {
          */
         set_output_format_simple(
             sample_rate: number,
-            sample_format: GstAudio.AudioFormat,
+            sample_format: GstAudio.AudioFormat | null,
             num_channels: number,
         ): boolean;
     }
@@ -460,7 +460,7 @@ export namespace GstBadAudio {
          * @param flags hint the intended use of the returned buffer
          * @returns a #GstBuffer containing the first     @nsamples of the adapter, or %NULL if @nsamples samples are not     available. gst_buffer_unref() when no longer needed.
          */
-        get_buffer(nsamples: number, flags: Gst.MapFlags): Gst.Buffer | null;
+        get_buffer(nsamples: number, flags: Gst.MapFlags | null): Gst.Buffer | null;
         /**
          * Get the offset that was on the last buffer with the GST_BUFFER_FLAG_DISCONT
          * flag, or GST_BUFFER_OFFSET_NONE.
@@ -529,7 +529,7 @@ export namespace GstBadAudio {
          * @param flags hint the intended use of the returned buffer
          * @returns a #GstBuffer containing the first     @nsamples of the adapter, or %NULL if @nsamples samples are not     available. gst_buffer_unref() when no longer needed.
          */
-        take_buffer(nsamples: number, flags: Gst.MapFlags): Gst.Buffer | null;
+        take_buffer(nsamples: number, flags: Gst.MapFlags | null): Gst.Buffer | null;
     }
 
     type NonstreamAudioDecoderClass = typeof NonstreamAudioDecoder;

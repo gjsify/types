@@ -214,7 +214,7 @@ export namespace CloudProviders {
         set_menu_model(menu_model: Gio.MenuModel): void;
         set_name(name: string): void;
         set_path(path: string): void;
-        set_status(status: AccountStatus): void;
+        set_status(status: AccountStatus | null): void;
         set_status_details(status_details: string): void;
     }
 
@@ -782,7 +782,7 @@ export namespace CloudProviders {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -823,7 +823,7 @@ export namespace CloudProviders {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1286,7 +1286,7 @@ export namespace CloudProviders {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1327,7 +1327,7 @@ export namespace CloudProviders {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2159,7 +2159,7 @@ export namespace CloudProviders {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2200,7 +2200,7 @@ export namespace CloudProviders {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2652,7 +2652,7 @@ export namespace CloudProviders {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2693,7 +2693,7 @@ export namespace CloudProviders {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3158,7 +3158,7 @@ export namespace CloudProviders {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3199,7 +3199,7 @@ export namespace CloudProviders {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3996,7 +3996,7 @@ export namespace CloudProviders {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4037,7 +4037,7 @@ export namespace CloudProviders {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4465,7 +4465,7 @@ export namespace CloudProviders {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4506,7 +4506,7 @@ export namespace CloudProviders {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5109,7 +5109,9 @@ export namespace CloudProviders {
         set statusDetails(val: string);
     }
 
-    export const DbusAccount: DbusAccountNamespace;
+    export const DbusAccount: DbusAccountNamespace & {
+        new (): DbusAccount; // This allows `obj instanceof DbusAccount`
+    };
 
     module DbusObject {
         // Constructor properties interface
@@ -5156,7 +5158,9 @@ export namespace CloudProviders {
         get_provider(): DbusProvider | null;
     }
 
-    export const DbusObject: DbusObjectNamespace;
+    export const DbusObject: DbusObjectNamespace & {
+        new (): DbusObject; // This allows `obj instanceof DbusObject`
+    };
 
     module DbusProvider {
         // Constructor properties interface
@@ -5194,7 +5198,9 @@ export namespace CloudProviders {
         set name(val: string);
     }
 
-    export const DbusProvider: DbusProviderNamespace;
+    export const DbusProvider: DbusProviderNamespace & {
+        new (): DbusProvider; // This allows `obj instanceof DbusProvider`
+    };
 
     /**
      * Name of the imported GIR library

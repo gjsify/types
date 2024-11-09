@@ -398,7 +398,7 @@ export namespace Farstream {
      * @param media_type A media type
      * @returns a static string representing the media type
      */
-    function media_type_to_string(media_type: MediaType): string;
+    function media_type_to_string(media_type: MediaType | null): string;
     /**
      * Parses a "farstream-farstream" message and checks if it matches
      * the `object` parameters.
@@ -446,7 +446,10 @@ export namespace Farstream {
      * @param media_type The media type for which to get header extensions
      * @returns a #GList of #FsRtpHeaderExtension that must be freed with fs_rtp_header_extension_list_destroy()
      */
-    function rtp_header_extension_list_from_keyfile(filename: string, media_type: MediaType): RtpHeaderExtension[];
+    function rtp_header_extension_list_from_keyfile(
+        filename: string,
+        media_type: MediaType | null,
+    ): RtpHeaderExtension[];
     /**
      * These default codec preferences should work with the elements that are
      * available in the main GStreamer element repositories.
@@ -463,7 +466,10 @@ export namespace Farstream {
      * @param media_type The #FsMediaType for which to get default RTP Header Extension  preferences
      * @returns The default rtp header extension preferences for this plugin, this #GList should be freed with fs_codec_list_destroy()
      */
-    function utils_get_default_rtp_header_extension_preferences(element: Gst.Element, media_type: MediaType): Codec[];
+    function utils_get_default_rtp_header_extension_preferences(
+        element: Gst.Element,
+        media_type: MediaType | null,
+    ): Codec[];
     /**
      * This allows setting the bitrate on all elements that have a "bitrate"
      * property without having to know the type or of the unit used by that element.
@@ -555,7 +561,7 @@ export namespace Farstream {
          * @param media_type #FsMediaType of the new session
          * @returns the new #FsSession that has been created. The #FsSession must be unref'd by the user when closing the session.
          */
-        new_session(media_type: MediaType): Session;
+        new_session(media_type: MediaType | null): Session;
 
         // Inherited methods
         /**
@@ -700,7 +706,7 @@ export namespace Farstream {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -741,7 +747,7 @@ export namespace Farstream {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1267,7 +1273,7 @@ export namespace Farstream {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1308,7 +1314,7 @@ export namespace Farstream {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2002,7 +2008,7 @@ export namespace Farstream {
          * @param direction #FsStreamDirection describing the direction of the new stream that will be created for this participant
          * @returns the new #FsStream that has been created. User must unref the #FsStream when the stream is ended. If an error occured, returns NULL.
          */
-        new_stream(participant: Participant, direction: StreamDirection): Stream;
+        new_stream(participant: Participant, direction: StreamDirection | null): Stream;
         /**
          * Parses a "farstream-codecs-changed" message and checks if it matches
          * the `session` parameters.

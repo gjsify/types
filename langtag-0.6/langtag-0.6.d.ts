@@ -186,12 +186,12 @@ export namespace LangTag {
          * @param type a #LtErrorype_t
          * @returns %TRUE if any, otherwise %FALSE
          */
-        is_set(type: ErrorType): Bool;
+        is_set(type: ErrorType | null): Bool;
         /**
          * Output the error messages in `error` according to `type`.
          * @param type a #LtErrorype_t
          */
-        print(type: ErrorType): void;
+        print(type: ErrorType | null): void;
         /**
          * Inscreases the reference count of `error`.
          * @returns the same @error object.

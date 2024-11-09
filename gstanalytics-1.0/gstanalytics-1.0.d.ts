@@ -297,7 +297,7 @@ export namespace GstAnalytics {
             an_meta_first_id: number,
             an_meta_second_id: number,
             max_relation_span: number,
-            cond_types: RelTypes,
+            cond_types: RelTypes | null,
         ): [boolean, number[] | null];
         /**
          * Fill `rlt` if a analytics-meta with id == `an_meta_id` exist in `meta` instance,
@@ -308,7 +308,7 @@ export namespace GstAnalytics {
         get_cls_mtd(an_meta_id: number): [boolean, ClsMtd];
         get_direct_related(
             an_meta_id: number,
-            relation_type: RelTypes,
+            relation_type: RelTypes | null,
             type: MtdType,
             state: any,
             rlt_mtd: Mtd,
@@ -355,7 +355,7 @@ export namespace GstAnalytics {
          * @param an_meta_second_id second meta id
          * @returns TRUE on success and FALSE on failure.
          */
-        set_relation(type: RelTypes, an_meta_first_id: number, an_meta_second_id: number): boolean;
+        set_relation(type: RelTypes | null, an_meta_first_id: number, an_meta_second_id: number): boolean;
     }
 
     /**

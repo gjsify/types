@@ -44,7 +44,10 @@ export namespace GnomeAutoarGtk {
      * @param default_filter an #AutoarFilter
      * @returns a new #GtkGrid widget
      */
-    function chooser_advanced_new(default_format: GnomeAutoar.Format, default_filter: GnomeAutoar.Filter): Gtk.Widget;
+    function chooser_advanced_new(
+        default_format: GnomeAutoar.Format | null,
+        default_filter: GnomeAutoar.Filter | null,
+    ): Gtk.Widget;
     /**
      * Gets the selected archive format of the widget created by
      * autoar_gtk_chooser_simple_new().
@@ -68,7 +71,10 @@ export namespace GnomeAutoarGtk {
      * @param default_filter an #AutoarFilter
      * @returns a new #GtkComboBox widget
      */
-    function chooser_simple_new(default_format: GnomeAutoar.Format, default_filter: GnomeAutoar.Filter): Gtk.Widget;
+    function chooser_simple_new(
+        default_format: GnomeAutoar.Format | null,
+        default_filter: GnomeAutoar.Filter | null,
+    ): Gtk.Widget;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

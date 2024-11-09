@@ -332,7 +332,7 @@ export namespace Playerctl {
          * Set the loop status of the player. Can be set to either None, Track, or Playlist.
          * @param status the requested #PlayerctlLoopStatus to set the player to
          */
-        set_loop_status(status: LoopStatus): void;
+        set_loop_status(status: LoopStatus | null): void;
         /**
          * Sets the absolute position of the current track to the given position in microseconds.
          * @param position The absolute position in the track to set as the position

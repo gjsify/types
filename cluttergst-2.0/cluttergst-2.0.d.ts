@@ -194,7 +194,7 @@ export namespace ClutterGst {
          * Sends the indicated command to the navigation interface.
          * @param command The command to issue
          */
-        send_command(command: GstVideo.NavigationCommand): void;
+        send_command(command: GstVideo.NavigationCommand | null): void;
         send_event(structure: Gst.Structure): void;
         // Conflicted with Gst.Element.send_event
         send_event(...args: never[]): any;
@@ -282,7 +282,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -323,7 +323,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -749,7 +749,7 @@ export namespace ClutterGst {
          * @param index_ the index of the audio stream
          */
         set_audio_stream(index_: number): void;
-        set_buffering_mode(mode: BufferingMode): void;
+        set_buffering_mode(mode: BufferingMode | null): void;
         /**
          * Sets a material to use to draw when no media is being played. The
          * #ClutterGstVideoTexture holds a reference of the `material`.
@@ -765,7 +765,7 @@ export namespace ClutterGst {
          * to %CLUTTER_GST_SEEK_FLAG_NONE.
          * @param flags a combination of #ClutterGstSeekFlags
          */
-        set_seek_flags(flags: SeekFlags): void;
+        set_seek_flags(flags: SeekFlags | null): void;
         /**
          * Set the subtitles track to play. `index_` is the index of the stream
          * in the list returned by clutter_gst_video_texture_get_subtitle_tracks().
@@ -1159,7 +1159,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1200,7 +1200,7 @@ export namespace ClutterGst {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1715,13 +1715,13 @@ export namespace ClutterGst {
          * @param index_ the index of the audio stream
          */
         set_audio_stream(index_: number): void;
-        set_buffering_mode(mode: BufferingMode): void;
+        set_buffering_mode(mode: BufferingMode | null): void;
         /**
          * Seeking can be done with several trade-offs. Clutter-gst defaults
          * to %CLUTTER_GST_SEEK_FLAG_NONE.
          * @param flags a combination of #ClutterGstSeekFlags
          */
-        set_seek_flags(flags: SeekFlags): void;
+        set_seek_flags(flags: SeekFlags | null): void;
         /**
          * Set the subtitles track to play. `index_` is the index of the stream
          * in the list returned by clutter_gst_player_get_subtitle_tracks().
@@ -1817,7 +1817,9 @@ export namespace ClutterGst {
         vfunc_set_user_agent(user_agent: string): void;
     }
 
-    export const Player: PlayerNamespace;
+    export const Player: PlayerNamespace & {
+        new (): Player; // This allows `obj instanceof Player`
+    };
 
     /**
      * Name of the imported GIR library

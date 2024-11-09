@@ -386,7 +386,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -427,7 +427,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -855,7 +855,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -896,7 +896,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1298,7 +1298,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1339,7 +1339,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1766,7 +1766,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1807,7 +1807,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2246,7 +2246,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2287,7 +2287,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2740,7 +2740,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2781,7 +2781,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3246,7 +3246,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3287,7 +3287,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3754,7 +3754,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3795,7 +3795,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4332,7 +4332,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4373,7 +4373,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4837,7 +4837,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4878,7 +4878,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5298,7 +5298,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5339,7 +5339,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5726,7 +5726,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5767,7 +5767,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6151,7 +6151,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6192,7 +6192,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6667,7 +6667,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6708,7 +6708,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7113,7 +7113,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7154,7 +7154,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7541,7 +7541,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7582,7 +7582,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8026,7 +8026,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8067,7 +8067,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8477,7 +8477,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8518,7 +8518,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8884,7 +8884,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8925,7 +8925,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9380,7 +9380,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9421,7 +9421,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9835,7 +9835,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9876,7 +9876,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10266,7 +10266,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10307,7 +10307,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10667,7 +10667,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10708,7 +10708,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11097,7 +11097,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11138,7 +11138,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11522,7 +11522,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11563,7 +11563,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12123,7 +12123,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -12164,7 +12164,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12551,7 +12551,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -12592,7 +12592,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12994,7 +12994,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13035,7 +13035,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13417,7 +13417,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13458,7 +13458,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13863,7 +13863,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13904,7 +13904,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14313,7 +14313,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14354,7 +14354,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14769,7 +14769,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14810,7 +14810,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15266,7 +15266,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -15307,7 +15307,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15731,7 +15731,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -15772,7 +15772,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16158,7 +16158,7 @@ export namespace GXml {
         collapse(to_start: boolean): void;
         select_node(node: DomNode): void;
         select_node_contents(node: DomNode): void;
-        compare_boundary_points(how: DomRangeBoundaryPoints, sourceRange: DomRange): number;
+        compare_boundary_points(how: DomRangeBoundaryPoints | null, sourceRange: DomRange): number;
         delete_contents(): void;
         extract_contents(): DomDocumentFragment;
         clone_contents(): DomDocumentFragment;
@@ -16247,7 +16247,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16288,7 +16288,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16782,7 +16782,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16823,7 +16823,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17214,7 +17214,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -17255,7 +17255,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17804,7 +17804,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -17845,7 +17845,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18256,7 +18256,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -18297,7 +18297,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18696,7 +18696,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -18737,7 +18737,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19114,7 +19114,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -19155,7 +19155,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19582,7 +19582,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -19623,7 +19623,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20026,7 +20026,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -20067,7 +20067,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20524,7 +20524,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -20565,7 +20565,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -21022,7 +21022,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -21063,7 +21063,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -21480,7 +21480,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -21521,7 +21521,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22117,7 +22117,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -22158,7 +22158,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22648,7 +22648,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -22689,7 +22689,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -23076,7 +23076,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -23117,7 +23117,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -23609,7 +23609,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -23650,7 +23650,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -24061,7 +24061,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -24102,7 +24102,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -24647,7 +24647,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -24688,7 +24688,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -25089,7 +25089,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -25130,7 +25130,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -25547,7 +25547,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -25588,7 +25588,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -26068,7 +26068,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -26109,7 +26109,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -26495,7 +26495,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -26536,7 +26536,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -26954,7 +26954,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -26995,7 +26995,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -27596,7 +27596,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -27637,7 +27637,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -28075,7 +28075,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -28116,7 +28116,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -28573,7 +28573,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -28614,7 +28614,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -29083,7 +29083,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -29124,7 +29124,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -29520,7 +29520,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -29561,7 +29561,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -30264,7 +30264,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -30305,7 +30305,7 @@ export namespace GXml {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -33069,7 +33069,9 @@ export namespace GXml {
         vfunc_get_prefix(): string;
     }
 
-    export const Attribute: AttributeNamespace;
+    export const Attribute: AttributeNamespace & {
+        new (): Attribute; // This allows `obj instanceof Attribute`
+    };
 
     module Comment {
         // Constructor properties interface
@@ -33100,7 +33102,9 @@ export namespace GXml {
         vfunc_set_str(value: string): void;
     }
 
-    export const Comment: CommentNamespace;
+    export const Comment: CommentNamespace & {
+        new (): Comment; // This allows `obj instanceof Comment`
+    };
 
     module CDATA {
         // Constructor properties interface
@@ -33128,7 +33132,9 @@ export namespace GXml {
         vfunc_get_str(): string;
     }
 
-    export const CDATA: CDATANamespace;
+    export const CDATA: CDATANamespace & {
+        new (): CDATA; // This allows `obj instanceof CDATA`
+    };
 
     module Character {
         // Constructor properties interface
@@ -33159,7 +33165,9 @@ export namespace GXml {
         vfunc_set_str(value: string): void;
     }
 
-    export const Character: CharacterNamespace;
+    export const Character: CharacterNamespace & {
+        new (): Character; // This allows `obj instanceof Character`
+    };
 
     module Document {
         // Constructor properties interface
@@ -33246,7 +33254,9 @@ export namespace GXml {
         vfunc_set_file(value: Gio.File): void;
     }
 
-    export const Document: DocumentNamespace;
+    export const Document: DocumentNamespace & {
+        new (): Document; // This allows `obj instanceof Document`
+    };
 
     module DocumentType {
         // Constructor properties interface
@@ -33260,7 +33270,9 @@ export namespace GXml {
     }
     interface DocumentType extends GObject.Object {}
 
-    export const DocumentType: DocumentTypeNamespace;
+    export const DocumentType: DocumentTypeNamespace & {
+        new (): DocumentType; // This allows `obj instanceof DocumentType`
+    };
 
     module Element {
         // Constructor properties interface
@@ -33311,7 +33323,9 @@ export namespace GXml {
         vfunc_set_content(value: string): void;
     }
 
-    export const Element: ElementNamespace;
+    export const Element: ElementNamespace & {
+        new (): Element; // This allows `obj instanceof Element`
+    };
 
     module Namespace {
         // Constructor properties interface
@@ -33343,7 +33357,9 @@ export namespace GXml {
         vfunc_get_prefix(): string;
     }
 
-    export const Namespace: NamespaceNamespace;
+    export const Namespace: NamespaceNamespace & {
+        new (): Namespace; // This allows `obj instanceof Namespace`
+    };
 
     module Node {
         // Constructor properties interface
@@ -33424,7 +33440,9 @@ export namespace GXml {
         vfunc_get_parent(): Node;
     }
 
-    export const Node: NodeNamespace;
+    export const Node: NodeNamespace & {
+        new (): Node; // This allows `obj instanceof Node`
+    };
 
     module Notation {
         // Constructor properties interface
@@ -33460,7 +33478,9 @@ export namespace GXml {
         vfunc_get_external_id(): string;
     }
 
-    export const Notation: NotationNamespace;
+    export const Notation: NotationNamespace & {
+        new (): Notation; // This allows `obj instanceof Notation`
+    };
 
     module Entity {
         // Constructor properties interface
@@ -33474,7 +33494,9 @@ export namespace GXml {
     }
     interface Entity extends GObject.Object {}
 
-    export const Entity: EntityNamespace;
+    export const Entity: EntityNamespace & {
+        new (): Entity; // This allows `obj instanceof Entity`
+    };
 
     module ProcessingInstruction {
         // Constructor properties interface
@@ -33511,7 +33533,9 @@ export namespace GXml {
         vfunc_set_data(value: string): void;
     }
 
-    export const ProcessingInstruction: ProcessingInstructionNamespace;
+    export const ProcessingInstruction: ProcessingInstructionNamespace & {
+        new (): ProcessingInstruction; // This allows `obj instanceof ProcessingInstruction`
+    };
 
     module Text {
         // Constructor properties interface
@@ -33542,7 +33566,9 @@ export namespace GXml {
         vfunc_set_str(value: string): void;
     }
 
-    export const Text: TextNamespace;
+    export const Text: TextNamespace & {
+        new (): Text; // This allows `obj instanceof Text`
+    };
 
     module Serializable {
         // Constructor properties interface
@@ -33617,7 +33643,9 @@ export namespace GXml {
         vfunc_set_serialized_xml_node_value(value: string): void;
     }
 
-    export const Serializable: SerializableNamespace;
+    export const Serializable: SerializableNamespace & {
+        new (): Serializable; // This allows `obj instanceof Serializable`
+    };
 
     module SerializableProperty {
         // Constructor properties interface
@@ -33651,7 +33679,9 @@ export namespace GXml {
         vfunc_serialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): Node;
     }
 
-    export const SerializableProperty: SerializablePropertyNamespace;
+    export const SerializableProperty: SerializablePropertyNamespace & {
+        new (): SerializableProperty; // This allows `obj instanceof SerializableProperty`
+    };
 
     module SerializableMapKey {
         // Constructor properties interface
@@ -33673,7 +33703,9 @@ export namespace GXml {
         vfunc_get_map_key(): any;
     }
 
-    export const SerializableMapKey: SerializableMapKeyNamespace;
+    export const SerializableMapKey: SerializableMapKeyNamespace & {
+        new (): SerializableMapKey; // This allows `obj instanceof SerializableMapKey`
+    };
 
     module SerializableMapDualKey {
         // Constructor properties interface
@@ -33697,7 +33729,9 @@ export namespace GXml {
         vfunc_get_map_secondary_key(): any;
     }
 
-    export const SerializableMapDualKey: SerializableMapDualKeyNamespace;
+    export const SerializableMapDualKey: SerializableMapDualKeyNamespace & {
+        new (): SerializableMapDualKey; // This allows `obj instanceof SerializableMapDualKey`
+    };
 
     module SerializableCollection {
         // Constructor properties interface
@@ -33727,7 +33761,9 @@ export namespace GXml {
         vfunc_is_collection(): boolean;
     }
 
-    export const SerializableCollection: SerializableCollectionNamespace;
+    export const SerializableCollection: SerializableCollectionNamespace & {
+        new (): SerializableCollection; // This allows `obj instanceof SerializableCollection`
+    };
 
     module DomAttr {
         // Constructor properties interface
@@ -33782,7 +33818,9 @@ export namespace GXml {
         vfunc_get_specified(): boolean;
     }
 
-    export const DomAttr: DomAttrNamespace;
+    export const DomAttr: DomAttrNamespace & {
+        new (): DomAttr; // This allows `obj instanceof DomAttr`
+    };
 
     module DomCharacterData {
         // Constructor properties interface
@@ -33829,7 +33867,9 @@ export namespace GXml {
         vfunc_get_length(): number;
     }
 
-    export const DomCharacterData: DomCharacterDataNamespace;
+    export const DomCharacterData: DomCharacterDataNamespace & {
+        new (): DomCharacterData; // This allows `obj instanceof DomCharacterData`
+    };
 
     module DomText {
         // Constructor properties interface
@@ -33861,7 +33901,9 @@ export namespace GXml {
         vfunc_get_whole_text(): string;
     }
 
-    export const DomText: DomTextNamespace;
+    export const DomText: DomTextNamespace & {
+        new (): DomText; // This allows `obj instanceof DomText`
+    };
 
     module DomProcessingInstruction {
         // Constructor properties interface
@@ -33889,7 +33931,9 @@ export namespace GXml {
         vfunc_get_target(): string;
     }
 
-    export const DomProcessingInstruction: DomProcessingInstructionNamespace;
+    export const DomProcessingInstruction: DomProcessingInstructionNamespace & {
+        new (): DomProcessingInstruction; // This allows `obj instanceof DomProcessingInstruction`
+    };
 
     module DomComment {
         // Constructor properties interface
@@ -33903,7 +33947,9 @@ export namespace GXml {
     }
     interface DomComment extends DomCharacterData {}
 
-    export const DomComment: DomCommentNamespace;
+    export const DomComment: DomCommentNamespace & {
+        new (): DomComment; // This allows `obj instanceof DomComment`
+    };
 
     module DomNonElementParentNode {
         // Constructor properties interface
@@ -33925,7 +33971,9 @@ export namespace GXml {
         vfunc_get_element_by_id(element_id: string): DomElement;
     }
 
-    export const DomNonElementParentNode: DomNonElementParentNodeNamespace;
+    export const DomNonElementParentNode: DomNonElementParentNodeNamespace & {
+        new (): DomNonElementParentNode; // This allows `obj instanceof DomNonElementParentNode`
+    };
 
     module DomParentNode {
         // Constructor properties interface
@@ -33977,7 +34025,9 @@ export namespace GXml {
         vfunc_get_child_element_count(): number;
     }
 
-    export const DomParentNode: DomParentNodeNamespace;
+    export const DomParentNode: DomParentNodeNamespace & {
+        new (): DomParentNode; // This allows `obj instanceof DomParentNode`
+    };
 
     module DomNonDocumentTypeChildNode {
         // Constructor properties interface
@@ -34013,7 +34063,9 @@ export namespace GXml {
         vfunc_get_next_element_sibling(): DomElement;
     }
 
-    export const DomNonDocumentTypeChildNode: DomNonDocumentTypeChildNodeNamespace;
+    export const DomNonDocumentTypeChildNode: DomNonDocumentTypeChildNodeNamespace & {
+        new (): DomNonDocumentTypeChildNode; // This allows `obj instanceof DomNonDocumentTypeChildNode`
+    };
 
     module DomChildNode {
         // Constructor properties interface
@@ -34035,7 +34087,9 @@ export namespace GXml {
         vfunc_remove(): void;
     }
 
-    export const DomChildNode: DomChildNodeNamespace;
+    export const DomChildNode: DomChildNodeNamespace & {
+        new (): DomChildNode; // This allows `obj instanceof DomChildNode`
+    };
 
     module DomNodeList {
         // Constructor properties interface
@@ -34065,7 +34119,9 @@ export namespace GXml {
         vfunc_get_length(): number;
     }
 
-    export const DomNodeList: DomNodeListNamespace;
+    export const DomNodeList: DomNodeListNamespace & {
+        new (): DomNodeList; // This allows `obj instanceof DomNodeList`
+    };
 
     module DomHTMLCollection {
         // Constructor properties interface
@@ -34101,7 +34157,9 @@ export namespace GXml {
         vfunc_get_length(): number;
     }
 
-    export const DomHTMLCollection: DomHTMLCollectionNamespace;
+    export const DomHTMLCollection: DomHTMLCollectionNamespace & {
+        new (): DomHTMLCollection; // This allows `obj instanceof DomHTMLCollection`
+    };
 
     module DomNodeIterator {
         // Constructor properties interface
@@ -34157,7 +34215,9 @@ export namespace GXml {
         vfunc_get_filter(): DomNodeFilter;
     }
 
-    export const DomNodeIterator: DomNodeIteratorNamespace;
+    export const DomNodeIterator: DomNodeIteratorNamespace & {
+        new (): DomNodeIterator; // This allows `obj instanceof DomNodeIterator`
+    };
 
     module DomTreeWalker {
         // Constructor properties interface
@@ -34215,7 +34275,9 @@ export namespace GXml {
         vfunc_get_current_node(): DomNode;
     }
 
-    export const DomTreeWalker: DomTreeWalkerNamespace;
+    export const DomTreeWalker: DomTreeWalkerNamespace & {
+        new (): DomTreeWalker; // This allows `obj instanceof DomTreeWalker`
+    };
 
     module DomNamedNodeMap {
         // Constructor properties interface
@@ -34257,7 +34319,9 @@ export namespace GXml {
         vfunc_get_length(): number;
     }
 
-    export const DomNamedNodeMap: DomNamedNodeMapNamespace;
+    export const DomNamedNodeMap: DomNamedNodeMapNamespace & {
+        new (): DomNamedNodeMap; // This allows `obj instanceof DomNamedNodeMap`
+    };
 
     module DomTokenList {
         // Constructor properties interface
@@ -34297,7 +34361,9 @@ export namespace GXml {
         vfunc_get_length(): number;
     }
 
-    export const DomTokenList: DomTokenListNamespace;
+    export const DomTokenList: DomTokenListNamespace & {
+        new (): DomTokenList; // This allows `obj instanceof DomTokenList`
+    };
 
     module DomSettableTokenList {
         // Constructor properties interface
@@ -34328,7 +34394,9 @@ export namespace GXml {
         vfunc_set_value(value: string): void;
     }
 
-    export const DomSettableTokenList: DomSettableTokenListNamespace;
+    export const DomSettableTokenList: DomSettableTokenListNamespace & {
+        new (): DomSettableTokenList; // This allows `obj instanceof DomSettableTokenList`
+    };
 
     module DomDocument {
         // Constructor properties interface
@@ -34428,7 +34496,9 @@ export namespace GXml {
         vfunc_get_document_element(): DomElement;
     }
 
-    export const DomDocument: DomDocumentNamespace;
+    export const DomDocument: DomDocumentNamespace & {
+        new (): DomDocument; // This allows `obj instanceof DomDocument`
+    };
 
     module DomXMLDocument {
         // Constructor properties interface
@@ -34442,7 +34512,9 @@ export namespace GXml {
     }
     interface DomXMLDocument extends GObject.Object {}
 
-    export const DomXMLDocument: DomXMLDocumentNamespace;
+    export const DomXMLDocument: DomXMLDocumentNamespace & {
+        new (): DomXMLDocument; // This allows `obj instanceof DomXMLDocument`
+    };
 
     module DomImplementation {
         // Constructor properties interface
@@ -34470,7 +34542,9 @@ export namespace GXml {
         vfunc_has_feature(): boolean;
     }
 
-    export const DomImplementation: DomImplementationNamespace;
+    export const DomImplementation: DomImplementationNamespace & {
+        new (): DomImplementation; // This allows `obj instanceof DomImplementation`
+    };
 
     module DomDocumentFragment {
         // Constructor properties interface
@@ -34484,7 +34558,9 @@ export namespace GXml {
     }
     interface DomDocumentFragment extends GObject.Object {}
 
-    export const DomDocumentFragment: DomDocumentFragmentNamespace;
+    export const DomDocumentFragment: DomDocumentFragmentNamespace & {
+        new (): DomDocumentFragment; // This allows `obj instanceof DomDocumentFragment`
+    };
 
     module DomDocumentType {
         // Constructor properties interface
@@ -34524,7 +34600,9 @@ export namespace GXml {
         vfunc_get_system_id(): string;
     }
 
-    export const DomDocumentType: DomDocumentTypeNamespace;
+    export const DomDocumentType: DomDocumentTypeNamespace & {
+        new (): DomDocumentType; // This allows `obj instanceof DomDocumentType`
+    };
 
     module DomElement {
         // Constructor properties interface
@@ -34619,7 +34697,9 @@ export namespace GXml {
         vfunc_get_attributes(): DomNamedNodeMap;
     }
 
-    export const DomElement: DomElementNamespace;
+    export const DomElement: DomElementNamespace & {
+        new (): DomElement; // This allows `obj instanceof DomElement`
+    };
 
     module DomEventTarget {
         // Constructor properties interface
@@ -34645,7 +34725,9 @@ export namespace GXml {
         vfunc_dispatch_event(event: DomEvent): boolean;
     }
 
-    export const DomEventTarget: DomEventTargetNamespace;
+    export const DomEventTarget: DomEventTargetNamespace & {
+        new (): DomEventTarget; // This allows `obj instanceof DomEventTarget`
+    };
 
     module DomEventListener {
         // Constructor properties interface
@@ -34667,7 +34749,9 @@ export namespace GXml {
         vfunc_handle_event(event: DomEvent): void;
     }
 
-    export const DomEventListener: DomEventListenerNamespace;
+    export const DomEventListener: DomEventListenerNamespace & {
+        new (): DomEventListener; // This allows `obj instanceof DomEventListener`
+    };
 
     module DomEvent {
         // Constructor properties interface
@@ -34747,7 +34831,9 @@ export namespace GXml {
         vfunc_get_event_phase(): DomEventPhase;
     }
 
-    export const DomEvent: DomEventNamespace;
+    export const DomEvent: DomEventNamespace & {
+        new (): DomEvent; // This allows `obj instanceof DomEvent`
+    };
 
     module DomCustomEvent {
         // Constructor properties interface
@@ -34777,7 +34863,9 @@ export namespace GXml {
         vfunc_get_detail(): unknown;
     }
 
-    export const DomCustomEvent: DomCustomEventNamespace;
+    export const DomCustomEvent: DomCustomEventNamespace & {
+        new (): DomCustomEvent; // This allows `obj instanceof DomCustomEvent`
+    };
 
     module DomMutationObserver {
         // Constructor properties interface
@@ -34803,7 +34891,9 @@ export namespace GXml {
         vfunc_take_records(): Gee.List;
     }
 
-    export const DomMutationObserver: DomMutationObserverNamespace;
+    export const DomMutationObserver: DomMutationObserverNamespace & {
+        new (): DomMutationObserver; // This allows `obj instanceof DomMutationObserver`
+    };
 
     module DomMutationRecord {
         // Constructor properties interface
@@ -34885,7 +34975,9 @@ export namespace GXml {
         vfunc_get_old_value(): string;
     }
 
-    export const DomMutationRecord: DomMutationRecordNamespace;
+    export const DomMutationRecord: DomMutationRecordNamespace & {
+        new (): DomMutationRecord; // This allows `obj instanceof DomMutationRecord`
+    };
 
     module DomNode {
         // Constructor properties interface
@@ -35027,7 +35119,9 @@ export namespace GXml {
         vfunc_set_text_content(value: string): void;
     }
 
-    export const DomNode: DomNodeNamespace;
+    export const DomNode: DomNodeNamespace & {
+        new (): DomNode; // This allows `obj instanceof DomNode`
+    };
 
     module DomRange {
         // Constructor properties interface
@@ -35077,7 +35171,7 @@ export namespace GXml {
         collapse(to_start: boolean): void;
         select_node(node: DomNode): void;
         select_node_contents(node: DomNode): void;
-        compare_boundary_points(how: DomRangeBoundaryPoints, sourceRange: DomRange): number;
+        compare_boundary_points(how: DomRangeBoundaryPoints | null, sourceRange: DomRange): number;
         delete_contents(): void;
         extract_contents(): DomDocumentFragment;
         clone_contents(): DomDocumentFragment;
@@ -35127,7 +35221,9 @@ export namespace GXml {
         vfunc_get_common_ancestor_container(): DomNode;
     }
 
-    export const DomRange: DomRangeNamespace;
+    export const DomRange: DomRangeNamespace & {
+        new (): DomRange; // This allows `obj instanceof DomRange`
+    };
 
     module XPathContext {
         // Constructor properties interface
@@ -35149,7 +35245,9 @@ export namespace GXml {
         vfunc_evaluate(expression: string, resolver: Gee.List): XPathObject;
     }
 
-    export const XPathContext: XPathContextNamespace;
+    export const XPathContext: XPathContextNamespace & {
+        new (): XPathContext; // This allows `obj instanceof XPathContext`
+    };
 
     module XPathObject {
         // Constructor properties interface
@@ -35201,7 +35299,9 @@ export namespace GXml {
         vfunc_get_nodeset(): DomHTMLCollection;
     }
 
-    export const XPathObject: XPathObjectNamespace;
+    export const XPathObject: XPathObjectNamespace & {
+        new (): XPathObject; // This allows `obj instanceof XPathObject`
+    };
 
     module GomObject {
         // Constructor properties interface
@@ -35245,7 +35345,9 @@ export namespace GXml {
         vfunc_clean_property_elements(name: string): void;
     }
 
-    export const GomObject: GomObjectNamespace;
+    export const GomObject: GomObjectNamespace & {
+        new (): GomObject; // This allows `obj instanceof GomObject`
+    };
 
     module GomCollection {
         // Constructor properties interface
@@ -35314,7 +35416,9 @@ export namespace GXml {
         vfunc_get_length(): number;
     }
 
-    export const GomCollection: GomCollectionNamespace;
+    export const GomCollection: GomCollectionNamespace & {
+        new (): GomCollection; // This allows `obj instanceof GomCollection`
+    };
 
     module MappeableElement {
         // Constructor properties interface
@@ -35336,7 +35440,9 @@ export namespace GXml {
         vfunc_get_map_key(): string;
     }
 
-    export const MappeableElement: MappeableElementNamespace;
+    export const MappeableElement: MappeableElementNamespace & {
+        new (): MappeableElement; // This allows `obj instanceof MappeableElement`
+    };
 
     module MappeableElementPairKey {
         // Constructor properties interface
@@ -35360,7 +35466,9 @@ export namespace GXml {
         vfunc_get_map_secondary_key(): string;
     }
 
-    export const MappeableElementPairKey: MappeableElementPairKeyNamespace;
+    export const MappeableElementPairKey: MappeableElementPairKeyNamespace & {
+        new (): MappeableElementPairKey; // This allows `obj instanceof MappeableElementPairKey`
+    };
 
     module MappeableElementThreeKey {
         // Constructor properties interface
@@ -35386,7 +35494,9 @@ export namespace GXml {
         vfunc_get_map_tkey(): string;
     }
 
-    export const MappeableElementThreeKey: MappeableElementThreeKeyNamespace;
+    export const MappeableElementThreeKey: MappeableElementThreeKeyNamespace & {
+        new (): MappeableElementThreeKey; // This allows `obj instanceof MappeableElementThreeKey`
+    };
 
     module GomProperty {
         // Constructor properties interface
@@ -35419,7 +35529,9 @@ export namespace GXml {
         vfunc_set_value(value: string): void;
     }
 
-    export const GomProperty: GomPropertyNamespace;
+    export const GomProperty: GomPropertyNamespace & {
+        new (): GomProperty; // This allows `obj instanceof GomProperty`
+    };
 
     module Parser {
         // Constructor properties interface
@@ -35473,7 +35585,9 @@ export namespace GXml {
         vfunc_get_node(): DomNode;
     }
 
-    export const Parser: ParserNamespace;
+    export const Parser: ParserNamespace & {
+        new (): Parser; // This allows `obj instanceof Parser`
+    };
 
     module IXsdSchema {
         // Constructor properties interface
@@ -35527,7 +35641,9 @@ export namespace GXml {
         vfunc_set_complex_type_definitions(value: IXsdListComplexTypes): void;
     }
 
-    export const IXsdSchema: IXsdSchemaNamespace;
+    export const IXsdSchema: IXsdSchemaNamespace & {
+        new (): IXsdSchema; // This allows `obj instanceof IXsdSchema`
+    };
 
     module IXsdBaseType {
         // Constructor properties interface
@@ -35558,7 +35674,9 @@ export namespace GXml {
         vfunc_set_anotation(value: IXsdAnnotation): void;
     }
 
-    export const IXsdBaseType: IXsdBaseTypeNamespace;
+    export const IXsdBaseType: IXsdBaseTypeNamespace & {
+        new (): IXsdBaseType; // This allows `obj instanceof IXsdBaseType`
+    };
 
     module IXsdSimpleType {
         // Constructor properties interface
@@ -35631,7 +35749,9 @@ export namespace GXml {
         vfunc_set_restriction(value: IXsdTypeRestriction): void;
     }
 
-    export const IXsdSimpleType: IXsdSimpleTypeNamespace;
+    export const IXsdSimpleType: IXsdSimpleTypeNamespace & {
+        new (): IXsdSimpleType; // This allows `obj instanceof IXsdSimpleType`
+    };
 
     module IXsdTypeDef {
         // Constructor properties interface
@@ -35645,7 +35765,9 @@ export namespace GXml {
     }
     interface IXsdTypeDef extends GObject.Object {}
 
-    export const IXsdTypeDef: IXsdTypeDefNamespace;
+    export const IXsdTypeDef: IXsdTypeDefNamespace & {
+        new (): IXsdTypeDef; // This allows `obj instanceof IXsdTypeDef`
+    };
 
     module IXsdTypeRestriction {
         // Constructor properties interface
@@ -35710,7 +35832,9 @@ export namespace GXml {
         vfunc_set_white_spaces(value: IXsdListTypeRestrictionWhiteSpaces): void;
     }
 
-    export const IXsdTypeRestriction: IXsdTypeRestrictionNamespace;
+    export const IXsdTypeRestriction: IXsdTypeRestrictionNamespace & {
+        new (): IXsdTypeRestriction; // This allows `obj instanceof IXsdTypeRestriction`
+    };
 
     module IXsdTypeList {
         // Constructor properties interface
@@ -35724,7 +35848,9 @@ export namespace GXml {
     }
     interface IXsdTypeList extends GObject.Object {}
 
-    export const IXsdTypeList: IXsdTypeListNamespace;
+    export const IXsdTypeList: IXsdTypeListNamespace & {
+        new (): IXsdTypeList; // This allows `obj instanceof IXsdTypeList`
+    };
 
     module IXsdTypeUnion {
         // Constructor properties interface
@@ -35738,7 +35864,9 @@ export namespace GXml {
     }
     interface IXsdTypeUnion extends GObject.Object {}
 
-    export const IXsdTypeUnion: IXsdTypeUnionNamespace;
+    export const IXsdTypeUnion: IXsdTypeUnionNamespace & {
+        new (): IXsdTypeUnion; // This allows `obj instanceof IXsdTypeUnion`
+    };
 
     module IXsdTypeRestrictionDef {
         // Constructor properties interface
@@ -35769,7 +35897,9 @@ export namespace GXml {
         vfunc_set_annotation(value: IXsdAnnotation): void;
     }
 
-    export const IXsdTypeRestrictionDef: IXsdTypeRestrictionDefNamespace;
+    export const IXsdTypeRestrictionDef: IXsdTypeRestrictionDefNamespace & {
+        new (): IXsdTypeRestrictionDef; // This allows `obj instanceof IXsdTypeRestrictionDef`
+    };
 
     module IXsdTypeRestrictionMinExclusive {
         // Constructor properties interface
@@ -35783,7 +35913,9 @@ export namespace GXml {
     }
     interface IXsdTypeRestrictionMinExclusive extends GObject.Object {}
 
-    export const IXsdTypeRestrictionMinExclusive: IXsdTypeRestrictionMinExclusiveNamespace;
+    export const IXsdTypeRestrictionMinExclusive: IXsdTypeRestrictionMinExclusiveNamespace & {
+        new (): IXsdTypeRestrictionMinExclusive; // This allows `obj instanceof IXsdTypeRestrictionMinExclusive`
+    };
 
     module IXsdTypeRestrictionMinInclusive {
         // Constructor properties interface
@@ -35797,7 +35929,9 @@ export namespace GXml {
     }
     interface IXsdTypeRestrictionMinInclusive extends GObject.Object {}
 
-    export const IXsdTypeRestrictionMinInclusive: IXsdTypeRestrictionMinInclusiveNamespace;
+    export const IXsdTypeRestrictionMinInclusive: IXsdTypeRestrictionMinInclusiveNamespace & {
+        new (): IXsdTypeRestrictionMinInclusive; // This allows `obj instanceof IXsdTypeRestrictionMinInclusive`
+    };
 
     module IXsdTypeRestrictionMaxExclusive {
         // Constructor properties interface
@@ -35811,7 +35945,9 @@ export namespace GXml {
     }
     interface IXsdTypeRestrictionMaxExclusive extends GObject.Object {}
 
-    export const IXsdTypeRestrictionMaxExclusive: IXsdTypeRestrictionMaxExclusiveNamespace;
+    export const IXsdTypeRestrictionMaxExclusive: IXsdTypeRestrictionMaxExclusiveNamespace & {
+        new (): IXsdTypeRestrictionMaxExclusive; // This allows `obj instanceof IXsdTypeRestrictionMaxExclusive`
+    };
 
     module IXsdTypeRestrictionMaxInclusive {
         // Constructor properties interface
@@ -35825,7 +35961,9 @@ export namespace GXml {
     }
     interface IXsdTypeRestrictionMaxInclusive extends GObject.Object {}
 
-    export const IXsdTypeRestrictionMaxInclusive: IXsdTypeRestrictionMaxInclusiveNamespace;
+    export const IXsdTypeRestrictionMaxInclusive: IXsdTypeRestrictionMaxInclusiveNamespace & {
+        new (): IXsdTypeRestrictionMaxInclusive; // This allows `obj instanceof IXsdTypeRestrictionMaxInclusive`
+    };
 
     module IXsdTypeRestrictionTotalDigits {
         // Constructor properties interface
@@ -35839,7 +35977,9 @@ export namespace GXml {
     }
     interface IXsdTypeRestrictionTotalDigits extends GObject.Object {}
 
-    export const IXsdTypeRestrictionTotalDigits: IXsdTypeRestrictionTotalDigitsNamespace;
+    export const IXsdTypeRestrictionTotalDigits: IXsdTypeRestrictionTotalDigitsNamespace & {
+        new (): IXsdTypeRestrictionTotalDigits; // This allows `obj instanceof IXsdTypeRestrictionTotalDigits`
+    };
 
     module IXsdTypeRestrictionFractionDigits {
         // Constructor properties interface
@@ -35853,7 +35993,9 @@ export namespace GXml {
     }
     interface IXsdTypeRestrictionFractionDigits extends GObject.Object {}
 
-    export const IXsdTypeRestrictionFractionDigits: IXsdTypeRestrictionFractionDigitsNamespace;
+    export const IXsdTypeRestrictionFractionDigits: IXsdTypeRestrictionFractionDigitsNamespace & {
+        new (): IXsdTypeRestrictionFractionDigits; // This allows `obj instanceof IXsdTypeRestrictionFractionDigits`
+    };
 
     module IXsdTypeRestrictionLength {
         // Constructor properties interface
@@ -35867,7 +36009,9 @@ export namespace GXml {
     }
     interface IXsdTypeRestrictionLength extends GObject.Object {}
 
-    export const IXsdTypeRestrictionLength: IXsdTypeRestrictionLengthNamespace;
+    export const IXsdTypeRestrictionLength: IXsdTypeRestrictionLengthNamespace & {
+        new (): IXsdTypeRestrictionLength; // This allows `obj instanceof IXsdTypeRestrictionLength`
+    };
 
     module IXsdTypeRestrictionMinLength {
         // Constructor properties interface
@@ -35881,7 +36025,9 @@ export namespace GXml {
     }
     interface IXsdTypeRestrictionMinLength extends GObject.Object {}
 
-    export const IXsdTypeRestrictionMinLength: IXsdTypeRestrictionMinLengthNamespace;
+    export const IXsdTypeRestrictionMinLength: IXsdTypeRestrictionMinLengthNamespace & {
+        new (): IXsdTypeRestrictionMinLength; // This allows `obj instanceof IXsdTypeRestrictionMinLength`
+    };
 
     module IXsdTypeRestrictionMaxLength {
         // Constructor properties interface
@@ -35895,7 +36041,9 @@ export namespace GXml {
     }
     interface IXsdTypeRestrictionMaxLength extends GObject.Object {}
 
-    export const IXsdTypeRestrictionMaxLength: IXsdTypeRestrictionMaxLengthNamespace;
+    export const IXsdTypeRestrictionMaxLength: IXsdTypeRestrictionMaxLengthNamespace & {
+        new (): IXsdTypeRestrictionMaxLength; // This allows `obj instanceof IXsdTypeRestrictionMaxLength`
+    };
 
     module IXsdTypeRestrictionEnumeration {
         // Constructor properties interface
@@ -35933,7 +36081,9 @@ export namespace GXml {
         vfunc_set_value(value: string): void;
     }
 
-    export const IXsdTypeRestrictionEnumeration: IXsdTypeRestrictionEnumerationNamespace;
+    export const IXsdTypeRestrictionEnumeration: IXsdTypeRestrictionEnumerationNamespace & {
+        new (): IXsdTypeRestrictionEnumeration; // This allows `obj instanceof IXsdTypeRestrictionEnumeration`
+    };
 
     module IXsdTypeRestrictionWhiteSpace {
         // Constructor properties interface
@@ -35978,7 +36128,9 @@ export namespace GXml {
         vfunc_set_value(value: string): void;
     }
 
-    export const IXsdTypeRestrictionWhiteSpace: IXsdTypeRestrictionWhiteSpaceNamespace;
+    export const IXsdTypeRestrictionWhiteSpace: IXsdTypeRestrictionWhiteSpaceNamespace & {
+        new (): IXsdTypeRestrictionWhiteSpace; // This allows `obj instanceof IXsdTypeRestrictionWhiteSpace`
+    };
 
     module IXsdTypeRestrictionPattern {
         // Constructor properties interface
@@ -35992,7 +36144,9 @@ export namespace GXml {
     }
     interface IXsdTypeRestrictionPattern extends GObject.Object {}
 
-    export const IXsdTypeRestrictionPattern: IXsdTypeRestrictionPatternNamespace;
+    export const IXsdTypeRestrictionPattern: IXsdTypeRestrictionPatternNamespace & {
+        new (): IXsdTypeRestrictionPattern; // This allows `obj instanceof IXsdTypeRestrictionPattern`
+    };
 
     module IXsdTypeRestrictionAssertion {
         // Constructor properties interface
@@ -36006,7 +36160,9 @@ export namespace GXml {
     }
     interface IXsdTypeRestrictionAssertion extends GObject.Object {}
 
-    export const IXsdTypeRestrictionAssertion: IXsdTypeRestrictionAssertionNamespace;
+    export const IXsdTypeRestrictionAssertion: IXsdTypeRestrictionAssertionNamespace & {
+        new (): IXsdTypeRestrictionAssertion; // This allows `obj instanceof IXsdTypeRestrictionAssertion`
+    };
 
     module IXsdTypeRestrictionExplicitTimezone {
         // Constructor properties interface
@@ -36020,7 +36176,9 @@ export namespace GXml {
     }
     interface IXsdTypeRestrictionExplicitTimezone extends GObject.Object {}
 
-    export const IXsdTypeRestrictionExplicitTimezone: IXsdTypeRestrictionExplicitTimezoneNamespace;
+    export const IXsdTypeRestrictionExplicitTimezone: IXsdTypeRestrictionExplicitTimezoneNamespace & {
+        new (): IXsdTypeRestrictionExplicitTimezone; // This allows `obj instanceof IXsdTypeRestrictionExplicitTimezone`
+    };
 
     module IXsdComplexType {
         // Constructor properties interface
@@ -36111,7 +36269,9 @@ export namespace GXml {
         vfunc_get_group_attributes(): IXsdListAttributesGroup;
     }
 
-    export const IXsdComplexType: IXsdComplexTypeNamespace;
+    export const IXsdComplexType: IXsdComplexTypeNamespace & {
+        new (): IXsdComplexType; // This allows `obj instanceof IXsdComplexType`
+    };
 
     module IXsdExtension {
         // Constructor properties interface
@@ -36142,7 +36302,9 @@ export namespace GXml {
         vfunc_set_base(value: string): void;
     }
 
-    export const IXsdExtension: IXsdExtensionNamespace;
+    export const IXsdExtension: IXsdExtensionNamespace & {
+        new (): IXsdExtension; // This allows `obj instanceof IXsdExtension`
+    };
 
     module IXsdElement {
         // Constructor properties interface
@@ -36307,7 +36469,9 @@ export namespace GXml {
         vfunc_set_complex_type(value: IXsdComplexType): void;
     }
 
-    export const IXsdElement: IXsdElementNamespace;
+    export const IXsdElement: IXsdElementNamespace & {
+        new (): IXsdElement; // This allows `obj instanceof IXsdElement`
+    };
 
     module IXsdAnnotation {
         // Constructor properties interface
@@ -36321,7 +36485,9 @@ export namespace GXml {
     }
     interface IXsdAnnotation extends GObject.Object {}
 
-    export const IXsdAnnotation: IXsdAnnotationNamespace;
+    export const IXsdAnnotation: IXsdAnnotationNamespace & {
+        new (): IXsdAnnotation; // This allows `obj instanceof IXsdAnnotation`
+    };
 
     module IXsdBaseContent {
         // Constructor properties interface
@@ -36352,7 +36518,9 @@ export namespace GXml {
         vfunc_set_anotation(value: IXsdAnnotation): void;
     }
 
-    export const IXsdBaseContent: IXsdBaseContentNamespace;
+    export const IXsdBaseContent: IXsdBaseContentNamespace & {
+        new (): IXsdBaseContent; // This allows `obj instanceof IXsdBaseContent`
+    };
 
     module IXsdSimpleContent {
         // Constructor properties interface
@@ -36366,7 +36534,9 @@ export namespace GXml {
     }
     interface IXsdSimpleContent extends GObject.Object {}
 
-    export const IXsdSimpleContent: IXsdSimpleContentNamespace;
+    export const IXsdSimpleContent: IXsdSimpleContentNamespace & {
+        new (): IXsdSimpleContent; // This allows `obj instanceof IXsdSimpleContent`
+    };
 
     module IXsdComplexContent {
         // Constructor properties interface
@@ -36380,7 +36550,9 @@ export namespace GXml {
     }
     interface IXsdComplexContent extends GObject.Object {}
 
-    export const IXsdComplexContent: IXsdComplexContentNamespace;
+    export const IXsdComplexContent: IXsdComplexContentNamespace & {
+        new (): IXsdComplexContent; // This allows `obj instanceof IXsdComplexContent`
+    };
 
     module IXsdOpenContent {
         // Constructor properties interface
@@ -36394,7 +36566,9 @@ export namespace GXml {
     }
     interface IXsdOpenContent extends GObject.Object {}
 
-    export const IXsdOpenContent: IXsdOpenContentNamespace;
+    export const IXsdOpenContent: IXsdOpenContentNamespace & {
+        new (): IXsdOpenContent; // This allows `obj instanceof IXsdOpenContent`
+    };
 
     module IXsdBaseAttribute {
         // Constructor properties interface
@@ -36425,7 +36599,9 @@ export namespace GXml {
         vfunc_set_anotation(value: IXsdAnnotation): void;
     }
 
-    export const IXsdBaseAttribute: IXsdBaseAttributeNamespace;
+    export const IXsdBaseAttribute: IXsdBaseAttributeNamespace & {
+        new (): IXsdBaseAttribute; // This allows `obj instanceof IXsdBaseAttribute`
+    };
 
     module IXsdAttribute {
         // Constructor properties interface
@@ -36439,7 +36615,9 @@ export namespace GXml {
     }
     interface IXsdAttribute extends GObject.Object {}
 
-    export const IXsdAttribute: IXsdAttributeNamespace;
+    export const IXsdAttribute: IXsdAttributeNamespace & {
+        new (): IXsdAttribute; // This allows `obj instanceof IXsdAttribute`
+    };
 
     module IXsdAttributeGroup {
         // Constructor properties interface
@@ -36453,7 +36631,9 @@ export namespace GXml {
     }
     interface IXsdAttributeGroup extends GObject.Object {}
 
-    export const IXsdAttributeGroup: IXsdAttributeGroupNamespace;
+    export const IXsdAttributeGroup: IXsdAttributeGroupNamespace & {
+        new (): IXsdAttributeGroup; // This allows `obj instanceof IXsdAttributeGroup`
+    };
 
     module IXsdList {
         // Constructor properties interface
@@ -36516,7 +36696,9 @@ export namespace GXml {
         vfunc_get_length(): number;
     }
 
-    export const IXsdList: IXsdListNamespace;
+    export const IXsdList: IXsdListNamespace & {
+        new (): IXsdList; // This allows `obj instanceof IXsdList`
+    };
 
     module IXsdListElements {
         // Constructor properties interface
@@ -36530,7 +36712,9 @@ export namespace GXml {
     }
     interface IXsdListElements extends GObject.Object {}
 
-    export const IXsdListElements: IXsdListElementsNamespace;
+    export const IXsdListElements: IXsdListElementsNamespace & {
+        new (): IXsdListElements; // This allows `obj instanceof IXsdListElements`
+    };
 
     module IXsdListSimpleTypes {
         // Constructor properties interface
@@ -36544,7 +36728,9 @@ export namespace GXml {
     }
     interface IXsdListSimpleTypes extends GObject.Object {}
 
-    export const IXsdListSimpleTypes: IXsdListSimpleTypesNamespace;
+    export const IXsdListSimpleTypes: IXsdListSimpleTypesNamespace & {
+        new (): IXsdListSimpleTypes; // This allows `obj instanceof IXsdListSimpleTypes`
+    };
 
     module IXsdListComplexTypes {
         // Constructor properties interface
@@ -36558,7 +36744,9 @@ export namespace GXml {
     }
     interface IXsdListComplexTypes extends GObject.Object {}
 
-    export const IXsdListComplexTypes: IXsdListComplexTypesNamespace;
+    export const IXsdListComplexTypes: IXsdListComplexTypesNamespace & {
+        new (): IXsdListComplexTypes; // This allows `obj instanceof IXsdListComplexTypes`
+    };
 
     module IXsdListAttributes {
         // Constructor properties interface
@@ -36572,7 +36760,9 @@ export namespace GXml {
     }
     interface IXsdListAttributes extends GObject.Object {}
 
-    export const IXsdListAttributes: IXsdListAttributesNamespace;
+    export const IXsdListAttributes: IXsdListAttributesNamespace & {
+        new (): IXsdListAttributes; // This allows `obj instanceof IXsdListAttributes`
+    };
 
     module IXsdListAttributesGroup {
         // Constructor properties interface
@@ -36586,7 +36776,9 @@ export namespace GXml {
     }
     interface IXsdListAttributesGroup extends GObject.Object {}
 
-    export const IXsdListAttributesGroup: IXsdListAttributesGroupNamespace;
+    export const IXsdListAttributesGroup: IXsdListAttributesGroupNamespace & {
+        new (): IXsdListAttributesGroup; // This allows `obj instanceof IXsdListAttributesGroup`
+    };
 
     module IXsdListTypeRestrictionEnumerations {
         // Constructor properties interface
@@ -36600,7 +36792,9 @@ export namespace GXml {
     }
     interface IXsdListTypeRestrictionEnumerations extends GObject.Object {}
 
-    export const IXsdListTypeRestrictionEnumerations: IXsdListTypeRestrictionEnumerationsNamespace;
+    export const IXsdListTypeRestrictionEnumerations: IXsdListTypeRestrictionEnumerationsNamespace & {
+        new (): IXsdListTypeRestrictionEnumerations; // This allows `obj instanceof IXsdListTypeRestrictionEnumerations`
+    };
 
     module IXsdListTypeRestrictionWhiteSpaces {
         // Constructor properties interface
@@ -36614,7 +36808,9 @@ export namespace GXml {
     }
     interface IXsdListTypeRestrictionWhiteSpaces extends GObject.Object {}
 
-    export const IXsdListTypeRestrictionWhiteSpaces: IXsdListTypeRestrictionWhiteSpacesNamespace;
+    export const IXsdListTypeRestrictionWhiteSpaces: IXsdListTypeRestrictionWhiteSpacesNamespace & {
+        new (): IXsdListTypeRestrictionWhiteSpaces; // This allows `obj instanceof IXsdListTypeRestrictionWhiteSpaces`
+    };
 
     /**
      * Name of the imported GIR library

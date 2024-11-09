@@ -323,7 +323,7 @@ export namespace Mks {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -371,22 +371,22 @@ export namespace Mks {
          * @param state platform state to query
          * @returns the value of @state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
         /**
          * Resets the accessible `property` to its default value.
          * @param property a `GtkAccessibleProperty`
          */
-        reset_property(property: Gtk.AccessibleProperty): void;
+        reset_property(property: Gtk.AccessibleProperty | null): void;
         /**
          * Resets the accessible `relation` to its default value.
          * @param relation a `GtkAccessibleRelation`
          */
-        reset_relation(relation: Gtk.AccessibleRelation): void;
+        reset_relation(relation: Gtk.AccessibleRelation | null): void;
         /**
          * Resets the accessible `state` to its default value.
          * @param state a `GtkAccessibleState`
          */
-        reset_state(state: Gtk.AccessibleState): void;
+        reset_state(state: Gtk.AccessibleState | null): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -419,7 +419,7 @@ export namespace Mks {
          * @param properties an array of `GtkAccessibleProperty`
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -430,7 +430,7 @@ export namespace Mks {
          * @param relations an array of `GtkAccessibleRelation`
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -441,7 +441,7 @@ export namespace Mks {
          * @param states an array of `GtkAccessibleState`
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -616,7 +616,7 @@ export namespace Mks {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -657,7 +657,7 @@ export namespace Mks {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1237,7 +1237,7 @@ export namespace Mks {
          * @param button the #MksMouseButton that was pressed
          * @param cancellable a #GCancellable
          */
-        press(button: MouseButton, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        press(button: MouseButton | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
         /**
          * Presses a mouse button.
          * @param button the #MksMouseButton that was pressed
@@ -1245,7 +1245,7 @@ export namespace Mks {
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         press(
-            button: MouseButton,
+            button: MouseButton | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1256,7 +1256,7 @@ export namespace Mks {
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         press(
-            button: MouseButton,
+            button: MouseButton | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -1272,13 +1272,13 @@ export namespace Mks {
          * @param cancellable a #GCancellable
          * @returns %TRUE if the operation was acknowledged by the QEMU instance;   otherwise %FALSE and @error is set.
          */
-        press_sync(button: MouseButton, cancellable?: Gio.Cancellable | null): boolean;
+        press_sync(button: MouseButton | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Releases a mouse button.
          * @param button the #MksMouseButton that was released
          * @param cancellable a #GCancellable
          */
-        release(button: MouseButton, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        release(button: MouseButton | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
         /**
          * Releases a mouse button.
          * @param button the #MksMouseButton that was released
@@ -1286,7 +1286,7 @@ export namespace Mks {
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         release(
-            button: MouseButton,
+            button: MouseButton | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1297,7 +1297,7 @@ export namespace Mks {
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         release(
-            button: MouseButton,
+            button: MouseButton | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -1313,7 +1313,7 @@ export namespace Mks {
          * @param cancellable a #GCancellable
          * @returns %TRUE if the operation was acknowledged by the QEMU instance;   otherwise %FALSE and @error is set.
          */
-        release_sync(button: MouseButton, cancellable?: Gio.Cancellable | null): boolean;
+        release_sync(button: MouseButton | null, cancellable?: Gio.Cancellable | null): boolean;
     }
 
     module Screen {
@@ -1928,7 +1928,7 @@ export namespace Mks {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1969,7 +1969,7 @@ export namespace Mks {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2333,7 +2333,7 @@ export namespace Mks {
          * @param cancellable a #GCancellable
          */
         send_event(
-            kind: TouchEventKind,
+            kind: TouchEventKind | null,
             num_slot: number,
             x: number,
             y: number,
@@ -2349,7 +2349,7 @@ export namespace Mks {
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         send_event(
-            kind: TouchEventKind,
+            kind: TouchEventKind | null,
             num_slot: number,
             x: number,
             y: number,
@@ -2366,7 +2366,7 @@ export namespace Mks {
          * @param callback a #GAsyncReadyCallback to execute upon completion
          */
         send_event(
-            kind: TouchEventKind,
+            kind: TouchEventKind | null,
             num_slot: number,
             x: number,
             y: number,
@@ -2389,7 +2389,7 @@ export namespace Mks {
          * @returns %TRUE if the operation was acknowledged by the QEMU instance;   otherwise %FALSE and @error is set.
          */
         send_event_sync(
-            kind: TouchEventKind,
+            kind: TouchEventKind | null,
             num_slot: number,
             x: number,
             y: number,

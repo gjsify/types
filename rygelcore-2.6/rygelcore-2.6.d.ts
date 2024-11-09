@@ -208,7 +208,7 @@ export namespace RygelCore {
         set_udn(udn: string): void;
         get_udn(): string | null;
         set_serial_number(serial: string): void;
-        set_dlna_caps(capabilities: PluginCapabilities): void;
+        set_dlna_caps(capabilities: PluginCapabilities | null): void;
         clear_service_list(): void;
         add_dlna_doc_element(dlnadoc_xpath: string, dlnadoc_non_xpath: string, dev_cap: string): void;
         remove_dlna_doc_element(dlnadoc_xpath: string): void;
@@ -424,7 +424,7 @@ export namespace RygelCore {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -465,7 +465,7 @@ export namespace RygelCore {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -940,7 +940,7 @@ export namespace RygelCore {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -981,7 +981,7 @@ export namespace RygelCore {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1426,7 +1426,7 @@ export namespace RygelCore {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1467,7 +1467,7 @@ export namespace RygelCore {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1939,7 +1939,7 @@ export namespace RygelCore {
         add_icon(icon_info: IconInfo): void;
         apply_hacks(device: RootDevice, description_path: string): void;
         get_capabilities(): PluginCapabilities;
-        set_capabilities(value: PluginCapabilities): void;
+        set_capabilities(value: PluginCapabilities | null): void;
         get_name(): string;
         get_title(): string;
         set_title(value: string): void;
@@ -2115,7 +2115,7 @@ export namespace RygelCore {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2156,7 +2156,7 @@ export namespace RygelCore {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2584,7 +2584,7 @@ export namespace RygelCore {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2625,7 +2625,7 @@ export namespace RygelCore {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3048,7 +3048,7 @@ export namespace RygelCore {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3089,7 +3089,7 @@ export namespace RygelCore {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3519,7 +3519,7 @@ export namespace RygelCore {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3560,7 +3560,7 @@ export namespace RygelCore {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4271,7 +4271,9 @@ export namespace RygelCore {
         vfunc_shutdown(): void;
     }
 
-    export const DBusInterface: DBusInterfaceNamespace;
+    export const DBusInterface: DBusInterfaceNamespace & {
+        new (): DBusInterface; // This allows `obj instanceof DBusInterface`
+    };
 
     module DBusAclProvider {
         // Constructor properties interface
@@ -4324,7 +4326,9 @@ export namespace RygelCore {
         vfunc_is_allowed_finish(_res_: Gio.AsyncResult): boolean;
     }
 
-    export const DBusAclProvider: DBusAclProviderNamespace;
+    export const DBusAclProvider: DBusAclProviderNamespace & {
+        new (): DBusAclProvider; // This allows `obj instanceof DBusAclProvider`
+    };
 
     module Configuration {
         // Constructor properties interface
@@ -4384,7 +4388,9 @@ export namespace RygelCore {
         vfunc_get_bool(section: string, key: string): boolean;
     }
 
-    export const Configuration: ConfigurationNamespace;
+    export const Configuration: ConfigurationNamespace & {
+        new (): Configuration; // This allows `obj instanceof Configuration`
+    };
 
     module StateMachine {
         // Constructor properties interface
@@ -4421,7 +4427,9 @@ export namespace RygelCore {
         vfunc_set_cancellable(value: Gio.Cancellable): void;
     }
 
-    export const StateMachine: StateMachineNamespace;
+    export const StateMachine: StateMachineNamespace & {
+        new (): StateMachine; // This allows `obj instanceof StateMachine`
+    };
 
     /**
      * Name of the imported GIR library

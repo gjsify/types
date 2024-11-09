@@ -590,7 +590,7 @@ export namespace GstTag {
      */
     function tag_image_data_to_image_sample(
         image_data: Uint8Array | string,
-        image_type: TagImageType,
+        image_type: TagImageType | null,
     ): Gst.Sample | null;
     /**
      * Adds an image from an ID3 APIC frame (or similar, such as used in FLAC)
@@ -953,7 +953,7 @@ export namespace GstTag {
          * @param tag tag to set
          * @param value GValue to set for the tag
          */
-        add_tag_value(mode: Gst.TagMergeMode, tag: string, value: GObject.Value | any): void;
+        add_tag_value(mode: Gst.TagMergeMode | null, tag: string, value: GObject.Value | any): void;
         /**
          * Returns the current list of tags the setter uses.  The list should not be
          * modified or freed.
@@ -973,7 +973,7 @@ export namespace GstTag {
          * @param list a tag list to merge from
          * @param mode the mode to merge with
          */
-        merge_tags(list: Gst.TagList, mode: Gst.TagMergeMode): void;
+        merge_tags(list: Gst.TagList, mode: Gst.TagMergeMode | null): void;
         /**
          * Reset the internal taglist. Elements should call this from within the
          * state-change handler.
@@ -985,7 +985,7 @@ export namespace GstTag {
          * the tags set with this interface and discards tags from events.
          * @param mode The mode with which tags are added
          */
-        set_tag_merge_mode(mode: Gst.TagMergeMode): void;
+        set_tag_merge_mode(mode: Gst.TagMergeMode | null): void;
         /**
          * Abort the state change of the element. This function is used
          * by elements that do asynchronous state changes and find out
@@ -1034,7 +1034,7 @@ export namespace GstTag {
          * @param transition the requested transition
          * @returns the #GstStateChangeReturn of the state transition.
          */
-        change_state(transition: Gst.StateChange): Gst.StateChangeReturn;
+        change_state(transition: Gst.StateChange | null): Gst.StateChangeReturn;
         /**
          * Commit the state change of the element and proceed to the next
          * pending state if any. This function is used
@@ -1052,7 +1052,7 @@ export namespace GstTag {
          * @param ret The previous state return value
          * @returns The result of the commit state change. MT safe.
          */
-        continue_state(ret: Gst.StateChangeReturn): Gst.StateChangeReturn;
+        continue_state(ret: Gst.StateChangeReturn | null): Gst.StateChangeReturn;
         /**
          * Creates a pad for each pad template that is always available.
          * This function is only useful during object initialization of
@@ -1374,7 +1374,7 @@ export namespace GstTag {
             srcpadname: string | null,
             dest: Gst.Element,
             destpadname: string | null,
-            flags: Gst.PadLinkCheck,
+            flags: Gst.PadLinkCheck | null,
         ): boolean;
         /**
          * Brings the element to the lost state. The current state of the
@@ -1412,7 +1412,7 @@ export namespace GstTag {
          * @param line the source code line where the error was generated
          */
         message_full(
-            type: Gst.MessageType,
+            type: Gst.MessageType | null,
             domain: GLib.Quark,
             code: number,
             text: string | null,
@@ -1437,7 +1437,7 @@ export namespace GstTag {
          * @param structure optional details structure
          */
         message_full_with_details(
-            type: Gst.MessageType,
+            type: Gst.MessageType | null,
             domain: GLib.Quark,
             code: number,
             text: string | null,
@@ -1493,7 +1493,11 @@ export namespace GstTag {
          * @param dest_format the #GstFormat to convert to.
          * @returns %TRUE if the query could be performed.
          */
-        query_convert(src_format: Gst.Format, src_val: number, dest_format: Gst.Format): [boolean, number];
+        query_convert(
+            src_format: Gst.Format | null,
+            src_val: number,
+            dest_format: Gst.Format | null,
+        ): [boolean, number];
         /**
          * Queries an element (usually top-level pipeline or playbin element) for the
          * total stream duration in nanoseconds. This query will only work once the
@@ -1506,7 +1510,7 @@ export namespace GstTag {
          * @param format the #GstFormat requested
          * @returns %TRUE if the query could be performed.
          */
-        query_duration(format: Gst.Format): [boolean, number];
+        query_duration(format: Gst.Format | null): [boolean, number];
         /**
          * Queries an element (usually top-level pipeline or playbin element) for the
          * stream position in nanoseconds. This will be a value between 0 and the
@@ -1520,7 +1524,7 @@ export namespace GstTag {
          * @param format the #GstFormat requested
          * @returns %TRUE if the query could be performed.
          */
-        query_position(format: Gst.Format): [boolean, number];
+        query_position(format: Gst.Format | null): [boolean, number];
         /**
          * Makes the element free the previously requested pad as obtained
          * with gst_element_request_pad().
@@ -1601,11 +1605,11 @@ export namespace GstTag {
          */
         seek(
             rate: number,
-            format: Gst.Format,
-            flags: Gst.SeekFlags,
-            start_type: Gst.SeekType,
+            format: Gst.Format | null,
+            flags: Gst.SeekFlags | null,
+            start_type: Gst.SeekType | null,
             start: number,
-            stop_type: Gst.SeekType,
+            stop_type: Gst.SeekType | null,
             stop: number,
         ): boolean;
         /**
@@ -1628,7 +1632,7 @@ export namespace GstTag {
          * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
          * @returns %TRUE if the seek operation succeeded. Flushing seeks will trigger a preroll, which will emit %GST_MESSAGE_ASYNC_DONE.
          */
-        seek_simple(format: Gst.Format, seek_flags: Gst.SeekFlags, seek_pos: number): boolean;
+        seek_simple(format: Gst.Format | null, seek_flags: Gst.SeekFlags | null, seek_pos: number): boolean;
         /**
          * Sends an event to an element. If the element doesn't implement an
          * event handler, the event will be pushed on a random linked sink pad for
@@ -1718,7 +1722,7 @@ export namespace GstTag {
          * @param state the element's new #GstState.
          * @returns Result of the state change using #GstStateChangeReturn. MT safe.
          */
-        set_state(state: Gst.State): Gst.StateChangeReturn;
+        set_state(state: Gst.State | null): Gst.StateChangeReturn;
         /**
          * Tries to change the state of the element to the same as its parent.
          * If this function returns %FALSE, the state of element is undefined.
@@ -1951,7 +1955,9 @@ export namespace GstTag {
         tag_list_to_xmp_buffer(taglist: Gst.TagList, read_only: boolean): Gst.Buffer;
     }
 
-    export const TagXmpWriter: TagXmpWriterNamespace;
+    export const TagXmpWriter: TagXmpWriterNamespace & {
+        new (): TagXmpWriter; // This allows `obj instanceof TagXmpWriter`
+    };
 
     /**
      * Name of the imported GIR library

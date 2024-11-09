@@ -80,7 +80,7 @@ export namespace EBook {
     function book_utils_get_recipient_certificates_sync(
         registry: EDataServer.SourceRegistry,
         only_clients: BookClient[] | null,
-        flags: Camel.RecipientCertificateFlags,
+        flags: Camel.RecipientCertificateFlags | null,
         recipients: string[],
         cancellable?: Gio.Cancellable | null,
     ): [boolean, string[]];
@@ -253,7 +253,7 @@ export namespace EBook {
          */
         add_contact(
             contact: EBookContacts.Contact,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<string>;
         /**
@@ -267,7 +267,7 @@ export namespace EBook {
          */
         add_contact(
             contact: EBookContacts.Contact,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -282,7 +282,7 @@ export namespace EBook {
          */
         add_contact(
             contact: EBookContacts.Contact,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<string> | void;
@@ -310,7 +310,7 @@ export namespace EBook {
          */
         add_contact_sync(
             contact: EBookContacts.Contact,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string];
         /**
@@ -323,7 +323,7 @@ export namespace EBook {
          */
         add_contacts(
             contacts: EBookContacts.Contact[],
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<string[] | null>;
         /**
@@ -337,7 +337,7 @@ export namespace EBook {
          */
         add_contacts(
             contacts: EBookContacts.Contact[],
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -352,7 +352,7 @@ export namespace EBook {
          */
         add_contacts(
             contacts: EBookContacts.Contact[],
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<string[] | null> | void;
@@ -386,7 +386,7 @@ export namespace EBook {
          */
         add_contacts_sync(
             contacts: EBookContacts.Contact[],
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string[] | null];
         /**
@@ -634,8 +634,8 @@ export namespace EBook {
          */
         get_cursor(
             sexp: string,
-            sort_fields: EBookContacts.ContactField,
-            sort_types: EBookContacts.BookCursorSortType,
+            sort_fields: EBookContacts.ContactField | null,
+            sort_types: EBookContacts.BookCursorSortType | null,
             n_fields: number,
             cancellable?: Gio.Cancellable | null,
         ): Promise<BookClientCursor>;
@@ -655,8 +655,8 @@ export namespace EBook {
          */
         get_cursor(
             sexp: string,
-            sort_fields: EBookContacts.ContactField,
-            sort_types: EBookContacts.BookCursorSortType,
+            sort_fields: EBookContacts.ContactField | null,
+            sort_types: EBookContacts.BookCursorSortType | null,
             n_fields: number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -677,8 +677,8 @@ export namespace EBook {
          */
         get_cursor(
             sexp: string,
-            sort_fields: EBookContacts.ContactField,
-            sort_types: EBookContacts.BookCursorSortType,
+            sort_fields: EBookContacts.ContactField | null,
+            sort_types: EBookContacts.BookCursorSortType | null,
             n_fields: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -708,8 +708,8 @@ export namespace EBook {
          */
         get_cursor_sync(
             sexp: string,
-            sort_fields: EBookContacts.ContactField,
-            sort_types: EBookContacts.BookCursorSortType,
+            sort_fields: EBookContacts.ContactField | null,
+            sort_types: EBookContacts.BookCursorSortType | null,
             n_fields: number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, BookClientCursor];
@@ -798,7 +798,7 @@ export namespace EBook {
          */
         modify_contact(
             contact: EBookContacts.Contact,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
@@ -812,7 +812,7 @@ export namespace EBook {
          */
         modify_contact(
             contact: EBookContacts.Contact,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -827,7 +827,7 @@ export namespace EBook {
          */
         modify_contact(
             contact: EBookContacts.Contact,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -846,7 +846,7 @@ export namespace EBook {
          */
         modify_contact_sync(
             contact: EBookContacts.Contact,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -859,7 +859,7 @@ export namespace EBook {
          */
         modify_contacts(
             contacts: EBookContacts.Contact[],
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
@@ -873,7 +873,7 @@ export namespace EBook {
          */
         modify_contacts(
             contacts: EBookContacts.Contact[],
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -888,7 +888,7 @@ export namespace EBook {
          */
         modify_contacts(
             contacts: EBookContacts.Contact[],
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -907,7 +907,7 @@ export namespace EBook {
          */
         modify_contacts_sync(
             contacts: EBookContacts.Contact[],
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -920,7 +920,7 @@ export namespace EBook {
          */
         remove_contact(
             contact: EBookContacts.Contact,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
@@ -934,7 +934,7 @@ export namespace EBook {
          */
         remove_contact(
             contact: EBookContacts.Contact,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -949,7 +949,7 @@ export namespace EBook {
          */
         remove_contact(
             contact: EBookContacts.Contact,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -963,7 +963,7 @@ export namespace EBook {
          */
         remove_contact_by_uid(
             uid: string,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
@@ -977,7 +977,7 @@ export namespace EBook {
          */
         remove_contact_by_uid(
             uid: string,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -992,7 +992,7 @@ export namespace EBook {
          */
         remove_contact_by_uid(
             uid: string,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -1011,7 +1011,7 @@ export namespace EBook {
          */
         remove_contact_by_uid_sync(
             uid: string,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -1029,7 +1029,7 @@ export namespace EBook {
          */
         remove_contact_sync(
             contact: EBookContacts.Contact,
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -1045,7 +1045,7 @@ export namespace EBook {
          */
         remove_contacts(
             uids: string[],
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
@@ -1062,7 +1062,7 @@ export namespace EBook {
          */
         remove_contacts(
             uids: string[],
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1080,7 +1080,7 @@ export namespace EBook {
          */
         remove_contacts(
             uids: string[],
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -1102,7 +1102,7 @@ export namespace EBook {
          */
         remove_contacts_sync(
             uids: string[],
-            opflags: EBookContacts.BookOperationFlags,
+            opflags: EBookContacts.BookOperationFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -1442,7 +1442,7 @@ export namespace EBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1483,7 +1483,7 @@ export namespace EBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2182,8 +2182,8 @@ export namespace EBook {
          * @param cancellable a #GCancellable to optionally cancel this operation while in progress
          */
         step(
-            flags: EBookContacts.BookCursorStepFlags,
-            origin: EBookContacts.BookCursorOrigin,
+            flags: EBookContacts.BookCursorStepFlags | null,
+            origin: EBookContacts.BookCursorOrigin | null,
             count: number,
             cancellable?: Gio.Cancellable | null,
         ): Promise<[number, EBookContacts.Contact[] | null]>;
@@ -2202,8 +2202,8 @@ export namespace EBook {
          * @param callback callback to call when a result is ready
          */
         step(
-            flags: EBookContacts.BookCursorStepFlags,
-            origin: EBookContacts.BookCursorOrigin,
+            flags: EBookContacts.BookCursorStepFlags | null,
+            origin: EBookContacts.BookCursorOrigin | null,
             count: number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -2223,8 +2223,8 @@ export namespace EBook {
          * @param callback callback to call when a result is ready
          */
         step(
-            flags: EBookContacts.BookCursorStepFlags,
-            origin: EBookContacts.BookCursorOrigin,
+            flags: EBookContacts.BookCursorStepFlags | null,
+            origin: EBookContacts.BookCursorOrigin | null,
             count: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -2274,8 +2274,8 @@ export namespace EBook {
          * @returns The number of contacts traversed if successful, otherwise -1 is returned and @error is set.
          */
         step_sync(
-            flags: EBookContacts.BookCursorStepFlags,
-            origin: EBookContacts.BookCursorOrigin,
+            flags: EBookContacts.BookCursorStepFlags | null,
+            origin: EBookContacts.BookCursorOrigin | null,
             count: number,
             cancellable?: Gio.Cancellable | null,
         ): [number, EBookContacts.Contact[] | null];
@@ -2410,7 +2410,7 @@ export namespace EBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2451,7 +2451,7 @@ export namespace EBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2984,7 +2984,7 @@ export namespace EBook {
          * Sets the `flags` which control the behaviour of `client_view`.
          * @param flags the #EBookClientViewFlags for @client_view
          */
-        set_flags(flags: EBookContacts.BookClientViewFlags): void;
+        set_flags(flags: EBookContacts.BookClientViewFlags | null): void;
         /**
          * Sets `fields` to sort the view by. The default is to sort by the file-as
          * field in ascending order. Not every field can be used for sorting,
@@ -3144,7 +3144,7 @@ export namespace EBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3185,7 +3185,7 @@ export namespace EBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

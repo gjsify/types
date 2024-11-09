@@ -658,7 +658,7 @@ export namespace GstSdp {
          * @param data the encrypted envelope key
          * @returns %TRUE on success
          */
-        add_pke(C: MIKEYCacheType, data: Uint8Array | string): boolean;
+        add_pke(C: MIKEYCacheType | null, data: Uint8Array | string): boolean;
         /**
          * Add a new RAND payload to `msg` with the given parameters.
          * @param rand random data
@@ -677,7 +677,7 @@ export namespace GstSdp {
          * @param ts_value The timestamp value of the specified @type
          * @returns %TRUE on success
          */
-        add_t(type: MIKEYTSType, ts_value: Uint8Array | string): boolean;
+        add_t(type: MIKEYTSType | null, ts_value: Uint8Array | string): boolean;
         /**
          * Add a new T payload to `msg` that contains the current time
          * in NTP-UTC format.
@@ -691,7 +691,7 @@ export namespace GstSdp {
          * @param nth payload to find
          * @returns the @nth #GstMIKEYPayload of @type.
          */
-        find_payload(type: MIKEYPayloadType, nth: number): MIKEYPayload | null;
+        find_payload(type: MIKEYPayloadType | null, nth: number): MIKEYPayload | null;
         /**
          * Get the policy information of `msg` at `idx`.
          * @param idx an index
@@ -769,11 +769,11 @@ export namespace GstSdp {
          */
         set_info(
             version: number,
-            type: MIKEYType,
+            type: MIKEYType | null,
             V: boolean,
-            prf_func: MIKEYPRFFunc,
+            prf_func: MIKEYPRFFunc | null,
             CSB_id: number,
-            map_type: MIKEYMapType,
+            map_type: MIKEYMapType | null,
         ): boolean;
         /**
          * Convert `msg` to a #GBytes.
@@ -836,7 +836,7 @@ export namespace GstSdp {
          * @param mac_alg a #GstMIKEYMacAlg
          * @returns %TRUE on success
          */
-        kemac_set(enc_alg: MIKEYEncAlg, mac_alg: MIKEYMacAlg): boolean;
+        kemac_set(enc_alg: MIKEYEncAlg | null, mac_alg: MIKEYMacAlg | null): boolean;
         /**
          * Set the key validity period in the %GST_MIKEY_PT_KEY_DATA `payload`.
          * @param vf_data the Valid From data
@@ -851,7 +851,7 @@ export namespace GstSdp {
          * @param key_data the key of type @key_type
          * @returns %TRUE on success
          */
-        key_data_set_key(key_type: MIKEYKeyDataType, key_data: Uint8Array | string): boolean;
+        key_data_set_key(key_type: MIKEYKeyDataType | null, key_data: Uint8Array | string): boolean;
         /**
          * Set the salt key data. If `salt_len` is 0 and `salt_data` is %NULL, the
          * salt data will be removed.
@@ -872,7 +872,7 @@ export namespace GstSdp {
          * @param data the encrypted envelope key
          * @returns %TRUE on success
          */
-        pke_set(C: MIKEYCacheType, data: Uint8Array | string): boolean;
+        pke_set(C: MIKEYCacheType | null, data: Uint8Array | string): boolean;
         /**
          * Set the random values in a %GST_MIKEY_PT_RAND `payload`.
          * @param rand random values
@@ -913,14 +913,14 @@ export namespace GstSdp {
          * @param proto a #GstMIKEYSecProto
          * @returns %TRUE on success
          */
-        sp_set(policy: number, proto: MIKEYSecProto): boolean;
+        sp_set(policy: number, proto: MIKEYSecProto | null): boolean;
         /**
          * Set the timestamp in a %GST_MIKEY_PT_T `payload`.
          * @param type the #GstMIKEYTSType
          * @param ts_value the timestamp value
          * @returns %TRUE on success
          */
-        t_set(type: MIKEYTSType, ts_value: Uint8Array | string): boolean;
+        t_set(type: MIKEYTSType | null, ts_value: Uint8Array | string): boolean;
     }
 
     /**

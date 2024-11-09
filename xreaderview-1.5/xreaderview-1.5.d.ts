@@ -218,7 +218,7 @@ export namespace XreaderView {
         set_rotation(rotation: number): void;
         set_rtl(rtl: boolean): void;
         set_scale(scale: number): void;
-        set_sizing_mode(mode: SizingMode): void;
+        set_sizing_mode(mode: SizingMode | null): void;
     }
 
     module Job {
@@ -283,9 +283,9 @@ export namespace XreaderView {
         is_failed(): boolean;
         is_finished(): boolean;
         run(): boolean;
-        scheduler_push_job(priority: JobPriority): void;
-        scheduler_update_job(priority: JobPriority): void;
-        set_run_mode(run_mode: JobRunMode): void;
+        scheduler_push_job(priority: JobPriority | null): void;
+        scheduler_update_job(priority: JobPriority | null): void;
+        set_run_mode(run_mode: JobRunMode | null): void;
         succeeded(): void;
     }
 
@@ -629,7 +629,7 @@ export namespace XreaderView {
 
         set_selection_info(
             selection_points: XreaderDocument.Rectangle,
-            selection_style: XreaderDocument.SelectionStyle,
+            selection_style: XreaderDocument.SelectionStyle | null,
             text: Gdk.Color,
             base: Gdk.Color,
         ): void;
@@ -870,7 +870,7 @@ export namespace XreaderView {
 
         autoscroll_start(): void;
         autoscroll_stop(): void;
-        begin_add_annotation(annot_type: XreaderDocument.AnnotationType): void;
+        begin_add_annotation(annot_type: XreaderDocument.AnnotationType | null): void;
         can_zoom_in(): boolean;
         can_zoom_out(): boolean;
         cancel_add_annotation(): void;
@@ -896,7 +896,7 @@ export namespace XreaderView {
         previous_page(): boolean;
         reload(): void;
         remove_annotation(annot: XreaderDocument.Annotation): void;
-        scroll(scroll: Gtk.ScrollType, horizontal: boolean): void;
+        scroll(scroll: Gtk.ScrollType | null, horizontal: boolean): void;
         select_all(): void;
         set_loading(loading: boolean): void;
         set_model(model: DocumentModel): void;
@@ -993,7 +993,7 @@ export namespace XreaderView {
          * below the natural width.
          * @param policy the horizontal #GtkScrollablePolicy
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
          * Sets the vertical adjustment of the #GtkScrollable.
          * @param vadjustment a #GtkAdjustment
@@ -1005,7 +1005,7 @@ export namespace XreaderView {
          * below the natural height.
          * @param policy the vertical #GtkScrollablePolicy
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -1058,7 +1058,7 @@ export namespace XreaderView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1099,7 +1099,7 @@ export namespace XreaderView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1717,7 +1717,7 @@ export namespace XreaderView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1758,7 +1758,7 @@ export namespace XreaderView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2167,7 +2167,7 @@ export namespace XreaderView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2208,7 +2208,7 @@ export namespace XreaderView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

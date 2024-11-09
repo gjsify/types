@@ -98,27 +98,32 @@ export namespace GstVideo {
     function event_new_still_frame(in_still: boolean): Gst.Event;
     function event_parse_still_frame(event: Gst.Event): [boolean, boolean];
     function format_convert(
-        format: Format,
+        format: Format | null,
         width: number,
         height: number,
         fps_n: number,
         fps_d: number,
-        src_format: Gst.Format,
+        src_format: Gst.Format | null,
         src_value: number,
-        dest_format: Gst.Format,
+        dest_format: Gst.Format | null,
     ): [boolean, number];
     function format_from_fourcc(fourcc: number): Format;
-    function format_get_component_height(format: Format, component: number, height: number): number;
-    function format_get_component_offset(format: Format, component: number, width: number, height: number): number;
-    function format_get_component_width(format: Format, component: number, width: number): number;
-    function format_get_pixel_stride(format: Format, component: number): number;
-    function format_get_row_stride(format: Format, component: number, width: number): number;
-    function format_get_size(format: Format, width: number, height: number): number;
-    function format_has_alpha(format: Format): boolean;
-    function format_is_rgb(format: Format): boolean;
-    function format_is_yuv(format: Format): boolean;
+    function format_get_component_height(format: Format | null, component: number, height: number): number;
+    function format_get_component_offset(
+        format: Format | null,
+        component: number,
+        width: number,
+        height: number,
+    ): number;
+    function format_get_component_width(format: Format | null, component: number, width: number): number;
+    function format_get_pixel_stride(format: Format | null, component: number): number;
+    function format_get_row_stride(format: Format | null, component: number, width: number): number;
+    function format_get_size(format: Format | null, width: number, height: number): number;
+    function format_has_alpha(format: Format | null): boolean;
+    function format_is_rgb(format: Format | null): boolean;
+    function format_is_yuv(format: Format | null): boolean;
     function format_new_caps(
-        format: Format,
+        format: Format | null,
         width: number,
         height: number,
         framerate_n: number,
@@ -127,7 +132,7 @@ export namespace GstVideo {
         par_d: number,
     ): Gst.Caps;
     function format_new_caps_interlaced(
-        format: Format,
+        format: Format | null,
         width: number,
         height: number,
         framerate_n: number,
@@ -136,9 +141,9 @@ export namespace GstVideo {
         par_d: number,
         interlaced: boolean,
     ): Gst.Caps;
-    function format_parse_caps(caps: Gst.Caps, format: Format): [boolean, number, number];
+    function format_parse_caps(caps: Gst.Caps, format: Format | null): [boolean, number, number];
     function format_parse_caps_interlaced(caps: Gst.Caps): [boolean, boolean];
-    function format_to_fourcc(format: Format): number;
+    function format_to_fourcc(format: Format | null): number;
     function frame_rate(pad: Gst.Pad): unknown;
     function get_size(pad: Gst.Pad): [boolean, number, number];
     function parse_caps_chroma_site(caps: Gst.Caps): string;

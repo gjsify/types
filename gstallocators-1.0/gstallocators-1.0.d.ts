@@ -323,7 +323,9 @@ export namespace GstAllocators {
         vfunc_get_phys_addr(mem: Gst.Memory): never;
     }
 
-    export const PhysMemoryAllocator: PhysMemoryAllocatorNamespace;
+    export const PhysMemoryAllocator: PhysMemoryAllocatorNamespace & {
+        new (): PhysMemoryAllocator; // This allows `obj instanceof PhysMemoryAllocator`
+    };
 
     /**
      * Name of the imported GIR library

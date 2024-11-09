@@ -15,7 +15,9 @@
     "removeComments": false,
     "inlineSourceMap": false,
     "inlineSources": false,
-    "newLine": "LF"
+    "newLine": "LF",
+    // Show diagnostics
+    "diagnostics": true
   },
   "include": ["./amtk-4.d.ts"]
 }

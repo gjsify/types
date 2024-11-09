@@ -144,20 +144,20 @@ export namespace GstClapper {
      * @param type a #GstClapperColorBalanceType
      * @returns a string with the name of the color balance type.
      */
-    function clapper_color_balance_type_get_name(type: ClapperColorBalanceType): string;
+    function clapper_color_balance_type_get_name(type: ClapperColorBalanceType | null): string;
     /**
      * Gets a string representing the given error.
      * @param error a #GstClapperError
      * @returns a string with the given error.
      */
-    function clapper_error_get_name(error: ClapperError): string;
+    function clapper_error_get_name(error: ClapperError | null): string;
     function clapper_error_quark(): GLib.Quark;
     /**
      * Gets a string representing the given state.
      * @param state a #GstClapperState
      * @returns a string with the name of the state.
      */
-    function clapper_state_get_name(state: ClapperState): string;
+    function clapper_state_get_name(state: ClapperState | null): string;
     interface ClapperSignalDispatcherFunc {
         (data?: any | null): void;
     }
@@ -405,7 +405,7 @@ export namespace GstClapper {
          * @param type #GstClapperColorBalanceType
          * @returns The current value of @type, between [0,1]. In case of   error -1 is returned.
          */
-        get_color_balance(type: ClapperColorBalanceType): number;
+        get_color_balance(type: ClapperColorBalanceType | null): number;
         /**
          * A Function to get current audio #GstClapperAudioInfo instance.
          * @returns current audio track. The caller should free it with g_object_unref()
@@ -479,7 +479,7 @@ export namespace GstClapper {
          * @param config Additional configuration
          * @returns Current video snapshot sample or %NULL on failure
          */
-        get_video_snapshot(format: ClapperSnapshotFormat, config?: Gst.Structure | null): Gst.Sample;
+        get_video_snapshot(format: ClapperSnapshotFormat | null, config?: Gst.Structure | null): Gst.Sample;
         /**
          * Returns the current volume level, as a percentage between 0 and 1.5
          * @returns the cubic volume as percentage between 0 and 1.5
@@ -527,19 +527,19 @@ export namespace GstClapper {
          * @param type #GstClapperColorBalanceType
          * @param value The new value for the @type, ranged [0,1]
          */
-        set_color_balance(type: ClapperColorBalanceType, value: number): void;
+        set_color_balance(type: ClapperColorBalanceType | null, value: number): void;
         /**
          * Sets the current value of the indicated mode `type` to the passed
          * value.
          * @param flags The new value for the @type
          */
-        set_multiview_flags(flags: GstVideo.VideoMultiviewFlags): void;
+        set_multiview_flags(flags: GstVideo.VideoMultiviewFlags | null): void;
         /**
          * Sets the current value of the indicated mode `type` to the passed
          * value.
          * @param mode The new value for the @type
          */
-        set_multiview_mode(mode: GstVideo.VideoMultiviewFramePacking): void;
+        set_multiview_mode(mode: GstVideo.VideoMultiviewFramePacking | null): void;
         /**
          * %TRUE if the currently-playing stream should be muted.
          * @param val Mute state the should be set
@@ -554,7 +554,7 @@ export namespace GstClapper {
          * Changes currently used clapper seek mode to the one of `mode`
          * @param mode #GstClapperSeekMode
          */
-        set_seek_mode(mode: ClapperSeekMode): void;
+        set_seek_mode(mode: ClapperSeekMode | null): void;
         set_subtitle_track(stream_index: number): boolean;
         /**
          * Enable or disable the current subtitle track.
@@ -713,7 +713,7 @@ export namespace GstClapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -754,7 +754,7 @@ export namespace GstClapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1408,7 +1408,7 @@ export namespace GstClapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1449,7 +1449,7 @@ export namespace GstClapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1829,7 +1829,9 @@ export namespace GstClapper {
         vfunc_dispatch(clapper: Clapper, emitter: ClapperSignalDispatcherFunc): void;
     }
 
-    export const ClapperSignalDispatcher: ClapperSignalDispatcherNamespace;
+    export const ClapperSignalDispatcher: ClapperSignalDispatcherNamespace & {
+        new (): ClapperSignalDispatcher; // This allows `obj instanceof ClapperSignalDispatcher`
+    };
 
     module ClapperVideoRenderer {
         // Constructor properties interface
@@ -1843,7 +1845,9 @@ export namespace GstClapper {
     }
     interface ClapperVideoRenderer extends GObject.Object {}
 
-    export const ClapperVideoRenderer: ClapperVideoRendererNamespace;
+    export const ClapperVideoRenderer: ClapperVideoRendererNamespace & {
+        new (): ClapperVideoRenderer; // This allows `obj instanceof ClapperVideoRenderer`
+    };
 
     /**
      * Name of the imported GIR library

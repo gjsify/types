@@ -713,8 +713,8 @@ export namespace EDataBook {
          * @returns A newly created cursor, the cursor belongs    to the backend and should not be unreffed, or %NULL on error
          */
         create_cursor(
-            sort_fields: EBookContacts.ContactField,
-            sort_types: EBookContacts.BookCursorSortType,
+            sort_fields: EBookContacts.ContactField | null,
+            sort_types: EBookContacts.BookCursorSortType | null,
             n_fields: number,
         ): DataBookCursor;
         /**
@@ -1974,8 +1974,8 @@ export namespace EDataBook {
          */
         cursor_step(
             cursor: BookCacheCursor,
-            flags: BookCacheCursorStepFlags,
-            origin: BookCacheCursorOrigin,
+            flags: BookCacheCursorStepFlags | null,
+            origin: BookCacheCursorOrigin | null,
             count: number,
             cancellable?: Gio.Cancellable | null,
         ): [number, BookCacheSearchData[] | null];
@@ -2012,8 +2012,8 @@ export namespace EDataBook {
          */
         dup_query_contacts(
             sexp: string | null,
-            sort_field: EBookContacts.ContactField,
-            sort_type: EBookContacts.BookCursorSortType,
+            sort_field: EBookContacts.ContactField | null,
+            sort_type: EBookContacts.BookCursorSortType | null,
             n_offset: number,
             n_limit: number,
             out_contacts: EBookContacts.Contact[],
@@ -2042,10 +2042,10 @@ export namespace EDataBook {
          * @returns Whether succeeded.
          */
         dup_query_field(
-            summary_field: EBookContacts.ContactField,
+            summary_field: EBookContacts.ContactField | null,
             sexp: string | null,
-            sort_field: EBookContacts.ContactField,
-            sort_type: EBookContacts.BookCursorSortType,
+            sort_field: EBookContacts.ContactField | null,
+            sort_type: EBookContacts.BookCursorSortType | null,
             n_offset: number,
             n_limit: number,
             out_uids: string[],
@@ -2064,7 +2064,7 @@ export namespace EDataBook {
          * @returns Whether succeeded.
          */
         dup_summary_field(
-            summary_field: EBookContacts.ContactField,
+            summary_field: EBookContacts.ContactField | null,
             uid: string,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string];
@@ -2136,7 +2136,7 @@ export namespace EDataBook {
             contact: EBookContacts.Contact,
             extra: string | null,
             custom_flags: number,
-            offline_flag: EBackend.CacheOfflineFlag,
+            offline_flag: EBackend.CacheOfflineFlag | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -2157,7 +2157,7 @@ export namespace EDataBook {
             contacts: EBookContacts.Contact[],
             extras: string[] | null,
             custom_flags: number[] | null,
-            offline_flag: EBackend.CacheOfflineFlag,
+            offline_flag: EBackend.CacheOfflineFlag | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -2186,7 +2186,7 @@ export namespace EDataBook {
         remove_contact(
             uid: string,
             custom_flags: number,
-            offline_flag: EBackend.CacheOfflineFlag,
+            offline_flag: EBackend.CacheOfflineFlag | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -2203,7 +2203,7 @@ export namespace EDataBook {
         remove_contacts(
             uids: string[],
             custom_flags: number[] | null,
-            offline_flag: EBackend.CacheOfflineFlag,
+            offline_flag: EBackend.CacheOfflineFlag | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -2348,7 +2348,7 @@ export namespace EDataBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2389,7 +2389,7 @@ export namespace EDataBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3198,7 +3198,7 @@ export namespace EDataBook {
          * @returns Whether succeeded.
          */
         remove_contact_sync(
-            conflict_resolution: EDataServer.ConflictResolution,
+            conflict_resolution: EDataServer.ConflictResolution | null,
             uid: string,
             extra: string | null,
             object: string | null,
@@ -3251,7 +3251,7 @@ export namespace EDataBook {
          */
         save_contact_sync(
             overwrite_existing: boolean,
-            conflict_resolution: EDataServer.ConflictResolution,
+            conflict_resolution: EDataServer.ConflictResolution | null,
             contact: EBookContacts.Contact,
             extra: string | null,
             opflags: number,
@@ -3561,8 +3561,8 @@ export namespace EDataBook {
          */
         dup_query_contacts(
             sexp: string | null,
-            sort_field: EBookContacts.ContactField,
-            sort_type: EBookContacts.BookCursorSortType,
+            sort_field: EBookContacts.ContactField | null,
+            sort_type: EBookContacts.BookCursorSortType | null,
             n_offset: number,
             n_limit: number,
             out_contacts: EBookContacts.Contact[],
@@ -3591,10 +3591,10 @@ export namespace EDataBook {
          * @returns Whether succeeded.
          */
         dup_query_field(
-            summary_field: EBookContacts.ContactField,
+            summary_field: EBookContacts.ContactField | null,
             sexp: string | null,
-            sort_field: EBookContacts.ContactField,
-            sort_type: EBookContacts.BookCursorSortType,
+            sort_field: EBookContacts.ContactField | null,
+            sort_type: EBookContacts.BookCursorSortType | null,
             n_offset: number,
             n_limit: number,
             out_uids: string[],
@@ -3613,7 +3613,7 @@ export namespace EDataBook {
          * @returns Whether succeeded.
          */
         dup_summary_field(
-            summary_field: EBookContacts.ContactField,
+            summary_field: EBookContacts.ContactField | null,
             uid: string,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string];
@@ -3696,7 +3696,7 @@ export namespace EDataBook {
          * @param cancellable A #GCancellable
          * @returns %TRUE on success, otherwise %FALSE is returned and @error is set appropriately.
          */
-        lock(lock_type: bSqlLockType, cancellable?: Gio.Cancellable | null): boolean;
+        lock(lock_type: bSqlLockType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * References the currently active #ECollator for `ebsql,`
          * use e_collator_unref() when finished using the returned collator.
@@ -3816,7 +3816,7 @@ export namespace EDataBook {
          * @param action Which #EbSqlUnlockAction to take while unlocking
          * @returns %TRUE on success, otherwise %FALSE is returned and @error is set appropriately.
          */
-        unlock(action: bSqlUnlockAction): boolean;
+        unlock(action: bSqlUnlockAction | null): boolean;
 
         // Inherited methods
         /**
@@ -3887,7 +3887,7 @@ export namespace EDataBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3928,7 +3928,7 @@ export namespace EDataBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4518,7 +4518,7 @@ export namespace EDataBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4559,7 +4559,7 @@ export namespace EDataBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5067,8 +5067,8 @@ export namespace EDataBook {
          */
         step(
             revision_guard: string | null,
-            flags: EBookContacts.BookCursorStepFlags,
-            origin: EBookContacts.BookCursorOrigin,
+            flags: EBookContacts.BookCursorStepFlags | null,
+            origin: EBookContacts.BookCursorOrigin | null,
             count: number,
             cancellable?: Gio.Cancellable | null,
         ): [number, string[] | null];
@@ -5326,7 +5326,7 @@ export namespace EDataBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5367,7 +5367,7 @@ export namespace EDataBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6081,7 +6081,7 @@ export namespace EDataBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6122,7 +6122,7 @@ export namespace EDataBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6718,7 +6718,7 @@ export namespace EDataBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6759,7 +6759,7 @@ export namespace EDataBook {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

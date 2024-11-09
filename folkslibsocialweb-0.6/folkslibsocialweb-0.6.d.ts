@@ -108,12 +108,12 @@ export namespace FolksLibsocialweb {
         vfunc_change_avatar_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_avatar(): Gio.LoadableIcon;
         vfunc_set_avatar(value: Gio.LoadableIcon): void;
-        change_gender(gender: Folks.Gender): Promise<void>;
-        change_gender(gender: Folks.Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_gender(gender: Folks.Gender, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        change_gender(gender: Folks.Gender | null): Promise<void>;
+        change_gender(gender: Folks.Gender | null, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_gender(gender: Folks.Gender | null, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_gender_finish(_res_: Gio.AsyncResult): void;
         get_gender(): Folks.Gender;
-        set_gender(value: Folks.Gender): void;
+        set_gender(value: Folks.Gender | null): void;
         vfunc_change_gender(gender: Folks.Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_gender_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_gender(): Folks.Gender;
@@ -237,7 +237,7 @@ export namespace FolksLibsocialweb {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -278,7 +278,7 @@ export namespace FolksLibsocialweb {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

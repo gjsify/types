@@ -93,7 +93,7 @@ export namespace GstGLEGL {
         fd: number,
         offset: number,
         in_info: GstVideo.VideoInfo,
-        target: GstGL.GLTextureTarget,
+        target: GstGL.GLTextureTarget | null,
     ): EGLImage | null;
     /**
      * Creates an EGL image that imports the dmabuf FD. The dmabuf data is passed
@@ -114,7 +114,7 @@ export namespace GstGLEGL {
         fd: number,
         offset: number,
         in_info_dma: GstVideo.VideoInfoDmaDrm,
-        target: GstGL.GLTextureTarget,
+        target: GstGL.GLTextureTarget | null,
     ): EGLImage | null;
     /**
      * Creates an EGL image that imports the dmabuf FD. The dmabuf data

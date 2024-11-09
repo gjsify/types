@@ -994,7 +994,7 @@ export namespace UPowerGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1035,7 +1035,7 @@ export namespace UPowerGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1698,7 +1698,7 @@ export namespace UPowerGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1739,7 +1739,7 @@ export namespace UPowerGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3417,7 +3417,7 @@ export namespace UPowerGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3458,7 +3458,7 @@ export namespace UPowerGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4389,7 +4389,7 @@ export namespace UPowerGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4430,7 +4430,7 @@ export namespace UPowerGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4800,7 +4800,7 @@ export namespace UPowerGlib {
          * Sets the item state.
          * @param state the new value
          */
-        set_state(state: DeviceState): void;
+        set_state(state: DeviceState | null): void;
         /**
          * Sets the item time.
          * @param time the new value
@@ -5655,7 +5655,7 @@ export namespace UPowerGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5696,7 +5696,7 @@ export namespace UPowerGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6252,7 +6252,7 @@ export namespace UPowerGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6293,7 +6293,7 @@ export namespace UPowerGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7011,7 +7011,9 @@ export namespace UPowerGlib {
         vfunc_handle_get_display_device(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
-    export const ClientGlue: ClientGlueNamespace;
+    export const ClientGlue: ClientGlueNamespace & {
+        new (): ClientGlue; // This allows `obj instanceof ClientGlue`
+    };
 
     module DeviceGlue {
         // Constructor properties interface
@@ -7600,7 +7602,9 @@ export namespace UPowerGlib {
         vfunc_handle_refresh(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
-    export const DeviceGlue: DeviceGlueNamespace;
+    export const DeviceGlue: DeviceGlueNamespace & {
+        new (): DeviceGlue; // This allows `obj instanceof DeviceGlue`
+    };
 
     module WakeupsGlue {
         // Constructor properties interface
@@ -7773,7 +7777,9 @@ export namespace UPowerGlib {
         vfunc_total_changed(arg_value: number): void;
     }
 
-    export const WakeupsGlue: WakeupsGlueNamespace;
+    export const WakeupsGlue: WakeupsGlueNamespace & {
+        new (): WakeupsGlue; // This allows `obj instanceof WakeupsGlue`
+    };
 
     /**
      * Name of the imported GIR library

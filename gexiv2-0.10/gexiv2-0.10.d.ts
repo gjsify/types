@@ -180,7 +180,7 @@ export namespace GExiv2 {
      * Log messages below this level will not be logged.
      * @param level The #GExiv2LogLevel gexiv2 should respect.
      */
-    function log_set_level(level: LogLevel): void;
+    function log_set_level(level: LogLevel | null): void;
     /**
      * When called, gexiv2 will install it's own #GExiv2LogHandler which redirects all Exiv2 and gexiv2
      * log messages to GLib's logging calls (g_debug(), g_message(), g_warning(), and g_critical() for the
@@ -391,7 +391,7 @@ export namespace GExiv2 {
          * @param padding The padding (FIXME: Add documentation)
          * @returns Encode the XMP packet and return as a %NULL-terminated string.
          */
-        generate_xmp_packet(xmp_format_flags: XmpFormatFlags, padding: number): string | null;
+        generate_xmp_packet(xmp_format_flags: XmpFormatFlags | null, padding: number): string | null;
         /**
          * A composite accessor that uses the first available metadata field from a list of well-known
          * locations to find the photo's comment (or description).
@@ -417,7 +417,7 @@ export namespace GExiv2 {
          * @returns The photo's comment field.
          */
         get_comment(): string | null;
-        get_exif_data(byte_order: ByteOrder): GLib.Bytes | null;
+        get_exif_data(byte_order: ByteOrder | null): GLib.Bytes | null;
         /**
          * Fetch EXIF `tag` represented by a fraction. `nom` will contain the numerator,
          * `den` the denominator of the fraction on successful return.
@@ -675,7 +675,7 @@ export namespace GExiv2 {
          * The orientation must be valid and cannot be #GEXIV2_ORIENTATION_UNSPECIFIED.
          * @param orientation The new #GExiv2Orientation for the image.
          */
-        set_orientation(orientation: Orientation): void;
+        set_orientation(orientation: Orientation | null): void;
         /**
          * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
          * @param tag Exiv2 tag name
@@ -718,7 +718,7 @@ export namespace GExiv2 {
          * @param type The GExiv2StructureType specifying the type of structure
          * @returns TRUE on success
          */
-        set_xmp_tag_struct(tag: string, type: StructureType): boolean;
+        set_xmp_tag_struct(tag: string, type: StructureType | null): boolean;
         /**
          * Removes the Exiv2 tag from the metadata object.
          *
@@ -741,7 +741,7 @@ export namespace GExiv2 {
          * @param padding The padding (FIXME: Add documentation)
          * @returns Encode the XMP packet and return as a %NULL-terminated string.
          */
-        try_generate_xmp_packet(xmp_format_flags: XmpFormatFlags, padding: number): string | null;
+        try_generate_xmp_packet(xmp_format_flags: XmpFormatFlags | null, padding: number): string | null;
         /**
          * A composite accessor that uses the first available metadata field from a list of well-known
          * locations to find the photo's comment (or description).
@@ -925,7 +925,7 @@ export namespace GExiv2 {
          * The orientation must be valid and cannot be #GEXIV2_ORIENTATION_UNSPECIFIED.
          * @param orientation The new #GExiv2Orientation for the image.
          */
-        try_set_orientation(orientation: Orientation): void;
+        try_set_orientation(orientation: Orientation | null): void;
         /**
          * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
          * @param tag Exiv2 tag name
@@ -960,7 +960,7 @@ export namespace GExiv2 {
          * @param type The GExiv2StructureType specifying the type of structure
          * @returns TRUE on success
          */
-        try_set_xmp_tag_struct(tag: string, type: StructureType): boolean;
+        try_set_xmp_tag_struct(tag: string, type: StructureType | null): boolean;
         /**
          * The Exiv2 Tag Reference can be found at <ulink url="https://www.exiv2.org/metadata.html"></ulink>
          *

@@ -15,7 +15,9 @@
     "removeComments": false,
     "inlineSourceMap": false,
     "inlineSources": false,
-    "newLine": "LF"
+    "newLine": "LF",
+    // Show diagnostics
+    "diagnostics": true
   },
   "include": ["./avahicore-0.6.d.ts"]
 }

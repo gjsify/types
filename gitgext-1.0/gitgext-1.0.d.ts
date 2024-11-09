@@ -350,9 +350,9 @@ export namespace GitgExt {
         get_message(): string;
         set_message(value: string): void;
         get_message_type(): Gtk.MessageType;
-        set_message_type(value: Gtk.MessageType): void;
+        set_message_type(value: Gtk.MessageType | null): void;
         get_default_response(): Gtk.ResponseType;
-        set_default_response(value: Gtk.ResponseType): void;
+        set_default_response(value: Gtk.ResponseType | null): void;
         get_default_is_destructive(): boolean;
         set_default_is_destructive(value: boolean): void;
         get_message_use_markup(): boolean;
@@ -464,7 +464,9 @@ export namespace GitgExt {
         vfunc_fetch_finish(_res_: Gio.AsyncResult): boolean;
     }
 
-    export const Action: ActionNamespace;
+    export const Action: ActionNamespace & {
+        new (): Action; // This allows `obj instanceof Action`
+    };
 
     module Activity {
         // Constructor properties interface
@@ -488,7 +490,9 @@ export namespace GitgExt {
         vfunc_on_key_pressed(event: Gdk.EventKey): boolean;
     }
 
-    export const Activity: ActivityNamespace;
+    export const Activity: ActivityNamespace & {
+        new (): Activity; // This allows `obj instanceof Activity`
+    };
 
     module Application {
         // Constructor properties interface
@@ -540,7 +544,7 @@ export namespace GitgExt {
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<Gtk.ResponseType> | void;
         user_query_finish(_res_: Gio.AsyncResult): Gtk.ResponseType;
-        show_infobar(primary_msg: string, secondary_msg: string, type: Gtk.MessageType): void;
+        show_infobar(primary_msg: string, secondary_msg: string, type: Gtk.MessageType | null): void;
         open_new(repository: Ggit.Repository, hint?: string | null): Application;
         open_repository(path: Gio.File): void;
         get_repository(): Gitg.Repository | null;
@@ -575,7 +579,9 @@ export namespace GitgExt {
         vfunc_get_remote_lookup(): RemoteLookup;
     }
 
-    export const Application: ApplicationNamespace;
+    export const Application: ApplicationNamespace & {
+        new (): Application; // This allows `obj instanceof Application`
+    };
 
     module CommandLine {
         // Constructor properties interface
@@ -601,7 +607,9 @@ export namespace GitgExt {
         vfunc_apply(application: Application): void;
     }
 
-    export const CommandLine: CommandLineNamespace;
+    export const CommandLine: CommandLineNamespace & {
+        new (): CommandLine; // This allows `obj instanceof CommandLine`
+    };
 
     module CommitAction {
         // Constructor properties interface
@@ -642,7 +650,9 @@ export namespace GitgExt {
         vfunc_set_commit(value: Gitg.Commit): void;
     }
 
-    export const CommitAction: CommitActionNamespace;
+    export const CommitAction: CommitActionNamespace & {
+        new (): CommitAction; // This allows `obj instanceof CommitAction`
+    };
 
     module HistoryPanel {
         // Constructor properties interface
@@ -673,7 +683,9 @@ export namespace GitgExt {
         vfunc_set_history(value?: History | null): void;
     }
 
-    export const HistoryPanel: HistoryPanelNamespace;
+    export const HistoryPanel: HistoryPanelNamespace & {
+        new (): HistoryPanel; // This allows `obj instanceof HistoryPanel`
+    };
 
     module History {
         // Constructor properties interface
@@ -697,7 +709,9 @@ export namespace GitgExt {
         vfunc_select(commit: Gitg.Commit): void;
     }
 
-    export const History: HistoryNamespace;
+    export const History: HistoryNamespace & {
+        new (): History; // This allows `obj instanceof History`
+    };
 
     module Notification {
         // Constructor properties interface
@@ -725,7 +739,9 @@ export namespace GitgExt {
         vfunc_get_widget(): Gtk.Widget | null;
     }
 
-    export const Notification: NotificationNamespace;
+    export const Notification: NotificationNamespace & {
+        new (): Notification; // This allows `obj instanceof Notification`
+    };
 
     module Notifications {
         // Constructor properties interface
@@ -749,7 +765,9 @@ export namespace GitgExt {
         vfunc_remove(notification: Notification, delay: number): void;
     }
 
-    export const Notifications: NotificationsNamespace;
+    export const Notifications: NotificationsNamespace & {
+        new (): Notifications; // This allows `obj instanceof Notifications`
+    };
 
     module Preferences {
         // Constructor properties interface
@@ -787,7 +805,9 @@ export namespace GitgExt {
         vfunc_get_widget(): Gtk.Widget;
     }
 
-    export const Preferences: PreferencesNamespace;
+    export const Preferences: PreferencesNamespace & {
+        new (): Preferences; // This allows `obj instanceof Preferences`
+    };
 
     module RefActionInterface {
         // Constructor properties interface
@@ -834,7 +854,9 @@ export namespace GitgExt {
         vfunc_get_references(): Gee.List;
     }
 
-    export const RefActionInterface: RefActionInterfaceNamespace;
+    export const RefActionInterface: RefActionInterfaceNamespace & {
+        new (): RefActionInterface; // This allows `obj instanceof RefActionInterface`
+    };
 
     module RefAction {
         // Constructor properties interface
@@ -875,7 +897,9 @@ export namespace GitgExt {
         vfunc_set_reference(value: Gitg.Ref): void;
     }
 
-    export const RefAction: RefActionNamespace;
+    export const RefAction: RefActionNamespace & {
+        new (): RefAction; // This allows `obj instanceof RefAction`
+    };
 
     module RemoteLookup {
         // Constructor properties interface
@@ -897,7 +921,9 @@ export namespace GitgExt {
         vfunc_lookup(name: string): Gitg.Remote | null;
     }
 
-    export const RemoteLookup: RemoteLookupNamespace;
+    export const RemoteLookup: RemoteLookupNamespace & {
+        new (): RemoteLookup; // This allows `obj instanceof RemoteLookup`
+    };
 
     module Searchable {
         // Constructor properties interface
@@ -953,7 +979,9 @@ export namespace GitgExt {
         vfunc_set_search_entry(value?: Gtk.Entry | null): void;
     }
 
-    export const Searchable: SearchableNamespace;
+    export const Searchable: SearchableNamespace & {
+        new (): Searchable; // This allows `obj instanceof Searchable`
+    };
 
     module Selectable {
         // Constructor properties interface
@@ -991,7 +1019,7 @@ export namespace GitgExt {
         // Methods
 
         get_selectable_mode(): SelectionMode;
-        set_selectable_mode(value: SelectionMode): void;
+        set_selectable_mode(value: SelectionMode | null): void;
         get_selectable_available(): boolean;
         get_selectable_mode_tooltip(): string;
         get_action_widget(): Gtk.Widget | null;
@@ -1005,7 +1033,9 @@ export namespace GitgExt {
         vfunc_get_action_widget(): Gtk.Widget | null;
     }
 
-    export const Selectable: SelectableNamespace;
+    export const Selectable: SelectableNamespace & {
+        new (): Selectable; // This allows `obj instanceof Selectable`
+    };
 
     module UIElement {
         // Constructor properties interface
@@ -1063,7 +1093,9 @@ export namespace GitgExt {
         vfunc_activate(): void;
     }
 
-    export const UIElement: UIElementNamespace;
+    export const UIElement: UIElementNamespace & {
+        new (): UIElement; // This allows `obj instanceof UIElement`
+    };
 
     /**
      * Name of the imported GIR library

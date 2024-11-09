@@ -221,7 +221,7 @@ export namespace Bump {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -262,7 +262,7 @@ export namespace Bump {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1335,7 +1335,7 @@ export namespace Bump {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1376,7 +1376,7 @@ export namespace Bump {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1813,7 +1813,9 @@ export namespace Bump {
         vfunc_get_length(): number;
     }
 
-    export const Queue: QueueNamespace;
+    export const Queue: QueueNamespace & {
+        new (): Queue; // This allows `obj instanceof Queue`
+    };
 
     module Threading {
         // Constructor properties interface
@@ -1843,7 +1845,9 @@ export namespace Bump {
         vfunc_spawn(max_new_threads: number): number;
     }
 
-    export const Threading: ThreadingNamespace;
+    export const Threading: ThreadingNamespace & {
+        new (): Threading; // This allows `obj instanceof Threading`
+    };
 
     /**
      * Name of the imported GIR library

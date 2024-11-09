@@ -171,7 +171,7 @@ export namespace Liferea {
      * @param icon the icon
      * @returns GIcon
      */
-    function icon_get(icon: lifereaIcon): Gio.Icon;
+    function icon_get(icon: lifereaIcon | null): Gio.Icon;
     function node_foreach_child_full(ptr: nodePtr, func: any | null, params: number, user_data?: any | null): void;
     /**
      * Returns a new unused unique node id.
@@ -329,7 +329,7 @@ export namespace Liferea {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -370,7 +370,7 @@ export namespace Liferea {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1056,7 +1056,7 @@ export namespace Liferea {
          * @param sortType new sort type
          * @param sortReversed TRUE for ascending order
          */
-        set_sort_column(sortType: nodeViewSortType, sortReversed: boolean): void;
+        set_sort_column(sortType: nodeViewSortType | null, sortReversed: boolean): void;
     }
 
     module ItemView {
@@ -1633,7 +1633,9 @@ export namespace Liferea {
         vfunc_store(authId: string, username: string, password: string): void;
     }
 
-    export const AuthActivatable: AuthActivatableNamespace;
+    export const AuthActivatable: AuthActivatableNamespace & {
+        new (): AuthActivatable; // This allows `obj instanceof AuthActivatable`
+    };
 
     module NodeSourceActivatable {
         // Constructor properties interface
@@ -1657,7 +1659,9 @@ export namespace Liferea {
         vfunc_deactivate(): void;
     }
 
-    export const NodeSourceActivatable: NodeSourceActivatableNamespace;
+    export const NodeSourceActivatable: NodeSourceActivatableNamespace & {
+        new (): NodeSourceActivatable; // This allows `obj instanceof NodeSourceActivatable`
+    };
 
     module ShellActivatable {
         // Constructor properties interface
@@ -1709,7 +1713,9 @@ export namespace Liferea {
         vfunc_update_state(): void;
     }
 
-    export const ShellActivatable: ShellActivatableNamespace;
+    export const ShellActivatable: ShellActivatableNamespace & {
+        new (): ShellActivatable; // This allows `obj instanceof ShellActivatable`
+    };
 
     /**
      * Name of the imported GIR library

@@ -210,7 +210,7 @@ export namespace GConf {
 
         // Methods
 
-        add_dir(dir: string, preload: ClientPreloadType): void;
+        add_dir(dir: string, preload: ClientPreloadType | null): void;
         /**
          * Lists the subdirectories in `dir`. The returned list contains
          * allocated strings. Each string is the absolute path of a
@@ -246,8 +246,8 @@ export namespace GConf {
         get_int(key: string): number;
         get_pair(
             key: string,
-            car_type: ValueType,
-            cdr_type: ValueType,
+            car_type: ValueType | null,
+            cdr_type: ValueType | null,
             car_retloc?: any | null,
             cdr_retloc?: any | null,
         ): boolean;
@@ -257,21 +257,21 @@ export namespace GConf {
         notify(key: string): void;
         notify_add(namespace_section: string, func: ClientNotifyFunc, destroy_notify: GLib.FreeFunc): number;
         notify_remove(cnxn: number): void;
-        preload(dirname: string, type: ClientPreloadType): void;
-        recursive_unset(key: string, flags: UnsetFlags): boolean;
+        preload(dirname: string, type: ClientPreloadType | null): void;
+        recursive_unset(key: string, flags: UnsetFlags | null): boolean;
         remove_dir(dir: string): void;
         reverse_change_set(cs: ChangeSet): ChangeSet;
         set(key: string, val: Value): void;
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         set_bool(key: string, val: boolean): boolean;
-        set_error_handling(mode: ClientErrorHandlingMode): void;
+        set_error_handling(mode: ClientErrorHandlingMode | null): void;
         set_float(key: string, val: number): boolean;
         set_int(key: string, val: number): boolean;
         set_pair(
             key: string,
-            car_type: ValueType,
-            cdr_type: ValueType,
+            car_type: ValueType | null,
+            cdr_type: ValueType | null,
             address_of_car?: any | null,
             address_of_cdr?: any | null,
         ): boolean;
@@ -314,8 +314,8 @@ export namespace GConf {
         set_nocopy(key: string, value: Value): void;
         set_pair(
             key: string,
-            car_type: ValueType,
-            cdr_type: ValueType,
+            car_type: ValueType | null,
+            cdr_type: ValueType | null,
             address_of_car?: any | null,
             address_of_cdr?: any | null,
         ): void;
@@ -430,7 +430,7 @@ export namespace GConf {
         set_cdr_nocopy(cdr: Value): void;
         set_float(the_float: number): void;
         set_int(the_int: number): void;
-        set_list_type(type: ValueType): void;
+        set_list_type(type: ValueType | null): void;
         set_string(the_str: string): void;
         to_string(): string;
     }

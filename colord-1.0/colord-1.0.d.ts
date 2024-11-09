@@ -794,7 +794,7 @@ export namespace Colord {
      * @param flags some #CdColorBlackbodyFlags, e.g. %CD_COLOR_BLACKBODY_FLAG_USE_PLANCKIAN
      * @returns TRUE if @temp was in range and the result accurate
      */
-    function color_get_blackbody_rgb_full(temp: number, result: ColorRGB, flags: ColorBlackbodyFlags): boolean;
+    function color_get_blackbody_rgb_full(temp: number, result: ColorRGB, flags: ColorBlackbodyFlags | null): boolean;
     /**
      * Convert from one color format to another.
      * @param src the source color
@@ -822,7 +822,7 @@ export namespace Colord {
      */
     function color_rgb_array_new(): ColorRGB[];
     function colorspace_from_string(colorspace: string): Colorspace;
-    function colorspace_to_string(colorspace: Colorspace): string;
+    function colorspace_to_string(colorspace: Colorspace | null): string;
     /**
      * Clears a matrix value, setting all it's values to zero.
      * @param src the source
@@ -931,11 +931,11 @@ export namespace Colord {
      */
     function mat33_vector_multiply(mat_src: Mat3x3, vec_src: Vec3, vec_dest: Vec3): void;
     function object_scope_from_string(object_scope: string): ObjectScope;
-    function object_scope_to_string(object_scope: ObjectScope): string;
+    function object_scope_to_string(object_scope: ObjectScope | null): string;
     function pixel_format_from_string(pixel_format: string): PixelFormat;
     function pixel_format_to_string(pixel_format: PixelFormat): string;
     function rendering_intent_from_string(rendering_intent: string): RenderingIntent;
-    function rendering_intent_to_string(rendering_intent: RenderingIntent): string;
+    function rendering_intent_to_string(rendering_intent: RenderingIntent | null): string;
     /**
      * Gets the standard colorspace as a enumerated value.
      * @param standard_space the standard colorspace, e.g. 'srgb'.
@@ -947,7 +947,7 @@ export namespace Colord {
      * @param standard_space a #CdStandardSpace
      * @returns the standard colorspace, e.g. 'srgb'.
      */
-    function standard_space_to_string(standard_space: StandardSpace): string;
+    function standard_space_to_string(standard_space: StandardSpace | null): string;
     /**
      * Flags used when loading an ICC profile.
      */
@@ -1188,7 +1188,7 @@ export namespace Colord {
          */
         create_device(
             id: string,
-            scope: ObjectScope,
+            scope: ObjectScope | null,
             properties?: GLib.HashTable<string, string> | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<Device>;
@@ -1202,7 +1202,7 @@ export namespace Colord {
          */
         create_device(
             id: string,
-            scope: ObjectScope,
+            scope: ObjectScope | null,
             properties: GLib.HashTable<string, string> | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -1217,7 +1217,7 @@ export namespace Colord {
          */
         create_device(
             id: string,
-            scope: ObjectScope,
+            scope: ObjectScope | null,
             properties?: GLib.HashTable<string, string> | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -1241,7 +1241,7 @@ export namespace Colord {
          */
         create_device_sync(
             id: string,
-            scope: ObjectScope,
+            scope: ObjectScope | null,
             properties?: GLib.HashTable<string, string> | null,
             cancellable?: Gio.Cancellable | null,
         ): Device;
@@ -1254,7 +1254,7 @@ export namespace Colord {
          */
         create_profile(
             id: string,
-            scope: ObjectScope,
+            scope: ObjectScope | null,
             properties?: GLib.HashTable<string, string> | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<Profile>;
@@ -1268,7 +1268,7 @@ export namespace Colord {
          */
         create_profile(
             id: string,
-            scope: ObjectScope,
+            scope: ObjectScope | null,
             properties: GLib.HashTable<string, string> | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -1283,7 +1283,7 @@ export namespace Colord {
          */
         create_profile(
             id: string,
-            scope: ObjectScope,
+            scope: ObjectScope | null,
             properties?: GLib.HashTable<string, string> | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -1300,7 +1300,11 @@ export namespace Colord {
          * @param scope the scope of the profile
          * @param cancellable a #GCancellable, or %NULL
          */
-        create_profile_for_icc(icc: Icc, scope: ObjectScope, cancellable?: Gio.Cancellable | null): Promise<Profile>;
+        create_profile_for_icc(
+            icc: Icc,
+            scope: ObjectScope | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Profile>;
         /**
          * Creates a color profile for an #CdIcc Object.
          * @param icc #CdIcc object
@@ -1310,7 +1314,7 @@ export namespace Colord {
          */
         create_profile_for_icc(
             icc: Icc,
-            scope: ObjectScope,
+            scope: ObjectScope | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1323,7 +1327,7 @@ export namespace Colord {
          */
         create_profile_for_icc(
             icc: Icc,
-            scope: ObjectScope,
+            scope: ObjectScope | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<Profile> | void;
@@ -1343,7 +1347,7 @@ export namespace Colord {
          * @param cancellable a #GCancellable, or %NULL
          * @returns A #CdProfile object, or %NULL for error
          */
-        create_profile_for_icc_sync(icc: Icc, scope: ObjectScope, cancellable?: Gio.Cancellable | null): Profile;
+        create_profile_for_icc_sync(icc: Icc, scope: ObjectScope | null, cancellable?: Gio.Cancellable | null): Profile;
         /**
          * Creates a color profile.
          *
@@ -1357,7 +1361,7 @@ export namespace Colord {
          */
         create_profile_sync(
             id: string,
-            scope: ObjectScope,
+            scope: ObjectScope | null,
             properties?: GLib.HashTable<string, string> | null,
             cancellable?: Gio.Cancellable | null,
         ): Profile;
@@ -1760,7 +1764,7 @@ export namespace Colord {
          * @param kind the type of device.
          * @param cancellable a #GCancellable, or %NULL
          */
-        get_devices_by_kind(kind: DeviceKind, cancellable?: Gio.Cancellable | null): Promise<Device[]>;
+        get_devices_by_kind(kind: DeviceKind | null, cancellable?: Gio.Cancellable | null): Promise<Device[]>;
         /**
          * Gets an array of color devices.
          * @param kind the type of device.
@@ -1768,7 +1772,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         get_devices_by_kind(
-            kind: DeviceKind,
+            kind: DeviceKind | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1779,7 +1783,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         get_devices_by_kind(
-            kind: DeviceKind,
+            kind: DeviceKind | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<Device[]> | void;
@@ -1798,7 +1802,7 @@ export namespace Colord {
          * @param cancellable a #GCancellable or %NULL
          * @returns an array of 	 #CdDevice objects.
          */
-        get_devices_by_kind_sync(kind: DeviceKind, cancellable?: Gio.Cancellable | null): Device[];
+        get_devices_by_kind_sync(kind: DeviceKind | null, cancellable?: Gio.Cancellable | null): Device[];
         /**
          * Gets the result from the asynchronous function.
          * @param res the #GAsyncResult
@@ -1896,7 +1900,10 @@ export namespace Colord {
          * @param standard_space a profile id
          * @param cancellable a #GCancellable, or %NULL
          */
-        get_standard_space(standard_space: StandardSpace, cancellable?: Gio.Cancellable | null): Promise<Profile>;
+        get_standard_space(
+            standard_space: StandardSpace | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<Profile>;
         /**
          * Finds a standard profile space.
          * @param standard_space a profile id
@@ -1904,7 +1911,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         get_standard_space(
-            standard_space: StandardSpace,
+            standard_space: StandardSpace | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1915,7 +1922,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         get_standard_space(
-            standard_space: StandardSpace,
+            standard_space: StandardSpace | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<Profile> | void;
@@ -1934,7 +1941,7 @@ export namespace Colord {
          * @param cancellable a #GCancellable, or %NULL
          * @returns A #CdProfile object, or %NULL for error
          */
-        get_standard_space_sync(standard_space: StandardSpace, cancellable?: Gio.Cancellable | null): Profile;
+        get_standard_space_sync(standard_space: StandardSpace | null, cancellable?: Gio.Cancellable | null): Profile;
         /**
          * Get system model.
          * @returns string containing the system model, e.g. "T61"
@@ -2177,7 +2184,11 @@ export namespace Colord {
          * @param profile a #CdProfile instance
          * @param cancellable a #GCancellable, or %NULL
          */
-        add_profile(relation: DeviceRelation, profile: Profile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        add_profile(
+            relation: DeviceRelation | null,
+            profile: Profile,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
         /**
          * Adds a profile to a device.
          * @param relation a #CdDeviceRelation, e.g. #CD_DEVICE_RELATION_HARD
@@ -2186,7 +2197,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         add_profile(
-            relation: DeviceRelation,
+            relation: DeviceRelation | null,
             profile: Profile,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -2199,7 +2210,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         add_profile(
-            relation: DeviceRelation,
+            relation: DeviceRelation | null,
             profile: Profile,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -2220,7 +2231,11 @@ export namespace Colord {
          * @param cancellable a #GCancellable or %NULL
          * @returns %TRUE for success, else %FALSE.
          */
-        add_profile_sync(relation: DeviceRelation, profile: Profile, cancellable?: Gio.Cancellable | null): boolean;
+        add_profile_sync(
+            relation: DeviceRelation | null,
+            profile: Profile,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
         /**
          * Connects to the object and fills up initial properties.
          * @param cancellable a #GCancellable, or %NULL
@@ -2639,7 +2654,7 @@ export namespace Colord {
          * @param cancellable a #GCancellable or %NULL
          * @returns #TRUE for success, else #FALSE and @error is used
          */
-        set_colorspace_sync(colorspace: Colorspace, cancellable?: Gio.Cancellable | null): boolean;
+        set_colorspace_sync(colorspace: Colorspace | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Enables or disables a device.
          * @param enabled the enabled state
@@ -2693,7 +2708,7 @@ export namespace Colord {
          * @param cancellable a #GCancellable or %NULL
          * @returns #TRUE for success, else #FALSE and @error is used
          */
-        set_kind_sync(kind: DeviceKind, cancellable?: Gio.Cancellable | null): boolean;
+        set_kind_sync(kind: DeviceKind | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Sets the device mode.
          *
@@ -2703,7 +2718,7 @@ export namespace Colord {
          * @param cancellable a #GCancellable or %NULL
          * @returns #TRUE for success, else #FALSE and @error is used
          */
-        set_mode_sync(mode: DeviceMode, cancellable?: Gio.Cancellable | null): boolean;
+        set_mode_sync(mode: DeviceMode | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Sets the device model.
          *
@@ -2974,7 +2989,7 @@ export namespace Colord {
          * @param flags a set of #CdIccLoadFlags
          * @returns %TRUE for success
          */
-        create_default_full(flags: IccLoadFlags): boolean;
+        create_default_full(flags: IccLoadFlags | null): boolean;
         /**
          * Creates an ICC profile from EDID data.
          * @param gamma_value approximate device gamma
@@ -3174,20 +3189,20 @@ export namespace Colord {
          * @param data binary data
          * @param flags a set of #CdIccLoadFlags
          */
-        load_data(data: Uint8Array | string, flags: IccLoadFlags): boolean;
+        load_data(data: Uint8Array | string, flags: IccLoadFlags | null): boolean;
         /**
          * Loads an ICC profile from an open file descriptor.
          * @param fd a file descriptor
          * @param flags a set of #CdIccLoadFlags
          */
-        load_fd(fd: number, flags: IccLoadFlags): boolean;
+        load_fd(fd: number, flags: IccLoadFlags | null): boolean;
         /**
          * Loads an ICC profile from a local or remote file.
          * @param file a #GFile
          * @param flags a set of #CdIccLoadFlags
          * @param cancellable A #GCancellable or %NULL
          */
-        load_file(file: Gio.File, flags: IccLoadFlags, cancellable?: Gio.Cancellable | null): boolean;
+        load_file(file: Gio.File, flags: IccLoadFlags | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Set the internal cmsHPROFILE instance. This may be required if you create
          * the profile using cmsCreateRGBProfileTHR() and then want to use the
@@ -3206,7 +3221,7 @@ export namespace Colord {
          * @param handle a cmsHPROFILE instance
          * @param flags a set of #CdIccLoadFlags
          */
-        load_handle(handle: any | null, flags: IccLoadFlags): boolean;
+        load_handle(handle: any | null, flags: IccLoadFlags | null): boolean;
         /**
          * Removes an item of metadata.
          * @param key the metadata key
@@ -3218,7 +3233,7 @@ export namespace Colord {
          * Return vale: A #GBytes structure, or %NULL for error
          * @param flags a set of #CdIccSaveFlags
          */
-        save_data(flags: IccSaveFlags): GLib.Bytes;
+        save_data(flags: IccSaveFlags | null): GLib.Bytes;
         /**
          * Saves an ICC profile to the default per-user location.
          *
@@ -3226,7 +3241,7 @@ export namespace Colord {
          * @param flags a set of #CdIccSaveFlags
          * @param cancellable A #GCancellable or %NULL
          */
-        save_default(flags: IccSaveFlags, cancellable?: Gio.Cancellable | null): boolean;
+        save_default(flags: IccSaveFlags | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Saves an ICC profile to a local or remote file.
          *
@@ -3235,7 +3250,7 @@ export namespace Colord {
          * @param flags a set of #CdIccSaveFlags
          * @param cancellable A #GCancellable or %NULL
          */
-        save_file(file: Gio.File, flags: IccSaveFlags, cancellable?: Gio.Cancellable | null): boolean;
+        save_file(file: Gio.File, flags: IccSaveFlags | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Sets the characterization data used to build the profile.
          * @param data TI3 string data, or %NULL
@@ -3245,7 +3260,7 @@ export namespace Colord {
          * Sets the colorspace kind.
          * @param colorspace the profile colorspace, e.g. %CD_COLORSPACE_RGB
          */
-        set_colorspace(colorspace: Colorspace): void;
+        set_colorspace(colorspace: Colorspace | null): void;
         /**
          * Sets the profile _copyright for a specific locale.
          * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
@@ -3283,7 +3298,7 @@ export namespace Colord {
          * Sets the profile kind.
          * @param kind the profile kind, e.g. %CD_PROFILE_KIND_DISPLAY_DEVICE
          */
-        set_kind(kind: ProfileKind): void;
+        set_kind(kind: ProfileKind | null): void;
         /**
          * Sets the profile manufacturer for a specific locale.
          * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
@@ -3540,7 +3555,7 @@ export namespace Colord {
          * Set the kind of IT8 file.
          * @param kind a #CdIt8Kind, e.g %CD_IT8_KIND_TI3.
          */
-        set_kind(kind: It8Kind): void;
+        set_kind(kind: It8Kind | null): void;
         /**
          * Set the calibration matrix in the it8 file.
          * @param matrix a #CdMat3x3.
@@ -3928,7 +3943,7 @@ export namespace Colord {
          * @param cancellable A #GCancellable, or %NULL
          * @returns A new #CdIcc object, or %NULL for error
          */
-        load_icc(flags: IccLoadFlags, cancellable?: Gio.Cancellable | null): Icc;
+        load_icc(flags: IccLoadFlags | null, cancellable?: Gio.Cancellable | null): Icc;
         /**
          * Sets the object path of the profile.
          * @param object_path The colord object path.
@@ -4265,7 +4280,7 @@ export namespace Colord {
          * @param cap a #CdSensorCap
          * @param cancellable a #GCancellable, or %NULL
          */
-        get_sample(cap: SensorCap, cancellable?: Gio.Cancellable | null): Promise<ColorXYZ>;
+        get_sample(cap: SensorCap | null, cancellable?: Gio.Cancellable | null): Promise<ColorXYZ>;
         /**
          * Gets a color sample from a sensor
          * @param cap a #CdSensorCap
@@ -4273,7 +4288,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         get_sample(
-            cap: SensorCap,
+            cap: SensorCap | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -4284,7 +4299,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         get_sample(
-            cap: SensorCap,
+            cap: SensorCap | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<ColorXYZ> | void;
@@ -4303,7 +4318,7 @@ export namespace Colord {
          * @param cancellable a #GCancellable or %NULL
          * @returns the XYZ reading, with ambient levels in Lux encoded in X, or %NULL for error.
          */
-        get_sample_sync(cap: SensorCap, cancellable?: Gio.Cancellable | null): ColorXYZ;
+        get_sample_sync(cap: SensorCap | null, cancellable?: Gio.Cancellable | null): ColorXYZ;
         /**
          * Gets the sensor serial number.
          * @returns A string, or %NULL for invalid
@@ -4314,7 +4329,7 @@ export namespace Colord {
          * @param cap a #CdSensorCap
          * @param cancellable a #GCancellable, or %NULL
          */
-        get_spectrum(cap: SensorCap, cancellable?: Gio.Cancellable | null): Promise<Spectrum>;
+        get_spectrum(cap: SensorCap | null, cancellable?: Gio.Cancellable | null): Promise<Spectrum>;
         /**
          * Gets a color spectrum from a sensor
          * @param cap a #CdSensorCap
@@ -4322,7 +4337,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         get_spectrum(
-            cap: SensorCap,
+            cap: SensorCap | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -4333,7 +4348,7 @@ export namespace Colord {
          * @param callback the function to run on completion
          */
         get_spectrum(
-            cap: SensorCap,
+            cap: SensorCap | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<Spectrum> | void;
@@ -4352,7 +4367,7 @@ export namespace Colord {
          * @param cancellable a #GCancellable or %NULL
          * @returns the XYZ reading, with ambient levels in Lux encoded in X, or %NULL for error.
          */
-        get_spectrum_sync(cap: SensorCap, cancellable?: Gio.Cancellable | null): Spectrum;
+        get_spectrum_sync(cap: SensorCap | null, cancellable?: Gio.Cancellable | null): Spectrum;
         /**
          * Gets the sensor state.
          * @returns A #CdSensorState, e.g. %CD_SENSOR_STATE_IDLE
@@ -4368,7 +4383,7 @@ export namespace Colord {
          * @param cap a specified capability, e.g. %CD_SENSOR_CAP_LCD
          * @returns %TRUE if the sensor has the specified capability
          */
-        has_cap(cap: SensorCap): boolean;
+        has_cap(cap: SensorCap | null): boolean;
         /**
          * Locks the device so we can use it.
          * @param cancellable a #GCancellable, or %NULL

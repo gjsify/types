@@ -604,7 +604,7 @@ export namespace GstGL {
      */
     function context_set_gl_display(context: Gst.Context, display?: GLDisplay | null): void;
     function gl_api_from_string(api_s: string): GLAPI;
-    function gl_api_to_string(api: GLAPI): string;
+    function gl_api_to_string(api: GLAPI | null): string;
     function gl_base_memory_alloc(allocator: GLBaseMemoryAllocator, params: GLAllocationParams): GLBaseMemory | null;
     function gl_base_memory_error_quark(): GLib.Quark;
     /**
@@ -618,8 +618,8 @@ export namespace GstGL {
      */
     function gl_buffer_init_once(): void;
     function gl_check_extension(name: string, ext: string): boolean;
-    function gl_config_caveat_to_string(caveat: GLConfigCaveat): string | null;
-    function gl_config_surface_type_to_string(surface_type: GLConfigSurfaceType): string | null;
+    function gl_config_caveat_to_string(caveat: GLConfigCaveat | null): string | null;
+    function gl_config_surface_type_to_string(surface_type: GLConfigSurfaceType | null): string | null;
     function gl_context_error_quark(): GLib.Quark;
     function gl_element_propagate_display_context(element: Gst.Element, display: GLDisplay): void;
     /**
@@ -650,13 +650,13 @@ export namespace GstGL {
         other_context_ptr: GLContext,
     ): [boolean, GLDisplay, GLContext];
     function gl_format_from_video_info(context: GLContext, vinfo: GstVideo.VideoInfo, plane: number): GLFormat;
-    function gl_format_is_supported(context: GLContext, format: GLFormat): boolean;
+    function gl_format_is_supported(context: GLContext, format: GLFormat | null): boolean;
     /**
      * Get the unsized format and type from `format` for usage in glReadPixels,
      * glTex{Sub}Image*, glTexImage* and similar functions.
      * @param format the sized internal #GstGLFormat
      */
-    function gl_format_type_from_sized_gl_format(format: GLFormat): [GLFormat, number];
+    function gl_format_type_from_sized_gl_format(format: GLFormat | null): [GLFormat, number];
     function gl_format_type_n_bytes(format: number, type: number): number;
     /**
      * Retrieves the stored 4x4 affine transformation matrix stored in `meta` in
@@ -709,7 +709,7 @@ export namespace GstGL {
      */
     function gl_multiply_matrix4(a: number[], b: number[]): number[];
     function gl_platform_from_string(platform_s: string): GLPlatform;
-    function gl_platform_to_string(platform: GLPlatform): string;
+    function gl_platform_to_string(platform: GLPlatform | null): string;
     /**
      * Performs a GST_QUERY_CONTEXT query of type "gst.gl.local_context" on all
      * #GstPads in `element` of `direction` for the local OpenGL context used by
@@ -721,7 +721,7 @@ export namespace GstGL {
      */
     function gl_query_local_gl_context(
         element: Gst.Element,
-        direction: Gst.PadDirection,
+        direction: Gst.PadDirection | null,
         context_ptr: GLContext,
     ): [boolean, GLContext];
     /**
@@ -745,16 +745,16 @@ export namespace GstGL {
     function gl_sync_meta_get_info(): Gst.MetaInfo;
     function gl_texture_target_from_gl(target: number): GLTextureTarget;
     function gl_texture_target_from_string(str: string): GLTextureTarget;
-    function gl_texture_target_to_buffer_pool_option(target: GLTextureTarget): string | null;
-    function gl_texture_target_to_gl(target: GLTextureTarget): number;
-    function gl_texture_target_to_string(target: GLTextureTarget): string | null;
+    function gl_texture_target_to_buffer_pool_option(target: GLTextureTarget | null): string | null;
+    function gl_texture_target_to_gl(target: GLTextureTarget | null): number;
+    function gl_texture_target_to_string(target: GLTextureTarget | null): string | null;
     /**
      * See gst_gl_value_set_texture_target_from_mask() for what entails a mask
      * @param value an initialized #GValue of type G_TYPE_STRING
      * @returns the mask of #GstGLTextureTarget's in @value or     %GST_GL_TEXTURE_TARGET_NONE on failure
      */
     function gl_value_get_texture_target_mask(value: GObject.Value | any): GLTextureTarget;
-    function gl_value_set_texture_target(value: GObject.Value | any, target: GLTextureTarget): boolean;
+    function gl_value_set_texture_target(value: GObject.Value | any, target: GLTextureTarget | null): boolean;
     /**
      * A mask is a bitwise OR of (1 << target) where target is a valid
      * #GstGLTextureTarget
@@ -762,12 +762,15 @@ export namespace GstGL {
      * @param target_mask a bitwise mask of #GstGLTextureTarget's
      * @returns whether the @target_mask could be set on @value
      */
-    function gl_value_set_texture_target_from_mask(value: GObject.Value | any, target_mask: GLTextureTarget): boolean;
-    function gl_version_to_glsl_version(gl_api: GLAPI, maj: number, min: number): GLSLVersion;
+    function gl_value_set_texture_target_from_mask(
+        value: GObject.Value | any,
+        target_mask: GLTextureTarget | null,
+    ): boolean;
+    function gl_version_to_glsl_version(gl_api: GLAPI | null, maj: number, min: number): GLSLVersion;
     function gl_window_error_quark(): GLib.Quark;
     function glsl_error_quark(): GLib.Quark;
     function glsl_profile_from_string(string: string): GLSLProfile;
-    function glsl_profile_to_string(profile: GLSLProfile): string | null;
+    function glsl_profile_to_string(profile: GLSLProfile | null): string | null;
     /**
      * Note: this function first searches the first 1 kilobytes for a `#version`
      * preprocessor directive and then executes gst_glsl_version_profile_from_string().
@@ -783,8 +786,8 @@ export namespace GstGL {
      * @returns TRUE if a valid `#version` string was found, FALSE otherwise
      */
     function glsl_version_profile_from_string(string: string): [boolean, GLSLVersion, GLSLProfile];
-    function glsl_version_profile_to_string(version: GLSLVersion, profile: GLSLProfile): string | null;
-    function glsl_version_to_string(version: GLSLVersion): string | null;
+    function glsl_version_profile_to_string(version: GLSLVersion | null, profile: GLSLProfile | null): string | null;
+    function glsl_version_to_string(version: GLSLVersion | null): string | null;
     function is_gl_base_memory(mem: Gst.Memory): boolean;
     function is_gl_buffer(mem: Gst.Memory): boolean;
     function is_gl_memory(mem: Gst.Memory): boolean;
@@ -1537,7 +1540,7 @@ export namespace GstGL {
          * @returns whether whether the current framebuffer is complete
          */
         check_framebuffer_status(fbo_target: number): boolean;
-        check_gl_version(api: GLAPI, maj: number, min: number): boolean;
+        check_gl_version(api: GLAPI | null, maj: number, min: number): boolean;
         /**
          * Unbind the current framebuffer
          */
@@ -1683,9 +1686,9 @@ export namespace GstGL {
          * @returns Whether the window was successfully updated
          */
         set_window(window: GLWindow): boolean;
-        supports_glsl_profile_version(version: GLSLVersion, profile: GLSLProfile): boolean;
-        supports_precision(version: GLSLVersion, profile: GLSLProfile): boolean;
-        supports_precision_highp(version: GLSLVersion, profile: GLSLProfile): boolean;
+        supports_glsl_profile_version(version: GLSLVersion | null, profile: GLSLProfile | null): boolean;
+        supports_precision(version: GLSLVersion | null, profile: GLSLProfile | null): boolean;
+        supports_precision_highp(version: GLSLVersion | null, profile: GLSLProfile | null): boolean;
         /**
          * Swap the front and back buffers on the window attached to `context`.
          * This will display the frame on the next refresh cycle.
@@ -1789,7 +1792,7 @@ export namespace GstGL {
          * API supported by a #GstGLContext.
          * @param gl_api a #GstGLAPI to filter with
          */
-        filter_gl_api(gl_api: GLAPI): void;
+        filter_gl_api(gl_api: GLAPI | null): void;
         /**
          * Execute `compare_func` over the list of windows stored by `display`.  The
          * first argument to `compare_func` is the #GstGLWindow being checked and the
@@ -2197,7 +2200,7 @@ export namespace GstGL {
          * @param profile a #GstGLSLProfile
          * @param str a GLSL shader string
          */
-        set_strings(version: GLSLVersion, profile: GLSLProfile, str: string[]): boolean;
+        set_strings(version: GLSLVersion | null, profile: GLSLProfile | null, str: string[]): boolean;
     }
 
     module GLShader {
@@ -2577,7 +2580,12 @@ export namespace GstGL {
          */
         set_caps(in_caps: Gst.Caps, out_caps: Gst.Caps): boolean;
         set_context(context: GLContext): void;
-        transform_caps(context: GLContext, direction: Gst.PadDirection, caps: Gst.Caps, filter: Gst.Caps): Gst.Caps;
+        transform_caps(
+            context: GLContext,
+            direction: Gst.PadDirection | null,
+            caps: Gst.Caps,
+            filter: Gst.Caps,
+        ): Gst.Caps;
     }
 
     module GLViewConvert {
@@ -2655,7 +2663,7 @@ export namespace GstGL {
          * @param othercaps the #GstCaps to fixate
          * @returns the fixated #GstCaps
          */
-        fixate_caps(direction: Gst.PadDirection, caps: Gst.Caps, othercaps: Gst.Caps): Gst.Caps;
+        fixate_caps(direction: Gst.PadDirection | null, caps: Gst.Caps, othercaps: Gst.Caps): Gst.Caps;
         /**
          * Retrieve the processed output buffer placing the output in `outbuf_ptr`.
          * @returns a #GstFlowReturn
@@ -2698,7 +2706,7 @@ export namespace GstGL {
          * @param filter a set of filter #GstCaps
          * @returns the converted #GstCaps
          */
-        transform_caps(direction: Gst.PadDirection, caps: Gst.Caps, filter: Gst.Caps): Gst.Caps;
+        transform_caps(direction: Gst.PadDirection | null, caps: Gst.Caps, filter: Gst.Caps): Gst.Caps;
     }
 
     module GLWindow {
@@ -3307,8 +3315,8 @@ export namespace GstGL {
          */
         copy_into(
             tex_id: number,
-            target: GLTextureTarget,
-            tex_format: GLFormat,
+            target: GLTextureTarget | null,
+            tex_format: GLFormat | null,
             width: number,
             height: number,
         ): boolean;
@@ -3324,8 +3332,8 @@ export namespace GstGL {
          */
         copy_teximage(
             tex_id: number,
-            out_target: GLTextureTarget,
-            out_tex_format: GLFormat,
+            out_target: GLTextureTarget | null,
+            out_tex_format: GLFormat | null,
             out_width: number,
             out_height: number,
         ): boolean;
@@ -3353,8 +3361,8 @@ export namespace GstGL {
             allocator: Gst.Allocator,
             parent: Gst.Memory | null,
             context: GLContext,
-            target: GLTextureTarget,
-            tex_format: GLFormat,
+            target: GLTextureTarget | null,
+            tex_format: GLFormat | null,
             params: Gst.AllocationParams | null,
             info: GstVideo.VideoInfo,
             plane: number,
@@ -3426,8 +3434,8 @@ export namespace GstGL {
          */
         copy_into_texture(
             tex_id: number,
-            target: GLTextureTarget,
-            tex_format: GLFormat,
+            target: GLTextureTarget | null,
+            tex_format: GLFormat | null,
             width: number,
             height: number,
             stride: number,
@@ -3496,7 +3504,7 @@ export namespace GstGL {
          * Frees a #GstGLQuery
          */
         free(): void;
-        init(context: GLContext, query_type: GLQueryType): void;
+        init(context: GLContext, query_type: GLQueryType | null): void;
         result(): number;
         /**
          * Start counting the query

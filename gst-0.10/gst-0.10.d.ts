@@ -1144,7 +1144,7 @@ export namespace Gst {
     function alloc_trace_live_all(): number;
     function alloc_trace_print_all(): void;
     function alloc_trace_print_live(): void;
-    function alloc_trace_set_flags_all(flags: AllocTraceFlags): void;
+    function alloc_trace_set_flags_all(flags: AllocTraceFlags | null): void;
     function atomic_int_set(value: number): number;
     function caps_from_string(string: string): Caps;
     function caps_load_thyself(parent: libxml2.NodePtr): Caps;
@@ -1162,10 +1162,10 @@ export namespace Gst {
     function debug_get_default_threshold(): DebugLevel;
     function debug_is_active(): boolean;
     function debug_is_colored(): boolean;
-    function debug_level_get_name(level: DebugLevel): string;
+    function debug_level_get_name(level: DebugLevel | null): string;
     function debug_log_default(
         category: DebugCategory,
-        level: DebugLevel,
+        level: DebugLevel | null,
         file: string,
         _function: string,
         line: number,
@@ -1178,8 +1178,8 @@ export namespace Gst {
     function debug_remove_log_function_by_data(data: any): number;
     function debug_set_active(active: boolean): void;
     function debug_set_colored(colored: boolean): void;
-    function debug_set_default_threshold(level: DebugLevel): void;
-    function debug_set_threshold_for_name(name: string, level: DebugLevel): void;
+    function debug_set_default_threshold(level: DebugLevel | null): void;
+    function debug_set_threshold_for_name(name: string, level: DebugLevel | null): void;
     function debug_unset_threshold_for_name(name: string): void;
     function default_registry_check_feature_version(
         feature_name: string,
@@ -1189,15 +1189,15 @@ export namespace Gst {
     ): boolean;
     function deinit(): void;
     function error_get_message(domain: GLib.Quark, code: number): string;
-    function flow_get_name(ret: FlowReturn): string;
-    function flow_to_quark(ret: FlowReturn): GLib.Quark;
+    function flow_get_name(ret: FlowReturn | null): string;
+    function flow_to_quark(ret: FlowReturn | null): GLib.Quark;
     function format_get_by_nick(nick: string): Format;
-    function format_get_details(format: Format): FormatDefinition;
-    function format_get_name(format: Format): string;
+    function format_get_details(format: Format | null): FormatDefinition;
+    function format_get_name(format: Format | null): string;
     function format_iterate_definitions(): Iterator;
     function format_register(nick: string, description: string): Format;
-    function format_to_quark(format: Format): GLib.Quark;
-    function formats_contains(formats: Format, format: Format): boolean;
+    function format_to_quark(format: Format | null): GLib.Quark;
+    function formats_contains(formats: Format | null, format: Format | null): boolean;
     function implements_interface_cast(from: any, type: GObject.GType): any;
     function implements_interface_check(from: any, type: GObject.GType): boolean;
     function init(argv?: string[] | null): string[] | null;
@@ -1214,26 +1214,26 @@ export namespace Gst {
         max_denom: number,
         default_num: number,
         default_denom: number,
-        flags: GObject.ParamFlags,
+        flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     function param_spec_mini_object(
         name: string,
         nick: string,
         blurb: string,
         object_type: GObject.GType,
-        flags: GObject.ParamFlags,
+        flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     function parse_bin_from_description(bin_description: string, ghost_unlinked_pads: boolean): Element;
     function parse_bin_from_description_full(
         bin_description: string,
         ghost_unlinked_pads: boolean,
         context: ParseContext,
-        flags: ParseFlags,
+        flags: ParseFlags | null,
     ): Element;
     function parse_launch(pipeline_description: string): Element;
-    function parse_launch_full(pipeline_description: string, context: ParseContext, flags: ParseFlags): Element;
+    function parse_launch_full(pipeline_description: string, context: ParseContext, flags: ParseFlags | null): Element;
     function parse_launchv(argv: string[]): Element;
-    function parse_launchv_full(argv: string[], context: ParseContext, flags: ParseFlags): Element;
+    function parse_launchv_full(argv: string[], context: ParseContext, flags: ParseFlags | null): Element;
     function print_element_args(buf: GLib.String, indent: number, element: Element): void;
     function print_pad_caps(buf: GLib.String, indent: number, pad: Pad): void;
     function segtrap_is_enabled(): boolean;
@@ -1252,7 +1252,7 @@ export namespace Gst {
     function tag_merge_use_first(dest: GObject.Value | any, src: GObject.Value | any): void;
     function tag_register(
         name: string,
-        flag: TagFlag,
+        flag: TagFlag | null,
         type: GObject.GType,
         nick: string,
         blurb: string,
@@ -1260,20 +1260,20 @@ export namespace Gst {
     ): void;
     function trace_read_tsc(): number;
     function type_find_helper(src: Pad, size: number): Caps;
-    function type_find_helper_for_buffer(obj: Object, buf: Buffer, prob: TypeFindProbability): Caps;
+    function type_find_helper_for_buffer(obj: Object, buf: Buffer, prob: TypeFindProbability | null): Caps;
     function type_find_helper_for_extension(obj: Object, extension: string): Caps;
     function type_find_helper_get_range(
         obj: Object,
         func: TypeFindHelperGetRangeFunction,
         size: number,
-        prob: TypeFindProbability,
+        prob: TypeFindProbability | null,
     ): Caps;
     function type_find_helper_get_range_ext(
         obj: Object,
         func: TypeFindHelperGetRangeFunction,
         size: number,
         extension: string,
-        prob: TypeFindProbability,
+        prob: TypeFindProbability | null,
     ): Caps;
     function type_find_register(
         plugin: Plugin,
@@ -1296,7 +1296,7 @@ export namespace Gst {
         n_preallocs: number,
         instance_init: GObject.InstanceInitFunc,
         value_table: GObject.TypeValueTable,
-        flags: GObject.TypeFlags,
+        flags: GObject.TypeFlags | null,
     ): GObject.GType;
     function update_registry(): boolean;
     function uri_construct(protocol: string, location: string): string;
@@ -1304,14 +1304,14 @@ export namespace Gst {
     function uri_get_protocol(uri: string): string;
     function uri_has_protocol(uri: string, protocol: string): boolean;
     function uri_is_valid(uri: string): boolean;
-    function uri_protocol_is_supported(type: URIType, protocol: string): boolean;
+    function uri_protocol_is_supported(type: URIType | null, protocol: string): boolean;
     function uri_protocol_is_valid(protocol: string): boolean;
     function util_array_binary_search(
         array: any,
         num_elements: number,
         element_size: number,
         search_func: GLib.CompareDataFunc,
-        mode: SearchMode,
+        mode: SearchMode | null,
         search_data: any,
         user_data: any,
     ): any;
@@ -2365,7 +2365,7 @@ export namespace Gst {
         wait_playing(): FlowReturn;
         set_live(live: boolean): void;
         is_live(): boolean;
-        set_format(format: Format): void;
+        set_format(format: Format | null): void;
         query_latency(min_latency: ClockTime, max_latency: ClockTime): [boolean, boolean];
         set_blocksize(blocksize: never): void;
         get_blocksize(): never;
@@ -2539,8 +2539,8 @@ export namespace Gst {
         iterate_sources(): Iterator;
         iterate_all_by_interface(iface: GObject.GType): Iterator;
         recalculate_latency(): boolean;
-        find_unlinked_pad(direction: PadDirection): Pad;
-        find_unconnected_pad(direction: PadDirection): Pad;
+        find_unlinked_pad(direction: PadDirection | null): Pad;
+        find_unconnected_pad(direction: PadDirection | null): Pad;
 
         // Inherited properties
         get name(): string;
@@ -2602,7 +2602,7 @@ export namespace Gst {
 
         // Methods
 
-        copy_metadata(src: Buffer, flags: BufferCopyFlags): void;
+        copy_metadata(src: Buffer, flags: BufferCopyFlags | null): void;
         is_metadata_writable(): boolean;
         make_metadata_writable(): Buffer;
         get_caps(): Caps;
@@ -2689,15 +2689,15 @@ export namespace Gst {
         have_pending(): boolean;
         peek(): Message;
         pop(): Message;
-        pop_filtered(types: MessageType): Message;
+        pop_filtered(types: MessageType | null): Message;
         timed_pop(timeout: ClockTime): Message;
-        timed_pop_filtered(timeout: ClockTime, types: MessageType): Message;
+        timed_pop_filtered(timeout: ClockTime, types: MessageType | null): Message;
         set_flushing(flushing: boolean): void;
         set_sync_handler(func: BusSyncHandler, data: any): void;
         create_watch(): GLib.Source;
         add_watch_full(priority: number, func: BusFunc, user_data: any): number;
         add_watch(func: BusFunc, user_data: any): number;
-        poll(events: MessageType, timeout: ClockTimeDiff): Message;
+        poll(events: MessageType | null, timeout: ClockTimeDiff): Message;
         async_signal_func(message: Message, data: any): boolean;
         sync_signal_handler(message: Message, data: any): BusSyncReply;
         add_signal_watch(): void;
@@ -3069,18 +3069,18 @@ export namespace Gst {
         send_event(event: Event): boolean;
         seek(
             rate: number,
-            format: Format,
-            flags: SeekFlags,
-            cur_type: SeekType,
+            format: Format | null,
+            flags: SeekFlags | null,
+            cur_type: SeekType | null,
             cur: number,
-            stop_type: SeekType,
+            stop_type: SeekType | null,
             stop: number,
         ): boolean;
         get_query_types(): QueryType;
         query(query: Query): boolean;
         post_message(message: Message): boolean;
         message_full(
-            type: MessageType,
+            type: MessageType | null,
             domain: GLib.Quark,
             code: number,
             text: string,
@@ -3093,10 +3093,10 @@ export namespace Gst {
         set_locked_state(locked_state: boolean): boolean;
         sync_state_with_parent(): boolean;
         get_state(timeout: ClockTime): [StateChangeReturn, State, State];
-        set_state(state: State): StateChangeReturn;
+        set_state(state: State | null): StateChangeReturn;
         abort_state(): void;
-        change_state(transition: StateChange): StateChangeReturn;
-        continue_state(ret: StateChangeReturn): StateChangeReturn;
+        change_state(transition: StateChange | null): StateChangeReturn;
+        continue_state(ret: StateChangeReturn | null): StateChangeReturn;
         lost_state(): void;
         lost_state_full(new_base_time: boolean): void;
         get_factory(): ElementFactory;
@@ -3108,13 +3108,13 @@ export namespace Gst {
         link_filtered(dest: Element, filter: Caps): boolean;
         unlink(dest: Element): void;
         link_pads(srcpadname: string, dest: Element, destpadname: string): boolean;
-        link_pads_full(srcpadname: string, dest: Element, destpadname: string, flags: PadLinkCheck): boolean;
+        link_pads_full(srcpadname: string, dest: Element, destpadname: string, flags: PadLinkCheck | null): boolean;
         unlink_pads(srcpadname: string, dest: Element, destpadname: string): void;
         link_pads_filtered(srcpadname: string, dest: Element, destpadname: string, filter: Caps): boolean;
-        seek_simple(format: Format, seek_flags: SeekFlags, seek_pos: number): boolean;
-        query_position(format: Format): [boolean, number];
-        query_duration(format: Format): [boolean, number];
-        query_convert(src_format: Format, src_val: number, dest_format: Format): [boolean, number];
+        seek_simple(format: Format | null, seek_flags: SeekFlags | null, seek_pos: number): boolean;
+        query_position(format: Format | null): [boolean, number];
+        query_duration(format: Format | null): [boolean, number];
+        query_convert(src_format: Format | null, src_val: number, dest_format: Format | null): [boolean, number];
         found_tags_for_pad(pad: Pad, list: TagList): void;
         found_tags(list: TagList): void;
     }
@@ -3248,19 +3248,19 @@ export namespace Gst {
         has_name(name: string): boolean;
         get_seqnum(): number;
         set_seqnum(seqnum: number): void;
-        parse_new_segment(format: Format): [boolean, number, number, number, number];
-        parse_new_segment_full(format: Format): [boolean, number, number, number, number, number];
+        parse_new_segment(format: Format | null): [boolean, number, number, number, number];
+        parse_new_segment_full(format: Format | null): [boolean, number, number, number, number, number];
         parse_tag(taglist: TagList): void;
-        parse_buffer_size(format: Format): [number, number, boolean];
+        parse_buffer_size(format: Format | null): [number, number, boolean];
         parse_qos(diff: ClockTimeDiff, timestamp: ClockTime): number;
         parse_seek(
-            format: Format,
-            flags: SeekFlags,
-            start_type: SeekType,
-            stop_type: SeekType,
+            format: Format | null,
+            flags: SeekFlags | null,
+            start_type: SeekType | null,
+            stop_type: SeekType | null,
         ): [number, number, number];
         parse_latency(latency: ClockTime): void;
-        parse_step(format: Format): [number, number, boolean, boolean];
+        parse_step(format: Format | null): [number, number, boolean, boolean];
         parse_sink_message(msg: Message): void;
     }
 
@@ -3399,29 +3399,29 @@ export namespace Gst {
         get_group(): number;
         new_group(): number;
         set_group(groupnum: number): boolean;
-        set_certainty(certainty: IndexCertainty): void;
+        set_certainty(certainty: IndexCertainty | null): void;
         get_certainty(): IndexCertainty;
         set_filter(filter: IndexFilter, user_data: any): void;
         set_filter_full(filter: IndexFilter, user_data: any): void;
         set_resolver(resolver: IndexResolver, user_data: any): void;
         set_resolver_full(resolver: IndexResolver, user_data: any): void;
         get_writer_id(writer: Object): [boolean, number];
-        add_format(id: number, format: Format): IndexEntry;
-        add_associationv(id: number, flags: AssocFlags, n: number, list: IndexAssociation): IndexEntry;
+        add_format(id: number, format: Format | null): IndexEntry;
+        add_associationv(id: number, flags: AssocFlags | null, n: number, list: IndexAssociation): IndexEntry;
         add_object(id: number, key: string, type: GObject.GType, object: any): IndexEntry;
         add_id(id: number, description: string): IndexEntry;
         get_assoc_entry(
             id: number,
-            method: IndexLookupMethod,
-            flags: AssocFlags,
-            format: Format,
+            method: IndexLookupMethod | null,
+            flags: AssocFlags | null,
+            format: Format | null,
             value: number,
         ): IndexEntry;
         get_assoc_entry_full(
             id: number,
-            method: IndexLookupMethod,
-            flags: AssocFlags,
-            format: Format,
+            method: IndexLookupMethod | null,
+            flags: AssocFlags | null,
+            format: Format | null,
             value: number,
             func: GLib.CompareDataFunc,
             user_data: any,
@@ -3575,28 +3575,28 @@ export namespace Gst {
         parse_tag(tag_list: TagList): void;
         parse_tag_full(pad: Pad, tag_list: TagList): void;
         parse_buffering(): number;
-        set_buffering_stats(mode: BufferingMode, avg_in: number, avg_out: number, buffering_left: number): void;
-        parse_buffering_stats(mode: BufferingMode): [number, number, number];
-        parse_state_changed(oldstate: State, newstate: State, pending: State): void;
-        parse_step_done(format: Format): [number, number, boolean, boolean, number, boolean];
+        set_buffering_stats(mode: BufferingMode | null, avg_in: number, avg_out: number, buffering_left: number): void;
+        parse_buffering_stats(mode: BufferingMode | null): [number, number, number];
+        parse_state_changed(oldstate: State | null, newstate: State | null, pending: State | null): void;
+        parse_step_done(format: Format | null): [number, number, boolean, boolean, number, boolean];
         parse_clock_provide(clock: Clock): boolean;
         parse_clock_lost(clock: Clock): void;
         parse_new_clock(clock: Clock): void;
-        parse_segment_start(format: Format): number;
-        parse_segment_done(format: Format): number;
-        parse_duration(format: Format): number;
+        parse_segment_start(format: Format | null): number;
+        parse_segment_done(format: Format | null): number;
+        parse_duration(format: Format | null): number;
         parse_async_start(): boolean;
-        parse_structure_change(type: StructureChangeType, owner: Element): boolean;
-        parse_stream_status(type: StreamStatusType, owner: Element): void;
+        parse_structure_change(type: StructureChangeType | null, owner: Element): boolean;
+        parse_stream_status(type: StreamStatusType | null, owner: Element): void;
         set_stream_status_object(object: GObject.Value | any): void;
         get_stream_status_object(): unknown;
-        parse_request_state(state: State): void;
-        parse_step_start(format: Format): [boolean, number, number, boolean, boolean];
+        parse_request_state(state: State | null): void;
+        parse_step_start(format: Format | null): [boolean, number, number, boolean, boolean];
         set_qos_values(jitter: number, proportion: number, quality: number): void;
-        set_qos_stats(format: Format, processed: number, dropped: number): void;
+        set_qos_stats(format: Format | null, processed: number, dropped: number): void;
         parse_qos(): [boolean, number, number, number, number];
         parse_qos_values(): [number, number, number];
-        parse_qos_stats(format: Format): [number, number];
+        parse_qos_stats(format: Format | null): [number, number];
         get_structure(): Structure;
     }
 
@@ -3875,7 +3875,7 @@ export namespace Gst {
         set_unlink_function(unlink: PadUnlinkFunction): void;
         can_link(sinkpad: Pad): boolean;
         link(sinkpad: Pad): PadLinkReturn;
-        link_full(sinkpad: Pad, flags: PadLinkCheck): PadLinkReturn;
+        link_full(sinkpad: Pad, flags: PadLinkCheck | null): PadLinkReturn;
         unlink(sinkpad: Pad): boolean;
         is_linked(): boolean;
         get_peer(): Pad;
@@ -3924,12 +3924,12 @@ export namespace Gst {
         proxy_getcaps(): Caps;
         proxy_setcaps(caps: Caps): boolean;
         get_parent_element(): Element;
-        query_position(format: Format): [boolean, number];
-        query_duration(format: Format): [boolean, number];
-        query_convert(src_format: Format, src_val: number, dest_format: Format): [boolean, number];
-        query_peer_position(format: Format): [boolean, number];
-        query_peer_duration(format: Format): [boolean, number];
-        query_peer_convert(src_format: Format, src_val: number, dest_format: Format): [boolean, number];
+        query_position(format: Format | null): [boolean, number];
+        query_duration(format: Format | null): [boolean, number];
+        query_convert(src_format: Format | null, src_val: number, dest_format: Format | null): [boolean, number];
+        query_peer_position(format: Format | null): [boolean, number];
+        query_peer_duration(format: Format | null): [boolean, number];
+        query_peer_convert(src_format: Format | null, src_val: number, dest_format: Format | null): [boolean, number];
         add_data_probe(handler: GObject.Callback, data: any): never;
         add_data_probe_full(handler: GObject.Callback, data: any): never;
         remove_data_probe(handler_id: number): void;
@@ -4170,8 +4170,13 @@ export namespace Gst {
         is_loaded(): boolean;
         name_filter(name: string): boolean;
         load(): Plugin;
-        add_dependency(env_vars: string[], paths: string[], names: string[], flags: PluginDependencyFlags): void;
-        add_dependency_simple(env_vars: string, paths: string, names: string, flags: PluginDependencyFlags): void;
+        add_dependency(env_vars: string[], paths: string[], names: string[], flags: PluginDependencyFlags | null): void;
+        add_dependency_simple(
+            env_vars: string,
+            paths: string,
+            names: string,
+            flags: PluginDependencyFlags | null,
+        ): void;
     }
 
     module PluginFeature {
@@ -4307,28 +4312,28 @@ export namespace Gst {
 
         // Methods
 
-        set_position(format: Format, cur: number): void;
-        parse_position(format: Format): number;
-        set_duration(format: Format, duration: number): void;
-        parse_duration(format: Format): number;
+        set_position(format: Format | null, cur: number): void;
+        parse_position(format: Format | null): number;
+        set_duration(format: Format | null, duration: number): void;
+        parse_duration(format: Format | null): number;
         set_latency(live: boolean, min_latency: ClockTime, max_latency: ClockTime): void;
         parse_latency(min_latency: ClockTime, max_latency: ClockTime): boolean;
-        set_convert(src_format: Format, src_value: number, dest_format: Format, dest_value: number): void;
-        parse_convert(src_format: Format, dest_format: Format): [number, number];
-        set_segment(rate: number, format: Format, start_value: number, stop_value: number): void;
-        parse_segment(format: Format): [number, number, number];
+        set_convert(src_format: Format | null, src_value: number, dest_format: Format | null, dest_value: number): void;
+        parse_convert(src_format: Format | null, dest_format: Format | null): [number, number];
+        set_segment(rate: number, format: Format | null, start_value: number, stop_value: number): void;
+        parse_segment(format: Format | null): [number, number, number];
         get_structure(): Structure;
-        set_seeking(format: Format, seekable: boolean, segment_start: number, segment_end: number): void;
-        parse_seeking(format: Format): [boolean, number, number];
-        set_formatsv(n_formats: number, formats: Format): void;
+        set_seeking(format: Format | null, seekable: boolean, segment_start: number, segment_end: number): void;
+        parse_seeking(format: Format | null): [boolean, number, number];
+        set_formatsv(n_formats: number, formats: Format | null): void;
         parse_formats_length(): number;
-        parse_formats_nth(nth: number, format: Format): void;
+        parse_formats_nth(nth: number, format: Format | null): void;
         set_buffering_percent(busy: boolean, percent: number): void;
         parse_buffering_percent(): [boolean, number];
-        set_buffering_stats(mode: BufferingMode, avg_in: number, avg_out: number, buffering_left: number): void;
-        parse_buffering_stats(mode: BufferingMode): [number, number, number];
-        set_buffering_range(format: Format, start: number, stop: number, estimated_total: number): void;
-        parse_buffering_range(format: Format): [number, number, number];
+        set_buffering_stats(mode: BufferingMode | null, avg_in: number, avg_out: number, buffering_left: number): void;
+        parse_buffering_stats(mode: BufferingMode | null): [number, number, number];
+        set_buffering_range(format: Format | null, start: number, stop: number, estimated_total: number): void;
+        parse_buffering_range(format: Format | null): [number, number, number];
         parse_uri(uri: string[]): void;
         set_uri(uri: string): void;
     }
@@ -4477,12 +4482,12 @@ export namespace Gst {
         // Methods
 
         set_lock(mutex: never): void;
-        set_priority(priority: GLib.ThreadPriority): void;
+        set_priority(priority: GLib.ThreadPriority | null): void;
         get_pool(): TaskPool;
         set_pool(pool: TaskPool): void;
         set_thread_callbacks(callbacks: TaskThreadCallbacks, user_data: any): void;
         get_state(): TaskState;
-        set_state(state: TaskState): boolean;
+        set_state(state: TaskState | null): boolean;
         start(): boolean;
         stop(): boolean;
         pause(): boolean;
@@ -4654,7 +4659,7 @@ export namespace Gst {
         // Methods
 
         print(): void;
-        set_flags(flags: AllocTraceFlags): void;
+        set_flags(flags: AllocTraceFlags | null): void;
     }
 
     type BaseSinkClass = typeof BaseSink;
@@ -5147,7 +5152,7 @@ export namespace Gst {
         // Methods
 
         free(): void;
-        set_threshold(level: DebugLevel): void;
+        set_threshold(level: DebugLevel | null): void;
         reset_threshold(): void;
         get_threshold(): DebugLevel;
         get_name(): string;
@@ -5264,7 +5269,7 @@ export namespace Gst {
 
         copy(): IndexEntry;
         free(): void;
-        assoc_map(format: Format): [boolean, number];
+        assoc_map(format: Format | null): [boolean, number];
     }
 
     type IndexFactoryClass = typeof IndexFactory;
@@ -5593,33 +5598,40 @@ export namespace Gst {
 
         copy(): Segment;
         free(): void;
-        init(format: Format): void;
-        set_duration(format: Format, duration: number): void;
-        set_last_stop(format: Format, position: number): void;
+        init(format: Format | null): void;
+        set_duration(format: Format | null, duration: number): void;
+        set_last_stop(format: Format | null, position: number): void;
         set_seek(
             rate: number,
-            format: Format,
-            flags: SeekFlags,
-            start_type: SeekType,
+            format: Format | null,
+            flags: SeekFlags | null,
+            start_type: SeekType | null,
             start: number,
-            stop_type: SeekType,
+            stop_type: SeekType | null,
             stop: number,
         ): boolean;
-        set_newsegment(update: boolean, rate: number, format: Format, start: number, stop: number, time: number): void;
-        set_newsegment_full(
+        set_newsegment(
             update: boolean,
             rate: number,
-            applied_rate: number,
-            format: Format,
+            format: Format | null,
             start: number,
             stop: number,
             time: number,
         ): void;
-        to_stream_time(format: Format, position: number): number;
-        to_running_time(format: Format, position: number): number;
-        to_position(format: Format, running_time: number): number;
-        clip(format: Format, start: number, stop: number): [boolean, number, number];
-        set_running_time(format: Format, running_time: number): boolean;
+        set_newsegment_full(
+            update: boolean,
+            rate: number,
+            applied_rate: number,
+            format: Format | null,
+            start: number,
+            stop: number,
+            time: number,
+        ): void;
+        to_stream_time(format: Format | null, position: number): number;
+        to_running_time(format: Format | null, position: number): number;
+        to_position(format: Format | null, running_time: number): number;
+        clip(format: Format | null, start: number, stop: number): [boolean, number, number];
+        set_running_time(format: Format | null, running_time: number): boolean;
     }
 
     /**
@@ -5928,7 +5940,9 @@ export namespace Gst {
         vfunc_get_children_count(): number;
     }
 
-    export const ChildProxy: ChildProxyNamespace;
+    export const ChildProxy: ChildProxyNamespace & {
+        new (): ChildProxy; // This allows `obj instanceof ChildProxy`
+    };
 
     module ImplementsInterface {
         // Constructor properties interface
@@ -5946,7 +5960,9 @@ export namespace Gst {
         vfunc_supported(iface_type: GObject.GType): boolean;
     }
 
-    export const ImplementsInterface: ImplementsInterfaceNamespace;
+    export const ImplementsInterface: ImplementsInterfaceNamespace & {
+        new (): ImplementsInterface; // This allows `obj instanceof ImplementsInterface`
+    };
 
     module TagSetter {
         // Constructor properties interface
@@ -5962,14 +5978,16 @@ export namespace Gst {
         // Methods
 
         reset_tags(): void;
-        merge_tags(list: TagList, mode: TagMergeMode): void;
-        add_tag_value(mode: TagMergeMode, tag: string, value: GObject.Value | any): void;
+        merge_tags(list: TagList, mode: TagMergeMode | null): void;
+        add_tag_value(mode: TagMergeMode | null, tag: string, value: GObject.Value | any): void;
         get_tag_list(): TagList;
-        set_tag_merge_mode(mode: TagMergeMode): void;
+        set_tag_merge_mode(mode: TagMergeMode | null): void;
         get_tag_merge_mode(): TagMergeMode;
     }
 
-    export const TagSetter: TagSetterNamespace;
+    export const TagSetter: TagSetterNamespace & {
+        new (): TagSetter; // This allows `obj instanceof TagSetter`
+    };
 
     module URIHandler {
         // Constructor properties interface
@@ -5996,7 +6014,9 @@ export namespace Gst {
         vfunc_set_uri(uri: string): boolean;
     }
 
-    export const URIHandler: URIHandlerNamespace;
+    export const URIHandler: URIHandlerNamespace & {
+        new (): URIHandler; // This allows `obj instanceof URIHandler`
+    };
 
     type ClockID = unknown;
     type ClockTime = unknown;

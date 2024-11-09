@@ -1603,7 +1603,7 @@ export namespace IAnjuta {
          * @param command_id Command to get override.
          * @returns The overridden command. NULL if no override set.
          */
-        get_command(command_id: BuildableCommand): string;
+        get_command(command_id: BuildableCommand | null): string;
         /**
          * fixme
          * @param uri fixme
@@ -1618,7 +1618,7 @@ export namespace IAnjuta {
          * @param command_id Command to override.
          * @param command Build command to override.
          */
-        set_command(command_id: BuildableCommand, command: string): void;
+        set_command(command_id: BuildableCommand | null, command: string): void;
 
         // Virtual methods
 
@@ -1669,7 +1669,9 @@ export namespace IAnjuta {
         vfunc_set_command(command_id: BuildableCommand, command: string): void;
     }
 
-    export const Buildable: BuildableNamespace;
+    export const Buildable: BuildableNamespace & {
+        new (): Buildable; // This allows `obj instanceof Buildable`
+    };
 
     module Builder {
         // Constructor properties interface
@@ -1727,7 +1729,9 @@ export namespace IAnjuta {
         vfunc_list_configuration(): string[];
     }
 
-    export const Builder: BuilderNamespace;
+    export const Builder: BuilderNamespace & {
+        new (): Builder; // This allows `obj instanceof Builder`
+    };
 
     module DebugManager {
         // Constructor properties interface
@@ -1796,7 +1800,9 @@ export namespace IAnjuta {
         vfunc_start_remote(server: string, uri: string): boolean;
     }
 
-    export const DebugManager: DebugManagerNamespace;
+    export const DebugManager: DebugManagerNamespace & {
+        new (): DebugManager; // This allows `obj instanceof DebugManager`
+    };
 
     module Debugger {
         // Constructor properties interface
@@ -2106,7 +2112,9 @@ export namespace IAnjuta {
         vfunc_unload(): boolean;
     }
 
-    export const Debugger: DebuggerNamespace;
+    export const Debugger: DebuggerNamespace & {
+        new (): Debugger; // This allows `obj instanceof Debugger`
+    };
 
     module DebuggerBreakpoint {
         // Constructor properties interface
@@ -2137,7 +2145,9 @@ export namespace IAnjuta {
         vfunc_implement_breakpoint(): number;
     }
 
-    export const DebuggerBreakpoint: DebuggerBreakpointNamespace;
+    export const DebuggerBreakpoint: DebuggerBreakpointNamespace & {
+        new (): DebuggerBreakpoint; // This allows `obj instanceof DebuggerBreakpoint`
+    };
 
     module DebuggerInstruction {
         // Constructor properties interface
@@ -2201,7 +2211,9 @@ export namespace IAnjuta {
         vfunc_step_over_instruction(): boolean;
     }
 
-    export const DebuggerInstruction: DebuggerInstructionNamespace;
+    export const DebuggerInstruction: DebuggerInstructionNamespace & {
+        new (): DebuggerInstruction; // This allows `obj instanceof DebuggerInstruction`
+    };
 
     module DebuggerMemory {
         // Constructor properties interface
@@ -2217,7 +2229,9 @@ export namespace IAnjuta {
     }
     interface DebuggerMemory extends Debugger {}
 
-    export const DebuggerMemory: DebuggerMemoryNamespace;
+    export const DebuggerMemory: DebuggerMemoryNamespace & {
+        new (): DebuggerMemory; // This allows `obj instanceof DebuggerMemory`
+    };
 
     module DebuggerRegister {
         // Constructor properties interface
@@ -2250,7 +2264,9 @@ export namespace IAnjuta {
         vfunc_write_register(value: DebuggerRegisterData): boolean;
     }
 
-    export const DebuggerRegister: DebuggerRegisterNamespace;
+    export const DebuggerRegister: DebuggerRegisterNamespace & {
+        new (): DebuggerRegister; // This allows `obj instanceof DebuggerRegister`
+    };
 
     module DebuggerVariable {
         // Constructor properties interface
@@ -2298,7 +2314,9 @@ export namespace IAnjuta {
         vfunc_destroy(name: string): boolean;
     }
 
-    export const DebuggerVariable: DebuggerVariableNamespace;
+    export const DebuggerVariable: DebuggerVariableNamespace & {
+        new (): DebuggerVariable; // This allows `obj instanceof DebuggerVariable`
+    };
 
     module Document {
         // Constructor properties interface
@@ -2422,7 +2440,9 @@ export namespace IAnjuta {
         vfunc_update_ui(): void;
     }
 
-    export const Document: DocumentNamespace;
+    export const Document: DocumentNamespace & {
+        new (): Document; // This allows `obj instanceof Document`
+    };
 
     module DocumentManager {
         // Constructor properties interface
@@ -2580,7 +2600,9 @@ export namespace IAnjuta {
         vfunc_set_current_document(document: Document): void;
     }
 
-    export const DocumentManager: DocumentManagerNamespace;
+    export const DocumentManager: DocumentManagerNamespace & {
+        new (): DocumentManager; // This allows `obj instanceof DocumentManager`
+    };
 
     module Editor {
         // Constructor properties interface
@@ -2914,7 +2936,9 @@ export namespace IAnjuta {
         vfunc_set_use_spaces(use_spaces: boolean): void;
     }
 
-    export const Editor: EditorNamespace;
+    export const Editor: EditorNamespace & {
+        new (): Editor; // This allows `obj instanceof Editor`
+    };
 
     module EditorAssist {
         // Constructor properties interface
@@ -2970,7 +2994,9 @@ export namespace IAnjuta {
         vfunc_remove(provider: Provider): void;
     }
 
-    export const EditorAssist: EditorAssistNamespace;
+    export const EditorAssist: EditorAssistNamespace & {
+        new (): EditorAssist; // This allows `obj instanceof EditorAssist`
+    };
 
     module EditorCell {
         // Constructor properties interface
@@ -3043,7 +3069,9 @@ export namespace IAnjuta {
         vfunc_get_length(): number;
     }
 
-    export const EditorCell: EditorCellNamespace;
+    export const EditorCell: EditorCellNamespace & {
+        new (): EditorCell; // This allows `obj instanceof EditorCell`
+    };
 
     module EditorCellStyle {
         // Constructor properties interface
@@ -3071,7 +3099,9 @@ export namespace IAnjuta {
         vfunc_get_font_description(): string;
     }
 
-    export const EditorCellStyle: EditorCellStyleNamespace;
+    export const EditorCellStyle: EditorCellStyleNamespace & {
+        new (): EditorCellStyle; // This allows `obj instanceof EditorCellStyle`
+    };
 
     module EditorComment {
         // Constructor properties interface
@@ -3117,7 +3147,9 @@ export namespace IAnjuta {
         vfunc_stream(): void;
     }
 
-    export const EditorComment: EditorCommentNamespace;
+    export const EditorComment: EditorCommentNamespace & {
+        new (): EditorComment; // This allows `obj instanceof EditorComment`
+    };
 
     module EditorConvert {
         // Constructor properties interface
@@ -3163,7 +3195,9 @@ export namespace IAnjuta {
         vfunc_to_upper(start_position: Iterable, end_position: Iterable): void;
     }
 
-    export const EditorConvert: EditorConvertNamespace;
+    export const EditorConvert: EditorConvertNamespace & {
+        new (): EditorConvert; // This allows `obj instanceof EditorConvert`
+    };
 
     module EditorFactory {
         // Constructor properties interface
@@ -3179,7 +3213,9 @@ export namespace IAnjuta {
     }
     interface EditorFactory extends GObject.Object {}
 
-    export const EditorFactory: EditorFactoryNamespace;
+    export const EditorFactory: EditorFactoryNamespace & {
+        new (): EditorFactory; // This allows `obj instanceof EditorFactory`
+    };
 
     module EditorFolds {
         // Constructor properties interface
@@ -3207,7 +3243,9 @@ export namespace IAnjuta {
         vfunc_toggle_current(): void;
     }
 
-    export const EditorFolds: EditorFoldsNamespace;
+    export const EditorFolds: EditorFoldsNamespace & {
+        new (): EditorFolds; // This allows `obj instanceof EditorFolds`
+    };
 
     module EditorGladeSignal {
         // Constructor properties interface
@@ -3228,7 +3266,9 @@ export namespace IAnjuta {
         vfunc_drop_possible(iterator: Iterable): boolean;
     }
 
-    export const EditorGladeSignal: EditorGladeSignalNamespace;
+    export const EditorGladeSignal: EditorGladeSignalNamespace & {
+        new (): EditorGladeSignal; // This allows `obj instanceof EditorGladeSignal`
+    };
 
     module EditorGoto {
         // Constructor properties interface
@@ -3274,7 +3314,9 @@ export namespace IAnjuta {
         vfunc_start_block(): void;
     }
 
-    export const EditorGoto: EditorGotoNamespace;
+    export const EditorGoto: EditorGotoNamespace & {
+        new (): EditorGoto; // This allows `obj instanceof EditorGoto`
+    };
 
     module EditorHover {
         // Constructor properties interface
@@ -3310,7 +3352,9 @@ export namespace IAnjuta {
         vfunc_hover_over(position: Iterable): void;
     }
 
-    export const EditorHover: EditorHoverNamespace;
+    export const EditorHover: EditorHoverNamespace & {
+        new (): EditorHover; // This allows `obj instanceof EditorHover`
+    };
 
     module EditorLanguage {
         // Constructor properties interface
@@ -3365,7 +3409,9 @@ export namespace IAnjuta {
         vfunc_set_language(language: string): void;
     }
 
-    export const EditorLanguage: EditorLanguageNamespace;
+    export const EditorLanguage: EditorLanguageNamespace & {
+        new (): EditorLanguage; // This allows `obj instanceof EditorLanguage`
+    };
 
     module EditorLineMode {
         // Constructor properties interface
@@ -3387,7 +3433,7 @@ export namespace IAnjuta {
          * characters in the buffer to `mode` line end characters.
          * @param mode Line mode to convert.
          */
-        convert(mode: EditorLineModeType): void;
+        convert(mode: EditorLineModeType | null): void;
         /**
          * Convert EOL characters to majority of line mode. This is helpful
          * when the buffer contains mixed line modes and we want to fix it.
@@ -3404,7 +3450,7 @@ export namespace IAnjuta {
          * texts will have `mode` line end characters.
          * @param mode Line mode to set.
          */
-        set(mode: EditorLineModeType): void;
+        set(mode: EditorLineModeType | null): void;
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
 
@@ -3435,7 +3481,9 @@ export namespace IAnjuta {
         vfunc_set(mode: EditorLineModeType): void;
     }
 
-    export const EditorLineMode: EditorLineModeNamespace;
+    export const EditorLineMode: EditorLineModeNamespace & {
+        new (): EditorLineMode; // This allows `obj instanceof EditorLineMode`
+    };
 
     module EditorSearch {
         // Constructor properties interface
@@ -3509,7 +3557,9 @@ export namespace IAnjuta {
         ): [boolean, EditorCell, EditorCell];
     }
 
-    export const EditorSearch: EditorSearchNamespace;
+    export const EditorSearch: EditorSearchNamespace & {
+        new (): EditorSearch; // This allows `obj instanceof EditorSearch`
+    };
 
     module EditorSelection {
         // Constructor properties interface
@@ -3615,7 +3665,9 @@ export namespace IAnjuta {
         vfunc_set(start: Iterable, end: Iterable, scroll: boolean): void;
     }
 
-    export const EditorSelection: EditorSelectionNamespace;
+    export const EditorSelection: EditorSelectionNamespace & {
+        new (): EditorSelection; // This allows `obj instanceof EditorSelection`
+    };
 
     module EditorTip {
         // Constructor properties interface
@@ -3669,7 +3721,9 @@ export namespace IAnjuta {
         vfunc_visible(): boolean;
     }
 
-    export const EditorTip: EditorTipNamespace;
+    export const EditorTip: EditorTipNamespace & {
+        new (): EditorTip; // This allows `obj instanceof EditorTip`
+    };
 
     module EditorView {
         // Constructor properties interface
@@ -3723,7 +3777,9 @@ export namespace IAnjuta {
         vfunc_remove_current(): void;
     }
 
-    export const EditorView: EditorViewNamespace;
+    export const EditorView: EditorViewNamespace & {
+        new (): EditorView; // This allows `obj instanceof EditorView`
+    };
 
     module EditorZoom {
         // Constructor properties interface
@@ -3761,7 +3817,9 @@ export namespace IAnjuta {
         vfunc_out(): void;
     }
 
-    export const EditorZoom: EditorZoomNamespace;
+    export const EditorZoom: EditorZoomNamespace & {
+        new (): EditorZoom; // This allows `obj instanceof EditorZoom`
+    };
 
     module Environment {
         // Constructor properties interface
@@ -3813,7 +3871,9 @@ export namespace IAnjuta {
         vfunc_override(dirp: string, argvp: string, envp: string): boolean;
     }
 
-    export const Environment: EnvironmentNamespace;
+    export const Environment: EnvironmentNamespace & {
+        new (): Environment; // This allows `obj instanceof Environment`
+    };
 
     module File {
         // Constructor properties interface
@@ -3855,7 +3915,9 @@ export namespace IAnjuta {
         vfunc_opened(): void;
     }
 
-    export const File: FileNamespace;
+    export const File: FileNamespace & {
+        new (): File; // This allows `obj instanceof File`
+    };
 
     module FileLoader {
         // Constructor properties interface
@@ -3879,7 +3941,9 @@ export namespace IAnjuta {
         vfunc_peek_interface(file: Gio.File): string;
     }
 
-    export const FileLoader: FileLoaderNamespace;
+    export const FileLoader: FileLoaderNamespace & {
+        new (): FileLoader; // This allows `obj instanceof FileLoader`
+    };
 
     module FileManager {
         // Constructor properties interface
@@ -3922,7 +3986,9 @@ export namespace IAnjuta {
         vfunc_set_selected(file: Gio.File): void;
     }
 
-    export const FileManager: FileManagerNamespace;
+    export const FileManager: FileManagerNamespace & {
+        new (): FileManager; // This allows `obj instanceof FileManager`
+    };
 
     module FileSavable {
         // Constructor properties interface
@@ -4013,7 +4079,9 @@ export namespace IAnjuta {
         vfunc_update_save_ui(): void;
     }
 
-    export const FileSavable: FileSavableNamespace;
+    export const FileSavable: FileSavableNamespace & {
+        new (): FileSavable; // This allows `obj instanceof FileSavable`
+    };
 
     module Glade {
         // Constructor properties interface
@@ -4037,7 +4105,9 @@ export namespace IAnjuta {
         vfunc_add_association(master: string, slave: string): void;
     }
 
-    export const Glade: GladeNamespace;
+    export const Glade: GladeNamespace & {
+        new (): Glade; // This allows `obj instanceof Glade`
+    };
 
     module Help {
         // Constructor properties interface
@@ -4069,7 +4139,9 @@ export namespace IAnjuta {
         vfunc_search(query: string): void;
     }
 
-    export const Help: HelpNamespace;
+    export const Help: HelpNamespace & {
+        new (): Help; // This allows `obj instanceof Help`
+    };
 
     module Indenter {
         // Constructor properties interface
@@ -4111,7 +4183,9 @@ export namespace IAnjuta {
         vfunc_indent(start: Iterable, end: Iterable): void;
     }
 
-    export const Indenter: IndenterNamespace;
+    export const Indenter: IndenterNamespace & {
+        new (): Indenter; // This allows `obj instanceof Indenter`
+    };
 
     module Indicable {
         // Constructor properties interface
@@ -4138,7 +4212,7 @@ export namespace IAnjuta {
          * @param end_location Location where the indication should end
          * @param indicator the indicator to use
          */
-        set(begin_location: Iterable, end_location: Iterable, indicator: IndicableIndicator): void;
+        set(begin_location: Iterable, end_location: Iterable, indicator: IndicableIndicator | null): void;
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
 
@@ -4157,7 +4231,9 @@ export namespace IAnjuta {
         vfunc_set(begin_location: Iterable, end_location: Iterable, indicator: IndicableIndicator): void;
     }
 
-    export const Indicable: IndicableNamespace;
+    export const Indicable: IndicableNamespace & {
+        new (): Indicable; // This allows `obj instanceof Indicable`
+    };
 
     module Iterable {
         // Constructor properties interface
@@ -4331,7 +4407,9 @@ export namespace IAnjuta {
         vfunc_set_position(position: number): boolean;
     }
 
-    export const Iterable: IterableNamespace;
+    export const Iterable: IterableNamespace & {
+        new (): Iterable; // This allows `obj instanceof Iterable`
+    };
 
     module IterableTree {
         // Constructor properties interface
@@ -4384,7 +4462,9 @@ export namespace IAnjuta {
         vfunc_parent(): boolean;
     }
 
-    export const IterableTree: IterableTreeNamespace;
+    export const IterableTree: IterableTreeNamespace & {
+        new (): IterableTree; // This allows `obj instanceof IterableTree`
+    };
 
     module Language {
         // Constructor properties interface
@@ -4438,7 +4518,9 @@ export namespace IAnjuta {
         vfunc_get_name_from_editor(editor: EditorLanguage): string;
     }
 
-    export const Language: LanguageNamespace;
+    export const Language: LanguageNamespace & {
+        new (): Language; // This allows `obj instanceof Language`
+    };
 
     module LanguageProvider {
         // Constructor properties interface
@@ -4513,7 +4595,9 @@ export namespace IAnjuta {
         vfunc_populate_completions(iter: Iterable): Iterable | null;
     }
 
-    export const LanguageProvider: LanguageProviderNamespace;
+    export const LanguageProvider: LanguageProviderNamespace & {
+        new (): LanguageProvider; // This allows `obj instanceof LanguageProvider`
+    };
 
     module Loader {
         // Constructor properties interface
@@ -4529,7 +4613,9 @@ export namespace IAnjuta {
     }
     interface Loader extends GObject.Object {}
 
-    export const Loader: LoaderNamespace;
+    export const Loader: LoaderNamespace & {
+        new (): Loader; // This allows `obj instanceof Loader`
+    };
 
     module Markable {
         // Constructor properties interface
@@ -4548,14 +4634,14 @@ export namespace IAnjuta {
          * Delete the `marker` from all locations.
          * @param marker Marker to delete.
          */
-        delete_all_markers(marker: MarkableMarker): void;
+        delete_all_markers(marker: MarkableMarker | null): void;
         /**
          * Check if the `marker` is set at the given `location`.
          * @param location Location to check.
          * @param marker Marker to check.
          * @returns TRUE if the marker is set at the location, other false.
          */
-        is_marker_set(location: number, marker: MarkableMarker): boolean;
+        is_marker_set(location: number, marker: MarkableMarker | null): boolean;
         /**
          * Location where a marker is set could have moved by some operation in
          * the implementation. To retrieve the correct location where the marker
@@ -4574,13 +4660,13 @@ export namespace IAnjuta {
          * @param tooltip optional tooltip displayed with the marker
          * @returns Handle of the location marked. Can be used later to obtain new location, if it has been moved due to addetions/deletions in the implementor object.
          */
-        mark(location: number, marker: MarkableMarker, tooltip?: string | null): number;
+        mark(location: number, marker: MarkableMarker | null, tooltip?: string | null): number;
         /**
          * Clears the `marker` at given `location`.
          * @param location Location where the marker is set.
          * @param marker The marker to unset.
          */
-        unmark(location: number, marker: MarkableMarker): void;
+        unmark(location: number, marker: MarkableMarker | null): void;
 
         // Virtual methods
 
@@ -4621,7 +4707,9 @@ export namespace IAnjuta {
         vfunc_unmark(location: number, marker: MarkableMarker): void;
     }
 
-    export const Markable: MarkableNamespace;
+    export const Markable: MarkableNamespace & {
+        new (): Markable; // This allows `obj instanceof Markable`
+    };
 
     module MessageManager {
         // Constructor properties interface
@@ -4699,7 +4787,9 @@ export namespace IAnjuta {
         vfunc_set_view_title(view: MessageView, title: string): void;
     }
 
-    export const MessageManager: MessageManagerNamespace;
+    export const MessageManager: MessageManagerNamespace & {
+        new (): MessageManager; // This allows `obj instanceof MessageManager`
+    };
 
     module MessageView {
         // Constructor properties interface
@@ -4722,7 +4812,7 @@ export namespace IAnjuta {
          * @param summary summary of the message
          * @param details details of the message
          */
-        append(type: MessageViewType, summary: string, details: string): void;
+        append(type: MessageViewType | null, summary: string, details: string): void;
         /**
          * Appends the text in buffer. Flushes the buffer where a newline is found.
          * by emiiting buffer_flushed signal. The string is expected to be utf8.
@@ -4781,7 +4871,9 @@ export namespace IAnjuta {
         vfunc_select_previous(): void;
     }
 
-    export const MessageView: MessageViewNamespace;
+    export const MessageView: MessageViewNamespace & {
+        new (): MessageView; // This allows `obj instanceof MessageView`
+    };
 
     module PluginFactory {
         // Constructor properties interface
@@ -4795,7 +4887,9 @@ export namespace IAnjuta {
     }
     interface PluginFactory extends GObject.Object {}
 
-    export const PluginFactory: PluginFactoryNamespace;
+    export const PluginFactory: PluginFactoryNamespace & {
+        new (): PluginFactory; // This allows `obj instanceof PluginFactory`
+    };
 
     module Preferences {
         // Constructor properties interface
@@ -4837,7 +4931,9 @@ export namespace IAnjuta {
         vfunc_unmerge(prefs: Anjuta.Preferences): void;
     }
 
-    export const Preferences: PreferencesNamespace;
+    export const Preferences: PreferencesNamespace & {
+        new (): Preferences; // This allows `obj instanceof Preferences`
+    };
 
     module Print {
         // Constructor properties interface
@@ -4877,7 +4973,9 @@ export namespace IAnjuta {
         vfunc_print_preview(): void;
     }
 
-    export const Print: PrintNamespace;
+    export const Print: PrintNamespace & {
+        new (): Print; // This allows `obj instanceof Print`
+    };
 
     module Project {
         // Constructor properties interface
@@ -4904,7 +5002,7 @@ export namespace IAnjuta {
         add_node_after(
             parent: Anjuta.ProjectNode,
             sibling: Anjuta.ProjectNode | null,
-            type: Anjuta.ProjectNodeType,
+            type: Anjuta.ProjectNodeType | null,
             file?: Gio.File | null,
             name?: string | null,
         ): Anjuta.ProjectNode;
@@ -4920,7 +5018,7 @@ export namespace IAnjuta {
         add_node_before(
             parent: Anjuta.ProjectNode,
             sibling: Anjuta.ProjectNode | null,
-            type: Anjuta.ProjectNodeType,
+            type: Anjuta.ProjectNodeType | null,
             file?: Gio.File | null,
             name?: string | null,
         ): Anjuta.ProjectNode;
@@ -5069,7 +5167,9 @@ export namespace IAnjuta {
         vfunc_set_property(...args: never[]): any;
     }
 
-    export const Project: ProjectNamespace;
+    export const Project: ProjectNamespace & {
+        new (): Project; // This allows `obj instanceof Project`
+    };
 
     module ProjectBackend {
         // Constructor properties interface
@@ -5115,7 +5215,9 @@ export namespace IAnjuta {
         vfunc_probe(directory: Gio.File): number;
     }
 
-    export const ProjectBackend: ProjectBackendNamespace;
+    export const ProjectBackend: ProjectBackendNamespace & {
+        new (): ProjectBackend; // This allows `obj instanceof ProjectBackend`
+    };
 
     module ProjectChooser {
         // Constructor properties interface
@@ -5157,7 +5259,7 @@ export namespace IAnjuta {
          * @param child_type Select one element type: source, group or target
          * @returns TRUE if sucessful, other FALSE.
          */
-        set_project_model(manager: ProjectManager, child_type: Anjuta.ProjectNodeType): boolean;
+        set_project_model(manager: ProjectManager, child_type: Anjuta.ProjectNodeType | null): boolean;
 
         // Virtual methods
 
@@ -5188,7 +5290,9 @@ export namespace IAnjuta {
         vfunc_set_project_model(manager: ProjectManager, child_type: Anjuta.ProjectNodeType): boolean;
     }
 
-    export const ProjectChooser: ProjectChooserNamespace;
+    export const ProjectChooser: ProjectChooserNamespace & {
+        new (): ProjectChooser; // This allows `obj instanceof ProjectChooser`
+    };
 
     module ProjectManager {
         // Constructor properties interface
@@ -5284,7 +5388,7 @@ export namespace IAnjuta {
          * @param element_type Select one element type: source, group or target
          * @returns Get list of #GFile corresponding to all valid elements or %NULL if there are no elements of this type. Free the returned list with g_list_free() and the files with g_object_unref().
          */
-        get_elements(element_type: Anjuta.ProjectNodeType): Gio.File[];
+        get_elements(element_type: Anjuta.ProjectNodeType | null): Gio.File[];
         get_packages(): string[];
         /**
          * Gets the currently selected element in the project manager view.
@@ -5302,7 +5406,7 @@ export namespace IAnjuta {
          * @param target_type type of the target
          * @returns A list of #GFile corresponding to each target of the requested type or %NULL if none exists. Free the returned list with g_list_free() and the files with g_object_unref().
          */
-        get_targets(target_type: Anjuta.ProjectNodeType): Gio.File[];
+        get_targets(target_type: Anjuta.ProjectNodeType | null): Gio.File[];
         /**
          * Gets whether a project is currently opened.
          * @returns %TRUE if a project is opened.
@@ -5422,7 +5526,9 @@ export namespace IAnjuta {
         vfunc_remove_file(file: Gio.File): boolean;
     }
 
-    export const ProjectManager: ProjectManagerNamespace;
+    export const ProjectManager: ProjectManagerNamespace & {
+        new (): ProjectManager; // This allows `obj instanceof ProjectManager`
+    };
 
     module Provider {
         // Constructor properties interface
@@ -5491,7 +5597,9 @@ export namespace IAnjuta {
         vfunc_populate(iter: Iterable): void;
     }
 
-    export const Provider: ProviderNamespace;
+    export const Provider: ProviderNamespace & {
+        new (): Provider; // This allows `obj instanceof Provider`
+    };
 
     module SnippetsManager {
         // Constructor properties interface
@@ -5525,7 +5633,9 @@ export namespace IAnjuta {
         vfunc_insert(key: string, editing_session: boolean): boolean;
     }
 
-    export const SnippetsManager: SnippetsManagerNamespace;
+    export const SnippetsManager: SnippetsManagerNamespace & {
+        new (): SnippetsManager; // This allows `obj instanceof SnippetsManager`
+    };
 
     module Stream {
         // Constructor properties interface
@@ -5557,7 +5667,9 @@ export namespace IAnjuta {
         vfunc_open(stream?: any | null): void;
     }
 
-    export const Stream: StreamNamespace;
+    export const Stream: StreamNamespace & {
+        new (): Stream; // This allows `obj instanceof Stream`
+    };
 
     module StreamLoader {
         // Constructor properties interface
@@ -5592,7 +5704,9 @@ export namespace IAnjuta {
         vfunc_peek_interface(stream?: any | null): string;
     }
 
-    export const StreamLoader: StreamLoaderNamespace;
+    export const StreamLoader: StreamLoaderNamespace & {
+        new (): StreamLoader; // This allows `obj instanceof StreamLoader`
+    };
 
     module StreamSavable {
         // Constructor properties interface
@@ -5616,7 +5730,9 @@ export namespace IAnjuta {
         vfunc_save(stream?: any | null): void;
     }
 
-    export const StreamSavable: StreamSavableNamespace;
+    export const StreamSavable: StreamSavableNamespace & {
+        new (): StreamSavable; // This allows `obj instanceof StreamSavable`
+    };
 
     module Symbol {
         // Constructor properties interface
@@ -5638,7 +5754,7 @@ export namespace IAnjuta {
          * @param field The field to retrieve.
          * @returns The boolean
          */
-        get_boolean(field: SymbolField): boolean;
+        get_boolean(field: SymbolField | null): boolean;
         /**
          * A convenience method to get a small icon (16x16) representing the symbol
          * kind. You *need* a query with fields #IANJUTA_SYMBOL_FIELD_ACCESS and
@@ -5651,13 +5767,13 @@ export namespace IAnjuta {
          * @param field The field to retrieve.
          * @returns The integer
          */
-        get_int(field: SymbolField): number;
+        get_int(field: SymbolField | null): number;
         /**
          * Retreives the string value of a string `field`.
          * @param field The field to retrieve.
          * @returns The string
          */
-        get_string(field: SymbolField): string;
+        get_string(field: SymbolField | null): string;
         /**
          * A convenience method to get value of #IANJUTA_SYMBOL_FIELD_TYPE
          * field typecasted to IAnjutaSymbolType. Numerical value is unchanged.
@@ -5695,7 +5811,9 @@ export namespace IAnjuta {
         vfunc_get_sym_type(): SymbolType;
     }
 
-    export const Symbol: SymbolNamespace;
+    export const Symbol: SymbolNamespace & {
+        new (): Symbol; // This allows `obj instanceof Symbol`
+    };
 
     module SymbolManager {
         // Constructor properties interface
@@ -5754,7 +5872,9 @@ export namespace IAnjuta {
         vfunc_sys_scan_end(process_id: number): void;
     }
 
-    export const SymbolManager: SymbolManagerNamespace;
+    export const SymbolManager: SymbolManagerNamespace & {
+        new (): SymbolManager; // This allows `obj instanceof SymbolManager`
+    };
 
     module SymbolQuery {
         // Constructor properties interface
@@ -5777,12 +5897,12 @@ export namespace IAnjuta {
          * @param n_fields Then number of fields to retrieve.
          * @param fields The fields to retrieve in the query. The array length must   be @n_fields.
          */
-        set_fields(n_fields: number, fields: SymbolField): void;
+        set_fields(n_fields: number, fields: SymbolField | null): void;
         /**
          * Sets the filescope search of Query.
          * @param filescope_search The filescope to search.
          */
-        set_file_scope(filescope_search: SymbolQueryFileScope): void;
+        set_file_scope(filescope_search: SymbolQueryFileScope | null): void;
         /**
          * Sets the bit mask of symbol type filters. if `include_types` is TRUE,
          * symbols satisfying the given symbol types are selected, otherwise
@@ -5790,13 +5910,13 @@ export namespace IAnjuta {
          * @param filters The mode of query.
          * @param include_types TRUE if filter is positive, FALSE if reversed.
          */
-        set_filters(filters: SymbolType, include_types: boolean): void;
+        set_filters(filters: SymbolType | null, include_types: boolean): void;
         /**
          * Sets the field with which result of query is grouped. As a result
          * there will be no duplicates of with this field.
          * @param field The field to group results.
          */
-        set_group_by(field: SymbolField): void;
+        set_group_by(field: SymbolField | null): void;
         /**
          * Sets the limit of Query results. No more than `limit` results are
          * returned.
@@ -5807,7 +5927,7 @@ export namespace IAnjuta {
          * Sets the mode of Query.
          * @param mode The mode of query.
          */
-        set_mode(mode: SymbolQueryMode): void;
+        set_mode(mode: SymbolQueryMode | null): void;
         /**
          * Sets the offset index of Query results.
          * @param offset Offset of the resultset.
@@ -5817,7 +5937,7 @@ export namespace IAnjuta {
          * Sets the field with which result of query is ordered.
          * @param field The field to order the result.
          */
-        set_order_by(field: SymbolField): void;
+        set_order_by(field: SymbolField | null): void;
 
         // Virtual methods
 
@@ -5871,7 +5991,9 @@ export namespace IAnjuta {
         vfunc_set_order_by(field: SymbolField): void;
     }
 
-    export const SymbolQuery: SymbolQueryNamespace;
+    export const SymbolQuery: SymbolQueryNamespace & {
+        new (): SymbolQuery; // This allows `obj instanceof SymbolQuery`
+    };
 
     module Terminal {
         // Constructor properties interface
@@ -5911,7 +6033,9 @@ export namespace IAnjuta {
         vfunc_execute_command(directory: string, command: string, environment: string[]): number;
     }
 
-    export const Terminal: TerminalNamespace;
+    export const Terminal: TerminalNamespace & {
+        new (): Terminal; // This allows `obj instanceof Terminal`
+    };
 
     module Todo {
         // Constructor properties interface
@@ -5935,7 +6059,9 @@ export namespace IAnjuta {
         vfunc_load(file: Gio.File): void;
     }
 
-    export const Todo: TodoNamespace;
+    export const Todo: TodoNamespace & {
+        new (): Todo; // This allows `obj instanceof Todo`
+    };
 
     module Vcs {
         // Constructor properties interface
@@ -6006,7 +6132,9 @@ export namespace IAnjuta {
         vfunc_status_changed(): void;
     }
 
-    export const Vcs: VcsNamespace;
+    export const Vcs: VcsNamespace & {
+        new (): Vcs; // This allows `obj instanceof Vcs`
+    };
 
     module Wizard {
         // Constructor properties interface
@@ -6036,7 +6164,9 @@ export namespace IAnjuta {
         vfunc_activate(): void;
     }
 
-    export const Wizard: WizardNamespace;
+    export const Wizard: WizardNamespace & {
+        new (): Wizard; // This allows `obj instanceof Wizard`
+    };
 
     type BuilderHandle = any;
     type LanguageId = number;

@@ -296,7 +296,7 @@ export namespace Thunarx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -337,7 +337,7 @@ export namespace Thunarx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -834,7 +834,7 @@ export namespace Thunarx {
             type_parent: GObject.GType,
             type_name: string,
             type_info: GObject.TypeInfo,
-            type_flags: GObject.TypeFlags,
+            type_flags: GObject.TypeFlags | null,
         ): GObject.GType;
         /**
          * This method is used to instruct the application that `plugin` must be
@@ -964,7 +964,7 @@ export namespace Thunarx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1005,7 +1005,7 @@ export namespace Thunarx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1720,7 +1720,7 @@ export namespace Thunarx {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1765,7 +1765,7 @@ export namespace Thunarx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1806,7 +1806,7 @@ export namespace Thunarx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2431,7 +2431,9 @@ export namespace Thunarx {
         vfunc_renamed(): void;
     }
 
-    export const FileInfo: FileInfoNamespace;
+    export const FileInfo: FileInfoNamespace & {
+        new (): FileInfo; // This allows `obj instanceof FileInfo`
+    };
 
     module MenuProvider {
         // Constructor properties interface
@@ -2445,7 +2447,9 @@ export namespace Thunarx {
     }
     interface MenuProvider extends GObject.Object {}
 
-    export const MenuProvider: MenuProviderNamespace;
+    export const MenuProvider: MenuProviderNamespace & {
+        new (): MenuProvider; // This allows `obj instanceof MenuProvider`
+    };
 
     module PreferencesProvider {
         // Constructor properties interface
@@ -2459,7 +2463,9 @@ export namespace Thunarx {
     }
     interface PreferencesProvider extends GObject.Object {}
 
-    export const PreferencesProvider: PreferencesProviderNamespace;
+    export const PreferencesProvider: PreferencesProviderNamespace & {
+        new (): PreferencesProvider; // This allows `obj instanceof PreferencesProvider`
+    };
 
     module PropertyPageProvider {
         // Constructor properties interface
@@ -2473,7 +2479,9 @@ export namespace Thunarx {
     }
     interface PropertyPageProvider extends GObject.Object {}
 
-    export const PropertyPageProvider: PropertyPageProviderNamespace;
+    export const PropertyPageProvider: PropertyPageProviderNamespace & {
+        new (): PropertyPageProvider; // This allows `obj instanceof PropertyPageProvider`
+    };
 
     module ProviderPlugin {
         // Constructor properties interface
@@ -2562,7 +2570,7 @@ export namespace Thunarx {
             type_parent: GObject.GType,
             type_name: string,
             type_info: GObject.TypeInfo,
-            type_flags: GObject.TypeFlags,
+            type_flags: GObject.TypeFlags | null,
         ): GObject.GType;
         /**
          * This method is used to instruct the application that `plugin` must be
@@ -2653,7 +2661,9 @@ export namespace Thunarx {
         vfunc_set_resident(resident: boolean): void;
     }
 
-    export const ProviderPlugin: ProviderPluginNamespace;
+    export const ProviderPlugin: ProviderPluginNamespace & {
+        new (): ProviderPlugin; // This allows `obj instanceof ProviderPlugin`
+    };
 
     module RenamerProvider {
         // Constructor properties interface
@@ -2667,7 +2677,9 @@ export namespace Thunarx {
     }
     interface RenamerProvider extends GObject.Object {}
 
-    export const RenamerProvider: RenamerProviderNamespace;
+    export const RenamerProvider: RenamerProviderNamespace & {
+        new (): RenamerProvider; // This allows `obj instanceof RenamerProvider`
+    };
 
     /**
      * Name of the imported GIR library

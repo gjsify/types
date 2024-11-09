@@ -58,7 +58,7 @@ export namespace Nautilus {
         update_complete: GObject.Closure,
         provider: InfoProvider,
         handle: OperationHandle,
-        result: OperationResult,
+        result: OperationResult | null,
     ): void;
     module Column {
         // Constructor properties interface
@@ -360,7 +360,9 @@ export namespace Nautilus {
         vfunc_get_columns(): Column[] | null;
     }
 
-    export const ColumnProvider: ColumnProviderNamespace;
+    export const ColumnProvider: ColumnProviderNamespace & {
+        new (): ColumnProvider; // This allows `obj instanceof ColumnProvider`
+    };
 
     module FileInfo {
         // Constructor properties interface
@@ -511,7 +513,9 @@ export namespace Nautilus {
         vfunc_is_mime_type(mime_type: string): boolean;
     }
 
-    export const FileInfo: FileInfoNamespace;
+    export const FileInfo: FileInfoNamespace & {
+        new (): FileInfo; // This allows `obj instanceof FileInfo`
+    };
 
     module InfoProvider {
         // Constructor properties interface
@@ -556,7 +560,9 @@ export namespace Nautilus {
         ): [OperationResult, OperationHandle | null];
     }
 
-    export const InfoProvider: InfoProviderNamespace;
+    export const InfoProvider: InfoProviderNamespace & {
+        new (): InfoProvider; // This allows `obj instanceof InfoProvider`
+    };
 
     module MenuProvider {
         // Constructor properties interface
@@ -594,7 +600,9 @@ export namespace Nautilus {
         vfunc_get_file_items(files: FileInfo[]): MenuItem[] | null;
     }
 
-    export const MenuProvider: MenuProviderNamespace;
+    export const MenuProvider: MenuProviderNamespace & {
+        new (): MenuProvider; // This allows `obj instanceof MenuProvider`
+    };
 
     module PropertiesModelProvider {
         // Constructor properties interface
@@ -635,7 +643,9 @@ export namespace Nautilus {
         vfunc_get_models(files: FileInfo[]): PropertiesModel[] | null;
     }
 
-    export const PropertiesModelProvider: PropertiesModelProviderNamespace;
+    export const PropertiesModelProvider: PropertiesModelProviderNamespace & {
+        new (): PropertiesModelProvider; // This allows `obj instanceof PropertiesModelProvider`
+    };
 
     /**
      * Name of the imported GIR library

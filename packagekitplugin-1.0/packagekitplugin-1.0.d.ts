@@ -102,7 +102,7 @@ export namespace PackageKitPlugin {
     function directory_remove_contents(directory: string): boolean;
     function get_resource(): Gio.Resource;
     function hint_enum_from_string(hint: string): HintEnum;
-    function hint_enum_to_string(hint: HintEnum): string;
+    function hint_enum_to_string(hint: HintEnum | null): string;
     function load_introspection(filename: string): Gio.DBusNodeInfo;
     function plugin_get_description(): string;
     /**
@@ -211,12 +211,17 @@ export namespace PackageKitPlugin {
         get_roles(): PackageKitGlib.Bitfield;
         get_update_detail(job: BackendJob, package_ids: string): void;
         get_updates(job: BackendJob, filters: PackageKitGlib.Bitfield): void;
-        implement(role: PackageKitGlib.RoleEnum): void;
+        implement(role: PackageKitGlib.RoleEnum | null): void;
         install_files(job: BackendJob, transaction_flags: PackageKitGlib.Bitfield, full_paths: string): void;
         install_packages(job: BackendJob, transaction_flags: PackageKitGlib.Bitfield, package_ids: string): void;
-        install_signature(job: BackendJob, type: PackageKitGlib.SigTypeEnum, key_id: string, package_id: string): void;
+        install_signature(
+            job: BackendJob,
+            type: PackageKitGlib.SigTypeEnum | null,
+            key_id: string,
+            package_id: string,
+        ): void;
         is_eula_valid(eula_id: string): boolean;
-        is_implemented(role: PackageKitGlib.RoleEnum): boolean;
+        is_implemented(role: PackageKitGlib.RoleEnum | null): boolean;
         is_online(): boolean;
         /**
          * Responsible for initialising the external backend object.
@@ -334,12 +339,12 @@ export namespace PackageKitPlugin {
             package_id: string,
             summary: string,
             license: string,
-            group: PackageKitGlib.GroupEnum,
+            group: PackageKitGlib.GroupEnum | null,
             description: string,
             url: string,
             size: number,
         ): void;
-        distro_upgrade(type: PackageKitGlib.DistroUpgradeEnum, name: string, summary: string): void;
+        distro_upgrade(type: PackageKitGlib.DistroUpgradeEnum | null, name: string, summary: string): void;
         eula_required(eula_id: string, package_id: string, vendor_name: string, license_agreement: string): void;
         /**
          * package_id is NULL when we are using this as a calback from DownloadPackages
@@ -377,11 +382,15 @@ export namespace PackageKitPlugin {
         get_transaction_flags(): PackageKitGlib.Bitfield;
         get_uid(): number;
         get_user_data(): any;
-        get_vfunc_enabled(signal_kind: BackendJobSignal): boolean;
+        get_vfunc_enabled(signal_kind: BackendJobSignal | null): boolean;
         has_set_error_code(): boolean;
-        media_change_required(media_type: PackageKitGlib.MediaTypeEnum, media_id: string, media_text: string): void;
+        media_change_required(
+            media_type: PackageKitGlib.MediaTypeEnum | null,
+            media_id: string,
+            media_text: string,
+        ): void;
         not_implemented_yet(method: string): void;
-        ['package'](info: PackageKitGlib.InfoEnum, package_id: string, summary: string): void;
+        ['package'](info: PackageKitGlib.InfoEnum | null, package_id: string, summary: string): void;
         repo_detail(repo_id: string, description: string, enabled: boolean): void;
         repo_signature_required(
             package_id: string,
@@ -391,13 +400,13 @@ export namespace PackageKitPlugin {
             key_id: string,
             key_fingerprint: string,
             key_timestamp: string,
-            type: PackageKitGlib.SigTypeEnum,
+            type: PackageKitGlib.SigTypeEnum | null,
         ): void;
-        require_restart(restart: PackageKitGlib.RestartEnum, package_id: string): void;
+        require_restart(restart: PackageKitGlib.RestartEnum | null, package_id: string): void;
         reset(): void;
         set_allow_cancel(allow_cancel: boolean): void;
         set_backend(backend: any): void;
-        set_background(background: HintEnum): void;
+        set_background(background: HintEnum | null): void;
         set_cache_age(cache_age: number): void;
         set_cmdline(cmdline: string): void;
         set_download_size_remaining(download_size_remaining: number): void;
@@ -405,10 +414,10 @@ export namespace PackageKitPlugin {
          * Should only be used internally, or from PkRunner when setting CANCELLED.
          * @param exit
          */
-        set_exit_code(exit: PackageKitGlib.ExitEnum): void;
+        set_exit_code(exit: PackageKitGlib.ExitEnum | null): void;
         set_frontend_socket(frontend_socket: string): void;
-        set_interactive(interactive: HintEnum): void;
-        set_item_progress(package_id: string, status: PackageKitGlib.StatusEnum, percentage: number): void;
+        set_interactive(interactive: HintEnum | null): void;
+        set_item_progress(package_id: string, status: PackageKitGlib.StatusEnum | null, percentage: number): void;
         set_locale(code: string): void;
         /**
          * Set if your backend job currently locks the cache, so no other tool will
@@ -426,10 +435,10 @@ export namespace PackageKitPlugin {
             no_proxy: string,
             pac: string,
         ): void;
-        set_role(role: PackageKitGlib.RoleEnum): void;
+        set_role(role: PackageKitGlib.RoleEnum | null): void;
         set_speed(speed: number): void;
         set_started(started: boolean): void;
-        set_status(status: PackageKitGlib.StatusEnum): void;
+        set_status(status: PackageKitGlib.StatusEnum | null): void;
         set_transaction_flags(transaction_flags: PackageKitGlib.Bitfield): void;
         set_uid(uid: number): void;
         set_user_data(user_data: any): void;
@@ -438,7 +447,7 @@ export namespace PackageKitPlugin {
          * @param signal_kind Kind of the backend signal we want to connect
          * @param vfunc The function we want to call
          */
-        set_vfunc(signal_kind: BackendJobSignal, vfunc: BackendJobVFunc): void;
+        set_vfunc(signal_kind: BackendJobSignal | null, vfunc: BackendJobVFunc): void;
         thread_create(func: BackendJobThreadFunc): boolean;
         update_detail(
             package_id: string,
@@ -447,10 +456,10 @@ export namespace PackageKitPlugin {
             vendor_urls: string,
             bugzilla_urls: string,
             cve_urls: string,
-            restart: PackageKitGlib.RestartEnum,
+            restart: PackageKitGlib.RestartEnum | null,
             update_text: string,
             changelog: string,
-            state: PackageKitGlib.UpdateStateEnum,
+            state: PackageKitGlib.UpdateStateEnum | null,
             issued: string,
             updated: string,
         ): void;
@@ -536,7 +545,7 @@ export namespace PackageKitPlugin {
          * 6. 'finished'
          * @param state
          */
-        set_state(state: TransactionState): boolean;
+        set_state(state: TransactionState | null): boolean;
         /**
          * Connect all backend_signals to the PkTransaction.
          * @param job

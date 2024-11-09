@@ -150,7 +150,7 @@ export namespace Wp {
      * @param filename the name of the file to search for
      * @returns A newly allocated string with the absolute, canonicalized file path, or NULL if the file was not found.
      */
-    function base_dirs_find_file(flags: BaseDirsFlags, subdir: string | null, filename: string): string | null;
+    function base_dirs_find_file(flags: BaseDirsFlags | null, subdir: string | null, filename: string): string | null;
     /**
      * Creates an iterator to iterate over all files that match `suffix` within the `subdir` of the directories specified in `flags`.
      *
@@ -164,7 +164,7 @@ export namespace Wp {
      * @returns a new iterator iterating over strings which are absolute & canonicalized paths to the files found
      */
     function base_dirs_new_files_iterator(
-        flags: BaseDirsFlags,
+        flags: BaseDirsFlags | null,
         subdir?: string | null,
         suffix?: string | null,
     ): Iterator;
@@ -186,7 +186,7 @@ export namespace Wp {
      * `flags` can modify which parts are initialized, in cases where you want to handle part of this initialization externally.
      * @param flags initialization flags
      */
-    function init(flags: InitFlags): void;
+    function init(flags: InitFlags | null): void;
     /**
      * Matches the given properties against a set of rules described in JSON and calls the given callback to perform actions on a successful match.
      *
@@ -229,7 +229,7 @@ export namespace Wp {
      * @param user_data
      */
     function log_writer_default(
-        log_level: GLib.LogLevelFlags,
+        log_level: GLib.LogLevelFlags | null,
         fields: GLib.LogField,
         n_fields: number,
         user_data?: any | null,
@@ -2054,7 +2054,7 @@ export namespace Wp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2095,7 +2095,7 @@ export namespace Wp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5064,7 +5064,7 @@ export namespace Wp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5105,7 +5105,7 @@ export namespace Wp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5719,7 +5719,12 @@ export namespace Wp {
          * @param verb the operation that is performed to check the constraint
          * @param value the value to check for
          */
-        add_constraint(type: ConstraintType, subject: string, verb: ConstraintVerb, value?: GLib.Variant | null): void;
+        add_constraint(
+            type: ConstraintType | null,
+            subject: string,
+            verb: ConstraintVerb | null,
+            value?: GLib.Variant | null,
+        ): void;
         /**
          * Checks if the specified `object` matches the type and all the constraints that are described in `self`.
          *
@@ -5745,7 +5750,7 @@ export namespace Wp {
          * @returns flags that indicate which components of the interest match. WP_INTEREST_MATCH_ALL indicates a fully successful match; any other combination indicates a failure on the component(s) that do not appear on the flag set
          */
         matches_full(
-            flags: InterestMatchFlags,
+            flags: InterestMatchFlags | null,
             object_type: GObject.GType,
             object?: GObject.Object | null,
             pw_props?: Properties | null,
@@ -6947,7 +6952,9 @@ export namespace Wp {
         vfunc_supports_type(type: string): boolean;
     }
 
-    export const ComponentLoader: ComponentLoaderNamespace;
+    export const ComponentLoader: ComponentLoaderNamespace & {
+        new (): ComponentLoader; // This allows `obj instanceof ComponentLoader`
+    };
 
     module PipewireObject {
         // Constructor properties interface
@@ -7168,7 +7175,9 @@ export namespace Wp {
         vfunc_set_param(id: string, flags: number, param: SpaPod): boolean;
     }
 
-    export const PipewireObject: PipewireObjectNamespace;
+    export const PipewireObject: PipewireObjectNamespace & {
+        new (): PipewireObject; // This allows `obj instanceof PipewireObject`
+    };
 
     module SiAcquisition {
         // Constructor properties interface
@@ -7258,7 +7267,9 @@ export namespace Wp {
         vfunc_release(acquisitor: SiLink, item: SiLinkable): void;
     }
 
-    export const SiAcquisition: SiAcquisitionNamespace;
+    export const SiAcquisition: SiAcquisitionNamespace & {
+        new (): SiAcquisition; // This allows `obj instanceof SiAcquisition`
+    };
 
     module SiAdapter {
         // Constructor properties interface
@@ -7358,7 +7369,9 @@ export namespace Wp {
         vfunc_set_ports_format_finish(res: Gio.AsyncResult): boolean;
     }
 
-    export const SiAdapter: SiAdapterNamespace;
+    export const SiAdapter: SiAdapterNamespace & {
+        new (): SiAdapter; // This allows `obj instanceof SiAdapter`
+    };
 
     module SiLink {
         // Constructor properties interface
@@ -7416,7 +7429,9 @@ export namespace Wp {
         vfunc_get_registration_info(): GLib.Variant;
     }
 
-    export const SiLink: SiLinkNamespace;
+    export const SiLink: SiLinkNamespace & {
+        new (): SiLink; // This allows `obj instanceof SiLink`
+    };
 
     module SiLinkable {
         // Constructor properties interface
@@ -7486,7 +7501,9 @@ export namespace Wp {
         vfunc_get_ports(context?: string | null): GLib.Variant;
     }
 
-    export const SiLinkable: SiLinkableNamespace;
+    export const SiLinkable: SiLinkableNamespace & {
+        new (): SiLinkable; // This allows `obj instanceof SiLinkable`
+    };
 
     type ObjectFeatures = number;
     type SpaIdTable = any;

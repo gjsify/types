@@ -140,10 +140,15 @@ export namespace GstCheck {
         caps_in: Gst.Caps,
         buffer_out: Gst.Buffer[],
         caps_out: Gst.Caps,
-        last_flow_return: Gst.FlowReturn,
+        last_flow_return: Gst.FlowReturn | null,
     ): void;
     function check_init(argc: number, argv: string): void;
-    function check_message_error(message: Gst.Message, type: Gst.MessageType, domain: GLib.Quark, code: number): void;
+    function check_message_error(
+        message: Gst.Message,
+        type: Gst.MessageType | null,
+        domain: GLib.Quark,
+        code: number,
+    ): void;
     /**
      * Unrefs `object_to_unref` and checks that is has properly been
      * destroyed.
@@ -173,7 +178,12 @@ export namespace GstCheck {
      * @param caps #GstCaps in case caps event must be sent
      * @param format The #GstFormat of the default segment to send
      */
-    function check_setup_events(srcpad: Gst.Pad, element: Gst.Element, caps: Gst.Caps | null, format: Gst.Format): void;
+    function check_setup_events(
+        srcpad: Gst.Pad,
+        element: Gst.Element,
+        caps: Gst.Caps | null,
+        format: Gst.Format | null,
+    ): void;
     /**
      * Push stream-start, caps and segment event, which consist of the minimum
      * required events to allow streaming. Caps is optional to allow raw src
@@ -188,7 +198,7 @@ export namespace GstCheck {
         srcpad: Gst.Pad,
         element: Gst.Element,
         caps: Gst.Caps | null,
-        format: Gst.Format,
+        format: Gst.Format | null,
         stream_id: string,
     ): void;
     /**
@@ -818,7 +828,12 @@ export namespace GstCheck {
          * @param mask a #GstPadProbeType (see gst_pad_add_probe)
          * @param callback a #GstPadProbeCallback (see gst_pad_add_probe)
          */
-        add_probe(element_name: string, pad_name: string, mask: Gst.PadProbeType, callback: Gst.PadProbeCallback): void;
+        add_probe(
+            element_name: string,
+            pad_name: string,
+            mask: Gst.PadProbeType | null,
+            callback: Gst.PadProbeCallback,
+        ): void;
         /**
          * Add api with params as one of the supported metadata API to propose when
          * receiving an allocation query.

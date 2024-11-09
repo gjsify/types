@@ -2237,9 +2237,9 @@ export namespace Skk {
         reset(): void;
         ['delete'](): boolean;
         get_kana_mode(): KanaMode;
-        set_kana_mode(value: KanaMode): void;
+        set_kana_mode(value: KanaMode | null): void;
         get_period_style(): PeriodStyle;
-        set_period_style(value: PeriodStyle): void;
+        set_period_style(value: PeriodStyle | null): void;
         get_output(): string;
         get_preedit(): string;
     }
@@ -2422,7 +2422,7 @@ export namespace Skk {
         get_name(): string | null;
         get_code(): number;
         get_modifiers(): ModifierType;
-        set_modifiers(value: ModifierType): void;
+        set_modifiers(value: ModifierType | null): void;
     }
 
     module KeyEventFilter {
@@ -2617,13 +2617,13 @@ export namespace Skk {
         set_dictionaries(value: Dict[]): void;
         get_candidates(): CandidateList;
         get_input_mode(): InputMode;
-        set_input_mode(value: InputMode): void;
+        set_input_mode(value: InputMode | null): void;
         get_auto_start_henkan_keywords(): string[];
         set_auto_start_henkan_keywords(value: string[]): void;
         get_egg_like_newline(): boolean;
         set_egg_like_newline(value: boolean): void;
         get_period_style(): PeriodStyle;
-        set_period_style(value: PeriodStyle): void;
+        set_period_style(value: PeriodStyle | null): void;
         get_typing_rule(): Rule;
         set_typing_rule(value: Rule): void;
         get_key_event_filter(): KeyEventFilter;

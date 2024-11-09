@@ -1157,13 +1157,13 @@ export namespace Modulemd {
          * state.
          * @param mdversion The #ModulemdDefaults metadata version to upgrade to.
          */
-        upgrade_defaults(mdversion: DefaultsVersionEnum): boolean;
+        upgrade_defaults(mdversion: DefaultsVersionEnum | null): boolean;
         /**
          * Upgrades all #ModulemdModuleStream objects in this index to `mdversion` if
          * they are not already at that version.
          * @param mdversion The #ModulemdModuleStream metadata version to upgrade to.
          */
-        upgrade_streams(mdversion: ModuleStreamVersionEnum): boolean;
+        upgrade_streams(mdversion: ModuleStreamVersionEnum | null): boolean;
     }
 
     module ModuleIndexMerger {
@@ -2309,7 +2309,7 @@ export namespace Modulemd {
          * @param date The date this service level ends.
          */
         set_eol(date?: GLib.Date | null): void;
-        set_eol_ymd(year: GLib.DateYear, month: GLib.DateMonth, day: GLib.DateDay): void;
+        set_eol_ymd(year: GLib.DateYear, month: GLib.DateMonth | null, day: GLib.DateDay): void;
     }
 
     module SubdocumentInfo {

@@ -723,7 +723,7 @@ export namespace Graphene {
          * @param order the order used to apply the rotations
          * @returns the initialized #graphene_euler_t
          */
-        init_from_matrix(m: Matrix | null, order: EulerOrder): Euler;
+        init_from_matrix(m: Matrix | null, order: EulerOrder | null): Euler;
         /**
          * Initializes a #graphene_euler_t using the given normalized quaternion.
          *
@@ -733,7 +733,7 @@ export namespace Graphene {
          * @param order the order used to apply the rotations
          * @returns the initialized #graphene_euler_t
          */
-        init_from_quaternion(q: Quaternion | null, order: EulerOrder): Euler;
+        init_from_quaternion(q: Quaternion | null, order: EulerOrder | null): Euler;
         /**
          * Initializes a #graphene_euler_t using the given angles
          * and order of rotation.
@@ -743,7 +743,7 @@ export namespace Graphene {
          * @param order order of rotations
          * @returns the initialized #graphene_euler_t
          */
-        init_from_radians(x: number, y: number, z: number, order: EulerOrder): Euler;
+        init_from_radians(x: number, y: number, z: number, order: EulerOrder | null): Euler;
         /**
          * Initializes a #graphene_euler_t using the angles contained in a
          * #graphene_vec3_t.
@@ -754,7 +754,7 @@ export namespace Graphene {
          * @param order the order used to apply the rotations
          * @returns the initialized #graphene_euler_t
          */
-        init_from_vec3(v: Vec3 | null, order: EulerOrder): Euler;
+        init_from_vec3(v: Vec3 | null, order: EulerOrder | null): Euler;
         /**
          * Initializes a #graphene_euler_t with the given angles and `order`.
          * @param x rotation angle on the X axis, in degrees
@@ -763,7 +763,7 @@ export namespace Graphene {
          * @param order the order used to apply the rotations
          * @returns the initialized #graphene_euler_t
          */
-        init_with_order(x: number, y: number, z: number, order: EulerOrder): Euler;
+        init_with_order(x: number, y: number, z: number, order: EulerOrder | null): Euler;
         /**
          * Reorders a #graphene_euler_t using `order`.
          *
@@ -772,7 +772,7 @@ export namespace Graphene {
          * #graphene_euler_t.
          * @param order the new order
          */
-        reorder(order: EulerOrder): Euler;
+        reorder(order: EulerOrder | null): Euler;
         /**
          * Converts a #graphene_euler_t into a transformation matrix expressing
          * the extrinsic composition of rotations described by the Euler angles.

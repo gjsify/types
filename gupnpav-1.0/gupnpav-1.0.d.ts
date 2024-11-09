@@ -1441,7 +1441,7 @@ export namespace GUPnPAV {
          * Set the 'dlna:dlnaManaged' attribute of the `object` to `dlna_managed`.
          * @param dlna_managed The #GUPnPOCMFlags.
          */
-        set_dlna_managed(dlna_managed: OCMFlags): void;
+        set_dlna_managed(dlna_managed: OCMFlags | null): void;
         /**
          * Set the genre of the `object` to `genre`.
          * @param genre The Genre
@@ -2438,17 +2438,17 @@ export namespace GUPnPAV {
          * Set the DLNA conversion flags.
          * @param conversion The bitwise OR of one or more DLNA conversion flags
          */
-        set_dlna_conversion(conversion: DLNAConversion): void;
+        set_dlna_conversion(conversion: DLNAConversion | null): void;
         /**
          * Set the gereric DLNA flags.
          * @param flags The bitwise OR of one or more generic DLNA flags
          */
-        set_dlna_flags(flags: DLNAFlags): void;
+        set_dlna_flags(flags: DLNAFlags | null): void;
         /**
          * Set the DLNA operation flags.
          * @param operation The bitwise OR of one or more DLNA operation flags
          */
-        set_dlna_operation(operation: DLNAOperation): void;
+        set_dlna_operation(operation: DLNAOperation | null): void;
         /**
          * Set the DLNA profile of this info.
          * @param profile The DLNA profile string

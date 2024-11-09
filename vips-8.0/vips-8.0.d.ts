@@ -2142,27 +2142,27 @@ export namespace Vips {
      * Return %TRUE if `format` is uchar or schar.
      * @param format format to test
      */
-    function band_format_is8bit(format: BandFormat): boolean;
+    function band_format_is8bit(format: BandFormat | null): boolean;
     /**
      * Return %TRUE if `fmt` is one of the complex types.
      * @param format format to test
      */
-    function band_format_iscomplex(format: BandFormat): boolean;
+    function band_format_iscomplex(format: BandFormat | null): boolean;
     /**
      * Return %TRUE if `format` is one of the float types.
      * @param format format to test
      */
-    function band_format_isfloat(format: BandFormat): boolean;
+    function band_format_isfloat(format: BandFormat | null): boolean;
     /**
      * Return %TRUE if `format` is one of the integer types.
      * @param format format to test
      */
-    function band_format_isint(format: BandFormat): boolean;
+    function band_format_isint(format: BandFormat | null): boolean;
     /**
      * Return %TRUE if `format` is one of the unsigned integer types.
      * @param format format to test
      */
-    function band_format_isuint(format: BandFormat): boolean;
+    function band_format_isuint(format: BandFormat | null): boolean;
     /**
      * Like vips_blob_new(), but take a copy of the data. Useful for bindings
      * which struggle with callbacks.
@@ -2392,7 +2392,7 @@ export namespace Vips {
      * @param coding required coding
      * @returns 0 on OK, or -1 on error.
      */
-    function check_coding(domain: string, im: Image, coding: Coding): number;
+    function check_coding(domain: string, im: Image, coding: Coding | null): number;
     /**
      * Check that the image is uncoded, LABQ coded or RAD coded.
      * If not, set an error message
@@ -2449,7 +2449,7 @@ export namespace Vips {
      * @param fmt format to test for
      * @returns 0 if OK, -1 otherwise.
      */
-    function check_format(domain: string, im: Image, fmt: BandFormat): number;
+    function check_format(domain: string, im: Image, fmt: BandFormat | null): number;
     /**
      * Check that the images have the same format.
      * If not, set an error message
@@ -2544,7 +2544,7 @@ export namespace Vips {
      * @param precision precision to check
      * @returns 0 on OK, or -1 on error.
      */
-    function check_precision_intfloat(domain: string, precision: Precision): number;
+    function check_precision_intfloat(domain: string, precision: Precision | null): number;
     /**
      * Separable matrix images must have width or height 1.
      * Return 0 if the image will pass, or -1 and
@@ -2882,7 +2882,7 @@ export namespace Vips {
      * @returns the flags for @filename.
      */
     function foreign_flags(loader: string, filename: string): ForeignFlags;
-    function format_sizeof(format: BandFormat): number;
+    function format_sizeof(format: BandFormat | null): number;
     /**
      * This function adds the %GError to the vips error buffer and clears it. It's
      * the opposite of vips_error_g().
@@ -2963,7 +2963,7 @@ export namespace Vips {
      * @returns 0 on success, -1 otherwise
      */
     function init(argv0: string): number;
-    function interpretation_max_alpha(interpretation: Interpretation): number;
+    function interpretation_max_alpha(interpretation: Interpretation | null): number;
     /**
      * Turn on or off vips leak checking. See also --vips-leak,
      * vips_add_option_entries() and the `VIPS_LEAK` environment variable.
@@ -4224,7 +4224,7 @@ export namespace Vips {
          * @param coding coding to apply
          * @returns 0 on success, or -1 on error.
          */
-        encode(coding: Coding): [number, Image];
+        encode(coding: Coding | null): [number, Image];
         /**
          * Loaders can call this on the image they are making if they see a read error
          * from the load library. It signals "invalidate" on the load operation and
@@ -4571,9 +4571,9 @@ export namespace Vips {
             xsize: number,
             ysize: number,
             bands: number,
-            format: BandFormat,
-            coding: Coding,
-            interpretation: Interpretation,
+            format: BandFormat | null,
+            coding: Coding | null,
+            interpretation: Interpretation | null,
             xres: number,
             yres: number,
         ): void;
@@ -5452,7 +5452,7 @@ export namespace Vips {
          * @param target #VipsRect of pixels you need to copy
          * @param method method to use when generating target pixels
          */
-        shrink_method(to: Region, target: Rect, method: RegionShrink): [number, Region];
+        shrink_method(to: Region, target: Rect, method: RegionShrink | null): [number, Region];
         width(): number;
     }
 

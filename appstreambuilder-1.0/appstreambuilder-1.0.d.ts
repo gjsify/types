@@ -182,7 +182,7 @@ export namespace AppStreamBuilder {
          * @param save_flags #AsbAppSaveFlags, e.g. %ASB_APP_SAVE_FLAG_SCREENSHOTS
          * @returns %TRUE for success, %FALSE otherwise
          */
-        save_resources(save_flags: AppSaveFlags): boolean;
+        save_resources(save_flags: AppSaveFlags | null): boolean;
         /**
          * Sets the HiDPI mode for the application.
          * @param hidpi_enabled if HiDPI mode should be enabled
@@ -258,7 +258,7 @@ export namespace AppStreamBuilder {
          * @param flag A #AsbContextFlags
          * @returns %TRUE if the flag was set
          */
-        get_flag(flag: ContextFlags): boolean;
+        get_flag(flag: ContextFlags | null): boolean;
         /**
          * Gets the build flags.
          * @returns #AsbContextFlags
@@ -303,7 +303,7 @@ export namespace AppStreamBuilder {
          * Sets flags to be used when building the metadata.
          * @param flags #AsbContextFlags, e.g. %ASB_CONTEXT_FLAG_NO_NETWORK
          */
-        set_flags(flags: ContextFlags): void;
+        set_flags(flags: ContextFlags | null): void;
         /**
          * Sets the icons directory to use when building metadata.
          * @param icons_dir directory
@@ -607,7 +607,7 @@ export namespace AppStreamBuilder {
          * Sets the package kind.
          * @param kind A #AsbPackageKind
          */
-        set_kind(kind: PackageKind): void;
+        set_kind(kind: PackageKind | null): void;
         /**
          * Sets the package license.
          * @param license license string

@@ -120,7 +120,7 @@ export namespace BudgieRaven {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -161,7 +161,7 @@ export namespace BudgieRaven {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -516,7 +516,9 @@ export namespace BudgieRaven {
         vfunc_supports_settings(): boolean;
     }
 
-    export const RavenPlugin: RavenPluginNamespace;
+    export const RavenPlugin: RavenPluginNamespace & {
+        new (): RavenPlugin; // This allows `obj instanceof RavenPlugin`
+    };
 
     /**
      * Name of the imported GIR library

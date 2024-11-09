@@ -831,14 +831,14 @@ export namespace EBookContacts {
      * @returns A new #EAddressWestern structure, or %NULL if    the parsing failed or when the @in_address was %NULL.
      */
     function address_western_parse(in_address?: string | null): AddressWestern | null;
-    function book_client_error_create(code: BookClientError, custom_msg?: string | null): GLib.Error;
+    function book_client_error_create(code: BookClientError | null, custom_msg?: string | null): GLib.Error;
     function book_client_error_quark(): GLib.Quark;
     /**
      * Get localized human readable description of the given error code.
      * @param code an #EBookClientError code
      * @returns Localized human readable description of the given error code
      */
-    function book_client_error_to_string(code: BookClientError): string;
+    function book_client_error_to_string(code: BookClientError | null): string;
     /**
      * Returns whether the `self` considers contacts stored in the ascending order.
      * @param self an #EBookIndicesUpdater
@@ -872,7 +872,7 @@ export namespace EBookContacts {
      * @param field an #EContactField
      * @returns the new #EBookQuery
      */
-    function book_query_field_exists(field: ContactField): BookQuery;
+    function book_query_field_exists(field: ContactField | null): BookQuery;
     /**
      * Creates a new #EBookQuery which tests `field` for `value` using the test `test`.
      * @param field an #EContactField to test
@@ -880,7 +880,7 @@ export namespace EBookContacts {
      * @param value the value to test for
      * @returns the new #EBookQuery
      */
-    function book_query_field_test(field: ContactField, test: BookQueryTest, value: string): BookQuery;
+    function book_query_field_test(field: ContactField | null, test: BookQueryTest | null, value: string): BookQuery;
     /**
      * Parse `query_string` and return a new #EBookQuery representing it.
      * @param query_string the query
@@ -909,7 +909,7 @@ export namespace EBookContacts {
      * @param value the value to test for
      * @returns the new #EBookQuery
      */
-    function book_query_vcard_field_test(field: string, test: BookQueryTest, value: string): BookQuery;
+    function book_query_vcard_field_test(field: string, test: BookQueryTest | null, value: string): BookQuery;
     /**
      * Encodes the #EConflictResolution into the bit-or of #EBookOperationFlags.
      * The returned value can be bit-or-ed with other #EBookOperationFlags values.
@@ -917,7 +917,7 @@ export namespace EBookContacts {
      * @returns a bit-or of #EBookOperationFlags, corresponding to the @conflict_resolution
      */
     function book_util_conflict_resolution_to_operation_flags(
-        conflict_resolution: EDataServer.ConflictResolution,
+        conflict_resolution: EDataServer.ConflictResolution | null,
     ): number;
     /**
      * Compares list of categories on the `old_contact` with the list of categories
@@ -2048,13 +2048,13 @@ export namespace EBookContacts {
          * @param field_id an #EContactField
          * @returns Depends on the field's type, owned by the caller. This may be %NULL if the field isn't set.
          */
-        get(field_id: ContactField): any | null;
+        get(field_id: ContactField | null): any | null;
         /**
          * Gets a list of the vcard attributes for `contact'`s `field_id`.
          * @param field_id an #EContactField
          * @returns A #GList of pointers to #EVCardAttribute, owned by the caller.
          */
-        get_attributes(field_id: ContactField): VCardAttribute[];
+        get_attributes(field_id: ContactField | null): VCardAttribute[];
         // Conflicted with EBookContacts.VCard.get_attributes
         get_attributes(...args: never[]): any;
         /**
@@ -2062,7 +2062,7 @@ export namespace EBookContacts {
          * @param field_ids an array of #EContactField
          * @returns A #GList of pointers to #EVCardAttribute, owned by the caller.
          */
-        get_attributes_set(field_ids: ContactField[]): VCardAttribute[];
+        get_attributes_set(field_ids: ContactField[] | null): VCardAttribute[];
         /**
          * Gets the value of `contact'`s field specified by `field_id,` caching
          * the result so it can be freed later. Use e_contact_field_is_string()
@@ -2070,7 +2070,7 @@ export namespace EBookContacts {
          * @param field_id an #EContactField
          * @returns Depends on the field's type, owned by the #EContact.
          */
-        get_const(field_id: ContactField): any | null;
+        get_const(field_id: ContactField | null): any | null;
         /**
          * Tries to modify any #EContactPhoto fields which are
          * stored on the local file system as type %E_CONTACT_PHOTO_TYPE_URI
@@ -2083,7 +2083,7 @@ export namespace EBookContacts {
          * @param field_id an #EContactField
          * @param value a value whose type depends on the @field_id
          */
-        set(field_id: ContactField, value?: any | null): void;
+        set(field_id: ContactField | null, value?: any | null): void;
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
@@ -2092,7 +2092,7 @@ export namespace EBookContacts {
          * @param field_id an #EContactField
          * @param attributes a #GList of pointers to #EVCardAttribute
          */
-        set_attributes(field_id: ContactField, attributes: VCardAttribute[]): void;
+        set_attributes(field_id: ContactField | null, attributes: VCardAttribute[]): void;
     }
 
     module SourceBackendSummarySetup {
@@ -2160,7 +2160,7 @@ export namespace EBookContacts {
          * @param types The array of #EBookIndexTypes defining what types of indexes to create
          * @param n_fields The number elements in the passed @fields, @rule_types and @rules arrays.
          */
-        set_indexed_fieldsv(fields: ContactField, types: BookIndexType, n_fields: number): void;
+        set_indexed_fieldsv(fields: ContactField | null, types: BookIndexType | null, n_fields: number): void;
         /**
          * Sets the summary fields configured for the given addressbook.
          *
@@ -2175,7 +2175,7 @@ export namespace EBookContacts {
          * @param fields The array of #EContactFields to set as summary fields
          * @param n_fields The number of #EContactFields in @fields
          */
-        set_summary_fieldsv(fields: ContactField, n_fields: number): void;
+        set_summary_fieldsv(fields: ContactField | null, n_fields: number): void;
     }
 
     module VCard {
@@ -2330,7 +2330,7 @@ export namespace EBookContacts {
          * @param format the format to export to
          * @returns A newly allocated string representing the vcard.
          */
-        to_string(format: VCardFormat): string;
+        to_string(format: VCardFormat | null): string;
         util_dup_x_attribute(x_name: string): string | null;
         /**
          * Sets an "X-" attribute `x_name` to value `value` in `vcard,` or
@@ -2981,7 +2981,7 @@ export namespace EBookContacts {
          * @param source an optional location for storing the phone number's origin, or %NULL
          * @returns A valid country calling code, or zero if no code is known.
          */
-        get_country_code(source?: PhoneNumberCountrySource | null): number;
+        get_country_code(source?: (PhoneNumberCountrySource | null) | null): number;
         /**
          * Queries the national portion of `phone_number` without any call-out
          * prefixes. For instance when parsing "+1-617-5423789" this function would
@@ -2994,7 +2994,7 @@ export namespace EBookContacts {
          * @param format the phone number format to apply
          * @returns A formatted string for @phone_number.
          */
-        to_string(format: PhoneNumberFormat): string;
+        to_string(format: PhoneNumberFormat | null): string;
     }
 
     type SourceBackendSummarySetupClass = typeof SourceBackendSummarySetup;

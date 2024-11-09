@@ -236,10 +236,10 @@ export namespace Unity {
     }
     const SCOPE_API_VERSION: number;
     function category_renderer_from_string(renderer_name: string): CategoryRenderer;
-    function category_renderer_to_string(val: CategoryRenderer): string;
+    function category_renderer_to_string(val: CategoryRenderer | null): string;
     function category_content_type_from_string(content_type: string): CategoryContentType;
-    function category_content_type_to_string(val: CategoryContentType): string;
-    function filter_renderer_to_string(renderer: FilterRenderer): string;
+    function category_content_type_to_string(val: CategoryContentType | null): string;
+    function filter_renderer_to_string(renderer: FilterRenderer | null): string;
     function filter_renderer_from_string(renderer_name: string): FilterRenderer;
     function scope_module_get_version(): number;
     function scope_module_load_scopes(): AbstractScope[];
@@ -346,9 +346,9 @@ export namespace Unity {
         get_ribbon(): string;
         set_ribbon(value: string): void;
         get_category(): CategoryType;
-        set_category(value: CategoryType): void;
+        set_category(value: CategoryType | null): void;
         get_size_hint(): IconSizeHint;
-        set_size_hint(value: IconSizeHint): void;
+        set_size_hint(value: IconSizeHint | null): void;
     }
 
     module Inspector {
@@ -532,7 +532,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -573,7 +573,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1039,7 +1039,7 @@ export namespace Unity {
         get_icon_hint(): Gio.Icon;
         get_default_renderer(): CategoryRenderer;
         get_content_type(): CategoryContentType;
-        set_content_type(value: CategoryContentType): void;
+        set_content_type(value: CategoryContentType | null): void;
         get_renderer_hint(): string;
         set_renderer_hint(value: string): void;
         get_renderer(): string;
@@ -1185,7 +1185,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1226,7 +1226,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1629,7 +1629,7 @@ export namespace Unity {
         get_option(id: string): FilterOption;
         remove_option(id: string): boolean;
         get_sort_type(): OptionsFilterSortType;
-        set_sort_type(value: OptionsFilterSortType): void;
+        set_sort_type(value: OptionsFilterSortType | null): void;
         get_show_all_button(): boolean;
         set_show_all_button(value: boolean): void;
     }
@@ -1817,7 +1817,7 @@ export namespace Unity {
         // Methods
 
         get_remote_content_search(): PreferencesManagerRemoteContent;
-        set_remote_content_search(value: PreferencesManagerRemoteContent): void;
+        set_remote_content_search(value: PreferencesManagerRemoteContent | null): void;
         get_always_search(): string[];
         set_always_search(value: string[]): void;
         get_home_lens_priority(): string[];
@@ -1953,20 +1953,20 @@ export namespace Unity {
         search_scope(
             scope_id: string,
             search_string: string,
-            search_type: SearchType,
+            search_type: SearchType | null,
             hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
         ): Promise<GLib.HashTable<string, GLib.Variant>>;
         search_scope(
             scope_id: string,
             search_string: string,
-            search_type: SearchType,
+            search_type: SearchType | null,
             hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             _callback_: Gio.AsyncReadyCallback<this>,
         ): void;
         search_scope(
             scope_id: string,
             search_string: string,
-            search_type: SearchType,
+            search_type: SearchType | null,
             hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             _callback_?: Gio.AsyncReadyCallback<this>,
         ): Promise<GLib.HashTable<string, GLib.Variant>> | void;
@@ -2115,7 +2115,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2156,7 +2156,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2622,7 +2622,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2663,7 +2663,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3195,7 +3195,7 @@ export namespace Unity {
         get_purchase_type(): string;
         set_purchase_type(value: string): void;
         get_preview_type(): PaymentPreviewType;
-        set_preview_type(value: PaymentPreviewType): void;
+        set_preview_type(value: PaymentPreviewType | null): void;
     }
 
     module MoviePreview {
@@ -3499,7 +3499,7 @@ export namespace Unity {
 
         // Methods
 
-        add_field(name: string, schema: string, type: SchemaFieldType): void;
+        add_field(name: string, schema: string, type: SchemaFieldType | null): void;
         get_fields(): SchemaFieldInfo[];
     }
 
@@ -3616,7 +3616,7 @@ export namespace Unity {
 
         // Methods
 
-        serialize_as(serialization_type: SerializationType): Uint8Array;
+        serialize_as(serialization_type: SerializationType | null): Uint8Array;
     }
 
     module ResultPreviewer {
@@ -3784,7 +3784,7 @@ export namespace Unity {
         get_unique_name(): string;
         activate(result: ScopeResult, metadata: SearchMetadata, action_id: string): ActivationResponse;
         normalize_search_query(search_query: string): string;
-        results_invalidated(search_type: SearchType): void;
+        results_invalidated(search_type: SearchType | null): void;
     }
 
     module ScopeDBusConnector {
@@ -4018,7 +4018,7 @@ export namespace Unity {
             _callback_?: Gio.AsyncReadyCallback<this>,
         ): Promise<ActivationResponse> | void;
         activate_result_finish(_res_: Gio.AsyncResult): ActivationResponse;
-        queue_search_changed(search_type: SearchType): void;
+        queue_search_changed(search_type: SearchType | null): void;
     }
 
     module AggregatorScope {
@@ -4069,7 +4069,7 @@ export namespace Unity {
         // Methods
 
         category_index_for_scope_id(scope_id: string): number;
-        add_sorter(category_index: number, field: string, flags: AggregatorScopeSortFlags): void;
+        add_sorter(category_index: number, field: string, flags: AggregatorScopeSortFlags | null): void;
         add_constraint(category_index: number, field: string): void;
         search(scope_search: AggregatedScopeSearch): Promise<void>;
         search(scope_search: AggregatedScopeSearch, _callback_: Gio.AsyncReadyCallback<this>): void;
@@ -4083,7 +4083,7 @@ export namespace Unity {
         ): Promise<ActivationResponse> | void;
         activate_finish(_res_: Gio.AsyncResult): ActivationResponse;
         get_merge_mode(): AggregatorScopeMergeMode;
-        set_merge_mode(value: AggregatorScopeMergeMode): void;
+        set_merge_mode(value: AggregatorScopeMergeMode | null): void;
         get_proxy_filter_hints(): boolean;
         set_proxy_filter_hints(value: boolean): void;
         get_automatic_flushing(): boolean;
@@ -4550,7 +4550,7 @@ export namespace Unity {
         get_current_track(): TrackMetadata;
         set_current_track(value: TrackMetadata): void;
         get_playback_state(): PlaybackState;
-        set_playback_state(value: PlaybackState): void;
+        set_playback_state(value: PlaybackState | null): void;
         get_current_playlist(): Playlist;
         set_current_playlist(value: Playlist): void;
         get_track_menu(): Dbusmenu.Menuitem;

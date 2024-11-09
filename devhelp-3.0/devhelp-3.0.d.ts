@@ -119,7 +119,7 @@ export namespace Devhelp {
      * webkit_web_context_set_sandbox_enabled() on the default #WebKitWebContext.
      */
     function init(): void;
-    function link_type_to_string(link_type: LinkType): string;
+    function link_type_to_string(link_type: LinkType | null): string;
 
     export namespace LinkFlags {
         export const $gtype: GObject.GType<LinkFlags>;
@@ -230,7 +230,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -271,7 +271,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1039,7 +1039,7 @@ export namespace Devhelp {
          * below the natural width.
          * @param policy the horizontal #GtkScrollablePolicy
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
          * Sets the vertical adjustment of the #GtkScrollable.
          * @param vadjustment a #GtkAdjustment
@@ -1051,7 +1051,7 @@ export namespace Devhelp {
          * below the natural height.
          * @param policy the vertical #GtkScrollablePolicy
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -1104,7 +1104,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1145,7 +1145,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2007,7 +2007,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2048,7 +2048,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2458,7 +2458,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2499,7 +2499,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2980,7 +2980,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3021,7 +3021,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3673,7 +3673,7 @@ export namespace Devhelp {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -3718,7 +3718,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3759,7 +3759,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4137,7 +4137,7 @@ export namespace Devhelp {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4182,7 +4182,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4223,7 +4223,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4595,7 +4595,7 @@ export namespace Devhelp {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4640,7 +4640,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4681,7 +4681,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5139,7 +5139,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5180,7 +5180,7 @@ export namespace Devhelp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5595,7 +5595,7 @@ export namespace Devhelp {
          * Sets the flags of the link.
          * @param flags the new flags of the link.
          */
-        set_flags(flags: LinkFlags): void;
+        set_flags(flags: LinkFlags | null): void;
         /**
          * Decreases the reference count of `link`.
          *

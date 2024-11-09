@@ -440,7 +440,7 @@ export namespace Budgie {
          *
          * @param action Action to invoke
          */
-        invoke_action(action: PanelAction): void;
+        invoke_action(action: PanelAction | null): void;
         /**
          * Utility function for Python usage. See: #BudgieApplet:settings-prefix
          * @param prefix
@@ -519,7 +519,7 @@ export namespace Budgie {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -560,7 +560,7 @@ export namespace Budgie {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1007,7 +1007,7 @@ export namespace Budgie {
          * Set the positioning policy employed by the popover
          * @param policy New policy to set
          */
-        set_position_policy(policy: PopoverPositionPolicy): void;
+        set_position_policy(policy: PopoverPositionPolicy | null): void;
 
         // Inherited methods
         /**
@@ -1054,7 +1054,7 @@ export namespace Budgie {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1095,7 +1095,7 @@ export namespace Budgie {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1512,7 +1512,9 @@ export namespace Budgie {
         vfunc_get_panel_widget(uuid: string): Applet;
     }
 
-    export const Plugin: PluginNamespace;
+    export const Plugin: PluginNamespace & {
+        new (): Plugin; // This allows `obj instanceof Plugin`
+    };
 
     /**
      * Name of the imported GIR library

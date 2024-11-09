@@ -1761,7 +1761,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1802,7 +1802,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4363,7 +4363,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4404,7 +4404,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7006,7 +7006,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7047,7 +7047,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9423,7 +9423,7 @@ export namespace GData {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -9535,7 +9535,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9576,7 +9576,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10618,7 +10618,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10659,7 +10659,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11239,7 +11239,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11280,7 +11280,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11802,7 +11802,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11843,7 +11843,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12447,7 +12447,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -12488,7 +12488,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13018,7 +13018,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13059,7 +13059,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13579,7 +13579,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13620,7 +13620,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14174,7 +14174,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14215,7 +14215,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14833,7 +14833,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14874,7 +14874,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15396,7 +15396,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -15437,7 +15437,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16242,7 +16242,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16283,7 +16283,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16782,7 +16782,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16823,7 +16823,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17352,7 +17352,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -17393,7 +17393,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17878,7 +17878,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -17919,7 +17919,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18417,7 +18417,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -18458,7 +18458,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18900,7 +18900,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -18941,7 +18941,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19550,7 +19550,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -19591,7 +19591,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20145,7 +20145,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -20186,7 +20186,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -21511,7 +21511,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -21552,7 +21552,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22256,7 +22256,7 @@ export namespace GData {
          * Sets the #GDataPicasaWebAlbum:visibility property to `visibility`.
          * @param visibility the new album visibility level
          */
-        set_visibility(visibility: PicasaWebVisibility): void;
+        set_visibility(visibility: PicasaWebVisibility | null): void;
     }
 
     module PicasaWebComment {
@@ -23420,7 +23420,7 @@ export namespace GData {
          * Sets the #GDataPicasaWebQuery:visibility property to `visibility`.
          * @param visibility the visibility of the objects to retrieve, or <code class="literal">0</code> to retrieve all objects
          */
-        set_visibility(visibility: PicasaWebVisibility): void;
+        set_visibility(visibility: PicasaWebVisibility | null): void;
     }
 
     module PicasaWebService {
@@ -25759,7 +25759,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -25800,7 +25800,7 @@ export namespace GData {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -26386,7 +26386,7 @@ export namespace GData {
          * Sets the #GDataYouTubeQuery:age property of the #GDataYouTubeQuery to `age`.
          * @param age the new age
          */
-        set_age(age: YouTubeAge): void;
+        set_age(age: YouTubeAge | null): void;
         /**
          * Sets the #GDataYouTubeQuery:license property of the #GDataYouTubeQuery to the new license value, `license`.
          *
@@ -26420,7 +26420,7 @@ export namespace GData {
          * Sets the #GDataYouTubeQuery:safe-search property of the #GDataYouTubeQuery to `safe_search`.
          * @param safe_search a new safe search level
          */
-        set_safe_search(safe_search: YouTubeSafeSearch): void;
+        set_safe_search(safe_search: YouTubeSafeSearch | null): void;
     }
 
     module YouTubeService {
@@ -26603,7 +26603,7 @@ export namespace GData {
          * @returns a #GDataFeed of query results, or %NULL; unref with g_object_unref()
          */
         query_standard_feed(
-            feed_type: YouTubeStandardFeedType,
+            feed_type: YouTubeStandardFeedType | null,
             query?: Query | null,
             cancellable?: Gio.Cancellable | null,
             progress_callback?: QueryProgressCallback | null,
@@ -26624,7 +26624,7 @@ export namespace GData {
          * @param callback a #GAsyncReadyCallback to call when authentication is finished
          */
         query_standard_feed_async(
-            feed_type: YouTubeStandardFeedType,
+            feed_type: YouTubeStandardFeedType | null,
             query?: Query | null,
             cancellable?: Gio.Cancellable | null,
             progress_callback?: QueryProgressCallback | null,
@@ -27779,7 +27779,7 @@ export namespace GData {
          * @param action the action whose permission is being set
          * @param permission the permission to give to the action
          */
-        set_access_control(action: string, permission: YouTubePermission): void;
+        set_access_control(action: string, permission: YouTubePermission | null): void;
         /**
          * Sets the #GDataYouTubeVideo:aspect-ratio property to specify the video's aspect ratio.
          * If `aspect_ratio` is %NULL, the property will be unset.
@@ -29087,7 +29087,9 @@ export namespace GData {
         ): Feed;
     }
 
-    export const AccessHandler: AccessHandlerNamespace;
+    export const AccessHandler: AccessHandlerNamespace & {
+        new (): AccessHandler; // This allows `obj instanceof AccessHandler`
+    };
 
     module Authorizer {
         // Constructor properties interface
@@ -29312,7 +29314,9 @@ export namespace GData {
         vfunc_refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
     }
 
-    export const Authorizer: AuthorizerNamespace;
+    export const Authorizer: AuthorizerNamespace & {
+        new (): Authorizer; // This allows `obj instanceof Authorizer`
+    };
 
     module Batchable {
         // Constructor properties interface
@@ -29339,7 +29343,9 @@ export namespace GData {
         create_operation(domain: AuthorizationDomain | null, feed_uri: string): BatchOperation;
     }
 
-    export const Batchable: BatchableNamespace;
+    export const Batchable: BatchableNamespace & {
+        new (): Batchable; // This allows `obj instanceof Batchable`
+    };
 
     module Commentable {
         // Constructor properties interface
@@ -29596,7 +29602,9 @@ export namespace GData {
         vfunc_is_comment_deletable(comment: Comment): boolean;
     }
 
-    export const Commentable: CommentableNamespace;
+    export const Commentable: CommentableNamespace & {
+        new (): Commentable; // This allows `obj instanceof Commentable`
+    };
 
     module Comparable {
         // Constructor properties interface
@@ -29629,7 +29637,9 @@ export namespace GData {
         vfunc_compare_with(other: Comparable): number;
     }
 
-    export const Comparable: ComparableNamespace;
+    export const Comparable: ComparableNamespace & {
+        new (): Comparable; // This allows `obj instanceof Comparable`
+    };
 
     /**
      * Name of the imported GIR library

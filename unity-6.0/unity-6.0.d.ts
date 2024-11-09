@@ -581,7 +581,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -622,7 +622,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1619,7 +1619,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1660,7 +1660,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2114,7 +2114,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2155,7 +2155,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2917,7 +2917,7 @@ export namespace Unity {
          *  signal will be emitted immediately in case the Lens managing this scope is active, or as soon as it becomes active.</para>
          * @param search_type Type of search to queue.
          */
-        queue_search_changed(search_type: SearchType): void;
+        queue_search_changed(search_type: SearchType | null): void;
         /**
          * <para>Invalidates last search.</para>
          * <para>Invalidate last search, so that the next search request will trigger the #UnityScope::search-changed signal even if the search would be
@@ -2925,7 +2925,7 @@ export namespace Unity {
          * <para>See also: #UnityScope::generate-search-key</para>
          * @param search_type Type of search to invalidate.
          */
-        invalidate_search(search_type: SearchType): void;
+        invalidate_search(search_type: SearchType | null): void;
     }
 
     module TrackMetadata {
@@ -3530,7 +3530,9 @@ export namespace Unity {
         vfunc_merge_result(target: Dee.Model, row: GLib.Variant[]): Dee.ModelIter;
     }
 
-    export const MergeStrategy: MergeStrategyNamespace;
+    export const MergeStrategy: MergeStrategyNamespace & {
+        new (): MergeStrategy; // This allows `obj instanceof MergeStrategy`
+    };
 
     /**
      * Name of the imported GIR library

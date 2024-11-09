@@ -186,9 +186,9 @@ export namespace GnomeRR {
         set_geometry(x: number, y: number, width: number, height: number): void;
         set_primary(primary: boolean): void;
         set_refresh_rate(rate: number): void;
-        set_rotation(rotation: Rotation): void;
+        set_rotation(rotation: Rotation | null): void;
         set_underscanning(underscanning: boolean): void;
-        supports_rotation(rotation: Rotation): boolean;
+        supports_rotation(rotation: Rotation | null): boolean;
     }
 
     module Screen {
@@ -333,7 +333,7 @@ export namespace GnomeRR {
          * This method also disables the DPMS timeouts.
          * @param mode
          */
-        set_dpms_mode(mode: DpmsMode): boolean;
+        set_dpms_mode(mode: DpmsMode | null): boolean;
 
         // Inherited methods
         /**
@@ -664,7 +664,7 @@ export namespace GnomeRR {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -705,7 +705,7 @@ export namespace GnomeRR {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1049,7 +1049,7 @@ export namespace GnomeRR {
         get_position(): [number, number];
         get_rotations(): Rotation;
         set_gamma(size: number, red: number, green: number, blue: number): boolean;
-        supports_rotation(rotation: Rotation): boolean;
+        supports_rotation(rotation: Rotation | null): boolean;
     }
 
     abstract class Mode {

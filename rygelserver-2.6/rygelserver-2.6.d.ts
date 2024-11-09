@@ -571,7 +571,7 @@ export namespace RygelServer {
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<MediaObjects | null> | void;
         get_children_finish(_res_: Gio.AsyncResult): MediaObjects | null;
-        updated(object: MediaObject | null, event_type: ObjectEventType, sub_tree_update: boolean): void;
+        updated(object: MediaObject | null, event_type: ObjectEventType | null, sub_tree_update: boolean): void;
         get_child_count(): number;
         set_child_count(value: number): void;
         get_empty_child_count(): number;
@@ -920,7 +920,7 @@ export namespace RygelServer {
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<MediaObject | null> | void;
         find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
-        updated(object: MediaObject | null, event_type: ObjectEventType, sub_tree_update: boolean): void;
+        updated(object: MediaObject | null, event_type: ObjectEventType | null, sub_tree_update: boolean): void;
         get_child_count(): number;
         set_child_count(value: number): void;
         get_empty_child_count(): number;
@@ -1362,11 +1362,11 @@ export namespace RygelServer {
         get_network(): string;
         set_network(value: string): void;
         get_dlna_conversion(): GUPnPAV.DLNAConversion;
-        set_dlna_conversion(value: GUPnPAV.DLNAConversion): void;
+        set_dlna_conversion(value: GUPnPAV.DLNAConversion | null): void;
         get_dlna_flags(): GUPnPAV.DLNAFlags;
-        set_dlna_flags(value: GUPnPAV.DLNAFlags): void;
+        set_dlna_flags(value: GUPnPAV.DLNAFlags | null): void;
         get_dlna_operation(): GUPnPAV.DLNAOperation;
-        set_dlna_operation(value: GUPnPAV.DLNAOperation): void;
+        set_dlna_operation(value: GUPnPAV.DLNAOperation | null): void;
     }
 
     module MediaServerPlugin {
@@ -1982,7 +1982,7 @@ export namespace RygelServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2023,7 +2023,7 @@ export namespace RygelServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2442,7 +2442,7 @@ export namespace RygelServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2483,7 +2483,7 @@ export namespace RygelServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2940,7 +2940,7 @@ export namespace RygelServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2981,7 +2981,7 @@ export namespace RygelServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4272,7 +4272,9 @@ export namespace RygelServer {
         vfunc_set_search_classes(value: Gee.ArrayList): void;
     }
 
-    export const SearchableContainer: SearchableContainerNamespace;
+    export const SearchableContainer: SearchableContainerNamespace & {
+        new (): SearchableContainer; // This allows `obj instanceof SearchableContainer`
+    };
 
     module TrackableContainer {
         // Constructor properties interface
@@ -4325,7 +4327,9 @@ export namespace RygelServer {
         vfunc_get_system_update_id(): number;
     }
 
-    export const TrackableContainer: TrackableContainerNamespace;
+    export const TrackableContainer: TrackableContainerNamespace & {
+        new (): TrackableContainer; // This allows `obj instanceof TrackableContainer`
+    };
 
     module TrackableItem {
         // Constructor properties interface
@@ -4343,7 +4347,9 @@ export namespace RygelServer {
         changed(): void;
     }
 
-    export const TrackableItem: TrackableItemNamespace;
+    export const TrackableItem: TrackableItemNamespace & {
+        new (): TrackableItem; // This allows `obj instanceof TrackableItem`
+    };
 
     module VisualItem {
         // Constructor properties interface
@@ -4398,7 +4404,9 @@ export namespace RygelServer {
         vfunc_set_thumbnails(value: Gee.ArrayList): void;
     }
 
-    export const VisualItem: VisualItemNamespace;
+    export const VisualItem: VisualItemNamespace & {
+        new (): VisualItem; // This allows `obj instanceof VisualItem`
+    };
 
     module WritableContainer {
         // Constructor properties interface
@@ -4523,7 +4531,9 @@ export namespace RygelServer {
         vfunc_set_create_classes(value: Gee.ArrayList): void;
     }
 
-    export const WritableContainer: WritableContainerNamespace;
+    export const WritableContainer: WritableContainerNamespace & {
+        new (): WritableContainer; // This allows `obj instanceof WritableContainer`
+    };
 
     module DataSource {
         // Constructor properties interface
@@ -4553,7 +4563,9 @@ export namespace RygelServer {
         vfunc_stop(): void;
     }
 
-    export const DataSource: DataSourceNamespace;
+    export const DataSource: DataSourceNamespace & {
+        new (): DataSource; // This allows `obj instanceof DataSource`
+    };
 
     module UpdatableObject {
         // Constructor properties interface
@@ -4579,7 +4591,9 @@ export namespace RygelServer {
         vfunc_commit_finish(_res_: Gio.AsyncResult): void;
     }
 
-    export const UpdatableObject: UpdatableObjectNamespace;
+    export const UpdatableObject: UpdatableObjectNamespace & {
+        new (): UpdatableObject; // This allows `obj instanceof UpdatableObject`
+    };
 
     /**
      * Name of the imported GIR library

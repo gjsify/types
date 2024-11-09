@@ -1626,7 +1626,7 @@ export namespace PackageKitGlib {
      * @param authorize_type The enumerated type value
      * @returns the enumerated constant value, e.g. "yes"
      */
-    function authorize_type_enum_to_string(authorize_type: AuthorizeEnum): string;
+    function authorize_type_enum_to_string(authorize_type: AuthorizeEnum | null): string;
     /**
      * An error quark for #PkClientError.
      * @returns an error quark.
@@ -1663,7 +1663,7 @@ export namespace PackageKitGlib {
      * @param upgrade The enumerated type value
      * @returns the enumerated constant value, e.g. "stable"
      */
-    function distro_upgrade_enum_to_string(upgrade: DistroUpgradeEnum): string;
+    function distro_upgrade_enum_to_string(upgrade: DistroUpgradeEnum | null): string;
     /**
      * Search for a enum value in a table of constants.
      * @param table A #PkEnumMatch enum table of values
@@ -1689,7 +1689,7 @@ export namespace PackageKitGlib {
      * @param code The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
      */
-    function error_enum_to_string(code: ErrorEnum): string;
+    function error_enum_to_string(code: ErrorEnum | null): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param exit Text describing the enumerated type
@@ -1701,7 +1701,7 @@ export namespace PackageKitGlib {
      * @param exit The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
      */
-    function exit_enum_to_string(exit: ExitEnum): string;
+    function exit_enum_to_string(exit: ExitEnum | null): string;
     /**
      * Converts text representation to its enumerated type bitfield, or 0 for invalid
      * @param filters the enumerated constant value, e.g. "available;~gui"
@@ -1725,7 +1725,7 @@ export namespace PackageKitGlib {
      * @param filter The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
      */
-    function filter_enum_to_string(filter: FilterEnum): string;
+    function filter_enum_to_string(filter: FilterEnum | null): string;
     /**
      * Get the distribution ID for the current host, typically "distro;version;arch"
      * @returns a distribution ID
@@ -1754,7 +1754,7 @@ export namespace PackageKitGlib {
      * @param group The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
      */
-    function group_enum_to_string(group: GroupEnum): string;
+    function group_enum_to_string(group: GroupEnum | null): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param info Text describing the enumerated type
@@ -1766,19 +1766,19 @@ export namespace PackageKitGlib {
      * @param info The enumerated type value
      * @returns the translated text
      */
-    function info_enum_to_localised_past(info: InfoEnum): string;
+    function info_enum_to_localised_past(info: InfoEnum | null): string;
     /**
      * Converts a enumerated type to its localized description
      * @param info The enumerated type value
      * @returns the translated text
      */
-    function info_enum_to_localised_present(info: InfoEnum): string;
+    function info_enum_to_localised_present(info: InfoEnum | null): string;
     /**
      * Converts a enumerated type to its text representation
      * @param info The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
      */
-    function info_enum_to_string(info: InfoEnum): string;
+    function info_enum_to_string(info: InfoEnum | null): string;
     /**
      * Convert a date into an ISO8601 data string.
      * @param date a #GDate to convert
@@ -1801,7 +1801,7 @@ export namespace PackageKitGlib {
      * @param media_type The enumerated type value
      * @returns the enumerated constant value, e.g. "dvd"
      */
-    function media_type_enum_to_string(media_type: MediaTypeEnum): string;
+    function media_type_enum_to_string(media_type: MediaTypeEnum | null): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param network Text describing the enumerated type
@@ -1813,7 +1813,7 @@ export namespace PackageKitGlib {
      * @param network The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
      */
-    function network_enum_to_string(network: NetworkEnum): string;
+    function network_enum_to_string(network: NetworkEnum | null): string;
     /**
      * Converts the string to the enumerated value.
      * @param action a string representation of a #PkOfflineAction, e.g. "reboot"
@@ -1825,16 +1825,16 @@ export namespace PackageKitGlib {
      * @param action a #PkOfflineAction, e.g. %PK_OFFLINE_ACTION_REBOOT
      * @returns string value, or %NULL for invalid
      */
-    function offline_action_to_string(action: OfflineAction): string;
+    function offline_action_to_string(action: OfflineAction | null): string;
     function offline_auth_cancel(): boolean;
     function offline_auth_clear_results(): boolean;
     function offline_auth_invalidate(): boolean;
-    function offline_auth_set_action(action: OfflineAction): boolean;
+    function offline_auth_set_action(action: OfflineAction | null): boolean;
     function offline_auth_set_prepared_ids(package_ids: string): boolean;
     function offline_auth_set_prepared_upgrade(name: string, release_ver: string): boolean;
     function offline_auth_set_results(results: Results): boolean;
-    function offline_auth_trigger(action: OfflineAction): boolean;
-    function offline_auth_trigger_upgrade(action: OfflineAction): boolean;
+    function offline_auth_trigger(action: OfflineAction | null): boolean;
+    function offline_auth_trigger_upgrade(action: OfflineAction | null): boolean;
     /**
      * Cancels the offline operation that has been scheduled. If there is no
      * scheduled offline operation then this method returns with success.
@@ -1851,7 +1851,7 @@ export namespace PackageKitGlib {
      * @param cancellable A #GCancellable or %NULL
      * @returns %TRUE for success, else %FALSE and @error set
      */
-    function offline_cancel_with_flags(flags: OfflineFlags, cancellable?: Gio.Cancellable | null): boolean;
+    function offline_cancel_with_flags(flags: OfflineFlags | null, cancellable?: Gio.Cancellable | null): boolean;
     /**
      * Clears the last offline operation report, which may be success or failure.
      * If the report does not exist then this method returns success.
@@ -1868,7 +1868,10 @@ export namespace PackageKitGlib {
      * @param cancellable A #GCancellable or %NULL
      * @returns %TRUE for success, else %FALSE and @error set
      */
-    function offline_clear_results_with_flags(flags: OfflineFlags, cancellable?: Gio.Cancellable | null): boolean;
+    function offline_clear_results_with_flags(
+        flags: OfflineFlags | null,
+        cancellable?: Gio.Cancellable | null,
+    ): boolean;
     /**
      * An error quark for #PkOfflineError.
      * @returns an error quark.
@@ -1939,7 +1942,7 @@ export namespace PackageKitGlib {
      * @param cancellable A #GCancellable or %NULL
      * @returns %TRUE for success, else %FALSE and @error set
      */
-    function offline_trigger(action: OfflineAction, cancellable?: Gio.Cancellable | null): boolean;
+    function offline_trigger(action: OfflineAction | null, cancellable?: Gio.Cancellable | null): boolean;
     /**
      * Triggers the offline system upgrade so that the next reboot will perform the
      * pending transaction.
@@ -1949,7 +1952,7 @@ export namespace PackageKitGlib {
      * @param cancellable A #GCancellable or %NULL
      * @returns %TRUE for success, else %FALSE and @error set
      */
-    function offline_trigger_upgrade(action: OfflineAction, cancellable?: Gio.Cancellable | null): boolean;
+    function offline_trigger_upgrade(action: OfflineAction | null, cancellable?: Gio.Cancellable | null): boolean;
     /**
      * Triggers the offline system upgrade so that the next reboot will perform the
      * pending transaction.
@@ -1959,8 +1962,8 @@ export namespace PackageKitGlib {
      * @returns %TRUE for success, else %FALSE and @error set
      */
     function offline_trigger_upgrade_with_flags(
-        action: OfflineAction,
-        flags: OfflineFlags,
+        action: OfflineAction | null,
+        flags: OfflineFlags | null,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
     /**
@@ -1972,8 +1975,8 @@ export namespace PackageKitGlib {
      * @returns %TRUE for success, else %FALSE and @error set
      */
     function offline_trigger_with_flags(
-        action: OfflineAction,
-        flags: OfflineFlags,
+        action: OfflineAction | null,
+        flags: OfflineFlags | null,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
     function polkit_agent_close(): void;
@@ -1996,7 +1999,7 @@ export namespace PackageKitGlib {
      * @param restart The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
      */
-    function restart_enum_to_string(restart: RestartEnum): string;
+    function restart_enum_to_string(restart: RestartEnum | null): string;
     /**
      * Converts text representation to its enumerated type bitfield
      * @param roles the enumerated constant value, e.g. "search-file;update-system"
@@ -2020,13 +2023,13 @@ export namespace PackageKitGlib {
      * @param role The enumerated type value
      * @returns the translated text
      */
-    function role_enum_to_localised_present(role: RoleEnum): string;
+    function role_enum_to_localised_present(role: RoleEnum | null): string;
     /**
      * Converts a enumerated type to its text representation
      * @param role The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
      */
-    function role_enum_to_string(role: RoleEnum): string;
+    function role_enum_to_string(role: RoleEnum | null): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param sig_type Text describing the enumerated type
@@ -2038,20 +2041,20 @@ export namespace PackageKitGlib {
      * @param sig_type The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
      */
-    function sig_type_enum_to_string(sig_type: SigTypeEnum): string;
+    function sig_type_enum_to_string(sig_type: SigTypeEnum | null): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param status Text describing the enumerated type
      * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
      */
     function status_enum_from_string(status: string): StatusEnum;
-    function status_enum_to_localised_text(status: StatusEnum): string;
+    function status_enum_to_localised_text(status: StatusEnum | null): string;
     /**
      * Converts a enumerated type to its text representation
      * @param status The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
      */
-    function status_enum_to_string(status: StatusEnum): string;
+    function status_enum_to_string(status: StatusEnum | null): string;
     /**
      * Converts text representation to its enumerated type bitfield, or 0 for invalid
      * @param transaction_flags the enumerated constant value, e.g. "only-trusted;simulate"
@@ -2075,7 +2078,7 @@ export namespace PackageKitGlib {
      * @param transaction_flag The enumerated type value
      * @returns the enumerated constant value, e.g. "simulate"
      */
-    function transaction_flag_enum_to_string(transaction_flag: TransactionFlagEnum): string;
+    function transaction_flag_enum_to_string(transaction_flag: TransactionFlagEnum | null): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param update_state Text describing the enumerated type
@@ -2087,7 +2090,7 @@ export namespace PackageKitGlib {
      * @param update_state The enumerated type value
      * @returns the enumerated constant value, e.g. "testing"
      */
-    function update_state_enum_to_string(update_state: UpdateStateEnum): string;
+    function update_state_enum_to_string(update_state: UpdateStateEnum | null): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param upgrade_kind Text describing the enumerated type
@@ -2099,7 +2102,7 @@ export namespace PackageKitGlib {
      * @param upgrade_kind The enumerated type value
      * @returns the enumerated constant value, e.g. "minimal"
      */
-    function upgrade_kind_enum_to_string(upgrade_kind: UpgradeKindEnum): string;
+    function upgrade_kind_enum_to_string(upgrade_kind: UpgradeKindEnum | null): string;
     interface PackageSackFilterFunc {
         (_package: Package): boolean;
     }
@@ -2868,7 +2871,7 @@ export namespace PackageKitGlib {
          * @returns a #PkResults object, or %NULL for error
          */
         install_signature(
-            type: SigTypeEnum,
+            type: SigTypeEnum | null,
             key_id: string,
             package_id: string,
             cancellable: Gio.Cancellable | null,
@@ -2884,7 +2887,7 @@ export namespace PackageKitGlib {
          * @param callback_ready the function to run on completion
          */
         install_signature_async(
-            type: SigTypeEnum,
+            type: SigTypeEnum | null,
             key_id: string,
             package_id: string,
             cancellable: Gio.Cancellable | null,
@@ -3400,7 +3403,7 @@ export namespace PackageKitGlib {
         upgrade_system(
             transaction_flags: Bitfield,
             distro_id: string,
-            upgrade_kind: UpgradeKindEnum,
+            upgrade_kind: UpgradeKindEnum | null,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
         ): Results;
@@ -3420,7 +3423,7 @@ export namespace PackageKitGlib {
         upgrade_system_async(
             transaction_flags: Bitfield,
             distro_id: string,
-            upgrade_kind: UpgradeKindEnum,
+            upgrade_kind: UpgradeKindEnum | null,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
@@ -3782,7 +3785,7 @@ export namespace PackageKitGlib {
          * @param role the role enum, e.g. %PK_ROLE_ENUM_GET_UPDATES
          * @param cancellable a #GCancellable or %NULL
          */
-        get_time_since_action_async(role: RoleEnum, cancellable?: Gio.Cancellable | null): Promise<number>;
+        get_time_since_action_async(role: RoleEnum | null, cancellable?: Gio.Cancellable | null): Promise<number>;
         /**
          * We may want to know how long it has been since we refreshed the cache or
          * retrieved the update list.
@@ -3791,7 +3794,7 @@ export namespace PackageKitGlib {
          * @param callback the function to run on completion
          */
         get_time_since_action_async(
-            role: RoleEnum,
+            role: RoleEnum | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -3803,7 +3806,7 @@ export namespace PackageKitGlib {
          * @param callback the function to run on completion
          */
         get_time_since_action_async(
-            role: RoleEnum,
+            role: RoleEnum | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<number> | void;
@@ -4758,7 +4761,7 @@ export namespace PackageKitGlib {
          * Sets the package info enum.
          * @param info the #PkInfoEnum
          */
-        set_info(info: InfoEnum): void;
+        set_info(info: InfoEnum | null): void;
         /**
          * Sets the package summary.
          * @param summary the package summary
@@ -4770,7 +4773,7 @@ export namespace PackageKitGlib {
          * %PK_INFO_ENUM_IMPORTANT or %PK_INFO_ENUM_CRITICAL.
          * @param update_severity a #PkInfoEnum
          */
-        set_update_severity(update_severity: InfoEnum): void;
+        set_update_severity(update_severity: InfoEnum | null): void;
     }
 
     module PackageSack {
@@ -4831,7 +4834,7 @@ export namespace PackageKitGlib {
          * @param info a #PkInfoEnum value to match
          * @returns a new #PkPackageSack, free with g_object_unref()
          */
-        filter_by_info(info: InfoEnum): PackageSack;
+        filter_by_info(info: InfoEnum | null): PackageSack;
         /**
          * Finds a package in a sack from reference. As soon as one package is found
          * the search is stopped.
@@ -4953,7 +4956,7 @@ export namespace PackageKitGlib {
          * Sorts the package sack
          * @param type the type of sorting, e.g. #PK_PACKAGE_SACK_SORT_TYPE_NAME
          */
-        sort(type: PackageSackSortType): void;
+        sort(type: PackageSackSortType | null): void;
         /**
          * Write the contents of a #PkPackageSack to a package-list file.
          * @param file a valid package-list file
@@ -5274,7 +5277,7 @@ export namespace PackageKitGlib {
          * @param role a #PkRoleEnum
          * @returns %TRUE if value changed.
          */
-        set_role(role: RoleEnum): boolean;
+        set_role(role: RoleEnum | null): boolean;
         /**
          * Set the D-Bus name of the client that started this transaction.
          * @param bus_name a D-Bus name
@@ -5292,7 +5295,7 @@ export namespace PackageKitGlib {
          * @param status a #PkStatusEnum
          * @returns %TRUE if value changed.
          */
-        set_status(status: StatusEnum): boolean;
+        set_status(status: StatusEnum | null): boolean;
         /**
          * Set the flags associated with this transaction.
          * @param transaction_flags a #PkBitfield containing #PkTransactionFlagEnum values.
@@ -5690,13 +5693,13 @@ export namespace PackageKitGlib {
          * @param exit_enum the exit code
          * @returns %TRUE if the value was set
          */
-        set_exit_code(exit_enum: ExitEnum): boolean;
+        set_exit_code(exit_enum: ExitEnum | null): boolean;
         /**
          * Sets the results object to have the given role enum.
          * @param role the role enum
          * @returns %TRUE if the value was set
          */
-        set_role(role: RoleEnum): boolean;
+        set_role(role: RoleEnum | null): boolean;
     }
 
     module Source {
@@ -6508,7 +6511,7 @@ export namespace PackageKitGlib {
          */
         upgrade_system_async(
             distro_id: string,
-            upgrade_kind: UpgradeKindEnum,
+            upgrade_kind: UpgradeKindEnum | null,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
@@ -6529,7 +6532,7 @@ export namespace PackageKitGlib {
          */
         upgrade_system_sync(
             distro_id: string,
-            upgrade_kind: UpgradeKindEnum,
+            upgrade_kind: UpgradeKindEnum | null,
             cancellable: Gio.Cancellable | null,
             progress_callback: ProgressCallback,
         ): Results;

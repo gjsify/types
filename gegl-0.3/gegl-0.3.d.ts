@@ -282,7 +282,7 @@ export namespace Gegl {
         name: string,
         nick: string,
         blurb: string,
-        flags: GObject.ParamFlags,
+        flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
      * Creates a new #GParamSpec instance specifying a #GeglColor property.
@@ -298,7 +298,7 @@ export namespace Gegl {
         nick: string,
         blurb: string,
         default_color: Color,
-        flags: GObject.ParamFlags,
+        flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
      * Creates a new #GParamSpec instance specifying a #GeglColor property.
@@ -314,7 +314,7 @@ export namespace Gegl {
         nick: string,
         blurb: string,
         default_color_string: string,
-        flags: GObject.ParamFlags,
+        flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
      * Get the default color value of the param spec
@@ -336,7 +336,7 @@ export namespace Gegl {
         nick: string,
         blurb: string,
         default_curve: Curve,
-        flags: GObject.ParamFlags,
+        flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
      * Creates a new #GeglParamSpecDouble instance.
@@ -362,7 +362,7 @@ export namespace Gegl {
         ui_minimum: number,
         ui_maximum: number,
         ui_gamma: number,
-        flags: GObject.ParamFlags,
+        flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
      * Creates a new #GeglParamSpecEnum instance.
@@ -380,7 +380,7 @@ export namespace Gegl {
         blurb: string,
         enum_type: GObject.GType,
         default_value: number,
-        flags: GObject.ParamFlags,
+        flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
      * Creates a new #GeglParamSpecFilePath instance.
@@ -400,7 +400,7 @@ export namespace Gegl {
         no_validate: boolean,
         null_ok: boolean,
         default_value: string,
-        flags: GObject.ParamFlags,
+        flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
      * Creates a new #GeglParamSpecFormat instance specifying a Babl format.
@@ -410,7 +410,12 @@ export namespace Gegl {
      * @param flags flags for the property specified
      * @returns a newly created parameter specification
      */
-    function param_spec_format(name: string, nick: string, blurb: string, flags: GObject.ParamFlags): GObject.ParamSpec;
+    function param_spec_format(
+        name: string,
+        nick: string,
+        blurb: string,
+        flags: GObject.ParamFlags | null,
+    ): GObject.ParamSpec;
     function param_spec_get_property_key(pspec: GObject.ParamSpec, key_name: string): string;
     /**
      * Creates a new #GeglParamSpecInt instance.
@@ -436,7 +441,7 @@ export namespace Gegl {
         ui_minimum: number,
         ui_maximum: number,
         ui_gamma: number,
-        flags: GObject.ParamFlags,
+        flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
      * Creates a new #GParamSpec instance specifying a #GeglPath property.
@@ -452,7 +457,7 @@ export namespace Gegl {
         nick: string,
         blurb: string,
         default_path: Path,
-        flags: GObject.ParamFlags,
+        flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
      * Creates a new #GeglParamSpecSeed instance specifying an integer random seed.
@@ -462,7 +467,12 @@ export namespace Gegl {
      * @param flags flags for the property specified
      * @returns a newly created parameter specification
      */
-    function param_spec_seed(name: string, nick: string, blurb: string, flags: GObject.ParamFlags): GObject.ParamSpec;
+    function param_spec_seed(
+        name: string,
+        nick: string,
+        blurb: string,
+        flags: GObject.ParamFlags | null,
+    ): GObject.ParamSpec;
     function param_spec_set_property_key(pspec: GObject.ParamSpec, key_name: string, value: string): void;
     /**
      * Creates a new #GeglParamSpecString instance.
@@ -482,7 +492,7 @@ export namespace Gegl {
         no_validate: boolean,
         null_ok: boolean,
         default_value: string,
-        flags: GObject.ParamFlags,
+        flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
      * Creates a new #GeglParamSpecUri instance.
@@ -502,7 +512,7 @@ export namespace Gegl {
         no_validate: boolean,
         null_ok: boolean,
         default_value: string,
-        flags: GObject.ParamFlags,
+        flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
      * Returns a GeglRectangle that represents an infininte plane.
@@ -513,7 +523,7 @@ export namespace Gegl {
      * by #gegl_stats().
      */
     function reset_stats(): void;
-    function serialize(start: Node, end: Node, basepath: string, serialize_flags: SerializeFlag): string;
+    function serialize(start: Node, end: Node, basepath: string, serialize_flags: SerializeFlag | null): string;
     /**
      * Returns a GeglStats object with properties that can be read to monitor
      * GEGL statistics.
@@ -768,7 +778,7 @@ export namespace Gegl {
          * @param dst destination buffer.
          * @param dst_rect position of upper left destination pixel, or NULL for top left coordinates of the buffer extents.
          */
-        copy(src_rect: Rectangle, repeat_mode: AbyssPolicy, dst: Buffer, dst_rect: Rectangle): void;
+        copy(src_rect: Rectangle, repeat_mode: AbyssPolicy | null, dst: Buffer, dst_rect: Rectangle): void;
         /**
          * Create a new sub GeglBuffer, that is a view on a larger buffer.
          * @param extent coordinates of new buffer.
@@ -805,7 +815,7 @@ export namespace Gegl {
          * @param repeat_mode how requests outside the buffer extent are handled. Valid values: GEGL_ABYSS_NONE (abyss pixels are zeroed), GEGL_ABYSS_WHITE (abyss pixels are white), GEGL_ABYSS_BLACK (abyss pixels are black), GEGL_ABYSS_CLAMP (coordinates are clamped to the abyss rectangle), GEGL_ABYSS_LOOP (buffer contents are tiled if outside of the abyss rectangle).
          * @returns A copy of the requested data
          */
-        get(rect: Rectangle, scale: number, format_name: string | null, repeat_mode: AbyssPolicy): Uint8Array;
+        get(rect: Rectangle, scale: number, format_name: string | null, repeat_mode: AbyssPolicy | null): Uint8Array;
         /**
          * Store a linear raster buffer into the GeglBuffer.
          * @param rect the rectangle to write.
@@ -1179,7 +1189,12 @@ export namespace Gegl {
          * @param level mipmap level to render (0 for all)
          * @param abyss_policy
          */
-        blit_buffer(buffer: Buffer | null, roi: Rectangle | null, level: number, abyss_policy: AbyssPolicy): void;
+        blit_buffer(
+            buffer: Buffer | null,
+            roi: Rectangle | null,
+            level: number,
+            abyss_policy: AbyssPolicy | null,
+        ): void;
         /**
          * Makes a connection between the pads of two nodes.
          *
@@ -2391,7 +2406,7 @@ export namespace Gegl {
          * @param output memory location for output data.
          * @param repeat_mode how requests outside the buffer extent are handled. Valid values: GEGL_ABYSS_NONE (abyss pixels are zeroed), GEGL_ABYSS_WHITE (abyss pixels are white), GEGL_ABYSS_BLACK (abyss pixels are black), GEGL_ABYSS_CLAMP (coordinates are clamped to the abyss rectangle), GEGL_ABYSS_LOOP (buffer contents are tiled if outside of the abyss rectangle).
          */
-        get(x: number, y: number, scale: Matrix2, output: any | null, repeat_mode: AbyssPolicy): void;
+        get(x: number, y: number, scale: Matrix2, output: any | null, repeat_mode: AbyssPolicy | null): void;
         get_context_rect(): Rectangle;
     }
 

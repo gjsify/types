@@ -146,7 +146,7 @@ export namespace Shell {
      */
     function util_create_pixbuf_from_data(
         data: Uint8Array | string,
-        colorspace: GdkPixbuf.Colorspace,
+        colorspace: GdkPixbuf.Colorspace | null,
         has_alpha: boolean,
         bits_per_sample: number,
         width: number,
@@ -209,7 +209,7 @@ export namespace Shell {
         working_directory: string | null,
         argv: string[],
         envp: string[] | null,
-        flags: GLib.SpawnFlags,
+        flags: GLib.SpawnFlags | null,
     ): GLib.Pid;
     /**
      * A wrapper around g_spawn_async_with_fds() with async-signal-safe
@@ -228,7 +228,7 @@ export namespace Shell {
         working_directory: string | null,
         argv: string[],
         envp: string[] | null,
-        flags: GLib.SpawnFlags,
+        flags: GLib.SpawnFlags | null,
         stdin_fd: number,
         stdout_fd: number,
         stderr_fd: number,
@@ -247,7 +247,7 @@ export namespace Shell {
         working_directory: string | null,
         argv: string[],
         envp: string[] | null,
-        flags: GLib.SpawnFlags,
+        flags: GLib.SpawnFlags | null,
     ): [GLib.Pid, number, number, number];
     /**
      * A wrapper around g_spawn_async_with_pipes_and_fds() with async-signal-safe
@@ -268,7 +268,7 @@ export namespace Shell {
         working_directory: string | null,
         argv: string[],
         envp: string[] | null,
-        flags: GLib.SpawnFlags,
+        flags: GLib.SpawnFlags | null,
         stdin_fd: number,
         stdout_fd: number,
         stderr_fd: number,
@@ -647,7 +647,7 @@ export namespace Shell {
          * how to launch it again.
          */
         is_window_backed(): boolean;
-        launch(timestamp: number, workspace: number, gpu_pref: AppLaunchGpu): boolean;
+        launch(timestamp: number, workspace: number, gpu_pref: AppLaunchGpu | null): boolean;
         launch_action(action_name: string, timestamp: number, workspace: number): void;
         /**
          * Request that the application create a new window.
@@ -824,7 +824,7 @@ export namespace Shell {
         get_mode(): BlurMode;
         get_radius(): number;
         set_brightness(brightness: number): void;
-        set_mode(mode: BlurMode): void;
+        set_mode(mode: BlurMode | null): void;
         set_radius(radius: number): void;
     }
 
@@ -884,7 +884,7 @@ export namespace Shell {
          * @param code GLSL code
          * @param is_replace whether Cogl code should be replaced by the custom shader
          */
-        add_glsl_snippet(hook: SnippetHook, declarations: string, code: string, is_replace: boolean): void;
+        add_glsl_snippet(hook: SnippetHook | null, declarations: string, code: string, is_replace: boolean): void;
         get_uniform_location(name: string): number;
         set_uniform_float(uniform: number, n_components: number, value: number[]): void;
         set_uniform_matrix(uniform: number, transpose: boolean, dimensions: number, value: number[]): void;
@@ -1898,7 +1898,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1939,7 +1939,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2344,7 +2344,7 @@ export namespace Shell {
         // Methods
 
         add_vpn_secret(request_id: string, setting_key: string, setting_value: string): void;
-        respond(request_id: string, response: NetworkAgentResponse): void;
+        respond(request_id: string, response: NetworkAgentResponse | null): void;
         search_vpn_plugin(service: string): Promise<NM.VpnPluginInfo | null>;
         search_vpn_plugin(service: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         search_vpn_plugin(
@@ -2683,7 +2683,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2724,7 +2724,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3585,7 +3585,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3626,7 +3626,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4006,7 +4006,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4047,7 +4047,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4454,7 +4454,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4495,7 +4495,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5170,7 +5170,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5211,7 +5211,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5721,7 +5721,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5762,7 +5762,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

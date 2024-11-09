@@ -761,7 +761,7 @@ export namespace Abi {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -802,7 +802,7 @@ export namespace Abi {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1144,8 +1144,8 @@ export namespace Abi {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -1153,7 +1153,7 @@ export namespace Abi {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -1231,7 +1231,7 @@ export namespace Abi {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -1265,7 +1265,7 @@ export namespace Abi {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -1352,7 +1352,7 @@ export namespace Abi {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -1392,7 +1392,7 @@ export namespace Abi {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -1504,14 +1504,22 @@ export namespace Abi {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -1593,9 +1601,9 @@ export namespace Abi {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -2054,7 +2062,7 @@ export namespace Abi {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -2688,7 +2696,7 @@ export namespace Abi {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -2749,7 +2757,7 @@ export namespace Abi {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -2768,7 +2776,7 @@ export namespace Abi {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -2788,7 +2796,7 @@ export namespace Abi {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -2830,7 +2838,7 @@ export namespace Abi {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -2839,7 +2847,7 @@ export namespace Abi {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -2869,7 +2877,7 @@ export namespace Abi {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -3036,7 +3044,11 @@ export namespace Abi {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -3285,7 +3297,7 @@ export namespace Abi {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -3301,7 +3313,7 @@ export namespace Abi {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -3371,7 +3383,7 @@ export namespace Abi {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -3634,7 +3646,7 @@ export namespace Abi {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -3652,7 +3664,7 @@ export namespace Abi {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -3702,7 +3714,7 @@ export namespace Abi {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -3913,7 +3925,7 @@ export namespace Abi {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -5303,7 +5315,7 @@ export namespace Abi {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5344,7 +5356,7 @@ export namespace Abi {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

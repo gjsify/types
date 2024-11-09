@@ -686,7 +686,7 @@ export namespace Fwupd {
      * @param kind a #GChecksumType, e.g. %G_CHECKSUM_SHA512
      * @returns a checksum from the array, or %NULL if not found
      */
-    function checksum_get_by_kind(checksums: string[], kind: GLib.ChecksumType): string;
+    function checksum_get_by_kind(checksums: string[], kind: GLib.ChecksumType | null): string;
     /**
      * Guesses the checksum kind based on the length of the hash.
      * @param checksum A checksum
@@ -705,7 +705,7 @@ export namespace Fwupd {
      * @param error A #FwupdError, e.g. %FWUPD_ERROR_VERSION_NEWER
      * @returns identifier string
      */
-    function error_to_string(error: Error): string;
+    function error_to_string(error: Error | null): string;
     /**
      * Converts a string to a #FwupdFeatureFlags.
      * @param feature_flag A string, e.g. `detach-action`
@@ -717,7 +717,7 @@ export namespace Fwupd {
      * @param feature_flag A #FwupdFeatureFlags, e.g. %FWUPD_FEATURE_FLAG_DETACH_ACTION
      * @returns identifier string
      */
-    function feature_flag_to_string(feature_flag: FeatureFlags): string;
+    function feature_flag_to_string(feature_flag: FeatureFlags | null): string;
     /**
      * Loads information from the system os-release file.
      * @returns keys from os-release
@@ -731,7 +731,7 @@ export namespace Fwupd {
      * @param flags some %FwupdGuidFlags, e.g. %FWUPD_GUID_FLAG_MIXED_ENDIAN
      * @returns %TRUE for success
      */
-    function guid_from_string(guidstr: string | null, guid: number, flags: GuidFlags): boolean;
+    function guid_from_string(guidstr: string | null, guid: number, flags: GuidFlags | null): boolean;
     /**
      * Returns a GUID for some data. This uses a hash and so even small
      * differences in the `data` will produce radically different return values.
@@ -743,7 +743,7 @@ export namespace Fwupd {
      * @param flags some %FwupdGuidFlags, e.g. %FWUPD_GUID_FLAG_NAMESPACE_MICROSOFT
      * @returns A new GUID, or %NULL for internal error
      */
-    function guid_hash_data(data: number, datasz: number, flags: GuidFlags): string;
+    function guid_hash_data(data: number, datasz: number, flags: GuidFlags | null): string;
     /**
      * Returns a GUID for a given string. This uses a hash and so even small
      * differences in the `str` will produce radically different return values.
@@ -771,7 +771,7 @@ export namespace Fwupd {
      * @param flags some %FwupdGuidFlags, e.g. %FWUPD_GUID_FLAG_MIXED_ENDIAN
      * @returns A new GUID
      */
-    function guid_to_string(guid: number, flags: GuidFlags): string;
+    function guid_to_string(guid: number, flags: GuidFlags | null): string;
     /**
      * Converts an printable string to an enumerated type.
      * @param keyring_kind a string, e.g. `gpg`
@@ -783,7 +783,7 @@ export namespace Fwupd {
      * @param keyring_kind a #FwupdKeyringKind, e.g. %FWUPD_KEYRING_KIND_GPG
      * @returns a string, e.g. `gpg`
      */
-    function keyring_kind_to_string(keyring_kind: KeyringKind): string;
+    function keyring_kind_to_string(keyring_kind: KeyringKind | null): string;
     /**
      * Converts a string to a #FwupdStatus.
      * @param status A string, e.g. `decompressing`
@@ -795,7 +795,7 @@ export namespace Fwupd {
      * @param status A #FwupdStatus, e.g. %FWUPD_STATUS_DECOMPRESSING
      * @returns identifier string
      */
-    function status_to_string(status: Status): string;
+    function status_to_string(status: Status | null): string;
     /**
      * Converts a string to a #FwupdTrustFlags.
      * @param trust_flag A string, e.g. `payload`
@@ -807,7 +807,7 @@ export namespace Fwupd {
      * @param trust_flag A #FwupdTrustFlags, e.g. %FWUPD_TRUST_FLAG_PAYLOAD
      * @returns identifier string
      */
-    function trust_flag_to_string(trust_flag: TrustFlags): string;
+    function trust_flag_to_string(trust_flag: TrustFlags | null): string;
     /**
      * Converts a string to a #FwupdUpdateState.
      * @param update_state A string, e.g. `pending`
@@ -819,7 +819,7 @@ export namespace Fwupd {
      * @param update_state A #FwupdUpdateState, e.g. %FWUPD_UPDATE_STATE_PENDING
      * @returns identifier string
      */
-    function update_state_to_string(update_state: UpdateState): string;
+    function update_state_to_string(update_state: UpdateState | null): string;
     /**
      * Converts text to a display version type.
      * @param str A string, e.g. `quad`
@@ -831,7 +831,7 @@ export namespace Fwupd {
      * @param kind A #FwupdVersionFormat, e.g. %FWUPD_VERSION_FORMAT_TRIPLET
      * @returns A string, e.g. `quad`, or %NULL if not known
      */
-    function version_format_to_string(kind: VersionFormat): string;
+    function version_format_to_string(kind: VersionFormat | null): string;
     /**
      * The options to use for downloading.
      */
@@ -1357,7 +1357,11 @@ export namespace Fwupd {
          * @param cancellable the #GCancellable, or %NULL
          * @returns downloaded data, or %NULL for error
          */
-        download_bytes(url: string, flags: ClientDownloadFlags, cancellable?: Gio.Cancellable | null): GLib.Bytes;
+        download_bytes(
+            url: string,
+            flags: ClientDownloadFlags | null,
+            cancellable?: Gio.Cancellable | null,
+        ): GLib.Bytes;
         /**
          * Downloads data from a remote server. The fwupd_client_set_user_agent() function
          * should be called before this method is used.
@@ -1374,7 +1378,7 @@ export namespace Fwupd {
          */
         download_bytes_async(
             url: string,
-            flags: ClientDownloadFlags,
+            flags: ClientDownloadFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<GLib.Bytes>;
         /**
@@ -1394,7 +1398,7 @@ export namespace Fwupd {
          */
         download_bytes_async(
             url: string,
-            flags: ClientDownloadFlags,
+            flags: ClientDownloadFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1415,7 +1419,7 @@ export namespace Fwupd {
          */
         download_bytes_async(
             url: string,
-            flags: ClientDownloadFlags,
+            flags: ClientDownloadFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<GLib.Bytes> | void;
@@ -1437,7 +1441,7 @@ export namespace Fwupd {
         download_file(
             url: string,
             file: Gio.File,
-            flags: ClientDownloadFlags,
+            flags: ClientDownloadFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -2247,7 +2251,7 @@ export namespace Fwupd {
         install(
             device_id: string,
             filename: string,
-            install_flags: InstallFlags,
+            install_flags: InstallFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -2264,7 +2268,7 @@ export namespace Fwupd {
         install_async(
             device_id: string,
             filename: string,
-            install_flags: InstallFlags,
+            install_flags: InstallFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
@@ -2282,7 +2286,7 @@ export namespace Fwupd {
         install_async(
             device_id: string,
             filename: string,
-            install_flags: InstallFlags,
+            install_flags: InstallFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2301,7 +2305,7 @@ export namespace Fwupd {
         install_async(
             device_id: string,
             filename: string,
-            install_flags: InstallFlags,
+            install_flags: InstallFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -2316,7 +2320,7 @@ export namespace Fwupd {
         install_bytes(
             device_id: string,
             bytes: GLib.Bytes | Uint8Array,
-            install_flags: InstallFlags,
+            install_flags: InstallFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -2333,7 +2337,7 @@ export namespace Fwupd {
         install_bytes_async(
             device_id: string,
             bytes: GLib.Bytes | Uint8Array,
-            install_flags: InstallFlags,
+            install_flags: InstallFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
@@ -2351,7 +2355,7 @@ export namespace Fwupd {
         install_bytes_async(
             device_id: string,
             bytes: GLib.Bytes | Uint8Array,
-            install_flags: InstallFlags,
+            install_flags: InstallFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2370,7 +2374,7 @@ export namespace Fwupd {
         install_bytes_async(
             device_id: string,
             bytes: GLib.Bytes | Uint8Array,
-            install_flags: InstallFlags,
+            install_flags: InstallFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -2397,7 +2401,7 @@ export namespace Fwupd {
         install_release(
             device: Device,
             release: Release,
-            install_flags: InstallFlags,
+            install_flags: InstallFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -2412,8 +2416,8 @@ export namespace Fwupd {
         install_release2(
             device: Device,
             release: Release,
-            install_flags: InstallFlags,
-            download_flags: ClientDownloadFlags,
+            install_flags: InstallFlags | null,
+            download_flags: ClientDownloadFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -2432,8 +2436,8 @@ export namespace Fwupd {
         install_release2_async(
             device: Device,
             release: Release,
-            install_flags: InstallFlags,
-            download_flags: ClientDownloadFlags,
+            install_flags: InstallFlags | null,
+            download_flags: ClientDownloadFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2451,7 +2455,7 @@ export namespace Fwupd {
         install_release_async(
             device: Device,
             release: Release,
-            install_flags: InstallFlags,
+            install_flags: InstallFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
@@ -2469,7 +2473,7 @@ export namespace Fwupd {
         install_release_async(
             device: Device,
             release: Release,
-            install_flags: InstallFlags,
+            install_flags: InstallFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2488,7 +2492,7 @@ export namespace Fwupd {
         install_release_async(
             device: Device,
             release: Release,
-            install_flags: InstallFlags,
+            install_flags: InstallFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -2733,7 +2737,7 @@ export namespace Fwupd {
          * @param cancellable the #GCancellable, or %NULL
          * @returns a signature, or %NULL for failure
          */
-        self_sign(value: string, flags: SelfSignFlags, cancellable?: Gio.Cancellable | null): string;
+        self_sign(value: string, flags: SelfSignFlags | null, cancellable?: Gio.Cancellable | null): string;
         /**
          * Signs the data using the client self-signed certificate.
          *
@@ -2743,7 +2747,11 @@ export namespace Fwupd {
          * @param flags #FwupdSelfSignFlags, e.g. %FWUPD_SELF_SIGN_FLAG_ADD_TIMESTAMP
          * @param cancellable the #GCancellable, or %NULL
          */
-        self_sign_async(value: string, flags: SelfSignFlags, cancellable?: Gio.Cancellable | null): Promise<string>;
+        self_sign_async(
+            value: string,
+            flags: SelfSignFlags | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<string>;
         /**
          * Signs the data using the client self-signed certificate.
          *
@@ -2756,7 +2764,7 @@ export namespace Fwupd {
          */
         self_sign_async(
             value: string,
-            flags: SelfSignFlags,
+            flags: SelfSignFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2772,7 +2780,7 @@ export namespace Fwupd {
          */
         self_sign_async(
             value: string,
-            flags: SelfSignFlags,
+            flags: SelfSignFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<string> | void;
@@ -2874,7 +2882,7 @@ export namespace Fwupd {
          * @param cancellable the #GCancellable, or %NULL
          * @returns %TRUE for success
          */
-        set_feature_flags(feature_flags: FeatureFlags, cancellable?: Gio.Cancellable | null): boolean;
+        set_feature_flags(feature_flags: FeatureFlags | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Sets the features the client supports. This allows firmware to depend on
          * specific front-end features, for instance showing the user an image on
@@ -2882,7 +2890,10 @@ export namespace Fwupd {
          * @param feature_flags #FwupdFeatureFlags, e.g. %FWUPD_FEATURE_FLAG_UPDATE_TEXT
          * @param cancellable the #GCancellable, or %NULL
          */
-        set_feature_flags_async(feature_flags: FeatureFlags, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        set_feature_flags_async(
+            feature_flags: FeatureFlags | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
         /**
          * Sets the features the client supports. This allows firmware to depend on
          * specific front-end features, for instance showing the user an image on
@@ -2892,7 +2903,7 @@ export namespace Fwupd {
          * @param callback the function to run on completion
          */
         set_feature_flags_async(
-            feature_flags: FeatureFlags,
+            feature_flags: FeatureFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2905,7 +2916,7 @@ export namespace Fwupd {
          * @param callback the function to run on completion
          */
         set_feature_flags_async(
-            feature_flags: FeatureFlags,
+            feature_flags: FeatureFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -3109,7 +3120,7 @@ export namespace Fwupd {
             url: string,
             payload: string,
             signature: string | null,
-            flags: ClientUploadFlags,
+            flags: ClientUploadFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): GLib.Bytes;
         /**
@@ -3132,7 +3143,7 @@ export namespace Fwupd {
             url: string,
             payload: string,
             signature: string | null,
-            flags: ClientUploadFlags,
+            flags: ClientUploadFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<GLib.Bytes>;
         /**
@@ -3156,7 +3167,7 @@ export namespace Fwupd {
             url: string,
             payload: string,
             signature: string | null,
-            flags: ClientUploadFlags,
+            flags: ClientUploadFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -3181,7 +3192,7 @@ export namespace Fwupd {
             url: string,
             payload: string,
             signature: string | null,
-            flags: ClientUploadFlags,
+            flags: ClientUploadFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<GLib.Bytes> | void;
@@ -3708,7 +3719,7 @@ export namespace Fwupd {
          * Sets what the device is currently doing.
          * @param status the status value, e.g. %FWUPD_STATUS_DEVICE_WRITE
          */
-        set_status(status: Status): void;
+        set_status(status: Status | null): void;
         /**
          * Sets the device summary.
          * @param summary the device one line summary
@@ -3733,7 +3744,7 @@ export namespace Fwupd {
          * Sets the update state.
          * @param update_state the state, e.g. %FWUPD_UPDATE_STATE_PENDING
          */
-        set_update_state(update_state: UpdateState): void;
+        set_update_state(update_state: UpdateState | null): void;
         /**
          * Sets the device vendor.
          * @param vendor the description
@@ -3763,7 +3774,7 @@ export namespace Fwupd {
          * Sets the update state.
          * @param version_format the state, e.g. %FWUPD_VERSION_FORMAT_PENDING
          */
-        set_version_format(version_format: VersionFormat): void;
+        set_version_format(version_format: VersionFormat | null): void;
         /**
          * Sets the lowest version of firmware the device will accept.
          * @param version_lowest the description
@@ -4272,7 +4283,7 @@ export namespace Fwupd {
          * Sets the trust level of the release.
          * @param trust_flags the bitfield, e.g. #FWUPD_TRUST_FLAG_PAYLOAD
          */
-        set_trust_flags(trust_flags: TrustFlags): void;
+        set_trust_flags(trust_flags: TrustFlags | null): void;
         /**
          * Sets the update image.
          * @param update_image the update image URL
@@ -4287,7 +4298,7 @@ export namespace Fwupd {
          * Sets the release urgency.
          * @param urgency the release urgency, e.g. %FWUPD_RELEASE_FLAG_TRUSTED_PAYLOAD
          */
-        set_urgency(urgency: ReleaseUrgency): void;
+        set_urgency(urgency: ReleaseUrgency | null): void;
         /**
          * Sets the update URI, i.e. where you can download the firmware from.
          * @param uri the update URI
@@ -4577,7 +4588,7 @@ export namespace Fwupd {
          * Sets the keyring kind
          * @param keyring_kind #FwupdKeyringKind e.g. #FWUPD_KEYRING_KIND_PKCS7
          */
-        set_keyring_kind(keyring_kind: KeyringKind): void;
+        set_keyring_kind(keyring_kind: KeyringKind | null): void;
         /**
          * Sets the plugin modification time.
          * @param mtime a UNIX itmestamp
@@ -4651,7 +4662,7 @@ export namespace Fwupd {
          * Adds a specific self flag to the self.
          * @param flag the #FwupdSecurityAttrFlags
          */
-        add_flag(flag: SecurityAttrFlags): void;
+        add_flag(flag: SecurityAttrFlags | null): void;
         /**
          * Adds metadata to the attribute which may be used in the name.
          * @param key metadata key
@@ -4716,7 +4727,7 @@ export namespace Fwupd {
          * @param flag the #FwupdSecurityAttrFlags
          * @returns %TRUE if the flag is set
          */
-        has_flag(flag: SecurityAttrFlags): boolean;
+        has_flag(flag: SecurityAttrFlags | null): boolean;
         /**
          * Finds out if the attribute obsoletes a specific appstream_id.
          * @param appstream_id the attribute appstream_id
@@ -4732,13 +4743,13 @@ export namespace Fwupd {
          * Sets the self flags.
          * @param flags the self flags, e.g. %FWUPD_SECURITY_ATTR_FLAG_OBSOLETED
          */
-        set_flags(flags: SecurityAttrFlags): void;
+        set_flags(flags: SecurityAttrFlags | null): void;
         /**
          * Sets the HSI level. A `level` of %FWUPD_SECURITY_ATTR_LEVEL_NONE is not used
          * for the HSI calculation.
          * @param level A #FwupdSecurityAttrLevel, e.g. %FWUPD_SECURITY_ATTR_LEVEL_IMPORTANT
          */
-        set_level(level: SecurityAttrLevel): void;
+        set_level(level: SecurityAttrLevel | null): void;
         /**
          * Sets the attribute name.
          * @param name the attribute name
@@ -4754,7 +4765,7 @@ export namespace Fwupd {
          * be a "success" when something is `locked` or may be "failed" if `found`.
          * @param result A #FwupdSecurityAttrResult, e.g. %FWUPD_SECURITY_ATTR_LEVEL_LOCKED
          */
-        set_result(result: SecurityAttrResult): void;
+        set_result(result: SecurityAttrResult | null): void;
         /**
          * Sets the attribute result.
          * @param url the attribute URL

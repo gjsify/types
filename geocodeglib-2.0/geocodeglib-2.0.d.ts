@@ -706,7 +706,7 @@ export namespace GeocodeGlib {
          * @param scheme the scheme of the requested URI
          * @returns a URI representing the location. The returned string should be freed with g_free() when no longer needed.
          */
-        to_uri(scheme: LocationURIScheme): string;
+        to_uri(scheme: LocationURIScheme | null): string;
     }
 
     module MockBackend {
@@ -1124,7 +1124,7 @@ export namespace GeocodeGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1165,7 +1165,7 @@ export namespace GeocodeGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1911,7 +1911,7 @@ export namespace GeocodeGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1952,7 +1952,7 @@ export namespace GeocodeGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3095,7 +3095,9 @@ export namespace GeocodeGlib {
         vfunc_reverse_resolve_finish(result: Gio.AsyncResult): Place[];
     }
 
-    export const Backend: BackendNamespace;
+    export const Backend: BackendNamespace & {
+        new (): Backend; // This allows `obj instanceof Backend`
+    };
 
     /**
      * Name of the imported GIR library

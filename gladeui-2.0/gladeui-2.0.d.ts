@@ -446,7 +446,7 @@ export namespace Gladeui {
      * @param window a #GdkWindow
      * @param type a #GladeCursorType
      */
-    function cursor_set(project: Project, window: Gdk.Window, type: CursorType): void;
+    function cursor_set(project: Project, window: Gdk.Window, type: CursorType | null): void;
     function displayable_value_is_disabled(type: GObject.GType, value: string): boolean;
     function displayable_value_set_disabled(type: GObject.GType, value: string, disabled: boolean): void;
     function get_debug_flags(): number;
@@ -463,7 +463,7 @@ export namespace Gladeui {
         nick: string,
         blurb: string,
         accepted_type: GObject.GType,
-        flags: GObject.ParamFlags,
+        flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     function propert_get_insensitive_tooltip(property: Property): string;
     function property_def_get_default_from_spec(spec: GObject.ParamSpec): unknown;
@@ -551,7 +551,7 @@ export namespace Gladeui {
         title: string,
         project: Project,
         parent: Gtk.Window,
-        action: UtilFileDialogType,
+        action: UtilFileDialogType | null,
     ): Gtk.Widget;
     /**
      * Checks whether the file at `path` is writeable
@@ -574,7 +574,7 @@ export namespace Gladeui {
      * @param size the preferred icon size
      * @returns a #GtkImage
      */
-    function util_get_devhelp_icon(size: Gtk.IconSize): Gtk.Widget;
+    function util_get_devhelp_icon(size: Gtk.IconSize | null): Gtk.Widget;
     /**
      * Gets the UTC modification time of file `filename`.
      * @param filename A filename
@@ -683,7 +683,7 @@ export namespace Gladeui {
      * @param size icon size
      * @returns the rendered #GdkPixbuf
      */
-    function utils_pointer_mode_render_icon(mode: PointerMode, size: Gtk.IconSize): GdkPixbuf.Pixbuf;
+    function utils_pointer_mode_render_icon(mode: PointerMode | null, size: Gtk.IconSize | null): GdkPixbuf.Pixbuf;
     function utils_replace_home_dir_with_tilde(path: string): string;
     /**
      * Serializes #GValue into a string
@@ -957,7 +957,7 @@ export namespace Gladeui {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1002,7 +1002,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1043,7 +1043,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1604,7 +1604,7 @@ export namespace Gladeui {
          * @param gchild the #GladeWidget
          * @param page the #GladeEditorPageType of the desired page for @gchild
          */
-        add_editable(gchild: Widget, page: EditorPageType): void;
+        add_editable(gchild: Widget, page: EditorPageType | null): void;
         /**
          * Adds a new label to `editor`
          *
@@ -1642,7 +1642,7 @@ export namespace Gladeui {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1687,7 +1687,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1728,7 +1728,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2418,7 +2418,7 @@ export namespace Gladeui {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2463,7 +2463,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2504,7 +2504,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3284,7 +3284,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3325,7 +3325,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3669,8 +3669,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -3678,7 +3678,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -3756,7 +3756,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -3790,7 +3790,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -3877,7 +3877,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -3917,7 +3917,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -4029,14 +4029,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -4118,9 +4126,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -4579,7 +4587,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -5213,7 +5221,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -5274,7 +5282,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -5293,7 +5301,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -5313,7 +5321,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -5355,7 +5363,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -5364,7 +5372,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -5394,7 +5402,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -5561,7 +5569,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -5810,7 +5822,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -5826,7 +5838,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -5896,7 +5908,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -6159,7 +6171,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -6177,7 +6189,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -6227,7 +6239,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -6438,7 +6450,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -7569,7 +7581,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7610,7 +7622,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7954,8 +7966,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -7963,7 +7975,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -8041,7 +8053,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -8075,7 +8087,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -8162,7 +8174,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -8202,7 +8214,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -8314,14 +8326,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -8403,9 +8423,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -8864,7 +8884,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -9498,7 +9518,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -9559,7 +9579,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -9578,7 +9598,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -9598,7 +9618,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -9640,7 +9660,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -9649,7 +9669,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -9679,7 +9699,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -9846,7 +9866,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -10095,7 +10119,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -10111,7 +10135,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -10181,7 +10205,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -10444,7 +10468,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -10462,7 +10486,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -10512,7 +10536,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -10723,7 +10747,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -11854,7 +11878,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11895,7 +11919,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12239,8 +12263,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -12248,7 +12272,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -12326,7 +12350,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -12360,7 +12384,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -12447,7 +12471,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -12487,7 +12511,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -12599,14 +12623,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -12688,9 +12720,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -13149,7 +13181,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -13783,7 +13815,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -13844,7 +13876,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -13863,7 +13895,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -13883,7 +13915,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -13925,7 +13957,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -13934,7 +13966,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -13964,7 +13996,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -14131,7 +14163,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -14380,7 +14416,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -14396,7 +14432,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -14466,7 +14502,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -14729,7 +14765,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -14747,7 +14783,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -14797,7 +14833,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -15008,7 +15044,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -16139,7 +16175,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16180,7 +16216,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16524,8 +16560,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -16533,7 +16569,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -16611,7 +16647,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -16645,7 +16681,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -16732,7 +16768,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -16772,7 +16808,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -16884,14 +16920,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -16973,9 +17017,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -17434,7 +17478,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -18068,7 +18112,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -18129,7 +18173,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -18148,7 +18192,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -18168,7 +18212,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -18210,7 +18254,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -18219,7 +18263,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -18249,7 +18293,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -18416,7 +18460,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -18665,7 +18713,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -18681,7 +18729,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -18751,7 +18799,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -19014,7 +19062,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -19032,7 +19080,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -19082,7 +19130,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -19293,7 +19341,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -20424,7 +20472,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -20465,7 +20513,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20809,8 +20857,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -20818,7 +20866,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -20896,7 +20944,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -20930,7 +20978,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -21017,7 +21065,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -21057,7 +21105,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -21169,14 +21217,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -21258,9 +21314,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -21719,7 +21775,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -22353,7 +22409,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -22414,7 +22470,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -22433,7 +22489,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -22453,7 +22509,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -22495,7 +22551,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -22504,7 +22560,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -22534,7 +22590,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -22701,7 +22757,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -22950,7 +23010,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -22966,7 +23026,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -23036,7 +23096,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -23299,7 +23359,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -23317,7 +23377,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -23367,7 +23427,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -23578,7 +23638,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -24712,7 +24772,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -24753,7 +24813,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -25097,8 +25157,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -25106,7 +25166,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -25184,7 +25244,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -25218,7 +25278,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -25305,7 +25365,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -25345,7 +25405,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -25457,14 +25517,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -25546,9 +25614,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -26007,7 +26075,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -26641,7 +26709,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -26702,7 +26770,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -26721,7 +26789,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -26741,7 +26809,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -26783,7 +26851,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -26792,7 +26860,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -26822,7 +26890,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -26989,7 +27057,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -27238,7 +27310,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -27254,7 +27326,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -27324,7 +27396,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -27587,7 +27659,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -27605,7 +27677,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -27655,7 +27727,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -27866,7 +27938,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -28997,7 +29069,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -29038,7 +29110,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -29382,8 +29454,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -29391,7 +29463,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -29469,7 +29541,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -29503,7 +29575,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -29590,7 +29662,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -29630,7 +29702,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -29742,14 +29814,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -29831,9 +29911,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -30292,7 +30372,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -30926,7 +31006,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -30987,7 +31067,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -31006,7 +31086,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -31026,7 +31106,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -31068,7 +31148,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -31077,7 +31157,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -31107,7 +31187,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -31274,7 +31354,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -31523,7 +31607,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -31539,7 +31623,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -31609,7 +31693,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -31872,7 +31956,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -31890,7 +31974,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -31940,7 +32024,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -32151,7 +32235,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -33282,7 +33366,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -33323,7 +33407,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -33667,8 +33751,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -33676,7 +33760,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -33754,7 +33838,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -33788,7 +33872,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -33875,7 +33959,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -33915,7 +33999,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -34027,14 +34111,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -34116,9 +34208,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -34577,7 +34669,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -35211,7 +35303,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -35272,7 +35364,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -35291,7 +35383,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -35311,7 +35403,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -35353,7 +35445,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -35362,7 +35454,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -35392,7 +35484,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -35559,7 +35651,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -35808,7 +35904,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -35824,7 +35920,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -35894,7 +35990,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -36157,7 +36253,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -36175,7 +36271,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -36225,7 +36321,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -36436,7 +36532,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -37567,7 +37663,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -37608,7 +37704,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -37952,8 +38048,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -37961,7 +38057,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -38039,7 +38135,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -38073,7 +38169,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -38160,7 +38256,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -38200,7 +38296,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -38312,14 +38408,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -38401,9 +38505,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -38862,7 +38966,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -39496,7 +39600,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -39557,7 +39661,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -39576,7 +39680,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -39596,7 +39700,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -39638,7 +39742,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -39647,7 +39751,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -39677,7 +39781,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -39844,7 +39948,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -40093,7 +40201,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -40109,7 +40217,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -40179,7 +40287,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -40442,7 +40550,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -40460,7 +40568,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -40510,7 +40618,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -40721,7 +40829,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -41852,7 +41960,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -41893,7 +42001,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -42237,8 +42345,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -42246,7 +42354,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -42324,7 +42432,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -42358,7 +42466,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -42445,7 +42553,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -42485,7 +42593,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -42597,14 +42705,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -42686,9 +42802,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -43147,7 +43263,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -43781,7 +43897,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -43842,7 +43958,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -43861,7 +43977,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -43881,7 +43997,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -43923,7 +44039,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -43932,7 +44048,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -43962,7 +44078,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -44129,7 +44245,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -44378,7 +44498,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -44394,7 +44514,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -44464,7 +44584,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -44727,7 +44847,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -44745,7 +44865,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -44795,7 +44915,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -45006,7 +45126,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -46137,7 +46257,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -46178,7 +46298,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -46522,8 +46642,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -46531,7 +46651,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -46609,7 +46729,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -46643,7 +46763,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -46730,7 +46850,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -46770,7 +46890,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -46882,14 +47002,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -46971,9 +47099,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -47432,7 +47560,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -48066,7 +48194,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -48127,7 +48255,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -48146,7 +48274,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -48166,7 +48294,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -48208,7 +48336,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -48217,7 +48345,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -48247,7 +48375,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -48414,7 +48542,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -48663,7 +48795,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -48679,7 +48811,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -48749,7 +48881,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -49012,7 +49144,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -49030,7 +49162,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -49080,7 +49212,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -49291,7 +49423,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -50049,7 +50181,7 @@ export namespace Gladeui {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -50094,7 +50226,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -50135,7 +50267,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -50993,7 +51125,7 @@ export namespace Gladeui {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -51038,7 +51170,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -51079,7 +51211,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -51420,8 +51552,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -51429,7 +51561,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -51507,7 +51639,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -51541,7 +51673,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -51628,7 +51760,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -51668,7 +51800,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -51780,14 +51912,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -51869,9 +52009,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -52330,7 +52470,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -52964,7 +53104,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -53025,7 +53165,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -53044,7 +53184,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -53064,7 +53204,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -53106,7 +53246,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -53115,7 +53255,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -53145,7 +53285,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -53312,7 +53452,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -53561,7 +53705,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -53577,7 +53721,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -53647,7 +53791,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -53910,7 +54054,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -53928,7 +54072,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -53978,7 +54122,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -54189,7 +54333,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -55292,7 +55436,7 @@ export namespace Gladeui {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -55337,7 +55481,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -55378,7 +55522,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -55720,8 +55864,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -55729,7 +55873,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -55807,7 +55951,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -55841,7 +55985,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -55928,7 +56072,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -55968,7 +56112,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -56080,14 +56224,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -56169,9 +56321,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -56630,7 +56782,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -57264,7 +57416,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -57325,7 +57477,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -57344,7 +57496,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -57364,7 +57516,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -57406,7 +57558,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -57415,7 +57567,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -57445,7 +57597,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -57612,7 +57764,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -57861,7 +58017,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -57877,7 +58033,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -57947,7 +58103,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -58210,7 +58366,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -58228,7 +58384,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -58278,7 +58434,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -58489,7 +58645,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -59599,7 +59755,7 @@ export namespace Gladeui {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -59644,7 +59800,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -59685,7 +59841,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -60027,8 +60183,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -60036,7 +60192,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -60114,7 +60270,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -60148,7 +60304,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -60235,7 +60391,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -60275,7 +60431,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -60387,14 +60543,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -60476,9 +60640,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -60937,7 +61101,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -61571,7 +61735,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -61632,7 +61796,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -61651,7 +61815,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -61671,7 +61835,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -61713,7 +61877,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -61722,7 +61886,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -61752,7 +61916,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -61919,7 +62083,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -62168,7 +62336,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -62184,7 +62352,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -62254,7 +62422,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -62517,7 +62685,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -62535,7 +62703,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -62585,7 +62753,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -62796,7 +62964,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -63560,7 +63728,7 @@ export namespace Gladeui {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -63605,7 +63773,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -63646,7 +63814,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -64064,7 +64232,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -64105,7 +64273,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -64498,7 +64666,7 @@ export namespace Gladeui {
          * Sets the appearance of the palette items.
          * @param item_appearance the item appearance
          */
-        set_item_appearance(item_appearance: ItemAppearance): void;
+        set_item_appearance(item_appearance: ItemAppearance | null): void;
         set_project(project: Project): void;
         /**
          * Sets whether to show the internal widget selector button
@@ -64528,7 +64696,7 @@ export namespace Gladeui {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -64573,7 +64741,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -64614,7 +64782,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -65219,7 +65387,7 @@ export namespace Gladeui {
          * below the natural width.
          * @param policy the horizontal #GtkScrollablePolicy
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
          * Sets the vertical adjustment of the #GtkScrollable.
          * @param vadjustment a #GtkAdjustment
@@ -65231,7 +65399,7 @@ export namespace Gladeui {
          * below the natural height.
          * @param policy the vertical #GtkScrollablePolicy
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -65284,7 +65452,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -65325,7 +65493,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -66077,7 +66245,7 @@ export namespace Gladeui {
          * @param flags the #GladeVerifyFlags to warn about
          * @returns %TRUE on success, %FALSE on failure
          */
-        save_verify(path: string, flags: VerifyFlags): boolean;
+        save_verify(path: string, flags: VerifyFlags | null): boolean;
         /**
          * Adds `object` to the selection chain of `project`
          *
@@ -66121,7 +66289,7 @@ export namespace Gladeui {
          */
         set_css_provider_path(path: string): void;
         set_license(license: string): void;
-        set_pointer_mode(mode: PointerMode): void;
+        set_pointer_mode(mode: PointerMode | null): void;
         set_resource_path(path: string): void;
         set_target_version(catalog: string, major: number, minor: number): void;
         set_template(widget: Widget): void;
@@ -66147,7 +66315,7 @@ export namespace Gladeui {
          * @returns A newly created menu
          */
         undo_items(): Gtk.Widget;
-        verify(saving: boolean, flags: VerifyFlags): boolean;
+        verify(saving: boolean, flags: VerifyFlags | null): boolean;
         /**
          * Checks the supported state of this widget adaptor
          * and generates a string to show in the UI describing why.
@@ -66155,7 +66323,7 @@ export namespace Gladeui {
          * @param mask a return location for a #GladeSupportMask
          * @returns A newly allocated string
          */
-        verify_widget_adaptor(adaptor: WidgetAdaptor, mask: SupportMask): string;
+        verify_widget_adaptor(adaptor: WidgetAdaptor, mask: SupportMask | null): string;
         widget_changed(gwidget: Widget): void;
         /**
          * Emits  GladeProject::widget-visibility-changed signal
@@ -66656,7 +66824,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -66697,7 +66865,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -67746,7 +67914,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -67787,7 +67955,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -68127,8 +68295,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -68136,7 +68304,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -68214,7 +68382,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -68248,7 +68416,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -68335,7 +68503,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -68375,7 +68543,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -68487,14 +68655,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -68576,9 +68752,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -69037,7 +69213,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -69671,7 +69847,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -69732,7 +69908,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -69751,7 +69927,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -69771,7 +69947,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -69813,7 +69989,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -69822,7 +69998,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -69852,7 +70028,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -70019,7 +70195,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -70268,7 +70448,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -70284,7 +70464,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -70354,7 +70534,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -70617,7 +70797,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -70635,7 +70815,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -70685,7 +70865,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -70896,7 +71076,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -72065,7 +72245,7 @@ export namespace Gladeui {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -72110,7 +72290,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -72151,7 +72331,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -72493,8 +72673,8 @@ export namespace Gladeui {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType,
-            accel_flags: Gtk.AccelFlags,
+            accel_mods: Gdk.ModifierType | null,
+            accel_flags: Gtk.AccelFlags | null,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -72502,7 +72682,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events an event mask, see #GdkEventMask
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See gtk_widget_set_events() and the
@@ -72580,7 +72760,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Emits a #GtkWidget::child-notify signal for the
          * [child property][child-properties] `child_property`
@@ -72614,7 +72794,7 @@ export namespace Gladeui {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Creates a new #PangoContext with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -72701,7 +72881,7 @@ export namespace Gladeui {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -72741,7 +72921,7 @@ export namespace Gladeui {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -72853,14 +73033,22 @@ export namespace Gladeui {
          * @param targets a pointer to an array of     #GtkTargetEntrys indicating the drop types that this @widget will     accept, or %NULL. Later you can access the list with     gtk_drag_dest_get_target_list() and gtk_drag_dest_find_target().
          * @param actions a bitmask of possible actions for a drop onto this @widget.
          */
-        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
+        drag_dest_set(
+            flags: Gtk.DestDefaults | null,
+            targets: Gtk.TargetEntry[] | null,
+            actions: Gdk.DragAction | null,
+        ): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the @proxy_window accepts   (You can use gdk_drag_get_protocol() to determine this)
          * @param use_coordinates If %TRUE, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
+        drag_dest_set_proxy(
+            proxy_window: Gdk.Window,
+            protocol: Gdk.DragProtocol | null,
+            use_coordinates: boolean,
+        ): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -72942,9 +73130,9 @@ export namespace Gladeui {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType,
+            start_button_mask: Gdk.ModifierType | null,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction,
+            actions: Gdk.DragAction | null,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -73403,7 +73591,7 @@ export namespace Gladeui {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * gtk_widget_modify_style().) If no style has previously set, a new
@@ -74037,7 +74225,7 @@ export namespace Gladeui {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
@@ -74098,7 +74286,7 @@ export namespace Gladeui {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_base().
          */
-        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -74117,7 +74305,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_bg().
          */
-        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the #GtkWidget
          * cursor-color and secondary-cursor-color
@@ -74137,7 +74325,7 @@ export namespace Gladeui {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or %NULL to undo the effect of previous calls to     of gtk_widget_modify_fg().
          */
-        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -74179,7 +74367,7 @@ export namespace Gladeui {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or %NULL to undo the effect of previous     calls to of gtk_widget_modify_text().
          */
-        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -74188,7 +74376,7 @@ export namespace Gladeui {
          * @param state the state for which to set the background color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_background_color()
          */
-        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -74218,7 +74406,7 @@ export namespace Gladeui {
          * @param state the state for which to set the color
          * @param color the color to assign, or %NULL to undo the effect     of previous calls to gtk_widget_override_color()
          */
-        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -74385,7 +74573,11 @@ export namespace Gladeui {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+        remove_accelerator(
+            accel_group: Gtk.AccelGroup,
+            accel_key: number,
+            accel_mods: Gdk.ModifierType | null,
+        ): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See gtk_widget_list_mnemonic_labels()). The widget
@@ -74634,7 +74826,7 @@ export namespace Gladeui {
          * @param device a #GdkDevice
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -74650,7 +74842,7 @@ export namespace Gladeui {
          * set by gtk_widget_set_default_direction() will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -74720,7 +74912,7 @@ export namespace Gladeui {
          * See the #GtkWidget:halign property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * #GtkWidget:has-tooltip for more information.
@@ -74983,7 +75175,7 @@ export namespace Gladeui {
          * the state using wrapper functions such as gtk_widget_set_sensitive().
          * @param state new state for @widget
          */
-        set_state(state: Gtk.StateType): void;
+        set_state(state: Gtk.StateType | null): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -75001,7 +75193,7 @@ export namespace Gladeui {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Used to set the #GtkStyle for a widget (`widget->`style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -75051,7 +75243,7 @@ export namespace Gladeui {
          * See the #GtkWidget:valign property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -75262,7 +75454,7 @@ export namespace Gladeui {
          * See gtk_widget_set_state_flags().
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         vfunc_adjust_baseline_allocation(baseline: number): void;
         vfunc_adjust_baseline_request(minimum_baseline: number, natural_baseline: number): void;
         /**
@@ -76158,7 +76350,7 @@ export namespace Gladeui {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -76203,7 +76395,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -76244,7 +76436,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -77096,7 +77288,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -77137,7 +77329,7 @@ export namespace Gladeui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -77680,7 +77872,7 @@ export namespace Gladeui {
             internal_name: string,
             parent_name: string,
             anarchist: boolean,
-            reason: CreateReason,
+            reason: CreateReason | null,
         ): Widget;
         /**
          * Adds `child` to `parent` in a generic way for this #GladeWidget parent.
@@ -78615,7 +78807,7 @@ export namespace Gladeui {
          * @param type The #GladeEditorPageType
          * @returns A new #GladeEditable widget
          */
-        create_editable(type: EditorPageType): Editable;
+        create_editable(type: EditorPageType | null): Editable;
         /**
          * Creates a GladeEditorProperty to edit `def`
          * @param def The #GladePropertyDef to be edited
@@ -78754,7 +78946,7 @@ export namespace Gladeui {
          * @param object The #GObject
          * @param reason The #GladeCreateReason that @object was created for
          */
-        post_create(object: GObject.Object, reason: CreateReason): void;
+        post_create(object: GObject.Object, reason: CreateReason | null): void;
         /**
          * This function is called to update load a child `widget`
          * from `node` when loading xml files (will recurse into
@@ -79529,7 +79721,9 @@ export namespace Gladeui {
         vfunc_set_show_name(show_name: boolean): void;
     }
 
-    export const Editable: EditableNamespace;
+    export const Editable: EditableNamespace & {
+        new (): Editable; // This allows `obj instanceof Editable`
+    };
 
     /**
      * Name of the imported GIR library

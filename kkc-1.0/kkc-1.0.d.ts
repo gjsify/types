@@ -2420,7 +2420,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2461,7 +2461,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3061,7 +3061,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3102,7 +3102,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4074,7 +4074,7 @@ export namespace Kkc {
         get_keycode(): number;
         set_keycode(value: number): void;
         get_modifiers(): ModifierType;
-        set_modifiers(value: ModifierType): void;
+        set_modifiers(value: ModifierType | null): void;
     }
 
     module Keymap {
@@ -4244,9 +4244,9 @@ export namespace Kkc {
         reset(): void;
         ['delete'](): boolean;
         get_kana_mode(): KanaMode;
-        set_kana_mode(value: KanaMode): void;
+        set_kana_mode(value: KanaMode | null): void;
         get_punctuation_style(): PunctuationStyle;
-        set_punctuation_style(value: PunctuationStyle): void;
+        set_punctuation_style(value: PunctuationStyle | null): void;
         get_auto_correct(): boolean;
         set_auto_correct(value: boolean): void;
         get_pending_output(): string;
@@ -4332,7 +4332,7 @@ export namespace Kkc {
 
         // Methods
 
-        get_keymap(mode: InputMode): Keymap;
+        get_keymap(mode: InputMode | null): Keymap;
         get_metadata(): RuleMetadata;
         set_metadata(value: RuleMetadata): void;
         get_filter(): KeyEventFilter;
@@ -4468,7 +4468,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4509,7 +4509,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4848,7 +4848,7 @@ export namespace Kkc {
 
         // Methods
 
-        write(input_mode: InputMode): void;
+        write(input_mode: InputMode | null): void;
     }
 
     module Context {
@@ -4950,9 +4950,9 @@ export namespace Kkc {
         get_input_cursor_pos(): number;
         get_input_cursor_width(): number;
         get_input_mode(): InputMode;
-        set_input_mode(value: InputMode): void;
+        set_input_mode(value: InputMode | null): void;
         get_punctuation_style(): PunctuationStyle;
-        set_punctuation_style(value: PunctuationStyle): void;
+        set_punctuation_style(value: PunctuationStyle | null): void;
         get_auto_correct(): boolean;
         set_auto_correct(value: boolean): void;
         get_typing_rule(): Rule;
@@ -5037,7 +5037,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5078,7 +5078,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5472,7 +5472,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5513,7 +5513,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5907,7 +5907,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5948,7 +5948,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6340,7 +6340,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6381,7 +6381,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6782,7 +6782,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6823,7 +6823,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7816,7 +7816,9 @@ export namespace Kkc {
         vfunc_unigram_backoff(entry: LanguageModelEntry): number;
     }
 
-    export const UnigramLanguageModel: UnigramLanguageModelNamespace;
+    export const UnigramLanguageModel: UnigramLanguageModelNamespace & {
+        new (): UnigramLanguageModel; // This allows `obj instanceof UnigramLanguageModel`
+    };
 
     module BigramLanguageModel {
         // Constructor properties interface
@@ -7843,7 +7845,9 @@ export namespace Kkc {
         vfunc_bigram_backoff(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
     }
 
-    export const BigramLanguageModel: BigramLanguageModelNamespace;
+    export const BigramLanguageModel: BigramLanguageModelNamespace & {
+        new (): BigramLanguageModel; // This allows `obj instanceof BigramLanguageModel`
+    };
 
     module TrigramLanguageModel {
         // Constructor properties interface
@@ -7872,7 +7876,9 @@ export namespace Kkc {
         vfunc_trigram_cost(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
     }
 
-    export const TrigramLanguageModel: TrigramLanguageModelNamespace;
+    export const TrigramLanguageModel: TrigramLanguageModelNamespace & {
+        new (): TrigramLanguageModel; // This allows `obj instanceof TrigramLanguageModel`
+    };
 
     module Dictionary {
         // Constructor properties interface
@@ -7896,7 +7902,9 @@ export namespace Kkc {
         vfunc_save(): void;
     }
 
-    export const Dictionary: DictionaryNamespace;
+    export const Dictionary: DictionaryNamespace & {
+        new (): Dictionary; // This allows `obj instanceof Dictionary`
+    };
 
     module SegmentDictionary {
         // Constructor properties interface
@@ -7924,7 +7932,9 @@ export namespace Kkc {
         vfunc_purge_candidate(candidate: Candidate): boolean;
     }
 
-    export const SegmentDictionary: SegmentDictionaryNamespace;
+    export const SegmentDictionary: SegmentDictionaryNamespace & {
+        new (): SegmentDictionary; // This allows `obj instanceof SegmentDictionary`
+    };
 
     module SentenceDictionary {
         // Constructor properties interface
@@ -7950,7 +7960,9 @@ export namespace Kkc {
         vfunc_select_segments(input: Segment[]): boolean;
     }
 
-    export const SentenceDictionary: SentenceDictionaryNamespace;
+    export const SentenceDictionary: SentenceDictionaryNamespace & {
+        new (): SentenceDictionary; // This allows `obj instanceof SentenceDictionary`
+    };
 
     /**
      * Name of the imported GIR library

@@ -414,7 +414,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -455,7 +455,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -905,7 +905,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -946,7 +946,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1372,7 +1372,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1413,7 +1413,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1871,7 +1871,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1912,7 +1912,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2332,7 +2332,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2373,7 +2373,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2799,7 +2799,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2840,7 +2840,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3260,7 +3260,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3301,7 +3301,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4105,7 +4105,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4146,7 +4146,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4559,7 +4559,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4600,7 +4600,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5018,7 +5018,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5059,7 +5059,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5563,7 +5563,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5604,7 +5604,7 @@ export namespace Gpseq {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6237,7 +6237,9 @@ export namespace Gpseq {
     }
     interface Channel extends Sender {}
 
-    export const Channel: ChannelNamespace;
+    export const Channel: ChannelNamespace & {
+        new (): Channel; // This allows `obj instanceof Channel`
+    };
 
     module ChannelBase {
         // Constructor properties interface
@@ -6275,7 +6277,9 @@ export namespace Gpseq {
         vfunc_close(): void;
     }
 
-    export const ChannelBase: ChannelBaseNamespace;
+    export const ChannelBase: ChannelBaseNamespace & {
+        new (): ChannelBase; // This allows `obj instanceof ChannelBase`
+    };
 
     module Collector {
         // Constructor properties interface
@@ -6311,7 +6315,9 @@ export namespace Gpseq {
         vfunc_finish(a: any): any;
     }
 
-    export const Collector: CollectorNamespace;
+    export const Collector: CollectorNamespace & {
+        new (): Collector; // This allows `obj instanceof Collector`
+    };
 
     module Executor {
         // Constructor properties interface
@@ -6341,7 +6347,9 @@ export namespace Gpseq {
         vfunc_get_parallels(): number;
     }
 
-    export const Executor: ExecutorNamespace;
+    export const Executor: ExecutorNamespace & {
+        new (): Executor; // This allows `obj instanceof Executor`
+    };
 
     module Receiver {
         // Constructor properties interface
@@ -6367,7 +6375,9 @@ export namespace Gpseq {
         vfunc_try_recv(): Result;
     }
 
-    export const Receiver: ReceiverNamespace;
+    export const Receiver: ReceiverNamespace & {
+        new (): Receiver; // This allows `obj instanceof Receiver`
+    };
 
     module Result {
         interface TransformFunc {
@@ -6480,7 +6490,9 @@ export namespace Gpseq {
         vfunc_and_then(func: Func): Result;
     }
 
-    export const Result: ResultNamespace;
+    export const Result: ResultNamespace & {
+        new (): Result; // This allows `obj instanceof Result`
+    };
 
     module Sender {
         // Constructor properties interface
@@ -6506,7 +6518,9 @@ export namespace Gpseq {
         vfunc_try_send(data: any): Result;
     }
 
-    export const Sender: SenderNamespace;
+    export const Sender: SenderNamespace & {
+        new (): Sender; // This allows `obj instanceof Sender`
+    };
 
     module Spliterator {
         // Constructor properties interface
@@ -6553,7 +6567,9 @@ export namespace Gpseq {
         vfunc_each_chunk(f: EachChunkFunc): boolean;
     }
 
-    export const Spliterator: SpliteratorNamespace;
+    export const Spliterator: SpliteratorNamespace & {
+        new (): Spliterator; // This allows `obj instanceof Spliterator`
+    };
 
     module Supplier {
         // Constructor properties interface
@@ -6577,7 +6593,9 @@ export namespace Gpseq {
         vfunc_supply(): any;
     }
 
-    export const Supplier: SupplierNamespace;
+    export const Supplier: SupplierNamespace & {
+        new (): Supplier; // This allows `obj instanceof Supplier`
+    };
 
     module Task {
         // Constructor properties interface
@@ -6608,7 +6626,9 @@ export namespace Gpseq {
         vfunc_compute(): void;
     }
 
-    export const Task: TaskNamespace;
+    export const Task: TaskNamespace & {
+        new (): Task; // This allows `obj instanceof Task`
+    };
 
     module ThreadFactory {
         // Constructor properties interface
@@ -6630,7 +6650,9 @@ export namespace Gpseq {
         vfunc_create_thread(pool: WorkerPool): WorkerThread;
     }
 
-    export const ThreadFactory: ThreadFactoryNamespace;
+    export const ThreadFactory: ThreadFactoryNamespace & {
+        new (): ThreadFactory; // This allows `obj instanceof ThreadFactory`
+    };
 
     /**
      * Name of the imported GIR library

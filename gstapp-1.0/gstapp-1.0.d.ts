@@ -574,7 +574,7 @@ export namespace GstApp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -615,7 +615,7 @@ export namespace GstApp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1516,7 +1516,7 @@ export namespace GstApp {
          * buffers.
          * @param leaky the #GstAppLeakyType
          */
-        set_leaky_type(leaky: AppLeakyType): void;
+        set_leaky_type(leaky: AppLeakyType | null): void;
         /**
          * Set the maximum amount of buffers that can be queued in `appsrc`.
          * After the maximum amount of buffers are queued, `appsrc` will emit the
@@ -1551,7 +1551,7 @@ export namespace GstApp {
          * A stream_type stream
          * @param type the new state
          */
-        set_stream_type(type: AppStreamType): void;
+        set_stream_type(type: AppStreamType | null): void;
 
         // Inherited methods
         /**
@@ -1629,7 +1629,7 @@ export namespace GstApp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1670,7 +1670,7 @@ export namespace GstApp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

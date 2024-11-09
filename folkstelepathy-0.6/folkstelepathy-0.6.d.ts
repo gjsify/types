@@ -337,7 +337,7 @@ export namespace FolksTelepathy {
         vfunc_set_phone_numbers(value: Gee.Set): void;
         is_online(): boolean;
         get_presence_type(): Folks.PresenceType;
-        set_presence_type(value: Folks.PresenceType): void;
+        set_presence_type(value: Folks.PresenceType | null): void;
         get_presence_message(): string;
         set_presence_message(value: string): void;
         get_client_types(): string[];
@@ -406,7 +406,7 @@ export namespace FolksTelepathy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -447,7 +447,7 @@ export namespace FolksTelepathy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

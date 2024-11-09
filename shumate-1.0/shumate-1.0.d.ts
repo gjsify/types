@@ -428,7 +428,7 @@ export namespace Shumate {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -476,22 +476,22 @@ export namespace Shumate {
          * @param state platform state to query
          * @returns the value of @state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
         /**
          * Resets the accessible `property` to its default value.
          * @param property a `GtkAccessibleProperty`
          */
-        reset_property(property: Gtk.AccessibleProperty): void;
+        reset_property(property: Gtk.AccessibleProperty | null): void;
         /**
          * Resets the accessible `relation` to its default value.
          * @param relation a `GtkAccessibleRelation`
          */
-        reset_relation(relation: Gtk.AccessibleRelation): void;
+        reset_relation(relation: Gtk.AccessibleRelation | null): void;
         /**
          * Resets the accessible `state` to its default value.
          * @param state a `GtkAccessibleState`
          */
-        reset_state(state: Gtk.AccessibleState): void;
+        reset_state(state: Gtk.AccessibleState | null): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -524,7 +524,7 @@ export namespace Shumate {
          * @param properties an array of `GtkAccessibleProperty`
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -535,7 +535,7 @@ export namespace Shumate {
          * @param relations an array of `GtkAccessibleRelation`
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -546,7 +546,7 @@ export namespace Shumate {
          * @param states an array of `GtkAccessibleState`
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -721,7 +721,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -762,7 +762,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1198,7 +1198,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1239,7 +1239,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2246,7 +2246,7 @@ export namespace Shumate {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -2294,22 +2294,22 @@ export namespace Shumate {
          * @param state platform state to query
          * @returns the value of @state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
         /**
          * Resets the accessible `property` to its default value.
          * @param property a `GtkAccessibleProperty`
          */
-        reset_property(property: Gtk.AccessibleProperty): void;
+        reset_property(property: Gtk.AccessibleProperty | null): void;
         /**
          * Resets the accessible `relation` to its default value.
          * @param relation a `GtkAccessibleRelation`
          */
-        reset_relation(relation: Gtk.AccessibleRelation): void;
+        reset_relation(relation: Gtk.AccessibleRelation | null): void;
         /**
          * Resets the accessible `state` to its default value.
          * @param state a `GtkAccessibleState`
          */
-        reset_state(state: Gtk.AccessibleState): void;
+        reset_state(state: Gtk.AccessibleState | null): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -2342,7 +2342,7 @@ export namespace Shumate {
          * @param properties an array of `GtkAccessibleProperty`
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -2353,7 +2353,7 @@ export namespace Shumate {
          * @param relations an array of `GtkAccessibleRelation`
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -2364,7 +2364,7 @@ export namespace Shumate {
          * @param states an array of `GtkAccessibleState`
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -2539,7 +2539,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2580,7 +2580,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3004,7 +3004,7 @@ export namespace Shumate {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -3052,22 +3052,22 @@ export namespace Shumate {
          * @param state platform state to query
          * @returns the value of @state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
         /**
          * Resets the accessible `property` to its default value.
          * @param property a `GtkAccessibleProperty`
          */
-        reset_property(property: Gtk.AccessibleProperty): void;
+        reset_property(property: Gtk.AccessibleProperty | null): void;
         /**
          * Resets the accessible `relation` to its default value.
          * @param relation a `GtkAccessibleRelation`
          */
-        reset_relation(relation: Gtk.AccessibleRelation): void;
+        reset_relation(relation: Gtk.AccessibleRelation | null): void;
         /**
          * Resets the accessible `state` to its default value.
          * @param state a `GtkAccessibleState`
          */
-        reset_state(state: Gtk.AccessibleState): void;
+        reset_state(state: Gtk.AccessibleState | null): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -3100,7 +3100,7 @@ export namespace Shumate {
          * @param properties an array of `GtkAccessibleProperty`
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -3111,7 +3111,7 @@ export namespace Shumate {
          * @param relations an array of `GtkAccessibleRelation`
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -3122,7 +3122,7 @@ export namespace Shumate {
          * @param states an array of `GtkAccessibleState`
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -3297,7 +3297,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3338,7 +3338,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3918,7 +3918,7 @@ export namespace Shumate {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -3966,22 +3966,22 @@ export namespace Shumate {
          * @param state platform state to query
          * @returns the value of @state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
         /**
          * Resets the accessible `property` to its default value.
          * @param property a `GtkAccessibleProperty`
          */
-        reset_property(property: Gtk.AccessibleProperty): void;
+        reset_property(property: Gtk.AccessibleProperty | null): void;
         /**
          * Resets the accessible `relation` to its default value.
          * @param relation a `GtkAccessibleRelation`
          */
-        reset_relation(relation: Gtk.AccessibleRelation): void;
+        reset_relation(relation: Gtk.AccessibleRelation | null): void;
         /**
          * Resets the accessible `state` to its default value.
          * @param state a `GtkAccessibleState`
          */
-        reset_state(state: Gtk.AccessibleState): void;
+        reset_state(state: Gtk.AccessibleState | null): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -4014,7 +4014,7 @@ export namespace Shumate {
          * @param properties an array of `GtkAccessibleProperty`
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -4025,7 +4025,7 @@ export namespace Shumate {
          * @param relations an array of `GtkAccessibleRelation`
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -4036,7 +4036,7 @@ export namespace Shumate {
          * @param states an array of `GtkAccessibleState`
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -4211,7 +4211,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4252,7 +4252,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4662,7 +4662,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4703,7 +4703,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5313,7 +5313,7 @@ export namespace Shumate {
          * Sets the map source's projection.
          * @param projection a #ShumateMapProjection
          */
-        set_projection(projection: MapProjection): void;
+        set_projection(projection: MapProjection | null): void;
         /**
          * Sets the map source's tile size.
          * @param tile_size the tile size
@@ -5514,7 +5514,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5555,7 +5555,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5998,7 +5998,7 @@ export namespace Shumate {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -6046,22 +6046,22 @@ export namespace Shumate {
          * @param state platform state to query
          * @returns the value of @state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
         /**
          * Resets the accessible `property` to its default value.
          * @param property a `GtkAccessibleProperty`
          */
-        reset_property(property: Gtk.AccessibleProperty): void;
+        reset_property(property: Gtk.AccessibleProperty | null): void;
         /**
          * Resets the accessible `relation` to its default value.
          * @param relation a `GtkAccessibleRelation`
          */
-        reset_relation(relation: Gtk.AccessibleRelation): void;
+        reset_relation(relation: Gtk.AccessibleRelation | null): void;
         /**
          * Resets the accessible `state` to its default value.
          * @param state a `GtkAccessibleState`
          */
-        reset_state(state: Gtk.AccessibleState): void;
+        reset_state(state: Gtk.AccessibleState | null): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -6094,7 +6094,7 @@ export namespace Shumate {
          * @param properties an array of `GtkAccessibleProperty`
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -6105,7 +6105,7 @@ export namespace Shumate {
          * @param relations an array of `GtkAccessibleRelation`
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -6116,7 +6116,7 @@ export namespace Shumate {
          * @param states an array of `GtkAccessibleState`
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -6331,7 +6331,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6372,7 +6372,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6807,7 +6807,7 @@ export namespace Shumate {
          * or %GTK_SELECTION_BROWSE will clear all previously selected markers.
          * @param mode a [enum@Gtk.SelectionMode] value
          */
-        set_selection_mode(mode: Gtk.SelectionMode): void;
+        set_selection_mode(mode: Gtk.SelectionMode | null): void;
         /**
          * Unselects all markers in the layer.
          */
@@ -6867,7 +6867,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6908,7 +6908,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7506,7 +7506,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7547,7 +7547,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7987,7 +7987,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8028,7 +8028,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8493,7 +8493,7 @@ export namespace Shumate {
          * Sets the scale unit.
          * @param unit a #ShumateUnit
          */
-        set_unit(unit: Unit): void;
+        set_unit(unit: Unit | null): void;
         /**
          * Sets the scale viewport.
          * @param viewport a #ShumateViewport
@@ -8530,7 +8530,7 @@ export namespace Shumate {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -8578,22 +8578,22 @@ export namespace Shumate {
          * @param state platform state to query
          * @returns the value of @state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
         /**
          * Resets the accessible `property` to its default value.
          * @param property a `GtkAccessibleProperty`
          */
-        reset_property(property: Gtk.AccessibleProperty): void;
+        reset_property(property: Gtk.AccessibleProperty | null): void;
         /**
          * Resets the accessible `relation` to its default value.
          * @param relation a `GtkAccessibleRelation`
          */
-        reset_relation(relation: Gtk.AccessibleRelation): void;
+        reset_relation(relation: Gtk.AccessibleRelation | null): void;
         /**
          * Resets the accessible `state` to its default value.
          * @param state a `GtkAccessibleState`
          */
-        reset_state(state: Gtk.AccessibleState): void;
+        reset_state(state: Gtk.AccessibleState | null): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -8626,7 +8626,7 @@ export namespace Shumate {
          * @param properties an array of `GtkAccessibleProperty`
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -8637,7 +8637,7 @@ export namespace Shumate {
          * @param relations an array of `GtkAccessibleRelation`
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -8648,7 +8648,7 @@ export namespace Shumate {
          * @param states an array of `GtkAccessibleState`
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -8823,7 +8823,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8864,7 +8864,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9341,7 +9341,7 @@ export namespace Shumate {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -9389,22 +9389,22 @@ export namespace Shumate {
          * @param state platform state to query
          * @returns the value of @state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
         /**
          * Resets the accessible `property` to its default value.
          * @param property a `GtkAccessibleProperty`
          */
-        reset_property(property: Gtk.AccessibleProperty): void;
+        reset_property(property: Gtk.AccessibleProperty | null): void;
         /**
          * Resets the accessible `relation` to its default value.
          * @param relation a `GtkAccessibleRelation`
          */
-        reset_relation(relation: Gtk.AccessibleRelation): void;
+        reset_relation(relation: Gtk.AccessibleRelation | null): void;
         /**
          * Resets the accessible `state` to its default value.
          * @param state a `GtkAccessibleState`
          */
-        reset_state(state: Gtk.AccessibleState): void;
+        reset_state(state: Gtk.AccessibleState | null): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -9437,7 +9437,7 @@ export namespace Shumate {
          * @param properties an array of `GtkAccessibleProperty`
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -9448,7 +9448,7 @@ export namespace Shumate {
          * @param relations an array of `GtkAccessibleRelation`
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -9459,7 +9459,7 @@ export namespace Shumate {
          * @param states an array of `GtkAccessibleState`
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -9634,7 +9634,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9675,7 +9675,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10190,7 +10190,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10231,7 +10231,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10706,7 +10706,7 @@ export namespace Shumate {
          * Sets the tile's #ShumateState
          * @param state a #ShumateState
          */
-        set_state(state: State): void;
+        set_state(state: State | null): void;
         /**
          * Sets the tile's x position
          * @param x the position
@@ -11207,7 +11207,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11248,7 +11248,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11946,7 +11946,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11987,7 +11987,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12651,7 +12651,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -12692,7 +12692,7 @@ export namespace Shumate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13111,7 +13111,9 @@ export namespace Shumate {
         vfunc_set_location(latitude: number, longitude: number): void;
     }
 
-    export const Location: LocationNamespace;
+    export const Location: LocationNamespace & {
+        new (): Location; // This allows `obj instanceof Location`
+    };
 
     /**
      * Name of the imported GIR library

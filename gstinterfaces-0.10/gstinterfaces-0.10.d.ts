@@ -307,7 +307,7 @@ export namespace GstInterfaces {
      * @param command Pointer to GstNavigationCommand to receive the type of the navigation event.
      * @returns TRUE if the navigation command could be extracted, otherwise FALSE.
      */
-    function navigation_event_parse_command(event: Gst.Event, command: NavigationCommand): boolean;
+    function navigation_event_parse_command(event: Gst.Event, command: NavigationCommand | null): boolean;
     function navigation_event_parse_key_event(event: Gst.Event, key: string): boolean;
     /**
      * Retrieve the details of either a #GstNavigation mouse button press event or
@@ -395,7 +395,7 @@ export namespace GstInterfaces {
      * @param cmd a pointer to store the nth command into.
      * @returns %TRUE if the query could be successfully parsed. %FALSE if not.
      */
-    function navigation_query_parse_commands_nth(query: Gst.Query, nth: number, cmd: NavigationCommand): boolean;
+    function navigation_query_parse_commands_nth(query: Gst.Query, nth: number, cmd: NavigationCommand | null): boolean;
     /**
      * Set the #GstNavigation angles query result field in `query`.
      * @param query a #GstQuery
@@ -410,8 +410,12 @@ export namespace GstInterfaces {
      * @param n_cmds the number of commands to set.
      * @param cmds An array containing @n_cmds @GstNavigationCommand values.
      */
-    function navigation_query_set_commandsv(query: Gst.Query, n_cmds: number, cmds: NavigationCommand): void;
-    function stream_volume_convert_volume(from: StreamVolumeFormat, to: StreamVolumeFormat, val: number): number;
+    function navigation_query_set_commandsv(query: Gst.Query, n_cmds: number, cmds: NavigationCommand | null): void;
+    function stream_volume_convert_volume(
+        from: StreamVolumeFormat | null,
+        to: StreamVolumeFormat | null,
+        val: number,
+    ): number;
     /**
      * Flags indicating which optional features are supported by a mixer
      * implementation.
@@ -747,7 +751,9 @@ export namespace GstInterfaces {
         value_changed(channel: ColorBalanceChannel, value: number): void;
     }
 
-    export const ColorBalance: ColorBalanceNamespace;
+    export const ColorBalance: ColorBalanceNamespace & {
+        new (): ColorBalance; // This allows `obj instanceof ColorBalance`
+    };
 
     module Mixer {
         // Constructor properties interface
@@ -889,7 +895,9 @@ export namespace GstInterfaces {
         volume_changed(track: MixerTrack, volumes: number): void;
     }
 
-    export const Mixer: MixerNamespace;
+    export const Mixer: MixerNamespace & {
+        new (): Mixer; // This allows `obj instanceof Mixer`
+    };
 
     module Navigation {
         // Constructor properties interface
@@ -908,7 +916,7 @@ export namespace GstInterfaces {
          * Sends the indicated command to the navigation interface.
          * @param command The command to issue
          */
-        send_command(command: NavigationCommand): void;
+        send_command(command: NavigationCommand | null): void;
         send_event(structure: Gst.Structure): void;
         send_key_event(event: string, key: string): void;
         /**
@@ -928,7 +936,9 @@ export namespace GstInterfaces {
         vfunc_send_event(structure: Gst.Structure): void;
     }
 
-    export const Navigation: NavigationNamespace;
+    export const Navigation: NavigationNamespace & {
+        new (): Navigation; // This allows `obj instanceof Navigation`
+    };
 
     module PropertyProbe {
         // Constructor properties interface
@@ -1023,7 +1033,9 @@ export namespace GstInterfaces {
         vfunc_probe_property(prop_id: number, pspec: GObject.ParamSpec): void;
     }
 
-    export const PropertyProbe: PropertyProbeNamespace;
+    export const PropertyProbe: PropertyProbeNamespace & {
+        new (): PropertyProbe; // This allows `obj instanceof PropertyProbe`
+    };
 
     module StreamVolume {
         // Constructor properties interface
@@ -1049,12 +1061,14 @@ export namespace GstInterfaces {
         // Methods
 
         get_mute(): boolean;
-        get_volume(format: StreamVolumeFormat): number;
+        get_volume(format: StreamVolumeFormat | null): number;
         set_mute(mute: boolean): void;
-        set_volume(format: StreamVolumeFormat, val: number): void;
+        set_volume(format: StreamVolumeFormat | null, val: number): void;
     }
 
-    export const StreamVolume: StreamVolumeNamespace;
+    export const StreamVolume: StreamVolumeNamespace & {
+        new (): StreamVolume; // This allows `obj instanceof StreamVolume`
+    };
 
     module Tuner {
         // Constructor properties interface
@@ -1161,7 +1175,9 @@ export namespace GstInterfaces {
         signal_strength(channel: TunerChannel): number;
     }
 
-    export const Tuner: TunerNamespace;
+    export const Tuner: TunerNamespace & {
+        new (): Tuner; // This allows `obj instanceof Tuner`
+    };
 
     module VideoOrientation {
         // Constructor properties interface
@@ -1269,7 +1285,9 @@ export namespace GstInterfaces {
         vfunc_set_vflip(flip: boolean): boolean;
     }
 
-    export const VideoOrientation: VideoOrientationNamespace;
+    export const VideoOrientation: VideoOrientationNamespace & {
+        new (): VideoOrientation; // This allows `obj instanceof VideoOrientation`
+    };
 
     module XOverlay {
         // Constructor properties interface
@@ -1339,7 +1357,9 @@ export namespace GstInterfaces {
         set_xwindow_id(xwindow_id: number): void;
     }
 
-    export const XOverlay: XOverlayNamespace;
+    export const XOverlay: XOverlayNamespace & {
+        new (): XOverlay; // This allows `obj instanceof XOverlay`
+    };
 
     /**
      * Name of the imported GIR library

@@ -788,7 +788,7 @@ export namespace FPrint {
          * @param feature #FpDeviceFeature flags to check against device supported features
          * @returns %TRUE if supported, %FALSE otherwise
          */
-        has_feature(feature: DeviceFeature): boolean;
+        has_feature(feature: DeviceFeature | null): boolean;
         /**
          * Whether the device has on-chip storage. If it has, you can list the
          * prints stored on the with fp_device_list_prints() and you should
@@ -1342,7 +1342,7 @@ export namespace FPrint {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1383,7 +1383,7 @@ export namespace FPrint {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2073,7 +2073,7 @@ export namespace FPrint {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2114,7 +2114,7 @@ export namespace FPrint {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2575,7 +2575,7 @@ export namespace FPrint {
          * Set the finger that the print is for.
          * @param finger The #FpFinger
          */
-        set_finger(finger: Finger): void;
+        set_finger(finger: Finger | null): void;
         /**
          * Set the username for the print.
          * @param username The new username

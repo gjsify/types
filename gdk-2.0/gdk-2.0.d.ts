@@ -3028,7 +3028,7 @@ export namespace Gdk {
      * @param protocol location where the supported DND protocol is returned.
      * @returns the windowing system specific id for the window where    the drop should happen. This may be @xid or the id of a proxy    window, or zero if @xid doesn't support Drag and Drop.
      */
-    function drag_get_protocol(xid: NativeWindow, protocol: DragProtocol): NativeWindow;
+    function drag_get_protocol(xid: NativeWindow, protocol: DragProtocol | null): NativeWindow;
     /**
      * Finds out the DND protocol supported by a window.
      * @param display the #GdkDisplay where the destination window resides
@@ -3036,7 +3036,11 @@ export namespace Gdk {
      * @param protocol location where the supported DND protocol is returned.
      * @returns the windowing system id of the window where the drop should happen. This     may be @xid or the id of a proxy window, or zero if @xid doesn't     support Drag and Drop.
      */
-    function drag_get_protocol_for_display(display: Display, xid: NativeWindow, protocol: DragProtocol): NativeWindow;
+    function drag_get_protocol_for_display(
+        display: Display,
+        xid: NativeWindow,
+        protocol: DragProtocol | null,
+    ): NativeWindow;
     /**
      * Updates the drag context when the pointer moves or the
      * set of actions changes.
@@ -3055,11 +3059,11 @@ export namespace Gdk {
     function drag_motion(
         context: DragContext,
         dest_window: Window,
-        protocol: DragProtocol,
+        protocol: DragProtocol | null,
         x_root: number,
         y_root: number,
-        suggested_action: DragAction,
-        possible_actions: DragAction,
+        suggested_action: DragAction | null,
+        possible_actions: DragAction | null,
         time_: number,
     ): boolean;
     /**
@@ -3071,7 +3075,7 @@ export namespace Gdk {
      * @param action the selected action which will be taken when a drop happens,    or 0 to indicate that a drop will not be accepted.
      * @param time_ the timestamp for this operation.
      */
-    function drag_status(context: DragContext, action: DragAction, time_: number): void;
+    function drag_status(context: DragContext, action: DragAction | null, time_: number): void;
     /**
      * Draws an arc or a filled 'pie slice'. The arc is defined by the bounding
      * rectangle of the entire ellipse, and the start and end angles of the part
@@ -3191,7 +3195,7 @@ export namespace Gdk {
         y: number,
         width: number,
         height: number,
-        dith: RgbDither,
+        dith: RgbDither | null,
         buf: number,
         rowstride: number,
     ): void;
@@ -3226,7 +3230,7 @@ export namespace Gdk {
         y: number,
         width: number,
         height: number,
-        dith: RgbDither,
+        dith: RgbDither | null,
         buf: number,
         rowstride: number,
         cmap: RgbCmap,
@@ -3375,7 +3379,7 @@ export namespace Gdk {
         dest_y: number,
         width: number,
         height: number,
-        dither: RgbDither,
+        dither: RgbDither | null,
         x_dither: number,
         y_dither: number,
     ): void;
@@ -3441,7 +3445,7 @@ export namespace Gdk {
         y: number,
         width: number,
         height: number,
-        dith: RgbDither,
+        dith: RgbDither | null,
         buf: number,
         rowstride: number,
     ): void;
@@ -3467,7 +3471,7 @@ export namespace Gdk {
         y: number,
         width: number,
         height: number,
-        dith: RgbDither,
+        dith: RgbDither | null,
         buf: number,
         rowstride: number,
         xdith: number,
@@ -3480,7 +3484,7 @@ export namespace Gdk {
         y: number,
         width: number,
         height: number,
-        dith: RgbDither,
+        dith: RgbDither | null,
         rgb_buf: number,
         rowstride: number,
     ): void;
@@ -3491,7 +3495,7 @@ export namespace Gdk {
         y: number,
         width: number,
         height: number,
-        dith: RgbDither,
+        dith: RgbDither | null,
         rgb_buf: number,
         rowstride: number,
         xdith: number,
@@ -3706,9 +3710,9 @@ export namespace Gdk {
      * @param _function the callback function.
      * @returns a tag that can later be used as an argument to gdk_input_remove().
      */
-    function input_add_full(source: number, condition: InputCondition, _function: InputFunction): number;
+    function input_add_full(source: number, condition: InputCondition | null, _function: InputFunction): number;
     function input_remove(tag: number): void;
-    function input_set_extension_events(window: Window, mask: number, mode: ExtensionMode): void;
+    function input_set_extension_events(window: Window, mask: number, mode: ExtensionMode | null): void;
     function keyboard_grab(window: Window, owner_events: boolean, time_: number): GrabStatus;
     /**
      * Determines information about the current keyboard grab.
@@ -3968,7 +3972,7 @@ export namespace Gdk {
         dest_y: number,
         width: number,
         height: number,
-        dither: RgbDither,
+        dither: RgbDither | null,
         x_dither: number,
         y_dither: number,
     ): void;
@@ -4003,16 +4007,16 @@ export namespace Gdk {
         dest_y: number,
         width: number,
         height: number,
-        alpha_mode: GdkPixbuf.PixbufAlphaMode,
+        alpha_mode: GdkPixbuf.PixbufAlphaMode | null,
         alpha_threshold: number,
-        dither: RgbDither,
+        dither: RgbDither | null,
         x_dither: number,
         y_dither: number,
     ): void;
     function pointer_grab(
         window: Window,
         owner_events: boolean,
-        event_mask: EventMask,
+        event_mask: EventMask | null,
         confine_to: Window,
         cursor: Cursor,
         time_: number,
@@ -4047,7 +4051,7 @@ export namespace Gdk {
         property: Atom,
         type: Atom,
         format: number,
-        mode: PropMode,
+        mode: PropMode | null,
         data: number,
         nelements: number,
     ): void;
@@ -4083,7 +4087,7 @@ export namespace Gdk {
      * @param visual_types return location for the available visual types
      * @param count return location for the number of available visual types
      */
-    function query_visual_types(visual_types: VisualType, count: number): void;
+    function query_visual_types(visual_types: VisualType | null, count: number): void;
     function rgb_colormap_ditherable(cmap: Colormap): boolean;
     function rgb_ditherable(): boolean;
     /**
@@ -4314,7 +4318,11 @@ export namespace Gdk {
      * @returns the width of the string in pixels.
      */
     function string_width(font: Font, string: string): number;
-    function synthesize_window_state(window: Window, unset_flags: WindowState, set_flags: WindowState): void;
+    function synthesize_window_state(
+        window: Window,
+        unset_flags: WindowState | null,
+        set_flags: WindowState | null,
+    ): void;
     /**
      * This function retrieves a pixel from `window` to force the windowing
      * system to carry out any pending rendering commands.
@@ -4349,8 +4357,8 @@ export namespace Gdk {
         x: number,
         y: number,
         button: number,
-        modifiers: ModifierType,
-        button_pressrelease: EventType,
+        modifiers: ModifierType | null,
+        button_pressrelease: EventType | null,
     ): boolean;
     /**
      * This function is intended to be used in GTK+ test programs.
@@ -4382,8 +4390,8 @@ export namespace Gdk {
         x: number,
         y: number,
         keyval: number,
-        modifiers: ModifierType,
-        key_pressrelease: EventType,
+        modifiers: ModifierType | null,
+        key_pressrelease: EventType | null,
     ): boolean;
     function text_extents(
         font: Font,
@@ -5143,7 +5151,7 @@ export namespace Gdk {
          * @param value location to store the found value.
          * @returns %TRUE if the given axis use was found, otherwise %FALSE
          */
-        get_axis(axes: number, use: AxisUse, value: number): boolean;
+        get_axis(axes: number, use: AxisUse | null, value: number): boolean;
         /**
          * Returns the axis use for `index`.
          * @param index the index of the axis.
@@ -5175,7 +5183,7 @@ export namespace Gdk {
          * @param keyval return value for the keyval.
          * @param modifiers return value for modifiers.
          */
-        get_key(index: number, keyval: number, modifiers: ModifierType): void;
+        get_key(index: number, keyval: number, modifiers: ModifierType | null): void;
         /**
          * Determines the mode of the device.
          * @returns a #GdkInputSource
@@ -5201,11 +5209,11 @@ export namespace Gdk {
          * @returns a #GdkInputSource
          */
         get_source(): InputSource;
-        get_state(window: Window, axes: number, mask: ModifierType): void;
-        set_axis_use(index_: number, use: AxisUse): void;
-        set_key(index_: number, keyval: number, modifiers: ModifierType): void;
-        set_mode(mode: InputMode): boolean;
-        set_source(source: InputSource): void;
+        get_state(window: Window, axes: number, mask: ModifierType | null): void;
+        set_axis_use(index_: number, use: AxisUse | null): void;
+        set_key(index_: number, keyval: number, modifiers: ModifierType | null): void;
+        set_mode(mode: InputMode | null): boolean;
+        set_source(source: InputSource | null): void;
     }
 
     module Display {
@@ -5949,7 +5957,7 @@ export namespace Gdk {
          * Set the fill mode for a graphics context.
          * @param fill the new fill mode.
          */
-        set_fill(fill: Fill): void;
+        set_fill(fill: Fill | null): void;
         /**
          * Sets the font for a graphics context. (Note that
          * all text-drawing functions in GDK take a `font`
@@ -5972,7 +5980,7 @@ export namespace Gdk {
          * the final pixel values.
          * @param _function the #GdkFunction to use
          */
-        set_function(_function: Function): void;
+        set_function(_function: Function | null): void;
         /**
          * Sets various attributes of how lines are drawn. See
          * the corresponding members of #GdkGCValues for full
@@ -5984,9 +5992,9 @@ export namespace Gdk {
          */
         set_line_attributes(
             line_width: number,
-            line_style: LineStyle,
-            cap_style: CapStyle,
-            join_style: JoinStyle,
+            line_style: LineStyle | null,
+            cap_style: CapStyle | null,
+            join_style: JoinStyle | null,
         ): void;
         /**
          * Set the background color of a GC using an unallocated color. The
@@ -6022,7 +6030,7 @@ export namespace Gdk {
          * windows of that window.
          * @param mode the subwindow mode.
          */
-        set_subwindow(mode: SubwindowMode): void;
+        set_subwindow(mode: SubwindowMode | null): void;
         /**
          * Set a tile pixmap for a graphics context.
          * This will only be used if the fill mode
@@ -6048,7 +6056,7 @@ export namespace Gdk {
          * @param values struct containing the new values
          * @param values_mask mask indicating which struct fields are to be used
          */
-        set_values(values: GCValues, values_mask: GCValuesMask): void;
+        set_values(values: GCValues, values_mask: GCValuesMask | null): void;
         /**
          * Decrement the reference count of `gc`.
          */
@@ -6220,7 +6228,7 @@ export namespace Gdk {
          * accelerators.
          * @param state pointer to the modifier mask to change
          */
-        add_virtual_modifiers(state: ModifierType): void;
+        add_virtual_modifiers(state: ModifierType | null): void;
         /**
          * Returns whether the Caps Lock modifer is locked.
          * @returns %TRUE if Caps Lock is on
@@ -6300,7 +6308,7 @@ export namespace Gdk {
          * @param state pointer to the modifier state to map
          * @returns %TRUE if no virtual modifiers were mapped to the     same non-virtual modifier. Note that %FALSE is also returned     if a virtual modifier is mapped to a non-virtual modifier that     was already set in @state.
          */
-        map_virtual_modifiers(state: ModifierType): boolean;
+        map_virtual_modifiers(state: ModifierType | null): boolean;
         /**
          * Translates the contents of a #GdkEventKey into a keyval, effective
          * group, and level. Modifiers that affected the translation and
@@ -6364,7 +6372,7 @@ export namespace Gdk {
          */
         translate_keyboard_state(
             hardware_keycode: number,
-            state: ModifierType,
+            state: ModifierType | null,
             group: number,
         ): [boolean, number, number, number, ModifierType | null];
     }
@@ -6435,7 +6443,7 @@ export namespace Gdk {
          * @param part the part to render to set the color of
          * @param color the color to use, or %NULL to unset a previously         set override color.
          */
-        set_override_color(part: Pango.RenderPart, color?: Color | null): void;
+        set_override_color(part: Pango.RenderPart | null, color?: Color | null): void;
         /**
          * Sets the stipple for one render part (foreground, background, underline,
          * etc.) Note that this is overwritten when iterating through the individual
@@ -6446,7 +6454,7 @@ export namespace Gdk {
          * @param part the part to render with the stipple
          * @param stipple the new stipple value.
          */
-        set_stipple(part: Pango.RenderPart, stipple: Bitmap): void;
+        set_stipple(part: Pango.RenderPart | null, stipple: Bitmap): void;
     }
 
     module Pixmap {
@@ -7201,7 +7209,13 @@ export namespace Gdk {
          * @param root_y root window Y coordinate of mouse click that began the drag
          * @param timestamp timestamp of mouse click that began the drag (use gdk_event_get_time())
          */
-        begin_resize_drag(edge: WindowEdge, button: number, root_x: number, root_y: number, timestamp: number): void;
+        begin_resize_drag(
+            edge: WindowEdge | null,
+            button: number,
+            root_x: number,
+            root_y: number,
+            timestamp: number,
+        ): void;
         /**
          * Clears an entire `window` to the background color or background pixmap.
          */
@@ -7294,7 +7308,7 @@ export namespace Gdk {
          * @param height height of the new surface
          * @returns a pointer to the newly allocated surface. The caller owns the surface and should call cairo_surface_destroy() when done with it. This function always returns a valid pointer, but it will return a pointer to a "nil" surface if @other is already in an error state or any other error occurs.
          */
-        create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface;
+        create_similar_surface(content: cairo.Content | null, width: number, height: number): cairo.Surface;
         /**
          * Attempt to deiconify (unminimize) `window`. On X11 the window manager may
          * choose to ignore the request to deiconify. When using GTK+,
@@ -7457,7 +7471,7 @@ export namespace Gdk {
          * @param decorations The window decorations will be written here
          * @returns TRUE if the window has decorations set, FALSE otherwise.
          */
-        get_decorations(decorations: WMDecoration): boolean;
+        get_decorations(decorations: WMDecoration | null): boolean;
         /**
          * This gets the origin of a #GdkWindow relative to
          * an Enlightenment-window-manager desktop. As long as you don't
@@ -8087,7 +8101,7 @@ export namespace Gdk {
          * but very few honor all possible combinations of bits.
          * @param decorations decoration hint mask
          */
-        set_decorations(decorations: WMDecoration): void;
+        set_decorations(decorations: WMDecoration | null): void;
         /**
          * The event mask for a window determines which events will be reported
          * for that window. For example, an event mask including #GDK_BUTTON_PRESS_MASK
@@ -8095,7 +8109,7 @@ export namespace Gdk {
          * is the bitwise OR of values from the #GdkEventMask enumeration.
          * @param event_mask event mask for @window
          */
-        set_events(event_mask: EventMask): void;
+        set_events(event_mask: EventMask | null): void;
         /**
          * Setting `focus_on_map` to %FALSE hints the desktop environment that the
          * window doesn't want to receive input focus when it is mapped.
@@ -8124,7 +8138,7 @@ export namespace Gdk {
          * enable.
          * @param functions bitmask of operations to allow on @window
          */
-        set_functions(functions: WMFunction): void;
+        set_functions(functions: WMFunction | null): void;
         /**
          * Sets the geometry hints for `window`. Hints flagged in `geom_mask`
          * are set, hints not flagged in `geom_mask` are unset.
@@ -8150,7 +8164,7 @@ export namespace Gdk {
          * @param geometry geometry hints
          * @param geom_mask bitmask indicating fields of @geometry to pay attention to
          */
-        set_geometry_hints(geometry: Geometry, geom_mask: WindowHints): void;
+        set_geometry_hints(geometry: Geometry, geom_mask: WindowHints | null): void;
         /**
          * Sets the group leader window for `window`. By default,
          * GDK sets the group leader for all toplevel windows
@@ -8370,7 +8384,7 @@ export namespace Gdk {
          * The hint must be set before the window is mapped.
          * @param hint A hint of the function this window will have
          */
-        set_type_hint(hint: WindowTypeHint): void;
+        set_type_hint(hint: WindowTypeHint | null): void;
         /**
          * Toggles whether a window needs the user's
          * urgent attention.
@@ -9766,7 +9780,7 @@ export namespace Gdk {
          * @param axis_use the axis use to look for
          * @returns %TRUE if the specified axis was found, otherwise %FALSE
          */
-        get_axis(axis_use: AxisUse): [boolean, number];
+        get_axis(axis_use: AxisUse | null): [boolean, number];
         /**
          * Extract the event window relative x/y coordinates from an event.
          * @returns %TRUE if the event delivered event window coordinates

@@ -248,7 +248,7 @@ export namespace Libxfce4windowing {
      * This does nothing on Wayland, but is safe to call under a Wayland session.
      * @param client_type A #XfwClientType
      */
-    function set_client_type(client_type: ClientType): void;
+    function set_client_type(client_type: ClientType | null): void;
     /**
      * Determines the windowing environment that is currently active.
      * @returns A value from the #XfwWindowing enum.
@@ -798,7 +798,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -839,7 +839,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1288,7 +1288,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1329,7 +1329,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2245,7 +2245,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2286,7 +2286,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2729,7 +2729,7 @@ export namespace Libxfce4windowing {
          * @param direction an #XfwDirection.
          * @returns a #XfwWorkspace, owned by the parent @group, or %NULL if no workspace exists in @direction.
          */
-        get_neighbor(direction: Direction): Workspace | null;
+        get_neighbor(direction: Direction | null): Workspace | null;
         /**
          * Fetches the ordinal number of this workspace.
          *
@@ -2804,7 +2804,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2845,7 +2845,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3338,7 +3338,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3379,7 +3379,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3865,7 +3865,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3906,7 +3906,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4300,7 +4300,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4341,7 +4341,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4747,7 +4747,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4788,7 +4788,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5182,7 +5182,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5223,7 +5223,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5687,7 +5687,7 @@ export namespace Libxfce4windowing {
          * @param direction an #XfwDirection.
          * @returns a #XfwWorkspace, owned by the parent @group, or %NULL if no workspace exists in @direction.
          */
-        get_neighbor(direction: Direction): Workspace | null;
+        get_neighbor(direction: Direction | null): Workspace | null;
         /**
          * Fetches the ordinal number of this workspace.
          *
@@ -5762,7 +5762,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5803,7 +5803,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6246,7 +6246,7 @@ export namespace Libxfce4windowing {
          * @param direction an #XfwDirection.
          * @returns a #XfwWorkspace, owned by the parent @group, or %NULL if no workspace exists in @direction.
          */
-        get_neighbor(direction: Direction): Workspace | null;
+        get_neighbor(direction: Direction | null): Workspace | null;
         /**
          * Fetches the ordinal number of this workspace.
          *
@@ -6321,7 +6321,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6362,7 +6362,7 @@ export namespace Libxfce4windowing {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6974,7 +6974,9 @@ export namespace Libxfce4windowing {
         set_show_desktop(show: boolean): void;
     }
 
-    export const Screen: ScreenNamespace;
+    export const Screen: ScreenNamespace & {
+        new (): Screen; // This allows `obj instanceof Screen`
+    };
 
     module Workspace {
         // Constructor properties interface
@@ -7111,7 +7113,7 @@ export namespace Libxfce4windowing {
          * @param direction an #XfwDirection.
          * @returns a #XfwWorkspace, owned by the parent @group, or %NULL if no workspace exists in @direction.
          */
-        get_neighbor(direction: Direction): Workspace | null;
+        get_neighbor(direction: Direction | null): Workspace | null;
         /**
          * Fetches the ordinal number of this workspace.
          *
@@ -7144,7 +7146,9 @@ export namespace Libxfce4windowing {
         remove(): boolean;
     }
 
-    export const Workspace: WorkspaceNamespace;
+    export const Workspace: WorkspaceNamespace & {
+        new (): Workspace; // This allows `obj instanceof Workspace`
+    };
 
     module WorkspaceGroup {
         // Constructor properties interface
@@ -7264,7 +7268,9 @@ export namespace Libxfce4windowing {
         set_layout(rows: number, columns: number): boolean;
     }
 
-    export const WorkspaceGroup: WorkspaceGroupNamespace;
+    export const WorkspaceGroup: WorkspaceGroupNamespace & {
+        new (): WorkspaceGroup; // This allows `obj instanceof WorkspaceGroup`
+    };
 
     module WorkspaceManager {
         // Constructor properties interface
@@ -7301,7 +7307,9 @@ export namespace Libxfce4windowing {
         list_workspaces(): Workspace[] | null;
     }
 
-    export const WorkspaceManager: WorkspaceManagerNamespace;
+    export const WorkspaceManager: WorkspaceManagerNamespace & {
+        new (): WorkspaceManager; // This allows `obj instanceof WorkspaceManager`
+    };
 
     /**
      * Name of the imported GIR library

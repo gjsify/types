@@ -97,7 +97,7 @@ export namespace GstTag {
     function image_data_to_image_buffer(
         image_data: number[],
         image_data_len: number,
-        image_type: ImageType,
+        image_type: ImageType | null,
     ): Gst.Buffer;
     function list_add_id3_image(
         tag_list: Gst.TagList,

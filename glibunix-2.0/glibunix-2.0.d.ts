@@ -42,10 +42,10 @@ export namespace GLibUnix {
     function fd_add_full(
         priority: number,
         fd: number,
-        condition: GLib.IOCondition,
+        condition: GLib.IOCondition | null,
         _function: GLib.UnixFDSourceFunc,
     ): number;
-    function fd_source_new(fd: number, condition: GLib.IOCondition): GLib.Source;
+    function fd_source_new(fd: number, condition: GLib.IOCondition | null): GLib.Source;
     function fdwalk_set_cloexec(lowfd: number): number;
     function get_passwd_entry(user_name: string): any | null;
     function open_pipe(fds: number, flags: number): boolean;

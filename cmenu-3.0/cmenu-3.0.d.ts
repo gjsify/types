@@ -222,7 +222,7 @@ export namespace CMenu {
         launch_uris_as_manager(
             uris: string[],
             launch_context: Gio.AppLaunchContext | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
         ): boolean;
         /**
          * Returns the list of "additional application actions" supported on the
@@ -723,7 +723,7 @@ export namespace CMenu {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -764,7 +764,7 @@ export namespace CMenu {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

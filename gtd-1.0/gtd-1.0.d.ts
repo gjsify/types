@@ -287,7 +287,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -328,7 +328,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -918,7 +918,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -959,7 +959,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1793,7 +1793,7 @@ export namespace Gtd {
          * as if you passed %GTK_ARROW_DOWN (although you won’t see any arrows).
          * @param direction a #GtkArrowType
          */
-        set_direction(direction: Gtk.ArrowType): void;
+        set_direction(direction: Gtk.ArrowType | null): void;
         // Conflicted with Gtk.Widget.set_direction
         set_direction(...args: never[]): any;
         set_gicon(icon: Gio.Icon): void;
@@ -1865,7 +1865,7 @@ export namespace Gtd {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -1913,22 +1913,22 @@ export namespace Gtd {
          * @param state platform state to query
          * @returns the value of @state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
         /**
          * Resets the accessible `property` to its default value.
          * @param property a `GtkAccessibleProperty`
          */
-        reset_property(property: Gtk.AccessibleProperty): void;
+        reset_property(property: Gtk.AccessibleProperty | null): void;
         /**
          * Resets the accessible `relation` to its default value.
          * @param relation a `GtkAccessibleRelation`
          */
-        reset_relation(relation: Gtk.AccessibleRelation): void;
+        reset_relation(relation: Gtk.AccessibleRelation | null): void;
         /**
          * Resets the accessible `state` to its default value.
          * @param state a `GtkAccessibleState`
          */
-        reset_state(state: Gtk.AccessibleState): void;
+        reset_state(state: Gtk.AccessibleState | null): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -1961,7 +1961,7 @@ export namespace Gtd {
          * @param properties an array of `GtkAccessibleProperty`
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -1972,7 +1972,7 @@ export namespace Gtd {
          * @param relations an array of `GtkAccessibleRelation`
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -1983,7 +1983,7 @@ export namespace Gtd {
          * @param states an array of `GtkAccessibleState`
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -2158,7 +2158,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2199,7 +2199,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2783,7 +2783,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2824,7 +2824,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3656,7 +3656,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3697,7 +3697,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4154,7 +4154,7 @@ export namespace Gtd {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Computes the bounds for `widget` in the coordinate space of `target`.
          *
@@ -4189,7 +4189,7 @@ export namespace Gtd {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Translates the given `point` in `widget'`s coordinates to coordinates
          * relative to `target’`s coordinate system.
@@ -4786,7 +4786,7 @@ export namespace Gtd {
          * @param orientation the orientation to query
          * @returns The size of @widget in @orientation.
          */
-        get_size(orientation: Gtk.Orientation): number;
+        get_size(orientation: Gtk.Orientation | null): number;
         /**
          * Gets the size request that was explicitly set for the widget using
          * gtk_widget_set_size_request().
@@ -5102,7 +5102,7 @@ export namespace Gtd {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE   if the emitting widget should try to handle the keyboard   navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Returns the widgets for which this widget is the target of a
          * mnemonic.
@@ -5136,7 +5136,7 @@ export namespace Gtd {
          * @param orientation the orientation to measure
          * @param for_size Size for the opposite of @orientation, i.e.   if @orientation is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
          */
-        measure(orientation: Gtk.Orientation, for_size: number): [number, number, number, number];
+        measure(orientation: Gtk.Orientation | null, for_size: number): [number, number, number, number];
         /**
          * Emits the ::mnemonic-activate signal.
          *
@@ -5190,7 +5190,7 @@ export namespace Gtd {
          * @param flags Flags to influence what is picked
          * @returns The widget descendant at   the given point
          */
-        pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null;
+        pick(x: number, y: number, flags: Gtk.PickFlags | null): Gtk.Widget | null;
         /**
          * Flags the widget for a rerun of the [vfunc`Gtk`.Widget.size_allocate]
          * function.
@@ -5350,7 +5350,7 @@ export namespace Gtd {
          * set by [func`Gtk`.Widget.set_default_direction] will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Set `child` as the current focus child of `widget`.
          *
@@ -5412,7 +5412,7 @@ export namespace Gtd {
          * Sets the horizontal alignment of `widget`.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
          * @param has_tooltip whether or not @widget has a tooltip.
@@ -5546,7 +5546,7 @@ export namespace Gtd {
          * The default value is %GTK_OVERFLOW_VISIBLE.
          * @param overflow desired overflow
          */
-        set_overflow(overflow: Gtk.Overflow): void;
+        set_overflow(overflow: Gtk.Overflow | null): void;
         /**
          * Sets `parent` as the parent widget of `widget`.
          *
@@ -5629,7 +5629,7 @@ export namespace Gtd {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Sets `markup` as the contents of the tooltip, which is marked
          * up with Pango markup.
@@ -5660,7 +5660,7 @@ export namespace Gtd {
          * Sets the vertical alignment of `widget`.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -5772,7 +5772,7 @@ export namespace Gtd {
          * This function is for use in widget implementations.
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         /**
          * Computes whether a container should give this
          *   widget extra space when possible.
@@ -6079,7 +6079,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6120,7 +6120,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7010,7 +7010,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7051,7 +7051,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7476,7 +7476,7 @@ export namespace Gtd {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7521,7 +7521,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7562,7 +7562,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8132,7 +8132,7 @@ export namespace Gtd {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -8180,22 +8180,22 @@ export namespace Gtd {
          * @param state platform state to query
          * @returns the value of @state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
         /**
          * Resets the accessible `property` to its default value.
          * @param property a `GtkAccessibleProperty`
          */
-        reset_property(property: Gtk.AccessibleProperty): void;
+        reset_property(property: Gtk.AccessibleProperty | null): void;
         /**
          * Resets the accessible `relation` to its default value.
          * @param relation a `GtkAccessibleRelation`
          */
-        reset_relation(relation: Gtk.AccessibleRelation): void;
+        reset_relation(relation: Gtk.AccessibleRelation | null): void;
         /**
          * Resets the accessible `state` to its default value.
          * @param state a `GtkAccessibleState`
          */
-        reset_state(state: Gtk.AccessibleState): void;
+        reset_state(state: Gtk.AccessibleState | null): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -8228,7 +8228,7 @@ export namespace Gtd {
          * @param properties an array of `GtkAccessibleProperty`
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -8239,7 +8239,7 @@ export namespace Gtd {
          * @param relations an array of `GtkAccessibleRelation`
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -8250,7 +8250,7 @@ export namespace Gtd {
          * @param states an array of `GtkAccessibleState`
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -8425,7 +8425,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8466,7 +8466,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8843,7 +8843,7 @@ export namespace Gtd {
          * @param widget a #GtkWidget
          * @param position either @GTK_POS_LEFT or @GTK_POS_RIGHT
          */
-        embed_widget_in_header(widget: Gtk.Widget, position: Gtk.PositionType): void;
+        embed_widget_in_header(widget: Gtk.Widget, position: Gtk.PositionType | null): void;
         /**
          * Shows a notification on the top of the main window.
          * @param notification a #GtdNotification
@@ -9858,7 +9858,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9899,7 +9899,7 @@ export namespace Gtd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10326,7 +10326,7 @@ export namespace Gtd {
          * @param direction direction of focus movement
          * @returns %TRUE if focus ended up inside @widget
          */
-        child_focus(direction: Gtk.DirectionType): boolean;
+        child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
          * Computes the bounds for `widget` in the coordinate space of `target`.
          *
@@ -10361,7 +10361,7 @@ export namespace Gtd {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation): boolean;
+        compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Translates the given `point` in `widget'`s coordinates to coordinates
          * relative to `target’`s coordinate system.
@@ -10958,7 +10958,7 @@ export namespace Gtd {
          * @param orientation the orientation to query
          * @returns The size of @widget in @orientation.
          */
-        get_size(orientation: Gtk.Orientation): number;
+        get_size(orientation: Gtk.Orientation | null): number;
         /**
          * Gets the size request that was explicitly set for the widget using
          * gtk_widget_set_size_request().
@@ -11274,7 +11274,7 @@ export namespace Gtd {
          * @param direction direction of focus movement
          * @returns %TRUE if stopping keyboard navigation is fine, %FALSE   if the emitting widget should try to handle the keyboard   navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType): boolean;
+        keynav_failed(direction: Gtk.DirectionType | null): boolean;
         /**
          * Returns the widgets for which this widget is the target of a
          * mnemonic.
@@ -11308,7 +11308,7 @@ export namespace Gtd {
          * @param orientation the orientation to measure
          * @param for_size Size for the opposite of @orientation, i.e.   if @orientation is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
          */
-        measure(orientation: Gtk.Orientation, for_size: number): [number, number, number, number];
+        measure(orientation: Gtk.Orientation | null, for_size: number): [number, number, number, number];
         /**
          * Emits the ::mnemonic-activate signal.
          *
@@ -11362,7 +11362,7 @@ export namespace Gtd {
          * @param flags Flags to influence what is picked
          * @returns The widget descendant at   the given point
          */
-        pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null;
+        pick(x: number, y: number, flags: Gtk.PickFlags | null): Gtk.Widget | null;
         /**
          * Flags the widget for a rerun of the [vfunc`Gtk`.Widget.size_allocate]
          * function.
@@ -11541,7 +11541,7 @@ export namespace Gtd {
          * set by [func`Gtk`.Widget.set_default_direction] will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection): void;
+        set_direction(dir: Gtk.TextDirection | null): void;
         /**
          * Set `child` as the current focus child of `widget`.
          *
@@ -11603,7 +11603,7 @@ export namespace Gtd {
          * Sets the horizontal alignment of `widget`.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align): void;
+        set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the `has-tooltip` property on `widget` to `has_tooltip`.
          * @param has_tooltip whether or not @widget has a tooltip.
@@ -11737,7 +11737,7 @@ export namespace Gtd {
          * The default value is %GTK_OVERFLOW_VISIBLE.
          * @param overflow desired overflow
          */
-        set_overflow(overflow: Gtk.Overflow): void;
+        set_overflow(overflow: Gtk.Overflow | null): void;
         /**
          * Sets `parent` as the parent widget of `widget`.
          *
@@ -11820,7 +11820,7 @@ export namespace Gtd {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on @flags
          */
-        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
          * Sets `markup` as the contents of the tooltip, which is marked
          * up with Pango markup.
@@ -11851,7 +11851,7 @@ export namespace Gtd {
          * Sets the vertical alignment of `widget`.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align): void;
+        set_valign(align: Gtk.Align | null): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -11970,7 +11970,7 @@ export namespace Gtd {
          * This function is for use in widget implementations.
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags): void;
+        unset_state_flags(flags: Gtk.StateFlags | null): void;
         /**
          * Computes whether a container should give this
          *   widget extra space when possible.
@@ -12420,7 +12420,9 @@ export namespace Gtd {
         vfunc_get_preferences_panel(): Gtk.Widget | null;
     }
 
-    export const Activatable: ActivatableNamespace;
+    export const Activatable: ActivatableNamespace & {
+        new (): Activatable; // This allows `obj instanceof Activatable`
+    };
 
     module OmniAreaAddin {
         // Constructor properties interface
@@ -12466,7 +12468,9 @@ export namespace Gtd {
         vfunc_unload(omni_area: OmniArea): void;
     }
 
-    export const OmniAreaAddin: OmniAreaAddinNamespace;
+    export const OmniAreaAddin: OmniAreaAddinNamespace & {
+        new (): OmniAreaAddin; // This allows `obj instanceof OmniAreaAddin`
+    };
 
     module Panel {
         // Constructor properties interface
@@ -12608,7 +12612,9 @@ export namespace Gtd {
         vfunc_get_subtitle(): string;
     }
 
-    export const Panel: PanelNamespace;
+    export const Panel: PanelNamespace & {
+        new (): Panel; // This allows `obj instanceof Panel`
+    };
 
     module Provider {
         // Constructor properties interface
@@ -13067,7 +13073,9 @@ export namespace Gtd {
         vfunc_update_task_list_finish(result: Gio.AsyncResult): boolean;
     }
 
-    export const Provider: ProviderNamespace;
+    export const Provider: ProviderNamespace & {
+        new (): Provider; // This allows `obj instanceof Provider`
+    };
 
     module Workspace {
         // Constructor properties interface
@@ -13152,7 +13160,9 @@ export namespace Gtd {
         vfunc_get_title(): string;
     }
 
-    export const Workspace: WorkspaceNamespace;
+    export const Workspace: WorkspaceNamespace & {
+        new (): Workspace; // This allows `obj instanceof Workspace`
+    };
 
     /**
      * Name of the imported GIR library

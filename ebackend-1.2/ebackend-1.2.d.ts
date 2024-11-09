@@ -456,9 +456,9 @@ export namespace EBackend {
          * @param cancellable optional #GCancellable object, or %NULL
          */
         credentials_required(
-            reason: EDataServer.SourceCredentialsReason,
+            reason: EDataServer.SourceCredentialsReason | null,
             certificate_pem: string,
-            certificate_errors: Gio.TlsCertificateFlags,
+            certificate_errors: Gio.TlsCertificateFlags | null,
             op_error?: GLib.Error | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
@@ -476,9 +476,9 @@ export namespace EBackend {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         credentials_required(
-            reason: EDataServer.SourceCredentialsReason,
+            reason: EDataServer.SourceCredentialsReason | null,
             certificate_pem: string,
-            certificate_errors: Gio.TlsCertificateFlags,
+            certificate_errors: Gio.TlsCertificateFlags | null,
             op_error: GLib.Error | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -497,9 +497,9 @@ export namespace EBackend {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         credentials_required(
-            reason: EDataServer.SourceCredentialsReason,
+            reason: EDataServer.SourceCredentialsReason | null,
             certificate_pem: string,
-            certificate_errors: Gio.TlsCertificateFlags,
+            certificate_errors: Gio.TlsCertificateFlags | null,
             op_error?: GLib.Error | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -529,9 +529,9 @@ export namespace EBackend {
          * @returns %TRUE on success, %FALSE on error
          */
         credentials_required_sync(
-            reason: EDataServer.SourceCredentialsReason,
+            reason: EDataServer.SourceCredentialsReason | null,
             certificate_pem: string,
-            certificate_errors: Gio.TlsCertificateFlags,
+            certificate_errors: Gio.TlsCertificateFlags | null,
             op_error?: GLib.Error | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
@@ -651,9 +651,9 @@ export namespace EBackend {
          * @param who_calls an identification who calls this
          */
         schedule_credentials_required(
-            reason: EDataServer.SourceCredentialsReason,
+            reason: EDataServer.SourceCredentialsReason | null,
             certificate_pem: string,
-            certificate_errors: Gio.TlsCertificateFlags,
+            certificate_errors: Gio.TlsCertificateFlags | null,
             op_error?: GLib.Error | null,
             cancellable?: Gio.Cancellable | null,
             who_calls?: string | null,
@@ -961,7 +961,7 @@ export namespace EBackend {
          * @param deleted_flag one of #ECacheDeletedFlag enum
          * @returns Whether the object had been found.
          */
-        contains(uid: string, deleted_flag: CacheDeletedFlag): boolean;
+        contains(uid: string, deleted_flag: CacheDeletedFlag | null): boolean;
         /**
          * Adds every column value which is not part of the `other_columns` to it,
          * except of E_CACHE_COLUMN_UID, E_CACHE_COLUMN_REVISION, E_CACHE_COLUMN_OBJECT
@@ -997,7 +997,7 @@ export namespace EBackend {
          * @returns Whether succeeded.
          */
         foreach(
-            deleted_flag: CacheDeletedFlag,
+            deleted_flag: CacheDeletedFlag | null,
             where_clause: string | null,
             func: CacheForeachFunc,
             cancellable?: Gio.Cancellable | null,
@@ -1019,7 +1019,7 @@ export namespace EBackend {
          * @returns Whether succeeded.
          */
         foreach_update(
-            deleted_flag: CacheDeletedFlag,
+            deleted_flag: CacheDeletedFlag | null,
             where_clause: string | null,
             func: CacheUpdateFunc,
             cancellable?: Gio.Cancellable | null,
@@ -1044,7 +1044,7 @@ export namespace EBackend {
          * @returns An object with the given @uid. Free it    with g_free(), when no longer needed. Returns %NULL on error, like when    the object could not be found.
          */
         get(uid: string, cancellable?: Gio.Cancellable | null): [string | null, string, CacheColumnValues | null];
-        get_count(deleted_flag: CacheDeletedFlag, cancellable?: Gio.Cancellable | null): number;
+        get_count(deleted_flag: CacheDeletedFlag | null, cancellable?: Gio.Cancellable | null): number;
         get_filename(): string;
         /**
          * Reads the user `key` value as an integer.
@@ -1075,7 +1075,7 @@ export namespace EBackend {
          * @returns Whether succeeded. It doesn't necessarily mean that there was    any object stored in the @cache.
          */
         get_objects(
-            deleted_flag: CacheDeletedFlag,
+            deleted_flag: CacheDeletedFlag | null,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string[], string[] | null];
         /**
@@ -1102,7 +1102,7 @@ export namespace EBackend {
          * @returns Whether succeeded. It doesn't necessarily mean that there was    any object stored in the @cache.
          */
         get_uids(
-            deleted_flag: CacheDeletedFlag,
+            deleted_flag: CacheDeletedFlag | null,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string[], string[] | null];
         get_version(): number;
@@ -1130,7 +1130,7 @@ export namespace EBackend {
          * Each call should have its pair e_cache_unlock().
          * @param lock_type an #ECacheLockType
          */
-        lock(lock_type: CacheLockType): void;
+        lock(lock_type: CacheLockType | null): void;
         /**
          * Stores an object into the cache. Depending on `offline_flag,` this update
          * the object's offline state accordingly. When the `offline_flag` is set
@@ -1151,7 +1151,7 @@ export namespace EBackend {
             revision: string | null,
             object: string,
             other_columns: CacheColumnValues | null,
-            offline_flag: CacheOfflineFlag,
+            offline_flag: CacheOfflineFlag | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -1164,7 +1164,7 @@ export namespace EBackend {
          * @param cancellable optional #GCancellable object, or %NULL
          * @returns Whether succeeded.
          */
-        remove(uid: string, offline_flag: CacheOfflineFlag, cancellable?: Gio.Cancellable | null): boolean;
+        remove(uid: string, offline_flag: CacheOfflineFlag | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Removes all objects from the `cache` in one call.
          * @param cancellable optional #GCancellable object, or %NULL
@@ -1192,7 +1192,7 @@ export namespace EBackend {
          * @param cancellable optional #GCancellable object, or %NULL
          * @returns Whether succeeded.
          */
-        set_offline_state(uid: string, state: OfflineState, cancellable?: Gio.Cancellable | null): boolean;
+        set_offline_state(uid: string, state: OfflineState | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Sets the `revision` of the whole `cache`. This is not meant to be
          * used by the descendants, because the revision is updated automatically
@@ -1241,7 +1241,7 @@ export namespace EBackend {
          * while the #E_CACHE_LOCK_READ should use #E_CACHE_UNLOCK_NONE `action`.
          * @param action an #ECacheUnlockAction
          */
-        unlock(action: CacheUnlockAction): void;
+        unlock(action: CacheUnlockAction | null): void;
     }
 
     module CacheKeys {
@@ -1526,7 +1526,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1567,7 +1567,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2308,7 +2308,7 @@ export namespace EBackend {
          * @param parts a bit-or of #ECollectionBackendParts with parts to be checked
          * @returns %TRUE, when at least one of the @parts is enabled and    the backend's #ESource is enabled as well.
          */
-        get_part_enabled(parts: CollectionBackendParts): boolean;
+        get_part_enabled(parts: CollectionBackendParts | null): boolean;
         get_populate_frozen(): boolean;
         /**
          * Returns whether the `source` is a newly created child or not. New sources
@@ -2570,7 +2570,7 @@ export namespace EBackend {
          * e_dbus_server_run() to return `code`.
          * @param code an #EDBusServerExitCode
          */
-        quit(code: DBusServerExitCode): void;
+        quit(code: DBusServerExitCode | null): void;
         /**
          * Decreates the use count of `server`.
          *
@@ -2665,7 +2665,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2706,7 +2706,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3311,7 +3311,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3352,7 +3352,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4251,7 +4251,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4292,7 +4292,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4707,7 +4707,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4748,7 +4748,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5221,7 +5221,7 @@ export namespace EBackend {
          * @param flags permission flags for files loaded from @path
          * @returns %TRUE if @path was successfully opened, but this          does not imply the key files were successfully loaded
          */
-        load_directory(path: string, flags: SourcePermissionFlags): boolean;
+        load_directory(path: string, flags: SourcePermissionFlags | null): boolean;
         /**
          * Emits the #ESourceRegistryServer::load-error signal.
          * @param file the #GFile that failed to load
@@ -5238,7 +5238,7 @@ export namespace EBackend {
          * @param flags initial permission flags for the data source
          * @returns the newly-added #ESource, or %NULL on error
          */
-        load_file(file: Gio.File, flags: SourcePermissionFlags): EDataServer.Source | null;
+        load_file(file: Gio.File, flags: SourcePermissionFlags | null): EDataServer.Source | null;
         /**
          * Loads data source key files from `resource` by enumerating the children
          * at `path` and calling e_source_registry_server_load_file() on each child.
@@ -5250,7 +5250,7 @@ export namespace EBackend {
          * @param flags permission flags for files loaded from @path
          * @returns %TRUE if @path was successfully located, but this does not          imply the key files were successfully loaded
          */
-        load_resource(resource: Gio.Resource, path: string, flags: SourcePermissionFlags): boolean;
+        load_resource(resource: Gio.Resource, path: string, flags: SourcePermissionFlags | null): boolean;
         /**
          * Returns the #ECollectionBackend associated with `source,` or %NULL if
          * there is no #ECollectionBackend associated with `source`.
@@ -5544,7 +5544,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5585,7 +5585,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6142,7 +6142,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6183,7 +6183,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6930,7 +6930,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6971,7 +6971,7 @@ export namespace EBackend {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7856,7 +7856,9 @@ export namespace EBackend {
         ): [boolean, string, number];
     }
 
-    export const OAuth2Support: OAuth2SupportNamespace;
+    export const OAuth2Support: OAuth2SupportNamespace & {
+        new (): OAuth2Support; // This allows `obj instanceof OAuth2Support`
+    };
 
     /**
      * Name of the imported GIR library

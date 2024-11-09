@@ -382,8 +382,8 @@ export namespace MediaArt {
          * @returns %TRUE if @file could be processed or %FALSE if @error is set.
          */
         buffer(
-            type: Type,
-            flags: ProcessFlags,
+            type: Type | null,
+            flags: ProcessFlags | null,
             related_file: Gio.File,
             buffer?: Uint8Array | null,
             mime?: string | null,
@@ -420,8 +420,8 @@ export namespace MediaArt {
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         buffer_async(
-            type: Type,
-            flags: ProcessFlags,
+            type: Type | null,
+            flags: ProcessFlags | null,
             related_file: Gio.File,
             buffer: Uint8Array | null,
             mime: string,
@@ -460,8 +460,8 @@ export namespace MediaArt {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         buffer_async(
-            type: Type,
-            flags: ProcessFlags,
+            type: Type | null,
+            flags: ProcessFlags | null,
             related_file: Gio.File,
             buffer: Uint8Array | null,
             mime: string,
@@ -501,8 +501,8 @@ export namespace MediaArt {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         buffer_async(
-            type: Type,
-            flags: ProcessFlags,
+            type: Type | null,
+            flags: ProcessFlags | null,
             related_file: Gio.File,
             buffer: Uint8Array | null,
             mime: string,
@@ -556,8 +556,8 @@ export namespace MediaArt {
          * @returns %TRUE if @file could be processed or %FALSE if @error is set.
          */
         file(
-            type: Type,
-            flags: ProcessFlags,
+            type: Type | null,
+            flags: ProcessFlags | null,
             file: Gio.File,
             artist?: string | null,
             title?: string | null,
@@ -590,8 +590,8 @@ export namespace MediaArt {
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         file_async(
-            type: Type,
-            flags: ProcessFlags,
+            type: Type | null,
+            flags: ProcessFlags | null,
             file: Gio.File,
             artist: string | null,
             title: string | null,
@@ -626,8 +626,8 @@ export namespace MediaArt {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         file_async(
-            type: Type,
-            flags: ProcessFlags,
+            type: Type | null,
+            flags: ProcessFlags | null,
             file: Gio.File,
             artist: string | null,
             title: string | null,
@@ -663,8 +663,8 @@ export namespace MediaArt {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         file_async(
-            type: Type,
-            flags: ProcessFlags,
+            type: Type | null,
+            flags: ProcessFlags | null,
             file: Gio.File,
             artist: string | null,
             title: string | null,
@@ -692,8 +692,8 @@ export namespace MediaArt {
          * @returns %TRUE if @uri could be processed or %FALSE if @error is set.
          */
         uri(
-            type: Type,
-            flags: ProcessFlags,
+            type: Type | null,
+            flags: ProcessFlags | null,
             uri: string,
             artist?: string | null,
             title?: string | null,
@@ -726,8 +726,8 @@ export namespace MediaArt {
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         uri_async(
-            type: Type,
-            flags: ProcessFlags,
+            type: Type | null,
+            flags: ProcessFlags | null,
             uri: string,
             artist: string | null,
             title: string | null,
@@ -762,8 +762,8 @@ export namespace MediaArt {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         uri_async(
-            type: Type,
-            flags: ProcessFlags,
+            type: Type | null,
+            flags: ProcessFlags | null,
             uri: string,
             artist: string | null,
             title: string | null,
@@ -799,8 +799,8 @@ export namespace MediaArt {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
         uri_async(
-            type: Type,
-            flags: ProcessFlags,
+            type: Type | null,
+            flags: ProcessFlags | null,
             uri: string,
             artist: string | null,
             title: string | null,
@@ -946,7 +946,7 @@ export namespace MediaArt {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -987,7 +987,7 @@ export namespace MediaArt {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

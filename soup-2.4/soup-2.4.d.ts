@@ -3077,7 +3077,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3118,7 +3118,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4144,7 +4144,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4185,7 +4185,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4735,7 +4735,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4776,7 +4776,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5227,7 +5227,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5268,7 +5268,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5755,7 +5755,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5796,7 +5796,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6311,7 +6311,7 @@ export namespace Soup {
          * Sets `policy` as the cookie acceptance policy for `jar`.
          * @param policy a #SoupCookieJarAcceptPolicy
          */
-        set_accept_policy(policy: CookieJarAcceptPolicy): void;
+        set_accept_policy(policy: CookieJarAcceptPolicy | null): void;
         /**
          * Adds `cookie` to `jar,` exactly as though it had appeared in a
          * Set-Cookie header returned from a request to `uri`.
@@ -6456,7 +6456,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6497,7 +6497,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6959,7 +6959,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7000,7 +7000,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7462,7 +7462,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7503,7 +7503,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8048,7 +8048,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8089,7 +8089,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8554,7 +8554,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8595,7 +8595,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9114,7 +9114,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9155,7 +9155,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9938,14 +9938,14 @@ export namespace Soup {
          * Sets the specified flags on `msg`.
          * @param flags a set of #SoupMessageFlags values
          */
-        set_flags(flags: MessageFlags): void;
+        set_flags(flags: MessageFlags | null): void;
         /**
          * Sets the HTTP version on `msg`. The default version is
          * %SOUP_HTTP_1_1. Setting it to %SOUP_HTTP_1_0 will prevent certain
          * functionality from being used.
          * @param version the HTTP version
          */
-        set_http_version(version: HTTPVersion): void;
+        set_http_version(version: HTTPVersion | null): void;
         /**
          * See the [same-site spec](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00)
          * for more information.
@@ -9967,7 +9967,7 @@ export namespace Soup {
          * semi-randomly by thread scheduling.
          * @param priority the #SoupMessagePriority
          */
-        set_priority(priority: MessagePriority): void;
+        set_priority(priority: MessagePriority | null): void;
         /**
          * Sets `msg'`s status_code to `status_code` and adds a Location header
          * pointing to `redirect_uri`. Use this from a #SoupServer when you
@@ -9988,7 +9988,7 @@ export namespace Soup {
          * @param req_use a #SoupMemoryUse describing how to handle @req_body
          * @param req_body a data buffer containing the body of the message request.
          */
-        set_request(content_type: string | null, req_use: MemoryUse, req_body?: Uint8Array | null): void;
+        set_request(content_type: string | null, req_use: MemoryUse | null, req_body?: Uint8Array | null): void;
         /**
          * Convenience function to set the response body of a #SoupMessage. If
          * `content_type` is %NULL, the response body must be empty as well.
@@ -9996,7 +9996,7 @@ export namespace Soup {
          * @param resp_use a #SoupMemoryUse describing how to handle @resp_body
          * @param resp_body a data buffer containing the body of the message response.
          */
-        set_response(content_type: string | null, resp_use: MemoryUse, resp_body?: Uint8Array | null): void;
+        set_response(content_type: string | null, resp_use: MemoryUse | null, resp_body?: Uint8Array | null): void;
         /**
          * Sets `site_for_cookies` as the policy URL for same-site cookies for `msg`.
          *
@@ -10954,6 +10954,54 @@ export namespace Soup {
          * @param result a #GAsyncResult.
          */
         vfunc_skip_finish(result: Gio.AsyncResult): number;
+        /**
+         * Creates an asynchronous iterator for a Gio.InputStream that reads the stream in chunks.
+         *
+         * Each iteration will return a GLib.Bytes object containing at most `count` bytes (default 4096). The iterator will end when the stream is exhausted.
+         *
+         * Example:
+         * ```js
+         * import Gio from "gi://Gio";
+         *
+         * const textDecoder = new TextDecoder("utf-8");
+         *
+         * const file = Gio.File.new_for_path("/etc/os-release");
+         * const inputStream = file.read(null);
+         *
+         * for await (const bytes of inputStream.createAsyncIterator(4)) {
+         *   log(textDecoder.decode(bytes.toArray()));
+         * }
+         * ```
+         *
+         * `returns` An async iterator yielding GLib.Bytes objects
+         * @param count Maximum number of bytes to read per chunk (default: 4096)
+         * @param priority I/O priority of the request (default: GLib.PRIORITY_DEFAULT)
+         */
+        createAsyncIterator(count?: number, priority?: number): AsyncIterableIterator<GLib.Bytes>;
+        /**
+         * Creates a synchronous iterator for a Gio.InputStream that reads the stream in chunks.
+         *
+         * Each iteration will return a GLib.Bytes object containing at most `count` bytes (default 4096). The iterator will end when the stream is exhausted.
+         *
+         * Example:
+         * ```js
+         * import Gio from "gi://Gio";
+         *
+         * const textDecoder = new TextDecoder("utf-8");
+         *
+         * const file = Gio.File.new_for_path("/etc/os-release");
+         * const inputStream = file.read(null);
+         *
+         * for (const bytes of inputStream.createSyncIterator(4)) {
+         *   log(textDecoder.decode(bytes.toArray()));
+         * }
+         * ```
+         *
+         * `returns` An iterable yielding GLib.Bytes objects
+         * @param count Maximum number of bytes to read per chunk (default: 4096)
+         * @param priority I/O priority of the request (default: GLib.PRIORITY_DEFAULT)
+         */
+        createSyncIterator(count?: number, priority?: number): IterableIterator<GLib.Bytes>;
     }
 
     module ProxyResolverDefault {
@@ -11146,7 +11194,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11187,7 +11235,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11787,7 +11835,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11828,7 +11876,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12290,7 +12338,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -12331,7 +12379,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12801,7 +12849,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -12842,7 +12890,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13312,7 +13360,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13353,7 +13401,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13811,7 +13859,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13852,7 +13900,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14702,7 +14750,7 @@ export namespace Soup {
          * @param options listening options for this server
          * @returns %TRUE on success, %FALSE if @address could not be bound or any other error occurred (in which case @error will be set).
          */
-        listen(address: Gio.SocketAddress, options: ServerListenOptions): boolean;
+        listen(address: Gio.SocketAddress, options: ServerListenOptions | null): boolean;
         /**
          * This attempts to set up `server` to listen for connections on all
          * interfaces on the system. (That is, it listens on the addresses
@@ -14718,7 +14766,7 @@ export namespace Soup {
          * @param options listening options for this server
          * @returns %TRUE on success, %FALSE if @port could not be bound or any other error occurred (in which case @error will be set).
          */
-        listen_all(port: number, options: ServerListenOptions): boolean;
+        listen_all(port: number, options: ServerListenOptions | null): boolean;
         /**
          * This attempts to set up `server` to listen for connections on
          * `fd`.
@@ -14731,7 +14779,7 @@ export namespace Soup {
          * @param options listening options for this server
          * @returns %TRUE on success, %FALSE if an error occurred (in which case @error will be set).
          */
-        listen_fd(fd: number, options: ServerListenOptions): boolean;
+        listen_fd(fd: number, options: ServerListenOptions | null): boolean;
         /**
          * This attempts to set up `server` to listen for connections on
          * "localhost" (that is, <literal>127.0.0.1</literal> and/or
@@ -14747,7 +14795,7 @@ export namespace Soup {
          * @param options listening options for this server
          * @returns %TRUE on success, %FALSE if @port could not be bound or any other error occurred (in which case @error will be set).
          */
-        listen_local(port: number, options: ServerListenOptions): boolean;
+        listen_local(port: number, options: ServerListenOptions | null): boolean;
         /**
          * This attempts to set up `server` to listen for connections on
          * `socket`.
@@ -14757,7 +14805,7 @@ export namespace Soup {
          * @param options listening options for this server
          * @returns %TRUE on success, %FALSE if an error occurred (in which case @error will be set).
          */
-        listen_socket(socket: Gio.Socket, options: ServerListenOptions): boolean;
+        listen_socket(socket: Gio.Socket, options: ServerListenOptions | null): boolean;
         /**
          * Pauses I/O on `msg`. This can be used when you need to return from
          * the server handler without having the full response ready yet. Use
@@ -16619,7 +16667,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16660,7 +16708,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17271,7 +17319,7 @@ export namespace Soup {
          * @param type the type of message contents
          * @param message the message data as #GBytes
          */
-        send_message(type: WebsocketDataType, message: GLib.Bytes | Uint8Array): void;
+        send_message(type: WebsocketDataType | null, message: GLib.Bytes | Uint8Array): void;
         /**
          * Send a %NULL-terminated text (UTF-8) message to the peer. If you need
          * to send text messages containing %NULL characters use
@@ -17358,7 +17406,7 @@ export namespace Soup {
          * @param params the parameters, or %NULL
          * @returns %TRUE if extension could be configured with the given parameters, or %FALSE otherwise
          */
-        configure(connection_type: WebsocketConnectionType, params?: GLib.HashTable<any, any> | null): boolean;
+        configure(connection_type: WebsocketConnectionType | null, params?: GLib.HashTable<any, any> | null): boolean;
         /**
          * Get the parameters strings to be included in the request header. If the extension
          * doesn't include any parameter in the request, this function returns %NULL.
@@ -17545,7 +17593,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -17586,7 +17634,7 @@ export namespace Soup {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18330,7 +18378,7 @@ export namespace Soup {
          * sets the policy of when this cookie should be exposed.
          * @param policy a #SoupSameSitePolicy
          */
-        set_same_site_policy(policy: SameSitePolicy): void;
+        set_same_site_policy(policy: SameSitePolicy | null): void;
         /**
          * Sets `cookie'`s secure attribute to `secure`. If %TRUE, `cookie` will
          * only be transmitted from the client to the server over secure
@@ -18467,7 +18515,7 @@ export namespace Soup {
          * @param format the format to generate the date in
          * @returns @date as a string
          */
-        to_string(format: DateFormat): string;
+        to_string(format: DateFormat | null): string;
         /**
          * Converts `date` to a <type>time_t</type>, assumming it to be in
          * UTC.
@@ -18633,7 +18681,7 @@ export namespace Soup {
          * @param use how to use @data
          * @param data data to append
          */
-        append(use: MemoryUse, data: Uint8Array | string): void;
+        append(use: MemoryUse | null, data: Uint8Array | string): void;
         /**
          * Appends the data from `buffer` to `body`. (#SoupMessageBody uses
          * #SoupBuffers internally, so this is normally a constant-time
@@ -19044,7 +19092,7 @@ export namespace Soup {
          * chunked encoding.
          * @param encoding a #SoupEncoding
          */
-        set_encoding(encoding: Encoding): void;
+        set_encoding(encoding: Encoding | null): void;
         /**
          * Sets `hdrs'`s "Expect" header according to `expectations`.
          *
@@ -19058,7 +19106,7 @@ export namespace Soup {
          * server is just going to ignore it anyway.
          * @param expectations the expectations to set
          */
-        set_expectations(expectations: Expectation): void;
+        set_expectations(expectations: Expectation | null): void;
         /**
          * Sets `hdrs'`s Range header to request the indicated range.
          * `start` and `end` are interpreted as in a #SoupRange.
@@ -19672,7 +19720,9 @@ export namespace Soup {
         vfunc_get_passwords_sync(msg: Message, auth: Auth, cancellable?: Gio.Cancellable | null): void;
     }
 
-    export const PasswordManager: PasswordManagerNamespace;
+    export const PasswordManager: PasswordManagerNamespace & {
+        new (): PasswordManager; // This allows `obj instanceof PasswordManager`
+    };
 
     module ProxyResolver {
         // Constructor properties interface
@@ -19706,7 +19756,9 @@ export namespace Soup {
         vfunc_get_proxy_sync(msg: Message, cancellable: Gio.Cancellable | null): [number, Address];
     }
 
-    export const ProxyResolver: ProxyResolverNamespace;
+    export const ProxyResolver: ProxyResolverNamespace & {
+        new (): ProxyResolver; // This allows `obj instanceof ProxyResolver`
+    };
 
     module ProxyURIResolver {
         // Constructor properties interface
@@ -19771,7 +19823,9 @@ export namespace Soup {
         vfunc_get_proxy_uri_sync(uri: URI, cancellable: Gio.Cancellable | null): [number, URI];
     }
 
-    export const ProxyURIResolver: ProxyURIResolverNamespace;
+    export const ProxyURIResolver: ProxyURIResolverNamespace & {
+        new (): ProxyURIResolver; // This allows `obj instanceof ProxyURIResolver`
+    };
 
     module SessionFeature {
         // Constructor properties interface
@@ -19865,7 +19919,9 @@ export namespace Soup {
         vfunc_request_unqueued(session: Session, msg: Message): void;
     }
 
-    export const SessionFeature: SessionFeatureNamespace;
+    export const SessionFeature: SessionFeatureNamespace & {
+        new (): SessionFeature; // This allows `obj instanceof SessionFeature`
+    };
 
     /**
      * Name of the imported GIR library

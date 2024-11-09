@@ -436,7 +436,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -477,7 +477,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1567,11 +1567,11 @@ export namespace Vte {
          * @returns %TRUE on success, or %FALSE on error with @error filled in
          */
         fork_command_full(
-            pty_flags: PtyFlags,
+            pty_flags: PtyFlags | null,
             working_directory: string | null,
             argv: string[],
             envv: string[] | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
             child_setup?: GLib.SpawnChildSetupFunc | null,
         ): [boolean, GLib.Pid | null];
         /**
@@ -1746,7 +1746,7 @@ export namespace Vte {
          * @param flags the #GRegexMatchFlags to use when matching the regex
          * @returns an integer associated with this expression
          */
-        match_add_gregex(regex: GLib.Regex, flags: GLib.RegexMatchFlags): number;
+        match_add_gregex(regex: GLib.Regex, flags: GLib.RegexMatchFlags | null): number;
         /**
          * Checks if the text in and around the specified position matches any of the
          * regular expressions previously set using vte_terminal_match_add().  If a
@@ -1793,7 +1793,7 @@ export namespace Vte {
          * @param tag the tag of the regex which should use the specified cursor
          * @param cursor_type a #GdkCursorType
          */
-        match_set_cursor_type(tag: number, cursor_type: Gdk.CursorType): void;
+        match_set_cursor_type(tag: number, cursor_type: Gdk.CursorType | null): void;
         /**
          * Sends the contents of the #GDK_SELECTION_CLIPBOARD selection to the
          * terminal's child.  If necessary, the data is converted from UTF-8 to the
@@ -1817,7 +1817,7 @@ export namespace Vte {
          * @param flags flags from #VtePtyFlags
          * @returns a new #VtePty
          */
-        pty_new(flags: PtyFlags): Pty;
+        pty_new(flags: PtyFlags | null): Pty;
         /**
          * Resets as much of the terminal's internal state as possible, discarding any
          * unprocessed input data, resetting character attributes, cursor state,
@@ -1927,7 +1927,7 @@ export namespace Vte {
          * presses the backspace key.
          * @param binding a #VteTerminalEraseBinding for the backspace key
          */
-        set_backspace_binding(binding: TerminalEraseBinding): void;
+        set_backspace_binding(binding: TerminalEraseBinding | null): void;
         /**
          * Sets the background color for text which does not have a specific background
          * color assigned.  Only has effect when no background image is set and when
@@ -1988,12 +1988,12 @@ export namespace Vte {
          * will use the #GtkSettings::gtk-cursor-blink setting.
          * @param mode the #VteTerminalCursorBlinkMode to use
          */
-        set_cursor_blink_mode(mode: TerminalCursorBlinkMode): void;
+        set_cursor_blink_mode(mode: TerminalCursorBlinkMode | null): void;
         /**
          * Sets the shape of the cursor drawn.
          * @param shape the #VteTerminalCursorShape to use
          */
-        set_cursor_shape(shape: TerminalCursorShape): void;
+        set_cursor_shape(shape: TerminalCursorShape | null): void;
         /**
          * Reset the terminal palette to reasonable compiled-in default color.
          */
@@ -2004,7 +2004,7 @@ export namespace Vte {
          * presses the delete key.
          * @param binding a #VteTerminalEraseBinding for the delete key
          */
-        set_delete_binding(binding: TerminalEraseBinding): void;
+        set_delete_binding(binding: TerminalEraseBinding | null): void;
         /**
          * Sets what type of terminal the widget attempts to emulate by scanning for
          * control sequences defined in the system's termcap file.  Unless you
@@ -2149,7 +2149,7 @@ export namespace Vte {
          */
         write_contents(
             stream: Gio.OutputStream,
-            flags: TerminalWriteFlags,
+            flags: TerminalWriteFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
 
@@ -2374,7 +2374,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2415,7 +2415,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

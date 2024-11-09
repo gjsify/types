@@ -216,7 +216,7 @@ export namespace Json {
      * @param node_type a node type
      * @returns `TRUE` if the type can be deserialized, and `FALSE` otherwise
      */
-    function boxed_can_deserialize(gboxed_type: GObject.GType, node_type: NodeType): boolean;
+    function boxed_can_deserialize(gboxed_type: GObject.GType, node_type: NodeType | null): boolean;
     /**
      * Checks whether it is possible to serialize a `GBoxed` of
      * type `gboxed_type` into a [struct`Json`.Node].
@@ -2153,7 +2153,7 @@ export namespace Json {
          * @param type the type of JSON node to initialize @node to
          * @returns the initialized node
          */
-        init(type: NodeType): Node;
+        init(type: NodeType | null): Node;
         /**
          * Initializes `node` to `JSON_NODE_ARRAY` and sets `array` into it.
          *
@@ -3035,7 +3035,9 @@ export namespace Json {
         vfunc_set_property(...args: never[]): any;
     }
 
-    export const Serializable: SerializableNamespace;
+    export const Serializable: SerializableNamespace & {
+        new (): Serializable; // This allows `obj instanceof Serializable`
+    };
 
     /**
      * Name of the imported GIR library

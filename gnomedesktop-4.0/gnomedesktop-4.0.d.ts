@@ -47,7 +47,7 @@ export namespace GnomeDesktop {
      * @param size a thumbnail size
      * @returns an absolute filename
      */
-    function desktop_thumbnail_path_for_uri(uri: string, size: DesktopThumbnailSize): string;
+    function desktop_thumbnail_path_for_uri(uri: string, size: DesktopThumbnailSize | null): string;
     /**
      * Gets all locales.
      * @returns a newly allocated %NULL-terminated string array containing the   all locales. Free with g_strfreev().
@@ -635,7 +635,7 @@ export namespace GnomeDesktop {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -676,7 +676,7 @@ export namespace GnomeDesktop {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1100,7 +1100,7 @@ export namespace GnomeDesktop {
         get_timezone(): GLib.TimeZone;
         string_for_datetime(
             now: GLib.DateTime,
-            clock_format: GDesktopEnums.ClockFormat,
+            clock_format: GDesktopEnums.ClockFormat | null,
             show_weekday: boolean,
             show_full_date: boolean,
             show_seconds: boolean,

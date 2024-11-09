@@ -101,7 +101,7 @@ export namespace Lasem {
         pixbuf_y: number,
     ): void;
     function cairo_vertical(cairo: cairo.Context, y: number): void;
-    function debug_check(category: DebugCategory, level: DebugLevel): boolean;
+    function debug_check(category: DebugCategory, level: DebugLevel | null): boolean;
     function debug_enable(category_selection: string): void;
     function dom_get_entity(name: string): string;
     function dom_implementation_cleanup(): void;

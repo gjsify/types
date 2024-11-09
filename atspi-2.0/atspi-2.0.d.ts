@@ -2098,7 +2098,11 @@ export namespace Atspi {
      * @param synth_type an #AtspiKeySynthType flag indicating whether @keyval           is to be interpreted as a keysym rather than a keycode           (%ATSPI_KEY_SYM) or a string (%ATSPI_KEY_STRING) or a modifier           mask (%ATSPI_KEY_LOCKMODIFIERS and %ATSPI_KEY_UNLOCKMODIFIERS), or           whether to synthesize %ATSPI_KEY_PRESS,           %ATSPI_KEY_RELEASE, or both (%ATSPI_KEY_PRESSRELEASE).
      * @returns %TRUE if successful, otherwise %FALSE.
      */
-    function generate_keyboard_event(keyval: number, keystring: string | null, synth_type: KeySynthType): boolean;
+    function generate_keyboard_event(
+        keyval: number,
+        keystring: string | null,
+        synth_type: KeySynthType | null,
+    ): boolean;
     /**
      * Synthesizes a mouse event at a specific screen coordinate.
      * Most AT clients should use the #AccessibleAction interface when
@@ -2199,20 +2203,20 @@ export namespace Atspi {
         key_set: KeyDefinition[] | null,
         modmask: KeyMaskType,
         event_types: KeyEventMask,
-        sync_type: KeyListenerSyncType,
+        sync_type: KeyListenerSyncType | null,
     ): boolean;
     /**
      * Gets the localized description string describing the #AtspiRole `role`.
      * @param role an #AtspiRole object to query.
      * @returns the localized string describing the AtspiRole
      */
-    function role_get_localized_name(role: Role): string;
+    function role_get_localized_name(role: Role | null): string;
     /**
      * Gets a localizable string that indicates the name of an #AtspiRole.
      * @param role an #AtspiRole object to query.
      * @returns a localizable string name for an #AtspiRole enumerated type.
      */
-    function role_get_name(role: Role): string;
+    function role_get_name(role: Role | null): string;
     /**
      * Sets the main loop context that AT-SPI should assume is in use when
      * setting an idle callback.
@@ -2787,7 +2791,7 @@ export namespace Atspi {
          * events are not raised / to aid in testing for such bugs.
          * @param mask An #AtspiCache specifying a bit mask of the types of data to cache.
          */
-        set_cache_mask(mask: Cache): void;
+        set_cache_mask(mask: Cache | null): void;
 
         // Inherited methods
         /**
@@ -2858,7 +2862,12 @@ export namespace Atspi {
          * @param traverse Not supported.
          * @returns All          #AtspiAccessible objects matching the given match rule.
          */
-        get_matches(rule: MatchRule, sortby: CollectionSortOrder, count: number, traverse: boolean): Accessible[];
+        get_matches(
+            rule: MatchRule,
+            sortby: CollectionSortOrder | null,
+            count: number,
+            traverse: boolean,
+        ): Accessible[];
         /**
          * Gets all #AtspiAccessible objects from the `collection,` before
          * `current_object,` matching a given `rule`.
@@ -2873,8 +2882,8 @@ export namespace Atspi {
         get_matches_from(
             current_object: Accessible,
             rule: MatchRule,
-            sortby: CollectionSortOrder,
-            tree: CollectionTreeTraversalType,
+            sortby: CollectionSortOrder | null,
+            tree: CollectionTreeTraversalType | null,
             count: number,
             traverse: boolean,
         ): Accessible[];
@@ -2893,8 +2902,8 @@ export namespace Atspi {
         get_matches_to(
             current_object: Accessible,
             rule: MatchRule,
-            sortby: CollectionSortOrder,
-            tree: CollectionTreeTraversalType,
+            sortby: CollectionSortOrder | null,
+            tree: CollectionTreeTraversalType | null,
             limit_scope: boolean,
             count: number,
             traverse: boolean,
@@ -2911,7 +2920,7 @@ export namespace Atspi {
          * @param ctype the desired coordinate system of the point (@x, @y)         (e.g. CSPI_COORD_TYPE_WINDOW, CSPI_COORD_TYPE_SCREEN).
          * @returns #TRUE if the specified component contains the point (@x, @y),          #FALSE otherwise.
          */
-        contains(x: number, y: number, ctype: CoordType): boolean;
+        contains(x: number, y: number, ctype: CoordType | null): boolean;
         /**
          * Gets the accessible child at a given coordinate within an #AtspiComponent.
          * @param x a #gint specifying the x coordinate of the point in question.
@@ -2919,7 +2928,7 @@ export namespace Atspi {
          * @param ctype the coordinate system of the point (@x, @y)         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns a pointer to an          #AtspiAccessible child of the specified component which          contains the point (@x, @y), or NULL if no child contains          the point.
          */
-        get_accessible_at_point(x: number, y: number, ctype: CoordType): Accessible | null;
+        get_accessible_at_point(x: number, y: number, ctype: CoordType | null): Accessible | null;
         /**
          * Gets the opacity/alpha value of a component, if alpha blending is in use.
          * @returns the opacity value of a component, as a #gdouble between 0.0 and 1.0.
@@ -2932,7 +2941,7 @@ export namespace Atspi {
          * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns An #AtspiRect giving the accessible's extents.
          */
-        get_extents(ctype: CoordType): Rect;
+        get_extents(ctype: CoordType | null): Rect;
         /**
          * Queries which layer the component is painted into, to help determine its
          *      visibility in terms of stacking order.
@@ -2952,7 +2961,7 @@ export namespace Atspi {
          * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns An #AtspiPoint giving the @obj's position.
          */
-        get_position(ctype: CoordType): Point;
+        get_position(ctype: CoordType | null): Point;
         // Conflicted with Atspi.TableCell.get_position
         get_position(...args: never[]): any;
         /**
@@ -2974,7 +2983,7 @@ export namespace Atspi {
          * @param type a #AtspiScrollType indicating where the object should be placed on the        screen.
          * @returns #TRUE if successful, #FALSE otherwise.
          */
-        scroll_to(type: ScrollType): boolean;
+        scroll_to(type: ScrollType | null): boolean;
         /**
          * Scrolls whatever container of the #AtspiComponent object so it becomes
          * visible on the screen at a given position.
@@ -2983,7 +2992,7 @@ export namespace Atspi {
          * @param y the y coordinate of the point to reach
          * @returns #TRUE if successful, #FALSE otherwise.
          */
-        scroll_to_point(coords: CoordType, x: number, y: number): boolean;
+        scroll_to_point(coords: CoordType | null, x: number, y: number): boolean;
         /**
          * Moves and resizes the specified component.
          * @param x the new horizontal position to which the component should be moved.
@@ -2993,7 +3002,7 @@ export namespace Atspi {
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns #TRUE if successful; #FALSE otherwise.
          */
-        set_extents(x: number, y: number, width: number, height: number, ctype: CoordType): boolean;
+        set_extents(x: number, y: number, width: number, height: number, ctype: CoordType | null): boolean;
         /**
          * Moves the component to the specified position.
          * @param x the new horizontal position to which the component should be moved.
@@ -3001,7 +3010,7 @@ export namespace Atspi {
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns #TRUE if successful; #FALSE otherwise.
          */
-        set_position(x: number, y: number, ctype: CoordType): boolean;
+        set_position(x: number, y: number, ctype: CoordType | null): boolean;
         /**
          * Resizes the specified component to the given pixel dimensions.
          * @param width the width to which the component should be resized.
@@ -3139,7 +3148,7 @@ export namespace Atspi {
          * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns a pointer to an #AtspiRect corresponding to the image's bounding box. The minimum x and y coordinates, width, and height are specified.
          */
-        get_image_extents(ctype: CoordType): Rect;
+        get_image_extents(ctype: CoordType | null): Rect;
         /**
          * Gets the locale associated with an image and its textual representation.
          * @returns A POSIX LC_MESSAGES-style locale value for image description and text.
@@ -3153,7 +3162,7 @@ export namespace Atspi {
          * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns a pointer to an #AtspiPoint where x and y correspond to the minimum coordinates of the displayed image.
          */
-        get_image_position(ctype: CoordType): Point;
+        get_image_position(ctype: CoordType | null): Point;
         /**
          * Gets the size of the image displayed in a specified #AtspiImage object.
          * The returned values are meaningful only if the Image has both
@@ -3519,9 +3528,9 @@ export namespace Atspi {
             y: number,
             width: number,
             height: number,
-            type: CoordType,
-            clipTypeX: TextClipType,
-            clipTypeY: TextClipType,
+            type: CoordType | null,
+            clipTypeX: TextClipType | null,
+            clipTypeY: TextClipType | null,
         ): TextRange[];
         /**
          * Gets the current offset of the text caret in an #AtspiText object.
@@ -3548,7 +3557,7 @@ export namespace Atspi {
          * @param type an #AccessibleCoordType indicating the coordinate system to use        for the returned values.
          * @returns An #AtspiRect specifying the position and size of the character.
          */
-        get_character_extents(offset: number, type: CoordType): Rect;
+        get_character_extents(offset: number, type: CoordType | null): Rect;
         /**
          * Gets the default attributes applied to an #AtspiText
          * object. The text attributes correspond to CSS attributes
@@ -3571,7 +3580,7 @@ export namespace Atspi {
          * @param type an #AtspiCoordType indicating the coordinate system in which       the values should be returned.
          * @returns the offset (as a #gint) at the point (@x, @y)       in the specified coordinate system.
          */
-        get_offset_at_point(x: number, y: number, type: CoordType): number;
+        get_offset_at_point(x: number, y: number, type: CoordType | null): number;
         /**
          * Gets the bounding box for text within a range in an  #AtspiText object.
          * The returned values are meaningful only if the Text has both
@@ -3581,7 +3590,7 @@ export namespace Atspi {
          * @param type an #AtspiCoordType indicating the coordinate system to use        for the returned values.
          * @returns An #AtspiRect giving the position and size of the specified range          of text.
          */
-        get_range_extents(start_offset: number, end_offset: number, type: CoordType): Rect;
+        get_range_extents(start_offset: number, end_offset: number, type: CoordType | null): Rect;
         /**
          * Gets a portion of the text exposed through an #AtspiText according to a given `offset`
          * and a specific `granularity,` along with the start and end offsets defining the
@@ -3617,7 +3626,7 @@ export namespace Atspi {
          * @param granularity An #AtspiTextGranularity
          * @returns a newly allocated string containing the text at the @offset bounded   by the specified @granularity. Use g_free() to free the returned string.   Returns %NULL if the offset is invalid or no implementation is available.
          */
-        get_string_at_offset(offset: number, granularity: TextGranularity): TextRange;
+        get_string_at_offset(offset: number, granularity: TextGranularity | null): TextRange;
         /**
          * Gets delimited text from an #AtspiText object which follows a given
          *          text offset.
@@ -3625,7 +3634,7 @@ export namespace Atspi {
          * @param type an #AtspiTextBoundaryType indicating whether the desired       text string is a word, sentence, line, or attribute run.
          * @returns an #AtspiTextRange containing a UTF-8 string representing the          delimited text, both of whose delimiting boundaries are after or          inclusive of the current offset, or an empty string if no such          text exists.
          */
-        get_text_after_offset(offset: number, type: TextBoundaryType): TextRange;
+        get_text_after_offset(offset: number, type: TextBoundaryType | null): TextRange;
         /**
          * Gets delimited text from an #AtspiText object which includes a given
          *          text offset.
@@ -3633,7 +3642,7 @@ export namespace Atspi {
          * @param type an #AtspiTextBoundaryType indicating whether the desired       text string is a word, sentence, line, or attribute run.
          * @returns an #AtspiTextRange containing a UTF-8 string representing the          delimited text, whose delimiting boundaries bracket the          current offset, or an empty string if no such text exists.
          */
-        get_text_at_offset(offset: number, type: TextBoundaryType): TextRange;
+        get_text_at_offset(offset: number, type: TextBoundaryType | null): TextRange;
         /**
          * Gets delimited text from an #AtspiText object which precedes a given
          *          text offset.
@@ -3641,7 +3650,7 @@ export namespace Atspi {
          * @param type an #AtspiTextBoundaryType indicating whether the desired       text string is a word, sentence, line, or attribute run.
          * @returns an #AtspiTextRange containing a UTF-8 string representing the          delimited text, both of whose delimiting boundaries are before the          current offset, or an empty string if no such text exists.
          */
-        get_text_before_offset(offset: number, type: TextBoundaryType): TextRange;
+        get_text_before_offset(offset: number, type: TextBoundaryType | null): TextRange;
         /**
          * De-selects a text selection.
          * @param selection_num a #gint indicating which text selection to remove.
@@ -3656,7 +3665,7 @@ export namespace Atspi {
          * @param type a #AtspiScrollType indicating where the object should be placed on the        screen.
          * @returns #TRUE if successful, #FALSE otherwise.
          */
-        scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean;
+        scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType | null): boolean;
         /**
          * Scrolls whatever container of the #AtspiText text range so it becomes
          * visible on the screen at a given position.
@@ -3670,7 +3679,7 @@ export namespace Atspi {
         scroll_substring_to_point(
             start_offset: number,
             end_offset: number,
-            coords: CoordType,
+            coords: CoordType | null,
             x: number,
             y: number,
         ): boolean;
@@ -3758,7 +3767,7 @@ export namespace Atspi {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3799,7 +3808,7 @@ export namespace Atspi {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4770,7 +4779,7 @@ export namespace Atspi {
          *       given state to #TRUE in the stateset).
          * @param state an #AtspiStateType to be added to the specified #AtspiStateSet.
          */
-        add(state: StateType): void;
+        add(state: StateType | null): void;
         /**
          * Determines the differences between two instances of #AtspiStateSet.
          *
@@ -4785,7 +4794,7 @@ export namespace Atspi {
          * @param state an #AtspiStateType for which the specified #AtspiStateSet          will be queried.
          * @returns #TRUE if @state is true/included in the given #AtspiStateSet,          otherwise #FALSE.
          */
-        contains(state: StateType): boolean;
+        contains(state: StateType | null): boolean;
         /**
          * Determines whether two instances of #AtspiStateSet are equivalent (i.e.
          *          consist of the same #AtspiStates).  Useful for checking multiple
@@ -4807,7 +4816,7 @@ export namespace Atspi {
          *       given state to #FALSE in the stateset.)
          * @param state an #AtspiStateType to remove from the specified @set.
          */
-        remove(state: StateType): void;
+        remove(state: StateType | null): void;
         /**
          * Enables/disables a state in an #AtspiStateSet according to its `name`.
          * @param name a string corresponding to a state name.
@@ -5178,7 +5187,9 @@ export namespace Atspi {
         get_action_name(i: number): string;
     }
 
-    export const Action: ActionNamespace;
+    export const Action: ActionNamespace & {
+        new (): Action; // This allows `obj instanceof Action`
+    };
 
     module Collection {
         // Constructor properties interface
@@ -5203,7 +5214,12 @@ export namespace Atspi {
          * @param traverse Not supported.
          * @returns All          #AtspiAccessible objects matching the given match rule.
          */
-        get_matches(rule: MatchRule, sortby: CollectionSortOrder, count: number, traverse: boolean): Accessible[];
+        get_matches(
+            rule: MatchRule,
+            sortby: CollectionSortOrder | null,
+            count: number,
+            traverse: boolean,
+        ): Accessible[];
         /**
          * Gets all #AtspiAccessible objects from the `collection,` before
          * `current_object,` matching a given `rule`.
@@ -5218,8 +5234,8 @@ export namespace Atspi {
         get_matches_from(
             current_object: Accessible,
             rule: MatchRule,
-            sortby: CollectionSortOrder,
-            tree: CollectionTreeTraversalType,
+            sortby: CollectionSortOrder | null,
+            tree: CollectionTreeTraversalType | null,
             count: number,
             traverse: boolean,
         ): Accessible[];
@@ -5238,8 +5254,8 @@ export namespace Atspi {
         get_matches_to(
             current_object: Accessible,
             rule: MatchRule,
-            sortby: CollectionSortOrder,
-            tree: CollectionTreeTraversalType,
+            sortby: CollectionSortOrder | null,
+            tree: CollectionTreeTraversalType | null,
             limit_scope: boolean,
             count: number,
             traverse: boolean,
@@ -5251,7 +5267,9 @@ export namespace Atspi {
         is_ancestor_of(test: Accessible): boolean;
     }
 
-    export const Collection: CollectionNamespace;
+    export const Collection: CollectionNamespace & {
+        new (): Collection; // This allows `obj instanceof Collection`
+    };
 
     module Component {
         // Constructor properties interface
@@ -5273,7 +5291,7 @@ export namespace Atspi {
          * @param ctype the desired coordinate system of the point (@x, @y)         (e.g. CSPI_COORD_TYPE_WINDOW, CSPI_COORD_TYPE_SCREEN).
          * @returns #TRUE if the specified component contains the point (@x, @y),          #FALSE otherwise.
          */
-        contains(x: number, y: number, ctype: CoordType): boolean;
+        contains(x: number, y: number, ctype: CoordType | null): boolean;
         /**
          * Gets the accessible child at a given coordinate within an #AtspiComponent.
          * @param x a #gint specifying the x coordinate of the point in question.
@@ -5281,7 +5299,7 @@ export namespace Atspi {
          * @param ctype the coordinate system of the point (@x, @y)         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns a pointer to an          #AtspiAccessible child of the specified component which          contains the point (@x, @y), or NULL if no child contains          the point.
          */
-        get_accessible_at_point(x: number, y: number, ctype: CoordType): Accessible | null;
+        get_accessible_at_point(x: number, y: number, ctype: CoordType | null): Accessible | null;
         /**
          * Gets the opacity/alpha value of a component, if alpha blending is in use.
          * @returns the opacity value of a component, as a #gdouble between 0.0 and 1.0.
@@ -5294,7 +5312,7 @@ export namespace Atspi {
          * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns An #AtspiRect giving the accessible's extents.
          */
-        get_extents(ctype: CoordType): Rect;
+        get_extents(ctype: CoordType | null): Rect;
         /**
          * Queries which layer the component is painted into, to help determine its
          *      visibility in terms of stacking order.
@@ -5314,7 +5332,7 @@ export namespace Atspi {
          * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns An #AtspiPoint giving the @obj's position.
          */
-        get_position(ctype: CoordType): Point;
+        get_position(ctype: CoordType | null): Point;
         /**
          * Gets the size of the specified #AtspiComponent.
          * The returned values are meaningful only if the Component has both
@@ -5334,7 +5352,7 @@ export namespace Atspi {
          * @param type a #AtspiScrollType indicating where the object should be placed on the        screen.
          * @returns #TRUE if successful, #FALSE otherwise.
          */
-        scroll_to(type: ScrollType): boolean;
+        scroll_to(type: ScrollType | null): boolean;
         /**
          * Scrolls whatever container of the #AtspiComponent object so it becomes
          * visible on the screen at a given position.
@@ -5343,7 +5361,7 @@ export namespace Atspi {
          * @param y the y coordinate of the point to reach
          * @returns #TRUE if successful, #FALSE otherwise.
          */
-        scroll_to_point(coords: CoordType, x: number, y: number): boolean;
+        scroll_to_point(coords: CoordType | null, x: number, y: number): boolean;
         /**
          * Moves and resizes the specified component.
          * @param x the new horizontal position to which the component should be moved.
@@ -5353,7 +5371,7 @@ export namespace Atspi {
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns #TRUE if successful; #FALSE otherwise.
          */
-        set_extents(x: number, y: number, width: number, height: number, ctype: CoordType): boolean;
+        set_extents(x: number, y: number, width: number, height: number, ctype: CoordType | null): boolean;
         /**
          * Moves the component to the specified position.
          * @param x the new horizontal position to which the component should be moved.
@@ -5361,7 +5379,7 @@ export namespace Atspi {
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns #TRUE if successful; #FALSE otherwise.
          */
-        set_position(x: number, y: number, ctype: CoordType): boolean;
+        set_position(x: number, y: number, ctype: CoordType | null): boolean;
         /**
          * Resizes the specified component to the given pixel dimensions.
          * @param width the width to which the component should be resized.
@@ -5371,7 +5389,9 @@ export namespace Atspi {
         set_size(width: number, height: number): boolean;
     }
 
-    export const Component: ComponentNamespace;
+    export const Component: ComponentNamespace & {
+        new (): Component; // This allows `obj instanceof Component`
+    };
 
     module Document {
         // Constructor properties interface
@@ -5443,7 +5463,9 @@ export namespace Atspi {
         set_text_selections(selections: TextSelection[]): boolean;
     }
 
-    export const Document: DocumentNamespace;
+    export const Document: DocumentNamespace & {
+        new (): Document; // This allows `obj instanceof Document`
+    };
 
     module EditableText {
         // Constructor properties interface
@@ -5515,7 +5537,9 @@ export namespace Atspi {
         set_text_contents(new_contents: string): boolean;
     }
 
-    export const EditableText: EditableTextNamespace;
+    export const EditableText: EditableTextNamespace & {
+        new (): EditableText; // This allows `obj instanceof EditableText`
+    };
 
     module Hypertext {
         // Constructor properties interface
@@ -5551,7 +5575,9 @@ export namespace Atspi {
         get_n_links(): number;
     }
 
-    export const Hypertext: HypertextNamespace;
+    export const Hypertext: HypertextNamespace & {
+        new (): Hypertext; // This allows `obj instanceof Hypertext`
+    };
 
     module Image {
         // Constructor properties interface
@@ -5579,7 +5605,7 @@ export namespace Atspi {
          * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns a pointer to an #AtspiRect corresponding to the image's bounding box. The minimum x and y coordinates, width, and height are specified.
          */
-        get_image_extents(ctype: CoordType): Rect;
+        get_image_extents(ctype: CoordType | null): Rect;
         /**
          * Gets the locale associated with an image and its textual representation.
          * @returns A POSIX LC_MESSAGES-style locale value for image description and text.
@@ -5593,7 +5619,7 @@ export namespace Atspi {
          * @param ctype the desired coordinate system into which to return the results,         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns a pointer to an #AtspiPoint where x and y correspond to the minimum coordinates of the displayed image.
          */
-        get_image_position(ctype: CoordType): Point;
+        get_image_position(ctype: CoordType | null): Point;
         /**
          * Gets the size of the image displayed in a specified #AtspiImage object.
          * The returned values are meaningful only if the Image has both
@@ -5603,7 +5629,9 @@ export namespace Atspi {
         get_image_size(): Point;
     }
 
-    export const Image: ImageNamespace;
+    export const Image: ImageNamespace & {
+        new (): Image; // This allows `obj instanceof Image`
+    };
 
     module Selection {
         // Constructor properties interface
@@ -5688,7 +5716,9 @@ export namespace Atspi {
         select_child(child_index: number): boolean;
     }
 
-    export const Selection: SelectionNamespace;
+    export const Selection: SelectionNamespace & {
+        new (): Selection; // This allows `obj instanceof Selection`
+    };
 
     module Table {
         // Constructor properties interface
@@ -5917,7 +5947,9 @@ export namespace Atspi {
         remove_row_selection(row: number): boolean;
     }
 
-    export const Table: TableNamespace;
+    export const Table: TableNamespace & {
+        new (): Table; // This allows `obj instanceof Table`
+    };
 
     module TableCell {
         // Constructor properties interface
@@ -5975,7 +6007,9 @@ export namespace Atspi {
         get_table(): Accessible;
     }
 
-    export const TableCell: TableCellNamespace;
+    export const TableCell: TableCellNamespace & {
+        new (): TableCell; // This allows `obj instanceof TableCell`
+    };
 
     module Text {
         // Constructor properties interface
@@ -6037,9 +6071,9 @@ export namespace Atspi {
             y: number,
             width: number,
             height: number,
-            type: CoordType,
-            clipTypeX: TextClipType,
-            clipTypeY: TextClipType,
+            type: CoordType | null,
+            clipTypeX: TextClipType | null,
+            clipTypeY: TextClipType | null,
         ): TextRange[];
         /**
          * Gets the current offset of the text caret in an #AtspiText object.
@@ -6066,7 +6100,7 @@ export namespace Atspi {
          * @param type an #AccessibleCoordType indicating the coordinate system to use        for the returned values.
          * @returns An #AtspiRect specifying the position and size of the character.
          */
-        get_character_extents(offset: number, type: CoordType): Rect;
+        get_character_extents(offset: number, type: CoordType | null): Rect;
         /**
          * Gets the default attributes applied to an #AtspiText
          * object. The text attributes correspond to CSS attributes
@@ -6089,7 +6123,7 @@ export namespace Atspi {
          * @param type an #AtspiCoordType indicating the coordinate system in which       the values should be returned.
          * @returns the offset (as a #gint) at the point (@x, @y)       in the specified coordinate system.
          */
-        get_offset_at_point(x: number, y: number, type: CoordType): number;
+        get_offset_at_point(x: number, y: number, type: CoordType | null): number;
         /**
          * Gets the bounding box for text within a range in an  #AtspiText object.
          * The returned values are meaningful only if the Text has both
@@ -6099,7 +6133,7 @@ export namespace Atspi {
          * @param type an #AtspiCoordType indicating the coordinate system to use        for the returned values.
          * @returns An #AtspiRect giving the position and size of the specified range          of text.
          */
-        get_range_extents(start_offset: number, end_offset: number, type: CoordType): Rect;
+        get_range_extents(start_offset: number, end_offset: number, type: CoordType | null): Rect;
         /**
          * Gets the bounds of the `selection_num-th` active text selection for an
          *         #AtspiText object.
@@ -6141,7 +6175,7 @@ export namespace Atspi {
          * @param granularity An #AtspiTextGranularity
          * @returns a newly allocated string containing the text at the @offset bounded   by the specified @granularity. Use g_free() to free the returned string.   Returns %NULL if the offset is invalid or no implementation is available.
          */
-        get_string_at_offset(offset: number, granularity: TextGranularity): TextRange;
+        get_string_at_offset(offset: number, granularity: TextGranularity | null): TextRange;
         /**
          * Gets a range of text from an #AtspiText object.  The number of bytes
          *          in the returned string may exceed either end_offset or start_offset, since
@@ -6158,7 +6192,7 @@ export namespace Atspi {
          * @param type an #AtspiTextBoundaryType indicating whether the desired       text string is a word, sentence, line, or attribute run.
          * @returns an #AtspiTextRange containing a UTF-8 string representing the          delimited text, both of whose delimiting boundaries are after or          inclusive of the current offset, or an empty string if no such          text exists.
          */
-        get_text_after_offset(offset: number, type: TextBoundaryType): TextRange;
+        get_text_after_offset(offset: number, type: TextBoundaryType | null): TextRange;
         /**
          * Gets delimited text from an #AtspiText object which includes a given
          *          text offset.
@@ -6166,7 +6200,7 @@ export namespace Atspi {
          * @param type an #AtspiTextBoundaryType indicating whether the desired       text string is a word, sentence, line, or attribute run.
          * @returns an #AtspiTextRange containing a UTF-8 string representing the          delimited text, whose delimiting boundaries bracket the          current offset, or an empty string if no such text exists.
          */
-        get_text_at_offset(offset: number, type: TextBoundaryType): TextRange;
+        get_text_at_offset(offset: number, type: TextBoundaryType | null): TextRange;
         /**
          * Gets the value of a named attribute at a given offset.
          * @param offset The character offset at which to query the attribute.
@@ -6189,7 +6223,7 @@ export namespace Atspi {
          * @param type an #AtspiTextBoundaryType indicating whether the desired       text string is a word, sentence, line, or attribute run.
          * @returns an #AtspiTextRange containing a UTF-8 string representing the          delimited text, both of whose delimiting boundaries are before the          current offset, or an empty string if no such text exists.
          */
-        get_text_before_offset(offset: number, type: TextBoundaryType): TextRange;
+        get_text_before_offset(offset: number, type: TextBoundaryType | null): TextRange;
         /**
          * De-selects a text selection.
          * @param selection_num a #gint indicating which text selection to remove.
@@ -6204,7 +6238,7 @@ export namespace Atspi {
          * @param type a #AtspiScrollType indicating where the object should be placed on the        screen.
          * @returns #TRUE if successful, #FALSE otherwise.
          */
-        scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean;
+        scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType | null): boolean;
         /**
          * Scrolls whatever container of the #AtspiText text range so it becomes
          * visible on the screen at a given position.
@@ -6218,7 +6252,7 @@ export namespace Atspi {
         scroll_substring_to_point(
             start_offset: number,
             end_offset: number,
-            coords: CoordType,
+            coords: CoordType | null,
             x: number,
             y: number,
         ): boolean;
@@ -6238,7 +6272,9 @@ export namespace Atspi {
         set_selection(selection_num: number, start_offset: number, end_offset: number): boolean;
     }
 
-    export const Text: TextNamespace;
+    export const Text: TextNamespace & {
+        new (): Text; // This allows `obj instanceof Text`
+    };
 
     module Value {
         // Constructor properties interface
@@ -6287,7 +6323,9 @@ export namespace Atspi {
         set_current_value(new_value: number): boolean;
     }
 
-    export const Value: ValueNamespace;
+    export const Value: ValueNamespace & {
+        new (): Value; // This allows `obj instanceof Value`
+    };
 
     type ControllerEventMask = number;
     type DeviceEventMask = number;

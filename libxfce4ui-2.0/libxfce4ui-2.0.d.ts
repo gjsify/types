@@ -269,7 +269,7 @@ export namespace Libxfce4ui {
     function gdk_device_grab(
         seat: Gdk.Seat,
         window: Gdk.Window,
-        capabilities: Gdk.SeatCapabilities,
+        capabilities: Gdk.SeatCapabilities | null,
         cursor?: Gdk.Cursor | null,
     ): boolean;
     /**
@@ -664,7 +664,7 @@ export namespace Libxfce4ui {
         working_directory: string | null,
         argv: string,
         envp: string | null,
-        flags: GLib.SpawnFlags,
+        flags: GLib.SpawnFlags | null,
         startup_notify: boolean,
         startup_timestamp: number,
         startup_icon_name: string | null,
@@ -722,7 +722,7 @@ export namespace Libxfce4ui {
         working_directory: string | null,
         argv: string,
         envp: string | null,
-        flags: GLib.SpawnFlags,
+        flags: GLib.SpawnFlags | null,
         startup_notify: boolean,
         startup_timestamp: number,
         startup_icon_name?: string | null,
@@ -772,7 +772,7 @@ export namespace Libxfce4ui {
         working_directory: string | null,
         argv: string,
         envp: string | null,
-        flags: GLib.SpawnFlags,
+        flags: GLib.SpawnFlags | null,
         startup_notify: boolean,
         startup_timestamp: number,
         startup_icon_name?: string | null,
@@ -915,7 +915,7 @@ export namespace Libxfce4ui {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation): void;
+        set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -960,7 +960,7 @@ export namespace Libxfce4ui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1001,7 +1001,7 @@ export namespace Libxfce4ui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1565,7 +1565,7 @@ export namespace Libxfce4ui {
          * </para></note>
          * @param shutdown_hint The type of shutdown requested
          */
-        request_shutdown(shutdown_hint: SMClientShutdownHint): void;
+        request_shutdown(shutdown_hint: SMClientShutdownHint | null): void;
         /**
          * Sets the startup working directory of `sm_client` to
          * `current_directory`.  If unset, defaults to the user's
@@ -1611,7 +1611,7 @@ export namespace Libxfce4ui {
          * Sets the restart style hint to `restart_style`.
          * @param restart_style An #XfceSMClientRestartStyle value
          */
-        set_restart_style(restart_style: SMClientRestartStyle): void;
+        set_restart_style(restart_style: SMClientRestartStyle | null): void;
     }
 
     module Screensaver {
@@ -1811,7 +1811,7 @@ export namespace Libxfce4ui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1852,7 +1852,7 @@ export namespace Libxfce4ui {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

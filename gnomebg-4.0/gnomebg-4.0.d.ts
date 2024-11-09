@@ -111,14 +111,14 @@ export namespace GnomeBG {
             height: number,
         ): boolean;
         get_placement(): GDesktopEnums.BackgroundStyle;
-        get_rgba(type: GDesktopEnums.BackgroundShading, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
+        get_rgba(type: GDesktopEnums.BackgroundShading | null, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
         has_multiple_sizes(): boolean;
         is_dark(dest_width: number, dest_height: number): boolean;
         load_from_preferences(settings: Gio.Settings): void;
         save_to_preferences(settings: Gio.Settings): void;
         set_filename(filename: string): void;
-        set_placement(placement: GDesktopEnums.BackgroundStyle): void;
-        set_rgba(type: GDesktopEnums.BackgroundShading, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
+        set_placement(placement: GDesktopEnums.BackgroundStyle | null): void;
+        set_rgba(type: GDesktopEnums.BackgroundShading | null, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
     }
 
     module BGSlideShow {

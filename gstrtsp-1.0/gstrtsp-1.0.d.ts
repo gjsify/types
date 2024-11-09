@@ -596,13 +596,13 @@ export namespace GstRtsp {
      * @param field a #GstRTSPHeaderField
      * @returns %TRUE if multiple headers are allowed.
      */
-    function rtsp_header_allow_multiple(field: RTSPHeaderField): boolean;
+    function rtsp_header_allow_multiple(field: RTSPHeaderField | null): boolean;
     /**
      * Convert `field` to a string.
      * @param field a #GstRTSPHeaderField
      * @returns a string representation of @field.
      */
-    function rtsp_header_as_text(field: RTSPHeaderField): string | null;
+    function rtsp_header_as_text(field: RTSPHeaderField | null): string | null;
     /**
      * Create a new initialized #GstRTSPMessage. Free with gst_rtsp_message_free().
      * @returns a #GstRTSPResult.
@@ -622,7 +622,7 @@ export namespace GstRtsp {
      * @param uri the uri of the request
      * @returns a #GstRTSPResult.
      */
-    function rtsp_message_new_request(method: RTSPMethod, uri: string): [RTSPResult, RTSPMessage];
+    function rtsp_message_new_request(method: RTSPMethod | null, uri: string): [RTSPResult, RTSPMessage];
     /**
      * Create a new response #GstRTSPMessage with `code` and `reason` and store the
      * result message in `msg`. Free with gst_rtsp_message_free().
@@ -637,7 +637,7 @@ export namespace GstRtsp {
      * @returns a #GstRTSPResult.
      */
     function rtsp_message_new_response(
-        code: RTSPStatusCode,
+        code: RTSPStatusCode | null,
         reason?: string | null,
         request?: RTSPMessage | null,
     ): [RTSPResult, RTSPMessage];
@@ -646,13 +646,13 @@ export namespace GstRtsp {
      * @param method a #GstRTSPMethod
      * @returns a string representation of @method.
      */
-    function rtsp_method_as_text(method: RTSPMethod): string | null;
+    function rtsp_method_as_text(method: RTSPMethod | null): string | null;
     /**
      * Convert `options` to a string.
      * @param options one or more #GstRTSPMethod
      * @returns a new string of @options. g_free() after usage.
      */
-    function rtsp_options_as_text(options: RTSPMethod): string;
+    function rtsp_options_as_text(options: RTSPMethod | null): string;
     /**
      * Convert the comma separated list `options` to a #GstRTSPMethod bitwise or
      * of methods. This functions is the reverse of gst_rtsp_options_as_text().
@@ -668,7 +668,7 @@ export namespace GstRtsp {
      * @param unit the unit to convert the range into
      * @returns %TRUE if the range could be converted
      */
-    function rtsp_range_convert_units(range: RTSPTimeRange, unit: RTSPRangeUnit): boolean;
+    function rtsp_range_convert_units(range: RTSPTimeRange, unit: RTSPRangeUnit | null): boolean;
     /**
      * Free the memory allocated by `range`.
      * @param range a #GstRTSPTimeRange
@@ -703,13 +703,13 @@ export namespace GstRtsp {
      * @param code a #GstRTSPStatusCode
      * @returns a string representation of @code.
      */
-    function rtsp_status_as_text(code: RTSPStatusCode): string;
+    function rtsp_status_as_text(code: RTSPStatusCode | null): string;
     /**
      * Convert `result` in a human readable string.
      * @param result a #GstRTSPResult
      * @returns a newly allocated string. g_free() after usage.
      */
-    function rtsp_strresult(result: RTSPResult): string;
+    function rtsp_strresult(result: RTSPResult | null): string;
     /**
      * Get the #GstElement that can handle the buffers transported over `trans`.
      *
@@ -722,14 +722,14 @@ export namespace GstRtsp {
      * @param option option index.
      * @returns #GST_RTSP_OK.
      */
-    function rtsp_transport_get_manager(trans: RTSPTransMode, option: number): [RTSPResult, string];
+    function rtsp_transport_get_manager(trans: RTSPTransMode | null, option: number): [RTSPResult, string];
     /**
      * Get the mime type of the transport mode `trans`. This mime type is typically
      * used to generate #GstCaps events.
      * @param trans a #GstRTSPTransMode
      * @returns #GST_RTSP_OK.
      */
-    function rtsp_transport_get_mime(trans: RTSPTransMode): [RTSPResult, string];
+    function rtsp_transport_get_mime(trans: RTSPTransMode | null): [RTSPResult, string];
     /**
      * Initialize `transport` so that it can be used.
      * @returns #GST_RTSP_OK.
@@ -759,7 +759,7 @@ export namespace GstRtsp {
      * @param version a #GstRTSPVersion
      * @returns a string representation of @version.
      */
-    function rtsp_version_as_text(version: RTSPVersion): string;
+    function rtsp_version_as_text(version: RTSPVersion | null): string;
     interface RTSPConnectionAcceptCertificateFunc {
         (conn: Gio.TlsConnection, peer_cert: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): boolean;
     }
@@ -1225,7 +1225,7 @@ export namespace GstRtsp {
          * @param timeout a timeout
          * @returns #GST_RTSP_OK on success.
          */
-        poll(events: RTSPEvent, timeout: GLib.TimeVal): [RTSPResult, RTSPEvent];
+        poll(events: RTSPEvent | null, timeout: GLib.TimeVal): [RTSPResult, RTSPEvent];
         /**
          * Wait up to the specified `timeout` for the connection to become available for
          * at least one of the operations specified in `events`. When the function returns
@@ -1239,7 +1239,7 @@ export namespace GstRtsp {
          * @param timeout a timeout in microseconds
          * @returns #GST_RTSP_OK on success.
          */
-        poll_usec(events: RTSPEvent, timeout: number): [RTSPResult, RTSPEvent];
+        poll_usec(events: RTSPEvent | null, timeout: number): [RTSPResult, RTSPEvent];
         /**
          * Attempt to read `size` bytes into `data` from the connected `conn,` blocking up to
          * the specified `timeout`. `timeout` can be %NULL, in which case this function
@@ -1351,7 +1351,7 @@ export namespace GstRtsp {
          * @param pass the password
          * @returns #GST_RTSP_OK.
          */
-        set_auth(method: RTSPAuthMethod, user: string, pass: string): RTSPResult;
+        set_auth(method: RTSPAuthMethod | null, user: string, pass: string): RTSPResult;
         /**
          * Setup `conn` with authentication directives. This is not necessary for
          * methods #GST_RTSP_AUTH_NONE and #GST_RTSP_AUTH_BASIC. For
@@ -1437,7 +1437,7 @@ export namespace GstRtsp {
          * @param flags the validation flags.
          * @returns TRUE if the validation flags are set correctly, or FALSE if @conn is NULL or is not a TLS connection.
          */
-        set_tls_validation_flags(flags: Gio.TlsCertificateFlags): boolean;
+        set_tls_validation_flags(flags: Gio.TlsCertificateFlags | null): boolean;
         /**
          * Set the HTTP tunneling state of the connection. This must be configured before
          * the `conn` is connected.
@@ -1492,7 +1492,7 @@ export namespace GstRtsp {
          * @param value the value of the header
          * @returns a #GstRTSPResult.
          */
-        add_header(field: RTSPHeaderField, value: string): RTSPResult;
+        add_header(field: RTSPHeaderField | null, value: string): RTSPResult;
         /**
          * Add a header with key `header` and `value` to `msg`. This function takes a copy
          * of `value`.
@@ -1551,7 +1551,7 @@ export namespace GstRtsp {
          * @param indx the index of the header
          * @returns #GST_RTSP_OK when @field was found, #GST_RTSP_ENOTIMPL if the key was not found.
          */
-        get_header(field: RTSPHeaderField, indx: number): [RTSPResult, string];
+        get_header(field: RTSPHeaderField | null, indx: number): [RTSPResult, string];
         /**
          * Get the `index` header value with key `header` from `msg`. The result in `value`
          * stays valid as long as it remains present in `msg`.
@@ -1589,7 +1589,7 @@ export namespace GstRtsp {
          * @param uri the uri of the request
          * @returns a #GstRTSPResult.
          */
-        init_request(method: RTSPMethod, uri: string): RTSPResult;
+        init_request(method: RTSPMethod | null, uri: string): RTSPResult;
         /**
          * Initialize `msg` with `code` and `reason`.
          *
@@ -1602,13 +1602,13 @@ export namespace GstRtsp {
          * @param request the request that triggered the response or %NULL
          * @returns a #GstRTSPResult.
          */
-        init_response(code: RTSPStatusCode, reason?: string | null, request?: RTSPMessage | null): RTSPResult;
+        init_response(code: RTSPStatusCode | null, reason?: string | null, request?: RTSPMessage | null): RTSPResult;
         /**
          * Parses the credentials given in a WWW-Authenticate or Authorization header.
          * @param field a #GstRTSPHeaderField
          * @returns %NULL-terminated array of GstRTSPAuthCredential or %NULL.
          */
-        parse_auth_credentials(field: RTSPHeaderField): RTSPAuthCredential[];
+        parse_auth_credentials(field: RTSPHeaderField | null): RTSPAuthCredential[];
         /**
          * Parse the data message `msg` and store the channel in `channel`.
          * @returns a #GstRTSPResult.
@@ -1639,7 +1639,7 @@ export namespace GstRtsp {
          * @param indx the index of the header
          * @returns a #GstRTSPResult.
          */
-        remove_header(field: RTSPHeaderField, indx: number): RTSPResult;
+        remove_header(field: RTSPHeaderField | null, indx: number): RTSPResult;
         /**
          * Remove the `index` header with key `header` from `msg`. If `index` equals -1,
          * all matching headers will be removed.
@@ -1699,7 +1699,7 @@ export namespace GstRtsp {
          * @param value the value of the header
          * @returns a #GstRTSPResult.
          */
-        take_header(field: RTSPHeaderField, value: string): RTSPResult;
+        take_header(field: RTSPHeaderField | null, value: string): RTSPResult;
         /**
          * Add a header with key `header` and `value` to `msg`. This function takes
          * ownership of `value,` but not of `header`.
@@ -2153,7 +2153,7 @@ export namespace GstRtsp {
         before_send(req: RTSPMessage): RTSPResult;
         configure_stream(caps: Gst.Caps): boolean;
         detect_server(resp: RTSPMessage): boolean;
-        get_transports(protocols: RTSPLowerTrans, transport: string): RTSPResult;
+        get_transports(protocols: RTSPLowerTrans | null, transport: string): RTSPResult;
         parse_sdp(sdp: GstSdp.SDPMessage, s: Gst.Structure): RTSPResult;
         receive_request(req: RTSPMessage): RTSPResult;
         send(req: RTSPMessage, resp: RTSPMessage): RTSPResult;
@@ -2174,7 +2174,9 @@ export namespace GstRtsp {
         vfunc_stream_select(url: RTSPUrl): RTSPResult;
     }
 
-    export const RTSPExtension: RTSPExtensionNamespace;
+    export const RTSPExtension: RTSPExtensionNamespace & {
+        new (): RTSPExtension; // This allows `obj instanceof RTSPExtension`
+    };
 
     /**
      * Name of the imported GIR library

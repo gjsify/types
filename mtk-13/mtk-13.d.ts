@@ -27,7 +27,7 @@ export namespace Mtk {
         GROW,
         ROUND,
     }
-    function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy): Rectangle;
+    function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy | null): Rectangle;
     function x11_errors_deinit(): void;
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;

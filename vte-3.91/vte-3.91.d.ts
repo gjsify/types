@@ -583,7 +583,7 @@ export namespace Vte {
      * @param flags flags from #VtePropertyFlags
      * @returns an ID for the termprop
      */
-    function install_termprop(name: string, type: PropertyType, flags: PropertyFlags): number;
+    function install_termprop(name: string, type: PropertyType | null, flags: PropertyFlags | null): number;
     /**
      * Installs a new terminal property `name` as an alias for the terminal
      * property `target_name`.
@@ -619,7 +619,7 @@ export namespace Vte {
      */
     function query_termprop_by_id(prop: number): [boolean, string, PropertyType | null, PropertyFlags | null];
     function regex_error_quark(): GLib.Quark;
-    function uuid_validate_string(str: string, len: number, fmt: UuidFormat): boolean;
+    function uuid_validate_string(str: string, len: number, fmt: UuidFormat | null): boolean;
     interface SelectionFunc {
         (terminal: Terminal, column: number, row: number): boolean;
     }
@@ -814,7 +814,7 @@ export namespace Vte {
             working_directory: string | null,
             argv: string[],
             envv: string[] | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
@@ -868,7 +868,7 @@ export namespace Vte {
             envv: string[] | null,
             fds: number[] | null,
             map_fds: number[] | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
@@ -1004,7 +1004,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1045,7 +1045,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2283,7 +2283,7 @@ export namespace Vte {
          * the start.
          * @param format a #VteFormat
          */
-        copy_clipboard_format(format: Format): void;
+        copy_clipboard_format(format: Format | null): void;
         /**
          * Places the selected text in the terminal in the #GDK_SELECTION_PRIMARY
          * selection.
@@ -2641,7 +2641,7 @@ export namespace Vte {
          * @param format the #VteFormat to use
          * @returns a newly allocated text string, or %NULL.
          */
-        get_text_format(format: Format): string | null;
+        get_text_format(format: Format | null): string | null;
         /**
          * Extracts a view of the visible part of the terminal.
          *
@@ -2692,7 +2692,7 @@ export namespace Vte {
          * @returns a newly allocated string, or %NULL.
          */
         get_text_range_format(
-            format: Format,
+            format: Format | null,
             start_row: number,
             start_col: number,
             end_row: number,
@@ -2704,13 +2704,13 @@ export namespace Vte {
          * @param format the #VteFormat to use
          * @returns a newly allocated string containing the selected text, or %NULL if there is no selection or the format is not supported
          */
-        get_text_selected(format: Format): string | null;
+        get_text_selected(format: Format | null): string | null;
         /**
          * Gets the currently selected text in the format specified by `format`.
          * @param format the #VteFormat to use
          * @returns a newly allocated string containing the selected text, or %NULL if there is no selection or the format is not supported
          */
-        get_text_selected_full(format: Format): [string | null, number];
+        get_text_selected_full(format: Format | null): [string | null, number];
         get_window_title(): string | null;
         /**
          * Returns the set of characters which will be considered parts of a word
@@ -2807,7 +2807,7 @@ export namespace Vte {
          * @param cancellable a #GCancellable, or %NULL
          * @returns a new #VtePty
          */
-        pty_new_sync(flags: PtyFlags, cancellable?: Gio.Cancellable | null): Pty;
+        pty_new_sync(flags: PtyFlags | null, cancellable?: Gio.Cancellable | null): Pty;
         /**
          * Returns the value of a %VTE_PROPERTY_DATA termprop as a #GBytes, or %NULL if
          *   `prop` is unset, or `prop` is not a registered property.
@@ -2931,7 +2931,7 @@ export namespace Vte {
          * presses the backspace key.
          * @param binding a #VteEraseBinding for the backspace key
          */
-        set_backspace_binding(binding: EraseBinding): void;
+        set_backspace_binding(binding: EraseBinding | null): void;
         /**
          * Sets whether the SGR 1 attribute also switches to the bright counterpart
          * of the first 8 palette colors, in addition to making them bold (legacy behavior)
@@ -3055,12 +3055,12 @@ export namespace Vte {
          * will use the #GtkSettings::gtk-cursor-blink setting.
          * @param mode the #VteCursorBlinkMode to use
          */
-        set_cursor_blink_mode(mode: CursorBlinkMode): void;
+        set_cursor_blink_mode(mode: CursorBlinkMode | null): void;
         /**
          * Sets the shape of the cursor drawn.
          * @param shape the #VteCursorShape to use
          */
-        set_cursor_shape(shape: CursorShape): void;
+        set_cursor_shape(shape: CursorShape | null): void;
         /**
          * Reset the terminal palette to reasonable compiled-in default color.
          */
@@ -3071,7 +3071,7 @@ export namespace Vte {
          * presses the delete key.
          * @param binding a #VteEraseBinding for the delete key
          */
-        set_delete_binding(binding: EraseBinding): void;
+        set_delete_binding(binding: EraseBinding | null): void;
         /**
          * Controls whether or not the terminal will communicate with a11y backends.
          * @param enable_a11y %TRUE to enable a11y support
@@ -3230,7 +3230,7 @@ export namespace Vte {
          * Controls whether or not the terminal will allow blinking text.
          * @param text_blink_mode the #VteTextBlinkMode to use
          */
-        set_text_blink_mode(text_blink_mode: TextBlinkMode): void;
+        set_text_blink_mode(text_blink_mode: TextBlinkMode | null): void;
         /**
          * With this function you can provide a set of characters which will
          * be considered parts of a word when doing word-wise selection, in
@@ -3252,7 +3252,7 @@ export namespace Vte {
          *   like %VTE_ALIGN_START.
          * @param align alignment value from #VteAlign
          */
-        set_xalign(align: Align): void;
+        set_xalign(align: Align | null): void;
         /**
          * Sets the horizontal fillment of `terminal` within its allocation.
          *
@@ -3265,7 +3265,7 @@ export namespace Vte {
          * Sets the vertical alignment of `terminal` within its allocation.
          * @param align alignment value from #VteAlign
          */
-        set_yalign(align: Align): void;
+        set_yalign(align: Align | null): void;
         /**
          * Sets the vertical fillment of `terminal` within its allocation.
          * Note that yfill is only supported with yalign set to
@@ -3289,11 +3289,11 @@ export namespace Vte {
          * @param cancellable a #GCancellable, or %NULL
          */
         spawn_async(
-            pty_flags: PtyFlags,
+            pty_flags: PtyFlags | null,
             working_directory: string | null,
             argv: string[],
             envv: string[] | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
@@ -3332,11 +3332,11 @@ export namespace Vte {
          * @returns %TRUE on success, or %FALSE on error with @error filled in
          */
         spawn_sync(
-            pty_flags: PtyFlags,
+            pty_flags: PtyFlags | null,
             working_directory: string | null,
             argv: string[],
             envv: string[] | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
             child_setup?: GLib.SpawnChildSetupFunc | null,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, GLib.Pid | null];
@@ -3397,13 +3397,13 @@ export namespace Vte {
          * @param cancellable a #GCancellable, or %NULL
          */
         spawn_with_fds_async(
-            pty_flags: PtyFlags,
+            pty_flags: PtyFlags | null,
             working_directory: string | null,
             argv: string[],
             envv: string[] | null,
             fds: number[] | null,
             map_fds: number[] | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
@@ -3445,7 +3445,11 @@ export namespace Vte {
          * @param cancellable a #GCancellable object, or %NULL
          * @returns %TRUE on success, %FALSE if there was an error
          */
-        write_contents_sync(stream: Gio.OutputStream, flags: WriteFlags, cancellable?: Gio.Cancellable | null): boolean;
+        write_contents_sync(
+            stream: Gio.OutputStream,
+            flags: WriteFlags | null,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
 
         // Inherited properties
         /**
@@ -3511,7 +3515,7 @@ export namespace Vte {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -3559,22 +3563,22 @@ export namespace Vte {
          * @param state platform state to query
          * @returns the value of @state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
         /**
          * Resets the accessible `property` to its default value.
          * @param property a `GtkAccessibleProperty`
          */
-        reset_property(property: Gtk.AccessibleProperty): void;
+        reset_property(property: Gtk.AccessibleProperty | null): void;
         /**
          * Resets the accessible `relation` to its default value.
          * @param relation a `GtkAccessibleRelation`
          */
-        reset_relation(relation: Gtk.AccessibleRelation): void;
+        reset_relation(relation: Gtk.AccessibleRelation | null): void;
         /**
          * Resets the accessible `state` to its default value.
          * @param state a `GtkAccessibleState`
          */
-        reset_state(state: Gtk.AccessibleState): void;
+        reset_state(state: Gtk.AccessibleState | null): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -3607,7 +3611,7 @@ export namespace Vte {
          * @param properties an array of `GtkAccessibleProperty`
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -3618,7 +3622,7 @@ export namespace Vte {
          * @param relations an array of `GtkAccessibleRelation`
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -3629,7 +3633,7 @@ export namespace Vte {
          * @param states an array of `GtkAccessibleState`
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -3689,7 +3693,7 @@ export namespace Vte {
          * @param start the starting offset of the change, in characters
          * @param end the end offset of the change, in characters
          */
-        update_contents(change: Gtk.AccessibleTextContentChange, start: number, end: number): void;
+        update_contents(change: Gtk.AccessibleTextContentChange | null, start: number, end: number): void;
         /**
          * Updates the boundary of the selection.
          *
@@ -3914,7 +3918,7 @@ export namespace Vte {
          * below the minimum width or below the natural width.
          * @param policy the horizontal `GtkScrollablePolicy`
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
          * Sets the vertical adjustment of the `GtkScrollable`.
          * @param vadjustment a `GtkAdjustment`
@@ -3927,7 +3931,7 @@ export namespace Vte {
          * below the minimum height or below the natural height.
          * @param policy the vertical `GtkScrollablePolicy`
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable.
@@ -3981,7 +3985,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4022,7 +4026,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4439,9 +4443,9 @@ export namespace Vte {
         dup(): Uuid;
         equal(other: Uuid): boolean;
         free(): void;
-        free_to_string(fmt: UuidFormat, len: number): string;
+        free_to_string(fmt: UuidFormat | null, len: number): string;
         new_v5(data: string, len: number): Uuid;
-        to_string(fmt: UuidFormat, len: number): string;
+        to_string(fmt: UuidFormat | null, len: number): string;
     }
 
     /**

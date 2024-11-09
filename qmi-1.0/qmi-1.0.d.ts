@@ -11527,269 +11527,269 @@ export namespace Qmi {
      * @param val a QmiCoreError.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function core_error_get_string(val: CoreError): string;
+    function core_error_get_string(val: CoreError | null): string;
     function core_error_quark(): GLib.Quark;
     /**
      * Gets the nickname string for the #QmiDataEndpointType specified at `val`.
      * @param val a QmiDataEndpointType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function data_endpoint_type_get_string(val: DataEndpointType): string;
+    function data_endpoint_type_get_string(val: DataEndpointType | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiDeviceAddLinkFlags in `mask`.
      * @param mask bitmask of QmiDeviceAddLinkFlags values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function device_add_link_flags_build_string_from_mask(mask: DeviceAddLinkFlags): string;
+    function device_add_link_flags_build_string_from_mask(mask: DeviceAddLinkFlags | null): string;
     /**
      * Gets the nickname string for the #QmiDeviceExpectedDataFormat specified at `val`.
      * @param val a QmiDeviceExpectedDataFormat.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function device_expected_data_format_get_string(val: DeviceExpectedDataFormat): string;
+    function device_expected_data_format_get_string(val: DeviceExpectedDataFormat | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiDeviceOpenFlags in `mask`.
      * @param mask bitmask of QmiDeviceOpenFlags values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function device_open_flags_build_string_from_mask(mask: DeviceOpenFlags): string;
+    function device_open_flags_build_string_from_mask(mask: DeviceOpenFlags | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiDeviceReleaseClientFlags in `mask`.
      * @param mask bitmask of QmiDeviceReleaseClientFlags values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function device_release_client_flags_build_string_from_mask(mask: DeviceReleaseClientFlags): string;
+    function device_release_client_flags_build_string_from_mask(mask: DeviceReleaseClientFlags | null): string;
     /**
      * Gets the nickname string for the #QmiDmsActivationState specified at `val`.
      * @param val a QmiDmsActivationState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_activation_state_get_string(val: DmsActivationState): string;
+    function dms_activation_state_get_string(val: DmsActivationState | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiDmsBandCapability in `mask`.
      * @param mask bitmask of QmiDmsBandCapability values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function dms_band_capability_build_string_from_mask(mask: DmsBandCapability): string;
+    function dms_band_capability_build_string_from_mask(mask: DmsBandCapability | null): string;
     /**
      * Gets the nickname string for the #QmiDmsBootImageDownloadMode specified at `val`.
      * @param val a QmiDmsBootImageDownloadMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_boot_image_download_mode_get_string(val: DmsBootImageDownloadMode): string;
+    function dms_boot_image_download_mode_get_string(val: DmsBootImageDownloadMode | null): string;
     /**
      * Gets the nickname string for the #QmiDmsDataServiceCapability specified at `val`.
      * @param val a QmiDmsDataServiceCapability.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_data_service_capability_get_string(val: DmsDataServiceCapability): string;
+    function dms_data_service_capability_get_string(val: DmsDataServiceCapability | null): string;
     /**
      * Gets the nickname string for the #QmiDmsFirmwareImageType specified at `val`.
      * @param val a QmiDmsFirmwareImageType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_firmware_image_type_get_string(val: DmsFirmwareImageType): string;
+    function dms_firmware_image_type_get_string(val: DmsFirmwareImageType | null): string;
     /**
      * Gets the nickname string for the #QmiDmsFoxconnDeviceMode specified at `val`.
      * @param val a QmiDmsFoxconnDeviceMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_foxconn_device_mode_get_string(val: DmsFoxconnDeviceMode): string;
+    function dms_foxconn_device_mode_get_string(val: DmsFoxconnDeviceMode | null): string;
     /**
      * Gets the nickname string for the #QmiDmsFoxconnFirmwareVersionType specified at `val`.
      * @param val a QmiDmsFoxconnFirmwareVersionType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_foxconn_firmware_version_type_get_string(val: DmsFoxconnFirmwareVersionType): string;
+    function dms_foxconn_firmware_version_type_get_string(val: DmsFoxconnFirmwareVersionType | null): string;
     /**
      * Gets the nickname string for the #QmiDmsHpDeviceMode specified at `val`.
      * @param val a QmiDmsHpDeviceMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_hp_device_mode_get_string(val: DmsHpDeviceMode): string;
+    function dms_hp_device_mode_get_string(val: DmsHpDeviceMode | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiDmsLteBandCapability in `mask`.
      * @param mask bitmask of QmiDmsLteBandCapability values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function dms_lte_band_capability_build_string_from_mask(mask: DmsLteBandCapability): string;
+    function dms_lte_band_capability_build_string_from_mask(mask: DmsLteBandCapability | null): string;
     /**
      * Gets the nickname string for the #QmiDmsMacType specified at `val`.
      * @param val a QmiDmsMacType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_mac_type_get_string(val: DmsMacType): string;
+    function dms_mac_type_get_string(val: DmsMacType | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiDmsOfflineReason in `mask`.
      * @param mask bitmask of QmiDmsOfflineReason values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function dms_offline_reason_build_string_from_mask(mask: DmsOfflineReason): string;
+    function dms_offline_reason_build_string_from_mask(mask: DmsOfflineReason | null): string;
     /**
      * Gets the nickname string for the #QmiDmsOperatingMode specified at `val`.
      * @param val a QmiDmsOperatingMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_operating_mode_get_string(val: DmsOperatingMode): string;
+    function dms_operating_mode_get_string(val: DmsOperatingMode | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiDmsPowerState in `mask`.
      * @param mask bitmask of QmiDmsPowerState values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function dms_power_state_build_string_from_mask(mask: DmsPowerState): string;
+    function dms_power_state_build_string_from_mask(mask: DmsPowerState | null): string;
     /**
      * Gets the nickname string for the #QmiDmsRadioInterface specified at `val`.
      * @param val a QmiDmsRadioInterface.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_radio_interface_get_string(val: DmsRadioInterface): string;
+    function dms_radio_interface_get_string(val: DmsRadioInterface | null): string;
     /**
      * Gets the nickname string for the #QmiDmsSimCapability specified at `val`.
      * @param val a QmiDmsSimCapability.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_sim_capability_get_string(val: DmsSimCapability): string;
+    function dms_sim_capability_get_string(val: DmsSimCapability | null): string;
     /**
      * Gets a text description of the Sierra Wireless USB composition.
      * @param value a #QmiDmsSwiUsbComposition.
      * @returns a string.
      */
-    function dms_swi_usb_composition_get_description(value: DmsSwiUsbComposition): string;
+    function dms_swi_usb_composition_get_description(value: DmsSwiUsbComposition | null): string;
     /**
      * Gets the nickname string for the #QmiDmsSwiUsbComposition specified at `val`.
      * @param val a QmiDmsSwiUsbComposition.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_swi_usb_composition_get_string(val: DmsSwiUsbComposition): string;
+    function dms_swi_usb_composition_get_string(val: DmsSwiUsbComposition | null): string;
     /**
      * Gets the nickname string for the #QmiDmsTimeReferenceType specified at `val`.
      * @param val a QmiDmsTimeReferenceType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_time_reference_type_get_string(val: DmsTimeReferenceType): string;
+    function dms_time_reference_type_get_string(val: DmsTimeReferenceType | null): string;
     /**
      * Gets the nickname string for the #QmiDmsTimeSource specified at `val`.
      * @param val a QmiDmsTimeSource.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_time_source_get_string(val: DmsTimeSource): string;
+    function dms_time_source_get_string(val: DmsTimeSource | null): string;
     /**
      * Gets the nickname string for the #QmiDmsUimFacility specified at `val`.
      * @param val a QmiDmsUimFacility.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_uim_facility_get_string(val: DmsUimFacility): string;
+    function dms_uim_facility_get_string(val: DmsUimFacility | null): string;
     /**
      * Gets the nickname string for the #QmiDmsUimFacilityState specified at `val`.
      * @param val a QmiDmsUimFacilityState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_uim_facility_state_get_string(val: DmsUimFacilityState): string;
+    function dms_uim_facility_state_get_string(val: DmsUimFacilityState | null): string;
     /**
      * Gets the nickname string for the #QmiDmsUimPinId specified at `val`.
      * @param val a QmiDmsUimPinId.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_uim_pin_id_get_string(val: DmsUimPinId): string;
+    function dms_uim_pin_id_get_string(val: DmsUimPinId | null): string;
     /**
      * Gets the nickname string for the #QmiDmsUimPinStatus specified at `val`.
      * @param val a QmiDmsUimPinStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_uim_pin_status_get_string(val: DmsUimPinStatus): string;
+    function dms_uim_pin_status_get_string(val: DmsUimPinStatus | null): string;
     /**
      * Gets the nickname string for the #QmiDmsUimState specified at `val`.
      * @param val a QmiDmsUimState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dms_uim_state_get_string(val: DmsUimState): string;
+    function dms_uim_state_get_string(val: DmsUimState | null): string;
     /**
      * Gets the nickname string for the #QmiDsdApnType specified at `val`.
      * @param val a QmiDsdApnType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dsd_apn_type_get_string(val: DsdApnType): string;
+    function dsd_apn_type_get_string(val: DsdApnType | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiDsdApnTypePreference in `mask`.
      * @param mask bitmask of QmiDsdApnTypePreference values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function dsd_apn_type_preference_build_string_from_mask(mask: DsdApnTypePreference): string;
+    function dsd_apn_type_preference_build_string_from_mask(mask: DsdApnTypePreference | null): string;
     /**
      * Gets the nickname string for the #QmiDsdDataSystemNetworkType specified at `val`.
      * @param val a QmiDsdDataSystemNetworkType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dsd_data_system_network_type_get_string(val: DsdDataSystemNetworkType): string;
+    function dsd_data_system_network_type_get_string(val: DsdDataSystemNetworkType | null): string;
     /**
      * Gets the nickname string for the #QmiDsdRadioAccessTechnology specified at `val`.
      * @param val a QmiDsdRadioAccessTechnology.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dsd_radio_access_technology_get_string(val: DsdRadioAccessTechnology): string;
+    function dsd_radio_access_technology_get_string(val: DsdRadioAccessTechnology | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiDsdSoMask in `mask`.
      * @param mask bitmask of QmiDsdSoMask values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function dsd_so_mask_build_string_from_mask(mask: DsdSoMask): string;
+    function dsd_so_mask_build_string_from_mask(mask: DsdSoMask | null): string;
     /**
      * Gets the nickname string for the #QmiEndian specified at `val`.
      * @param val a QmiEndian.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function endian_get_string(val: Endian): string;
+    function endian_get_string(val: Endian | null): string;
     /**
      * Gets the nickname string for the #QmiFoxFirmwareVersionType specified at `val`.
      * @param val a QmiFoxFirmwareVersionType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function fox_firmware_version_type_get_string(val: FoxFirmwareVersionType): string;
+    function fox_firmware_version_type_get_string(val: FoxFirmwareVersionType | null): string;
     /**
      * Gets the nickname string for the #QmiGasFirmwareListingMode specified at `val`.
      * @param val a QmiGasFirmwareListingMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function gas_firmware_listing_mode_get_string(val: GasFirmwareListingMode): string;
+    function gas_firmware_listing_mode_get_string(val: GasFirmwareListingMode | null): string;
     /**
      * Gets the nickname string for the #QmiGasUsbCompositionEndpointType specified at `val`.
      * @param val a QmiGasUsbCompositionEndpointType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function gas_usb_composition_endpoint_type_get_string(val: GasUsbCompositionEndpointType): string;
+    function gas_usb_composition_endpoint_type_get_string(val: GasUsbCompositionEndpointType | null): string;
     /**
      * Gets the nickname string for the #QmiImsaImsRegistrationStatus specified at `val`.
      * @param val a QmiImsaImsRegistrationStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function imsa_ims_registration_status_get_string(val: ImsaImsRegistrationStatus): string;
+    function imsa_ims_registration_status_get_string(val: ImsaImsRegistrationStatus | null): string;
     /**
      * Gets the nickname string for the #QmiImsaRegistrationTechnology specified at `val`.
      * @param val a QmiImsaRegistrationTechnology.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function imsa_registration_technology_get_string(val: ImsaRegistrationTechnology): string;
+    function imsa_registration_technology_get_string(val: ImsaRegistrationTechnology | null): string;
     /**
      * Gets the nickname string for the #QmiImsaServiceStatus specified at `val`.
      * @param val a QmiImsaServiceStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function imsa_service_status_get_string(val: ImsaServiceStatus): string;
+    function imsa_service_status_get_string(val: ImsaServiceStatus | null): string;
     /**
      * Gets the nickname string for the #QmiImspEnablerState specified at `val`.
      * @param val a QmiImspEnablerState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function imsp_enabler_state_get_string(val: ImspEnablerState): string;
+    function imsp_enabler_state_get_string(val: ImspEnablerState | null): string;
     /**
      * Parses a #QmiMessage and builds a #QmiIndicationAtrReceivedOutput out of it.
      * The operation fails if the message is of the wrong type.
@@ -12201,160 +12201,160 @@ export namespace Qmi {
      * @param mask bitmask of QmiLocDeleteCellDatabase values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function loc_delete_cell_database_build_string_from_mask(mask: LocDeleteCellDatabase): string;
+    function loc_delete_cell_database_build_string_from_mask(mask: LocDeleteCellDatabase | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiLocDeleteClockInfo in `mask`.
      * @param mask bitmask of QmiLocDeleteClockInfo values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function loc_delete_clock_info_build_string_from_mask(mask: LocDeleteClockInfo): string;
+    function loc_delete_clock_info_build_string_from_mask(mask: LocDeleteClockInfo | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiLocDeleteGnssData in `mask`.
      * @param mask bitmask of QmiLocDeleteGnssData values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function loc_delete_gnss_data_build_string_from_mask(mask: LocDeleteGnssData): string;
+    function loc_delete_gnss_data_build_string_from_mask(mask: LocDeleteGnssData | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiLocDeleteSvInfo in `mask`.
      * @param mask bitmask of QmiLocDeleteSvInfo values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function loc_delete_sv_info_build_string_from_mask(mask: LocDeleteSvInfo): string;
+    function loc_delete_sv_info_build_string_from_mask(mask: LocDeleteSvInfo | null): string;
     /**
      * Gets the nickname string for the #QmiLocEngineState specified at `val`.
      * @param val a QmiLocEngineState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function loc_engine_state_get_string(val: LocEngineState): string;
+    function loc_engine_state_get_string(val: LocEngineState | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiLocEventRegistrationFlag in `mask`.
      * @param mask bitmask of QmiLocEventRegistrationFlag values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function loc_event_registration_flag_build_string_from_mask(mask: LocEventRegistrationFlag): string;
+    function loc_event_registration_flag_build_string_from_mask(mask: LocEventRegistrationFlag | null): string;
     /**
      * Gets the nickname string for the #QmiLocFixRecurrenceType specified at `val`.
      * @param val a QmiLocFixRecurrenceType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function loc_fix_recurrence_type_get_string(val: LocFixRecurrenceType): string;
+    function loc_fix_recurrence_type_get_string(val: LocFixRecurrenceType | null): string;
     /**
      * Gets the nickname string for the #QmiLocHealthStatus specified at `val`.
      * @param val a QmiLocHealthStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function loc_health_status_get_string(val: LocHealthStatus): string;
+    function loc_health_status_get_string(val: LocHealthStatus | null): string;
     /**
      * Gets the nickname string for the #QmiLocIndicationStatus specified at `val`.
      * @param val a QmiLocIndicationStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function loc_indication_status_get_string(val: LocIndicationStatus): string;
+    function loc_indication_status_get_string(val: LocIndicationStatus | null): string;
     /**
      * Gets the nickname string for the #QmiLocIntermediateReportState specified at `val`.
      * @param val a QmiLocIntermediateReportState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function loc_intermediate_report_state_get_string(val: LocIntermediateReportState): string;
+    function loc_intermediate_report_state_get_string(val: LocIntermediateReportState | null): string;
     /**
      * Gets the nickname string for the #QmiLocLockType specified at `val`.
      * @param val a QmiLocLockType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function loc_lock_type_get_string(val: LocLockType): string;
+    function loc_lock_type_get_string(val: LocLockType | null): string;
     /**
      * Gets the nickname string for the #QmiLocNavigationData specified at `val`.
      * @param val a QmiLocNavigationData.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function loc_navigation_data_get_string(val: LocNavigationData): string;
+    function loc_navigation_data_get_string(val: LocNavigationData | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiLocNmeaType in `mask`.
      * @param mask bitmask of QmiLocNmeaType values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function loc_nmea_type_build_string_from_mask(mask: LocNmeaType): string;
+    function loc_nmea_type_build_string_from_mask(mask: LocNmeaType | null): string;
     /**
      * Gets the nickname string for the #QmiLocOperationMode specified at `val`.
      * @param val a QmiLocOperationMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function loc_operation_mode_get_string(val: LocOperationMode): string;
+    function loc_operation_mode_get_string(val: LocOperationMode | null): string;
     /**
      * Gets the nickname string for the #QmiLocPredictedOrbitsDataFormat specified at `val`.
      * @param val a QmiLocPredictedOrbitsDataFormat.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function loc_predicted_orbits_data_format_get_string(val: LocPredictedOrbitsDataFormat): string;
+    function loc_predicted_orbits_data_format_get_string(val: LocPredictedOrbitsDataFormat | null): string;
     /**
      * Gets the nickname string for the #QmiLocReliability specified at `val`.
      * @param val a QmiLocReliability.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function loc_reliability_get_string(val: LocReliability): string;
+    function loc_reliability_get_string(val: LocReliability | null): string;
     /**
      * Gets the nickname string for the #QmiLocSatelliteStatus specified at `val`.
      * @param val a QmiLocSatelliteStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function loc_satellite_status_get_string(val: LocSatelliteStatus): string;
+    function loc_satellite_status_get_string(val: LocSatelliteStatus | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiLocSatelliteValidInformation in `mask`.
      * @param mask bitmask of QmiLocSatelliteValidInformation values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function loc_satellite_valid_information_build_string_from_mask(mask: LocSatelliteValidInformation): string;
+    function loc_satellite_valid_information_build_string_from_mask(mask: LocSatelliteValidInformation | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiLocSensorDataUsage in `mask`.
      * @param mask bitmask of QmiLocSensorDataUsage values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function loc_sensor_data_usage_build_string_from_mask(mask: LocSensorDataUsage): string;
+    function loc_sensor_data_usage_build_string_from_mask(mask: LocSensorDataUsage | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiLocServerAddressType in `mask`.
      * @param mask bitmask of QmiLocServerAddressType values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function loc_server_address_type_build_string_from_mask(mask: LocServerAddressType): string;
+    function loc_server_address_type_build_string_from_mask(mask: LocServerAddressType | null): string;
     /**
      * Gets the nickname string for the #QmiLocServerType specified at `val`.
      * @param val a QmiLocServerType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function loc_server_type_get_string(val: LocServerType): string;
+    function loc_server_type_get_string(val: LocServerType | null): string;
     /**
      * Gets the nickname string for the #QmiLocSessionStatus specified at `val`.
      * @param val a QmiLocSessionStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function loc_session_status_get_string(val: LocSessionStatus): string;
+    function loc_session_status_get_string(val: LocSessionStatus | null): string;
     /**
      * Gets the nickname string for the #QmiLocSystem specified at `val`.
      * @param val a QmiLocSystem.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function loc_system_get_string(val: LocSystem): string;
+    function loc_system_get_string(val: LocSystem | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiLocTechnologyUsed in `mask`.
      * @param mask bitmask of QmiLocTechnologyUsed values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function loc_technology_used_build_string_from_mask(mask: LocTechnologyUsed): string;
+    function loc_technology_used_build_string_from_mask(mask: LocTechnologyUsed | null): string;
     /**
      * Gets the nickname string for the #QmiLocTimeSource specified at `val`.
      * @param val a QmiLocTimeSource.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function loc_time_source_get_string(val: LocTimeSource): string;
+    function loc_time_source_get_string(val: LocTimeSource | null): string;
     /**
      * Creates a new `type` TLV with the value given in `raw,` and adds it to the #QmiMessage.
      * @param self a #QmiMessage.
@@ -13406,7 +13406,12 @@ export namespace Qmi {
      * @param message_id message ID.
      * @returns a newly created #QmiMessage. The returned value should be freed with qmi_message_unref().
      */
-    function message_new(service: Service, client_id: number, transaction_id: number, message_id: number): Message;
+    function message_new(
+        service: Service | null,
+        client_id: number,
+        transaction_id: number,
+        message_id: number,
+    ): Message;
     /**
      * Create a new #QmiMessage for the given `service` and `client_id` and including the given QMI data buffer.
      *
@@ -13419,7 +13424,7 @@ export namespace Qmi {
      * @returns a newly created #QmiMessage, which should be freed with qmi_message_unref(). If @qmi_data doesn't contain a complete QMI data payload %NULL is returned. If there is a complete QMI data payload but it appears not to be valid, %NULL is returned and @error is set.
      */
     function message_new_from_data(
-        service: Service,
+        service: Service | null,
         client_id: number,
         qmi_data: Uint8Array | string,
     ): [Message, Uint8Array];
@@ -13713,7 +13718,7 @@ export namespace Qmi {
      * @param error a #QmiProtocolError to set in the result TLV.
      * @returns a newly created #QmiMessage. The returned value should be freed with qmi_message_unref().
      */
-    function message_response_new(request: Message, error: ProtocolError): Message;
+    function message_response_new(request: Message, error: ProtocolError | null): Message;
     /**
      * Parses a #QmiMessage and builds a #QmiMessageSarRfGetStateOutput out of it.
      * The operation fails if the message is of the wrong type.
@@ -13784,7 +13789,7 @@ export namespace Qmi {
         self: Message,
         tlv_offset: number,
         offset: number,
-        endian: Endian,
+        endian: Endian | null,
     ): [boolean, number, number];
     /**
      * Reads a 32-bit floating-point number from the TLV.
@@ -13802,7 +13807,7 @@ export namespace Qmi {
         self: Message,
         tlv_offset: number,
         offset: number,
-        endian: Endian,
+        endian: Endian | null,
     ): [boolean, number, number];
     /**
      * Reads a signed 16-bit integer from the TLV, in host byte order.
@@ -13820,7 +13825,7 @@ export namespace Qmi {
         self: Message,
         tlv_offset: number,
         offset: number,
-        endian: Endian,
+        endian: Endian | null,
     ): [boolean, number, number];
     /**
      * Reads a signed 32-bit integer from the TLV, in host byte order.
@@ -13838,7 +13843,7 @@ export namespace Qmi {
         self: Message,
         tlv_offset: number,
         offset: number,
-        endian: Endian,
+        endian: Endian | null,
     ): [boolean, number, number];
     /**
      * Reads a signed 64-bit integer from the TLV, in host byte order.
@@ -13856,7 +13861,7 @@ export namespace Qmi {
         self: Message,
         tlv_offset: number,
         offset: number,
-        endian: Endian,
+        endian: Endian | null,
     ): [boolean, number, number];
     /**
      * Reads a signed byte from the TLV.
@@ -13886,7 +13891,7 @@ export namespace Qmi {
         self: Message,
         tlv_offset: number,
         offset: number,
-        endian: Endian,
+        endian: Endian | null,
     ): [boolean, number, number];
     /**
      * Reads an unsigned 32-bit integer from the TLV, in host byte order.
@@ -13904,7 +13909,7 @@ export namespace Qmi {
         self: Message,
         tlv_offset: number,
         offset: number,
-        endian: Endian,
+        endian: Endian | null,
     ): [boolean, number, number];
     /**
      * Reads an unsigned 64-bit integer from the TLV, in host byte order.
@@ -13922,7 +13927,7 @@ export namespace Qmi {
         self: Message,
         tlv_offset: number,
         offset: number,
-        endian: Endian,
+        endian: Endian | null,
     ): [boolean, number, number];
     /**
      * Reads an unsigned byte from the TLV.
@@ -13962,7 +13967,7 @@ export namespace Qmi {
         tlv_offset: number,
         offset: number,
         n_bytes: number,
-        endian: Endian,
+        endian: Endian | null,
     ): [boolean, number, number];
     /**
      * Reads a string from the TLV.
@@ -14008,7 +14013,7 @@ export namespace Qmi {
      * @param _in a #gint16 in host byte order.
      * @returns %TRUE if the variable is successfully added, otherwise %FALSE is returned and @error is set.
      */
-    function message_tlv_write_gint16(self: Message, endian: Endian, _in: number): boolean;
+    function message_tlv_write_gint16(self: Message, endian: Endian | null, _in: number): boolean;
     /**
      * Appends a signed 32-bit integer to the TLV being built. The number to be
      * written is expected to be given in host endianness, and this method takes
@@ -14018,7 +14023,7 @@ export namespace Qmi {
      * @param _in a #gint32 in host byte order.
      * @returns %TRUE if the variable is successfully added, otherwise %FALSE is returned and @error is set.
      */
-    function message_tlv_write_gint32(self: Message, endian: Endian, _in: number): boolean;
+    function message_tlv_write_gint32(self: Message, endian: Endian | null, _in: number): boolean;
     /**
      * Appends a signed 32-bit integer to the TLV being built. The number to be
      * written is expected to be given in host endianness, and this method takes
@@ -14028,7 +14033,7 @@ export namespace Qmi {
      * @param _in a #gint64 in host byte order.
      * @returns %TRUE if the variable is successfully added, otherwise %FALSE is returned and @error is set.
      */
-    function message_tlv_write_gint64(self: Message, endian: Endian, _in: number): boolean;
+    function message_tlv_write_gint64(self: Message, endian: Endian | null, _in: number): boolean;
     /**
      * Appends a signed byte variable to the TLV being built.
      * @param self a #QmiMessage.
@@ -14045,7 +14050,7 @@ export namespace Qmi {
      * @param _in a #guint16 in host byte order.
      * @returns %TRUE if the variable is successfully added, otherwise %FALSE is returned and @error is set.
      */
-    function message_tlv_write_guint16(self: Message, endian: Endian, _in: number): boolean;
+    function message_tlv_write_guint16(self: Message, endian: Endian | null, _in: number): boolean;
     /**
      * Appends an unsigned 32-bit integer to the TLV being built. The number to be
      * written is expected to be given in host endianness, and this method takes
@@ -14055,7 +14060,7 @@ export namespace Qmi {
      * @param _in a #guint32 in host byte order.
      * @returns %TRUE if the variable is successfully added, otherwise %FALSE is returned and @error is set.
      */
-    function message_tlv_write_guint32(self: Message, endian: Endian, _in: number): boolean;
+    function message_tlv_write_guint32(self: Message, endian: Endian | null, _in: number): boolean;
     /**
      * Appends an unsigned 64-bit integer to the TLV being built. The number to be
      * written is expected to be given in host endianness, and this method takes
@@ -14065,7 +14070,7 @@ export namespace Qmi {
      * @param _in a #guint64 in host byte order.
      * @returns %TRUE if the variable is successfully added, otherwise %FALSE is returned and @error is set.
      */
-    function message_tlv_write_guint64(self: Message, endian: Endian, _in: number): boolean;
+    function message_tlv_write_guint64(self: Message, endian: Endian | null, _in: number): boolean;
     /**
      * Appends an unsigned byte to the TLV being built.
      * @param self a #QmiMessage.
@@ -14105,7 +14110,7 @@ export namespace Qmi {
      * @param _in a #guint64 in host byte order.
      * @returns %TRUE if the variable is successfully added, otherwise %FALSE is returned and @error is set.
      */
-    function message_tlv_write_sized_guint(self: Message, n_bytes: number, endian: Endian, _in: number): boolean;
+    function message_tlv_write_sized_guint(self: Message, n_bytes: number, endian: Endian | null, _in: number): boolean;
     /**
      * Appends a string to the TLV being built.
      *
@@ -14804,212 +14809,216 @@ export namespace Qmi {
      * @param val a QmiNasActiveBand.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_active_band_get_string(val: NasActiveBand): string;
+    function nas_active_band_get_string(val: NasActiveBand | null): string;
     /**
      * Gets the nickname string for the #QmiNasAttachState specified at `val`.
      * @param val a QmiNasAttachState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_attach_state_get_string(val: NasAttachState): string;
+    function nas_attach_state_get_string(val: NasAttachState | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiNasBandPreference in `mask`.
      * @param mask bitmask of QmiNasBandPreference values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function nas_band_preference_build_string_from_mask(mask: NasBandPreference): string;
+    function nas_band_preference_build_string_from_mask(mask: NasBandPreference | null): string;
     /**
      * Gets the nickname string for the #QmiNasBoolean specified at `val`.
      * @param val a QmiNasBoolean.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_boolean_get_string(val: NasBoolean): string;
+    function nas_boolean_get_string(val: NasBoolean | null): string;
     /**
      * Gets the nickname string for the #QmiNasCallBarringStatus specified at `val`.
      * @param val a QmiNasCallBarringStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_call_barring_status_get_string(val: NasCallBarringStatus): string;
+    function nas_call_barring_status_get_string(val: NasCallBarringStatus | null): string;
     /**
      * Gets the nickname string for the #QmiNasCdmaPilotType specified at `val`.
      * @param val a QmiNasCdmaPilotType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_cdma_pilot_type_get_string(val: NasCdmaPilotType): string;
+    function nas_cdma_pilot_type_get_string(val: NasCdmaPilotType | null): string;
     /**
      * Gets the nickname string for the #QmiNasCdmaPrlPreference specified at `val`.
      * @param val a QmiNasCdmaPrlPreference.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_cdma_prl_preference_get_string(val: NasCdmaPrlPreference): string;
+    function nas_cdma_prl_preference_get_string(val: NasCdmaPrlPreference | null): string;
     /**
      * Gets the nickname string for the #QmiNasCellBroadcastCapability specified at `val`.
      * @param val a QmiNasCellBroadcastCapability.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_cell_broadcast_capability_get_string(val: NasCellBroadcastCapability): string;
+    function nas_cell_broadcast_capability_get_string(val: NasCellBroadcastCapability | null): string;
     /**
      * Gets the nickname string for the #QmiNasChangeDuration specified at `val`.
      * @param val a QmiNasChangeDuration.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_change_duration_get_string(val: NasChangeDuration): string;
+    function nas_change_duration_get_string(val: NasChangeDuration | null): string;
     /**
      * Gets the nickname string for the #QmiNasDataCapability specified at `val`.
      * @param val a QmiNasDataCapability.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_data_capability_get_string(val: NasDataCapability): string;
+    function nas_data_capability_get_string(val: NasDataCapability | null): string;
     /**
      * Gets the nickname string for the #QmiNasDayOfWeek specified at `val`.
      * @param val a QmiNasDayOfWeek.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_day_of_week_get_string(val: NasDayOfWeek): string;
+    function nas_day_of_week_get_string(val: NasDayOfWeek | null): string;
     /**
      * Gets the nickname string for the #QmiNasDaylightSavingsAdjustment specified at `val`.
      * @param val a QmiNasDaylightSavingsAdjustment.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_daylight_savings_adjustment_get_string(val: NasDaylightSavingsAdjustment): string;
+    function nas_daylight_savings_adjustment_get_string(val: NasDaylightSavingsAdjustment | null): string;
     /**
      * Gets the nickname string for the #QmiNasDLBandwidth specified at `val`.
      * @param val a QmiNasDLBandwidth.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_dl_bandwidth_get_string(val: NasDLBandwidth): string;
+    function nas_dl_bandwidth_get_string(val: NasDLBandwidth | null): string;
     /**
      * Gets the nickname string for the #QmiNasDrx specified at `val`.
      * @param val a QmiNasDrx.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_drx_get_string(val: NasDrx): string;
+    function nas_drx_get_string(val: NasDrx | null): string;
     /**
      * Gets the nickname string for the #QmiNasEvdoSinrLevel specified at `val`.
      * @param val a QmiNasEvdoSinrLevel.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_evdo_sinr_level_get_string(val: NasEvdoSinrLevel): string;
+    function nas_evdo_sinr_level_get_string(val: NasEvdoSinrLevel | null): string;
     /**
      * Gets the nickname string for the #QmiNasGsmWcdmaAcquisitionOrderPreference specified at `val`.
      * @param val a QmiNasGsmWcdmaAcquisitionOrderPreference.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_gsm_wcdma_acquisition_order_preference_get_string(val: NasGsmWcdmaAcquisitionOrderPreference): string;
+    function nas_gsm_wcdma_acquisition_order_preference_get_string(
+        val: NasGsmWcdmaAcquisitionOrderPreference | null,
+    ): string;
     /**
      * Gets the nickname string for the #QmiNasHdrPersonality specified at `val`.
      * @param val a QmiNasHdrPersonality.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_hdr_personality_get_string(val: NasHdrPersonality): string;
+    function nas_hdr_personality_get_string(val: NasHdrPersonality | null): string;
     /**
      * Gets the nickname string for the #QmiNasHdrProtocolRevision specified at `val`.
      * @param val a QmiNasHdrProtocolRevision.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_hdr_protocol_revision_get_string(val: NasHdrProtocolRevision): string;
+    function nas_hdr_protocol_revision_get_string(val: NasHdrProtocolRevision | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiNasLteBandPreference in `mask`.
      * @param mask bitmask of QmiNasLteBandPreference values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function nas_lte_band_preference_build_string_from_mask(mask: NasLteBandPreference): string;
+    function nas_lte_band_preference_build_string_from_mask(mask: NasLteBandPreference | null): string;
     /**
      * Gets the nickname string for the #QmiNasLteCellAccessStatus specified at `val`.
      * @param val a QmiNasLteCellAccessStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_lte_cell_access_status_get_string(val: NasLteCellAccessStatus): string;
+    function nas_lte_cell_access_status_get_string(val: NasLteCellAccessStatus | null): string;
     /**
      * Gets the nickname string for the #QmiNasLteRegistrationDomain specified at `val`.
      * @param val a QmiNasLteRegistrationDomain.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_lte_registration_domain_get_string(val: NasLteRegistrationDomain): string;
+    function nas_lte_registration_domain_get_string(val: NasLteRegistrationDomain | null): string;
     /**
      * Gets the nickname string for the #QmiNasLteVoiceDomain specified at `val`.
      * @param val a QmiNasLteVoiceDomain.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_lte_voice_domain_get_string(val: NasLteVoiceDomain): string;
+    function nas_lte_voice_domain_get_string(val: NasLteVoiceDomain | null): string;
     /**
      * Gets the nickname string for the #QmiNasNetworkDescriptionDisplay specified at `val`.
      * @param val a QmiNasNetworkDescriptionDisplay.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_network_description_display_get_string(val: NasNetworkDescriptionDisplay): string;
+    function nas_network_description_display_get_string(val: NasNetworkDescriptionDisplay | null): string;
     /**
      * Gets the nickname string for the #QmiNasNetworkDescriptionEncoding specified at `val`.
      * @param val a QmiNasNetworkDescriptionEncoding.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_network_description_encoding_get_string(val: NasNetworkDescriptionEncoding): string;
+    function nas_network_description_encoding_get_string(val: NasNetworkDescriptionEncoding | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiNasNetworkNameDisplayCondition in `mask`.
      * @param mask bitmask of QmiNasNetworkNameDisplayCondition values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function nas_network_name_display_condition_build_string_from_mask(mask: NasNetworkNameDisplayCondition): string;
+    function nas_network_name_display_condition_build_string_from_mask(
+        mask: NasNetworkNameDisplayCondition | null,
+    ): string;
     /**
      * Gets the nickname string for the #QmiNasNetworkNameSource specified at `val`.
      * @param val a QmiNasNetworkNameSource.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_network_name_source_get_string(val: NasNetworkNameSource): string;
+    function nas_network_name_source_get_string(val: NasNetworkNameSource | null): string;
     /**
      * Gets the nickname string for the #QmiNasNetworkRegisterType specified at `val`.
      * @param val a QmiNasNetworkRegisterType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_network_register_type_get_string(val: NasNetworkRegisterType): string;
+    function nas_network_register_type_get_string(val: NasNetworkRegisterType | null): string;
     /**
      * Gets the nickname string for the #QmiNasNetworkScanResult specified at `val`.
      * @param val a QmiNasNetworkScanResult.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_network_scan_result_get_string(val: NasNetworkScanResult): string;
+    function nas_network_scan_result_get_string(val: NasNetworkScanResult | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiNasNetworkScanType in `mask`.
      * @param mask bitmask of QmiNasNetworkScanType values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function nas_network_scan_type_build_string_from_mask(mask: NasNetworkScanType): string;
+    function nas_network_scan_type_build_string_from_mask(mask: NasNetworkScanType | null): string;
     /**
      * Gets the nickname string for the #QmiNasNetworkSelectionPreference specified at `val`.
      * @param val a QmiNasNetworkSelectionPreference.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_network_selection_preference_get_string(val: NasNetworkSelectionPreference): string;
+    function nas_network_selection_preference_get_string(val: NasNetworkSelectionPreference | null): string;
     /**
      * Gets the nickname string for the #QmiNasNetworkSelectionRegistrationRestriction specified at `val`.
      * @param val a QmiNasNetworkSelectionRegistrationRestriction.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
     function nas_network_selection_registration_restriction_get_string(
-        val: NasNetworkSelectionRegistrationRestriction,
+        val: NasNetworkSelectionRegistrationRestriction | null,
     ): string;
     /**
      * Gets the nickname string for the #QmiNasNetworkServiceDomain specified at `val`.
      * @param val a QmiNasNetworkServiceDomain.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_network_service_domain_get_string(val: NasNetworkServiceDomain): string;
+    function nas_network_service_domain_get_string(val: NasNetworkServiceDomain | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiNasNetworkStatus in `mask`.
      * @param mask bitmask of QmiNasNetworkStatus values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function nas_network_status_build_string_from_mask(mask: NasNetworkStatus): string;
+    function nas_network_status_build_string_from_mask(mask: NasNetworkStatus | null): string;
     /**
      * Gets the nickname string for the #QmiNasNetworkType specified at `val`.
      * @param val a QmiNasNetworkType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_network_type_get_string(val: NasNetworkType): string;
+    function nas_network_type_get_string(val: NasNetworkType | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiNasPlmnAccessTechnologyIdentifier in `mask`.
@@ -15017,64 +15026,64 @@ export namespace Qmi {
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
     function nas_plmn_access_technology_identifier_build_string_from_mask(
-        mask: NasPlmnAccessTechnologyIdentifier,
+        mask: NasPlmnAccessTechnologyIdentifier | null,
     ): string;
     /**
      * Gets the nickname string for the #QmiNasPlmnEncodingScheme specified at `val`.
      * @param val a QmiNasPlmnEncodingScheme.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_plmn_encoding_scheme_get_string(val: NasPlmnEncodingScheme): string;
+    function nas_plmn_encoding_scheme_get_string(val: NasPlmnEncodingScheme | null): string;
     /**
      * Gets the nickname string for the #QmiNasPlmnLanguageId specified at `val`.
      * @param val a QmiNasPlmnLanguageId.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_plmn_language_id_get_string(val: NasPlmnLanguageId): string;
+    function nas_plmn_language_id_get_string(val: NasPlmnLanguageId | null): string;
     /**
      * Gets the nickname string for the #QmiNasPlmnNameCountryInitials specified at `val`.
      * @param val a QmiNasPlmnNameCountryInitials.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_plmn_name_country_initials_get_string(val: NasPlmnNameCountryInitials): string;
+    function nas_plmn_name_country_initials_get_string(val: NasPlmnNameCountryInitials | null): string;
     /**
      * Gets the nickname string for the #QmiNasPlmnNameSpareBits specified at `val`.
      * @param val a QmiNasPlmnNameSpareBits.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_plmn_name_spare_bits_get_string(val: NasPlmnNameSpareBits): string;
+    function nas_plmn_name_spare_bits_get_string(val: NasPlmnNameSpareBits | null): string;
     /**
      * Gets the nickname string for the #QmiNasPreferenceDuration specified at `val`.
      * @param val a QmiNasPreferenceDuration.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_preference_duration_get_string(val: NasPreferenceDuration): string;
+    function nas_preference_duration_get_string(val: NasPreferenceDuration | null): string;
     /**
      * Gets the nickname string for the #QmiNasPsAttachAction specified at `val`.
      * @param val a QmiNasPsAttachAction.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_ps_attach_action_get_string(val: NasPsAttachAction): string;
+    function nas_ps_attach_action_get_string(val: NasPsAttachAction | null): string;
     /**
      * Gets the nickname string for the #QmiNasRadioInterface specified at `val`.
      * @param val a QmiNasRadioInterface.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_radio_interface_get_string(val: NasRadioInterface): string;
+    function nas_radio_interface_get_string(val: NasRadioInterface | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiNasRadioTechnologyPreference in `mask`.
      * @param mask bitmask of QmiNasRadioTechnologyPreference values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function nas_radio_technology_preference_build_string_from_mask(mask: NasRadioTechnologyPreference): string;
+    function nas_radio_technology_preference_build_string_from_mask(mask: NasRadioTechnologyPreference | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiNasRatModePreference in `mask`.
      * @param mask bitmask of QmiNasRatModePreference values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function nas_rat_mode_preference_build_string_from_mask(mask: NasRatModePreference): string;
+    function nas_rat_mode_preference_build_string_from_mask(mask: NasRatModePreference | null): string;
     /**
      * Converts the encoded data in `array` to UTF-8 and returns a newly allocated
      * NUL-terminated string.
@@ -15083,7 +15092,7 @@ export namespace Qmi {
      * @returns the UTF-8 encoded string, or %NULL if an error happened during the conversion. The returned value should be freed with g_free().
      */
     function nas_read_string_from_network_description_encoded_array(
-        encoding: NasNetworkDescriptionEncoding,
+        encoding: NasNetworkDescriptionEncoding | null,
         array: Uint8Array | string,
     ): string;
     /**
@@ -15094,7 +15103,7 @@ export namespace Qmi {
      * @returns the UTF-8 encoded string, or %NULL if an error happened during the conversion. The returned value should be freed with g_free().
      */
     function nas_read_string_from_plmn_encoded_array(
-        encoding: NasPlmnEncodingScheme,
+        encoding: NasPlmnEncodingScheme | null,
         array: Uint8Array | string,
     ): string;
     /**
@@ -15102,272 +15111,272 @@ export namespace Qmi {
      * @param val a QmiNasRegistrationState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_registration_state_get_string(val: NasRegistrationState): string;
+    function nas_registration_state_get_string(val: NasRegistrationState | null): string;
     /**
      * Gets the nickname string for the #QmiNasRejectCause specified at `val`.
      * @param val a QmiNasRejectCause.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_reject_cause_get_string(val: NasRejectCause): string;
+    function nas_reject_cause_get_string(val: NasRejectCause | null): string;
     /**
      * Gets the nickname string for the #QmiNasRoamingIndicatorStatus specified at `val`.
      * @param val a QmiNasRoamingIndicatorStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_roaming_indicator_status_get_string(val: NasRoamingIndicatorStatus): string;
+    function nas_roaming_indicator_status_get_string(val: NasRoamingIndicatorStatus | null): string;
     /**
      * Gets the nickname string for the #QmiNasRoamingPreference specified at `val`.
      * @param val a QmiNasRoamingPreference.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_roaming_preference_get_string(val: NasRoamingPreference): string;
+    function nas_roaming_preference_get_string(val: NasRoamingPreference | null): string;
     /**
      * Gets the nickname string for the #QmiNasRoamingStatus specified at `val`.
      * @param val a QmiNasRoamingStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_roaming_status_get_string(val: NasRoamingStatus): string;
+    function nas_roaming_status_get_string(val: NasRoamingStatus | null): string;
     /**
      * Gets the nickname string for the #QmiNasScellState specified at `val`.
      * @param val a QmiNasScellState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_scell_state_get_string(val: NasScellState): string;
+    function nas_scell_state_get_string(val: NasScellState | null): string;
     /**
      * Gets the nickname string for the #QmiNasServiceDomainPreference specified at `val`.
      * @param val a QmiNasServiceDomainPreference.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_service_domain_preference_get_string(val: NasServiceDomainPreference): string;
+    function nas_service_domain_preference_get_string(val: NasServiceDomainPreference | null): string;
     /**
      * Gets the nickname string for the #QmiNasServiceStatus specified at `val`.
      * @param val a QmiNasServiceStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_service_status_get_string(val: NasServiceStatus): string;
+    function nas_service_status_get_string(val: NasServiceStatus | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiNasSignalStrengthRequest in `mask`.
      * @param mask bitmask of QmiNasSignalStrengthRequest values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function nas_signal_strength_request_build_string_from_mask(mask: NasSignalStrengthRequest): string;
+    function nas_signal_strength_request_build_string_from_mask(mask: NasSignalStrengthRequest | null): string;
     /**
      * Gets the nickname string for the #QmiNasSimRejectState specified at `val`.
      * @param val a QmiNasSimRejectState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_sim_reject_state_get_string(val: NasSimRejectState): string;
+    function nas_sim_reject_state_get_string(val: NasSimRejectState | null): string;
     /**
      * Gets the nickname string for the #QmiNasSwiEmmConnectionState specified at `val`.
      * @param val a QmiNasSwiEmmConnectionState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_swi_emm_connection_state_get_string(val: NasSwiEmmConnectionState): string;
+    function nas_swi_emm_connection_state_get_string(val: NasSwiEmmConnectionState | null): string;
     /**
      * Gets the nickname string for the #QmiNasSwiEmmState specified at `val`.
      * @param val a QmiNasSwiEmmState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_swi_emm_state_get_string(val: NasSwiEmmState): string;
+    function nas_swi_emm_state_get_string(val: NasSwiEmmState | null): string;
     /**
      * Gets the nickname string for the #QmiNasSwiImsRegState specified at `val`.
      * @param val a QmiNasSwiImsRegState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_swi_ims_reg_state_get_string(val: NasSwiImsRegState): string;
+    function nas_swi_ims_reg_state_get_string(val: NasSwiImsRegState | null): string;
     /**
      * Gets the nickname string for the #QmiNasSwiModemMode specified at `val`.
      * @param val a QmiNasSwiModemMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_swi_modem_mode_get_string(val: NasSwiModemMode): string;
+    function nas_swi_modem_mode_get_string(val: NasSwiModemMode | null): string;
     /**
      * Gets the nickname string for the #QmiNasSwiPsState specified at `val`.
      * @param val a QmiNasSwiPsState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_swi_ps_state_get_string(val: NasSwiPsState): string;
+    function nas_swi_ps_state_get_string(val: NasSwiPsState | null): string;
     /**
      * Gets the nickname string for the #QmiNasSwiSystemMode specified at `val`.
      * @param val a QmiNasSwiSystemMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_swi_system_mode_get_string(val: NasSwiSystemMode): string;
+    function nas_swi_system_mode_get_string(val: NasSwiSystemMode | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiNasTdScdmaBandPreference in `mask`.
      * @param mask bitmask of QmiNasTdScdmaBandPreference values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function nas_td_scdma_band_preference_build_string_from_mask(mask: NasTdScdmaBandPreference): string;
+    function nas_td_scdma_band_preference_build_string_from_mask(mask: NasTdScdmaBandPreference | null): string;
     /**
      * Gets the nickname string for the #QmiNasUsagePreference specified at `val`.
      * @param val a QmiNasUsagePreference.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_usage_preference_get_string(val: NasUsagePreference): string;
+    function nas_usage_preference_get_string(val: NasUsagePreference | null): string;
     /**
      * Gets the nickname string for the #QmiNasVoiceDomainPreference specified at `val`.
      * @param val a QmiNasVoiceDomainPreference.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_voice_domain_preference_get_string(val: NasVoiceDomainPreference): string;
+    function nas_voice_domain_preference_get_string(val: NasVoiceDomainPreference | null): string;
     /**
      * Gets the nickname string for the #QmiNasWcdmaHsService specified at `val`.
      * @param val a QmiNasWcdmaHsService.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_wcdma_hs_service_get_string(val: NasWcdmaHsService): string;
+    function nas_wcdma_hs_service_get_string(val: NasWcdmaHsService | null): string;
     /**
      * Gets the nickname string for the #QmiNasWcdmaRrcState specified at `val`.
      * @param val a QmiNasWcdmaRrcState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nas_wcdma_rrc_state_get_string(val: NasWcdmaRrcState): string;
+    function nas_wcdma_rrc_state_get_string(val: NasWcdmaRrcState | null): string;
     /**
      * Gets the nickname string for the #QmiOmaHfaFeatureDoneState specified at `val`.
      * @param val a QmiOmaHfaFeatureDoneState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function oma_hfa_feature_done_state_get_string(val: OmaHfaFeatureDoneState): string;
+    function oma_hfa_feature_done_state_get_string(val: OmaHfaFeatureDoneState | null): string;
     /**
      * Gets the nickname string for the #QmiOmaSessionFailedReason specified at `val`.
      * @param val a QmiOmaSessionFailedReason.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function oma_session_failed_reason_get_string(val: OmaSessionFailedReason): string;
+    function oma_session_failed_reason_get_string(val: OmaSessionFailedReason | null): string;
     /**
      * Gets the nickname string for the #QmiOmaSessionState specified at `val`.
      * @param val a QmiOmaSessionState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function oma_session_state_get_string(val: OmaSessionState): string;
+    function oma_session_state_get_string(val: OmaSessionState | null): string;
     /**
      * Gets the nickname string for the #QmiOmaSessionType specified at `val`.
      * @param val a QmiOmaSessionType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function oma_session_type_get_string(val: OmaSessionType): string;
+    function oma_session_type_get_string(val: OmaSessionType | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiPbmEventRegistrationFlag in `mask`.
      * @param mask bitmask of QmiPbmEventRegistrationFlag values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function pbm_event_registration_flag_build_string_from_mask(mask: PbmEventRegistrationFlag): string;
+    function pbm_event_registration_flag_build_string_from_mask(mask: PbmEventRegistrationFlag | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiPbmPhonebookType in `mask`.
      * @param mask bitmask of QmiPbmPhonebookType values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function pbm_phonebook_type_build_string_from_mask(mask: PbmPhonebookType): string;
+    function pbm_phonebook_type_build_string_from_mask(mask: PbmPhonebookType | null): string;
     /**
      * Gets the nickname string for the #QmiPbmSessionType specified at `val`.
      * @param val a QmiPbmSessionType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function pbm_session_type_get_string(val: PbmSessionType): string;
+    function pbm_session_type_get_string(val: PbmSessionType | null): string;
     /**
      * Gets the nickname string for the #QmiPdcConfigurationType specified at `val`.
      * @param val a QmiPdcConfigurationType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function pdc_configuration_type_get_string(val: PdcConfigurationType): string;
+    function pdc_configuration_type_get_string(val: PdcConfigurationType | null): string;
     /**
      * Gets the nickname string for the #QmiPdcRefreshEventType specified at `val`.
      * @param val a QmiPdcRefreshEventType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function pdc_refresh_event_type_get_string(val: PdcRefreshEventType): string;
+    function pdc_refresh_event_type_get_string(val: PdcRefreshEventType | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiPdsDataValid in `mask`.
      * @param mask bitmask of QmiPdsDataValid values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function pds_data_valid_build_string_from_mask(mask: PdsDataValid): string;
+    function pds_data_valid_build_string_from_mask(mask: PdsDataValid | null): string;
     /**
      * Gets the nickname string for the #QmiPdsNetworkMode specified at `val`.
      * @param val a QmiPdsNetworkMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function pds_network_mode_get_string(val: PdsNetworkMode): string;
+    function pds_network_mode_get_string(val: PdsNetworkMode | null): string;
     /**
      * Gets the nickname string for the #QmiPdsOperatingMode specified at `val`.
      * @param val a QmiPdsOperatingMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function pds_operating_mode_get_string(val: PdsOperatingMode): string;
+    function pds_operating_mode_get_string(val: PdsOperatingMode | null): string;
     /**
      * Gets the nickname string for the #QmiPdsOperationMode specified at `val`.
      * @param val a QmiPdsOperationMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function pds_operation_mode_get_string(val: PdsOperationMode): string;
+    function pds_operation_mode_get_string(val: PdsOperationMode | null): string;
     /**
      * Gets the nickname string for the #QmiPdsPositionSessionStatus specified at `val`.
      * @param val a QmiPdsPositionSessionStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function pds_position_session_status_get_string(val: PdsPositionSessionStatus): string;
+    function pds_position_session_status_get_string(val: PdsPositionSessionStatus | null): string;
     /**
      * Gets the nickname string for the #QmiPdsTrackingSessionState specified at `val`.
      * @param val a QmiPdsTrackingSessionState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function pds_tracking_session_state_get_string(val: PdsTrackingSessionState): string;
+    function pds_tracking_session_state_get_string(val: PdsTrackingSessionState | null): string;
     /**
      * Gets the nickname string for the #QmiProtocolError specified at `val`.
      * @param val a QmiProtocolError.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function protocol_error_get_string(val: ProtocolError): string;
+    function protocol_error_get_string(val: ProtocolError | null): string;
     function protocol_error_quark(): GLib.Quark;
     /**
      * Gets the nickname string for the #QmiQosEvent specified at `val`.
      * @param val a QmiQosEvent.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function qos_event_get_string(val: QosEvent): string;
+    function qos_event_get_string(val: QosEvent | null): string;
     /**
      * Gets the nickname string for the #QmiQosStatus specified at `val`.
      * @param val a QmiQosStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function qos_status_get_string(val: QosStatus): string;
+    function qos_status_get_string(val: QosStatus | null): string;
     /**
      * Gets the nickname string for the #QmiSarRfState specified at `val`.
      * @param val a QmiSarRfState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function sar_rf_state_get_string(val: SarRfState): string;
+    function sar_rf_state_get_string(val: SarRfState | null): string;
     /**
      * Gets the nickname string for the #QmiService specified at `val`.
      * @param val a QmiService.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function service_get_string(val: Service): string;
+    function service_get_string(val: Service | null): string;
     /**
      * Gets the nickname string for the #QmiSioPort specified at `val`.
      * @param val a QmiSioPort.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function sio_port_get_string(val: SioPort): string;
+    function sio_port_get_string(val: SioPort | null): string;
     /**
      * Gets the nickname string for the #QmiSscReportType specified at `val`.
      * @param val a QmiSscReportType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function ssc_report_type_get_string(val: SscReportType): string;
+    function ssc_report_type_get_string(val: SscReportType | null): string;
     /**
      * Gets the nickname string for the #QmiUimCardApplicationPersonalizationFeature specified at `val`.
      * @param val a QmiUimCardApplicationPersonalizationFeature.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
     function uim_card_application_personalization_feature_get_string(
-        val: UimCardApplicationPersonalizationFeature,
+        val: UimCardApplicationPersonalizationFeature | null,
     ): string;
     /**
      * Gets the nickname string for the #QmiUimCardApplicationPersonalizationFeatureStatus specified at `val`.
@@ -15375,125 +15384,127 @@ export namespace Qmi {
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
     function uim_card_application_personalization_feature_status_get_string(
-        val: UimCardApplicationPersonalizationFeatureStatus,
+        val: UimCardApplicationPersonalizationFeatureStatus | null,
     ): string;
     /**
      * Gets the nickname string for the #QmiUimCardApplicationPersonalizationState specified at `val`.
      * @param val a QmiUimCardApplicationPersonalizationState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_card_application_personalization_state_get_string(val: UimCardApplicationPersonalizationState): string;
+    function uim_card_application_personalization_state_get_string(
+        val: UimCardApplicationPersonalizationState | null,
+    ): string;
     /**
      * Gets the nickname string for the #QmiUimCardApplicationState specified at `val`.
      * @param val a QmiUimCardApplicationState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_card_application_state_get_string(val: UimCardApplicationState): string;
+    function uim_card_application_state_get_string(val: UimCardApplicationState | null): string;
     /**
      * Gets the nickname string for the #QmiUimCardApplicationType specified at `val`.
      * @param val a QmiUimCardApplicationType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_card_application_type_get_string(val: UimCardApplicationType): string;
+    function uim_card_application_type_get_string(val: UimCardApplicationType | null): string;
     /**
      * Gets the nickname string for the #QmiUimCardError specified at `val`.
      * @param val a QmiUimCardError.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_card_error_get_string(val: UimCardError): string;
+    function uim_card_error_get_string(val: UimCardError | null): string;
     /**
      * Gets the nickname string for the #QmiUimCardProtocol specified at `val`.
      * @param val a QmiUimCardProtocol.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_card_protocol_get_string(val: UimCardProtocol): string;
+    function uim_card_protocol_get_string(val: UimCardProtocol | null): string;
     /**
      * Gets the nickname string for the #QmiUimCardState specified at `val`.
      * @param val a QmiUimCardState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_card_state_get_string(val: UimCardState): string;
+    function uim_card_state_get_string(val: UimCardState | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiUimConfiguration in `mask`.
      * @param mask bitmask of QmiUimConfiguration values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function uim_configuration_build_string_from_mask(mask: UimConfiguration): string;
+    function uim_configuration_build_string_from_mask(mask: UimConfiguration | null): string;
     /**
      * Gets the nickname string for the #QmiUimDepersonalizationOperation specified at `val`.
      * @param val a QmiUimDepersonalizationOperation.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_depersonalization_operation_get_string(val: UimDepersonalizationOperation): string;
+    function uim_depersonalization_operation_get_string(val: UimDepersonalizationOperation | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiUimEventRegistrationFlag in `mask`.
      * @param mask bitmask of QmiUimEventRegistrationFlag values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function uim_event_registration_flag_build_string_from_mask(mask: UimEventRegistrationFlag): string;
+    function uim_event_registration_flag_build_string_from_mask(mask: UimEventRegistrationFlag | null): string;
     /**
      * Gets the nickname string for the #QmiUimFileType specified at `val`.
      * @param val a QmiUimFileType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_file_type_get_string(val: UimFileType): string;
+    function uim_file_type_get_string(val: UimFileType | null): string;
     /**
      * Gets the nickname string for the #QmiUimPhysicalCardState specified at `val`.
      * @param val a QmiUimPhysicalCardState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_physical_card_state_get_string(val: UimPhysicalCardState): string;
+    function uim_physical_card_state_get_string(val: UimPhysicalCardState | null): string;
     /**
      * Gets the nickname string for the #QmiUimPinId specified at `val`.
      * @param val a QmiUimPinId.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_pin_id_get_string(val: UimPinId): string;
+    function uim_pin_id_get_string(val: UimPinId | null): string;
     /**
      * Gets the nickname string for the #QmiUimPinState specified at `val`.
      * @param val a QmiUimPinState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_pin_state_get_string(val: UimPinState): string;
+    function uim_pin_state_get_string(val: UimPinState | null): string;
     /**
      * Gets the nickname string for the #QmiUimRefreshMode specified at `val`.
      * @param val a QmiUimRefreshMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_refresh_mode_get_string(val: UimRefreshMode): string;
+    function uim_refresh_mode_get_string(val: UimRefreshMode | null): string;
     /**
      * Gets the nickname string for the #QmiUimRefreshStage specified at `val`.
      * @param val a QmiUimRefreshStage.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_refresh_stage_get_string(val: UimRefreshStage): string;
+    function uim_refresh_stage_get_string(val: UimRefreshStage | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiUimSecurityAttribute in `mask`.
      * @param mask bitmask of QmiUimSecurityAttribute values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function uim_security_attribute_build_string_from_mask(mask: UimSecurityAttribute): string;
+    function uim_security_attribute_build_string_from_mask(mask: UimSecurityAttribute | null): string;
     /**
      * Gets the nickname string for the #QmiUimSecurityAttributeLogic specified at `val`.
      * @param val a QmiUimSecurityAttributeLogic.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_security_attribute_logic_get_string(val: UimSecurityAttributeLogic): string;
+    function uim_security_attribute_logic_get_string(val: UimSecurityAttributeLogic | null): string;
     /**
      * Gets the nickname string for the #QmiUimSessionType specified at `val`.
      * @param val a QmiUimSessionType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_session_type_get_string(val: UimSessionType): string;
+    function uim_session_type_get_string(val: UimSessionType | null): string;
     /**
      * Gets the nickname string for the #QmiUimSlotState specified at `val`.
      * @param val a QmiUimSlotState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uim_slot_state_get_string(val: UimSlotState): string;
+    function uim_slot_state_get_string(val: UimSlotState | null): string;
     /**
      * Checks whether personal info should be hidden when traces are enabled.
      * @returns %TRUE to show personal info in trace, %FALSE otherwise.
@@ -15519,248 +15530,248 @@ export namespace Qmi {
      * @param val a QmiVoiceAlphaDataCodingScheme.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_alpha_data_coding_scheme_get_string(val: VoiceAlphaDataCodingScheme): string;
+    function voice_alpha_data_coding_scheme_get_string(val: VoiceAlphaDataCodingScheme | null): string;
     /**
      * Gets the nickname string for the #QmiVoiceAls specified at `val`.
      * @param val a QmiVoiceAls.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_als_get_string(val: VoiceAls): string;
+    function voice_als_get_string(val: VoiceAls | null): string;
     /**
      * Gets the nickname string for the #QmiVoiceCallControlResultType specified at `val`.
      * @param val a QmiVoiceCallControlResultType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_call_control_result_type_get_string(val: VoiceCallControlResultType): string;
+    function voice_call_control_result_type_get_string(val: VoiceCallControlResultType | null): string;
     /**
      * Gets the nickname string for the #QmiVoiceCallControlSupplementaryServiceType specified at `val`.
      * @param val a QmiVoiceCallControlSupplementaryServiceType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
     function voice_call_control_supplementary_service_type_get_string(
-        val: VoiceCallControlSupplementaryServiceType,
+        val: VoiceCallControlSupplementaryServiceType | null,
     ): string;
     /**
      * Gets the nickname string for the #QmiVoiceCallDirection specified at `val`.
      * @param val a QmiVoiceCallDirection.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_call_direction_get_string(val: VoiceCallDirection): string;
+    function voice_call_direction_get_string(val: VoiceCallDirection | null): string;
     /**
      * Gets the nickname string for the #QmiVoiceCallEndReason specified at `val`.
      * @param val a QmiVoiceCallEndReason.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_call_end_reason_get_string(val: VoiceCallEndReason): string;
+    function voice_call_end_reason_get_string(val: VoiceCallEndReason | null): string;
     /**
      * Gets the nickname string for the #QmiVoiceCallMode specified at `val`.
      * @param val a QmiVoiceCallMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_call_mode_get_string(val: VoiceCallMode): string;
+    function voice_call_mode_get_string(val: VoiceCallMode | null): string;
     /**
      * Gets the nickname string for the #QmiVoiceCallState specified at `val`.
      * @param val a QmiVoiceCallState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_call_state_get_string(val: VoiceCallState): string;
+    function voice_call_state_get_string(val: VoiceCallState | null): string;
     /**
      * Gets the nickname string for the #QmiVoiceCallType specified at `val`.
      * @param val a QmiVoiceCallType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_call_type_get_string(val: VoiceCallType): string;
+    function voice_call_type_get_string(val: VoiceCallType | null): string;
     /**
      * Gets the nickname string for the #QmiVoiceDomain specified at `val`.
      * @param val a QmiVoiceDomain.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_domain_get_string(val: VoiceDomain): string;
+    function voice_domain_get_string(val: VoiceDomain | null): string;
     /**
      * Gets the nickname string for the #QmiVoicePresentation specified at `val`.
      * @param val a QmiVoicePresentation.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_presentation_get_string(val: VoicePresentation): string;
+    function voice_presentation_get_string(val: VoicePresentation | null): string;
     /**
      * Gets the nickname string for the #QmiVoicePrivacy specified at `val`.
      * @param val a QmiVoicePrivacy.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_privacy_get_string(val: VoicePrivacy): string;
+    function voice_privacy_get_string(val: VoicePrivacy | null): string;
     /**
      * Gets the nickname string for the #QmiVoiceServiceOption specified at `val`.
      * @param val a QmiVoiceServiceOption.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_service_option_get_string(val: VoiceServiceOption): string;
+    function voice_service_option_get_string(val: VoiceServiceOption | null): string;
     /**
      * Gets the nickname string for the #QmiVoiceSupplementaryServiceAction specified at `val`.
      * @param val a QmiVoiceSupplementaryServiceAction.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_supplementary_service_action_get_string(val: VoiceSupplementaryServiceAction): string;
+    function voice_supplementary_service_action_get_string(val: VoiceSupplementaryServiceAction | null): string;
     /**
      * Gets the nickname string for the #QmiVoiceSupplementaryServiceNotificationType specified at `val`.
      * @param val a QmiVoiceSupplementaryServiceNotificationType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
     function voice_supplementary_service_notification_type_get_string(
-        val: VoiceSupplementaryServiceNotificationType,
+        val: VoiceSupplementaryServiceNotificationType | null,
     ): string;
     /**
      * Gets the nickname string for the #QmiVoiceSupplementaryServiceReason specified at `val`.
      * @param val a QmiVoiceSupplementaryServiceReason.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_supplementary_service_reason_get_string(val: VoiceSupplementaryServiceReason): string;
+    function voice_supplementary_service_reason_get_string(val: VoiceSupplementaryServiceReason | null): string;
     /**
      * Gets the nickname string for the #QmiVoiceSupplementaryServiceType specified at `val`.
      * @param val a QmiVoiceSupplementaryServiceType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_supplementary_service_type_get_string(val: VoiceSupplementaryServiceType): string;
+    function voice_supplementary_service_type_get_string(val: VoiceSupplementaryServiceType | null): string;
     /**
      * Gets the nickname string for the #QmiVoiceTtyMode specified at `val`.
      * @param val a QmiVoiceTtyMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_tty_mode_get_string(val: VoiceTtyMode): string;
+    function voice_tty_mode_get_string(val: VoiceTtyMode | null): string;
     /**
      * Gets the nickname string for the #QmiVoiceUserAction specified at `val`.
      * @param val a QmiVoiceUserAction.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_user_action_get_string(val: VoiceUserAction): string;
+    function voice_user_action_get_string(val: VoiceUserAction | null): string;
     /**
      * Gets the nickname string for the #QmiVoiceUssDataCodingScheme specified at `val`.
      * @param val a QmiVoiceUssDataCodingScheme.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_uss_data_coding_scheme_get_string(val: VoiceUssDataCodingScheme): string;
+    function voice_uss_data_coding_scheme_get_string(val: VoiceUssDataCodingScheme | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiVoiceWcdmaAmrStatus in `mask`.
      * @param mask bitmask of QmiVoiceWcdmaAmrStatus values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function voice_wcdma_amr_status_build_string_from_mask(mask: VoiceWcdmaAmrStatus): string;
+    function voice_wcdma_amr_status_build_string_from_mask(mask: VoiceWcdmaAmrStatus | null): string;
     /**
      * Gets the nickname string for the #QmiWdaDataAggregationProtocol specified at `val`.
      * @param val a QmiWdaDataAggregationProtocol.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wda_data_aggregation_protocol_get_string(val: WdaDataAggregationProtocol): string;
+    function wda_data_aggregation_protocol_get_string(val: WdaDataAggregationProtocol | null): string;
     /**
      * Gets the nickname string for the #QmiWdaLinkLayerProtocol specified at `val`.
      * @param val a QmiWdaLinkLayerProtocol.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wda_link_layer_protocol_get_string(val: WdaLinkLayerProtocol): string;
+    function wda_link_layer_protocol_get_string(val: WdaLinkLayerProtocol | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiWdsApnTypeMask in `mask`.
      * @param mask bitmask of QmiWdsApnTypeMask values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function wds_apn_type_mask_build_string_from_mask(mask: WdsApnTypeMask): string;
+    function wds_apn_type_mask_build_string_from_mask(mask: WdsApnTypeMask | null): string;
     /**
      * Gets the nickname string for the #QmiWdsAttachPdnListAction specified at `val`.
      * @param val a QmiWdsAttachPdnListAction.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_attach_pdn_list_action_get_string(val: WdsAttachPdnListAction): string;
+    function wds_attach_pdn_list_action_get_string(val: WdsAttachPdnListAction | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiWdsAuthentication in `mask`.
      * @param mask bitmask of QmiWdsAuthentication values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function wds_authentication_build_string_from_mask(mask: WdsAuthentication): string;
+    function wds_authentication_build_string_from_mask(mask: WdsAuthentication | null): string;
     /**
      * Gets the nickname string for the #QmiWdsAutoconnectSetting specified at `val`.
      * @param val a QmiWdsAutoconnectSetting.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_autoconnect_setting_get_string(val: WdsAutoconnectSetting): string;
+    function wds_autoconnect_setting_get_string(val: WdsAutoconnectSetting | null): string;
     /**
      * Gets the nickname string for the #QmiWdsAutoconnectSettingRoaming specified at `val`.
      * @param val a QmiWdsAutoconnectSettingRoaming.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_autoconnect_setting_roaming_get_string(val: WdsAutoconnectSettingRoaming): string;
+    function wds_autoconnect_setting_roaming_get_string(val: WdsAutoconnectSettingRoaming | null): string;
     /**
      * Gets the nickname string for the #QmiWdsCallEndReason specified at `val`.
      * @param val a QmiWdsCallEndReason.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_call_end_reason_get_string(val: WdsCallEndReason): string;
+    function wds_call_end_reason_get_string(val: WdsCallEndReason | null): string;
     /**
      * Gets the nickname string for the #QmiWdsCallType specified at `val`.
      * @param val a QmiWdsCallType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_call_type_get_string(val: WdsCallType): string;
+    function wds_call_type_get_string(val: WdsCallType | null): string;
     /**
      * Gets the nickname string for the #QmiWdsClientType specified at `val`.
      * @param val a QmiWdsClientType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_client_type_get_string(val: WdsClientType): string;
+    function wds_client_type_get_string(val: WdsClientType | null): string;
     /**
      * Gets the nickname string for the #QmiWdsConnectionStatus specified at `val`.
      * @param val a QmiWdsConnectionStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_connection_status_get_string(val: WdsConnectionStatus): string;
+    function wds_connection_status_get_string(val: WdsConnectionStatus | null): string;
     /**
      * Gets the nickname string for the #QmiWdsDataBearerTechnology specified at `val`.
      * @param val a QmiWdsDataBearerTechnology.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_data_bearer_technology_get_string(val: WdsDataBearerTechnology): string;
+    function wds_data_bearer_technology_get_string(val: WdsDataBearerTechnology | null): string;
     /**
      * Gets the nickname string for the #QmiWdsDataCallStatus specified at `val`.
      * @param val a QmiWdsDataCallStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_data_call_status_get_string(val: WdsDataCallStatus): string;
+    function wds_data_call_status_get_string(val: WdsDataCallStatus | null): string;
     /**
      * Gets the nickname string for the #QmiWdsDataCallType specified at `val`.
      * @param val a QmiWdsDataCallType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_data_call_type_get_string(val: WdsDataCallType): string;
+    function wds_data_call_type_get_string(val: WdsDataCallType | null): string;
     /**
      * Gets the nickname string for the #QmiWdsDataSystem specified at `val`.
      * @param val a QmiWdsDataSystem.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_data_system_get_string(val: WdsDataSystem): string;
+    function wds_data_system_get_string(val: WdsDataSystem | null): string;
     /**
      * Gets the nickname string for the #QmiWdsDataSystemNetworkType specified at `val`.
      * @param val a QmiWdsDataSystemNetworkType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_data_system_network_type_get_string(val: WdsDataSystemNetworkType): string;
+    function wds_data_system_network_type_get_string(val: WdsDataSystemNetworkType | null): string;
     /**
      * Gets the nickname string for the #QmiWdsDeliveryOrder specified at `val`.
      * @param val a QmiWdsDeliveryOrder.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_delivery_order_get_string(val: WdsDeliveryOrder): string;
+    function wds_delivery_order_get_string(val: WdsDeliveryOrder | null): string;
     /**
      * Gets the nickname string for the #QmiWdsDormancyStatus specified at `val`.
      * @param val a QmiWdsDormancyStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_dormancy_status_get_string(val: WdsDormancyStatus): string;
+    function wds_dormancy_status_get_string(val: WdsDormancyStatus | null): string;
     /**
      * Gets the nickname string for the #QmiWdsDsProfileError specified at `val`.
      * @param val a QmiWdsDsProfileError.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_ds_profile_error_get_string(val: WdsDsProfileError): string;
+    function wds_ds_profile_error_get_string(val: WdsDsProfileError | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiWdsExtendedDataBearerTechnology3gpp2 in `mask`.
@@ -15768,7 +15779,7 @@ export namespace Qmi {
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
     function wds_extended_data_bearer_technology_3gpp2_build_string_from_mask(
-        mask: WdsExtendedDataBearerTechnology3gpp2,
+        mask: WdsExtendedDataBearerTechnology3gpp2 | null,
     ): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
@@ -15777,126 +15788,126 @@ export namespace Qmi {
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
     function wds_extended_data_bearer_technology_3gpp_build_string_from_mask(
-        mask: WdsExtendedDataBearerTechnology3gpp,
+        mask: WdsExtendedDataBearerTechnology3gpp | null,
     ): string;
     /**
      * Gets the nickname string for the #QmiWdsExtendedTechnologyPreference specified at `val`.
      * @param val a QmiWdsExtendedTechnologyPreference.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_extended_technology_preference_get_string(val: WdsExtendedTechnologyPreference): string;
+    function wds_extended_technology_preference_get_string(val: WdsExtendedTechnologyPreference | null): string;
     /**
      * Gets the nickname string for the #QmiWdsIpFamily specified at `val`.
      * @param val a QmiWdsIpFamily.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_ip_family_get_string(val: WdsIpFamily): string;
+    function wds_ip_family_get_string(val: WdsIpFamily | null): string;
     /**
      * Gets the nickname string for the #QmiWdsIpSupportType specified at `val`.
      * @param val a QmiWdsIpSupportType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_ip_support_type_get_string(val: WdsIpSupportType): string;
+    function wds_ip_support_type_get_string(val: WdsIpSupportType | null): string;
     /**
      * Gets the nickname string for the #QmiWdsNetworkType specified at `val`.
      * @param val a QmiWdsNetworkType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_network_type_get_string(val: WdsNetworkType): string;
+    function wds_network_type_get_string(val: WdsNetworkType | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiWdsPacketStatisticsMaskFlag in `mask`.
      * @param mask bitmask of QmiWdsPacketStatisticsMaskFlag values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function wds_packet_statistics_mask_flag_build_string_from_mask(mask: WdsPacketStatisticsMaskFlag): string;
+    function wds_packet_statistics_mask_flag_build_string_from_mask(mask: WdsPacketStatisticsMaskFlag | null): string;
     /**
      * Gets the nickname string for the #QmiWdsPdpDataCompressionType specified at `val`.
      * @param val a QmiWdsPdpDataCompressionType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_pdp_data_compression_type_get_string(val: WdsPdpDataCompressionType): string;
+    function wds_pdp_data_compression_type_get_string(val: WdsPdpDataCompressionType | null): string;
     /**
      * Gets the nickname string for the #QmiWdsPdpHeaderCompressionType specified at `val`.
      * @param val a QmiWdsPdpHeaderCompressionType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_pdp_header_compression_type_get_string(val: WdsPdpHeaderCompressionType): string;
+    function wds_pdp_header_compression_type_get_string(val: WdsPdpHeaderCompressionType | null): string;
     /**
      * Gets the nickname string for the #QmiWdsPdpType specified at `val`.
      * @param val a QmiWdsPdpType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_pdp_type_get_string(val: WdsPdpType): string;
+    function wds_pdp_type_get_string(val: WdsPdpType | null): string;
     /**
      * Gets the nickname string for the #QmiWdsProfileChangeEvent specified at `val`.
      * @param val a QmiWdsProfileChangeEvent.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_profile_change_event_get_string(val: WdsProfileChangeEvent): string;
+    function wds_profile_change_event_get_string(val: WdsProfileChangeEvent | null): string;
     /**
      * Gets the nickname string for the #QmiWdsProfileFamily specified at `val`.
      * @param val a QmiWdsProfileFamily.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_profile_family_get_string(val: WdsProfileFamily): string;
+    function wds_profile_family_get_string(val: WdsProfileFamily | null): string;
     /**
      * Gets the nickname string for the #QmiWdsProfileType specified at `val`.
      * @param val a QmiWdsProfileType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_profile_type_get_string(val: WdsProfileType): string;
+    function wds_profile_type_get_string(val: WdsProfileType | null): string;
     /**
      * Gets the nickname string for the #QmiWdsQosClassIdentifier specified at `val`.
      * @param val a QmiWdsQosClassIdentifier.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_qos_class_identifier_get_string(val: WdsQosClassIdentifier): string;
+    function wds_qos_class_identifier_get_string(val: WdsQosClassIdentifier | null): string;
     /**
      * Gets the nickname string for the #QmiWdsRadioAccessTechnology specified at `val`.
      * @param val a QmiWdsRadioAccessTechnology.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_radio_access_technology_get_string(val: WdsRadioAccessTechnology): string;
+    function wds_radio_access_technology_get_string(val: WdsRadioAccessTechnology | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiWdsRat3gpp2 in `mask`.
      * @param mask bitmask of QmiWdsRat3gpp2 values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function wds_rat_3gpp2_build_string_from_mask(mask: WdsRat3gpp2): string;
+    function wds_rat_3gpp2_build_string_from_mask(mask: WdsRat3gpp2 | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiWdsRat3gpp in `mask`.
      * @param mask bitmask of QmiWdsRat3gpp values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function wds_rat_3gpp_build_string_from_mask(mask: WdsRat3gpp): string;
+    function wds_rat_3gpp_build_string_from_mask(mask: WdsRat3gpp | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiWdsRequestedSettings in `mask`.
      * @param mask bitmask of QmiWdsRequestedSettings values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function wds_requested_settings_build_string_from_mask(mask: WdsRequestedSettings): string;
+    function wds_requested_settings_build_string_from_mask(mask: WdsRequestedSettings | null): string;
     /**
      * Gets the nickname string for the #QmiWdsSduErroneousDelivery specified at `val`.
      * @param val a QmiWdsSduErroneousDelivery.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_sdu_erroneous_delivery_get_string(val: WdsSduErroneousDelivery): string;
+    function wds_sdu_erroneous_delivery_get_string(val: WdsSduErroneousDelivery | null): string;
     /**
      * Gets the nickname string for the #QmiWdsSduErrorRatio specified at `val`.
      * @param val a QmiWdsSduErrorRatio.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_sdu_error_ratio_get_string(val: WdsSduErrorRatio): string;
+    function wds_sdu_error_ratio_get_string(val: WdsSduErrorRatio | null): string;
     /**
      * Gets the nickname string for the #QmiWdsSduResidualBitErrorRatio specified at `val`.
      * @param val a QmiWdsSduResidualBitErrorRatio.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_sdu_residual_bit_error_ratio_get_string(val: WdsSduResidualBitErrorRatio): string;
+    function wds_sdu_residual_bit_error_ratio_get_string(val: WdsSduResidualBitErrorRatio | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiWdsSetEventReportTransferStatistics in `mask`.
@@ -15904,7 +15915,7 @@ export namespace Qmi {
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
     function wds_set_event_report_transfer_statistics_build_string_from_mask(
-        mask: WdsSetEventReportTransferStatistics,
+        mask: WdsSetEventReportTransferStatistics | null,
     ): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
@@ -15912,210 +15923,210 @@ export namespace Qmi {
      * @param mask bitmask of QmiWdsSoCdma1x values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function wds_so_cdma1x_build_string_from_mask(mask: WdsSoCdma1x): string;
+    function wds_so_cdma1x_build_string_from_mask(mask: WdsSoCdma1x | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiWdsSoEvdoRev0 in `mask`.
      * @param mask bitmask of QmiWdsSoEvdoRev0 values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function wds_so_evdo_rev0_build_string_from_mask(mask: WdsSoEvdoRev0): string;
+    function wds_so_evdo_rev0_build_string_from_mask(mask: WdsSoEvdoRev0 | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiWdsSoEvdoRevA in `mask`.
      * @param mask bitmask of QmiWdsSoEvdoRevA values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function wds_so_evdo_reva_build_string_from_mask(mask: WdsSoEvdoRevA): string;
+    function wds_so_evdo_reva_build_string_from_mask(mask: WdsSoEvdoRevA | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiWdsSoEvdoRevB in `mask`.
      * @param mask bitmask of QmiWdsSoEvdoRevB values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function wds_so_evdo_revb_build_string_from_mask(mask: WdsSoEvdoRevB): string;
+    function wds_so_evdo_revb_build_string_from_mask(mask: WdsSoEvdoRevB | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #QmiWdsTechnologyPreference in `mask`.
      * @param mask bitmask of QmiWdsTechnologyPreference values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function wds_technology_preference_build_string_from_mask(mask: WdsTechnologyPreference): string;
+    function wds_technology_preference_build_string_from_mask(mask: WdsTechnologyPreference | null): string;
     /**
      * Gets the nickname string for the #QmiWdsTetheredCallType specified at `val`.
      * @param val a QmiWdsTetheredCallType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_tethered_call_type_get_string(val: WdsTetheredCallType): string;
+    function wds_tethered_call_type_get_string(val: WdsTetheredCallType | null): string;
     /**
      * Gets the nickname string for the #QmiWdsTrafficClass specified at `val`.
      * @param val a QmiWdsTrafficClass.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_traffic_class_get_string(val: WdsTrafficClass): string;
+    function wds_traffic_class_get_string(val: WdsTrafficClass | null): string;
     /**
      * Gets the nickname string for the #QmiWdsVerboseCallEndReason3gpp specified at `val`.
      * @param val a QmiWdsVerboseCallEndReason3gpp.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_verbose_call_end_reason_3gpp_get_string(val: WdsVerboseCallEndReason3gpp): string;
+    function wds_verbose_call_end_reason_3gpp_get_string(val: WdsVerboseCallEndReason3gpp | null): string;
     /**
      * Gets the nickname string for the #QmiWdsVerboseCallEndReasonCm specified at `val`.
      * @param val a QmiWdsVerboseCallEndReasonCm.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_verbose_call_end_reason_cm_get_string(val: WdsVerboseCallEndReasonCm): string;
+    function wds_verbose_call_end_reason_cm_get_string(val: WdsVerboseCallEndReasonCm | null): string;
     /**
      * Gets the nickname string for the #QmiWdsVerboseCallEndReasonEhrpd specified at `val`.
      * @param val a QmiWdsVerboseCallEndReasonEhrpd.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_verbose_call_end_reason_ehrpd_get_string(val: WdsVerboseCallEndReasonEhrpd): string;
+    function wds_verbose_call_end_reason_ehrpd_get_string(val: WdsVerboseCallEndReasonEhrpd | null): string;
     /**
      * Get verbose call end reason based on the reason type.
      * @param type a #QmiWdsVerboseCallEndReasonType.
      * @param reason the reason id.
      * @returns a string with the reason, or %NULL if not found. Do not free the returned value.
      */
-    function wds_verbose_call_end_reason_get_string(type: WdsVerboseCallEndReasonType, reason: number): string;
+    function wds_verbose_call_end_reason_get_string(type: WdsVerboseCallEndReasonType | null, reason: number): string;
     /**
      * Gets the nickname string for the #QmiWdsVerboseCallEndReasonInternal specified at `val`.
      * @param val a QmiWdsVerboseCallEndReasonInternal.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_verbose_call_end_reason_internal_get_string(val: WdsVerboseCallEndReasonInternal): string;
+    function wds_verbose_call_end_reason_internal_get_string(val: WdsVerboseCallEndReasonInternal | null): string;
     /**
      * Gets the nickname string for the #QmiWdsVerboseCallEndReasonIpv6 specified at `val`.
      * @param val a QmiWdsVerboseCallEndReasonIpv6.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_verbose_call_end_reason_ipv6_get_string(val: WdsVerboseCallEndReasonIpv6): string;
+    function wds_verbose_call_end_reason_ipv6_get_string(val: WdsVerboseCallEndReasonIpv6 | null): string;
     /**
      * Gets the nickname string for the #QmiWdsVerboseCallEndReasonMip specified at `val`.
      * @param val a QmiWdsVerboseCallEndReasonMip.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_verbose_call_end_reason_mip_get_string(val: WdsVerboseCallEndReasonMip): string;
+    function wds_verbose_call_end_reason_mip_get_string(val: WdsVerboseCallEndReasonMip | null): string;
     /**
      * Gets the nickname string for the #QmiWdsVerboseCallEndReasonPpp specified at `val`.
      * @param val a QmiWdsVerboseCallEndReasonPpp.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_verbose_call_end_reason_ppp_get_string(val: WdsVerboseCallEndReasonPpp): string;
+    function wds_verbose_call_end_reason_ppp_get_string(val: WdsVerboseCallEndReasonPpp | null): string;
     /**
      * Gets the nickname string for the #QmiWdsVerboseCallEndReasonType specified at `val`.
      * @param val a QmiWdsVerboseCallEndReasonType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wds_verbose_call_end_reason_type_get_string(val: WdsVerboseCallEndReasonType): string;
+    function wds_verbose_call_end_reason_type_get_string(val: WdsVerboseCallEndReasonType | null): string;
     /**
      * Gets the nickname string for the #QmiWmsAckFailureCause specified at `val`.
      * @param val a QmiWmsAckFailureCause.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_ack_failure_cause_get_string(val: WmsAckFailureCause): string;
+    function wms_ack_failure_cause_get_string(val: WmsAckFailureCause | null): string;
     /**
      * Gets the nickname string for the #QmiWmsAckIndicator specified at `val`.
      * @param val a QmiWmsAckIndicator.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_ack_indicator_get_string(val: WmsAckIndicator): string;
+    function wms_ack_indicator_get_string(val: WmsAckIndicator | null): string;
     /**
      * Gets the nickname string for the #QmiWmsCdmaCauseCode specified at `val`.
      * @param val a QmiWmsCdmaCauseCode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_cdma_cause_code_get_string(val: WmsCdmaCauseCode): string;
+    function wms_cdma_cause_code_get_string(val: WmsCdmaCauseCode | null): string;
     /**
      * Gets the nickname string for the #QmiWmsCdmaErrorClass specified at `val`.
      * @param val a QmiWmsCdmaErrorClass.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_cdma_error_class_get_string(val: WmsCdmaErrorClass): string;
+    function wms_cdma_error_class_get_string(val: WmsCdmaErrorClass | null): string;
     /**
      * Gets the nickname string for the #QmiWmsCdmaServiceOption specified at `val`.
      * @param val a QmiWmsCdmaServiceOption.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_cdma_service_option_get_string(val: WmsCdmaServiceOption): string;
+    function wms_cdma_service_option_get_string(val: WmsCdmaServiceOption | null): string;
     /**
      * Gets the nickname string for the #QmiWmsGsmUmtsRpCause specified at `val`.
      * @param val a QmiWmsGsmUmtsRpCause.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_gsm_umts_rp_cause_get_string(val: WmsGsmUmtsRpCause): string;
+    function wms_gsm_umts_rp_cause_get_string(val: WmsGsmUmtsRpCause | null): string;
     /**
      * Gets the nickname string for the #QmiWmsGsmUmtsTpCause specified at `val`.
      * @param val a QmiWmsGsmUmtsTpCause.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_gsm_umts_tp_cause_get_string(val: WmsGsmUmtsTpCause): string;
+    function wms_gsm_umts_tp_cause_get_string(val: WmsGsmUmtsTpCause | null): string;
     /**
      * Gets the nickname string for the #QmiWmsMessageClass specified at `val`.
      * @param val a QmiWmsMessageClass.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_message_class_get_string(val: WmsMessageClass): string;
+    function wms_message_class_get_string(val: WmsMessageClass | null): string;
     /**
      * Gets the nickname string for the #QmiWmsMessageDeliveryFailureType specified at `val`.
      * @param val a QmiWmsMessageDeliveryFailureType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_message_delivery_failure_type_get_string(val: WmsMessageDeliveryFailureType): string;
+    function wms_message_delivery_failure_type_get_string(val: WmsMessageDeliveryFailureType | null): string;
     /**
      * Gets the nickname string for the #QmiWmsMessageFormat specified at `val`.
      * @param val a QmiWmsMessageFormat.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_message_format_get_string(val: WmsMessageFormat): string;
+    function wms_message_format_get_string(val: WmsMessageFormat | null): string;
     /**
      * Gets the nickname string for the #QmiWmsMessageMode specified at `val`.
      * @param val a QmiWmsMessageMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_message_mode_get_string(val: WmsMessageMode): string;
+    function wms_message_mode_get_string(val: WmsMessageMode | null): string;
     /**
      * Gets the nickname string for the #QmiWmsMessageProtocol specified at `val`.
      * @param val a QmiWmsMessageProtocol.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_message_protocol_get_string(val: WmsMessageProtocol): string;
+    function wms_message_protocol_get_string(val: WmsMessageProtocol | null): string;
     /**
      * Gets the nickname string for the #QmiWmsMessageTagType specified at `val`.
      * @param val a QmiWmsMessageTagType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_message_tag_type_get_string(val: WmsMessageTagType): string;
+    function wms_message_tag_type_get_string(val: WmsMessageTagType | null): string;
     /**
      * Gets the nickname string for the #QmiWmsMessageType specified at `val`.
      * @param val a QmiWmsMessageType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_message_type_get_string(val: WmsMessageType): string;
+    function wms_message_type_get_string(val: WmsMessageType | null): string;
     /**
      * Gets the nickname string for the #QmiWmsNotificationType specified at `val`.
      * @param val a QmiWmsNotificationType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_notification_type_get_string(val: WmsNotificationType): string;
+    function wms_notification_type_get_string(val: WmsNotificationType | null): string;
     /**
      * Gets the nickname string for the #QmiWmsReceiptAction specified at `val`.
      * @param val a QmiWmsReceiptAction.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_receipt_action_get_string(val: WmsReceiptAction): string;
+    function wms_receipt_action_get_string(val: WmsReceiptAction | null): string;
     /**
      * Gets the nickname string for the #QmiWmsStorageType specified at `val`.
      * @param val a QmiWmsStorageType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_storage_type_get_string(val: WmsStorageType): string;
+    function wms_storage_type_get_string(val: WmsStorageType | null): string;
     /**
      * Gets the nickname string for the #QmiWmsTransferIndication specified at `val`.
      * @param val a QmiWmsTransferIndication.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wms_transfer_indication_get_string(val: WmsTransferIndication): string;
+    function wms_transfer_indication_get_string(val: WmsTransferIndication | null): string;
     interface DeviceCommandAbortableParseResponseFn {
         (self: Device, abort_response: Message): boolean;
     }
@@ -35065,7 +35076,7 @@ export namespace Qmi {
             mux_id: number,
             base_ifname: string,
             ifname_prefix: string,
-            flags: DeviceAddLinkFlags,
+            flags: DeviceAddLinkFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<string>;
         /**
@@ -35095,7 +35106,7 @@ export namespace Qmi {
             mux_id: number,
             base_ifname: string,
             ifname_prefix: string,
-            flags: DeviceAddLinkFlags,
+            flags: DeviceAddLinkFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -35126,7 +35137,7 @@ export namespace Qmi {
             mux_id: number,
             base_ifname: string,
             ifname_prefix: string,
-            flags: DeviceAddLinkFlags,
+            flags: DeviceAddLinkFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<string> | void;
@@ -35154,7 +35165,7 @@ export namespace Qmi {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         allocate_client(
-            service: Service,
+            service: Service | null,
             cid: number,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
@@ -35177,7 +35188,7 @@ export namespace Qmi {
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         allocate_client(
-            service: Service,
+            service: Service | null,
             cid: number,
             timeout: number,
             cancellable: Gio.Cancellable | null,
@@ -35201,7 +35212,7 @@ export namespace Qmi {
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         allocate_client(
-            service: Service,
+            service: Service | null,
             cid: number,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
@@ -35223,7 +35234,7 @@ export namespace Qmi {
          * @param format a known #QmiDeviceExpectedDataFormat.
          * @returns %TRUE if the data format is supported, or %FALSE if @error is set.
          */
-        check_expected_data_format_supported(format: DeviceExpectedDataFormat): boolean;
+        check_expected_data_format_supported(format: DeviceExpectedDataFormat | null): boolean;
         /**
          * Checks whether link management is supported by the kernel.
          * @returns %TRUE if link management is supported, or %FALSE if @error is set.
@@ -35658,7 +35669,7 @@ export namespace Qmi {
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        open(flags: DeviceOpenFlags, timeout: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        open(flags: DeviceOpenFlags | null, timeout: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
         /**
          * Asynchronously opens a #QmiDevice for I/O.
          *
@@ -35670,7 +35681,7 @@ export namespace Qmi {
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         open(
-            flags: DeviceOpenFlags,
+            flags: DeviceOpenFlags | null,
             timeout: number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -35686,7 +35697,7 @@ export namespace Qmi {
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         open(
-            flags: DeviceOpenFlags,
+            flags: DeviceOpenFlags | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -35729,7 +35740,7 @@ export namespace Qmi {
          */
         release_client(
             client: Client,
-            flags: DeviceReleaseClientFlags,
+            flags: DeviceReleaseClientFlags | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
@@ -35750,7 +35761,7 @@ export namespace Qmi {
          */
         release_client(
             client: Client,
-            flags: DeviceReleaseClientFlags,
+            flags: DeviceReleaseClientFlags | null,
             timeout: number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -35772,7 +35783,7 @@ export namespace Qmi {
          */
         release_client(
             client: Client,
-            flags: DeviceReleaseClientFlags,
+            flags: DeviceReleaseClientFlags | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -35796,7 +35807,7 @@ export namespace Qmi {
          * @param format a known #QmiDeviceExpectedDataFormat.
          * @returns %TRUE if successful, or %FALSE if @error is set.
          */
-        set_expected_data_format(format: DeviceExpectedDataFormat): boolean;
+        set_expected_data_format(format: DeviceExpectedDataFormat | null): boolean;
         /**
          * Sets the instance ID of the #QmiDevice.
          *
@@ -36091,7 +36102,7 @@ export namespace Qmi {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -36132,7 +36143,7 @@ export namespace Qmi {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -40074,7 +40085,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_image_details(
-            value_image_details_type: DmsFirmwareImageType,
+            value_image_details_type: DmsFirmwareImageType | null,
             value_image_details_unique_id: Uint8Array | string,
             value_image_details_build_id: string,
         ): boolean;
@@ -40146,7 +40157,7 @@ export namespace Qmi {
          * @param value_mode a #QmiDmsFoxconnDeviceMode.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_mode(value_mode: DmsFoxconnDeviceMode): boolean;
+        set_mode(value_mode: DmsFoxconnDeviceMode | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -40215,7 +40226,7 @@ export namespace Qmi {
          * @param value_version_type a #QmiDmsFoxconnFirmwareVersionType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_version_type(value_version_type: DmsFoxconnFirmwareVersionType): boolean;
+        set_version_type(value_version_type: DmsFoxconnFirmwareVersionType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -40810,7 +40821,7 @@ export namespace Qmi {
          * @param value_device a #QmiDmsMacType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_device(value_device: DmsMacType): boolean;
+        set_device(value_device: DmsMacType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -41182,7 +41193,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_image_details(
-            value_image_details_type: DmsFirmwareImageType,
+            value_image_details_type: DmsFirmwareImageType | null,
             value_image_details_unique_id: Uint8Array | string,
             value_image_details_build_id: string,
         ): boolean;
@@ -41384,7 +41395,7 @@ export namespace Qmi {
          * @param value_mode a #QmiDmsHpDeviceMode.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_mode(value_mode: DmsHpDeviceMode): boolean;
+        set_mode(value_mode: DmsHpDeviceMode | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -41776,7 +41787,7 @@ export namespace Qmi {
          * @param value_mode a #QmiDmsBootImageDownloadMode.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_mode(value_mode: DmsBootImageDownloadMode): boolean;
+        set_mode(value_mode: DmsBootImageDownloadMode | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -42171,7 +42182,7 @@ export namespace Qmi {
          * @param value_mode a #QmiDmsOperatingMode.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_mode(value_mode: DmsOperatingMode): boolean;
+        set_mode(value_mode: DmsOperatingMode | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -42325,7 +42336,7 @@ export namespace Qmi {
          * @param value_time_reference_type a #QmiDmsTimeReferenceType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_time_reference_type(value_time_reference_type: DmsTimeReferenceType): boolean;
+        set_time_reference_type(value_time_reference_type: DmsTimeReferenceType | null): boolean;
         /**
          * Set the 'Time Value' field in the message.
          * @param value_time_value a #guint64.
@@ -42655,7 +42666,7 @@ export namespace Qmi {
          * @param value_current a #QmiDmsSwiUsbComposition.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_current(value_current: DmsSwiUsbComposition): boolean;
+        set_current(value_current: DmsSwiUsbComposition | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -42726,7 +42737,11 @@ export namespace Qmi {
          * @param value_info_new_pin a constant string.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_info(value_info_pin_id: DmsUimPinId, value_info_old_pin: string, value_info_new_pin: string): boolean;
+        set_info(
+            value_info_pin_id: DmsUimPinId | null,
+            value_info_old_pin: string,
+            value_info_new_pin: string,
+        ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -42800,7 +42815,7 @@ export namespace Qmi {
          * @param value_facility a #QmiDmsUimFacility.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_facility(value_facility: DmsUimFacility): boolean;
+        set_facility(value_facility: DmsUimFacility | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -43027,8 +43042,8 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_facility(
-            value_facility_facility: DmsUimFacility,
-            value_facility_facility_state: DmsUimFacilityState,
+            value_facility_facility: DmsUimFacility | null,
+            value_facility_facility_state: DmsUimFacilityState | null,
             value_facility_facility_depersonalization_control_key: string,
         ): boolean;
         /**
@@ -43107,7 +43122,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_info(
-            value_info_pin_id: DmsUimPinId,
+            value_info_pin_id: DmsUimPinId | null,
             value_info_protection_enabled: boolean,
             value_info_pin: string,
         ): boolean;
@@ -43185,7 +43200,10 @@ export namespace Qmi {
          * @param value_facility_facility_control_key a constant string.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_facility(value_facility_facility: DmsUimFacility, value_facility_facility_control_key: string): boolean;
+        set_facility(
+            value_facility_facility: DmsUimFacility | null,
+            value_facility_facility_control_key: string,
+        ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -43261,7 +43279,7 @@ export namespace Qmi {
          * @param value_info_new_pin a constant string.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_info(value_info_pin_id: DmsUimPinId, value_info_puk: string, value_info_new_pin: string): boolean;
+        set_info(value_info_pin_id: DmsUimPinId | null, value_info_puk: string, value_info_new_pin: string): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -43336,7 +43354,7 @@ export namespace Qmi {
          * @param value_info_pin a constant string.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_info(value_info_pin_id: DmsUimPinId, value_info_pin: string): boolean;
+        set_info(value_info_pin_id: DmsUimPinId | null, value_info_pin: string): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -43734,7 +43752,7 @@ export namespace Qmi {
          * @param value_apn_type a #QmiDsdApnType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_apn_type(value_apn_type: DsdApnType): boolean;
+        set_apn_type(value_apn_type: DsdApnType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -43869,13 +43887,13 @@ export namespace Qmi {
          * @param value_apn_type_type a #QmiDsdApnTypePreference.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_apn_type(value_apn_type_name: string, value_apn_type_type: DsdApnTypePreference): boolean;
+        set_apn_type(value_apn_type_name: string, value_apn_type_type: DsdApnTypePreference | null): boolean;
         /**
          * Set the 'APN Type Preference Mask' field in the message.
          * @param value_apn_type_preference_mask a #QmiDsdApnTypePreference.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_apn_type_preference_mask(value_apn_type_preference_mask: DsdApnTypePreference): boolean;
+        set_apn_type_preference_mask(value_apn_type_preference_mask: DsdApnTypePreference | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -44013,7 +44031,7 @@ export namespace Qmi {
          * @param value_version_type a #QmiFoxFirmwareVersionType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_version_type(value_version_type: FoxFirmwareVersionType): boolean;
+        set_version_type(value_version_type: FoxFirmwareVersionType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -44102,7 +44120,7 @@ export namespace Qmi {
          * @param value_mode a #QmiGasFirmwareListingMode.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_mode(value_mode: GasFirmwareListingMode): boolean;
+        set_mode(value_mode: GasFirmwareListingMode | null): boolean;
         /**
          * Set the 'Name' field in the message.
          * @param value_name a constant string.
@@ -44386,7 +44404,7 @@ export namespace Qmi {
          * @param value_endpoint_type a #QmiGasUsbCompositionEndpointType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_endpoint_type(value_endpoint_type: GasUsbCompositionEndpointType): boolean;
+        set_endpoint_type(value_endpoint_type: GasUsbCompositionEndpointType | null): boolean;
         /**
          * Set the 'Immediate Setting' field in the message.
          * @param value_immediate_setting a #gboolean.
@@ -44852,19 +44870,19 @@ export namespace Qmi {
          * @param value_delete_cell_database_mask a #QmiLocDeleteCellDatabase.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_delete_cell_database_mask(value_delete_cell_database_mask: LocDeleteCellDatabase): boolean;
+        set_delete_cell_database_mask(value_delete_cell_database_mask: LocDeleteCellDatabase | null): boolean;
         /**
          * Set the 'Delete Clock Info Mask' field in the message.
          * @param value_delete_clock_info_mask a #QmiLocDeleteClockInfo.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_delete_clock_info_mask(value_delete_clock_info_mask: LocDeleteClockInfo): boolean;
+        set_delete_clock_info_mask(value_delete_clock_info_mask: LocDeleteClockInfo | null): boolean;
         /**
          * Set the 'Delete GNSS Data Mask' field in the message.
          * @param value_delete_gnss_data_mask a #QmiLocDeleteGnssData.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_delete_gnss_data_mask(value_delete_gnss_data_mask: LocDeleteGnssData): boolean;
+        set_delete_gnss_data_mask(value_delete_gnss_data_mask: LocDeleteGnssData | null): boolean;
         /**
          * Set the 'Delete SV Info' field in the message.
          * @param value_delete_sv_info_ptr array of #QmiMessageLocDeleteAssistanceDataInputDeleteSvInfoElement elements. The contents of the given array will be copied, the #GPtrArray will not increase its reference count.
@@ -45081,13 +45099,13 @@ export namespace Qmi {
          * @param value_server_address_type a #QmiLocServerAddressType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_server_address_type(value_server_address_type: LocServerAddressType): boolean;
+        set_server_address_type(value_server_address_type: LocServerAddressType | null): boolean;
         /**
          * Set the 'Server Type' field in the message.
          * @param value_server_type a #QmiLocServerType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_server_type(value_server_type: LocServerType): boolean;
+        set_server_type(value_server_type: LocServerType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -45176,7 +45194,7 @@ export namespace Qmi {
          * @param value_format_type a #QmiLocPredictedOrbitsDataFormat.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_format_type(value_format_type: LocPredictedOrbitsDataFormat): boolean;
+        set_format_type(value_format_type: LocPredictedOrbitsDataFormat | null): boolean;
         /**
          * Set the 'Part Data' field in the message.
          * @param value_part_data a #GArray of #guint8 elements. A new reference to @value_part_data will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
@@ -45371,7 +45389,7 @@ export namespace Qmi {
          * @param value_event_registration_mask a #QmiLocEventRegistrationFlag.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_event_registration_mask(value_event_registration_mask: LocEventRegistrationFlag): boolean;
+        set_event_registration_mask(value_event_registration_mask: LocEventRegistrationFlag | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -45440,7 +45458,7 @@ export namespace Qmi {
          * @param value_lock_type a #QmiLocLockType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_lock_type(value_lock_type: LocLockType): boolean;
+        set_lock_type(value_lock_type: LocLockType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -45509,7 +45527,7 @@ export namespace Qmi {
          * @param value_nmea_types a #QmiLocNmeaType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_nmea_types(value_nmea_types: LocNmeaType): boolean;
+        set_nmea_types(value_nmea_types: LocNmeaType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -45578,7 +45596,7 @@ export namespace Qmi {
          * @param value_operation_mode a #QmiLocOperationMode.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_operation_mode(value_operation_mode: LocOperationMode): boolean;
+        set_operation_mode(value_operation_mode: LocOperationMode | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -45676,7 +45694,7 @@ export namespace Qmi {
          * @param value_server_type a #QmiLocServerType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_server_type(value_server_type: LocServerType): boolean;
+        set_server_type(value_server_type: LocServerType | null): boolean;
         /**
          * Set the 'URL' field in the message.
          * @param value_url a constant string with a maximum length of 256 characters.
@@ -45766,13 +45784,13 @@ export namespace Qmi {
          * @param value_fix_recurrence_type a #QmiLocFixRecurrenceType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_fix_recurrence_type(value_fix_recurrence_type: LocFixRecurrenceType): boolean;
+        set_fix_recurrence_type(value_fix_recurrence_type: LocFixRecurrenceType | null): boolean;
         /**
          * Set the 'Intermediate Report State' field in the message.
          * @param value_intermediate_report_state a #QmiLocIntermediateReportState.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_intermediate_report_state(value_intermediate_report_state: LocIntermediateReportState): boolean;
+        set_intermediate_report_state(value_intermediate_report_state: LocIntermediateReportState | null): boolean;
         /**
          * Set the 'Minimum Interval between Position Reports' field in the message.
          * @param value_minimum_interval_between_position_reports a #guint32.
@@ -45922,7 +45940,7 @@ export namespace Qmi {
          * @param value_action a #QmiNasPsAttachAction.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_action(value_action: NasPsAttachAction): boolean;
+        set_action(value_action: NasPsAttachAction | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -47548,7 +47566,7 @@ export namespace Qmi {
          * @param value_radio_access_technology a #QmiNasRadioInterface.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_radio_access_technology(value_radio_access_technology: NasRadioInterface): boolean;
+        set_radio_access_technology(value_radio_access_technology: NasRadioInterface | null): boolean;
         /**
          * Set the 'Send All Information' field in the message.
          * @param value_send_all_information a #gboolean.
@@ -48159,7 +48177,7 @@ export namespace Qmi {
          * @param value_request_mask a #QmiNasSignalStrengthRequest.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_request_mask(value_request_mask: NasSignalStrengthRequest): boolean;
+        set_request_mask(value_request_mask: NasSignalStrengthRequest | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -48955,7 +48973,7 @@ export namespace Qmi {
          * @param value_radio_interface a #QmiNasRadioInterface.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_radio_interface(value_radio_interface: NasRadioInterface): boolean;
+        set_radio_interface(value_radio_interface: NasRadioInterface | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -49064,13 +49082,13 @@ export namespace Qmi {
          * @param value_action a #QmiNasNetworkRegisterType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_action(value_action: NasNetworkRegisterType): boolean;
+        set_action(value_action: NasNetworkRegisterType | null): boolean;
         /**
          * Set the 'Change Duration' field in the message.
          * @param value_change_duration a #QmiNasChangeDuration.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_change_duration(value_change_duration: NasChangeDuration): boolean;
+        set_change_duration(value_change_duration: NasChangeDuration | null): boolean;
         /**
          * Set the 'Manual Registration Info 3GPP' field in the message.
          * @param value_manual_registration_info_3gpp_mcc a #guint16.
@@ -49081,7 +49099,7 @@ export namespace Qmi {
         set_manual_registration_info_3gpp(
             value_manual_registration_info_3gpp_mcc: number,
             value_manual_registration_info_3gpp_mnc: number,
-            value_manual_registration_info_3gpp_radio_interface: NasRadioInterface,
+            value_manual_registration_info_3gpp_radio_interface: NasRadioInterface | null,
         ): boolean;
         /**
          * Set the 'MNC PCS Digit Include Status' field in the message.
@@ -49157,7 +49175,7 @@ export namespace Qmi {
          * @param value_network_type a #QmiNasNetworkScanType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_network_type(value_network_type: NasNetworkScanType): boolean;
+        set_network_type(value_network_type: NasNetworkScanType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -50025,25 +50043,25 @@ export namespace Qmi {
          * @param value_acquisition_order_preference a #GArray of #QmiNasRadioInterface elements. A new reference to @value_acquisition_order_preference will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_acquisition_order_preference(value_acquisition_order_preference: NasRadioInterface[]): boolean;
+        set_acquisition_order_preference(value_acquisition_order_preference: NasRadioInterface[] | null): boolean;
         /**
          * Set the 'Band Preference' field in the message.
          * @param value_band_preference a #QmiNasBandPreference.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_band_preference(value_band_preference: NasBandPreference): boolean;
+        set_band_preference(value_band_preference: NasBandPreference | null): boolean;
         /**
          * Set the 'CDMA PRL Preference' field in the message.
          * @param value_cdma_prl_preference a #QmiNasCdmaPrlPreference.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_cdma_prl_preference(value_cdma_prl_preference: NasCdmaPrlPreference): boolean;
+        set_cdma_prl_preference(value_cdma_prl_preference: NasCdmaPrlPreference | null): boolean;
         /**
          * Set the 'Change Duration' field in the message.
          * @param value_change_duration a #QmiNasChangeDuration.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_change_duration(value_change_duration: NasChangeDuration): boolean;
+        set_change_duration(value_change_duration: NasChangeDuration | null): boolean;
         /**
          * Set the 'Emergency mode' field in the message.
          * @param value_emergency_mode a #gboolean.
@@ -50070,14 +50088,14 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_gsm_wcdma_acquisition_order_preference(
-            value_gsm_wcdma_acquisition_order_preference: NasGsmWcdmaAcquisitionOrderPreference,
+            value_gsm_wcdma_acquisition_order_preference: NasGsmWcdmaAcquisitionOrderPreference | null,
         ): boolean;
         /**
          * Set the 'LTE Band Preference' field in the message.
          * @param value_lte_band_preference a #QmiNasLteBandPreference.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_lte_band_preference(value_lte_band_preference: NasLteBandPreference): boolean;
+        set_lte_band_preference(value_lte_band_preference: NasLteBandPreference | null): boolean;
         /**
          * Set the 'MNC PCS Digit Include Status' field in the message.
          * @param value_mnc_pcs_digit_include_status a #gboolean.
@@ -50089,7 +50107,7 @@ export namespace Qmi {
          * @param value_mode_preference a #QmiNasRatModePreference.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_mode_preference(value_mode_preference: NasRatModePreference): boolean;
+        set_mode_preference(value_mode_preference: NasRatModePreference | null): boolean;
         /**
          * Set the 'Network Selection Preference' field in the message.
          * @param value_network_selection_preference_mode a #QmiNasNetworkSelectionPreference.
@@ -50098,7 +50116,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_network_selection_preference(
-            value_network_selection_preference_mode: NasNetworkSelectionPreference,
+            value_network_selection_preference_mode: NasNetworkSelectionPreference | null,
             value_network_selection_preference_mcc: number,
             value_network_selection_preference_mnc: number,
         ): boolean;
@@ -50108,7 +50126,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_network_selection_registration_restriction(
-            value_network_selection_registration_restriction: NasNetworkSelectionRegistrationRestriction,
+            value_network_selection_registration_restriction: NasNetworkSelectionRegistrationRestriction | null,
         ): boolean;
         /**
          * Set the 'NR5G NSA Band Preference' field in the message.
@@ -50159,31 +50177,31 @@ export namespace Qmi {
          * @param value_roaming_preference a #QmiNasRoamingPreference.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_roaming_preference(value_roaming_preference: NasRoamingPreference): boolean;
+        set_roaming_preference(value_roaming_preference: NasRoamingPreference | null): boolean;
         /**
          * Set the 'Service Domain Preference' field in the message.
          * @param value_service_domain_preference a #QmiNasServiceDomainPreference.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_service_domain_preference(value_service_domain_preference: NasServiceDomainPreference): boolean;
+        set_service_domain_preference(value_service_domain_preference: NasServiceDomainPreference | null): boolean;
         /**
          * Set the 'TD SCDMA Band Preference' field in the message.
          * @param value_td_scdma_band_preference a #QmiNasTdScdmaBandPreference.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_td_scdma_band_preference(value_td_scdma_band_preference: NasTdScdmaBandPreference): boolean;
+        set_td_scdma_band_preference(value_td_scdma_band_preference: NasTdScdmaBandPreference | null): boolean;
         /**
          * Set the 'Usage Preference' field in the message.
          * @param value_usage_preference a #QmiNasUsagePreference.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_usage_preference(value_usage_preference: NasUsagePreference): boolean;
+        set_usage_preference(value_usage_preference: NasUsagePreference | null): boolean;
         /**
          * Set the 'Voice Domain Preference' field in the message.
          * @param value_voice_domain_preference a #QmiNasVoiceDomainPreference.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_voice_domain_preference(value_voice_domain_preference: NasVoiceDomainPreference): boolean;
+        set_voice_domain_preference(value_voice_domain_preference: NasVoiceDomainPreference | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -50254,8 +50272,8 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_current(
-            value_current_technology_preference: NasRadioTechnologyPreference,
-            value_current_technology_preference_duration: NasPreferenceDuration,
+            value_current_technology_preference: NasRadioTechnologyPreference | null,
+            value_current_technology_preference_duration: NasPreferenceDuration | null,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -50787,7 +50805,7 @@ export namespace Qmi {
          * @param value_session_type a #QmiOmaSessionType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_session_type(value_session_type: OmaSessionType): boolean;
+        set_session_type(value_session_type: OmaSessionType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -51124,8 +51142,8 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_phonebook_information(
-            value_phonebook_information_session_type: PbmSessionType,
-            value_phonebook_information_phonebook_type: PbmPhonebookType,
+            value_phonebook_information_session_type: PbmSessionType | null,
+            value_phonebook_information_phonebook_type: PbmPhonebookType | null,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -51243,7 +51261,7 @@ export namespace Qmi {
          * @param value_event_registration_mask a #QmiPbmEventRegistrationFlag.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_event_registration_mask(value_event_registration_mask: PbmEventRegistrationFlag): boolean;
+        set_event_registration_mask(value_event_registration_mask: PbmEventRegistrationFlag | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -51322,7 +51340,7 @@ export namespace Qmi {
          * @param value_config_type a #QmiPdcConfigurationType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_config_type(value_config_type: PdcConfigurationType): boolean;
+        set_config_type(value_config_type: PdcConfigurationType | null): boolean;
         /**
          * Set the 'Token' field in the message.
          * @param value_token a #guint32.
@@ -51404,7 +51422,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_type_with_id_v2(
-            value_type_with_id_v2_config_type: PdcConfigurationType,
+            value_type_with_id_v2_config_type: PdcConfigurationType | null,
             value_type_with_id_v2_id: Uint8Array | string,
         ): boolean;
         /**
@@ -51485,7 +51503,7 @@ export namespace Qmi {
          * @param value_config_type a #QmiPdcConfigurationType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_config_type(value_config_type: PdcConfigurationType): boolean;
+        set_config_type(value_config_type: PdcConfigurationType | null): boolean;
         /**
          * Set the 'Token' field in the message.
          * @param value_token a #guint32.
@@ -51575,7 +51593,7 @@ export namespace Qmi {
          * @param value_config_type a #QmiPdcConfigurationType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_config_type(value_config_type: PdcConfigurationType): boolean;
+        set_config_type(value_config_type: PdcConfigurationType | null): boolean;
         /**
          * Set the 'Id' field in the message.
          * @param value_id a #GArray of #guint8 elements. A new reference to @value_id will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
@@ -51674,7 +51692,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_type_with_id_v2(
-            value_type_with_id_v2_config_type: PdcConfigurationType,
+            value_type_with_id_v2_config_type: PdcConfigurationType | null,
             value_type_with_id_v2_id: Uint8Array | string,
         ): boolean;
         /**
@@ -51750,7 +51768,7 @@ export namespace Qmi {
          * @param value_config_type a #QmiPdcConfigurationType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_config_type(value_config_type: PdcConfigurationType): boolean;
+        set_config_type(value_config_type: PdcConfigurationType | null): boolean;
         /**
          * Set the 'Token' field in the message.
          * @param value_token a #guint32.
@@ -51845,7 +51863,7 @@ export namespace Qmi {
          * @param value_config_type a #QmiPdcConfigurationType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_config_type(value_config_type: PdcConfigurationType): boolean;
+        set_config_type(value_config_type: PdcConfigurationType | null): boolean;
         /**
          * Set the 'Token' field in the message.
          * @param value_token a #guint32.
@@ -51945,7 +51963,7 @@ export namespace Qmi {
          * @param value_config_type a #QmiPdcConfigurationType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_config_type(value_config_type: PdcConfigurationType): boolean;
+        set_config_type(value_config_type: PdcConfigurationType | null): boolean;
         /**
          * Set the 'Token' field in the message.
          * @param value_token a #guint32.
@@ -52030,7 +52048,7 @@ export namespace Qmi {
          * @param value_config_type a #QmiPdcConfigurationType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_config_type(value_config_type: PdcConfigurationType): boolean;
+        set_config_type(value_config_type: PdcConfigurationType | null): boolean;
         /**
          * Set the 'Token' field in the message.
          * @param value_token a #guint32.
@@ -52114,7 +52132,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_config_chunk(
-            value_config_chunk_type: PdcConfigurationType,
+            value_config_chunk_type: PdcConfigurationType | null,
             value_config_chunk_id: Uint8Array | string,
             value_config_chunk_total_size: number,
             value_config_chunk_chunk: Uint8Array | string,
@@ -52321,7 +52339,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_type_with_id_v2(
-            value_type_with_id_v2_config_type: PdcConfigurationType,
+            value_type_with_id_v2_config_type: PdcConfigurationType | null,
             value_type_with_id_v2_id: Uint8Array | string,
         ): boolean;
         /**
@@ -52397,7 +52415,7 @@ export namespace Qmi {
          * @param value_network_mode a #QmiPdsNetworkMode.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_network_mode(value_network_mode: PdsNetworkMode): boolean;
+        set_network_mode(value_network_mode: PdsNetworkMode | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -52637,7 +52655,7 @@ export namespace Qmi {
          * @param value_network_mode a #QmiPdsNetworkMode.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_network_mode(value_network_mode: PdsNetworkMode): boolean;
+        set_network_mode(value_network_mode: PdsNetworkMode | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -52779,7 +52797,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_info(
-            value_info_session_operation: PdsOperatingMode,
+            value_info_session_operation: PdsOperatingMode | null,
             value_info_position_data_timeout: number,
             value_info_interval: number,
             value_info_accuracy_threshold: number,
@@ -53491,7 +53509,7 @@ export namespace Qmi {
          * @param value_state a #QmiSarRfState.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_state(value_state: SarRfState): boolean;
+        set_state(value_state: SarRfState | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -53571,7 +53589,7 @@ export namespace Qmi {
          * @param value_report_type a #QmiSscReportType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_report_type(value_report_type: SscReportType): boolean;
+        set_report_type(value_report_type: SscReportType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -53662,7 +53680,7 @@ export namespace Qmi {
          * @param value_info_new_pin a constant string.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_info(value_info_pin_id: UimPinId, value_info_old_pin: string, value_info_new_pin: string): boolean;
+        set_info(value_info_pin_id: UimPinId | null, value_info_old_pin: string, value_info_new_pin: string): boolean;
         /**
          * Set the 'Response In Indication Token' field in the message.
          * @param value_response_in_indication_token a #guint32.
@@ -53676,7 +53694,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_session(
-            value_session_session_type: UimSessionType,
+            value_session_session_type: UimSessionType | null,
             value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
@@ -53779,7 +53797,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_session_change(
-            value_session_change_session_type: UimSessionType,
+            value_session_change_session_type: UimSessionType | null,
             value_session_change_activate: boolean,
         ): boolean;
         /**
@@ -53863,8 +53881,8 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_info(
-            value_info_feature: UimCardApplicationPersonalizationFeature,
-            value_info_operation: UimDepersonalizationOperation,
+            value_info_feature: UimCardApplicationPersonalizationFeature | null,
+            value_info_operation: UimDepersonalizationOperation | null,
             value_info_control_key: string,
         ): boolean;
         /**
@@ -54041,7 +54059,7 @@ export namespace Qmi {
          * @param value_configuration_mask a #QmiUimConfiguration.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_configuration_mask(value_configuration_mask: UimConfiguration): boolean;
+        set_configuration_mask(value_configuration_mask: UimConfiguration | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -54214,7 +54232,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_session(
-            value_session_session_type: UimSessionType,
+            value_session_session_type: UimSessionType | null,
             value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
@@ -54595,7 +54613,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_session(
-            value_session_session_type: UimSessionType,
+            value_session_session_type: UimSessionType | null,
             value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
@@ -54734,7 +54752,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_session(
-            value_session_session_type: UimSessionType,
+            value_session_session_type: UimSessionType | null,
             value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
@@ -54838,7 +54856,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_session(
-            value_session_session_type: UimSessionType,
+            value_session_session_type: UimSessionType | null,
             value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
@@ -54922,7 +54940,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_session(
-            value_session_session_type: UimSessionType,
+            value_session_session_type: UimSessionType | null,
             value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
@@ -55015,7 +55033,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_session(
-            value_session_session_type: UimSessionType,
+            value_session_session_type: UimSessionType | null,
             value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
@@ -55108,7 +55126,7 @@ export namespace Qmi {
          * @param value_event_registration_mask a #QmiUimEventRegistrationFlag.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_event_registration_mask(value_event_registration_mask: UimEventRegistrationFlag): boolean;
+        set_event_registration_mask(value_event_registration_mask: UimEventRegistrationFlag | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -55304,7 +55322,11 @@ export namespace Qmi {
          * @param value_info_pin_value a constant string.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_info(value_info_pin_id: UimPinId, value_info_pin_enabled: boolean, value_info_pin_value: string): boolean;
+        set_info(
+            value_info_pin_id: UimPinId | null,
+            value_info_pin_enabled: boolean,
+            value_info_pin_value: string,
+        ): boolean;
         /**
          * Set the 'Response In Indication Token' field in the message.
          * @param value_response_in_indication_token a #guint32.
@@ -55318,7 +55340,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_session(
-            value_session_session_type: UimSessionType,
+            value_session_session_type: UimSessionType | null,
             value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
@@ -55491,7 +55513,7 @@ export namespace Qmi {
          * @param value_info_new_pin a constant string.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_info(value_info_pin_id: UimPinId, value_info_puk: string, value_info_new_pin: string): boolean;
+        set_info(value_info_pin_id: UimPinId | null, value_info_puk: string, value_info_new_pin: string): boolean;
         /**
          * Set the 'Response In Indication Token' field in the message.
          * @param value_response_in_indication_token a #guint32.
@@ -55505,7 +55527,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_session(
-            value_session_session_type: UimSessionType,
+            value_session_session_type: UimSessionType | null,
             value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
@@ -55602,7 +55624,7 @@ export namespace Qmi {
          * @param value_info_pin_value a constant string.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_info(value_info_pin_id: UimPinId, value_info_pin_value: string): boolean;
+        set_info(value_info_pin_id: UimPinId | null, value_info_pin_value: string): boolean;
         /**
          * Set the 'Response In Indication Token' field in the message.
          * @param value_response_in_indication_token a #guint32.
@@ -55616,7 +55638,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_session(
-            value_session_session_type: UimSessionType,
+            value_session_session_type: UimSessionType | null,
             value_session_application_identifier: Uint8Array | string,
         ): boolean;
         /**
@@ -55778,7 +55800,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_uss_data(
-            value_uss_data_data_coding_scheme: VoiceUssDataCodingScheme,
+            value_uss_data_data_coding_scheme: VoiceUssDataCodingScheme | null,
             value_uss_data_data: Uint8Array | string,
         ): boolean;
         /**
@@ -56715,7 +56737,7 @@ export namespace Qmi {
          * @param value_service_type a #QmiVoiceSupplementaryServiceType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_service_type(value_service_type: VoiceSupplementaryServiceType): boolean;
+        set_service_type(value_service_type: VoiceSupplementaryServiceType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -56786,7 +56808,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_uss_data(
-            value_uss_data_data_coding_scheme: VoiceUssDataCodingScheme,
+            value_uss_data_data_coding_scheme: VoiceUssDataCodingScheme | null,
             value_uss_data_data: Uint8Array | string,
         ): boolean;
         /**
@@ -56829,7 +56851,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_uss_data(
-            value_uss_data_data_coding_scheme: VoiceUssDataCodingScheme,
+            value_uss_data_data_coding_scheme: VoiceUssDataCodingScheme | null,
             value_uss_data_data: Uint8Array | string,
         ): boolean;
         /**
@@ -56971,8 +56993,8 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_supplementary_service_information(
-            value_supplementary_service_information_supplementary_service_action: VoiceSupplementaryServiceAction,
-            value_supplementary_service_information_supplementary_service_reason: VoiceSupplementaryServiceReason,
+            value_supplementary_service_information_supplementary_service_action: VoiceSupplementaryServiceAction | null,
+            value_supplementary_service_information_supplementary_service_reason: VoiceSupplementaryServiceReason | null,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -57198,7 +57220,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_endpoint_info(
-            value_endpoint_info_endpoint_type: DataEndpointType,
+            value_endpoint_info_endpoint_type: DataEndpointType | null,
             value_endpoint_info_interface_number: number,
         ): boolean;
         /**
@@ -57417,7 +57439,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_downlink_data_aggregation_protocol(
-            value_downlink_data_aggregation_protocol: WdaDataAggregationProtocol,
+            value_downlink_data_aggregation_protocol: WdaDataAggregationProtocol | null,
         ): boolean;
         /**
          * Set the 'Endpoint Info' field in the message.
@@ -57426,7 +57448,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_endpoint_info(
-            value_endpoint_info_endpoint_type: DataEndpointType,
+            value_endpoint_info_endpoint_type: DataEndpointType | null,
             value_endpoint_info_interface_number: number,
         ): boolean;
         /**
@@ -57434,7 +57456,7 @@ export namespace Qmi {
          * @param value_link_layer_protocol a #QmiWdaLinkLayerProtocol.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_link_layer_protocol(value_link_layer_protocol: WdaLinkLayerProtocol): boolean;
+        set_link_layer_protocol(value_link_layer_protocol: WdaLinkLayerProtocol | null): boolean;
         /**
          * Set the 'NDP Signature' field in the message.
          * @param value_ndp_signature a #guint32.
@@ -57465,7 +57487,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_uplink_data_aggregation_protocol(
-            value_uplink_data_aggregation_protocol: WdaDataAggregationProtocol,
+            value_uplink_data_aggregation_protocol: WdaDataAggregationProtocol | null,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -57590,7 +57612,7 @@ export namespace Qmi {
          * @param value_data_port a #QmiSioPort.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_data_port(value_data_port: SioPort): boolean;
+        set_data_port(value_data_port: SioPort | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -57669,7 +57691,7 @@ export namespace Qmi {
          * @param value_client_type a #QmiWdsClientType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_client_type(value_client_type: WdsClientType): boolean;
+        set_client_type(value_client_type: WdsClientType | null): boolean;
         /**
          * Set the 'Endpoint Info' field in the message.
          * @param value_endpoint_info_endpoint_type a #QmiDataEndpointType.
@@ -57677,7 +57699,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_endpoint_info(
-            value_endpoint_info_endpoint_type: DataEndpointType,
+            value_endpoint_info_endpoint_type: DataEndpointType | null,
             value_endpoint_info_interface_number: number,
         ): boolean;
         /**
@@ -58062,13 +58084,13 @@ export namespace Qmi {
          * @param value_apn_type_mask a #QmiWdsApnTypeMask.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_apn_type_mask(value_apn_type_mask: WdsApnTypeMask): boolean;
+        set_apn_type_mask(value_apn_type_mask: WdsApnTypeMask | null): boolean;
         /**
          * Set the 'Authentication' field in the message.
          * @param value_authentication a #QmiWdsAuthentication.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_authentication(value_authentication: WdsAuthentication): boolean;
+        set_authentication(value_authentication: WdsAuthentication | null): boolean;
         /**
          * Set the 'GPRS Minimum QoS' field in the message.
          * @param value_gprs_minimum_qos_precedence_class a #guint32.
@@ -58141,7 +58163,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_lte_qos_parameters(
-            value_lte_qos_parameters_qos_class_identifier: WdsQosClassIdentifier,
+            value_lte_qos_parameters_qos_class_identifier: WdsQosClassIdentifier | null,
             value_lte_qos_parameters_guaranteed_downlink_bitrate: number,
             value_lte_qos_parameters_max_downlink_bitrate: number,
             value_lte_qos_parameters_guaranteed_uplink_bitrate: number,
@@ -58188,19 +58210,19 @@ export namespace Qmi {
          * @param value_pdp_data_compression_type a #QmiWdsPdpDataCompressionType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_pdp_data_compression_type(value_pdp_data_compression_type: WdsPdpDataCompressionType): boolean;
+        set_pdp_data_compression_type(value_pdp_data_compression_type: WdsPdpDataCompressionType | null): boolean;
         /**
          * Set the 'PDP Header Compression Type' field in the message.
          * @param value_pdp_header_compression_type a #QmiWdsPdpHeaderCompressionType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_pdp_header_compression_type(value_pdp_header_compression_type: WdsPdpHeaderCompressionType): boolean;
+        set_pdp_header_compression_type(value_pdp_header_compression_type: WdsPdpHeaderCompressionType | null): boolean;
         /**
          * Set the 'PDP Type' field in the message.
          * @param value_pdp_type a #QmiWdsPdpType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_pdp_type(value_pdp_type: WdsPdpType): boolean;
+        set_pdp_type(value_pdp_type: WdsPdpType | null): boolean;
         /**
          * Set the 'Primary IPv4 DNS Address' field in the message.
          * @param value_primary_ipv4_dns_address a #guint32.
@@ -58218,7 +58240,7 @@ export namespace Qmi {
          * @param value_profile_type a #QmiWdsProfileType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_profile_type(value_profile_type: WdsProfileType): boolean;
+        set_profile_type(value_profile_type: WdsProfileType | null): boolean;
         /**
          * Set the 'Roaming Disallowed Flag' field in the message.
          * @param value_roaming_disallowed_flag a #gboolean.
@@ -58248,16 +58270,16 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_umts_minimum_qos(
-            value_umts_minimum_qos_traffic_class: WdsTrafficClass,
+            value_umts_minimum_qos_traffic_class: WdsTrafficClass | null,
             value_umts_minimum_qos_max_uplink_bitrate: number,
             value_umts_minimum_qos_max_downlink_bitrate: number,
             value_umts_minimum_qos_guaranteed_uplink_bitrate: number,
             value_umts_minimum_qos_guaranteed_downlink_bitrate: number,
-            value_umts_minimum_qos_qos_delivery_order: WdsDeliveryOrder,
+            value_umts_minimum_qos_qos_delivery_order: WdsDeliveryOrder | null,
             value_umts_minimum_qos_maximum_sdu_size: number,
-            value_umts_minimum_qos_sdu_error_ratio: WdsSduErrorRatio,
-            value_umts_minimum_qos_residual_bit_error_ratio: WdsSduResidualBitErrorRatio,
-            value_umts_minimum_qos_delivery_erroneous_sdu: WdsSduErroneousDelivery,
+            value_umts_minimum_qos_sdu_error_ratio: WdsSduErrorRatio | null,
+            value_umts_minimum_qos_residual_bit_error_ratio: WdsSduResidualBitErrorRatio | null,
+            value_umts_minimum_qos_delivery_erroneous_sdu: WdsSduErroneousDelivery | null,
             value_umts_minimum_qos_transfer_delay: number,
             value_umts_minimum_qos_traffic_handling_priority: number,
         ): boolean;
@@ -58279,16 +58301,16 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_umts_minimum_qos_with_signaling_indication_flag(
-            value_umts_minimum_qos_with_signaling_indication_flag_traffic_class: WdsTrafficClass,
+            value_umts_minimum_qos_with_signaling_indication_flag_traffic_class: WdsTrafficClass | null,
             value_umts_minimum_qos_with_signaling_indication_flag_max_uplink_bitrate: number,
             value_umts_minimum_qos_with_signaling_indication_flag_max_downlink_bitrate: number,
             value_umts_minimum_qos_with_signaling_indication_flag_guaranteed_uplink_bitrate: number,
             value_umts_minimum_qos_with_signaling_indication_flag_guaranteed_downlink_bitrate: number,
-            value_umts_minimum_qos_with_signaling_indication_flag_qos_delivery_order: WdsDeliveryOrder,
+            value_umts_minimum_qos_with_signaling_indication_flag_qos_delivery_order: WdsDeliveryOrder | null,
             value_umts_minimum_qos_with_signaling_indication_flag_maximum_sdu_size: number,
-            value_umts_minimum_qos_with_signaling_indication_flag_sdu_error_ratio: WdsSduErrorRatio,
-            value_umts_minimum_qos_with_signaling_indication_flag_residual_bit_error_ratio: WdsSduResidualBitErrorRatio,
-            value_umts_minimum_qos_with_signaling_indication_flag_delivery_erroneous_sdu: WdsSduErroneousDelivery,
+            value_umts_minimum_qos_with_signaling_indication_flag_sdu_error_ratio: WdsSduErrorRatio | null,
+            value_umts_minimum_qos_with_signaling_indication_flag_residual_bit_error_ratio: WdsSduResidualBitErrorRatio | null,
+            value_umts_minimum_qos_with_signaling_indication_flag_delivery_erroneous_sdu: WdsSduErroneousDelivery | null,
             value_umts_minimum_qos_with_signaling_indication_flag_transfer_delay: number,
             value_umts_minimum_qos_with_signaling_indication_flag_traffic_handling_priority: number,
             value_umts_minimum_qos_with_signaling_indication_flag_signaling_indication: number,
@@ -58310,16 +58332,16 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_umts_requested_qos(
-            value_umts_requested_qos_traffic_class: WdsTrafficClass,
+            value_umts_requested_qos_traffic_class: WdsTrafficClass | null,
             value_umts_requested_qos_max_uplink_bitrate: number,
             value_umts_requested_qos_max_downlink_bitrate: number,
             value_umts_requested_qos_guaranteed_uplink_bitrate: number,
             value_umts_requested_qos_guaranteed_downlink_bitrate: number,
-            value_umts_requested_qos_qos_delivery_order: WdsDeliveryOrder,
+            value_umts_requested_qos_qos_delivery_order: WdsDeliveryOrder | null,
             value_umts_requested_qos_maximum_sdu_size: number,
-            value_umts_requested_qos_sdu_error_ratio: WdsSduErrorRatio,
-            value_umts_requested_qos_residual_bit_error_ratio: WdsSduResidualBitErrorRatio,
-            value_umts_requested_qos_delivery_erroneous_sdu: WdsSduErroneousDelivery,
+            value_umts_requested_qos_sdu_error_ratio: WdsSduErrorRatio | null,
+            value_umts_requested_qos_residual_bit_error_ratio: WdsSduResidualBitErrorRatio | null,
+            value_umts_requested_qos_delivery_erroneous_sdu: WdsSduErroneousDelivery | null,
             value_umts_requested_qos_transfer_delay: number,
             value_umts_requested_qos_traffic_handling_priority: number,
         ): boolean;
@@ -58341,16 +58363,16 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_umts_requested_qos_with_signaling_indication_flag(
-            value_umts_requested_qos_with_signaling_indication_flag_traffic_class: WdsTrafficClass,
+            value_umts_requested_qos_with_signaling_indication_flag_traffic_class: WdsTrafficClass | null,
             value_umts_requested_qos_with_signaling_indication_flag_max_uplink_bitrate: number,
             value_umts_requested_qos_with_signaling_indication_flag_max_downlink_bitrate: number,
             value_umts_requested_qos_with_signaling_indication_flag_guaranteed_uplink_bitrate: number,
             value_umts_requested_qos_with_signaling_indication_flag_guaranteed_downlink_bitrate: number,
-            value_umts_requested_qos_with_signaling_indication_flag_qos_delivery_order: WdsDeliveryOrder,
+            value_umts_requested_qos_with_signaling_indication_flag_qos_delivery_order: WdsDeliveryOrder | null,
             value_umts_requested_qos_with_signaling_indication_flag_maximum_sdu_size: number,
-            value_umts_requested_qos_with_signaling_indication_flag_sdu_error_ratio: WdsSduErrorRatio,
-            value_umts_requested_qos_with_signaling_indication_flag_residual_bit_error_ratio: WdsSduResidualBitErrorRatio,
-            value_umts_requested_qos_with_signaling_indication_flag_delivery_erroneous_sdu: WdsSduErroneousDelivery,
+            value_umts_requested_qos_with_signaling_indication_flag_sdu_error_ratio: WdsSduErrorRatio | null,
+            value_umts_requested_qos_with_signaling_indication_flag_residual_bit_error_ratio: WdsSduResidualBitErrorRatio | null,
+            value_umts_requested_qos_with_signaling_indication_flag_delivery_erroneous_sdu: WdsSduErroneousDelivery | null,
             value_umts_requested_qos_with_signaling_indication_flag_transfer_delay: number,
             value_umts_requested_qos_with_signaling_indication_flag_traffic_handling_priority: number,
             value_umts_requested_qos_with_signaling_indication_flag_signaling_indication: number,
@@ -58441,7 +58463,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_profile_identifier(
-            value_profile_identifier_profile_type: WdsProfileType,
+            value_profile_identifier_profile_type: WdsProfileType | null,
             value_profile_identifier_profile_index: number,
         ): boolean;
         /**
@@ -58632,7 +58654,7 @@ export namespace Qmi {
          * @param value_requested_settings a #QmiWdsRequestedSettings.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_requested_settings(value_requested_settings: WdsRequestedSettings): boolean;
+        set_requested_settings(value_requested_settings: WdsRequestedSettings | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -58886,7 +58908,10 @@ export namespace Qmi {
          * @param value_profile_type_family a #QmiWdsProfileFamily.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_profile_type(value_profile_type_type: WdsProfileType, value_profile_type_family: WdsProfileFamily): boolean;
+        set_profile_type(
+            value_profile_type_type: WdsProfileType | null,
+            value_profile_type_family: WdsProfileFamily | null,
+        ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -58965,7 +58990,7 @@ export namespace Qmi {
          * @param value_profile_type a #QmiWdsProfileType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_profile_type(value_profile_type: WdsProfileType): boolean;
+        set_profile_type(value_profile_type: WdsProfileType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -59422,7 +59447,7 @@ export namespace Qmi {
          * @param value_mask a #QmiWdsPacketStatisticsMaskFlag.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_mask(value_mask: WdsPacketStatisticsMaskFlag): boolean;
+        set_mask(value_mask: WdsPacketStatisticsMaskFlag | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -59551,7 +59576,7 @@ export namespace Qmi {
          * @param value_network_type a #QmiWdsDataSystemNetworkType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_network_type(value_network_type: WdsDataSystemNetworkType): boolean;
+        set_network_type(value_network_type: WdsDataSystemNetworkType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -59656,7 +59681,7 @@ export namespace Qmi {
          * @param value_profile_type a #QmiWdsProfileType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_profile_type(value_profile_type: WdsProfileType): boolean;
+        set_profile_type(value_profile_type: WdsProfileType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -59756,7 +59781,10 @@ export namespace Qmi {
          * @param value_profile_id_profile_index a #guint8.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_profile_id(value_profile_id_profile_type: WdsProfileType, value_profile_id_profile_index: number): boolean;
+        set_profile_id(
+            value_profile_id_profile_type: WdsProfileType | null,
+            value_profile_id_profile_index: number,
+        ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -60433,13 +60461,13 @@ export namespace Qmi {
          * @param value_apn_type_mask a #QmiWdsApnTypeMask.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_apn_type_mask(value_apn_type_mask: WdsApnTypeMask): boolean;
+        set_apn_type_mask(value_apn_type_mask: WdsApnTypeMask | null): boolean;
         /**
          * Set the 'Authentication' field in the message.
          * @param value_authentication a #QmiWdsAuthentication.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_authentication(value_authentication: WdsAuthentication): boolean;
+        set_authentication(value_authentication: WdsAuthentication | null): boolean;
         /**
          * Set the 'GPRS Minimum QoS' field in the message.
          * @param value_gprs_minimum_qos_precedence_class a #guint32.
@@ -60512,7 +60540,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_lte_qos_parameters(
-            value_lte_qos_parameters_qos_class_identifier: WdsQosClassIdentifier,
+            value_lte_qos_parameters_qos_class_identifier: WdsQosClassIdentifier | null,
             value_lte_qos_parameters_guaranteed_downlink_bitrate: number,
             value_lte_qos_parameters_max_downlink_bitrate: number,
             value_lte_qos_parameters_guaranteed_uplink_bitrate: number,
@@ -60559,19 +60587,19 @@ export namespace Qmi {
          * @param value_pdp_data_compression_type a #QmiWdsPdpDataCompressionType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_pdp_data_compression_type(value_pdp_data_compression_type: WdsPdpDataCompressionType): boolean;
+        set_pdp_data_compression_type(value_pdp_data_compression_type: WdsPdpDataCompressionType | null): boolean;
         /**
          * Set the 'PDP Header Compression Type' field in the message.
          * @param value_pdp_header_compression_type a #QmiWdsPdpHeaderCompressionType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_pdp_header_compression_type(value_pdp_header_compression_type: WdsPdpHeaderCompressionType): boolean;
+        set_pdp_header_compression_type(value_pdp_header_compression_type: WdsPdpHeaderCompressionType | null): boolean;
         /**
          * Set the 'PDP Type' field in the message.
          * @param value_pdp_type a #QmiWdsPdpType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_pdp_type(value_pdp_type: WdsPdpType): boolean;
+        set_pdp_type(value_pdp_type: WdsPdpType | null): boolean;
         /**
          * Set the 'Primary IPv4 DNS Address' field in the message.
          * @param value_primary_ipv4_dns_address a #guint32.
@@ -60585,7 +60613,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_profile_identifier(
-            value_profile_identifier_profile_type: WdsProfileType,
+            value_profile_identifier_profile_type: WdsProfileType | null,
             value_profile_identifier_profile_index: number,
         ): boolean;
         /**
@@ -60623,16 +60651,16 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_umts_minimum_qos(
-            value_umts_minimum_qos_traffic_class: WdsTrafficClass,
+            value_umts_minimum_qos_traffic_class: WdsTrafficClass | null,
             value_umts_minimum_qos_max_uplink_bitrate: number,
             value_umts_minimum_qos_max_downlink_bitrate: number,
             value_umts_minimum_qos_guaranteed_uplink_bitrate: number,
             value_umts_minimum_qos_guaranteed_downlink_bitrate: number,
-            value_umts_minimum_qos_qos_delivery_order: WdsDeliveryOrder,
+            value_umts_minimum_qos_qos_delivery_order: WdsDeliveryOrder | null,
             value_umts_minimum_qos_maximum_sdu_size: number,
-            value_umts_minimum_qos_sdu_error_ratio: WdsSduErrorRatio,
-            value_umts_minimum_qos_residual_bit_error_ratio: WdsSduResidualBitErrorRatio,
-            value_umts_minimum_qos_delivery_erroneous_sdu: WdsSduErroneousDelivery,
+            value_umts_minimum_qos_sdu_error_ratio: WdsSduErrorRatio | null,
+            value_umts_minimum_qos_residual_bit_error_ratio: WdsSduResidualBitErrorRatio | null,
+            value_umts_minimum_qos_delivery_erroneous_sdu: WdsSduErroneousDelivery | null,
             value_umts_minimum_qos_transfer_delay: number,
             value_umts_minimum_qos_traffic_handling_priority: number,
         ): boolean;
@@ -60654,16 +60682,16 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_umts_minimum_qos_with_signaling_indication_flag(
-            value_umts_minimum_qos_with_signaling_indication_flag_traffic_class: WdsTrafficClass,
+            value_umts_minimum_qos_with_signaling_indication_flag_traffic_class: WdsTrafficClass | null,
             value_umts_minimum_qos_with_signaling_indication_flag_max_uplink_bitrate: number,
             value_umts_minimum_qos_with_signaling_indication_flag_max_downlink_bitrate: number,
             value_umts_minimum_qos_with_signaling_indication_flag_guaranteed_uplink_bitrate: number,
             value_umts_minimum_qos_with_signaling_indication_flag_guaranteed_downlink_bitrate: number,
-            value_umts_minimum_qos_with_signaling_indication_flag_qos_delivery_order: WdsDeliveryOrder,
+            value_umts_minimum_qos_with_signaling_indication_flag_qos_delivery_order: WdsDeliveryOrder | null,
             value_umts_minimum_qos_with_signaling_indication_flag_maximum_sdu_size: number,
-            value_umts_minimum_qos_with_signaling_indication_flag_sdu_error_ratio: WdsSduErrorRatio,
-            value_umts_minimum_qos_with_signaling_indication_flag_residual_bit_error_ratio: WdsSduResidualBitErrorRatio,
-            value_umts_minimum_qos_with_signaling_indication_flag_delivery_erroneous_sdu: WdsSduErroneousDelivery,
+            value_umts_minimum_qos_with_signaling_indication_flag_sdu_error_ratio: WdsSduErrorRatio | null,
+            value_umts_minimum_qos_with_signaling_indication_flag_residual_bit_error_ratio: WdsSduResidualBitErrorRatio | null,
+            value_umts_minimum_qos_with_signaling_indication_flag_delivery_erroneous_sdu: WdsSduErroneousDelivery | null,
             value_umts_minimum_qos_with_signaling_indication_flag_transfer_delay: number,
             value_umts_minimum_qos_with_signaling_indication_flag_traffic_handling_priority: number,
             value_umts_minimum_qos_with_signaling_indication_flag_signaling_indication: number,
@@ -60685,16 +60713,16 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_umts_requested_qos(
-            value_umts_requested_qos_traffic_class: WdsTrafficClass,
+            value_umts_requested_qos_traffic_class: WdsTrafficClass | null,
             value_umts_requested_qos_max_uplink_bitrate: number,
             value_umts_requested_qos_max_downlink_bitrate: number,
             value_umts_requested_qos_guaranteed_uplink_bitrate: number,
             value_umts_requested_qos_guaranteed_downlink_bitrate: number,
-            value_umts_requested_qos_qos_delivery_order: WdsDeliveryOrder,
+            value_umts_requested_qos_qos_delivery_order: WdsDeliveryOrder | null,
             value_umts_requested_qos_maximum_sdu_size: number,
-            value_umts_requested_qos_sdu_error_ratio: WdsSduErrorRatio,
-            value_umts_requested_qos_residual_bit_error_ratio: WdsSduResidualBitErrorRatio,
-            value_umts_requested_qos_delivery_erroneous_sdu: WdsSduErroneousDelivery,
+            value_umts_requested_qos_sdu_error_ratio: WdsSduErrorRatio | null,
+            value_umts_requested_qos_residual_bit_error_ratio: WdsSduResidualBitErrorRatio | null,
+            value_umts_requested_qos_delivery_erroneous_sdu: WdsSduErroneousDelivery | null,
             value_umts_requested_qos_transfer_delay: number,
             value_umts_requested_qos_traffic_handling_priority: number,
         ): boolean;
@@ -60716,16 +60744,16 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_umts_requested_qos_with_signaling_indication_flag(
-            value_umts_requested_qos_with_signaling_indication_flag_traffic_class: WdsTrafficClass,
+            value_umts_requested_qos_with_signaling_indication_flag_traffic_class: WdsTrafficClass | null,
             value_umts_requested_qos_with_signaling_indication_flag_max_uplink_bitrate: number,
             value_umts_requested_qos_with_signaling_indication_flag_max_downlink_bitrate: number,
             value_umts_requested_qos_with_signaling_indication_flag_guaranteed_uplink_bitrate: number,
             value_umts_requested_qos_with_signaling_indication_flag_guaranteed_downlink_bitrate: number,
-            value_umts_requested_qos_with_signaling_indication_flag_qos_delivery_order: WdsDeliveryOrder,
+            value_umts_requested_qos_with_signaling_indication_flag_qos_delivery_order: WdsDeliveryOrder | null,
             value_umts_requested_qos_with_signaling_indication_flag_maximum_sdu_size: number,
-            value_umts_requested_qos_with_signaling_indication_flag_sdu_error_ratio: WdsSduErrorRatio,
-            value_umts_requested_qos_with_signaling_indication_flag_residual_bit_error_ratio: WdsSduResidualBitErrorRatio,
-            value_umts_requested_qos_with_signaling_indication_flag_delivery_erroneous_sdu: WdsSduErroneousDelivery,
+            value_umts_requested_qos_with_signaling_indication_flag_sdu_error_ratio: WdsSduErrorRatio | null,
+            value_umts_requested_qos_with_signaling_indication_flag_residual_bit_error_ratio: WdsSduResidualBitErrorRatio | null,
+            value_umts_requested_qos_with_signaling_indication_flag_delivery_erroneous_sdu: WdsSduErroneousDelivery | null,
             value_umts_requested_qos_with_signaling_indication_flag_transfer_delay: number,
             value_umts_requested_qos_with_signaling_indication_flag_traffic_handling_priority: number,
             value_umts_requested_qos_with_signaling_indication_flag_signaling_indication: number,
@@ -60844,13 +60872,13 @@ export namespace Qmi {
          * @param value_roaming a #QmiWdsAutoconnectSettingRoaming.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_roaming(value_roaming: WdsAutoconnectSettingRoaming): boolean;
+        set_roaming(value_roaming: WdsAutoconnectSettingRoaming | null): boolean;
         /**
          * Set the 'Status' field in the message.
          * @param value_status a #QmiWdsAutoconnectSetting.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_status(value_status: WdsAutoconnectSetting): boolean;
+        set_status(value_status: WdsAutoconnectSetting | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -60922,8 +60950,8 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_profile_identifier(
-            value_profile_identifier_type: WdsProfileType,
-            value_profile_identifier_family: WdsProfileFamily,
+            value_profile_identifier_type: WdsProfileType | null,
+            value_profile_identifier_family: WdsProfileFamily | null,
             value_profile_identifier_index: number,
         ): boolean;
         /**
@@ -61139,7 +61167,7 @@ export namespace Qmi {
          */
         set_transfer_statistics(
             value_transfer_statistics_interval_seconds: number,
-            value_transfer_statistics_indicators: WdsSetEventReportTransferStatistics,
+            value_transfer_statistics_indicators: WdsSetEventReportTransferStatistics | null,
         ): boolean;
         /**
          * Set the 'Uplink Flow Control' field in the message.
@@ -61215,7 +61243,7 @@ export namespace Qmi {
          * @param value_preference a #QmiWdsIpFamily.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_preference(value_preference: WdsIpFamily): boolean;
+        set_preference(value_preference: WdsIpFamily | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -61289,7 +61317,7 @@ export namespace Qmi {
          * @param value_action a #QmiWdsAttachPdnListAction.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_action(value_action: WdsAttachPdnListAction): boolean;
+        set_action(value_action: WdsAttachPdnListAction | null): boolean;
         /**
          * Set the 'List' field in the message.
          * @param value_list a #GArray of #guint16 elements. A new reference to @value_list will be taken, so the caller must make sure the array was created with the correct #GDestroyNotify as clear function for each element in the array.
@@ -61445,13 +61473,13 @@ export namespace Qmi {
          * @param value_authentication_preference a #QmiWdsAuthentication.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_authentication_preference(value_authentication_preference: WdsAuthentication): boolean;
+        set_authentication_preference(value_authentication_preference: WdsAuthentication | null): boolean;
         /**
          * Set the 'Call Type' field in the message.
          * @param value_call_type a #QmiWdsCallType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_call_type(value_call_type: WdsCallType): boolean;
+        set_call_type(value_call_type: WdsCallType | null): boolean;
         /**
          * Set the 'Enable Autoconnect' field in the message.
          * @param value_enable_autoconnect a #gboolean.
@@ -61464,14 +61492,14 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_extended_technology_preference(
-            value_extended_technology_preference: WdsExtendedTechnologyPreference,
+            value_extended_technology_preference: WdsExtendedTechnologyPreference | null,
         ): boolean;
         /**
          * Set the 'IP Family Preference' field in the message.
          * @param value_ip_family_preference a #QmiWdsIpFamily.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_ip_family_preference(value_ip_family_preference: WdsIpFamily): boolean;
+        set_ip_family_preference(value_ip_family_preference: WdsIpFamily | null): boolean;
         /**
          * Set the 'IPv4 Address Preference' field in the message.
          * @param value_ipv4_address_preference a #guint32.
@@ -61525,7 +61553,7 @@ export namespace Qmi {
          * @param value_technology_preference a #QmiWdsTechnologyPreference.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_technology_preference(value_technology_preference: WdsTechnologyPreference): boolean;
+        set_technology_preference(value_technology_preference: WdsTechnologyPreference | null): boolean;
         /**
          * Set the 'Username' field in the message.
          * @param value_username a constant string.
@@ -61767,7 +61795,7 @@ export namespace Qmi {
          * @param value_authentication a #QmiWdsAuthentication.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_authentication(value_authentication: WdsAuthentication): boolean;
+        set_authentication(value_authentication: WdsAuthentication | null): boolean;
         /**
          * Set the 'IPv4 Address Preference' field in the message.
          * @param value_ipv4_address_preference a #guint32.
@@ -61791,7 +61819,7 @@ export namespace Qmi {
          * @param value_pdp_type a #QmiWdsPdpType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_pdp_type(value_pdp_type: WdsPdpType): boolean;
+        set_pdp_type(value_pdp_type: WdsPdpType | null): boolean;
         /**
          * Set the 'Primary IPv4 DNS Address' field in the message.
          * @param value_primary_ipv4_dns_address a #guint32.
@@ -61805,7 +61833,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_profile_identifier(
-            value_profile_identifier_profile_type: WdsProfileType,
+            value_profile_identifier_profile_type: WdsProfileType | null,
             value_profile_identifier_profile_index: number,
         ): boolean;
         /**
@@ -61926,19 +61954,19 @@ export namespace Qmi {
          * @param value_memory_storage a #QmiWmsStorageType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_memory_storage(value_memory_storage: WmsStorageType): boolean;
+        set_memory_storage(value_memory_storage: WmsStorageType | null): boolean;
         /**
          * Set the 'Message Mode' field in the message.
          * @param value_message_mode a #QmiWmsMessageMode.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_message_mode(value_message_mode: WmsMessageMode): boolean;
+        set_message_mode(value_message_mode: WmsMessageMode | null): boolean;
         /**
          * Set the 'Message Tag' field in the message.
          * @param value_message_tag a #QmiWmsMessageTagType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_message_tag(value_message_tag: WmsMessageTagType): boolean;
+        set_message_tag(value_message_tag: WmsMessageTagType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -62148,19 +62176,19 @@ export namespace Qmi {
          * @param value_message_mode a #QmiWmsMessageMode.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_message_mode(value_message_mode: WmsMessageMode): boolean;
+        set_message_mode(value_message_mode: WmsMessageMode | null): boolean;
         /**
          * Set the 'Message Tag' field in the message.
          * @param value_message_tag a #QmiWmsMessageTagType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_message_tag(value_message_tag: WmsMessageTagType): boolean;
+        set_message_tag(value_message_tag: WmsMessageTagType | null): boolean;
         /**
          * Set the 'Storage Type' field in the message.
          * @param value_storage_type a #QmiWmsStorageType.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_storage_type(value_storage_type: WmsStorageType): boolean;
+        set_storage_type(value_storage_type: WmsStorageType | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -62258,7 +62286,7 @@ export namespace Qmi {
          * @param value_message_mode a #QmiWmsMessageMode.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_message_mode(value_message_mode: WmsMessageMode): boolean;
+        set_message_mode(value_message_mode: WmsMessageMode | null): boolean;
         /**
          * Set the 'Message Tag' field in the message.
          * @param value_message_tag_storage_type a #QmiWmsStorageType.
@@ -62267,9 +62295,9 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_message_tag(
-            value_message_tag_storage_type: WmsStorageType,
+            value_message_tag_storage_type: WmsStorageType | null,
             value_message_tag_memory_index: number,
-            value_message_tag_message_tag: WmsMessageTagType,
+            value_message_tag_message_tag: WmsMessageTagType | null,
         ): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
@@ -62351,7 +62379,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_message_memory_storage_id(
-            value_message_memory_storage_id_storage_type: WmsStorageType,
+            value_message_memory_storage_id_storage_type: WmsStorageType | null,
             value_message_memory_storage_id_memory_index: number,
         ): boolean;
         /**
@@ -62359,7 +62387,7 @@ export namespace Qmi {
          * @param value_message_mode a #QmiWmsMessageMode.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_message_mode(value_message_mode: WmsMessageMode): boolean;
+        set_message_mode(value_message_mode: WmsMessageMode | null): boolean;
         /**
          * Set the 'SMS on IMS' field in the message.
          * @param value_sms_on_ims a #gboolean.
@@ -62468,7 +62496,7 @@ export namespace Qmi {
          */
         set_cdma_force_on_dc(
             value_cdma_force_on_dc_force: boolean,
-            value_cdma_force_on_dc_service_option: WmsCdmaServiceOption,
+            value_cdma_force_on_dc_service_option: WmsCdmaServiceOption | null,
         ): boolean;
         /**
          * Set the 'GSM WCDMA Link Timer' field in the message.
@@ -62483,7 +62511,7 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_raw_message_data(
-            value_raw_message_data_format: WmsMessageFormat,
+            value_raw_message_data_format: WmsMessageFormat | null,
             value_raw_message_data_raw_data: Uint8Array | string,
         ): boolean;
         /**
@@ -62588,8 +62616,8 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_raw_message_data(
-            value_raw_message_data_storage_type: WmsStorageType,
-            value_raw_message_data_format: WmsMessageFormat,
+            value_raw_message_data_storage_type: WmsStorageType | null,
+            value_raw_message_data_format: WmsMessageFormat | null,
             value_raw_message_data_raw_data: Uint8Array | string,
         ): boolean;
         /**
@@ -62712,8 +62740,8 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_3gpp2_failure_information(
-            value_3gpp2_failure_information_error_class: WmsCdmaErrorClass,
-            value_3gpp2_failure_information_cause_code: WmsCdmaCauseCode,
+            value_3gpp2_failure_information_error_class: WmsCdmaErrorClass | null,
+            value_3gpp2_failure_information_cause_code: WmsCdmaCauseCode | null,
         ): boolean;
         /**
          * Set the '3GPP Failure Information' field in the message.
@@ -62722,8 +62750,8 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_3gpp_failure_information(
-            value_3gpp_failure_information_rp_cause: WmsGsmUmtsRpCause,
-            value_3gpp_failure_information_tp_cause: WmsGsmUmtsTpCause,
+            value_3gpp_failure_information_rp_cause: WmsGsmUmtsRpCause | null,
+            value_3gpp_failure_information_tp_cause: WmsGsmUmtsTpCause | null,
         ): boolean;
         /**
          * Set the 'Information' field in the message.
@@ -62734,7 +62762,7 @@ export namespace Qmi {
          */
         set_information(
             value_information_transaction_id: number,
-            value_information_message_protocol: WmsMessageProtocol,
+            value_information_message_protocol: WmsMessageProtocol | null,
             value_information_success: boolean,
         ): boolean;
         /**
@@ -62824,9 +62852,9 @@ export namespace Qmi {
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
         set_information(
-            value_information_storage_type: WmsStorageType,
+            value_information_storage_type: WmsStorageType | null,
             value_information_memory_index: number,
-            value_information_message_mode: WmsMessageMode,
+            value_information_message_mode: WmsMessageMode | null,
         ): boolean;
         /**
          * Set the 'SMS on IMS' field in the message.
@@ -63010,7 +63038,7 @@ export namespace Qmi {
          * @param value_transfer_status_report a #QmiWmsTransferIndication.
          * @returns %TRUE if @value was successfully set, %FALSE otherwise.
          */
-        set_transfer_status_report(value_transfer_status_report: WmsTransferIndication): boolean;
+        set_transfer_status_report(value_transfer_status_report: WmsTransferIndication | null): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.

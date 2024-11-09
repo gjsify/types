@@ -132,7 +132,7 @@ export namespace SugarGestures {
 
         // Methods
 
-        attach(widget: Gtk.Widget, flags: EventControllerFlags): boolean;
+        attach(widget: Gtk.Widget, flags: EventControllerFlags | null): boolean;
         detach(widget: Gtk.Widget): boolean;
         get_state(): EventControllerState;
         handle_event(event: Gdk.Event): boolean;

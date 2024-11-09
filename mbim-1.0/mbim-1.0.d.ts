@@ -4127,19 +4127,19 @@ export namespace Mbim {
      * @param val a MbimAccessMediaType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function access_media_type_get_string(val: AccessMediaType): string;
+    function access_media_type_get_string(val: AccessMediaType | null): string;
     /**
      * Gets the nickname string for the #MbimActivationCommand specified at `val`.
      * @param val a MbimActivationCommand.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function activation_command_get_string(val: ActivationCommand): string;
+    function activation_command_get_string(val: ActivationCommand | null): string;
     /**
      * Gets the nickname string for the #MbimActivationState specified at `val`.
      * @param val a MbimActivationState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function activation_state_get_string(val: ActivationState): string;
+    function activation_state_get_string(val: ActivationState | null): string;
     /**
      * Frees the memory allocated for the array of #MbimAtdsProvider structs.
      * @param array a #NULL terminated array of #MbimAtdsProvider structs.
@@ -4150,37 +4150,37 @@ export namespace Mbim {
      * @param val a MbimAtdsProviderPlmnMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function atds_provider_plmn_mode_get_string(val: AtdsProviderPlmnMode): string;
+    function atds_provider_plmn_mode_get_string(val: AtdsProviderPlmnMode | null): string;
     /**
      * Gets the nickname string for the #MbimAtdsRatMode specified at `val`.
      * @param val a MbimAtdsRatMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function atds_rat_mode_get_string(val: AtdsRatMode): string;
+    function atds_rat_mode_get_string(val: AtdsRatMode | null): string;
     /**
      * Gets the nickname string for the #MbimAuthProtocol specified at `val`.
      * @param val a MbimAuthProtocol.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function auth_protocol_get_string(val: AuthProtocol): string;
+    function auth_protocol_get_string(val: AuthProtocol | null): string;
     /**
      * Gets the nickname string for the #MbimCarrierLockCause specified at `val`.
      * @param val a MbimCarrierLockCause.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function carrier_lock_cause_get_string(val: CarrierLockCause): string;
+    function carrier_lock_cause_get_string(val: CarrierLockCause | null): string;
     /**
      * Gets the nickname string for the #MbimCarrierLockModemState specified at `val`.
      * @param val a MbimCarrierLockModemState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function carrier_lock_modem_state_get_string(val: CarrierLockModemState): string;
+    function carrier_lock_modem_state_get_string(val: CarrierLockModemState | null): string;
     /**
      * Gets the nickname string for the #MbimCarrierLockStatus specified at `val`.
      * @param val a MbimCarrierLockStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function carrier_lock_status_get_string(val: CarrierLockStatus): string;
+    function carrier_lock_status_get_string(val: CarrierLockStatus | null): string;
     /**
      * Frees the memory allocated for the array of #MbimCellInfoCdma structs.
      * @param array a #NULL terminated array of #MbimCellInfoCdma structs.
@@ -4222,52 +4222,52 @@ export namespace Mbim {
      * @param mask bitmask of MbimCellularClass values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function cellular_class_build_string_from_mask(mask: CellularClass): string;
+    function cellular_class_build_string_from_mask(mask: CellularClass | null): string;
     /**
      * Gets the nickname string for the #MbimCidAtds specified at `val`.
      * @param val a MbimCidAtds.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_atds_get_string(val: CidAtds): string;
+    function cid_atds_get_string(val: CidAtds | null): string;
     /**
      * Gets the nickname string for the #MbimCidAuth specified at `val`.
      * @param val a MbimCidAuth.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_auth_get_string(val: CidAuth): string;
+    function cid_auth_get_string(val: CidAuth | null): string;
     /**
      * Gets the nickname string for the #MbimCidBasicConnect specified at `val`.
      * @param val a MbimCidBasicConnect.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_basic_connect_get_string(val: CidBasicConnect): string;
+    function cid_basic_connect_get_string(val: CidBasicConnect | null): string;
     /**
      * Checks whether the given command allows notifying.
      * @param service a #MbimService.
      * @param cid a command ID.
      * @returns %TRUE if the command allows notifying, %FALSE otherwise.
      */
-    function cid_can_notify(service: Service, cid: number): boolean;
+    function cid_can_notify(service: Service | null, cid: number): boolean;
     /**
      * Checks whether the given command allows querying.
      * @param service a #MbimService.
      * @param cid a command ID.
      * @returns %TRUE if the command allows querying, %FALSE otherwise.
      */
-    function cid_can_query(service: Service, cid: number): boolean;
+    function cid_can_query(service: Service | null, cid: number): boolean;
     /**
      * Checks whether the given command allows setting.
      * @param service a #MbimService.
      * @param cid a command ID.
      * @returns %TRUE if the command allows setting, %FALSE otherwise.
      */
-    function cid_can_set(service: Service, cid: number): boolean;
+    function cid_can_set(service: Service | null, cid: number): boolean;
     /**
      * Gets the nickname string for the #MbimCidDss specified at `val`.
      * @param val a MbimCidDss.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_dss_get_string(val: CidDss): string;
+    function cid_dss_get_string(val: CidDss | null): string;
     /**
      * Gets a printable string for the command specified by the `service` and the
      * `cid`.
@@ -4275,175 +4275,175 @@ export namespace Mbim {
      * @param cid a command ID.
      * @returns a constant string.
      */
-    function cid_get_printable(service: Service, cid: number): string;
+    function cid_get_printable(service: Service | null, cid: number): string;
     /**
      * Gets the nickname string for the #MbimCidGoogle specified at `val`.
      * @param val a MbimCidGoogle.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_google_get_string(val: CidGoogle): string;
+    function cid_google_get_string(val: CidGoogle | null): string;
     /**
      * Gets the nickname string for the #MbimCidIntelFirmwareUpdate specified at `val`.
      * @param val a MbimCidIntelFirmwareUpdate.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_intel_firmware_update_get_string(val: CidIntelFirmwareUpdate): string;
+    function cid_intel_firmware_update_get_string(val: CidIntelFirmwareUpdate | null): string;
     /**
      * Gets the nickname string for the #MbimCidIntelMutualAuthentication specified at `val`.
      * @param val a MbimCidIntelMutualAuthentication.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_intel_mutual_authentication_get_string(val: CidIntelMutualAuthentication): string;
+    function cid_intel_mutual_authentication_get_string(val: CidIntelMutualAuthentication | null): string;
     /**
      * Gets the nickname string for the #MbimCidIntelThermalRf specified at `val`.
      * @param val a MbimCidIntelThermalRf.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_intel_thermal_rf_get_string(val: CidIntelThermalRf): string;
+    function cid_intel_thermal_rf_get_string(val: CidIntelThermalRf | null): string;
     /**
      * Gets the nickname string for the #MbimCidIntelTools specified at `val`.
      * @param val a MbimCidIntelTools.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_intel_tools_get_string(val: CidIntelTools): string;
+    function cid_intel_tools_get_string(val: CidIntelTools | null): string;
     /**
      * Gets the nickname string for the #MbimCidMsBasicConnectExtensions specified at `val`.
      * @param val a MbimCidMsBasicConnectExtensions.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_ms_basic_connect_extensions_get_string(val: CidMsBasicConnectExtensions): string;
+    function cid_ms_basic_connect_extensions_get_string(val: CidMsBasicConnectExtensions | null): string;
     /**
      * Gets the nickname string for the #MbimCidMsFirmwareId specified at `val`.
      * @param val a MbimCidMsFirmwareId.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_ms_firmware_id_get_string(val: CidMsFirmwareId): string;
+    function cid_ms_firmware_id_get_string(val: CidMsFirmwareId | null): string;
     /**
      * Gets the nickname string for the #MbimCidMsHostShutdown specified at `val`.
      * @param val a MbimCidMsHostShutdown.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_ms_host_shutdown_get_string(val: CidMsHostShutdown): string;
+    function cid_ms_host_shutdown_get_string(val: CidMsHostShutdown | null): string;
     /**
      * Gets the nickname string for the #MbimCidMsSar specified at `val`.
      * @param val a MbimCidMsSar.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_ms_sar_get_string(val: CidMsSar): string;
+    function cid_ms_sar_get_string(val: CidMsSar | null): string;
     /**
      * Gets the nickname string for the #MbimCidMsUiccLowLevelAccess specified at `val`.
      * @param val a MbimCidMsUiccLowLevelAccess.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_ms_uicc_low_level_access_get_string(val: CidMsUiccLowLevelAccess): string;
+    function cid_ms_uicc_low_level_access_get_string(val: CidMsUiccLowLevelAccess | null): string;
     /**
      * Gets the nickname string for the #MbimCidMsVoiceExtensions specified at `val`.
      * @param val a MbimCidMsVoiceExtensions.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_ms_voice_extensions_get_string(val: CidMsVoiceExtensions): string;
+    function cid_ms_voice_extensions_get_string(val: CidMsVoiceExtensions | null): string;
     /**
      * Gets the nickname string for the #MbimCidPhonebook specified at `val`.
      * @param val a MbimCidPhonebook.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_phonebook_get_string(val: CidPhonebook): string;
+    function cid_phonebook_get_string(val: CidPhonebook | null): string;
     /**
      * Gets the nickname string for the #MbimCidProxyControl specified at `val`.
      * @param val a MbimCidProxyControl.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_proxy_control_get_string(val: CidProxyControl): string;
+    function cid_proxy_control_get_string(val: CidProxyControl | null): string;
     /**
      * Gets the nickname string for the #MbimCidQdu specified at `val`.
      * @param val a MbimCidQdu.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_qdu_get_string(val: CidQdu): string;
+    function cid_qdu_get_string(val: CidQdu | null): string;
     /**
      * Gets the nickname string for the #MbimCidQmi specified at `val`.
      * @param val a MbimCidQmi.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_qmi_get_string(val: CidQmi): string;
+    function cid_qmi_get_string(val: CidQmi | null): string;
     /**
      * Gets the nickname string for the #MbimCidQuectel specified at `val`.
      * @param val a MbimCidQuectel.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_quectel_get_string(val: CidQuectel): string;
+    function cid_quectel_get_string(val: CidQuectel | null): string;
     /**
      * Gets the nickname string for the #MbimCidSms specified at `val`.
      * @param val a MbimCidSms.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_sms_get_string(val: CidSms): string;
+    function cid_sms_get_string(val: CidSms | null): string;
     /**
      * Gets the nickname string for the #MbimCidStk specified at `val`.
      * @param val a MbimCidStk.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_stk_get_string(val: CidStk): string;
+    function cid_stk_get_string(val: CidStk | null): string;
     /**
      * Gets the nickname string for the #MbimCidUssd specified at `val`.
      * @param val a MbimCidUssd.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function cid_ussd_get_string(val: CidUssd): string;
+    function cid_ussd_get_string(val: CidUssd | null): string;
     /**
      * Gets the nickname string for the #MbimCompression specified at `val`.
      * @param val a MbimCompression.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function compression_get_string(val: Compression): string;
+    function compression_get_string(val: Compression | null): string;
     /**
      * Gets the nickname string for the #MbimContextIpType specified at `val`.
      * @param val a MbimContextIpType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function context_ip_type_get_string(val: ContextIpType): string;
+    function context_ip_type_get_string(val: ContextIpType | null): string;
     /**
      * Gets the nickname string for the #MbimContextMediaType specified at `val`.
      * @param val a MbimContextMediaType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function context_media_type_get_string(val: ContextMediaType): string;
+    function context_media_type_get_string(val: ContextMediaType | null): string;
     /**
      * Gets the nickname string for the #MbimContextOperation specified at `val`.
      * @param val a MbimContextOperation.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function context_operation_get_string(val: ContextOperation): string;
+    function context_operation_get_string(val: ContextOperation | null): string;
     /**
      * Gets the nickname string for the #MbimContextRoamingControl specified at `val`.
      * @param val a MbimContextRoamingControl.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function context_roaming_control_get_string(val: ContextRoamingControl): string;
+    function context_roaming_control_get_string(val: ContextRoamingControl | null): string;
     /**
      * Gets the nickname string for the #MbimContextSource specified at `val`.
      * @param val a MbimContextSource.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function context_source_get_string(val: ContextSource): string;
+    function context_source_get_string(val: ContextSource | null): string;
     /**
      * Gets the nickname string for the #MbimContextState specified at `val`.
      * @param val a MbimContextState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function context_state_get_string(val: ContextState): string;
+    function context_state_get_string(val: ContextState | null): string;
     /**
      * Gets the nickname string for the #MbimContextType specified at `val`.
      * @param val a MbimContextType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function context_type_get_string(val: ContextType): string;
+    function context_type_get_string(val: ContextType | null): string;
     /**
      * Gets the nickname string for the #MbimCoreError specified at `val`.
      * @param val a MbimCoreError.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function core_error_get_string(val: CoreError): string;
+    function core_error_get_string(val: CoreError | null): string;
     function core_error_quark(): GLib.Quark;
     /**
      * Builds a string containing a comma-separated list of nicknames for
@@ -4451,34 +4451,34 @@ export namespace Mbim {
      * @param mask bitmask of MbimCtrlCaps values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function ctrl_caps_build_string_from_mask(mask: CtrlCaps): string;
+    function ctrl_caps_build_string_from_mask(mask: CtrlCaps | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #MbimDataClass in `mask`.
      * @param mask bitmask of MbimDataClass values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function data_class_build_string_from_mask(mask: DataClass): string;
+    function data_class_build_string_from_mask(mask: DataClass | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #MbimDataClassV3 in `mask`.
      * @param mask bitmask of MbimDataClassV3 values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function data_class_v3_build_string_from_mask(mask: DataClassV3): string;
+    function data_class_v3_build_string_from_mask(mask: DataClassV3 | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #MbimDataSubclass in `mask`.
      * @param mask bitmask of MbimDataSubclass values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function data_subclass_build_string_from_mask(mask: DataSubclass): string;
+    function data_subclass_build_string_from_mask(mask: DataSubclass | null): string;
     /**
      * Gets the nickname string for the #MbimDefaultPduActivationHint specified at `val`.
      * @param val a MbimDefaultPduActivationHint.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function default_pdu_activation_hint_get_string(val: DefaultPduActivationHint): string;
+    function default_pdu_activation_hint_get_string(val: DefaultPduActivationHint | null): string;
     /**
      * Frees the memory allocated for the array of #MbimDeviceServiceElement structs.
      * @param array a #NULL terminated array of #MbimDeviceServiceElement structs.
@@ -4489,25 +4489,25 @@ export namespace Mbim {
      * @param val a MbimDeviceType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function device_type_get_string(val: DeviceType): string;
+    function device_type_get_string(val: DeviceType | null): string;
     /**
      * Gets the nickname string for the #MbimDrxCycle specified at `val`.
      * @param val a MbimDrxCycle.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function drx_cycle_get_string(val: DrxCycle): string;
+    function drx_cycle_get_string(val: DrxCycle | null): string;
     /**
      * Gets the nickname string for the #MbimDssLinkState specified at `val`.
      * @param val a MbimDssLinkState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function dss_link_state_get_string(val: DssLinkState): string;
+    function dss_link_state_get_string(val: DssLinkState | null): string;
     /**
      * Gets the nickname string for the #MbimEmergencyModeState specified at `val`.
      * @param val a MbimEmergencyModeState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function emergency_mode_state_get_string(val: EmergencyModeState): string;
+    function emergency_mode_state_get_string(val: EmergencyModeState | null): string;
     /**
      * Frees the memory allocated for the array of #MbimEventEntry structs.
      * @param array a #NULL terminated array of #MbimEventEntry structs.
@@ -4519,13 +4519,13 @@ export namespace Mbim {
      * @param mask bitmask of MbimFrequencyRange values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function frequency_range_build_string_from_mask(mask: FrequencyRange): string;
+    function frequency_range_build_string_from_mask(mask: FrequencyRange | null): string;
     /**
      * Gets the nickname string for the #MbimIntelBootMode specified at `val`.
      * @param val a MbimIntelBootMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function intel_boot_mode_get_string(val: IntelBootMode): string;
+    function intel_boot_mode_get_string(val: IntelBootMode | null): string;
     /**
      * Frees the memory allocated for the array of #MbimIntelRfimFrequencyValue structs.
      * @param array a #NULL terminated array of #MbimIntelRfimFrequencyValue structs.
@@ -4536,14 +4536,14 @@ export namespace Mbim {
      * @param val a MbimIntelServingCellInfo.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function intel_serving_cell_info_get_string(val: IntelServingCellInfo): string;
+    function intel_serving_cell_info_get_string(val: IntelServingCellInfo | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #MbimIPConfigurationAvailableFlag in `mask`.
      * @param mask bitmask of MbimIPConfigurationAvailableFlag values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function ip_configuration_available_flag_build_string_from_mask(mask: IPConfigurationAvailableFlag): string;
+    function ip_configuration_available_flag_build_string_from_mask(mask: IPConfigurationAvailableFlag | null): string;
     /**
      * Frees the memory allocated for the array of #MbimIPv4Element structs.
      * @param array a #NULL terminated array of #MbimIPv4Element structs.
@@ -4559,7 +4559,7 @@ export namespace Mbim {
      * @param val a MbimLadnInfo.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function ladn_info_get_string(val: LadnInfo): string;
+    function ladn_info_get_string(val: LadnInfo | null): string;
     /**
      * Frees the memory allocated for the array of #MbimLteAttachConfiguration structs.
      * @param array a #NULL terminated array of #MbimLteAttachConfiguration structs.
@@ -4570,19 +4570,19 @@ export namespace Mbim {
      * @param val a MbimLteAttachContextOperation.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function lte_attach_context_operation_get_string(val: LteAttachContextOperation): string;
+    function lte_attach_context_operation_get_string(val: LteAttachContextOperation | null): string;
     /**
      * Gets the nickname string for the #MbimLteAttachContextRoamingControl specified at `val`.
      * @param val a MbimLteAttachContextRoamingControl.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function lte_attach_context_roaming_control_get_string(val: LteAttachContextRoamingControl): string;
+    function lte_attach_context_roaming_control_get_string(val: LteAttachContextRoamingControl | null): string;
     /**
      * Gets the nickname string for the #MbimLteAttachState specified at `val`.
      * @param val a MbimLteAttachState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function lte_attach_state_get_string(val: LteAttachState): string;
+    function lte_attach_state_get_string(val: LteAttachState | null): string;
     /**
      * Frees the memory allocated for the #MbimLteAttachStatus.
      * @param _var a #MbimLteAttachStatus.
@@ -4593,37 +4593,37 @@ export namespace Mbim {
      * @param val a MbimMessageCommandType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function message_command_type_get_string(val: MessageCommandType): string;
+    function message_command_type_get_string(val: MessageCommandType | null): string;
     /**
      * Gets the nickname string for the #MbimMessageType specified at `val`.
      * @param val a MbimMessageType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function message_type_get_string(val: MessageType): string;
+    function message_type_get_string(val: MessageType | null): string;
     /**
      * Gets the nickname string for the #MbimMicoMode specified at `val`.
      * @param val a MbimMicoMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function mico_mode_get_string(val: MicoMode): string;
+    function mico_mode_get_string(val: MicoMode | null): string;
     /**
      * Gets the nickname string for the #MbimModemConfigurationStatus specified at `val`.
      * @param val a MbimModemConfigurationStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function modem_configuration_status_get_string(val: ModemConfigurationStatus): string;
+    function modem_configuration_status_get_string(val: ModemConfigurationStatus | null): string;
     /**
      * Gets the nickname string for the #MbimNetworkIdleHintState specified at `val`.
      * @param val a MbimNetworkIdleHintState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function network_idle_hint_state_get_string(val: NetworkIdleHintState): string;
+    function network_idle_hint_state_get_string(val: NetworkIdleHintState | null): string;
     /**
      * Gets the nickname string for the #MbimNwError specified at `val`.
      * @param val a MbimNwError.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function nw_error_get_string(val: NwError): string;
+    function nw_error_get_string(val: NwError | null): string;
     /**
      * Frees the memory allocated for the array of #MbimPacketFilter structs.
      * @param array a #NULL terminated array of #MbimPacketFilter structs.
@@ -4639,19 +4639,19 @@ export namespace Mbim {
      * @param val a MbimPacketServiceAction.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function packet_service_action_get_string(val: PacketServiceAction): string;
+    function packet_service_action_get_string(val: PacketServiceAction | null): string;
     /**
      * Gets the nickname string for the #MbimPacketServiceState specified at `val`.
      * @param val a MbimPacketServiceState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function packet_service_state_get_string(val: PacketServiceState): string;
+    function packet_service_state_get_string(val: PacketServiceState | null): string;
     /**
      * Gets the nickname string for the #MbimPcoType specified at `val`.
      * @param val a MbimPcoType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function pco_type_get_string(val: PcoType): string;
+    function pco_type_get_string(val: PcoType | null): string;
     /**
      * Frees the memory allocated for the array of #MbimPhonebookEntry structs.
      * @param array a #NULL terminated array of #MbimPhonebookEntry structs.
@@ -4662,55 +4662,55 @@ export namespace Mbim {
      * @param val a MbimPhonebookFlag.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function phonebook_flag_get_string(val: PhonebookFlag): string;
+    function phonebook_flag_get_string(val: PhonebookFlag | null): string;
     /**
      * Gets the nickname string for the #MbimPhonebookState specified at `val`.
      * @param val a MbimPhonebookState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function phonebook_state_get_string(val: PhonebookState): string;
+    function phonebook_state_get_string(val: PhonebookState | null): string;
     /**
      * Gets the nickname string for the #MbimPhonebookWriteFlag specified at `val`.
      * @param val a MbimPhonebookWriteFlag.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function phonebook_write_flag_get_string(val: PhonebookWriteFlag): string;
+    function phonebook_write_flag_get_string(val: PhonebookWriteFlag | null): string;
     /**
      * Gets the nickname string for the #MbimPinFormat specified at `val`.
      * @param val a MbimPinFormat.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function pin_format_get_string(val: PinFormat): string;
+    function pin_format_get_string(val: PinFormat | null): string;
     /**
      * Gets the nickname string for the #MbimPinMode specified at `val`.
      * @param val a MbimPinMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function pin_mode_get_string(val: PinMode): string;
+    function pin_mode_get_string(val: PinMode | null): string;
     /**
      * Gets the nickname string for the #MbimPinOperation specified at `val`.
      * @param val a MbimPinOperation.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function pin_operation_get_string(val: PinOperation): string;
+    function pin_operation_get_string(val: PinOperation | null): string;
     /**
      * Gets the nickname string for the #MbimPinState specified at `val`.
      * @param val a MbimPinState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function pin_state_get_string(val: PinState): string;
+    function pin_state_get_string(val: PinState | null): string;
     /**
      * Gets the nickname string for the #MbimPinType specified at `val`.
      * @param val a MbimPinType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function pin_type_get_string(val: PinType): string;
+    function pin_type_get_string(val: PinType | null): string;
     /**
      * Gets the nickname string for the #MbimProtocolError specified at `val`.
      * @param val a MbimProtocolError.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function protocol_error_get_string(val: ProtocolError): string;
+    function protocol_error_get_string(val: ProtocolError | null): string;
     function protocol_error_quark(): GLib.Quark;
     /**
      * Frees the memory allocated for the array of #MbimProvider structs.
@@ -4723,7 +4723,7 @@ export namespace Mbim {
      * @param mask bitmask of MbimProviderState values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function provider_state_build_string_from_mask(mask: ProviderState): string;
+    function provider_state_build_string_from_mask(mask: ProviderState | null): string;
     /**
      * Frees the memory allocated for the array of #MbimProvisionedContextElement structs.
      * @param array a #NULL terminated array of #MbimProvisionedContextElement structs.
@@ -4739,68 +4739,68 @@ export namespace Mbim {
      * @param val a MbimQduFileType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function qdu_file_type_get_string(val: QduFileType): string;
+    function qdu_file_type_get_string(val: QduFileType | null): string;
     /**
      * Gets the nickname string for the #MbimQduQuectelRebootType specified at `val`.
      * @param val a MbimQduQuectelRebootType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function qdu_quectel_reboot_type_get_string(val: QduQuectelRebootType): string;
+    function qdu_quectel_reboot_type_get_string(val: QduQuectelRebootType | null): string;
     /**
      * Gets the nickname string for the #MbimQduQuectelVersionType specified at `val`.
      * @param val a MbimQduQuectelVersionType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function qdu_quectel_version_type_get_string(val: QduQuectelVersionType): string;
+    function qdu_quectel_version_type_get_string(val: QduQuectelVersionType | null): string;
     /**
      * Gets the nickname string for the #MbimQduSessionAction specified at `val`.
      * @param val a MbimQduSessionAction.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function qdu_session_action_get_string(val: QduSessionAction): string;
+    function qdu_session_action_get_string(val: QduSessionAction | null): string;
     /**
      * Gets the nickname string for the #MbimQduSessionResult specified at `val`.
      * @param val a MbimQduSessionResult.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function qdu_session_result_get_string(val: QduSessionResult): string;
+    function qdu_session_result_get_string(val: QduSessionResult | null): string;
     /**
      * Gets the nickname string for the #MbimQduSessionStatus specified at `val`.
      * @param val a MbimQduSessionStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function qdu_session_status_get_string(val: QduSessionStatus): string;
+    function qdu_session_status_get_string(val: QduSessionStatus | null): string;
     /**
      * Gets the nickname string for the #MbimQduSessionType specified at `val`.
      * @param val a MbimQduSessionType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function qdu_session_type_get_string(val: QduSessionType): string;
+    function qdu_session_type_get_string(val: QduSessionType | null): string;
     /**
      * Gets the nickname string for the #MbimQuectelRadioSwitchState specified at `val`.
      * @param val a MbimQuectelRadioSwitchState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function quectel_radio_switch_state_get_string(val: QuectelRadioSwitchState): string;
+    function quectel_radio_switch_state_get_string(val: QuectelRadioSwitchState | null): string;
     /**
      * Gets the nickname string for the #MbimRadioSwitchState specified at `val`.
      * @param val a MbimRadioSwitchState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function radio_switch_state_get_string(val: RadioSwitchState): string;
+    function radio_switch_state_get_string(val: RadioSwitchState | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #MbimReadyInfoFlag in `mask`.
      * @param mask bitmask of MbimReadyInfoFlag values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function ready_info_flag_build_string_from_mask(mask: ReadyInfoFlag): string;
+    function ready_info_flag_build_string_from_mask(mask: ReadyInfoFlag | null): string;
     /**
      * Gets the nickname string for the #MbimRegisterAction specified at `val`.
      * @param val a MbimRegisterAction.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function register_action_get_string(val: RegisterAction): string;
+    function register_action_get_string(val: RegisterAction | null): string;
     /**
      * Register a custom service
      * @param uuid MbimUuid structure corresponding to service
@@ -4813,20 +4813,20 @@ export namespace Mbim {
      * @param val a MbimRegisterMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function register_mode_get_string(val: RegisterMode): string;
+    function register_mode_get_string(val: RegisterMode | null): string;
     /**
      * Gets the nickname string for the #MbimRegisterState specified at `val`.
      * @param val a MbimRegisterState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function register_state_get_string(val: RegisterState): string;
+    function register_state_get_string(val: RegisterState | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #MbimRegistrationFlag in `mask`.
      * @param mask bitmask of MbimRegistrationFlag values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function registration_flag_build_string_from_mask(mask: RegistrationFlag): string;
+    function registration_flag_build_string_from_mask(mask: RegistrationFlag | null): string;
     /**
      * Frees the memory allocated for the array of #MbimRsrpSnrInfo structs.
      * @param array a #NULL terminated array of #MbimRsrpSnrInfo structs.
@@ -4837,7 +4837,7 @@ export namespace Mbim {
      * @param val a MbimSarBackoffState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function sar_backoff_state_get_string(val: SarBackoffState): string;
+    function sar_backoff_state_get_string(val: SarBackoffState | null): string;
     /**
      * Frees the memory allocated for the array of #MbimSarConfigState structs.
      * @param array a #NULL terminated array of #MbimSarConfigState structs.
@@ -4848,19 +4848,19 @@ export namespace Mbim {
      * @param val a MbimSarControlMode.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function sar_control_mode_get_string(val: SarControlMode): string;
+    function sar_control_mode_get_string(val: SarControlMode | null): string;
     /**
      * Gets the nickname string for the #MbimSarWifiHardwareState specified at `val`.
      * @param val a MbimSarWifiHardwareState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function sar_wifi_hardware_state_get_string(val: SarWifiHardwareState): string;
+    function sar_wifi_hardware_state_get_string(val: SarWifiHardwareState | null): string;
     /**
      * Gets the nickname string for the #MbimService specified at `val`.
      * @param val a MbimService.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function service_get_string(val: Service): string;
+    function service_get_string(val: Service | null): string;
     /**
      * Checks whether `id` is a custom or standard service.
      * @param id ID of the service
@@ -4882,7 +4882,7 @@ export namespace Mbim {
      * @param mask bitmask of MbimSimClass values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function sim_class_build_string_from_mask(mask: SimClass): string;
+    function sim_class_build_string_from_mask(mask: SimClass | null): string;
     /**
      * Frees the memory allocated for the array of #MbimSlot structs.
      * @param array a #NULL terminated array of #MbimSlot structs.
@@ -4894,19 +4894,19 @@ export namespace Mbim {
      * @param mask bitmask of MbimSmsCaps values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function sms_caps_build_string_from_mask(mask: SmsCaps): string;
+    function sms_caps_build_string_from_mask(mask: SmsCaps | null): string;
     /**
      * Gets the nickname string for the #MbimSmsCdmaEncoding specified at `val`.
      * @param val a MbimSmsCdmaEncoding.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function sms_cdma_encoding_get_string(val: SmsCdmaEncoding): string;
+    function sms_cdma_encoding_get_string(val: SmsCdmaEncoding | null): string;
     /**
      * Gets the nickname string for the #MbimSmsCdmaLang specified at `val`.
      * @param val a MbimSmsCdmaLang.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function sms_cdma_lang_get_string(val: SmsCdmaLang): string;
+    function sms_cdma_lang_get_string(val: SmsCdmaLang | null): string;
     /**
      * Frees the memory allocated for the array of #MbimSmsCdmaReadRecord structs.
      * @param array a #NULL terminated array of #MbimSmsCdmaReadRecord structs.
@@ -4917,13 +4917,13 @@ export namespace Mbim {
      * @param val a MbimSmsFlag.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function sms_flag_get_string(val: SmsFlag): string;
+    function sms_flag_get_string(val: SmsFlag | null): string;
     /**
      * Gets the nickname string for the #MbimSmsFormat specified at `val`.
      * @param val a MbimSmsFormat.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function sms_format_get_string(val: SmsFormat): string;
+    function sms_format_get_string(val: SmsFormat | null): string;
     /**
      * Frees the memory allocated for the array of #MbimSmsPduReadRecord structs.
      * @param array a #NULL terminated array of #MbimSmsPduReadRecord structs.
@@ -4935,57 +4935,57 @@ export namespace Mbim {
      * @param mask bitmask of MbimSmsStatusFlag values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function sms_status_flag_build_string_from_mask(mask: SmsStatusFlag): string;
+    function sms_status_flag_build_string_from_mask(mask: SmsStatusFlag | null): string;
     /**
      * Gets the nickname string for the #MbimSmsStatusFlag specified at `val`.
      * @param val a MbimSmsStatusFlag.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function sms_status_flag_get_string(val: SmsStatusFlag): string;
+    function sms_status_flag_get_string(val: SmsStatusFlag | null): string;
     /**
      * Gets the nickname string for the #MbimSmsStatus specified at `val`.
      * @param val a MbimSmsStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function sms_status_get_string(val: SmsStatus): string;
+    function sms_status_get_string(val: SmsStatus | null): string;
     /**
      * Gets the nickname string for the #MbimSmsStorageState specified at `val`.
      * @param val a MbimSmsStorageState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function sms_storage_state_get_string(val: SmsStorageState): string;
+    function sms_storage_state_get_string(val: SmsStorageState | null): string;
     /**
      * Gets the nickname string for the #MbimStatusError specified at `val`.
      * @param val a MbimStatusError.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function status_error_get_string(val: StatusError): string;
+    function status_error_get_string(val: StatusError | null): string;
     function status_error_quark(): GLib.Quark;
     /**
      * Gets the nickname string for the #MbimStkPacProfile specified at `val`.
      * @param val a MbimStkPacProfile.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function stk_pac_profile_get_string(val: StkPacProfile): string;
+    function stk_pac_profile_get_string(val: StkPacProfile | null): string;
     /**
      * Gets the nickname string for the #MbimStkPacType specified at `val`.
      * @param val a MbimStkPacType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function stk_pac_type_get_string(val: StkPacType): string;
+    function stk_pac_type_get_string(val: StkPacType | null): string;
     /**
      * Gets the nickname string for the #MbimSubscriberReadyState specified at `val`.
      * @param val a MbimSubscriberReadyState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function subscriber_ready_state_get_string(val: SubscriberReadyState): string;
+    function subscriber_ready_state_get_string(val: SubscriberReadyState | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
      * each #MbimSubscriberReadyStatusFlag in `mask`.
      * @param mask bitmask of MbimSubscriberReadyStatusFlag values.
      * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
      */
-    function subscriber_ready_status_flag_build_string_from_mask(mask: SubscriberReadyStatusFlag): string;
+    function subscriber_ready_status_flag_build_string_from_mask(mask: SubscriberReadyStatusFlag | null): string;
     /**
      * Frees the memory allocated for the array of #MbimTerminalCapabilityInfo structs.
      * @param array a #NULL terminated array of #MbimTerminalCapabilityInfo structs.
@@ -4996,25 +4996,25 @@ export namespace Mbim {
      * @param val a MbimTlvType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function tlv_type_get_string(val: TlvType): string;
+    function tlv_type_get_string(val: TlvType | null): string;
     /**
      * Gets the nickname string for the #MbimTraceCommand specified at `val`.
      * @param val a MbimTraceCommand.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function trace_command_get_string(val: TraceCommand): string;
+    function trace_command_get_string(val: TraceCommand | null): string;
     /**
      * Gets the nickname string for the #MbimTransmissionNotificationStatus specified at `val`.
      * @param val a MbimTransmissionNotificationStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function transmission_notification_status_get_string(val: TransmissionNotificationStatus): string;
+    function transmission_notification_status_get_string(val: TransmissionNotificationStatus | null): string;
     /**
      * Gets the nickname string for the #MbimTransmissionState specified at `val`.
      * @param val a MbimTransmissionState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function transmission_state_get_string(val: TransmissionState): string;
+    function transmission_state_get_string(val: TransmissionState | null): string;
     /**
      * Frees the memory allocated for the array of #MbimUiccApplication structs.
      * @param array a #NULL terminated array of #MbimUiccApplication structs.
@@ -5025,55 +5025,55 @@ export namespace Mbim {
      * @param val a MbimUiccApplicationType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uicc_application_type_get_string(val: UiccApplicationType): string;
+    function uicc_application_type_get_string(val: UiccApplicationType | null): string;
     /**
      * Gets the nickname string for the #MbimUiccClassByteType specified at `val`.
      * @param val a MbimUiccClassByteType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uicc_class_byte_type_get_string(val: UiccClassByteType): string;
+    function uicc_class_byte_type_get_string(val: UiccClassByteType | null): string;
     /**
      * Gets the nickname string for the #MbimUiccFileAccessibility specified at `val`.
      * @param val a MbimUiccFileAccessibility.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uicc_file_accessibility_get_string(val: UiccFileAccessibility): string;
+    function uicc_file_accessibility_get_string(val: UiccFileAccessibility | null): string;
     /**
      * Gets the nickname string for the #MbimUiccFileStructure specified at `val`.
      * @param val a MbimUiccFileStructure.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uicc_file_structure_get_string(val: UiccFileStructure): string;
+    function uicc_file_structure_get_string(val: UiccFileStructure | null): string;
     /**
      * Gets the nickname string for the #MbimUiccFileType specified at `val`.
      * @param val a MbimUiccFileType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uicc_file_type_get_string(val: UiccFileType): string;
+    function uicc_file_type_get_string(val: UiccFileType | null): string;
     /**
      * Gets the nickname string for the #MbimUiccPassThroughAction specified at `val`.
      * @param val a MbimUiccPassThroughAction.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uicc_pass_through_action_get_string(val: UiccPassThroughAction): string;
+    function uicc_pass_through_action_get_string(val: UiccPassThroughAction | null): string;
     /**
      * Gets the nickname string for the #MbimUiccPassThroughStatus specified at `val`.
      * @param val a MbimUiccPassThroughStatus.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uicc_pass_through_status_get_string(val: UiccPassThroughStatus): string;
+    function uicc_pass_through_status_get_string(val: UiccPassThroughStatus | null): string;
     /**
      * Gets the nickname string for the #MbimUiccSecureMessaging specified at `val`.
      * @param val a MbimUiccSecureMessaging.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uicc_secure_messaging_get_string(val: UiccSecureMessaging): string;
+    function uicc_secure_messaging_get_string(val: UiccSecureMessaging | null): string;
     /**
      * Gets the nickname string for the #MbimUiccSlotState specified at `val`.
      * @param val a MbimUiccSlotState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function uicc_slot_state_get_string(val: UiccSlotState): string;
+    function uicc_slot_state_get_string(val: UiccSlotState | null): string;
     /**
      * Unregister a custom service.
      * @param id ID of the service to unregister.MbimUuid structure corresponding to service
@@ -5085,19 +5085,19 @@ export namespace Mbim {
      * @param val a MbimUssdAction.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function ussd_action_get_string(val: UssdAction): string;
+    function ussd_action_get_string(val: UssdAction | null): string;
     /**
      * Gets the nickname string for the #MbimUssdResponse specified at `val`.
      * @param val a MbimUssdResponse.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function ussd_response_get_string(val: UssdResponse): string;
+    function ussd_response_get_string(val: UssdResponse | null): string;
     /**
      * Gets the nickname string for the #MbimUssdSessionState specified at `val`.
      * @param val a MbimUssdSessionState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function ussd_session_state_get_string(val: UssdSessionState): string;
+    function ussd_session_state_get_string(val: UssdSessionState | null): string;
     /**
      * Checks whether personal info should be hidden when traces are enabled.
      * @returns %TRUE to show personal info in trace, %FALSE otherwise.
@@ -5123,7 +5123,7 @@ export namespace Mbim {
      * @param context_type a #MbimContextType.
      * @returns a #MbimUuid.
      */
-    function uuid_from_context_type(context_type: ContextType): Uuid;
+    function uuid_from_context_type(context_type: ContextType | null): Uuid;
     /**
      * Fills in `uuid` from the printable representation give in `str`.
      *
@@ -5142,31 +5142,31 @@ export namespace Mbim {
      * @param service a #MbimService.
      * @returns a #MbimUuid.
      */
-    function uuid_from_service(service: Service): Uuid;
+    function uuid_from_service(service: Service | null): Uuid;
     /**
      * Gets the nickname string for the #MbimVisibleProvidersAction specified at `val`.
      * @param val a MbimVisibleProvidersAction.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function visible_providers_action_get_string(val: VisibleProvidersAction): string;
+    function visible_providers_action_get_string(val: VisibleProvidersAction | null): string;
     /**
      * Gets the nickname string for the #MbimVoiceCallState specified at `val`.
      * @param val a MbimVoiceCallState.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_call_state_get_string(val: VoiceCallState): string;
+    function voice_call_state_get_string(val: VoiceCallState | null): string;
     /**
      * Gets the nickname string for the #MbimVoiceClass specified at `val`.
      * @param val a MbimVoiceClass.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function voice_class_get_string(val: VoiceClass): string;
+    function voice_class_get_string(val: VoiceClass | null): string;
     /**
      * Gets the nickname string for the #MbimWakeType specified at `val`.
      * @param val a MbimWakeType.
      * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
      */
-    function wake_type_get_string(val: WakeType): string;
+    function wake_type_get_string(val: WakeType | null): string;
     /**
      * Cellular class.
      */
@@ -6275,7 +6275,11 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
          * @param cancellable optional #GCancellable object, #NULL to ignore.
          */
-        open_full(flags: DeviceOpenFlags, timeout: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        open_full(
+            flags: DeviceOpenFlags | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
         /**
          * Asynchronously opens a #MbimDevice for I/O.
          *
@@ -6290,7 +6294,7 @@ export namespace Mbim {
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         open_full(
-            flags: DeviceOpenFlags,
+            flags: DeviceOpenFlags | null,
             timeout: number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -6309,7 +6313,7 @@ export namespace Mbim {
          * @param callback a #GAsyncReadyCallback to call when the operation is finished.
          */
         open_full(
-            flags: DeviceOpenFlags,
+            flags: DeviceOpenFlags | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -6582,7 +6586,7 @@ export namespace Mbim {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6623,7 +6627,7 @@ export namespace Mbim {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9474,7 +9478,7 @@ export namespace Mbim {
          * @param expected expected #MbimMessageType if there isn't any error in the operation.
          * @returns %TRUE if the operation succeeded, %FALSE if @error is set.
          */
-        response_get_result(expected: MessageType): boolean;
+        response_get_result(expected: MessageType | null): boolean;
         /**
          * Parses and returns parameters of the 'Service Activation' response command in the 'Basic Connect' service.
          * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.

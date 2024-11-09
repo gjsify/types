@@ -4553,11 +4553,11 @@ export namespace Gdk {
     function drag_motion(
         context: DragContext,
         dest_window: Window,
-        protocol: DragProtocol,
+        protocol: DragProtocol | null,
         x_root: number,
         y_root: number,
-        suggested_action: DragAction,
-        possible_actions: DragAction,
+        suggested_action: DragAction | null,
+        possible_actions: DragAction | null,
         time_: number,
     ): boolean;
     /**
@@ -4569,7 +4569,7 @@ export namespace Gdk {
      * @param action the selected action which will be taken when a drop happens,    or 0 to indicate that a drop will not be accepted
      * @param time_ the timestamp for this operation
      */
-    function drag_status(context: DragContext, action: DragAction, time_: number): void;
+    function drag_status(context: DragContext, action: DragAction | null, time_: number): void;
     /**
      * Ends the drag operation after a drop.
      *
@@ -5086,7 +5086,7 @@ export namespace Gdk {
     function pointer_grab(
         window: Window,
         owner_events: boolean,
-        event_mask: EventMask,
+        event_mask: EventMask | null,
         confine_to: Window | null,
         cursor: Cursor | null,
         time_: number,
@@ -5315,7 +5315,11 @@ export namespace Gdk {
      * @returns %TRUE if the setting existed and a value was stored   in @value, %FALSE otherwise.
      */
     function setting_get(name: string, value: GObject.Value | any): boolean;
-    function synthesize_window_state(window: Window, unset_flags: WindowState, set_flags: WindowState): void;
+    function synthesize_window_state(
+        window: Window,
+        unset_flags: WindowState | null,
+        set_flags: WindowState | null,
+    ): void;
     /**
      * Retrieves a pixel from `window` to force the windowing
      * system to carry out any pending rendering commands.
@@ -5351,8 +5355,8 @@ export namespace Gdk {
         x: number,
         y: number,
         button: number,
-        modifiers: ModifierType,
-        button_pressrelease: EventType,
+        modifiers: ModifierType | null,
+        button_pressrelease: EventType | null,
     ): boolean;
     /**
      * This function is intended to be used in GTK+ test programs.
@@ -5384,8 +5388,8 @@ export namespace Gdk {
         x: number,
         y: number,
         keyval: number,
-        modifiers: ModifierType,
-        key_pressrelease: EventType,
+        modifiers: ModifierType | null,
+        key_pressrelease: EventType | null,
     ): boolean;
     /**
      * Converts a text property in the given encoding to
@@ -7043,9 +7047,9 @@ export namespace Gdk {
          */
         grab(
             window: Window,
-            grab_ownership: GrabOwnership,
+            grab_ownership: GrabOwnership | null,
             owner_events: boolean,
-            event_mask: EventMask,
+            event_mask: EventMask | null,
             cursor: Cursor | null,
             time_: number,
         ): GrabStatus;
@@ -7067,7 +7071,7 @@ export namespace Gdk {
          * @param index_ the index of the axis
          * @param use specifies how the axis is used
          */
-        set_axis_use(index_: number, use: AxisUse): void;
+        set_axis_use(index_: number, use: AxisUse | null): void;
         /**
          * Specifies the X key event to generate when a macro button of a device
          * is pressed.
@@ -7075,7 +7079,7 @@ export namespace Gdk {
          * @param keyval the keyval to generate
          * @param modifiers the modifiers to set
          */
-        set_key(index_: number, keyval: number, modifiers: ModifierType): void;
+        set_key(index_: number, keyval: number, modifiers: ModifierType | null): void;
         /**
          * Sets a the mode of an input device. The mode controls if the
          * device is active and whether the device’s range is mapped to the
@@ -7087,7 +7091,7 @@ export namespace Gdk {
          * @param mode the input mode.
          * @returns %TRUE if the mode was successfully changed.
          */
-        set_mode(mode: InputMode): boolean;
+        set_mode(mode: InputMode | null): boolean;
         /**
          * Release any grab on `device`.
          * @param time_ a timestap (e.g. %GDK_CURRENT_TIME).
@@ -7303,7 +7307,7 @@ export namespace Gdk {
          * @param type device type to get.
          * @returns a list of          #GdkDevices. The returned list must be          freed with g_list_free (). The list elements are owned by          GTK+ and must not be freed or unreffed.
          */
-        list_devices(type: DeviceType): Device[];
+        list_devices(type: DeviceType | null): Device[];
     }
 
     module DeviceTool {
@@ -8035,7 +8039,7 @@ export namespace Gdk {
          * @param actions the actions supported by the drag source
          * @returns #TRUE if the drag and drop operation is managed.
          */
-        manage_dnd(ipc_window: Window, actions: DragAction): boolean;
+        manage_dnd(ipc_window: Window, actions: DragAction | null): boolean;
         /**
          * Associates a #GdkDevice to `context,` so all Drag and Drop events
          * for `context` are emitted as if they came from this device.
@@ -8306,7 +8310,7 @@ export namespace Gdk {
          * smooth animations.
          * @param phase the phase that is requested
          */
-        request_phase(phase: FrameClockPhase): void;
+        request_phase(phase: FrameClockPhase | null): void;
     }
 
     module GLContext {
@@ -8622,7 +8626,7 @@ export namespace Gdk {
          * accelerators.
          * @param state pointer to the modifier mask to change
          */
-        add_virtual_modifiers(state: ModifierType): ModifierType;
+        add_virtual_modifiers(state: ModifierType | null): ModifierType;
         /**
          * Returns whether the Caps Lock modifer is locked.
          * @returns %TRUE if Caps Lock is on
@@ -8673,7 +8677,7 @@ export namespace Gdk {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for @intent.
          */
-        get_modifier_mask(intent: ModifierIntent): ModifierType;
+        get_modifier_mask(intent: ModifierIntent | null): ModifierType;
         /**
          * Returns the current modifier state.
          * @returns the current modifier state.
@@ -8715,7 +8719,7 @@ export namespace Gdk {
          * @param state pointer to the modifier state to map
          * @returns %FALSE if two virtual modifiers were mapped to the     same non-virtual modifier. Note that %FALSE is also returned     if a virtual modifier is mapped to a non-virtual modifier that     was already set in @state.
          */
-        map_virtual_modifiers(state: ModifierType): [boolean, ModifierType];
+        map_virtual_modifiers(state: ModifierType | null): [boolean, ModifierType];
         /**
          * Translates the contents of a #GdkEventKey into a keyval, effective
          * group, and level. Modifiers that affected the translation and
@@ -8775,7 +8779,7 @@ export namespace Gdk {
          */
         translate_keyboard_state(
             hardware_keycode: number,
-            state: ModifierType,
+            state: ModifierType | null,
             group: number,
         ): [boolean, number, number, number, ModifierType | null];
     }
@@ -9415,7 +9419,7 @@ export namespace Gdk {
          * @param capabilities capabilities to get devices for
          * @returns A list of #GdkDevices.          The list must be freed with g_list_free(), the elements are owned          by GDK and must not be freed.
          */
-        get_slaves(capabilities: SeatCapabilities): Device[];
+        get_slaves(capabilities: SeatCapabilities | null): Device[];
         /**
          * Grabs the seat so that all events corresponding to the given `capabilities`
          * are passed to this application until the seat is ungrabbed with gdk_seat_ungrab(),
@@ -9451,7 +9455,7 @@ export namespace Gdk {
          */
         grab(
             window: Window,
-            capabilities: SeatCapabilities,
+            capabilities: SeatCapabilities | null,
             owner_events: boolean,
             cursor?: Cursor | null,
             event?: Event | null,
@@ -9939,7 +9943,13 @@ export namespace Gdk {
          * @param root_y root window Y coordinate of mouse click that began the drag
          * @param timestamp timestamp of mouse click that began the drag (use gdk_event_get_time())
          */
-        begin_resize_drag(edge: WindowEdge, button: number, root_x: number, root_y: number, timestamp: number): void;
+        begin_resize_drag(
+            edge: WindowEdge | null,
+            button: number,
+            root_x: number,
+            root_y: number,
+            timestamp: number,
+        ): void;
         /**
          * Begins a window resize operation (for a toplevel window).
          * You might use this function to implement a “window resize grip,” for
@@ -9955,7 +9965,7 @@ export namespace Gdk {
          * @param timestamp timestamp of mouse click that began the drag (use gdk_event_get_time())
          */
         begin_resize_drag_for_device(
-            edge: WindowEdge,
+            edge: WindowEdge | null,
             device: Device,
             button: number,
             root_x: number,
@@ -10057,7 +10067,12 @@ export namespace Gdk {
          * @param scale the scale of the new surface, or 0 to use same as @window
          * @returns a pointer to the newly allocated surface. The caller owns the surface and should call cairo_surface_destroy() when done with it. This function always returns a valid pointer, but it will return a pointer to a “nil” surface if @other is already in an error state or any other error occurs.
          */
-        create_similar_image_surface(format: cairo.Format, width: number, height: number, scale: number): cairo.Surface;
+        create_similar_image_surface(
+            format: cairo.Format | null,
+            width: number,
+            height: number,
+            scale: number,
+        ): cairo.Surface;
         /**
          * Create a new surface that is as compatible as possible with the
          * given `window`. For example the new surface will have the same
@@ -10073,7 +10088,7 @@ export namespace Gdk {
          * @param height height of the new surface
          * @returns a pointer to the newly allocated surface. The caller owns the surface and should call cairo_surface_destroy() when done with it. This function always returns a valid pointer, but it will return a pointer to a “nil” surface if @other is already in an error state or any other error occurs.
          */
-        create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface;
+        create_similar_surface(content: cairo.Content | null, width: number, height: number): cairo.Surface;
         /**
          * Attempt to deiconify (unminimize) `window`. On X11 the window manager may
          * choose to ignore the request to deiconify. When using GTK+,
@@ -10483,7 +10498,7 @@ export namespace Gdk {
          * @param source a #GdkInputSource to define the source class.
          * @returns source event mask for @window
          */
-        get_source_events(source: InputSource): EventMask;
+        get_source_events(source: InputSource | null): EventMask;
         /**
          * Gets the bitwise OR of the currently active window state flags,
          * from the #GdkWindowState enumeration.
@@ -10801,9 +10816,9 @@ export namespace Gdk {
          */
         move_to_rect(
             rect: Rectangle,
-            rect_anchor: Gravity,
-            window_anchor: Gravity,
-            anchor_hints: AnchorHints,
+            rect_anchor: Gravity | null,
+            window_anchor: Gravity | null,
+            anchor_hints: AnchorHints | null,
             rect_anchor_dx: number,
             rect_anchor_dy: number,
         ): void;
@@ -10999,7 +11014,7 @@ export namespace Gdk {
          * but very few honor all possible combinations of bits.
          * @param decorations decoration hint mask
          */
-        set_decorations(decorations: WMDecoration): void;
+        set_decorations(decorations: WMDecoration | null): void;
         /**
          * Sets a specific #GdkCursor for a given device when it gets inside `window`.
          * Use gdk_cursor_new_for_display() or gdk_cursor_new_from_pixbuf() to create
@@ -11022,7 +11037,7 @@ export namespace Gdk {
          * @param device #GdkDevice to enable events for.
          * @param event_mask event mask for @window
          */
-        set_device_events(device: Device, event_mask: EventMask): void;
+        set_device_events(device: Device, event_mask: EventMask | null): void;
         /**
          * Determines whether or not extra unprocessed motion events in
          * the event queue can be discarded. If %TRUE only the most recent
@@ -11045,7 +11060,7 @@ export namespace Gdk {
          * See the [input handling overview][event-masks] for details.
          * @param event_mask event mask for @window
          */
-        set_events(event_mask: EventMask): void;
+        set_events(event_mask: EventMask | null): void;
         /**
          * Setting `focus_on_map` to %FALSE hints the desktop environment that the
          * window doesn’t want to receive input focus when it is mapped.
@@ -11078,7 +11093,7 @@ export namespace Gdk {
          * is specified.
          * @param mode fullscreen mode
          */
-        set_fullscreen_mode(mode: FullscreenMode): void;
+        set_fullscreen_mode(mode: FullscreenMode | null): void;
         /**
          * Sets hints about the window management functions to make available
          * via buttons on the window frame.
@@ -11095,7 +11110,7 @@ export namespace Gdk {
          * enable.
          * @param functions bitmask of operations to allow on @window
          */
-        set_functions(functions: WMFunction): void;
+        set_functions(functions: WMFunction | null): void;
         /**
          * Sets the geometry hints for `window`. Hints flagged in `geom_mask`
          * are set, hints not flagged in `geom_mask` are unset.
@@ -11121,7 +11136,7 @@ export namespace Gdk {
          * @param geometry geometry hints
          * @param geom_mask bitmask indicating fields of @geometry to pay attention to
          */
-        set_geometry_hints(geometry: Geometry, geom_mask: WindowHints): void;
+        set_geometry_hints(geometry: Geometry, geom_mask: WindowHints | null): void;
         /**
          * Sets the group leader window for `window`. By default,
          * GDK sets the group leader for all toplevel windows
@@ -11338,7 +11353,7 @@ export namespace Gdk {
          * @param source a #GdkInputSource to define the source class.
          * @param event_mask event mask for @window
          */
-        set_source_events(source: InputSource, event_mask: EventMask): void;
+        set_source_events(source: InputSource | null, event_mask: EventMask | null): void;
         /**
          * When using GTK+, typically you should use gtk_window_set_startup_id()
          * instead of this low-level function.
@@ -11391,7 +11406,7 @@ export namespace Gdk {
          * The hint must be set before the window is mapped.
          * @param hint A hint of the function this window will have
          */
-        set_type_hint(hint: WindowTypeHint): void;
+        set_type_hint(hint: WindowTypeHint | null): void;
         /**
          * Toggles whether a window needs the user's
          * urgent attention.
@@ -12820,7 +12835,7 @@ export namespace Gdk {
          * @param axis_use the axis use to look for
          * @returns %TRUE if the specified axis was found, otherwise %FALSE
          */
-        get_axis(axis_use: AxisUse): [boolean, number];
+        get_axis(axis_use: AxisUse | null): [boolean, number];
         /**
          * Extract the button number from an event.
          * @returns %TRUE if the event delivered a button number
@@ -13077,7 +13092,7 @@ export namespace Gdk {
          * @param feature_idx the index of the feature to get the group from
          * @returns The group number of the queried pad feature.
          */
-        get_feature_group(feature: DevicePadFeature, feature_idx: number): number;
+        get_feature_group(feature: DevicePadFeature | null, feature_idx: number): number;
         /**
          * Returns the number of modes that `group` may have.
          * @param group_idx group to get the number of available modes from
@@ -13089,7 +13104,7 @@ export namespace Gdk {
          * @param feature a pad feature
          * @returns The amount of elements of type @feature that this pad has.
          */
-        get_n_features(feature: DevicePadFeature): number;
+        get_n_features(feature: DevicePadFeature | null): number;
         /**
          * Returns the number of groups this pad device has. Pads have
          * at least one group. A pad group is a subcollection of
@@ -13100,7 +13115,9 @@ export namespace Gdk {
         get_n_groups(): number;
     }
 
-    export const DevicePad: DevicePadNamespace;
+    export const DevicePad: DevicePadNamespace & {
+        new (): DevicePad; // This allows `obj instanceof DevicePad`
+    };
 
     type XEvent = void;
     /**

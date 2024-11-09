@@ -539,7 +539,7 @@ export namespace Amtk {
          * @param flags #AmtkFactoryFlags.
          * @returns a new #GtkCheckMenuItem for @action_name.
          */
-        create_check_menu_item_full(action_name: string, flags: FactoryFlags): Gtk.Widget;
+        create_check_menu_item_full(action_name: string, flags: FactoryFlags | null): Gtk.Widget;
         /**
          * Calls amtk_factory_create_gmenu_item_full() with the
          * #AmtkFactory:default-flags.
@@ -557,7 +557,7 @@ export namespace Amtk {
          * @param flags #AmtkFactoryFlags.
          * @returns a new #GMenuItem for @action_name.
          */
-        create_gmenu_item_full(action_name: string, flags: FactoryFlags): Gio.MenuItem;
+        create_gmenu_item_full(action_name: string, flags: FactoryFlags | null): Gio.MenuItem;
         /**
          * Creates a new #GtkMenuItem for `action_name` with the
          * #AmtkFactory:default-flags.
@@ -572,7 +572,7 @@ export namespace Amtk {
          * @param flags #AmtkFactoryFlags.
          * @returns a new #GtkMenuItem for @action_name.
          */
-        create_menu_item_full(action_name: string, flags: FactoryFlags): Gtk.Widget;
+        create_menu_item_full(action_name: string, flags: FactoryFlags | null): Gtk.Widget;
         /**
          * Creates a new #GtkMenuToolButton for `action_name` with the
          * #AmtkFactory:default-flags.
@@ -593,7 +593,7 @@ export namespace Amtk {
          * @param flags #AmtkFactoryFlags.
          * @returns a new #GtkMenuToolButton for @action_name.
          */
-        create_menu_tool_button_full(action_name: string, flags: FactoryFlags): Gtk.MenuToolButton;
+        create_menu_tool_button_full(action_name: string, flags: FactoryFlags | null): Gtk.MenuToolButton;
         /**
          * Calls amtk_factory_create_shortcut_full() with the
          * #AmtkFactory:default-flags.
@@ -627,7 +627,7 @@ export namespace Amtk {
          * @param flags #AmtkFactoryFlags.
          * @returns a new #GtkShortcutsShortcut for @action_name.
          */
-        create_shortcut_full(action_name: string, flags: FactoryFlags): Gtk.Widget;
+        create_shortcut_full(action_name: string, flags: FactoryFlags | null): Gtk.Widget;
         /**
          * Calls amtk_factory_create_simple_menu_full() with the
          * #AmtkFactory:default-flags.
@@ -652,7 +652,7 @@ export namespace Amtk {
          * @param flags #AmtkFactoryFlags.
          * @returns a new simple #GtkMenu for @entries.
          */
-        create_simple_menu_full(entries: ActionInfoEntry[], flags: FactoryFlags): Gtk.Widget;
+        create_simple_menu_full(entries: ActionInfoEntry[], flags: FactoryFlags | null): Gtk.Widget;
         /**
          * Creates a new #GtkToolButton for `action_name` with the
          * #AmtkFactory:default-flags.
@@ -667,14 +667,14 @@ export namespace Amtk {
          * @param flags #AmtkFactoryFlags.
          * @returns a new #GtkToolButton for @action_name.
          */
-        create_tool_button_full(action_name: string, flags: FactoryFlags): Gtk.ToolItem;
+        create_tool_button_full(action_name: string, flags: FactoryFlags | null): Gtk.ToolItem;
         get_application(): Gtk.Application | null;
         get_default_flags(): FactoryFlags;
         /**
          * Sets the #AmtkFactory:default-flags property.
          * @param default_flags the new value.
          */
-        set_default_flags(default_flags: FactoryFlags): void;
+        set_default_flags(default_flags: FactoryFlags | null): void;
     }
 
     module MenuShell {

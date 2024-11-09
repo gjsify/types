@@ -727,7 +727,7 @@ export namespace gSignon {
             realms: string | null,
             owner: SecurityContext | null,
             access_control_list: SecurityContext[] | null,
-            type: IdentityType,
+            type: IdentityType | null,
             cb: IdentityStoreCredentialsCb,
         ): void;
         /**
@@ -867,7 +867,7 @@ export namespace gSignon {
          * Specifies the type of this identity.
          * @param type the type of the identity.
          */
-        set_identity_type(type: IdentityType): void;
+        set_identity_type(type: IdentityType | null): void;
         /**
          * Adds a method to the list of allowed authentication methods.
          * @param method an authentication method.

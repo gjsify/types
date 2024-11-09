@@ -1231,7 +1231,7 @@ export namespace Dmap {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -1343,7 +1343,7 @@ export namespace Dmap {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1384,7 +1384,7 @@ export namespace Dmap {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2020,7 +2020,9 @@ export namespace Dmap {
         vfunc_read(): Gio.InputStream;
     }
 
-    export const AvRecord: AvRecordNamespace;
+    export const AvRecord: AvRecordNamespace & {
+        new (): AvRecord; // This allows `obj instanceof AvRecord`
+    };
 
     module ContainerDb {
         // Constructor properties interface
@@ -2064,7 +2066,9 @@ export namespace Dmap {
         vfunc_lookup_by_id(id: number): ContainerRecord;
     }
 
-    export const ContainerDb: ContainerDbNamespace;
+    export const ContainerDb: ContainerDbNamespace & {
+        new (): ContainerDb; // This allows `obj instanceof ContainerDb`
+    };
 
     module ContainerRecord {
         // Constructor properties interface
@@ -2111,7 +2115,9 @@ export namespace Dmap {
         vfunc_get_id(): number;
     }
 
-    export const ContainerRecord: ContainerRecordNamespace;
+    export const ContainerRecord: ContainerRecordNamespace & {
+        new (): ContainerRecord; // This allows `obj instanceof ContainerRecord`
+    };
 
     module ControlPlayer {
         // Constructor properties interface
@@ -2178,7 +2184,9 @@ export namespace Dmap {
         vfunc_prev_item(): void;
     }
 
-    export const ControlPlayer: ControlPlayerNamespace;
+    export const ControlPlayer: ControlPlayerNamespace & {
+        new (): ControlPlayer; // This allows `obj instanceof ControlPlayer`
+    };
 
     module Db {
         // Constructor properties interface
@@ -2252,7 +2260,9 @@ export namespace Dmap {
         vfunc_lookup_id_by_location(location: string): number;
     }
 
-    export const Db: DbNamespace;
+    export const Db: DbNamespace & {
+        new (): Db; // This allows `obj instanceof Db`
+    };
 
     module ImageRecord {
         // Constructor properties interface
@@ -2329,7 +2339,9 @@ export namespace Dmap {
         vfunc_read(): Gio.InputStream;
     }
 
-    export const ImageRecord: ImageRecordNamespace;
+    export const ImageRecord: ImageRecordNamespace & {
+        new (): ImageRecord; // This allows `obj instanceof ImageRecord`
+    };
 
     module Record {
         // Constructor properties interface
@@ -2353,7 +2365,9 @@ export namespace Dmap {
         vfunc_to_blob(): Uint8Array;
     }
 
-    export const Record: RecordNamespace;
+    export const Record: RecordNamespace & {
+        new (): Record; // This allows `obj instanceof Record`
+    };
 
     module RecordFactory {
         // Constructor properties interface
@@ -2375,7 +2389,9 @@ export namespace Dmap {
         vfunc_create(): Record;
     }
 
-    export const RecordFactory: RecordFactoryNamespace;
+    export const RecordFactory: RecordFactoryNamespace & {
+        new (): RecordFactory; // This allows `obj instanceof RecordFactory`
+    };
 
     type Bits = number;
     /**

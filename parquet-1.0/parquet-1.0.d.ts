@@ -142,7 +142,7 @@ export namespace Parquet {
         get_max_row_group_length(): number;
         is_dictionary_enabled(path: string): boolean;
         set_batch_size(batch_size: number): void;
-        set_compression(compression_type: Arrow.CompressionType, path?: string | null): void;
+        set_compression(compression_type: Arrow.CompressionType | null, path?: string | null): void;
         set_data_page_size(data_page_size: number): void;
         set_dictionary_page_size_limit(limit: number): void;
         set_max_row_group_length(length: number): void;

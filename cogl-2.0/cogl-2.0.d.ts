@@ -2170,7 +2170,7 @@ export namespace Cogl {
      * @param hints A mask of #CoglBufferMapHint<!-- -->s that tell Cogl how   the data will be modified once mapped.
      * @returns A pointer to the mapped memory or        %NULL is the call fails
      */
-    function buffer_map(buffer: Buffer, access: BufferAccess, hints: BufferMapHint): any | null;
+    function buffer_map(buffer: Buffer, access: BufferAccess | null, hints: BufferMapHint | null): any | null;
     /**
      * Maps a sub-region of the buffer into the application's address space
      * for direct access.
@@ -2198,8 +2198,8 @@ export namespace Cogl {
         buffer: Buffer,
         offset: number,
         size: number,
-        access: BufferAccess,
-        hints: BufferMapHint,
+        access: BufferAccess | null,
+        hints: BufferMapHint | null,
     ): any | null;
     /**
      * Updates part of the buffer with new data from `data`. Where to put this new
@@ -2218,7 +2218,7 @@ export namespace Cogl {
      * @param buffer a buffer object
      * @param hint the new hint
      */
-    function buffer_set_update_hint(buffer: Buffer, hint: BufferUpdateHint): void;
+    function buffer_set_update_hint(buffer: Buffer, hint: BufferUpdateHint | null): void;
     /**
      * Unmaps a buffer previously mapped by cogl_buffer_map().
      * @param buffer a buffer object
@@ -2429,7 +2429,7 @@ export namespace Cogl {
      * @param feature A #CoglFeatureID
      * @returns %TRUE if the @feature is currently supported or %FALSE if not.
      */
-    function has_feature(context: Context, feature: FeatureID): Bool;
+    function has_feature(context: Context, feature: FeatureID | null): Bool;
     /**
      * Checks whether the given object references a #CoglAtlasTexture
      * @param object a #CoglObject
@@ -4522,7 +4522,7 @@ export namespace Cogl {
          */
         draw_attributes(
             pipeline: Pipeline,
-            mode: VerticesMode,
+            mode: VerticesMode | null,
             first_vertex: number,
             n_vertices: number,
             attributes: Attribute,
@@ -4578,7 +4578,7 @@ export namespace Cogl {
          */
         draw_indexed_attributes(
             pipeline: Pipeline,
-            mode: VerticesMode,
+            mode: VerticesMode | null,
             first_vertex: number,
             n_vertices: number,
             indices: Indices,
@@ -5110,7 +5110,14 @@ export namespace Cogl {
          * @param pixels The address of the buffer to store the data in
          * @returns %TRUE if the read succeeded or %FALSE otherwise.
          */
-        read_pixels(x: number, y: number, width: number, height: number, format: PixelFormat, pixels: number): Bool;
+        read_pixels(
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+            format: PixelFormat | null,
+            pixels: number,
+        ): Bool;
         /**
          * This reads a rectangle of pixels from the given framebuffer where
          * position (0, 0) is the top left. The pixel at (x, y) is the first
@@ -5128,7 +5135,7 @@ export namespace Cogl {
          * @param bitmap The bitmap to store the results in.
          * @returns %TRUE if the read succeeded or %FALSE otherwise. The  function is only likely to fail if the bitmap points to a pixel  buffer and it could not be mapped.
          */
-        read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags, bitmap: Bitmap): Bool;
+        read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags | null, bitmap: Bitmap): Bool;
         /**
          * When point sample rendering (also known as multisample rendering)
          * has been enabled via cogl_framebuffer_set_samples_per_pixel()
@@ -5218,7 +5225,7 @@ export namespace Cogl {
          * color will be written.
          * @param color_mask A #CoglColorMask of which color channels to write to              the current framebuffer.
          */
-        set_color_mask(color_mask: ColorMask): void;
+        set_color_mask(color_mask: ColorMask | null): void;
         /**
          * If `enabled` is #TRUE, the depth buffer used when rendering to `framebuffer`
          * is available as a texture. You can retrieve the texture with
@@ -5316,7 +5323,7 @@ export namespace Cogl {
          * cogl_framebuffer_get_is_stereo().)
          * @param stereo_mode A #CoglStereoMode specifying which stereo buffers               should be drawn tow.
          */
-        set_stereo_mode(stereo_mode: StereoMode): void;
+        set_stereo_mode(stereo_mode: StereoMode | null): void;
         /**
          * Defines a scale and offset for everything rendered relative to the
          * top-left of the destination framebuffer.
@@ -5663,7 +5670,7 @@ export namespace Cogl {
          * @param alpha_func A @CoglPipelineAlphaFunc constant
          * @param alpha_reference A reference point that the chosen alpha function uses   to compare incoming fragments to.
          */
-        set_alpha_test_function(alpha_func: PipelineAlphaFunc, alpha_reference: number): void;
+        set_alpha_test_function(alpha_func: PipelineAlphaFunc | null, alpha_reference: number): void;
         /**
          * Sets the pipeline's ambient color, in the standard OpenGL lighting
          * model. The ambient color affects the overall color of the object.
@@ -5800,7 +5807,7 @@ export namespace Cogl {
          * color will be written.
          * @param color_mask A #CoglColorMask of which color channels to write to              the current framebuffer.
          */
-        set_color_mask(color_mask: ColorMask): void;
+        set_color_mask(color_mask: ColorMask | null): void;
         /**
          * Sets which faces will be culled when drawing. Face culling can be
          * used to increase efficiency by avoiding drawing faces that would
@@ -5818,7 +5825,7 @@ export namespace Cogl {
          * Status: Unstable
          * @param cull_face_mode The new mode to set
          */
-        set_cull_face_mode(cull_face_mode: PipelineCullFaceMode): void;
+        set_cull_face_mode(cull_face_mode: PipelineCullFaceMode | null): void;
         /**
          * This commits all the depth state configured in `state` struct to the
          * given `pipeline`. The configuration values are copied into the
@@ -5861,7 +5868,7 @@ export namespace Cogl {
          * Status: Unstable
          * @param front_winding the winding order
          */
-        set_front_face_winding(front_winding: Winding): void;
+        set_front_face_winding(front_winding: Winding | null): void;
         /**
          * If not already familiar; you can refer
          * <link linkend="cogl-Blend-Strings">here</link> for an overview of what blend
@@ -5963,7 +5970,11 @@ export namespace Cogl {
          * @param min_filter the filter used when scaling a texture down.
          * @param mag_filter the filter used when magnifying a texture.
          */
-        set_layer_filters(layer_index: number, min_filter: PipelineFilter, mag_filter: PipelineFilter): void;
+        set_layer_filters(
+            layer_index: number,
+            min_filter: PipelineFilter | null,
+            mag_filter: PipelineFilter | null,
+        ): void;
         /**
          * This function lets you set a matrix that can be used to e.g. translate
          * and rotate a single layer of a pipeline used to fill your geometry.
@@ -5986,7 +5997,7 @@ export namespace Cogl {
          * @param layer_index The layer number to modify
          * @param texture_type The type of the default texture to use
          */
-        set_layer_null_texture(layer_index: number, texture_type: TextureType): void;
+        set_layer_null_texture(layer_index: number, texture_type: TextureType | null): void;
         /**
          * When rendering points, if `enable` is %TRUE then the texture
          * coordinates for this layer will be replaced with coordinates that
@@ -6013,26 +6024,26 @@ export namespace Cogl {
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode(layer_index: number, mode: PipelineWrapMode): void;
+        set_layer_wrap_mode(layer_index: number, mode: PipelineWrapMode | null): void;
         /**
          * Sets the wrap mode for the 'p' coordinate of texture lookups on
          * this layer. 'p' is the third coordinate.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode_p(layer_index: number, mode: PipelineWrapMode): void;
+        set_layer_wrap_mode_p(layer_index: number, mode: PipelineWrapMode | null): void;
         /**
          * Sets the wrap mode for the 's' coordinate of texture lookups on this layer.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode_s(layer_index: number, mode: PipelineWrapMode): void;
+        set_layer_wrap_mode_s(layer_index: number, mode: PipelineWrapMode | null): void;
         /**
          * Sets the wrap mode for the 't' coordinate of texture lookups on this layer.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode_t(layer_index: number, mode: PipelineWrapMode): void;
+        set_layer_wrap_mode_t(layer_index: number, mode: PipelineWrapMode | null): void;
         /**
          * Sets whether to use a per-vertex point size or to use the value set
          * by cogl_pipeline_set_point_size(). If per-vertex point size is
@@ -6363,7 +6374,7 @@ export namespace Cogl {
          * @param n_indices The number of indices to reference when drawing
          */
         set_indices(indices: Indices, n_indices: number): void;
-        set_mode(mode: VerticesMode): void;
+        set_mode(mode: VerticesMode | null): void;
         /**
          * Specifies how many vertices should be read when drawing the given
          * `primitive`.
@@ -6397,7 +6408,7 @@ export namespace Cogl {
          * depend on to ensure maximum portability.
          * @param constraint A #CoglRendererConstraint to add
          */
-        add_constraint(constraint: RendererConstraint): void;
+        add_constraint(constraint: RendererConstraint | null): void;
         /**
          * Tests if a given `onscreen_template` can be supported with the given
          * `renderer`.
@@ -6445,7 +6456,7 @@ export namespace Cogl {
          * depend on to ensure maximum portability.
          * @param constraint A #CoglRendererConstraint to remove
          */
-        remove_constraint(constraint: RendererConstraint): void;
+        remove_constraint(constraint: RendererConstraint | null): void;
         /**
          * Requests that Cogl should try to use a specific underlying driver
          * for rendering.
@@ -6458,7 +6469,7 @@ export namespace Cogl {
          * This may only be called on an un-connected #CoglRenderer.
          * @param driver
          */
-        set_driver(driver: Driver): void;
+        set_driver(driver: Driver | null): void;
         /**
          * This allows you to explicitly select a winsys backend to use instead
          * of letting Cogl automatically select a backend.
@@ -6469,7 +6480,7 @@ export namespace Cogl {
          * This may only be called on an un-connected #CoglRenderer.
          * @param winsys_id An ID of the winsys you explicitly want to use.
          */
-        set_winsys_id(winsys_id: WinsysID): void;
+        set_winsys_id(winsys_id: WinsysID | null): void;
     }
 
     class Snippet extends Object {
@@ -6645,7 +6656,7 @@ export namespace Cogl {
          * @param data memory location to write the @texture's contents, or %NULL to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data: number): number;
+        get_data(format: PixelFormat | null, rowstride: number, data: number): number;
         /**
          * Queries the GL handles for a GPU side texture through its #CoglTexture.
          *
@@ -6707,7 +6718,7 @@ export namespace Cogl {
          * as the texture's components.
          * @param components
          */
-        set_components(components: TextureComponents): void;
+        set_components(components: TextureComponents | null): void;
         /**
          * `texture` a #CoglTexture.
          * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -6757,7 +6768,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns %TRUE if the data upload was successful, and               %FALSE otherwise
          */
-        set_data(format: PixelFormat, rowstride: number, data: number, level: number): Bool;
+        set_data(format: PixelFormat | null, rowstride: number, data: number, level: number): Bool;
         /**
          * Affects the internal storage format for this texture by specifying
          * whether red, green and blue color components should be stored as
@@ -6810,7 +6821,7 @@ export namespace Cogl {
             dst_height: number,
             width: number,
             height: number,
-            format: PixelFormat,
+            format: PixelFormat | null,
             rowstride: number,
             data: number,
         ): Bool;
@@ -6898,7 +6909,7 @@ export namespace Cogl {
          * @param data memory location to write the @texture's contents, or %NULL to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data: number): number;
+        get_data(format: PixelFormat | null, rowstride: number, data: number): number;
         /**
          * Queries the GL handles for a GPU side texture through its #CoglTexture.
          *
@@ -6960,7 +6971,7 @@ export namespace Cogl {
          * as the texture's components.
          * @param components
          */
-        set_components(components: TextureComponents): void;
+        set_components(components: TextureComponents | null): void;
         /**
          * `texture` a #CoglTexture.
          * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -7010,7 +7021,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns %TRUE if the data upload was successful, and               %FALSE otherwise
          */
-        set_data(format: PixelFormat, rowstride: number, data: number, level: number): Bool;
+        set_data(format: PixelFormat | null, rowstride: number, data: number, level: number): Bool;
         /**
          * Affects the internal storage format for this texture by specifying
          * whether red, green and blue color components should be stored as
@@ -7063,7 +7074,7 @@ export namespace Cogl {
             dst_height: number,
             width: number,
             height: number,
-            format: PixelFormat,
+            format: PixelFormat | null,
             rowstride: number,
             data: number,
         ): Bool;
@@ -7150,7 +7161,7 @@ export namespace Cogl {
          * @param data memory location to write the @texture's contents, or %NULL to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data: number): number;
+        get_data(format: PixelFormat | null, rowstride: number, data: number): number;
         /**
          * Queries the GL handles for a GPU side texture through its #CoglTexture.
          *
@@ -7212,7 +7223,7 @@ export namespace Cogl {
          * as the texture's components.
          * @param components
          */
-        set_components(components: TextureComponents): void;
+        set_components(components: TextureComponents | null): void;
         /**
          * `texture` a #CoglTexture.
          * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -7262,7 +7273,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns %TRUE if the data upload was successful, and               %FALSE otherwise
          */
-        set_data(format: PixelFormat, rowstride: number, data: number, level: number): Bool;
+        set_data(format: PixelFormat | null, rowstride: number, data: number, level: number): Bool;
         /**
          * Affects the internal storage format for this texture by specifying
          * whether red, green and blue color components should be stored as
@@ -7315,7 +7326,7 @@ export namespace Cogl {
             dst_height: number,
             width: number,
             height: number,
-            format: PixelFormat,
+            format: PixelFormat | null,
             rowstride: number,
             data: number,
         ): Bool;
@@ -7382,7 +7393,7 @@ export namespace Cogl {
          * @param damage A X11 Damage object or 0
          * @param report_level The report level which describes how to interpret   the damage events. This should match the level that the damage   object was created with.
          */
-        set_damage_object(damage: number, report_level: TexturePixmapX11ReportLevel): void;
+        set_damage_object(damage: number, report_level: TexturePixmapX11ReportLevel | null): void;
         /**
          * Forces an update of the given `texture` so that it is refreshed with
          * the contents of the pixmap that was given to
@@ -7449,7 +7460,7 @@ export namespace Cogl {
          * @param data memory location to write the @texture's contents, or %NULL to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data: number): number;
+        get_data(format: PixelFormat | null, rowstride: number, data: number): number;
         /**
          * Queries the GL handles for a GPU side texture through its #CoglTexture.
          *
@@ -7511,7 +7522,7 @@ export namespace Cogl {
          * as the texture's components.
          * @param components
          */
-        set_components(components: TextureComponents): void;
+        set_components(components: TextureComponents | null): void;
         /**
          * `texture` a #CoglTexture.
          * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -7561,7 +7572,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns %TRUE if the data upload was successful, and               %FALSE otherwise
          */
-        set_data(format: PixelFormat, rowstride: number, data: number, level: number): Bool;
+        set_data(format: PixelFormat | null, rowstride: number, data: number, level: number): Bool;
         /**
          * Affects the internal storage format for this texture by specifying
          * whether red, green and blue color components should be stored as
@@ -7614,7 +7625,7 @@ export namespace Cogl {
             dst_height: number,
             width: number,
             height: number,
-            format: PixelFormat,
+            format: PixelFormat | null,
             rowstride: number,
             data: number,
         ): Bool;
@@ -8008,7 +8019,7 @@ export namespace Cogl {
          * cogl_pipeline_set_depth_state()
          * @param _function The #CoglDepthTestFunction to set
          */
-        set_test_function(_function: DepthTestFunction): void;
+        set_test_function(_function: DepthTestFunction | null): void;
         /**
          * Enables or disables depth buffer writing according to the value of
          * `enable`. Normally when depth testing is enabled and the comparison
@@ -9621,7 +9632,7 @@ export namespace Cogl {
          */
         draw_attributes(
             pipeline: Pipeline,
-            mode: VerticesMode,
+            mode: VerticesMode | null,
             first_vertex: number,
             n_vertices: number,
             attributes: Attribute,
@@ -9677,7 +9688,7 @@ export namespace Cogl {
          */
         draw_indexed_attributes(
             pipeline: Pipeline,
-            mode: VerticesMode,
+            mode: VerticesMode | null,
             first_vertex: number,
             n_vertices: number,
             indices: Indices,
@@ -10209,7 +10220,14 @@ export namespace Cogl {
          * @param pixels The address of the buffer to store the data in
          * @returns %TRUE if the read succeeded or %FALSE otherwise.
          */
-        read_pixels(x: number, y: number, width: number, height: number, format: PixelFormat, pixels: number): Bool;
+        read_pixels(
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+            format: PixelFormat | null,
+            pixels: number,
+        ): Bool;
         /**
          * This reads a rectangle of pixels from the given framebuffer where
          * position (0, 0) is the top left. The pixel at (x, y) is the first
@@ -10227,7 +10245,7 @@ export namespace Cogl {
          * @param bitmap The bitmap to store the results in.
          * @returns %TRUE if the read succeeded or %FALSE otherwise. The  function is only likely to fail if the bitmap points to a pixel  buffer and it could not be mapped.
          */
-        read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags, bitmap: Bitmap): Bool;
+        read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags | null, bitmap: Bitmap): Bool;
         /**
          * When point sample rendering (also known as multisample rendering)
          * has been enabled via cogl_framebuffer_set_samples_per_pixel()
@@ -10317,7 +10335,7 @@ export namespace Cogl {
          * color will be written.
          * @param color_mask A #CoglColorMask of which color channels to write to              the current framebuffer.
          */
-        set_color_mask(color_mask: ColorMask): void;
+        set_color_mask(color_mask: ColorMask | null): void;
         /**
          * If `enabled` is #TRUE, the depth buffer used when rendering to `framebuffer`
          * is available as a texture. You can retrieve the texture with
@@ -10415,7 +10433,7 @@ export namespace Cogl {
          * cogl_framebuffer_get_is_stereo().)
          * @param stereo_mode A #CoglStereoMode specifying which stereo buffers               should be drawn tow.
          */
-        set_stereo_mode(stereo_mode: StereoMode): void;
+        set_stereo_mode(stereo_mode: StereoMode | null): void;
         /**
          * Defines a scale and offset for everything rendered relative to the
          * top-left of the destination framebuffer.
@@ -10453,7 +10471,9 @@ export namespace Cogl {
         translate(x: number, y: number, z: number): void;
     }
 
-    export const Framebuffer: FramebufferNamespace;
+    export const Framebuffer: FramebufferNamespace & {
+        new (): Framebuffer; // This allows `obj instanceof Framebuffer`
+    };
 
     interface Texture extends Object {
         // Methods
@@ -10492,7 +10512,7 @@ export namespace Cogl {
          * @param data memory location to write the @texture's contents, or %NULL to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data: number): number;
+        get_data(format: PixelFormat | null, rowstride: number, data: number): number;
         /**
          * Queries the GL handles for a GPU side texture through its #CoglTexture.
          *
@@ -10554,7 +10574,7 @@ export namespace Cogl {
          * as the texture's components.
          * @param components
          */
-        set_components(components: TextureComponents): void;
+        set_components(components: TextureComponents | null): void;
         /**
          * `texture` a #CoglTexture.
          * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -10604,7 +10624,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns %TRUE if the data upload was successful, and               %FALSE otherwise
          */
-        set_data(format: PixelFormat, rowstride: number, data: number, level: number): Bool;
+        set_data(format: PixelFormat | null, rowstride: number, data: number, level: number): Bool;
         /**
          * Affects the internal storage format for this texture by specifying
          * whether red, green and blue color components should be stored as
@@ -10657,7 +10677,7 @@ export namespace Cogl {
             dst_height: number,
             width: number,
             height: number,
-            format: PixelFormat,
+            format: PixelFormat | null,
             rowstride: number,
             data: number,
         ): Bool;

@@ -3391,7 +3391,7 @@ export namespace Gio {
     function app_info_create_from_commandline(
         commandline: string,
         application_name: string | null,
-        flags: AppInfoCreateFlags,
+        flags: AppInfoCreateFlags | null,
     ): AppInfo;
     /**
      * Gets a list of all of the applications currently registered
@@ -3677,7 +3677,7 @@ export namespace Gio {
      * @param bus_type a #GBusType
      * @param cancellable a #GCancellable or %NULL
      */
-    function bus_get(bus_type: BusType, cancellable?: Cancellable | null): Promise<DBusConnection>;
+    function bus_get(bus_type: BusType | null, cancellable?: Cancellable | null): Promise<DBusConnection>;
     /**
      * Asynchronously connects to the message bus specified by `bus_type`.
      *
@@ -3691,9 +3691,9 @@ export namespace Gio {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     function bus_get(
-        bus_type: BusType,
+        bus_type: BusType | null,
         cancellable: Cancellable | null,
-        callback: AsyncReadyCallback<BusType> | null,
+        callback: AsyncReadyCallback<BusType | null> | null,
     ): void;
     /**
      * Asynchronously connects to the message bus specified by `bus_type`.
@@ -3708,9 +3708,9 @@ export namespace Gio {
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     function bus_get(
-        bus_type: BusType,
+        bus_type: BusType | null,
         cancellable?: Cancellable | null,
-        callback?: AsyncReadyCallback<BusType> | null,
+        callback?: AsyncReadyCallback<BusType | null> | null,
     ): Promise<DBusConnection> | void;
     /**
      * Finishes an operation started with g_bus_get().
@@ -3752,7 +3752,7 @@ export namespace Gio {
      * @param cancellable a #GCancellable or %NULL
      * @returns a #GDBusConnection or %NULL if @error is set.     Free with g_object_unref().
      */
-    function bus_get_sync(bus_type: BusType, cancellable?: Cancellable | null): DBusConnection;
+    function bus_get_sync(bus_type: BusType | null, cancellable?: Cancellable | null): DBusConnection;
     /**
      * Version of g_bus_own_name() using closures instead of callbacks for
      * easier binding in other languages.
@@ -3765,9 +3765,9 @@ export namespace Gio {
      * @returns an identifier (never 0) that can be used with     g_bus_unown_name() to stop owning the name.
      */
     function bus_own_name(
-        bus_type: BusType,
+        bus_type: BusType | null,
         name: string,
-        flags: BusNameOwnerFlags,
+        flags: BusNameOwnerFlags | null,
         bus_acquired_closure?: GObject.Closure | null,
         name_acquired_closure?: GObject.Closure | null,
         name_lost_closure?: GObject.Closure | null,
@@ -3785,7 +3785,7 @@ export namespace Gio {
     function bus_own_name_on_connection(
         connection: DBusConnection,
         name: string,
-        flags: BusNameOwnerFlags,
+        flags: BusNameOwnerFlags | null,
         name_acquired_closure?: GObject.Closure | null,
         name_lost_closure?: GObject.Closure | null,
     ): number;
@@ -3824,9 +3824,9 @@ export namespace Gio {
      * @returns An identifier (never 0) that can be used with g_bus_unwatch_name() to stop watching the name.
      */
     function bus_watch_name(
-        bus_type: BusType,
+        bus_type: BusType | null,
         name: string,
-        flags: BusNameWatcherFlags,
+        flags: BusNameWatcherFlags | null,
         name_appeared_closure?: GObject.Closure | null,
         name_vanished_closure?: GObject.Closure | null,
     ): number;
@@ -3843,7 +3843,7 @@ export namespace Gio {
     function bus_watch_name_on_connection(
         connection: DBusConnection,
         name: string,
-        flags: BusNameWatcherFlags,
+        flags: BusNameWatcherFlags | null,
         name_appeared_closure?: GObject.Closure | null,
         name_vanished_closure?: GObject.Closure | null,
     ): number;
@@ -4017,7 +4017,7 @@ export namespace Gio {
      * @param cancellable a #GCancellable or %NULL
      * @returns a valid D-Bus address string for @bus_type or     %NULL if @error is set
      */
-    function dbus_address_get_for_bus_sync(bus_type: BusType, cancellable?: Cancellable | null): string;
+    function dbus_address_get_for_bus_sync(bus_type: BusType | null, cancellable?: Cancellable | null): string;
     /**
      * Asynchronously connects to an endpoint specified by `address` and
      * sets up the connection so it is in a state to run the client-side
@@ -4680,7 +4680,7 @@ export namespace Gio {
      * @param file_error a #GFileError.
      * @returns #GIOErrorEnum value for the given #GFileError error value.
      */
-    function io_error_from_file_error(file_error: GLib.FileError): IOErrorEnum;
+    function io_error_from_file_error(file_error: GLib.FileError | null): IOErrorEnum;
     /**
      * Gets the GIO Error Quark.
      * @returns a #GQuark.
@@ -5047,7 +5047,7 @@ export namespace Gio {
      * @param lookup_flags A #GResourceLookupFlags
      * @returns an array of constant strings
      */
-    function resources_enumerate_children(path: string, lookup_flags: ResourceLookupFlags): string[];
+    function resources_enumerate_children(path: string, lookup_flags: ResourceLookupFlags | null): string[];
     /**
      * Looks for a file at the specified `path` in the set of
      * globally registered resources and if found returns information about it.
@@ -5057,7 +5057,7 @@ export namespace Gio {
      * @param lookup_flags A #GResourceLookupFlags
      * @returns %TRUE if the file was found. %FALSE if there were errors
      */
-    function resources_get_info(path: string, lookup_flags: ResourceLookupFlags): [boolean, number, number];
+    function resources_get_info(path: string, lookup_flags: ResourceLookupFlags | null): [boolean, number, number];
     /**
      * Looks for a file at the specified `path` in the set of
      * globally registered resources and returns a #GBytes that
@@ -5077,7 +5077,7 @@ export namespace Gio {
      * @param lookup_flags A #GResourceLookupFlags
      * @returns #GBytes or %NULL on error.     Free the returned object with g_bytes_unref()
      */
-    function resources_lookup_data(path: string, lookup_flags: ResourceLookupFlags): GLib.Bytes;
+    function resources_lookup_data(path: string, lookup_flags: ResourceLookupFlags | null): GLib.Bytes;
     /**
      * Looks for a file at the specified `path` in the set of
      * globally registered resources and returns a #GInputStream
@@ -5088,7 +5088,7 @@ export namespace Gio {
      * @param lookup_flags A #GResourceLookupFlags
      * @returns #GInputStream or %NULL on error.     Free the returned object with g_object_unref()
      */
-    function resources_open_stream(path: string, lookup_flags: ResourceLookupFlags): InputStream;
+    function resources_open_stream(path: string, lookup_flags: ResourceLookupFlags | null): InputStream;
     /**
      * Registers the resource with the process-global set of resources.
      * Once a resource is registered the files in it can be accessed
@@ -7654,8 +7654,8 @@ export namespace Gio {
         add_main_option(
             long_name: string,
             short_name: number,
-            flags: GLib.OptionFlags,
-            arg: GLib.OptionArg,
+            flags: GLib.OptionFlags | null,
+            arg: GLib.OptionArg | null,
             description: string,
             arg_description?: string | null,
         ): void;
@@ -8107,7 +8107,7 @@ export namespace Gio {
          * See #GApplicationFlags.
          * @param flags the flags for @application
          */
-        set_flags(flags: ApplicationFlags): void;
+        set_flags(flags: ApplicationFlags | null): void;
         /**
          * Sets the current inactivity timeout for the application.
          *
@@ -8832,7 +8832,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8873,7 +8873,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9935,7 +9935,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -10047,7 +10047,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10088,7 +10088,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10525,7 +10525,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -10637,7 +10637,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10678,7 +10678,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11212,7 +11212,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11253,7 +11253,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11960,7 +11960,7 @@ export namespace Gio {
         convert(
             inbuf: Uint8Array | string,
             outbuf: Uint8Array | string,
-            flags: ConverterFlags,
+            flags: ConverterFlags | null,
         ): [ConverterResult, number, number];
         /**
          * Applies `converter` to the data in `bytes`.
@@ -12201,7 +12201,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -12242,7 +12242,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13421,6 +13421,54 @@ export namespace Gio {
          * @param result a #GAsyncResult.
          */
         vfunc_skip_finish(result: AsyncResult): number;
+        /**
+         * Creates an asynchronous iterator for a Gio.InputStream that reads the stream in chunks.
+         *
+         * Each iteration will return a GLib.Bytes object containing at most `count` bytes (default 4096). The iterator will end when the stream is exhausted.
+         *
+         * Example:
+         * ```js
+         * import Gio from "gi://Gio";
+         *
+         * const textDecoder = new TextDecoder("utf-8");
+         *
+         * const file = Gio.File.new_for_path("/etc/os-release");
+         * const inputStream = file.read(null);
+         *
+         * for await (const bytes of inputStream.createAsyncIterator(4)) {
+         *   log(textDecoder.decode(bytes.toArray()));
+         * }
+         * ```
+         *
+         * `returns` An async iterator yielding GLib.Bytes objects
+         * @param count Maximum number of bytes to read per chunk (default: 4096)
+         * @param priority I/O priority of the request (default: GLib.PRIORITY_DEFAULT)
+         */
+        createAsyncIterator(count?: number, priority?: number): AsyncIterableIterator<GLib.Bytes>;
+        /**
+         * Creates a synchronous iterator for a Gio.InputStream that reads the stream in chunks.
+         *
+         * Each iteration will return a GLib.Bytes object containing at most `count` bytes (default 4096). The iterator will end when the stream is exhausted.
+         *
+         * Example:
+         * ```js
+         * import Gio from "gi://Gio";
+         *
+         * const textDecoder = new TextDecoder("utf-8");
+         *
+         * const file = Gio.File.new_for_path("/etc/os-release");
+         * const inputStream = file.read(null);
+         *
+         * for (const bytes of inputStream.createSyncIterator(4)) {
+         *   log(textDecoder.decode(bytes.toArray()));
+         * }
+         * ```
+         *
+         * `returns` An iterable yielding GLib.Bytes objects
+         * @param count Maximum number of bytes to read per chunk (default: 4096)
+         * @param priority I/O priority of the request (default: GLib.PRIORITY_DEFAULT)
+         */
+        createSyncIterator(count?: number, priority?: number): IterableIterator<GLib.Bytes>;
     }
 
     module ConverterOutputStream {
@@ -13837,7 +13885,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns a #gssize containing the size of the data spliced, or     -1 if an error occurred. Note that if the number of bytes     spliced is greater than %G_MAXSSIZE, then that will be     returned, and there is no way to determine the actual number     of bytes spliced.
          */
-        splice(source: InputStream, flags: OutputStreamSpliceFlags, cancellable?: Cancellable | null): number;
+        splice(source: InputStream, flags: OutputStreamSpliceFlags | null, cancellable?: Cancellable | null): number;
         /**
          * Splices a stream asynchronously.
          * When the operation is finished `callback` will be called.
@@ -13853,7 +13901,7 @@ export namespace Gio {
          */
         splice_async(
             source: InputStream,
-            flags: OutputStreamSpliceFlags,
+            flags: OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
         ): Promise<number>;
@@ -13873,7 +13921,7 @@ export namespace Gio {
          */
         splice_async(
             source: InputStream,
-            flags: OutputStreamSpliceFlags,
+            flags: OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -13894,7 +13942,7 @@ export namespace Gio {
          */
         splice_async(
             source: InputStream,
-            flags: OutputStreamSpliceFlags,
+            flags: OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -14914,7 +14962,7 @@ export namespace Gio {
          * @param native_type The type of native credentials to set.
          * @param _native A pointer to native credentials.
          */
-        set_native(native_type: CredentialsType, _native: any): void;
+        set_native(native_type: CredentialsType | null, _native: any): void;
         /**
          * Tries to set the UNIX user identifier on `credentials`. This method
          * is only available on UNIX platforms.
@@ -15530,7 +15578,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -15571,7 +15619,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16412,7 +16460,7 @@ export namespace Gio {
             method_name: string,
             parameters: GLib.Variant | null,
             reply_type: GLib.VariantType<T> | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             cancellable?: Cancellable | null,
         ): Promise<GLib.Variant<T>>;
@@ -16482,7 +16530,7 @@ export namespace Gio {
             method_name: string,
             parameters: GLib.Variant | null,
             reply_type: GLib.VariantType<T> | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -16553,7 +16601,7 @@ export namespace Gio {
             method_name: string,
             parameters: GLib.Variant | null,
             reply_type: GLib.VariantType<T> | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -16621,7 +16669,7 @@ export namespace Gio {
             method_name: string,
             parameters: GLib.Variant | null,
             reply_type: GLib.VariantType | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             cancellable?: Cancellable | null,
         ): GLib.Variant;
@@ -16659,7 +16707,7 @@ export namespace Gio {
             method_name: string,
             parameters: GLib.Variant | null,
             reply_type: GLib.VariantType | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             fd_list?: UnixFDList | null,
             cancellable?: Cancellable | null,
@@ -16699,7 +16747,7 @@ export namespace Gio {
             method_name: string,
             parameters: GLib.Variant | null,
             reply_type: GLib.VariantType | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             fd_list: UnixFDList | null,
             cancellable: Cancellable | null,
@@ -16740,7 +16788,7 @@ export namespace Gio {
             method_name: string,
             parameters: GLib.Variant | null,
             reply_type: GLib.VariantType | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             fd_list?: UnixFDList | null,
             cancellable?: Cancellable | null,
@@ -16788,7 +16836,7 @@ export namespace Gio {
             method_name: string,
             parameters: GLib.Variant | null,
             reply_type: GLib.VariantType | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             fd_list?: UnixFDList | null,
             cancellable?: Cancellable | null,
@@ -17214,7 +17262,7 @@ export namespace Gio {
         register_subtree(
             object_path: string,
             vtable: DBusSubtreeVTable,
-            flags: DBusSubtreeFlags,
+            flags: DBusSubtreeFlags | null,
             user_data?: any | null,
         ): number;
         /**
@@ -17255,7 +17303,7 @@ export namespace Gio {
          * @param flags flags affecting how the message is sent
          * @returns %TRUE if the message was well-formed and queued for     transmission, %FALSE if @error is set
          */
-        send_message(message: DBusMessage, flags: DBusSendMessageFlags): [boolean, number];
+        send_message(message: DBusMessage, flags: DBusSendMessageFlags | null): [boolean, number];
         /**
          * Asynchronously sends `message` to the peer represented by `connection`.
          *
@@ -17293,7 +17341,7 @@ export namespace Gio {
          */
         send_message_with_reply(
             message: DBusMessage,
-            flags: DBusSendMessageFlags,
+            flags: DBusSendMessageFlags | null,
             timeout_msec: number,
             cancellable?: Cancellable | null,
         ): [Promise<DBusMessage>, number];
@@ -17335,7 +17383,7 @@ export namespace Gio {
          */
         send_message_with_reply(
             message: DBusMessage,
-            flags: DBusSendMessageFlags,
+            flags: DBusSendMessageFlags | null,
             timeout_msec: number,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -17378,7 +17426,7 @@ export namespace Gio {
          */
         send_message_with_reply(
             message: DBusMessage,
-            flags: DBusSendMessageFlags,
+            flags: DBusSendMessageFlags | null,
             timeout_msec: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -17437,7 +17485,7 @@ export namespace Gio {
          */
         send_message_with_reply_sync(
             message: DBusMessage,
-            flags: DBusSendMessageFlags,
+            flags: DBusSendMessageFlags | null,
             timeout_msec: number,
             cancellable?: Cancellable | null,
         ): [DBusMessage, number];
@@ -17521,7 +17569,7 @@ export namespace Gio {
             member: string | null,
             object_path: string | null,
             arg0: string | null,
-            flags: DBusSignalFlags,
+            flags: DBusSignalFlags | null,
             callback: DBusSignalCallback,
             user_data_free_func?: GLib.DestroyNotify | null,
         ): number;
@@ -17582,14 +17630,14 @@ export namespace Gio {
         unregister_subtree(registration_id: number): boolean;
         watch_name(
             name: string,
-            flags: BusNameWatcherFlags,
+            flags: BusNameWatcherFlags | null,
             name_appeared_closure?: GObject.Closure | null,
             name_vanished_closure?: GObject.Closure | null,
         ): number;
         unwatch_name(watcher_id: number): void;
         own_name(
             name: string,
-            flags: BusNameOwnerFlags,
+            flags: BusNameOwnerFlags | null,
             name_acquired_closure?: GObject.Closure | null,
             name_lost_closure?: GObject.Closure | null,
         ): number;
@@ -17924,7 +17972,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -17965,7 +18013,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18446,7 +18494,7 @@ export namespace Gio {
          * Sets flags describing what the behavior of `skeleton` should be.
          * @param flags Flags from the #GDBusInterfaceSkeletonFlags enumeration.
          */
-        set_flags(flags: DBusInterfaceSkeletonFlags): void;
+        set_flags(flags: DBusInterfaceSkeletonFlags | null): void;
         /**
          * Stops exporting `interface_` on all connections it is exported on.
          *
@@ -18531,7 +18579,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -18572,7 +18620,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19034,7 +19082,7 @@ export namespace Gio {
          * @param header_field A 8-bit unsigned integer (typically a value from the #GDBusMessageHeaderField enumeration)
          * @returns A #GVariant with the value if the header was found, %NULL otherwise. Do not free, it is owned by @message.
          */
-        get_header(header_field: DBusMessageHeaderField): GLib.Variant | null;
+        get_header(header_field: DBusMessageHeaderField | null): GLib.Variant | null;
         /**
          * Gets an array of all header fields on `message` that are set.
          * @returns An array of header fields terminated by %G_DBUS_MESSAGE_HEADER_FIELD_INVALID.  Each element is a #guchar. Free with g_free().
@@ -19173,7 +19221,7 @@ export namespace Gio {
          * Sets the byte order of `message`.
          * @param byte_order The byte order.
          */
-        set_byte_order(byte_order: DBusMessageByteOrder): void;
+        set_byte_order(byte_order: DBusMessageByteOrder | null): void;
         /**
          * Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_DESTINATION header field.
          * @param value The value to set.
@@ -19188,7 +19236,7 @@ export namespace Gio {
          * Sets the flags to set on `message`.
          * @param flags Flags for @message that are set (typically values from the #GDBusMessageFlags enumeration bitwise ORed together).
          */
-        set_flags(flags: DBusMessageFlags): void;
+        set_flags(flags: DBusMessageFlags | null): void;
         /**
          * Sets a header field on `message`.
          *
@@ -19196,7 +19244,7 @@ export namespace Gio {
          * @param header_field A 8-bit unsigned integer (typically a value from the #GDBusMessageHeaderField enumeration)
          * @param value A #GVariant to set the header field or %NULL to clear the header field.
          */
-        set_header(header_field: DBusMessageHeaderField, value?: GLib.Variant | null): void;
+        set_header(header_field: DBusMessageHeaderField | null, value?: GLib.Variant | null): void;
         /**
          * Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_INTERFACE header field.
          * @param value The value to set.
@@ -19211,7 +19259,7 @@ export namespace Gio {
          * Sets `message` to be of `type`.
          * @param type A 8-bit unsigned integer (typically a value from the #GDBusMessageType enumeration).
          */
-        set_message_type(type: DBusMessageType): void;
+        set_message_type(type: DBusMessageType | null): void;
         /**
          * Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_NUM_UNIX_FDS header field.
          * @param value The value to set.
@@ -19263,7 +19311,7 @@ export namespace Gio {
          * @param capabilities A #GDBusCapabilityFlags describing what protocol features are supported.
          * @returns A pointer to a valid binary D-Bus message of @out_size bytes generated by @message or %NULL if @error is set. Free with g_free().
          */
-        to_blob(capabilities: DBusCapabilityFlags): Uint8Array;
+        to_blob(capabilities: DBusCapabilityFlags | null): Uint8Array;
         /**
          * If `message` is not of type %G_DBUS_MESSAGE_TYPE_ERROR does
          * nothing and returns %FALSE.
@@ -20277,7 +20325,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -20318,7 +20366,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20858,7 +20906,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -20899,7 +20947,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -21357,7 +21405,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -21398,7 +21446,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -21909,7 +21957,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -21950,7 +21998,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22730,7 +22778,7 @@ export namespace Gio {
         call(
             method_name: string,
             parameters: GLib.Variant | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             cancellable?: Cancellable | null,
         ): Promise<GLib.Variant>;
@@ -22789,7 +22837,7 @@ export namespace Gio {
         call(
             method_name: string,
             parameters: GLib.Variant | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -22849,7 +22897,7 @@ export namespace Gio {
         call(
             method_name: string,
             parameters: GLib.Variant | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -22907,7 +22955,7 @@ export namespace Gio {
         call_sync(
             method_name: string,
             parameters: GLib.Variant | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             cancellable?: Cancellable | null,
         ): GLib.Variant;
@@ -22925,7 +22973,7 @@ export namespace Gio {
         call_with_unix_fd_list(
             method_name: string,
             parameters: GLib.Variant | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             fd_list?: UnixFDList | null,
             cancellable?: Cancellable | null,
@@ -22945,7 +22993,7 @@ export namespace Gio {
         call_with_unix_fd_list(
             method_name: string,
             parameters: GLib.Variant | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             fd_list: UnixFDList | null,
             cancellable: Cancellable | null,
@@ -22966,7 +23014,7 @@ export namespace Gio {
         call_with_unix_fd_list(
             method_name: string,
             parameters: GLib.Variant | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             fd_list?: UnixFDList | null,
             cancellable?: Cancellable | null,
@@ -22993,7 +23041,7 @@ export namespace Gio {
         call_with_unix_fd_list_sync(
             method_name: string,
             parameters: GLib.Variant | null,
-            flags: DBusCallFlags,
+            flags: DBusCallFlags | null,
             timeout_msec: number,
             fd_list?: UnixFDList | null,
             cancellable?: Cancellable | null,
@@ -23489,7 +23537,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -23530,7 +23578,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -24121,7 +24169,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -24162,7 +24210,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -24925,7 +24973,7 @@ export namespace Gio {
          * reads from the `stream` will be read in the given `order`.
          * @param order a #GDataStreamByteOrder to set.
          */
-        set_byte_order(order: DataStreamByteOrder): void;
+        set_byte_order(order: DataStreamByteOrder | null): void;
         /**
          * Sets the newline type for the `stream`.
          *
@@ -24934,7 +24982,7 @@ export namespace Gio {
          * "CR LF", and this might block if there is no more data available.
          * @param type the type of new line return as #GDataStreamNewlineType.
          */
-        set_newline_type(type: DataStreamNewlineType): void;
+        set_newline_type(type: DataStreamNewlineType | null): void;
 
         // Inherited methods
         /**
@@ -24968,7 +25016,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -25080,7 +25128,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -25121,7 +25169,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -25544,7 +25592,7 @@ export namespace Gio {
          * Sets the byte order of the data output stream to `order`.
          * @param order a %GDataStreamByteOrder.
          */
-        set_byte_order(order: DataStreamByteOrder): void;
+        set_byte_order(order: DataStreamByteOrder | null): void;
 
         // Inherited methods
         /**
@@ -25578,7 +25626,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -25690,7 +25738,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -25731,7 +25779,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -26395,7 +26443,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -26436,7 +26484,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -26997,7 +27045,7 @@ export namespace Gio {
         launch_uris_as_manager(
             uris: string[],
             launch_context: AppLaunchContext | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
             user_setup?: GLib.SpawnChildSetupFunc | null,
             pid_callback?: DesktopAppLaunchCallback | null,
         ): boolean;
@@ -27021,7 +27069,7 @@ export namespace Gio {
         launch_uris_as_manager_with_fds(
             uris: string[],
             launch_context: AppLaunchContext | null,
-            spawn_flags: GLib.SpawnFlags,
+            spawn_flags: GLib.SpawnFlags | null,
             user_setup: GLib.SpawnChildSetupFunc | null,
             pid_callback: DesktopAppLaunchCallback | null,
             stdin_fd: number,
@@ -27528,7 +27576,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -27569,7 +27617,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -28047,7 +28095,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -28088,7 +28136,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -28568,7 +28616,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -28609,7 +28657,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -28971,6 +29019,51 @@ export namespace Gio {
          * The container that is being enumerated.
          */
         set container(val: File);
+
+        // Fields
+
+        /**
+         * Gio.FileEnumerator are sync iterators.
+         * Each iteration returns a Gio.FileInfo:
+         *
+         * ```js
+         * import Gio from "gi://Gio";
+         *
+         * const dir = Gio.File.new_for_path("/");
+         * const enumerator = dir.enumerate_children(
+         *   "standard::name",
+         *   Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+         *   null
+         * );
+         *
+         * for (const file_info of enumerator) {
+         *   console.log(file_info.get_name());
+         * }
+         * ```
+         *
+         */
+        [Symbol.iterator]: () => IterableIterator<FileInfo>;
+        /**
+         * Gio.FileEnumerator are async iterators.
+         * Each iteration returns a Gio.FileInfo:
+         *
+         * ```js
+         * import Gio from "gi://Gio";
+         *
+         * const dir = Gio.File.new_for_path("/");
+         * const enumerator = dir.enumerate_children(
+         *   "standard::name",
+         *   Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+         *   null
+         * );
+         *
+         * for await (const file_info of enumerator) {
+         *   console.log(file_info.get_name());
+         * }
+         * ```
+         *
+         */
+        [Symbol.asyncIterator]: () => AsyncIterableIterator<FileInfo>;
 
         // Constructors
 
@@ -29733,7 +29826,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -29798,7 +29891,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -29839,7 +29932,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -30375,7 +30468,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -30416,7 +30509,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -31124,7 +31217,7 @@ export namespace Gio {
          * @param type a #GFileAttributeType
          * @param value_p pointer to the value
          */
-        set_attribute(attribute: string, type: FileAttributeType, value_p: any): void;
+        set_attribute(attribute: string, type: FileAttributeType | null, value_p: any): void;
         /**
          * Sets the `attribute` to contain the given `attr_value,`
          * if possible.
@@ -31186,7 +31279,7 @@ export namespace Gio {
          * @param status a #GFileAttributeStatus
          * @returns %TRUE if the status was changed, %FALSE if the key was not set.
          */
-        set_attribute_status(attribute: string, status: FileAttributeStatus): boolean;
+        set_attribute_status(attribute: string, status: FileAttributeStatus | null): boolean;
         /**
          * Sets the `attribute` to contain the given `attr_value,`
          * if possible.
@@ -31249,7 +31342,7 @@ export namespace Gio {
          * See %G_FILE_ATTRIBUTE_STANDARD_TYPE.
          * @param type a #GFileType.
          */
-        set_file_type(type: FileType): void;
+        set_file_type(type: FileType | null): void;
         /**
          * Sets the icon for a given #GFileInfo.
          * See %G_FILE_ATTRIBUTE_STANDARD_ICON.
@@ -31508,7 +31601,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -31592,7 +31685,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -31633,7 +31726,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -32049,7 +32142,7 @@ export namespace Gio {
          * @param other_file a #GFile.
          * @param event_type a set of #GFileMonitorEvent flags.
          */
-        emit_event(child: File, other_file: File, event_type: FileMonitorEvent): void;
+        emit_event(child: File, other_file: File, event_type: FileMonitorEvent | null): void;
         /**
          * Returns whether the monitor is canceled.
          * @returns %TRUE if monitor is canceled. %FALSE otherwise.
@@ -32274,7 +32367,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -32339,7 +32432,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -32380,7 +32473,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -33026,7 +33119,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -33067,7 +33160,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -33675,7 +33768,7 @@ export namespace Gio {
          */
         splice_async(
             stream2: IOStream,
-            flags: IOStreamSpliceFlags,
+            flags: IOStreamSpliceFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -34150,7 +34243,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -34191,7 +34284,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -34684,7 +34777,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -34725,7 +34818,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -35780,6 +35873,54 @@ export namespace Gio {
          * @returns the size of the bytes skipped, or `-1` on error.
          */
         skip_finish(result: AsyncResult): number;
+        /**
+         * Creates an asynchronous iterator for a Gio.InputStream that reads the stream in chunks.
+         *
+         * Each iteration will return a GLib.Bytes object containing at most `count` bytes (default 4096). The iterator will end when the stream is exhausted.
+         *
+         * Example:
+         * ```js
+         * import Gio from "gi://Gio";
+         *
+         * const textDecoder = new TextDecoder("utf-8");
+         *
+         * const file = Gio.File.new_for_path("/etc/os-release");
+         * const inputStream = file.read(null);
+         *
+         * for await (const bytes of inputStream.createAsyncIterator(4)) {
+         *   log(textDecoder.decode(bytes.toArray()));
+         * }
+         * ```
+         *
+         * `returns` An async iterator yielding GLib.Bytes objects
+         * @param count Maximum number of bytes to read per chunk (default: 4096)
+         * @param priority I/O priority of the request (default: GLib.PRIORITY_DEFAULT)
+         */
+        createAsyncIterator(count?: number, priority?: number): AsyncIterableIterator<GLib.Bytes>;
+        /**
+         * Creates a synchronous iterator for a Gio.InputStream that reads the stream in chunks.
+         *
+         * Each iteration will return a GLib.Bytes object containing at most `count` bytes (default 4096). The iterator will end when the stream is exhausted.
+         *
+         * Example:
+         * ```js
+         * import Gio from "gi://Gio";
+         *
+         * const textDecoder = new TextDecoder("utf-8");
+         *
+         * const file = Gio.File.new_for_path("/etc/os-release");
+         * const inputStream = file.read(null);
+         *
+         * for (const bytes of inputStream.createSyncIterator(4)) {
+         *   log(textDecoder.decode(bytes.toArray()));
+         * }
+         * ```
+         *
+         * `returns` An iterable yielding GLib.Bytes objects
+         * @param count Maximum number of bytes to read per chunk (default: 4096)
+         * @param priority I/O priority of the request (default: GLib.PRIORITY_DEFAULT)
+         */
+        createSyncIterator(count?: number, priority?: number): IterableIterator<GLib.Bytes>;
     }
 
     module ListStore {
@@ -36091,7 +36232,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -36132,7 +36273,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -36643,7 +36784,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -37415,6 +37556,54 @@ export namespace Gio {
          */
         vfunc_skip_finish(result: AsyncResult): number;
         /**
+         * Creates an asynchronous iterator for a Gio.InputStream that reads the stream in chunks.
+         *
+         * Each iteration will return a GLib.Bytes object containing at most `count` bytes (default 4096). The iterator will end when the stream is exhausted.
+         *
+         * Example:
+         * ```js
+         * import Gio from "gi://Gio";
+         *
+         * const textDecoder = new TextDecoder("utf-8");
+         *
+         * const file = Gio.File.new_for_path("/etc/os-release");
+         * const inputStream = file.read(null);
+         *
+         * for await (const bytes of inputStream.createAsyncIterator(4)) {
+         *   log(textDecoder.decode(bytes.toArray()));
+         * }
+         * ```
+         *
+         * `returns` An async iterator yielding GLib.Bytes objects
+         * @param count Maximum number of bytes to read per chunk (default: 4096)
+         * @param priority I/O priority of the request (default: GLib.PRIORITY_DEFAULT)
+         */
+        createAsyncIterator(count?: number, priority?: number): AsyncIterableIterator<GLib.Bytes>;
+        /**
+         * Creates a synchronous iterator for a Gio.InputStream that reads the stream in chunks.
+         *
+         * Each iteration will return a GLib.Bytes object containing at most `count` bytes (default 4096). The iterator will end when the stream is exhausted.
+         *
+         * Example:
+         * ```js
+         * import Gio from "gi://Gio";
+         *
+         * const textDecoder = new TextDecoder("utf-8");
+         *
+         * const file = Gio.File.new_for_path("/etc/os-release");
+         * const inputStream = file.read(null);
+         *
+         * for (const bytes of inputStream.createSyncIterator(4)) {
+         *   log(textDecoder.decode(bytes.toArray()));
+         * }
+         * ```
+         *
+         * `returns` An iterable yielding GLib.Bytes objects
+         * @param count Maximum number of bytes to read per chunk (default: 4096)
+         * @param priority I/O priority of the request (default: GLib.PRIORITY_DEFAULT)
+         */
+        createSyncIterator(count?: number, priority?: number): IterableIterator<GLib.Bytes>;
+        /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
          *
@@ -37458,7 +37647,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -37499,7 +37688,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -38126,7 +38315,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -38391,7 +38580,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns a #gssize containing the size of the data spliced, or     -1 if an error occurred. Note that if the number of bytes     spliced is greater than %G_MAXSSIZE, then that will be     returned, and there is no way to determine the actual number     of bytes spliced.
          */
-        splice(source: InputStream, flags: OutputStreamSpliceFlags, cancellable?: Cancellable | null): number;
+        splice(source: InputStream, flags: OutputStreamSpliceFlags | null, cancellable?: Cancellable | null): number;
         /**
          * Splices a stream asynchronously.
          * When the operation is finished `callback` will be called.
@@ -38407,7 +38596,7 @@ export namespace Gio {
          */
         splice_async(
             source: InputStream,
-            flags: OutputStreamSpliceFlags,
+            flags: OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
         ): Promise<number>;
@@ -38427,7 +38616,7 @@ export namespace Gio {
          */
         splice_async(
             source: InputStream,
-            flags: OutputStreamSpliceFlags,
+            flags: OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -38448,7 +38637,7 @@ export namespace Gio {
          */
         splice_async(
             source: InputStream,
-            flags: OutputStreamSpliceFlags,
+            flags: OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -39415,7 +39604,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -39456,7 +39645,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -40918,7 +41107,7 @@ export namespace Gio {
          * Emits the #GMountOperation::reply signal.
          * @param result a #GMountOperationResult
          */
-        reply(result: MountOperationResult): void;
+        reply(result: MountOperationResult | null): void;
         /**
          * Sets the mount operation to use an anonymous user if `anonymous` is %TRUE.
          * @param anonymous boolean value.
@@ -40953,7 +41142,7 @@ export namespace Gio {
          * Sets the state of saving passwords for the mount operation.
          * @param save a set of #GPasswordSave flags.
          */
-        set_password_save(save: PasswordSave): void;
+        set_password_save(save: PasswordSave | null): void;
         /**
          * Sets the mount operation's PIM to `pim`.
          * @param pim an unsigned integer.
@@ -41085,7 +41274,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -41126,7 +41315,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -41664,7 +41853,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -41705,7 +41894,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -42202,7 +42391,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -42243,7 +42432,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -42704,7 +42893,7 @@ export namespace Gio {
          * #GNotificationPriority for possible values.
          * @param priority a #GNotificationPriority
          */
-        set_priority(priority: NotificationPriority): void;
+        set_priority(priority: NotificationPriority | null): void;
         /**
          * Sets the title of `notification` to `title`.
          * @param title the new title for @notification
@@ -43199,7 +43388,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns a #gssize containing the size of the data spliced, or     -1 if an error occurred. Note that if the number of bytes     spliced is greater than %G_MAXSSIZE, then that will be     returned, and there is no way to determine the actual number     of bytes spliced.
          */
-        splice(source: InputStream, flags: OutputStreamSpliceFlags, cancellable?: Cancellable | null): number;
+        splice(source: InputStream, flags: OutputStreamSpliceFlags | null, cancellable?: Cancellable | null): number;
         /**
          * Splices a stream asynchronously.
          * When the operation is finished `callback` will be called.
@@ -43215,7 +43404,7 @@ export namespace Gio {
          */
         splice_async(
             source: InputStream,
-            flags: OutputStreamSpliceFlags,
+            flags: OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
         ): Promise<number>;
@@ -43235,7 +43424,7 @@ export namespace Gio {
          */
         splice_async(
             source: InputStream,
-            flags: OutputStreamSpliceFlags,
+            flags: OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -43256,7 +43445,7 @@ export namespace Gio {
          */
         splice_async(
             source: InputStream,
-            flags: OutputStreamSpliceFlags,
+            flags: OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -44626,7 +44815,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -44667,7 +44856,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -45160,7 +45349,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -45201,7 +45390,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -46013,7 +46202,7 @@ export namespace Gio {
          */
         lookup_by_name_with_flags(
             hostname: string,
-            flags: ResolverNameLookupFlags,
+            flags: ResolverNameLookupFlags | null,
             cancellable?: Cancellable | null,
         ): InetAddress[];
         /**
@@ -46027,7 +46216,7 @@ export namespace Gio {
          */
         lookup_by_name_with_flags_async(
             hostname: string,
-            flags: ResolverNameLookupFlags,
+            flags: ResolverNameLookupFlags | null,
             cancellable?: Cancellable | null,
         ): Promise<InetAddress[]>;
         /**
@@ -46042,7 +46231,7 @@ export namespace Gio {
          */
         lookup_by_name_with_flags_async(
             hostname: string,
-            flags: ResolverNameLookupFlags,
+            flags: ResolverNameLookupFlags | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
         ): void;
@@ -46058,7 +46247,7 @@ export namespace Gio {
          */
         lookup_by_name_with_flags_async(
             hostname: string,
-            flags: ResolverNameLookupFlags,
+            flags: ResolverNameLookupFlags | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<InetAddress[]> | void;
@@ -46091,7 +46280,7 @@ export namespace Gio {
          */
         lookup_records(
             rrname: string,
-            record_type: ResolverRecordType,
+            record_type: ResolverRecordType | null,
             cancellable?: Cancellable | null,
         ): GLib.Variant[];
         /**
@@ -46105,7 +46294,7 @@ export namespace Gio {
          */
         lookup_records_async(
             rrname: string,
-            record_type: ResolverRecordType,
+            record_type: ResolverRecordType | null,
             cancellable?: Cancellable | null,
         ): Promise<GLib.Variant[]>;
         /**
@@ -46120,7 +46309,7 @@ export namespace Gio {
          */
         lookup_records_async(
             rrname: string,
-            record_type: ResolverRecordType,
+            record_type: ResolverRecordType | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
         ): void;
@@ -46136,7 +46325,7 @@ export namespace Gio {
          */
         lookup_records_async(
             rrname: string,
-            record_type: ResolverRecordType,
+            record_type: ResolverRecordType | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<GLib.Variant[]> | void;
@@ -46792,7 +46981,7 @@ export namespace Gio {
          * @param property the name of the property to bind
          * @param flags flags for the binding
          */
-        bind(key: string, object: GObject.Object, property: string, flags: SettingsBindFlags): void;
+        bind(key: string, object: GObject.Object, property: string, flags: SettingsBindFlags | null): void;
         /**
          * Version of g_settings_bind_with_mapping() using closures instead of callbacks
          * for easier binding in other languages.
@@ -46807,7 +46996,7 @@ export namespace Gio {
             key: string,
             object: GObject.Object,
             property: string,
-            flags: SettingsBindFlags,
+            flags: SettingsBindFlags | null,
             get_mapping?: GObject.Closure | null,
             set_mapping?: GObject.Closure | null,
         ): void;
@@ -47901,7 +48090,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -47942,7 +48131,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -48919,7 +49108,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -48960,7 +49149,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -49670,7 +49859,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -49711,7 +49900,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -50439,7 +50628,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -50480,7 +50669,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -51108,7 +51297,7 @@ export namespace Gio {
          * @param condition a #GIOCondition mask to check
          * @returns the @GIOCondition mask of the current state
          */
-        condition_check(condition: GLib.IOCondition): GLib.IOCondition;
+        condition_check(condition: GLib.IOCondition | null): GLib.IOCondition;
         /**
          * Waits for up to `timeout_us` microseconds for `condition` to become true
          * on `socket`. If the condition is met, %TRUE is returned.
@@ -51132,7 +51321,7 @@ export namespace Gio {
          * @returns %TRUE if the condition was met, %FALSE otherwise
          */
         condition_timed_wait(
-            condition: GLib.IOCondition,
+            condition: GLib.IOCondition | null,
             timeout_us: number,
             cancellable?: Cancellable | null,
         ): boolean;
@@ -51151,7 +51340,7 @@ export namespace Gio {
          * @param cancellable a #GCancellable, or %NULL
          * @returns %TRUE if the condition was met, %FALSE otherwise
          */
-        condition_wait(condition: GLib.IOCondition, cancellable?: Cancellable | null): boolean;
+        condition_wait(condition: GLib.IOCondition | null, cancellable?: Cancellable | null): boolean;
         // Conflicted with Gio.DatagramBased.condition_wait
         condition_wait(...args: never[]): any;
         /**
@@ -51984,7 +52173,7 @@ export namespace Gio {
          * @param cancellable a #GCancellable
          * @returns a newly allocated #GSource
          */
-        create_source(condition: GLib.IOCondition, cancellable?: Cancellable | null): GLib.Source;
+        create_source(condition: GLib.IOCondition | null, cancellable?: Cancellable | null): GLib.Source;
         /**
          * Checks on the readiness of `datagram_based` to perform operations. The
          * operations specified in `condition` are checked for and masked against the
@@ -52300,7 +52489,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -52341,7 +52530,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -52837,7 +53026,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -52878,7 +53067,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -53955,7 +54144,7 @@ export namespace Gio {
          * be an ipv6 mapped to ipv4 address.
          * @param family a #GSocketFamily
          */
-        set_family(family: SocketFamily): void;
+        set_family(family: SocketFamily | null): void;
         /**
          * Sets the local address of the socket client.
          * The sockets created by this object will bound to the
@@ -53976,7 +54165,7 @@ export namespace Gio {
          * protocol for the socket family and type.
          * @param protocol a #GSocketProtocol
          */
-        set_protocol(protocol: SocketProtocol): void;
+        set_protocol(protocol: SocketProtocol | null): void;
         /**
          * Overrides the #GProxyResolver used by `client`. You can call this if
          * you want to use specific proxies, rather than using the system
@@ -53997,7 +54186,7 @@ export namespace Gio {
          * as GSocketClient is used for connection oriented services.
          * @param type a #GSocketType
          */
-        set_socket_type(type: SocketType): void;
+        set_socket_type(type: SocketType | null): void;
         /**
          * Sets the I/O timeout for sockets created by `client`. `timeout` is a
          * time in seconds, or 0 for no timeout (the default).
@@ -54039,7 +54228,7 @@ export namespace Gio {
          * information.
          * @param flags the validation flags
          */
-        set_tls_validation_flags(flags: TlsCertificateFlags): void;
+        set_tls_validation_flags(flags: TlsCertificateFlags | null): void;
     }
 
     module SocketConnection {
@@ -54549,8 +54738,8 @@ export namespace Gio {
          */
         add_address(
             address: SocketAddress,
-            type: SocketType,
-            protocol: SocketProtocol,
+            type: SocketType | null,
+            protocol: SocketProtocol | null,
             source_object?: GObject.Object | null,
         ): [boolean, SocketAddress | null];
         /**
@@ -55321,7 +55510,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -55362,7 +55551,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -55787,7 +55976,7 @@ export namespace Gio {
          * g_subprocess_launcher_take_stdout_fd().
          * @param flags #GSubprocessFlags
          */
-        set_flags(flags: SubprocessFlags): void;
+        set_flags(flags: SubprocessFlags | null): void;
         /**
          * Sets the file path to use as the stderr for spawned processes.
          *
@@ -56980,7 +57169,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -57021,7 +57210,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -57832,7 +58021,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -57873,7 +58062,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -59053,7 +59242,7 @@ export namespace Gio {
          * @param errors the problems with @peer_cert
          * @returns %TRUE if one of the signal handlers has returned     %TRUE to accept @peer_cert
          */
-        emit_accept_certificate(peer_cert: TlsCertificate, errors: TlsCertificateFlags): boolean;
+        emit_accept_certificate(peer_cert: TlsCertificate, errors: TlsCertificateFlags | null): boolean;
         /**
          * Gets `conn'`s certificate, as set by
          * g_tls_connection_set_certificate().
@@ -59077,7 +59266,7 @@ export namespace Gio {
          * @param type #GTlsChannelBindingType type of data to fetch
          * @returns %TRUE on success, %FALSE otherwise
          */
-        get_channel_binding_data(type: TlsChannelBindingType): [boolean, Uint8Array | null];
+        get_channel_binding_data(type: TlsChannelBindingType | null): [boolean, Uint8Array | null];
         /**
          * Returns the name of the current TLS ciphersuite, or %NULL if the
          * connection has not handshaked or has been closed. Beware that the TLS
@@ -59299,7 +59488,7 @@ export namespace Gio {
          * rekey operations.
          * @param mode the rehandshaking mode
          */
-        set_rehandshake_mode(mode: TlsRehandshakeMode): void;
+        set_rehandshake_mode(mode: TlsRehandshakeMode | null): void;
         /**
          * Sets whether or not `conn` expects a proper TLS close notification
          * before the connection is closed. If this is %TRUE (the default),
@@ -59679,7 +59868,7 @@ export namespace Gio {
         lookup_certificate_for_handle(
             handle: string,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseLookupFlags,
+            flags: TlsDatabaseLookupFlags | null,
             cancellable?: Cancellable | null,
         ): TlsCertificate | null;
         /**
@@ -59693,7 +59882,7 @@ export namespace Gio {
         lookup_certificate_for_handle_async(
             handle: string,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseLookupFlags,
+            flags: TlsDatabaseLookupFlags | null,
             cancellable?: Cancellable | null,
         ): Promise<TlsCertificate>;
         /**
@@ -59708,7 +59897,7 @@ export namespace Gio {
         lookup_certificate_for_handle_async(
             handle: string,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseLookupFlags,
+            flags: TlsDatabaseLookupFlags | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
         ): void;
@@ -59724,7 +59913,7 @@ export namespace Gio {
         lookup_certificate_for_handle_async(
             handle: string,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseLookupFlags,
+            flags: TlsDatabaseLookupFlags | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<TlsCertificate> | void;
@@ -59768,7 +59957,7 @@ export namespace Gio {
         lookup_certificate_issuer(
             certificate: TlsCertificate,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseLookupFlags,
+            flags: TlsDatabaseLookupFlags | null,
             cancellable?: Cancellable | null,
         ): TlsCertificate;
         /**
@@ -59782,7 +59971,7 @@ export namespace Gio {
         lookup_certificate_issuer_async(
             certificate: TlsCertificate,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseLookupFlags,
+            flags: TlsDatabaseLookupFlags | null,
             cancellable?: Cancellable | null,
         ): Promise<TlsCertificate>;
         /**
@@ -59797,7 +59986,7 @@ export namespace Gio {
         lookup_certificate_issuer_async(
             certificate: TlsCertificate,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseLookupFlags,
+            flags: TlsDatabaseLookupFlags | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
         ): void;
@@ -59813,7 +60002,7 @@ export namespace Gio {
         lookup_certificate_issuer_async(
             certificate: TlsCertificate,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseLookupFlags,
+            flags: TlsDatabaseLookupFlags | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<TlsCertificate> | void;
@@ -59838,7 +60027,7 @@ export namespace Gio {
         lookup_certificates_issued_by(
             issuer_raw_dn: Uint8Array | string,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseLookupFlags,
+            flags: TlsDatabaseLookupFlags | null,
             cancellable?: Cancellable | null,
         ): TlsCertificate[];
         /**
@@ -59856,7 +60045,7 @@ export namespace Gio {
         lookup_certificates_issued_by_async(
             issuer_raw_dn: Uint8Array | string,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseLookupFlags,
+            flags: TlsDatabaseLookupFlags | null,
             cancellable?: Cancellable | null,
         ): Promise<TlsCertificate[]>;
         /**
@@ -59875,7 +60064,7 @@ export namespace Gio {
         lookup_certificates_issued_by_async(
             issuer_raw_dn: Uint8Array | string,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseLookupFlags,
+            flags: TlsDatabaseLookupFlags | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
         ): void;
@@ -59895,7 +60084,7 @@ export namespace Gio {
         lookup_certificates_issued_by_async(
             issuer_raw_dn: Uint8Array | string,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseLookupFlags,
+            flags: TlsDatabaseLookupFlags | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<TlsCertificate[]> | void;
@@ -59980,7 +60169,7 @@ export namespace Gio {
             purpose: string,
             identity: SocketConnectable | null,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseVerifyFlags,
+            flags: TlsDatabaseVerifyFlags | null,
             cancellable?: Cancellable | null,
         ): TlsCertificateFlags;
         /**
@@ -59999,7 +60188,7 @@ export namespace Gio {
             purpose: string,
             identity: SocketConnectable | null,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseVerifyFlags,
+            flags: TlsDatabaseVerifyFlags | null,
             cancellable?: Cancellable | null,
         ): Promise<TlsCertificateFlags>;
         /**
@@ -60019,7 +60208,7 @@ export namespace Gio {
             purpose: string,
             identity: SocketConnectable | null,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseVerifyFlags,
+            flags: TlsDatabaseVerifyFlags | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
         ): void;
@@ -60040,7 +60229,7 @@ export namespace Gio {
             purpose: string,
             identity: SocketConnectable | null,
             interaction: TlsInteraction | null,
-            flags: TlsDatabaseVerifyFlags,
+            flags: TlsDatabaseVerifyFlags | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<TlsCertificateFlags> | void;
@@ -60376,7 +60565,7 @@ export namespace Gio {
          */
         invoke_request_certificate(
             connection: TlsConnection,
-            flags: TlsCertificateRequestFlags,
+            flags: TlsCertificateRequestFlags | null,
             cancellable?: Cancellable | null,
         ): TlsInteractionResult;
         /**
@@ -60403,7 +60592,7 @@ export namespace Gio {
          */
         request_certificate(
             connection: TlsConnection,
-            flags: TlsCertificateRequestFlags,
+            flags: TlsCertificateRequestFlags | null,
             cancellable?: Cancellable | null,
         ): TlsInteractionResult;
         /**
@@ -60421,7 +60610,7 @@ export namespace Gio {
          */
         request_certificate_async(
             connection: TlsConnection,
-            flags: TlsCertificateRequestFlags,
+            flags: TlsCertificateRequestFlags | null,
             cancellable?: Cancellable | null,
         ): Promise<TlsInteractionResult>;
         /**
@@ -60440,7 +60629,7 @@ export namespace Gio {
          */
         request_certificate_async(
             connection: TlsConnection,
-            flags: TlsCertificateRequestFlags,
+            flags: TlsCertificateRequestFlags | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
         ): void;
@@ -60460,7 +60649,7 @@ export namespace Gio {
          */
         request_certificate_async(
             connection: TlsConnection,
-            flags: TlsCertificateRequestFlags,
+            flags: TlsCertificateRequestFlags | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<TlsInteractionResult> | void;
@@ -60591,7 +60780,7 @@ export namespace Gio {
          * Set flags about the password.
          * @param flags The flags about the password
          */
-        set_flags(flags: TlsPasswordFlags): void;
+        set_flags(flags: TlsPasswordFlags | null): void;
         /**
          * Set the value for this password. The `value` will be copied by the password
          * object.
@@ -61335,7 +61524,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -61376,7 +61565,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -62394,6 +62583,54 @@ export namespace Gio {
          * @param result a #GAsyncResult.
          */
         vfunc_skip_finish(result: AsyncResult): number;
+        /**
+         * Creates an asynchronous iterator for a Gio.InputStream that reads the stream in chunks.
+         *
+         * Each iteration will return a GLib.Bytes object containing at most `count` bytes (default 4096). The iterator will end when the stream is exhausted.
+         *
+         * Example:
+         * ```js
+         * import Gio from "gi://Gio";
+         *
+         * const textDecoder = new TextDecoder("utf-8");
+         *
+         * const file = Gio.File.new_for_path("/etc/os-release");
+         * const inputStream = file.read(null);
+         *
+         * for await (const bytes of inputStream.createAsyncIterator(4)) {
+         *   log(textDecoder.decode(bytes.toArray()));
+         * }
+         * ```
+         *
+         * `returns` An async iterator yielding GLib.Bytes objects
+         * @param count Maximum number of bytes to read per chunk (default: 4096)
+         * @param priority I/O priority of the request (default: GLib.PRIORITY_DEFAULT)
+         */
+        createAsyncIterator(count?: number, priority?: number): AsyncIterableIterator<GLib.Bytes>;
+        /**
+         * Creates a synchronous iterator for a Gio.InputStream that reads the stream in chunks.
+         *
+         * Each iteration will return a GLib.Bytes object containing at most `count` bytes (default 4096). The iterator will end when the stream is exhausted.
+         *
+         * Example:
+         * ```js
+         * import Gio from "gi://Gio";
+         *
+         * const textDecoder = new TextDecoder("utf-8");
+         *
+         * const file = Gio.File.new_for_path("/etc/os-release");
+         * const inputStream = file.read(null);
+         *
+         * for (const bytes of inputStream.createSyncIterator(4)) {
+         *   log(textDecoder.decode(bytes.toArray()));
+         * }
+         * ```
+         *
+         * `returns` An iterable yielding GLib.Bytes objects
+         * @param count Maximum number of bytes to read per chunk (default: 4096)
+         * @param priority I/O priority of the request (default: GLib.PRIORITY_DEFAULT)
+         */
+        createSyncIterator(count?: number, priority?: number): IterableIterator<GLib.Bytes>;
     }
 
     module UnixMountMonitor {
@@ -62764,7 +63001,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -62805,7 +63042,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -63317,7 +63554,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns a #gssize containing the size of the data spliced, or     -1 if an error occurred. Note that if the number of bytes     spliced is greater than %G_MAXSSIZE, then that will be     returned, and there is no way to determine the actual number     of bytes spliced.
          */
-        splice(source: InputStream, flags: OutputStreamSpliceFlags, cancellable?: Cancellable | null): number;
+        splice(source: InputStream, flags: OutputStreamSpliceFlags | null, cancellable?: Cancellable | null): number;
         /**
          * Splices a stream asynchronously.
          * When the operation is finished `callback` will be called.
@@ -63333,7 +63570,7 @@ export namespace Gio {
          */
         splice_async(
             source: InputStream,
-            flags: OutputStreamSpliceFlags,
+            flags: OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
         ): Promise<number>;
@@ -63353,7 +63590,7 @@ export namespace Gio {
          */
         splice_async(
             source: InputStream,
-            flags: OutputStreamSpliceFlags,
+            flags: OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -63374,7 +63611,7 @@ export namespace Gio {
          */
         splice_async(
             source: InputStream,
-            flags: OutputStreamSpliceFlags,
+            flags: OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -64508,7 +64745,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -64549,7 +64786,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -65433,7 +65670,7 @@ export namespace Gio {
         convert(
             inbuf: Uint8Array | string,
             outbuf: Uint8Array | string,
-            flags: ConverterFlags,
+            flags: ConverterFlags | null,
         ): [ConverterResult, number, number];
         /**
          * Applies `converter` to the data in `bytes`.
@@ -65589,7 +65826,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -65630,7 +65867,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -66097,7 +66334,7 @@ export namespace Gio {
         convert(
             inbuf: Uint8Array | string,
             outbuf: Uint8Array | string,
-            flags: ConverterFlags,
+            flags: ConverterFlags | null,
         ): [ConverterResult, number, number];
         /**
          * Applies `converter` to the data in `bytes`.
@@ -66253,7 +66490,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -66294,7 +66531,7 @@ export namespace Gio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -67321,7 +67558,7 @@ export namespace Gio {
          * @param type the #GFileAttributeType for the attribute.
          * @param flags #GFileAttributeInfoFlags for the attribute.
          */
-        add(name: string, type: FileAttributeType, flags: FileAttributeInfoFlags): void;
+        add(name: string, type: FileAttributeType | null, flags: FileAttributeInfoFlags | null): void;
         /**
          * Makes a duplicate of a file attribute info list.
          * @returns a copy of the given @list.
@@ -68217,7 +68454,7 @@ export namespace Gio {
          * @param lookup_flags A #GResourceLookupFlags
          * @returns an array of constant strings
          */
-        enumerate_children(path: string, lookup_flags: ResourceLookupFlags): string[];
+        enumerate_children(path: string, lookup_flags: ResourceLookupFlags | null): string[];
         /**
          * Looks for a file at the specified `path` in the resource and
          * if found returns information about it.
@@ -68227,7 +68464,7 @@ export namespace Gio {
          * @param lookup_flags A #GResourceLookupFlags
          * @returns %TRUE if the file was found. %FALSE if there were errors
          */
-        get_info(path: string, lookup_flags: ResourceLookupFlags): [boolean, number, number];
+        get_info(path: string, lookup_flags: ResourceLookupFlags | null): [boolean, number, number];
         /**
          * Looks for a file at the specified `path` in the resource and
          * returns a #GBytes that lets you directly access the data in
@@ -68247,7 +68484,7 @@ export namespace Gio {
          * @param lookup_flags A #GResourceLookupFlags
          * @returns #GBytes or %NULL on error.     Free the returned object with g_bytes_unref()
          */
-        lookup_data(path: string, lookup_flags: ResourceLookupFlags): GLib.Bytes;
+        lookup_data(path: string, lookup_flags: ResourceLookupFlags | null): GLib.Bytes;
         /**
          * Looks for a file at the specified `path` in the resource and
          * returns a #GInputStream that lets you read the data.
@@ -68257,7 +68494,7 @@ export namespace Gio {
          * @param lookup_flags A #GResourceLookupFlags
          * @returns #GInputStream or %NULL on error.     Free the returned object with g_object_unref()
          */
-        open_stream(path: string, lookup_flags: ResourceLookupFlags): InputStream;
+        open_stream(path: string, lookup_flags: ResourceLookupFlags | null): InputStream;
         /**
          * Atomically increments the reference count of `resource` by one. This
          * function is MT-safe and may be called from any thread.
@@ -69434,7 +69671,9 @@ export namespace Gio {
         vfunc_get_state_type(): GLib.VariantType | null;
     }
 
-    export const Action: ActionNamespace;
+    export const Action: ActionNamespace & {
+        new (): Action; // This allows `obj instanceof Action`
+    };
 
     module ActionGroup {
         // Constructor properties interface
@@ -69892,7 +70131,9 @@ export namespace Gio {
         ];
     }
 
-    export const ActionGroup: ActionGroupNamespace;
+    export const ActionGroup: ActionGroupNamespace & {
+        new (): ActionGroup; // This allows `obj instanceof ActionGroup`
+    };
 
     module ActionMap {
         // Constructor properties interface
@@ -70029,7 +70270,9 @@ export namespace Gio {
         vfunc_remove_action(action_name: string): void;
     }
 
-    export const ActionMap: ActionMapNamespace;
+    export const ActionMap: ActionMapNamespace & {
+        new (): ActionMap; // This allows `obj instanceof ActionMap`
+    };
 
     module AppInfo {
         // Constructor properties interface
@@ -70662,7 +70905,9 @@ export namespace Gio {
         vfunc_supports_uris(): boolean;
     }
 
-    export const AppInfo: AppInfoNamespace;
+    export const AppInfo: AppInfoNamespace & {
+        new (): AppInfo; // This allows `obj instanceof AppInfo`
+    };
 
     module AsyncInitable {
         // Constructor properties interface
@@ -70904,7 +71149,9 @@ export namespace Gio {
         vfunc_init_finish(res: AsyncResult): boolean;
     }
 
-    export const AsyncInitable: AsyncInitableNamespace;
+    export const AsyncInitable: AsyncInitableNamespace & {
+        new (): AsyncInitable; // This allows `obj instanceof AsyncInitable`
+    };
 
     module AsyncResult {
         // Constructor properties interface
@@ -70969,7 +71216,9 @@ export namespace Gio {
         vfunc_is_tagged(source_tag?: any | null): boolean;
     }
 
-    export const AsyncResult: AsyncResultNamespace;
+    export const AsyncResult: AsyncResultNamespace & {
+        new (): AsyncResult; // This allows `obj instanceof AsyncResult`
+    };
 
     module Converter {
         // Constructor properties interface
@@ -71075,7 +71324,7 @@ export namespace Gio {
         convert(
             inbuf: Uint8Array | string,
             outbuf: Uint8Array | string,
-            flags: ConverterFlags,
+            flags: ConverterFlags | null,
         ): [ConverterResult, number, number];
         /**
          * Applies `converter` to the data in `bytes`.
@@ -71192,7 +71441,9 @@ export namespace Gio {
         vfunc_reset(): void;
     }
 
-    export const Converter: ConverterNamespace;
+    export const Converter: ConverterNamespace & {
+        new (): Converter; // This allows `obj instanceof Converter`
+    };
 
     module DBusInterface {
         // Constructor properties interface
@@ -71246,7 +71497,9 @@ export namespace Gio {
         vfunc_set_object(object?: DBusObject | null): void;
     }
 
-    export const DBusInterface: DBusInterfaceNamespace;
+    export const DBusInterface: DBusInterfaceNamespace & {
+        new (): DBusInterface; // This allows `obj instanceof DBusInterface`
+    };
 
     module DBusObject {
         // Constructor properties interface
@@ -71307,7 +71560,9 @@ export namespace Gio {
         vfunc_interface_removed(interface_: DBusInterface): void;
     }
 
-    export const DBusObject: DBusObjectNamespace;
+    export const DBusObject: DBusObjectNamespace & {
+        new (): DBusObject; // This allows `obj instanceof DBusObject`
+    };
 
     module DBusObjectManager {
         // Constructor properties interface
@@ -71393,7 +71648,9 @@ export namespace Gio {
         vfunc_object_removed(object: DBusObject): void;
     }
 
-    export const DBusObjectManager: DBusObjectManagerNamespace;
+    export const DBusObjectManager: DBusObjectManagerNamespace & {
+        new (): DBusObjectManager; // This allows `obj instanceof DBusObjectManager`
+    };
 
     module DatagramBased {
         // Constructor properties interface
@@ -71448,7 +71705,7 @@ export namespace Gio {
          * @param condition a #GIOCondition mask to check
          * @returns the #GIOCondition mask of the current state
          */
-        condition_check(condition: GLib.IOCondition): GLib.IOCondition;
+        condition_check(condition: GLib.IOCondition | null): GLib.IOCondition;
         /**
          * Waits for up to `timeout` microseconds for condition to become true on
          * `datagram_based`. If the condition is met, %TRUE is returned.
@@ -71461,7 +71718,7 @@ export namespace Gio {
          * @param cancellable a #GCancellable
          * @returns %TRUE if the condition was met, %FALSE otherwise
          */
-        condition_wait(condition: GLib.IOCondition, timeout: number, cancellable?: Cancellable | null): boolean;
+        condition_wait(condition: GLib.IOCondition | null, timeout: number, cancellable?: Cancellable | null): boolean;
         /**
          * Creates a #GSource that can be attached to a #GMainContext to monitor for
          * the availability of the specified `condition` on the #GDatagramBased. The
@@ -71481,7 +71738,7 @@ export namespace Gio {
          * @param cancellable a #GCancellable
          * @returns a newly allocated #GSource
          */
-        create_source(condition: GLib.IOCondition, cancellable?: Cancellable | null): GLib.Source;
+        create_source(condition: GLib.IOCondition | null, cancellable?: Cancellable | null): GLib.Source;
         /**
          * Receive one or more data messages from `datagram_based` in one go.
          *
@@ -71790,7 +72047,9 @@ export namespace Gio {
         ): number;
     }
 
-    export const DatagramBased: DatagramBasedNamespace;
+    export const DatagramBased: DatagramBasedNamespace & {
+        new (): DatagramBased; // This allows `obj instanceof DatagramBased`
+    };
 
     module DebugController {
         // Constructor properties interface
@@ -71835,7 +72094,9 @@ export namespace Gio {
         set_debug_enabled(debug_enabled: boolean): void;
     }
 
-    export const DebugController: DebugControllerNamespace;
+    export const DebugController: DebugControllerNamespace & {
+        new (): DebugController; // This allows `obj instanceof DebugController`
+    };
 
     module DesktopAppInfoLookup {
         // Constructor properties interface
@@ -71882,7 +72143,9 @@ export namespace Gio {
         vfunc_get_default_for_uri_scheme(uri_scheme: string): AppInfo | null;
     }
 
-    export const DesktopAppInfoLookup: DesktopAppInfoLookupNamespace;
+    export const DesktopAppInfoLookup: DesktopAppInfoLookupNamespace & {
+        new (): DesktopAppInfoLookup; // This allows `obj instanceof DesktopAppInfoLookup`
+    };
 
     module Drive {
         // Constructor properties interface
@@ -71931,7 +72194,7 @@ export namespace Gio {
          * @param flags flags affecting the unmount if required for eject
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        eject(flags: MountUnmountFlags, cancellable?: Cancellable | null): Promise<boolean>;
+        eject(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): Promise<boolean>;
         /**
          * Asynchronously ejects a drive.
          *
@@ -71943,7 +72206,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         eject(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
         ): void;
@@ -71958,7 +72221,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         eject(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -71977,7 +72240,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         eject_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
         ): Promise<boolean>;
@@ -71991,7 +72254,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         eject_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation: MountOperation | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -72006,7 +72269,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         eject_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -72143,7 +72406,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         start(
-            flags: DriveStartFlags,
+            flags: DriveStartFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
         ): Promise<boolean>;
@@ -72159,7 +72422,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         start(
-            flags: DriveStartFlags,
+            flags: DriveStartFlags | null,
             mount_operation: MountOperation | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -72176,7 +72439,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         start(
-            flags: DriveStartFlags,
+            flags: DriveStartFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -72198,7 +72461,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         stop(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
         ): Promise<boolean>;
@@ -72214,7 +72477,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         stop(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation: MountOperation | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -72231,7 +72494,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         stop(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -72446,7 +72709,9 @@ export namespace Gio {
         vfunc_stop_finish(result: AsyncResult): boolean;
     }
 
-    export const Drive: DriveNamespace;
+    export const Drive: DriveNamespace & {
+        new (): Drive; // This allows `obj instanceof Drive`
+    };
 
     module DtlsClientConnection {
         // Constructor properties interface
@@ -72618,10 +72883,12 @@ export namespace Gio {
          * information.
          * @param flags the #GTlsCertificateFlags to use
          */
-        set_validation_flags(flags: TlsCertificateFlags): void;
+        set_validation_flags(flags: TlsCertificateFlags | null): void;
     }
 
-    export const DtlsClientConnection: DtlsClientConnectionNamespace;
+    export const DtlsClientConnection: DtlsClientConnectionNamespace & {
+        new (): DtlsClientConnection; // This allows `obj instanceof DtlsClientConnection`
+    };
 
     module DtlsConnection {
         // Constructor properties interface
@@ -72889,7 +73156,7 @@ export namespace Gio {
          * @param errors the problems with @peer_cert
          * @returns %TRUE if one of the signal handlers has returned     %TRUE to accept @peer_cert
          */
-        emit_accept_certificate(peer_cert: TlsCertificate, errors: TlsCertificateFlags): boolean;
+        emit_accept_certificate(peer_cert: TlsCertificate, errors: TlsCertificateFlags | null): boolean;
         /**
          * Gets `conn'`s certificate, as set by
          * g_dtls_connection_set_certificate().
@@ -72913,7 +73180,7 @@ export namespace Gio {
          * @param type #GTlsChannelBindingType type of data to fetch
          * @returns %TRUE on success, %FALSE otherwise
          */
-        get_channel_binding_data(type: TlsChannelBindingType): [boolean, Uint8Array | null];
+        get_channel_binding_data(type: TlsChannelBindingType | null): [boolean, Uint8Array | null];
         /**
          * Returns the name of the current DTLS ciphersuite, or %NULL if the
          * connection has not handshaked or has been closed. Beware that the TLS
@@ -73122,7 +73389,7 @@ export namespace Gio {
          * rekey operations.
          * @param mode the rehandshaking mode
          */
-        set_rehandshake_mode(mode: TlsRehandshakeMode): void;
+        set_rehandshake_mode(mode: TlsRehandshakeMode | null): void;
         /**
          * Sets whether or not `conn` expects a proper TLS close notification
          * before the connection is closed. If this is %TRUE (the default),
@@ -73361,7 +73628,9 @@ export namespace Gio {
         vfunc_shutdown_finish(result: AsyncResult): boolean;
     }
 
-    export const DtlsConnection: DtlsConnectionNamespace;
+    export const DtlsConnection: DtlsConnectionNamespace & {
+        new (): DtlsConnection; // This allows `obj instanceof DtlsConnection`
+    };
 
     module DtlsServerConnection {
         // Constructor properties interface
@@ -73402,7 +73671,9 @@ export namespace Gio {
         set authenticationMode(val: TlsAuthenticationMode);
     }
 
-    export const DtlsServerConnection: DtlsServerConnectionNamespace;
+    export const DtlsServerConnection: DtlsServerConnectionNamespace & {
+        new (): DtlsServerConnection; // This allows `obj instanceof DtlsServerConnection`
+    };
 
     module File {
         // Constructor properties interface
@@ -73567,7 +73838,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @returns a #GFileOutputStream, or %NULL on error.   Free the returned object with g_object_unref().
          */
-        append_to(flags: FileCreateFlags, cancellable?: Cancellable | null): FileOutputStream;
+        append_to(flags: FileCreateFlags | null, cancellable?: Cancellable | null): FileOutputStream;
         /**
          * Asynchronously opens `file` for appending.
          *
@@ -73582,7 +73853,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         append_to_async(
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
         ): Promise<FileOutputStream>;
@@ -73601,7 +73872,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         append_to_async(
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -73621,7 +73892,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         append_to_async(
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -73647,7 +73918,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @returns an attribute query string for g_file_query_info(),   or %NULL if an error occurs.
          */
-        build_attribute_list_for_copy(flags: FileCopyFlags, cancellable?: Cancellable | null): string;
+        build_attribute_list_for_copy(flags: FileCopyFlags | null, cancellable?: Cancellable | null): string;
         /**
          * Copies the file `source` to the location specified by `destination`.
          * Can not handle recursive copies of directories.
@@ -73697,7 +73968,7 @@ export namespace Gio {
          */
         copy(
             destination: File,
-            flags: FileCopyFlags,
+            flags: FileCopyFlags | null,
             cancellable?: Cancellable | null,
             progress_callback?: FileProgressCallback | null,
         ): boolean;
@@ -73720,7 +73991,7 @@ export namespace Gio {
          */
         copy_async(
             destination: File,
-            flags: FileCopyFlags,
+            flags: FileCopyFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             progress_callback?: FileProgressCallback | null,
@@ -73745,7 +74016,7 @@ export namespace Gio {
          */
         copy_async(
             destination: File,
-            flags: FileCopyFlags,
+            flags: FileCopyFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             progress_callback: FileProgressCallback | null,
@@ -73771,7 +74042,7 @@ export namespace Gio {
          */
         copy_async(
             destination: File,
-            flags: FileCopyFlags,
+            flags: FileCopyFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             progress_callback?: FileProgressCallback | null,
@@ -73789,7 +74060,7 @@ export namespace Gio {
          */
         copy_async(
             destination: File,
-            flags: FileCopyFlags,
+            flags: FileCopyFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             progress_callback_closure: GObject.Closure | null,
@@ -73809,7 +74080,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @returns %TRUE if the attributes were copied successfully,   %FALSE otherwise.
          */
-        copy_attributes(destination: File, flags: FileCopyFlags, cancellable?: Cancellable | null): boolean;
+        copy_attributes(destination: File, flags: FileCopyFlags | null, cancellable?: Cancellable | null): boolean;
         /**
          * Finishes copying the file started with g_file_copy_async().
          * @param res a #GAsyncResult
@@ -73840,7 +74111,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @returns a #GFileOutputStream for the newly created   file, or %NULL on error.   Free the returned object with g_object_unref().
          */
-        create(flags: FileCreateFlags, cancellable?: Cancellable | null): FileOutputStream;
+        create(flags: FileCreateFlags | null, cancellable?: Cancellable | null): FileOutputStream;
         /**
          * Asynchronously creates a new file and returns an output stream
          * for writing to it. The file must not already exist.
@@ -73856,7 +74127,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         create_async(
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
         ): Promise<FileOutputStream>;
@@ -73876,7 +74147,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         create_async(
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -73897,7 +74168,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         create_async(
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -73937,7 +74208,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @returns a #GFileIOStream for the newly created   file, or %NULL on error.   Free the returned object with g_object_unref().
          */
-        create_readwrite(flags: FileCreateFlags, cancellable?: Cancellable | null): FileIOStream;
+        create_readwrite(flags: FileCreateFlags | null, cancellable?: Cancellable | null): FileIOStream;
         /**
          * Asynchronously creates a new file and returns a stream
          * for reading and writing to it. The file must not already exist.
@@ -73953,7 +74224,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         create_readwrite_async(
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
         ): Promise<FileIOStream>;
@@ -73973,7 +74244,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         create_readwrite_async(
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -73994,7 +74265,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         create_readwrite_async(
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -74100,7 +74371,7 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
-        eject_mountable(flags: MountUnmountFlags, cancellable?: Cancellable | null): Promise<boolean>;
+        eject_mountable(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): Promise<boolean>;
         /**
          * Starts an asynchronous eject on a mountable.
          * When this operation has completed, `callback` will be called with
@@ -74115,7 +74386,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         eject_mountable(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
         ): void;
@@ -74133,7 +74404,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         eject_mountable(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -74158,7 +74429,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         eject_mountable_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
         ): Promise<boolean>;
@@ -74177,7 +74448,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         eject_mountable_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation: MountOperation | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -74197,7 +74468,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         eject_mountable_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -74242,7 +74513,7 @@ export namespace Gio {
          */
         enumerate_children(
             attributes: string,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             cancellable?: Cancellable | null,
         ): FileEnumerator;
         /**
@@ -74263,7 +74534,7 @@ export namespace Gio {
          */
         enumerate_children_async(
             attributes: string,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
         ): Promise<FileEnumerator>;
@@ -74286,7 +74557,7 @@ export namespace Gio {
          */
         enumerate_children_async(
             attributes: string,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -74310,7 +74581,7 @@ export namespace Gio {
          */
         enumerate_children_async(
             attributes: string,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -74894,7 +75165,7 @@ export namespace Gio {
          * @returns %TRUE if successful, with the out parameters set.   %FALSE otherwise, with @error set.
          */
         measure_disk_usage(
-            flags: FileMeasureFlags,
+            flags: FileMeasureFlags | null,
             cancellable: Cancellable | null,
             progress_callback: FileMeasureProgressCallback | null,
         ): [boolean, number, number, number];
@@ -74917,7 +75188,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @returns a #GFileMonitor for the given @file,   or %NULL on error.   Free the returned object with g_object_unref().
          */
-        monitor(flags: FileMonitorFlags, cancellable?: Cancellable | null): FileMonitor;
+        monitor(flags: FileMonitorFlags | null, cancellable?: Cancellable | null): FileMonitor;
         /**
          * Obtains a directory monitor for the given file.
          * This may fail if directory monitoring is not supported.
@@ -74935,7 +75206,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @returns a #GFileMonitor for the given @file,   or %NULL on error. Free the returned object with g_object_unref().
          */
-        monitor_directory(flags: FileMonitorFlags, cancellable?: Cancellable | null): FileMonitor;
+        monitor_directory(flags: FileMonitorFlags | null, cancellable?: Cancellable | null): FileMonitor;
         /**
          * Obtains a file monitor for the given file. If no file notification
          * mechanism exists, then regular polling of the file is used.
@@ -74955,7 +75226,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @returns a #GFileMonitor for the given @file,   or %NULL on error.   Free the returned object with g_object_unref().
          */
-        monitor_file(flags: FileMonitorFlags, cancellable?: Cancellable | null): FileMonitor;
+        monitor_file(flags: FileMonitorFlags | null, cancellable?: Cancellable | null): FileMonitor;
         /**
          * Starts a `mount_operation,` mounting the volume that contains
          * the file `location`.
@@ -74972,7 +75243,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         mount_enclosing_volume(
-            flags: MountMountFlags,
+            flags: MountMountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
         ): Promise<boolean>;
@@ -74993,7 +75264,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         mount_enclosing_volume(
-            flags: MountMountFlags,
+            flags: MountMountFlags | null,
             mount_operation: MountOperation | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -75015,7 +75286,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         mount_enclosing_volume(
-            flags: MountMountFlags,
+            flags: MountMountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -75043,7 +75314,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         mount_mountable(
-            flags: MountMountFlags,
+            flags: MountMountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
         ): Promise<File>;
@@ -75065,7 +75336,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         mount_mountable(
-            flags: MountMountFlags,
+            flags: MountMountFlags | null,
             mount_operation: MountOperation | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -75088,7 +75359,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         mount_mountable(
-            flags: MountMountFlags,
+            flags: MountMountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -75144,7 +75415,7 @@ export namespace Gio {
          */
         move(
             destination: File,
-            flags: FileCopyFlags,
+            flags: FileCopyFlags | null,
             cancellable?: Cancellable | null,
             progress_callback?: FileProgressCallback | null,
         ): boolean;
@@ -75166,7 +75437,7 @@ export namespace Gio {
          */
         move_async(
             destination: File,
-            flags: FileCopyFlags,
+            flags: FileCopyFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             progress_callback?: FileProgressCallback | null,
@@ -75190,7 +75461,7 @@ export namespace Gio {
          */
         move_async(
             destination: File,
-            flags: FileCopyFlags,
+            flags: FileCopyFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             progress_callback: FileProgressCallback | null,
@@ -75215,7 +75486,7 @@ export namespace Gio {
          */
         move_async(
             destination: File,
-            flags: FileCopyFlags,
+            flags: FileCopyFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             progress_callback?: FileProgressCallback | null,
@@ -75233,7 +75504,7 @@ export namespace Gio {
          */
         move_async(
             destination: File,
-            flags: FileCopyFlags,
+            flags: FileCopyFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             progress_callback_closure: GObject.Closure | null,
@@ -75469,7 +75740,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @returns The #GFileType of the file and %G_FILE_TYPE_UNKNOWN   if the file does not exist
          */
-        query_file_type(flags: FileQueryInfoFlags, cancellable?: Cancellable | null): FileType;
+        query_file_type(flags: FileQueryInfoFlags | null, cancellable?: Cancellable | null): FileType;
         /**
          * Similar to g_file_query_info(), but obtains information
          * about the filesystem the `file` is on, rather than the file itself.
@@ -75611,7 +75882,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @returns a #GFileInfo for the given @file, or %NULL   on error. Free the returned object with g_object_unref().
          */
-        query_info(attributes: string, flags: FileQueryInfoFlags, cancellable?: Cancellable | null): FileInfo;
+        query_info(attributes: string, flags: FileQueryInfoFlags | null, cancellable?: Cancellable | null): FileInfo;
         /**
          * Asynchronously gets the requested information about specified `file`.
          * The result is a #GFileInfo object that contains key-value attributes
@@ -75629,7 +75900,7 @@ export namespace Gio {
          */
         query_info_async(
             attributes: string,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
         ): Promise<FileInfo>;
@@ -75651,7 +75922,7 @@ export namespace Gio {
          */
         query_info_async(
             attributes: string,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -75674,7 +75945,7 @@ export namespace Gio {
          */
         query_info_async(
             attributes: string,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -75836,7 +76107,7 @@ export namespace Gio {
         replace(
             etag: string | null,
             make_backup: boolean,
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             cancellable?: Cancellable | null,
         ): FileOutputStream;
         /**
@@ -75858,7 +76129,7 @@ export namespace Gio {
         replace_async(
             etag: string | null,
             make_backup: boolean,
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
         ): Promise<FileOutputStream>;
@@ -75882,7 +76153,7 @@ export namespace Gio {
         replace_async(
             etag: string | null,
             make_backup: boolean,
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -75907,7 +76178,7 @@ export namespace Gio {
         replace_async(
             etag: string | null,
             make_backup: boolean,
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -75940,7 +76211,7 @@ export namespace Gio {
             contents: Uint8Array | string,
             etag: string | null,
             make_backup: boolean,
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             cancellable?: Cancellable | null,
         ): [boolean, string];
         /**
@@ -75973,7 +76244,7 @@ export namespace Gio {
             contents: Uint8Array | string,
             etag: string | null,
             make_backup: boolean,
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             cancellable?: Cancellable | null,
         ): Promise<string>;
         /**
@@ -76007,7 +76278,7 @@ export namespace Gio {
             contents: Uint8Array | string,
             etag: string | null,
             make_backup: boolean,
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
         ): void;
@@ -76042,7 +76313,7 @@ export namespace Gio {
             contents: Uint8Array | string,
             etag: string | null,
             make_backup: boolean,
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<string> | void;
@@ -76066,7 +76337,7 @@ export namespace Gio {
             contents: GLib.Bytes | Uint8Array,
             etag: string | null,
             make_backup: boolean,
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
         ): void;
@@ -76105,7 +76376,7 @@ export namespace Gio {
         replace_readwrite(
             etag: string | null,
             make_backup: boolean,
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             cancellable?: Cancellable | null,
         ): FileIOStream;
         /**
@@ -76128,7 +76399,7 @@ export namespace Gio {
         replace_readwrite_async(
             etag: string | null,
             make_backup: boolean,
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
         ): Promise<FileIOStream>;
@@ -76153,7 +76424,7 @@ export namespace Gio {
         replace_readwrite_async(
             etag: string | null,
             make_backup: boolean,
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -76179,7 +76450,7 @@ export namespace Gio {
         replace_readwrite_async(
             etag: string | null,
             make_backup: boolean,
-            flags: FileCreateFlags,
+            flags: FileCreateFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -76220,9 +76491,9 @@ export namespace Gio {
          */
         set_attribute(
             attribute: string,
-            type: FileAttributeType,
+            type: FileAttributeType | null,
             value_p: any | null,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             cancellable?: Cancellable | null,
         ): boolean;
         /**
@@ -76242,7 +76513,7 @@ export namespace Gio {
         set_attribute_byte_string(
             attribute: string,
             value: string,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             cancellable?: Cancellable | null,
         ): boolean;
         /**
@@ -76261,7 +76532,7 @@ export namespace Gio {
         set_attribute_int32(
             attribute: string,
             value: number,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             cancellable?: Cancellable | null,
         ): boolean;
         /**
@@ -76280,7 +76551,7 @@ export namespace Gio {
         set_attribute_int64(
             attribute: string,
             value: number,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             cancellable?: Cancellable | null,
         ): boolean;
         /**
@@ -76299,7 +76570,7 @@ export namespace Gio {
         set_attribute_string(
             attribute: string,
             value: string,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             cancellable?: Cancellable | null,
         ): boolean;
         /**
@@ -76318,7 +76589,7 @@ export namespace Gio {
         set_attribute_uint32(
             attribute: string,
             value: number,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             cancellable?: Cancellable | null,
         ): boolean;
         /**
@@ -76337,7 +76608,7 @@ export namespace Gio {
         set_attribute_uint64(
             attribute: string,
             value: number,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             cancellable?: Cancellable | null,
         ): boolean;
         /**
@@ -76356,7 +76627,7 @@ export namespace Gio {
          */
         set_attributes_async(
             info: FileInfo,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
         ): Promise<FileInfo>;
@@ -76377,7 +76648,7 @@ export namespace Gio {
          */
         set_attributes_async(
             info: FileInfo,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             io_priority: number,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -76399,7 +76670,7 @@ export namespace Gio {
          */
         set_attributes_async(
             info: FileInfo,
-            flags: FileQueryInfoFlags,
+            flags: FileQueryInfoFlags | null,
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -76428,7 +76699,11 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @returns %FALSE if there was any error, %TRUE otherwise.
          */
-        set_attributes_from_info(info: FileInfo, flags: FileQueryInfoFlags, cancellable?: Cancellable | null): boolean;
+        set_attributes_from_info(
+            info: FileInfo,
+            flags: FileQueryInfoFlags | null,
+            cancellable?: Cancellable | null,
+        ): boolean;
         /**
          * Renames `file` to the specified display name.
          *
@@ -76532,7 +76807,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         start_mountable(
-            flags: DriveStartFlags,
+            flags: DriveStartFlags | null,
             start_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
         ): Promise<boolean>;
@@ -76554,7 +76829,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied, or %NULL
          */
         start_mountable(
-            flags: DriveStartFlags,
+            flags: DriveStartFlags | null,
             start_operation: MountOperation | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -76577,7 +76852,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied, or %NULL
          */
         start_mountable(
-            flags: DriveStartFlags,
+            flags: DriveStartFlags | null,
             start_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -76606,7 +76881,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         stop_mountable(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
         ): Promise<boolean>;
@@ -76626,7 +76901,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         stop_mountable(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation: MountOperation | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -76647,7 +76922,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
          */
         stop_mountable(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -76735,7 +77010,7 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
-        unmount_mountable(flags: MountUnmountFlags, cancellable?: Cancellable | null): Promise<boolean>;
+        unmount_mountable(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): Promise<boolean>;
         /**
          * Unmounts a file of type G_FILE_TYPE_MOUNTABLE.
          *
@@ -76751,7 +77026,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         unmount_mountable(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
         ): void;
@@ -76770,7 +77045,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         unmount_mountable(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -76798,7 +77073,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         unmount_mountable_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
         ): Promise<boolean>;
@@ -76818,7 +77093,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         unmount_mountable_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation: MountOperation | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -76839,7 +77114,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
         unmount_mountable_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -78400,7 +78675,9 @@ export namespace Gio {
         vfunc_unmount_mountable_with_operation_finish(result: AsyncResult): boolean;
     }
 
-    export const File: FileNamespace;
+    export const File: FileNamespace & {
+        new (): File; // This allows `obj instanceof File`
+    };
 
     module FileDescriptorBased {
         // Constructor properties interface
@@ -78429,7 +78706,9 @@ export namespace Gio {
         vfunc_get_fd(): number;
     }
 
-    export const FileDescriptorBased: FileDescriptorBasedNamespace;
+    export const FileDescriptorBased: FileDescriptorBasedNamespace & {
+        new (): FileDescriptorBased; // This allows `obj instanceof FileDescriptorBased`
+    };
 
     module Icon {
         // Constructor properties interface
@@ -78527,7 +78806,9 @@ export namespace Gio {
         vfunc_to_tokens(): [boolean, string[], number];
     }
 
-    export const Icon: IconNamespace;
+    export const Icon: IconNamespace & {
+        new (): Icon; // This allows `obj instanceof Icon`
+    };
 
     module Initable {
         // Constructor properties interface
@@ -78647,7 +78928,9 @@ export namespace Gio {
         vfunc_init(cancellable?: Cancellable | null): boolean;
     }
 
-    export const Initable: InitableNamespace;
+    export const Initable: InitableNamespace & {
+        new (): Initable; // This allows `obj instanceof Initable`
+    };
 
     module ListModel {
         // Constructor properties interface
@@ -78761,7 +79044,9 @@ export namespace Gio {
         vfunc_get_n_items(): number;
     }
 
-    export const ListModel: ListModelNamespace;
+    export const ListModel: ListModelNamespace & {
+        new (): ListModel; // This allows `obj instanceof ListModel`
+    };
 
     module LoadableIcon {
         // Constructor properties interface
@@ -78850,7 +79135,9 @@ export namespace Gio {
         vfunc_load_finish(res: AsyncResult): [InputStream, string];
     }
 
-    export const LoadableIcon: LoadableIconNamespace;
+    export const LoadableIcon: LoadableIconNamespace & {
+        new (): LoadableIcon; // This allows `obj instanceof LoadableIcon`
+    };
 
     module MemoryMonitor {
         // Constructor properties interface
@@ -78878,7 +79165,9 @@ export namespace Gio {
         vfunc_low_memory_warning(level: MemoryMonitorWarningLevel): void;
     }
 
-    export const MemoryMonitor: MemoryMonitorNamespace;
+    export const MemoryMonitor: MemoryMonitorNamespace & {
+        new (): MemoryMonitor; // This allows `obj instanceof MemoryMonitor`
+    };
 
     module Mount {
         // Constructor properties interface
@@ -78910,7 +79199,7 @@ export namespace Gio {
          * @param flags flags affecting the unmount if required for eject
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        eject(flags: MountUnmountFlags, cancellable?: Cancellable | null): Promise<boolean>;
+        eject(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): Promise<boolean>;
         /**
          * Ejects a mount. This is an asynchronous operation, and is
          * finished by calling g_mount_eject_finish() with the `mount`
@@ -78920,7 +79209,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         eject(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
         ): void;
@@ -78933,7 +79222,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         eject(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -78953,7 +79242,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         eject_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
         ): Promise<boolean>;
@@ -78967,7 +79256,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         eject_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation: MountOperation | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -78982,7 +79271,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         eject_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -79172,7 +79461,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         remount(
-            flags: MountMountFlags,
+            flags: MountMountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
         ): Promise<boolean>;
@@ -79192,7 +79481,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         remount(
-            flags: MountMountFlags,
+            flags: MountMountFlags | null,
             mount_operation: MountOperation | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -79213,7 +79502,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         remount(
-            flags: MountMountFlags,
+            flags: MountMountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -79239,7 +79528,7 @@ export namespace Gio {
          * @param flags flags affecting the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
-        unmount(flags: MountUnmountFlags, cancellable?: Cancellable | null): Promise<boolean>;
+        unmount(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): Promise<boolean>;
         /**
          * Unmounts a mount. This is an asynchronous operation, and is
          * finished by calling g_mount_unmount_finish() with the `mount`
@@ -79249,7 +79538,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         unmount(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
         ): void;
@@ -79262,7 +79551,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         unmount(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -79282,7 +79571,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         unmount_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
         ): Promise<boolean>;
@@ -79296,7 +79585,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         unmount_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation: MountOperation | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -79311,7 +79600,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL.
          */
         unmount_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -79550,7 +79839,9 @@ export namespace Gio {
         vfunc_unmounted(): void;
     }
 
-    export const Mount: MountNamespace;
+    export const Mount: MountNamespace & {
+        new (): Mount; // This allows `obj instanceof Mount`
+    };
 
     module NetworkMonitor {
         // Constructor properties interface
@@ -79850,7 +80141,9 @@ export namespace Gio {
         vfunc_network_changed(network_available: boolean): void;
     }
 
-    export const NetworkMonitor: NetworkMonitorNamespace;
+    export const NetworkMonitor: NetworkMonitorNamespace & {
+        new (): NetworkMonitor; // This allows `obj instanceof NetworkMonitor`
+    };
 
     module PollableInputStream {
         // Constructor properties interface
@@ -79987,7 +80280,9 @@ export namespace Gio {
         vfunc_read_nonblocking(): [number, Uint8Array | null];
     }
 
-    export const PollableInputStream: PollableInputStreamNamespace;
+    export const PollableInputStream: PollableInputStreamNamespace & {
+        new (): PollableInputStream; // This allows `obj instanceof PollableInputStream`
+    };
 
     module PollableOutputStream {
         // Constructor properties interface
@@ -80182,7 +80477,9 @@ export namespace Gio {
         vfunc_writev_nonblocking(vectors: OutputVector[]): [PollableReturn, number];
     }
 
-    export const PollableOutputStream: PollableOutputStreamNamespace;
+    export const PollableOutputStream: PollableOutputStreamNamespace & {
+        new (): PollableOutputStream; // This allows `obj instanceof PollableOutputStream`
+    };
 
     module PowerProfileMonitor {
         // Constructor properties interface
@@ -80227,7 +80524,9 @@ export namespace Gio {
         get_power_saver_enabled(): boolean;
     }
 
-    export const PowerProfileMonitor: PowerProfileMonitorNamespace;
+    export const PowerProfileMonitor: PowerProfileMonitorNamespace & {
+        new (): PowerProfileMonitor; // This allows `obj instanceof PowerProfileMonitor`
+    };
 
     module Proxy {
         // Constructor properties interface
@@ -80358,7 +80657,9 @@ export namespace Gio {
         vfunc_supports_hostname(): boolean;
     }
 
-    export const Proxy: ProxyNamespace;
+    export const Proxy: ProxyNamespace & {
+        new (): Proxy; // This allows `obj instanceof Proxy`
+    };
 
     module ProxyResolver {
         // Constructor properties interface
@@ -80491,7 +80792,9 @@ export namespace Gio {
         vfunc_lookup_finish(result: AsyncResult): string[];
     }
 
-    export const ProxyResolver: ProxyResolverNamespace;
+    export const ProxyResolver: ProxyResolverNamespace & {
+        new (): ProxyResolver; // This allows `obj instanceof ProxyResolver`
+    };
 
     module RemoteActionGroup {
         // Constructor properties interface
@@ -80575,7 +80878,9 @@ export namespace Gio {
         vfunc_change_action_state_full(action_name: string, value: GLib.Variant, platform_data: GLib.Variant): void;
     }
 
-    export const RemoteActionGroup: RemoteActionGroupNamespace;
+    export const RemoteActionGroup: RemoteActionGroupNamespace & {
+        new (): RemoteActionGroup; // This allows `obj instanceof RemoteActionGroup`
+    };
 
     module Seekable {
         // Constructor properties interface
@@ -80621,7 +80926,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -80694,7 +80999,9 @@ export namespace Gio {
         vfunc_truncate_fn(offset: number, cancellable?: Cancellable | null): boolean;
     }
 
-    export const Seekable: SeekableNamespace;
+    export const Seekable: SeekableNamespace & {
+        new (): Seekable; // This allows `obj instanceof Seekable`
+    };
 
     module SocketConnectable {
         // Constructor properties interface
@@ -80765,7 +81072,9 @@ export namespace Gio {
         vfunc_to_string(): string;
     }
 
-    export const SocketConnectable: SocketConnectableNamespace;
+    export const SocketConnectable: SocketConnectableNamespace & {
+        new (): SocketConnectable; // This allows `obj instanceof SocketConnectable`
+    };
 
     module TlsBackend {
         // Constructor properties interface
@@ -80863,7 +81172,9 @@ export namespace Gio {
         vfunc_supports_tls(): boolean;
     }
 
-    export const TlsBackend: TlsBackendNamespace;
+    export const TlsBackend: TlsBackendNamespace & {
+        new (): TlsBackend; // This allows `obj instanceof TlsBackend`
+    };
 
     module TlsClientConnection {
         // Constructor properties interface
@@ -81106,7 +81417,7 @@ export namespace Gio {
          * information.
          * @param flags the #GTlsCertificateFlags to use
          */
-        set_validation_flags(flags: TlsCertificateFlags): void;
+        set_validation_flags(flags: TlsCertificateFlags | null): void;
 
         // Virtual methods
 
@@ -81144,7 +81455,9 @@ export namespace Gio {
         vfunc_copy_session_state(source: TlsClientConnection): void;
     }
 
-    export const TlsClientConnection: TlsClientConnectionNamespace;
+    export const TlsClientConnection: TlsClientConnectionNamespace & {
+        new (): TlsClientConnection; // This allows `obj instanceof TlsClientConnection`
+    };
 
     module TlsFileDatabase {
         // Constructor properties interface
@@ -81180,7 +81493,9 @@ export namespace Gio {
         set anchors(val: string);
     }
 
-    export const TlsFileDatabase: TlsFileDatabaseNamespace;
+    export const TlsFileDatabase: TlsFileDatabaseNamespace & {
+        new (): TlsFileDatabase; // This allows `obj instanceof TlsFileDatabase`
+    };
 
     module TlsServerConnection {
         // Constructor properties interface
@@ -81226,7 +81541,9 @@ export namespace Gio {
         set authenticationMode(val: TlsAuthenticationMode);
     }
 
-    export const TlsServerConnection: TlsServerConnectionNamespace;
+    export const TlsServerConnection: TlsServerConnectionNamespace & {
+        new (): TlsServerConnection; // This allows `obj instanceof TlsServerConnection`
+    };
 
     module Volume {
         // Constructor properties interface
@@ -81258,7 +81575,7 @@ export namespace Gio {
          * @param flags flags affecting the unmount if required for eject
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
-        eject(flags: MountUnmountFlags, cancellable?: Cancellable | null): Promise<boolean>;
+        eject(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): Promise<boolean>;
         /**
          * Ejects a volume. This is an asynchronous operation, and is
          * finished by calling g_volume_eject_finish() with the `volume`
@@ -81268,7 +81585,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL
          */
         eject(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
         ): void;
@@ -81281,7 +81598,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL
          */
         eject(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -81301,7 +81618,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         eject_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
         ): Promise<boolean>;
@@ -81315,7 +81632,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL
          */
         eject_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation: MountOperation | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -81330,7 +81647,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL
          */
         eject_with_operation(
-            flags: MountUnmountFlags,
+            flags: MountUnmountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -81437,7 +81754,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         mount(
-            flags: MountMountFlags,
+            flags: MountMountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
         ): Promise<boolean>;
@@ -81451,7 +81768,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL
          */
         mount(
-            flags: MountMountFlags,
+            flags: MountMountFlags | null,
             mount_operation: MountOperation | null,
             cancellable: Cancellable | null,
             callback: AsyncReadyCallback<this> | null,
@@ -81466,7 +81783,7 @@ export namespace Gio {
          * @param callback a #GAsyncReadyCallback, or %NULL
          */
         mount(
-            flags: MountMountFlags,
+            flags: MountMountFlags | null,
             mount_operation?: MountOperation | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<this> | null,
@@ -81655,7 +81972,9 @@ export namespace Gio {
         vfunc_should_automount(): boolean;
     }
 
-    export const Volume: VolumeNamespace;
+    export const Volume: VolumeNamespace & {
+        new (): Volume; // This allows `obj instanceof Volume`
+    };
 
     export interface DBusNamespace {
         prototype: DBus;
@@ -81673,7 +81992,11 @@ export namespace Gio {
          * @param cancellable a #GCancellable or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        get(bus_type: BusType, cancellable?: Cancellable | null, callback?: AsyncReadyCallback<BusType> | null): void;
+        get(
+            bus_type: BusType | null,
+            cancellable?: Cancellable | null,
+            callback?: AsyncReadyCallback<BusType | null> | null,
+        ): void;
         /**
          * Finishes an operation started with g_bus_get().
          *
@@ -81712,7 +82035,7 @@ export namespace Gio {
          * @param bus_type a #GBusType
          * @param cancellable a #GCancellable or %NULL
          */
-        get_sync(bus_type: BusType, cancellable?: Cancellable | null): DBusConnection;
+        get_sync(bus_type: BusType | null, cancellable?: Cancellable | null): DBusConnection;
         /**
          * Version of g_bus_own_name() using closures instead of callbacks for
          * easier binding in other languages.
@@ -81724,9 +82047,9 @@ export namespace Gio {
          * @param name_lost_closure #GClosure to invoke when @name is lost or     %NULL
          */
         own_name(
-            bus_type: BusType,
+            bus_type: BusType | null,
             name: string,
-            flags: BusNameOwnerFlags,
+            flags: BusNameOwnerFlags | null,
             bus_acquired_closure?: GObject.Closure | null,
             name_acquired_closure?: GObject.Closure | null,
             name_lost_closure?: GObject.Closure | null,
@@ -81743,7 +82066,7 @@ export namespace Gio {
         own_name_on_connection(
             connection: DBusConnection,
             name: string,
-            flags: BusNameOwnerFlags,
+            flags: BusNameOwnerFlags | null,
             name_acquired_closure?: GObject.Closure | null,
             name_lost_closure?: GObject.Closure | null,
         ): number;
@@ -81769,9 +82092,9 @@ export namespace Gio {
          * @param name_vanished_closure #GClosure to invoke when @name is known to not exist or %NULL.
          */
         watch_name(
-            bus_type: BusType,
+            bus_type: BusType | null,
             name: string,
-            flags: BusNameWatcherFlags,
+            flags: BusNameWatcherFlags | null,
             name_appeared_closure?: GObject.Closure | null,
             name_vanished_closure?: GObject.Closure | null,
         ): number;
@@ -81799,14 +82122,16 @@ export namespace Gio {
         watch_name_on_connection(
             connection: DBusConnection,
             name: string,
-            flags: BusNameWatcherFlags,
+            flags: BusNameWatcherFlags | null,
             name_appeared_closure?: GObject.Closure | null,
             name_vanished_closure?: GObject.Closure | null,
         ): number;
     }
     interface DBus {}
 
-    export const DBus: DBusNamespace;
+    export const DBus: DBusNamespace & {
+        new (): DBus; // This allows `obj instanceof DBus`
+    };
 
     class DBusExportedObject {
         static $gtype: GObject.GType<DBusExportedObject>;

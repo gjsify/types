@@ -685,14 +685,14 @@ export namespace Libosinfo {
          * @param relshp the product relationship
          * @returns a list of operating systems
          */
-        unique_values_for_os_relationship(relshp: ProductRelationship): OsList;
+        unique_values_for_os_relationship(relshp: ProductRelationship | null): OsList;
         /**
          * Get all platforms that are the referee
          * in an platform relationship.
          * @param relshp the product relationship
          * @returns a list of virtualization platforms
          */
-        unique_values_for_platform_relationship(relshp: ProductRelationship): PlatformList;
+        unique_values_for_platform_relationship(relshp: ProductRelationship | null): PlatformList;
         /**
          * Get all unique values for a named property amongst all
          * deployments in the database
@@ -2451,7 +2451,7 @@ export namespace Libosinfo {
          * Set the installation source to be used with the `script`.
          * @param source one of the installation sources: OSINFO_INSTALL_SCRIPT_INSTALLATION_SOURCE_MEDIA, OSINFO_INSTALL_SCRIPT_INSTALLATION_SOURCE_NETWORK
          */
-        set_installation_source(source: InstallScriptInstallationSource): void;
+        set_installation_source(source: InstallScriptInstallationSource | null): void;
         /**
          * Mind that not all installers support any name for the installer scripts.
          * @param prefix a prefix to be added to the file generated
@@ -2461,7 +2461,7 @@ export namespace Libosinfo {
          * Set the preferred injection method to be used with the `script`
          * @param method one of the injection methods: OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_CDROM, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_DISK, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_FLOPPY, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_INITRD, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_WEB
          */
-        set_preferred_injection_method(method: InstallScriptInjectionMethod): void;
+        set_preferred_injection_method(method: InstallScriptInjectionMethod | null): void;
     }
 
     module InstallScriptList {
@@ -3686,7 +3686,7 @@ export namespace Libosinfo {
          * @param relshp the relationship
          * @param otherproduct the product to relate to
          */
-        add_related(relshp: ProductRelationship, otherproduct: Product): void;
+        add_related(relshp: ProductRelationship | null, otherproduct: Product): void;
         get_codename(): string;
         get_eol_date(): GLib.Date;
         get_eol_date_string(): string;
@@ -3698,7 +3698,7 @@ export namespace Libosinfo {
          * @param relshp the relationship to query
          * @returns a list of related products
          */
-        get_related(relshp: ProductRelationship): ProductList;
+        get_related(relshp: ProductRelationship | null): ProductList;
         get_release_date(): GLib.Date;
         get_release_date_string(): string;
         get_short_id(): string;
@@ -3738,13 +3738,13 @@ export namespace Libosinfo {
          * @param relshp the relationship to filter on
          * @param product the target product to filter on
          */
-        add_product_constraint(relshp: ProductRelationship, product: Product): number;
+        add_product_constraint(relshp: ProductRelationship | null, product: Product): number;
         add_support_date_constraint(when: GLib.Date): void;
         /**
          * Remove all constraints for the relationship `relshp`
          * @param relshp the relationship to clear
          */
-        clear_product_constraint(relshp: ProductRelationship): void;
+        clear_product_constraint(relshp: ProductRelationship | null): void;
         /**
          * Remove all relationship constraints
          */
@@ -3756,7 +3756,7 @@ export namespace Libosinfo {
          * @param relshp a relationship to query
          * @returns a list of operating systems
          */
-        get_product_constraint_values(relshp: ProductRelationship): Product[];
+        get_product_constraint_values(relshp: ProductRelationship | null): Product[];
     }
 
     module ProductList {

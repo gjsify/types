@@ -662,7 +662,7 @@ export namespace GMime {
      * @param encoding a #GMimeContentEncoding
      * @returns the encoding type as a string or %NULL on error. Available values for the encoding are: #GMIME_CONTENT_ENCODING_DEFAULT, #GMIME_CONTENT_ENCODING_7BIT, #GMIME_CONTENT_ENCODING_8BIT, #GMIME_CONTENT_ENCODING_BINARY, #GMIME_CONTENT_ENCODING_BASE64, #GMIME_CONTENT_ENCODING_QUOTEDPRINTABLE and #GMIME_CONTENT_ENCODING_UUENCODE.
      */
-    function content_encoding_to_string(encoding: ContentEncoding): string;
+    function content_encoding_to_string(encoding: ContentEncoding | null): string;
     /**
      * Decodes a chunk of base64 encoded data.
      * @param inbuf input buffer
@@ -1279,7 +1279,7 @@ export namespace GMime {
          * Set the digest algorithm used by the certificate.
          * @param algo a #GMimeDigestAlgo
          */
-        set_digest_algo(algo: DigestAlgo): void;
+        set_digest_algo(algo: DigestAlgo | null): void;
         /**
          * Set the certificate's email.
          * @param email certificate's email
@@ -1319,12 +1319,12 @@ export namespace GMime {
          * Set the public-key algorithm used by the certificate.
          * @param algo a #GMimePubKeyAlgo
          */
-        set_pubkey_algo(algo: PubKeyAlgo): void;
+        set_pubkey_algo(algo: PubKeyAlgo | null): void;
         /**
          * Set the certificate trust.
          * @param trust a #GMimeCertificateTrust value
          */
-        set_trust(trust: CertificateTrust): void;
+        set_trust(trust: CertificateTrust | null): void;
     }
 
     module CertificateList {
@@ -1809,7 +1809,7 @@ export namespace GMime {
          * @param digest digest id
          * @returns the equivalent digest name or %NULL on fail.
          */
-        digest_name(digest: DigestAlgo): string;
+        digest_name(digest: DigestAlgo | null): string;
         /**
          * Encrypts (and optionally signs) the cleartext input stream and
          * writes the resulting ciphertext to the output stream.
@@ -1824,7 +1824,7 @@ export namespace GMime {
         encrypt(
             sign: boolean,
             userid: string,
-            digest: DigestAlgo,
+            digest: DigestAlgo | null,
             recipients: string[],
             istream: Stream,
             ostream: Stream,
@@ -1881,7 +1881,7 @@ export namespace GMime {
          * @param ostream output stream
          * @returns the #GMimeDigestAlgo used on success (useful if @digest is specified as #GMIME_DIGEST_ALGO_DEFAULT) or %-1 on fail.
          */
-        sign(userid: string, digest: DigestAlgo, istream: Stream, ostream: Stream): number;
+        sign(userid: string, digest: DigestAlgo | null, istream: Stream, ostream: Stream): number;
         /**
          * Verifies the signature. If `istream` is a clearsigned stream,
          * you should pass %NULL as the sigstream parameter. Otherwise
@@ -1892,7 +1892,7 @@ export namespace GMime {
          * @param sigstream optional detached-signature stream
          * @returns a #GMimeSignatureList object containing the status of each signature or %NULL on error.
          */
-        verify(digest: DigestAlgo, istream: Stream, sigstream: Stream): SignatureList;
+        verify(digest: DigestAlgo | null, istream: Stream, sigstream: Stream): SignatureList;
     }
 
     module DataWrapper {
@@ -1947,7 +1947,7 @@ export namespace GMime {
          * Sets the encoding type of the internal stream.
          * @param encoding encoding
          */
-        set_encoding(encoding: ContentEncoding): void;
+        set_encoding(encoding: ContentEncoding | null): void;
         /**
          * Replaces the wrapper's internal stream with `stream`. Don't forget,
          * if `stream` is not of the same encoding as the old stream, you'll
@@ -2029,12 +2029,12 @@ export namespace GMime {
          * Set the cipher algorithm used.
          * @param cipher a #GMimeCipherAlgo
          */
-        set_cipher(cipher: CipherAlgo): void;
+        set_cipher(cipher: CipherAlgo | null): void;
         /**
          * Set the mdc digest algorithm used.
          * @param mdc a #GMimeDigestAlgo
          */
-        set_mdc(mdc: DigestAlgo): void;
+        set_mdc(mdc: DigestAlgo | null): void;
         /**
          * Sets the list of certificates that the stream had been encrypted to.
          * @param recipients A #GMimeCertificateList
@@ -2219,7 +2219,7 @@ export namespace GMime {
          * @param constraint a #GMimeEncodingConstraint
          * @returns the best encoding for the stream filtered by @best.
          */
-        encoding(constraint: EncodingConstraint): ContentEncoding;
+        encoding(constraint: EncodingConstraint | null): ContentEncoding;
     }
 
     module FilterCRLF {
@@ -2917,7 +2917,7 @@ export namespace GMime {
          * @param name The recipient's name (or %NULL)
          * @param addr The recipient's address
          */
-        add_recipient(type: RecipientType, name: string, addr: string): void;
+        add_recipient(type: RecipientType | null, name: string, addr: string): void;
         /**
          * Recursively calls `callback` on each of the mime parts in the mime message.
          * @param callback function to call on each of the mime parts   contained by the mime message
@@ -2960,7 +2960,7 @@ export namespace GMime {
          * @param type A #GMimeRecipientType
          * @returns a list of recipients of the specified @type from the @message.
          */
-        get_recipients(type: RecipientType): InternetAddressList;
+        get_recipients(type: RecipientType | null): InternetAddressList;
         /**
          * Gets the Reply-To address from `message`.
          * @returns the sender's Reply-To address in a form suitable for display or %NULL if no Reply-To address is set. If not %NULL, the returned string will be in UTF-8.
@@ -3415,7 +3415,7 @@ export namespace GMime {
             ctx: CryptoContext,
             sign: boolean,
             userid: string,
-            digest: DigestAlgo,
+            digest: DigestAlgo | null,
             recipients: string[],
         ): number;
     }
@@ -3457,7 +3457,7 @@ export namespace GMime {
          * @param digest preferred digest algorithm
          * @returns %0 on success or %-1 on fail. If the signing fails, an exception will be set on @err to provide information as to why the failure occured.
          */
-        sign(content: Object, ctx: CryptoContext, userid: string, digest: DigestAlgo): number;
+        sign(content: Object, ctx: CryptoContext, userid: string, digest: DigestAlgo | null): number;
         /**
          * Attempts to verify the signed MIME part contained within the
          * multipart/signed object `mps` using the `ctx` crypto context.
@@ -3592,7 +3592,7 @@ export namespace GMime {
          * provided.
          * @param constraint a #GMimeEncodingConstraint
          */
-        encode(constraint: EncodingConstraint): void;
+        encode(constraint: EncodingConstraint | null): void;
         /**
          * Gets the #GMimeContentDisposition for the specified MIME object.
          * @returns the #GMimeContentDisposition set on the MIME object.
@@ -3919,7 +3919,7 @@ export namespace GMime {
          * @param constraint a #GMimeEncodingConstraint
          * @returns the best content encoding for the specified mime part.
          */
-        get_best_content_encoding(constraint: EncodingConstraint): ContentEncoding;
+        get_best_content_encoding(constraint: EncodingConstraint | null): ContentEncoding;
         /**
          * Gets the value of the Content-Description for the specified mime
          * part if it exists or %NULL otherwise.
@@ -3976,7 +3976,7 @@ export namespace GMime {
          * Set the content encoding for the specified mime part.
          * @param encoding a #GMimeContentEncoding
          */
-        set_content_encoding(encoding: ContentEncoding): void;
+        set_content_encoding(encoding: ContentEncoding | null): void;
         /**
          * Set the content id for the specified mime part.
          * @param content_id content id
@@ -4122,7 +4122,7 @@ export namespace GMime {
          * Set the errors on the signature.
          * @param errors a #GMimeSignatureError
          */
-        set_errors(errors: SignatureError): void;
+        set_errors(errors: SignatureError | null): void;
         /**
          * Set the expiration date of the signature.
          * @param expires expiration date
@@ -4132,7 +4132,7 @@ export namespace GMime {
          * Set the status on the signature.
          * @param status a #GMimeSignatureStatus
          */
-        set_status(status: SignatureStatus): void;
+        set_status(status: SignatureStatus | null): void;
     }
 
     module SignatureList {
@@ -4380,7 +4380,7 @@ export namespace GMime {
          * @param whence seek directive
          * @returns the resultant position on success or %-1 on fail.
          */
-        seek(offset: number, whence: SeekWhence): number;
+        seek(offset: number, whence: SeekWhence | null): number;
         /**
          * Set the bounds on a stream.
          * @param start start boundary
@@ -5121,13 +5121,13 @@ export namespace GMime {
          * `encoding`.
          * @param encoding a #GMimeContentEncoding to use
          */
-        init_decode(encoding: ContentEncoding): void;
+        init_decode(encoding: ContentEncoding | null): void;
         /**
          * Initializes a #GMimeEncoding state machine for encoding to
          * `encoding`.
          * @param encoding a #GMimeContentEncoding to use
          */
-        init_encode(encoding: ContentEncoding): void;
+        init_encode(encoding: ContentEncoding | null): void;
         /**
          * Given the input length, `inlen,` calculate the needed output length
          * to perform an encoding or decoding step.

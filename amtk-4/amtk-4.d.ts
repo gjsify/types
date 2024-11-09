@@ -460,7 +460,7 @@ export namespace Amtk {
          * @param flags #AmtkFactoryFlags.
          * @returns a new #GtkCheckMenuItem for @action_name.
          */
-        create_check_menu_item_full(action_name: string, flags: FactoryFlags): Gtk.Widget;
+        create_check_menu_item_full(action_name: string, flags: FactoryFlags | null): Gtk.Widget;
         /**
          * Creates a new #GtkMenuItem for `action_name` with the
          * #AmtkFactory:default-flags.
@@ -475,7 +475,7 @@ export namespace Amtk {
          * @param flags #AmtkFactoryFlags.
          * @returns a new #GtkMenuItem for @action_name.
          */
-        create_menu_item_full(action_name: string, flags: FactoryFlags): Gtk.Widget;
+        create_menu_item_full(action_name: string, flags: FactoryFlags | null): Gtk.Widget;
         /**
          * Creates a new #GtkMenuToolButton for `action_name` with the
          * #AmtkFactory:default-flags.
@@ -496,7 +496,7 @@ export namespace Amtk {
          * @param flags #AmtkFactoryFlags.
          * @returns a new #GtkMenuToolButton for @action_name.
          */
-        create_menu_tool_button_full(action_name: string, flags: FactoryFlags): Gtk.MenuToolButton;
+        create_menu_tool_button_full(action_name: string, flags: FactoryFlags | null): Gtk.MenuToolButton;
         /**
          * Creates a new #GtkToolButton for `action_name` with the
          * #AmtkFactory:default-flags.
@@ -511,14 +511,14 @@ export namespace Amtk {
          * @param flags #AmtkFactoryFlags.
          * @returns a new #GtkToolButton for @action_name.
          */
-        create_tool_button_full(action_name: string, flags: FactoryFlags): Gtk.ToolItem;
+        create_tool_button_full(action_name: string, flags: FactoryFlags | null): Gtk.ToolItem;
         get_application(): Gtk.Application | null;
         get_default_flags(): FactoryFlags;
         /**
          * Sets the #AmtkFactory:default-flags property.
          * @param default_flags the new value.
          */
-        set_default_flags(default_flags: FactoryFlags): void;
+        set_default_flags(default_flags: FactoryFlags | null): void;
     }
 
     module MenuShell {

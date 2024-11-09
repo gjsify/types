@@ -2401,7 +2401,7 @@ export namespace Ags {
          * Enable a feature of #AgsApplicationContext.
          * @param flags see enum AgsApplicationContextFlags
          */
-        set_flags(flags: ApplicationContextFlags): void;
+        set_flags(flags: ApplicationContextFlags | null): void;
         /**
          * Setup `application_context`.
          */
@@ -2411,12 +2411,12 @@ export namespace Ags {
          * @param flags the flags
          * @returns %TRUE if flags are set, else %FALSE
          */
-        test_flags(flags: ApplicationContextFlags): boolean;
+        test_flags(flags: ApplicationContextFlags | null): boolean;
         /**
          * Disable a feature of AgsApplicationContext.
          * @param flags see enum AgsApplicationContextFlags
          */
-        unset_flags(flags: ApplicationContextFlags): void;
+        unset_flags(flags: ApplicationContextFlags | null): void;
 
         // Inherited methods
         /**
@@ -2575,7 +2575,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2616,7 +2616,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3545,7 +3545,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3586,7 +3586,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4663,7 +4663,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4704,7 +4704,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5548,7 +5548,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5589,7 +5589,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6537,7 +6537,7 @@ export namespace Ags {
          * Set flags.
          * @param flags the flags
          */
-        set_flags(flags: ReturnableThreadFlags): void;
+        set_flags(flags: ReturnableThreadFlags | null): void;
         // Conflicted with Ags.Thread.set_flags
         set_flags(...args: never[]): any;
         /**
@@ -6545,14 +6545,14 @@ export namespace Ags {
          * @param flags the flags
          * @returns %TRUE if flags are set, else %FALSE
          */
-        test_flags(flags: ReturnableThreadFlags): boolean;
+        test_flags(flags: ReturnableThreadFlags | null): boolean;
         // Conflicted with Ags.Thread.test_flags
         test_flags(...args: never[]): any;
         /**
          * Unset flags.
          * @param flags the flags
          */
-        unset_flags(flags: ReturnableThreadFlags): void;
+        unset_flags(flags: ReturnableThreadFlags | null): void;
         // Conflicted with Ags.Thread.unset_flags
         unset_flags(...args: never[]): any;
 
@@ -6718,7 +6718,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6759,7 +6759,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7302,7 +7302,7 @@ export namespace Ags {
          * Enable a feature of `server`.
          * @param flags see #AgsServerFlags-enum
          */
-        set_flags(flags: ServerFlags): void;
+        set_flags(flags: ServerFlags | null): void;
         /**
          * Start the XMLRPC-C abyss server.
          */
@@ -7316,12 +7316,12 @@ export namespace Ags {
          * @param flags the flags
          * @returns %TRUE if flags are set, else %FALSE
          */
-        test_flags(flags: ServerFlags): boolean;
+        test_flags(flags: ServerFlags | null): boolean;
         /**
          * Disable a feature of `server`.
          * @param flags see #AgsServerFlags-enum
          */
-        unset_flags(flags: ServerFlags): void;
+        unset_flags(flags: ServerFlags | null): void;
     }
 
     module ServerApplicationContext {
@@ -7627,7 +7627,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7668,7 +7668,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8171,7 +8171,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8212,7 +8212,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8986,18 +8986,18 @@ export namespace Ags {
          * Enable a feature of #AgsTask.
          * @param flags see enum AgsTaskFlags
          */
-        set_flags(flags: TaskFlags): void;
+        set_flags(flags: TaskFlags | null): void;
         /**
          * Test `flags` to be set on `task`.
          * @param flags the flags
          * @returns %TRUE if flags are set, else %FALSE
          */
-        test_flags(flags: TaskFlags): boolean;
+        test_flags(flags: TaskFlags | null): boolean;
         /**
          * Disable a feature of AgsTask.
          * @param flags see enum AgsTaskFlags
          */
-        unset_flags(flags: TaskFlags): void;
+        unset_flags(flags: TaskFlags | null): void;
     }
 
     module TaskCompletion {
@@ -9065,18 +9065,18 @@ export namespace Ags {
          * Enable a feature of #AgsTaskCompletion.
          * @param flags see enum AgsTaskCompletionFlags
          */
-        set_flags(flags: TaskCompletionFlags): void;
+        set_flags(flags: TaskCompletionFlags | null): void;
         /**
          * Test `flags` to be set on `task_completion`.
          * @param flags the flags
          * @returns %TRUE if flags are set, else %FALSE
          */
-        test_flags(flags: TaskCompletionFlags): boolean;
+        test_flags(flags: TaskCompletionFlags | null): boolean;
         /**
          * Disable a feature of AgsTaskCompletion.
          * @param flags see enum AgsTaskCompletionFlags
          */
-        unset_flags(flags: TaskCompletionFlags): void;
+        unset_flags(flags: TaskCompletionFlags | null): void;
 
         // Inherited methods
         /**
@@ -9240,7 +9240,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9281,7 +9281,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9841,7 +9841,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9882,7 +9882,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10451,7 +10451,7 @@ export namespace Ags {
          * Set flags.
          * @param flags the flags
          */
-        set_flags(flags: ThreadFlags): void;
+        set_flags(flags: ThreadFlags | null): void;
         /**
          * Set frequency.
          * @param frequency the frequency
@@ -10466,12 +10466,12 @@ export namespace Ags {
          * Set status flags.
          * @param status_flags the status flags
          */
-        set_status_flags(status_flags: ThreadStatusFlags): void;
+        set_status_flags(status_flags: ThreadStatusFlags | null): void;
         /**
          * Set sync-tic flags.
          * @param sync_tic_flags the sync-tic flags
          */
-        set_sync_tic_flags(sync_tic_flags: ThreadSyncTicFlags): void;
+        set_sync_tic_flags(sync_tic_flags: ThreadSyncTicFlags | null): void;
         set_tree_sync_recursive(current_sync_tic: number): void;
         /**
          * Start the thread.
@@ -10486,19 +10486,19 @@ export namespace Ags {
          * @param flags the flags
          * @returns %TRUE if flags are set, else %FALSE
          */
-        test_flags(flags: ThreadFlags): boolean;
+        test_flags(flags: ThreadFlags | null): boolean;
         /**
          * Test `status_flags` to be set on `thread`.
          * @param status_flags the status flags
          * @returns %TRUE if status flags are set, else %FALSE
          */
-        test_status_flags(status_flags: ThreadStatusFlags): boolean;
+        test_status_flags(status_flags: ThreadStatusFlags | null): boolean;
         /**
          * Test `sync_tic_flags` to be set on `thread`.
          * @param sync_tic_flags the sync-tic flags
          * @returns %TRUE if sync-tic flags are set, else %FALSE
          */
-        test_sync_tic_flags(sync_tic_flags: ThreadSyncTicFlags): boolean;
+        test_sync_tic_flags(sync_tic_flags: ThreadSyncTicFlags | null): boolean;
         /**
          * Locks the threads own mutex if available and sets the
          * appropriate flag and returning %TRUE. Otherwise return %FALSE
@@ -10514,17 +10514,17 @@ export namespace Ags {
          * Unset flags.
          * @param flags the flags
          */
-        unset_flags(flags: ThreadFlags): void;
+        unset_flags(flags: ThreadFlags | null): void;
         /**
          * Unset status flags.
          * @param status_flags the status flags
          */
-        unset_status_flags(status_flags: ThreadStatusFlags): void;
+        unset_status_flags(status_flags: ThreadStatusFlags | null): void;
         /**
          * Unset sync-tic flags.
          * @param sync_tic_flags the sync-tic flags
          */
-        unset_sync_tic_flags(sync_tic_flags: ThreadSyncTicFlags): void;
+        unset_sync_tic_flags(sync_tic_flags: ThreadSyncTicFlags | null): void;
 
         // Inherited methods
         /**
@@ -10688,7 +10688,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10729,7 +10729,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11326,7 +11326,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11367,7 +11367,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11818,7 +11818,7 @@ export namespace Ags {
          * Set `flags` of `timestamp`.
          * @param flags the flags
          */
-        set_flags(flags: TimestampFlags): void;
+        set_flags(flags: TimestampFlags | null): void;
         /**
          * Set unix time.
          * @param unix_time the unix time value
@@ -11829,12 +11829,12 @@ export namespace Ags {
          * @param flags the flags
          * @returns if @flags set returning %TRUE otherwise %FALSE
          */
-        test_flags(flags: TimestampFlags): boolean;
+        test_flags(flags: TimestampFlags | null): boolean;
         /**
          * Unset `flags` of `timestamp`.
          * @param flags the flags
          */
-        unset_flags(flags: TimestampFlags): void;
+        unset_flags(flags: TimestampFlags | null): void;
     }
 
     module Turtle {
@@ -12334,7 +12334,7 @@ export namespace Ags {
          * Set status flags.
          * @param status_flags status flags
          */
-        set_status_flags(status_flags: WorkerThreadStatusFlags): void;
+        set_status_flags(status_flags: WorkerThreadStatusFlags | null): void;
         // Conflicted with Ags.Thread.set_status_flags
         set_status_flags(...args: never[]): any;
         /**
@@ -12342,14 +12342,14 @@ export namespace Ags {
          * @param status_flags status flags
          * @returns %TRUE if status flags set, otherwise %FALSE
          */
-        test_status_flags(status_flags: WorkerThreadStatusFlags): boolean;
+        test_status_flags(status_flags: WorkerThreadStatusFlags | null): boolean;
         // Conflicted with Ags.Thread.test_status_flags
         test_status_flags(...args: never[]): any;
         /**
          * Unset status flags.
          * @param status_flags status flags
          */
-        unset_status_flags(status_flags: WorkerThreadStatusFlags): void;
+        unset_status_flags(status_flags: WorkerThreadStatusFlags | null): void;
         // Conflicted with Ags.Thread.unset_status_flags
         unset_status_flags(...args: never[]): any;
 
@@ -12515,7 +12515,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -12556,7 +12556,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13031,7 +13031,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13072,7 +13072,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13595,7 +13595,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13636,7 +13636,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14273,7 +14273,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14314,7 +14314,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14809,7 +14809,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14850,7 +14850,7 @@ export namespace Ags {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16248,7 +16248,9 @@ export namespace Ags {
         vfunc_set_update(update: boolean): void;
     }
 
-    export const Applicable: ApplicableNamespace;
+    export const Applicable: ApplicableNamespace & {
+        new (): Applicable; // This allows `obj instanceof Applicable`
+    };
 
     module Authentication {
         // Constructor properties interface
@@ -16344,7 +16346,9 @@ export namespace Ags {
         vfunc_logout(security_context: GObject.Object, login: string, security_token: string): boolean;
     }
 
-    export const Authentication: AuthenticationNamespace;
+    export const Authentication: AuthenticationNamespace & {
+        new (): Authentication; // This allows `obj instanceof Authentication`
+    };
 
     module BusinessGroup {
         // Constructor properties interface
@@ -16493,7 +16497,9 @@ export namespace Ags {
         ): void;
     }
 
-    export const BusinessGroup: BusinessGroupNamespace;
+    export const BusinessGroup: BusinessGroupNamespace & {
+        new (): BusinessGroup; // This allows `obj instanceof BusinessGroup`
+    };
 
     module Certificate {
         // Constructor properties interface
@@ -16756,7 +16762,9 @@ export namespace Ags {
         ): void;
     }
 
-    export const Certificate: CertificateNamespace;
+    export const Certificate: CertificateNamespace & {
+        new (): Certificate; // This allows `obj instanceof Certificate`
+    };
 
     module ConcurrencyProvider {
         // Constructor properties interface
@@ -16852,7 +16860,9 @@ export namespace Ags {
         vfunc_set_worker(worker: WorkerThread[]): void;
     }
 
-    export const ConcurrencyProvider: ConcurrencyProviderNamespace;
+    export const ConcurrencyProvider: ConcurrencyProviderNamespace & {
+        new (): ConcurrencyProvider; // This allows `obj instanceof ConcurrencyProvider`
+    };
 
     module Connectable {
         // Constructor properties interface
@@ -16989,7 +16999,9 @@ export namespace Ags {
         vfunc_xml_parse(node: libxml2.Node): void;
     }
 
-    export const Connectable: ConnectableNamespace;
+    export const Connectable: ConnectableNamespace & {
+        new (): Connectable; // This allows `obj instanceof Connectable`
+    };
 
     module Countable {
         // Constructor properties interface
@@ -17045,7 +17057,9 @@ export namespace Ags {
         vfunc_get_wave_counter(): number;
     }
 
-    export const Countable: CountableNamespace;
+    export const Countable: CountableNamespace & {
+        new (): Countable; // This allows `obj instanceof Countable`
+    };
 
     module Cursor {
         // Constructor properties interface
@@ -17172,7 +17186,9 @@ export namespace Ags {
         vfunc_get_tact(): number;
     }
 
-    export const Cursor: CursorNamespace;
+    export const Cursor: CursorNamespace & {
+        new (): Cursor; // This allows `obj instanceof Cursor`
+    };
 
     module MainLoop {
         // Constructor properties interface
@@ -17274,7 +17290,9 @@ export namespace Ags {
         vfunc_test_queued_critical_region(): number;
     }
 
-    export const MainLoop: MainLoopNamespace;
+    export const MainLoop: MainLoopNamespace & {
+        new (): MainLoop; // This allows `obj instanceof MainLoop`
+    };
 
     module Mutable {
         // Constructor properties interface
@@ -17304,7 +17322,9 @@ export namespace Ags {
         vfunc_set_muted(muted: boolean): void;
     }
 
-    export const Mutable: MutableNamespace;
+    export const Mutable: MutableNamespace & {
+        new (): Mutable; // This allows `obj instanceof Mutable`
+    };
 
     module PasswordStore {
         // Constructor properties interface
@@ -17419,7 +17439,9 @@ export namespace Ags {
         ): void;
     }
 
-    export const PasswordStore: PasswordStoreNamespace;
+    export const PasswordStore: PasswordStoreNamespace & {
+        new (): PasswordStore; // This allows `obj instanceof PasswordStore`
+    };
 
     module Plugin {
         // Constructor properties interface
@@ -17549,7 +17571,9 @@ export namespace Ags {
         vfunc_set_xml_type(xml_type: string): void;
     }
 
-    export const Plugin: PluginNamespace;
+    export const Plugin: PluginNamespace & {
+        new (): Plugin; // This allows `obj instanceof Plugin`
+    };
 
     module PluginController {
         // Constructor properties interface
@@ -17604,7 +17628,9 @@ export namespace Ags {
         ): any | null;
     }
 
-    export const PluginController: PluginControllerNamespace;
+    export const PluginController: PluginControllerNamespace & {
+        new (): PluginController; // This allows `obj instanceof PluginController`
+    };
 
     module Portlet {
         // Constructor properties interface
@@ -17676,7 +17702,9 @@ export namespace Ags {
         vfunc_set_port(port: GObject.Object): void;
     }
 
-    export const Portlet: PortletNamespace;
+    export const Portlet: PortletNamespace & {
+        new (): Portlet; // This allows `obj instanceof Portlet`
+    };
 
     module Seekable {
         // Constructor properties interface
@@ -17708,7 +17736,9 @@ export namespace Ags {
         vfunc_seek(offset: number, whence: number): void;
     }
 
-    export const Seekable: SeekableNamespace;
+    export const Seekable: SeekableNamespace & {
+        new (): Seekable; // This allows `obj instanceof Seekable`
+    };
 
     module Sequencer {
         // Constructor properties interface
@@ -17958,7 +17988,9 @@ export namespace Ags {
         vfunc_unlock_buffer(buffer?: any | null): void;
     }
 
-    export const Sequencer: SequencerNamespace;
+    export const Sequencer: SequencerNamespace & {
+        new (): Sequencer; // This allows `obj instanceof Sequencer`
+    };
 
     module ServiceProvider {
         // Constructor properties interface
@@ -18016,7 +18048,9 @@ export namespace Ags {
         vfunc_set_server(server: Server[]): void;
     }
 
-    export const ServiceProvider: ServiceProviderNamespace;
+    export const ServiceProvider: ServiceProviderNamespace & {
+        new (): ServiceProvider; // This allows `obj instanceof ServiceProvider`
+    };
 
     module SoundServer {
         // Constructor properties interface
@@ -18156,7 +18190,9 @@ export namespace Ags {
         vfunc_unregister_soundcard(soundcard: GObject.Object): void;
     }
 
-    export const SoundServer: SoundServerNamespace;
+    export const SoundServer: SoundServerNamespace & {
+        new (): SoundServer; // This allows `obj instanceof SoundServer`
+    };
 
     module Soundcard {
         // Constructor properties interface
@@ -18430,7 +18466,7 @@ export namespace Ags {
          * @param buffer_size the buffer size
          * @param format the format
          */
-        set_presets(channels: number, rate: number, buffer_size: number, format: SoundcardFormat): void;
+        set_presets(channels: number, rate: number, buffer_size: number, format: SoundcardFormat | null): void;
         /**
          * Set start playback note offset.
          * @param start_note_offset the start note offset to set
@@ -18698,7 +18734,9 @@ export namespace Ags {
         vfunc_unlock_sub_block(buffer: any | null, sub_block: number): void;
     }
 
-    export const Soundcard: SoundcardNamespace;
+    export const Soundcard: SoundcardNamespace & {
+        new (): Soundcard; // This allows `obj instanceof Soundcard`
+    };
 
     module Tactable {
         // Constructor properties interface
@@ -18836,7 +18874,9 @@ export namespace Ags {
         vfunc_get_wave_duration(): number;
     }
 
-    export const Tactable: TactableNamespace;
+    export const Tactable: TactableNamespace & {
+        new (): Tactable; // This allows `obj instanceof Tactable`
+    };
 
     /**
      * Name of the imported GIR library

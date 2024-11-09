@@ -485,7 +485,7 @@ export namespace BraseroBurn {
          * @param action a #BraseroBurnAction
          * @param string a #gchar **
          */
-        get_action_string(action: BurnAction, string: string): void;
+        get_action_string(action: BurnAction | null, string: string): void;
         /**
          * Burns or creates a disc image according to the parameters
          * set in `session`.
@@ -586,7 +586,7 @@ export namespace BraseroBurn {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -627,7 +627,7 @@ export namespace BraseroBurn {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1026,7 +1026,7 @@ export namespace BraseroBurn {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1067,7 +1067,7 @@ export namespace BraseroBurn {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1487,7 +1487,7 @@ export namespace BraseroBurn {
          * Merges the current flags set in `session` with `flags`.
          * @param flags a #BraseroBurnFlag
          */
-        add_flag(flags: BurnFlag): void;
+        add_flag(flags: BurnFlag | null): void;
         /**
          * Inserts a new track after `sibling` or appended if `sibling` is NULL. If `track` is NULL then all tracks
          * already in `session` will be removed.
@@ -1500,8 +1500,8 @@ export namespace BraseroBurn {
         add_track(new_track?: Track | null, sibling?: Track | null): BurnResult;
         can_blank(): BurnResult;
         can_burn(check_flags: boolean): BurnResult;
-        get_blank_flags(supported: BurnFlag, compulsory: BurnFlag): BurnResult;
-        get_burn_flags(supported: BurnFlag, compulsory: BurnFlag): BurnResult;
+        get_blank_flags(supported: BurnFlag | null, compulsory: BurnFlag | null): BurnResult;
+        get_burn_flags(supported: BurnFlag | null, compulsory: BurnFlag | null): BurnResult;
         get_default_output_format(): ImageFormat;
         /**
          * Returns the current flags set for `session`.
@@ -1547,7 +1547,7 @@ export namespace BraseroBurn {
          * @returns a #BraseroBurnResult. BRASERO_BURN_OK if it was successful; BRASERO_BURN_NOT_READY if no setting has been set; BRASERO_BURN_ERR otherwise.
          */
         get_output_type(output: TrackType): BurnResult;
-        get_possible_output_formats(formats: ImageFormat): number;
+        get_possible_output_formats(formats: ImageFormat | null): number;
         /**
          * Returns the speed at which the medium should be burnt.
          * NOTE: before using this function a #BraseroDrive should have been
@@ -1602,7 +1602,7 @@ export namespace BraseroBurn {
          * Removes `flags` from the current flags set for `session`.
          * @param flags a #BraseroBurnFlag
          */
-        remove_flag(flags: BurnFlag): void;
+        remove_flag(flags: BurnFlag | null): void;
         /**
          * Removes `track` from `session`.
          * @param track a #BraseroTrack
@@ -1613,7 +1613,7 @@ export namespace BraseroBurn {
          * Replaces the current flags set in `session` with `flags`.
          * @param flags a #BraseroBurnFlag
          */
-        set_flags(flags: BurnFlag): void;
+        set_flags(flags: BurnFlag | null): void;
         /**
          * When the contents of `session` should be written to a
          * file, this function sets format of the image that will be
@@ -1626,7 +1626,7 @@ export namespace BraseroBurn {
          * @param format a #BraseroImageFormat
          * @returns a #BraseroBurnResult. BRASERO_BURN_OK if it was successfully set; BRASERO_BURN_ERR otherwise.
          */
-        set_image_output_format(format: ImageFormat): BurnResult;
+        set_image_output_format(format: ImageFormat | null): BurnResult;
         /**
          * When the contents of `session` should be written to a
          * file, this function sets the different parameters of this
@@ -1640,7 +1640,7 @@ export namespace BraseroBurn {
          * @param toc a #gchar or NULL.
          * @returns a #BraseroBurnResult. BRASERO_BURN_OK if it was successfully set; BRASERO_BURN_ERR otherwise.
          */
-        set_image_output_full(format: ImageFormat, image?: string | null, toc?: string | null): BurnResult;
+        set_image_output_full(format: ImageFormat | null, image?: string | null, toc?: string | null): BurnResult;
         /**
          * Sets the label for `session`.
          * @param label a #gchar or %NULL
@@ -1767,7 +1767,7 @@ export namespace BraseroBurn {
          * Adds all flags from `flags` that are supported.
          * @param flags a #BraseroBurnFlag
          */
-        add_flags(flags: BurnFlag): void;
+        add_flags(flags: BurnFlag | null): void;
         /**
          * This function disables autoconfiguration
          */
@@ -1794,18 +1794,18 @@ export namespace BraseroBurn {
          * @param flag a #BraseroBurnFlag
          * @returns a #gboolean. TRUE if it is compulsory; FALSE otherwise.
          */
-        is_compulsory(flag: BurnFlag): boolean;
+        is_compulsory(flag: BurnFlag | null): boolean;
         /**
          * Checks whether a particular flag is supported.
          * @param flag a #BraseroBurnFlag
          * @returns a #gboolean. TRUE if it is supported; FALSE otherwise.
          */
-        is_supported(flag: BurnFlag): boolean;
+        is_supported(flag: BurnFlag | null): boolean;
         /**
          * Removes all flags that are not compulsory.
          * @param flags a #BraseroBurnFlag
          */
-        remove_flags(flags: BurnFlag): void;
+        remove_flags(flags: BurnFlag | null): void;
     }
 
     module SessionSpan {
@@ -2004,7 +2004,7 @@ export namespace BraseroBurn {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2045,7 +2045,7 @@ export namespace BraseroBurn {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2440,7 +2440,7 @@ export namespace BraseroBurn {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2481,7 +2481,7 @@ export namespace BraseroBurn {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2890,7 +2890,7 @@ export namespace BraseroBurn {
          * @param checksum a #gchar * holding the checksum
          * @returns a #BraseroBurnResult. BRASERO_BURN_OK if the checksum was previously empty or matches the new one BRASERO_BURN_ERR otherwise
          */
-        set_checksum(type: ChecksumType, checksum: string): BurnResult;
+        set_checksum(type: ChecksumType | null, checksum: string): BurnResult;
         /**
          * Associates a new `tag` with a track. This can be used
          * to pass arbitrary information for plugins, like parameters
@@ -3012,7 +3012,7 @@ export namespace BraseroBurn {
          * @param fstype a #BraseroImageFS
          * @returns a #BraseroBurnResult. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
-        add_fs(fstype: ImageFS): BurnResult;
+        add_fs(fstype: ImageFS | null): BurnResult;
         /**
          * Returns a list of URIs which must not be included in
          * the image to be created.
@@ -3045,7 +3045,7 @@ export namespace BraseroBurn {
          * @param fstype a #BraseroImageFS
          * @returns a #BraseroBurnResult. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
-        rm_fs(fstype: ImageFS): BurnResult;
+        rm_fs(fstype: ImageFS | null): BurnResult;
         /**
          * Sets the size of the image to be created (in sectors of 2048 bytes).
          * @param blocks a #goffset
@@ -3873,7 +3873,7 @@ export namespace BraseroBurn {
          * @param sort_column_id the sort column id to set
          * @param order The sort order of the column
          */
-        set_sort_column_id(sort_column_id: number, order: Gtk.SortType): void;
+        set_sort_column_id(sort_column_id: number, order: Gtk.SortType | null): void;
         /**
          * Sets the comparison function used when sorting to be `sort_func`. If the
          * current sort column id of `sortable` is the same as `sort_column_id,` then
@@ -3993,7 +3993,7 @@ export namespace BraseroBurn {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4034,7 +4034,7 @@ export namespace BraseroBurn {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4461,7 +4461,7 @@ export namespace BraseroBurn {
          * @param format a #BraseroImageFormat
          * @returns a #BraseroBurnResult. BRASERO_BURN_OK if it is successful.
          */
-        set_source(image: string, toc: string, format: ImageFormat): BurnResult;
+        set_source(image: string, toc: string, format: ImageFormat | null): BurnResult;
     }
 
     module TrackImageCfg {
@@ -4491,7 +4491,7 @@ export namespace BraseroBurn {
          * @param format a #BraseroImageFormat
          * @returns a #BraseroBurnResult. BRASERO_BURN_OK if it is successful.
          */
-        force_format(format: ImageFormat): BurnResult;
+        force_format(format: ImageFormat | null): BurnResult;
         /**
          * This function returns the #BraseroImageFormat that was set for the image.
          * See brasero_track_image_cfg_force_format ().
@@ -4600,7 +4600,7 @@ export namespace BraseroBurn {
          * @param format a #BraseroStreamFormat
          * @returns a #BraseroBurnResult. BRASERO_BURN_OK if it is successful.
          */
-        set_format(format: StreamFormat): BurnResult;
+        set_format(format: StreamFormat | null): BurnResult;
         /**
          * Sets the stream (song or video) uri.
          *
@@ -4742,7 +4742,7 @@ export namespace BraseroBurn {
          * after brasero_track_type_set_has_data ().
          * @param fs_type a #BraseroImageFS
          */
-        set_data_fs(fs_type: ImageFS): void;
+        set_data_fs(fs_type: ImageFS | null): void;
         /**
          * Set DATA type for `type`.
          */
@@ -4764,13 +4764,13 @@ export namespace BraseroBurn {
          * after brasero_track_type_set_has_image ().
          * @param format a #BraseroImageFormat
          */
-        set_image_format(format: ImageFormat): void;
+        set_image_format(format: ImageFormat | null): void;
         /**
          * Sets the #BraseroStreamFormat. Must be called
          * after brasero_track_type_set_has_stream ().
          * @param format a #BraseroImageFormat
          */
-        set_stream_format(format: StreamFormat): void;
+        set_stream_format(format: StreamFormat | null): void;
     }
 
     /**

@@ -1,6 +1,6 @@
 {
     "name": "@girs/cogl-15",
-    "version": "15.0.0-4.0.0-beta.18",
+    "version": "15.0.0-4.0.0-beta.19",
     "description": "GJS TypeScript type definitions for Cogl-15, generated from library version 15.0.0",
     "type": "module",
     "module": "cogl-15.js",

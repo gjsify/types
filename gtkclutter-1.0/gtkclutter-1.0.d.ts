@@ -622,7 +622,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -663,7 +663,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1100,7 +1100,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1141,7 +1141,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1501,7 +1501,7 @@ export namespace GtkClutter {
          * @param icon_size the icon size or -1
          * @returns %TRUE on success, %FALSE on failure
          */
-        set_from_icon_name(widget: Gtk.Widget | null, icon_name: string, icon_size: Gtk.IconSize): boolean;
+        set_from_icon_name(widget: Gtk.Widget | null, icon_name: string, icon_size: Gtk.IconSize | null): boolean;
         /**
          * Sets the contents of `texture` with a copy of `pixbuf`.
          * @param pixbuf a #GdkPixbuf
@@ -1516,7 +1516,7 @@ export namespace GtkClutter {
          * @param icon_size the size of the icon, or -1
          * @returns %TRUE on success, %FALSE on failure.
          */
-        set_from_stock(widget: Gtk.Widget, stock_id: string, icon_size: Gtk.IconSize): boolean;
+        set_from_stock(widget: Gtk.Widget, stock_id: string, icon_size: Gtk.IconSize | null): boolean;
 
         // Inherited methods
         /**
@@ -1563,7 +1563,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1604,7 +1604,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2002,7 +2002,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2043,7 +2043,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

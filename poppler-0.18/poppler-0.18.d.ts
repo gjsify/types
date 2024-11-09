@@ -1664,7 +1664,7 @@ export namespace Poppler {
          * `poppler_annot`.
          * @param flags a #PopplerAnnotFlag
          */
-        set_flags(flags: AnnotFlag): void;
+        set_flags(flags: AnnotFlag | null): void;
         /**
          * Move the annotation to the rectangle representing the page coordinates
          * where the annotation `poppler_annot` should be placed.
@@ -2000,7 +2000,7 @@ export namespace Poppler {
          * Sets the icon of `poppler_annot` to be one of the predefined values in #PopplerAnnotStampIcon
          * @param icon the #PopplerAnnotStampIcon type of the icon
          */
-        set_icon(icon: AnnotStampIcon): void;
+        set_icon(icon: AnnotStampIcon | null): void;
     }
 
     module AnnotText {
@@ -2955,7 +2955,7 @@ export namespace Poppler {
          * @param type the type of additional action
          * @returns the action to perform. The returned               object is owned by @field and should not be freed.
          */
-        get_additional_action(type: AdditionalActionType): Action;
+        get_additional_action(type: AdditionalActionType | null): Action;
         /**
          * Gets the alternate ui name of `field`. This name is also commonly
          * used by pdf producers/readers to show it as a tooltip when `field` area
@@ -3009,7 +3009,7 @@ export namespace Poppler {
          * @param cancellable optional #GCancellable object
          */
         signature_validate_async(
-            flags: SignatureValidationFlags,
+            flags: SignatureValidationFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<SignatureInfo>;
         /**
@@ -3019,7 +3019,7 @@ export namespace Poppler {
          * @param callback a #GAsyncReadyCallback to call when the signature is validated
          */
         signature_validate_async(
-            flags: SignatureValidationFlags,
+            flags: SignatureValidationFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -3030,7 +3030,7 @@ export namespace Poppler {
          * @param callback a #GAsyncReadyCallback to call when the signature is validated
          */
         signature_validate_async(
-            flags: SignatureValidationFlags,
+            flags: SignatureValidationFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<SignatureInfo> | void;
@@ -3047,7 +3047,10 @@ export namespace Poppler {
          * @param cancellable optional #GCancellable object
          * @returns a #PopplerSignatureInfo structure containing signature metadata and validation status                                Free the returned structure with poppler_signature_info_free().
          */
-        signature_validate_sync(flags: SignatureValidationFlags, cancellable?: Gio.Cancellable | null): SignatureInfo;
+        signature_validate_sync(
+            flags: SignatureValidationFlags | null,
+            cancellable?: Gio.Cancellable | null,
+        ): SignatureInfo;
         text_do_scroll(): boolean;
         /**
          * Checks whether spell checking should be done for the contents of `field`
@@ -3443,7 +3446,7 @@ export namespace Poppler {
          * @param options find options
          * @returns a newly allocated list of newly allocated #PopplerRectangle. Free with g_list_free_full() using poppler_rectangle_free().
          */
-        find_text_with_options(text: string, options: FindFlags): Rectangle[];
+        find_text_with_options(text: string, options: FindFlags | null): Rectangle[];
         /**
          * Returns a list of #PopplerAnnotMapping items that map from a location on
          * `page` to a #PopplerAnnot.  This list must be freed with
@@ -3508,14 +3511,14 @@ export namespace Poppler {
          * @param selection start and end point of selection as a rectangle
          * @returns a cairo_region_t
          */
-        get_selected_region(scale: number, style: SelectionStyle, selection: Rectangle): cairo.Region;
+        get_selected_region(scale: number, style: SelectionStyle | null, selection: Rectangle): cairo.Region;
         /**
          * Retrieves the contents of the specified `selection` as text.
          * @param style a #PopplerSelectionStyle
          * @param selection the #PopplerRectangle including the text
          * @returns a pointer to the contents of the @selection               as a string
          */
-        get_selected_text(style: SelectionStyle, selection: Rectangle): string;
+        get_selected_text(style: SelectionStyle | null, selection: Rectangle): string;
         /**
          * Returns a region containing the area that would be rendered by
          * poppler_page_render_selection() as a #GList of
@@ -3526,7 +3529,7 @@ export namespace Poppler {
          * @param selection start and end point of selection as a rectangle
          * @returns a #GList of #PopplerRectangle
          */
-        get_selection_region(scale: number, style: SelectionStyle, selection: Rectangle): Rectangle[];
+        get_selection_region(scale: number, style: SelectionStyle | null, selection: Rectangle): Rectangle[];
         /**
          * Gets the size of `page` at the current scale and rotation.
          */
@@ -3663,7 +3666,7 @@ export namespace Poppler {
          * @param cairo cairo context to render to
          * @param options print options
          */
-        render_for_printing_with_options(cairo: cairo.Context, options: PrintFlags): void;
+        render_for_printing_with_options(cairo: cairo.Context, options: PrintFlags | null): void;
         /**
          * Render the selection specified by `selection` for `page` to
          * the given cairo context.  The selection will be rendered, using
@@ -3684,7 +3687,7 @@ export namespace Poppler {
             cairo: cairo.Context,
             selection: Rectangle,
             old_selection: Rectangle,
-            style: SelectionStyle,
+            style: SelectionStyle | null,
             glyph_color: Color,
             background_color: Color,
         ): void;
@@ -3996,7 +3999,7 @@ export namespace Poppler {
          * @param flags A #PopplerStructureGetTextFlags value, or    %POPPLER_STRUCTURE_GET_TEXT_NONE to disable all the flags.
          * @returns A string.
          */
-        get_text(flags: StructureGetTextFlags): string;
+        get_text(flags: StructureGetTextFlags | null): string;
         /**
          * Obtains the text alignment mode of the text contained into a
          * block-level structure element.

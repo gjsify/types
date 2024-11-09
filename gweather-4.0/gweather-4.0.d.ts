@@ -537,22 +537,22 @@ export namespace GWeather {
      * @param level a #GWeatherLocationLevel
      * @returns a string
      */
-    function location_level_to_string(level: LocationLevel): string;
-    function sky_to_string(sky: Sky): string;
-    function sky_to_string_full(sky: Sky, options: FormatOptions): string;
+    function location_level_to_string(level: LocationLevel | null): string;
+    function sky_to_string(sky: Sky | null): string;
+    function sky_to_string_full(sky: Sky | null, options: FormatOptions | null): string;
     /**
      * Creates a human-readable, localized representation of `unit`
      * @param unit a speed unit, or %GWEATHER_SPEED_UNIT_DEFAULT
      */
-    function speed_unit_to_string(unit: SpeedUnit): string;
+    function speed_unit_to_string(unit: SpeedUnit | null): string;
     /**
      * Resolve `unit` into a real temperature unit, potentially considering
      * locale defaults.
      * @param unit a tempeature unit, or %GWEATHER_TEMP_UNIT_DEFAULT
      */
-    function temperature_unit_to_real(unit: TemperatureUnit): TemperatureUnit;
-    function wind_direction_to_string(wind: WindDirection): string;
-    function wind_direction_to_string_full(wind: WindDirection, options: FormatOptions): string;
+    function temperature_unit_to_real(unit: TemperatureUnit | null): TemperatureUnit;
+    function wind_direction_to_string(wind: WindDirection | null): string;
+    function wind_direction_to_string_full(wind: WindDirection | null, options: FormatOptions | null): string;
     interface FilterFunc {
         (location: Location): boolean;
     }
@@ -774,15 +774,15 @@ export namespace GWeather {
         get_temp_summary(): string;
         get_upcoming_moonphases(phases: never): boolean;
         get_update(): string;
-        get_value_apparent(unit: TemperatureUnit): [boolean, number];
+        get_value_apparent(unit: TemperatureUnit | null): [boolean, number];
         /**
          * Fills out `phenomenon` and `qualifier` with current weather conditions.
          * @returns TRUE is out arguments are valid, FALSE otherwise.
          */
         get_value_conditions(): [boolean, ConditionPhenomenon, ConditionQualifier];
-        get_value_dew(unit: TemperatureUnit): [boolean, number];
+        get_value_dew(unit: TemperatureUnit | null): [boolean, number];
         get_value_moonphase(): [boolean, MoonPhase, MoonLatitude];
-        get_value_pressure(unit: PressureUnit): [boolean, number];
+        get_value_pressure(unit: PressureUnit | null): [boolean, number];
         /**
          * Fills out `sky` with current sky conditions.
          * @returns TRUE is @sky is valid, FALSE otherwise.
@@ -790,16 +790,16 @@ export namespace GWeather {
         get_value_sky(): [boolean, Sky];
         get_value_sunrise(): [boolean, number];
         get_value_sunset(): [boolean, number];
-        get_value_temp(unit: TemperatureUnit): [boolean, number];
-        get_value_temp_max(unit: TemperatureUnit): [boolean, number];
-        get_value_temp_min(unit: TemperatureUnit): [boolean, number];
+        get_value_temp(unit: TemperatureUnit | null): [boolean, number];
+        get_value_temp_max(unit: TemperatureUnit | null): [boolean, number];
+        get_value_temp_min(unit: TemperatureUnit | null): [boolean, number];
         /**
          * Note that `value` may be 0 if `info` has not yet been updated.
          * @returns TRUE is @value is valid, FALSE otherwise.
          */
         get_value_update(): [boolean, number];
-        get_value_visibility(unit: DistanceUnit): [boolean, number];
-        get_value_wind(unit: SpeedUnit): [boolean, number, WindDirection];
+        get_value_visibility(unit: DistanceUnit | null): [boolean, number];
+        get_value_wind(unit: SpeedUnit | null): [boolean, number, WindDirection];
         get_visibility(): string;
         get_weather_summary(): string;
         get_wind(): string;
@@ -839,7 +839,7 @@ export namespace GWeather {
          * not set to a valid value.
          * @param providers a bitmask of #GWeatherProvider
          */
-        set_enabled_providers(providers: Provider): void;
+        set_enabled_providers(providers: Provider | null): void;
         /**
          * Changes the location of the weather report.
          *
@@ -1182,7 +1182,7 @@ export namespace GWeather {
         // Methods
 
         to_string(): string;
-        to_string_full(options: FormatOptions): string;
+        to_string_full(options: FormatOptions | null): string;
     }
 
     type InfoClass = typeof Info;

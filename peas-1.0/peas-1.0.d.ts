@@ -657,7 +657,7 @@ export namespace Peas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -698,7 +698,7 @@ export namespace Peas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1171,7 +1171,7 @@ export namespace Peas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1212,7 +1212,7 @@ export namespace Peas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1837,7 +1837,9 @@ export namespace Peas {
         vfunc_update_state(): void;
     }
 
-    export const Activatable: ActivatableNamespace;
+    export const Activatable: ActivatableNamespace & {
+        new (): Activatable; // This allows `obj instanceof Activatable`
+    };
 
     type Extension = GObject.Object;
     /**

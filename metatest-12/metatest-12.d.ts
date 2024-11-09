@@ -108,7 +108,7 @@ export namespace MetaTest {
 
         // Methods
 
-        run_tests(flags: TestRunFlags): number;
+        run_tests(flags: TestRunFlags | null): number;
         wait_for_x11_display(): void;
     }
 

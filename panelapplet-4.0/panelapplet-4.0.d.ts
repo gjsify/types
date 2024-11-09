@@ -391,7 +391,7 @@ export namespace PanelApplet {
          * %PANEL_APPLET_EXPAND_MINOR should be used.
          * @param flags #PanelAppletFlags to use for @applet.
          */
-        set_flags(flags: AppletFlags): void;
+        set_flags(flags: AppletFlags | null): void;
         /**
          * Give hints to the panel about sizes `applet` is comfortable with. This is
          * generally useful for applets that can take a lot of space, in case the panel
@@ -493,7 +493,7 @@ export namespace PanelApplet {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -534,7 +534,7 @@ export namespace PanelApplet {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

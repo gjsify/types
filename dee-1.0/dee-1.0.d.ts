@@ -632,7 +632,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -673,7 +673,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1133,7 +1133,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1174,7 +1174,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1633,7 +1633,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1674,7 +1674,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2131,7 +2131,7 @@ export namespace Dee {
          * @returns A bit mask of the acceptedd #DeeTermMatchFlag<!-- -->s
          */
         get_supported_term_match_flags(): number;
-        lookup(term: string, flags: TermMatchFlag): ResultSet;
+        lookup(term: string, flags: TermMatchFlag | null): ResultSet;
         /**
          * Convenience function in for cases where you have a priori guarantee that
          * a dee_index_lookup() call will return exactly 0 or 1 row. If the lookup
@@ -3045,7 +3045,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3086,7 +3086,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4121,7 +4121,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4162,7 +4162,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5208,7 +5208,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5249,7 +5249,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5812,7 +5812,7 @@ export namespace Dee {
          * Convenience function for setting the #DeeSharedModel:flush-mode property.
          * @param mode Flush mode to use
          */
-        set_flush_mode(mode: SharedModelFlushMode): void;
+        set_flush_mode(mode: SharedModelFlushMode | null): void;
 
         // Inherited methods
         /**
@@ -5859,7 +5859,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5900,7 +5900,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7098,7 +7098,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7139,7 +7139,7 @@ export namespace Dee {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8513,7 +8513,9 @@ export namespace Dee {
         vfunc_set_value(iter: ModelIter, column: number, value: GLib.Variant): void;
     }
 
-    export const Model: ModelNamespace;
+    export const Model: ModelNamespace & {
+        new (): Model; // This allows `obj instanceof Model`
+    };
 
     module ResourceManager {
         // Constructor properties interface
@@ -8596,7 +8598,9 @@ export namespace Dee {
         vfunc_store(resource: Serializable, resource_name: string): boolean;
     }
 
-    export const ResourceManager: ResourceManagerNamespace;
+    export const ResourceManager: ResourceManagerNamespace & {
+        new (): ResourceManager; // This allows `obj instanceof ResourceManager`
+    };
 
     module ResultSet {
         // Constructor properties interface
@@ -8698,7 +8702,9 @@ export namespace Dee {
         vfunc_tell(): number;
     }
 
-    export const ResultSet: ResultSetNamespace;
+    export const ResultSet: ResultSetNamespace & {
+        new (): ResultSet; // This allows `obj instanceof ResultSet`
+    };
 
     module Serializable {
         // Constructor properties interface
@@ -8777,7 +8783,9 @@ export namespace Dee {
         vfunc_serialize(): GLib.Variant;
     }
 
-    export const Serializable: SerializableNamespace;
+    export const Serializable: SerializableNamespace & {
+        new (): Serializable; // This allows `obj instanceof Serializable`
+    };
 
     /**
      * Name of the imported GIR library

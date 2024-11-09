@@ -103,7 +103,7 @@ export namespace FolksDummy {
 
         // Methods
 
-        update_gender(gender: Folks.Gender): void;
+        update_gender(gender: Folks.Gender | null): void;
         update_calendar_event_id(calendar_event_id: string): void;
         update_birthday(birthday: GLib.DateTime): void;
         update_roles(roles: Gee.Set): void;
@@ -280,12 +280,12 @@ export namespace FolksDummy {
         vfunc_change_is_favourite_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_is_favourite(): boolean;
         vfunc_set_is_favourite(value: boolean): void;
-        change_gender(gender: Folks.Gender): Promise<void>;
-        change_gender(gender: Folks.Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_gender(gender: Folks.Gender, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
+        change_gender(gender: Folks.Gender | null): Promise<void>;
+        change_gender(gender: Folks.Gender | null, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_gender(gender: Folks.Gender | null, _callback_?: Gio.AsyncReadyCallback<this>): Promise<void> | void;
         change_gender_finish(_res_: Gio.AsyncResult): void;
         get_gender(): Folks.Gender;
-        set_gender(value: Folks.Gender): void;
+        set_gender(value: Folks.Gender | null): void;
         vfunc_change_gender(gender: Folks.Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_gender_finish(_res_: Gio.AsyncResult): void;
         vfunc_get_gender(): Folks.Gender;
@@ -494,7 +494,7 @@ export namespace FolksDummy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -535,7 +535,7 @@ export namespace FolksDummy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -892,9 +892,9 @@ export namespace FolksDummy {
         // Methods
 
         update_capabilities(
-            can_add_personas: Folks.MaybeBool,
-            can_alias_personas: Folks.MaybeBool,
-            can_remove_personas: Folks.MaybeBool,
+            can_add_personas: Folks.MaybeBool | null,
+            can_alias_personas: Folks.MaybeBool | null,
+            can_remove_personas: Folks.MaybeBool | null,
         ): void;
         freeze_personas_changed(): void;
         thaw_personas_changed(): void;
@@ -902,7 +902,7 @@ export namespace FolksDummy {
         unregister_personas(personas: Gee.Set): void;
         reach_quiescence(): void;
         update_is_user_set_default(is_user_set_default: boolean): void;
-        update_trust_level(trust_level: Folks.PersonaStoreTrust): void;
+        update_trust_level(trust_level: Folks.PersonaStoreTrust | null): void;
         set_add_persona_from_details_mock(mock: PersonaStore.AddPersonaFromDetailsMock): void;
         set_remove_persona_mock(mock: PersonaStore.RemovePersonaMock): void;
         set_prepare_mock(mock: PersonaStore.PrepareMock): void;

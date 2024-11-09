@@ -87,7 +87,7 @@ export namespace Uhm {
         get_response_headers(): Soup.MessageHeaders;
         get_status(): number;
         get_uri(): GLib.Uri;
-        set_http_version(version: Soup.HTTPVersion): void;
+        set_http_version(version: Soup.HTTPVersion | null): void;
         set_status(status: number, reason_phrase: string): void;
     }
 

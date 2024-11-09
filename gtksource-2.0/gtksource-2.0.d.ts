@@ -119,7 +119,7 @@ export namespace GtkSource {
     function iter_backward_search(
         iter: Gtk.TextIter,
         str: string,
-        flags: SearchFlags,
+        flags: SearchFlags | null,
         match_start: Gtk.TextIter,
         match_end?: Gtk.TextIter | null,
         limit?: Gtk.TextIter | null,
@@ -155,7 +155,7 @@ export namespace GtkSource {
     function iter_forward_search(
         iter: Gtk.TextIter,
         str: string,
-        flags: SearchFlags,
+        flags: SearchFlags | null,
         match_start?: Gtk.TextIter | null,
         match_end?: Gtk.TextIter | null,
         limit?: Gtk.TextIter | null,
@@ -1108,7 +1108,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1149,7 +1149,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1674,7 +1674,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1715,7 +1715,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2686,7 +2686,7 @@ export namespace GtkSource {
          * @param unit the unit for the return value.
          * @returns the bottom margin.
          */
-        get_bottom_margin(unit: Gtk.Unit): number;
+        get_bottom_margin(unit: Gtk.Unit | null): number;
         /**
          * Gets the #GtkSourceBuffer associated with the compositor. The returned
          * object reference is owned by the compositor object and
@@ -2718,7 +2718,7 @@ export namespace GtkSource {
          * @param unit the unit for the return value.
          * @returns the left margin
          */
-        get_left_margin(unit: Gtk.Unit): number;
+        get_left_margin(unit: Gtk.Unit | null): number;
         /**
          * Returns the name of the font used to print line numbers on the left margin.
          * The returned string must be freed with g_free().
@@ -2764,7 +2764,7 @@ export namespace GtkSource {
          * @param unit the unit for the return value.
          * @returns the right margin.
          */
-        get_right_margin(unit: Gtk.Unit): number;
+        get_right_margin(unit: Gtk.Unit | null): number;
         /**
          * Returns the width of tabulation in characters for printed text.
          * @returns width of tab.
@@ -2775,7 +2775,7 @@ export namespace GtkSource {
          * @param unit the unit for the return value.
          * @returns the top margin.
          */
-        get_top_margin(unit: Gtk.Unit): number;
+        get_top_margin(unit: Gtk.Unit | null): number;
         /**
          * Gets the line wrapping mode for the printed text.
          * @returns the line wrap mode.
@@ -2864,7 +2864,7 @@ export namespace GtkSource {
          * @param margin the new bottom margin in units of @unit.
          * @param unit the units for @margin.
          */
-        set_bottom_margin(margin: number, unit: Gtk.Unit): void;
+        set_bottom_margin(margin: number, unit: Gtk.Unit | null): void;
         /**
          * Sets the font for printing the page footer. If
          * %NULL is supplied, the default font (i.e. the one being used for the
@@ -2969,7 +2969,7 @@ export namespace GtkSource {
          * @param margin the new left margin in units of @unit.
          * @param unit the units for @margin.
          */
-        set_left_margin(margin: number, unit: Gtk.Unit): void;
+        set_left_margin(margin: number, unit: Gtk.Unit | null): void;
         /**
          * Sets the font for printing line numbers on the left margin.  If
          * %NULL is supplied, the default font (i.e. the one being used for the
@@ -3030,7 +3030,7 @@ export namespace GtkSource {
          * @param margin the new right margin in units of @unit.
          * @param unit the units for @margin.
          */
-        set_right_margin(margin: number, unit: Gtk.Unit): void;
+        set_right_margin(margin: number, unit: Gtk.Unit | null): void;
         /**
          * Sets the width of tabulation in characters for printed text.
          *
@@ -3044,7 +3044,7 @@ export namespace GtkSource {
          * @param margin the new top margin in units of @unit
          * @param unit the units for @margin
          */
-        set_top_margin(margin: number, unit: Gtk.Unit): void;
+        set_top_margin(margin: number, unit: Gtk.Unit | null): void;
         /**
          * Sets the line wrapping mode for the printed text.
          *
@@ -3052,7 +3052,7 @@ export namespace GtkSource {
          * gtk_source_print_compositor_paginate() function.
          * @param wrap_mode a #GtkWrapMode.
          */
-        set_wrap_mode(wrap_mode: Gtk.WrapMode): void;
+        set_wrap_mode(wrap_mode: Gtk.WrapMode | null): void;
     }
 
     module Style {
@@ -3469,7 +3469,7 @@ export namespace GtkSource {
          * @param window_type the gutter window type.
          * @returns the #GtkSourceGutter.
          */
-        get_gutter(window_type: Gtk.TextWindowType): Gutter;
+        get_gutter(window_type: Gtk.TextWindowType | null): Gutter;
         /**
          * Returns whether the current line is highlighted.
          * @returns %TRUE if the current line is highlighted.
@@ -3554,7 +3554,7 @@ export namespace GtkSource {
          * disable display of spaces.
          * @param flags #GtkSourceDrawSpacesFlags specifing how white spaces should be displayed
          */
-        set_draw_spaces(flags: DrawSpacesFlags): void;
+        set_draw_spaces(flags: DrawSpacesFlags | null): void;
         /**
          * If `show` is %TRUE the current line is highlighted.
          * @param show whether to highlight the current line.
@@ -3695,7 +3695,7 @@ export namespace GtkSource {
          * are pressed.
          * @param smart_he the desired behavior among #GtkSourceSmartHomeEndType.
          */
-        set_smart_home_end(smart_he: SmartHomeEndType): void;
+        set_smart_home_end(smart_he: SmartHomeEndType | null): void;
         /**
          * Sets the width of tabulation in characters.
          * @param width width of tab in characters.
@@ -3747,7 +3747,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3788,7 +3788,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4341,7 +4341,9 @@ export namespace GtkSource {
         vfunc_hash(): number;
     }
 
-    export const CompletionProposal: CompletionProposalNamespace;
+    export const CompletionProposal: CompletionProposalNamespace & {
+        new (): CompletionProposal; // This allows `obj instanceof CompletionProposal`
+    };
 
     module CompletionProvider {
         // Constructor properties interface
@@ -4488,7 +4490,9 @@ export namespace GtkSource {
         vfunc_update_info(proposal: CompletionProposal, info: CompletionInfo): void;
     }
 
-    export const CompletionProvider: CompletionProviderNamespace;
+    export const CompletionProvider: CompletionProviderNamespace & {
+        new (): CompletionProvider; // This allows `obj instanceof CompletionProvider`
+    };
 
     module UndoManager {
         // Constructor properties interface
@@ -4586,7 +4590,9 @@ export namespace GtkSource {
         vfunc_undo(): void;
     }
 
-    export const UndoManager: UndoManagerNamespace;
+    export const UndoManager: UndoManagerNamespace & {
+        new (): UndoManager; // This allows `obj instanceof UndoManager`
+    };
 
     /**
      * Name of the imported GIR library

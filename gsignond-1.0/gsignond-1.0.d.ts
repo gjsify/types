@@ -1245,7 +1245,7 @@ export namespace GSignond {
          * The UI policy indicates how the authentication plugin should interact with the user.
          * @param ui_policy ui policy to set
          */
-        set_ui_policy(ui_policy: UiPolicy): void;
+        set_ui_policy(ui_policy: UiPolicy | null): void;
         /**
          * A setter for a username associated with the authentication session.
          * @param username username to set
@@ -1453,7 +1453,7 @@ export namespace GSignond {
          * there were no errors.
          * @param error the error
          */
-        set_query_error(error: SignonuiError): void;
+        set_query_error(error: SignonuiError | null): void;
         /**
          * A setter for the query password property. It indicates whether the signon UI
          * should ask the user for a password (and return it in the password property).
@@ -1817,7 +1817,7 @@ export namespace GSignond {
          * @param state the new state
          * @param message the message
          */
-        status_changed(state: PluginState, message: string): void;
+        status_changed(state: PluginState | null, message: string): void;
         /**
          * Plugin implementations should use this to issue #GSignondPlugin::store
          * signal. This method should not be used otherwise.
@@ -1872,7 +1872,9 @@ export namespace GSignond {
         vfunc_user_action_finished(ui_data: SignonuiData): void;
     }
 
-    export const Plugin: PluginNamespace;
+    export const Plugin: PluginNamespace & {
+        new (): Plugin; // This allows `obj instanceof Plugin`
+    };
 
     /**
      * Name of the imported GIR library

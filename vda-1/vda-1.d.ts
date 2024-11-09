@@ -340,7 +340,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -381,7 +381,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -807,7 +807,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -848,7 +848,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1238,7 +1238,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1279,7 +1279,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1702,7 +1702,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1743,7 +1743,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2164,7 +2164,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2205,7 +2205,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2601,7 +2601,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2642,7 +2642,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3291,7 +3291,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3332,7 +3332,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3740,7 +3740,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3781,7 +3781,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4267,7 +4267,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4308,7 +4308,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4694,7 +4694,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4735,7 +4735,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5121,7 +5121,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5162,7 +5162,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5548,7 +5548,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5589,7 +5589,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5975,7 +5975,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6016,7 +6016,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6402,7 +6402,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6443,7 +6443,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6829,7 +6829,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6870,7 +6870,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7256,7 +7256,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7297,7 +7297,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7683,7 +7683,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7724,7 +7724,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8110,7 +8110,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8151,7 +8151,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8537,7 +8537,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8578,7 +8578,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8964,7 +8964,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9005,7 +9005,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9391,7 +9391,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9432,7 +9432,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9818,7 +9818,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9859,7 +9859,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10245,7 +10245,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10286,7 +10286,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10672,7 +10672,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10713,7 +10713,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11099,7 +11099,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11140,7 +11140,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11526,7 +11526,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11567,7 +11567,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11953,7 +11953,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11994,7 +11994,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12380,7 +12380,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -12421,7 +12421,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12807,7 +12807,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -12848,7 +12848,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13234,7 +13234,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13275,7 +13275,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13661,7 +13661,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13702,7 +13702,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14088,7 +14088,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14129,7 +14129,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14515,7 +14515,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14556,7 +14556,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14942,7 +14942,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14983,7 +14983,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15369,7 +15369,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -15410,7 +15410,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15796,7 +15796,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -15837,7 +15837,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16223,7 +16223,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16264,7 +16264,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16650,7 +16650,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16691,7 +16691,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17077,7 +17077,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -17118,7 +17118,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17504,7 +17504,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -17545,7 +17545,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17931,7 +17931,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -17972,7 +17972,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18358,7 +18358,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -18399,7 +18399,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18785,7 +18785,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -18826,7 +18826,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19212,7 +19212,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -19253,7 +19253,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19639,7 +19639,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -19680,7 +19680,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20066,7 +20066,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -20107,7 +20107,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20493,7 +20493,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -20534,7 +20534,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20920,7 +20920,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -20961,7 +20961,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -21347,7 +21347,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -21388,7 +21388,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -21774,7 +21774,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -21815,7 +21815,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22201,7 +22201,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -22242,7 +22242,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22628,7 +22628,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -22669,7 +22669,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -23055,7 +23055,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -23096,7 +23096,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -23482,7 +23482,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -23523,7 +23523,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -23909,7 +23909,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -23950,7 +23950,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -24336,7 +24336,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -24377,7 +24377,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -24763,7 +24763,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -24804,7 +24804,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -25190,7 +25190,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -25231,7 +25231,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -25617,7 +25617,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -25658,7 +25658,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -26044,7 +26044,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -26085,7 +26085,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -26471,7 +26471,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -26512,7 +26512,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -26914,7 +26914,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -26955,7 +26955,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -27363,7 +27363,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -27404,7 +27404,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -27899,7 +27899,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -27940,7 +27940,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -28355,7 +28355,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -28396,7 +28396,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -28783,7 +28783,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -28824,7 +28824,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -29215,7 +29215,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -29256,7 +29256,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -29645,7 +29645,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -29686,7 +29686,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -30069,7 +30069,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -30110,7 +30110,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -30503,7 +30503,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -30544,7 +30544,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -30955,7 +30955,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -30996,7 +30996,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -31375,7 +31375,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -31416,7 +31416,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -31795,7 +31795,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -31836,7 +31836,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -32220,7 +32220,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -32261,7 +32261,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -32645,7 +32645,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -32686,7 +32686,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -33065,7 +33065,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -33106,7 +33106,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -33485,7 +33485,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -33526,7 +33526,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -33905,7 +33905,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -33946,7 +33946,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -34325,7 +34325,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -34366,7 +34366,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -34767,7 +34767,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -34808,7 +34808,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -35187,7 +35187,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -35228,7 +35228,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -35607,7 +35607,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -35648,7 +35648,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -36027,7 +36027,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -36068,7 +36068,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -36447,7 +36447,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -36488,7 +36488,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -36889,7 +36889,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -36930,7 +36930,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -37311,7 +37311,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -37352,7 +37352,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -37733,7 +37733,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -37774,7 +37774,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -38155,7 +38155,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -38196,7 +38196,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -38577,7 +38577,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -38618,7 +38618,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -38997,7 +38997,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -39038,7 +39038,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -39441,7 +39441,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -39482,7 +39482,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -39863,7 +39863,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -39904,7 +39904,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -40283,7 +40283,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -40324,7 +40324,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -40711,7 +40711,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -40752,7 +40752,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -41157,7 +41157,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -41198,7 +41198,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -41577,7 +41577,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -41618,7 +41618,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -41997,7 +41997,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -42038,7 +42038,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -42417,7 +42417,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -42458,7 +42458,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -42845,7 +42845,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -42886,7 +42886,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -43280,7 +43280,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -43321,7 +43321,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -43743,7 +43743,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -43784,7 +43784,7 @@ export namespace Vda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -45226,7 +45226,9 @@ export namespace Vda {
         vfunc_set_connection(value: Connection): void;
     }
 
-    export const MetaObject: MetaObjectNamespace;
+    export const MetaObject: MetaObjectNamespace & {
+        new (): MetaObject; // This allows `obj instanceof MetaObject`
+    };
 
     module MetaNamedObject {
         // Constructor properties interface
@@ -45257,7 +45259,9 @@ export namespace Vda {
         vfunc_set_name(value: string): void;
     }
 
-    export const MetaNamedObject: MetaNamedObjectNamespace;
+    export const MetaNamedObject: MetaNamedObjectNamespace & {
+        new (): MetaNamedObject; // This allows `obj instanceof MetaNamedObject`
+    };
 
     module ColumnModel {
         // Constructor properties interface
@@ -45291,7 +45295,9 @@ export namespace Vda {
         vfunc_get_data_type(): GObject.GType;
     }
 
-    export const ColumnModel: ColumnModelNamespace;
+    export const ColumnModel: ColumnModelNamespace & {
+        new (): ColumnModel; // This allows `obj instanceof ColumnModel`
+    };
 
     module Connection {
         // Constructor properties interface
@@ -45371,7 +45377,9 @@ export namespace Vda {
         vfunc_get_connection_string(): string;
     }
 
-    export const Connection: ConnectionNamespace;
+    export const Connection: ConnectionNamespace & {
+        new (): Connection; // This allows `obj instanceof Connection`
+    };
 
     module ConnectionBlob {
         // Constructor properties interface
@@ -45395,7 +45403,9 @@ export namespace Vda {
         vfunc_delete(val: SqlValueBlob): void;
     }
 
-    export const ConnectionBlob: ConnectionBlobNamespace;
+    export const ConnectionBlob: ConnectionBlobNamespace & {
+        new (): ConnectionBlob; // This allows `obj instanceof ConnectionBlob`
+    };
 
     module ConnectionRolebased {
         // Constructor properties interface
@@ -45419,7 +45429,9 @@ export namespace Vda {
         vfunc_create_role(name: string, params: Parameters): Role;
     }
 
-    export const ConnectionRolebased: ConnectionRolebasedNamespace;
+    export const ConnectionRolebased: ConnectionRolebasedNamespace & {
+        new (): ConnectionRolebased; // This allows `obj instanceof ConnectionRolebased`
+    };
 
     module ConnectionTransactional {
         // Constructor properties interface
@@ -45451,7 +45463,9 @@ export namespace Vda {
         vfunc_rollback_transaction(name: string): boolean;
     }
 
-    export const ConnectionTransactional: ConnectionTransactionalNamespace;
+    export const ConnectionTransactional: ConnectionTransactionalNamespace & {
+        new (): ConnectionTransactional; // This allows `obj instanceof ConnectionTransactional`
+    };
 
     module DataObject {
         // Constructor properties interface
@@ -45570,7 +45584,9 @@ export namespace Vda {
         vfunc_set_cancellable(value: Gio.Cancellable): void;
     }
 
-    export const DataObject: DataObjectNamespace;
+    export const DataObject: DataObjectNamespace & {
+        new (): DataObject; // This allows `obj instanceof DataObject`
+    };
 
     module DataCollection {
         // Constructor properties interface
@@ -45639,7 +45655,9 @@ export namespace Vda {
         vfunc_set_cancellable(value: Gio.Cancellable): void;
     }
 
-    export const DataCollection: DataCollectionNamespace;
+    export const DataCollection: DataCollectionNamespace & {
+        new (): DataCollection; // This allows `obj instanceof DataCollection`
+    };
 
     module HashModel {
         // Constructor properties interface
@@ -45665,7 +45683,9 @@ export namespace Vda {
         vfunc_remove(object: GObject.Object): void;
     }
 
-    export const HashModel: HashModelNamespace;
+    export const HashModel: HashModelNamespace & {
+        new (): HashModel; // This allows `obj instanceof HashModel`
+    };
 
     module Inserted {
         // Constructor properties interface
@@ -45699,7 +45719,9 @@ export namespace Vda {
         vfunc_get_last_inserted(): RowModel;
     }
 
-    export const Inserted: InsertedNamespace;
+    export const Inserted: InsertedNamespace & {
+        new (): Inserted; // This allows `obj instanceof Inserted`
+    };
 
     module ParsedQuery {
         // Constructor properties interface
@@ -45727,7 +45749,9 @@ export namespace Vda {
         vfunc_get_command(): SqlCommand;
     }
 
-    export const ParsedQuery: ParsedQueryNamespace;
+    export const ParsedQuery: ParsedQueryNamespace & {
+        new (): ParsedQuery; // This allows `obj instanceof ParsedQuery`
+    };
 
     module PreparedQuery {
         // Constructor properties interface
@@ -45759,7 +45783,9 @@ export namespace Vda {
         vfunc_get_parameters(): SqlParameters;
     }
 
-    export const PreparedQuery: PreparedQueryNamespace;
+    export const PreparedQuery: PreparedQueryNamespace & {
+        new (): PreparedQuery; // This allows `obj instanceof PreparedQuery`
+    };
 
     module Query {
         // Constructor properties interface
@@ -45805,7 +45831,9 @@ export namespace Vda {
         vfunc_get_connection(): Connection;
     }
 
-    export const Query: QueryNamespace;
+    export const Query: QueryNamespace & {
+        new (): Query; // This allows `obj instanceof Query`
+    };
 
     module Result {
         // Constructor properties interface
@@ -45819,7 +45847,9 @@ export namespace Vda {
     }
     interface Result extends GObject.Object {}
 
-    export const Result: ResultNamespace;
+    export const Result: ResultNamespace & {
+        new (): Result; // This allows `obj instanceof Result`
+    };
 
     module Role {
         // Constructor properties interface
@@ -45852,11 +45882,11 @@ export namespace Vda {
         privilages(object: MetaObject, _callback_: Gio.AsyncReadyCallback<this>): void;
         privilages(object: MetaObject, _callback_?: Gio.AsyncReadyCallback<this>): Promise<RoleGrant> | void;
         privilages_finish(_res_: Gio.AsyncResult): RoleGrant;
-        change_privilages(object: MetaObject, grant: RoleGrant): Promise<void>;
-        change_privilages(object: MetaObject, grant: RoleGrant, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_privilages(object: MetaObject, grant: RoleGrant | null): Promise<void>;
+        change_privilages(object: MetaObject, grant: RoleGrant | null, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_privilages(
             object: MetaObject,
-            grant: RoleGrant,
+            grant: RoleGrant | null,
             _callback_?: Gio.AsyncReadyCallback<this>,
         ): Promise<void> | void;
         change_privilages_finish(_res_: Gio.AsyncResult): void;
@@ -45875,7 +45905,9 @@ export namespace Vda {
         vfunc_get_connection(): Connection;
     }
 
-    export const Role: RoleNamespace;
+    export const Role: RoleNamespace & {
+        new (): Role; // This allows `obj instanceof Role`
+    };
 
     module RowModel {
         // Constructor properties interface
@@ -45917,7 +45949,9 @@ export namespace Vda {
         vfunc_get_n_columns(): number;
     }
 
-    export const RowModel: RowModelNamespace;
+    export const RowModel: RowModelNamespace & {
+        new (): RowModel; // This allows `obj instanceof RowModel`
+    };
 
     module SqlAffectedRows {
         // Constructor properties interface
@@ -45945,7 +45979,9 @@ export namespace Vda {
         vfunc_get_number(): number;
     }
 
-    export const SqlAffectedRows: SqlAffectedRowsNamespace;
+    export const SqlAffectedRows: SqlAffectedRowsNamespace & {
+        new (): SqlAffectedRows; // This allows `obj instanceof SqlAffectedRows`
+    };
 
     module SqlCommand {
         // Constructor properties interface
@@ -45973,7 +46009,9 @@ export namespace Vda {
         vfunc_get_connection(): Connection;
     }
 
-    export const SqlCommand: SqlCommandNamespace;
+    export const SqlCommand: SqlCommandNamespace & {
+        new (): SqlCommand; // This allows `obj instanceof SqlCommand`
+    };
 
     module SqlCommandConditional {
         // Constructor properties interface
@@ -46001,7 +46039,9 @@ export namespace Vda {
         vfunc_get_condition(): SqlExpression;
     }
 
-    export const SqlCommandConditional: SqlCommandConditionalNamespace;
+    export const SqlCommandConditional: SqlCommandConditionalNamespace & {
+        new (): SqlCommandConditional; // This allows `obj instanceof SqlCommandConditional`
+    };
 
     module SqlCommandDelete {
         // Constructor properties interface
@@ -46027,7 +46067,9 @@ export namespace Vda {
         vfunc_parse(sql: string): void;
     }
 
-    export const SqlCommandDelete: SqlCommandDeleteNamespace;
+    export const SqlCommandDelete: SqlCommandDeleteNamespace & {
+        new (): SqlCommandDelete; // This allows `obj instanceof SqlCommandDelete`
+    };
 
     module SqlCommandInsert {
         // Constructor properties interface
@@ -46053,7 +46095,9 @@ export namespace Vda {
         vfunc_parse(sql: string): void;
     }
 
-    export const SqlCommandInsert: SqlCommandInsertNamespace;
+    export const SqlCommandInsert: SqlCommandInsertNamespace & {
+        new (): SqlCommandInsert; // This allows `obj instanceof SqlCommandInsert`
+    };
 
     module SqlCommandModification {
         // Constructor properties interface
@@ -46095,7 +46139,9 @@ export namespace Vda {
         vfunc_get_values(): HashModel;
     }
 
-    export const SqlCommandModification: SqlCommandModificationNamespace;
+    export const SqlCommandModification: SqlCommandModificationNamespace & {
+        new (): SqlCommandModification; // This allows `obj instanceof SqlCommandModification`
+    };
 
     module SqlCommandParametrized {
         // Constructor properties interface
@@ -46123,7 +46169,9 @@ export namespace Vda {
         vfunc_get_parameters(): SqlParameters;
     }
 
-    export const SqlCommandParametrized: SqlCommandParametrizedNamespace;
+    export const SqlCommandParametrized: SqlCommandParametrizedNamespace & {
+        new (): SqlCommandParametrized; // This allows `obj instanceof SqlCommandParametrized`
+    };
 
     module SqlCommandSelect {
         // Constructor properties interface
@@ -46169,7 +46217,9 @@ export namespace Vda {
         vfunc_get_tables(): HashModel;
     }
 
-    export const SqlCommandSelect: SqlCommandSelectNamespace;
+    export const SqlCommandSelect: SqlCommandSelectNamespace & {
+        new (): SqlCommandSelect; // This allows `obj instanceof SqlCommandSelect`
+    };
 
     module SqlCommandTableRelated {
         // Constructor properties interface
@@ -46207,7 +46257,9 @@ export namespace Vda {
         vfunc_set_allias(value: string): void;
     }
 
-    export const SqlCommandTableRelated: SqlCommandTableRelatedNamespace;
+    export const SqlCommandTableRelated: SqlCommandTableRelatedNamespace & {
+        new (): SqlCommandTableRelated; // This allows `obj instanceof SqlCommandTableRelated`
+    };
 
     module SqlCommandUpdate {
         // Constructor properties interface
@@ -46233,7 +46285,9 @@ export namespace Vda {
         vfunc_parse(sql: string): void;
     }
 
-    export const SqlCommandUpdate: SqlCommandUpdateNamespace;
+    export const SqlCommandUpdate: SqlCommandUpdateNamespace & {
+        new (): SqlCommandUpdate; // This allows `obj instanceof SqlCommandUpdate`
+    };
 
     module SqlExpression {
         // Constructor properties interface
@@ -46263,7 +46317,9 @@ export namespace Vda {
         vfunc_add_math_expression(str: string, cnc: Connection, params: SqlParameters): void;
     }
 
-    export const SqlExpression: SqlExpressionNamespace;
+    export const SqlExpression: SqlExpressionNamespace & {
+        new (): SqlExpression; // This allows `obj instanceof SqlExpression`
+    };
 
     module SqlExpressionField {
         // Constructor properties interface
@@ -46311,7 +46367,9 @@ export namespace Vda {
         vfunc_set_allias(value: string): void;
     }
 
-    export const SqlExpressionField: SqlExpressionFieldNamespace;
+    export const SqlExpressionField: SqlExpressionFieldNamespace & {
+        new (): SqlExpressionField; // This allows `obj instanceof SqlExpressionField`
+    };
 
     module SqlExpressionOperator {
         // Constructor properties interface
@@ -46435,7 +46493,9 @@ export namespace Vda {
         vfunc_get_operator_type(): SqlExpressionOperatorType;
     }
 
-    export const SqlExpressionOperator: SqlExpressionOperatorNamespace;
+    export const SqlExpressionOperator: SqlExpressionOperatorNamespace & {
+        new (): SqlExpressionOperator; // This allows `obj instanceof SqlExpressionOperator`
+    };
 
     module SqlExpressionOperatorGroup {
         // Constructor properties interface
@@ -46449,7 +46509,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorGroup extends GObject.Object {}
 
-    export const SqlExpressionOperatorGroup: SqlExpressionOperatorGroupNamespace;
+    export const SqlExpressionOperatorGroup: SqlExpressionOperatorGroupNamespace & {
+        new (): SqlExpressionOperatorGroup; // This allows `obj instanceof SqlExpressionOperatorGroup`
+    };
 
     module SqlExpressionOperatorMultiterm {
         // Constructor properties interface
@@ -46463,7 +46525,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorMultiterm extends GObject.Object {}
 
-    export const SqlExpressionOperatorMultiterm: SqlExpressionOperatorMultitermNamespace;
+    export const SqlExpressionOperatorMultiterm: SqlExpressionOperatorMultitermNamespace & {
+        new (): SqlExpressionOperatorMultiterm; // This allows `obj instanceof SqlExpressionOperatorMultiterm`
+    };
 
     module SqlExpressionOperatorAnd {
         // Constructor properties interface
@@ -46477,7 +46541,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorAnd extends GObject.Object {}
 
-    export const SqlExpressionOperatorAnd: SqlExpressionOperatorAndNamespace;
+    export const SqlExpressionOperatorAnd: SqlExpressionOperatorAndNamespace & {
+        new (): SqlExpressionOperatorAnd; // This allows `obj instanceof SqlExpressionOperatorAnd`
+    };
 
     module SqlExpressionOperatorOr {
         // Constructor properties interface
@@ -46491,7 +46557,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorOr extends GObject.Object {}
 
-    export const SqlExpressionOperatorOr: SqlExpressionOperatorOrNamespace;
+    export const SqlExpressionOperatorOr: SqlExpressionOperatorOrNamespace & {
+        new (): SqlExpressionOperatorOr; // This allows `obj instanceof SqlExpressionOperatorOr`
+    };
 
     module SqlExpressionOperatorBinaryterm {
         // Constructor properties interface
@@ -46505,7 +46573,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorBinaryterm extends GObject.Object {}
 
-    export const SqlExpressionOperatorBinaryterm: SqlExpressionOperatorBinarytermNamespace;
+    export const SqlExpressionOperatorBinaryterm: SqlExpressionOperatorBinarytermNamespace & {
+        new (): SqlExpressionOperatorBinaryterm; // This allows `obj instanceof SqlExpressionOperatorBinaryterm`
+    };
 
     module SqlExpressionOperatorEq {
         // Constructor properties interface
@@ -46519,7 +46589,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorEq extends GObject.Object {}
 
-    export const SqlExpressionOperatorEq: SqlExpressionOperatorEqNamespace;
+    export const SqlExpressionOperatorEq: SqlExpressionOperatorEqNamespace & {
+        new (): SqlExpressionOperatorEq; // This allows `obj instanceof SqlExpressionOperatorEq`
+    };
 
     module SqlExpressionOperatorNotEq {
         // Constructor properties interface
@@ -46533,7 +46605,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorNotEq extends GObject.Object {}
 
-    export const SqlExpressionOperatorNotEq: SqlExpressionOperatorNotEqNamespace;
+    export const SqlExpressionOperatorNotEq: SqlExpressionOperatorNotEqNamespace & {
+        new (): SqlExpressionOperatorNotEq; // This allows `obj instanceof SqlExpressionOperatorNotEq`
+    };
 
     module SqlExpressionOperatorDiff {
         // Constructor properties interface
@@ -46547,7 +46621,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorDiff extends GObject.Object {}
 
-    export const SqlExpressionOperatorDiff: SqlExpressionOperatorDiffNamespace;
+    export const SqlExpressionOperatorDiff: SqlExpressionOperatorDiffNamespace & {
+        new (): SqlExpressionOperatorDiff; // This allows `obj instanceof SqlExpressionOperatorDiff`
+    };
 
     module SqlExpressionOperatorGt {
         // Constructor properties interface
@@ -46561,7 +46637,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorGt extends GObject.Object {}
 
-    export const SqlExpressionOperatorGt: SqlExpressionOperatorGtNamespace;
+    export const SqlExpressionOperatorGt: SqlExpressionOperatorGtNamespace & {
+        new (): SqlExpressionOperatorGt; // This allows `obj instanceof SqlExpressionOperatorGt`
+    };
 
     module SqlExpressionOperatorLt {
         // Constructor properties interface
@@ -46575,7 +46653,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorLt extends GObject.Object {}
 
-    export const SqlExpressionOperatorLt: SqlExpressionOperatorLtNamespace;
+    export const SqlExpressionOperatorLt: SqlExpressionOperatorLtNamespace & {
+        new (): SqlExpressionOperatorLt; // This allows `obj instanceof SqlExpressionOperatorLt`
+    };
 
     module SqlExpressionOperatorGeq {
         // Constructor properties interface
@@ -46589,7 +46669,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorGeq extends GObject.Object {}
 
-    export const SqlExpressionOperatorGeq: SqlExpressionOperatorGeqNamespace;
+    export const SqlExpressionOperatorGeq: SqlExpressionOperatorGeqNamespace & {
+        new (): SqlExpressionOperatorGeq; // This allows `obj instanceof SqlExpressionOperatorGeq`
+    };
 
     module SqlExpressionOperatorLeq {
         // Constructor properties interface
@@ -46603,7 +46685,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorLeq extends GObject.Object {}
 
-    export const SqlExpressionOperatorLeq: SqlExpressionOperatorLeqNamespace;
+    export const SqlExpressionOperatorLeq: SqlExpressionOperatorLeqNamespace & {
+        new (): SqlExpressionOperatorLeq; // This allows `obj instanceof SqlExpressionOperatorLeq`
+    };
 
     module SqlExpressionOperatorRegexp {
         // Constructor properties interface
@@ -46617,7 +46701,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorRegexp extends GObject.Object {}
 
-    export const SqlExpressionOperatorRegexp: SqlExpressionOperatorRegexpNamespace;
+    export const SqlExpressionOperatorRegexp: SqlExpressionOperatorRegexpNamespace & {
+        new (): SqlExpressionOperatorRegexp; // This allows `obj instanceof SqlExpressionOperatorRegexp`
+    };
 
     module SqlExpressionOperatorStar {
         // Constructor properties interface
@@ -46631,7 +46717,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorStar extends GObject.Object {}
 
-    export const SqlExpressionOperatorStar: SqlExpressionOperatorStarNamespace;
+    export const SqlExpressionOperatorStar: SqlExpressionOperatorStarNamespace & {
+        new (): SqlExpressionOperatorStar; // This allows `obj instanceof SqlExpressionOperatorStar`
+    };
 
     module SqlExpressionOperatorDiv {
         // Constructor properties interface
@@ -46645,7 +46733,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorDiv extends GObject.Object {}
 
-    export const SqlExpressionOperatorDiv: SqlExpressionOperatorDivNamespace;
+    export const SqlExpressionOperatorDiv: SqlExpressionOperatorDivNamespace & {
+        new (): SqlExpressionOperatorDiv; // This allows `obj instanceof SqlExpressionOperatorDiv`
+    };
 
     module SqlExpressionOperatorIn {
         // Constructor properties interface
@@ -46659,7 +46749,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIn extends GObject.Object {}
 
-    export const SqlExpressionOperatorIn: SqlExpressionOperatorInNamespace;
+    export const SqlExpressionOperatorIn: SqlExpressionOperatorInNamespace & {
+        new (): SqlExpressionOperatorIn; // This allows `obj instanceof SqlExpressionOperatorIn`
+    };
 
     module SqlExpressionOperatorNotIn {
         // Constructor properties interface
@@ -46673,7 +46765,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorNotIn extends GObject.Object {}
 
-    export const SqlExpressionOperatorNotIn: SqlExpressionOperatorNotInNamespace;
+    export const SqlExpressionOperatorNotIn: SqlExpressionOperatorNotInNamespace & {
+        new (): SqlExpressionOperatorNotIn; // This allows `obj instanceof SqlExpressionOperatorNotIn`
+    };
 
     module SqlExpressionOperatorConcatenate {
         // Constructor properties interface
@@ -46687,7 +46781,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorConcatenate extends GObject.Object {}
 
-    export const SqlExpressionOperatorConcatenate: SqlExpressionOperatorConcatenateNamespace;
+    export const SqlExpressionOperatorConcatenate: SqlExpressionOperatorConcatenateNamespace & {
+        new (): SqlExpressionOperatorConcatenate; // This allows `obj instanceof SqlExpressionOperatorConcatenate`
+    };
 
     module SqlExpressionOperatorSimilarTo {
         // Constructor properties interface
@@ -46701,7 +46797,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorSimilarTo extends GObject.Object {}
 
-    export const SqlExpressionOperatorSimilarTo: SqlExpressionOperatorSimilarToNamespace;
+    export const SqlExpressionOperatorSimilarTo: SqlExpressionOperatorSimilarToNamespace & {
+        new (): SqlExpressionOperatorSimilarTo; // This allows `obj instanceof SqlExpressionOperatorSimilarTo`
+    };
 
     module SqlExpressionOperatorLike {
         // Constructor properties interface
@@ -46715,7 +46813,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorLike extends GObject.Object {}
 
-    export const SqlExpressionOperatorLike: SqlExpressionOperatorLikeNamespace;
+    export const SqlExpressionOperatorLike: SqlExpressionOperatorLikeNamespace & {
+        new (): SqlExpressionOperatorLike; // This allows `obj instanceof SqlExpressionOperatorLike`
+    };
 
     module SqlExpressionOperatorNotLike {
         // Constructor properties interface
@@ -46729,7 +46829,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorNotLike extends GObject.Object {}
 
-    export const SqlExpressionOperatorNotLike: SqlExpressionOperatorNotLikeNamespace;
+    export const SqlExpressionOperatorNotLike: SqlExpressionOperatorNotLikeNamespace & {
+        new (): SqlExpressionOperatorNotLike; // This allows `obj instanceof SqlExpressionOperatorNotLike`
+    };
 
     module SqlExpressionOperatorIlike {
         // Constructor properties interface
@@ -46743,7 +46845,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIlike extends GObject.Object {}
 
-    export const SqlExpressionOperatorIlike: SqlExpressionOperatorIlikeNamespace;
+    export const SqlExpressionOperatorIlike: SqlExpressionOperatorIlikeNamespace & {
+        new (): SqlExpressionOperatorIlike; // This allows `obj instanceof SqlExpressionOperatorIlike`
+    };
 
     module SqlExpressionOperatorNotIlike {
         // Constructor properties interface
@@ -46757,7 +46861,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorNotIlike extends GObject.Object {}
 
-    export const SqlExpressionOperatorNotIlike: SqlExpressionOperatorNotIlikeNamespace;
+    export const SqlExpressionOperatorNotIlike: SqlExpressionOperatorNotIlikeNamespace & {
+        new (): SqlExpressionOperatorNotIlike; // This allows `obj instanceof SqlExpressionOperatorNotIlike`
+    };
 
     module SqlExpressionOperatorBinaryUnaryterm {
         // Constructor properties interface
@@ -46771,7 +46877,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorBinaryUnaryterm extends GObject.Object {}
 
-    export const SqlExpressionOperatorBinaryUnaryterm: SqlExpressionOperatorBinaryUnarytermNamespace;
+    export const SqlExpressionOperatorBinaryUnaryterm: SqlExpressionOperatorBinaryUnarytermNamespace & {
+        new (): SqlExpressionOperatorBinaryUnaryterm; // This allows `obj instanceof SqlExpressionOperatorBinaryUnaryterm`
+    };
 
     module SqlExpressionOperatorMinus {
         // Constructor properties interface
@@ -46785,7 +46893,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorMinus extends GObject.Object {}
 
-    export const SqlExpressionOperatorMinus: SqlExpressionOperatorMinusNamespace;
+    export const SqlExpressionOperatorMinus: SqlExpressionOperatorMinusNamespace & {
+        new (): SqlExpressionOperatorMinus; // This allows `obj instanceof SqlExpressionOperatorMinus`
+    };
 
     module SqlExpressionOperatorPlus {
         // Constructor properties interface
@@ -46799,7 +46909,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorPlus extends GObject.Object {}
 
-    export const SqlExpressionOperatorPlus: SqlExpressionOperatorPlusNamespace;
+    export const SqlExpressionOperatorPlus: SqlExpressionOperatorPlusNamespace & {
+        new (): SqlExpressionOperatorPlus; // This allows `obj instanceof SqlExpressionOperatorPlus`
+    };
 
     module SqlExpressionOperatorInitialUnaryterm {
         // Constructor properties interface
@@ -46813,7 +46925,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorInitialUnaryterm extends GObject.Object {}
 
-    export const SqlExpressionOperatorInitialUnaryterm: SqlExpressionOperatorInitialUnarytermNamespace;
+    export const SqlExpressionOperatorInitialUnaryterm: SqlExpressionOperatorInitialUnarytermNamespace & {
+        new (): SqlExpressionOperatorInitialUnaryterm; // This allows `obj instanceof SqlExpressionOperatorInitialUnaryterm`
+    };
 
     module SqlExpressionOperatorNot {
         // Constructor properties interface
@@ -46827,7 +46941,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorNot extends GObject.Object {}
 
-    export const SqlExpressionOperatorNot: SqlExpressionOperatorNotNamespace;
+    export const SqlExpressionOperatorNot: SqlExpressionOperatorNotNamespace & {
+        new (): SqlExpressionOperatorNot; // This allows `obj instanceof SqlExpressionOperatorNot`
+    };
 
     module SqlExpressionOperatorFinalUnaryterm {
         // Constructor properties interface
@@ -46841,7 +46957,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorFinalUnaryterm extends GObject.Object {}
 
-    export const SqlExpressionOperatorFinalUnaryterm: SqlExpressionOperatorFinalUnarytermNamespace;
+    export const SqlExpressionOperatorFinalUnaryterm: SqlExpressionOperatorFinalUnarytermNamespace & {
+        new (): SqlExpressionOperatorFinalUnaryterm; // This allows `obj instanceof SqlExpressionOperatorFinalUnaryterm`
+    };
 
     module SqlExpressionOperatorIs {
         // Constructor properties interface
@@ -46855,7 +46973,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIs extends GObject.Object {}
 
-    export const SqlExpressionOperatorIs: SqlExpressionOperatorIsNamespace;
+    export const SqlExpressionOperatorIs: SqlExpressionOperatorIsNamespace & {
+        new (): SqlExpressionOperatorIs; // This allows `obj instanceof SqlExpressionOperatorIs`
+    };
 
     module SqlExpressionOperatorIsNot {
         // Constructor properties interface
@@ -46869,7 +46989,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIsNot extends GObject.Object {}
 
-    export const SqlExpressionOperatorIsNot: SqlExpressionOperatorIsNotNamespace;
+    export const SqlExpressionOperatorIsNot: SqlExpressionOperatorIsNotNamespace & {
+        new (): SqlExpressionOperatorIsNot; // This allows `obj instanceof SqlExpressionOperatorIsNot`
+    };
 
     module SqlExpressionOperatorIsNull {
         // Constructor properties interface
@@ -46883,7 +47005,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIsNull extends GObject.Object {}
 
-    export const SqlExpressionOperatorIsNull: SqlExpressionOperatorIsNullNamespace;
+    export const SqlExpressionOperatorIsNull: SqlExpressionOperatorIsNullNamespace & {
+        new (): SqlExpressionOperatorIsNull; // This allows `obj instanceof SqlExpressionOperatorIsNull`
+    };
 
     module SqlExpressionOperatorIsNotNull {
         // Constructor properties interface
@@ -46897,7 +47021,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIsNotNull extends GObject.Object {}
 
-    export const SqlExpressionOperatorIsNotNull: SqlExpressionOperatorIsNotNullNamespace;
+    export const SqlExpressionOperatorIsNotNull: SqlExpressionOperatorIsNotNullNamespace & {
+        new (): SqlExpressionOperatorIsNotNull; // This allows `obj instanceof SqlExpressionOperatorIsNotNull`
+    };
 
     module SqlExpressionOperatorIsTrue {
         // Constructor properties interface
@@ -46911,7 +47037,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIsTrue extends GObject.Object {}
 
-    export const SqlExpressionOperatorIsTrue: SqlExpressionOperatorIsTrueNamespace;
+    export const SqlExpressionOperatorIsTrue: SqlExpressionOperatorIsTrueNamespace & {
+        new (): SqlExpressionOperatorIsTrue; // This allows `obj instanceof SqlExpressionOperatorIsTrue`
+    };
 
     module SqlExpressionOperatorIsNotTrue {
         // Constructor properties interface
@@ -46925,7 +47053,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIsNotTrue extends GObject.Object {}
 
-    export const SqlExpressionOperatorIsNotTrue: SqlExpressionOperatorIsNotTrueNamespace;
+    export const SqlExpressionOperatorIsNotTrue: SqlExpressionOperatorIsNotTrueNamespace & {
+        new (): SqlExpressionOperatorIsNotTrue; // This allows `obj instanceof SqlExpressionOperatorIsNotTrue`
+    };
 
     module SqlExpressionOperatorIsFalse {
         // Constructor properties interface
@@ -46939,7 +47069,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIsFalse extends GObject.Object {}
 
-    export const SqlExpressionOperatorIsFalse: SqlExpressionOperatorIsFalseNamespace;
+    export const SqlExpressionOperatorIsFalse: SqlExpressionOperatorIsFalseNamespace & {
+        new (): SqlExpressionOperatorIsFalse; // This allows `obj instanceof SqlExpressionOperatorIsFalse`
+    };
 
     module SqlExpressionOperatorIsNotFalse {
         // Constructor properties interface
@@ -46953,7 +47085,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIsNotFalse extends GObject.Object {}
 
-    export const SqlExpressionOperatorIsNotFalse: SqlExpressionOperatorIsNotFalseNamespace;
+    export const SqlExpressionOperatorIsNotFalse: SqlExpressionOperatorIsNotFalseNamespace & {
+        new (): SqlExpressionOperatorIsNotFalse; // This allows `obj instanceof SqlExpressionOperatorIsNotFalse`
+    };
 
     module SqlExpressionOperatorIsUnknown {
         // Constructor properties interface
@@ -46967,7 +47101,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIsUnknown extends GObject.Object {}
 
-    export const SqlExpressionOperatorIsUnknown: SqlExpressionOperatorIsUnknownNamespace;
+    export const SqlExpressionOperatorIsUnknown: SqlExpressionOperatorIsUnknownNamespace & {
+        new (): SqlExpressionOperatorIsUnknown; // This allows `obj instanceof SqlExpressionOperatorIsUnknown`
+    };
 
     module SqlExpressionOperatorIsNotUnknown {
         // Constructor properties interface
@@ -46981,7 +47117,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIsNotUnknown extends GObject.Object {}
 
-    export const SqlExpressionOperatorIsNotUnknown: SqlExpressionOperatorIsNotUnknownNamespace;
+    export const SqlExpressionOperatorIsNotUnknown: SqlExpressionOperatorIsNotUnknownNamespace & {
+        new (): SqlExpressionOperatorIsNotUnknown; // This allows `obj instanceof SqlExpressionOperatorIsNotUnknown`
+    };
 
     module SqlExpressionOperatorIsDistinct {
         // Constructor properties interface
@@ -46995,7 +47133,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIsDistinct extends GObject.Object {}
 
-    export const SqlExpressionOperatorIsDistinct: SqlExpressionOperatorIsDistinctNamespace;
+    export const SqlExpressionOperatorIsDistinct: SqlExpressionOperatorIsDistinctNamespace & {
+        new (): SqlExpressionOperatorIsDistinct; // This allows `obj instanceof SqlExpressionOperatorIsDistinct`
+    };
 
     module SqlExpressionOperatorIsNotDistinct {
         // Constructor properties interface
@@ -47009,7 +47149,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIsNotDistinct extends GObject.Object {}
 
-    export const SqlExpressionOperatorIsNotDistinct: SqlExpressionOperatorIsNotDistinctNamespace;
+    export const SqlExpressionOperatorIsNotDistinct: SqlExpressionOperatorIsNotDistinctNamespace & {
+        new (): SqlExpressionOperatorIsNotDistinct; // This allows `obj instanceof SqlExpressionOperatorIsNotDistinct`
+    };
 
     module SqlExpressionOperatorIsDistinctFrom {
         // Constructor properties interface
@@ -47023,7 +47165,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIsDistinctFrom extends GObject.Object {}
 
-    export const SqlExpressionOperatorIsDistinctFrom: SqlExpressionOperatorIsDistinctFromNamespace;
+    export const SqlExpressionOperatorIsDistinctFrom: SqlExpressionOperatorIsDistinctFromNamespace & {
+        new (): SqlExpressionOperatorIsDistinctFrom; // This allows `obj instanceof SqlExpressionOperatorIsDistinctFrom`
+    };
 
     module SqlExpressionOperatorIsNotDistinctFrom {
         // Constructor properties interface
@@ -47037,7 +47181,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorIsNotDistinctFrom extends GObject.Object {}
 
-    export const SqlExpressionOperatorIsNotDistinctFrom: SqlExpressionOperatorIsNotDistinctFromNamespace;
+    export const SqlExpressionOperatorIsNotDistinctFrom: SqlExpressionOperatorIsNotDistinctFromNamespace & {
+        new (): SqlExpressionOperatorIsNotDistinctFrom; // This allows `obj instanceof SqlExpressionOperatorIsNotDistinctFrom`
+    };
 
     module SqlExpressionOperatorThreeterm {
         // Constructor properties interface
@@ -47051,7 +47197,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorThreeterm extends GObject.Object {}
 
-    export const SqlExpressionOperatorThreeterm: SqlExpressionOperatorThreetermNamespace;
+    export const SqlExpressionOperatorThreeterm: SqlExpressionOperatorThreetermNamespace & {
+        new (): SqlExpressionOperatorThreeterm; // This allows `obj instanceof SqlExpressionOperatorThreeterm`
+    };
 
     module SqlExpressionOperatorBetween {
         // Constructor properties interface
@@ -47065,7 +47213,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorBetween extends GObject.Object {}
 
-    export const SqlExpressionOperatorBetween: SqlExpressionOperatorBetweenNamespace;
+    export const SqlExpressionOperatorBetween: SqlExpressionOperatorBetweenNamespace & {
+        new (): SqlExpressionOperatorBetween; // This allows `obj instanceof SqlExpressionOperatorBetween`
+    };
 
     module SqlExpressionOperatorBetweenAnd {
         // Constructor properties interface
@@ -47079,7 +47229,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorBetweenAnd extends GObject.Object {}
 
-    export const SqlExpressionOperatorBetweenAnd: SqlExpressionOperatorBetweenAndNamespace;
+    export const SqlExpressionOperatorBetweenAnd: SqlExpressionOperatorBetweenAndNamespace & {
+        new (): SqlExpressionOperatorBetweenAnd; // This allows `obj instanceof SqlExpressionOperatorBetweenAnd`
+    };
 
     module SqlExpressionOperatorNotBetween {
         // Constructor properties interface
@@ -47093,7 +47245,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorNotBetween extends GObject.Object {}
 
-    export const SqlExpressionOperatorNotBetween: SqlExpressionOperatorNotBetweenNamespace;
+    export const SqlExpressionOperatorNotBetween: SqlExpressionOperatorNotBetweenNamespace & {
+        new (): SqlExpressionOperatorNotBetween; // This allows `obj instanceof SqlExpressionOperatorNotBetween`
+    };
 
     module SqlExpressionOperatorNotBetweenAnd {
         // Constructor properties interface
@@ -47107,7 +47261,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorNotBetweenAnd extends GObject.Object {}
 
-    export const SqlExpressionOperatorNotBetweenAnd: SqlExpressionOperatorNotBetweenAndNamespace;
+    export const SqlExpressionOperatorNotBetweenAnd: SqlExpressionOperatorNotBetweenAndNamespace & {
+        new (): SqlExpressionOperatorNotBetweenAnd; // This allows `obj instanceof SqlExpressionOperatorNotBetweenAnd`
+    };
 
     module SqlExpressionOperatorBetweenSymmetric {
         // Constructor properties interface
@@ -47121,7 +47277,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorBetweenSymmetric extends GObject.Object {}
 
-    export const SqlExpressionOperatorBetweenSymmetric: SqlExpressionOperatorBetweenSymmetricNamespace;
+    export const SqlExpressionOperatorBetweenSymmetric: SqlExpressionOperatorBetweenSymmetricNamespace & {
+        new (): SqlExpressionOperatorBetweenSymmetric; // This allows `obj instanceof SqlExpressionOperatorBetweenSymmetric`
+    };
 
     module SqlExpressionOperatorBetweenSymmetricAnd {
         // Constructor properties interface
@@ -47135,7 +47293,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorBetweenSymmetricAnd extends GObject.Object {}
 
-    export const SqlExpressionOperatorBetweenSymmetricAnd: SqlExpressionOperatorBetweenSymmetricAndNamespace;
+    export const SqlExpressionOperatorBetweenSymmetricAnd: SqlExpressionOperatorBetweenSymmetricAndNamespace & {
+        new (): SqlExpressionOperatorBetweenSymmetricAnd; // This allows `obj instanceof SqlExpressionOperatorBetweenSymmetricAnd`
+    };
 
     module SqlExpressionOperatorNotBetweenSymmetric {
         // Constructor properties interface
@@ -47149,7 +47309,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorNotBetweenSymmetric extends GObject.Object {}
 
-    export const SqlExpressionOperatorNotBetweenSymmetric: SqlExpressionOperatorNotBetweenSymmetricNamespace;
+    export const SqlExpressionOperatorNotBetweenSymmetric: SqlExpressionOperatorNotBetweenSymmetricNamespace & {
+        new (): SqlExpressionOperatorNotBetweenSymmetric; // This allows `obj instanceof SqlExpressionOperatorNotBetweenSymmetric`
+    };
 
     module SqlExpressionOperatorNotBetweenSymmetricAnd {
         // Constructor properties interface
@@ -47163,7 +47325,9 @@ export namespace Vda {
     }
     interface SqlExpressionOperatorNotBetweenSymmetricAnd extends GObject.Object {}
 
-    export const SqlExpressionOperatorNotBetweenSymmetricAnd: SqlExpressionOperatorNotBetweenSymmetricAndNamespace;
+    export const SqlExpressionOperatorNotBetweenSymmetricAnd: SqlExpressionOperatorNotBetweenSymmetricAndNamespace & {
+        new (): SqlExpressionOperatorNotBetweenSymmetricAnd; // This allows `obj instanceof SqlExpressionOperatorNotBetweenSymmetricAnd`
+    };
 
     module SqlExpressionValue {
         // Constructor properties interface
@@ -47203,7 +47367,9 @@ export namespace Vda {
         vfunc_set_value(value: SqlValue): void;
     }
 
-    export const SqlExpressionValue: SqlExpressionValueNamespace;
+    export const SqlExpressionValue: SqlExpressionValueNamespace & {
+        new (): SqlExpressionValue; // This allows `obj instanceof SqlExpressionValue`
+    };
 
     module SqlExpressionValueParameter {
         // Constructor properties interface
@@ -47252,7 +47418,9 @@ export namespace Vda {
         vfunc_set_gtype(value: GObject.GType): void;
     }
 
-    export const SqlExpressionValueParameter: SqlExpressionValueParameterNamespace;
+    export const SqlExpressionValueParameter: SqlExpressionValueParameterNamespace & {
+        new (): SqlExpressionValueParameter; // This allows `obj instanceof SqlExpressionValueParameter`
+    };
 
     module SqlParameters {
         // Constructor properties interface
@@ -47282,7 +47450,9 @@ export namespace Vda {
         vfunc_has_param(name: string): boolean;
     }
 
-    export const SqlParameters: SqlParametersNamespace;
+    export const SqlParameters: SqlParametersNamespace & {
+        new (): SqlParameters; // This allows `obj instanceof SqlParameters`
+    };
 
     module SqlParser {
         // Constructor properties interface
@@ -47304,7 +47474,9 @@ export namespace Vda {
         vfunc_parse(str: string, cnc: Connection): SqlCommandParametrized;
     }
 
-    export const SqlParser: SqlParserNamespace;
+    export const SqlParser: SqlParserNamespace & {
+        new (): SqlParser; // This allows `obj instanceof SqlParser`
+    };
 
     module SqlTableReference {
         // Constructor properties interface
@@ -47342,7 +47514,9 @@ export namespace Vda {
         vfunc_set_allias(value: string): void;
     }
 
-    export const SqlTableReference: SqlTableReferenceNamespace;
+    export const SqlTableReference: SqlTableReferenceNamespace & {
+        new (): SqlTableReference; // This allows `obj instanceof SqlTableReference`
+    };
 
     module Stringifiable {
         // Constructor properties interface
@@ -47364,7 +47538,9 @@ export namespace Vda {
         vfunc_to_string(): string;
     }
 
-    export const Stringifiable: StringifiableNamespace;
+    export const Stringifiable: StringifiableNamespace & {
+        new (): Stringifiable; // This allows `obj instanceof Stringifiable`
+    };
 
     module SqlValue {
         // Constructor properties interface
@@ -47409,7 +47585,9 @@ export namespace Vda {
         vfunc_get_name(): string;
     }
 
-    export const SqlValue: SqlValueNamespace;
+    export const SqlValue: SqlValueNamespace & {
+        new (): SqlValue; // This allows `obj instanceof SqlValue`
+    };
 
     module SqlValueNull {
         // Constructor properties interface
@@ -47423,7 +47601,9 @@ export namespace Vda {
     }
     interface SqlValueNull extends GObject.Object {}
 
-    export const SqlValueNull: SqlValueNullNamespace;
+    export const SqlValueNull: SqlValueNullNamespace & {
+        new (): SqlValueNull; // This allows `obj instanceof SqlValueNull`
+    };
 
     module SqlValueBool {
         // Constructor properties interface
@@ -47437,7 +47617,9 @@ export namespace Vda {
     }
     interface SqlValueBool extends GObject.Object {}
 
-    export const SqlValueBool: SqlValueBoolNamespace;
+    export const SqlValueBool: SqlValueBoolNamespace & {
+        new (): SqlValueBool; // This allows `obj instanceof SqlValueBool`
+    };
 
     module SqlValueBit {
         // Constructor properties interface
@@ -47451,7 +47633,9 @@ export namespace Vda {
     }
     interface SqlValueBit extends GObject.Object {}
 
-    export const SqlValueBit: SqlValueBitNamespace;
+    export const SqlValueBit: SqlValueBitNamespace & {
+        new (): SqlValueBit; // This allows `obj instanceof SqlValueBit`
+    };
 
     module SqlValueString {
         // Constructor properties interface
@@ -47465,7 +47649,9 @@ export namespace Vda {
     }
     interface SqlValueString extends GObject.Object {}
 
-    export const SqlValueString: SqlValueStringNamespace;
+    export const SqlValueString: SqlValueStringNamespace & {
+        new (): SqlValueString; // This allows `obj instanceof SqlValueString`
+    };
 
     module SqlValueXml {
         // Constructor properties interface
@@ -47493,7 +47679,9 @@ export namespace Vda {
         vfunc_get_document(): GXml.DomDocument;
     }
 
-    export const SqlValueXml: SqlValueXmlNamespace;
+    export const SqlValueXml: SqlValueXmlNamespace & {
+        new (): SqlValueXml; // This allows `obj instanceof SqlValueXml`
+    };
 
     module SqlValueJson {
         // Constructor properties interface
@@ -47521,7 +47709,9 @@ export namespace Vda {
         vfunc_get_document(): Json.Node;
     }
 
-    export const SqlValueJson: SqlValueJsonNamespace;
+    export const SqlValueJson: SqlValueJsonNamespace & {
+        new (): SqlValueJson; // This allows `obj instanceof SqlValueJson`
+    };
 
     module SqlValueText {
         // Constructor properties interface
@@ -47535,7 +47725,9 @@ export namespace Vda {
     }
     interface SqlValueText extends GObject.Object {}
 
-    export const SqlValueText: SqlValueTextNamespace;
+    export const SqlValueText: SqlValueTextNamespace & {
+        new (): SqlValueText; // This allows `obj instanceof SqlValueText`
+    };
 
     module SqlValueName {
         // Constructor properties interface
@@ -47549,7 +47741,9 @@ export namespace Vda {
     }
     interface SqlValueName extends GObject.Object {}
 
-    export const SqlValueName: SqlValueNameNamespace;
+    export const SqlValueName: SqlValueNameNamespace & {
+        new (): SqlValueName; // This allows `obj instanceof SqlValueName`
+    };
 
     module SqlValueInteger {
         // Constructor properties interface
@@ -47563,7 +47757,9 @@ export namespace Vda {
     }
     interface SqlValueInteger extends GObject.Object {}
 
-    export const SqlValueInteger: SqlValueIntegerNamespace;
+    export const SqlValueInteger: SqlValueIntegerNamespace & {
+        new (): SqlValueInteger; // This allows `obj instanceof SqlValueInteger`
+    };
 
     module SqlValueByte {
         // Constructor properties interface
@@ -47577,7 +47773,9 @@ export namespace Vda {
     }
     interface SqlValueByte extends GObject.Object {}
 
-    export const SqlValueByte: SqlValueByteNamespace;
+    export const SqlValueByte: SqlValueByteNamespace & {
+        new (): SqlValueByte; // This allows `obj instanceof SqlValueByte`
+    };
 
     module SqlValueInt2 {
         // Constructor properties interface
@@ -47591,7 +47789,9 @@ export namespace Vda {
     }
     interface SqlValueInt2 extends GObject.Object {}
 
-    export const SqlValueInt2: SqlValueInt2Namespace;
+    export const SqlValueInt2: SqlValueInt2Namespace & {
+        new (): SqlValueInt2; // This allows `obj instanceof SqlValueInt2`
+    };
 
     module SqlValueInt4 {
         // Constructor properties interface
@@ -47605,7 +47805,9 @@ export namespace Vda {
     }
     interface SqlValueInt4 extends GObject.Object {}
 
-    export const SqlValueInt4: SqlValueInt4Namespace;
+    export const SqlValueInt4: SqlValueInt4Namespace & {
+        new (): SqlValueInt4; // This allows `obj instanceof SqlValueInt4`
+    };
 
     module SqlValueInt8 {
         // Constructor properties interface
@@ -47619,7 +47821,9 @@ export namespace Vda {
     }
     interface SqlValueInt8 extends GObject.Object {}
 
-    export const SqlValueInt8: SqlValueInt8Namespace;
+    export const SqlValueInt8: SqlValueInt8Namespace & {
+        new (): SqlValueInt8; // This allows `obj instanceof SqlValueInt8`
+    };
 
     module SqlValueUnsignedInteger {
         // Constructor properties interface
@@ -47633,7 +47837,9 @@ export namespace Vda {
     }
     interface SqlValueUnsignedInteger extends GObject.Object {}
 
-    export const SqlValueUnsignedInteger: SqlValueUnsignedIntegerNamespace;
+    export const SqlValueUnsignedInteger: SqlValueUnsignedIntegerNamespace & {
+        new (): SqlValueUnsignedInteger; // This allows `obj instanceof SqlValueUnsignedInteger`
+    };
 
     module SqlValueUnsignedByte {
         // Constructor properties interface
@@ -47647,7 +47853,9 @@ export namespace Vda {
     }
     interface SqlValueUnsignedByte extends GObject.Object {}
 
-    export const SqlValueUnsignedByte: SqlValueUnsignedByteNamespace;
+    export const SqlValueUnsignedByte: SqlValueUnsignedByteNamespace & {
+        new (): SqlValueUnsignedByte; // This allows `obj instanceof SqlValueUnsignedByte`
+    };
 
     module SqlValueUnsignedInt2 {
         // Constructor properties interface
@@ -47661,7 +47869,9 @@ export namespace Vda {
     }
     interface SqlValueUnsignedInt2 extends GObject.Object {}
 
-    export const SqlValueUnsignedInt2: SqlValueUnsignedInt2Namespace;
+    export const SqlValueUnsignedInt2: SqlValueUnsignedInt2Namespace & {
+        new (): SqlValueUnsignedInt2; // This allows `obj instanceof SqlValueUnsignedInt2`
+    };
 
     module SqlValueUnsignedInt4 {
         // Constructor properties interface
@@ -47675,7 +47885,9 @@ export namespace Vda {
     }
     interface SqlValueUnsignedInt4 extends GObject.Object {}
 
-    export const SqlValueUnsignedInt4: SqlValueUnsignedInt4Namespace;
+    export const SqlValueUnsignedInt4: SqlValueUnsignedInt4Namespace & {
+        new (): SqlValueUnsignedInt4; // This allows `obj instanceof SqlValueUnsignedInt4`
+    };
 
     module SqlValueUnsignedInt8 {
         // Constructor properties interface
@@ -47689,7 +47901,9 @@ export namespace Vda {
     }
     interface SqlValueUnsignedInt8 extends GObject.Object {}
 
-    export const SqlValueUnsignedInt8: SqlValueUnsignedInt8Namespace;
+    export const SqlValueUnsignedInt8: SqlValueUnsignedInt8Namespace & {
+        new (): SqlValueUnsignedInt8; // This allows `obj instanceof SqlValueUnsignedInt8`
+    };
 
     module SqlValueOid {
         // Constructor properties interface
@@ -47703,7 +47917,9 @@ export namespace Vda {
     }
     interface SqlValueOid extends GObject.Object {}
 
-    export const SqlValueOid: SqlValueOidNamespace;
+    export const SqlValueOid: SqlValueOidNamespace & {
+        new (): SqlValueOid; // This allows `obj instanceof SqlValueOid`
+    };
 
     module SqlValueNumeric {
         // Constructor properties interface
@@ -47741,7 +47957,9 @@ export namespace Vda {
         vfunc_set_imaginary(img: number): void;
     }
 
-    export const SqlValueNumeric: SqlValueNumericNamespace;
+    export const SqlValueNumeric: SqlValueNumericNamespace & {
+        new (): SqlValueNumeric; // This allows `obj instanceof SqlValueNumeric`
+    };
 
     module SqlValueFloat {
         // Constructor properties interface
@@ -47763,7 +47981,9 @@ export namespace Vda {
         vfunc_get_float(): number;
     }
 
-    export const SqlValueFloat: SqlValueFloatNamespace;
+    export const SqlValueFloat: SqlValueFloatNamespace & {
+        new (): SqlValueFloat; // This allows `obj instanceof SqlValueFloat`
+    };
 
     module SqlValueDouble {
         // Constructor properties interface
@@ -47777,7 +47997,9 @@ export namespace Vda {
     }
     interface SqlValueDouble extends GObject.Object {}
 
-    export const SqlValueDouble: SqlValueDoubleNamespace;
+    export const SqlValueDouble: SqlValueDoubleNamespace & {
+        new (): SqlValueDouble; // This allows `obj instanceof SqlValueDouble`
+    };
 
     module SqlValueMoney {
         // Constructor properties interface
@@ -47805,7 +48027,9 @@ export namespace Vda {
         vfunc_set_int_precision(p: number): void;
     }
 
-    export const SqlValueMoney: SqlValueMoneyNamespace;
+    export const SqlValueMoney: SqlValueMoneyNamespace & {
+        new (): SqlValueMoney; // This allows `obj instanceof SqlValueMoney`
+    };
 
     module SqlValueDate {
         // Constructor properties interface
@@ -47829,7 +48053,9 @@ export namespace Vda {
         vfunc_set_date(ts: GLib.Date): void;
     }
 
-    export const SqlValueDate: SqlValueDateNamespace;
+    export const SqlValueDate: SqlValueDateNamespace & {
+        new (): SqlValueDate; // This allows `obj instanceof SqlValueDate`
+    };
 
     module SqlValueTimestamp {
         // Constructor properties interface
@@ -47869,7 +48095,9 @@ export namespace Vda {
         vfunc_set_timestamp(ts: GLib.DateTime): void;
     }
 
-    export const SqlValueTimestamp: SqlValueTimestampNamespace;
+    export const SqlValueTimestamp: SqlValueTimestampNamespace & {
+        new (): SqlValueTimestamp; // This allows `obj instanceof SqlValueTimestamp`
+    };
 
     module SqlValueTimestampNtz {
         // Constructor properties interface
@@ -47883,7 +48111,9 @@ export namespace Vda {
     }
     interface SqlValueTimestampNtz extends GObject.Object {}
 
-    export const SqlValueTimestampNtz: SqlValueTimestampNtzNamespace;
+    export const SqlValueTimestampNtz: SqlValueTimestampNtzNamespace & {
+        new (): SqlValueTimestampNtz; // This allows `obj instanceof SqlValueTimestampNtz`
+    };
 
     module SqlValueTime {
         // Constructor properties interface
@@ -47897,7 +48127,9 @@ export namespace Vda {
     }
     interface SqlValueTime extends GObject.Object {}
 
-    export const SqlValueTime: SqlValueTimeNamespace;
+    export const SqlValueTime: SqlValueTimeNamespace & {
+        new (): SqlValueTime; // This allows `obj instanceof SqlValueTime`
+    };
 
     module SqlValueTimeNtz {
         // Constructor properties interface
@@ -47911,7 +48143,9 @@ export namespace Vda {
     }
     interface SqlValueTimeNtz extends GObject.Object {}
 
-    export const SqlValueTimeNtz: SqlValueTimeNtzNamespace;
+    export const SqlValueTimeNtz: SqlValueTimeNtzNamespace & {
+        new (): SqlValueTimeNtz; // This allows `obj instanceof SqlValueTimeNtz`
+    };
 
     module SqlValueBinary {
         // Constructor properties interface
@@ -47945,7 +48179,9 @@ export namespace Vda {
         vfunc_get_size(): number;
     }
 
-    export const SqlValueBinary: SqlValueBinaryNamespace;
+    export const SqlValueBinary: SqlValueBinaryNamespace & {
+        new (): SqlValueBinary; // This allows `obj instanceof SqlValueBinary`
+    };
 
     module SqlValueBlob {
         // Constructor properties interface
@@ -47981,7 +48217,9 @@ export namespace Vda {
         vfunc_get_connection(): Connection;
     }
 
-    export const SqlValueBlob: SqlValueBlobNamespace;
+    export const SqlValueBlob: SqlValueBlobNamespace & {
+        new (): SqlValueBlob; // This allows `obj instanceof SqlValueBlob`
+    };
 
     module SqlValueBlobOid {
         // Constructor properties interface
@@ -48009,7 +48247,9 @@ export namespace Vda {
         vfunc_get_identification(): number;
     }
 
-    export const SqlValueBlobOid: SqlValueBlobOidNamespace;
+    export const SqlValueBlobOid: SqlValueBlobOidNamespace & {
+        new (): SqlValueBlobOid; // This allows `obj instanceof SqlValueBlobOid`
+    };
 
     module SqlValueGeometricPoint {
         // Constructor properties interface
@@ -48047,7 +48287,9 @@ export namespace Vda {
         vfunc_set_y(value: number): void;
     }
 
-    export const SqlValueGeometricPoint: SqlValueGeometricPointNamespace;
+    export const SqlValueGeometricPoint: SqlValueGeometricPointNamespace & {
+        new (): SqlValueGeometricPoint; // This allows `obj instanceof SqlValueGeometricPoint`
+    };
 
     module SqlValueMathExp {
         // Constructor properties interface
@@ -48078,7 +48320,9 @@ export namespace Vda {
         vfunc_set_math(value: GCalc.MathEquationManager): void;
     }
 
-    export const SqlValueMathExp: SqlValueMathExpNamespace;
+    export const SqlValueMathExp: SqlValueMathExpNamespace & {
+        new (): SqlValueMathExp; // This allows `obj instanceof SqlValueMathExp`
+    };
 
     module TableModel {
         // Constructor properties interface
@@ -48092,7 +48336,9 @@ export namespace Vda {
     }
     interface TableModel extends GObject.Object {}
 
-    export const TableModel: TableModelNamespace;
+    export const TableModel: TableModelNamespace & {
+        new (): TableModel; // This allows `obj instanceof TableModel`
+    };
 
     module TableModelSequential {
         // Constructor properties interface
@@ -48110,7 +48356,7 @@ export namespace Vda {
         current(): RowModel;
         next(): boolean;
         back(): boolean;
-        move(direction: MoveDirection, relative: number): boolean;
+        move(direction: MoveDirection | null, relative: number): boolean;
         copy_current(): RowModel;
 
         // Virtual methods
@@ -48122,7 +48368,9 @@ export namespace Vda {
         vfunc_copy_current(): RowModel;
     }
 
-    export const TableModelSequential: TableModelSequentialNamespace;
+    export const TableModelSequential: TableModelSequentialNamespace & {
+        new (): TableModelSequential; // This allows `obj instanceof TableModelSequential`
+    };
 
     /**
      * Name of the imported GIR library

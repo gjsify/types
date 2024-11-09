@@ -243,13 +243,15 @@ export namespace Granite {
         priority: number,
     ): Gtk.CssProvider | null;
     function widgets_utils_get_css_provider(stylesheet: string): Gtk.CssProvider | null;
-    function widgets_utils_apply_text_style_to_label(text_style: TextStyle, label: Gtk.Label): void;
+    function widgets_utils_apply_text_style_to_label(text_style: TextStyle | null, label: Gtk.Label): void;
     function widgets_utils_get_default_close_button_position(): [boolean, CloseButtonPosition];
     function widgets_utils_get_button_layout_schema(): string | null;
     function widgets_storage_bar_item_description_get_class(
-        description: WidgetsStorageBarItemDescription,
+        description: WidgetsStorageBarItemDescription | null,
     ): string | null;
-    function widgets_storage_bar_item_description_get_name(description: WidgetsStorageBarItemDescription): string;
+    function widgets_storage_bar_item_description_get_name(
+        description: WidgetsStorageBarItemDescription | null,
+    ): string;
     function text_style_get_stylesheet(): [string, string];
     function accel_to_string(accel?: string | null): string;
     function markup_accel_tooltip(accels?: string[] | null, description?: string | null): string;
@@ -418,7 +420,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -459,7 +461,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1275,7 +1277,7 @@ export namespace Granite {
         // Methods
 
         get_collapse_mode(): CollapseMode;
-        set_collapse_mode(value: CollapseMode): void;
+        set_collapse_mode(value: CollapseMode | null): void;
     }
 
     module WidgetsCompositedWindow {
@@ -1340,7 +1342,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1381,7 +1383,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1802,7 +1804,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1843,7 +1845,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2271,7 +2273,7 @@ export namespace Granite {
         get_working(): boolean;
         set_working(value: boolean): void;
         get_ellipsize_mode(): Pango.EllipsizeMode;
-        set_ellipsize_mode(value: Pango.EllipsizeMode): void;
+        set_ellipsize_mode(value: Pango.EllipsizeMode | null): void;
         get_menu(): Gtk.Menu;
         set_menu(value: Gtk.Menu): void;
         close(): void;
@@ -2520,7 +2522,7 @@ export namespace Granite {
         get_group_name(): string;
         set_group_name(value: string): void;
         get_tab_bar_behavior(): WidgetsDynamicNotebookTabBarBehavior;
-        set_tab_bar_behavior(value: WidgetsDynamicNotebookTabBarBehavior): void;
+        set_tab_bar_behavior(value: WidgetsDynamicNotebookTabBarBehavior | null): void;
         get_menu(): Gtk.Menu;
         remove_tab(tab: WidgetsTab): void;
         next_page(): void;
@@ -2604,7 +2606,7 @@ export namespace Granite {
         get_n_items(): number;
         append_pixbuf(pixbuf: GdkPixbuf.Pixbuf): number;
         append_text(text: string): number;
-        append_icon(icon_name: string, size: Gtk.IconSize): number;
+        append_icon(icon_name: string, size: Gtk.IconSize | null): number;
         append(w: Gtk.Widget): number;
         set_active(new_active_index: number): void;
         set_item_visible(index: number, val: boolean): void;
@@ -2731,7 +2733,7 @@ export namespace Granite {
         get_selected(): WidgetsSourceListItem | null;
         set_selected(value?: WidgetsSourceListItem | null): void;
         get_ellipsize_mode(): Pango.EllipsizeMode;
-        set_ellipsize_mode(value: Pango.EllipsizeMode): void;
+        set_ellipsize_mode(value: Pango.EllipsizeMode | null): void;
         get_editing(): boolean;
         has_item(item: WidgetsSourceListItem): boolean;
         set_filter_func(visible_func: WidgetsSourceList.VisibleFunc | null, refilter: boolean): void;
@@ -2741,7 +2743,7 @@ export namespace Granite {
         stop_editing(): void;
         enable_drag_source(src_entries: Gtk.TargetEntry[]): void;
         disable_drag_source(): void;
-        enable_drag_dest(dest_entries: Gtk.TargetEntry[], actions: Gdk.DragAction): void;
+        enable_drag_dest(dest_entries: Gtk.TargetEntry[], actions: Gdk.DragAction | null): void;
         disable_drag_dest(): void;
         scroll_to_item(
             item: WidgetsSourceListItem,
@@ -3008,7 +3010,7 @@ export namespace Granite {
         set_total_usage(value: number): void;
         get_inner_margin_sides(): number;
         set_inner_margin_sides(value: number): void;
-        update_block_size(description: WidgetsStorageBarItemDescription, size: number): void;
+        update_block_size(description: WidgetsStorageBarItemDescription | null, size: number): void;
     }
 
     module WidgetsTimePicker {
@@ -3340,7 +3342,7 @@ export namespace Granite {
         // Methods
 
         get_status_type(): SettingsPageStatusType;
-        set_status_type(value: SettingsPageStatusType): void;
+        set_status_type(value: SettingsPageStatusType | null): void;
         get_display_widget(): Gtk.Widget | null;
         get_header(): string | null;
         get_status(): string;
@@ -3543,18 +3545,18 @@ export namespace Granite {
         set_from_gicon_finish(_res_: Gio.AsyncResult): void;
         set_from_icon_name_async(
             icon_name: string,
-            icon_size: Gtk.IconSize,
+            icon_size: Gtk.IconSize | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<void>;
         set_from_icon_name_async(
             icon_name: string,
-            icon_size: Gtk.IconSize,
+            icon_size: Gtk.IconSize | null,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         set_from_icon_name_async(
             icon_name: string,
-            icon_size: Gtk.IconSize,
+            icon_size: Gtk.IconSize | null,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<void> | void;
@@ -4482,7 +4484,9 @@ export namespace Granite {
         vfunc_execute_with_files(files: Gio.File[]): void;
     }
 
-    export const ServicesContract: ServicesContractNamespace;
+    export const ServicesContract: ServicesContractNamespace & {
+        new (): ServicesContract; // This allows `obj instanceof ServicesContract`
+    };
 
     module ServicesSettingsSerializable {
         // Constructor properties interface
@@ -4506,7 +4510,9 @@ export namespace Granite {
         vfunc_settings_deserialize(s: string): void;
     }
 
-    export const ServicesSettingsSerializable: ServicesSettingsSerializableNamespace;
+    export const ServicesSettingsSerializable: ServicesSettingsSerializableNamespace & {
+        new (): ServicesSettingsSerializable; // This allows `obj instanceof ServicesSettingsSerializable`
+    };
 
     module WidgetsSourceListSortable {
         // Constructor properties interface
@@ -4530,7 +4536,9 @@ export namespace Granite {
         vfunc_compare(a: WidgetsSourceListItem, b: WidgetsSourceListItem): number;
     }
 
-    export const WidgetsSourceListSortable: WidgetsSourceListSortableNamespace;
+    export const WidgetsSourceListSortable: WidgetsSourceListSortableNamespace & {
+        new (): WidgetsSourceListSortable; // This allows `obj instanceof WidgetsSourceListSortable`
+    };
 
     module WidgetsSourceListDragSource {
         // Constructor properties interface
@@ -4554,7 +4562,9 @@ export namespace Granite {
         vfunc_prepare_selection_data(selection_data: Gtk.SelectionData): void;
     }
 
-    export const WidgetsSourceListDragSource: WidgetsSourceListDragSourceNamespace;
+    export const WidgetsSourceListDragSource: WidgetsSourceListDragSourceNamespace & {
+        new (): WidgetsSourceListDragSource; // This allows `obj instanceof WidgetsSourceListDragSource`
+    };
 
     module WidgetsSourceListDragDest {
         // Constructor properties interface
@@ -4578,7 +4588,9 @@ export namespace Granite {
         vfunc_data_received(context: Gdk.DragContext, data: Gtk.SelectionData): Gdk.DragAction;
     }
 
-    export const WidgetsSourceListDragDest: WidgetsSourceListDragDestNamespace;
+    export const WidgetsSourceListDragDest: WidgetsSourceListDragDestNamespace & {
+        new (): WidgetsSourceListDragDest; // This allows `obj instanceof WidgetsSourceListDragDest`
+    };
 
     /**
      * Name of the imported GIR library

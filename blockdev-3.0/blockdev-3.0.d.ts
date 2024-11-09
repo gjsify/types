@@ -946,7 +946,7 @@ export namespace BlockDev {
     function btrfs_error_quark(): GLib.Quark;
     function btrfs_filesystem_info(device: string): BtrfsFilesystemInfo;
     function btrfs_get_default_subvolume_id(mountpoint: string): number;
-    function btrfs_is_tech_avail(tech: BtrfsTech, mode: number): boolean;
+    function btrfs_is_tech_avail(tech: BtrfsTech | null, mode: number): boolean;
     function btrfs_list_devices(device: string): BtrfsDeviceInfo[];
     function btrfs_list_subvolumes(mountpoint: string, snapshots_only: boolean): BtrfsSubvolumeInfo[];
     function btrfs_mkfs(
@@ -1058,10 +1058,10 @@ export namespace BlockDev {
         name: string,
         algorithm: string,
         context: CryptoKeyslotContext | null,
-        flags: CryptoIntegrityOpenFlags,
+        flags: CryptoIntegrityOpenFlags | null,
         extra?: CryptoIntegrityExtra | null,
     ): boolean;
-    function crypto_is_tech_avail(tech: CryptoTech, mode: number): boolean;
+    function crypto_is_tech_avail(tech: CryptoTech | null, mode: number): boolean;
     function crypto_keyring_add_key(key_desc: string, key_data: Uint8Array | string): boolean;
     /**
      * Supported `context` types for this function: passphrase, key file
@@ -1088,7 +1088,7 @@ export namespace BlockDev {
         ncontext: CryptoKeyslotContext,
     ): boolean;
     function crypto_luks_close(luks_device: string): boolean;
-    function crypto_luks_convert(device: string, target_version: CryptoLUKSVersion): boolean;
+    function crypto_luks_convert(device: string, target_version: CryptoLUKSVersion | null): boolean;
     /**
      * Formats the given `device` as LUKS according to the other parameters given. If
      * `min_entropy` is specified (greater than 0), the function waits for enough
@@ -1111,7 +1111,7 @@ export namespace BlockDev {
         key_size: number,
         context: CryptoKeyslotContext,
         min_entropy: number,
-        luks_version: CryptoLUKSVersion,
+        luks_version: CryptoLUKSVersion | null,
         extra?: CryptoLUKSExtra | null,
     ): boolean;
     function crypto_luks_header_backup(device: string, backup_file: string): boolean;
@@ -1185,7 +1185,7 @@ export namespace BlockDev {
         key_size: number,
         context: CryptoKeyslotContext,
         min_entropy: number,
-        hw_encryption: CryptoLUKSHWEncryptionType,
+        hw_encryption: CryptoLUKSHWEncryptionType | null,
         opal_context: CryptoKeyslotContext,
         extra?: CryptoLUKSExtra | null,
     ): boolean;
@@ -1220,7 +1220,7 @@ export namespace BlockDev {
     function dm_create_linear(map_name: string, device: string, length: number, uuid?: string | null): boolean;
     function dm_error_quark(): GLib.Quark;
     function dm_get_subsystem_from_name(device_name: string): string;
-    function dm_is_tech_avail(tech: DMTech, mode: number): boolean;
+    function dm_is_tech_avail(tech: DMTech | null, mode: number): boolean;
     function dm_map_exists(map_name: string, live_only: boolean, active_only: boolean): boolean;
     function dm_name_from_node(dm_node: string): string;
     function dm_node_from_name(map_name: string): string;
@@ -1485,7 +1485,7 @@ export namespace BlockDev {
      */
     function fs_get_size(device: string, fstype?: string | null): number;
     function fs_is_mountpoint(path: string): boolean;
-    function fs_is_tech_avail(tech: FSTech, mode: number): boolean;
+    function fs_is_tech_avail(tech: FSTech | null, mode: number): boolean;
     /**
      * This is a helper function for creating filesystems with extra options.
      * This is the same as running a filesystem-specific function like %bd_fs_ext4_mkfs
@@ -1637,15 +1637,15 @@ export namespace BlockDev {
     function fs_xfs_set_label(device: string, label: string): boolean;
     function fs_xfs_set_uuid(device: string, uuid?: string | null): boolean;
     function get_available_plugin_names(): string[];
-    function get_plugin_name(plugin: Plugin): string;
-    function get_plugin_soname(plugin: Plugin): string;
+    function get_plugin_name(plugin: Plugin | null): string;
+    function get_plugin_soname(plugin: Plugin | null): string;
     function init(require_plugins?: PluginSpec[] | null, log_func?: UtilsLogFunc | null): boolean;
     function is_initialized(): boolean;
-    function is_plugin_available(plugin: Plugin): boolean;
+    function is_plugin_available(plugin: Plugin | null): boolean;
     function loop_error_quark(): GLib.Quark;
     function loop_get_loop_name(file: string): string;
     function loop_info(loop: string): LoopInfo;
-    function loop_is_tech_avail(tech: LoopTech, mode: number): boolean;
+    function loop_is_tech_avail(tech: LoopTech | null, mode: number): boolean;
     function loop_set_autoclear(loop: string, autoclear: boolean): boolean;
     function loop_setup(
         file: string,
@@ -1679,8 +1679,8 @@ export namespace BlockDev {
         data_size: number,
         cache_size: number,
         md_size: number,
-        mode: LVMCacheMode,
-        flags: LVMCachePoolFlags,
+        mode: LVMCacheMode | null,
+        flags: LVMCachePoolFlags | null,
         slow_pvs: string[],
         fast_pvs: string[],
     ): boolean;
@@ -1689,14 +1689,14 @@ export namespace BlockDev {
         pool_name: string,
         pool_size: number,
         md_size: number,
-        mode: LVMCacheMode,
-        flags: LVMCachePoolFlags,
+        mode: LVMCacheMode | null,
+        flags: LVMCachePoolFlags | null,
         fast_pvs: string[],
     ): boolean;
     function lvm_cache_detach(vg_name: string, cached_lv: string, destroy: boolean, extra?: ExtraArg[] | null): boolean;
     function lvm_cache_get_default_md_size(cache_size: number): number;
     function lvm_cache_get_mode_from_str(mode_str: string): LVMCacheMode;
-    function lvm_cache_get_mode_str(mode: LVMCacheMode): string;
+    function lvm_cache_get_mode_str(mode: LVMCacheMode | null): string;
     /**
      * Converts the `data_lv` and `metadata_lv` into a new cache pool in the `vg_name`
      * VG.
@@ -1737,13 +1737,13 @@ export namespace BlockDev {
      */
     function lvm_get_thpool_meta_size(size: number, chunk_size: number, n_snapshots: number): number;
     function lvm_get_thpool_padding(size: number, pe_size: number, included: boolean): number;
-    function lvm_get_vdo_compression_state_str(state: LVMVDOCompressionState): string;
-    function lvm_get_vdo_index_state_str(state: LVMVDOIndexState): string;
-    function lvm_get_vdo_operating_mode_str(mode: LVMVDOOperatingMode): string;
+    function lvm_get_vdo_compression_state_str(state: LVMVDOCompressionState | null): string;
+    function lvm_get_vdo_index_state_str(state: LVMVDOIndexState | null): string;
+    function lvm_get_vdo_operating_mode_str(mode: LVMVDOOperatingMode | null): string;
     function lvm_get_vdo_write_policy_from_str(policy_str: string): LVMVDOWritePolicy;
-    function lvm_get_vdo_write_policy_str(policy: LVMVDOWritePolicy): string;
+    function lvm_get_vdo_write_policy_str(policy: LVMVDOWritePolicy | null): string;
     function lvm_is_supported_pe_size(size: number): boolean;
-    function lvm_is_tech_avail(tech: LVMTech, mode: number): boolean;
+    function lvm_is_tech_avail(tech: LVMTech | null, mode: number): boolean;
     function lvm_is_valid_thpool_chunk_size(size: number, discard: boolean): boolean;
     function lvm_is_valid_thpool_md_size(size: number): boolean;
     function lvm_lvactivate(
@@ -1877,7 +1877,7 @@ export namespace BlockDev {
         index_memory: number,
         compression: boolean,
         deduplication: boolean,
-        write_policy: LVMVDOWritePolicy,
+        write_policy: LVMVDOWritePolicy | null,
         extra?: ExtraArg[] | null,
     ): boolean;
     function lvm_vdo_pool_create(
@@ -1889,7 +1889,7 @@ export namespace BlockDev {
         index_memory: number,
         compression: boolean,
         deduplication: boolean,
-        write_policy: LVMVDOWritePolicy,
+        write_policy: LVMVDOWritePolicy | null,
         extra?: ExtraArg[] | null,
     ): boolean;
     function lvm_vdo_pool_resize(vg_name: string, pool_name: string, size: number, extra?: ExtraArg[] | null): boolean;
@@ -1955,7 +1955,7 @@ export namespace BlockDev {
     function md_get_md_uuid(uuid: string): string;
     function md_get_status(raid_spec: string): string;
     function md_get_superblock_size(member_size: number, version?: string | null): number;
-    function md_is_tech_avail(tech: MDTech, mode: number): boolean;
+    function md_is_tech_avail(tech: MDTech | null, mode: number): boolean;
     function md_name_from_node(node: string): string;
     function md_node_from_name(name: string): string;
     function md_nominate(device: string): boolean;
@@ -1967,10 +1967,10 @@ export namespace BlockDev {
     function mpath_flush_mpaths(): boolean;
     function mpath_get_mpath_members(): string[];
     function mpath_is_mpath_member(device: string): boolean;
-    function mpath_is_tech_avail(tech: MpathTech, mode: number): boolean;
+    function mpath_is_tech_avail(tech: MpathTech | null, mode: number): boolean;
     function mpath_set_friendly_names(enabled: boolean): boolean;
     function nvdimm_error_quark(): GLib.Quark;
-    function nvdimm_is_tech_avail(tech: NVDIMMTech, mode: number): boolean;
+    function nvdimm_is_tech_avail(tech: NVDIMMTech | null, mode: number): boolean;
     function nvdimm_list_namespaces(
         bus: string | null,
         region: string | null,
@@ -1981,12 +1981,12 @@ export namespace BlockDev {
     function nvdimm_namespace_enable(namespace: string, extra?: ExtraArg[] | null): boolean;
     function nvdimm_namespace_get_devname(device: string): string;
     function nvdimm_namespace_get_mode_from_str(mode_str: string): NVDIMMNamespaceMode;
-    function nvdimm_namespace_get_mode_str(mode: NVDIMMNamespaceMode): string;
-    function nvdimm_namespace_get_supported_sector_sizes(mode: NVDIMMNamespaceMode): number[];
+    function nvdimm_namespace_get_mode_str(mode: NVDIMMNamespaceMode | null): string;
+    function nvdimm_namespace_get_supported_sector_sizes(mode: NVDIMMNamespaceMode | null): number[];
     function nvdimm_namespace_info(namespace: string, extra?: ExtraArg[] | null): NVDIMMNamespaceInfo;
     function nvdimm_namespace_reconfigure(
         namespace: string,
-        mode: NVDIMMNamespaceMode,
+        mode: NVDIMMNamespaceMode | null,
         force: boolean,
         extra?: ExtraArg[] | null,
     ): boolean;
@@ -2070,7 +2070,7 @@ export namespace BlockDev {
      * @param action self-test action to take.
      * @returns %TRUE if the device self-test command was issued successfully,          %FALSE otherwise with @error set. Tech category: %BD_NVME_TECH_NVME-%BD_NVME_TECH_MODE_MANAGE
      */
-    function nvme_device_self_test(device: string, action: NVMESelfTestAction): boolean;
+    function nvme_device_self_test(device: string, action: NVMESelfTestAction | null): boolean;
     /**
      * Disconnects and removes one or more existing NVMe over Fabrics controllers.
      * This may disconnect multiple controllers with matching `subsysnqn` and %TRUE
@@ -2130,7 +2130,7 @@ export namespace BlockDev {
         device: string,
         lba_data_size: number,
         metadata_size: number,
-        secure_erase: NVMEFormatSecureErase,
+        secure_erase: NVMEFormatSecureErase | null,
     ): boolean;
     /**
      * Compute new Host NQN (NVM Qualified Name) value for the current system. This
@@ -2203,7 +2203,7 @@ export namespace BlockDev {
      * @returns health log data or %NULL in case of an error (with @error set). Tech category: %BD_NVME_TECH_NVME-%BD_NVME_TECH_MODE_INFO
      */
     function nvme_get_smart_log(device: string): NVMESmartLog;
-    function nvme_is_tech_avail(tech: NVMETech, mode: number): boolean;
+    function nvme_is_tech_avail(tech: NVMETech | null, mode: number): boolean;
     /**
      * Starts a sanitize operation or recovers from a previously failed sanitize operation.
      * By definition, a sanitize operation alters all user data in the NVM subsystem such
@@ -2244,13 +2244,13 @@ export namespace BlockDev {
      */
     function nvme_sanitize(
         device: string,
-        action: NVMESanitizeAction,
+        action: NVMESanitizeAction | null,
         no_dealloc: boolean,
         overwrite_pass_count: number,
         overwrite_pattern: number,
         overwrite_invert_pattern: boolean,
     ): boolean;
-    function nvme_self_test_result_to_string(result: NVMESelfTestResult): string;
+    function nvme_self_test_result_to_string(result: NVMESelfTestResult | null): string;
     /**
      * Writes the Host ID value to the system `/etc/nvme/hostid` file.
      * No validation of the string is performed.
@@ -2265,20 +2265,26 @@ export namespace BlockDev {
      * @returns %TRUE if the value was set successfully or %FALSE otherwise with @error set. Tech category: %BD_NVME_TECH_FABRICS-%BD_NVME_TECH_MODE_INITIATOR
      */
     function nvme_set_host_nqn(host_nqn: string): boolean;
-    function part_create_part(disk: string, type: PartTypeReq, start: number, size: number, align: PartAlign): PartSpec;
-    function part_create_table(disk: string, type: PartTableType, ignore_existing: boolean): boolean;
+    function part_create_part(
+        disk: string,
+        type: PartTypeReq | null,
+        start: number,
+        size: number,
+        align: PartAlign | null,
+    ): PartSpec;
+    function part_create_table(disk: string, type: PartTableType | null, ignore_existing: boolean): boolean;
     function part_delete_part(disk: string, part: string): boolean;
     function part_error_quark(): GLib.Quark;
-    function part_get_best_free_region(disk: string, type: PartType, size: number): PartSpec;
+    function part_get_best_free_region(disk: string, type: PartType | null, size: number): PartSpec;
     function part_get_disk_free_regions(disk: string): PartSpec[];
     function part_get_disk_parts(disk: string): PartSpec[];
     function part_get_disk_spec(disk: string): PartDiskSpec;
     function part_get_part_by_pos(disk: string, position: number): PartSpec;
     function part_get_part_spec(disk: string, part: string): PartSpec;
-    function part_get_part_table_type_str(type: PartTableType): string;
-    function part_get_type_str(type: PartType): string;
-    function part_is_tech_avail(tech: PartTech, mode: number): boolean;
-    function part_resize_part(disk: string, part: string, size: number, align: PartAlign): boolean;
+    function part_get_part_table_type_str(type: PartTableType | null): string;
+    function part_get_type_str(type: PartType | null): string;
+    function part_is_tech_avail(tech: PartTech | null, mode: number): boolean;
+    function part_resize_part(disk: string, part: string, size: number, align: PartAlign | null): boolean;
     function part_set_part_attributes(disk: string, part: string, attrs: number): boolean;
     function part_set_part_bootable(disk: string, part: string, bootable: boolean): boolean;
     function part_set_part_id(disk: string, part: string, part_id: string): boolean;
@@ -2306,9 +2312,13 @@ export namespace BlockDev {
      * @param extra extra options to pass through.
      * @returns %TRUE when the self-test was triggered successfully or %FALSE in case of an error (with @error set). Tech category: %BD_SMART_TECH_ATA-%BD_SMART_TECH_MODE_SELFTEST
      */
-    function smart_device_self_test(device: string, operation: SmartSelfTestOp, extra?: ExtraArg[] | null): boolean;
+    function smart_device_self_test(
+        device: string,
+        operation: SmartSelfTestOp | null,
+        extra?: ExtraArg[] | null,
+    ): boolean;
     function smart_error_quark(): GLib.Quark;
-    function smart_is_tech_avail(tech: SmartTechMode, mode: number): boolean;
+    function smart_is_tech_avail(tech: SmartTechMode | null, mode: number): boolean;
     /**
      * Retrieve SMART information from SCSI or SAS-compliant drive.
      * @param device device to check.
@@ -2327,7 +2337,7 @@ export namespace BlockDev {
     function swap_check_label(label: string): boolean;
     function swap_check_uuid(uuid: string): boolean;
     function swap_error_quark(): GLib.Quark;
-    function swap_is_tech_avail(tech: SwapTech, mode: number): boolean;
+    function swap_is_tech_avail(tech: SwapTech | null, mode: number): boolean;
     function swap_mkswap(
         device: string,
         label?: string | null,
@@ -2375,7 +2385,7 @@ export namespace BlockDev {
     ): boolean;
     function utils_dbus_service_available(
         connection: Gio.DBusConnection | null,
-        bus_type: Gio.BusType,
+        bus_type: Gio.BusType | null,
         bus_name: string,
         obj_prefix: string,
     ): boolean;

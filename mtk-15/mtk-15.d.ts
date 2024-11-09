@@ -59,17 +59,20 @@ export namespace Mtk {
     const MONITOR_N_TRANSFORMS: number;
     const RECTANGLE_MAX_STACK_RECTS: number;
     const REGION_BUILDER_MAX_LEVELS: number;
-    function monitor_transform_invert(transform: MonitorTransform): MonitorTransform;
-    function monitor_transform_transform(transform: MonitorTransform, other: MonitorTransform): MonitorTransform;
-    function monitor_transform_transform_matrix(transform: MonitorTransform, matrix: Graphene.Matrix): void;
+    function monitor_transform_invert(transform: MonitorTransform | null): MonitorTransform;
+    function monitor_transform_transform(
+        transform: MonitorTransform | null,
+        other: MonitorTransform | null,
+    ): MonitorTransform;
+    function monitor_transform_transform_matrix(transform: MonitorTransform | null, matrix: Graphene.Matrix): void;
     function monitor_transform_transform_point(
-        transform: MonitorTransform,
+        transform: MonitorTransform | null,
         area_width: number,
         area_height: number,
         point_x: number,
         point_y: number,
     ): void;
-    function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy): Rectangle;
+    function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy | null): Rectangle;
     function region_create(): Region;
     function region_create_rectangle(rect: Rectangle): Region;
     function region_create_rectangles(rects: Rectangle, n_rects: number): Region;
@@ -140,7 +143,7 @@ export namespace Mtk {
          * @returns Whether the two rectangles overlap
          */
         overlap(rect2: Rectangle): boolean;
-        scale_double(scale: number, rounding_strategy: RoundingStrategy, dest: Rectangle): void;
+        scale_double(scale: number, rounding_strategy: RoundingStrategy | null, dest: Rectangle): void;
         to_graphene_rect(): Graphene.Rect;
         /**
          * This function transforms the values in `rect` in order to compensate for
@@ -152,7 +155,7 @@ export namespace Mtk {
          * @param height the height of the target space
          * @param dest the transformed #MtkRectangle
          */
-        transform(transform: MonitorTransform, width: number, height: number, dest: Rectangle): void;
+        transform(transform: MonitorTransform | null, width: number, height: number, dest: Rectangle): void;
         /**
          * Computes the union of the two rectangles
          * @param rect2 another #MtkRectangle

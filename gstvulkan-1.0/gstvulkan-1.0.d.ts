@@ -198,7 +198,7 @@ export namespace GstVulkan {
         notify?: GLib.DestroyNotify | null,
     ): Gst.Memory;
     function vulkan_create_shader(device: VulkanDevice, code: string, size: number): VulkanHandle;
-    function vulkan_display_type_to_extension_string(type: VulkanDisplayType): string;
+    function vulkan_display_type_to_extension_string(type: VulkanDisplayType | null): string;
     /**
      * Perform the steps necessary for retrieving a #GstVulkanInstance and
      * (optionally) an #GstVulkanDisplay from the surrounding elements or from
@@ -323,7 +323,7 @@ export namespace GstVulkan {
      */
     function vulkan_memory_init_once(): void;
     function vulkan_memory_property_flags_to_string(prop_bits: Vulkan.MemoryPropertyFlags): string;
-    function vulkan_run_query(element: Gst.Element, query: Gst.Query, direction: Gst.PadDirection): boolean;
+    function vulkan_run_query(element: Gst.Element, query: Gst.Query, direction: Gst.PadDirection | null): boolean;
     function vulkan_sample_count_flags_to_string(sample_count_bits: Vulkan.SampleCountFlags): string;
     function vulkan_trash_mini_object_unref(device: VulkanDevice, user_data?: any | null): void;
     function vulkan_trash_object_unref(device: VulkanDevice, user_data?: any | null): void;

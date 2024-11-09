@@ -1292,7 +1292,7 @@ export namespace ColorHug {
     const USB_VID: number;
     const USB_VID_LEGACY: number;
     const WRITE_EEPROM_MAGIC: string;
-    function color_select_to_string(color_select: ColorSelect): string;
+    function color_select_to_string(color_select: ColorSelect | null): string;
     function command_to_string(cmd: Cmd): string;
     /**
      * Checks the firmware is suitable for the ColorHug device that is attached.
@@ -1415,7 +1415,7 @@ export namespace ColorHug {
      */
     function device_get_spectrum_full(
         device: GUsb.Device,
-        kind: SpectrumKind,
+        kind: SpectrumKind | null,
         cancellable?: Gio.Cancellable | null,
     ): Colord.Spectrum;
     /**
@@ -1442,7 +1442,7 @@ export namespace ColorHug {
      * @returns A #ChDeviceMode
      */
     function device_mode_from_firmware(data: number, data_len: number): DeviceMode;
-    function device_mode_to_string(device_mode: DeviceMode): string;
+    function device_mode_to_string(device_mode: DeviceMode | null): string;
     function device_open(device: GUsb.Device): boolean;
     /**
      * Opens the device ready for use.
@@ -1516,7 +1516,7 @@ export namespace ColorHug {
      */
     function device_set_illuminants(
         device: GUsb.Device,
-        value: Illuminant,
+        value: Illuminant | null,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
     /**
@@ -1538,7 +1538,11 @@ export namespace ColorHug {
      * @param cancellable a #GCancellable, or %NULL
      * @returns %TRUE for success
      */
-    function device_set_leds(device: GUsb.Device, value: StatusLed, cancellable?: Gio.Cancellable | null): boolean;
+    function device_set_leds(
+        device: GUsb.Device,
+        value: StatusLed | null,
+        cancellable?: Gio.Cancellable | null,
+    ): boolean;
     /**
      * Sets any PCB errata on the device
      * @param device A #GUsbDevice
@@ -1548,7 +1552,7 @@ export namespace ColorHug {
      */
     function device_set_pcb_errata(
         device: GUsb.Device,
-        value: PcbErrata,
+        value: PcbErrata | null,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
     /**
@@ -1574,7 +1578,7 @@ export namespace ColorHug {
      */
     function device_set_spectrum_full(
         device: GUsb.Device,
-        kind: SpectrumKind,
+        kind: SpectrumKind | null,
         sp: Colord.Spectrum,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
@@ -1587,7 +1591,7 @@ export namespace ColorHug {
      */
     function device_take_reading_spectral(
         device: GUsb.Device,
-        value: SpectrumKind,
+        value: SpectrumKind | null,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
     /**
@@ -1704,8 +1708,8 @@ export namespace ColorHug {
         data: GLib.Bytes | Uint8Array,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
-    function measure_mode_to_string(measure_mode: MeasureMode): string;
-    function multiplier_to_string(multiplier: FreqScale): string;
+    function measure_mode_to_string(measure_mode: MeasureMode | null): string;
+    function multiplier_to_string(multiplier: FreqScale | null): string;
     /**
      * Parses a SHA1 hash from a string value.
      * @param value A string representation of the SHA1 hash
@@ -1713,7 +1717,7 @@ export namespace ColorHug {
      * @returns %TRUE for success
      */
     function sha1_parse(value: string, sha1: Sha1): boolean;
-    function strerror(error_enum: Error): string;
+    function strerror(error_enum: Error | null): string;
     /**
      * CH_DEVICE_QUEUE_PROCESS_FLAGS_NONE:
      * 	Normal operation, where a single device command failure makes
@@ -1939,7 +1943,7 @@ export namespace ColorHug {
          * @param device A #GUsbDevice
          * @param color_select The color select, e.g. %CH_COLOR_SELECT_RED
          */
-        get_color_select(device: GUsb.Device, color_select: ColorSelect): void;
+        get_color_select(device: GUsb.Device, color_select: ColorSelect | null): void;
         /**
          * Gets the DAC value.
          *
@@ -1997,7 +2001,7 @@ export namespace ColorHug {
          * @param device A #GUsbDevice
          * @param measure_mode The #ChMeasureMode, e.g. %CH_MEASURE_MODE_DURATION
          */
-        get_measure_mode(device: GUsb.Device, measure_mode: MeasureMode): void;
+        get_measure_mode(device: GUsb.Device, measure_mode: MeasureMode | null): void;
         /**
          * Gets the sensor multiplier.
          *
@@ -2005,7 +2009,7 @@ export namespace ColorHug {
          * @param device A #GUsbDevice
          * @param multiplier The device multiplier, e.g. %CH_FREQ_SCALE_100
          */
-        get_multiplier(device: GUsb.Device, multiplier: FreqScale): void;
+        get_multiplier(device: GUsb.Device, multiplier: FreqScale | null): void;
         /**
          * Gets the owner email address.
          *
@@ -2077,13 +2081,16 @@ export namespace ColorHug {
          * @param cancellable #GCancellable or %NULL
          * @returns %TRUE if the commands were executed successfully.
          */
-        process(process_flags: DeviceQueueProcessFlags, cancellable?: Gio.Cancellable | null): boolean;
+        process(process_flags: DeviceQueueProcessFlags | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Processes all commands in the command queue.
          * @param process_flags
          * @param cancellable A #GCancellable, or %NULL
          */
-        process_async(process_flags: DeviceQueueProcessFlags, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        process_async(
+            process_flags: DeviceQueueProcessFlags | null,
+            cancellable?: Gio.Cancellable | null,
+        ): Promise<boolean>;
         /**
          * Processes all commands in the command queue.
          * @param process_flags
@@ -2091,7 +2098,7 @@ export namespace ColorHug {
          * @param callback A #GAsyncReadyCallback that will be called when finished.
          */
         process_async(
-            process_flags: DeviceQueueProcessFlags,
+            process_flags: DeviceQueueProcessFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2102,7 +2109,7 @@ export namespace ColorHug {
          * @param callback A #GAsyncReadyCallback that will be called when finished.
          */
         process_async(
-            process_flags: DeviceQueueProcessFlags,
+            process_flags: DeviceQueueProcessFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -2197,7 +2204,7 @@ export namespace ColorHug {
          * @param device A #GUsbDevice
          * @param color_select The color select, e.g. %CH_COLOR_SELECT_RED
          */
-        set_color_select(device: GUsb.Device, color_select: ColorSelect): void;
+        set_color_select(device: GUsb.Device, color_select: ColorSelect | null): void;
         /**
          * Sets the post scale value.
          *
@@ -2250,7 +2257,7 @@ export namespace ColorHug {
          * @param device A #GUsbDevice
          * @param measure_mode The #ChMeasureMode, e.g. %CH_MEASURE_MODE_DURATION
          */
-        set_measure_mode(device: GUsb.Device, measure_mode: MeasureMode): void;
+        set_measure_mode(device: GUsb.Device, measure_mode: MeasureMode | null): void;
         /**
          * Sets the sensor multiplier.
          *
@@ -2258,7 +2265,7 @@ export namespace ColorHug {
          * @param device A #GUsbDevice
          * @param multiplier The device multiplier, e.g. %CH_FREQ_SCALE_100
          */
-        set_multiplier(device: GUsb.Device, multiplier: FreqScale): void;
+        set_multiplier(device: GUsb.Device, multiplier: FreqScale | null): void;
         /**
          * Sets the owner email address.
          *

@@ -3743,7 +3743,7 @@ export namespace Gdk {
      * @param action a `GdkDragAction`
      * @returns %TRUE if exactly one action was given
      */
-    function drag_action_is_unique(action: DragAction): boolean;
+    function drag_action_is_unique(action: DragAction | null): boolean;
     function drag_surface_size_get_type(): GObject.GType;
     /**
      * Returns the relative angle from `event1` to `event2`.
@@ -5224,7 +5224,7 @@ export namespace Gdk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5265,7 +5265,7 @@ export namespace Gdk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6012,7 +6012,7 @@ export namespace Gdk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6053,7 +6053,7 @@ export namespace Gdk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7447,7 +7447,7 @@ export namespace Gdk {
          */
         translate_key(
             keycode: number,
-            state: ModifierType,
+            state: ModifierType | null,
             group: number,
         ): [boolean, number, number, number, ModifierType | null];
     }
@@ -7990,7 +7990,7 @@ export namespace Gdk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8031,7 +8031,7 @@ export namespace Gdk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9095,7 +9095,7 @@ export namespace Gdk {
          * available via [method`Gdk`.Drop.get_actions].
          * @param action the action performed by the destination or 0 if the drop failed
          */
-        finish(action: DragAction): void;
+        finish(action: DragAction | null): void;
         /**
          * Returns the possible actions for this `GdkDrop`.
          *
@@ -9285,7 +9285,7 @@ export namespace Gdk {
          * @param actions Supported actions of the destination, or 0 to indicate    that a drop will not be accepted
          * @param preferred A unique action that's a member of @actions indicating the    preferred action
          */
-        status(actions: DragAction, preferred: DragAction): void;
+        status(actions: DragAction | null, preferred: DragAction | null): void;
     }
 
     /**
@@ -9353,7 +9353,7 @@ export namespace Gdk {
          * @param axis_use the axis use to look for
          * @returns %TRUE if the specified axis was found, otherwise %FALSE
          */
-        get_axis(axis_use: AxisUse): [boolean, number];
+        get_axis(axis_use: AxisUse | null): [boolean, number];
         /**
          * Returns the device of an event.
          * @returns a `GdkDevice`
@@ -9685,7 +9685,7 @@ export namespace Gdk {
          * smooth animations.
          * @param phase the phase that is requested
          */
-        request_phase(phase: FrameClockPhase): void;
+        request_phase(phase: FrameClockPhase | null): void;
     }
 
     module GLContext {
@@ -9929,7 +9929,7 @@ export namespace Gdk {
          * By default, all APIs are allowed.
          * @param apis the allowed APIs
          */
-        set_allowed_apis(apis: GLAPI): void;
+        set_allowed_apis(apis: GLAPI | null): void;
         /**
          * Sets whether the `GdkGLContext` should perform extra validations and
          * runtime checking.
@@ -10403,7 +10403,7 @@ export namespace Gdk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10444,7 +10444,7 @@ export namespace Gdk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10968,7 +10968,7 @@ export namespace Gdk {
          * in GSK's shaders.
          * @param format The texture's format
          */
-        set_format(format: MemoryFormat): void;
+        set_format(format: MemoryFormat | null): void;
         /**
          * Sets whether the texture has a mipmap. This allows the renderer and other users of the
          * generated texture to use a higher quality downscaling.
@@ -11121,7 +11121,7 @@ export namespace Gdk {
          * @param modifiers the modifiers to match
          * @returns a `GdkKeyMatch` value describing whether @event matches
          */
-        matches(keyval: number, modifiers: ModifierType): KeyMatch;
+        matches(keyval: number, modifiers: ModifierType | null): KeyMatch;
     }
 
     module MemoryTexture {
@@ -11535,7 +11535,7 @@ export namespace Gdk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11576,7 +11576,7 @@ export namespace Gdk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12313,7 +12313,7 @@ export namespace Gdk {
          * @param capabilities capabilities to get devices for
          * @returns A list   of `GdkDevices`. The list must be freed with g_list_free(),   the elements are owned by GTK and must not be freed.
          */
-        get_devices(capabilities: SeatCapabilities): Device[];
+        get_devices(capabilities: SeatCapabilities | null): Device[];
         /**
          * Returns the `GdkDisplay` this seat belongs to.
          * @returns a `GdkDisplay`. This object   is owned by GTK and must not be freed.
@@ -12536,7 +12536,7 @@ export namespace Gdk {
          * @param height height of the new surface
          * @returns a pointer to the newly allocated surface. The caller   owns the surface and should call cairo_surface_destroy() when done   with it.
          */
-        create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface;
+        create_similar_surface(content: cairo.Content | null, width: number, height: number): cairo.Surface;
         /**
          * Sets an error and returns %NULL.
          * @returns %NULL
@@ -13303,7 +13303,7 @@ export namespace Gdk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13344,7 +13344,7 @@ export namespace Gdk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13894,7 +13894,7 @@ export namespace Gdk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13935,7 +13935,7 @@ export namespace Gdk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14860,7 +14860,7 @@ export namespace Gdk {
          * beyond the left or right edges of the monitor.
          * @param anchor_hints the new `GdkAnchorHints`
          */
-        set_anchor_hints(anchor_hints: AnchorHints): void;
+        set_anchor_hints(anchor_hints: AnchorHints | null): void;
         /**
          * Set the anchor rectangle.
          * @param anchor_rect the new anchor rectangle
@@ -14876,7 +14876,7 @@ export namespace Gdk {
          * Set the anchor on the anchor rectangle.
          * @param anchor the new rect anchor
          */
-        set_rect_anchor(anchor: Gravity): void;
+        set_rect_anchor(anchor: Gravity | null): void;
         /**
          * Sets the shadow width of the popup.
          *
@@ -14893,7 +14893,7 @@ export namespace Gdk {
          * Set the anchor on the popup surface.
          * @param anchor the new popup surface anchor
          */
-        set_surface_anchor(anchor: Gravity): void;
+        set_surface_anchor(anchor: Gravity | null): void;
         /**
          * Decreases the reference count of `value`.
          */
@@ -15168,7 +15168,7 @@ export namespace Gdk {
          * By default, GDK_MEMORY_DEFAULT is set.
          * @param format the format to use
          */
-        set_format(format: MemoryFormat): void;
+        set_format(format: MemoryFormat | null): void;
         /**
          * Changes the texture the downloader will download.
          * @param texture the new texture to download
@@ -15375,7 +15375,7 @@ export namespace Gdk {
          * @param feature_idx the index of the feature to get the group from
          * @returns The group number of the queried pad feature.
          */
-        get_feature_group(feature: DevicePadFeature, feature_idx: number): number;
+        get_feature_group(feature: DevicePadFeature | null, feature_idx: number): number;
         /**
          * Returns the number of modes that `group` may have.
          * @param group_idx group to get the number of available modes from
@@ -15387,7 +15387,7 @@ export namespace Gdk {
          * @param feature a pad feature
          * @returns The amount of elements of type @feature that this pad has.
          */
-        get_n_features(feature: DevicePadFeature): number;
+        get_n_features(feature: DevicePadFeature | null): number;
         /**
          * Returns the number of groups this pad device has.
          *
@@ -15399,7 +15399,9 @@ export namespace Gdk {
         get_n_groups(): number;
     }
 
-    export const DevicePad: DevicePadNamespace;
+    export const DevicePad: DevicePadNamespace & {
+        new (): DevicePad; // This allows `obj instanceof DevicePad`
+    };
 
     module DragSurface {
         // Constructor properties interface
@@ -15423,7 +15425,9 @@ export namespace Gdk {
         present(width: number, height: number): boolean;
     }
 
-    export const DragSurface: DragSurfaceNamespace;
+    export const DragSurface: DragSurfaceNamespace & {
+        new (): DragSurface; // This allows `obj instanceof DragSurface`
+    };
 
     module Paintable {
         // Constructor properties interface
@@ -15657,7 +15661,9 @@ export namespace Gdk {
         vfunc_snapshot(snapshot: Snapshot, width: number, height: number): void;
     }
 
-    export const Paintable: PaintableNamespace;
+    export const Paintable: PaintableNamespace & {
+        new (): Paintable; // This allows `obj instanceof Paintable`
+    };
 
     module Popup {
         // Constructor properties interface
@@ -15746,7 +15752,9 @@ export namespace Gdk {
         present(width: number, height: number, layout: PopupLayout): boolean;
     }
 
-    export const Popup: PopupNamespace;
+    export const Popup: PopupNamespace & {
+        new (): Popup; // This allows `obj instanceof Popup`
+    };
 
     module Toplevel {
         // Constructor properties interface
@@ -15881,7 +15889,7 @@ export namespace Gdk {
          * @param timestamp timestamp of mouse click that began the drag (use   [method@Gdk.Event.get_time])
          */
         begin_resize(
-            edge: SurfaceEdge,
+            edge: SurfaceEdge | null,
             device: Device | null,
             button: number,
             x: number,
@@ -16054,10 +16062,12 @@ export namespace Gdk {
          * @returns %TRUE if the desktop environment supports tiled window states
          */
         supports_edge_constraints(): boolean;
-        titlebar_gesture(gesture: TitlebarGesture): boolean;
+        titlebar_gesture(gesture: TitlebarGesture | null): boolean;
     }
 
-    export const Toplevel: ToplevelNamespace;
+    export const Toplevel: ToplevelNamespace & {
+        new (): Toplevel; // This allows `obj instanceof Toplevel`
+    };
 
     /**
      * Name of the imported GIR library

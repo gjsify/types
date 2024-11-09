@@ -281,7 +281,7 @@ export namespace Granite {
         // Methods
 
         get_status_type(): SettingsPageStatusType;
-        set_status_type(value: SettingsPageStatusType): void;
+        set_status_type(value: SettingsPageStatusType | null): void;
         get_display_widget(): Gtk.Widget | null;
         get_header(): string | null;
         get_status(): string;
@@ -470,7 +470,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -511,7 +511,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1631,7 +1631,9 @@ export namespace Granite {
         vfunc_execute_with_files(files: Gio.File[]): void;
     }
 
-    export const ServicesContract: ServicesContractNamespace;
+    export const ServicesContract: ServicesContractNamespace & {
+        new (): ServicesContract; // This allows `obj instanceof ServicesContract`
+    };
 
     module ServicesSettingsSerializable {
         // Constructor properties interface
@@ -1655,7 +1657,9 @@ export namespace Granite {
         vfunc_settings_deserialize(s: string): void;
     }
 
-    export const ServicesSettingsSerializable: ServicesSettingsSerializableNamespace;
+    export const ServicesSettingsSerializable: ServicesSettingsSerializableNamespace & {
+        new (): ServicesSettingsSerializable; // This allows `obj instanceof ServicesSettingsSerializable`
+    };
 
     /**
      * Name of the imported GIR library

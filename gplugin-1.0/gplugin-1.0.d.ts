@@ -121,13 +121,13 @@ export namespace GPlugin {
      * internally calls [func`GPlugin`.init].
      * @param flags The core flags to set.
      */
-    function init(flags: CoreFlags): void;
+    function init(flags: CoreFlags | null): void;
     /**
      * Gets a string representation of `state`.
      * @param state The #GPluginPluginState.
      * @returns The string representation of @state.
      */
-    function plugin_state_to_string(state: PluginState): string;
+    function plugin_state_to_string(state: PluginState | null): string;
     /**
      * Uninitializes the GPlugin library
      */
@@ -288,7 +288,7 @@ export namespace GPlugin {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -329,7 +329,7 @@ export namespace GPlugin {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -907,7 +907,7 @@ export namespace GPlugin {
          * @param state The state to look for.
          * @returns A [struct@GLib.SList]          of plugins whose state is @state.
          */
-        find_plugins_with_state(state: PluginState): Plugin[];
+        find_plugins_with_state(state: PluginState | null): Plugin[];
         /**
          * Similar to [method`GPlugin`.Manager.find_plugins] but only returns plugins
          * whose versions match `op` and `version`.
@@ -1550,13 +1550,13 @@ export namespace GPlugin {
          * anyone except [class`GPlugin`.Loader] which manages the state of plugins.
          * @param state The desired state.
          */
-        set_desired_state(state: PluginState): void;
+        set_desired_state(state: PluginState | null): void;
         /**
          * Changes the state of `plugin` to `state`.  This function should only be called
          * by loaders.
          * @param state The new state for @plugin.
          */
-        set_state(state: PluginState): void;
+        set_state(state: PluginState | null): void;
 
         // Virtual methods
 
@@ -1569,7 +1569,9 @@ export namespace GPlugin {
         vfunc_state_changed(oldstate: PluginState, newstate: PluginState): void;
     }
 
-    export const Plugin: PluginNamespace;
+    export const Plugin: PluginNamespace & {
+        new (): Plugin; // This allows `obj instanceof Plugin`
+    };
 
     module Source {
         // Constructor properties interface
@@ -1608,7 +1610,9 @@ export namespace GPlugin {
         vfunc_scan(): boolean;
     }
 
-    export const Source: SourceNamespace;
+    export const Source: SourceNamespace & {
+        new (): Source; // This allows `obj instanceof Source`
+    };
 
     /**
      * Name of the imported GIR library

@@ -1262,7 +1262,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1303,7 +1303,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2138,7 +2138,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2179,7 +2179,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2990,7 +2990,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3031,7 +3031,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3473,7 +3473,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3514,7 +3514,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4302,7 +4302,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4343,7 +4343,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4762,7 +4762,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4803,7 +4803,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5564,7 +5564,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5605,7 +5605,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6416,7 +6416,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6457,7 +6457,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6899,7 +6899,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6940,7 +6940,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7728,7 +7728,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7769,7 +7769,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8188,7 +8188,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8229,7 +8229,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9040,7 +9040,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9081,7 +9081,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9523,7 +9523,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9564,7 +9564,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10375,7 +10375,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10416,7 +10416,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10858,7 +10858,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10899,7 +10899,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11934,7 +11934,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11975,7 +11975,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12641,7 +12641,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -12682,7 +12682,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13660,7 +13660,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13701,7 +13701,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14310,7 +14310,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14351,7 +14351,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15139,7 +15139,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -15180,7 +15180,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15599,7 +15599,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -15640,7 +15640,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16451,7 +16451,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16492,7 +16492,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16934,7 +16934,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16975,7 +16975,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17763,7 +17763,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -17804,7 +17804,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18223,7 +18223,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -18264,7 +18264,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19142,7 +19142,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -19183,7 +19183,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19692,7 +19692,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -19733,7 +19733,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20617,7 +20617,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -20658,7 +20658,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -21173,7 +21173,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -21214,7 +21214,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22046,7 +22046,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -22087,7 +22087,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22790,7 +22790,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -22831,7 +22831,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -23637,7 +23637,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -23678,7 +23678,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -24535,7 +24535,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -24576,7 +24576,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -25064,7 +25064,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -25105,7 +25105,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -25893,7 +25893,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -25934,7 +25934,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -26353,7 +26353,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -26394,7 +26394,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -27182,7 +27182,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -27223,7 +27223,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -27642,7 +27642,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -27683,7 +27683,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -28471,7 +28471,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -28512,7 +28512,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -28931,7 +28931,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -28972,7 +28972,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -29827,7 +29827,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -29868,7 +29868,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -30354,7 +30354,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -30395,7 +30395,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -31183,7 +31183,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -31224,7 +31224,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -31643,7 +31643,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -31684,7 +31684,7 @@ export namespace Goa {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -32900,7 +32900,9 @@ export namespace Goa {
         vfunc_handle_remove(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
-    export const Account: AccountNamespace;
+    export const Account: AccountNamespace & {
+        new (): Account; // This allows `obj instanceof Account`
+    };
 
     module Calendar {
         // Constructor properties interface
@@ -32954,7 +32956,9 @@ export namespace Goa {
         set uri(val: string);
     }
 
-    export const Calendar: CalendarNamespace;
+    export const Calendar: CalendarNamespace & {
+        new (): Calendar; // This allows `obj instanceof Calendar`
+    };
 
     module Chat {
         // Constructor properties interface
@@ -32980,7 +32984,9 @@ export namespace Goa {
     }
     interface Chat extends GObject.Object {}
 
-    export const Chat: ChatNamespace;
+    export const Chat: ChatNamespace & {
+        new (): Chat; // This allows `obj instanceof Chat`
+    };
 
     module Contacts {
         // Constructor properties interface
@@ -33034,7 +33040,9 @@ export namespace Goa {
         set uri(val: string);
     }
 
-    export const Contacts: ContactsNamespace;
+    export const Contacts: ContactsNamespace & {
+        new (): Contacts; // This allows `obj instanceof Contacts`
+    };
 
     module Documents {
         // Constructor properties interface
@@ -33060,7 +33068,9 @@ export namespace Goa {
     }
     interface Documents extends GObject.Object {}
 
-    export const Documents: DocumentsNamespace;
+    export const Documents: DocumentsNamespace & {
+        new (): Documents; // This allows `obj instanceof Documents`
+    };
 
     module Exchange {
         // Constructor properties interface
@@ -33114,7 +33124,9 @@ export namespace Goa {
         set host(val: string);
     }
 
-    export const Exchange: ExchangeNamespace;
+    export const Exchange: ExchangeNamespace & {
+        new (): Exchange; // This allows `obj instanceof Exchange`
+    };
 
     module Files {
         // Constructor properties interface
@@ -33168,7 +33180,9 @@ export namespace Goa {
         set uri(val: string);
     }
 
-    export const Files: FilesNamespace;
+    export const Files: FilesNamespace & {
+        new (): Files; // This allows `obj instanceof Files`
+    };
 
     module Mail {
         // Constructor properties interface
@@ -33478,7 +33492,9 @@ export namespace Goa {
         set smtpUserName(val: string);
     }
 
-    export const Mail: MailNamespace;
+    export const Mail: MailNamespace & {
+        new (): Mail; // This allows `obj instanceof Mail`
+    };
 
     module Manager {
         // Constructor properties interface
@@ -33700,7 +33716,9 @@ export namespace Goa {
         vfunc_handle_is_supported_provider(invocation: Gio.DBusMethodInvocation, arg_provider_type: string): boolean;
     }
 
-    export const Manager: ManagerNamespace;
+    export const Manager: ManagerNamespace & {
+        new (): Manager; // This allows `obj instanceof Manager`
+    };
 
     module Maps {
         // Constructor properties interface
@@ -33726,7 +33744,9 @@ export namespace Goa {
     }
     interface Maps extends GObject.Object {}
 
-    export const Maps: MapsNamespace;
+    export const Maps: MapsNamespace & {
+        new (): Maps; // This allows `obj instanceof Maps`
+    };
 
     module MediaServer {
         // Constructor properties interface
@@ -33780,7 +33800,9 @@ export namespace Goa {
         set udn(val: string);
     }
 
-    export const MediaServer: MediaServerNamespace;
+    export const MediaServer: MediaServerNamespace & {
+        new (): MediaServer; // This allows `obj instanceof MediaServer`
+    };
 
     module Music {
         // Constructor properties interface
@@ -33806,7 +33828,9 @@ export namespace Goa {
     }
     interface Music extends GObject.Object {}
 
-    export const Music: MusicNamespace;
+    export const Music: MusicNamespace & {
+        new (): Music; // This allows `obj instanceof Music`
+    };
 
     module OAuth2Based {
         // Constructor properties interface
@@ -33934,7 +33958,9 @@ export namespace Goa {
         vfunc_handle_get_access_token(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
-    export const OAuth2Based: OAuth2BasedNamespace;
+    export const OAuth2Based: OAuth2BasedNamespace & {
+        new (): OAuth2Based; // This allows `obj instanceof OAuth2Based`
+    };
 
     module OAuthBased {
         // Constructor properties interface
@@ -34068,7 +34094,9 @@ export namespace Goa {
         vfunc_handle_get_access_token(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
-    export const OAuthBased: OAuthBasedNamespace;
+    export const OAuthBased: OAuthBasedNamespace & {
+        new (): OAuthBased; // This allows `obj instanceof OAuthBased`
+    };
 
     module Object {
         // Constructor properties interface
@@ -34389,7 +34417,9 @@ export namespace Goa {
         get_todo(): Todo | null;
     }
 
-    export const Object: ObjectNamespace;
+    export const Object: ObjectNamespace & {
+        new (): Object; // This allows `obj instanceof Object`
+    };
 
     module PasswordBased {
         // Constructor properties interface
@@ -34490,7 +34520,9 @@ export namespace Goa {
         vfunc_handle_get_password(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
     }
 
-    export const PasswordBased: PasswordBasedNamespace;
+    export const PasswordBased: PasswordBasedNamespace & {
+        new (): PasswordBased; // This allows `obj instanceof PasswordBased`
+    };
 
     module Photos {
         // Constructor properties interface
@@ -34516,7 +34548,9 @@ export namespace Goa {
     }
     interface Photos extends GObject.Object {}
 
-    export const Photos: PhotosNamespace;
+    export const Photos: PhotosNamespace & {
+        new (): Photos; // This allows `obj instanceof Photos`
+    };
 
     module Printers {
         // Constructor properties interface
@@ -34542,7 +34576,9 @@ export namespace Goa {
     }
     interface Printers extends GObject.Object {}
 
-    export const Printers: PrintersNamespace;
+    export const Printers: PrintersNamespace & {
+        new (): Printers; // This allows `obj instanceof Printers`
+    };
 
     module ReadLater {
         // Constructor properties interface
@@ -34568,7 +34604,9 @@ export namespace Goa {
     }
     interface ReadLater extends GObject.Object {}
 
-    export const ReadLater: ReadLaterNamespace;
+    export const ReadLater: ReadLaterNamespace & {
+        new (): ReadLater; // This allows `obj instanceof ReadLater`
+    };
 
     module Ticketing {
         // Constructor properties interface
@@ -34670,7 +34708,9 @@ export namespace Goa {
         vfunc_handle_get_ticket(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
-    export const Ticketing: TicketingNamespace;
+    export const Ticketing: TicketingNamespace & {
+        new (): Ticketing; // This allows `obj instanceof Ticketing`
+    };
 
     module Todo {
         // Constructor properties interface
@@ -34696,7 +34736,9 @@ export namespace Goa {
     }
     interface Todo extends GObject.Object {}
 
-    export const Todo: TodoNamespace;
+    export const Todo: TodoNamespace & {
+        new (): Todo; // This allows `obj instanceof Todo`
+    };
 
     /**
      * Name of the imported GIR library

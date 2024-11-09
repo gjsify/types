@@ -28,20 +28,24 @@ export namespace GstBase {
     const TRANSFORM_SINK_NAME: string;
     const TRANSFORM_SRC_NAME: string;
     function gst_type_find_helper(src: Gst.Pad, size: number): Gst.Caps;
-    function gst_type_find_helper_for_buffer(obj: Gst.Object, buf: Gst.Buffer, prob: Gst.TypeFindProbability): Gst.Caps;
+    function gst_type_find_helper_for_buffer(
+        obj: Gst.Object,
+        buf: Gst.Buffer,
+        prob: Gst.TypeFindProbability | null,
+    ): Gst.Caps;
     function gst_type_find_helper_for_extension(obj: Gst.Object, extension: string): Gst.Caps;
     function gst_type_find_helper_get_range(
         obj: Gst.Object,
         func: Gst.TypeFindHelperGetRangeFunction,
         size: number,
-        prob: Gst.TypeFindProbability,
+        prob: Gst.TypeFindProbability | null,
     ): Gst.Caps;
     function gst_type_find_helper_get_range_ext(
         obj: Gst.Object,
         func: Gst.TypeFindHelperGetRangeFunction,
         size: number,
         extension: string,
-        prob: Gst.TypeFindProbability,
+        prob: Gst.TypeFindProbability | null,
     ): Gst.Caps;
     interface GstCollectDataDestroyNotify {
         (data: Gst.CollectData): void;
@@ -468,7 +472,7 @@ export namespace GstBase {
         wait_playing(): Gst.FlowReturn;
         set_live(live: boolean): void;
         is_live(): boolean;
-        set_format(format: Gst.Format): void;
+        set_format(format: Gst.Format | null): void;
         query_latency(min_latency: Gst.ClockTime, max_latency: Gst.ClockTime): [boolean, boolean];
         set_blocksize(blocksize: never): void;
         get_blocksize(): never;

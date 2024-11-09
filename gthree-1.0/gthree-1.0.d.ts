@@ -378,7 +378,7 @@ export namespace Gthree {
         set_effective_time_scale(time_scale: number): void;
         set_effective_weight(weight: number): void;
         set_enabled(enabled: boolean): void;
-        set_loop_mode(loop_mode: LoopMode, repetitions: number): void;
+        set_loop_mode(loop_mode: LoopMode | null, repetitions: number): void;
         set_paused(paused: boolean): void;
         set_time(time: number): void;
         start_at(time: number): void;
@@ -875,7 +875,7 @@ export namespace Gthree {
         set_density(density: number): void;
         set_far(far: number): void;
         set_near(near: number): void;
-        set_style(style: FogStyle): void;
+        set_style(style: FogStyle | null): void;
     }
 
     module FullscreenQuadPass {
@@ -1120,8 +1120,8 @@ export namespace Gthree {
 
         get_end_ending_mode(): EndingMode;
         get_start_ending_mode(): EndingMode;
-        set_end_ending_mode(mode: EndingMode): void;
-        set_start_ending_mode(mode: EndingMode): void;
+        set_end_ending_mode(mode: EndingMode | null): void;
+        set_start_ending_mode(mode: EndingMode | null): void;
     }
 
     module KeyframeTrack {
@@ -1147,7 +1147,7 @@ export namespace Gthree {
         get_value_type(): ValueType;
         optimize(): void;
         scale(time_scale: number): void;
-        set_interpolation(interpolation: InterpolationMode): void;
+        set_interpolation(interpolation: InterpolationMode | null): void;
         trim(start_time: number, end_time: number): void;
     }
 
@@ -1425,7 +1425,7 @@ export namespace Gthree {
         needs_lights(): boolean;
         needs_view_matrix(): boolean;
         set_alpha_test(alpha_test: number): void;
-        set_blend_mode(mode: BlendMode, equation: number, src_factor: number, dst_factor: number): void;
+        set_blend_mode(mode: BlendMode | null, equation: number, src_factor: number, dst_factor: number): void;
         set_clip_intersection(clip_intersection: boolean): void;
         set_clipping_plane(index: number, plane: Graphene.Plane): number;
         set_depth_test(depth_test: boolean): void;
@@ -1438,7 +1438,7 @@ export namespace Gthree {
         set_opacity(opacity: number): void;
         set_params(params: ProgramParameters): void;
         set_polygon_offset(polygon_offset: boolean, factor: number, units: number): void;
-        set_side(side: Side): void;
+        set_side(side: Side | null): void;
         set_uniforms(uniforms: Uniforms, camera: Camera, renderer: Renderer): void;
         set_vertex_colors(vertex_colors: boolean): void;
     }
@@ -1478,7 +1478,7 @@ export namespace Gthree {
         get_draw_mode(): DrawMode;
         get_n_materials(): number;
         has_morph_targets(): boolean;
-        set_draw_mode(mode: DrawMode): void;
+        set_draw_mode(mode: DrawMode | null): void;
         set_material(index: number, material: Material): void;
         update_morph_targets(): void;
     }
@@ -1532,7 +1532,7 @@ export namespace Gthree {
         get_reflectivity(): number;
         get_refraction_ratio(): number;
         set_color(color: Graphene.Vec3): void;
-        set_combine(combine: Operation): void;
+        set_combine(combine: Operation | null): void;
         set_env_map(texture: Texture): void;
         set_map(texture: Texture): void;
         set_reflectivity(reflectivity: number): void;
@@ -1559,7 +1559,7 @@ export namespace Gthree {
         // Methods
 
         get_depth_packing_format(): DepthPackingFormat;
-        set_depth_packing_format(format: DepthPackingFormat): void;
+        set_depth_packing_format(format: DepthPackingFormat | null): void;
     }
 
     module MeshDistanceMaterial {
@@ -1645,7 +1645,7 @@ export namespace Gthree {
         get_reflectivity(): number;
         get_refraction_ratio(): number;
         set_color(color: Graphene.Vec3): void;
-        set_combine(combine: Operation): void;
+        set_combine(combine: Operation | null): void;
         set_emissive_color(color: Graphene.Vec3): void;
         set_env_map(texture: Texture): void;
         set_map(texture: Texture): void;
@@ -1730,7 +1730,7 @@ export namespace Gthree {
         // Methods
 
         get_shading_type(): ShadingType;
-        set_shading_type(shading_type: ShadingType): void;
+        set_shading_type(shading_type: ShadingType | null): void;
     }
 
     module MeshPhongMaterial {
@@ -1827,14 +1827,14 @@ export namespace Gthree {
         get_shininess(): number;
         get_specular_color(): Graphene.Vec3;
         set_color(color: Graphene.Vec3): void;
-        set_combine(combine: Operation): void;
+        set_combine(combine: Operation | null): void;
         set_emissive_color(color: Graphene.Vec3): void;
         set_env_map(texture: Texture): void;
         set_flat_shading(flat_shading: boolean): void;
         set_map(texture: Texture): void;
         set_normal_map(texture: Texture): void;
         set_normal_map_scale(scale: Graphene.Vec2): void;
-        set_normal_map_type(type: NormalMapType): void;
+        set_normal_map_type(type: NormalMapType | null): void;
         set_reflectivity(reflectivity: number): void;
         set_refraction_ratio(ratio: number): void;
         set_shininess(shininess: number): void;
@@ -2035,7 +2035,7 @@ export namespace Gthree {
         set_map(texture: Texture): void;
         set_normal_map(texture: Texture): void;
         set_normal_map_scale(scale: Graphene.Vec2): void;
-        set_normal_map_type(type: NormalMapType): void;
+        set_normal_map_type(type: NormalMapType | null): void;
         set_refraction_ratio(ratio: number): void;
         set_specular_factor(factor: Graphene.Vec3): void;
         set_specular_map(texture: Texture): void;
@@ -2231,7 +2231,7 @@ export namespace Gthree {
         set_metalness_map(texture: Texture): void;
         set_normal_map(texture: Texture): void;
         set_normal_map_scale(scale: Graphene.Vec2): void;
-        set_normal_map_type(type: NormalMapType): void;
+        set_normal_map_type(type: NormalMapType | null): void;
         set_refraction_ratio(ratio: number): void;
         set_roughness(ratio: number): void;
         set_roughness_map(texture: Texture): void;
@@ -2390,7 +2390,7 @@ export namespace Gthree {
         set_map(texture: Texture): void;
         set_normal_map(texture: Texture): void;
         set_normal_map_scale(scale: Graphene.Vec2): void;
-        set_normal_map_type(type: NormalMapType): void;
+        set_normal_map_type(type: NormalMapType | null): void;
     }
 
     module NumberKeyframeTrack {
@@ -3187,7 +3187,7 @@ export namespace Gthree {
         get_shading_type(): ShadingType;
         get_use_lights(): boolean;
         get_vertex_colors(): boolean;
-        set_shading_type(shading_type: ShadingType): void;
+        set_shading_type(shading_type: ShadingType | null): void;
         set_use_lights(use_lights: boolean): void;
         set_vertex_colors(vertex_color: boolean): void;
     }
@@ -3288,7 +3288,7 @@ export namespace Gthree {
         get_inverse_bind_matrix(): Graphene.Matrix;
         normalize_skin_weights(): void;
         pose(): void;
-        set_bind_mode(bind_mode: BindMode): void;
+        set_bind_mode(bind_mode: BindMode | null): void;
     }
 
     module SpotLight {
@@ -3498,21 +3498,21 @@ export namespace Gthree {
         get_wrap_s(): Wrapping;
         get_wrap_t(): Wrapping;
         set_anisotropy(anisotropy: number): void;
-        set_data_type(type: DataType): void;
-        set_encoding(encoding: EncodingFormat): void;
+        set_data_type(type: DataType | null): void;
+        set_encoding(encoding: EncodingFormat | null): void;
         set_flip_y(flip_y: boolean): void;
-        set_format(format: TextureFormat): void;
+        set_format(format: TextureFormat | null): void;
         set_generate_mipmaps(generate_mipmaps: boolean): void;
-        set_mag_filter(mag_filter: Filter): void;
-        set_mapping(mapping: Mapping): void;
-        set_min_filter(min_filter: Filter): void;
+        set_mag_filter(mag_filter: Filter | null): void;
+        set_mapping(mapping: Mapping | null): void;
+        set_min_filter(min_filter: Filter | null): void;
         set_name(name: string): void;
         set_needs_update(): void;
         set_offset(offset: Graphene.Vec2): void;
         set_repeat(repeat: Graphene.Vec2): void;
         set_uuid(uuid: string): void;
-        set_wrap_s(wrap_s: Wrapping): void;
-        set_wrap_t(wrap_t: Wrapping): void;
+        set_wrap_s(wrap_s: Wrapping | null): void;
+        set_wrap_t(wrap_t: Wrapping | null): void;
     }
 
     module Uniforms {

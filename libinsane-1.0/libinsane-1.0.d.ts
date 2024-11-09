@@ -180,7 +180,7 @@ export namespace Libinsane {
 
         cleanup(): void;
         get_device(dev_id: string): Item;
-        list_devices(locations: DeviceLocations): DeviceDescriptor[];
+        list_devices(locations: DeviceLocations | null): DeviceDescriptor[];
     }
 
     module DeviceDescriptor {
@@ -401,14 +401,16 @@ export namespace Libinsane {
     interface Logger extends GObject.Object {
         // Methods
 
-        log(lvl: LogLevel, msg: string): void;
+        log(lvl: LogLevel | null, msg: string): void;
 
         // Virtual methods
 
         vfunc_log(lvl: LogLevel, msg: string): void;
     }
 
-    export const Logger: LoggerNamespace;
+    export const Logger: LoggerNamespace & {
+        new (): Logger; // This allows `obj instanceof Logger`
+    };
 
     /**
      * Name of the imported GIR library

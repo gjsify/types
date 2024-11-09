@@ -922,7 +922,7 @@ export namespace LibvirtGConfig {
         set_description(description?: string | null): void;
         set_devices(devices: DomainDevice[]): void;
         set_features(features: string[]): void;
-        set_lifecycle(event: DomainLifecycleEvent, action: DomainLifecycleAction): void;
+        set_lifecycle(event: DomainLifecycleEvent | null, action: DomainLifecycleAction | null): void;
         /**
          * Sets the maximum amount of RAM allocated to `domain` in kilobytes (i.e.
          * blocks of 1024 bytes).
@@ -941,7 +941,7 @@ export namespace LibvirtGConfig {
         set_title(title?: string | null): void;
         set_uuid(uuid?: string | null): void;
         set_vcpus(vcpu_count: number): void;
-        set_virt_type(type: DomainVirtType): void;
+        set_virt_type(type: DomainVirtType | null): void;
     }
 
     module DomainAddress {
@@ -1115,7 +1115,7 @@ export namespace LibvirtGConfig {
         get_target_name(): string;
         get_target_type(): DomainChannelTargetType;
         set_target_name(name: string): void;
-        set_target_type(type: DomainChannelTargetType): void;
+        set_target_type(type: DomainChannelTargetType | null): void;
     }
 
     module DomainChardev {
@@ -1289,7 +1289,7 @@ export namespace LibvirtGConfig {
         get_offset(): DomainClockOffset;
         get_timezone(): string;
         get_variable_offset(): number;
-        set_offset(offset: DomainClockOffset): void;
+        set_offset(offset: DomainClockOffset | null): void;
         set_timezone(tz: string): void;
         set_variable_offset(seconds: number): void;
     }
@@ -1318,7 +1318,7 @@ export namespace LibvirtGConfig {
 
         // Methods
 
-        set_target_type(type: DomainConsoleTargetType): void;
+        set_target_type(type: DomainConsoleTargetType | null): void;
     }
 
     module DomainController {
@@ -1386,7 +1386,7 @@ export namespace LibvirtGConfig {
          * Sets the model of `controller` to `model`.
          * @param model the USB controller model
          */
-        set_model(model: DomainControllerUsbModel): void;
+        set_model(model: DomainControllerUsbModel | null): void;
     }
 
     module DomainCpu {
@@ -1415,8 +1415,8 @@ export namespace LibvirtGConfig {
 
         get_match_policy(): DomainCpuMatchPolicy;
         get_mode(): DomainCpuMode;
-        set_match_policy(policy: DomainCpuMatchPolicy): void;
-        set_mode(mode: DomainCpuMode): void;
+        set_match_policy(policy: DomainCpuMatchPolicy | null): void;
+        set_mode(mode: DomainCpuMode | null): void;
         set_model(model: DomainCpuModel): void;
     }
 
@@ -1445,7 +1445,7 @@ export namespace LibvirtGConfig {
         // Methods
 
         get_policy(): DomainCpuFeaturePolicy;
-        set_policy(policy: DomainCpuFeaturePolicy): void;
+        set_policy(policy: DomainCpuFeaturePolicy | null): void;
     }
 
     module DomainCpuModel {
@@ -1536,18 +1536,18 @@ export namespace LibvirtGConfig {
          * @param driver a #GVirConfigDomainDiskDriver
          */
         set_driver(driver?: DomainDiskDriver | null): void;
-        set_driver_cache(cache_type: DomainDiskCacheType): void;
-        set_driver_format(format: DomainDiskFormat): void;
+        set_driver_cache(cache_type: DomainDiskCacheType | null): void;
+        set_driver_format(format: DomainDiskFormat | null): void;
         set_driver_name(driver_name: string): void;
         set_driver_type(driver_type: string): void;
-        set_guest_device_type(type: DomainDiskGuestDeviceType): void;
+        set_guest_device_type(type: DomainDiskGuestDeviceType | null): void;
         set_readonly(readonly: boolean): void;
-        set_snapshot_type(type: DomainDiskSnapshotType): void;
+        set_snapshot_type(type: DomainDiskSnapshotType | null): void;
         set_source(source: string): void;
-        set_startup_policy(policy: DomainDiskStartupPolicy): void;
-        set_target_bus(bus: DomainDiskBus): void;
+        set_startup_policy(policy: DomainDiskStartupPolicy | null): void;
+        set_target_bus(bus: DomainDiskBus | null): void;
         set_target_dev(dev: string): void;
-        set_type(type: DomainDiskType): void;
+        set_type(type: DomainDiskType | null): void;
     }
 
     module DomainDiskDriver {
@@ -1581,12 +1581,12 @@ export namespace LibvirtGConfig {
         get_format(): DomainDiskFormat;
         get_io_policy(): DomainDiskDriverIoPolicy;
         get_name(): string;
-        set_cache(cache_type: DomainDiskCacheType): void;
+        set_cache(cache_type: DomainDiskCacheType | null): void;
         set_copy_on_read(copy_on_read: boolean): void;
-        set_discard(discard: DomainDiskDriverDiscard): void;
-        set_error_policy(policy: DomainDiskDriverErrorPolicy): void;
-        set_format(format: DomainDiskFormat): void;
-        set_io_policy(policy: DomainDiskDriverIoPolicy): void;
+        set_discard(discard: DomainDiskDriverDiscard | null): void;
+        set_error_policy(policy: DomainDiskDriverErrorPolicy | null): void;
+        set_format(format: DomainDiskFormat | null): void;
+        set_io_policy(policy: DomainDiskDriverIoPolicy | null): void;
         set_name(name: string): void;
     }
 
@@ -1614,14 +1614,14 @@ export namespace LibvirtGConfig {
 
         // Methods
 
-        set_access_type(type: DomainFilesysAccessType): void;
-        set_driver_format(format: DomainDiskFormat): void;
-        set_driver_type(type: DomainFilesysDriverType): void;
+        set_access_type(type: DomainFilesysAccessType | null): void;
+        set_driver_format(format: DomainDiskFormat | null): void;
+        set_driver_type(type: DomainFilesysDriverType | null): void;
         set_ram_usage(bytes: number): void;
         set_readonly(readonly: boolean): void;
         set_source(source: string): void;
         set_target(target: string): void;
-        set_type(type: DomainFilesysType): void;
+        set_type(type: DomainFilesysType | null): void;
     }
 
     module DomainGraphics {
@@ -1760,7 +1760,7 @@ export namespace LibvirtGConfig {
         get_port(): number;
         set_autoport(autoport: boolean): void;
         set_gl(gl: boolean): void;
-        set_image_compression(compression: DomainGraphicsSpiceImageCompression): void;
+        set_image_compression(compression: DomainGraphicsSpiceImageCompression | null): void;
         set_password(password: string): void;
         set_port(port: number): void;
         set_tls_port(port: number): void;
@@ -1900,8 +1900,8 @@ export namespace LibvirtGConfig {
 
         get_bus(): DomainInputBus;
         get_device_type(): DomainInputDeviceType;
-        set_bus(bus: DomainInputBus): void;
-        set_device_type(type: DomainInputDeviceType): void;
+        set_bus(bus: DomainInputBus | null): void;
+        set_device_type(type: DomainInputDeviceType | null): void;
     }
 
     module DomainInterface {
@@ -1932,7 +1932,7 @@ export namespace LibvirtGConfig {
         get_model(): string;
         set_filterref(filterref?: DomainInterfaceFilterref | null): void;
         set_ifname(ifname: string): void;
-        set_link_state(state: DomainInterfaceLinkState): void;
+        set_link_state(state: DomainInterfaceLinkState | null): void;
         set_mac(mac_address: string): void;
         set_model(model: string): void;
     }
@@ -2104,7 +2104,7 @@ export namespace LibvirtGConfig {
 
         // Methods
 
-        set_model(model: DomainMemballoonModel): void;
+        set_model(model: DomainMemballoonModel | null): void;
     }
 
     module DomainOs {
@@ -2144,16 +2144,16 @@ export namespace LibvirtGConfig {
         get_machine(): string;
         get_os_type(): DomainOsType;
         set_arch(arch: string): void;
-        set_boot_devices(boot_devices: DomainOsBootDevice[]): void;
+        set_boot_devices(boot_devices: DomainOsBootDevice[] | null): void;
         set_cmdline(cmdline?: string | null): void;
-        set_firmware(firmware: DomainOsFirmware): void;
+        set_firmware(firmware: DomainOsFirmware | null): void;
         set_init(init?: string | null): void;
         set_kernel(kernel?: string | null): void;
         set_loader(loader?: string | null): void;
         set_machine(machine: string): void;
-        set_os_type(type: DomainOsType): void;
+        set_os_type(type: DomainOsType | null): void;
         set_ramdisk(ramdisk?: string | null): void;
-        set_smbios_mode(mode: DomainOsSmBiosMode): void;
+        set_smbios_mode(mode: DomainOsSmBiosMode | null): void;
     }
 
     module DomainParallel {
@@ -2232,7 +2232,7 @@ export namespace LibvirtGConfig {
         // Methods
 
         set_address(address?: DomainAddress | null): void;
-        set_bus(bus: DomainRedirdevBus): void;
+        set_bus(bus: DomainRedirdevBus | null): void;
     }
 
     module DomainSeclabel {
@@ -2262,7 +2262,7 @@ export namespace LibvirtGConfig {
         set_baselabel(label?: string | null): void;
         set_label(label?: string | null): void;
         set_model(model: string): void;
-        set_type(type: DomainSeclabelType): void;
+        set_type(type: DomainSeclabelType | null): void;
     }
 
     module DomainSerial {
@@ -2433,7 +2433,7 @@ export namespace LibvirtGConfig {
         set_description(description: string): void;
         set_disks(disks: DomainSnapshotDisk[]): void;
         set_memory_file(filename: string): void;
-        set_memory_state(state: DomainSnapshotMemoryState): void;
+        set_memory_state(state: DomainSnapshotMemoryState | null): void;
         set_name(name: string): void;
     }
 
@@ -2465,9 +2465,9 @@ export namespace LibvirtGConfig {
         get_name(): string;
         get_snapshot_type(): DomainDiskSnapshotType;
         get_source_file(): string;
-        set_driver_format(format: DomainDiskFormat): void;
+        set_driver_format(format: DomainDiskFormat | null): void;
         set_name(name: string): void;
-        set_snapshot_type(type: DomainDiskSnapshotType): void;
+        set_snapshot_type(type: DomainDiskSnapshotType | null): void;
         set_source_file(filename: string): void;
     }
 
@@ -2495,7 +2495,7 @@ export namespace LibvirtGConfig {
 
         // Methods
 
-        set_model(model: DomainSoundModel): void;
+        set_model(model: DomainSoundModel | null): void;
     }
 
     module DomainTimer {
@@ -2518,7 +2518,7 @@ export namespace LibvirtGConfig {
         get_present(): boolean;
         get_tick_policy(): DomainTimerTickPolicy;
         set_present(present: boolean): void;
-        set_tick_policy(policy: DomainTimerTickPolicy): void;
+        set_tick_policy(policy: DomainTimerTickPolicy | null): void;
     }
 
     module DomainTimerHpet {
@@ -2617,7 +2617,7 @@ export namespace LibvirtGConfig {
         get_model(): DomainVideoModel;
         set_accel3d(accel3d: boolean): void;
         set_heads(head_count: number): void;
-        set_model(model: DomainVideoModel): void;
+        set_model(model: DomainVideoModel | null): void;
         set_ram(kbytes: number): void;
         set_vgamem(kbytes: number): void;
         set_vram(kbytes: number): void;
@@ -2894,7 +2894,7 @@ export namespace LibvirtGConfig {
         set_available(available: number): void;
         set_capacity(capacity: number): void;
         set_name(name?: string | null): void;
-        set_pool_type(type: StoragePoolType): void;
+        set_pool_type(type: StoragePoolType | null): void;
         set_source(source?: StoragePoolSource | null): void;
         set_target(target?: StoragePoolTarget | null): void;
         set_uuid(uuid?: string | null): void;

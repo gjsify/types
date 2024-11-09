@@ -571,7 +571,7 @@ export namespace TotemPlParser {
          * @param type a #TotemPlParserType for the outputted playlist
          * @returns %TRUE on success
          */
-        save(playlist: Playlist, dest: Gio.File, title: string, type: ParserType): boolean;
+        save(playlist: Playlist, dest: Gio.File, title: string, type: ParserType | null): boolean;
         /**
          * Starts asynchronous version of totem_pl_parser_save(). For more details
          * see totem_pl_parser_save().
@@ -588,7 +588,7 @@ export namespace TotemPlParser {
             playlist: Playlist,
             dest: Gio.File,
             title: string,
-            type: ParserType,
+            type: ParserType | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
@@ -608,7 +608,7 @@ export namespace TotemPlParser {
             playlist: Playlist,
             dest: Gio.File,
             title: string,
-            type: ParserType,
+            type: ParserType | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -629,7 +629,7 @@ export namespace TotemPlParser {
             playlist: Playlist,
             dest: Gio.File,
             title: string,
-            type: ParserType,
+            type: ParserType | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;

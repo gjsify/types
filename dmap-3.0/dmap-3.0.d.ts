@@ -282,10 +282,10 @@ export namespace DMAP {
     }
     const HASH_SIZE: number;
     const STATUS_OK: number;
-    function content_code_dmap_type(code: ContentCode): Type;
-    function content_code_name(code: ContentCode): string;
+    function content_code_dmap_type(code: ContentCode | null): Type;
+    function content_code_name(code: ContentCode | null): string;
     function content_code_read_from_buffer(buf: string): ContentCode;
-    function content_code_string(code: ContentCode): string;
+    function content_code_string(code: ContentCode | null): string;
     function content_code_string_as_int32(str: string): number;
     function content_codes(number: number): ContentCodeDefinition;
     function hash_generate(
@@ -528,7 +528,7 @@ export namespace DMAP {
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -640,7 +640,7 @@ export namespace DMAP {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -681,7 +681,7 @@ export namespace DMAP {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1465,7 +1465,9 @@ export namespace DMAP {
         vfunc_count(): number;
     }
 
-    export const ContainerDb: ContainerDbNamespace;
+    export const ContainerDb: ContainerDbNamespace & {
+        new (): ContainerDb; // This allows `obj instanceof ContainerDb`
+    };
 
     module ContainerRecord {
         // Constructor properties interface
@@ -1510,7 +1512,9 @@ export namespace DMAP {
         vfunc_get_id(): number;
     }
 
-    export const ContainerRecord: ContainerRecordNamespace;
+    export const ContainerRecord: ContainerRecordNamespace & {
+        new (): ContainerRecord; // This allows `obj instanceof ContainerRecord`
+    };
 
     module Db {
         // Constructor properties interface
@@ -1569,7 +1573,9 @@ export namespace DMAP {
         vfunc_lookup_id_by_location(location: string): number;
     }
 
-    export const Db: DbNamespace;
+    export const Db: DbNamespace & {
+        new (): Db; // This allows `obj instanceof Db`
+    };
 
     module Record {
         // Constructor properties interface
@@ -1591,7 +1597,9 @@ export namespace DMAP {
         vfunc_set_from_blob(blob: Uint8Array | string): boolean;
     }
 
-    export const Record: RecordNamespace;
+    export const Record: RecordNamespace & {
+        new (): Record; // This allows `obj instanceof Record`
+    };
 
     module RecordFactory {
         // Constructor properties interface
@@ -1605,7 +1613,9 @@ export namespace DMAP {
     }
     interface RecordFactory extends GObject.Object {}
 
-    export const RecordFactory: RecordFactoryNamespace;
+    export const RecordFactory: RecordFactoryNamespace & {
+        new (): RecordFactory; // This allows `obj instanceof RecordFactory`
+    };
 
     /**
      * Name of the imported GIR library

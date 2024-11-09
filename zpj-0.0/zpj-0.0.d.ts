@@ -363,7 +363,7 @@ export namespace Zpj {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -404,7 +404,7 @@ export namespace Zpj {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1109,7 +1109,7 @@ export namespace Zpj {
          */
         thumbnail_file_id_to_stream(
             file_id: string,
-            size: ThumbnailSize,
+            size: ThumbnailSize | null,
             cancellable?: Gio.Cancellable | null,
         ): Gio.InputStream;
         /**
@@ -1609,7 +1609,9 @@ export namespace Zpj {
         vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
     }
 
-    export const Authorizer: AuthorizerNamespace;
+    export const Authorizer: AuthorizerNamespace & {
+        new (): Authorizer; // This allows `obj instanceof Authorizer`
+    };
 
     /**
      * Name of the imported GIR library

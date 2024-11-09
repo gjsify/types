@@ -184,7 +184,7 @@ export namespace GstValidate {
      * @returns %TRUE if the time value could be retrieved/computed or %FALSE otherwise
      */
     function action_get_clocktime(scenario: Scenario, action: Action, name: string): [boolean, Gst.ClockTime];
-    function action_return_get_name(r: ActionReturn): string;
+    function action_return_get_name(r: ActionReturn | null): string;
     function deinit(): void;
     function element_has_klass(element: Gst.Element, klass: string): boolean;
     /**
@@ -227,7 +227,7 @@ export namespace GstValidate {
         object: GObject.Object,
         property: string,
         value: GObject.Value | any,
-        flags: ObjectSetPropertyFlags,
+        flags: ObjectSetPropertyFlags | null,
     ): ActionReturn;
     function override_registry_attach_overrides(monitor: Monitor): void;
     function override_registry_preload(): number;
@@ -269,26 +269,26 @@ export namespace GstValidate {
         _function: ExecuteAction,
         parameters: ActionParameter[] | null,
         description: string,
-        flags: ActionTypeFlags,
+        flags: ActionTypeFlags | null,
     ): ActionType;
     function register_action_type_dynamic(
         plugin: Gst.Plugin | null,
         type_name: string,
-        rank: Gst.Rank,
+        rank: Gst.Rank | null,
         _function: ExecuteAction,
         parameters: ActionParameter[] | null,
         description: string,
-        flags: ActionTypeFlags,
+        flags: ActionTypeFlags | null,
     ): ActionType;
     function replace_variables_in_string(
         incom: any | null,
         local_vars: Gst.Structure,
         in_string: string,
-        flags: StructureResolveVariablesFlags,
+        flags: StructureResolveVariablesFlags | null,
     ): string;
     function report_init(): void;
     function report_level_from_name(level_name: string): ReportLevel;
-    function report_level_get_name(level: ReportLevel): string;
+    function report_level_get_name(level: ReportLevel | null): string;
     function set_globals(structure: Gst.Structure): void;
     function setup_test_file(testfile: string, use_fakesinks: boolean): Gst.Structure;
     function spin_on_fault_signals(): void;
@@ -296,7 +296,7 @@ export namespace GstValidate {
         source: any | null,
         structure: Gst.Structure,
         local_variables: Gst.Structure,
-        flags: StructureResolveVariablesFlags,
+        flags: StructureResolveVariablesFlags | null,
     ): void;
     function structure_set_variables_from_struct_file(vars: Gst.Structure, struct_file: string): void;
     function utils_enum_from_str(type: GObject.GType, str_enum: string): [boolean, number];
@@ -597,7 +597,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -638,7 +638,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1075,7 +1075,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1116,7 +1116,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1558,7 +1558,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1599,7 +1599,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2041,7 +2041,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2082,7 +2082,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2534,7 +2534,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2575,7 +2575,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3058,7 +3058,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3099,7 +3099,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3456,9 +3456,9 @@ export namespace GstValidate {
         // Methods
 
         attached(): void;
-        change_severity(issue_id: IssueId, new_level: ReportLevel): void;
+        change_severity(issue_id: IssueId, new_level: ReportLevel | null): void;
         free(): void;
-        get_severity(issue_id: IssueId, default_level: ReportLevel): ReportLevel;
+        get_severity(issue_id: IssueId, default_level: ReportLevel | null): ReportLevel;
 
         // Inherited methods
         /**
@@ -3552,7 +3552,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3593,7 +3593,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4041,7 +4041,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4082,7 +4082,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4468,7 +4468,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4509,7 +4509,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4984,11 +4984,11 @@ export namespace GstValidate {
         execute_seek(
             action: Action,
             rate: number,
-            format: Gst.Format,
-            flags: Gst.SeekFlags,
-            start_type: Gst.SeekType,
+            format: Gst.Format | null,
+            flags: Gst.SeekFlags | null,
+            start_type: Gst.SeekType | null,
             start: Gst.ClockTime,
-            stop_type: Gst.SeekType,
+            stop_type: Gst.SeekType | null,
             stop: Gst.ClockTime,
         ): number;
         /**
@@ -5096,7 +5096,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5137,7 +5137,7 @@ export namespace GstValidate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5607,7 +5607,7 @@ export namespace GstValidate {
          * Registers `issue` in the issue type system
          */
         register(): void;
-        set_default_level(default_level: ReportLevel): void;
+        set_default_level(default_level: ReportLevel | null): void;
     }
 
     type MediaDescriptorClass = typeof MediaDescriptor;
@@ -5764,7 +5764,7 @@ export namespace GstValidate {
         printf(): void;
         ref(): Report;
         set_master_report(master_report: Report): boolean;
-        set_reporting_level(level: ReportingDetails): void;
+        set_reporting_level(level: ReportingDetails | null): void;
         should_print(): boolean;
         unref(): void;
     }
@@ -5867,7 +5867,9 @@ export namespace GstValidate {
         vfunc_intercept_report(report: Report): InterceptionReturn;
     }
 
-    export const Reporter: ReporterNamespace;
+    export const Reporter: ReporterNamespace & {
+        new (): Reporter; // This allows `obj instanceof Reporter`
+    };
 
     type IssueId = GLib.Quark;
     /**

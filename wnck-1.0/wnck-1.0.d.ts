@@ -339,7 +339,7 @@ export namespace Wnck {
      * libwnck to properly work.
      * @param ewmh_sourceindication_client_type a role for the client.
      */
-    function set_client_type(ewmh_sourceindication_client_type: ClientType): void;
+    function set_client_type(ewmh_sourceindication_client_type: ClientType | null): void;
     /**
      * Looks for the X resource usage of the application owning the X window ID
      * `xid` on display `gdisplay`. If no resource usage can be found, then all
@@ -630,7 +630,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -671,7 +671,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1199,12 +1199,12 @@ export namespace Wnck {
          * Sets the display mode for `pager` to `mode`.
          * @param mode a display mode.
          */
-        set_display_mode(mode: PagerDisplayMode): void;
+        set_display_mode(mode: PagerDisplayMode | null): void;
         /**
          * Sets the layout policy for `pager` to `policy`.
          * @param policy a layout policy.
          */
-        set_layout_policy(policy: PagerLayoutPolicy): void;
+        set_layout_policy(policy: PagerLayoutPolicy | null): void;
         /**
          * Tries to change the number of rows in the layout of #WnckWorkspace on the
          * #WnckScreen `pager` is watching. Since no more than one application should
@@ -1237,7 +1237,7 @@ export namespace Wnck {
          * @param orientation orientation to use for the layout of #WnckWorkspace on the #WnckScreen @pager is watching.
          * @returns %TRUE if the layout of #WnckWorkspace has been successfully changed or did not need to be changed, %FALSE otherwise.
          */
-        set_orientation(orientation: Gtk.Orientation): boolean;
+        set_orientation(orientation: Gtk.Orientation | null): boolean;
         /**
          * Does nothing.
          * @param screen a #WnckScreen.
@@ -1249,7 +1249,7 @@ export namespace Wnck {
          * backgrounds.
          * @param shadow_type a shadow type.
          */
-        set_shadow_type(shadow_type: Gtk.ShadowType): void;
+        set_shadow_type(shadow_type: Gtk.ShadowType | null): void;
         /**
          * Sets `pager` to display all #WnckWorkspace or not, according to
          * `show_all_workspaces`.
@@ -1478,7 +1478,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1519,7 +1519,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2141,7 +2141,7 @@ export namespace Wnck {
          * @param direction direction in which to search the neighbor.
          * @returns the neighbor #WnckWorkspace of @space in the @direction direction on @screen, or %NULL if no such neighbor #WnckWorkspace exists. The returned #WnckWorkspace is owned by libwnck and must not be referenced or unreferenced.
          */
-        get_workspace_neighbor(space: Workspace, direction: MotionDirection): Workspace;
+        get_workspace_neighbor(space: Workspace, direction: MotionDirection | null): Workspace;
         /**
          * Gets the list of #WnckWorkspace on `screen`. The list is ordered: the
          * first element in the list is the first #WnckWorkspace, etc..
@@ -2278,7 +2278,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2319,7 +2319,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2688,12 +2688,12 @@ export namespace Wnck {
          * non-system backgrounds.
          * @param relief a relief type.
          */
-        set_button_relief(relief: Gtk.ReliefStyle): void;
+        set_button_relief(relief: Gtk.ReliefStyle | null): void;
         /**
          * Sets the grouping policy for `tasklist` to `grouping`.
          * @param grouping a grouping policy.
          */
-        set_grouping(grouping: TasklistGroupingType): void;
+        set_grouping(grouping: TasklistGroupingType | null): void;
         /**
          * Sets the maximum size of buttons in `tasklist` before `tasklist` tries to
          * group #WnckWindow in the same #WnckApplication in only one button. This
@@ -2786,7 +2786,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2827,7 +2827,7 @@ export namespace Wnck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3638,8 +3638,8 @@ export namespace Wnck {
          * @param height new height in pixels of @window.
          */
         set_geometry(
-            gravity: WindowGravity,
-            geometry_mask: WindowMoveResizeMask,
+            gravity: WindowGravity | null,
+            geometry_mask: WindowMoveResizeMask | null,
             x: number,
             y: number,
             width: number,
@@ -3675,7 +3675,7 @@ export namespace Wnck {
          * Sets the semantic type of `window` to `wintype`.
          * @param wintype a semantic type.
          */
-        set_window_type(wintype: WindowType): void;
+        set_window_type(wintype: WindowType | null): void;
         /**
          * Asks the window manager to shade `window`.
          */

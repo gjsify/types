@@ -257,7 +257,7 @@ export namespace AtrilDocument {
      * @param type the compression type
      * @returns a newly allocated string URI, or %NULL on error
      */
-    function file_compress(uri: string, type: CompressionType): string;
+    function file_compress(uri: string, type: CompressionType | null): string;
     /**
      * Note: on unknown MIME types, this may return NULL without `error`
      * being filled in.
@@ -281,7 +281,7 @@ export namespace AtrilDocument {
      * @param type the compression type
      * @returns a newly allocated string URI, or %NULL on error
      */
-    function file_uncompress(uri: string, type: CompressionType): string;
+    function file_uncompress(uri: string, type: CompressionType | null): string;
     function get_locale_dir(): string;
     /**
      * Initializes the atril document library.
@@ -746,7 +746,7 @@ export namespace AtrilDocument {
 
         get_icon(): AnnotationTextIcon;
         get_is_open(): boolean;
-        set_icon(icon: AnnotationTextIcon): boolean;
+        set_icon(icon: AnnotationTextIcon | null): boolean;
         set_is_open(is_open: boolean): boolean;
 
         // Inherited properties
@@ -1948,7 +1948,9 @@ export namespace AtrilDocument {
         set_rectangle(ev_rect: Rectangle): boolean;
     }
 
-    export const AnnotationMarkup: AnnotationMarkupNamespace;
+    export const AnnotationMarkup: AnnotationMarkupNamespace & {
+        new (): AnnotationMarkup; // This allows `obj instanceof AnnotationMarkup`
+    };
 
     module AsyncRenderer {
         // Constructor properties interface
@@ -1971,7 +1973,9 @@ export namespace AtrilDocument {
         vfunc_render_pixbuf(page: number, scale: number, rotation: number): void;
     }
 
-    export const AsyncRenderer: AsyncRendererNamespace;
+    export const AsyncRenderer: AsyncRendererNamespace & {
+        new (): AsyncRenderer; // This allows `obj instanceof AsyncRenderer`
+    };
 
     module DocumentAnnotations {
         // Constructor properties interface
@@ -1992,7 +1996,7 @@ export namespace AtrilDocument {
         document_is_modified(): boolean;
         get_annotations(page: Page): MappingList;
         remove_annotation(annot: Annotation): void;
-        save_annotation(annot: Annotation, mask: AnnotationsSaveMask): void;
+        save_annotation(annot: Annotation, mask: AnnotationsSaveMask | null): void;
 
         // Virtual methods
 
@@ -2003,7 +2007,9 @@ export namespace AtrilDocument {
         vfunc_save_annotation(annot: Annotation, mask: AnnotationsSaveMask): void;
     }
 
-    export const DocumentAnnotations: DocumentAnnotationsNamespace;
+    export const DocumentAnnotations: DocumentAnnotationsNamespace & {
+        new (): DocumentAnnotations; // This allows `obj instanceof DocumentAnnotations`
+    };
 
     module DocumentAttachments {
         // Constructor properties interface
@@ -2027,7 +2033,9 @@ export namespace AtrilDocument {
         vfunc_has_attachments(): boolean;
     }
 
-    export const DocumentAttachments: DocumentAttachmentsNamespace;
+    export const DocumentAttachments: DocumentAttachmentsNamespace & {
+        new (): DocumentAttachments; // This allows `obj instanceof DocumentAttachments`
+    };
 
     module DocumentFind {
         // Constructor properties interface
@@ -2051,7 +2059,9 @@ export namespace AtrilDocument {
         vfunc_find_text(page: Page, text: string, case_sensitive: boolean): Rectangle[];
     }
 
-    export const DocumentFind: DocumentFindNamespace;
+    export const DocumentFind: DocumentFindNamespace & {
+        new (): DocumentFind; // This allows `obj instanceof DocumentFind`
+    };
 
     module DocumentFonts {
         // Constructor properties interface
@@ -2077,7 +2087,9 @@ export namespace AtrilDocument {
         vfunc_scan(n_pages: number): boolean;
     }
 
-    export const DocumentFonts: DocumentFontsNamespace;
+    export const DocumentFonts: DocumentFontsNamespace & {
+        new (): DocumentFonts; // This allows `obj instanceof DocumentFonts`
+    };
 
     module DocumentForms {
         // Constructor properties interface
@@ -2125,7 +2137,9 @@ export namespace AtrilDocument {
         vfunc_get_form_fields(page: Page): MappingList;
     }
 
-    export const DocumentForms: DocumentFormsNamespace;
+    export const DocumentForms: DocumentFormsNamespace & {
+        new (): DocumentForms; // This allows `obj instanceof DocumentForms`
+    };
 
     module DocumentImages {
         // Constructor properties interface
@@ -2149,7 +2163,9 @@ export namespace AtrilDocument {
         vfunc_get_image_mapping(page: Page): MappingList;
     }
 
-    export const DocumentImages: DocumentImagesNamespace;
+    export const DocumentImages: DocumentImagesNamespace & {
+        new (): DocumentImages; // This allows `obj instanceof DocumentImages`
+    };
 
     module DocumentLayers {
         // Constructor properties interface
@@ -2179,7 +2195,9 @@ export namespace AtrilDocument {
         vfunc_show_layer(layer: Layer): void;
     }
 
-    export const DocumentLayers: DocumentLayersNamespace;
+    export const DocumentLayers: DocumentLayersNamespace & {
+        new (): DocumentLayers; // This allows `obj instanceof DocumentLayers`
+    };
 
     module DocumentLinks {
         // Constructor properties interface
@@ -2213,7 +2231,9 @@ export namespace AtrilDocument {
         vfunc_has_document_links(): boolean;
     }
 
-    export const DocumentLinks: DocumentLinksNamespace;
+    export const DocumentLinks: DocumentLinksNamespace & {
+        new (): DocumentLinks; // This allows `obj instanceof DocumentLinks`
+    };
 
     module DocumentPrint {
         // Constructor properties interface
@@ -2235,7 +2255,9 @@ export namespace AtrilDocument {
         vfunc_print_page(page: Page, cr: cairo.Context): void;
     }
 
-    export const DocumentPrint: DocumentPrintNamespace;
+    export const DocumentPrint: DocumentPrintNamespace & {
+        new (): DocumentPrint; // This allows `obj instanceof DocumentPrint`
+    };
 
     module DocumentSecurity {
         // Constructor properties interface
@@ -2259,7 +2281,9 @@ export namespace AtrilDocument {
         vfunc_set_password(password: string): void;
     }
 
-    export const DocumentSecurity: DocumentSecurityNamespace;
+    export const DocumentSecurity: DocumentSecurityNamespace & {
+        new (): DocumentSecurity; // This allows `obj instanceof DocumentSecurity`
+    };
 
     module DocumentText {
         // Constructor properties interface
@@ -2287,7 +2311,9 @@ export namespace AtrilDocument {
         vfunc_get_text_mapping(page: Page): cairo.Region;
     }
 
-    export const DocumentText: DocumentTextNamespace;
+    export const DocumentText: DocumentTextNamespace & {
+        new (): DocumentText; // This allows `obj instanceof DocumentText`
+    };
 
     module DocumentThumbnails {
         // Constructor properties interface
@@ -2309,7 +2335,9 @@ export namespace AtrilDocument {
         vfunc_get_dimensions(rc: RenderContext, width: number, height: number): void;
     }
 
-    export const DocumentThumbnails: DocumentThumbnailsNamespace;
+    export const DocumentThumbnails: DocumentThumbnailsNamespace & {
+        new (): DocumentThumbnails; // This allows `obj instanceof DocumentThumbnails`
+    };
 
     module DocumentTransition {
         // Constructor properties interface
@@ -2333,7 +2361,9 @@ export namespace AtrilDocument {
         vfunc_get_page_duration(page: number): number;
     }
 
-    export const DocumentTransition: DocumentTransitionNamespace;
+    export const DocumentTransition: DocumentTransitionNamespace & {
+        new (): DocumentTransition; // This allows `obj instanceof DocumentTransition`
+    };
 
     module FileExporter {
         // Constructor properties interface
@@ -2365,7 +2395,9 @@ export namespace AtrilDocument {
         vfunc_get_capabilities(): FileExporterCapabilities;
     }
 
-    export const FileExporter: FileExporterNamespace;
+    export const FileExporter: FileExporterNamespace & {
+        new (): FileExporter; // This allows `obj instanceof FileExporter`
+    };
 
     module Selection {
         // Constructor properties interface
@@ -2380,14 +2412,14 @@ export namespace AtrilDocument {
     interface Selection extends GObject.Object {
         // Methods
 
-        get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
-        get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;
+        get_selected_text(page: Page, style: SelectionStyle | null, points: Rectangle): string;
+        get_selection_region(rc: RenderContext, style: SelectionStyle | null, points: Rectangle): cairo.Region;
         render_selection(
             rc: RenderContext,
             surface: cairo.Surface,
             points: Rectangle,
             old_points: Rectangle,
-            style: SelectionStyle,
+            style: SelectionStyle | null,
             text: Gdk.Color,
             base: Gdk.Color,
         ): void;
@@ -2407,7 +2439,9 @@ export namespace AtrilDocument {
         ): void;
     }
 
-    export const Selection: SelectionNamespace;
+    export const Selection: SelectionNamespace & {
+        new (): Selection; // This allows `obj instanceof Selection`
+    };
 
     type BackendPage = any;
     type BackendPageDestroyFunc = GLib.DestroyNotify;

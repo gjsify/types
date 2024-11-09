@@ -387,7 +387,7 @@ export namespace Gitg {
         get_d_pushes(): Ref[] | null;
         set_d_pushes(value?: Ref[] | null): void;
         get_state(): RefState;
-        set_state(value: RefState): void;
+        set_state(value: RefState | null): void;
         get_working(): boolean;
         set_working(value: boolean): void;
         get_parsed_name(): ParsedRefName;
@@ -561,7 +561,7 @@ export namespace Gitg {
          * @param flags a #GgitCreateFlags.
          * @returns the new branch or %NULL.
          */
-        move(new_branch_name: string, flags: Ggit.CreateFlags): Ggit.Branch | null;
+        move(new_branch_name: string, flags: Ggit.CreateFlags | null): Ggit.Branch | null;
         /**
          * Sets the upstream branch, for a given local branch reference
          * @param upstream_branch_name name of the upstream branch; if %NULL unsets it.
@@ -746,7 +746,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -787,7 +787,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1196,7 +1196,7 @@ export namespace Gitg {
         get_limit(): number;
         set_limit(value: number): void;
         get_sort_mode(): Ggit.SortMode;
-        set_sort_mode(value: Ggit.SortMode): void;
+        set_sort_mode(value: Ggit.SortMode | null): void;
         get_repository(): Repository;
         set_repository(value: Repository): void;
 
@@ -1646,7 +1646,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1687,7 +1687,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2054,7 +2054,7 @@ export namespace Gitg {
         get_diff(options: Ggit.DiffOptions | null, parent: number): Ggit.Diff;
         get_note(): Ggit.Note;
         get_tag(): LaneTag;
-        set_tag(value: LaneTag): void;
+        set_tag(value: LaneTag | null): void;
         get_mylane(): number;
         set_mylane(value: number): void;
         get_lane(): Lane;
@@ -2082,7 +2082,7 @@ export namespace Gitg {
 
         // Methods
 
-        credentials(url: string, username: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null;
+        credentials(url: string, username: string | null, allowed_types: Ggit.Credtype | null): Ggit.Cred | null;
     }
 
     module Date {
@@ -2257,7 +2257,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2298,7 +2298,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3161,7 +3161,7 @@ export namespace Gitg {
         get_d_pushes(): Ref[] | null;
         set_d_pushes(value?: Ref[] | null): void;
         get_state(): RefState;
-        set_state(value: RefState): void;
+        set_state(value: RefState | null): void;
         get_working(): boolean;
         set_working(value: boolean): void;
         get_parsed_name(): ParsedRefName;
@@ -3434,14 +3434,14 @@ export namespace Gitg {
 
         // Methods
 
-        connect(direction: Ggit.Direction, callbacks?: Ggit.RemoteCallbacks | null): Promise<void>;
+        connect(direction: Ggit.Direction | null, callbacks?: Ggit.RemoteCallbacks | null): Promise<void>;
         connect(
-            direction: Ggit.Direction,
+            direction: Ggit.Direction | null,
             callbacks: Ggit.RemoteCallbacks | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         connect(
-            direction: Ggit.Direction,
+            direction: Ggit.Direction | null,
             callbacks?: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<void> | void;
@@ -3576,7 +3576,7 @@ export namespace Gitg {
         get_selection(): RepositoryListBoxRow[];
         filter_text(text?: string | null): void;
         get_mode(): SelectionMode;
-        set_mode(value: SelectionMode): void;
+        set_mode(value: SelectionMode | null): void;
         get_bookmarks_from_recent_files(): boolean;
         set_bookmarks_from_recent_files(value: boolean): void;
         get_location(): Gio.File | null;
@@ -3671,7 +3671,7 @@ export namespace Gitg {
         // Methods
 
         get_mode(): SelectionMode;
-        set_mode(value: SelectionMode): void;
+        set_mode(value: SelectionMode | null): void;
         get_selected(): boolean;
         set_selected(value: boolean): void;
         get_repository(): Repository | null;
@@ -3735,7 +3735,7 @@ export namespace Gitg {
         lookup_reference_dwim(short_name: string): Ref;
         // Conflicted with Ggit.Repository.lookup_reference_dwim
         lookup_reference_dwim(...args: never[]): any;
-        create_branch(name: string, obj: Ggit.Object, flags: Ggit.CreateFlags): Branch;
+        create_branch(name: string, obj: Ggit.Object, flags: Ggit.CreateFlags | null): Branch;
         // Conflicted with Ggit.Repository.create_branch
         create_branch(...args: never[]): any;
         create_reference(name: string, oid: Ggit.OId, message: string): Ref;
@@ -3882,7 +3882,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3923,7 +3923,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4433,7 +4433,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4474,7 +4474,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4892,7 +4892,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4933,7 +4933,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5331,7 +5331,7 @@ export namespace Gitg {
             author: Ggit.Signature,
             committer: Ggit.Signature,
             parents: Ggit.OId[] | null,
-            options: StageCommitOptions,
+            options: StageCommitOptions | null,
         ): Promise<Ggit.OId | null>;
         commit_index(
             index: Ggit.Index,
@@ -5340,7 +5340,7 @@ export namespace Gitg {
             author: Ggit.Signature,
             committer: Ggit.Signature,
             parents: Ggit.OId[] | null,
-            options: StageCommitOptions,
+            options: StageCommitOptions | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         commit_index(
@@ -5350,7 +5350,7 @@ export namespace Gitg {
             author: Ggit.Signature,
             committer: Ggit.Signature,
             parents: Ggit.OId[] | null,
-            options: StageCommitOptions,
+            options: StageCommitOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<Ggit.OId | null> | void;
         commit_index_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
@@ -5361,7 +5361,7 @@ export namespace Gitg {
             author: Ggit.Signature,
             committer: Ggit.Signature,
             parents: Ggit.OId[] | null,
-            options: StageCommitOptions,
+            options: StageCommitOptions | null,
         ): Promise<Ggit.OId | null>;
         commit_tree(
             treeoid: Ggit.OId,
@@ -5370,7 +5370,7 @@ export namespace Gitg {
             author: Ggit.Signature,
             committer: Ggit.Signature,
             parents: Ggit.OId[] | null,
-            options: StageCommitOptions,
+            options: StageCommitOptions | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         commit_tree(
@@ -5380,7 +5380,7 @@ export namespace Gitg {
             author: Ggit.Signature,
             committer: Ggit.Signature,
             parents: Ggit.OId[] | null,
-            options: StageCommitOptions,
+            options: StageCommitOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<Ggit.OId | null> | void;
         commit_tree_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
@@ -5388,20 +5388,20 @@ export namespace Gitg {
             message: string,
             author: Ggit.Signature,
             committer: Ggit.Signature,
-            options: StageCommitOptions,
+            options: StageCommitOptions | null,
         ): Promise<Ggit.OId | null>;
         commit(
             message: string,
             author: Ggit.Signature,
             committer: Ggit.Signature,
-            options: StageCommitOptions,
+            options: StageCommitOptions | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         commit(
             message: string,
             author: Ggit.Signature,
             committer: Ggit.Signature,
-            options: StageCommitOptions,
+            options: StageCommitOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<Ggit.OId | null> | void;
         commit_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
@@ -6011,7 +6011,9 @@ export namespace Gitg {
         vfunc_get_upstream(): Ref;
     }
 
-    export const Branch: BranchNamespace;
+    export const Branch: BranchNamespace & {
+        new (): Branch; // This allows `obj instanceof Branch`
+    };
 
     module Ref {
         // Constructor properties interface
@@ -6056,7 +6058,7 @@ export namespace Gitg {
         get_d_pushes(): Ref[] | null;
         set_d_pushes(value?: Ref[] | null): void;
         get_state(): RefState;
-        set_state(value: RefState): void;
+        set_state(value: RefState | null): void;
         get_working(): boolean;
         set_working(value: boolean): void;
         get_parsed_name(): ParsedRefName;
@@ -6075,7 +6077,9 @@ export namespace Gitg {
         vfunc_set_working(value: boolean): void;
     }
 
-    export const Ref: RefNamespace;
+    export const Ref: RefNamespace & {
+        new (): Ref; // This allows `obj instanceof Ref`
+    };
 
     module CredentialsProvider {
         // Constructor properties interface
@@ -6090,7 +6094,11 @@ export namespace Gitg {
     interface CredentialsProvider extends GObject.Object {
         // Methods
 
-        credentials(url: string, username_from_url: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null;
+        credentials(
+            url: string,
+            username_from_url: string | null,
+            allowed_types: Ggit.Credtype | null,
+        ): Ggit.Cred | null;
 
         // Virtual methods
 
@@ -6101,7 +6109,9 @@ export namespace Gitg {
         ): Ggit.Cred | null;
     }
 
-    export const CredentialsProvider: CredentialsProviderNamespace;
+    export const CredentialsProvider: CredentialsProviderNamespace & {
+        new (): CredentialsProvider; // This allows `obj instanceof CredentialsProvider`
+    };
 
     module SidebarItem {
         // Constructor properties interface
@@ -6137,7 +6147,9 @@ export namespace Gitg {
         vfunc_get_icon_name(): string | null;
     }
 
-    export const SidebarItem: SidebarItemNamespace;
+    export const SidebarItem: SidebarItemNamespace & {
+        new (): SidebarItem; // This allows `obj instanceof SidebarItem`
+    };
 
     module StageStatusItem {
         // Constructor properties interface
@@ -6189,7 +6201,9 @@ export namespace Gitg {
         vfunc_get_icon_name(): string | null;
     }
 
-    export const StageStatusItem: StageStatusItemNamespace;
+    export const StageStatusItem: StageStatusItemNamespace & {
+        new (): StageStatusItem; // This allows `obj instanceof StageStatusItem`
+    };
 
     /**
      * Name of the imported GIR library

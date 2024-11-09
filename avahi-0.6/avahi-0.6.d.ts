@@ -195,7 +195,7 @@ export namespace Avahi {
         // Methods
 
         add_record(
-            flags: AvahiCore.PublishFlags,
+            flags: AvahiCore.PublishFlags | null,
             name: string,
             type: number,
             ttl: number,
@@ -204,8 +204,8 @@ export namespace Avahi {
         ): boolean;
         add_record_full(
             _interface: AvahiCore.IfIndex,
-            protocol: AvahiCore.Protocol,
-            flags: AvahiCore.PublishFlags,
+            protocol: AvahiCore.Protocol | null,
+            flags: AvahiCore.PublishFlags | null,
             name: string,
             clazz: number,
             type: number,

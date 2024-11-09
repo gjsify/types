@@ -795,7 +795,7 @@ export namespace Gom {
          * @param property_name A string.
          * @param sorting_mode A #GomSortingMode.
          */
-        add(resource_type: GObject.GType, property_name: string, sorting_mode: SortingMode): void;
+        add(resource_type: GObject.GType, property_name: string, sorting_mode: SortingMode | null): void;
         get_sql(table_map: { [key: string]: any } | GLib.HashTable<any, any>): string;
     }
 

@@ -546,7 +546,7 @@ export namespace OsmGpsMap {
          * @param key a #OsmGpsMapKey_t
          * @param keyval
          */
-        set_keyboard_shortcut(key: MapKey_t, keyval: number): void;
+        set_keyboard_shortcut(key: MapKey_t | null, keyval: number): void;
         set_zoom(zoom: number): number;
         set_zoom_offset(zoom_offset: number): void;
         track_add(track: MapTrack): void;
@@ -608,7 +608,7 @@ export namespace OsmGpsMap {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -649,7 +649,7 @@ export namespace OsmGpsMap {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1217,7 +1217,7 @@ export namespace OsmGpsMap {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1258,7 +1258,7 @@ export namespace OsmGpsMap {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1824,7 +1824,9 @@ export namespace OsmGpsMap {
         vfunc_render(map: Map): void;
     }
 
-    export const MapLayer: MapLayerNamespace;
+    export const MapLayer: MapLayerNamespace & {
+        new (): MapLayer; // This allows `obj instanceof MapLayer`
+    };
 
     /**
      * Name of the imported GIR library

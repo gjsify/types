@@ -272,7 +272,11 @@ export namespace Malcontent {
          * @param cancellable a #GCancellable, or %NULL
          * @returns app filter for the queried user
          */
-        get_app_filter(user_id: number, flags: ManagerGetValueFlags, cancellable?: Gio.Cancellable | null): AppFilter;
+        get_app_filter(
+            user_id: number,
+            flags: ManagerGetValueFlags | null,
+            cancellable?: Gio.Cancellable | null,
+        ): AppFilter;
         /**
          * Asynchronously get a snapshot of the app filter settings for the given
          * `user_id`.
@@ -285,7 +289,7 @@ export namespace Malcontent {
          */
         get_app_filter_async(
             user_id: number,
-            flags: ManagerGetValueFlags,
+            flags: ManagerGetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<AppFilter>;
         /**
@@ -301,7 +305,7 @@ export namespace Malcontent {
          */
         get_app_filter_async(
             user_id: number,
-            flags: ManagerGetValueFlags,
+            flags: ManagerGetValueFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -318,7 +322,7 @@ export namespace Malcontent {
          */
         get_app_filter_async(
             user_id: number,
-            flags: ManagerGetValueFlags,
+            flags: ManagerGetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<AppFilter> | void;
@@ -338,7 +342,7 @@ export namespace Malcontent {
          */
         get_session_limits(
             user_id: number,
-            flags: ManagerGetValueFlags,
+            flags: ManagerGetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): SessionLimits;
         /**
@@ -353,7 +357,7 @@ export namespace Malcontent {
          */
         get_session_limits_async(
             user_id: number,
-            flags: ManagerGetValueFlags,
+            flags: ManagerGetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<SessionLimits>;
         /**
@@ -369,7 +373,7 @@ export namespace Malcontent {
          */
         get_session_limits_async(
             user_id: number,
-            flags: ManagerGetValueFlags,
+            flags: ManagerGetValueFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -386,7 +390,7 @@ export namespace Malcontent {
          */
         get_session_limits_async(
             user_id: number,
-            flags: ManagerGetValueFlags,
+            flags: ManagerGetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<SessionLimits> | void;
@@ -408,7 +412,7 @@ export namespace Malcontent {
         set_app_filter(
             user_id: number,
             app_filter: AppFilter,
-            flags: ManagerSetValueFlags,
+            flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -425,7 +429,7 @@ export namespace Malcontent {
         set_app_filter_async(
             user_id: number,
             app_filter: AppFilter,
-            flags: ManagerSetValueFlags,
+            flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
@@ -443,7 +447,7 @@ export namespace Malcontent {
         set_app_filter_async(
             user_id: number,
             app_filter: AppFilter,
-            flags: ManagerSetValueFlags,
+            flags: ManagerSetValueFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -462,7 +466,7 @@ export namespace Malcontent {
         set_app_filter_async(
             user_id: number,
             app_filter: AppFilter,
-            flags: ManagerSetValueFlags,
+            flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -484,7 +488,7 @@ export namespace Malcontent {
         set_session_limits(
             user_id: number,
             session_limits: SessionLimits,
-            flags: ManagerSetValueFlags,
+            flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -502,7 +506,7 @@ export namespace Malcontent {
         set_session_limits_async(
             user_id: number,
             session_limits: SessionLimits,
-            flags: ManagerSetValueFlags,
+            flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
@@ -521,7 +525,7 @@ export namespace Malcontent {
         set_session_limits_async(
             user_id: number,
             session_limits: SessionLimits,
-            flags: ManagerSetValueFlags,
+            flags: ManagerSetValueFlags | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -541,7 +545,7 @@ export namespace Malcontent {
         set_session_limits_async(
             user_id: number,
             session_limits: SessionLimits,
-            flags: ManagerSetValueFlags,
+            flags: ManagerSetValueFlags | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -822,7 +826,7 @@ export namespace Malcontent {
          * @param oars_section name of the OARS section to set the value for
          * @param value value to set for the @oars_section
          */
-        set_oars_value(oars_section: string, value: AppFilterOarsValue): void;
+        set_oars_value(oars_section: string, value: AppFilterOarsValue | null): void;
     }
 
     type ManagerClass = typeof Manager;

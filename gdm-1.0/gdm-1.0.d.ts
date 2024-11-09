@@ -491,7 +491,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -532,7 +532,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -971,7 +971,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1012,7 +1012,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2090,7 +2090,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2131,7 +2131,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2659,7 +2659,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2700,7 +2700,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3498,7 +3498,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3539,7 +3539,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4023,7 +4023,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4064,7 +4064,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4802,7 +4802,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4843,7 +4843,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5267,7 +5267,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5308,7 +5308,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6071,7 +6071,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6112,7 +6112,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6560,7 +6560,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6601,7 +6601,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7449,7 +7449,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7490,7 +7490,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8024,7 +8024,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8065,7 +8065,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8940,7 +8940,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8981,7 +8981,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9542,7 +9542,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9583,7 +9583,7 @@ export namespace Gdm {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10080,7 +10080,9 @@ export namespace Gdm {
         vfunc_handle_select_hostname(invocation: Gio.DBusMethodInvocation, arg_hostname: string): boolean;
     }
 
-    export const Chooser: ChooserNamespace;
+    export const Chooser: ChooserNamespace & {
+        new (): Chooser; // This allows `obj instanceof Chooser`
+    };
 
     module Greeter {
         // Constructor properties interface
@@ -10217,7 +10219,9 @@ export namespace Gdm {
         vfunc_timed_login_requested(arg_username: string, arg_delay: number): void;
     }
 
-    export const Greeter: GreeterNamespace;
+    export const Greeter: GreeterNamespace & {
+        new (): Greeter; // This allows `obj instanceof Greeter`
+    };
 
     module Manager {
         // Constructor properties interface
@@ -10313,7 +10317,9 @@ export namespace Gdm {
         vfunc_handle_register_session(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
     }
 
-    export const Manager: ManagerNamespace;
+    export const Manager: ManagerNamespace & {
+        new (): Manager; // This allows `obj instanceof Manager`
+    };
 
     module RemoteGreeter {
         // Constructor properties interface
@@ -10346,7 +10352,9 @@ export namespace Gdm {
         vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
     }
 
-    export const RemoteGreeter: RemoteGreeterNamespace;
+    export const RemoteGreeter: RemoteGreeterNamespace & {
+        new (): RemoteGreeter; // This allows `obj instanceof RemoteGreeter`
+    };
 
     module UserVerifier {
         // Constructor properties interface
@@ -10489,7 +10497,9 @@ export namespace Gdm {
         vfunc_verification_failed(arg_service_name: string): void;
     }
 
-    export const UserVerifier: UserVerifierNamespace;
+    export const UserVerifier: UserVerifierNamespace & {
+        new (): UserVerifier; // This allows `obj instanceof UserVerifier`
+    };
 
     module UserVerifierChoiceList {
         // Constructor properties interface
@@ -10543,7 +10553,9 @@ export namespace Gdm {
         ): boolean;
     }
 
-    export const UserVerifierChoiceList: UserVerifierChoiceListNamespace;
+    export const UserVerifierChoiceList: UserVerifierChoiceListNamespace & {
+        new (): UserVerifierChoiceList; // This allows `obj instanceof UserVerifierChoiceList`
+    };
 
     module WorkerManager {
         // Constructor properties interface
@@ -10713,7 +10725,9 @@ export namespace Gdm {
         ): boolean;
     }
 
-    export const WorkerManager: WorkerManagerNamespace;
+    export const WorkerManager: WorkerManagerNamespace & {
+        new (): WorkerManager; // This allows `obj instanceof WorkerManager`
+    };
 
     /**
      * Name of the imported GIR library

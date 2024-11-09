@@ -407,7 +407,7 @@ export namespace Clapper {
          * Set the [enum`Clapper`.DiscovererDiscoveryMode] of `discoverer`.
          * @param mode a #ClapperDiscovererDiscoveryMode
          */
-        set_discovery_mode(mode: DiscovererDiscoveryMode): void;
+        set_discovery_mode(mode: DiscovererDiscoveryMode | null): void;
     }
 
     module Feature {
@@ -1343,7 +1343,7 @@ export namespace Clapper {
          * @param position a decimal number with position to seek to (in seconds)
          * @param method a #ClapperPlayerSeekMethod
          */
-        seek_custom(position: number, method: PlayerSeekMethod): void;
+        seek_custom(position: number, method: PlayerSeekMethod | null): void;
         /**
          * Set whether enable audio stream.
          * @param enabled whether enabled
@@ -1670,7 +1670,7 @@ export namespace Clapper {
          * see #ClapperQueueProgressionMode documentation.
          * @param mode a #ClapperQueueProgressionMode
          */
-        set_progression_mode(mode: QueueProgressionMode): void;
+        set_progression_mode(mode: QueueProgressionMode | null): void;
         /**
          * Removes #ClapperMediaItem at `index` from the queue.
          * @param index an item index
@@ -1817,7 +1817,7 @@ export namespace Clapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1858,7 +1858,7 @@ export namespace Clapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2623,7 +2623,7 @@ export namespace Clapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2664,7 +2664,7 @@ export namespace Clapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3294,7 +3294,7 @@ export namespace Clapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3335,7 +3335,7 @@ export namespace Clapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

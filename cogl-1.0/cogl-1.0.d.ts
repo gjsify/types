@@ -1195,7 +1195,7 @@ export namespace Cogl {
      */
     function clip_stack_save(): void;
     function clutter_check_extension_CLUTTER(name: string, ext: string): Bool;
-    function clutter_winsys_has_feature_CLUTTER(feature: WinsysFeature): Bool;
+    function clutter_winsys_has_feature_CLUTTER(feature: WinsysFeature | null): Bool;
     /**
      * Compares two #CoglColor<!-- -->s and checks if they are the same.
      *
@@ -1226,7 +1226,7 @@ export namespace Cogl {
      * @param shader_type COGL_SHADER_TYPE_VERTEX or COGL_SHADER_TYPE_FRAGMENT.
      * @returns a new shader handle.
      */
-    function create_shader(shader_type: ShaderType): Handle;
+    function create_shader(shader_type: ShaderType | null): Handle;
     /**
      * Prints the contents of a #CoglMatrix to stdout.
      * @param matrix A #CoglMatrix
@@ -1252,7 +1252,7 @@ export namespace Cogl {
      * @param features A bitmask of features to check for
      * @returns %TRUE if the features are available, %FALSE otherwise.
      */
-    function features_available(features: FeatureFlags): Bool;
+    function features_available(features: FeatureFlags | null): Bool;
     /**
      * This function should only need to be called in exceptional circumstances.
      *
@@ -1694,8 +1694,8 @@ export namespace Cogl {
         y: number,
         width: number,
         height: number,
-        source: ReadPixelsFlags,
-        format: PixelFormat,
+        source: ReadPixelsFlags | null,
+        format: PixelFormat | null,
         pixels: number,
     ): void;
     /**
@@ -1828,7 +1828,7 @@ export namespace Cogl {
      * @param target A #CoglBufferTarget that specifies what kind of framebuffer you          are setting as the render target.
      * @param offscreen If you are setting a framebuffer of type COGL_OFFSCREEN_BUFFER             then this is a CoglHandle for the offscreen buffer.
      */
-    function set_draw_buffer(target: BufferTarget, offscreen: Handle): void;
+    function set_draw_buffer(target: BufferTarget | null, offscreen: Handle): void;
     /**
      * Enables fogging. Fogging causes vertices that are further away from the eye
      * to be rendered with a different color. The color is determined according to
@@ -1850,7 +1850,7 @@ export namespace Cogl {
      * @param z_near Position along Z axis where no fogging should be applied
      * @param z_far Position along Z axis where full fogging should be applied
      */
-    function set_fog(fog_color: Color, mode: FogMode, density: number, z_near: number, z_far: number): void;
+    function set_fog(fog_color: Color, mode: FogMode | null, density: number, z_near: number, z_far: number): void;
     /**
      * Loads `matrix` as the new model-view matrix.
      * @param matrix the new model-view matrix
@@ -2056,7 +2056,7 @@ export namespace Cogl {
         handle: Handle,
         attribute_name: string,
         n_components: number,
-        type: AttributeType,
+        type: AttributeType | null,
         normalized: Bool,
         stride: number,
         pointer?: any | null,
@@ -2093,7 +2093,7 @@ export namespace Cogl {
      * @param first Specifies the index of the first vertex you want to draw with
      * @param count Specifies the number of vertices you want to draw.
      */
-    function vertex_buffer_draw(handle: Handle, mode: VerticesMode, first: number, count: number): void;
+    function vertex_buffer_draw(handle: Handle, mode: VerticesMode | null, first: number, count: number): void;
     /**
      * This function lets you use an array of indices to specify the vertices
      * within your vertex buffer that you want to draw. The indices themselves
@@ -2111,7 +2111,7 @@ export namespace Cogl {
      */
     function vertex_buffer_draw_elements(
         handle: Handle,
-        mode: VerticesMode,
+        mode: VerticesMode | null,
         indices: Handle,
         min_index: number,
         max_index: number,
@@ -2917,7 +2917,7 @@ export namespace Cogl {
          * @param alpha_func A @CoglMaterialAlphaFunc constant
          * @param alpha_reference A reference point that the chosen alpha function uses   to compare incoming fragments to.
          */
-        set_alpha_test_function(alpha_func: MaterialAlphaFunc, alpha_reference: number): void;
+        set_alpha_test_function(alpha_func: MaterialAlphaFunc | null, alpha_reference: number): void;
         /**
          * Sets the material's ambient color, in the standard OpenGL lighting
          * model. The ambient color affects the overall color of the object.
@@ -3179,7 +3179,11 @@ export namespace Cogl {
          * @param min_filter the filter used when scaling a texture down.
          * @param mag_filter the filter used when magnifying a texture.
          */
-        set_layer_filters(layer_index: number, min_filter: MaterialFilter, mag_filter: MaterialFilter): void;
+        set_layer_filters(
+            layer_index: number,
+            min_filter: MaterialFilter | null,
+            mag_filter: MaterialFilter | null,
+        ): void;
         /**
          * This function lets you set a matrix that can be used to e.g. translate
          * and rotate a single layer of a material used to fill your geometry.
@@ -3212,26 +3216,26 @@ export namespace Cogl {
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode(layer_index: number, mode: MaterialWrapMode): void;
+        set_layer_wrap_mode(layer_index: number, mode: MaterialWrapMode | null): void;
         /**
          * Sets the wrap mode for the 'p' coordinate of texture lookups on
          * this layer. 'p' is the third coordinate.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode_p(layer_index: number, mode: MaterialWrapMode): void;
+        set_layer_wrap_mode_p(layer_index: number, mode: MaterialWrapMode | null): void;
         /**
          * Sets the wrap mode for the 's' coordinate of texture lookups on this layer.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode_s(layer_index: number, mode: MaterialWrapMode): void;
+        set_layer_wrap_mode_s(layer_index: number, mode: MaterialWrapMode | null): void;
         /**
          * Sets the wrap mode for the 't' coordinate of texture lookups on this layer.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode_t(layer_index: number, mode: MaterialWrapMode): void;
+        set_layer_wrap_mode_t(layer_index: number, mode: MaterialWrapMode | null): void;
         /**
          * Changes the size of points drawn when %COGL_VERTICES_MODE_POINTS is
          * used with the vertex buffer API. Note that typically the GPU will
@@ -3778,7 +3782,7 @@ export namespace Cogl {
          * @param data memory location to write the @texture's contents, or %NULL to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data: number): number;
+        get_data(format: PixelFormat | null, rowstride: number, data: number): number;
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
@@ -3842,7 +3846,7 @@ export namespace Cogl {
          * as the texture's components.
          * @param components
          */
-        set_components(components: TextureComponents): void;
+        set_components(components: TextureComponents | null): void;
         /**
          * Affects the internal storage format for this texture by specifying
          * whether red, green and blue color components should be stored as
@@ -3895,13 +3899,15 @@ export namespace Cogl {
             dst_height: number,
             width: number,
             height: number,
-            format: PixelFormat,
+            format: PixelFormat | null,
             rowstride: number,
             data: number,
         ): Bool;
     }
 
-    export const Texture: TextureNamespace;
+    export const Texture: TextureNamespace & {
+        new (): Texture; // This allows `obj instanceof Texture`
+    };
 
     type Angle = number;
     type Bool = number;

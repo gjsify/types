@@ -165,7 +165,7 @@ export namespace Babl {
      */
     function get_version(): [number, number, number];
     function icc_get_key(icc_data: string, icc_length: number, key: string, language: string, country: string): string;
-    function icc_make_space(icc_data: string, icc_length: number, intent: IccIntent, error: string): Object;
+    function icc_make_space(icc_data: string, icc_length: number, intent: IccIntent | null, error: string): Object;
     /**
      * Initializes the babl library.
      */
@@ -300,7 +300,7 @@ export namespace Babl {
         trc_red: Object,
         trc_green: Object | null,
         trc_blue: Object | null,
-        flags: SpaceFlags,
+        flags: SpaceFlags | null,
     ): Object;
     /**
      * Create a babl space from an in memory ICC profile, the profile does no
@@ -318,7 +318,7 @@ export namespace Babl {
      * @param icc_length length of icc profile in bytes
      * @param intent the intent from the ICC profile to use.
      */
-    function space_from_icc(icc_data: string, icc_length: number, intent: IccIntent): [Object, string];
+    function space_from_icc(icc_data: string, icc_length: number, intent: IccIntent | null): [Object, string];
     /**
      * Creates a new RGB matrix color space definition using a precomputed D50
      * adapted 3x3 matrix and associated CIE XYZ whitepoint, as possibly read from

@@ -244,7 +244,7 @@ export namespace GSystem {
     function file_linkcopy(
         src: Gio.File,
         dest: Gio.File,
-        flags: Gio.FileCopyFlags,
+        flags: Gio.FileCopyFlags | null,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
     /**
@@ -259,7 +259,7 @@ export namespace GSystem {
     function file_linkcopy_sync_data(
         src: Gio.File,
         dest: Gio.File,
-        flags: Gio.FileCopyFlags,
+        flags: Gio.FileCopyFlags | null,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
     /**
@@ -821,7 +821,7 @@ export namespace GSystem {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -862,7 +862,7 @@ export namespace GSystem {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1264,13 +1264,13 @@ export namespace GSystem {
         set_environment(environ: string[]): void;
         set_keep_descriptors(keep_descriptors: boolean): void;
         set_search_path(search_path: boolean, search_path_from_envp: boolean): void;
-        set_stderr_disposition(disposition: SubprocessStreamDisposition): void;
+        set_stderr_disposition(disposition: SubprocessStreamDisposition | null): void;
         set_stderr_fd(fd: number): void;
         set_stderr_file_path(path: string): void;
-        set_stdin_disposition(disposition: SubprocessStreamDisposition): void;
+        set_stdin_disposition(disposition: SubprocessStreamDisposition | null): void;
         set_stdin_fd(fd: number): void;
         set_stdin_file_path(path: string): void;
-        set_stdout_disposition(disposition: SubprocessStreamDisposition): void;
+        set_stdout_disposition(disposition: SubprocessStreamDisposition | null): void;
         set_stdout_fd(fd: number): void;
         set_stdout_file_path(path: string): void;
     }

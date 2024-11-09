@@ -365,7 +365,7 @@ export namespace Cvc {
         open(): boolean;
         set_default_sink(stream: MixerStream): boolean;
         set_default_source(stream: MixerStream): boolean;
-        set_headset_port(id: number, choices: HeadsetPortChoice): void;
+        set_headset_port(id: number, choices: HeadsetPortChoice | null): void;
     }
 
     module MixerEventRole {
@@ -631,7 +631,7 @@ export namespace Cvc {
         set_name(name: string): boolean;
         set_port(port: string): boolean;
         set_ports(ports: MixerStreamPort[]): boolean;
-        set_state(state: MixerStreamState): boolean;
+        set_state(state: MixerStreamState | null): boolean;
         set_sysfs_path(sysfs_path: string): boolean;
         set_volume(volume: number): boolean;
     }

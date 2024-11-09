@@ -444,7 +444,7 @@ export namespace Midori {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -485,7 +485,7 @@ export namespace Midori {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -892,7 +892,7 @@ export namespace Midori {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -933,7 +933,7 @@ export namespace Midori {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1581,7 +1581,7 @@ export namespace Midori {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -1622,7 +1622,7 @@ export namespace Midori {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2297,7 +2297,7 @@ export namespace Midori {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2338,7 +2338,7 @@ export namespace Midori {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2851,7 +2851,7 @@ export namespace Midori {
         get_last_window_height(): number;
         set_last_window_height(value: number): void;
         get_load_on_startup(): StartupType;
-        set_load_on_startup(value: StartupType): void;
+        set_load_on_startup(value: StartupType | null): void;
         get_enable_spell_checking(): boolean;
         set_enable_spell_checking(value: boolean): void;
         get_auto_load_images(): boolean;
@@ -2869,7 +2869,7 @@ export namespace Midori {
         get_homepage(): string;
         set_homepage(value: string): void;
         get_proxy_type(): ProxyType;
-        set_proxy_type(value: ProxyType): void;
+        set_proxy_type(value: ProxyType | null): void;
         get_http_proxy(): string;
         set_http_proxy(value: string): void;
         get_http_proxy_port(): number;
@@ -3534,7 +3534,9 @@ export namespace Midori {
         vfunc_set_app(value: App): void;
     }
 
-    export const AppActivatable: AppActivatableNamespace;
+    export const AppActivatable: AppActivatableNamespace & {
+        new (): AppActivatable; // This allows `obj instanceof AppActivatable`
+    };
 
     module BrowserActivatable {
         // Constructor properties interface
@@ -3567,7 +3569,9 @@ export namespace Midori {
         vfunc_set_browser(value: Browser): void;
     }
 
-    export const BrowserActivatable: BrowserActivatableNamespace;
+    export const BrowserActivatable: BrowserActivatableNamespace & {
+        new (): BrowserActivatable; // This allows `obj instanceof BrowserActivatable`
+    };
 
     module ClearPrivateDataActivatable {
         // Constructor properties interface
@@ -3606,7 +3610,9 @@ export namespace Midori {
         vfunc_set_box(value: Gtk.Box): void;
     }
 
-    export const ClearPrivateDataActivatable: ClearPrivateDataActivatableNamespace;
+    export const ClearPrivateDataActivatable: ClearPrivateDataActivatableNamespace & {
+        new (): ClearPrivateDataActivatable; // This allows `obj instanceof ClearPrivateDataActivatable`
+    };
 
     module CompletionActivatable {
         // Constructor properties interface
@@ -3639,7 +3645,9 @@ export namespace Midori {
         vfunc_set_completion(value: Completion): void;
     }
 
-    export const CompletionActivatable: CompletionActivatableNamespace;
+    export const CompletionActivatable: CompletionActivatableNamespace & {
+        new (): CompletionActivatable; // This allows `obj instanceof CompletionActivatable`
+    };
 
     module Loggable {
         // Constructor properties interface
@@ -3658,7 +3666,9 @@ export namespace Midori {
         get_logging(): boolean;
     }
 
-    export const Loggable: LoggableNamespace;
+    export const Loggable: LoggableNamespace & {
+        new (): Loggable; // This allows `obj instanceof Loggable`
+    };
 
     module PreferencesActivatable {
         // Constructor properties interface
@@ -3691,7 +3701,9 @@ export namespace Midori {
         vfunc_set_preferences(value: Preferences): void;
     }
 
-    export const PreferencesActivatable: PreferencesActivatableNamespace;
+    export const PreferencesActivatable: PreferencesActivatableNamespace & {
+        new (): PreferencesActivatable; // This allows `obj instanceof PreferencesActivatable`
+    };
 
     module TabActivatable {
         // Constructor properties interface
@@ -3724,7 +3736,9 @@ export namespace Midori {
         vfunc_set_tab(value: Tab): void;
     }
 
-    export const TabActivatable: TabActivatableNamespace;
+    export const TabActivatable: TabActivatableNamespace & {
+        new (): TabActivatable; // This allows `obj instanceof TabActivatable`
+    };
 
     /**
      * Name of the imported GIR library

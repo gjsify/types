@@ -259,7 +259,9 @@ export namespace RygelRenderer {
         vfunc_set_user_agent(value?: string | null): void;
     }
 
-    export const MediaPlayer: MediaPlayerNamespace;
+    export const MediaPlayer: MediaPlayerNamespace & {
+        new (): MediaPlayer; // This allows `obj instanceof MediaPlayer`
+    };
 
     module PlayerController {
         // Constructor properties interface
@@ -406,7 +408,9 @@ export namespace RygelRenderer {
         vfunc_get_can_pause(): boolean;
     }
 
-    export const PlayerController: PlayerControllerNamespace;
+    export const PlayerController: PlayerControllerNamespace & {
+        new (): PlayerController; // This allows `obj instanceof PlayerController`
+    };
 
     /**
      * Name of the imported GIR library

@@ -1434,7 +1434,7 @@ export namespace Gda {
     function alphanum_to_text(text: string): string | null;
     function column_attributes_from_string(str: string): ColumnAttributes;
     function column_attributes_items(result_length1: number): ColumnAttributes;
-    function column_attributes_to_string(self: ColumnAttributes): string;
+    function column_attributes_to_string(self: ColumnAttributes | null): string;
     /**
      * Creates an array of strings (terminated by a %NULL) corresponding to possible completions.
      * If no completion is available, then the returned array contains just one NULL entry, and
@@ -1541,10 +1541,10 @@ export namespace Gda {
     function dsn_split(string: string, out_dsn: string, out_username: string, out_password: string): void;
     function foreign_key_match_from_string(str: string): ForeignKeyMatch;
     function foreign_key_match_items(result_length1: number): ForeignKeyMatch;
-    function foreign_key_match_to_string(self: ForeignKeyMatch): string;
+    function foreign_key_match_to_string(self: ForeignKeyMatch | null): string;
     function foreign_key_rule_from_string(str: string): ForeignKeyRule;
     function foreign_key_rule_items(result_length1: number): ForeignKeyRule;
-    function foreign_key_rule_to_string(self: ForeignKeyRule): string;
+    function foreign_key_rule_to_string(self: ForeignKeyRule | null): string;
     /**
      * Converts a named type to ts GType type (also see the gda_g_type_to_string() function).
      *
@@ -1620,9 +1620,9 @@ export namespace Gda {
     function parse_formatted_date(
         gdate: GLib.Date,
         value: string,
-        first: GLib.DateDMY,
-        second: GLib.DateDMY,
-        third: GLib.DateDMY,
+        first: GLib.DateDMY | null,
+        second: GLib.DateDMY | null,
+        third: GLib.DateDMY | null,
         sep: number,
     ): boolean;
     function parse_formatted_time(value: string, sep: number): Time;
@@ -1638,9 +1638,9 @@ export namespace Gda {
      */
     function parse_formatted_timestamp(
         value: string,
-        first: GLib.DateDMY,
-        second: GLib.DateDMY,
-        third: GLib.DateDMY,
+        first: GLib.DateDMY | null,
+        second: GLib.DateDMY | null,
+        third: GLib.DateDMY | null,
         sep: number,
     ): GLib.DateTime | null;
     /**
@@ -1979,14 +1979,14 @@ export namespace Gda {
      * @param op a #GdaSqlOperation structure
      * @returns a string with the operator's name or NULL in case @op is invalid.
      */
-    function sql_operation_operator_to_string(op: SqlOperatorType): string;
+    function sql_operation_operator_to_string(op: SqlOperatorType | null): string;
     /**
      * Creates a new string representing the join type.
      * @param type a #GdaSqlSelectJoinType structure to be copied
      * @returns a string representing the Join type.
      */
-    function sql_select_join_type_to_string(type: SqlSelectJoinType): string;
-    function sql_statement_get_contents_infos(type: SqlStatementType): SqlStatementContentsInfo;
+    function sql_select_join_type_to_string(type: SqlSelectJoinType | null): string;
+    function sql_statement_get_contents_infos(type: SqlStatementType | null): SqlStatementContentsInfo;
     /**
      * Converts a string to a #GdaSqlStatementType value, see also gda_sql_statement_type_to_string()
      * @param type a string representing a #GdaSqlStatementType type
@@ -1998,7 +1998,7 @@ export namespace Gda {
      * @param type a #GdaSqlStatementType value
      * @returns a constant string
      */
-    function sql_statement_type_to_string(type: SqlStatementType): string;
+    function sql_statement_type_to_string(type: SqlStatementType | null): string;
     /**
      * Simplified version of gda_value_stringify().
      * @param value a #GValue pointer
@@ -3432,7 +3432,7 @@ export namespace Gda {
          * @param model_usage specifies how the returned data model(s) will be used, as a #GdaStatementModelUsage enum
          * @returns a new list of #GObject objects
          */
-        batch_execute(batch: Batch, params: Set | null, model_usage: StatementModelUsage): GObject.Object[];
+        batch_execute(batch: Batch, params: Set | null, model_usage: StatementModelUsage | null): GObject.Object[];
         /**
          * Starts a transaction on the data source, identified by the `name` parameter.
          *
@@ -3442,7 +3442,7 @@ export namespace Gda {
          * @param level the requested transaction level (use %GDA_TRANSACTION_ISOLATION_SERVER_DEFAULT to apply the server default)
          * @returns %TRUE if the transaction was started successfully with the corresponding isolation level, %FALSE otherwise.
          */
-        begin_transaction(name: string | null, level: TransactionIsolation): boolean;
+        begin_transaction(name: string | null, level: TransactionIsolation | null): boolean;
         /**
          * This function lets you clear the list of #GdaConnectionEvent's of the
          * given connection.
@@ -3477,7 +3477,7 @@ export namespace Gda {
          * @param options an optional list of parameters
          * @returns a new #GdaServerOperation object, or %NULL in the connection's provider does not support the @type type of operation or if an error occurred
          */
-        create_operation(type: ServerOperationType, options?: Set | null): ServerOperation;
+        create_operation(type: ServerOperationType | null, options?: Set | null): ServerOperation;
         /**
          * Creates a new parser object able to parse the SQL dialect understood by `cnc`.
          * If the #GdaServerProvider object internally used by `cnc` does not have its own parser,
@@ -3618,7 +3618,7 @@ export namespace Gda {
          * @param filters a #GList of #GdaHolder objects
          * @returns a #GdaDataModel containing the data required. The caller is responsible for freeing the returned model using g_object_unref().
          */
-        get_meta_store_data(meta_type: ConnectionMetaType, filters: Holder[]): DataModel;
+        get_meta_store_data(meta_type: ConnectionMetaType | null, filters: Holder[]): DataModel;
         /**
          * Gets the #GdaConnectionOptions used to open this connection.
          * @returns the connection options.
@@ -3673,7 +3673,7 @@ export namespace Gda {
          * change.
          * @param newstate the new state
          */
-        internal_change_transaction_state(newstate: TransactionStatusState): void;
+        internal_change_transaction_state(newstate: TransactionStatusState | null): void;
         /**
          * Get the opaque pointer previously set using gda_connection_internal_set_provider_data().
          * If it's not set, then add a connection event and returns %NULL
@@ -3765,7 +3765,7 @@ export namespace Gda {
         internal_transaction_started(
             parent_trans: string | null,
             trans_name: string,
-            isol_level: TransactionIsolation,
+            isol_level: TransactionIsolation | null,
         ): void;
         /**
          * Checks whether a connection is open or not.
@@ -3821,7 +3821,7 @@ export namespace Gda {
          * @param type a #GdaConnectionEventType
          * @returns a pointer to the next available connection event, or %NULL if event should be ignored
          */
-        point_available_event(type: ConnectionEventType): ConnectionEvent;
+        point_available_event(type: ConnectionEventType | null): ConnectionEvent;
         /**
          * Add more arguments if the flag needs them:
          *
@@ -3893,7 +3893,7 @@ export namespace Gda {
          */
         repetitive_statement_execute(
             rstmt: RepetitiveStatement,
-            model_usage: StatementModelUsage,
+            model_usage: StatementModelUsage | null,
             col_types: GObject.GType[] | null,
             stop_on_error: boolean,
         ): GObject.Object[];
@@ -4003,7 +4003,7 @@ export namespace Gda {
         statement_execute<T = GObject.Object>(
             stmt: Statement,
             params: Set | null,
-            model_usage: StatementModelUsage,
+            model_usage: StatementModelUsage | null,
         ): [T, Set | null];
         /**
          * Executes a non-selection statement on the given connection.
@@ -4058,7 +4058,7 @@ export namespace Gda {
         statement_execute_select_full(
             stmt: Statement,
             params: Set | null,
-            model_usage: StatementModelUsage,
+            model_usage: StatementModelUsage | null,
             col_types?: GObject.GType[] | null,
         ): DataModel;
         /**
@@ -4083,13 +4083,17 @@ export namespace Gda {
          * @param flags SQL rendering flags, as #GdaStatementSqlFlag OR'ed values
          * @returns a new string, or %NULL if an error occurred
          */
-        statement_to_sql(stmt: Statement, params: Set | null, flags: StatementSqlFlag): [string, Holder[] | null];
+        statement_to_sql(
+            stmt: Statement,
+            params: Set | null,
+            flags: StatementSqlFlag | null,
+        ): [string, Holder[] | null];
         /**
          * Asks the underlying provider for if a specific feature is supported.
          * @param feature feature to ask for.
          * @returns %TRUE if the provider supports it, %FALSE if not.
          */
-        supports_feature(feature: ConnectionFeature): boolean;
+        supports_feature(feature: ConnectionFeature | null): boolean;
         /**
          * Updates `cnc'`s associated #GdaMetaStore. If `context` is not %NULL, then only the parts described by
          * `context` will be updated, and if it is %NULL, then the complete meta store will be updated. Detailed
@@ -4250,7 +4254,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4291,7 +4295,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4676,7 +4680,7 @@ export namespace Gda {
          * This function should not be called directly.
          * @param type the severity of the event
          */
-        set_event_type(type: ConnectionEventType): void;
+        set_event_type(type: ConnectionEventType | null): void;
         /**
          * Sets `event'`s gda code: that code is standardized by the libgda
          * library. If you want to specify the corresponding provider specific code,
@@ -4685,7 +4689,7 @@ export namespace Gda {
          * This function should not be called directly
          * @param code a code
          */
-        set_gda_code(code: ConnectionEventCode): void;
+        set_gda_code(code: ConnectionEventCode | null): void;
         /**
          * Sets `event'`s `source;` this function should not be called directly
          * @param source a source.
@@ -4951,7 +4955,7 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         export_to_file(
-            format: DataModelIOFormat,
+            format: DataModelIOFormat | null,
             file: string,
             cols: number[] | null,
             rows: number[] | null,
@@ -4974,7 +4978,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use g_free() when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(
+            format: DataModelIOFormat | null,
+            cols: number[] | null,
+            rows: number[] | null,
+            options: Set,
+        ): string;
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
@@ -5194,7 +5203,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or %NULL
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint | null, hint_value?: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
          * title to `name`.
@@ -5281,7 +5290,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5322,7 +5331,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5947,7 +5956,7 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         export_to_file(
-            format: DataModelIOFormat,
+            format: DataModelIOFormat | null,
             file: string,
             cols: number[] | null,
             rows: number[] | null,
@@ -5970,7 +5979,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use g_free() when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(
+            format: DataModelIOFormat | null,
+            cols: number[] | null,
+            rows: number[] | null,
+            options: Set,
+        ): string;
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
@@ -6190,7 +6204,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or %NULL
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint | null, hint_value?: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
          * title to `name`.
@@ -6277,7 +6291,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6318,7 +6332,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6830,7 +6844,7 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         export_to_file(
-            format: DataModelIOFormat,
+            format: DataModelIOFormat | null,
             file: string,
             cols: number[] | null,
             rows: number[] | null,
@@ -6853,7 +6867,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use g_free() when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(
+            format: DataModelIOFormat | null,
+            cols: number[] | null,
+            rows: number[] | null,
+            options: Set,
+        ): string;
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
@@ -7073,7 +7092,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or %NULL
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint | null, hint_value?: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
          * title to `name`.
@@ -7160,7 +7179,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7201,7 +7220,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7796,7 +7815,7 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         export_to_file(
-            format: DataModelIOFormat,
+            format: DataModelIOFormat | null,
             file: string,
             cols: number[] | null,
             rows: number[] | null,
@@ -7819,7 +7838,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use g_free() when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(
+            format: DataModelIOFormat | null,
+            cols: number[] | null,
+            rows: number[] | null,
+            options: Set,
+        ): string;
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
@@ -8039,7 +8063,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or %NULL
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint | null, hint_value?: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
          * title to `name`.
@@ -8126,7 +8150,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8167,7 +8191,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8935,7 +8959,7 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         export_to_file(
-            format: DataModelIOFormat,
+            format: DataModelIOFormat | null,
             file: string,
             cols: number[] | null,
             rows: number[] | null,
@@ -8958,7 +8982,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use g_free() when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(
+            format: DataModelIOFormat | null,
+            cols: number[] | null,
+            rows: number[] | null,
+            options: Set,
+        ): string;
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
@@ -9178,7 +9207,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or %NULL
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint | null, hint_value?: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
          * title to `name`.
@@ -9265,7 +9294,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9306,7 +9335,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9676,7 +9705,7 @@ export namespace Gda {
          * @param alias the field alias, or %NULL
          * @returns %TRUE if no error occurred
          */
-        add_data(aggregate_type: DataPivotAggregate, field: string, alias?: string | null): boolean;
+        add_data(aggregate_type: DataPivotAggregate | null, field: string, alias?: string | null): boolean;
         /**
          * Specifies that `field` has to be included in the analysis.
          * `field` is a field specification with the following accepted syntaxes:
@@ -9697,7 +9726,7 @@ export namespace Gda {
          * @param alias the field alias, or %NULL
          * @returns %TRUE if no error occurred
          */
-        add_field(field_type: DataPivotFieldType, field: string, alias?: string | null): boolean;
+        add_field(field_type: DataPivotFieldType | null, field: string, alias?: string | null): boolean;
         /**
          * Acutally populates `pivot` by analysing the data from the provided data model.
          * @returns %TRUE if no error occurred.
@@ -9858,7 +9887,7 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         export_to_file(
-            format: DataModelIOFormat,
+            format: DataModelIOFormat | null,
             file: string,
             cols: number[] | null,
             rows: number[] | null,
@@ -9881,7 +9910,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use g_free() when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(
+            format: DataModelIOFormat | null,
+            cols: number[] | null,
+            rows: number[] | null,
+            options: Set,
+        ): string;
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
@@ -10101,7 +10135,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or %NULL
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint | null, hint_value?: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
          * title to `name`.
@@ -10188,7 +10222,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10229,7 +10263,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10717,7 +10751,7 @@ export namespace Gda {
          * @param col a valid column number
          * @param alter_flags flags to alter the attributes
          */
-        alter_value_attributes(proxy_row: number, col: number, alter_flags: ValueAttribute): void;
+        alter_value_attributes(proxy_row: number, col: number, alter_flags: ValueAttribute | null): void;
         /**
          * Apply all the changes stored in the proxy to the proxied data model. The changes are done row
          * after row, and if an error
@@ -11056,7 +11090,7 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         export_to_file(
-            format: DataModelIOFormat,
+            format: DataModelIOFormat | null,
             file: string,
             cols: number[] | null,
             rows: number[] | null,
@@ -11079,7 +11113,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use g_free() when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(
+            format: DataModelIOFormat | null,
+            cols: number[] | null,
+            rows: number[] | null,
+            options: Set,
+        ): string;
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
@@ -11299,7 +11338,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or %NULL
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint | null, hint_value?: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
          * title to `name`.
@@ -11386,7 +11425,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11427,7 +11466,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11855,7 +11894,7 @@ export namespace Gda {
          * @param cond_type the type of condition for the modifications where one row only should be identified
          * @returns %TRUE if no error occurred. If %FALSE is returned, then some modification statement may still have been computed
          */
-        compute_modification_statements_ext(cond_type: DataSelectConditionType): boolean;
+        compute_modification_statements_ext(cond_type: DataSelectConditionType | null): boolean;
         /**
          * Offers the same features as gda_data_select_set_row_selection_condition() but the expression
          * is computed from the meta data associated to the connection being used when `model` was created.
@@ -12135,7 +12174,7 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         export_to_file(
-            format: DataModelIOFormat,
+            format: DataModelIOFormat | null,
             file: string,
             cols: number[] | null,
             rows: number[] | null,
@@ -12158,7 +12197,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use g_free() when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(
+            format: DataModelIOFormat | null,
+            cols: number[] | null,
+            rows: number[] | null,
+            options: Set,
+        ): string;
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
@@ -12378,7 +12422,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or %NULL
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint | null, hint_value?: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
          * title to `name`.
@@ -12465,7 +12509,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -12506,7 +12550,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13368,7 +13412,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13409,7 +13453,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13773,12 +13817,12 @@ export namespace Gda {
          * Set action for ON_DELETE
          * @param id #GdaDbFkeyReferenceAction action to set
          */
-        set_ondelete(id: DbFkeyReferenceAction): void;
+        set_ondelete(id: DbFkeyReferenceAction | null): void;
         /**
          * Set action for ON_UPDATE
          * @param id #GdaDbFkeyReferenceAction action to set
          */
-        set_onupdate(id: DbFkeyReferenceAction): void;
+        set_onupdate(id: DbFkeyReferenceAction | null): void;
         /**
          * Set reference table
          * @param rtable reference table name
@@ -13852,7 +13896,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13893,7 +13937,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14345,7 +14389,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14386,7 +14430,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14745,7 +14789,7 @@ export namespace Gda {
          * @param column column to add index to
          */
         set_column(column: DbColumn): void;
-        set_sort_order(sorder: DbIndexSortOrder): void;
+        set_sort_order(sorder: DbIndexSortOrder | null): void;
     }
 
     module DbTable {
@@ -14949,7 +14993,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14990,7 +15034,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15467,7 +15511,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -15508,7 +15552,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16018,7 +16062,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16059,7 +16103,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16569,7 +16613,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16610,7 +16654,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17120,7 +17164,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -17161,7 +17205,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17673,7 +17717,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -17714,7 +17758,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18231,7 +18275,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -18272,7 +18316,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18638,9 +18682,9 @@ export namespace Gda {
          * @param twodigits_years TRUE if year part of date must be rendered on 2 digits
          */
         set_sql_spec(
-            first: GLib.DateDMY,
-            sec: GLib.DateDMY,
-            third: GLib.DateDMY,
+            first: GLib.DateDMY | null,
+            sec: GLib.DateDMY | null,
+            third: GLib.DateDMY | null,
             separator: number,
             twodigits_years: boolean,
         ): void;
@@ -18659,9 +18703,9 @@ export namespace Gda {
          * @param twodigits_years TRUE if year part of date must be rendered on 2 digits
          */
         set_str_spec(
-            first: GLib.DateDMY,
-            sec: GLib.DateDMY,
-            third: GLib.DateDMY,
+            first: GLib.DateDMY | null,
+            sec: GLib.DateDMY | null,
+            third: GLib.DateDMY | null,
             separator: number,
             twodigits_years: boolean,
         ): void;
@@ -18842,7 +18886,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -18883,7 +18927,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19393,7 +19437,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -19434,7 +19478,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20201,7 +20245,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -20242,7 +20286,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20652,7 +20696,7 @@ export namespace Gda {
          * @returns a new #GdaDataModel
          */
         create_modify_data_model(table_name: string): DataModel;
-        create_struct(features: MetaStructFeature): MetaStruct;
+        create_struct(features: MetaStructFeature | null): MetaStruct;
         /**
          * Defines a new declared foreign key into `store`. If another declared foreign key is already defined
          * between the two tables and with the same name, then it is first removed.
@@ -20854,7 +20898,7 @@ export namespace Gda {
          * database providers.
          * @param style a style
          */
-        set_identifiers_style(style: SqlIdentifierStyle): void;
+        set_identifiers_style(style: SqlIdentifierStyle | null): void;
         /**
          * Specifies a function which `store` will use to determine if a keyword is an SQL reserved
          * keyword or not.
@@ -20956,7 +21000,7 @@ export namespace Gda {
          * @returns the #GdaMetaDbObject corresponding to the database object if no error occurred, or %NULL
          */
         complement(
-            type: MetaDbObjectType,
+            type: MetaDbObjectType | null,
             catalog: GObject.Value | null,
             schema: GObject.Value | null,
             name: GObject.Value | any,
@@ -21005,7 +21049,7 @@ export namespace Gda {
          * @param info informs what kind of information to show in the resulting graph
          * @returns a new string, or %NULL if an error occurred.
          */
-        dump_as_graph(info: MetaGraphInfo): string | null;
+        dump_as_graph(info: MetaGraphInfo | null): string | null;
         /**
          * Get a list of all the #GdaMetaDbObject structures representing database objects in `mstruct`. Note that
          * no #GdaMetaDbObject structure must not be modified.
@@ -21049,7 +21093,7 @@ export namespace Gda {
          * @param sort_type the kind of sorting requested
          * @returns TRUE if no error occurred
          */
-        sort_db_objects(sort_type: MetaSortType): boolean;
+        sort_db_objects(sort_type: MetaSortType | null): boolean;
     }
 
     module PStmt {
@@ -21396,7 +21440,7 @@ export namespace Gda {
          * @param status a place to store the status of the node, or %NULL
          * @returns the type of node, or GDA_SERVER_OPERATION_NODE_UNKNOWN if the node was not found
          */
-        get_node_type(path: string, status?: ServerOperationNodeStatus | null): ServerOperationNodeType;
+        get_node_type(path: string, status?: (ServerOperationNodeStatus | null) | null): ServerOperationNodeType;
         /**
          * Get the type of operation `op` is for
          * @returns a #GdaServerOperationType enum
@@ -21582,7 +21626,7 @@ export namespace Gda {
          */
         create_operation(
             cnc: Connection | null,
-            type: ServerOperationType,
+            type: ServerOperationType | null,
             options?: Set | null,
         ): ServerOperation | null;
         /**
@@ -21729,7 +21773,7 @@ export namespace Gda {
          * @param feature #GdaConnectionFeature feature to test
          * @returns %TRUE if @feature is supported
          */
-        supports_feature(cnc: Connection | null, feature: ConnectionFeature): boolean;
+        supports_feature(cnc: Connection | null, feature: ConnectionFeature | null): boolean;
         /**
          * Tells if `provider` supports the `type` of operation on the `cnc` connection, using the
          * (optional) `options` parameters.
@@ -21738,7 +21782,7 @@ export namespace Gda {
          * @param options a list of named parameters, or %NULL
          * @returns %TRUE if the operation is supported
          */
-        supports_operation(cnc: Connection | null, type: ServerOperationType, options?: Set | null): boolean;
+        supports_operation(cnc: Connection | null, type: ServerOperationType | null, options?: Set | null): boolean;
         /**
          * Unescapes `str` for use within an SQL command. This is the exact opposite of gda_server_provider_escape_string().
          * @param cnc a #GdaConnection object, or %NULL
@@ -21842,7 +21886,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -21883,7 +21927,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22492,7 +22536,7 @@ export namespace Gda {
          * @param op3 the ID of the 3rd argument (may be %0 if @op needs only one or two operand)
          * @returns the ID of the new expression, or %0 if there was an error
          */
-        add_cond(op: SqlOperatorType, op1: SqlBuilderId, op2: SqlBuilderId, op3: SqlBuilderId): SqlBuilderId;
+        add_cond(op: SqlOperatorType | null, op1: SqlBuilderId, op2: SqlBuilderId, op3: SqlBuilderId): SqlBuilderId;
         /**
          * Builds a new expression which represents a condition (or operation).
          *
@@ -22503,7 +22547,7 @@ export namespace Gda {
          * @param op_ids an array of ID for the arguments (not %0)
          * @returns the ID of the new expression, or %0 if there was an error
          */
-        add_cond_v(op: SqlOperatorType, op_ids: SqlBuilderId[]): SqlBuilderId;
+        add_cond_v(op: SqlOperatorType | null, op_ids: SqlBuilderId[]): SqlBuilderId;
         /**
          * Defines an expression in `builder` which may be reused to build other parts of a statement.
          *
@@ -22631,7 +22675,7 @@ export namespace Gda {
          * Changes the type of compound which `builder` is making, for a COMPOUND statement
          * @param compound_type a type of compound
          */
-        compound_set_type(compound_type: SqlStatementCompoundType): void;
+        compound_set_type(compound_type: SqlStatementCompoundType | null): void;
         /**
          * Exports a part managed by `builder` as a new #GdaSqlExpr, which can represent any expression
          * in a statement.
@@ -22723,7 +22767,7 @@ export namespace Gda {
         select_join_targets(
             left_target_id: SqlBuilderId,
             right_target_id: SqlBuilderId,
-            join_type: SqlSelectJoinType,
+            join_type: SqlSelectJoinType | null,
             join_expr: SqlBuilderId,
         ): SqlBuilderId;
         /**
@@ -22953,7 +22997,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -22994,7 +23038,7 @@ export namespace Gda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -23450,7 +23494,11 @@ export namespace Gda {
          * @param flags a set of flags to control the rendering
          * @returns a new string if no error occurred
          */
-        to_sql_extended(cnc: Connection | null, params: Set | null, flags: StatementSqlFlag): [string, Holder[] | null];
+        to_sql_extended(
+            cnc: Connection | null,
+            params: Set | null,
+            flags: StatementSqlFlag | null,
+        ): [string, Holder[] | null];
     }
 
     module TransactionStatus {
@@ -23486,8 +23534,8 @@ export namespace Gda {
         free_events(event: TransactionStatusEvent, free_after: boolean): void;
         get_isolation_level(): TransactionIsolation;
         get_state(): TransactionStatusState;
-        set_isolation_level(il: TransactionIsolation): void;
-        set_state(state: TransactionStatusState): void;
+        set_isolation_level(il: TransactionIsolation | null): void;
+        set_state(state: TransactionStatusState | null): void;
     }
 
     module Tree {
@@ -24575,7 +24623,7 @@ export namespace Gda {
         get_change_type(): MetaStoreChangeType;
         get_keys(): GLib.HashTable<string, GObject.Value>;
         get_table_name(): string;
-        set_change_type(ctype: MetaStoreChangeType): void;
+        set_change_type(ctype: MetaStoreChangeType | null): void;
         set_table_name(table_name: string): void;
     }
 
@@ -24866,7 +24914,7 @@ export namespace Gda {
          * Sets flags for new column to create with the table.
          * @param flags flags to used in this argument as #GdaServerOperationCreateTableFlag
          */
-        set_flags(flags: ServerOperationCreateTableFlag): void;
+        set_flags(flags: ServerOperationCreateTableFlag | null): void;
     }
 
     class ServerOperationCreateTableArgFKeyRefField {
@@ -25781,7 +25829,7 @@ export namespace Gda {
          * Specifies `stmt'`s type of compound
          * @param type a #GdaSqlStatementCompoundType value
          */
-        compound_set_type(type: SqlStatementCompoundType): void;
+        compound_set_type(type: SqlStatementCompoundType | null): void;
         /**
          * Adds the `s` sub-statement to the `stmt` compound statement. `s'`s reference is transferred to
          * `stmt` (which means `stmt` is then responsible for freeing it when no longer needed).
@@ -25928,7 +25976,7 @@ export namespace Gda {
          * @returns a new string
          */
         serialize(): string;
-        trans_set_isol_level(level: TransactionIsolation): void;
+        trans_set_isol_level(level: TransactionIsolation | null): void;
         /**
          * Sets the model of the transaction
          *
@@ -26620,7 +26668,9 @@ export namespace Gda {
         vfunc_get_number(): number;
     }
 
-    export const AfectedRows: AfectedRowsNamespace;
+    export const AfectedRows: AfectedRowsNamespace & {
+        new (): AfectedRows; // This allows `obj instanceof AfectedRows`
+    };
 
     module ColumnModel {
         // Constructor properties interface
@@ -26664,7 +26714,7 @@ export namespace Gda {
         get_index(): number;
         get_name(): string;
         get_value(): unknown;
-        set_attributes(value: ColumnAttributes): void;
+        set_attributes(value: ColumnAttributes | null): void;
         set_foreign_key(value: ForeignKey): void;
         set_value(value: GObject.Value | any): void;
 
@@ -26680,7 +26730,9 @@ export namespace Gda {
         vfunc_set_value(value: GObject.Value | any): void;
     }
 
-    export const ColumnModel: ColumnModelNamespace;
+    export const ColumnModel: ColumnModelNamespace & {
+        new (): ColumnModel; // This allows `obj instanceof ColumnModel`
+    };
 
     module ConnectionModel {
         // Constructor properties interface
@@ -26724,7 +26776,9 @@ export namespace Gda {
         vfunc_set_cnc_params(value: ConnectionModelParams): void;
     }
 
-    export const ConnectionModel: ConnectionModelNamespace;
+    export const ConnectionModel: ConnectionModelNamespace & {
+        new (): ConnectionModel; // This allows `obj instanceof ConnectionModel`
+    };
 
     module CreateDatabaseBuilder {
         // Constructor properties interface
@@ -26758,7 +26812,9 @@ export namespace Gda {
         vfunc_set_database_name(value: string): void;
     }
 
-    export const CreateDatabaseBuilder: CreateDatabaseBuilderNamespace;
+    export const CreateDatabaseBuilder: CreateDatabaseBuilderNamespace & {
+        new (): CreateDatabaseBuilder; // This allows `obj instanceof CreateDatabaseBuilder`
+    };
 
     module CreateTableBuilder {
         // Constructor properties interface
@@ -26802,7 +26858,9 @@ export namespace Gda {
         vfunc_set_table_name(value: string): void;
     }
 
-    export const CreateTableBuilder: CreateTableBuilderNamespace;
+    export const CreateTableBuilder: CreateTableBuilderNamespace & {
+        new (): CreateTableBuilder; // This allows `obj instanceof CreateTableBuilder`
+    };
 
     module DataHandler {
         // Constructor properties interface
@@ -26963,7 +27021,9 @@ export namespace Gda {
         vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
     }
 
-    export const DataHandler: DataHandlerNamespace;
+    export const DataHandler: DataHandlerNamespace & {
+        new (): DataHandler; // This allows `obj instanceof DataHandler`
+    };
 
     module DataModel {
         // Constructor properties interface
@@ -27133,7 +27193,7 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         export_to_file(
-            format: DataModelIOFormat,
+            format: DataModelIOFormat | null,
             file: string,
             cols: number[] | null,
             rows: number[] | null,
@@ -27156,7 +27216,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use g_free() when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(
+            format: DataModelIOFormat | null,
+            cols: number[] | null,
+            rows: number[] | null,
+            options: Set,
+        ): string;
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
@@ -27376,7 +27441,7 @@ export namespace Gda {
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or %NULL
          */
-        send_hint(hint: DataModelHint, hint_value?: GObject.Value | null): void;
+        send_hint(hint: DataModelHint | null, hint_value?: GObject.Value | null): void;
         /**
          * Sets the `name` of the given `col` in `model,` and if its title is not set, also sets the
          * title to `name`.
@@ -27421,7 +27486,9 @@ export namespace Gda {
         thaw(): void;
     }
 
-    export const DataModel: DataModelNamespace;
+    export const DataModel: DataModelNamespace & {
+        new (): DataModel; // This allows `obj instanceof DataModel`
+    };
 
     module DbBuildable {
         // Constructor properties interface
@@ -27463,7 +27530,9 @@ export namespace Gda {
         vfunc_write_node(node: libxml2.NodePtr): boolean;
     }
 
-    export const DbBuildable: DbBuildableNamespace;
+    export const DbBuildable: DbBuildableNamespace & {
+        new (): DbBuildable; // This allows `obj instanceof DbBuildable`
+    };
 
     module DdlModifiable {
         // Constructor properties interface
@@ -27524,7 +27593,9 @@ export namespace Gda {
         vfunc_rename(cnc: Connection): boolean;
     }
 
-    export const DdlModifiable: DdlModifiableNamespace;
+    export const DdlModifiable: DdlModifiableNamespace & {
+        new (): DdlModifiable; // This allows `obj instanceof DdlModifiable`
+    };
 
     module DropDatabaseBuilder {
         // Constructor properties interface
@@ -27558,7 +27629,9 @@ export namespace Gda {
         vfunc_set_database_name(value: string): void;
     }
 
-    export const DropDatabaseBuilder: DropDatabaseBuilderNamespace;
+    export const DropDatabaseBuilder: DropDatabaseBuilderNamespace & {
+        new (): DropDatabaseBuilder; // This allows `obj instanceof DropDatabaseBuilder`
+    };
 
     module DropTableBuilder {
         // Constructor properties interface
@@ -27599,7 +27672,9 @@ export namespace Gda {
         vfunc_set_table_name(value: string): void;
     }
 
-    export const DropTableBuilder: DropTableBuilderNamespace;
+    export const DropTableBuilder: DropTableBuilderNamespace & {
+        new (): DropTableBuilder; // This allows `obj instanceof DropTableBuilder`
+    };
 
     module ForeignKey {
         // Constructor properties interface
@@ -27651,13 +27726,13 @@ export namespace Gda {
         get_name(): string;
         get_refname(): string;
         get_update_rule(): ForeignKeyRule;
-        set_delete_rule(value: ForeignKeyRule): void;
-        set_match(value: ForeignKeyMatch): void;
+        set_delete_rule(value: ForeignKeyRule | null): void;
+        set_match(value: ForeignKeyMatch | null): void;
         set_name(value: string): void;
         set_refcol(value: Gio.ListModel): void;
         set_refname(value: string): void;
         set_reftable(value: TableModel): void;
-        set_update_rule(value: ForeignKeyRule): void;
+        set_update_rule(value: ForeignKeyRule | null): void;
         to_string(): string;
 
         // Virtual methods
@@ -27676,7 +27751,9 @@ export namespace Gda {
         vfunc_set_update_rule(value: ForeignKeyRule): void;
     }
 
-    export const ForeignKey: ForeignKeyNamespace;
+    export const ForeignKey: ForeignKeyNamespace & {
+        new (): ForeignKey; // This allows `obj instanceof ForeignKey`
+    };
 
     module Inserted {
         // Constructor properties interface
@@ -27708,7 +27785,9 @@ export namespace Gda {
         vfunc_get_number(): number;
     }
 
-    export const Inserted: InsertedNamespace;
+    export const Inserted: InsertedNamespace & {
+        new (): Inserted; // This allows `obj instanceof Inserted`
+    };
 
     module Lockable {
         // Constructor properties interface
@@ -27771,7 +27850,9 @@ export namespace Gda {
         vfunc_unlock(): void;
     }
 
-    export const Lockable: LockableNamespace;
+    export const Lockable: LockableNamespace & {
+        new (): Lockable; // This allows `obj instanceof Lockable`
+    };
 
     module MetaCatalog {
         // Constructor properties interface
@@ -27800,7 +27881,9 @@ export namespace Gda {
         vfunc_set_connection(value: ConnectionModel): void;
     }
 
-    export const MetaCatalog: MetaCatalogNamespace;
+    export const MetaCatalog: MetaCatalogNamespace & {
+        new (): MetaCatalog; // This allows `obj instanceof MetaCatalog`
+    };
 
     module MetaColumn {
         // Constructor properties interface
@@ -27843,7 +27926,9 @@ export namespace Gda {
         vfunc_set_name(value: string): void;
     }
 
-    export const MetaColumn: MetaColumnNamespace;
+    export const MetaColumn: MetaColumnNamespace & {
+        new (): MetaColumn; // This allows `obj instanceof MetaColumn`
+    };
 
     module MetaTable {
         // Constructor properties interface
@@ -27890,7 +27975,9 @@ export namespace Gda {
         vfunc_set_schema(value: string): void;
     }
 
-    export const MetaTable: MetaTableNamespace;
+    export const MetaTable: MetaTableNamespace & {
+        new (): MetaTable; // This allows `obj instanceof MetaTable`
+    };
 
     module Parameters {
         // Constructor properties interface
@@ -27915,7 +28002,9 @@ export namespace Gda {
         vfunc_set_value(name: string, val: GObject.Value | any): void;
     }
 
-    export const Parameters: ParametersNamespace;
+    export const Parameters: ParametersNamespace & {
+        new (): Parameters; // This allows `obj instanceof Parameters`
+    };
 
     module PreparedQuery {
         // Constructor properties interface
@@ -27945,7 +28034,9 @@ export namespace Gda {
         vfunc_get_name(): string;
     }
 
-    export const PreparedQuery: PreparedQueryNamespace;
+    export const PreparedQuery: PreparedQueryNamespace & {
+        new (): PreparedQuery; // This allows `obj instanceof PreparedQuery`
+    };
 
     module Provider {
         // Constructor properties interface
@@ -27961,11 +28052,11 @@ export namespace Gda {
         // Methods
 
         add_savepoint(cnc: Connection, name: string): boolean;
-        begin_transaction(cnc: Connection, name: string, level: TransactionIsolation): boolean;
+        begin_transaction(cnc: Connection, name: string, level: TransactionIsolation | null): boolean;
         close_connection(cnc: Connection): boolean;
         commit_transaction(cnc: Connection, name: string): boolean;
         create_connection(): Connection;
-        create_operation(cnc: Connection, type: ServerOperationType, options: Set): ServerOperation;
+        create_operation(cnc: Connection, type: ServerOperationType | null, options: Set): ServerOperation;
         create_parser(cnc: Connection): SqlParser;
         delete_savepoint(cnc: Connection, name: string): boolean;
         escape_string(cnc: Connection, str: string): string;
@@ -27991,7 +28082,7 @@ export namespace Gda {
             cnc: Connection,
             stmt: Statement,
             params: Set,
-            model_usage: StatementModelUsage,
+            model_usage: StatementModelUsage | null,
             col_types: GObject.GType,
             last_inserted_row: Set,
         ): T;
@@ -28001,10 +28092,10 @@ export namespace Gda {
             cnc: Connection,
             stmt: Statement,
             params: Set | null,
-            flags: StatementSqlFlag,
+            flags: StatementSqlFlag | null,
         ): [string, Holder[] | null];
-        supports_feature(cnc: Connection, feature: ConnectionFeature): boolean;
-        supports_operation(cnc: Connection, type: ServerOperationType, options: Set): boolean;
+        supports_feature(cnc: Connection, feature: ConnectionFeature | null): boolean;
+        supports_operation(cnc: Connection, type: ServerOperationType | null, options: Set): boolean;
         unescape_string(cnc: Connection, str: string): string;
 
         // Virtual methods
@@ -28061,7 +28152,9 @@ export namespace Gda {
         vfunc_unescape_string(cnc: Connection, str: string): string;
     }
 
-    export const Provider: ProviderNamespace;
+    export const Provider: ProviderNamespace & {
+        new (): Provider; // This allows `obj instanceof Provider`
+    };
 
     module ProviderMeta {
         // Constructor properties interface
@@ -28242,7 +28335,9 @@ export namespace Gda {
         vfunc_views_columns(): DataModel;
     }
 
-    export const ProviderMeta: ProviderMetaNamespace;
+    export const ProviderMeta: ProviderMetaNamespace & {
+        new (): ProviderMeta; // This allows `obj instanceof ProviderMeta`
+    };
 
     module Query {
         // Constructor properties interface
@@ -28282,7 +28377,9 @@ export namespace Gda {
         vfunc_get_sql(): string;
     }
 
-    export const Query: QueryNamespace;
+    export const Query: QueryNamespace & {
+        new (): Query; // This allows `obj instanceof Query`
+    };
 
     module QueryBuilder {
         // Constructor properties interface
@@ -28334,7 +28431,9 @@ export namespace Gda {
         vfunc_set_sql(value: string): void;
     }
 
-    export const QueryBuilder: QueryBuilderNamespace;
+    export const QueryBuilder: QueryBuilderNamespace & {
+        new (): QueryBuilder; // This allows `obj instanceof QueryBuilder`
+    };
 
     module ReadonlyTableModel {
         // Constructor properties interface
@@ -28364,7 +28463,9 @@ export namespace Gda {
         vfunc_get_value_at(row: number, column: number, result: GObject.Value | any): void;
     }
 
-    export const ReadonlyTableModel: ReadonlyTableModelNamespace;
+    export const ReadonlyTableModel: ReadonlyTableModelNamespace & {
+        new (): ReadonlyTableModel; // This allows `obj instanceof ReadonlyTableModel`
+    };
 
     module ReferencedColumn {
         // Constructor properties interface
@@ -28398,7 +28499,9 @@ export namespace Gda {
         vfunc_set_table_name(value: string): void;
     }
 
-    export const ReferencedColumn: ReferencedColumnNamespace;
+    export const ReferencedColumn: ReferencedColumnNamespace & {
+        new (): ReferencedColumn; // This allows `obj instanceof ReferencedColumn`
+    };
 
     module Result {
         // Constructor properties interface
@@ -28412,7 +28515,9 @@ export namespace Gda {
     }
     interface Result extends GObject.Object {}
 
-    export const Result: ResultNamespace;
+    export const Result: ResultNamespace & {
+        new (): Result; // This allows `obj instanceof Result`
+    };
 
     module ResultTable {
         // Constructor properties interface
@@ -28426,7 +28531,9 @@ export namespace Gda {
     }
     interface ResultTable extends MetaTable {}
 
-    export const ResultTable: ResultTableNamespace;
+    export const ResultTable: ResultTableNamespace & {
+        new (): ResultTable; // This allows `obj instanceof ResultTable`
+    };
 
     module RowModel {
         // Constructor properties interface
@@ -28457,7 +28564,9 @@ export namespace Gda {
         vfunc_get_n_columns(): number;
     }
 
-    export const RowModel: RowModelNamespace;
+    export const RowModel: RowModelNamespace & {
+        new (): RowModel; // This allows `obj instanceof RowModel`
+    };
 
     module TableConstraint {
         // Constructor properties interface
@@ -28481,7 +28590,9 @@ export namespace Gda {
         vfunc_set_definition(value: string): void;
     }
 
-    export const TableConstraint: TableConstraintNamespace;
+    export const TableConstraint: TableConstraintNamespace & {
+        new (): TableConstraint; // This allows `obj instanceof TableConstraint`
+    };
 
     module TableModel {
         // Constructor properties interface
@@ -28495,7 +28606,9 @@ export namespace Gda {
     }
     interface TableModel extends MetaTable {}
 
-    export const TableModel: TableModelNamespace;
+    export const TableModel: TableModelNamespace & {
+        new (): TableModel; // This allows `obj instanceof TableModel`
+    };
 
     module WritableTableModel {
         // Constructor properties interface
@@ -28521,7 +28634,9 @@ export namespace Gda {
         vfunc_set_value_at(row: number, column: number, value: GObject.Value | any): void;
     }
 
-    export const WritableTableModel: WritableTableModelNamespace;
+    export const WritableTableModel: WritableTableModelNamespace & {
+        new (): WritableTableModel; // This allows `obj instanceof WritableTableModel`
+    };
 
     type SqlBuilderId = number;
     /**

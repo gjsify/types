@@ -1008,13 +1008,13 @@ export namespace GES {
      * After this call GES should not be used until another ges_init() call.
      */
     function deinit(): void;
-    function edge_name(edge: Edge): string;
+    function edge_name(edge: Edge | null): string;
     /**
      * Return a string representation of `mode`.
      * @param mode a #GESEditMode
      * @returns a string representation of @mode.
      */
-    function edit_mode_name(mode: EditMode): string;
+    function edit_mode_name(mode: EditMode | null): string;
     /**
      * Get the best formatter for `uri`. It tries to find a formatter
      * compatible with `uri` extension, if none is found, it returns the default
@@ -1072,7 +1072,7 @@ export namespace GES {
     function play_sink_convert_frame(playsink: Gst.Element, caps: Gst.Caps): Gst.Sample | null;
     function pspec_equal(key_spec_1?: any | null, key_spec_2?: any | null): boolean;
     function pspec_hash(key_spec?: any | null): number;
-    function track_type_name(type: TrackType): string;
+    function track_type_name(type: TrackType | null): string;
     function validate_register_action_types(): boolean;
     /**
      * Gets the version number of the GStreamer Editing Services library.
@@ -1771,7 +1771,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @value types, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
+        register_meta(flags: MetaFlag | null, meta_item: string, value: GObject.Value | any): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value, and registers the field to only hold a boolean
@@ -1783,7 +1783,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold boolean typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_boolean(flags: MetaFlag, meta_item: string, value: boolean): boolean;
+        register_meta_boolean(flags: MetaFlag | null, meta_item: string, value: boolean): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date value, and registers the field to only hold a date
@@ -1795,7 +1795,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date(flags: MetaFlag, meta_item: string, value: GLib.Date): boolean;
+        register_meta_date(flags: MetaFlag | null, meta_item: string, value: GLib.Date): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date time value, and registers the field to only hold a date time
@@ -1807,7 +1807,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date time typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date_time(flags: MetaFlag, meta_item: string, value: Gst.DateTime): boolean;
+        register_meta_date_time(flags: MetaFlag | null, meta_item: string, value: Gst.DateTime): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given double value, and registers the field to only hold a double
@@ -1819,7 +1819,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold double typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_double(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_double(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given float value, and registers the field to only hold a float
@@ -1831,7 +1831,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold float typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_float(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_float(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int value, and registers the field to only hold an int
@@ -1843,7 +1843,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int64 value, and registers the field to only hold an int64
@@ -1855,7 +1855,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -1867,7 +1867,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold string typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_string(flags: MetaFlag, meta_item: string, value: string): boolean;
+        register_meta_string(flags: MetaFlag | null, meta_item: string, value: string): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint value, and registers the field to only hold a uint
@@ -1879,7 +1879,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint64 value, and registers the field to only hold a uint64
@@ -1891,7 +1891,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -1911,7 +1911,7 @@ export namespace GES {
          * @param type The required value type for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @type values, with the given @flags.
          */
-        register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
+        register_static_meta(flags: MetaFlag | null, meta_item: string, type: GObject.GType): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value.
@@ -2337,7 +2337,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2378,7 +2378,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2767,7 +2767,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -2808,7 +2808,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3216,7 +3216,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -3257,7 +3257,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3748,7 +3748,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @value types, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
+        register_meta(flags: MetaFlag | null, meta_item: string, value: GObject.Value | any): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value, and registers the field to only hold a boolean
@@ -3760,7 +3760,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold boolean typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_boolean(flags: MetaFlag, meta_item: string, value: boolean): boolean;
+        register_meta_boolean(flags: MetaFlag | null, meta_item: string, value: boolean): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date value, and registers the field to only hold a date
@@ -3772,7 +3772,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date(flags: MetaFlag, meta_item: string, value: GLib.Date): boolean;
+        register_meta_date(flags: MetaFlag | null, meta_item: string, value: GLib.Date): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date time value, and registers the field to only hold a date time
@@ -3784,7 +3784,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date time typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date_time(flags: MetaFlag, meta_item: string, value: Gst.DateTime): boolean;
+        register_meta_date_time(flags: MetaFlag | null, meta_item: string, value: Gst.DateTime): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given double value, and registers the field to only hold a double
@@ -3796,7 +3796,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold double typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_double(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_double(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given float value, and registers the field to only hold a float
@@ -3808,7 +3808,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold float typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_float(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_float(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int value, and registers the field to only hold an int
@@ -3820,7 +3820,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int64 value, and registers the field to only hold an int64
@@ -3832,7 +3832,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -3844,7 +3844,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold string typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_string(flags: MetaFlag, meta_item: string, value: string): boolean;
+        register_meta_string(flags: MetaFlag | null, meta_item: string, value: string): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint value, and registers the field to only hold a uint
@@ -3856,7 +3856,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint64 value, and registers the field to only hold a uint64
@@ -3868,7 +3868,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -3888,7 +3888,7 @@ export namespace GES {
          * @param type The required value type for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @type values, with the given @flags.
          */
-        register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
+        register_static_meta(flags: MetaFlag | null, meta_item: string, type: GObject.GType): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value.
@@ -4030,7 +4030,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4071,7 +4071,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4459,7 +4459,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4500,7 +4500,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4894,7 +4894,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -4935,7 +4935,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5420,7 +5420,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5461,7 +5461,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5855,7 +5855,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -5896,7 +5896,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6276,7 +6276,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -6317,7 +6317,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7091,7 +7091,7 @@ export namespace GES {
          * @param type The type of track element to search for, or %G_TYPE_NONE to match any type
          * @returns A list of all the #GESTrackElement-s controlled by @clip, in @track or of the given @track_type, and of the given @type.
          */
-        find_track_elements(track: Track | null, track_type: TrackType, type: GObject.GType): TrackElement[];
+        find_track_elements(track: Track | null, track_type: TrackType | null, type: GObject.GType): TrackElement[];
         /**
          * Gets the #GESClip:duration-limit of the clip.
          * @returns The duration-limit of @clip.
@@ -7262,7 +7262,7 @@ export namespace GES {
          * its value, rather than the user.
          * @param supportedformats The #GESTrackType-s supported by @clip
          */
-        set_supported_formats(supportedformats: TrackType): void;
+        set_supported_formats(supportedformats: TrackType | null): void;
         /**
          * See ges_clip_set_top_effect_index_full(), which also gives an error.
          * @param effect An effect within @clip to move
@@ -7366,7 +7366,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -7407,7 +7407,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7796,7 +7796,7 @@ export namespace GES {
          * Sets track types for which objects extracted from `self` can create #GESTrackElement
          * @param supportedformats The track types supported by the GESClipAsset
          */
-        set_supported_formats(supportedformats: TrackType): void;
+        set_supported_formats(supportedformats: TrackType | null): void;
 
         // Inherited methods
         /**
@@ -7932,7 +7932,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @value types, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
+        register_meta(flags: MetaFlag | null, meta_item: string, value: GObject.Value | any): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value, and registers the field to only hold a boolean
@@ -7944,7 +7944,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold boolean typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_boolean(flags: MetaFlag, meta_item: string, value: boolean): boolean;
+        register_meta_boolean(flags: MetaFlag | null, meta_item: string, value: boolean): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date value, and registers the field to only hold a date
@@ -7956,7 +7956,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date(flags: MetaFlag, meta_item: string, value: GLib.Date): boolean;
+        register_meta_date(flags: MetaFlag | null, meta_item: string, value: GLib.Date): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date time value, and registers the field to only hold a date time
@@ -7968,7 +7968,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date time typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date_time(flags: MetaFlag, meta_item: string, value: Gst.DateTime): boolean;
+        register_meta_date_time(flags: MetaFlag | null, meta_item: string, value: Gst.DateTime): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given double value, and registers the field to only hold a double
@@ -7980,7 +7980,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold double typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_double(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_double(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given float value, and registers the field to only hold a float
@@ -7992,7 +7992,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold float typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_float(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_float(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int value, and registers the field to only hold an int
@@ -8004,7 +8004,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int64 value, and registers the field to only hold an int64
@@ -8016,7 +8016,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -8028,7 +8028,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold string typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_string(flags: MetaFlag, meta_item: string, value: string): boolean;
+        register_meta_string(flags: MetaFlag | null, meta_item: string, value: string): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint value, and registers the field to only hold a uint
@@ -8040,7 +8040,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint64 value, and registers the field to only hold a uint64
@@ -8052,7 +8052,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -8072,7 +8072,7 @@ export namespace GES {
          * @param type The required value type for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @type values, with the given @flags.
          */
-        register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
+        register_static_meta(flags: MetaFlag | null, meta_item: string, type: GObject.GType): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value.
@@ -8498,7 +8498,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -8539,7 +8539,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9107,7 +9107,13 @@ export namespace GES {
          * @param position The edit position: a new location for the edge of @container (in nanoseconds)
          * @returns %TRUE if the edit of @container completed, %FALSE on failure.
          */
-        edit(layers: Layer[] | null, new_layer_priority: number, mode: EditMode, edge: Edge, position: number): boolean;
+        edit(
+            layers: Layer[] | null,
+            new_layer_priority: number,
+            mode: EditMode | null,
+            edge: Edge | null,
+            position: number,
+        ): boolean;
         /**
          * Get the list of timeline elements contained in the container. If
          * `recursive` is %TRUE, and the container contains other containers as
@@ -9333,7 +9339,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @value types, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
+        register_meta(flags: MetaFlag | null, meta_item: string, value: GObject.Value | any): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value, and registers the field to only hold a boolean
@@ -9345,7 +9351,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold boolean typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_boolean(flags: MetaFlag, meta_item: string, value: boolean): boolean;
+        register_meta_boolean(flags: MetaFlag | null, meta_item: string, value: boolean): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date value, and registers the field to only hold a date
@@ -9357,7 +9363,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date(flags: MetaFlag, meta_item: string, value: GLib.Date): boolean;
+        register_meta_date(flags: MetaFlag | null, meta_item: string, value: GLib.Date): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date time value, and registers the field to only hold a date time
@@ -9369,7 +9375,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date time typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date_time(flags: MetaFlag, meta_item: string, value: Gst.DateTime): boolean;
+        register_meta_date_time(flags: MetaFlag | null, meta_item: string, value: Gst.DateTime): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given double value, and registers the field to only hold a double
@@ -9381,7 +9387,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold double typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_double(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_double(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given float value, and registers the field to only hold a float
@@ -9393,7 +9399,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold float typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_float(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_float(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int value, and registers the field to only hold an int
@@ -9405,7 +9411,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int64 value, and registers the field to only hold an int64
@@ -9417,7 +9423,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -9429,7 +9435,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold string typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_string(flags: MetaFlag, meta_item: string, value: string): boolean;
+        register_meta_string(flags: MetaFlag | null, meta_item: string, value: string): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint value, and registers the field to only hold a uint
@@ -9441,7 +9447,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint64 value, and registers the field to only hold a uint64
@@ -9453,7 +9459,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -9473,7 +9479,7 @@ export namespace GES {
          * @param type The required value type for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @type values, with the given @flags.
          */
-        register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
+        register_static_meta(flags: MetaFlag | null, meta_item: string, type: GObject.GType): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value.
@@ -9615,7 +9621,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -9656,7 +9662,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10177,7 +10183,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10218,7 +10224,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10802,7 +10808,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -10843,7 +10849,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11271,7 +11277,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11312,7 +11318,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11934,7 +11940,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -11975,7 +11981,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12369,7 +12375,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -12410,7 +12416,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12866,7 +12872,7 @@ export namespace GES {
             start: Gst.ClockTime,
             inpoint: Gst.ClockTime,
             duration: Gst.ClockTime,
-            track_types: TrackType,
+            track_types: TrackType | null,
         ): Clip | null;
         /**
          * Extracts a new clip from an asset and adds it to the layer with
@@ -12883,7 +12889,7 @@ export namespace GES {
             start: Gst.ClockTime,
             inpoint: Gst.ClockTime,
             duration: Gst.ClockTime,
-            track_types: TrackType,
+            track_types: TrackType | null,
         ): Clip;
         /**
          * See ges_layer_add_clip_full(), which also gives an error.
@@ -13181,7 +13187,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @value types, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
+        register_meta(flags: MetaFlag | null, meta_item: string, value: GObject.Value | any): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value, and registers the field to only hold a boolean
@@ -13193,7 +13199,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold boolean typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_boolean(flags: MetaFlag, meta_item: string, value: boolean): boolean;
+        register_meta_boolean(flags: MetaFlag | null, meta_item: string, value: boolean): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date value, and registers the field to only hold a date
@@ -13205,7 +13211,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date(flags: MetaFlag, meta_item: string, value: GLib.Date): boolean;
+        register_meta_date(flags: MetaFlag | null, meta_item: string, value: GLib.Date): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date time value, and registers the field to only hold a date time
@@ -13217,7 +13223,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date time typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date_time(flags: MetaFlag, meta_item: string, value: Gst.DateTime): boolean;
+        register_meta_date_time(flags: MetaFlag | null, meta_item: string, value: Gst.DateTime): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given double value, and registers the field to only hold a double
@@ -13229,7 +13235,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold double typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_double(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_double(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given float value, and registers the field to only hold a float
@@ -13241,7 +13247,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold float typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_float(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_float(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int value, and registers the field to only hold an int
@@ -13253,7 +13259,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int64 value, and registers the field to only hold an int64
@@ -13265,7 +13271,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -13277,7 +13283,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold string typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_string(flags: MetaFlag, meta_item: string, value: string): boolean;
+        register_meta_string(flags: MetaFlag | null, meta_item: string, value: string): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint value, and registers the field to only hold a uint
@@ -13289,7 +13295,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint64 value, and registers the field to only hold a uint64
@@ -13301,7 +13307,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -13321,7 +13327,7 @@ export namespace GES {
          * @param type The required value type for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @type values, with the given @flags.
          */
-        register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
+        register_static_meta(flags: MetaFlag | null, meta_item: string, type: GObject.GType): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value.
@@ -13463,7 +13469,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -13504,7 +13510,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13982,7 +13988,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @value types, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
+        register_meta(flags: MetaFlag | null, meta_item: string, value: GObject.Value | any): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value, and registers the field to only hold a boolean
@@ -13994,7 +14000,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold boolean typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_boolean(flags: MetaFlag, meta_item: string, value: boolean): boolean;
+        register_meta_boolean(flags: MetaFlag | null, meta_item: string, value: boolean): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date value, and registers the field to only hold a date
@@ -14006,7 +14012,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date(flags: MetaFlag, meta_item: string, value: GLib.Date): boolean;
+        register_meta_date(flags: MetaFlag | null, meta_item: string, value: GLib.Date): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date time value, and registers the field to only hold a date time
@@ -14018,7 +14024,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date time typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date_time(flags: MetaFlag, meta_item: string, value: Gst.DateTime): boolean;
+        register_meta_date_time(flags: MetaFlag | null, meta_item: string, value: Gst.DateTime): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given double value, and registers the field to only hold a double
@@ -14030,7 +14036,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold double typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_double(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_double(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given float value, and registers the field to only hold a float
@@ -14042,7 +14048,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold float typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_float(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_float(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int value, and registers the field to only hold an int
@@ -14054,7 +14060,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int64 value, and registers the field to only hold an int64
@@ -14066,7 +14072,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -14078,7 +14084,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold string typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_string(flags: MetaFlag, meta_item: string, value: string): boolean;
+        register_meta_string(flags: MetaFlag | null, meta_item: string, value: string): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint value, and registers the field to only hold a uint
@@ -14090,7 +14096,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint64 value, and registers the field to only hold a uint64
@@ -14102,7 +14108,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -14122,7 +14128,7 @@ export namespace GES {
          * @param type The required value type for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @type values, with the given @flags.
          */
-        register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
+        register_static_meta(flags: MetaFlag | null, meta_item: string, type: GObject.GType): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value.
@@ -14264,7 +14270,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14305,7 +14311,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14802,7 +14808,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -14843,7 +14849,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15226,7 +15232,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -15267,7 +15273,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15650,7 +15656,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -15691,7 +15697,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16079,7 +16085,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16120,7 +16126,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16626,7 +16632,7 @@ export namespace GES {
          * @param mode The mode to set for @pipeline
          * @returns %TRUE if the mode of @pipeline was successfully set to @mode.
          */
-        set_mode(mode: PipelineFlags): boolean;
+        set_mode(mode: PipelineFlags | null): boolean;
         /**
          * Specifies encoding setting to be used by the pipeline to render its
          * #GESPipeline:timeline, and where the result should be written to.
@@ -16774,7 +16780,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -16815,7 +16821,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17603,7 +17609,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @value types, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
+        register_meta(flags: MetaFlag | null, meta_item: string, value: GObject.Value | any): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value, and registers the field to only hold a boolean
@@ -17615,7 +17621,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold boolean typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_boolean(flags: MetaFlag, meta_item: string, value: boolean): boolean;
+        register_meta_boolean(flags: MetaFlag | null, meta_item: string, value: boolean): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date value, and registers the field to only hold a date
@@ -17627,7 +17633,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date(flags: MetaFlag, meta_item: string, value: GLib.Date): boolean;
+        register_meta_date(flags: MetaFlag | null, meta_item: string, value: GLib.Date): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date time value, and registers the field to only hold a date time
@@ -17639,7 +17645,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date time typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date_time(flags: MetaFlag, meta_item: string, value: Gst.DateTime): boolean;
+        register_meta_date_time(flags: MetaFlag | null, meta_item: string, value: Gst.DateTime): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given double value, and registers the field to only hold a double
@@ -17651,7 +17657,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold double typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_double(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_double(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given float value, and registers the field to only hold a float
@@ -17663,7 +17669,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold float typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_float(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_float(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int value, and registers the field to only hold an int
@@ -17675,7 +17681,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int64 value, and registers the field to only hold an int64
@@ -17687,7 +17693,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -17699,7 +17705,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold string typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_string(flags: MetaFlag, meta_item: string, value: string): boolean;
+        register_meta_string(flags: MetaFlag | null, meta_item: string, value: string): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint value, and registers the field to only hold a uint
@@ -17711,7 +17717,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint64 value, and registers the field to only hold a uint64
@@ -17723,7 +17729,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -17743,7 +17749,7 @@ export namespace GES {
          * @param type The required value type for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @type values, with the given @flags.
          */
-        register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
+        register_static_meta(flags: MetaFlag | null, meta_item: string, type: GObject.GType): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value.
@@ -18169,7 +18175,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -18210,7 +18216,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18607,7 +18613,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -18648,7 +18654,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19040,7 +19046,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -19081,7 +19087,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19664,7 +19670,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -19705,7 +19711,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20127,7 +20133,7 @@ export namespace GES {
          * Sets which video pattern to display on `self`.
          * @param vpattern the #GESVideoTestPattern to use on @self
          */
-        set_vpattern(vpattern: VideoTestPattern): void;
+        set_vpattern(vpattern: VideoTestPattern | null): void;
 
         // Inherited methods
         /**
@@ -20174,7 +20180,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -20215,7 +20221,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20604,7 +20610,7 @@ export namespace GES {
          * Sets the horizontal aligment of the text.
          * @param halign The #GESTextHAlign defining the horizontal alignment of the text render by @self.
          */
-        set_halignment(halign: TextHAlign): void;
+        set_halignment(halign: TextHAlign | null): void;
         /**
          * Sets the text this track element will render.
          * @param text the text to render. an internal copy of this text will be made.
@@ -20614,7 +20620,7 @@ export namespace GES {
          * Sets the vertical aligment of the text.
          * @param valign The #GESTextVAlign defining the vertical alignment of the text render by @self.
          */
-        set_valignment(valign: TextVAlign): void;
+        set_valignment(valign: TextVAlign | null): void;
         /**
          * Sets the horizontal position of the text.
          * @param position The horizontal position @self is being set to
@@ -20671,7 +20677,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -20712,7 +20718,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -21155,7 +21161,7 @@ export namespace GES {
          * Sets the horizontal aligment of the text.
          * @param halign #GESTextHAlign
          */
-        set_halign(halign: TextHAlign): void;
+        set_halign(halign: TextHAlign | null): void;
         /**
          * Sets the text this clip will render.
          * @param text the text to render. an internal copy of this text will be made.
@@ -21165,7 +21171,7 @@ export namespace GES {
          * Sets the vertical aligment of the text.
          * @param valign #GESTextVAlign
          */
-        set_valign(valign: TextVAlign): void;
+        set_valign(valign: TextVAlign | null): void;
         /**
          * Sets the horizontal position of the text.
          * @param position The horizontal position @self is being set to
@@ -21222,7 +21228,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -21263,7 +21269,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22339,7 +22345,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @value types, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
+        register_meta(flags: MetaFlag | null, meta_item: string, value: GObject.Value | any): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value, and registers the field to only hold a boolean
@@ -22351,7 +22357,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold boolean typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_boolean(flags: MetaFlag, meta_item: string, value: boolean): boolean;
+        register_meta_boolean(flags: MetaFlag | null, meta_item: string, value: boolean): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date value, and registers the field to only hold a date
@@ -22363,7 +22369,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date(flags: MetaFlag, meta_item: string, value: GLib.Date): boolean;
+        register_meta_date(flags: MetaFlag | null, meta_item: string, value: GLib.Date): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date time value, and registers the field to only hold a date time
@@ -22375,7 +22381,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date time typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date_time(flags: MetaFlag, meta_item: string, value: Gst.DateTime): boolean;
+        register_meta_date_time(flags: MetaFlag | null, meta_item: string, value: Gst.DateTime): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given double value, and registers the field to only hold a double
@@ -22387,7 +22393,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold double typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_double(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_double(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given float value, and registers the field to only hold a float
@@ -22399,7 +22405,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold float typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_float(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_float(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int value, and registers the field to only hold an int
@@ -22411,7 +22417,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int64 value, and registers the field to only hold an int64
@@ -22423,7 +22429,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -22435,7 +22441,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold string typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_string(flags: MetaFlag, meta_item: string, value: string): boolean;
+        register_meta_string(flags: MetaFlag | null, meta_item: string, value: string): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint value, and registers the field to only hold a uint
@@ -22447,7 +22453,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint64 value, and registers the field to only hold a uint64
@@ -22459,7 +22465,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -22479,7 +22485,7 @@ export namespace GES {
          * @param type The required value type for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @type values, with the given @flags.
          */
-        register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
+        register_static_meta(flags: MetaFlag | null, meta_item: string, type: GObject.GType): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value.
@@ -22719,7 +22725,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -22760,7 +22766,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -23575,7 +23581,13 @@ export namespace GES {
          * @param position The edit position: a new location for the edge of @self (in nanoseconds) in the timeline coordinates
          * @returns %TRUE if the edit of @self completed, %FALSE on failure.
          */
-        edit(layers: Layer[] | null, new_layer_priority: number, mode: EditMode, edge: Edge, position: number): boolean;
+        edit(
+            layers: Layer[] | null,
+            new_layer_priority: number,
+            mode: EditMode | null,
+            edge: Edge | null,
+            position: number,
+        ): boolean;
         /**
          * Edits the element within its timeline by adjusting its
          * #GESTimelineElement:start, #GESTimelineElement:duration or
@@ -23605,7 +23617,7 @@ export namespace GES {
          * @param position The edit position: a new location for the edge of @self (in nanoseconds) in the timeline coordinates
          * @returns %TRUE if the edit of @self completed, %FALSE on failure.
          */
-        edit_full(new_layer_priority: number, mode: EditMode, edge: Edge, position: number): boolean;
+        edit_full(new_layer_priority: number, mode: EditMode | null, edge: Edge | null, position: number): boolean;
         /**
          * Gets the property of a child of the element.
          *
@@ -24143,7 +24155,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @value types, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
+        register_meta(flags: MetaFlag | null, meta_item: string, value: GObject.Value | any): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value, and registers the field to only hold a boolean
@@ -24155,7 +24167,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold boolean typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_boolean(flags: MetaFlag, meta_item: string, value: boolean): boolean;
+        register_meta_boolean(flags: MetaFlag | null, meta_item: string, value: boolean): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date value, and registers the field to only hold a date
@@ -24167,7 +24179,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date(flags: MetaFlag, meta_item: string, value: GLib.Date): boolean;
+        register_meta_date(flags: MetaFlag | null, meta_item: string, value: GLib.Date): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date time value, and registers the field to only hold a date time
@@ -24179,7 +24191,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date time typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date_time(flags: MetaFlag, meta_item: string, value: Gst.DateTime): boolean;
+        register_meta_date_time(flags: MetaFlag | null, meta_item: string, value: Gst.DateTime): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given double value, and registers the field to only hold a double
@@ -24191,7 +24203,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold double typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_double(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_double(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given float value, and registers the field to only hold a float
@@ -24203,7 +24215,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold float typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_float(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_float(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int value, and registers the field to only hold an int
@@ -24215,7 +24227,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int64 value, and registers the field to only hold an int64
@@ -24227,7 +24239,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -24239,7 +24251,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold string typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_string(flags: MetaFlag, meta_item: string, value: string): boolean;
+        register_meta_string(flags: MetaFlag | null, meta_item: string, value: string): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint value, and registers the field to only hold a uint
@@ -24251,7 +24263,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint64 value, and registers the field to only hold a uint64
@@ -24263,7 +24275,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -24283,7 +24295,7 @@ export namespace GES {
          * @param type The required value type for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @type values, with the given @flags.
          */
-        register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
+        register_static_meta(flags: MetaFlag | null, meta_item: string, type: GObject.GType): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value.
@@ -24425,7 +24437,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -24466,7 +24478,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -24926,7 +24938,7 @@ export namespace GES {
          * Sets the horizontal aligment of the text.
          * @param halign #GESTextHAlign
          */
-        set_halignment(halign: TextHAlign): void;
+        set_halignment(halign: TextHAlign | null): void;
         /**
          * Sets the text this clip will render.
          * @param text the text to render. an internal copy of this text will be made.
@@ -24936,7 +24948,7 @@ export namespace GES {
          * Sets the vertical aligment of the text.
          * @param valign #GESTextVAlign
          */
-        set_valignment(valign: TextVAlign): void;
+        set_valignment(valign: TextVAlign | null): void;
         /**
          * Sets the horizontal position of the text.
          * @param position The horizontal position @self is being set to
@@ -24993,7 +25005,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -25034,7 +25046,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -25430,7 +25442,7 @@ export namespace GES {
          * Sets the vertical aligment of the text.
          * @param halign #GESTextHAlign
          */
-        set_halignment(halign: TextHAlign): void;
+        set_halignment(halign: TextHAlign | null): void;
         /**
          * Sets the text this track element will render.
          * @param text the text to render. an internal copy of this text will be made.
@@ -25445,7 +25457,7 @@ export namespace GES {
          * Sets the vertical aligment of the text.
          * @param valign #GESTextVAlign
          */
-        set_valignment(valign: TextVAlign): void;
+        set_valignment(valign: TextVAlign | null): void;
         /**
          * Sets the horizontal position of the text.
          * @param position the horizontal position @self is being set to
@@ -25502,7 +25514,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -25543,7 +25555,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -26287,7 +26299,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @value types, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
+        register_meta(flags: MetaFlag | null, meta_item: string, value: GObject.Value | any): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value, and registers the field to only hold a boolean
@@ -26299,7 +26311,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold boolean typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_boolean(flags: MetaFlag, meta_item: string, value: boolean): boolean;
+        register_meta_boolean(flags: MetaFlag | null, meta_item: string, value: boolean): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date value, and registers the field to only hold a date
@@ -26311,7 +26323,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date(flags: MetaFlag, meta_item: string, value: GLib.Date): boolean;
+        register_meta_date(flags: MetaFlag | null, meta_item: string, value: GLib.Date): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date time value, and registers the field to only hold a date time
@@ -26323,7 +26335,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date time typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date_time(flags: MetaFlag, meta_item: string, value: Gst.DateTime): boolean;
+        register_meta_date_time(flags: MetaFlag | null, meta_item: string, value: Gst.DateTime): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given double value, and registers the field to only hold a double
@@ -26335,7 +26347,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold double typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_double(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_double(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given float value, and registers the field to only hold a float
@@ -26347,7 +26359,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold float typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_float(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_float(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int value, and registers the field to only hold an int
@@ -26359,7 +26371,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int64 value, and registers the field to only hold an int64
@@ -26371,7 +26383,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -26383,7 +26395,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold string typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_string(flags: MetaFlag, meta_item: string, value: string): boolean;
+        register_meta_string(flags: MetaFlag | null, meta_item: string, value: string): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint value, and registers the field to only hold a uint
@@ -26395,7 +26407,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint64 value, and registers the field to only hold a uint64
@@ -26407,7 +26419,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -26427,7 +26439,7 @@ export namespace GES {
          * @param type The required value type for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @type values, with the given @flags.
          */
-        register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
+        register_static_meta(flags: MetaFlag | null, meta_item: string, type: GObject.GType): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value.
@@ -26667,7 +26679,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -26708,7 +26720,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -27313,7 +27325,7 @@ export namespace GES {
          * @param position The edit position: a new location for the edge of @object (in nanoseconds)
          * @returns %TRUE if the edit of @object completed, %FALSE on failure.
          */
-        edit(layers: Layer[] | null, mode: EditMode, edge: Edge, position: number): boolean;
+        edit(layers: Layer[] | null, mode: EditMode | null, edge: Edge | null, position: number): boolean;
         // Conflicted with GES.TimelineElement.edit
         edit(...args: never[]): any;
         /**
@@ -27455,7 +27467,7 @@ export namespace GES {
          * Sets the #GESTrackElement:track-type for the element.
          * @param type The new track-type for @object
          */
-        set_track_type(type: TrackType): void;
+        set_track_type(type: TrackType | null): void;
 
         // Inherited methods
         /**
@@ -27649,7 +27661,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @value types, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
+        register_meta(flags: MetaFlag | null, meta_item: string, value: GObject.Value | any): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value, and registers the field to only hold a boolean
@@ -27661,7 +27673,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold boolean typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_boolean(flags: MetaFlag, meta_item: string, value: boolean): boolean;
+        register_meta_boolean(flags: MetaFlag | null, meta_item: string, value: boolean): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date value, and registers the field to only hold a date
@@ -27673,7 +27685,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date(flags: MetaFlag, meta_item: string, value: GLib.Date): boolean;
+        register_meta_date(flags: MetaFlag | null, meta_item: string, value: GLib.Date): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date time value, and registers the field to only hold a date time
@@ -27685,7 +27697,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date time typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date_time(flags: MetaFlag, meta_item: string, value: Gst.DateTime): boolean;
+        register_meta_date_time(flags: MetaFlag | null, meta_item: string, value: Gst.DateTime): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given double value, and registers the field to only hold a double
@@ -27697,7 +27709,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold double typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_double(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_double(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given float value, and registers the field to only hold a float
@@ -27709,7 +27721,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold float typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_float(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_float(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int value, and registers the field to only hold an int
@@ -27721,7 +27733,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int64 value, and registers the field to only hold an int64
@@ -27733,7 +27745,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -27745,7 +27757,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold string typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_string(flags: MetaFlag, meta_item: string, value: string): boolean;
+        register_meta_string(flags: MetaFlag | null, meta_item: string, value: string): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint value, and registers the field to only hold a uint
@@ -27757,7 +27769,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint64 value, and registers the field to only hold a uint64
@@ -27769,7 +27781,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -27789,7 +27801,7 @@ export namespace GES {
          * @param type The required value type for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @type values, with the given @flags.
          */
-        register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
+        register_static_meta(flags: MetaFlag | null, meta_item: string, type: GObject.GType): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value.
@@ -27931,7 +27943,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -27972,7 +27984,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -28342,7 +28354,7 @@ export namespace GES {
          * should get into
          * @param type A #GESTrackType
          */
-        set_track_type(type: TrackType): void;
+        set_track_type(type: TrackType | null): void;
 
         // Inherited methods
         /**
@@ -28478,7 +28490,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @value types, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
+        register_meta(flags: MetaFlag | null, meta_item: string, value: GObject.Value | any): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value, and registers the field to only hold a boolean
@@ -28490,7 +28502,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold boolean typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_boolean(flags: MetaFlag, meta_item: string, value: boolean): boolean;
+        register_meta_boolean(flags: MetaFlag | null, meta_item: string, value: boolean): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date value, and registers the field to only hold a date
@@ -28502,7 +28514,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date(flags: MetaFlag, meta_item: string, value: GLib.Date): boolean;
+        register_meta_date(flags: MetaFlag | null, meta_item: string, value: GLib.Date): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date time value, and registers the field to only hold a date time
@@ -28514,7 +28526,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date time typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date_time(flags: MetaFlag, meta_item: string, value: Gst.DateTime): boolean;
+        register_meta_date_time(flags: MetaFlag | null, meta_item: string, value: Gst.DateTime): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given double value, and registers the field to only hold a double
@@ -28526,7 +28538,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold double typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_double(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_double(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given float value, and registers the field to only hold a float
@@ -28538,7 +28550,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold float typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_float(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_float(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int value, and registers the field to only hold an int
@@ -28550,7 +28562,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int64 value, and registers the field to only hold an int64
@@ -28562,7 +28574,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -28574,7 +28586,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold string typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_string(flags: MetaFlag, meta_item: string, value: string): boolean;
+        register_meta_string(flags: MetaFlag | null, meta_item: string, value: string): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint value, and registers the field to only hold a uint
@@ -28586,7 +28598,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint64 value, and registers the field to only hold a uint64
@@ -28598,7 +28610,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -28618,7 +28630,7 @@ export namespace GES {
          * @param type The required value type for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @type values, with the given @flags.
          */
-        register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
+        register_static_meta(flags: MetaFlag | null, meta_item: string, type: GObject.GType): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value.
@@ -29044,7 +29056,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -29085,7 +29097,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -29468,7 +29480,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -29509,7 +29521,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -29917,7 +29929,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -29958,7 +29970,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -30402,7 +30414,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -30443,7 +30455,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -31129,7 +31141,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -31170,7 +31182,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -31778,7 +31790,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -31819,7 +31831,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -32216,7 +32228,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -32257,7 +32269,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -32608,7 +32620,7 @@ export namespace GES {
          * Sets the source to use the given `pattern`.
          * @param pattern a #GESVideoTestPattern
          */
-        set_pattern(pattern: VideoTestPattern): void;
+        set_pattern(pattern: VideoTestPattern | null): void;
 
         // Inherited methods
         /**
@@ -32655,7 +32667,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -32696,7 +32708,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -33186,7 +33198,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @value types, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
+        register_meta(flags: MetaFlag | null, meta_item: string, value: GObject.Value | any): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value, and registers the field to only hold a boolean
@@ -33198,7 +33210,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold boolean typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_boolean(flags: MetaFlag, meta_item: string, value: boolean): boolean;
+        register_meta_boolean(flags: MetaFlag | null, meta_item: string, value: boolean): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date value, and registers the field to only hold a date
@@ -33210,7 +33222,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date(flags: MetaFlag, meta_item: string, value: GLib.Date): boolean;
+        register_meta_date(flags: MetaFlag | null, meta_item: string, value: GLib.Date): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date time value, and registers the field to only hold a date time
@@ -33222,7 +33234,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date time typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date_time(flags: MetaFlag, meta_item: string, value: Gst.DateTime): boolean;
+        register_meta_date_time(flags: MetaFlag | null, meta_item: string, value: Gst.DateTime): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given double value, and registers the field to only hold a double
@@ -33234,7 +33246,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold double typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_double(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_double(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given float value, and registers the field to only hold a float
@@ -33246,7 +33258,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold float typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_float(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_float(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int value, and registers the field to only hold an int
@@ -33258,7 +33270,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int64 value, and registers the field to only hold an int64
@@ -33270,7 +33282,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -33282,7 +33294,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold string typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_string(flags: MetaFlag, meta_item: string, value: string): boolean;
+        register_meta_string(flags: MetaFlag | null, meta_item: string, value: string): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint value, and registers the field to only hold a uint
@@ -33294,7 +33306,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint64 value, and registers the field to only hold a uint64
@@ -33306,7 +33318,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -33326,7 +33338,7 @@ export namespace GES {
          * @param type The required value type for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @type values, with the given @flags.
          */
-        register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
+        register_static_meta(flags: MetaFlag | null, meta_item: string, type: GObject.GType): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value.
@@ -33468,7 +33480,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -33509,7 +33521,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -33914,7 +33926,7 @@ export namespace GES {
          * @param type a #GESVideoStandardTransitionType
          * @returns %TRUE if the transition type was properly changed, else %FALSE.
          */
-        set_transition_type(type: VideoStandardTransitionType): boolean;
+        set_transition_type(type: VideoStandardTransitionType | null): boolean;
 
         // Inherited methods
         /**
@@ -33961,7 +33973,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -34002,7 +34014,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -34396,7 +34408,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
          * Complete version of g_object_bind_property().
@@ -34437,7 +34449,7 @@ export namespace GES {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags,
+            flags: GObject.BindingFlags | null,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -35350,7 +35362,9 @@ export namespace GES {
         vfunc_set_asset_full(asset: Asset): boolean;
     }
 
-    export const Extractable: ExtractableNamespace;
+    export const Extractable: ExtractableNamespace & {
+        new (): Extractable; // This allows `obj instanceof Extractable`
+    };
 
     module MetaContainer {
         // Constructor properties interface
@@ -35498,7 +35512,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @value types, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
+        register_meta(flags: MetaFlag | null, meta_item: string, value: GObject.Value | any): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value, and registers the field to only hold a boolean
@@ -35510,7 +35524,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold boolean typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_boolean(flags: MetaFlag, meta_item: string, value: boolean): boolean;
+        register_meta_boolean(flags: MetaFlag | null, meta_item: string, value: boolean): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date value, and registers the field to only hold a date
@@ -35522,7 +35536,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date(flags: MetaFlag, meta_item: string, value: GLib.Date): boolean;
+        register_meta_date(flags: MetaFlag | null, meta_item: string, value: GLib.Date): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given date time value, and registers the field to only hold a date time
@@ -35534,7 +35548,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date time typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_date_time(flags: MetaFlag, meta_item: string, value: Gst.DateTime): boolean;
+        register_meta_date_time(flags: MetaFlag | null, meta_item: string, value: Gst.DateTime): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given double value, and registers the field to only hold a double
@@ -35546,7 +35560,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold double typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_double(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_double(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given float value, and registers the field to only hold a float
@@ -35558,7 +35572,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold float typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_float(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_float(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int value, and registers the field to only hold an int
@@ -35570,7 +35584,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given int64 value, and registers the field to only hold an int64
@@ -35582,7 +35596,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -35594,7 +35608,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold string typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_string(flags: MetaFlag, meta_item: string, value: string): boolean;
+        register_meta_string(flags: MetaFlag | null, meta_item: string, value: string): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint value, and registers the field to only hold a uint
@@ -35606,7 +35620,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given uint64 value, and registers the field to only hold a uint64
@@ -35618,7 +35632,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint64 typed values, with the given @flags, and the field was successfully set to @value.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -35638,7 +35652,7 @@ export namespace GES {
          * @param type The required value type for the registered field
          * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @type values, with the given @flags.
          */
-        register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
+        register_static_meta(flags: MetaFlag | null, meta_item: string, type: GObject.GType): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given boolean value.
@@ -35738,7 +35752,9 @@ export namespace GES {
         set_uint64(meta_item: string, value: number): boolean;
     }
 
-    export const MetaContainer: MetaContainerNamespace;
+    export const MetaContainer: MetaContainerNamespace & {
+        new (): MetaContainer; // This allows `obj instanceof MetaContainer`
+    };
 
     type FrameNumber = number;
     /**
