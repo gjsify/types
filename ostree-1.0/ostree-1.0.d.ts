@@ -11,7 +11,6 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
 
 export namespace OSTree {
     /**
@@ -2920,7 +2919,7 @@ export namespace OSTree {
          * You can then call g_file_append_to_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         append_to_async(
@@ -2938,7 +2937,7 @@ export namespace OSTree {
          * You can then call g_file_append_to_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -2958,7 +2957,7 @@ export namespace OSTree {
          * You can then call g_file_append_to_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -3056,7 +3055,7 @@ export namespace OSTree {
          * g_file_copy_finish() to get the result of the operation.
          * @param destination destination #GFile
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
          */
@@ -3080,7 +3079,7 @@ export namespace OSTree {
          * g_file_copy_finish() to get the result of the operation.
          * @param destination destination #GFile
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
@@ -3106,7 +3105,7 @@ export namespace OSTree {
          * g_file_copy_finish() to get the result of the operation.
          * @param destination destination #GFile
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
@@ -3119,8 +3118,6 @@ export namespace OSTree {
             progress_callback?: Gio.FileProgressCallback | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
-        // Conflicted with Gio.File.copy_async
-        copy_async(...args: never[]): any;
         /**
          * Copies the file attributes from `source` to `destination`.
          *
@@ -3182,7 +3179,7 @@ export namespace OSTree {
          * You can then call g_file_create_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         create_async(
@@ -3201,7 +3198,7 @@ export namespace OSTree {
          * You can then call g_file_create_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -3222,7 +3219,7 @@ export namespace OSTree {
          * You can then call g_file_create_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -3279,7 +3276,7 @@ export namespace OSTree {
          * You can then call g_file_create_readwrite_finish() to get
          * the result of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         create_readwrite_async(
@@ -3298,7 +3295,7 @@ export namespace OSTree {
          * You can then call g_file_create_readwrite_finish() to get
          * the result of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -3319,7 +3316,7 @@ export namespace OSTree {
          * You can then call g_file_create_readwrite_finish() to get
          * the result of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -3368,7 +3365,7 @@ export namespace OSTree {
          * Asynchronously delete a file. If the `file` is a directory, it will
          * only be deleted if it is empty.  This has the same semantics as
          * g_unlink().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         delete_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -3376,7 +3373,7 @@ export namespace OSTree {
          * Asynchronously delete a file. If the `file` is a directory, it will
          * only be deleted if it is empty.  This has the same semantics as
          * g_unlink().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -3389,7 +3386,7 @@ export namespace OSTree {
          * Asynchronously delete a file. If the `file` is a directory, it will
          * only be deleted if it is empty.  This has the same semantics as
          * g_unlink().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -3588,7 +3585,7 @@ export namespace OSTree {
          * the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         enumerate_children_async(
@@ -3610,7 +3607,7 @@ export namespace OSTree {
          * the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -3634,7 +3631,7 @@ export namespace OSTree {
          * the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -3687,7 +3684,7 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_find_enclosing_mount_finish() to
          * get the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         find_enclosing_mount_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<Gio.Mount>;
@@ -3700,7 +3697,7 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_find_enclosing_mount_finish() to
          * get the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -3718,7 +3715,7 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_find_enclosing_mount_finish() to
          * get the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -4089,13 +4086,13 @@ export namespace OSTree {
         make_directory(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously creates a directory.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         make_directory_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
         /**
          * Asynchronously creates a directory.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -4106,7 +4103,7 @@ export namespace OSTree {
         ): void;
         /**
          * Asynchronously creates a directory.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -4156,7 +4153,7 @@ export namespace OSTree {
          * Asynchronously creates a symbolic link named `file` which contains the
          * string `symlink_value`.
          * @param symlink_value a string with the path for the target   of the new symlink
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         make_symbolic_link_async(
@@ -4168,7 +4165,7 @@ export namespace OSTree {
          * Asynchronously creates a symbolic link named `file` which contains the
          * string `symlink_value`.
          * @param symlink_value a string with the path for the target   of the new symlink
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -4182,7 +4179,7 @@ export namespace OSTree {
          * Asynchronously creates a symbolic link named `file` which contains the
          * string `symlink_value`.
          * @param symlink_value a string with the path for the target   of the new symlink
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -4490,7 +4487,7 @@ export namespace OSTree {
          * g_file_move_finish() to get the result of the operation.
          * @param destination #GFile pointing to the destination location
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback #GFileProgressCallback function for updates
          */
@@ -4513,7 +4510,7 @@ export namespace OSTree {
          * g_file_move_finish() to get the result of the operation.
          * @param destination #GFile pointing to the destination location
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback #GFileProgressCallback function for updates
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
@@ -4538,7 +4535,7 @@ export namespace OSTree {
          * g_file_move_finish() to get the result of the operation.
          * @param destination #GFile pointing to the destination location
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback #GFileProgressCallback function for updates
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
@@ -4551,8 +4548,6 @@ export namespace OSTree {
             progress_callback?: Gio.FileProgressCallback | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
-        // Conflicted with Gio.File.move_async
-        move_async(...args: never[]): any;
         /**
          * Finishes an asynchronous file movement, started with
          * g_file_move_async().
@@ -4590,7 +4585,7 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_open_readwrite_finish() to get
          * the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         open_readwrite_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<Gio.FileIOStream>;
@@ -4603,7 +4598,7 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_open_readwrite_finish() to get
          * the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -4621,7 +4616,7 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_open_readwrite_finish() to get
          * the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -4714,13 +4709,13 @@ export namespace OSTree {
         query_default_handler(cancellable?: Gio.Cancellable | null): Gio.AppInfo;
         /**
          * Async version of g_file_query_default_handler().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         query_default_handler_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<Gio.AppInfo>;
         /**
          * Async version of g_file_query_default_handler().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is done
          */
@@ -4731,7 +4726,7 @@ export namespace OSTree {
         ): void;
         /**
          * Async version of g_file_query_default_handler().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is done
          */
@@ -4828,7 +4823,7 @@ export namespace OSTree {
          * then call g_file_query_info_finish() to get the result of the
          * operation.
          * @param attributes an attribute query string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         query_filesystem_info_async(
@@ -4849,7 +4844,7 @@ export namespace OSTree {
          * then call g_file_query_info_finish() to get the result of the
          * operation.
          * @param attributes an attribute query string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -4872,7 +4867,7 @@ export namespace OSTree {
          * then call g_file_query_info_finish() to get the result of the
          * operation.
          * @param attributes an attribute query string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -4942,7 +4937,7 @@ export namespace OSTree {
          * then call g_file_query_info_finish() to get the result of the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         query_info_async(
@@ -4963,7 +4958,7 @@ export namespace OSTree {
          * then call g_file_query_info_finish() to get the result of the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -4986,7 +4981,7 @@ export namespace OSTree {
          * then call g_file_query_info_finish() to get the result of the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -5056,7 +5051,7 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_read_finish() to get the result
          * of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         read_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<Gio.FileInputStream>;
@@ -5069,7 +5064,7 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_read_finish() to get the result
          * of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -5087,7 +5082,7 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_read_finish() to get the result
          * of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -5170,7 +5165,7 @@ export namespace OSTree {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         replace_async(
@@ -5193,7 +5188,7 @@ export namespace OSTree {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -5218,7 +5213,7 @@ export namespace OSTree {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -5442,7 +5437,7 @@ export namespace OSTree {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         replace_readwrite_async(
@@ -5466,7 +5461,7 @@ export namespace OSTree {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -5492,7 +5487,7 @@ export namespace OSTree {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -5671,7 +5666,7 @@ export namespace OSTree {
          * the result of the operation.
          * @param info a #GFileInfo
          * @param flags a #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         set_attributes_async(
@@ -5691,7 +5686,7 @@ export namespace OSTree {
          * the result of the operation.
          * @param info a #GFileInfo
          * @param flags a #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -5713,7 +5708,7 @@ export namespace OSTree {
          * the result of the operation.
          * @param info a #GFileInfo
          * @param flags a #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -5784,7 +5779,7 @@ export namespace OSTree {
          * You can then call g_file_set_display_name_finish() to get
          * the result of the operation.
          * @param display_name a string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         set_display_name_async(
@@ -5802,7 +5797,7 @@ export namespace OSTree {
          * You can then call g_file_set_display_name_finish() to get
          * the result of the operation.
          * @param display_name a string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -5822,7 +5817,7 @@ export namespace OSTree {
          * You can then call g_file_set_display_name_finish() to get
          * the result of the operation.
          * @param display_name a string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -5996,13 +5991,10 @@ export namespace OSTree {
         /**
          * Sends `file` to the "Trashcan", if possible. This is similar to
          * deleting it, but the user can recover it before emptying the trashcan.
-         * Trashing is disabled for system mounts by default (see
-         * g_unix_mount_is_system_internal()), so this call can return the
+         * Not all file systems support trashing, so this call can return the
          * %G_IO_ERROR_NOT_SUPPORTED error. Since GLib 2.66, the `x-gvfs-notrash` unix
-         * mount option can be used to disable g_file_trash() support for particular
+         * mount option can be used to disable g_file_trash() support for certain
          * mounts, the %G_IO_ERROR_NOT_SUPPORTED error will be returned in that case.
-         * Since 2.82, the `x-gvfs-trash` unix mount option can be used to enable
-         * g_file_trash() support for particular system mounts.
          *
          * If `cancellable` is not %NULL, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
@@ -6013,13 +6005,13 @@ export namespace OSTree {
         trash(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously sends `file` to the Trash location, if possible.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         trash_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
         /**
          * Asynchronously sends `file` to the Trash location, if possible.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -6030,7 +6022,7 @@ export namespace OSTree {
         ): void;
         /**
          * Asynchronously sends `file` to the Trash location, if possible.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -6210,7 +6202,7 @@ export namespace OSTree {
          * You can then call g_file_append_to_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -6291,7 +6283,7 @@ export namespace OSTree {
          * g_file_copy_finish() to get the result of the operation.
          * @param destination destination #GFile
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
@@ -6344,7 +6336,7 @@ export namespace OSTree {
          * You can then call g_file_create_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -6399,7 +6391,7 @@ export namespace OSTree {
          * You can then call g_file_create_readwrite_finish() to get
          * the result of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -6446,7 +6438,7 @@ export namespace OSTree {
          * Asynchronously delete a file. If the `file` is a directory, it will
          * only be deleted if it is empty.  This has the same semantics as
          * g_unlink().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -6571,7 +6563,7 @@ export namespace OSTree {
          * the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -6621,7 +6613,7 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_find_enclosing_mount_finish() to
          * get the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -6772,7 +6764,7 @@ export namespace OSTree {
         vfunc_make_directory(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously creates a directory.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -6802,7 +6794,7 @@ export namespace OSTree {
          * Asynchronously creates a symbolic link named `file` which contains the
          * string `symlink_value`.
          * @param symlink_value a string with the path for the target   of the new symlink
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -7004,7 +6996,7 @@ export namespace OSTree {
          * g_file_move_finish() to get the result of the operation.
          * @param destination #GFile pointing to the destination location
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback #GFileProgressCallback function for updates
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
@@ -7052,7 +7044,7 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_open_readwrite_finish() to get
          * the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -7153,7 +7145,7 @@ export namespace OSTree {
          * then call g_file_query_info_finish() to get the result of the
          * operation.
          * @param attributes an attribute query string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -7221,7 +7213,7 @@ export namespace OSTree {
          * then call g_file_query_info_finish() to get the result of the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -7272,7 +7264,7 @@ export namespace OSTree {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_read_finish() to get the result
          * of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -7368,7 +7360,7 @@ export namespace OSTree {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -7422,7 +7414,7 @@ export namespace OSTree {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -7483,7 +7475,7 @@ export namespace OSTree {
          * the result of the operation.
          * @param info a #GFileInfo
          * @param flags a #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -7551,7 +7543,7 @@ export namespace OSTree {
          * You can then call g_file_set_display_name_finish() to get
          * the result of the operation.
          * @param display_name a string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -7630,13 +7622,10 @@ export namespace OSTree {
         /**
          * Sends `file` to the "Trashcan", if possible. This is similar to
          * deleting it, but the user can recover it before emptying the trashcan.
-         * Trashing is disabled for system mounts by default (see
-         * g_unix_mount_is_system_internal()), so this call can return the
+         * Not all file systems support trashing, so this call can return the
          * %G_IO_ERROR_NOT_SUPPORTED error. Since GLib 2.66, the `x-gvfs-notrash` unix
-         * mount option can be used to disable g_file_trash() support for particular
+         * mount option can be used to disable g_file_trash() support for certain
          * mounts, the %G_IO_ERROR_NOT_SUPPORTED error will be returned in that case.
-         * Since 2.82, the `x-gvfs-trash` unix mount option can be used to enable
-         * g_file_trash() support for particular system mounts.
          *
          * If `cancellable` is not %NULL, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
@@ -7646,7 +7635,7 @@ export namespace OSTree {
         vfunc_trash(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously sends `file` to the Trash location, if possible.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */

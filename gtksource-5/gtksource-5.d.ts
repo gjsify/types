@@ -20,8 +20,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace GtkSource {
     /**
@@ -393,11 +393,6 @@ export namespace GtkSource {
      */
     function init(): void;
     /**
-     * Simplified version of [func`scheduler_add_full]`.
-     * @param callback the callback to execute
-     */
-    function scheduler_add(callback: SchedulerCallback): number;
-    /**
      * Adds a new callback that will be executed as time permits on the main thread.
      *
      * This is useful when you need to do a lot of background work but want to do
@@ -409,7 +404,7 @@ export namespace GtkSource {
      * Use [func`scheduler_remove]` to remove the handler.
      * @param callback the callback to execute
      */
-    function scheduler_add_full(callback: SchedulerCallback): number;
+    function scheduler_add(callback: SchedulerCallback): number;
     /**
      * Removes a scheduler callback previously registered with
      * [func`scheduler_add]` or [func`scheduler_add_full]`.
@@ -4369,7 +4364,7 @@ export namespace GtkSource {
          * function.
          * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+         * @param progress_callback function to call back with progress information, or %NULL if progress   information is not needed.
          * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
          */
         load_async(
@@ -4385,7 +4380,7 @@ export namespace GtkSource {
          * function.
          * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+         * @param progress_callback function to call back with progress information, or %NULL if progress   information is not needed.
          * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
          */
@@ -4403,7 +4398,7 @@ export namespace GtkSource {
          * function.
          * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+         * @param progress_callback function to call back with progress information, or %NULL if progress   information is not needed.
          * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
          */
@@ -4543,7 +4538,7 @@ export namespace GtkSource {
          * See the [iface`Gio`.AsyncResult] documentation to know how to use this function.
          * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+         * @param progress_callback function to call back with progress information, or %NULL if progress   information is not needed.
          * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
          */
         save_async(
@@ -4558,7 +4553,7 @@ export namespace GtkSource {
          * See the [iface`Gio`.AsyncResult] documentation to know how to use this function.
          * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+         * @param progress_callback function to call back with progress information, or %NULL if progress   information is not needed.
          * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
          */
@@ -4575,7 +4570,7 @@ export namespace GtkSource {
          * See the [iface`Gio`.AsyncResult] documentation to know how to use this function.
          * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
+         * @param progress_callback function to call back with progress information, or %NULL if progress   information is not needed.
          * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
          * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
          */
@@ -20786,7 +20781,7 @@ export namespace GtkSource {
          * is after having just inserted a newline (\n) character but can be other
          * situations such as a manually requested indentation or reformatting.
          *
-         * See [iface`Indenter`.is_trigger] for how to trigger indentation on
+         * See [vfunc`GtkSource`.Indenter.is_trigger] for how to trigger indentation on
          * various characters inserted into the buffer.
          *
          * The implementor of this function is expected to keep `iter` valid across
@@ -20828,7 +20823,7 @@ export namespace GtkSource {
          * is after having just inserted a newline (\n) character but can be other
          * situations such as a manually requested indentation or reformatting.
          *
-         * See [iface`Indenter`.is_trigger] for how to trigger indentation on
+         * See [vfunc`GtkSource`.Indenter.is_trigger] for how to trigger indentation on
          * various characters inserted into the buffer.
          *
          * The implementor of this function is expected to keep `iter` valid across

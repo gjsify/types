@@ -11,7 +11,6 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
 
 export namespace Soup {
     /**
@@ -8363,7 +8362,7 @@ export namespace Soup {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          */
         close_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -8378,7 +8377,7 @@ export namespace Soup {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8398,7 +8397,7 @@ export namespace Soup {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8484,7 +8483,7 @@ export namespace Soup {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         read_all_async(io_priority: number, cancellable?: Gio.Cancellable | null): [Promise<number>, Uint8Array];
@@ -8499,7 +8498,7 @@ export namespace Soup {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8519,7 +8518,7 @@ export namespace Soup {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8566,7 +8565,7 @@ export namespace Soup {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         read_async(io_priority: number, cancellable?: Gio.Cancellable | null): [Promise<number>, Uint8Array];
@@ -8594,7 +8593,7 @@ export namespace Soup {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8627,7 +8626,7 @@ export namespace Soup {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8687,7 +8686,7 @@ export namespace Soup {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         read_bytes_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<GLib.Bytes>;
@@ -8713,7 +8712,7 @@ export namespace Soup {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8745,7 +8744,7 @@ export namespace Soup {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8819,7 +8818,7 @@ export namespace Soup {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         skip_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<number>;
@@ -8848,7 +8847,7 @@ export namespace Soup {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8883,7 +8882,7 @@ export namespace Soup {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8910,7 +8909,7 @@ export namespace Soup {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8949,7 +8948,7 @@ export namespace Soup {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -9008,7 +9007,7 @@ export namespace Soup {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */

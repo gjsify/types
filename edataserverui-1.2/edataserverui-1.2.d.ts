@@ -12,7 +12,6 @@ import type Soup from '@girs/soup-3.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
 import type Gdk from '@girs/gdk-3.0';
@@ -21,6 +20,7 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Atk from '@girs/atk-1.0';
 import type EDataServer from '@girs/edataserver-1.2';
 import type libxml2 from '@girs/libxml2-2.0';
@@ -780,6 +780,26 @@ export namespace EDataServerUI {
 
         // Methods
 
+        /**
+         * Completes an ongoing credentials prompt on idle, by finishing the `async_result`.
+         * This function is meant to be used by an #ECredentialsPrompterImpl implementation.
+         * To actually finish the credentials prompt previously started with
+         * e_credentials_prompter_prompt(), the e_credentials_prompter_prompt_finish() should
+         * be called from the provided callback.
+         *
+         * Using %NULL `credentials` will result in a G_IO_ERROR_CANCELLED error, if
+         * no other `error` is provided.
+         * @param async_result a #GSimpleAsyncResult
+         * @param source an #ESource, on which the prompt was started
+         * @param credentials credentials, as provided by a user, on %NULL, when the prompt was cancelled
+         * @param error a resulting #GError, or %NULL
+         */
+        complete_prompt_call(
+            async_result: Gio.SimpleAsyncResult,
+            source: EDataServer.Source,
+            credentials: EDataServer.NamedParameters | null,
+            error: GLib.Error,
+        ): void;
         /**
          * Returns, whether can respond to credential prompts automatically.
          * Default value is %TRUE.

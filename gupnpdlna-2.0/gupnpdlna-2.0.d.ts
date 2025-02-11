@@ -170,10 +170,6 @@ export namespace GUPnPDLNA {
          * image files).
          */
         vfunc_get_image_information(): ImageInformation;
-        /**
-         * This is called by #GUPnPDLNAProfileGuesser to
-         * get the name of the DLNA profile assigned with this information.
-         */
         vfunc_get_profile_name(): string;
         /**
          * Get an container information of media file if applicable (e.g. for

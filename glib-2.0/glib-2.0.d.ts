@@ -4609,6 +4609,11 @@ export namespace GLib {
      * If the reference was the last one, it will call `clear_func`
      * to clear the contents of `mem_block,` and then will free the
      * resources allocated for `mem_block`.
+     *
+     * Note that implementing weak references via `clear_func` is not thread-safe:
+     * clearing a pointer to the memory from the callback can race with another
+     * thread trying to access it as `mem_block` already has a reference count of 0
+     * when the callback is called and will be freed.
      * @param mem_block a pointer to reference counted data
      */
     function atomic_rc_box_release_full(mem_block: any): void;
@@ -8992,14 +8997,6 @@ export namespace GLib {
      * @param prgname the name of the program.
      */
     function set_prgname(prgname: string): void;
-    /**
-     * If g_get_prgname() is not set, this is the same as setting
-     * the name via g_set_prgname() and %TRUE is returned. Otherwise,
-     * does nothing and returns %FALSE. This is thread-safe.
-     * @param prgname the name of the program.
-     * @returns whether g_prgname was initialized by the call.
-     */
-    function set_prgname_once(prgname: string): boolean;
     /**
      * Sets an environment variable. On UNIX, both the variable's name and
      * value can be arbitrary byte strings, except that the variable's name
@@ -17270,24 +17267,85 @@ export namespace GLib {
         steal(): void;
     }
 
+    /**
+     * HMACs should be used when producing a cookie or hash based on data
+     * and a key. Simple mechanisms for using SHA1 and other algorithms to
+     * digest a key and data together are vulnerable to various security
+     * issues.
+     * [HMAC](http://en.wikipedia.org/wiki/HMAC)
+     * uses algorithms like SHA1 in a secure way to produce a digest of a
+     * key and data.
+     *
+     * Both the key and data are arbitrary byte arrays of bytes or characters.
+     *
+     * Support for HMAC Digests has been added in GLib 2.30, and support for SHA-512
+     * in GLib 2.42. Support for SHA-384 was added in GLib 2.52.
+     *
+     * To create a new `GHmac`, use [ctor`GLib`.Hmac.new]. To free a `GHmac`, use
+     * [method`GLib`.Hmac.unref].
+     */
     class Hmac {
         static $gtype: GObject.GType<Hmac>;
 
         // Constructors
 
-        constructor(digest_type: ChecksumType, key: number, key_len: number);
+        constructor(digest_type: ChecksumType, key: Uint8Array | string);
         _init(...args: any[]): void;
 
-        static ['new'](digest_type: ChecksumType, key: number, key_len: number): Hmac;
+        static ['new'](digest_type: ChecksumType, key: Uint8Array | string): Hmac;
 
         // Methods
 
+        /**
+         * Copies a #GHmac. If `hmac` has been closed, by calling
+         * g_hmac_get_string() or g_hmac_get_digest(), the copied
+         * HMAC will be closed as well.
+         * @returns the copy of the passed #GHmac. Use g_hmac_unref()   when finished using it.
+         */
         copy(): Hmac;
-        get_digest(buffer: number, digest_len: number): void;
+        /**
+         * Gets the digest from `checksum` as a raw binary array and places it
+         * into `buffer`. The size of the digest depends on the type of checksum.
+         *
+         * Once this function has been called, the #GHmac is closed and can
+         * no longer be updated with g_checksum_update().
+         * @param buffer output buffer
+         */
+        get_digest(buffer: Uint8Array | string): void;
+        /**
+         * Gets the HMAC as a hexadecimal string.
+         *
+         * Once this function has been called the #GHmac can no longer be
+         * updated with g_hmac_update().
+         *
+         * The hexadecimal characters will be lower case.
+         * @returns the hexadecimal representation of the HMAC. The   returned string is owned by the HMAC and should not be modified   or freed.
+         */
         get_string(): string;
+        /**
+         * Atomically increments the reference count of `hmac` by one.
+         *
+         * This function is MT-safe and may be called from any thread.
+         * @returns the passed in #GHmac.
+         */
         ref(): Hmac;
+        /**
+         * Atomically decrements the reference count of `hmac` by one.
+         *
+         * If the reference count drops to 0, all keys and values will be
+         * destroyed, and all memory allocated by the hash table is released.
+         * This function is MT-safe and may be called from any thread.
+         * Frees the memory allocated for `hmac`.
+         */
         unref(): void;
-        update(data: number, length: number): void;
+        /**
+         * Feeds `data` into an existing #GHmac.
+         *
+         * The HMAC must still be open, that is g_hmac_get_string() or
+         * g_hmac_get_digest() must not have been called on `hmac`.
+         * @param data buffer used to compute the checksum
+         */
+        update(data: Uint8Array | string): void;
     }
 
     /**

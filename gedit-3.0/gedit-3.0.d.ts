@@ -8,7 +8,6 @@
  */
 
 // Module dependencies
-import type Tepl from '@girs/tepl-6';
 import type GtkSource from '@girs/gtksource-4';
 import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
@@ -20,10 +19,9 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Atk from '@girs/atk-1.0';
-import type Amtk from '@girs/amtk-5';
 
 export namespace Gedit {
     /**
@@ -228,6 +226,14 @@ export namespace Gedit {
     function utils_location_get_dirname_for_display(location: Gio.File): string;
     function utils_menu_position_under_tree_view(tree_view: Gtk.TreeView, rect: Gdk.Rectangle): boolean;
     function utils_newline_type_to_string(newline_type: GtkSource.NewlineType | null): string;
+    /**
+     * This function sets up name and description
+     * for a specified gtk widget.
+     * @param widget The Gtk widget for which name/description to be set
+     * @param name Atk name string
+     * @param description Atk description string
+     */
+    function utils_set_atk_name_description(widget: Gtk.Widget, name: string, description: string): void;
     function utils_set_direct_save_filename(context: Gdk.DragContext): string;
     interface MessageBusForeach {
         (object_path: string, method: string): void;
@@ -303,38 +309,10 @@ export namespace Gedit {
 
         // Virtual methods
 
-        vfunc_get_help_uri(name_of_user_manual: string, link_id_within_user_manual: string): string;
+        vfunc_help_link_id(name: string, link_id: string): string;
         vfunc_process_window_event(window: Window, event: Gdk.Event): boolean;
         vfunc_set_window_title(window: Window, title: string): void;
-        /**
-         * To show the user manual.
-         *
-         * As a useful information to know, the gedit user documentation is currently
-         * written in Mallard. As such, this functionality can easily be tested with
-         * Yelp on Linux:
-         *
-         * With `name_of_user_manual` and `link_id_within_user_manual` both %NULL, it is
-         * equivalent to:
-         *
-         * `$ yelp 'help:gedit'`
-         *
-         * With `link_id_within_user_manual` set to `"gedit-replace"` (a Mallard page
-         * id):
-         *
-         * `$ yelp 'help:gedit/gedit-replace'`
-         *
-         * It is also possible to refer to a section id within a page id, for example:
-         *
-         * `$ yelp 'help:gedit/gedit-spellcheck#dict'`
-         * @param parent_window the #GtkWindow where the request originates from.
-         * @param name_of_user_manual %NULL for gedit's user manual, otherwise   the name of another user manual (e.g., one from another application).
-         * @param link_id_within_user_manual a link ID within the user manual, or   %NULL to show the start page.
-         */
-        vfunc_show_help(
-            parent_window?: Gtk.Window | null,
-            name_of_user_manual?: string | null,
-            link_id_within_user_manual?: string | null,
-        ): boolean;
+        vfunc_show_help(parent: Gtk.Window, name: string, link_id: string): boolean;
 
         // Methods
 
@@ -363,36 +341,7 @@ export namespace Gedit {
         get_views(): View[];
         process_window_event(window: Window, event: Gdk.Event): boolean;
         set_window_title(window: Window, title: string): void;
-        /**
-         * To show the user manual.
-         *
-         * As a useful information to know, the gedit user documentation is currently
-         * written in Mallard. As such, this functionality can easily be tested with
-         * Yelp on Linux:
-         *
-         * With `name_of_user_manual` and `link_id_within_user_manual` both %NULL, it is
-         * equivalent to:
-         *
-         * `$ yelp 'help:gedit'`
-         *
-         * With `link_id_within_user_manual` set to `"gedit-replace"` (a Mallard page
-         * id):
-         *
-         * `$ yelp 'help:gedit/gedit-replace'`
-         *
-         * It is also possible to refer to a section id within a page id, for example:
-         *
-         * `$ yelp 'help:gedit/gedit-spellcheck#dict'`
-         * @param parent_window the #GtkWindow where the request originates from.
-         * @param name_of_user_manual %NULL for gedit's user manual, otherwise   the name of another user manual (e.g., one from another application).
-         * @param link_id_within_user_manual a link ID within the user manual, or   %NULL to show the start page.
-         * @returns whether the operation was successful.
-         */
-        show_help(
-            parent_window?: Gtk.Window | null,
-            name_of_user_manual?: string | null,
-            link_id_within_user_manual?: string | null,
-        ): boolean;
+        show_help(parent: Gtk.Window, name: string, link_id: string): boolean;
 
         // Inherited methods
         /**
@@ -818,7 +767,7 @@ export namespace Gedit {
 
         // Constructor properties interface
 
-        interface ConstructorProps extends Tepl.Buffer.ConstructorProps {
+        interface ConstructorProps extends GtkSource.Buffer.ConstructorProps {
             content_type: string;
             contentType: string;
             empty_search: boolean;
@@ -828,7 +777,7 @@ export namespace Gedit {
         }
     }
 
-    class Document extends Tepl.Buffer {
+    class Document extends GtkSource.Buffer {
         static $gtype: GObject.GType<Document>;
 
         // Properties
@@ -848,8 +797,6 @@ export namespace Gedit {
          * The property is used internally by gedit. It must not be used in a
          * gedit plugin. The property can be modified or removed at any time.
          * </warning>
-         *
-         * Whether the search is empty.
          */
         get empty_search(): boolean;
         /**
@@ -857,8 +804,6 @@ export namespace Gedit {
          * The property is used internally by gedit. It must not be used in a
          * gedit plugin. The property can be modified or removed at any time.
          * </warning>
-         *
-         * Whether the search is empty.
          */
         get emptySearch(): boolean;
         /**
@@ -918,16 +863,15 @@ export namespace Gedit {
          * @returns the associated #GtkSourceFile.
          */
         get_file(): GtkSource.File;
-        // Conflicted with Tepl.Buffer.get_file
-        get_file(...args: never[]): any;
+        get_language(): GtkSource.Language;
+        // Conflicted with GtkSource.Buffer.get_language
+        get_language(...args: never[]): any;
         /**
          * Gets the metadata assigned to `key`.
          * @param key name of the key
          * @returns the value assigned to @key. Free with g_free().
          */
         get_metadata(key: string): string;
-        // Conflicted with Tepl.Buffer.get_metadata
-        get_metadata(...args: never[]): any;
         /**
          * Note: this never returns %NULL.
          */
@@ -941,6 +885,11 @@ export namespace Gedit {
          * @returns the current search context of the document, or NULL if there is no current search context.
          */
         get_search_context(): GtkSource.SearchContext;
+        /**
+         * Note: this never returns %NULL.
+         */
+        get_short_name_for_display(): string;
+        is_untitled(): boolean;
         set_language(lang?: GtkSource.Language | null): void;
         /**
          * Sets the new search context for the document. Use this function only when the
@@ -5758,6 +5707,18 @@ export namespace Gedit {
 
         _init(...args: any[]): void;
 
+        static ['new'](): Statusbar;
+
+        // Methods
+
+        clear_overwrite(): void;
+        /**
+         * Sets the overwrite mode on the statusbar.
+         * @param overwrite if the overwrite mode is set
+         */
+        set_overwrite(overwrite: boolean): void;
+        set_window_state(state: WindowState | null, num_of_errors: number): void;
+
         // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -6254,47 +6215,6 @@ export namespace Gedit {
          */
         get_view(): View;
         /**
-         * This function tries to load `location` into `tab`. It is usually called only on
-         * a newly-created tab.
-         *
-         * If `location` doesn't exist, the behavior depends on `create:`
-         * - If `create` is %FALSE, an error is shown.
-         * - If `create` is %TRUE, an empty #GeditDocument is created without error (but
-         *   the file is not yet created on disk).
-         *
-         * The `tab` needs to be in %GEDIT_TAB_STATE_NORMAL. The previous
-         * #GtkTextBuffer's content is lost.
-         * @param location the #GFile to load.
-         * @param encoding a #GtkSourceEncoding, or %NULL.
-         * @param line_pos the line position to visualize.
-         * @param column_pos the column position to visualize.
-         * @param create %TRUE to show no errors if @location doesn't exist.
-         */
-        load_file(
-            location: Gio.File,
-            encoding: GtkSource.Encoding | null,
-            line_pos: number,
-            column_pos: number,
-            create: boolean,
-        ): void;
-        /**
-         * Loads `stream` into `tab`. This function is usually called only on a
-         * newly-created tab.
-         *
-         * The `tab` needs to be in %GEDIT_TAB_STATE_NORMAL. The previous
-         * #GtkTextBuffer's content is lost.
-         * @param stream the #GInputStream to load, e.g. stdin.
-         * @param encoding a #GtkSourceEncoding, or %NULL.
-         * @param line_pos the line position to visualize.
-         * @param column_pos the column position to visualize.
-         */
-        load_stream(
-            stream: Gio.InputStream,
-            encoding: GtkSource.Encoding | null,
-            line_pos: number,
-            column_pos: number,
-        ): void;
-        /**
          * Enables or disables the autosave feature. It does not install an
          * autosave timeout if the document is new or is read-only
          * @param enable enable (%TRUE) or disable (%FALSE) auto save
@@ -6737,18 +6657,14 @@ export namespace Gedit {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Tepl.View.ConstructorProps,
+            extends GtkSource.View.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {}
     }
 
-    class View extends Tepl.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+    class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
-
-        // Fields
-
-        view: Tepl.View;
 
         // Constructors
 
@@ -6757,7 +6673,7 @@ export namespace Gedit {
         _init(...args: any[]): void;
 
         static ['new'](doc: Document): View;
-        // Conflicted with Tepl.View.new
+        // Conflicted with GtkSource.View.new
 
         static ['new'](...args: never[]): any;
 
@@ -7220,9 +7136,6 @@ export namespace Gedit {
 
         // Properties
 
-        /**
-         * The state of the #GeditWindow.
-         */
         get state(): WindowState;
 
         // Fields
@@ -7282,17 +7195,54 @@ export namespace Gedit {
          */
         close_tabs(tabs: Tab[]): void;
         /**
-         * Creates a new #GeditTab and adds it to the #GtkNotebook.
-         * @param jump_to if %TRUE, the #GtkNotebook switches to the new #GeditTab.
-         * @returns the new #GeditTab.
+         * Creates a new #GeditTab and adds the new tab to the #GtkNotebook.
+         * In case `jump_to` is %TRUE the #GtkNotebook switches to that new #GeditTab.
+         * @param jump_to %TRUE to set the new #GeditTab as active
+         * @returns a new #GeditTab
          */
         create_tab(jump_to: boolean): Tab;
+        /**
+         * Creates a new #GeditTab loading the document specified by `uri`.
+         * In case `jump_to` is %TRUE the #GtkNotebook swithes to that new #GeditTab.
+         * Whether `create` is %TRUE, creates a new empty document if location does
+         * not refer to an existing file
+         * @param location the location of the document
+         * @param encoding a #GtkSourceEncoding, or %NULL
+         * @param line_pos the line position to visualize
+         * @param column_pos the column position to visualize
+         * @param create %TRUE to create a new document in case @uri does exist
+         * @param jump_to %TRUE to set the new #GeditTab as active
+         * @returns a new #GeditTab
+         */
+        create_tab_from_location(
+            location: Gio.File,
+            encoding: GtkSource.Encoding | null,
+            line_pos: number,
+            column_pos: number,
+            create: boolean,
+            jump_to: boolean,
+        ): Tab;
+        create_tab_from_stream(
+            stream: Gio.InputStream,
+            encoding: GtkSource.Encoding | null,
+            line_pos: number,
+            column_pos: number,
+            jump_to: boolean,
+        ): Tab;
+        /**
+         * Gets the active #GeditDocument.
+         * @returns the active #GeditDocument
+         */
         get_active_document(): Document;
         /**
          * Gets the active #GeditTab in the `window`.
          * @returns the active #GeditTab in the @window.
          */
         get_active_tab(): Tab;
+        /**
+         * Gets the active #GeditView.
+         * @returns the active #GeditView
+         */
         get_active_view(): View;
         /**
          * Gets the bottom panel of the `window`.
@@ -7316,7 +7266,11 @@ export namespace Gedit {
          * @returns the #GeditMessageBus associated with @window
          */
         get_message_bus(): MessageBus;
-        get_side_panel(): Tepl.Panel;
+        /**
+         * Gets the side panel of the `window`.
+         * @returns the side panel's #GtkStack.
+         */
+        get_side_panel(): Gtk.Widget;
         /**
          * Retrieves the state of the `window`.
          * @returns the current #GeditWindowState of the @window.
@@ -7353,31 +7307,31 @@ export namespace Gedit {
 
         // Inherited methods
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
+         * Emits the #GActionGroup::action-added signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         action_added(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
-         * @param enabled whether the action is now enabled
+         * @param enabled whether or not the action is now enabled
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
+         * Emits the #GActionGroup::action-removed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         action_removed(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-state-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
@@ -7387,35 +7341,37 @@ export namespace Gedit {
          *
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
-         * parameters then `parameter` must be `NULL`.  See
-         * [method`Gio`.ActionGroup.get_action_parameter_type].
+         * parameters then `parameter` must be %NULL.  See
+         * g_action_group_get_action_parameter_type().
          *
-         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
+         * If the #GActionGroup implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
+         * g_dbus_connection_flush() should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
-         * example of a ‘quit’ action being activated on the primary app
-         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
-         * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
+         * example of a "quit" action being activated on the primary app
+         * instance over D-Bus. Here g_dbus_connection_flush() is called
+         * before `exit()`. Without g_dbus_connection_flush(), the "quit" action
          * may fail to be activated on the primary instance.
          *
+         *
          * ```c
-         * // call ‘quit’ action on primary instance
+         * // call "quit" action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
          * // make sure the action is activated now
-         * g_dbus_connection_flush (…);
+         * g_dbus_connection_flush (...);
          *
-         * g_debug ("Application has been terminated. Exiting.");
+         * g_debug ("application has been terminated. exiting.");
          *
          * exit (0);
          * ```
+         *
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
@@ -7425,11 +7381,11 @@ export namespace Gedit {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.ActionGroup.get_action_state_type].
+         * See g_action_group_get_action_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.ActionGroup.get_action_state_hint].
+         * See g_action_group_get_action_state_hint().
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
@@ -7442,19 +7398,19 @@ export namespace Gedit {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
-         * @returns whether the action is currently enabled
+         * @returns whether or not the action is currently enabled
          */
         get_action_enabled(action_name: string): boolean;
         /**
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using [method`Gio`.ActionGroup.activate_action],
-         * the [type`GLib`.Variant] given to that function must be of the type returned
+         * When activating the action using g_action_group_activate_action(),
+         * the #GVariant given to that function must be of the type returned
          * by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -7466,12 +7422,12 @@ export namespace Gedit {
         /**
          * Queries the current state of the named action within `action_group`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.ActionGroup.get_action_state_type].
+         * given by g_action_group_get_action_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
@@ -7480,12 +7436,12 @@ export namespace Gedit {
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -7493,8 +7449,8 @@ export namespace Gedit {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
@@ -7504,14 +7460,14 @@ export namespace Gedit {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * [type`GLib`.VariantType] of the state.  All calls to
-         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
-         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
+         * #GVariantType of the state.  All calls to
+         * g_action_group_change_action_state() must give a #GVariant of this
+         * type and g_action_group_get_action_state() will return a #GVariant
          * of the same type.
          *
-         * If the action is not stateful then this function will return `NULL`.
-         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
-         * and you must not call [method`Gio`.ActionGroup.change_action_state].
+         * If the action is not stateful then this function will return %NULL.
+         * In that case, g_action_group_get_action_state() will return %NULL
+         * and you must not call g_action_group_change_action_state().
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -7529,27 +7485,27 @@ export namespace Gedit {
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
+         * The caller is responsible for freeing the list with g_strfreev() when
          * it is no longer required.
-         * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @returns a %NULL-terminated array of the names of the actions in the group
          */
         list_actions(): string[];
         /**
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
-         * [method`Gio`.ActionGroup.get_action_parameter_type],
-         * [method`Gio`.ActionGroup.get_action_state_type],
-         * [method`Gio`.ActionGroup.get_action_state_hint] and
-         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
+         * g_action_group_has_action(), g_action_group_get_action_enabled(),
+         * g_action_group_get_action_parameter_type(),
+         * g_action_group_get_action_state_type(),
+         * g_action_group_get_action_state_hint() and
+         * g_action_group_get_action_state() with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
+         * #GActionGroup can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -7558,12 +7514,12 @@ export namespace Gedit {
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
          *
-         * If the action exists, `TRUE` is returned and any of the requested
-         * fields (as indicated by having a non-`NULL` reference passed in) are
-         * filled.  If the action doesn’t exist, `FALSE` is returned and the
+         * If the action exists, %TRUE is returned and any of the requested
+         * fields (as indicated by having a non-%NULL reference passed in) are
+         * filled.  If the action doesn't exist, %FALSE is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
-         * @returns `TRUE` if the action exists, else `FALSE`
+         * @returns %TRUE if the action exists, else %FALSE
          */
         query_action(
             action_name: string,
@@ -7576,31 +7532,31 @@ export namespace Gedit {
             GLib.Variant | null,
         ];
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
+         * Emits the #GActionGroup::action-added signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         vfunc_action_added(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
-         * @param enabled whether the action is now enabled
+         * @param enabled whether or not the action is now enabled
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
+         * Emits the #GActionGroup::action-removed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         vfunc_action_removed(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-state-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
@@ -7610,35 +7566,37 @@ export namespace Gedit {
          *
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
-         * parameters then `parameter` must be `NULL`.  See
-         * [method`Gio`.ActionGroup.get_action_parameter_type].
+         * parameters then `parameter` must be %NULL.  See
+         * g_action_group_get_action_parameter_type().
          *
-         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
+         * If the #GActionGroup implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
+         * g_dbus_connection_flush() should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
-         * example of a ‘quit’ action being activated on the primary app
-         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
-         * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
+         * example of a "quit" action being activated on the primary app
+         * instance over D-Bus. Here g_dbus_connection_flush() is called
+         * before `exit()`. Without g_dbus_connection_flush(), the "quit" action
          * may fail to be activated on the primary instance.
          *
+         *
          * ```c
-         * // call ‘quit’ action on primary instance
+         * // call "quit" action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
          * // make sure the action is activated now
-         * g_dbus_connection_flush (…);
+         * g_dbus_connection_flush (...);
          *
-         * g_debug ("Application has been terminated. Exiting.");
+         * g_debug ("application has been terminated. exiting.");
          *
          * exit (0);
          * ```
+         *
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
@@ -7648,11 +7606,11 @@ export namespace Gedit {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.ActionGroup.get_action_state_type].
+         * See g_action_group_get_action_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.ActionGroup.get_action_state_hint].
+         * See g_action_group_get_action_state_hint().
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
@@ -7671,12 +7629,12 @@ export namespace Gedit {
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using [method`Gio`.ActionGroup.activate_action],
-         * the [type`GLib`.Variant] given to that function must be of the type returned
+         * When activating the action using g_action_group_activate_action(),
+         * the #GVariant given to that function must be of the type returned
          * by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -7687,12 +7645,12 @@ export namespace Gedit {
         /**
          * Queries the current state of the named action within `action_group`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.ActionGroup.get_action_state_type].
+         * given by g_action_group_get_action_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -7700,12 +7658,12 @@ export namespace Gedit {
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -7713,8 +7671,8 @@ export namespace Gedit {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -7723,14 +7681,14 @@ export namespace Gedit {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * [type`GLib`.VariantType] of the state.  All calls to
-         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
-         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
+         * #GVariantType of the state.  All calls to
+         * g_action_group_change_action_state() must give a #GVariant of this
+         * type and g_action_group_get_action_state() will return a #GVariant
          * of the same type.
          *
-         * If the action is not stateful then this function will return `NULL`.
-         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
-         * and you must not call [method`Gio`.ActionGroup.change_action_state].
+         * If the action is not stateful then this function will return %NULL.
+         * In that case, g_action_group_get_action_state() will return %NULL
+         * and you must not call g_action_group_change_action_state().
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -7746,7 +7704,7 @@ export namespace Gedit {
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
+         * The caller is responsible for freeing the list with g_strfreev() when
          * it is no longer required.
          */
         vfunc_list_actions(): string[];
@@ -7754,18 +7712,18 @@ export namespace Gedit {
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
-         * [method`Gio`.ActionGroup.get_action_parameter_type],
-         * [method`Gio`.ActionGroup.get_action_state_type],
-         * [method`Gio`.ActionGroup.get_action_state_hint] and
-         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
+         * g_action_group_has_action(), g_action_group_get_action_enabled(),
+         * g_action_group_get_action_parameter_type(),
+         * g_action_group_get_action_state_type(),
+         * g_action_group_get_action_state_hint() and
+         * g_action_group_get_action_state() with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
+         * #GActionGroup can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -7774,9 +7732,9 @@ export namespace Gedit {
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
          *
-         * If the action exists, `TRUE` is returned and any of the requested
-         * fields (as indicated by having a non-`NULL` reference passed in) are
-         * filled.  If the action doesn’t exist, `FALSE` is returned and the
+         * If the action exists, %TRUE is returned and any of the requested
+         * fields (as indicated by having a non-%NULL reference passed in) are
+         * filled.  If the action doesn't exist, %FALSE is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          */
@@ -7797,57 +7755,21 @@ export namespace Gedit {
          * as `action` then the old action is dropped from the action map.
          *
          * The action map takes its own reference on `action`.
-         * @param action a [iface@Gio.Action]
+         * @param action a #GAction
          */
         add_action(action: Gio.Action): void;
         /**
-         * A convenience function for creating multiple [class`Gio`.SimpleAction]
-         * instances and adding them to a [iface`Gio`.ActionMap].
-         *
-         * Each action is constructed as per one [struct`Gio`.ActionEntry].
-         *
-         * ```c
-         * static void
-         * activate_quit (GSimpleAction *simple,
-         *                GVariant      *parameter,
-         *                gpointer       user_data)
-         * {
-         *   exit (0);
-         * }
-         *
-         * static void
-         * activate_print_string (GSimpleAction *simple,
-         *                        GVariant      *parameter,
-         *                        gpointer       user_data)
-         * {
-         *   g_print ("%s\n", g_variant_get_string (parameter, NULL));
-         * }
-         *
-         * static GActionGroup *
-         * create_action_group (void)
-         * {
-         *   const GActionEntry entries[] = {
-         *     { "quit",         activate_quit              },
-         *     { "print-string", activate_print_string, "s" }
-         *   };
-         *   GSimpleActionGroup *group;
-         *
-         *   group = g_simple_action_group_new ();
-         *   g_action_map_add_action_entries (G_ACTION_MAP (group), entries, G_N_ELEMENTS (entries), NULL);
-         *
-         *   return G_ACTION_GROUP (group);
-         * }
-         * ```
-         * @param entries a pointer to   the first item in an array of [struct@Gio.ActionEntry] structs
-         * @param user_data the user data for signal connections
+         * A convenience function for creating multiple simple actions.
+         * See Gio.ActionEntryObj for the structure of the action entry.
+         * @param entries Array of action entries to add
          */
-        add_action_entries(entries: Gio.ActionEntry[], user_data?: any | null): void;
+        add_action_entries(entries: Gio.ActionEntryObj[]): void;
         /**
          * Looks up the action with the name `action_name` in `action_map`.
          *
-         * If no such action exists, returns `NULL`.
+         * If no such action exists, returns %NULL.
          * @param action_name the name of an action
-         * @returns a [iface@Gio.Action]
+         * @returns a #GAction, or %NULL
          */
         lookup_action(action_name: string): Gio.Action | null;
         /**
@@ -7858,8 +7780,9 @@ export namespace Gedit {
          */
         remove_action(action_name: string): void;
         /**
-         * Remove actions from a [iface`Gio`.ActionMap]. This is meant as the reverse of
-         * [method`Gio`.ActionMap.add_action_entries].
+         * Remove actions from a #GActionMap. This is meant as the reverse of
+         * g_action_map_add_action_entries().
+         *
          *
          *
          * ```c
@@ -7880,7 +7803,8 @@ export namespace Gedit {
          *   g_action_map_remove_action_entries (map, entries, G_N_ELEMENTS (entries));
          * }
          * ```
-         * @param entries a pointer to   the first item in an array of [struct@Gio.ActionEntry] structs
+         *
+         * @param entries a pointer to           the first item in an array of #GActionEntry structs
          */
         remove_action_entries(entries: Gio.ActionEntry[]): void;
         /**
@@ -7890,13 +7814,13 @@ export namespace Gedit {
          * as `action` then the old action is dropped from the action map.
          *
          * The action map takes its own reference on `action`.
-         * @param action a [iface@Gio.Action]
+         * @param action a #GAction
          */
         vfunc_add_action(action: Gio.Action): void;
         /**
          * Looks up the action with the name `action_name` in `action_map`.
          *
-         * If no such action exists, returns `NULL`.
+         * If no such action exists, returns %NULL.
          * @param action_name the name of an action
          */
         vfunc_lookup_action(action_name: string): Gio.Action | null;

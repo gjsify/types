@@ -14,7 +14,6 @@ import type GLib from '@girs/glib-2.0';
 import type DBusGLib from '@girs/dbusglib-1.0';
 import type NMClient from '@girs/nmclient-1.0';
 import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
 import type Gdk from '@girs/gdk-3.0';
@@ -23,6 +22,7 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace NMGtk {
@@ -240,7 +240,7 @@ export namespace NMGtk {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -281,7 +281,7 @@ export namespace NMGtk {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -327,7 +327,7 @@ export namespace NMGtk {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -387,7 +387,7 @@ export namespace NMGtk {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */

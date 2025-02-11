@@ -12,7 +12,6 @@ import type TelepathyGLib from '@girs/telepathyglib-0.12';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
 
 export namespace TelepathyLogger {
     /**
@@ -279,6 +278,21 @@ export namespace TelepathyLogger {
         // Methods
 
         /**
+         * Disables logging of events for given entity. By default logging is enabled
+         * for all entities.
+         * @param account
+         * @param entity
+         */
+        disable_for_entity(account: TelepathyGLib.Account, entity: Entity): void;
+        /**
+         * Re-enables logging of events for entity previously disabled by
+         * tpl_log_manager_disable_for_entity(). By default logging is enabled for all
+         * entities.
+         * @param account
+         * @param entity a TplEntity
+         */
+        enable_for_entity(account: TelepathyGLib.Account, entity: Entity): void;
+        /**
          * Checks if logs exist for `target`.
          *
          * It applies for any registered TplLogStore with the TplLogStore:readable
@@ -451,12 +465,38 @@ export namespace TelepathyLogger {
         ): Promise<Event[]> | void;
         get_filtered_events_finish(result: Gio.AsyncResult): [boolean, Event[]];
         /**
+         * Checks, whether logging is disabled for given entity. By default, logging
+         * is enabled for all entities.
+         * @param account
+         * @param entity a TplEntity
+         * @returns %TRUE if logging for the entity has been disabled, %FALSE otherwise.
+         */
+        is_disabled_for_entity(account: TelepathyGLib.Account, entity: Entity): boolean;
+        /**
+         * Search for all the conversations containing `text`.
+         * @param text the pattern to search
+         * @param type_mask event type filter see #TplEventTypeMask
+         */
+        search_async(text: string, type_mask: number): Promise<LogSearchHit[]>;
+        /**
          * Search for all the conversations containing `text`.
          * @param text the pattern to search
          * @param type_mask event type filter see #TplEventTypeMask
          * @param callback a callback to call when the request is satisfied
          */
-        search_async(text: string, type_mask: number, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        search_async(text: string, type_mask: number, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Search for all the conversations containing `text`.
+         * @param text the pattern to search
+         * @param type_mask event type filter see #TplEventTypeMask
+         * @param callback a callback to call when the request is satisfied
+         */
+        search_async(
+            text: string,
+            type_mask: number,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<LogSearchHit[]> | void;
+        search_finish(result: Gio.AsyncResult): [boolean, LogSearchHit[]];
         /**
          * Create a #TplLogWalker to traverse all the events exchanged with `target`.
          * @param account a #TpAccount

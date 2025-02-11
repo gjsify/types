@@ -16,7 +16,6 @@ import type Graphene from '@girs/graphene-1.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type GDesktopEnums from '@girs/gdesktopenums-3.0';
 import type CoglPango from '@girs/coglpango-15';
 import type PangoCairo from '@girs/pangocairo-1.0';
@@ -29,6 +28,7 @@ import type GL from '@girs/gl-1.0';
 import type Clutter from '@girs/clutter-15';
 import type Atk from '@girs/atk-1.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace St {
     /**
@@ -347,11 +347,11 @@ export namespace St {
         THREE,
     }
     /**
-     * Used to specify options for st_icon_theme_lookup_icon()
+     * Used to specify options for [method`St`.IconTheme.lookup_icon]
      */
 
     /**
-     * Used to specify options for st_icon_theme_lookup_icon()
+     * Used to specify options for [method`St`.IconTheme.lookup_icon]
      */
     export namespace IconLookupFlags {
         export const $gtype: GObject.GType<IconLookupFlags>;
@@ -457,6 +457,12 @@ export namespace St {
         }
     }
 
+    /**
+     * An adjustable bounded value.
+     *
+     * The #StAdjustment object represents a range of values bounded between a
+     * minimum and maximum, together with step and page increments and a page size.
+     */
     class Adjustment extends GObject.Object implements Clutter.Animatable {
         static $gtype: GObject.GType<Adjustment>;
 
@@ -560,14 +566,14 @@ export namespace St {
 
         /**
          * Add a #ClutterTransition for the adjustment. If the transition stops, it will
-         * be automatically removed if #ClutterTransition:remove-on-complete is %TRUE.
+         * be automatically removed if [property`Clutter`.Transition:remove-on-complete] is %TRUE.
          * @param name a unique name for the transition
          * @param transition a #ClutterTransition
          */
         add_transition(name: string, transition: Clutter.Transition): void;
         /**
          * Adjusts the adjustment using delta values from a scroll event.
-         * You should use this instead of using st_adjustment_set_value()
+         * You should use this instead of using [method`St`.Adjustment.set_value]
          * as this method will tweak the values directly using the same
          * math as GTK+, to ensure that scrolling is consistent across
          * the environment.
@@ -576,14 +582,14 @@ export namespace St {
         adjust_for_scroll_event(delta: number): void;
         /**
          * Set #StAdjustment:value to a value clamped between `lower` and `upper`. The
-         * clamping described by st_adjustment_set_value() still applies.
+         * clamping described by [method`St`.Adjustment.set_value] still applies.
          * @param lower the lower value
          * @param upper the upper value
          */
         clamp_page(lower: number, upper: number): void;
         /**
          * Get the #ClutterTransition for `name` previously added with
-         * st_adjustment_add_transition() or %NULL if not found.
+         * [method`St`.Adjustment.add_transition] or %NULL if not found.
          * @param name a transition name
          * @returns a #ClutterTransition
          */
@@ -608,9 +614,9 @@ export namespace St {
          * Sets all properties of the adjustment at once.
          *
          * Use this function to avoid multiple emissions of the #GObject::notify and
-         * #StAdjustment::changed signals. See st_adjustment_set_lower() for an
+         * [signal`St`.Adjustment::changed] signals. See st_adjustment_set_lower() for an
          * alternative way of compressing multiple emissions of #GObject::notify and
-         * #StAdjustmet::changed into one of each.
+         * [signal`St`.Adjustment::changed] into one of each.
          * @param value the new value
          * @param lower the new minimum value
          * @param upper the new maximum value
@@ -1116,6 +1122,12 @@ export namespace St {
         }
     }
 
+    /**
+     * A simple container with one actor.
+     *
+     * #StBin is a simple container capable of having only one
+     * #ClutterActor as a child.
+     */
     class Bin<A extends Clutter.Actor = Clutter.Actor>
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable
@@ -1611,8 +1623,14 @@ export namespace St {
     }
 
     /**
-     * The contents of this structure are private and should only be accessed
-     * through the public API.
+     * Layout container arranging children in a single line.
+     *
+     * The #StBoxLayout arranges its children along a single line, where each
+     * child can be allocated either its preferred size or larger if the expand
+     * option is set. If the fill option is set, the actor will be allocated more
+     * than its requested size. If the fill option is not set, but the expand option
+     * is enabled, then the position of the actor within the available space can
+     * be determined by the alignment child property.
      */
     class BoxLayout
         extends Viewport<Clutter.BoxLayout>
@@ -1673,8 +1691,7 @@ export namespace St {
          *
          * JavaScript code may override this as demonstrated below:
          *
-         *
-         * ```<!-- language="JavaScript" -->
+         * ```js
          * export const MyScrollable = GObject.registerClass({
          *     Properties: {
          *         'hadjustment': GObject.ParamSpec.override(
@@ -1697,7 +1714,6 @@ export namespace St {
          *     }
          * });
          * ```
-         *
          */
         get hadjustment(): Adjustment;
         set hadjustment(val: Adjustment);
@@ -2163,6 +2179,12 @@ export namespace St {
         }
     }
 
+    /**
+     * Button widget
+     *
+     * A button widget with support for either a text label or icon, toggle mode
+     * and transitions effects between states.
+     */
     class Button<A extends Clutter.Actor = Clutter.Actor>
         extends Bin<A>
         implements Atk.ImplementorIface, Clutter.Animatable
@@ -2727,8 +2749,11 @@ export namespace St {
     }
 
     /**
-     * The contents of this structure is private and should only be accessed using
-     * the provided API.
+     * A simple representation of the clipboard
+     *
+     * #StCliboard is a very simple object representation of the clipboard
+     * available to applications. Text is always assumed to be UTF-8 and non-text
+     * items are not handled.
      */
     class Clipboard extends GObject.Object {
         static $gtype: GObject.GType<Clipboard>;
@@ -2801,6 +2826,17 @@ export namespace St {
                 Clutter.Animatable.ConstructorProps {}
     }
 
+    /**
+     * A dynamically-sized Cairo drawing area
+     *
+     * #StDrawingArea allows drawing via Cairo; the primary difference is that
+     * it is dynamically sized. To use, connect to the [signal`St`.DrawingArea::repaint]
+     * signal, and inside the signal handler, call
+     * [method`St`.DrawingArea.get_context] to get the Cairo context to draw to.  The
+     * [signal`St`.DrawingArea::repaint] signal will be emitted by default when the area is
+     * resized or the CSS style changes; you can use the
+     * [method`St`.DrawingArea.queue_repaint] as well.
+     */
     class DrawingArea extends Widget implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<DrawingArea>;
 
@@ -2827,14 +2863,13 @@ export namespace St {
 
         /**
          * Gets the Cairo context to paint to. This function must only be called
-         * from a signal handler or virtual function for the #StDrawingArea::repaint
+         * from a signal handler or virtual function for the [signal`St`.DrawingArea::repaint]
          * signal.
          *
          * JavaScript code must call the special dispose function before returning from
          * the signal handler or virtual function to avoid leaking memory:
          *
-         *
-         * ```<!-- language="JavaScript" -->
+         * ```js
          * function onRepaint(area) {
          *     let cr = area.get_context();
          *
@@ -2846,7 +2881,6 @@ export namespace St {
          * let area = new St.DrawingArea();
          * area.connect('repaint', onRepaint);
          * ```
-         *
          * @returns the Cairo context for the paint operation
          */
         get_context(): cairo.Context;
@@ -2859,7 +2893,7 @@ export namespace St {
          */
         get_surface_size(): [number, number];
         /**
-         * Will cause the actor to emit a #StDrawingArea::repaint signal before it is
+         * Will cause the actor to emit a [signal`St`.DrawingArea::repaint] signal before it is
          * next drawn to the scene. Useful if some parameters for the area being
          * drawn other than the size or style have changed. Note that
          * clutter_actor_queue_redraw() will simply result in the same
@@ -3305,6 +3339,19 @@ export namespace St {
         }
     }
 
+    /**
+     * Widget for displaying text
+     *
+     * #StEntry is a simple widget for displaying text. It derives from
+     * #StWidget to add extra style and placement functionality over
+     * #ClutterText. The internal #ClutterText is publicly accessibly to allow
+     * applications to set further properties.
+     *
+     * #StEntry supports the following pseudo style states:
+     *
+     * - `focus`: the widget has focus
+     * - `indeterminate`: the widget is showing the hint text or actor
+     */
     class Entry extends Widget implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<Entry>;
 
@@ -3920,6 +3967,11 @@ export namespace St {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * Keyboard focus management
+     *
+     * #StFocusManager handles keyboard focus for all actors on the stage.
+     */
     class FocusManager extends GObject.Object {
         static $gtype: GObject.GType<FocusManager>;
 
@@ -4000,6 +4052,16 @@ export namespace St {
                 Atk.Value.ConstructorProps {}
     }
 
+    /**
+     * An accessible class with signals for implementing specific Atk interfaces
+     *
+     * #StGenericAccessible is mainly a workaround for the current lack of
+     * of a proper support for GValue at javascript. See bug#703412 for
+     * more information. We implement the accessible interfaces, but proxy
+     * the virtual functions into signals, which gjs can catch.
+     *
+     * #StGenericAccessible is an #StWidgetAccessible
+     */
     class GenericAccessible extends WidgetAccessible implements Atk.Component, Atk.Value {
         static $gtype: GObject.GType<GenericAccessible>;
 
@@ -4587,8 +4649,10 @@ export namespace St {
     }
 
     /**
-     * The contents of this structure are private and should only be accessed
-     * through the public API.
+     * A simple styled icon actor
+     *
+     * #StIcon is a simple styled texture actor that displays an image from
+     * a stylesheet.
      */
     class Icon extends Widget implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<Icon>;
@@ -5144,17 +5208,19 @@ export namespace St {
         // Methods
 
         /**
-         * Gets the base scale for the icon. The base scale is a scale
-         * for the icon that was specified by the icon theme creator.
-         * For instance an icon drawn for a high-dpi screen with window
-         * scale 2 for a base size of 32 will be 64 pixels tall and have
-         * a base scale of 2.
+         * Gets the base scale for the icon.
+         *
+         * The base scale is a scale for the icon that was specified by
+         * the icon theme creator. For instance an icon drawn for a
+         * high-dpi screen with window scale 2 for a base size of 32 will be
+         * 64 pixels tall and have a base scale of 2.
          * @returns the base scale
          */
         get_base_scale(): number;
         /**
-         * Gets the base size for the icon. The base size
-         * is a size for the icon that was specified by
+         * Gets the base size for the icon.
+         *
+         * The base size is a size for the icon that was specified by
          * the icon theme creator. This may be different
          * than the actual size of image; an example of
          * this is small emblem icons that can be attached
@@ -5169,20 +5235,22 @@ export namespace St {
         get_base_size(): number;
         /**
          * Gets the filename for the icon.
-         * @returns the filename for the icon, or %NULL.     The return value is owned by GTK+ and should not be modified     or freed.
+         * @returns the filename for the icon.     The return value is owned by GTK+ and should not be modified     or freed.
          */
         get_filename(): string | null;
         /**
-         * Checks if the icon is symbolic or not. This currently uses only
-         * the file name and not the file contents for determining this.
+         * Checks if the icon is symbolic or not.
+         *
+         * This currently uses only the file name and not
+         * the file contents for determining this.
          * This behaviour may change in the future.
          * @returns %TRUE if the icon is symbolic, %FALSE otherwise
          */
         is_symbolic(): boolean;
         /**
          * Renders an icon previously looked up in an icon theme using
-         * st_icon_theme_lookup_icon(); the size will be based on the size
-         * passed to st_icon_theme_lookup_icon(). Note that the resulting
+         * [method`St`.IconTheme.lookup_icon]; the size will be based on the size
+         * passed to [method`St`.IconTheme.lookup_icon]. Note that the resulting
          * pixbuf may not be exactly this size; an icon theme may have icons
          * that differ slightly from their nominal sizes, and in addition GTK+
          * will avoid scaling icons that it considers sufficiently close to the
@@ -5196,18 +5264,18 @@ export namespace St {
         load_icon(): GdkPixbuf.Pixbuf;
         /**
          * Asynchronously load, render and scale an icon previously looked up
-         * from the icon theme using st_icon_theme_lookup_icon().
+         * from the icon theme using [method`St`.IconTheme.lookup_icon].
          *
-         * For more details, see st_icon_info_load_icon() which is the synchronous
+         * For more details, see [method`St`.IconInfo.load_icon] which is the synchronous
          * version of this call.
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         load_icon_async(cancellable?: Gio.Cancellable | null): Promise<GdkPixbuf.Pixbuf>;
         /**
          * Asynchronously load, render and scale an icon previously looked up
-         * from the icon theme using st_icon_theme_lookup_icon().
+         * from the icon theme using [method`St`.IconTheme.lookup_icon].
          *
-         * For more details, see st_icon_info_load_icon() which is the synchronous
+         * For more details, see [method`St`.IconInfo.load_icon] which is the synchronous
          * version of this call.
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the     request is satisfied
@@ -5215,9 +5283,9 @@ export namespace St {
         load_icon_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Asynchronously load, render and scale an icon previously looked up
-         * from the icon theme using st_icon_theme_lookup_icon().
+         * from the icon theme using [method`St`.IconTheme.lookup_icon].
          *
-         * For more details, see st_icon_info_load_icon() which is the synchronous
+         * For more details, see [method`St`.IconInfo.load_icon] which is the synchronous
          * version of this call.
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the     request is satisfied
@@ -5235,7 +5303,7 @@ export namespace St {
         /**
          * Loads an icon, modifying it to match the system colours for the foreground,
          * success, warning and error colors provided. If the icon is not a symbolic
-         * one, the function will return the result from st_icon_info_load_icon().
+         * one, the function will return the result from [method`St`.IconInfo.load_icon].
          *
          * This allows loading symbolic icons that will match the system theme.
          *
@@ -5255,7 +5323,7 @@ export namespace St {
         load_symbolic(colors: IconColors): [GdkPixbuf.Pixbuf, boolean];
         /**
          * Asynchronously load, render and scale a symbolic icon previously looked up
-         * from the icon theme using st_icon_theme_lookup_icon().
+         * from the icon theme using [method`St`.IconTheme.lookup_icon].
          *
          * For more details, see st_icon_info_load_symbolic() which is the synchronous
          * version of this call.
@@ -5268,7 +5336,7 @@ export namespace St {
         ): Promise<[GdkPixbuf.Pixbuf, boolean]>;
         /**
          * Asynchronously load, render and scale a symbolic icon previously looked up
-         * from the icon theme using st_icon_theme_lookup_icon().
+         * from the icon theme using [method`St`.IconTheme.lookup_icon].
          *
          * For more details, see st_icon_info_load_symbolic() which is the synchronous
          * version of this call.
@@ -5283,7 +5351,7 @@ export namespace St {
         ): void;
         /**
          * Asynchronously load, render and scale a symbolic icon previously looked up
-         * from the icon theme using st_icon_theme_lookup_icon().
+         * from the icon theme using [method`St`.IconTheme.lookup_icon].
          *
          * For more details, see st_icon_info_load_symbolic() which is the synchronous
          * version of this call.
@@ -5317,6 +5385,8 @@ export namespace St {
     }
 
     /**
+     * Looking up icons by name
+     *
      * #StIconTheme provides a facility for looking up icons by name
      * and size. The main reason for using a name rather than simply
      * providing a filename is to allow different icons to be used
@@ -5379,7 +5449,7 @@ export namespace St {
          * Looks up a named icon and returns a #StIconInfo containing
          * information such as the filename of the icon. The icon
          * can then be rendered into a pixbuf using
-         * st_icon_info_load_icon(). (st_icon_theme_load_icon()
+         * [method`St`.IconInfo.load_icon]. ([method`St`.IconTheme.load_icon]
          * combines these two steps if all you need is the pixbuf.)
          *
          * If `icon_names` contains more than one name, this function
@@ -5388,14 +5458,14 @@ export namespace St {
          * @param icon_names %NULL-terminated array of     icon names to lookup
          * @param size desired icon size
          * @param flags flags modifying the behavior of the icon lookup
-         * @returns a #StIconInfo object containing information about the icon, or %NULL if the icon wasn’t found.
+         * @returns a #StIconInfo object containing information about the icon
          */
         choose_icon(icon_names: string[], size: number, flags: IconLookupFlags | null): IconInfo | null;
         /**
          * Looks up a named icon for a particular window scale and returns
          * a #StIconInfo containing information such as the filename of the
          * icon. The icon can then be rendered into a pixbuf using
-         * st_icon_info_load_icon(). (st_icon_theme_load_icon()
+         * [method`St`.IconInfo.load_icon]. ([method`St`.IconTheme.load_icon]
          * combines these two steps if all you need is the pixbuf.)
          *
          * If `icon_names` contains more than one name, this function
@@ -5405,7 +5475,7 @@ export namespace St {
          * @param size desired icon size
          * @param scale desired scale
          * @param flags flags modifying the behavior of the icon lookup
-         * @returns a #StIconInfo object     containing information about the icon, or %NULL if the     icon wasn’t found.
+         * @returns a #StIconInfo object     containing information about the icon.
          */
         choose_icon_for_scale(
             icon_names: string[],
@@ -5458,7 +5528,7 @@ export namespace St {
          * Looks up an icon in an icon theme, scales it to the given size
          * and renders it into a pixbuf. This is a convenience function;
          * if more details about the icon are needed, use
-         * st_icon_theme_lookup_icon() followed by st_icon_info_load_icon().
+         * [method`St`.IconTheme.lookup_icon] followed by [method`St`.IconInfo.load_icon].
          *
          * Note that you probably want to listen for icon theme changes and
          * update the icon. This is usually done by connecting to the
@@ -5468,17 +5538,17 @@ export namespace St {
          * returned by this function. Otherwise GTK+ may need to keep the old
          * icon theme loaded, which would be a waste of memory.
          * @param icon_name the name of the icon to lookup
-         * @param size the desired icon size. The resulting icon may not be     exactly this size; see st_icon_info_load_icon().
+         * @param size the desired icon size. The resulting icon may not be     exactly this size.
          * @param flags flags modifying the behavior of the icon lookup
-         * @returns the rendered icon; this may be     a newly created icon or a new reference to an internal icon, so     you must not modify the icon. Use g_object_unref() to release     your reference to the icon. %NULL if the icon isn’t found.
+         * @returns the rendered icon; this may be     a newly created icon or a new reference to an internal icon, so     you must not modify the icon.
          */
         load_icon(icon_name: string, size: number, flags: IconLookupFlags | null): GdkPixbuf.Pixbuf | null;
         /**
          * Looks up an icon in an icon theme for a particular window scale,
          * scales it to the given size and renders it into a pixbuf. This is a
          * convenience function; if more details about the icon are needed,
-         * use st_icon_theme_lookup_icon() followed by
-         * st_icon_info_load_icon().
+         * use [method`St`.IconTheme.lookup_icon] followed by
+         * [method`St`.IconInfo.load_icon].
          *
          * Note that you probably want to listen for icon theme changes and
          * update the icon. This is usually done by connecting to the
@@ -5488,10 +5558,10 @@ export namespace St {
          * returned by this function. Otherwise GTK+ may need to keep the old
          * icon theme loaded, which would be a waste of memory.
          * @param icon_name the name of the icon to lookup
-         * @param size the desired icon size. The resulting icon may not be     exactly this size; see st_icon_info_load_icon().
+         * @param size the desired icon size. The resulting icon may not be     exactly this size.
          * @param scale desired scale
          * @param flags flags modifying the behavior of the icon lookup
-         * @returns the rendered icon; this may be     a newly created icon or a new reference to an internal icon, so     you must not modify the icon. Use g_object_unref() to release     your reference to the icon. %NULL if the icon isn’t found.
+         * @returns the rendered icon; this may be     a newly created icon or a new reference to an internal icon, so     you must not modify the icon.
          */
         load_icon_for_scale(
             icon_name: string,
@@ -5502,28 +5572,28 @@ export namespace St {
         /**
          * Looks up an icon and returns a #StIconInfo containing information
          * such as the filename of the icon. The icon can then be rendered
-         * into a pixbuf using st_icon_info_load_icon().
+         * into a pixbuf using [method`St`.IconInfo.load_icon].
          *
          * When rendering on displays with high pixel densities you should not
          * use a `size` multiplied by the scaling factor returned by functions
          * like gdk_window_get_scale_factor(). Instead, you should use
-         * st_icon_theme_lookup_by_gicon_for_scale(), as the assets loaded
+         * [method`St`.IconTheme.lookup_by_gicon_for_scale], as the assets loaded
          * for a given scaling factor may be different.
          * @param icon the #GIcon to look up
          * @param size desired icon size
          * @param flags flags modifying the behavior of the icon lookup
-         * @returns a #StIconInfo containing     information about the icon, or %NULL if the icon wasn’t     found. Unref with g_object_unref()
+         * @returns a #StIconInfo containing     information about the icon.
          */
         lookup_by_gicon(icon: Gio.Icon, size: number, flags: IconLookupFlags | null): IconInfo | null;
         /**
          * Looks up an icon and returns a #StIconInfo containing information
          * such as the filename of the icon. The icon can then be rendered into
-         * a pixbuf using st_icon_info_load_icon().
+         * a pixbuf using [method`St`.IconInfo.load_icon].
          * @param icon the #GIcon to look up
          * @param size desired icon size
          * @param scale the desired scale
          * @param flags flags modifying the behavior of the icon lookup
-         * @returns a #StIconInfo containing     information about the icon, or %NULL if the icon wasn’t     found. Unref with g_object_unref()
+         * @returns a #StIconInfo containing     information about the icon.
          */
         lookup_by_gicon_for_scale(
             icon: Gio.Icon,
@@ -5535,31 +5605,31 @@ export namespace St {
          * Looks up a named icon and returns a #StIconInfo containing
          * information such as the filename of the icon. The icon
          * can then be rendered into a pixbuf using
-         * st_icon_info_load_icon(). (st_icon_theme_load_icon()
+         * [method`St`.IconInfo.load_icon]. ([method`St`.IconTheme.load_icon]
          * combines these two steps if all you need is the pixbuf.)
          *
          * When rendering on displays with high pixel densities you should not
          * use a `size` multiplied by the scaling factor returned by functions
          * like gdk_window_get_scale_factor(). Instead, you should use
-         * st_icon_theme_lookup_icon_for_scale(), as the assets loaded
+         * [method`St`.IconTheme.lookup_by_gicon_for_scale], as the assets loaded
          * for a given scaling factor may be different.
          * @param icon_name the name of the icon to lookup
          * @param size desired icon size
          * @param flags flags modifying the behavior of the icon lookup
-         * @returns a #StIconInfo object     containing information about the icon, or %NULL if the     icon wasn’t found.
+         * @returns a #StIconInfo object     containing information about the icon.
          */
         lookup_icon(icon_name: string, size: number, flags: IconLookupFlags | null): IconInfo | null;
         /**
          * Looks up a named icon for a particular window scale and returns a
          * #StIconInfo containing information such as the filename of the
          * icon. The icon can then be rendered into a pixbuf using
-         * st_icon_info_load_icon(). (st_icon_theme_load_icon() combines
+         * [method`St`.IconInfo.load_icon]. ([method`St`.IconTheme.load_icon] combines
          * these two steps if all you need is the pixbuf.)
          * @param icon_name the name of the icon to lookup
          * @param size desired icon size
          * @param scale the desired scale
          * @param flags flags modifying the behavior of the icon lookup
-         * @returns a #StIconInfo object     containing information about the icon, or %NULL if the     icon wasn’t found.
+         * @returns a #StIconInfo object     containing information about the icon.
          */
         lookup_icon_for_scale(
             icon_name: string,
@@ -6266,8 +6336,12 @@ export namespace St {
     }
 
     /**
-     * The contents of this structure is private and should only be accessed using
-     * the provided API.
+     * Widget for displaying text
+     *
+     * #StLabel is a simple widget for displaying text. It derives from
+     * #StWidget to add extra style and placement functionality over
+     * #ClutterText. The internal #ClutterText is publicly accessibly to allow
+     * applications to set further properties.
      */
     class Label extends Widget implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<Label>;
@@ -7221,6 +7295,12 @@ export namespace St {
         }
     }
 
+    /**
+     * A user interface element to control scrollable areas.
+     *
+     * The #StScrollBar allows users to scroll scrollable actors, either by
+     * the step or page amount, or by manually dragging the handle.
+     */
     class ScrollBar extends Widget implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<ScrollBar>;
 
@@ -7704,6 +7784,13 @@ export namespace St {
         }
     }
 
+    /**
+     * Container for scrollable children
+     *
+     * #StScrollView is a single child container for actors that implement
+     * #StScrollable. It provides scrollbars around the edge of the child to
+     * allow the user to move around the scrollable area.
+     */
     class ScrollView<A extends Clutter.Actor = Clutter.Actor>
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable
@@ -8634,6 +8721,13 @@ export namespace St {
         }
     }
 
+    /**
+     * A set of stylesheets
+     *
+     * #StTheme holds a set of stylesheets. (The "cascade" of the name
+     * Cascading Stylesheets.) A #StTheme can be set to apply to all the actors
+     * in a stage using st_theme_context_set_theme().
+     */
     class Theme extends GObject.Object {
         static $gtype: GObject.GType<Theme>;
 
@@ -8727,6 +8821,14 @@ export namespace St {
         }
     }
 
+    /**
+     * Holds global information about a tree of styled objects
+     *
+     * #StThemeContext is responsible for managing information global to a tree of styled objects,
+     * such as the set of stylesheets or the default font. In normal usage, a #StThemeContext
+     * is bound to a #ClutterStage; a singleton #StThemeContext can be obtained for a #ClutterStage
+     * by using st_theme_context_get_for_stage().
+     */
     class ThemeContext extends GObject.Object {
         static $gtype: GObject.GType<ThemeContext>;
 
@@ -8827,6 +8929,24 @@ export namespace St {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * Style information for one node in a tree of themed objects
+     *
+     * A #StThemeNode represents the CSS style information (the set of CSS properties) for one
+     * node in a tree of themed objects. In typical usage, it represents the style information
+     * for a single #ClutterActor. A #StThemeNode is immutable: attributes such as the
+     * CSS classes for the node are passed in at construction. If the attributes of the node
+     * or any parent node change, the node should be discarded and a new node created.
+     * #StThemeNode has generic accessors to look up properties by name and specific
+     * accessors for standard CSS properties that add caching and handling of various
+     * details of the CSS specification. #StThemeNode also has convenience functions to help
+     * in implementing a #ClutterActor with borders and padding.
+     *
+     * Note that pixel measurements take the #StThemeContext:scale-factor into
+     * account so all values are in physical pixels, as opposed to logical pixels.
+     * Physical pixels correspond to actor sizes, not necessarily to pixels on
+     * display devices (eg. when `scale-monitor-framebuffer` is enabled).
+     */
     class ThemeNode extends GObject.Object {
         static $gtype: GObject.GType<ThemeNode>;
 
@@ -9290,6 +9410,11 @@ export namespace St {
         }
     }
 
+    /**
+     * Scrollable container
+     *
+     * The #StViewport is a generic #StScrollable implementation.
+     */
     class Viewport<A extends Clutter.LayoutManager = Clutter.LayoutManager, B extends Clutter.Content = Clutter.Content>
         extends Widget<A, B>
         implements Atk.ImplementorIface, Clutter.Animatable, Scrollable
@@ -9318,8 +9443,7 @@ export namespace St {
          *
          * JavaScript code may override this as demonstrated below:
          *
-         *
-         * ```<!-- language="JavaScript" -->
+         * ```js
          * export const MyScrollable = GObject.registerClass({
          *     Properties: {
          *         'hadjustment': GObject.ParamSpec.override(
@@ -9342,7 +9466,6 @@ export namespace St {
          *     }
          * });
          * ```
-         *
          */
         get hadjustment(): Adjustment;
         set hadjustment(val: Adjustment);
@@ -9817,6 +9940,15 @@ export namespace St {
         }
     }
 
+    /**
+     * Base class for stylable actors
+     *
+     * #StWidget is a simple abstract class on top of #ClutterActor. It
+     * provides basic theming properties.
+     *
+     * Actors in the St library should subclass #StWidget if they plan
+     * to obey to a certain #StStyle.
+     */
     class Widget<A extends Clutter.LayoutManager = Clutter.LayoutManager, B extends Clutter.Content = Clutter.Content>
         extends Clutter.Actor<A, B>
         implements Atk.ImplementorIface, Clutter.Animatable
@@ -9922,7 +10054,7 @@ export namespace St {
         /**
          * Gets a list of the focusable children of `widget,` in "Tab"
          * order. By default, this returns all visible
-         * (as in clutter_actor_is_visible()) children of `widget`.
+         * (as in [method`Clutter`.Actor.is_visible]) children of `widget`.
          */
         vfunc_get_focus_chain(): Clutter.Actor[];
         vfunc_navigate_focus(from: Clutter.Actor | null, direction: DirectionType): boolean;
@@ -9976,7 +10108,7 @@ export namespace St {
         /**
          * Gets a list of the focusable children of `widget,` in "Tab"
          * order. By default, this returns all visible
-         * (as in clutter_actor_is_visible()) children of `widget`.
+         * (as in [method`Clutter`.Actor.is_visible]) children of `widget`.
          * @returns @widget's focusable children
          */
         get_focus_chain(): Clutter.Actor[];
@@ -11410,7 +11542,11 @@ export namespace St {
     type ScrollableInterface = typeof Scrollable;
     type SettingsClass = typeof Settings;
     /**
-     * Attributes of the -st-shadow property.
+     * A type representing -st-shadow attributes
+     *
+     * #StShadow is a boxed type for storing attributes of the -st-shadow
+     * property, modelled liberally after the CSS3 box-shadow property.
+     * See http://www.css3.info/preview/box-shadow/
      */
     class Shadow {
         static $gtype: GObject.GType<Shadow>;
@@ -11477,6 +11613,12 @@ export namespace St {
         unref(): void;
     }
 
+    /**
+     * A helper for implementing a drop shadow on a actor.
+     * The actor is expected to recreate the helper whenever its contents
+     * or size change. Then, it would call st_shadow_helper_paint() inside
+     * its paint() virtual function.
+     */
     class ShadowHelper {
         static $gtype: GObject.GType<ShadowHelper>;
 
@@ -11511,14 +11653,6 @@ export namespace St {
     }
 
     type TextureCacheClass = typeof TextureCache;
-    abstract class TextureCachePrivate {
-        static $gtype: GObject.GType<TextureCachePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
     type ThemeClass = typeof Theme;
     type ThemeContextClass = typeof ThemeContext;
     type ThemeNodeClass = typeof ThemeNode;
@@ -11579,8 +11713,7 @@ export namespace St {
          *
          * JavaScript code may override this as demonstrated below:
          *
-         *
-         * ```<!-- language="JavaScript" -->
+         * ```js
          * export const MyScrollable = GObject.registerClass({
          *     Properties: {
          *         'hadjustment': GObject.ParamSpec.override(
@@ -11603,7 +11736,6 @@ export namespace St {
          *     }
          * });
          * ```
-         *
          */
         get hadjustment(): Adjustment;
         set hadjustment(val: Adjustment);

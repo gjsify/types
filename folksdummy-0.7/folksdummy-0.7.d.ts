@@ -11,7 +11,6 @@
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type Gee from '@girs/gee-0.8';
 import type Folks from '@girs/folks-0.7';
 

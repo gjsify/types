@@ -10,7 +10,6 @@
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
 
 export namespace Gio {
     /**
@@ -701,8 +700,8 @@ export namespace Gio {
         MULTIDISK,
         /**
          * The start/stop methods will
-         *    unlock/lock the disk (for example using the ATA `SECURITY UNLOCK
-         *    DEVICE` command)
+         *    unlock/lock the disk (for example using the ATA <quote>SECURITY
+         *    UNLOCK DEVICE</quote> command)
          */
         PASSWORD,
     }
@@ -3314,12 +3313,12 @@ export namespace Gio {
      * Checks if `action_name` is valid.
      *
      * `action_name` is valid if it consists only of alphanumeric characters,
-     * plus `-` and `.`.  The empty string is not a valid action name.
+     * plus '-' and '.'.  The empty string is not a valid action name.
      *
-     * It is an error to call this function with a non-UTF-8 `action_name`.
-     * `action_name` must not be `NULL`.
+     * It is an error to call this function with a non-utf8 `action_name`.
+     * `action_name` must not be %NULL.
      * @param action_name a potential action name
-     * @returns `TRUE` if @action_name is valid
+     * @returns %TRUE if @action_name is valid
      */
     function action_name_is_valid(action_name: string): boolean;
     /**
@@ -3341,20 +3340,20 @@ export namespace Gio {
      * The third format is used to represent an action with any type of
      * target value, including strings.  The target value follows the action
      * name, surrounded in parens.  For example: `app.action(42)`.  The
-     * target value is parsed using [func`GLib`.Variant.parse].  If a tuple-typed
+     * target value is parsed using g_variant_parse().  If a tuple-typed
      * value is desired, it must be specified in the same way, resulting in
      * two sets of parens, for example: `app.action((1,2,3))`.  A string
      * target can be specified this way as well: `app.action('target')`.
      * For strings, this third format must be used if target value is
      * empty or contains characters other than alphanumerics, `-` and `.`.
      *
-     * If this function returns `TRUE`, a non-`NULL` value is guaranteed to be returned
-     * in `action_name` (if a pointer is passed in). A `NULL` value may still be
+     * If this function returns %TRUE, a non-%NULL value is guaranteed to be returned
+     * in `action_name` (if a pointer is passed in). A %NULL value may still be
      * returned in `target_value,` as the `detailed_name` may not contain a target.
      *
-     * If returned, the [type`GLib`.Variant] in `target_value` is guaranteed to not be floating.
+     * If returned, the #GVariant in `target_value` is guaranteed to not be floating.
      * @param detailed_name a detailed action name
-     * @returns `TRUE` if successful, else `FALSE` with @error set
+     * @returns %TRUE if successful, else %FALSE with @error set
      */
     function action_parse_detailed_name(detailed_name: string): [boolean, string, GLib.Variant | null];
     /**
@@ -3362,31 +3361,29 @@ export namespace Gio {
      *
      * It is an error to call this function with an invalid action name.
      *
-     * This function is the opposite of [func`Gio`.Action.parse_detailed_name].
+     * This function is the opposite of g_action_parse_detailed_name().
      * It will produce a string that can be parsed back to the `action_name`
      * and `target_value` by that function.
      *
      * See that function for the types of strings that will be printed by
      * this function.
      * @param action_name a valid action name
-     * @param target_value a [type@GLib.Variant] target value, or `NULL`
+     * @param target_value a #GVariant target value, or %NULL
      * @returns a detailed format string
      */
     function action_print_detailed_name(action_name: string, target_value?: GLib.Variant | null): string;
     /**
-     * Creates a new [iface`Gio`.AppInfo] from the given information.
+     * Creates a new #GAppInfo from the given information.
      *
-     * Note that for `commandline,` the quoting rules of the `Exec` key of the
+     * Note that for `commandline,` the quoting rules of the Exec key of the
      * [freedesktop.org Desktop Entry Specification](http://freedesktop.org/Standards/desktop-entry-spec)
      * are applied. For example, if the `commandline` contains
      * percent-encoded URIs, the percent-character must be doubled in order to prevent it from
-     * being swallowed by `Exec` key unquoting. See
-     * [the specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s07.html)
-     * for exact quoting rules.
-     * @param commandline the command line to use
-     * @param application_name the application name, or `NULL` to use @commandline
-     * @param flags flags that can specify details of the created [iface@Gio.AppInfo]
-     * @returns new [iface@Gio.AppInfo] for given command.
+     * being swallowed by Exec key unquoting. See the specification for exact quoting rules.
+     * @param commandline the commandline to use
+     * @param application_name the application name, or %NULL to use @commandline
+     * @param flags flags that can specify details of the created #GAppInfo
+     * @returns new #GAppInfo for given command.
      */
     function app_info_create_from_commandline(
         commandline: string,
@@ -3398,40 +3395,34 @@ export namespace Gio {
      * on this system.
      *
      * For desktop files, this includes applications that have
-     * [`NoDisplay=true`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-nodisplay)
-     * set or are excluded from display by means of
-     * [`OnlyShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-onlyshowin)
-     * or [`NotShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-notshowin).
-     * See [method`Gio`.AppInfo.should_show].
-     *
-     * The returned list does not include applications which have the
-     * [`Hidden` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-hidden)
-     * set.
-     * @returns a newly allocated   list of references to [iface@Gio.AppInfo]s.
+     * `NoDisplay=true` set or are excluded from display by means
+     * of `OnlyShowIn` or `NotShowIn`. See g_app_info_should_show().
+     * The returned list does not include applications which have
+     * the `Hidden` key set.
+     * @returns a newly allocated #GList of references to #GAppInfos.
      */
     function app_info_get_all(): AppInfo[];
     /**
-     * Gets a list of all [iface`Gio`.AppInfo]s for a given content type,
-     * including the recommended and fallback [iface`Gio`.AppInfo]s. See
-     * [func`Gio`.AppInfo.get_recommended_for_type] and
-     * [func`Gio`.AppInfo.get_fallback_for_type].
-     * @param content_type the content type to find a [iface@Gio.AppInfo] for
-     * @returns list of   [iface@Gio.AppInfo]s for given @content_type.
+     * Gets a list of all #GAppInfos for a given content type,
+     * including the recommended and fallback #GAppInfos. See
+     * g_app_info_get_recommended_for_type() and
+     * g_app_info_get_fallback_for_type().
+     * @param content_type the content type to find a #GAppInfo for
+     * @returns #GList of #GAppInfos     for given @content_type or %NULL on error.
      */
     function app_info_get_all_for_type(content_type: string): AppInfo[];
     /**
-     * Gets the default [iface`Gio`.AppInfo] for a given content type.
-     * @param content_type the content type to find a [iface@Gio.AppInfo] for
-     * @param must_support_uris if `TRUE`, the [iface@Gio.AppInfo] is expected to   support URIs
-     * @returns [iface@Gio.AppInfo] for given   @content_type or `NULL` on error.
+     * Gets the default #GAppInfo for a given content type.
+     * @param content_type the content type to find a #GAppInfo for
+     * @param must_support_uris if %TRUE, the #GAppInfo is expected to     support URIs
+     * @returns #GAppInfo for given @content_type or     %NULL on error.
      */
     function app_info_get_default_for_type(content_type: string, must_support_uris: boolean): AppInfo | null;
     /**
-     * Asynchronously gets the default [iface`Gio`.AppInfo] for a given content
-     * type.
-     * @param content_type the content type to find a [iface@Gio.AppInfo] for
-     * @param must_support_uris if `TRUE`, the [iface@Gio.AppInfo] is expected to   support URIs
-     * @param cancellable a [class@Gio.Cancellable]
+     * Asynchronously gets the default #GAppInfo for a given content type.
+     * @param content_type the content type to find a #GAppInfo for
+     * @param must_support_uris if %TRUE, the #GAppInfo is expected to     support URIs
+     * @param cancellable optional #GCancellable object, %NULL to ignore
      */
     function app_info_get_default_for_type_async(
         content_type: string,
@@ -3439,12 +3430,11 @@ export namespace Gio {
         cancellable?: Cancellable | null,
     ): Promise<AppInfo>;
     /**
-     * Asynchronously gets the default [iface`Gio`.AppInfo] for a given content
-     * type.
-     * @param content_type the content type to find a [iface@Gio.AppInfo] for
-     * @param must_support_uris if `TRUE`, the [iface@Gio.AppInfo] is expected to   support URIs
-     * @param cancellable a [class@Gio.Cancellable]
-     * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+     * Asynchronously gets the default #GAppInfo for a given content type.
+     * @param content_type the content type to find a #GAppInfo for
+     * @param must_support_uris if %TRUE, the #GAppInfo is expected to     support URIs
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is done
      */
     function app_info_get_default_for_type_async(
         content_type: string,
@@ -3453,12 +3443,11 @@ export namespace Gio {
         callback: AsyncReadyCallback<string> | null,
     ): void;
     /**
-     * Asynchronously gets the default [iface`Gio`.AppInfo] for a given content
-     * type.
-     * @param content_type the content type to find a [iface@Gio.AppInfo] for
-     * @param must_support_uris if `TRUE`, the [iface@Gio.AppInfo] is expected to   support URIs
-     * @param cancellable a [class@Gio.Cancellable]
-     * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+     * Asynchronously gets the default #GAppInfo for a given content type.
+     * @param content_type the content type to find a #GAppInfo for
+     * @param must_support_uris if %TRUE, the #GAppInfo is expected to     support URIs
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is done
      */
     function app_info_get_default_for_type_async(
         content_type: string,
@@ -3467,31 +3456,30 @@ export namespace Gio {
         callback?: AsyncReadyCallback<string> | null,
     ): Promise<AppInfo> | void;
     /**
-     * Finishes a default [iface`Gio`.AppInfo] lookup started by
-     * [func`Gio`.AppInfo.get_default_for_type_async].
+     * Finishes a default #GAppInfo lookup started by
+     * g_app_info_get_default_for_type_async().
      *
-     * If no #[iface`Gio`.AppInfo] is found, then `error` will be set to
-     * [error`Gio`.IOErrorEnum.NOT_FOUND].
-     * @param result the async result
-     * @returns [iface@Gio.AppInfo] for given @content_type or   `NULL` on error.
+     * If no #GAppInfo is found, then `error` will be set to %G_IO_ERROR_NOT_FOUND.
+     * @param result a #GAsyncResult
+     * @returns #GAppInfo for given @content_type or     %NULL on error.
      */
     function app_info_get_default_for_type_finish(result: AsyncResult): AppInfo;
     /**
-     * Gets the default application for handling URIs with the given URI scheme.
-     *
-     * A URI scheme is the initial part of the URI, up to but not including the `:`.
-     * For example, `http`, `ftp` or `sip`.
+     * Gets the default application for handling URIs with
+     * the given URI scheme. A URI scheme is the initial part
+     * of the URI, up to but not including the ':', e.g. "http",
+     * "ftp" or "sip".
      * @param uri_scheme a string containing a URI scheme.
-     * @returns [iface@Gio.AppInfo] for given   @uri_scheme or `NULL` on error.
+     * @returns #GAppInfo for given @uri_scheme or     %NULL on error.
      */
     function app_info_get_default_for_uri_scheme(uri_scheme: string): AppInfo | null;
     /**
      * Asynchronously gets the default application for handling URIs with
      * the given URI scheme. A URI scheme is the initial part
-     * of the URI, up to but not including the `:`, e.g. `http`,
-     * `ftp` or `sip`.
+     * of the URI, up to but not including the ':', e.g. "http",
+     * "ftp" or "sip".
      * @param uri_scheme a string containing a URI scheme.
-     * @param cancellable a [class@Gio.Cancellable]
+     * @param cancellable optional #GCancellable object, %NULL to ignore
      */
     function app_info_get_default_for_uri_scheme_async(
         uri_scheme: string,
@@ -3500,11 +3488,11 @@ export namespace Gio {
     /**
      * Asynchronously gets the default application for handling URIs with
      * the given URI scheme. A URI scheme is the initial part
-     * of the URI, up to but not including the `:`, e.g. `http`,
-     * `ftp` or `sip`.
+     * of the URI, up to but not including the ':', e.g. "http",
+     * "ftp" or "sip".
      * @param uri_scheme a string containing a URI scheme.
-     * @param cancellable a [class@Gio.Cancellable]
-     * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is done
      */
     function app_info_get_default_for_uri_scheme_async(
         uri_scheme: string,
@@ -3514,11 +3502,11 @@ export namespace Gio {
     /**
      * Asynchronously gets the default application for handling URIs with
      * the given URI scheme. A URI scheme is the initial part
-     * of the URI, up to but not including the `:`, e.g. `http`,
-     * `ftp` or `sip`.
+     * of the URI, up to but not including the ':', e.g. "http",
+     * "ftp" or "sip".
      * @param uri_scheme a string containing a URI scheme.
-     * @param cancellable a [class@Gio.Cancellable]
-     * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+     * @param cancellable optional #GCancellable object, %NULL to ignore
+     * @param callback a #GAsyncReadyCallback to call when the request is done
      */
     function app_info_get_default_for_uri_scheme_async(
         uri_scheme: string,
@@ -3526,61 +3514,61 @@ export namespace Gio {
         callback?: AsyncReadyCallback<string> | null,
     ): Promise<AppInfo> | void;
     /**
-     * Finishes a default [iface`Gio`.AppInfo] lookup started by
-     * [func`Gio`.AppInfo.get_default_for_uri_scheme_async].
+     * Finishes a default #GAppInfo lookup started by
+     * g_app_info_get_default_for_uri_scheme_async().
      *
-     * If no [iface`Gio`.AppInfo] is found, then `error` will be set to
-     * [error`Gio`.IOErrorEnum.NOT_FOUND].
-     * @param result the async result
-     * @returns [iface@Gio.AppInfo] for given @uri_scheme or   `NULL` on error.
+     * If no #GAppInfo is found, then `error` will be set to %G_IO_ERROR_NOT_FOUND.
+     * @param result a #GAsyncResult
+     * @returns #GAppInfo for given @uri_scheme or     %NULL on error.
      */
     function app_info_get_default_for_uri_scheme_finish(result: AsyncResult): AppInfo;
     /**
-     * Gets a list of fallback [iface`Gio`.AppInfo]s for a given content type, i.e.
-     * those applications which claim to support the given content type by MIME
-     * type subclassing and not directly.
-     * @param content_type the content type to find a [iface@Gio.AppInfo] for
-     * @returns list of [iface@Gio.AppInfo]s     for given @content_type or `NULL` on error.
+     * Gets a list of fallback #GAppInfos for a given content type, i.e.
+     * those applications which claim to support the given content type
+     * by MIME type subclassing and not directly.
+     * @param content_type the content type to find a #GAppInfo for
+     * @returns #GList of #GAppInfos     for given @content_type or %NULL on error.
      */
     function app_info_get_fallback_for_type(content_type: string): AppInfo[];
     /**
-     * Gets a list of recommended [iface`Gio`.AppInfo]s for a given content type,
-     * i.e. those applications which claim to support the given content type
-     * exactly, and not by MIME type subclassing.
-     *
+     * Gets a list of recommended #GAppInfos for a given content type, i.e.
+     * those applications which claim to support the given content type exactly,
+     * and not by MIME type subclassing.
      * Note that the first application of the list is the last used one, i.e.
-     * the last one for which [method`Gio`.AppInfo.set_as_last_used_for_type] has
-     * been called.
-     * @param content_type the content type to find a [iface@Gio.AppInfo] for
-     * @returns list of   [iface@Gio.AppInfo]s for given @content_type or `NULL` on error.
+     * the last one for which g_app_info_set_as_last_used_for_type() has been
+     * called.
+     * @param content_type the content type to find a #GAppInfo for
+     * @returns #GList of #GAppInfos     for given @content_type or %NULL on error.
      */
     function app_info_get_recommended_for_type(content_type: string): AppInfo[];
     /**
-     * Utility function that launches the default application registered to handle
-     * the specified uri. Synchronous I/O is done on the uri to detect the type of
-     * the file if required.
+     * Utility function that launches the default application
+     * registered to handle the specified uri. Synchronous I/O
+     * is done on the uri to detect the type of the file if
+     * required.
      *
-     * The D-Bus–activated applications don’t have to be started if your application
+     * The D-Bus–activated applications don't have to be started if your application
      * terminates too soon after this function. To prevent this, use
-     * [func`Gio`.AppInfo.launch_default_for_uri_async] instead.
+     * g_app_info_launch_default_for_uri_async() instead.
      * @param uri the uri to show
-     * @param context optional launch context
-     * @returns `TRUE` on success, `FALSE` on error.
+     * @param context an optional #GAppLaunchContext
+     * @returns %TRUE on success, %FALSE on error.
      */
     function app_info_launch_default_for_uri(uri: string, context?: AppLaunchContext | null): boolean;
     /**
-     * Async version of [func`Gio`.AppInfo.launch_default_for_uri].
+     * Async version of g_app_info_launch_default_for_uri().
      *
-     * This version is useful if you are interested in receiving error information
-     * in the case where the application is sandboxed and the portal may present an
-     * application chooser dialog to the user.
+     * This version is useful if you are interested in receiving
+     * error information in the case where the application is
+     * sandboxed and the portal may present an application chooser
+     * dialog to the user.
      *
      * This is also useful if you want to be sure that the D-Bus–activated
      * applications are really started before termination and if you are interested
      * in receiving error information from their activation.
      * @param uri the uri to show
-     * @param context optional launch context
-     * @param cancellable a [class@Gio.Cancellable]
+     * @param context an optional #GAppLaunchContext
+     * @param cancellable a #GCancellable
      */
     function app_info_launch_default_for_uri_async(
         uri: string,
@@ -3588,19 +3576,20 @@ export namespace Gio {
         cancellable?: Cancellable | null,
     ): Promise<boolean>;
     /**
-     * Async version of [func`Gio`.AppInfo.launch_default_for_uri].
+     * Async version of g_app_info_launch_default_for_uri().
      *
-     * This version is useful if you are interested in receiving error information
-     * in the case where the application is sandboxed and the portal may present an
-     * application chooser dialog to the user.
+     * This version is useful if you are interested in receiving
+     * error information in the case where the application is
+     * sandboxed and the portal may present an application chooser
+     * dialog to the user.
      *
      * This is also useful if you want to be sure that the D-Bus–activated
      * applications are really started before termination and if you are interested
      * in receiving error information from their activation.
      * @param uri the uri to show
-     * @param context optional launch context
-     * @param cancellable a [class@Gio.Cancellable]
-     * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+     * @param context an optional #GAppLaunchContext
+     * @param cancellable a #GCancellable
+     * @param callback a #GAsyncReadyCallback to call when the request is done
      */
     function app_info_launch_default_for_uri_async(
         uri: string,
@@ -3609,19 +3598,20 @@ export namespace Gio {
         callback: AsyncReadyCallback<string> | null,
     ): void;
     /**
-     * Async version of [func`Gio`.AppInfo.launch_default_for_uri].
+     * Async version of g_app_info_launch_default_for_uri().
      *
-     * This version is useful if you are interested in receiving error information
-     * in the case where the application is sandboxed and the portal may present an
-     * application chooser dialog to the user.
+     * This version is useful if you are interested in receiving
+     * error information in the case where the application is
+     * sandboxed and the portal may present an application chooser
+     * dialog to the user.
      *
      * This is also useful if you want to be sure that the D-Bus–activated
      * applications are really started before termination and if you are interested
      * in receiving error information from their activation.
      * @param uri the uri to show
-     * @param context optional launch context
-     * @param cancellable a [class@Gio.Cancellable]
-     * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+     * @param context an optional #GAppLaunchContext
+     * @param cancellable a #GCancellable
+     * @param callback a #GAsyncReadyCallback to call when the request is done
      */
     function app_info_launch_default_for_uri_async(
         uri: string,
@@ -3631,16 +3621,16 @@ export namespace Gio {
     ): Promise<boolean> | void;
     /**
      * Finishes an asynchronous launch-default-for-uri operation.
-     * @param result the async result
-     * @returns `TRUE` if the launch was successful, `FALSE` if @error is set
+     * @param result a #GAsyncResult
+     * @returns %TRUE if the launch was successful, %FALSE if @error is set
      */
     function app_info_launch_default_for_uri_finish(result: AsyncResult): boolean;
     /**
      * Removes all changes to the type associations done by
-     * [method`Gio`.AppInfo.set_as_default_for_type],
-     * [method`Gio`.AppInfo.set_as_default_for_extension],
-     * [method`Gio`.AppInfo.add_supports_type] or
-     * [method`Gio`.AppInfo.remove_supports_type].
+     * g_app_info_set_as_default_for_type(),
+     * g_app_info_set_as_default_for_extension(),
+     * g_app_info_add_supports_type() or
+     * g_app_info_remove_supports_type().
      * @param content_type a content type
      */
     function app_info_reset_type_associations(content_type: string): void;
@@ -3654,7 +3644,7 @@ export namespace Gio {
      * @param object_type a #GType supporting #GAsyncInitable.
      * @param n_parameters the number of parameters in @parameters
      * @param parameters the parameters to use to construct the object
-     * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+     * @param io_priority the [I/O priority][io-priority] of the operation
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
      */
@@ -4500,7 +4490,7 @@ export namespace Gio {
      * containing a sequence of six 'X' characters, and containing no
      * directory components. If it is %NULL, a default template is used.
      * @param tmpl Template for the file   name, as in g_file_open_tmp(), or %NULL for a default template
-     * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+     * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore
      */
     function file_new_tmp_async(
@@ -4516,7 +4506,7 @@ export namespace Gio {
      * containing a sequence of six 'X' characters, and containing no
      * directory components. If it is %NULL, a default template is used.
      * @param tmpl Template for the file   name, as in g_file_open_tmp(), or %NULL for a default template
-     * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+     * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is done
      */
@@ -4534,7 +4524,7 @@ export namespace Gio {
      * containing a sequence of six 'X' characters, and containing no
      * directory components. If it is %NULL, a default template is used.
      * @param tmpl Template for the file   name, as in g_file_open_tmp(), or %NULL for a default template
-     * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+     * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is done
      */
@@ -4552,7 +4542,7 @@ export namespace Gio {
      * containing a sequence of six 'X' characters, and containing no
      * directory components. If it is %NULL, a default template is used.
      * @param tmpl Template for the file   name, as in g_dir_make_tmp(), or %NULL for a default template
-     * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+     * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore
      */
     function file_new_tmp_dir_async(
@@ -4568,7 +4558,7 @@ export namespace Gio {
      * containing a sequence of six 'X' characters, and containing no
      * directory components. If it is %NULL, a default template is used.
      * @param tmpl Template for the file   name, as in g_dir_make_tmp(), or %NULL for a default template
-     * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+     * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is done
      */
@@ -4586,7 +4576,7 @@ export namespace Gio {
      * containing a sequence of six 'X' characters, and containing no
      * directory components. If it is %NULL, a default template is used.
      * @param tmpl Template for the file   name, as in g_dir_make_tmp(), or %NULL for a default template
-     * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+     * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is done
      */
@@ -4786,7 +4776,7 @@ export namespace Gio {
      * g_io_scheduler_cancel_all_jobs().
      * @param job_func a #GIOSchedulerJobFunc.
      * @param notify a #GDestroyNotify for @user_data, or %NULL
-     * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+     * @param io_priority the [I/O priority][io-priority] of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      */
     function io_scheduler_push_job(
@@ -5377,21 +5367,6 @@ export namespace Gio {
      */
     function unix_mount_points_get(): [UnixMountPoint[], number];
     /**
-     * Gets an array of [struct`Gio`.UnixMountPoint]s containing the Unix mount
-     * points listed in `table_path`.
-     *
-     * This is a generalized version of g_unix_mount_points_get(), mainly intended
-     * for internal testing use. Note that g_unix_mount_points_get() may parse
-     * multiple hierarchical table files, so this function is not a direct superset
-     * of its functionality.
-     *
-     * If there is an error reading or parsing the file, `NULL` will be returned
-     * and both out parameters will be set to `0`.
-     * @param table_path path to the mount points table file (for example `/etc/fstab`)
-     * @returns mount   points, or `NULL` if there was an error loading them
-     */
-    function unix_mount_points_get_from_file(table_path: string): [UnixMountPoint[] | null, number];
-    /**
      * Checks if the unix mounts have changed since a given unix time.
      * @param time guint64 to contain a timestamp.
      * @returns %TRUE if the mounts have changed since @time.
@@ -5405,21 +5380,6 @@ export namespace Gio {
      * @returns a #GList of the UNIX mounts.
      */
     function unix_mounts_get(): [UnixMountEntry[], number];
-    /**
-     * Gets an array of [struct`Gio`.UnixMountEntry]s containing the Unix mounts
-     * listed in `table_path`.
-     *
-     * This is a generalized version of g_unix_mounts_get(), mainly intended for
-     * internal testing use. Note that g_unix_mounts_get() may parse multiple
-     * hierarchical table files, so this function is not a direct superset of its
-     * functionality.
-     *
-     * If there is an error reading or parsing the file, `NULL` will be returned
-     * and both out parameters will be set to `0`.
-     * @param table_path path to the mounts table file (for example `/proc/self/mountinfo`)
-     * @returns mount   entries, or `NULL` if there was an error loading them
-     */
-    function unix_mounts_get_from_file(table_path: string): [UnixMountEntry[] | null, number];
     interface AsyncReadyCallback<A = GObject.Object> {
         (source_object: A | null, res: AsyncResult, data?: any | null): void;
     }
@@ -6950,7 +6910,7 @@ export namespace Gio {
          * Gets the #GAppInfoMonitor for the current thread-default main
          * context.
          *
-         * The #GAppInfoMonitor will emit a “changed” signal in the
+         * The #GAppInfoMonitor will emit a "changed" signal in the
          * thread-default main context whenever the list of installed
          * applications (as reported by g_app_info_get_all()) may have changed.
          *
@@ -7033,8 +6993,8 @@ export namespace Gio {
          * Gets the display string for the `context`. This is used to ensure new
          * applications are started on the same display as the launching
          * application, by setting the `DISPLAY` environment variable.
-         * @param info the app info
-         * @param files a list of [iface@Gio.File] objects
+         * @param info a #GAppInfo
+         * @param files a #GList of #GFile objects
          */
         vfunc_get_display(info: AppInfo, files: File[]): string | null;
         /**
@@ -7051,17 +7011,14 @@ export namespace Gio {
          * [freedesktop.org Startup Notification Protocol](http://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt).
          *
          * Support for the XDG Activation Protocol was added in GLib 2.76.
-         * Since GLib 2.82 `info` and `files` can be `NULL`. If that’s not supported by the backend,
-         * the returned token will be `NULL`.
-         * @param info the app info
-         * @param files a list of [iface@Gio.File] objects
+         * @param info a #GAppInfo
+         * @param files a #GList of #GFile objects
          */
-        vfunc_get_startup_notify_id(info?: AppInfo | null, files?: File[] | null): string | null;
+        vfunc_get_startup_notify_id(info: AppInfo, files: File[]): string | null;
         /**
          * Called when an application has failed to launch, so that it can cancel
-         * the application startup notification started in
-         * [method`Gio`.AppLaunchContext.get_startup_notify_id].
-         * @param startup_notify_id the startup notification id that was returned by   [method@Gio.AppLaunchContext.get_startup_notify_id].
+         * the application startup notification started in g_app_launch_context_get_startup_notify_id().
+         * @param startup_notify_id the startup notification id that was returned by g_app_launch_context_get_startup_notify_id().
          */
         vfunc_launch_failed(startup_notify_id: string): void;
         vfunc_launch_started(info: AppInfo, platform_data: GLib.Variant): void;
@@ -7073,17 +7030,17 @@ export namespace Gio {
          * Gets the display string for the `context`. This is used to ensure new
          * applications are started on the same display as the launching
          * application, by setting the `DISPLAY` environment variable.
-         * @param info the app info
-         * @param files a list of [iface@Gio.File] objects
+         * @param info a #GAppInfo
+         * @param files a #GList of #GFile objects
          * @returns a display string for the display.
          */
         get_display(info: AppInfo, files: File[]): string | null;
         /**
          * Gets the complete environment variable list to be passed to
          * the child process when `context` is used to launch an application.
-         * This is a `NULL`-terminated array of strings, where each string has
+         * This is a %NULL-terminated array of strings, where each string has
          * the form `KEY=VALUE`.
-         * @returns the child’s environment
+         * @returns the child's environment
          */
         get_environment(): string[];
         /**
@@ -7100,30 +7057,27 @@ export namespace Gio {
          * [freedesktop.org Startup Notification Protocol](http://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt).
          *
          * Support for the XDG Activation Protocol was added in GLib 2.76.
-         * Since GLib 2.82 `info` and `files` can be `NULL`. If that’s not supported by the backend,
-         * the returned token will be `NULL`.
-         * @param info the app info
-         * @param files a list of [iface@Gio.File] objects
-         * @returns a startup notification ID for the application, or `NULL` if   not supported.
+         * @param info a #GAppInfo
+         * @param files a #GList of #GFile objects
+         * @returns a startup notification ID for the application, or %NULL if     not supported.
          */
-        get_startup_notify_id(info?: AppInfo | null, files?: File[] | null): string | null;
+        get_startup_notify_id(info: AppInfo, files: File[]): string | null;
         /**
          * Called when an application has failed to launch, so that it can cancel
-         * the application startup notification started in
-         * [method`Gio`.AppLaunchContext.get_startup_notify_id].
-         * @param startup_notify_id the startup notification id that was returned by   [method@Gio.AppLaunchContext.get_startup_notify_id].
+         * the application startup notification started in g_app_launch_context_get_startup_notify_id().
+         * @param startup_notify_id the startup notification id that was returned by g_app_launch_context_get_startup_notify_id().
          */
         launch_failed(startup_notify_id: string): void;
         /**
-         * Arranges for `variable` to be set to `value` in the child’s environment when
-         * `context` is used to launch an application.
+         * Arranges for `variable` to be set to `value` in the child's
+         * environment when `context` is used to launch an application.
          * @param variable the environment variable to set
          * @param value the value for to set the variable to.
          */
         setenv(variable: string, value: string): void;
         /**
-         * Arranges for `variable` to be unset in the child’s environment when `context`
-         * is used to launch an application.
+         * Arranges for `variable` to be unset in the child's environment
+         * when `context` is used to launch an application.
          * @param variable the environment variable to remove
          */
         unsetenv(variable: string): void;
@@ -7298,7 +7252,7 @@ export namespace Gio {
      *
      * To parse commandline arguments you may handle the
      * [signal`Gio`.Application::command-line] signal or override the
-     * [vfunc`Gio`.Application.local_command_line] virtual function, to parse them in
+     * [vfunc`Gio`.Application.local_command_line] virtual funcion, to parse them in
      * either the primary instance or the local instance, respectively.
      *
      * For an example of opening files with a `GApplication`, see
@@ -7694,8 +7648,8 @@ export namespace Gio {
          * was to send all of the commandline arguments (options and all) to the
          * primary instance for handling.  #GApplication ignored them completely
          * on the local side.  Calling this function "opts in" to the new
-         * behaviour, and in particular, means that unrecognized options will be
-         * treated as errors.  Unrecognized options have never been ignored when
+         * behaviour, and in particular, means that unrecognised options will be
+         * treated as errors.  Unrecognised options have never been ignored when
          * %G_APPLICATION_HANDLES_COMMAND_LINE is unset.
          *
          * If #GApplication::handle-local-options needs to see the list of
@@ -7743,7 +7697,7 @@ export namespace Gio {
          *
          * Calling this function will cause the options in the supplied option
          * group to be parsed, but it does not cause you to be "opted in" to the
-         * new functionality whereby unrecognized options are rejected even if
+         * new functionality whereby unrecognised options are rejected even if
          * %G_APPLICATION_HANDLES_COMMAND_LINE was given.
          * @param group a #GOptionGroup
          */
@@ -8060,11 +8014,11 @@ export namespace Gio {
          * notification. This works even for notifications sent from a previous
          * execution of the application, as long as `id` is the same string.
          *
-         * `id` may be `NULL`, but it is impossible to replace or withdraw
+         * `id` may be %NULL, but it is impossible to replace or withdraw
          * notifications without an id.
          *
          * If `notification` is no longer relevant, it can be withdrawn with
-         * [method`Gio`.Application.withdraw_notification].
+         * g_application_withdraw_notification().
          *
          * It is an error to call this function if `application` has no
          * application ID.
@@ -8234,31 +8188,31 @@ export namespace Gio {
 
         // Inherited methods
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
+         * Emits the #GActionGroup::action-added signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         action_added(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
-         * @param enabled whether the action is now enabled
+         * @param enabled whether or not the action is now enabled
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
+         * Emits the #GActionGroup::action-removed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         action_removed(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-state-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
@@ -8268,35 +8222,37 @@ export namespace Gio {
          *
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
-         * parameters then `parameter` must be `NULL`.  See
-         * [method`Gio`.ActionGroup.get_action_parameter_type].
+         * parameters then `parameter` must be %NULL.  See
+         * g_action_group_get_action_parameter_type().
          *
-         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
+         * If the #GActionGroup implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
+         * g_dbus_connection_flush() should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
-         * example of a ‘quit’ action being activated on the primary app
-         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
-         * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
+         * example of a "quit" action being activated on the primary app
+         * instance over D-Bus. Here g_dbus_connection_flush() is called
+         * before `exit()`. Without g_dbus_connection_flush(), the "quit" action
          * may fail to be activated on the primary instance.
          *
+         *
          * ```c
-         * // call ‘quit’ action on primary instance
+         * // call "quit" action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
          * // make sure the action is activated now
-         * g_dbus_connection_flush (…);
+         * g_dbus_connection_flush (...);
          *
-         * g_debug ("Application has been terminated. Exiting.");
+         * g_debug ("application has been terminated. exiting.");
          *
          * exit (0);
          * ```
+         *
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
@@ -8306,11 +8262,11 @@ export namespace Gio {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.ActionGroup.get_action_state_type].
+         * See g_action_group_get_action_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.ActionGroup.get_action_state_hint].
+         * See g_action_group_get_action_state_hint().
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
@@ -8323,19 +8279,19 @@ export namespace Gio {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
-         * @returns whether the action is currently enabled
+         * @returns whether or not the action is currently enabled
          */
         get_action_enabled(action_name: string): boolean;
         /**
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using [method`Gio`.ActionGroup.activate_action],
-         * the [type`GLib`.Variant] given to that function must be of the type returned
+         * When activating the action using g_action_group_activate_action(),
+         * the #GVariant given to that function must be of the type returned
          * by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -8347,12 +8303,12 @@ export namespace Gio {
         /**
          * Queries the current state of the named action within `action_group`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.ActionGroup.get_action_state_type].
+         * given by g_action_group_get_action_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
@@ -8361,12 +8317,12 @@ export namespace Gio {
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -8374,8 +8330,8 @@ export namespace Gio {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
@@ -8385,14 +8341,14 @@ export namespace Gio {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * [type`GLib`.VariantType] of the state.  All calls to
-         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
-         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
+         * #GVariantType of the state.  All calls to
+         * g_action_group_change_action_state() must give a #GVariant of this
+         * type and g_action_group_get_action_state() will return a #GVariant
          * of the same type.
          *
-         * If the action is not stateful then this function will return `NULL`.
-         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
-         * and you must not call [method`Gio`.ActionGroup.change_action_state].
+         * If the action is not stateful then this function will return %NULL.
+         * In that case, g_action_group_get_action_state() will return %NULL
+         * and you must not call g_action_group_change_action_state().
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -8410,27 +8366,27 @@ export namespace Gio {
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
+         * The caller is responsible for freeing the list with g_strfreev() when
          * it is no longer required.
-         * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @returns a %NULL-terminated array of the names of the actions in the group
          */
         list_actions(): string[];
         /**
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
-         * [method`Gio`.ActionGroup.get_action_parameter_type],
-         * [method`Gio`.ActionGroup.get_action_state_type],
-         * [method`Gio`.ActionGroup.get_action_state_hint] and
-         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
+         * g_action_group_has_action(), g_action_group_get_action_enabled(),
+         * g_action_group_get_action_parameter_type(),
+         * g_action_group_get_action_state_type(),
+         * g_action_group_get_action_state_hint() and
+         * g_action_group_get_action_state() with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
+         * #GActionGroup can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -8439,12 +8395,12 @@ export namespace Gio {
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
          *
-         * If the action exists, `TRUE` is returned and any of the requested
-         * fields (as indicated by having a non-`NULL` reference passed in) are
-         * filled.  If the action doesn’t exist, `FALSE` is returned and the
+         * If the action exists, %TRUE is returned and any of the requested
+         * fields (as indicated by having a non-%NULL reference passed in) are
+         * filled.  If the action doesn't exist, %FALSE is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
-         * @returns `TRUE` if the action exists, else `FALSE`
+         * @returns %TRUE if the action exists, else %FALSE
          */
         query_action(
             action_name: string,
@@ -8457,31 +8413,31 @@ export namespace Gio {
             GLib.Variant | null,
         ];
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
+         * Emits the #GActionGroup::action-added signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         vfunc_action_added(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
-         * @param enabled whether the action is now enabled
+         * @param enabled whether or not the action is now enabled
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
+         * Emits the #GActionGroup::action-removed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         vfunc_action_removed(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-state-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
@@ -8491,35 +8447,37 @@ export namespace Gio {
          *
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
-         * parameters then `parameter` must be `NULL`.  See
-         * [method`Gio`.ActionGroup.get_action_parameter_type].
+         * parameters then `parameter` must be %NULL.  See
+         * g_action_group_get_action_parameter_type().
          *
-         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
+         * If the #GActionGroup implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
+         * g_dbus_connection_flush() should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
-         * example of a ‘quit’ action being activated on the primary app
-         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
-         * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
+         * example of a "quit" action being activated on the primary app
+         * instance over D-Bus. Here g_dbus_connection_flush() is called
+         * before `exit()`. Without g_dbus_connection_flush(), the "quit" action
          * may fail to be activated on the primary instance.
          *
+         *
          * ```c
-         * // call ‘quit’ action on primary instance
+         * // call "quit" action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
          * // make sure the action is activated now
-         * g_dbus_connection_flush (…);
+         * g_dbus_connection_flush (...);
          *
-         * g_debug ("Application has been terminated. Exiting.");
+         * g_debug ("application has been terminated. exiting.");
          *
          * exit (0);
          * ```
+         *
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
@@ -8529,11 +8487,11 @@ export namespace Gio {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.ActionGroup.get_action_state_type].
+         * See g_action_group_get_action_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.ActionGroup.get_action_state_hint].
+         * See g_action_group_get_action_state_hint().
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
@@ -8552,12 +8510,12 @@ export namespace Gio {
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using [method`Gio`.ActionGroup.activate_action],
-         * the [type`GLib`.Variant] given to that function must be of the type returned
+         * When activating the action using g_action_group_activate_action(),
+         * the #GVariant given to that function must be of the type returned
          * by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -8568,12 +8526,12 @@ export namespace Gio {
         /**
          * Queries the current state of the named action within `action_group`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.ActionGroup.get_action_state_type].
+         * given by g_action_group_get_action_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -8581,12 +8539,12 @@ export namespace Gio {
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -8594,8 +8552,8 @@ export namespace Gio {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -8604,14 +8562,14 @@ export namespace Gio {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * [type`GLib`.VariantType] of the state.  All calls to
-         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
-         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
+         * #GVariantType of the state.  All calls to
+         * g_action_group_change_action_state() must give a #GVariant of this
+         * type and g_action_group_get_action_state() will return a #GVariant
          * of the same type.
          *
-         * If the action is not stateful then this function will return `NULL`.
-         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
-         * and you must not call [method`Gio`.ActionGroup.change_action_state].
+         * If the action is not stateful then this function will return %NULL.
+         * In that case, g_action_group_get_action_state() will return %NULL
+         * and you must not call g_action_group_change_action_state().
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -8627,7 +8585,7 @@ export namespace Gio {
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
+         * The caller is responsible for freeing the list with g_strfreev() when
          * it is no longer required.
          */
         vfunc_list_actions(): string[];
@@ -8635,18 +8593,18 @@ export namespace Gio {
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
-         * [method`Gio`.ActionGroup.get_action_parameter_type],
-         * [method`Gio`.ActionGroup.get_action_state_type],
-         * [method`Gio`.ActionGroup.get_action_state_hint] and
-         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
+         * g_action_group_has_action(), g_action_group_get_action_enabled(),
+         * g_action_group_get_action_parameter_type(),
+         * g_action_group_get_action_state_type(),
+         * g_action_group_get_action_state_hint() and
+         * g_action_group_get_action_state() with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
+         * #GActionGroup can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -8655,9 +8613,9 @@ export namespace Gio {
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
          *
-         * If the action exists, `TRUE` is returned and any of the requested
-         * fields (as indicated by having a non-`NULL` reference passed in) are
-         * filled.  If the action doesn’t exist, `FALSE` is returned and the
+         * If the action exists, %TRUE is returned and any of the requested
+         * fields (as indicated by having a non-%NULL reference passed in) are
+         * filled.  If the action doesn't exist, %FALSE is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          */
@@ -8678,57 +8636,21 @@ export namespace Gio {
          * as `action` then the old action is dropped from the action map.
          *
          * The action map takes its own reference on `action`.
-         * @param action a [iface@Gio.Action]
+         * @param action a #GAction
          */
         add_action(action: Action): void;
         /**
-         * A convenience function for creating multiple [class`Gio`.SimpleAction]
-         * instances and adding them to a [iface`Gio`.ActionMap].
-         *
-         * Each action is constructed as per one [struct`Gio`.ActionEntry].
-         *
-         * ```c
-         * static void
-         * activate_quit (GSimpleAction *simple,
-         *                GVariant      *parameter,
-         *                gpointer       user_data)
-         * {
-         *   exit (0);
-         * }
-         *
-         * static void
-         * activate_print_string (GSimpleAction *simple,
-         *                        GVariant      *parameter,
-         *                        gpointer       user_data)
-         * {
-         *   g_print ("%s\n", g_variant_get_string (parameter, NULL));
-         * }
-         *
-         * static GActionGroup *
-         * create_action_group (void)
-         * {
-         *   const GActionEntry entries[] = {
-         *     { "quit",         activate_quit              },
-         *     { "print-string", activate_print_string, "s" }
-         *   };
-         *   GSimpleActionGroup *group;
-         *
-         *   group = g_simple_action_group_new ();
-         *   g_action_map_add_action_entries (G_ACTION_MAP (group), entries, G_N_ELEMENTS (entries), NULL);
-         *
-         *   return G_ACTION_GROUP (group);
-         * }
-         * ```
-         * @param entries a pointer to   the first item in an array of [struct@Gio.ActionEntry] structs
-         * @param user_data the user data for signal connections
+         * A convenience function for creating multiple simple actions.
+         * See Gio.ActionEntryObj for the structure of the action entry.
+         * @param entries Array of action entries to add
          */
-        add_action_entries(entries: ActionEntry[], user_data?: any | null): void;
+        add_action_entries(entries: ActionEntryObj[]): void;
         /**
          * Looks up the action with the name `action_name` in `action_map`.
          *
-         * If no such action exists, returns `NULL`.
+         * If no such action exists, returns %NULL.
          * @param action_name the name of an action
-         * @returns a [iface@Gio.Action]
+         * @returns a #GAction, or %NULL
          */
         lookup_action(action_name: string): Action | null;
         /**
@@ -8739,8 +8661,9 @@ export namespace Gio {
          */
         remove_action(action_name: string): void;
         /**
-         * Remove actions from a [iface`Gio`.ActionMap]. This is meant as the reverse of
-         * [method`Gio`.ActionMap.add_action_entries].
+         * Remove actions from a #GActionMap. This is meant as the reverse of
+         * g_action_map_add_action_entries().
+         *
          *
          *
          * ```c
@@ -8761,7 +8684,8 @@ export namespace Gio {
          *   g_action_map_remove_action_entries (map, entries, G_N_ELEMENTS (entries));
          * }
          * ```
-         * @param entries a pointer to   the first item in an array of [struct@Gio.ActionEntry] structs
+         *
+         * @param entries a pointer to           the first item in an array of #GActionEntry structs
          */
         remove_action_entries(entries: ActionEntry[]): void;
         /**
@@ -8771,13 +8695,13 @@ export namespace Gio {
          * as `action` then the old action is dropped from the action map.
          *
          * The action map takes its own reference on `action`.
-         * @param action a [iface@Gio.Action]
+         * @param action a #GAction
          */
         vfunc_add_action(action: Action): void;
         /**
          * Looks up the action with the name `action_name` in `action_map`.
          *
-         * If no such action exists, returns `NULL`.
+         * If no such action exists, returns %NULL.
          * @param action_name the name of an action
          */
         vfunc_lookup_action(action_name: string): Action | null;
@@ -9669,7 +9593,7 @@ export namespace Gio {
     }
 
     /**
-     * Buffered input stream implements [class`Gio`.FilterInputStream] and provides
+     * Buffered input stream implements #GFilterInputStream and provides
      * for buffered reads.
      *
      * By default, `GBufferedInputStream`'s buffer size is set at 4 kilobytes.
@@ -9716,8 +9640,7 @@ export namespace Gio {
          * Will block during this read.
          *
          * If `count` is zero, returns zero and does nothing. A value of `count`
-         * larger than `G_MAXSSIZE` will cause a
-         * [error`Gio`.IOErrorEnum.INVALID_ARGUMENT] error.
+         * larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
          *
          * On success, the number of bytes read into the buffer is returned.
          * It is not an error if this is not the same as the requested size, as it
@@ -9727,31 +9650,31 @@ export namespace Gio {
          * If `count` is -1 then the attempted read size is equal to the number of
          * bytes that are required to fill the buffer.
          *
-         * If `cancellable` is not `NULL`, then the operation can be cancelled by
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error [error`Gio`.IOErrorEnum.CANCELLED] will be returned.
-         * If an operation was partially finished when the operation was cancelled the
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+         * operation was partially finished when the operation was cancelled the
          * partial result will be returned, without an error.
          *
-         * On error `-1` is returned and `error` is set accordingly.
+         * On error -1 is returned and `error` is set accordingly.
          *
          * For the asynchronous, non-blocking, version of this function, see
-         * [method`Gio`.BufferedInputStream.fill_async].
+         * g_buffered_input_stream_fill_async().
          * @param count the number of bytes that will be read from the stream
-         * @param cancellable optional [class@Gio.Cancellable] object, `NULL` to ignore
+         * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         vfunc_fill(count: number, cancellable?: Cancellable | null): number;
         /**
          * Reads data into `stream'`s buffer asynchronously, up to `count` size.
          * `io_priority` can be used to prioritize reads. For the synchronous
-         * version of this function, see [method`Gio`.BufferedInputStream.fill].
+         * version of this function, see g_buffered_input_stream_fill().
          *
-         * If `count` is `-1` then the attempted read size is equal to the number
+         * If `count` is -1 then the attempted read size is equal to the number
          * of bytes that are required to fill the buffer.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional [class@Gio.Cancellable] object
-         * @param callback a [callback@Gio.AsyncReadyCallback]
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional #GCancellable object
+         * @param callback a #GAsyncReadyCallback
          */
         vfunc_fill_async(
             count: number,
@@ -9761,7 +9684,7 @@ export namespace Gio {
         ): void;
         /**
          * Finishes an asynchronous read.
-         * @param result a [iface@Gio.AsyncResult]
+         * @param result a #GAsyncResult
          */
         vfunc_fill_finish(result: AsyncResult): number;
 
@@ -9772,8 +9695,7 @@ export namespace Gio {
          * Will block during this read.
          *
          * If `count` is zero, returns zero and does nothing. A value of `count`
-         * larger than `G_MAXSSIZE` will cause a
-         * [error`Gio`.IOErrorEnum.INVALID_ARGUMENT] error.
+         * larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
          *
          * On success, the number of bytes read into the buffer is returned.
          * It is not an error if this is not the same as the requested size, as it
@@ -9783,44 +9705,44 @@ export namespace Gio {
          * If `count` is -1 then the attempted read size is equal to the number of
          * bytes that are required to fill the buffer.
          *
-         * If `cancellable` is not `NULL`, then the operation can be cancelled by
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error [error`Gio`.IOErrorEnum.CANCELLED] will be returned.
-         * If an operation was partially finished when the operation was cancelled the
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+         * operation was partially finished when the operation was cancelled the
          * partial result will be returned, without an error.
          *
-         * On error `-1` is returned and `error` is set accordingly.
+         * On error -1 is returned and `error` is set accordingly.
          *
          * For the asynchronous, non-blocking, version of this function, see
-         * [method`Gio`.BufferedInputStream.fill_async].
+         * g_buffered_input_stream_fill_async().
          * @param count the number of bytes that will be read from the stream
-         * @param cancellable optional [class@Gio.Cancellable] object, `NULL` to ignore
-         * @returns the number of bytes read into @stream's buffer, up to @count,     or `-1` on error.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @returns the number of bytes read into @stream's buffer, up to @count,     or -1 on error.
          */
         fill(count: number, cancellable?: Cancellable | null): number;
         /**
          * Reads data into `stream'`s buffer asynchronously, up to `count` size.
          * `io_priority` can be used to prioritize reads. For the synchronous
-         * version of this function, see [method`Gio`.BufferedInputStream.fill].
+         * version of this function, see g_buffered_input_stream_fill().
          *
-         * If `count` is `-1` then the attempted read size is equal to the number
+         * If `count` is -1 then the attempted read size is equal to the number
          * of bytes that are required to fill the buffer.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional [class@Gio.Cancellable] object
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional #GCancellable object
          */
         fill_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<number>;
         /**
          * Reads data into `stream'`s buffer asynchronously, up to `count` size.
          * `io_priority` can be used to prioritize reads. For the synchronous
-         * version of this function, see [method`Gio`.BufferedInputStream.fill].
+         * version of this function, see g_buffered_input_stream_fill().
          *
-         * If `count` is `-1` then the attempted read size is equal to the number
+         * If `count` is -1 then the attempted read size is equal to the number
          * of bytes that are required to fill the buffer.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional [class@Gio.Cancellable] object
-         * @param callback a [callback@Gio.AsyncReadyCallback]
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional #GCancellable object
+         * @param callback a #GAsyncReadyCallback
          */
         fill_async(
             count: number,
@@ -9831,14 +9753,14 @@ export namespace Gio {
         /**
          * Reads data into `stream'`s buffer asynchronously, up to `count` size.
          * `io_priority` can be used to prioritize reads. For the synchronous
-         * version of this function, see [method`Gio`.BufferedInputStream.fill].
+         * version of this function, see g_buffered_input_stream_fill().
          *
-         * If `count` is `-1` then the attempted read size is equal to the number
+         * If `count` is -1 then the attempted read size is equal to the number
          * of bytes that are required to fill the buffer.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional [class@Gio.Cancellable] object
-         * @param callback a [callback@Gio.AsyncReadyCallback]
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional #GCancellable object
+         * @param callback a #GAsyncReadyCallback
          */
         fill_async(
             count: number,
@@ -9848,7 +9770,7 @@ export namespace Gio {
         ): Promise<number> | void;
         /**
          * Finishes an asynchronous read.
-         * @param result a [iface@Gio.AsyncResult]
+         * @param result a #GAsyncResult
          * @returns a #gssize of the read stream, or `-1` on an error.
          */
         fill_finish(result: AsyncResult): number;
@@ -9867,7 +9789,7 @@ export namespace Gio {
          * offset `offset` bytes.
          * @param buffer a pointer to   an allocated chunk of memory
          * @param offset a #gsize
-         * @returns a #gsize of the number of bytes peeked, or `-1` on error.
+         * @returns a #gsize of the number of bytes peeked, or -1 on error.
          */
         peek(buffer: Uint8Array | string, offset: number): number;
         /**
@@ -9882,17 +9804,17 @@ export namespace Gio {
          * during this read.
          *
          * On success, the byte read from the stream is returned. On end of stream
-         * `-1` is returned but it's not an exceptional error and `error` is not set.
+         * -1 is returned but it's not an exceptional error and `error` is not set.
          *
-         * If `cancellable` is not `NULL`, then the operation can be cancelled by
+         * If `cancellable` is not %NULL, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error [error`Gio`.IOErrorEnum.CANCELLED] will be returned.
-         * If an operation was partially finished when the operation was cancelled the
+         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+         * operation was partially finished when the operation was cancelled the
          * partial result will be returned, without an error.
          *
-         * On error `-1` is returned and `error` is set accordingly.
-         * @param cancellable optional [class@Gio.Cancellable] object, `NULL` to ignore
-         * @returns the byte read from the @stream, or `-1` on end of stream or error.
+         * On error -1 is returned and `error` is set accordingly.
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @returns the byte read from the @stream, or -1 on end of stream or error.
          */
         read_byte(cancellable?: Cancellable | null): number;
         /**
@@ -10471,7 +10393,7 @@ export namespace Gio {
 
         /**
          * Checks if the buffer automatically grows as data is added.
-         * @returns `TRUE` if the @stream's buffer automatically grows, `FALSE` otherwise.
+         * @returns %TRUE if the @stream's buffer automatically grows, %FALSE otherwise.
          */
         get_auto_grow(): boolean;
         /**
@@ -11963,12 +11885,6 @@ export namespace Gio {
             flags: ConverterFlags | null,
         ): [ConverterResult, number, number];
         /**
-         * Applies `converter` to the data in `bytes`.
-         * @param bytes the data to convert
-         * @returns A newly-allocated   `GBytes` with the converted data, or `NULL` if an error   occurred
-         */
-        convert_bytes(bytes: GLib.Bytes | Uint8Array): GLib.Bytes;
-        /**
          * Resets all internal state in the converter, making it behave
          * as if it was just created. If the converter has any internal
          * state that would produce output then that output is lost.
@@ -12761,7 +12677,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          */
         close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
@@ -12776,7 +12692,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -12796,7 +12712,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -12882,7 +12798,7 @@ export namespace Gio {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         read_all_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
@@ -12897,7 +12813,7 @@ export namespace Gio {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -12917,7 +12833,7 @@ export namespace Gio {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -12964,7 +12880,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         read_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
@@ -12992,7 +12908,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -13025,7 +12941,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -13085,7 +13001,7 @@ export namespace Gio {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         read_bytes_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<GLib.Bytes>;
@@ -13111,7 +13027,7 @@ export namespace Gio {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -13143,7 +13059,7 @@ export namespace Gio {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -13217,7 +13133,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         skip_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<number>;
@@ -13246,7 +13162,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -13281,7 +13197,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -13308,7 +13224,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -13347,7 +13263,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -13406,7 +13322,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -14932,7 +14848,7 @@ export namespace Gio {
          * about the UNIX process ID.
          * @returns The UNIX process ID, or `-1` if @error is set.
          */
-        get_unix_pid(): never;
+        get_unix_pid(): number;
         /**
          * Tries to get the UNIX user identifier from `credentials`. This
          * method is only available on UNIX platforms.
@@ -14942,7 +14858,7 @@ export namespace Gio {
          * about the UNIX user.
          * @returns The UNIX user identifier or `-1` if @error is set.
          */
-        get_unix_user(): never;
+        get_unix_user(): number;
         /**
          * Checks if `credentials` and `other_credentials` is the same user.
          *
@@ -14974,7 +14890,7 @@ export namespace Gio {
          * @param uid The UNIX user identifier to set.
          * @returns %TRUE if @uid was set, %FALSE if error is set.
          */
-        set_unix_user(uid: never): boolean;
+        set_unix_user(uid: number): boolean;
         /**
          * Creates a human-readable textual representation of `credentials`
          * that can be used in logging and debug messages. The format of the
@@ -15033,31 +14949,31 @@ export namespace Gio {
 
         // Inherited methods
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
+         * Emits the #GActionGroup::action-added signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         action_added(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
-         * @param enabled whether the action is now enabled
+         * @param enabled whether or not the action is now enabled
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
+         * Emits the #GActionGroup::action-removed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         action_removed(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-state-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
@@ -15067,35 +14983,37 @@ export namespace Gio {
          *
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
-         * parameters then `parameter` must be `NULL`.  See
-         * [method`Gio`.ActionGroup.get_action_parameter_type].
+         * parameters then `parameter` must be %NULL.  See
+         * g_action_group_get_action_parameter_type().
          *
-         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
+         * If the #GActionGroup implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
+         * g_dbus_connection_flush() should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
-         * example of a ‘quit’ action being activated on the primary app
-         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
-         * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
+         * example of a "quit" action being activated on the primary app
+         * instance over D-Bus. Here g_dbus_connection_flush() is called
+         * before `exit()`. Without g_dbus_connection_flush(), the "quit" action
          * may fail to be activated on the primary instance.
          *
+         *
          * ```c
-         * // call ‘quit’ action on primary instance
+         * // call "quit" action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
          * // make sure the action is activated now
-         * g_dbus_connection_flush (…);
+         * g_dbus_connection_flush (...);
          *
-         * g_debug ("Application has been terminated. Exiting.");
+         * g_debug ("application has been terminated. exiting.");
          *
          * exit (0);
          * ```
+         *
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
@@ -15105,11 +15023,11 @@ export namespace Gio {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.ActionGroup.get_action_state_type].
+         * See g_action_group_get_action_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.ActionGroup.get_action_state_hint].
+         * See g_action_group_get_action_state_hint().
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
@@ -15122,19 +15040,19 @@ export namespace Gio {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
-         * @returns whether the action is currently enabled
+         * @returns whether or not the action is currently enabled
          */
         get_action_enabled(action_name: string): boolean;
         /**
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using [method`Gio`.ActionGroup.activate_action],
-         * the [type`GLib`.Variant] given to that function must be of the type returned
+         * When activating the action using g_action_group_activate_action(),
+         * the #GVariant given to that function must be of the type returned
          * by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -15146,12 +15064,12 @@ export namespace Gio {
         /**
          * Queries the current state of the named action within `action_group`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.ActionGroup.get_action_state_type].
+         * given by g_action_group_get_action_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
@@ -15160,12 +15078,12 @@ export namespace Gio {
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -15173,8 +15091,8 @@ export namespace Gio {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
@@ -15184,14 +15102,14 @@ export namespace Gio {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * [type`GLib`.VariantType] of the state.  All calls to
-         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
-         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
+         * #GVariantType of the state.  All calls to
+         * g_action_group_change_action_state() must give a #GVariant of this
+         * type and g_action_group_get_action_state() will return a #GVariant
          * of the same type.
          *
-         * If the action is not stateful then this function will return `NULL`.
-         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
-         * and you must not call [method`Gio`.ActionGroup.change_action_state].
+         * If the action is not stateful then this function will return %NULL.
+         * In that case, g_action_group_get_action_state() will return %NULL
+         * and you must not call g_action_group_change_action_state().
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -15209,27 +15127,27 @@ export namespace Gio {
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
+         * The caller is responsible for freeing the list with g_strfreev() when
          * it is no longer required.
-         * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @returns a %NULL-terminated array of the names of the actions in the group
          */
         list_actions(): string[];
         /**
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
-         * [method`Gio`.ActionGroup.get_action_parameter_type],
-         * [method`Gio`.ActionGroup.get_action_state_type],
-         * [method`Gio`.ActionGroup.get_action_state_hint] and
-         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
+         * g_action_group_has_action(), g_action_group_get_action_enabled(),
+         * g_action_group_get_action_parameter_type(),
+         * g_action_group_get_action_state_type(),
+         * g_action_group_get_action_state_hint() and
+         * g_action_group_get_action_state() with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
+         * #GActionGroup can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -15238,12 +15156,12 @@ export namespace Gio {
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
          *
-         * If the action exists, `TRUE` is returned and any of the requested
-         * fields (as indicated by having a non-`NULL` reference passed in) are
-         * filled.  If the action doesn’t exist, `FALSE` is returned and the
+         * If the action exists, %TRUE is returned and any of the requested
+         * fields (as indicated by having a non-%NULL reference passed in) are
+         * filled.  If the action doesn't exist, %FALSE is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
-         * @returns `TRUE` if the action exists, else `FALSE`
+         * @returns %TRUE if the action exists, else %FALSE
          */
         query_action(
             action_name: string,
@@ -15256,31 +15174,31 @@ export namespace Gio {
             GLib.Variant | null,
         ];
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
+         * Emits the #GActionGroup::action-added signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         vfunc_action_added(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
-         * @param enabled whether the action is now enabled
+         * @param enabled whether or not the action is now enabled
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
+         * Emits the #GActionGroup::action-removed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         vfunc_action_removed(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-state-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
@@ -15290,35 +15208,37 @@ export namespace Gio {
          *
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
-         * parameters then `parameter` must be `NULL`.  See
-         * [method`Gio`.ActionGroup.get_action_parameter_type].
+         * parameters then `parameter` must be %NULL.  See
+         * g_action_group_get_action_parameter_type().
          *
-         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
+         * If the #GActionGroup implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
+         * g_dbus_connection_flush() should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
-         * example of a ‘quit’ action being activated on the primary app
-         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
-         * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
+         * example of a "quit" action being activated on the primary app
+         * instance over D-Bus. Here g_dbus_connection_flush() is called
+         * before `exit()`. Without g_dbus_connection_flush(), the "quit" action
          * may fail to be activated on the primary instance.
          *
+         *
          * ```c
-         * // call ‘quit’ action on primary instance
+         * // call "quit" action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
          * // make sure the action is activated now
-         * g_dbus_connection_flush (…);
+         * g_dbus_connection_flush (...);
          *
-         * g_debug ("Application has been terminated. Exiting.");
+         * g_debug ("application has been terminated. exiting.");
          *
          * exit (0);
          * ```
+         *
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
@@ -15328,11 +15248,11 @@ export namespace Gio {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.ActionGroup.get_action_state_type].
+         * See g_action_group_get_action_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.ActionGroup.get_action_state_hint].
+         * See g_action_group_get_action_state_hint().
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
@@ -15351,12 +15271,12 @@ export namespace Gio {
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using [method`Gio`.ActionGroup.activate_action],
-         * the [type`GLib`.Variant] given to that function must be of the type returned
+         * When activating the action using g_action_group_activate_action(),
+         * the #GVariant given to that function must be of the type returned
          * by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -15367,12 +15287,12 @@ export namespace Gio {
         /**
          * Queries the current state of the named action within `action_group`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.ActionGroup.get_action_state_type].
+         * given by g_action_group_get_action_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -15380,12 +15300,12 @@ export namespace Gio {
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -15393,8 +15313,8 @@ export namespace Gio {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -15403,14 +15323,14 @@ export namespace Gio {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * [type`GLib`.VariantType] of the state.  All calls to
-         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
-         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
+         * #GVariantType of the state.  All calls to
+         * g_action_group_change_action_state() must give a #GVariant of this
+         * type and g_action_group_get_action_state() will return a #GVariant
          * of the same type.
          *
-         * If the action is not stateful then this function will return `NULL`.
-         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
-         * and you must not call [method`Gio`.ActionGroup.change_action_state].
+         * If the action is not stateful then this function will return %NULL.
+         * In that case, g_action_group_get_action_state() will return %NULL
+         * and you must not call g_action_group_change_action_state().
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -15426,7 +15346,7 @@ export namespace Gio {
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
+         * The caller is responsible for freeing the list with g_strfreev() when
          * it is no longer required.
          */
         vfunc_list_actions(): string[];
@@ -15434,18 +15354,18 @@ export namespace Gio {
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
-         * [method`Gio`.ActionGroup.get_action_parameter_type],
-         * [method`Gio`.ActionGroup.get_action_state_type],
-         * [method`Gio`.ActionGroup.get_action_state_hint] and
-         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
+         * g_action_group_has_action(), g_action_group_get_action_enabled(),
+         * g_action_group_get_action_parameter_type(),
+         * g_action_group_get_action_state_type(),
+         * g_action_group_get_action_state_hint() and
+         * g_action_group_get_action_state() with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
+         * #GActionGroup can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -15454,9 +15374,9 @@ export namespace Gio {
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
          *
-         * If the action exists, `TRUE` is returned and any of the requested
-         * fields (as indicated by having a non-`NULL` reference passed in) are
-         * filled.  If the action doesn’t exist, `FALSE` is returned and the
+         * If the action exists, %TRUE is returned and any of the requested
+         * fields (as indicated by having a non-%NULL reference passed in) are
+         * filled.  If the action doesn't exist, %FALSE is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          */
@@ -16975,7 +16895,7 @@ export namespace Gio {
          * returned (with `error` set accordingly).
          *
          * You can unexport the action group using
-         * [method`Gio`.DBusConnection.unexport_action_group] with the return value of
+         * g_dbus_connection_unexport_action_group() with the return value of
          * this function.
          *
          * The thread default main context is taken at the time of this call.
@@ -16987,7 +16907,7 @@ export namespace Gio {
          * limits a given action group to being exported from only one main
          * context.
          * @param object_path a D-Bus object path
-         * @param action_group an action group
+         * @param action_group a #GActionGroup
          * @returns the ID of the export (never zero), or 0 in case of failure
          */
         export_action_group(object_path: string, action_group: ActionGroup): number;
@@ -17598,12 +17518,12 @@ export namespace Gio {
         start_message_processing(): void;
         /**
          * Reverses the effect of a previous call to
-         * [method`Gio`.DBusConnection.export_action_group].
+         * g_dbus_connection_export_action_group().
          *
-         * It is an error to call this function with an ID that wasn’t returned from
-         * [method`Gio`.DBusConnection.export_action_group] or to call it with the same
-         * ID more than once.
-         * @param export_id the ID from [method@Gio.DBusConnection.export_action_group]
+         * It is an error to call this function with an ID that wasn't returned
+         * from g_dbus_connection_export_action_group() or to call it with the
+         * same ID more than once.
+         * @param export_id the ID from g_dbus_connection_export_action_group()
          */
         unexport_action_group(export_id: number): void;
         /**
@@ -17681,7 +17601,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         init_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
@@ -17722,7 +17642,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -17768,7 +17688,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -17828,7 +17748,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -19968,7 +19888,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         init_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
@@ -20009,7 +19929,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -20055,7 +19975,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -20115,7 +20035,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -23212,7 +23132,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         init_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
@@ -23253,7 +23173,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -23299,7 +23219,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -23359,7 +23279,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -24654,7 +24574,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called. You
          * can then call g_data_input_stream_read_line_finish() to get
          * the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         read_line_async(io_priority: number, cancellable?: Cancellable | null): Promise<[Uint8Array | null, number]>;
@@ -24665,7 +24585,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called. You
          * can then call g_data_input_stream_read_line_finish() to get
          * the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback callback to call when the request is satisfied.
          */
@@ -24681,7 +24601,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called. You
          * can then call g_data_input_stream_read_line_finish() to get
          * the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback callback to call when the request is satisfied.
          */
@@ -24785,7 +24705,7 @@ export namespace Gio {
          * will be marked as deprecated in a future release.  Use
          * g_data_input_stream_read_upto_async() instead.
          * @param stop_chars characters to terminate the read.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         read_until_async(
@@ -24810,7 +24730,7 @@ export namespace Gio {
          * will be marked as deprecated in a future release.  Use
          * g_data_input_stream_read_upto_async() instead.
          * @param stop_chars characters to terminate the read.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback callback to call when the request is satisfied.
          */
@@ -24837,7 +24757,7 @@ export namespace Gio {
          * will be marked as deprecated in a future release.  Use
          * g_data_input_stream_read_upto_async() instead.
          * @param stop_chars characters to terminate the read.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback callback to call when the request is satisfied.
          */
@@ -24890,7 +24810,7 @@ export namespace Gio {
          * the result of the operation.
          * @param stop_chars characters to terminate the read
          * @param stop_chars_len length of @stop_chars. May be -1 if @stop_chars is     nul-terminated
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         read_upto_async(
@@ -24916,7 +24836,7 @@ export namespace Gio {
          * the result of the operation.
          * @param stop_chars characters to terminate the read
          * @param stop_chars_len length of @stop_chars. May be -1 if @stop_chars is     nul-terminated
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback callback to call when the request is satisfied
          */
@@ -24944,7 +24864,7 @@ export namespace Gio {
          * the result of the operation.
          * @param stop_chars characters to terminate the read
          * @param stop_chars_len length of @stop_chars. May be -1 if @stop_chars is     nul-terminated
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback callback to call when the request is satisfied
          */
@@ -26823,7 +26743,7 @@ export namespace Gio {
         // Properties
 
         /**
-         * The origin filename of this [class`Gio`.DesktopAppInfo]
+         * The origin filename of this #GDesktopAppInfo
          */
         get filename(): string;
 
@@ -26845,7 +26765,7 @@ export namespace Gio {
          * Gets all applications that implement `interface`.
          *
          * An application implements an interface if that interface is listed in
-         * the `Implements` line of the desktop file of the application.
+         * the Implements= line of the desktop file of the application.
          * @param _interface the name of the interface
          */
         static get_implementations(_interface: string): DesktopAppInfo[];
@@ -26860,22 +26780,20 @@ export namespace Gio {
          * any time.
          *
          * None of the search results are subjected to the normal validation
-         * checks performed by [ctor`Gio`.DesktopAppInfo.new] (for example, checking that
+         * checks performed by g_desktop_app_info_new() (for example, checking that
          * the executable referenced by a result exists), and so it is possible for
-         * [ctor`Gio`.DesktopAppInfo.new] to return `NULL` when passed an app ID returned
-         * by this function. It is expected that calling code will do this when
-         * subsequently creating a [class`Gio`.DesktopAppInfo] for each result.
+         * g_desktop_app_info_new() to return %NULL when passed an app ID returned by
+         * this function. It is expected that calling code will do this when
+         * subsequently creating a #GDesktopAppInfo for each result.
          * @param search_string the search string to use
          */
         static search(search_string: string): string[][];
         /**
          * Sets the name of the desktop that the application is running in.
-         *
-         * This is used by [method`Gio`.AppInfo.should_show] and
-         * [method`Gio`.DesktopAppInfo.get_show_in] to evaluate the
-         * [`OnlyShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-onlyshowin)
-         * and [`NotShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-notshowin)
-         * keys.
+         * This is used by g_app_info_should_show() and
+         * g_desktop_app_info_get_show_in() to evaluate the
+         * `OnlyShowIn` and `NotShowIn`
+         * desktop entry fields.
          *
          * Should be called only once; subsequent calls are ignored.
          * @param desktop_env a string specifying what desktop this is
@@ -26885,186 +26803,175 @@ export namespace Gio {
         // Methods
 
         /**
-         * Gets the user-visible display name of the
-         * [‘additional application actions’](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html)
-         * specified by `action_name`.
+         * Gets the user-visible display name of the "additional application
+         * action" specified by `action_name`.
          *
-         * This corresponds to the `Name` key within the keyfile group for the
+         * This corresponds to the "Name" key within the keyfile group for the
          * action.
-         * @param action_name the name of the action as from   [method@Gio.DesktopAppInfo.list_actions]
+         * @param action_name the name of the action as from   g_desktop_app_info_list_actions()
          * @returns the locale-specific action name
          */
         get_action_name(action_name: string): string;
         /**
          * Looks up a boolean value in the keyfile backing `info`.
          *
-         * The `key` is looked up in the `Desktop Entry` group.
+         * The `key` is looked up in the "Desktop Entry" group.
          * @param key the key to look up
-         * @returns the boolean value, or `FALSE` if the key is not found
+         * @returns the boolean value, or %FALSE if the key     is not found
          */
         get_boolean(key: string): boolean;
         /**
          * Gets the categories from the desktop file.
-         * @returns The unparsed   [`Categories` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-categories)   from the desktop file;   i.e. no attempt is made to split it by `;` or validate it.
+         * @returns The unparsed Categories key from the desktop file;     i.e. no attempt is made to split it by ';' or validate it.
          */
         get_categories(): string | null;
         /**
          * When `info` was created from a known filename, return it.  In some
-         * situations such as a [class`Gio`.DesktopAppInfo] returned from
-         * [ctor`Gio`.DesktopAppInfo.new_from_keyfile], this function will return `NULL`.
-         * @returns The full path to the file for @info,   or `NULL` if not known.
+         * situations such as the #GDesktopAppInfo returned from
+         * g_desktop_app_info_new_from_keyfile(), this function will return %NULL.
+         * @returns The full path to the file for @info,     or %NULL if not known.
          */
         get_filename(): string | null;
         /**
          * Gets the generic name from the desktop file.
-         * @returns The value of the   [`GenericName` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-genericname)
+         * @returns The value of the GenericName key
          */
         get_generic_name(): string | null;
         /**
-         * A desktop file is hidden if the
-         * [`Hidden` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-hidden)
-         * in it is set to `True`.
-         * @returns `TRUE` if hidden, `FALSE` otherwise.
+         * A desktop file is hidden if the Hidden key in it is
+         * set to True.
+         * @returns %TRUE if hidden, %FALSE otherwise.
          */
         get_is_hidden(): boolean;
         /**
          * Gets the keywords from the desktop file.
-         * @returns The value of the   [`Keywords` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-keywords)
+         * @returns The value of the Keywords key
          */
         get_keywords(): string[];
         /**
          * Looks up a localized string value in the keyfile backing `info`
          * translated to the current locale.
          *
-         * The `key` is looked up in the `Desktop Entry` group.
+         * The `key` is looked up in the "Desktop Entry" group.
          * @param key the key to look up
-         * @returns a newly allocated string, or `NULL` if the key is not   found
+         * @returns a newly allocated string, or %NULL if the key     is not found
          */
         get_locale_string(key: string): string | null;
         /**
-         * Gets the value of the
-         * [`NoDisplay` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-nodisplay)
-         *  which helps determine if the application info should be shown in menus. See
-         * `G_KEY_FILE_DESKTOP_KEY_NO_DISPLAY` and [method`Gio`.AppInfo.should_show].
-         * @returns The value of the `NoDisplay` key
+         * Gets the value of the NoDisplay key, which helps determine if the
+         * application info should be shown in menus. See
+         * %G_KEY_FILE_DESKTOP_KEY_NO_DISPLAY and g_app_info_should_show().
+         * @returns The value of the NoDisplay key
          */
         get_nodisplay(): boolean;
         /**
          * Checks if the application info should be shown in menus that list available
          * applications for a specific name of the desktop, based on the
-         * [`OnlyShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-onlyshowin)
-         * and [`NotShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-notshowin)
-         * keys.
+         * `OnlyShowIn` and `NotShowIn` keys.
          *
-         * `desktop_env` should typically be given as `NULL`, in which case the
+         * `desktop_env` should typically be given as %NULL, in which case the
          * `XDG_CURRENT_DESKTOP` environment variable is consulted.  If you want
          * to override the default mechanism then you may specify `desktop_env,`
          * but this is not recommended.
          *
-         * Note that [method`Gio`.AppInfo.should_show] for `info` will include this check
-         * (with `NULL` for `desktop_env)` as well as additional checks.
+         * Note that g_app_info_should_show() for `info` will include this check (with
+         * %NULL for `desktop_env)` as well as additional checks.
          * @param desktop_env a string specifying a desktop name
-         * @returns `TRUE` if the @info should be shown in @desktop_env according to the `OnlyShowIn` and `NotShowIn` keys, `FALSE` otherwise.
+         * @returns %TRUE if the @info should be shown in @desktop_env according to the `OnlyShowIn` and `NotShowIn` keys, %FALSE otherwise.
          */
         get_show_in(desktop_env?: string | null): boolean;
         /**
-         * Retrieves the `StartupWMClass` field from `info`. This represents the
-         * `WM_CLASS` property of the main window of the application, if launched
+         * Retrieves the StartupWMClass field from `info`. This represents the
+         * WM_CLASS property of the main window of the application, if launched
          * through `info`.
-         * @returns the startup WM class, or `NULL` if none   is set in the desktop file.
+         * @returns the startup WM class, or %NULL if none is set in the desktop file.
          */
         get_startup_wm_class(): string | null;
         /**
          * Looks up a string value in the keyfile backing `info`.
          *
-         * The `key` is looked up in the `Desktop Entry` group.
+         * The `key` is looked up in the "Desktop Entry" group.
          * @param key the key to look up
-         * @returns a newly allocated string, or `NULL` if the key is not   found
+         * @returns a newly allocated string, or %NULL if the key     is not found
          */
         get_string(key: string): string | null;
         /**
          * Looks up a string list value in the keyfile backing `info`.
          *
-         * The `key` is looked up in the `Desktop Entry` group.
+         * The `key` is looked up in the "Desktop Entry" group.
          * @param key the key to look up
-         * @returns a `NULL`-terminated string array or `NULL` if the specified   key cannot be found. The array should be freed with [func@GLib.strfreev].
+         * @returns a %NULL-terminated string array or %NULL if the specified  key cannot be found. The array should be freed with g_strfreev().
          */
         get_string_list(key: string): string[];
         /**
-         * Returns whether `key` exists in the `Desktop Entry` group
+         * Returns whether `key` exists in the "Desktop Entry" group
          * of the keyfile backing `info`.
          * @param key the key to look up
-         * @returns `TRUE` if the @key exists
+         * @returns %TRUE if the @key exists
          */
         has_key(key: string): boolean;
         /**
          * Activates the named application action.
          *
          * You may only call this function on action names that were
-         * returned from [method`Gio`.DesktopAppInfo.list_actions].
+         * returned from g_desktop_app_info_list_actions().
          *
          * Note that if the main entry of the desktop file indicates that the
          * application supports startup notification, and `launch_context` is
-         * non-`NULL`, then startup notification will be used when activating the
+         * non-%NULL, then startup notification will be used when activating the
          * action (and as such, invocation of the action on the receiving side
          * must signal the end of startup notification when it is completed).
          * This is the expected behaviour of applications declaring additional
-         * actions, as per the
-         * [desktop file specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html).
+         * actions, as per the desktop file specification.
          *
-         * As with [method`Gio`.AppInfo.launch] there is no way to detect failures that
+         * As with g_app_info_launch() there is no way to detect failures that
          * occur while using this function.
-         * @param action_name the name of the action as from   [method@Gio.DesktopAppInfo.list_actions]
-         * @param launch_context a [class@Gio.AppLaunchContext]
+         * @param action_name the name of the action as from   g_desktop_app_info_list_actions()
+         * @param launch_context a #GAppLaunchContext
          */
         launch_action(action_name: string, launch_context?: AppLaunchContext | null): void;
         /**
-         * This function performs the equivalent of [method`Gio`.AppInfo.launch_uris],
+         * This function performs the equivalent of g_app_info_launch_uris(),
          * but is intended primarily for operating system components that
          * launch applications.  Ordinary applications should use
-         * [method`Gio`.AppInfo.launch_uris].
+         * g_app_info_launch_uris().
          *
          * If the application is launched via GSpawn, then `spawn_flags,` `user_setup`
-         * and `user_setup_data` are used for the call to [func`GLib`.spawn_async].
+         * and `user_setup_data` are used for the call to g_spawn_async().
          * Additionally, `pid_callback` (with `pid_callback_data)` will be called to
-         * inform about the PID of the created process. See
-         * [func`GLib`.spawn_async_with_pipes] for information on certain parameter
-         * conditions that can enable an optimized [`posix_spawn()`](man:posix_spawn(3))
-         * code path to be used.
+         * inform about the PID of the created process. See g_spawn_async_with_pipes()
+         * for information on certain parameter conditions that can enable an
+         * optimized posix_spawn() codepath to be used.
          *
-         * If application launching occurs via some other mechanism (for example, D-Bus
+         * If application launching occurs via some other mechanism (eg: D-Bus
          * activation) then `spawn_flags,` `user_setup,` `user_setup_data,`
          * `pid_callback` and `pid_callback_data` are ignored.
          * @param uris List of URIs
-         * @param launch_context a [class@Gio.AppLaunchContext]
-         * @param spawn_flags [flags@GLib.SpawnFlags], used for each process
-         * @param user_setup a [callback@GLib.SpawnChildSetupFunc],   used once  for each process.
-         * @param pid_callback Callback for child processes
-         * @returns `TRUE` on successful launch, `FALSE` otherwise.
+         * @param launch_context a #GAppLaunchContext
+         * @param spawn_flags #GSpawnFlags, used for each process
+         * @returns %TRUE on successful launch, %FALSE otherwise.
          */
         launch_uris_as_manager(
             uris: string[],
             launch_context: AppLaunchContext | null,
             spawn_flags: GLib.SpawnFlags | null,
-            user_setup?: GLib.SpawnChildSetupFunc | null,
-            pid_callback?: DesktopAppLaunchCallback | null,
         ): boolean;
         /**
-         * Equivalent to [method`Gio`.DesktopAppInfo.launch_uris_as_manager] but allows
+         * Equivalent to g_desktop_app_info_launch_uris_as_manager() but allows
          * you to pass in file descriptors for the stdin, stdout and stderr streams
          * of the launched process.
          *
          * If application launching occurs via some non-spawn mechanism (e.g. D-Bus
          * activation) then `stdin_fd,` `stdout_fd` and `stderr_fd` are ignored.
          * @param uris List of URIs
-         * @param launch_context a [class@Gio.AppLaunchContext]
-         * @param spawn_flags [flags@GLib.SpawnFlags], used for each process
-         * @param user_setup a   [callback@GLib.SpawnChildSetupFunc], used once for each process.
+         * @param launch_context a #GAppLaunchContext
+         * @param spawn_flags #GSpawnFlags, used for each process
+         * @param user_setup a #GSpawnChildSetupFunc, used once     for each process.
          * @param pid_callback Callback for child processes
-         * @param stdin_fd file descriptor to use for child’s stdin, or `-1`
-         * @param stdout_fd file descriptor to use for child’s stdout, or `-1`
-         * @param stderr_fd file descriptor to use for child’s stderr, or `-1`
-         * @returns `TRUE` on successful launch, `FALSE` otherwise.
+         * @param stdin_fd file descriptor to use for child's stdin, or -1
+         * @param stdout_fd file descriptor to use for child's stdout, or -1
+         * @param stderr_fd file descriptor to use for child's stderr, or -1
+         * @returns %TRUE on successful launch, %FALSE otherwise.
          */
         launch_uris_as_manager_with_fds(
             uris: string[],
@@ -27077,13 +26984,12 @@ export namespace Gio {
             stderr_fd: number,
         ): boolean;
         /**
-         * Returns the list of
-         * [‘additional application actions’](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html)
-         * supported on the desktop file, as per the desktop file specification.
+         * Returns the list of "additional application actions" supported on the
+         * desktop file, as per the desktop file specification.
          *
          * As per the specification, this is the list of actions that are
-         * explicitly listed in the `Actions` key of the `Desktop Entry` group.
-         * @returns a   list of strings, always non-`NULL`
+         * explicitly listed in the "Actions" key of the [Desktop Entry] group.
+         * @returns a list of strings, always non-%NULL
          */
         list_actions(): string[];
 
@@ -27092,53 +26998,53 @@ export namespace Gio {
          * Adds a content type to the application information to indicate the
          * application is capable of opening files with the given content type.
          * @param content_type a string.
-         * @returns `TRUE` on success, `FALSE` on error.
+         * @returns %TRUE on success, %FALSE on error.
          */
         add_supports_type(content_type: string): boolean;
         /**
-         * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
-         * See [method`Gio`.AppInfo.delete].
-         * @returns `TRUE` if @appinfo can be deleted
+         * Obtains the information whether the #GAppInfo can be deleted.
+         * See g_app_info_delete().
+         * @returns %TRUE if @appinfo can be deleted
          */
         can_delete(): boolean;
         /**
          * Checks if a supported content type can be removed from an application.
-         * @returns `TRUE` if it is possible to remove supported content types from a   given @appinfo, `FALSE` if not.
+         * @returns %TRUE if it is possible to remove supported     content types from a given @appinfo, %FALSE if not.
          */
         can_remove_supports_type(): boolean;
         /**
-         * Tries to delete a [iface`Gio`.AppInfo].
+         * Tries to delete a #GAppInfo.
          *
          * On some platforms, there may be a difference between user-defined
-         * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
-         * See [method`Gio`.AppInfo.can_delete].
-         * @returns `TRUE` if @appinfo has been deleted
+         * #GAppInfos which can be deleted, and system-wide ones which cannot.
+         * See g_app_info_can_delete().
+         * @returns %TRUE if @appinfo has been deleted
          */
         ['delete'](): boolean;
         /**
-         * Creates a duplicate of a [iface`Gio`.AppInfo].
+         * Creates a duplicate of a #GAppInfo.
          * @returns a duplicate of @appinfo.
          */
         dup(): AppInfo;
         /**
-         * Checks if two [iface`Gio`.AppInfo]s are equal.
+         * Checks if two #GAppInfos are equal.
          *
-         * Note that the check *may not* compare each individual field, and only does
-         * an identity check. In case detecting changes in the contents is needed,
-         * program code must additionally compare relevant fields.
-         * @param appinfo2 the second [iface@Gio.AppInfo].
-         * @returns `TRUE` if @appinfo1 is equal to @appinfo2. `FALSE` otherwise.
+         * Note that the check *may not* compare each individual
+         * field, and only does an identity check. In case detecting changes in the
+         * contents is needed, program code must additionally compare relevant fields.
+         * @param appinfo2 the second #GAppInfo.
+         * @returns %TRUE if @appinfo1 is equal to @appinfo2. %FALSE otherwise.
          */
         equal(appinfo2: AppInfo): boolean;
         /**
          * Gets the commandline with which the application will be
          * started.
-         * @returns a string containing the @appinfo’s   commandline, or `NULL` if this information is not available
+         * @returns a string containing the @appinfo's commandline,     or %NULL if this information is not available
          */
         get_commandline(): string | null;
         /**
          * Gets a human-readable description of an installed application.
-         * @returns a string containing a description of the application @appinfo, or `NULL` if none.
+         * @returns a string containing a description of the application @appinfo, or %NULL if none.
          */
         get_description(): string | null;
         /**
@@ -27148,27 +27054,28 @@ export namespace Gio {
          */
         get_display_name(): string;
         /**
-         * Gets the executable’s name for the installed application.
+         * Gets the executable's name for the installed application.
          *
          * This is intended to be used for debugging or labelling what program is going
-         * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
+         * to be run. To launch the executable, use g_app_info_launch() and related
          * functions, rather than spawning the return value from this function.
-         * @returns a string containing the @appinfo’s application binaries name
+         * @returns a string containing the @appinfo's application binaries name
          */
         get_executable(): string;
         /**
          * Gets the icon for the application.
-         * @returns the default [iface@Gio.Icon] for   @appinfo or `NULL` if there is no default icon.
+         * @returns the default #GIcon for @appinfo or %NULL if there is no default icon.
          */
         get_icon(): Icon | null;
         /**
-         * Gets the ID of an application. An id is a string that identifies the
-         * application. The exact format of the id is platform dependent. For instance,
-         * on Unix this is the desktop file id from the xdg menu specification.
+         * Gets the ID of an application. An id is a string that
+         * identifies the application. The exact format of the id is
+         * platform dependent. For instance, on Unix this is the
+         * desktop file id from the xdg menu specification.
          *
-         * Note that the returned ID may be `NULL`, depending on how the `appinfo` has
-         * been constructed.
-         * @returns a string containing the application’s ID.
+         * Note that the returned ID may be %NULL, depending on how
+         * the `appinfo` has been constructed.
+         * @returns a string containing the application's ID.
          */
         get_id(): string | null;
         /**
@@ -27179,10 +27086,9 @@ export namespace Gio {
         /**
          * Retrieves the list of content types that `app_info` claims to support.
          * If this information is not provided by the environment, this function
-         * will return `NULL`.
-         *
+         * will return %NULL.
          * This function does not take in consideration associations added with
-         * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
+         * g_app_info_add_supports_type(), but only those exported directly by
          * the application.
          * @returns a list of content types.
          */
@@ -27193,7 +27099,7 @@ export namespace Gio {
          * about the details of the launcher (like what screen it is on).
          * On error, `error` will be set accordingly.
          *
-         * To launch the application without arguments pass a `NULL` `files` list.
+         * To launch the application without arguments pass a %NULL `files` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
@@ -27202,11 +27108,11 @@ export namespace Gio {
          * Some URIs can be changed when passed through a GFile (for instance
          * unsupported URIs with strange formats like mailto:), so if you have
          * a textual URI you want to pass in as argument, consider using
-         * [method`Gio`.AppInfo.launch_uris] instead.
+         * g_app_info_launch_uris() instead.
          *
          * The launched application inherits the environment of the launching
-         * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
-         * and [method`Gio`.AppLaunchContext.unsetenv].
+         * process, but it can be modified with g_app_launch_context_setenv()
+         * and g_app_launch_context_unsetenv().
          *
          * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
          * environment variable with the path of the launched desktop file and
@@ -27215,9 +27121,9 @@ export namespace Gio {
          * should it be inherited by further processes. The `DISPLAY`,
          * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
          * variables are also set, based on information provided in `context`.
-         * @param files a list of [iface@Gio.File] objects
-         * @param context the launch context
-         * @returns `TRUE` on successful launch, `FALSE` otherwise.
+         * @param files a #GList of #GFile objects
+         * @param context a #GAppLaunchContext or %NULL
+         * @returns %TRUE on successful launch, %FALSE otherwise.
          */
         launch(files?: File[] | null, context?: AppLaunchContext | null): boolean;
         /**
@@ -27228,26 +27134,26 @@ export namespace Gio {
          * one URI per invocation as part of their command-line, multiple instances
          * of the application will be spawned.
          *
-         * To launch the application without arguments pass a `NULL` `uris` list.
+         * To launch the application without arguments pass a %NULL `uris` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
          * no way to detect this.
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @returns `TRUE` on successful launch, `FALSE` otherwise.
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
+         * @returns %TRUE on successful launch, %FALSE otherwise.
          */
         launch_uris(uris?: string[] | null, context?: AppLaunchContext | null): boolean;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of g_app_info_launch_uris().
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
+         * g_app_info_launch_default_for_uri_async().
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
+         * @param cancellable a #GCancellable
          */
         launch_uris_async(
             uris?: string[] | null,
@@ -27255,16 +27161,16 @@ export namespace Gio {
             cancellable?: Cancellable | null,
         ): Promise<boolean>;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of g_app_info_launch_uris().
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
-         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         * g_app_info_launch_default_for_uri_async().
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to call when the request is done
          */
         launch_uris_async(
             uris: string[] | null,
@@ -27273,16 +27179,16 @@ export namespace Gio {
             callback: AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of g_app_info_launch_uris().
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
-         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         * g_app_info_launch_default_for_uri_async().
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to call when the request is done
          */
         launch_uris_async(
             uris?: string[] | null,
@@ -27291,52 +27197,52 @@ export namespace Gio {
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
         /**
-         * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
-         * @param result the async result
-         * @returns `TRUE` on successful launch, `FALSE` otherwise.
+         * Finishes a g_app_info_launch_uris_async() operation.
+         * @param result a #GAsyncResult
+         * @returns %TRUE on successful launch, %FALSE otherwise.
          */
         launch_uris_finish(result: AsyncResult): boolean;
         /**
          * Removes a supported type from an application, if possible.
          * @param content_type a string.
-         * @returns `TRUE` on success, `FALSE` on error.
+         * @returns %TRUE on success, %FALSE on error.
          */
         remove_supports_type(content_type: string): boolean;
         /**
          * Sets the application as the default handler for the given file extension.
-         * @param extension a string containing the file extension (without   the dot).
-         * @returns `TRUE` on success, `FALSE` on error.
+         * @param extension a string containing the file extension     (without the dot).
+         * @returns %TRUE on success, %FALSE on error.
          */
         set_as_default_for_extension(extension: string): boolean;
         /**
          * Sets the application as the default handler for a given type.
          * @param content_type the content type.
-         * @returns `TRUE` on success, `FALSE` on error.
+         * @returns %TRUE on success, %FALSE on error.
          */
         set_as_default_for_type(content_type: string): boolean;
         /**
-         * Sets the application as the last used application for a given type. This
-         * will make the application appear as first in the list returned by
-         * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
+         * Sets the application as the last used application for a given type.
+         * This will make the application appear as first in the list returned
+         * by g_app_info_get_recommended_for_type(), regardless of the default
          * application for that content type.
          * @param content_type the content type.
-         * @returns `TRUE` on success, `FALSE` on error.
+         * @returns %TRUE on success, %FALSE on error.
          */
         set_as_last_used_for_type(content_type: string): boolean;
         /**
          * Checks if the application info should be shown in menus that
          * list available applications.
-         * @returns `TRUE` if the @appinfo should be shown, `FALSE` otherwise.
+         * @returns %TRUE if the @appinfo should be shown, %FALSE otherwise.
          */
         should_show(): boolean;
         /**
          * Checks if the application accepts files as arguments.
-         * @returns `TRUE` if the @appinfo supports files.
+         * @returns %TRUE if the @appinfo supports files.
          */
         supports_files(): boolean;
         /**
          * Checks if the application supports reading files and directories from URIs.
-         * @returns `TRUE` if the @appinfo supports URIs.
+         * @returns %TRUE if the @appinfo supports URIs.
          */
         supports_uris(): boolean;
         /**
@@ -27346,8 +27252,8 @@ export namespace Gio {
          */
         vfunc_add_supports_type(content_type: string): boolean;
         /**
-         * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
-         * See [method`Gio`.AppInfo.delete].
+         * Obtains the information whether the #GAppInfo can be deleted.
+         * See g_app_info_delete().
          */
         vfunc_can_delete(): boolean;
         /**
@@ -27355,24 +27261,24 @@ export namespace Gio {
          */
         vfunc_can_remove_supports_type(): boolean;
         /**
-         * Tries to delete a [iface`Gio`.AppInfo].
+         * Tries to delete a #GAppInfo.
          *
          * On some platforms, there may be a difference between user-defined
-         * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
-         * See [method`Gio`.AppInfo.can_delete].
+         * #GAppInfos which can be deleted, and system-wide ones which cannot.
+         * See g_app_info_can_delete().
          */
         vfunc_do_delete(): boolean;
         /**
-         * Creates a duplicate of a [iface`Gio`.AppInfo].
+         * Creates a duplicate of a #GAppInfo.
          */
         vfunc_dup(): AppInfo;
         /**
-         * Checks if two [iface`Gio`.AppInfo]s are equal.
+         * Checks if two #GAppInfos are equal.
          *
-         * Note that the check *may not* compare each individual field, and only does
-         * an identity check. In case detecting changes in the contents is needed,
-         * program code must additionally compare relevant fields.
-         * @param appinfo2 the second [iface@Gio.AppInfo].
+         * Note that the check *may not* compare each individual
+         * field, and only does an identity check. In case detecting changes in the
+         * contents is needed, program code must additionally compare relevant fields.
+         * @param appinfo2 the second #GAppInfo.
          */
         vfunc_equal(appinfo2: AppInfo): boolean;
         /**
@@ -27390,10 +27296,10 @@ export namespace Gio {
          */
         vfunc_get_display_name(): string;
         /**
-         * Gets the executable’s name for the installed application.
+         * Gets the executable's name for the installed application.
          *
          * This is intended to be used for debugging or labelling what program is going
-         * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
+         * to be run. To launch the executable, use g_app_info_launch() and related
          * functions, rather than spawning the return value from this function.
          */
         vfunc_get_executable(): string;
@@ -27402,12 +27308,13 @@ export namespace Gio {
          */
         vfunc_get_icon(): Icon | null;
         /**
-         * Gets the ID of an application. An id is a string that identifies the
-         * application. The exact format of the id is platform dependent. For instance,
-         * on Unix this is the desktop file id from the xdg menu specification.
+         * Gets the ID of an application. An id is a string that
+         * identifies the application. The exact format of the id is
+         * platform dependent. For instance, on Unix this is the
+         * desktop file id from the xdg menu specification.
          *
-         * Note that the returned ID may be `NULL`, depending on how the `appinfo` has
-         * been constructed.
+         * Note that the returned ID may be %NULL, depending on how
+         * the `appinfo` has been constructed.
          */
         vfunc_get_id(): string | null;
         /**
@@ -27417,10 +27324,9 @@ export namespace Gio {
         /**
          * Retrieves the list of content types that `app_info` claims to support.
          * If this information is not provided by the environment, this function
-         * will return `NULL`.
-         *
+         * will return %NULL.
          * This function does not take in consideration associations added with
-         * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
+         * g_app_info_add_supports_type(), but only those exported directly by
          * the application.
          */
         vfunc_get_supported_types(): string[];
@@ -27430,7 +27336,7 @@ export namespace Gio {
          * about the details of the launcher (like what screen it is on).
          * On error, `error` will be set accordingly.
          *
-         * To launch the application without arguments pass a `NULL` `files` list.
+         * To launch the application without arguments pass a %NULL `files` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
@@ -27439,11 +27345,11 @@ export namespace Gio {
          * Some URIs can be changed when passed through a GFile (for instance
          * unsupported URIs with strange formats like mailto:), so if you have
          * a textual URI you want to pass in as argument, consider using
-         * [method`Gio`.AppInfo.launch_uris] instead.
+         * g_app_info_launch_uris() instead.
          *
          * The launched application inherits the environment of the launching
-         * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
-         * and [method`Gio`.AppLaunchContext.unsetenv].
+         * process, but it can be modified with g_app_launch_context_setenv()
+         * and g_app_launch_context_unsetenv().
          *
          * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
          * environment variable with the path of the launched desktop file and
@@ -27452,8 +27358,8 @@ export namespace Gio {
          * should it be inherited by further processes. The `DISPLAY`,
          * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
          * variables are also set, based on information provided in `context`.
-         * @param files a list of [iface@Gio.File] objects
-         * @param context the launch context
+         * @param files a #GList of #GFile objects
+         * @param context a #GAppLaunchContext or %NULL
          */
         vfunc_launch(files?: File[] | null, context?: AppLaunchContext | null): boolean;
         /**
@@ -27464,26 +27370,26 @@ export namespace Gio {
          * one URI per invocation as part of their command-line, multiple instances
          * of the application will be spawned.
          *
-         * To launch the application without arguments pass a `NULL` `uris` list.
+         * To launch the application without arguments pass a %NULL `uris` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
          * no way to detect this.
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
          */
         vfunc_launch_uris(uris?: string[] | null, context?: AppLaunchContext | null): boolean;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of g_app_info_launch_uris().
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
-         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         * g_app_info_launch_default_for_uri_async().
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to call when the request is done
          */
         vfunc_launch_uris_async(
             uris?: string[] | null,
@@ -27492,8 +27398,8 @@ export namespace Gio {
             callback?: AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
-         * @param result the async result
+         * Finishes a g_app_info_launch_uris_async() operation.
+         * @param result a #GAsyncResult
          */
         vfunc_launch_uris_finish(result: AsyncResult): boolean;
         /**
@@ -27503,7 +27409,7 @@ export namespace Gio {
         vfunc_remove_supports_type(content_type: string): boolean;
         /**
          * Sets the application as the default handler for the given file extension.
-         * @param extension a string containing the file extension (without   the dot).
+         * @param extension a string containing the file extension     (without the dot).
          */
         vfunc_set_as_default_for_extension(extension: string): boolean;
         /**
@@ -27512,9 +27418,9 @@ export namespace Gio {
          */
         vfunc_set_as_default_for_type(content_type: string): boolean;
         /**
-         * Sets the application as the last used application for a given type. This
-         * will make the application appear as first in the list returned by
-         * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
+         * Sets the application as the last used application for a given type.
+         * This will make the application appear as first in the list returned
+         * by g_app_info_get_recommended_for_type(), regardless of the default
          * application for that content type.
          * @param content_type the content type.
          */
@@ -29080,7 +28986,7 @@ export namespace Gio {
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned in
          * g_file_enumerator_close_finish().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -29187,7 +29093,7 @@ export namespace Gio {
          * be executed before an outstanding request with lower priority. Default
          * priority is %G_PRIORITY_DEFAULT.
          * @param num_files the number of file info objects to request
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -29223,7 +29129,7 @@ export namespace Gio {
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned in
          * g_file_enumerator_close_finish().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
@@ -29234,7 +29140,7 @@ export namespace Gio {
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned in
          * g_file_enumerator_close_finish().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -29250,7 +29156,7 @@ export namespace Gio {
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned in
          * g_file_enumerator_close_finish().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -29437,7 +29343,7 @@ export namespace Gio {
          * be executed before an outstanding request with lower priority. Default
          * priority is %G_PRIORITY_DEFAULT.
          * @param num_files the number of file info objects to request
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         next_files_async(num_files: number, io_priority: number, cancellable?: Cancellable | null): Promise<FileInfo[]>;
@@ -29509,7 +29415,7 @@ export namespace Gio {
          * be executed before an outstanding request with lower priority. Default
          * priority is %G_PRIORITY_DEFAULT.
          * @param num_files the number of file info objects to request
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -29587,7 +29493,7 @@ export namespace Gio {
          * be executed before an outstanding request with lower priority. Default
          * priority is %G_PRIORITY_DEFAULT.
          * @param num_files the number of file info objects to request
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -30839,8 +30745,8 @@ export namespace Gio {
      * implements methods for getting information that all files should
      * contain, and allows for manipulation of extended attributes.
      *
-     * See the [file attributes](file-attributes.html) document for more
-     * information on how GIO handles file attributes.
+     * See [file-attributes.html](file attributes) for more information on how GIO
+     * handles file attributes.
      *
      * To obtain a `GFileInfo` for a [iface`Gio`.File], use
      * [method`Gio`.File.query_info] (or its async variant). To obtain a `GFileInfo`
@@ -31468,7 +31374,7 @@ export namespace Gio {
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be set
          * @param attributes a file attribute query string.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -31512,7 +31418,7 @@ export namespace Gio {
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be set
          * @param attributes a file attribute query string.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         query_info_async(attributes: string, io_priority: number, cancellable?: Cancellable | null): Promise<FileInfo>;
@@ -31529,7 +31435,7 @@ export namespace Gio {
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be set
          * @param attributes a file attribute query string.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -31552,7 +31458,7 @@ export namespace Gio {
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error %G_IO_ERROR_CANCELLED will be set
          * @param attributes a file attribute query string.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -32963,18 +32869,18 @@ export namespace Gio {
 
         /**
          * Gets the base stream for the filter stream.
-         * @returns a [class@Gio.OutputStream].
+         * @returns a #GOutputStream.
          */
         get_base_stream(): OutputStream;
         /**
          * Returns whether the base stream will be closed when `stream` is
          * closed.
-         * @returns `TRUE` if the base stream will be closed.
+         * @returns %TRUE if the base stream will be closed.
          */
         get_close_base_stream(): boolean;
         /**
          * Sets whether the base stream will be closed when `stream` is closed.
-         * @param close_base `TRUE` to close the base stream.
+         * @param close_base %TRUE to close the base stream.
          */
         set_close_base_stream(close_base: boolean): void;
     }
@@ -35178,7 +35084,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -35217,7 +35123,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -35276,7 +35182,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -35337,7 +35243,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          */
         close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
@@ -35352,7 +35258,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -35372,7 +35278,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -35458,7 +35364,7 @@ export namespace Gio {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         read_all_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
@@ -35473,7 +35379,7 @@ export namespace Gio {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -35493,7 +35399,7 @@ export namespace Gio {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -35540,7 +35446,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         read_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
@@ -35568,7 +35474,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -35601,7 +35507,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -35661,7 +35567,7 @@ export namespace Gio {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         read_bytes_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<GLib.Bytes>;
@@ -35687,7 +35593,7 @@ export namespace Gio {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -35719,7 +35625,7 @@ export namespace Gio {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -35793,7 +35699,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         skip_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<number>;
@@ -35822,7 +35728,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -35857,7 +35763,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -36895,7 +36801,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          */
         close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
@@ -36910,7 +36816,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -36930,7 +36836,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -37016,7 +36922,7 @@ export namespace Gio {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         read_all_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
@@ -37031,7 +36937,7 @@ export namespace Gio {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -37051,7 +36957,7 @@ export namespace Gio {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -37098,7 +37004,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         read_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
@@ -37126,7 +37032,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -37159,7 +37065,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -37219,7 +37125,7 @@ export namespace Gio {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         read_bytes_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<GLib.Bytes>;
@@ -37245,7 +37151,7 @@ export namespace Gio {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -37277,7 +37183,7 @@ export namespace Gio {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -37351,7 +37257,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         skip_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<number>;
@@ -37380,7 +37286,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -37415,7 +37321,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -37442,7 +37348,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -37481,7 +37387,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -37540,7 +37446,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -40521,8 +40427,6 @@ export namespace Gio {
      *
      * ![](menu-example.png)
      *
-     * While this kind of deeply nested menu is no longer considered good UI
-     * practice, it serves as a good example of the concepts in `GMenuModel`.
      * There are 8 ‘menus’ visible in the screenshot: one menubar, two
      * submenus and 5 sections:
      *
@@ -40542,10 +40446,7 @@ export namespace Gio {
      *
      * ## A menu example
      *
-     * <picture>
-     *   <source srcset="menu-model-dark.svg" media="(prefers-color-scheme: dark)">
-     *   <img src="menu-model-light.svg" alt="menu model">
-     * </picture>
+     * ![](menu-model.png)
      *
      * Notice that the separators visible in the [example](#an-example-menu)
      * appear nowhere in the [menu model](#a-menu-example). This is because
@@ -44580,9 +44481,9 @@ export namespace Gio {
          *
          * `parameter` must be the correct type of parameter for the action (ie:
          * the parameter type given at construction time).  If the parameter
-         * type was `NULL` then `parameter` must also be `NULL`.
+         * type was %NULL then `parameter` must also be %NULL.
          *
-         * If the `parameter` [type`GLib`.Variant] is floating, it is consumed.
+         * If the `parameter` GVariant is floating, it is consumed.
          * @param parameter the parameter to the activation
          */
         activate(parameter?: GLib.Variant | null): void;
@@ -44590,13 +44491,13 @@ export namespace Gio {
          * Request for the state of `action` to be changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.Action.get_state_type].
+         * See g_action_get_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.Action.get_state_hint].
+         * See g_action_get_state_hint().
          *
-         * If the `value` [type`GLib`.Variant] is floating, it is consumed.
+         * If the `value` GVariant is floating, it is consumed.
          * @param value the new state
          */
         change_state(value: GLib.Variant): void;
@@ -44617,24 +44518,23 @@ export namespace Gio {
          * Queries the type of the parameter that must be given when activating
          * `action`.
          *
-         * When activating the action using [method`Gio`.Action.activate], the
-         * [type`GLib`.Variant] given to that function must be of the type returned by
-         * this function.
+         * When activating the action using g_action_activate(), the #GVariant
+         * given to that function must be of the type returned by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          * @returns the parameter type
          */
         get_parameter_type(): GLib.VariantType | null;
         /**
          * Queries the current state of `action`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.Action.get_state_type].
+         * given by g_action_get_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @returns the current state of the action
          */
         get_state(): GLib.Variant | null;
@@ -44642,12 +44542,12 @@ export namespace Gio {
          * Requests a hint about the valid range of values for the state of
          * `action`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -44655,8 +44555,8 @@ export namespace Gio {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @returns the state range hint
          */
         get_state_hint(): GLib.Variant | null;
@@ -44664,15 +44564,15 @@ export namespace Gio {
          * Queries the type of the state of `action`.
          *
          * If the action is stateful (e.g. created with
-         * [ctor`Gio`.SimpleAction.new_stateful]) then this function returns the
-         * [type`GLib`.VariantType] of the state.  This is the type of the initial value
-         * given as the state. All calls to [method`Gio`.Action.change_state] must give a
-         * [type`GLib`.Variant] of this type and [method`Gio`.Action.get_state] will return a
-         * [type`GLib`.Variant] of the same type.
+         * g_simple_action_new_stateful()) then this function returns the
+         * #GVariantType of the state.  This is the type of the initial value
+         * given as the state. All calls to g_action_change_state() must give a
+         * #GVariant of this type and g_action_get_state() will return a
+         * #GVariant of the same type.
          *
-         * If the action is not stateful (e.g. created with [ctor`Gio`.SimpleAction.new])
-         * then this function will return `NULL`. In that case, [method`Gio`.Action.get_state]
-         * will return `NULL` and you must not call [method`Gio`.Action.change_state].
+         * If the action is not stateful (e.g. created with g_simple_action_new())
+         * then this function will return %NULL. In that case, g_action_get_state()
+         * will return %NULL and you must not call g_action_change_state().
          * @returns the state type, if the action is stateful
          */
         get_state_type(): GLib.VariantType | null;
@@ -44681,9 +44581,9 @@ export namespace Gio {
          *
          * `parameter` must be the correct type of parameter for the action (ie:
          * the parameter type given at construction time).  If the parameter
-         * type was `NULL` then `parameter` must also be `NULL`.
+         * type was %NULL then `parameter` must also be %NULL.
          *
-         * If the `parameter` [type`GLib`.Variant] is floating, it is consumed.
+         * If the `parameter` GVariant is floating, it is consumed.
          * @param parameter the parameter to the activation
          */
         vfunc_activate(parameter?: GLib.Variant | null): void;
@@ -44691,13 +44591,13 @@ export namespace Gio {
          * Request for the state of `action` to be changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.Action.get_state_type].
+         * See g_action_get_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.Action.get_state_hint].
+         * See g_action_get_state_hint().
          *
-         * If the `value` [type`GLib`.Variant] is floating, it is consumed.
+         * If the `value` GVariant is floating, it is consumed.
          * @param value the new state
          */
         vfunc_change_state(value: GLib.Variant): void;
@@ -44716,35 +44616,34 @@ export namespace Gio {
          * Queries the type of the parameter that must be given when activating
          * `action`.
          *
-         * When activating the action using [method`Gio`.Action.activate], the
-         * [type`GLib`.Variant] given to that function must be of the type returned by
-         * this function.
+         * When activating the action using g_action_activate(), the #GVariant
+         * given to that function must be of the type returned by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          */
         vfunc_get_parameter_type(): GLib.VariantType | null;
         /**
          * Queries the current state of `action`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.Action.get_state_type].
+         * given by g_action_get_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          */
         vfunc_get_state(): GLib.Variant | null;
         /**
          * Requests a hint about the valid range of values for the state of
          * `action`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -44752,23 +44651,23 @@ export namespace Gio {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          */
         vfunc_get_state_hint(): GLib.Variant | null;
         /**
          * Queries the type of the state of `action`.
          *
          * If the action is stateful (e.g. created with
-         * [ctor`Gio`.SimpleAction.new_stateful]) then this function returns the
-         * [type`GLib`.VariantType] of the state.  This is the type of the initial value
-         * given as the state. All calls to [method`Gio`.Action.change_state] must give a
-         * [type`GLib`.Variant] of this type and [method`Gio`.Action.get_state] will return a
-         * [type`GLib`.Variant] of the same type.
+         * g_simple_action_new_stateful()) then this function returns the
+         * #GVariantType of the state.  This is the type of the initial value
+         * given as the state. All calls to g_action_change_state() must give a
+         * #GVariant of this type and g_action_get_state() will return a
+         * #GVariant of the same type.
          *
-         * If the action is not stateful (e.g. created with [ctor`Gio`.SimpleAction.new])
-         * then this function will return `NULL`. In that case, [method`Gio`.Action.get_state]
-         * will return `NULL` and you must not call [method`Gio`.Action.change_state].
+         * If the action is not stateful (e.g. created with g_simple_action_new())
+         * then this function will return %NULL. In that case, g_action_get_state()
+         * will return %NULL and you must not call g_action_change_state().
          */
         vfunc_get_state_type(): GLib.VariantType | null;
         /**
@@ -46983,24 +46882,6 @@ export namespace Gio {
          */
         bind(key: string, object: GObject.Object, property: string, flags: SettingsBindFlags | null): void;
         /**
-         * Version of g_settings_bind_with_mapping() using closures instead of callbacks
-         * for easier binding in other languages.
-         * @param key the key to bind
-         * @param object a #GObject
-         * @param property the name of the property to bind
-         * @param flags flags for the binding
-         * @param get_mapping a function that gets called to convert values     from @settings to @object, or %NULL to use the default GIO mapping
-         * @param set_mapping a function that gets called to convert values     from @object to @settings, or %NULL to use the default GIO mapping
-         */
-        bind_with_mapping(
-            key: string,
-            object: GObject.Object,
-            property: string,
-            flags: SettingsBindFlags | null,
-            get_mapping?: GObject.Closure | null,
-            set_mapping?: GObject.Closure | null,
-        ): void;
-        /**
          * Create a binding between the writability of `key` in the
          * `settings` object and the property `property` of `object`.
          * The property must be boolean; "sensitive" or "visible"
@@ -47855,9 +47736,9 @@ export namespace Gio {
          *
          * `parameter` must be the correct type of parameter for the action (ie:
          * the parameter type given at construction time).  If the parameter
-         * type was `NULL` then `parameter` must also be `NULL`.
+         * type was %NULL then `parameter` must also be %NULL.
          *
-         * If the `parameter` [type`GLib`.Variant] is floating, it is consumed.
+         * If the `parameter` GVariant is floating, it is consumed.
          * @param parameter the parameter to the activation
          */
         activate(parameter?: GLib.Variant | null): void;
@@ -47865,13 +47746,13 @@ export namespace Gio {
          * Request for the state of `action` to be changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.Action.get_state_type].
+         * See g_action_get_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.Action.get_state_hint].
+         * See g_action_get_state_hint().
          *
-         * If the `value` [type`GLib`.Variant] is floating, it is consumed.
+         * If the `value` GVariant is floating, it is consumed.
          * @param value the new state
          */
         change_state(value: GLib.Variant): void;
@@ -47892,24 +47773,23 @@ export namespace Gio {
          * Queries the type of the parameter that must be given when activating
          * `action`.
          *
-         * When activating the action using [method`Gio`.Action.activate], the
-         * [type`GLib`.Variant] given to that function must be of the type returned by
-         * this function.
+         * When activating the action using g_action_activate(), the #GVariant
+         * given to that function must be of the type returned by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          * @returns the parameter type
          */
         get_parameter_type(): GLib.VariantType | null;
         /**
          * Queries the current state of `action`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.Action.get_state_type].
+         * given by g_action_get_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @returns the current state of the action
          */
         get_state(): GLib.Variant | null;
@@ -47917,12 +47797,12 @@ export namespace Gio {
          * Requests a hint about the valid range of values for the state of
          * `action`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -47930,8 +47810,8 @@ export namespace Gio {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @returns the state range hint
          */
         get_state_hint(): GLib.Variant | null;
@@ -47939,15 +47819,15 @@ export namespace Gio {
          * Queries the type of the state of `action`.
          *
          * If the action is stateful (e.g. created with
-         * [ctor`Gio`.SimpleAction.new_stateful]) then this function returns the
-         * [type`GLib`.VariantType] of the state.  This is the type of the initial value
-         * given as the state. All calls to [method`Gio`.Action.change_state] must give a
-         * [type`GLib`.Variant] of this type and [method`Gio`.Action.get_state] will return a
-         * [type`GLib`.Variant] of the same type.
+         * g_simple_action_new_stateful()) then this function returns the
+         * #GVariantType of the state.  This is the type of the initial value
+         * given as the state. All calls to g_action_change_state() must give a
+         * #GVariant of this type and g_action_get_state() will return a
+         * #GVariant of the same type.
          *
-         * If the action is not stateful (e.g. created with [ctor`Gio`.SimpleAction.new])
-         * then this function will return `NULL`. In that case, [method`Gio`.Action.get_state]
-         * will return `NULL` and you must not call [method`Gio`.Action.change_state].
+         * If the action is not stateful (e.g. created with g_simple_action_new())
+         * then this function will return %NULL. In that case, g_action_get_state()
+         * will return %NULL and you must not call g_action_change_state().
          * @returns the state type, if the action is stateful
          */
         get_state_type(): GLib.VariantType | null;
@@ -47956,9 +47836,9 @@ export namespace Gio {
          *
          * `parameter` must be the correct type of parameter for the action (ie:
          * the parameter type given at construction time).  If the parameter
-         * type was `NULL` then `parameter` must also be `NULL`.
+         * type was %NULL then `parameter` must also be %NULL.
          *
-         * If the `parameter` [type`GLib`.Variant] is floating, it is consumed.
+         * If the `parameter` GVariant is floating, it is consumed.
          * @param parameter the parameter to the activation
          */
         vfunc_activate(parameter?: GLib.Variant | null): void;
@@ -47966,13 +47846,13 @@ export namespace Gio {
          * Request for the state of `action` to be changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.Action.get_state_type].
+         * See g_action_get_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.Action.get_state_hint].
+         * See g_action_get_state_hint().
          *
-         * If the `value` [type`GLib`.Variant] is floating, it is consumed.
+         * If the `value` GVariant is floating, it is consumed.
          * @param value the new state
          */
         vfunc_change_state(value: GLib.Variant): void;
@@ -47991,35 +47871,34 @@ export namespace Gio {
          * Queries the type of the parameter that must be given when activating
          * `action`.
          *
-         * When activating the action using [method`Gio`.Action.activate], the
-         * [type`GLib`.Variant] given to that function must be of the type returned by
-         * this function.
+         * When activating the action using g_action_activate(), the #GVariant
+         * given to that function must be of the type returned by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          */
         vfunc_get_parameter_type(): GLib.VariantType | null;
         /**
          * Queries the current state of `action`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.Action.get_state_type].
+         * given by g_action_get_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          */
         vfunc_get_state(): GLib.Variant | null;
         /**
          * Requests a hint about the valid range of values for the state of
          * `action`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -48027,23 +47906,23 @@ export namespace Gio {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          */
         vfunc_get_state_hint(): GLib.Variant | null;
         /**
          * Queries the type of the state of `action`.
          *
          * If the action is stateful (e.g. created with
-         * [ctor`Gio`.SimpleAction.new_stateful]) then this function returns the
-         * [type`GLib`.VariantType] of the state.  This is the type of the initial value
-         * given as the state. All calls to [method`Gio`.Action.change_state] must give a
-         * [type`GLib`.Variant] of this type and [method`Gio`.Action.get_state] will return a
-         * [type`GLib`.Variant] of the same type.
+         * g_simple_action_new_stateful()) then this function returns the
+         * #GVariantType of the state.  This is the type of the initial value
+         * given as the state. All calls to g_action_change_state() must give a
+         * #GVariant of this type and g_action_get_state() will return a
+         * #GVariant of the same type.
          *
-         * If the action is not stateful (e.g. created with [ctor`Gio`.SimpleAction.new])
-         * then this function will return `NULL`. In that case, [method`Gio`.Action.get_state]
-         * will return `NULL` and you must not call [method`Gio`.Action.change_state].
+         * If the action is not stateful (e.g. created with g_simple_action_new())
+         * then this function will return %NULL. In that case, g_action_get_state()
+         * will return %NULL and you must not call g_action_change_state().
          */
         vfunc_get_state_type(): GLib.VariantType | null;
         /**
@@ -48510,31 +48389,31 @@ export namespace Gio {
 
         // Inherited methods
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
+         * Emits the #GActionGroup::action-added signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         action_added(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
-         * @param enabled whether the action is now enabled
+         * @param enabled whether or not the action is now enabled
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
+         * Emits the #GActionGroup::action-removed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         action_removed(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-state-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
@@ -48544,35 +48423,37 @@ export namespace Gio {
          *
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
-         * parameters then `parameter` must be `NULL`.  See
-         * [method`Gio`.ActionGroup.get_action_parameter_type].
+         * parameters then `parameter` must be %NULL.  See
+         * g_action_group_get_action_parameter_type().
          *
-         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
+         * If the #GActionGroup implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
+         * g_dbus_connection_flush() should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
-         * example of a ‘quit’ action being activated on the primary app
-         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
-         * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
+         * example of a "quit" action being activated on the primary app
+         * instance over D-Bus. Here g_dbus_connection_flush() is called
+         * before `exit()`. Without g_dbus_connection_flush(), the "quit" action
          * may fail to be activated on the primary instance.
          *
+         *
          * ```c
-         * // call ‘quit’ action on primary instance
+         * // call "quit" action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
          * // make sure the action is activated now
-         * g_dbus_connection_flush (…);
+         * g_dbus_connection_flush (...);
          *
-         * g_debug ("Application has been terminated. Exiting.");
+         * g_debug ("application has been terminated. exiting.");
          *
          * exit (0);
          * ```
+         *
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
@@ -48582,11 +48463,11 @@ export namespace Gio {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.ActionGroup.get_action_state_type].
+         * See g_action_group_get_action_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.ActionGroup.get_action_state_hint].
+         * See g_action_group_get_action_state_hint().
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
@@ -48599,19 +48480,19 @@ export namespace Gio {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
-         * @returns whether the action is currently enabled
+         * @returns whether or not the action is currently enabled
          */
         get_action_enabled(action_name: string): boolean;
         /**
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using [method`Gio`.ActionGroup.activate_action],
-         * the [type`GLib`.Variant] given to that function must be of the type returned
+         * When activating the action using g_action_group_activate_action(),
+         * the #GVariant given to that function must be of the type returned
          * by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -48623,12 +48504,12 @@ export namespace Gio {
         /**
          * Queries the current state of the named action within `action_group`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.ActionGroup.get_action_state_type].
+         * given by g_action_group_get_action_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
@@ -48637,12 +48518,12 @@ export namespace Gio {
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -48650,8 +48531,8 @@ export namespace Gio {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
@@ -48661,14 +48542,14 @@ export namespace Gio {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * [type`GLib`.VariantType] of the state.  All calls to
-         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
-         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
+         * #GVariantType of the state.  All calls to
+         * g_action_group_change_action_state() must give a #GVariant of this
+         * type and g_action_group_get_action_state() will return a #GVariant
          * of the same type.
          *
-         * If the action is not stateful then this function will return `NULL`.
-         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
-         * and you must not call [method`Gio`.ActionGroup.change_action_state].
+         * If the action is not stateful then this function will return %NULL.
+         * In that case, g_action_group_get_action_state() will return %NULL
+         * and you must not call g_action_group_change_action_state().
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -48686,27 +48567,27 @@ export namespace Gio {
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
+         * The caller is responsible for freeing the list with g_strfreev() when
          * it is no longer required.
-         * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @returns a %NULL-terminated array of the names of the actions in the group
          */
         list_actions(): string[];
         /**
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
-         * [method`Gio`.ActionGroup.get_action_parameter_type],
-         * [method`Gio`.ActionGroup.get_action_state_type],
-         * [method`Gio`.ActionGroup.get_action_state_hint] and
-         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
+         * g_action_group_has_action(), g_action_group_get_action_enabled(),
+         * g_action_group_get_action_parameter_type(),
+         * g_action_group_get_action_state_type(),
+         * g_action_group_get_action_state_hint() and
+         * g_action_group_get_action_state() with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
+         * #GActionGroup can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -48715,12 +48596,12 @@ export namespace Gio {
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
          *
-         * If the action exists, `TRUE` is returned and any of the requested
-         * fields (as indicated by having a non-`NULL` reference passed in) are
-         * filled.  If the action doesn’t exist, `FALSE` is returned and the
+         * If the action exists, %TRUE is returned and any of the requested
+         * fields (as indicated by having a non-%NULL reference passed in) are
+         * filled.  If the action doesn't exist, %FALSE is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
-         * @returns `TRUE` if the action exists, else `FALSE`
+         * @returns %TRUE if the action exists, else %FALSE
          */
         query_action(
             action_name: string,
@@ -48733,31 +48614,31 @@ export namespace Gio {
             GLib.Variant | null,
         ];
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
+         * Emits the #GActionGroup::action-added signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         vfunc_action_added(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
-         * @param enabled whether the action is now enabled
+         * @param enabled whether or not the action is now enabled
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
+         * Emits the #GActionGroup::action-removed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         vfunc_action_removed(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-state-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
@@ -48767,35 +48648,37 @@ export namespace Gio {
          *
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
-         * parameters then `parameter` must be `NULL`.  See
-         * [method`Gio`.ActionGroup.get_action_parameter_type].
+         * parameters then `parameter` must be %NULL.  See
+         * g_action_group_get_action_parameter_type().
          *
-         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
+         * If the #GActionGroup implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
+         * g_dbus_connection_flush() should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
-         * example of a ‘quit’ action being activated on the primary app
-         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
-         * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
+         * example of a "quit" action being activated on the primary app
+         * instance over D-Bus. Here g_dbus_connection_flush() is called
+         * before `exit()`. Without g_dbus_connection_flush(), the "quit" action
          * may fail to be activated on the primary instance.
          *
+         *
          * ```c
-         * // call ‘quit’ action on primary instance
+         * // call "quit" action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
          * // make sure the action is activated now
-         * g_dbus_connection_flush (…);
+         * g_dbus_connection_flush (...);
          *
-         * g_debug ("Application has been terminated. Exiting.");
+         * g_debug ("application has been terminated. exiting.");
          *
          * exit (0);
          * ```
+         *
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
@@ -48805,11 +48688,11 @@ export namespace Gio {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.ActionGroup.get_action_state_type].
+         * See g_action_group_get_action_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.ActionGroup.get_action_state_hint].
+         * See g_action_group_get_action_state_hint().
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
@@ -48828,12 +48711,12 @@ export namespace Gio {
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using [method`Gio`.ActionGroup.activate_action],
-         * the [type`GLib`.Variant] given to that function must be of the type returned
+         * When activating the action using g_action_group_activate_action(),
+         * the #GVariant given to that function must be of the type returned
          * by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -48844,12 +48727,12 @@ export namespace Gio {
         /**
          * Queries the current state of the named action within `action_group`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.ActionGroup.get_action_state_type].
+         * given by g_action_group_get_action_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -48857,12 +48740,12 @@ export namespace Gio {
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -48870,8 +48753,8 @@ export namespace Gio {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -48880,14 +48763,14 @@ export namespace Gio {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * [type`GLib`.VariantType] of the state.  All calls to
-         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
-         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
+         * #GVariantType of the state.  All calls to
+         * g_action_group_change_action_state() must give a #GVariant of this
+         * type and g_action_group_get_action_state() will return a #GVariant
          * of the same type.
          *
-         * If the action is not stateful then this function will return `NULL`.
-         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
-         * and you must not call [method`Gio`.ActionGroup.change_action_state].
+         * If the action is not stateful then this function will return %NULL.
+         * In that case, g_action_group_get_action_state() will return %NULL
+         * and you must not call g_action_group_change_action_state().
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -48903,7 +48786,7 @@ export namespace Gio {
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
+         * The caller is responsible for freeing the list with g_strfreev() when
          * it is no longer required.
          */
         vfunc_list_actions(): string[];
@@ -48911,18 +48794,18 @@ export namespace Gio {
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
-         * [method`Gio`.ActionGroup.get_action_parameter_type],
-         * [method`Gio`.ActionGroup.get_action_state_type],
-         * [method`Gio`.ActionGroup.get_action_state_hint] and
-         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
+         * g_action_group_has_action(), g_action_group_get_action_enabled(),
+         * g_action_group_get_action_parameter_type(),
+         * g_action_group_get_action_state_type(),
+         * g_action_group_get_action_state_hint() and
+         * g_action_group_get_action_state() with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
+         * #GActionGroup can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -48931,9 +48814,9 @@ export namespace Gio {
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
          *
-         * If the action exists, `TRUE` is returned and any of the requested
-         * fields (as indicated by having a non-`NULL` reference passed in) are
-         * filled.  If the action doesn’t exist, `FALSE` is returned and the
+         * If the action exists, %TRUE is returned and any of the requested
+         * fields (as indicated by having a non-%NULL reference passed in) are
+         * filled.  If the action doesn't exist, %FALSE is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          */
@@ -48954,57 +48837,21 @@ export namespace Gio {
          * as `action` then the old action is dropped from the action map.
          *
          * The action map takes its own reference on `action`.
-         * @param action a [iface@Gio.Action]
+         * @param action a #GAction
          */
         add_action(action: Action): void;
         /**
-         * A convenience function for creating multiple [class`Gio`.SimpleAction]
-         * instances and adding them to a [iface`Gio`.ActionMap].
-         *
-         * Each action is constructed as per one [struct`Gio`.ActionEntry].
-         *
-         * ```c
-         * static void
-         * activate_quit (GSimpleAction *simple,
-         *                GVariant      *parameter,
-         *                gpointer       user_data)
-         * {
-         *   exit (0);
-         * }
-         *
-         * static void
-         * activate_print_string (GSimpleAction *simple,
-         *                        GVariant      *parameter,
-         *                        gpointer       user_data)
-         * {
-         *   g_print ("%s\n", g_variant_get_string (parameter, NULL));
-         * }
-         *
-         * static GActionGroup *
-         * create_action_group (void)
-         * {
-         *   const GActionEntry entries[] = {
-         *     { "quit",         activate_quit              },
-         *     { "print-string", activate_print_string, "s" }
-         *   };
-         *   GSimpleActionGroup *group;
-         *
-         *   group = g_simple_action_group_new ();
-         *   g_action_map_add_action_entries (G_ACTION_MAP (group), entries, G_N_ELEMENTS (entries), NULL);
-         *
-         *   return G_ACTION_GROUP (group);
-         * }
-         * ```
-         * @param entries a pointer to   the first item in an array of [struct@Gio.ActionEntry] structs
-         * @param user_data the user data for signal connections
+         * A convenience function for creating multiple simple actions.
+         * See Gio.ActionEntryObj for the structure of the action entry.
+         * @param entries Array of action entries to add
          */
-        add_action_entries(entries: ActionEntry[], user_data?: any | null): void;
+        add_action_entries(entries: ActionEntryObj[]): void;
         /**
          * Looks up the action with the name `action_name` in `action_map`.
          *
-         * If no such action exists, returns `NULL`.
+         * If no such action exists, returns %NULL.
          * @param action_name the name of an action
-         * @returns a [iface@Gio.Action]
+         * @returns a #GAction, or %NULL
          */
         lookup_action(action_name: string): Action | null;
         /**
@@ -49015,8 +48862,9 @@ export namespace Gio {
          */
         remove_action(action_name: string): void;
         /**
-         * Remove actions from a [iface`Gio`.ActionMap]. This is meant as the reverse of
-         * [method`Gio`.ActionMap.add_action_entries].
+         * Remove actions from a #GActionMap. This is meant as the reverse of
+         * g_action_map_add_action_entries().
+         *
          *
          *
          * ```c
@@ -49037,7 +48885,8 @@ export namespace Gio {
          *   g_action_map_remove_action_entries (map, entries, G_N_ELEMENTS (entries));
          * }
          * ```
-         * @param entries a pointer to   the first item in an array of [struct@Gio.ActionEntry] structs
+         *
+         * @param entries a pointer to           the first item in an array of #GActionEntry structs
          */
         remove_action_entries(entries: ActionEntry[]): void;
         /**
@@ -49047,13 +48896,13 @@ export namespace Gio {
          * as `action` then the old action is dropped from the action map.
          *
          * The action map takes its own reference on `action`.
-         * @param action a [iface@Gio.Action]
+         * @param action a #GAction
          */
         vfunc_add_action(action: Action): void;
         /**
          * Looks up the action with the name `action_name` in `action_map`.
          *
-         * If no such action exists, returns `NULL`.
+         * If no such action exists, returns %NULL.
          * @param action_name the name of an action
          */
         vfunc_lookup_action(action_name: string): Action | null;
@@ -49771,12 +49620,12 @@ export namespace Gio {
 
         // Inherited methods
         /**
-         * Gets the source object from a [iface`Gio`.AsyncResult].
-         * @returns a new reference to the source    object for the @res, or `NULL` if there is none.
+         * Gets the source object from a #GAsyncResult.
+         * @returns a new reference to the source    object for the @res, or %NULL if there is none.
          */
         get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a [iface`Gio`.AsyncResult].
+         * Gets the user data from a #GAsyncResult.
          * @returns the user data for @res.
          */
         get_user_data(): any | null;
@@ -49784,29 +49633,29 @@ export namespace Gio {
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
-         * @returns `TRUE` if @res has the indicated @source_tag, `FALSE` if   not.
+         * @returns %TRUE if @res has the indicated @source_tag, %FALSE if   not.
          */
         is_tagged(source_tag?: any | null): boolean;
         /**
-         * If `res` is a [class`Gio`.SimpleAsyncResult], this is equivalent to
-         * [method`Gio`.SimpleAsyncResult.propagate_error]. Otherwise it returns
-         * `FALSE`.
+         * If `res` is a #GSimpleAsyncResult, this is equivalent to
+         * g_simple_async_result_propagate_error(). Otherwise it returns
+         * %FALSE.
          *
-         * This can be used for legacy error handling in async `*_finish()`
-         * wrapper functions that traditionally handled [class`Gio`.SimpleAsyncResult]
+         * This can be used for legacy error handling in async *_finish()
+         * wrapper functions that traditionally handled #GSimpleAsyncResult
          * error returns themselves rather than calling into the virtual method.
-         * This should not be used in new code; [iface`Gio`.AsyncResult] errors that are
+         * This should not be used in new code; #GAsyncResult errors that are
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
-         * @returns `TRUE` if @error is has been filled in with an error from   @res, `FALSE` if not.
+         * @returns %TRUE if @error is has been filled in with an error from   @res, %FALSE if not.
          */
         legacy_propagate_error(): boolean;
         /**
-         * Gets the source object from a [iface`Gio`.AsyncResult].
+         * Gets the source object from a #GAsyncResult.
          */
         vfunc_get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a [iface`Gio`.AsyncResult].
+         * Gets the user data from a #GAsyncResult.
          */
         vfunc_get_user_data(): any | null;
         /**
@@ -50487,7 +50336,7 @@ export namespace Gio {
          * Looks into the system proxy configuration to determine what proxy,
          * if any, to use to connect to `uri`. The returned proxy URIs are of
          * the form `<protocol>://[user[:password]`]`host[:port]` or
-         * `direct://`, where `<protocol>` could be http, rtsp, socks
+         * `direct://`, where <protocol> could be http, rtsp, socks
          * or other proxying protocol.
          *
          * If you don't know what network protocol is being used on the
@@ -50549,7 +50398,7 @@ export namespace Gio {
          * Looks into the system proxy configuration to determine what proxy,
          * if any, to use to connect to `uri`. The returned proxy URIs are of
          * the form `<protocol>://[user[:password]`]`host[:port]` or
-         * `direct://`, where `<protocol>` could be http, rtsp, socks
+         * `direct://`, where <protocol> could be http, rtsp, socks
          * or other proxying protocol.
          *
          * If you don't know what network protocol is being used on the
@@ -51476,7 +51325,7 @@ export namespace Gio {
          * getsockopt(). (If you need to fetch a  non-integer-valued option,
          * you will need to call getsockopt() directly.)
          *
-         * The [`<gio/gnetworking.h>`](networking.html)
+         * The [<gio/gnetworking.h>][gio-gnetworking.h]
          * header pulls in system headers that will define most of the
          * standard/portable socket options. For unusual socket protocols or
          * platform-dependent options, you may need to include additional
@@ -52078,7 +51927,7 @@ export namespace Gio {
          * setsockopt(). (If you need to set a non-integer-valued option,
          * you will need to call setsockopt() directly.)
          *
-         * The [`<gio/gnetworking.h>`](networking.html)
+         * The [<gio/gnetworking.h>][gio-gnetworking.h]
          * header pulls in system headers that will define most of the
          * standard/portable socket options. For unusual socket protocols or
          * platform-dependent options, you may need to include additional
@@ -55001,12 +54850,6 @@ export namespace Gio {
      * [method`Gio`.Subprocess.wait].  After the process exits, the status can be
      * checked using functions such as [method`Gio`.Subprocess.get_if_exited] (which
      * are similar to the familiar `WIFEXITED`-style POSIX macros).
-     *
-     * Note that as of GLib 2.82, creating a `GSubprocess` causes the signal
-     * `SIGPIPE` to be ignored for the remainder of the program. If you are writing
-     * a command-line utility that uses `GSubprocess`, you may need to take into
-     * account the fact that your program will not automatically be killed
-     * if it tries to write to `stdout` after it has been closed.
      */
     class Subprocess extends GObject.Object implements Initable {
         static $gtype: GObject.GType<Subprocess>;
@@ -57086,7 +56929,7 @@ export namespace Gio {
 
         // Inherited methods
         /**
-         * Gets the user data from a [iface`Gio`.AsyncResult].
+         * Gets the user data from a #GAsyncResult.
          * @returns the user data for @res.
          */
         get_user_data(): any | null;
@@ -57094,29 +56937,29 @@ export namespace Gio {
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
-         * @returns `TRUE` if @res has the indicated @source_tag, `FALSE` if   not.
+         * @returns %TRUE if @res has the indicated @source_tag, %FALSE if   not.
          */
         is_tagged(source_tag?: any | null): boolean;
         /**
-         * If `res` is a [class`Gio`.SimpleAsyncResult], this is equivalent to
-         * [method`Gio`.SimpleAsyncResult.propagate_error]. Otherwise it returns
-         * `FALSE`.
+         * If `res` is a #GSimpleAsyncResult, this is equivalent to
+         * g_simple_async_result_propagate_error(). Otherwise it returns
+         * %FALSE.
          *
-         * This can be used for legacy error handling in async `*_finish()`
-         * wrapper functions that traditionally handled [class`Gio`.SimpleAsyncResult]
+         * This can be used for legacy error handling in async *_finish()
+         * wrapper functions that traditionally handled #GSimpleAsyncResult
          * error returns themselves rather than calling into the virtual method.
-         * This should not be used in new code; [iface`Gio`.AsyncResult] errors that are
+         * This should not be used in new code; #GAsyncResult errors that are
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
-         * @returns `TRUE` if @error is has been filled in with an error from   @res, `FALSE` if not.
+         * @returns %TRUE if @error is has been filled in with an error from   @res, %FALSE if not.
          */
         legacy_propagate_error(): boolean;
         /**
-         * Gets the source object from a [iface`Gio`.AsyncResult].
+         * Gets the source object from a #GAsyncResult.
          */
         vfunc_get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a [iface`Gio`.AsyncResult].
+         * Gets the user data from a #GAsyncResult.
          */
         vfunc_get_user_data(): any | null;
         /**
@@ -59217,7 +59060,7 @@ export namespace Gio {
         /**
          * Asynchronously performs a TLS handshake on `conn`. See
          * g_tls_connection_handshake() for more information.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the handshake is complete
          */
@@ -59385,14 +59228,14 @@ export namespace Gio {
         /**
          * Asynchronously performs a TLS handshake on `conn`. See
          * g_tls_connection_handshake() for more information.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable a #GCancellable, or %NULL
          */
         handshake_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
         /**
          * Asynchronously performs a TLS handshake on `conn`. See
          * g_tls_connection_handshake() for more information.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the handshake is complete
          */
@@ -59404,7 +59247,7 @@ export namespace Gio {
         /**
          * Asynchronously performs a TLS handshake on `conn`. See
          * g_tls_connection_handshake() for more information.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the handshake is complete
          */
@@ -61923,7 +61766,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          */
         close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
@@ -61938,7 +61781,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -61958,7 +61801,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -62044,7 +61887,7 @@ export namespace Gio {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         read_all_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
@@ -62059,7 +61902,7 @@ export namespace Gio {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -62079,7 +61922,7 @@ export namespace Gio {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -62126,7 +61969,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         read_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
@@ -62154,7 +61997,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -62187,7 +62030,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -62247,7 +62090,7 @@ export namespace Gio {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         read_bytes_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<GLib.Bytes>;
@@ -62273,7 +62116,7 @@ export namespace Gio {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -62305,7 +62148,7 @@ export namespace Gio {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -62379,7 +62222,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         skip_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<number>;
@@ -62408,7 +62251,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -62443,7 +62286,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -62470,7 +62313,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -62509,7 +62352,7 @@ export namespace Gio {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
+         * @param io_priority the [I/O priority][io-priority] of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -62568,7 +62411,7 @@ export namespace Gio {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -65673,12 +65516,6 @@ export namespace Gio {
             flags: ConverterFlags | null,
         ): [ConverterResult, number, number];
         /**
-         * Applies `converter` to the data in `bytes`.
-         * @param bytes the data to convert
-         * @returns A newly-allocated   `GBytes` with the converted data, or `NULL` if an error   occurred
-         */
-        convert_bytes(bytes: GLib.Bytes | Uint8Array): GLib.Bytes;
-        /**
          * Resets all internal state in the converter, making it behave
          * as if it was just created. If the converter has any internal
          * state that would produce output then that output is lost.
@@ -66337,12 +66174,6 @@ export namespace Gio {
             flags: ConverterFlags | null,
         ): [ConverterResult, number, number];
         /**
-         * Applies `converter` to the data in `bytes`.
-         * @param bytes the data to convert
-         * @returns A newly-allocated   `GBytes` with the converted data, or `NULL` if an error   occurred
-         */
-        convert_bytes(bytes: GLib.Bytes | Uint8Array): GLib.Bytes;
-        /**
          * Resets all internal state in the converter, making it behave
          * as if it was just created. If the converter has any internal
          * state that would produce output then that output is lost.
@@ -66850,15 +66681,15 @@ export namespace Gio {
 
     /**
      * This struct defines a single action.  It is for use with
-     * [method`Gio`.ActionMap.add_action_entries].
+     * g_action_map_add_action_entries().
      *
      * The order of the items in the structure are intended to reflect
      * frequency of use.  It is permissible to use an incomplete initialiser
-     * in order to leave some of the later values as `NULL`.  All values
+     * in order to leave some of the later values as %NULL.  All values
      * after `name` are optional.  Additional optional fields may be added in
      * the future.
      *
-     * See [method`Gio`.ActionMap.add_action_entries] for an example.
+     * See g_action_map_add_action_entries() for an example.
      */
     class ActionEntry {
         static $gtype: GObject.GType<ActionEntry>;
@@ -67238,7 +67069,7 @@ export namespace Gio {
     }
 
     /**
-     * Information about a method on a D-Bus interface.
+     * Information about a method on an D-Bus interface.
      */
     class DBusMethodInfo {
         static $gtype: GObject.GType<DBusMethodInfo>;
@@ -69213,7 +69044,7 @@ export namespace Gio {
     }
 
     /**
-     * Defines a Unix mount entry (e.g. `/media/cdrom`).
+     * Defines a Unix mount entry (e.g. <filename>/media/cdrom</filename>).
      * This corresponds roughly to a mtab entry.
      */
     abstract class UnixMountEntry {
@@ -69226,7 +69057,7 @@ export namespace Gio {
 
     type UnixMountMonitorClass = typeof UnixMountMonitor;
     /**
-     * Defines a Unix mount point (e.g. `/dev`).
+     * Defines a Unix mount point (e.g. <filename>/dev</filename>).
      * This corresponds roughly to a fstab entry.
      */
     abstract class UnixMountPoint {
@@ -69369,10 +69200,10 @@ export namespace Gio {
          * Checks if `action_name` is valid.
          *
          * `action_name` is valid if it consists only of alphanumeric characters,
-         * plus `-` and `.`.  The empty string is not a valid action name.
+         * plus '-' and '.'.  The empty string is not a valid action name.
          *
-         * It is an error to call this function with a non-UTF-8 `action_name`.
-         * `action_name` must not be `NULL`.
+         * It is an error to call this function with a non-utf8 `action_name`.
+         * `action_name` must not be %NULL.
          * @param action_name a potential action name
          */
         name_is_valid(action_name: string): boolean;
@@ -69395,18 +69226,18 @@ export namespace Gio {
          * The third format is used to represent an action with any type of
          * target value, including strings.  The target value follows the action
          * name, surrounded in parens.  For example: `app.action(42)`.  The
-         * target value is parsed using [func`GLib`.Variant.parse].  If a tuple-typed
+         * target value is parsed using g_variant_parse().  If a tuple-typed
          * value is desired, it must be specified in the same way, resulting in
          * two sets of parens, for example: `app.action((1,2,3))`.  A string
          * target can be specified this way as well: `app.action('target')`.
          * For strings, this third format must be used if target value is
          * empty or contains characters other than alphanumerics, `-` and `.`.
          *
-         * If this function returns `TRUE`, a non-`NULL` value is guaranteed to be returned
-         * in `action_name` (if a pointer is passed in). A `NULL` value may still be
+         * If this function returns %TRUE, a non-%NULL value is guaranteed to be returned
+         * in `action_name` (if a pointer is passed in). A %NULL value may still be
          * returned in `target_value,` as the `detailed_name` may not contain a target.
          *
-         * If returned, the [type`GLib`.Variant] in `target_value` is guaranteed to not be floating.
+         * If returned, the #GVariant in `target_value` is guaranteed to not be floating.
          * @param detailed_name a detailed action name
          */
         parse_detailed_name(detailed_name: string): [boolean, string, GLib.Variant | null];
@@ -69415,14 +69246,14 @@ export namespace Gio {
          *
          * It is an error to call this function with an invalid action name.
          *
-         * This function is the opposite of [func`Gio`.Action.parse_detailed_name].
+         * This function is the opposite of g_action_parse_detailed_name().
          * It will produce a string that can be parsed back to the `action_name`
          * and `target_value` by that function.
          *
          * See that function for the types of strings that will be printed by
          * this function.
          * @param action_name a valid action name
-         * @param target_value a [type@GLib.Variant] target value, or `NULL`
+         * @param target_value a #GVariant target value, or %NULL
          */
         print_detailed_name(action_name: string, target_value?: GLib.Variant | null): string;
     }
@@ -69432,38 +69263,38 @@ export namespace Gio {
         /**
          * If `action` is currently enabled.
          *
-         * If the action is disabled then calls to [method`Gio`.Action.activate] and
-         * [method`Gio`.Action.change_state] have no effect.
+         * If the action is disabled then calls to g_action_activate() and
+         * g_action_change_state() have no effect.
          */
         get enabled(): boolean;
         /**
          * The name of the action.  This is mostly meaningful for identifying
-         * the action once it has been added to a [type`Gio`.ActionGroup]. It is immutable.
+         * the action once it has been added to a #GActionGroup. It is immutable.
          */
         get name(): string;
         /**
          * The type of the parameter that must be given when activating the
-         * action. This is immutable, and may be `NULL` if no parameter is needed when
+         * action. This is immutable, and may be %NULL if no parameter is needed when
          * activating the action.
          */
         get parameter_type(): GLib.VariantType;
         /**
          * The type of the parameter that must be given when activating the
-         * action. This is immutable, and may be `NULL` if no parameter is needed when
+         * action. This is immutable, and may be %NULL if no parameter is needed when
          * activating the action.
          */
         get parameterType(): GLib.VariantType;
         /**
-         * The state of the action, or `NULL` if the action is stateless.
+         * The state of the action, or %NULL if the action is stateless.
          */
         get state(): GLib.Variant;
         /**
-         * The [type`GLib`.VariantType] of the state that the action has, or `NULL` if the
+         * The #GVariantType of the state that the action has, or %NULL if the
          * action is stateless. This is immutable.
          */
         get state_type(): GLib.VariantType;
         /**
-         * The [type`GLib`.VariantType] of the state that the action has, or `NULL` if the
+         * The #GVariantType of the state that the action has, or %NULL if the
          * action is stateless. This is immutable.
          */
         get stateType(): GLib.VariantType;
@@ -69475,9 +69306,9 @@ export namespace Gio {
          *
          * `parameter` must be the correct type of parameter for the action (ie:
          * the parameter type given at construction time).  If the parameter
-         * type was `NULL` then `parameter` must also be `NULL`.
+         * type was %NULL then `parameter` must also be %NULL.
          *
-         * If the `parameter` [type`GLib`.Variant] is floating, it is consumed.
+         * If the `parameter` GVariant is floating, it is consumed.
          * @param parameter the parameter to the activation
          */
         activate(parameter?: GLib.Variant | null): void;
@@ -69485,13 +69316,13 @@ export namespace Gio {
          * Request for the state of `action` to be changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.Action.get_state_type].
+         * See g_action_get_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.Action.get_state_hint].
+         * See g_action_get_state_hint().
          *
-         * If the `value` [type`GLib`.Variant] is floating, it is consumed.
+         * If the `value` GVariant is floating, it is consumed.
          * @param value the new state
          */
         change_state(value: GLib.Variant): void;
@@ -69512,24 +69343,23 @@ export namespace Gio {
          * Queries the type of the parameter that must be given when activating
          * `action`.
          *
-         * When activating the action using [method`Gio`.Action.activate], the
-         * [type`GLib`.Variant] given to that function must be of the type returned by
-         * this function.
+         * When activating the action using g_action_activate(), the #GVariant
+         * given to that function must be of the type returned by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          * @returns the parameter type
          */
         get_parameter_type(): GLib.VariantType | null;
         /**
          * Queries the current state of `action`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.Action.get_state_type].
+         * given by g_action_get_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @returns the current state of the action
          */
         get_state(): GLib.Variant | null;
@@ -69537,12 +69367,12 @@ export namespace Gio {
          * Requests a hint about the valid range of values for the state of
          * `action`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -69550,8 +69380,8 @@ export namespace Gio {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @returns the state range hint
          */
         get_state_hint(): GLib.Variant | null;
@@ -69559,15 +69389,15 @@ export namespace Gio {
          * Queries the type of the state of `action`.
          *
          * If the action is stateful (e.g. created with
-         * [ctor`Gio`.SimpleAction.new_stateful]) then this function returns the
-         * [type`GLib`.VariantType] of the state.  This is the type of the initial value
-         * given as the state. All calls to [method`Gio`.Action.change_state] must give a
-         * [type`GLib`.Variant] of this type and [method`Gio`.Action.get_state] will return a
-         * [type`GLib`.Variant] of the same type.
+         * g_simple_action_new_stateful()) then this function returns the
+         * #GVariantType of the state.  This is the type of the initial value
+         * given as the state. All calls to g_action_change_state() must give a
+         * #GVariant of this type and g_action_get_state() will return a
+         * #GVariant of the same type.
          *
-         * If the action is not stateful (e.g. created with [ctor`Gio`.SimpleAction.new])
-         * then this function will return `NULL`. In that case, [method`Gio`.Action.get_state]
-         * will return `NULL` and you must not call [method`Gio`.Action.change_state].
+         * If the action is not stateful (e.g. created with g_simple_action_new())
+         * then this function will return %NULL. In that case, g_action_get_state()
+         * will return %NULL and you must not call g_action_change_state().
          * @returns the state type, if the action is stateful
          */
         get_state_type(): GLib.VariantType | null;
@@ -69579,9 +69409,9 @@ export namespace Gio {
          *
          * `parameter` must be the correct type of parameter for the action (ie:
          * the parameter type given at construction time).  If the parameter
-         * type was `NULL` then `parameter` must also be `NULL`.
+         * type was %NULL then `parameter` must also be %NULL.
          *
-         * If the `parameter` [type`GLib`.Variant] is floating, it is consumed.
+         * If the `parameter` GVariant is floating, it is consumed.
          * @param parameter the parameter to the activation
          */
         vfunc_activate(parameter?: GLib.Variant | null): void;
@@ -69589,13 +69419,13 @@ export namespace Gio {
          * Request for the state of `action` to be changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.Action.get_state_type].
+         * See g_action_get_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.Action.get_state_hint].
+         * See g_action_get_state_hint().
          *
-         * If the `value` [type`GLib`.Variant] is floating, it is consumed.
+         * If the `value` GVariant is floating, it is consumed.
          * @param value the new state
          */
         vfunc_change_state(value: GLib.Variant): void;
@@ -69614,35 +69444,34 @@ export namespace Gio {
          * Queries the type of the parameter that must be given when activating
          * `action`.
          *
-         * When activating the action using [method`Gio`.Action.activate], the
-         * [type`GLib`.Variant] given to that function must be of the type returned by
-         * this function.
+         * When activating the action using g_action_activate(), the #GVariant
+         * given to that function must be of the type returned by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          */
         vfunc_get_parameter_type(): GLib.VariantType | null;
         /**
          * Queries the current state of `action`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.Action.get_state_type].
+         * given by g_action_get_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          */
         vfunc_get_state(): GLib.Variant | null;
         /**
          * Requests a hint about the valid range of values for the state of
          * `action`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -69650,23 +69479,23 @@ export namespace Gio {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          */
         vfunc_get_state_hint(): GLib.Variant | null;
         /**
          * Queries the type of the state of `action`.
          *
          * If the action is stateful (e.g. created with
-         * [ctor`Gio`.SimpleAction.new_stateful]) then this function returns the
-         * [type`GLib`.VariantType] of the state.  This is the type of the initial value
-         * given as the state. All calls to [method`Gio`.Action.change_state] must give a
-         * [type`GLib`.Variant] of this type and [method`Gio`.Action.get_state] will return a
-         * [type`GLib`.Variant] of the same type.
+         * g_simple_action_new_stateful()) then this function returns the
+         * #GVariantType of the state.  This is the type of the initial value
+         * given as the state. All calls to g_action_change_state() must give a
+         * #GVariant of this type and g_action_get_state() will return a
+         * #GVariant of the same type.
          *
-         * If the action is not stateful (e.g. created with [ctor`Gio`.SimpleAction.new])
-         * then this function will return `NULL`. In that case, [method`Gio`.Action.get_state]
-         * will return `NULL` and you must not call [method`Gio`.Action.change_state].
+         * If the action is not stateful (e.g. created with g_simple_action_new())
+         * then this function will return %NULL. In that case, g_action_get_state()
+         * will return %NULL and you must not call g_action_change_state().
          */
         vfunc_get_state_type(): GLib.VariantType | null;
     }
@@ -69689,31 +69518,31 @@ export namespace Gio {
         // Methods
 
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
+         * Emits the #GActionGroup::action-added signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         action_added(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
-         * @param enabled whether the action is now enabled
+         * @param enabled whether or not the action is now enabled
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
+         * Emits the #GActionGroup::action-removed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         action_removed(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-state-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
@@ -69723,35 +69552,37 @@ export namespace Gio {
          *
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
-         * parameters then `parameter` must be `NULL`.  See
-         * [method`Gio`.ActionGroup.get_action_parameter_type].
+         * parameters then `parameter` must be %NULL.  See
+         * g_action_group_get_action_parameter_type().
          *
-         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
+         * If the #GActionGroup implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
+         * g_dbus_connection_flush() should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
-         * example of a ‘quit’ action being activated on the primary app
-         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
-         * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
+         * example of a "quit" action being activated on the primary app
+         * instance over D-Bus. Here g_dbus_connection_flush() is called
+         * before `exit()`. Without g_dbus_connection_flush(), the "quit" action
          * may fail to be activated on the primary instance.
          *
+         *
          * ```c
-         * // call ‘quit’ action on primary instance
+         * // call "quit" action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
          * // make sure the action is activated now
-         * g_dbus_connection_flush (…);
+         * g_dbus_connection_flush (...);
          *
-         * g_debug ("Application has been terminated. Exiting.");
+         * g_debug ("application has been terminated. exiting.");
          *
          * exit (0);
          * ```
+         *
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
@@ -69761,11 +69592,11 @@ export namespace Gio {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.ActionGroup.get_action_state_type].
+         * See g_action_group_get_action_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.ActionGroup.get_action_state_hint].
+         * See g_action_group_get_action_state_hint().
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
@@ -69778,19 +69609,19 @@ export namespace Gio {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
-         * @returns whether the action is currently enabled
+         * @returns whether or not the action is currently enabled
          */
         get_action_enabled(action_name: string): boolean;
         /**
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using [method`Gio`.ActionGroup.activate_action],
-         * the [type`GLib`.Variant] given to that function must be of the type returned
+         * When activating the action using g_action_group_activate_action(),
+         * the #GVariant given to that function must be of the type returned
          * by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -69802,12 +69633,12 @@ export namespace Gio {
         /**
          * Queries the current state of the named action within `action_group`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.ActionGroup.get_action_state_type].
+         * given by g_action_group_get_action_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
@@ -69816,12 +69647,12 @@ export namespace Gio {
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -69829,8 +69660,8 @@ export namespace Gio {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
@@ -69840,14 +69671,14 @@ export namespace Gio {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * [type`GLib`.VariantType] of the state.  All calls to
-         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
-         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
+         * #GVariantType of the state.  All calls to
+         * g_action_group_change_action_state() must give a #GVariant of this
+         * type and g_action_group_get_action_state() will return a #GVariant
          * of the same type.
          *
-         * If the action is not stateful then this function will return `NULL`.
-         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
-         * and you must not call [method`Gio`.ActionGroup.change_action_state].
+         * If the action is not stateful then this function will return %NULL.
+         * In that case, g_action_group_get_action_state() will return %NULL
+         * and you must not call g_action_group_change_action_state().
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -69865,27 +69696,27 @@ export namespace Gio {
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
+         * The caller is responsible for freeing the list with g_strfreev() when
          * it is no longer required.
-         * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @returns a %NULL-terminated array of the names of the actions in the group
          */
         list_actions(): string[];
         /**
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
-         * [method`Gio`.ActionGroup.get_action_parameter_type],
-         * [method`Gio`.ActionGroup.get_action_state_type],
-         * [method`Gio`.ActionGroup.get_action_state_hint] and
-         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
+         * g_action_group_has_action(), g_action_group_get_action_enabled(),
+         * g_action_group_get_action_parameter_type(),
+         * g_action_group_get_action_state_type(),
+         * g_action_group_get_action_state_hint() and
+         * g_action_group_get_action_state() with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
+         * #GActionGroup can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -69894,12 +69725,12 @@ export namespace Gio {
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
          *
-         * If the action exists, `TRUE` is returned and any of the requested
-         * fields (as indicated by having a non-`NULL` reference passed in) are
-         * filled.  If the action doesn’t exist, `FALSE` is returned and the
+         * If the action exists, %TRUE is returned and any of the requested
+         * fields (as indicated by having a non-%NULL reference passed in) are
+         * filled.  If the action doesn't exist, %FALSE is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
-         * @returns `TRUE` if the action exists, else `FALSE`
+         * @returns %TRUE if the action exists, else %FALSE
          */
         query_action(
             action_name: string,
@@ -69915,31 +69746,31 @@ export namespace Gio {
         // Virtual methods
 
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
+         * Emits the #GActionGroup::action-added signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         vfunc_action_added(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
-         * @param enabled whether the action is now enabled
+         * @param enabled whether or not the action is now enabled
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
+         * Emits the #GActionGroup::action-removed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          */
         vfunc_action_removed(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
+         * Emits the #GActionGroup::action-state-changed signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by #GActionGroup implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
@@ -69949,35 +69780,37 @@ export namespace Gio {
          *
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
-         * parameters then `parameter` must be `NULL`.  See
-         * [method`Gio`.ActionGroup.get_action_parameter_type].
+         * parameters then `parameter` must be %NULL.  See
+         * g_action_group_get_action_parameter_type().
          *
-         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
+         * If the #GActionGroup implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
+         * g_dbus_connection_flush() should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
-         * example of a ‘quit’ action being activated on the primary app
-         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
-         * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
+         * example of a "quit" action being activated on the primary app
+         * instance over D-Bus. Here g_dbus_connection_flush() is called
+         * before `exit()`. Without g_dbus_connection_flush(), the "quit" action
          * may fail to be activated on the primary instance.
          *
+         *
          * ```c
-         * // call ‘quit’ action on primary instance
+         * // call "quit" action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
          * // make sure the action is activated now
-         * g_dbus_connection_flush (…);
+         * g_dbus_connection_flush (...);
          *
-         * g_debug ("Application has been terminated. Exiting.");
+         * g_debug ("application has been terminated. exiting.");
          *
          * exit (0);
          * ```
+         *
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
@@ -69987,11 +69820,11 @@ export namespace Gio {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.ActionGroup.get_action_state_type].
+         * See g_action_group_get_action_state_type().
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.ActionGroup.get_action_state_hint].
+         * See g_action_group_get_action_state_hint().
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
@@ -70010,12 +69843,12 @@ export namespace Gio {
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using [method`Gio`.ActionGroup.activate_action],
-         * the [type`GLib`.Variant] given to that function must be of the type returned
+         * When activating the action using g_action_group_activate_action(),
+         * the #GVariant given to that function must be of the type returned
          * by this function.
          *
-         * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * In the case that this function returns %NULL, you must not give any
+         * #GVariant, but %NULL instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -70026,12 +69859,12 @@ export namespace Gio {
         /**
          * Queries the current state of the named action within `action_group`.
          *
-         * If the action is not stateful then `NULL` will be returned.  If the
+         * If the action is not stateful then %NULL will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.ActionGroup.get_action_state_type].
+         * given by g_action_group_get_action_state_type().
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -70039,12 +69872,12 @@ export namespace Gio {
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
          *
-         * If `NULL` is returned it either means that the action is not stateful
+         * If %NULL is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a #GVariant array is returned then each item in the array is a
+         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -70052,8 +69885,8 @@ export namespace Gio {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * The return value (if non-%NULL) should be freed with
+         * g_variant_unref() when it is no longer required.
          * @param action_name the name of the action to query
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -70062,14 +69895,14 @@ export namespace Gio {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * [type`GLib`.VariantType] of the state.  All calls to
-         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
-         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
+         * #GVariantType of the state.  All calls to
+         * g_action_group_change_action_state() must give a #GVariant of this
+         * type and g_action_group_get_action_state() will return a #GVariant
          * of the same type.
          *
-         * If the action is not stateful then this function will return `NULL`.
-         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
-         * and you must not call [method`Gio`.ActionGroup.change_action_state].
+         * If the action is not stateful then this function will return %NULL.
+         * In that case, g_action_group_get_action_state() will return %NULL
+         * and you must not call g_action_group_change_action_state().
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -70085,7 +69918,7 @@ export namespace Gio {
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
+         * The caller is responsible for freeing the list with g_strfreev() when
          * it is no longer required.
          */
         vfunc_list_actions(): string[];
@@ -70093,18 +69926,18 @@ export namespace Gio {
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
-         * [method`Gio`.ActionGroup.get_action_parameter_type],
-         * [method`Gio`.ActionGroup.get_action_state_type],
-         * [method`Gio`.ActionGroup.get_action_state_hint] and
-         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
+         * g_action_group_has_action(), g_action_group_get_action_enabled(),
+         * g_action_group_get_action_parameter_type(),
+         * g_action_group_get_action_state_type(),
+         * g_action_group_get_action_state_hint() and
+         * g_action_group_get_action_state() with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
+         * #GActionGroup can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -70113,9 +69946,9 @@ export namespace Gio {
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
          *
-         * If the action exists, `TRUE` is returned and any of the requested
-         * fields (as indicated by having a non-`NULL` reference passed in) are
-         * filled.  If the action doesn’t exist, `FALSE` is returned and the
+         * If the action exists, %TRUE is returned and any of the requested
+         * fields (as indicated by having a non-%NULL reference passed in) are
+         * filled.  If the action doesn't exist, %FALSE is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          */
@@ -70155,57 +69988,21 @@ export namespace Gio {
          * as `action` then the old action is dropped from the action map.
          *
          * The action map takes its own reference on `action`.
-         * @param action a [iface@Gio.Action]
+         * @param action a #GAction
          */
         add_action(action: Action): void;
         /**
-         * A convenience function for creating multiple [class`Gio`.SimpleAction]
-         * instances and adding them to a [iface`Gio`.ActionMap].
-         *
-         * Each action is constructed as per one [struct`Gio`.ActionEntry].
-         *
-         * ```c
-         * static void
-         * activate_quit (GSimpleAction *simple,
-         *                GVariant      *parameter,
-         *                gpointer       user_data)
-         * {
-         *   exit (0);
-         * }
-         *
-         * static void
-         * activate_print_string (GSimpleAction *simple,
-         *                        GVariant      *parameter,
-         *                        gpointer       user_data)
-         * {
-         *   g_print ("%s\n", g_variant_get_string (parameter, NULL));
-         * }
-         *
-         * static GActionGroup *
-         * create_action_group (void)
-         * {
-         *   const GActionEntry entries[] = {
-         *     { "quit",         activate_quit              },
-         *     { "print-string", activate_print_string, "s" }
-         *   };
-         *   GSimpleActionGroup *group;
-         *
-         *   group = g_simple_action_group_new ();
-         *   g_action_map_add_action_entries (G_ACTION_MAP (group), entries, G_N_ELEMENTS (entries), NULL);
-         *
-         *   return G_ACTION_GROUP (group);
-         * }
-         * ```
-         * @param entries a pointer to   the first item in an array of [struct@Gio.ActionEntry] structs
-         * @param user_data the user data for signal connections
+         * A convenience function for creating multiple simple actions.
+         * See Gio.ActionEntryObj for the structure of the action entry.
+         * @param entries Array of action entries to add
          */
-        add_action_entries(entries: ActionEntry[], user_data?: any | null): void;
+        add_action_entries(entries: ActionEntryObj[]): void;
         /**
          * Looks up the action with the name `action_name` in `action_map`.
          *
-         * If no such action exists, returns `NULL`.
+         * If no such action exists, returns %NULL.
          * @param action_name the name of an action
-         * @returns a [iface@Gio.Action]
+         * @returns a #GAction, or %NULL
          */
         lookup_action(action_name: string): Action | null;
         /**
@@ -70216,8 +70013,9 @@ export namespace Gio {
          */
         remove_action(action_name: string): void;
         /**
-         * Remove actions from a [iface`Gio`.ActionMap]. This is meant as the reverse of
-         * [method`Gio`.ActionMap.add_action_entries].
+         * Remove actions from a #GActionMap. This is meant as the reverse of
+         * g_action_map_add_action_entries().
+         *
          *
          *
          * ```c
@@ -70238,7 +70036,8 @@ export namespace Gio {
          *   g_action_map_remove_action_entries (map, entries, G_N_ELEMENTS (entries));
          * }
          * ```
-         * @param entries a pointer to   the first item in an array of [struct@Gio.ActionEntry] structs
+         *
+         * @param entries a pointer to           the first item in an array of #GActionEntry structs
          */
         remove_action_entries(entries: ActionEntry[]): void;
 
@@ -70251,13 +70050,13 @@ export namespace Gio {
          * as `action` then the old action is dropped from the action map.
          *
          * The action map takes its own reference on `action`.
-         * @param action a [iface@Gio.Action]
+         * @param action a #GAction
          */
         vfunc_add_action(action: Action): void;
         /**
          * Looks up the action with the name `action_name` in `action_map`.
          *
-         * If no such action exists, returns `NULL`.
+         * If no such action exists, returns %NULL.
          * @param action_name the name of an action
          */
         vfunc_lookup_action(action_name: string): Action | null;
@@ -70285,18 +70084,16 @@ export namespace Gio {
         prototype: AppInfo;
 
         /**
-         * Creates a new [iface`Gio`.AppInfo] from the given information.
+         * Creates a new #GAppInfo from the given information.
          *
-         * Note that for `commandline,` the quoting rules of the `Exec` key of the
+         * Note that for `commandline,` the quoting rules of the Exec key of the
          * [freedesktop.org Desktop Entry Specification](http://freedesktop.org/Standards/desktop-entry-spec)
          * are applied. For example, if the `commandline` contains
          * percent-encoded URIs, the percent-character must be doubled in order to prevent it from
-         * being swallowed by `Exec` key unquoting. See
-         * [the specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s07.html)
-         * for exact quoting rules.
-         * @param commandline the command line to use
-         * @param application_name the application name, or `NULL` to use @commandline
-         * @param flags flags that can specify details of the created [iface@Gio.AppInfo]
+         * being swallowed by Exec key unquoting. See the specification for exact quoting rules.
+         * @param commandline the commandline to use
+         * @param application_name the application name, or %NULL to use @commandline
+         * @param flags flags that can specify details of the created #GAppInfo
          */
         create_from_commandline(
             commandline: string,
@@ -70308,38 +70105,32 @@ export namespace Gio {
          * on this system.
          *
          * For desktop files, this includes applications that have
-         * [`NoDisplay=true`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-nodisplay)
-         * set or are excluded from display by means of
-         * [`OnlyShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-onlyshowin)
-         * or [`NotShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-notshowin).
-         * See [method`Gio`.AppInfo.should_show].
-         *
-         * The returned list does not include applications which have the
-         * [`Hidden` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-hidden)
-         * set.
+         * `NoDisplay=true` set or are excluded from display by means
+         * of `OnlyShowIn` or `NotShowIn`. See g_app_info_should_show().
+         * The returned list does not include applications which have
+         * the `Hidden` key set.
          */
         get_all(): AppInfo[];
         /**
-         * Gets a list of all [iface`Gio`.AppInfo]s for a given content type,
-         * including the recommended and fallback [iface`Gio`.AppInfo]s. See
-         * [func`Gio`.AppInfo.get_recommended_for_type] and
-         * [func`Gio`.AppInfo.get_fallback_for_type].
-         * @param content_type the content type to find a [iface@Gio.AppInfo] for
+         * Gets a list of all #GAppInfos for a given content type,
+         * including the recommended and fallback #GAppInfos. See
+         * g_app_info_get_recommended_for_type() and
+         * g_app_info_get_fallback_for_type().
+         * @param content_type the content type to find a #GAppInfo for
          */
         get_all_for_type(content_type: string): AppInfo[];
         /**
-         * Gets the default [iface`Gio`.AppInfo] for a given content type.
-         * @param content_type the content type to find a [iface@Gio.AppInfo] for
-         * @param must_support_uris if `TRUE`, the [iface@Gio.AppInfo] is expected to   support URIs
+         * Gets the default #GAppInfo for a given content type.
+         * @param content_type the content type to find a #GAppInfo for
+         * @param must_support_uris if %TRUE, the #GAppInfo is expected to     support URIs
          */
         get_default_for_type(content_type: string, must_support_uris: boolean): AppInfo | null;
         /**
-         * Asynchronously gets the default [iface`Gio`.AppInfo] for a given content
-         * type.
-         * @param content_type the content type to find a [iface@Gio.AppInfo] for
-         * @param must_support_uris if `TRUE`, the [iface@Gio.AppInfo] is expected to   support URIs
-         * @param cancellable a [class@Gio.Cancellable]
-         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         * Asynchronously gets the default #GAppInfo for a given content type.
+         * @param content_type the content type to find a #GAppInfo for
+         * @param must_support_uris if %TRUE, the #GAppInfo is expected to     support URIs
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is done
          */
         get_default_for_type_async(
             content_type: string,
@@ -70348,30 +70139,29 @@ export namespace Gio {
             callback?: AsyncReadyCallback<AppInfo> | null,
         ): void;
         /**
-         * Finishes a default [iface`Gio`.AppInfo] lookup started by
-         * [func`Gio`.AppInfo.get_default_for_type_async].
+         * Finishes a default #GAppInfo lookup started by
+         * g_app_info_get_default_for_type_async().
          *
-         * If no #[iface`Gio`.AppInfo] is found, then `error` will be set to
-         * [error`Gio`.IOErrorEnum.NOT_FOUND].
-         * @param result the async result
+         * If no #GAppInfo is found, then `error` will be set to %G_IO_ERROR_NOT_FOUND.
+         * @param result a #GAsyncResult
          */
         get_default_for_type_finish(result: AsyncResult): AppInfo;
         /**
-         * Gets the default application for handling URIs with the given URI scheme.
-         *
-         * A URI scheme is the initial part of the URI, up to but not including the `:`.
-         * For example, `http`, `ftp` or `sip`.
+         * Gets the default application for handling URIs with
+         * the given URI scheme. A URI scheme is the initial part
+         * of the URI, up to but not including the ':', e.g. "http",
+         * "ftp" or "sip".
          * @param uri_scheme a string containing a URI scheme.
          */
         get_default_for_uri_scheme(uri_scheme: string): AppInfo | null;
         /**
          * Asynchronously gets the default application for handling URIs with
          * the given URI scheme. A URI scheme is the initial part
-         * of the URI, up to but not including the `:`, e.g. `http`,
-         * `ftp` or `sip`.
+         * of the URI, up to but not including the ':', e.g. "http",
+         * "ftp" or "sip".
          * @param uri_scheme a string containing a URI scheme.
-         * @param cancellable a [class@Gio.Cancellable]
-         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param callback a #GAsyncReadyCallback to call when the request is done
          */
         get_default_for_uri_scheme_async(
             uri_scheme: string,
@@ -70379,58 +70169,58 @@ export namespace Gio {
             callback?: AsyncReadyCallback<AppInfo> | null,
         ): void;
         /**
-         * Finishes a default [iface`Gio`.AppInfo] lookup started by
-         * [func`Gio`.AppInfo.get_default_for_uri_scheme_async].
+         * Finishes a default #GAppInfo lookup started by
+         * g_app_info_get_default_for_uri_scheme_async().
          *
-         * If no [iface`Gio`.AppInfo] is found, then `error` will be set to
-         * [error`Gio`.IOErrorEnum.NOT_FOUND].
-         * @param result the async result
+         * If no #GAppInfo is found, then `error` will be set to %G_IO_ERROR_NOT_FOUND.
+         * @param result a #GAsyncResult
          */
         get_default_for_uri_scheme_finish(result: AsyncResult): AppInfo;
         /**
-         * Gets a list of fallback [iface`Gio`.AppInfo]s for a given content type, i.e.
-         * those applications which claim to support the given content type by MIME
-         * type subclassing and not directly.
-         * @param content_type the content type to find a [iface@Gio.AppInfo] for
+         * Gets a list of fallback #GAppInfos for a given content type, i.e.
+         * those applications which claim to support the given content type
+         * by MIME type subclassing and not directly.
+         * @param content_type the content type to find a #GAppInfo for
          */
         get_fallback_for_type(content_type: string): AppInfo[];
         /**
-         * Gets a list of recommended [iface`Gio`.AppInfo]s for a given content type,
-         * i.e. those applications which claim to support the given content type
-         * exactly, and not by MIME type subclassing.
-         *
+         * Gets a list of recommended #GAppInfos for a given content type, i.e.
+         * those applications which claim to support the given content type exactly,
+         * and not by MIME type subclassing.
          * Note that the first application of the list is the last used one, i.e.
-         * the last one for which [method`Gio`.AppInfo.set_as_last_used_for_type] has
-         * been called.
-         * @param content_type the content type to find a [iface@Gio.AppInfo] for
+         * the last one for which g_app_info_set_as_last_used_for_type() has been
+         * called.
+         * @param content_type the content type to find a #GAppInfo for
          */
         get_recommended_for_type(content_type: string): AppInfo[];
         /**
-         * Utility function that launches the default application registered to handle
-         * the specified uri. Synchronous I/O is done on the uri to detect the type of
-         * the file if required.
+         * Utility function that launches the default application
+         * registered to handle the specified uri. Synchronous I/O
+         * is done on the uri to detect the type of the file if
+         * required.
          *
-         * The D-Bus–activated applications don’t have to be started if your application
+         * The D-Bus–activated applications don't have to be started if your application
          * terminates too soon after this function. To prevent this, use
-         * [func`Gio`.AppInfo.launch_default_for_uri_async] instead.
+         * g_app_info_launch_default_for_uri_async() instead.
          * @param uri the uri to show
-         * @param context optional launch context
+         * @param context an optional #GAppLaunchContext
          */
         launch_default_for_uri(uri: string, context?: AppLaunchContext | null): boolean;
         /**
-         * Async version of [func`Gio`.AppInfo.launch_default_for_uri].
+         * Async version of g_app_info_launch_default_for_uri().
          *
-         * This version is useful if you are interested in receiving error information
-         * in the case where the application is sandboxed and the portal may present an
-         * application chooser dialog to the user.
+         * This version is useful if you are interested in receiving
+         * error information in the case where the application is
+         * sandboxed and the portal may present an application chooser
+         * dialog to the user.
          *
          * This is also useful if you want to be sure that the D-Bus–activated
          * applications are really started before termination and if you are interested
          * in receiving error information from their activation.
          * @param uri the uri to show
-         * @param context optional launch context
-         * @param cancellable a [class@Gio.Cancellable]
-         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         * @param context an optional #GAppLaunchContext
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to call when the request is done
          */
         launch_default_for_uri_async(
             uri: string,
@@ -70440,15 +70230,15 @@ export namespace Gio {
         ): void;
         /**
          * Finishes an asynchronous launch-default-for-uri operation.
-         * @param result the async result
+         * @param result a #GAsyncResult
          */
         launch_default_for_uri_finish(result: AsyncResult): boolean;
         /**
          * Removes all changes to the type associations done by
-         * [method`Gio`.AppInfo.set_as_default_for_type],
-         * [method`Gio`.AppInfo.set_as_default_for_extension],
-         * [method`Gio`.AppInfo.add_supports_type] or
-         * [method`Gio`.AppInfo.remove_supports_type].
+         * g_app_info_set_as_default_for_type(),
+         * g_app_info_set_as_default_for_extension(),
+         * g_app_info_add_supports_type() or
+         * g_app_info_remove_supports_type().
          * @param content_type a content type
          */
         reset_type_associations(content_type: string): void;
@@ -70460,53 +70250,53 @@ export namespace Gio {
          * Adds a content type to the application information to indicate the
          * application is capable of opening files with the given content type.
          * @param content_type a string.
-         * @returns `TRUE` on success, `FALSE` on error.
+         * @returns %TRUE on success, %FALSE on error.
          */
         add_supports_type(content_type: string): boolean;
         /**
-         * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
-         * See [method`Gio`.AppInfo.delete].
-         * @returns `TRUE` if @appinfo can be deleted
+         * Obtains the information whether the #GAppInfo can be deleted.
+         * See g_app_info_delete().
+         * @returns %TRUE if @appinfo can be deleted
          */
         can_delete(): boolean;
         /**
          * Checks if a supported content type can be removed from an application.
-         * @returns `TRUE` if it is possible to remove supported content types from a   given @appinfo, `FALSE` if not.
+         * @returns %TRUE if it is possible to remove supported     content types from a given @appinfo, %FALSE if not.
          */
         can_remove_supports_type(): boolean;
         /**
-         * Tries to delete a [iface`Gio`.AppInfo].
+         * Tries to delete a #GAppInfo.
          *
          * On some platforms, there may be a difference between user-defined
-         * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
-         * See [method`Gio`.AppInfo.can_delete].
-         * @returns `TRUE` if @appinfo has been deleted
+         * #GAppInfos which can be deleted, and system-wide ones which cannot.
+         * See g_app_info_can_delete().
+         * @returns %TRUE if @appinfo has been deleted
          */
         ['delete'](): boolean;
         /**
-         * Creates a duplicate of a [iface`Gio`.AppInfo].
+         * Creates a duplicate of a #GAppInfo.
          * @returns a duplicate of @appinfo.
          */
         dup(): AppInfo;
         /**
-         * Checks if two [iface`Gio`.AppInfo]s are equal.
+         * Checks if two #GAppInfos are equal.
          *
-         * Note that the check *may not* compare each individual field, and only does
-         * an identity check. In case detecting changes in the contents is needed,
-         * program code must additionally compare relevant fields.
-         * @param appinfo2 the second [iface@Gio.AppInfo].
-         * @returns `TRUE` if @appinfo1 is equal to @appinfo2. `FALSE` otherwise.
+         * Note that the check *may not* compare each individual
+         * field, and only does an identity check. In case detecting changes in the
+         * contents is needed, program code must additionally compare relevant fields.
+         * @param appinfo2 the second #GAppInfo.
+         * @returns %TRUE if @appinfo1 is equal to @appinfo2. %FALSE otherwise.
          */
         equal(appinfo2: AppInfo): boolean;
         /**
          * Gets the commandline with which the application will be
          * started.
-         * @returns a string containing the @appinfo’s   commandline, or `NULL` if this information is not available
+         * @returns a string containing the @appinfo's commandline,     or %NULL if this information is not available
          */
         get_commandline(): string | null;
         /**
          * Gets a human-readable description of an installed application.
-         * @returns a string containing a description of the application @appinfo, or `NULL` if none.
+         * @returns a string containing a description of the application @appinfo, or %NULL if none.
          */
         get_description(): string | null;
         /**
@@ -70516,27 +70306,28 @@ export namespace Gio {
          */
         get_display_name(): string;
         /**
-         * Gets the executable’s name for the installed application.
+         * Gets the executable's name for the installed application.
          *
          * This is intended to be used for debugging or labelling what program is going
-         * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
+         * to be run. To launch the executable, use g_app_info_launch() and related
          * functions, rather than spawning the return value from this function.
-         * @returns a string containing the @appinfo’s application binaries name
+         * @returns a string containing the @appinfo's application binaries name
          */
         get_executable(): string;
         /**
          * Gets the icon for the application.
-         * @returns the default [iface@Gio.Icon] for   @appinfo or `NULL` if there is no default icon.
+         * @returns the default #GIcon for @appinfo or %NULL if there is no default icon.
          */
         get_icon(): Icon | null;
         /**
-         * Gets the ID of an application. An id is a string that identifies the
-         * application. The exact format of the id is platform dependent. For instance,
-         * on Unix this is the desktop file id from the xdg menu specification.
+         * Gets the ID of an application. An id is a string that
+         * identifies the application. The exact format of the id is
+         * platform dependent. For instance, on Unix this is the
+         * desktop file id from the xdg menu specification.
          *
-         * Note that the returned ID may be `NULL`, depending on how the `appinfo` has
-         * been constructed.
-         * @returns a string containing the application’s ID.
+         * Note that the returned ID may be %NULL, depending on how
+         * the `appinfo` has been constructed.
+         * @returns a string containing the application's ID.
          */
         get_id(): string | null;
         /**
@@ -70547,10 +70338,9 @@ export namespace Gio {
         /**
          * Retrieves the list of content types that `app_info` claims to support.
          * If this information is not provided by the environment, this function
-         * will return `NULL`.
-         *
+         * will return %NULL.
          * This function does not take in consideration associations added with
-         * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
+         * g_app_info_add_supports_type(), but only those exported directly by
          * the application.
          * @returns a list of content types.
          */
@@ -70561,7 +70351,7 @@ export namespace Gio {
          * about the details of the launcher (like what screen it is on).
          * On error, `error` will be set accordingly.
          *
-         * To launch the application without arguments pass a `NULL` `files` list.
+         * To launch the application without arguments pass a %NULL `files` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
@@ -70570,11 +70360,11 @@ export namespace Gio {
          * Some URIs can be changed when passed through a GFile (for instance
          * unsupported URIs with strange formats like mailto:), so if you have
          * a textual URI you want to pass in as argument, consider using
-         * [method`Gio`.AppInfo.launch_uris] instead.
+         * g_app_info_launch_uris() instead.
          *
          * The launched application inherits the environment of the launching
-         * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
-         * and [method`Gio`.AppLaunchContext.unsetenv].
+         * process, but it can be modified with g_app_launch_context_setenv()
+         * and g_app_launch_context_unsetenv().
          *
          * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
          * environment variable with the path of the launched desktop file and
@@ -70583,9 +70373,9 @@ export namespace Gio {
          * should it be inherited by further processes. The `DISPLAY`,
          * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
          * variables are also set, based on information provided in `context`.
-         * @param files a list of [iface@Gio.File] objects
-         * @param context the launch context
-         * @returns `TRUE` on successful launch, `FALSE` otherwise.
+         * @param files a #GList of #GFile objects
+         * @param context a #GAppLaunchContext or %NULL
+         * @returns %TRUE on successful launch, %FALSE otherwise.
          */
         launch(files?: File[] | null, context?: AppLaunchContext | null): boolean;
         /**
@@ -70596,26 +70386,26 @@ export namespace Gio {
          * one URI per invocation as part of their command-line, multiple instances
          * of the application will be spawned.
          *
-         * To launch the application without arguments pass a `NULL` `uris` list.
+         * To launch the application without arguments pass a %NULL `uris` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
          * no way to detect this.
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @returns `TRUE` on successful launch, `FALSE` otherwise.
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
+         * @returns %TRUE on successful launch, %FALSE otherwise.
          */
         launch_uris(uris?: string[] | null, context?: AppLaunchContext | null): boolean;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of g_app_info_launch_uris().
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
+         * g_app_info_launch_default_for_uri_async().
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
+         * @param cancellable a #GCancellable
          */
         launch_uris_async(
             uris?: string[] | null,
@@ -70623,16 +70413,16 @@ export namespace Gio {
             cancellable?: Cancellable | null,
         ): Promise<boolean>;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of g_app_info_launch_uris().
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
-         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         * g_app_info_launch_default_for_uri_async().
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to call when the request is done
          */
         launch_uris_async(
             uris: string[] | null,
@@ -70641,16 +70431,16 @@ export namespace Gio {
             callback: AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of g_app_info_launch_uris().
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
-         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         * g_app_info_launch_default_for_uri_async().
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to call when the request is done
          */
         launch_uris_async(
             uris?: string[] | null,
@@ -70659,52 +70449,52 @@ export namespace Gio {
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
         /**
-         * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
-         * @param result the async result
-         * @returns `TRUE` on successful launch, `FALSE` otherwise.
+         * Finishes a g_app_info_launch_uris_async() operation.
+         * @param result a #GAsyncResult
+         * @returns %TRUE on successful launch, %FALSE otherwise.
          */
         launch_uris_finish(result: AsyncResult): boolean;
         /**
          * Removes a supported type from an application, if possible.
          * @param content_type a string.
-         * @returns `TRUE` on success, `FALSE` on error.
+         * @returns %TRUE on success, %FALSE on error.
          */
         remove_supports_type(content_type: string): boolean;
         /**
          * Sets the application as the default handler for the given file extension.
-         * @param extension a string containing the file extension (without   the dot).
-         * @returns `TRUE` on success, `FALSE` on error.
+         * @param extension a string containing the file extension     (without the dot).
+         * @returns %TRUE on success, %FALSE on error.
          */
         set_as_default_for_extension(extension: string): boolean;
         /**
          * Sets the application as the default handler for a given type.
          * @param content_type the content type.
-         * @returns `TRUE` on success, `FALSE` on error.
+         * @returns %TRUE on success, %FALSE on error.
          */
         set_as_default_for_type(content_type: string): boolean;
         /**
-         * Sets the application as the last used application for a given type. This
-         * will make the application appear as first in the list returned by
-         * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
+         * Sets the application as the last used application for a given type.
+         * This will make the application appear as first in the list returned
+         * by g_app_info_get_recommended_for_type(), regardless of the default
          * application for that content type.
          * @param content_type the content type.
-         * @returns `TRUE` on success, `FALSE` on error.
+         * @returns %TRUE on success, %FALSE on error.
          */
         set_as_last_used_for_type(content_type: string): boolean;
         /**
          * Checks if the application info should be shown in menus that
          * list available applications.
-         * @returns `TRUE` if the @appinfo should be shown, `FALSE` otherwise.
+         * @returns %TRUE if the @appinfo should be shown, %FALSE otherwise.
          */
         should_show(): boolean;
         /**
          * Checks if the application accepts files as arguments.
-         * @returns `TRUE` if the @appinfo supports files.
+         * @returns %TRUE if the @appinfo supports files.
          */
         supports_files(): boolean;
         /**
          * Checks if the application supports reading files and directories from URIs.
-         * @returns `TRUE` if the @appinfo supports URIs.
+         * @returns %TRUE if the @appinfo supports URIs.
          */
         supports_uris(): boolean;
 
@@ -70717,8 +70507,8 @@ export namespace Gio {
          */
         vfunc_add_supports_type(content_type: string): boolean;
         /**
-         * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
-         * See [method`Gio`.AppInfo.delete].
+         * Obtains the information whether the #GAppInfo can be deleted.
+         * See g_app_info_delete().
          */
         vfunc_can_delete(): boolean;
         /**
@@ -70726,24 +70516,24 @@ export namespace Gio {
          */
         vfunc_can_remove_supports_type(): boolean;
         /**
-         * Tries to delete a [iface`Gio`.AppInfo].
+         * Tries to delete a #GAppInfo.
          *
          * On some platforms, there may be a difference between user-defined
-         * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
-         * See [method`Gio`.AppInfo.can_delete].
+         * #GAppInfos which can be deleted, and system-wide ones which cannot.
+         * See g_app_info_can_delete().
          */
         vfunc_do_delete(): boolean;
         /**
-         * Creates a duplicate of a [iface`Gio`.AppInfo].
+         * Creates a duplicate of a #GAppInfo.
          */
         vfunc_dup(): AppInfo;
         /**
-         * Checks if two [iface`Gio`.AppInfo]s are equal.
+         * Checks if two #GAppInfos are equal.
          *
-         * Note that the check *may not* compare each individual field, and only does
-         * an identity check. In case detecting changes in the contents is needed,
-         * program code must additionally compare relevant fields.
-         * @param appinfo2 the second [iface@Gio.AppInfo].
+         * Note that the check *may not* compare each individual
+         * field, and only does an identity check. In case detecting changes in the
+         * contents is needed, program code must additionally compare relevant fields.
+         * @param appinfo2 the second #GAppInfo.
          */
         vfunc_equal(appinfo2: AppInfo): boolean;
         /**
@@ -70761,10 +70551,10 @@ export namespace Gio {
          */
         vfunc_get_display_name(): string;
         /**
-         * Gets the executable’s name for the installed application.
+         * Gets the executable's name for the installed application.
          *
          * This is intended to be used for debugging or labelling what program is going
-         * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
+         * to be run. To launch the executable, use g_app_info_launch() and related
          * functions, rather than spawning the return value from this function.
          */
         vfunc_get_executable(): string;
@@ -70773,12 +70563,13 @@ export namespace Gio {
          */
         vfunc_get_icon(): Icon | null;
         /**
-         * Gets the ID of an application. An id is a string that identifies the
-         * application. The exact format of the id is platform dependent. For instance,
-         * on Unix this is the desktop file id from the xdg menu specification.
+         * Gets the ID of an application. An id is a string that
+         * identifies the application. The exact format of the id is
+         * platform dependent. For instance, on Unix this is the
+         * desktop file id from the xdg menu specification.
          *
-         * Note that the returned ID may be `NULL`, depending on how the `appinfo` has
-         * been constructed.
+         * Note that the returned ID may be %NULL, depending on how
+         * the `appinfo` has been constructed.
          */
         vfunc_get_id(): string | null;
         /**
@@ -70788,10 +70579,9 @@ export namespace Gio {
         /**
          * Retrieves the list of content types that `app_info` claims to support.
          * If this information is not provided by the environment, this function
-         * will return `NULL`.
-         *
+         * will return %NULL.
          * This function does not take in consideration associations added with
-         * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
+         * g_app_info_add_supports_type(), but only those exported directly by
          * the application.
          */
         vfunc_get_supported_types(): string[];
@@ -70801,7 +70591,7 @@ export namespace Gio {
          * about the details of the launcher (like what screen it is on).
          * On error, `error` will be set accordingly.
          *
-         * To launch the application without arguments pass a `NULL` `files` list.
+         * To launch the application without arguments pass a %NULL `files` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
@@ -70810,11 +70600,11 @@ export namespace Gio {
          * Some URIs can be changed when passed through a GFile (for instance
          * unsupported URIs with strange formats like mailto:), so if you have
          * a textual URI you want to pass in as argument, consider using
-         * [method`Gio`.AppInfo.launch_uris] instead.
+         * g_app_info_launch_uris() instead.
          *
          * The launched application inherits the environment of the launching
-         * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
-         * and [method`Gio`.AppLaunchContext.unsetenv].
+         * process, but it can be modified with g_app_launch_context_setenv()
+         * and g_app_launch_context_unsetenv().
          *
          * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
          * environment variable with the path of the launched desktop file and
@@ -70823,8 +70613,8 @@ export namespace Gio {
          * should it be inherited by further processes. The `DISPLAY`,
          * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
          * variables are also set, based on information provided in `context`.
-         * @param files a list of [iface@Gio.File] objects
-         * @param context the launch context
+         * @param files a #GList of #GFile objects
+         * @param context a #GAppLaunchContext or %NULL
          */
         vfunc_launch(files?: File[] | null, context?: AppLaunchContext | null): boolean;
         /**
@@ -70835,26 +70625,26 @@ export namespace Gio {
          * one URI per invocation as part of their command-line, multiple instances
          * of the application will be spawned.
          *
-         * To launch the application without arguments pass a `NULL` `uris` list.
+         * To launch the application without arguments pass a %NULL `uris` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
          * no way to detect this.
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
          */
         vfunc_launch_uris(uris?: string[] | null, context?: AppLaunchContext | null): boolean;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of g_app_info_launch_uris().
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
-         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         * g_app_info_launch_default_for_uri_async().
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to call when the request is done
          */
         vfunc_launch_uris_async(
             uris?: string[] | null,
@@ -70863,8 +70653,8 @@ export namespace Gio {
             callback?: AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
-         * @param result the async result
+         * Finishes a g_app_info_launch_uris_async() operation.
+         * @param result a #GAsyncResult
          */
         vfunc_launch_uris_finish(result: AsyncResult): boolean;
         /**
@@ -70874,7 +70664,7 @@ export namespace Gio {
         vfunc_remove_supports_type(content_type: string): boolean;
         /**
          * Sets the application as the default handler for the given file extension.
-         * @param extension a string containing the file extension (without   the dot).
+         * @param extension a string containing the file extension     (without the dot).
          */
         vfunc_set_as_default_for_extension(extension: string): boolean;
         /**
@@ -70883,9 +70673,9 @@ export namespace Gio {
          */
         vfunc_set_as_default_for_type(content_type: string): boolean;
         /**
-         * Sets the application as the last used application for a given type. This
-         * will make the application appear as first in the list returned by
-         * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
+         * Sets the application as the last used application for a given type.
+         * This will make the application appear as first in the list returned
+         * by g_app_info_get_recommended_for_type(), regardless of the default
          * application for that content type.
          * @param content_type the content type.
          */
@@ -70929,7 +70719,7 @@ export namespace Gio {
          * @param object_type a #GType supporting #GAsyncInitable.
          * @param n_parameters the number of parameters in @parameters
          * @param parameters the parameters to use to construct the object
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the initialization is     finished
          */
@@ -70982,7 +70772,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         init_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
@@ -71023,7 +70813,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -71069,7 +70859,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -71132,7 +70922,7 @@ export namespace Gio {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param io_priority the [I/O priority][io-priority] of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -71167,12 +70957,12 @@ export namespace Gio {
         // Methods
 
         /**
-         * Gets the source object from a [iface`Gio`.AsyncResult].
-         * @returns a new reference to the source    object for the @res, or `NULL` if there is none.
+         * Gets the source object from a #GAsyncResult.
+         * @returns a new reference to the source    object for the @res, or %NULL if there is none.
          */
         get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a [iface`Gio`.AsyncResult].
+         * Gets the user data from a #GAsyncResult.
          * @returns the user data for @res.
          */
         get_user_data(): any | null;
@@ -71180,32 +70970,32 @@ export namespace Gio {
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
-         * @returns `TRUE` if @res has the indicated @source_tag, `FALSE` if   not.
+         * @returns %TRUE if @res has the indicated @source_tag, %FALSE if   not.
          */
         is_tagged(source_tag?: any | null): boolean;
         /**
-         * If `res` is a [class`Gio`.SimpleAsyncResult], this is equivalent to
-         * [method`Gio`.SimpleAsyncResult.propagate_error]. Otherwise it returns
-         * `FALSE`.
+         * If `res` is a #GSimpleAsyncResult, this is equivalent to
+         * g_simple_async_result_propagate_error(). Otherwise it returns
+         * %FALSE.
          *
-         * This can be used for legacy error handling in async `*_finish()`
-         * wrapper functions that traditionally handled [class`Gio`.SimpleAsyncResult]
+         * This can be used for legacy error handling in async *_finish()
+         * wrapper functions that traditionally handled #GSimpleAsyncResult
          * error returns themselves rather than calling into the virtual method.
-         * This should not be used in new code; [iface`Gio`.AsyncResult] errors that are
+         * This should not be used in new code; #GAsyncResult errors that are
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
-         * @returns `TRUE` if @error is has been filled in with an error from   @res, `FALSE` if not.
+         * @returns %TRUE if @error is has been filled in with an error from   @res, %FALSE if not.
          */
         legacy_propagate_error(): boolean;
 
         // Virtual methods
 
         /**
-         * Gets the source object from a [iface`Gio`.AsyncResult].
+         * Gets the source object from a #GAsyncResult.
          */
         vfunc_get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a [iface`Gio`.AsyncResult].
+         * Gets the user data from a #GAsyncResult.
          */
         vfunc_get_user_data(): any | null;
         /**
@@ -71326,12 +71116,6 @@ export namespace Gio {
             outbuf: Uint8Array | string,
             flags: ConverterFlags | null,
         ): [ConverterResult, number, number];
-        /**
-         * Applies `converter` to the data in `bytes`.
-         * @param bytes the data to convert
-         * @returns A newly-allocated   `GBytes` with the converted data, or `NULL` if an error   occurred
-         */
-        convert_bytes(bytes: GLib.Bytes | Uint8Array): GLib.Bytes;
         /**
          * Resets all internal state in the converter, making it behave
          * as if it was just created. If the converter has any internal
@@ -72113,16 +71897,15 @@ export namespace Gio {
 
         /**
          * Gets the default application for launching applications
-         * using this URI scheme for a particular [iface`Gio`.DesktopAppInfoLookup]
+         * using this URI scheme for a particular #GDesktopAppInfoLookup
          * implementation.
          *
-         * The [iface`Gio`.DesktopAppInfoLookup] interface and this function is used
-         * to implement [func`Gio`.AppInfo.get_default_for_uri_scheme] backends
+         * The #GDesktopAppInfoLookup interface and this function is used
+         * to implement g_app_info_get_default_for_uri_scheme() backends
          * in a GIO module. There is no reason for applications to use it
-         * directly. Applications should use
-         * [func`Gio`.AppInfo.get_default_for_uri_scheme].
+         * directly. Applications should use g_app_info_get_default_for_uri_scheme().
          * @param uri_scheme a string containing a URI scheme.
-         * @returns [iface@Gio.AppInfo] for given   @uri_scheme or `NULL` on error.
+         * @returns #GAppInfo for given @uri_scheme or    %NULL on error.
          */
         get_default_for_uri_scheme(uri_scheme: string): AppInfo | null;
 
@@ -72130,14 +71913,13 @@ export namespace Gio {
 
         /**
          * Gets the default application for launching applications
-         * using this URI scheme for a particular [iface`Gio`.DesktopAppInfoLookup]
+         * using this URI scheme for a particular #GDesktopAppInfoLookup
          * implementation.
          *
-         * The [iface`Gio`.DesktopAppInfoLookup] interface and this function is used
-         * to implement [func`Gio`.AppInfo.get_default_for_uri_scheme] backends
+         * The #GDesktopAppInfoLookup interface and this function is used
+         * to implement g_app_info_get_default_for_uri_scheme() backends
          * in a GIO module. There is no reason for applications to use it
-         * directly. Applications should use
-         * [func`Gio`.AppInfo.get_default_for_uri_scheme].
+         * directly. Applications should use g_app_info_get_default_for_uri_scheme().
          * @param uri_scheme a string containing a URI scheme.
          */
         vfunc_get_default_for_uri_scheme(uri_scheme: string): AppInfo | null;
@@ -73114,14 +72896,14 @@ export namespace Gio {
         /**
          * Asynchronously close the DTLS connection. See g_dtls_connection_close() for
          * more information.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable a #GCancellable, or %NULL
          */
         close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
         /**
          * Asynchronously close the DTLS connection. See g_dtls_connection_close() for
          * more information.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the close operation is complete
          */
@@ -73133,7 +72915,7 @@ export namespace Gio {
         /**
          * Asynchronously close the DTLS connection. See g_dtls_connection_close() for
          * more information.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the close operation is complete
          */
@@ -73286,14 +73068,14 @@ export namespace Gio {
         /**
          * Asynchronously performs a TLS handshake on `conn`. See
          * g_dtls_connection_handshake() for more information.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable a #GCancellable, or %NULL
          */
         handshake_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
         /**
          * Asynchronously performs a TLS handshake on `conn`. See
          * g_dtls_connection_handshake() for more information.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the handshake is complete
          */
@@ -73305,7 +73087,7 @@ export namespace Gio {
         /**
          * Asynchronously performs a TLS handshake on `conn`. See
          * g_dtls_connection_handshake() for more information.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the handshake is complete
          */
@@ -73447,7 +73229,7 @@ export namespace Gio {
          * g_dtls_connection_shutdown() for more information.
          * @param shutdown_read %TRUE to stop reception of incoming datagrams
          * @param shutdown_write %TRUE to stop sending outgoing datagrams
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable a #GCancellable, or %NULL
          */
         shutdown_async(
@@ -73461,7 +73243,7 @@ export namespace Gio {
          * g_dtls_connection_shutdown() for more information.
          * @param shutdown_read %TRUE to stop reception of incoming datagrams
          * @param shutdown_write %TRUE to stop sending outgoing datagrams
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the shutdown operation is complete
          */
@@ -73477,7 +73259,7 @@ export namespace Gio {
          * g_dtls_connection_shutdown() for more information.
          * @param shutdown_read %TRUE to stop reception of incoming datagrams
          * @param shutdown_write %TRUE to stop sending outgoing datagrams
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the shutdown operation is complete
          */
@@ -73553,7 +73335,7 @@ export namespace Gio {
         /**
          * Asynchronously performs a TLS handshake on `conn`. See
          * g_dtls_connection_handshake() for more information.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the handshake is complete
          */
@@ -73609,7 +73391,7 @@ export namespace Gio {
          * g_dtls_connection_shutdown() for more information.
          * @param shutdown_read %TRUE to stop reception of incoming datagrams
          * @param shutdown_write %TRUE to stop sending outgoing datagrams
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable a #GCancellable, or %NULL
          * @param callback callback to call when the shutdown operation is complete
          */
@@ -73765,7 +73547,7 @@ export namespace Gio {
          * containing a sequence of six 'X' characters, and containing no
          * directory components. If it is %NULL, a default template is used.
          * @param tmpl Template for the file   name, as in g_file_open_tmp(), or %NULL for a default template
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is done
          */
@@ -73783,7 +73565,7 @@ export namespace Gio {
          * containing a sequence of six 'X' characters, and containing no
          * directory components. If it is %NULL, a default template is used.
          * @param tmpl Template for the file   name, as in g_dir_make_tmp(), or %NULL for a default template
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is done
          */
@@ -73849,7 +73631,7 @@ export namespace Gio {
          * You can then call g_file_append_to_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         append_to_async(
@@ -73867,7 +73649,7 @@ export namespace Gio {
          * You can then call g_file_append_to_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -73887,7 +73669,7 @@ export namespace Gio {
          * You can then call g_file_append_to_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -73985,7 +73767,7 @@ export namespace Gio {
          * g_file_copy_finish() to get the result of the operation.
          * @param destination destination #GFile
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
          */
@@ -74009,7 +73791,7 @@ export namespace Gio {
          * g_file_copy_finish() to get the result of the operation.
          * @param destination destination #GFile
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
@@ -74035,7 +73817,7 @@ export namespace Gio {
          * g_file_copy_finish() to get the result of the operation.
          * @param destination destination #GFile
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
@@ -74048,24 +73830,6 @@ export namespace Gio {
             progress_callback?: FileProgressCallback | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
-        /**
-         * Version of [method`Gio`.File.copy_async] using closures instead of callbacks for
-         * easier binding in other languages.
-         * @param destination destination [type@Gio.File]
-         * @param flags set of [flags@Gio.FileCopyFlags]
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional [class@Gio.Cancellable] object,   `NULL` to ignore
-         * @param progress_callback_closure [type@GObject.Closure] to invoke with progress   information, or `NULL` if progress information is not needed
-         * @param ready_callback_closure [type@GObject.Closure] to invoke when the request is satisfied
-         */
-        copy_async(
-            destination: File,
-            flags: FileCopyFlags | null,
-            io_priority: number,
-            cancellable: Cancellable | null,
-            progress_callback_closure: GObject.Closure | null,
-            ready_callback_closure: GObject.Closure,
-        ): void;
         /**
          * Copies the file attributes from `source` to `destination`.
          *
@@ -74123,7 +73887,7 @@ export namespace Gio {
          * You can then call g_file_create_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         create_async(
@@ -74142,7 +73906,7 @@ export namespace Gio {
          * You can then call g_file_create_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -74163,7 +73927,7 @@ export namespace Gio {
          * You can then call g_file_create_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -74220,7 +73984,7 @@ export namespace Gio {
          * You can then call g_file_create_readwrite_finish() to get
          * the result of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         create_readwrite_async(
@@ -74239,7 +74003,7 @@ export namespace Gio {
          * You can then call g_file_create_readwrite_finish() to get
          * the result of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -74260,7 +74024,7 @@ export namespace Gio {
          * You can then call g_file_create_readwrite_finish() to get
          * the result of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -74309,7 +74073,7 @@ export namespace Gio {
          * Asynchronously delete a file. If the `file` is a directory, it will
          * only be deleted if it is empty.  This has the same semantics as
          * g_unlink().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         delete_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
@@ -74317,7 +74081,7 @@ export namespace Gio {
          * Asynchronously delete a file. If the `file` is a directory, it will
          * only be deleted if it is empty.  This has the same semantics as
          * g_unlink().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -74330,7 +74094,7 @@ export namespace Gio {
          * Asynchronously delete a file. If the `file` is a directory, it will
          * only be deleted if it is empty.  This has the same semantics as
          * g_unlink().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -74529,7 +74293,7 @@ export namespace Gio {
          * the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         enumerate_children_async(
@@ -74551,7 +74315,7 @@ export namespace Gio {
          * the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -74575,7 +74339,7 @@ export namespace Gio {
          * the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -74628,7 +74392,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_find_enclosing_mount_finish() to
          * get the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         find_enclosing_mount_async(io_priority: number, cancellable?: Cancellable | null): Promise<Mount>;
@@ -74641,7 +74405,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_find_enclosing_mount_finish() to
          * get the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -74659,7 +74423,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_find_enclosing_mount_finish() to
          * get the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -75030,13 +74794,13 @@ export namespace Gio {
         make_directory(cancellable?: Cancellable | null): boolean;
         /**
          * Asynchronously creates a directory.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         make_directory_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
         /**
          * Asynchronously creates a directory.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -75047,7 +74811,7 @@ export namespace Gio {
         ): void;
         /**
          * Asynchronously creates a directory.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -75097,7 +74861,7 @@ export namespace Gio {
          * Asynchronously creates a symbolic link named `file` which contains the
          * string `symlink_value`.
          * @param symlink_value a string with the path for the target   of the new symlink
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         make_symbolic_link_async(
@@ -75109,7 +74873,7 @@ export namespace Gio {
          * Asynchronously creates a symbolic link named `file` which contains the
          * string `symlink_value`.
          * @param symlink_value a string with the path for the target   of the new symlink
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -75123,7 +74887,7 @@ export namespace Gio {
          * Asynchronously creates a symbolic link named `file` which contains the
          * string `symlink_value`.
          * @param symlink_value a string with the path for the target   of the new symlink
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -75431,7 +75195,7 @@ export namespace Gio {
          * g_file_move_finish() to get the result of the operation.
          * @param destination #GFile pointing to the destination location
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback #GFileProgressCallback function for updates
          */
@@ -75454,7 +75218,7 @@ export namespace Gio {
          * g_file_move_finish() to get the result of the operation.
          * @param destination #GFile pointing to the destination location
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback #GFileProgressCallback function for updates
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
@@ -75479,7 +75243,7 @@ export namespace Gio {
          * g_file_move_finish() to get the result of the operation.
          * @param destination #GFile pointing to the destination location
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback #GFileProgressCallback function for updates
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
@@ -75492,24 +75256,6 @@ export namespace Gio {
             progress_callback?: FileProgressCallback | null,
             callback?: AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
-        /**
-         * Version of [method`Gio`.File.move_async] using closures instead of callbacks for
-         * easier binding in other languages.
-         * @param destination destination [type@Gio.File]
-         * @param flags set of [flags@Gio.FileCopyFlags]
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional [class@Gio.Cancellable] object,   `NULL` to ignore
-         * @param progress_callback_closure [type@GObject.Closure] to invoke with progress   information, or `NULL` if progress information is not needed
-         * @param ready_callback_closure [type@GObject.Closure] to invoke when the request is satisfied
-         */
-        move_async(
-            destination: File,
-            flags: FileCopyFlags | null,
-            io_priority: number,
-            cancellable: Cancellable | null,
-            progress_callback_closure: GObject.Closure | null,
-            ready_callback_closure: GObject.Closure,
-        ): void;
         /**
          * Finishes an asynchronous file movement, started with
          * g_file_move_async().
@@ -75547,7 +75293,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_open_readwrite_finish() to get
          * the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         open_readwrite_async(io_priority: number, cancellable?: Cancellable | null): Promise<FileIOStream>;
@@ -75560,7 +75306,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_open_readwrite_finish() to get
          * the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -75578,7 +75324,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_open_readwrite_finish() to get
          * the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -75671,13 +75417,13 @@ export namespace Gio {
         query_default_handler(cancellable?: Cancellable | null): AppInfo;
         /**
          * Async version of g_file_query_default_handler().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         query_default_handler_async(io_priority: number, cancellable?: Cancellable | null): Promise<AppInfo>;
         /**
          * Async version of g_file_query_default_handler().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is done
          */
@@ -75688,7 +75434,7 @@ export namespace Gio {
         ): void;
         /**
          * Async version of g_file_query_default_handler().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call when the request is done
          */
@@ -75785,7 +75531,7 @@ export namespace Gio {
          * then call g_file_query_info_finish() to get the result of the
          * operation.
          * @param attributes an attribute query string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         query_filesystem_info_async(
@@ -75806,7 +75552,7 @@ export namespace Gio {
          * then call g_file_query_info_finish() to get the result of the
          * operation.
          * @param attributes an attribute query string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -75829,7 +75575,7 @@ export namespace Gio {
          * then call g_file_query_info_finish() to get the result of the
          * operation.
          * @param attributes an attribute query string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -75895,7 +75641,7 @@ export namespace Gio {
          * then call g_file_query_info_finish() to get the result of the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         query_info_async(
@@ -75916,7 +75662,7 @@ export namespace Gio {
          * then call g_file_query_info_finish() to get the result of the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -75939,7 +75685,7 @@ export namespace Gio {
          * then call g_file_query_info_finish() to get the result of the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -76009,7 +75755,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_read_finish() to get the result
          * of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         read_async(io_priority: number, cancellable?: Cancellable | null): Promise<FileInputStream>;
@@ -76022,7 +75768,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_read_finish() to get the result
          * of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -76040,7 +75786,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_read_finish() to get the result
          * of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -76123,7 +75869,7 @@ export namespace Gio {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         replace_async(
@@ -76146,7 +75892,7 @@ export namespace Gio {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -76171,7 +75917,7 @@ export namespace Gio {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -76393,7 +76139,7 @@ export namespace Gio {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         replace_readwrite_async(
@@ -76417,7 +76163,7 @@ export namespace Gio {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -76443,7 +76189,7 @@ export namespace Gio {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -76622,7 +76368,7 @@ export namespace Gio {
          * the result of the operation.
          * @param info a #GFileInfo
          * @param flags a #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         set_attributes_async(
@@ -76642,7 +76388,7 @@ export namespace Gio {
          * the result of the operation.
          * @param info a #GFileInfo
          * @param flags a #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -76664,7 +76410,7 @@ export namespace Gio {
          * the result of the operation.
          * @param info a #GFileInfo
          * @param flags a #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -76735,7 +76481,7 @@ export namespace Gio {
          * You can then call g_file_set_display_name_finish() to get
          * the result of the operation.
          * @param display_name a string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         set_display_name_async(
@@ -76753,7 +76499,7 @@ export namespace Gio {
          * You can then call g_file_set_display_name_finish() to get
          * the result of the operation.
          * @param display_name a string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -76773,7 +76519,7 @@ export namespace Gio {
          * You can then call g_file_set_display_name_finish() to get
          * the result of the operation.
          * @param display_name a string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -76947,13 +76693,10 @@ export namespace Gio {
         /**
          * Sends `file` to the "Trashcan", if possible. This is similar to
          * deleting it, but the user can recover it before emptying the trashcan.
-         * Trashing is disabled for system mounts by default (see
-         * g_unix_mount_is_system_internal()), so this call can return the
+         * Not all file systems support trashing, so this call can return the
          * %G_IO_ERROR_NOT_SUPPORTED error. Since GLib 2.66, the `x-gvfs-notrash` unix
-         * mount option can be used to disable g_file_trash() support for particular
+         * mount option can be used to disable g_file_trash() support for certain
          * mounts, the %G_IO_ERROR_NOT_SUPPORTED error will be returned in that case.
-         * Since 2.82, the `x-gvfs-trash` unix mount option can be used to enable
-         * g_file_trash() support for particular system mounts.
          *
          * If `cancellable` is not %NULL, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
@@ -76964,13 +76707,13 @@ export namespace Gio {
         trash(cancellable?: Cancellable | null): boolean;
         /**
          * Asynchronously sends `file` to the Trash location, if possible.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          */
         trash_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
         /**
          * Asynchronously sends `file` to the Trash location, if possible.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -76981,7 +76724,7 @@ export namespace Gio {
         ): void;
         /**
          * Asynchronously sends `file` to the Trash location, if possible.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -77172,7 +76915,7 @@ export namespace Gio {
          * You can then call g_file_append_to_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -77253,7 +76996,7 @@ export namespace Gio {
          * g_file_copy_finish() to get the result of the operation.
          * @param destination destination #GFile
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
@@ -77306,7 +77049,7 @@ export namespace Gio {
          * You can then call g_file_create_finish() to get the result
          * of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -77361,7 +77104,7 @@ export namespace Gio {
          * You can then call g_file_create_readwrite_finish() to get
          * the result of the operation.
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -77408,7 +77151,7 @@ export namespace Gio {
          * Asynchronously delete a file. If the `file` is a directory, it will
          * only be deleted if it is empty.  This has the same semantics as
          * g_unlink().
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -77533,7 +77276,7 @@ export namespace Gio {
          * the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -77583,7 +77326,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_find_enclosing_mount_finish() to
          * get the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -77734,7 +77477,7 @@ export namespace Gio {
         vfunc_make_directory(cancellable?: Cancellable | null): boolean;
         /**
          * Asynchronously creates a directory.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -77764,7 +77507,7 @@ export namespace Gio {
          * Asynchronously creates a symbolic link named `file` which contains the
          * string `symlink_value`.
          * @param symlink_value a string with the path for the target   of the new symlink
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -77966,7 +77709,7 @@ export namespace Gio {
          * g_file_move_finish() to get the result of the operation.
          * @param destination #GFile pointing to the destination location
          * @param flags set of #GFileCopyFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param progress_callback #GFileProgressCallback function for updates
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
@@ -78014,7 +77757,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_open_readwrite_finish() to get
          * the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -78112,7 +77855,7 @@ export namespace Gio {
          * then call g_file_query_info_finish() to get the result of the
          * operation.
          * @param attributes an attribute query string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -78176,7 +77919,7 @@ export namespace Gio {
          * then call g_file_query_info_finish() to get the result of the operation.
          * @param attributes an attribute query string
          * @param flags a set of #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -78227,7 +77970,7 @@ export namespace Gio {
          * When the operation is finished, `callback` will be called.
          * You can then call g_file_read_finish() to get the result
          * of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -78323,7 +78066,7 @@ export namespace Gio {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -78377,7 +78120,7 @@ export namespace Gio {
          * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
          * @param make_backup %TRUE if a backup should be created
          * @param flags a set of #GFileCreateFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -78438,7 +78181,7 @@ export namespace Gio {
          * the result of the operation.
          * @param info a #GFileInfo
          * @param flags a #GFileQueryInfoFlags
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -78506,7 +78249,7 @@ export namespace Gio {
          * You can then call g_file_set_display_name_finish() to get
          * the result of the operation.
          * @param display_name a string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -78585,13 +78328,10 @@ export namespace Gio {
         /**
          * Sends `file` to the "Trashcan", if possible. This is similar to
          * deleting it, but the user can recover it before emptying the trashcan.
-         * Trashing is disabled for system mounts by default (see
-         * g_unix_mount_is_system_internal()), so this call can return the
+         * Not all file systems support trashing, so this call can return the
          * %G_IO_ERROR_NOT_SUPPORTED error. Since GLib 2.66, the `x-gvfs-notrash` unix
-         * mount option can be used to disable g_file_trash() support for particular
+         * mount option can be used to disable g_file_trash() support for certain
          * mounts, the %G_IO_ERROR_NOT_SUPPORTED error will be returned in that case.
-         * Since 2.82, the `x-gvfs-trash` unix mount option can be used to enable
-         * g_file_trash() support for particular system mounts.
          *
          * If `cancellable` is not %NULL, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
@@ -78601,7 +78341,7 @@ export namespace Gio {
         vfunc_trash(cancellable?: Cancellable | null): boolean;
         /**
          * Asynchronously sends `file` to the Trash location, if possible.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
          */
@@ -80690,7 +80430,7 @@ export namespace Gio {
          * Looks into the system proxy configuration to determine what proxy,
          * if any, to use to connect to `uri`. The returned proxy URIs are of
          * the form `<protocol>://[user[:password]`]`host[:port]` or
-         * `direct://`, where `<protocol>` could be http, rtsp, socks
+         * `direct://`, where <protocol> could be http, rtsp, socks
          * or other proxying protocol.
          *
          * If you don't know what network protocol is being used on the
@@ -80755,7 +80495,7 @@ export namespace Gio {
          * Looks into the system proxy configuration to determine what proxy,
          * if any, to use to connect to `uri`. The returned proxy URIs are of
          * the form `<protocol>://[user[:password]`]`host[:port]` or
-         * `direct://`, where `<protocol>` could be http, rtsp, socks
+         * `direct://`, where <protocol> could be http, rtsp, socks
          * or other proxying protocol.
          *
          * If you don't know what network protocol is being used on the
@@ -82157,6 +81897,18 @@ export namespace Gio {
         emit_property_changed(name: string, variant: GLib.Variant): void;
     }
 
+    type ActionEntryObj = {
+        /** The name of the action */
+        name: string;
+        /** The type of the parameter that must match the parameter_type specified in the entry */
+        parameter_type?: string;
+        /** The initial state of the action */
+        state?: string;
+        /** The callback to connect to the "activate" signal of the action */
+        activate?: (_source: SimpleAction, parameter: GLib.Variant | null) => void;
+        /** The callback to connect to the "change-state" signal of the action */
+        change_state?: (_source: SimpleAction, value: GLib.Variant | null) => void;
+    };
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

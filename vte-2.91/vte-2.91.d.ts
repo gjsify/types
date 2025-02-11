@@ -15,11 +15,11 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
 import type Gdk from '@girs/gdk-3.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Vte {
@@ -465,9 +465,9 @@ export namespace Vte {
      */
     const TERMPROP_NAME_PREFIX: string;
     /**
-     * A %VTE_PROPERTY_VALUELESS termprop that signals that the shell
+     * An ephemeral %VTE_PROPERTY_UINT termprop that signals that the shell
      * has executed the commands entered at the prompt and these commands
-     * have returned.
+     * have returned. The termprop value is the exit code.
      */
     const TERMPROP_SHELL_POSTEXEC: string;
     /**
@@ -491,7 +491,6 @@ export namespace Vte {
     const TERMPROP_XTERM_TITLE: string;
     const TEST_FLAGS_ALL: number;
     const TEST_FLAGS_NONE: number;
-    function event_context_get_type(): GObject.GType;
     /**
      * Queries whether the legacy encoding `encoding` is supported.
      *
@@ -805,6 +804,7 @@ export namespace Vte {
          * @param argv child's argument vector
          * @param envv a list of environment   variables to be added to the environment before starting the process, or %NULL
          * @param spawn_flags flags from #GSpawnFlags
+         * @param child_setup an extra child setup function to run in the child just before exec(), or %NULL
          * @param child_setup_data_destroy a #GDestroyNotify for @child_setup_data, or %NULL
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a #GCancellable, or %NULL
@@ -814,10 +814,61 @@ export namespace Vte {
             argv: string[],
             envv: string[] | null,
             spawn_flags: GLib.SpawnFlags | null,
+            child_setup: GLib.SpawnChildSetupFunc | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
+        ): Promise<GLib.Pid | null>;
+        /**
+         * Like vte_pty_spawn_with_fds_async(), except that this function does not
+         * allow passing file descriptors to the child process. See vte_pty_spawn_with_fds_async()
+         * for more information.
+         * @param working_directory the name of a directory the command should start   in, or %NULL to use the current working directory
+         * @param argv child's argument vector
+         * @param envv a list of environment   variables to be added to the environment before starting the process, or %NULL
+         * @param spawn_flags flags from #GSpawnFlags
+         * @param child_setup an extra child setup function to run in the child just before exec(), or %NULL
+         * @param child_setup_data_destroy a #GDestroyNotify for @child_setup_data, or %NULL
+         * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback, or %NULL
+         */
+        spawn_async(
+            working_directory: string | null,
+            argv: string[],
+            envv: string[] | null,
+            spawn_flags: GLib.SpawnFlags | null,
+            child_setup: GLib.SpawnChildSetupFunc | null,
+            child_setup_data_destroy: GLib.DestroyNotify | null,
+            timeout: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * Like vte_pty_spawn_with_fds_async(), except that this function does not
+         * allow passing file descriptors to the child process. See vte_pty_spawn_with_fds_async()
+         * for more information.
+         * @param working_directory the name of a directory the command should start   in, or %NULL to use the current working directory
+         * @param argv child's argument vector
+         * @param envv a list of environment   variables to be added to the environment before starting the process, or %NULL
+         * @param spawn_flags flags from #GSpawnFlags
+         * @param child_setup an extra child setup function to run in the child just before exec(), or %NULL
+         * @param child_setup_data_destroy a #GDestroyNotify for @child_setup_data, or %NULL
+         * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
+         * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback, or %NULL
+         */
+        spawn_async(
+            working_directory: string | null,
+            argv: string[],
+            envv: string[] | null,
+            spawn_flags: GLib.SpawnFlags | null,
+            child_setup: GLib.SpawnChildSetupFunc | null,
+            child_setup_data_destroy: GLib.DestroyNotify | null,
+            timeout: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): Promise<GLib.Pid | null> | void;
         spawn_finish(result: Gio.AsyncResult): [boolean, GLib.Pid | null];
         /**
          * Starts the specified command under the pseudo-terminal `pty`.
@@ -857,9 +908,11 @@ export namespace Vte {
          * @param fds an array of file descriptors, or %NULL
          * @param map_fds an array of integers, or %NULL
          * @param spawn_flags flags from #GSpawnFlags
+         * @param child_setup an extra child setup function to run in the child just before exec(), or %NULL
          * @param child_setup_data_destroy a #GDestroyNotify for @child_setup_data, or %NULL
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #GAsyncReadyCallback, or %NULL
          */
         spawn_with_fds_async(
             working_directory: string | null,
@@ -868,9 +921,11 @@ export namespace Vte {
             fds: number[] | null,
             map_fds: number[] | null,
             spawn_flags: GLib.SpawnFlags | null,
+            child_setup: GLib.SpawnChildSetupFunc | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
 
         // Inherited methods
@@ -2608,9 +2663,9 @@ export namespace Vte {
          */
         get_termprop_uint_by_id(prop: number): [boolean, number];
         /**
-         * Returns %TRUE with the value of `prop` stored in `value,` or %FALSE if
-         *   `prop` is unset, or `prop` is not a registered property; in that
-         *   case `value` will not be set.
+         * Returns %TRUE with the value of `prop` stored in `value` (if not %NULL) if,
+         *   the termprop has a value, or %FALSE if `prop` is unset, or `prop` is not
+         *   a registered property; in that case `value` will not be set.
          *
          * The value type returned depends on the termprop type:
          * * A %VTE_PROPERTY_VALUELESS termprop stores no value, and returns %FALSE
@@ -2630,14 +2685,14 @@ export namespace Vte {
          * @param prop a termprop name
          * @returns %TRUE iff the property has a value, with @gvalue containig   the property's value.
          */
-        get_termprop_value(prop: string): [boolean, unknown];
+        get_termprop_value(prop: string): [boolean, GObject.Value | null];
         /**
          * Like vte_terminal_get_termprop_value() except that it takes the termprop
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns %TRUE iff the property has a value, with @gvalue containig   the property's value.
          */
-        get_termprop_value_by_id(prop: number): [boolean, unknown];
+        get_termprop_value_by_id(prop: number): [boolean, GObject.Value | null];
         /**
          * Extracts a view of the visible part of the terminal.
          *
@@ -3360,9 +3415,11 @@ export namespace Vte {
          * @param argv child's argument vector
          * @param envv a list of environment   variables to be added to the environment before starting the process, or %NULL
          * @param spawn_flags flags from #GSpawnFlags
+         * @param child_setup an extra child setup function to run in the child just before exec(), or %NULL
          * @param child_setup_data_destroy a #GDestroyNotify for @child_setup_data, or %NULL
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #VteTerminalSpawnAsyncCallback, or %NULL
          */
         spawn_async(
             pty_flags: PtyFlags | null,
@@ -3370,9 +3427,11 @@ export namespace Vte {
             argv: string[],
             envv: string[] | null,
             spawn_flags: GLib.SpawnFlags | null,
+            child_setup: GLib.SpawnChildSetupFunc | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
+            callback?: TerminalSpawnAsyncCallback | null,
         ): void;
         /**
          * Starts the specified command under a newly-allocated controlling
@@ -3468,9 +3527,11 @@ export namespace Vte {
          * @param fds an array of file descriptors, or %NULL
          * @param map_fds an array of integers, or %NULL
          * @param spawn_flags flags from #GSpawnFlags
+         * @param child_setup an extra child setup function to run in the child just before exec(), or %NULL
          * @param child_setup_data_destroy a #GDestroyNotify for @child_setup_data, or %NULL
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a #GCancellable, or %NULL
+         * @param callback a #VteTerminalSpawnAsyncCallback, or %NULL
          */
         spawn_with_fds_async(
             pty_flags: PtyFlags | null,
@@ -3480,9 +3541,11 @@ export namespace Vte {
             fds: number[] | null,
             map_fds: number[] | null,
             spawn_flags: GLib.SpawnFlags | null,
+            child_setup: GLib.SpawnChildSetupFunc | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
+            callback?: TerminalSpawnAsyncCallback | null,
         ): void;
         /**
          * Clears the current selection.

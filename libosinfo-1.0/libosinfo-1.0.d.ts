@@ -12,7 +12,6 @@ import type libxml2 from '@girs/libxml2-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
 
 export namespace Libosinfo {
     /**
@@ -417,22 +416,22 @@ export namespace Libosinfo {
     enum InstallScriptInjectionMethod {
         /**
          * Support injection of the
-         * installation script through a CD-ROM.
+         * installation script trough a CD-ROM.
          */
         CDROM,
         /**
          * Support injection of the
-         * installation script through a disk.
+         * installation script trough a disk.
          */
         DISK,
         /**
          * Support injection of the
-         * installation script through a floppy disk.
+         * installation script trough a floppy disk.
          */
         FLOPPY,
         /**
          * Support injection of the
-         * installation script through the initrd.
+         * installation script trough the initrd.
          */
         INITRD,
         /**

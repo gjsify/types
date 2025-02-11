@@ -205,6 +205,42 @@ export namespace Clapper {
      */
     const VERSION_S: string;
     /**
+     * Check if Clapper was compiled with Enhancers Loader functionality.
+     *
+     * Alternatively, apps before compiling can also check whether `pkgconfig`
+     * variable named `functionalities` contains `enhancers-loader` string.
+     */
+    const WITH_ENHANCERS_LOADER: boolean;
+    /**
+     * Check if an enhancer of `type` is available for given `scheme` and `host`.
+     *
+     * A check that compares requested capabilites of all available Clapper enhancers,
+     * thus it is fast but does not guarantee that the found one will succeed. Please note
+     * that this function will always return %FALSE if Clapper was built without enhancers
+     * loader functionality. To check that, use [const`Clapper`.WITH_ENHANCERS_LOADER].
+     *
+     * This function can be used to quickly determine early if Clapper will at least try to
+     * handle URI and with one of its enhancers and which one.
+     *
+     * Example:
+     *
+     * ```c
+     * gboolean supported = clapper_enhancer_check (CLAPPER_TYPE_EXTRACTABLE, "https", "example.com", NULL);
+     * ```
+     *
+     * For self hosted services a custom URI `scheme` without `host` can be used. Enhancers should announce
+     * support for such schemes by defining them in their plugin info files.
+     *
+     * ```c
+     * gboolean supported = clapper_enhancer_check (CLAPPER_TYPE_EXTRACTABLE, "example", NULL, NULL);
+     * ```
+     * @param iface_type an interface #GType
+     * @param scheme an URI scheme
+     * @param host an URI host
+     * @returns whether a plausible enhancer was found.
+     */
+    function enhancer_check(iface_type: GObject.GType, scheme: string, host: string | null): [boolean, string];
+    /**
      * Initializes the Clapper library. Implementations must always call this
      * before using Clapper API.
      *
@@ -529,6 +565,86 @@ export namespace Clapper {
         vfunc_volume_changed(volume: number): void;
     }
 
+    module Harvest {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
+    }
+
+    /**
+     * An object storing data from enhancers that implement [iface`Clapper`.Extractable] interface.
+     */
+    class Harvest extends Gst.Object {
+        static $gtype: GObject.GType<Harvest>;
+
+        // Constructors
+
+        constructor(properties?: Partial<Harvest.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Fill harvest with extracted data. It can be anything that GStreamer
+         * can parse and play such as single URI or a streaming manifest.
+         *
+         * Calling again this function will replace previously filled content.
+         *
+         * Commonly used media types are:
+         *
+         *   * `application/dash+xml`
+         *
+         *   * `application/x-hls`
+         *
+         *   * `text/uri-list`
+         * @param media_type media mime type
+         * @param data data to fill @harvest
+         * @returns %TRUE when filled successfully, %FALSE if taken data was empty.
+         */
+        fill(media_type: string, data: Uint8Array | string): boolean;
+        /**
+         * A convenience method to fill `harvest` with data from #GBytes.
+         *
+         * For more info, see [method`Clapper`.Harvest.fill] documentation.
+         * @param media_type media mime type
+         * @param bytes a #GBytes to fill @harvest
+         * @returns %TRUE when filled successfully, %FALSE if taken data was empty.
+         */
+        fill_with_bytes(media_type: string, bytes: GLib.Bytes | Uint8Array): boolean;
+        /**
+         * A convenience method to fill `harvest` using a %NULL terminated string.
+         *
+         * For more info, see [method`Clapper`.Harvest.fill] documentation.
+         * @param media_type media mime type
+         * @param text data to fill @harvest as %NULL terminated string
+         * @returns %TRUE when filled successfully, %FALSE if taken data was empty.
+         */
+        fill_with_text(media_type: string, text: string): boolean;
+        /**
+         * Set another header in the request headers list using #GValue.
+         *
+         * Setting again the same key will update its value to the new one.
+         * @param key a header name
+         * @param value a string #GValue of header
+         */
+        headers_set(key: string, value: GObject.Value | any): void;
+        /**
+         * Append another tag into the tag list using #GValue.
+         * @param tag a name of tag to set
+         * @param value a #GValue of tag
+         */
+        tags_add(tag: string, value: GObject.Value | any): void;
+        /**
+         * Append a chapter or track name into table of contents.
+         * @param type a #GstTocEntryType
+         * @param title an entry title
+         * @param start entry start time in seconds
+         * @param end entry end time in seconds or -1 if none
+         */
+        toc_add(type: Gst.TocEntryType | null, title: string, start: number, end: number): void;
+    }
+
     module Marker {
         // Constructor properties interface
 
@@ -641,6 +757,8 @@ export namespace Clapper {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
+            cache_location: string;
+            cacheLocation: string;
             container_format: string;
             containerFormat: string;
             duration: number;
@@ -663,6 +781,14 @@ export namespace Clapper {
 
         // Properties
 
+        /**
+         * Media downloaded cache file location.
+         */
+        set cache_location(val: string);
+        /**
+         * Media downloaded cache file location.
+         */
+        set cacheLocation(val: string);
         /**
          * Media container format.
          */
@@ -704,6 +830,8 @@ export namespace Clapper {
         _init(...args: any[]): void;
 
         static ['new'](uri: string): MediaItem;
+
+        static new_cached(uri: string, location?: string | null): MediaItem;
 
         static new_from_file(file: Gio.File): MediaItem;
 
@@ -879,6 +1007,10 @@ export namespace Clapper {
     module Player {
         // Signal callback interfaces
 
+        interface DownloadComplete {
+            (item: MediaItem, location: string): void;
+        }
+
         interface Error {
             (error: GLib.Error, debug_info?: string | null): void;
         }
@@ -898,6 +1030,14 @@ export namespace Clapper {
         // Constructor properties interface
 
         interface ConstructorProps extends ThreadedObject.ConstructorProps {
+            adaptive_bandwidth: number;
+            adaptiveBandwidth: number;
+            adaptive_max_bitrate: number;
+            adaptiveMaxBitrate: number;
+            adaptive_min_bitrate: number;
+            adaptiveMinBitrate: number;
+            adaptive_start_bitrate: number;
+            adaptiveStartBitrate: number;
             audio_enabled: boolean;
             audioEnabled: boolean;
             audio_filter: Gst.Element;
@@ -913,6 +1053,10 @@ export namespace Clapper {
             currentAudioDecoder: Gst.Element;
             current_video_decoder: Gst.Element;
             currentVideoDecoder: Gst.Element;
+            download_dir: string;
+            downloadDir: string;
+            download_enabled: boolean;
+            downloadEnabled: boolean;
             mute: boolean;
             position: number;
             queue: Queue;
@@ -959,6 +1103,88 @@ export namespace Clapper {
 
         // Properties
 
+        /**
+         * Last fragment download bandwidth (bits/s) during adaptive streaming.
+         *
+         * This property only changes when adaptive streaming and later stays
+         * at the last value until streaming some adaptive content again.
+         *
+         * Apps can use this to determine and set an optimal value for
+         * [property`Clapper`.Player:adaptive-start-bitrate].
+         */
+        get adaptive_bandwidth(): number;
+        /**
+         * Last fragment download bandwidth (bits/s) during adaptive streaming.
+         *
+         * This property only changes when adaptive streaming and later stays
+         * at the last value until streaming some adaptive content again.
+         *
+         * Apps can use this to determine and set an optimal value for
+         * [property`Clapper`.Player:adaptive-start-bitrate].
+         */
+        get adaptiveBandwidth(): number;
+        /**
+         * A maximal allowed bitrate (bits/s) during adaptive streaming
+         * such as DASH or HLS (`0` for unlimited).
+         *
+         * Setting this will prevent streaming from entering qualities with
+         * higher bandwidth than the one set. When set together with
+         * [property`Clapper`.Player:adaptive-min-bitrate] it can be used to
+         * enforce some specific quality.
+         */
+        get adaptive_max_bitrate(): number;
+        set adaptive_max_bitrate(val: number);
+        /**
+         * A maximal allowed bitrate (bits/s) during adaptive streaming
+         * such as DASH or HLS (`0` for unlimited).
+         *
+         * Setting this will prevent streaming from entering qualities with
+         * higher bandwidth than the one set. When set together with
+         * [property`Clapper`.Player:adaptive-min-bitrate] it can be used to
+         * enforce some specific quality.
+         */
+        get adaptiveMaxBitrate(): number;
+        set adaptiveMaxBitrate(val: number);
+        /**
+         * A minimal allowed bitrate (bits/s) during adaptive streaming
+         * such as DASH or HLS.
+         *
+         * Setting this will prevent streaming from entering lower qualities
+         * (even when connection speed cannot keep up). When set together with
+         * [property`Clapper`.Player:adaptive-max-bitrate] it can be used to
+         * enforce some specific quality.
+         */
+        get adaptive_min_bitrate(): number;
+        set adaptive_min_bitrate(val: number);
+        /**
+         * A minimal allowed bitrate (bits/s) during adaptive streaming
+         * such as DASH or HLS.
+         *
+         * Setting this will prevent streaming from entering lower qualities
+         * (even when connection speed cannot keep up). When set together with
+         * [property`Clapper`.Player:adaptive-max-bitrate] it can be used to
+         * enforce some specific quality.
+         */
+        get adaptiveMinBitrate(): number;
+        set adaptiveMinBitrate(val: number);
+        /**
+         * An initial bitrate (bits/s) to select during
+         * starting adaptive streaming such as DASH or HLS.
+         *
+         * If value is higher than lowest available bitrate in streaming
+         * manifest, then lowest possible bitrate will be selected.
+         */
+        get adaptive_start_bitrate(): number;
+        set adaptive_start_bitrate(val: number);
+        /**
+         * An initial bitrate (bits/s) to select during
+         * starting adaptive streaming such as DASH or HLS.
+         *
+         * If value is higher than lowest available bitrate in streaming
+         * manifest, then lowest possible bitrate will be selected.
+         */
+        get adaptiveStartBitrate(): number;
+        set adaptiveStartBitrate(val: number);
         /**
          * Whether audio stream is enabled.
          */
@@ -1028,6 +1254,74 @@ export namespace Clapper {
          * Currently used video decoder.
          */
         get currentVideoDecoder(): Gst.Element;
+        /**
+         * A directory that `player` will use to download network content
+         * when [property`Clapper`.Player:download-enabled] is set to %TRUE.
+         *
+         * If directory at `path` does not exist, it will be automatically created.
+         */
+        get download_dir(): string;
+        set download_dir(val: string);
+        /**
+         * A directory that `player` will use to download network content
+         * when [property`Clapper`.Player:download-enabled] is set to %TRUE.
+         *
+         * If directory at `path` does not exist, it will be automatically created.
+         */
+        get downloadDir(): string;
+        set downloadDir(val: string);
+        /**
+         * Whether progressive download buffering is enabled.
+         *
+         * If progressive download is enabled and [property`Clapper`.Player:download-dir]
+         * is set, streamed network content will be cached to the disk space instead
+         * of memory whenever possible. This allows for faster seeking through
+         * currently played media.
+         *
+         * Not every type of content is download applicable. Mainly applies to
+         * web content that does not use adaptive streaming.
+         *
+         * Once data that media item URI points to is fully downloaded, player
+         * will emit [signal`Clapper`.Player::download-complete] signal with a
+         * location of downloaded file.
+         *
+         * Playing again the exact same [class`Clapper`.MediaItem] object that was
+         * previously fully downloaded will cause player to automatically use that
+         * cached file if it still exists, avoiding any further network requests.
+         *
+         * Please note that player will not delete nor manage downloaded content.
+         * It is up to application to cleanup data in created cache directory
+         * (e.g. before app exits), in order to remove any downloads that app
+         * is not going to use next time it is run and incomplete ones.
+         */
+        get download_enabled(): boolean;
+        set download_enabled(val: boolean);
+        /**
+         * Whether progressive download buffering is enabled.
+         *
+         * If progressive download is enabled and [property`Clapper`.Player:download-dir]
+         * is set, streamed network content will be cached to the disk space instead
+         * of memory whenever possible. This allows for faster seeking through
+         * currently played media.
+         *
+         * Not every type of content is download applicable. Mainly applies to
+         * web content that does not use adaptive streaming.
+         *
+         * Once data that media item URI points to is fully downloaded, player
+         * will emit [signal`Clapper`.Player::download-complete] signal with a
+         * location of downloaded file.
+         *
+         * Playing again the exact same [class`Clapper`.MediaItem] object that was
+         * previously fully downloaded will cause player to automatically use that
+         * cached file if it still exists, avoiding any further network requests.
+         *
+         * Please note that player will not delete nor manage downloaded content.
+         * It is up to application to cleanup data in created cache directory
+         * (e.g. before app exits), in order to remove any downloads that app
+         * is not going to use next time it is run and incomplete ones.
+         */
+        get downloadEnabled(): boolean;
+        set downloadEnabled(val: boolean);
         /**
          * Mute audio without changing volume.
          */
@@ -1150,6 +1444,15 @@ export namespace Clapper {
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect(
+            signal: 'download-complete',
+            callback: (_source: this, item: MediaItem, location: string) => void,
+        ): number;
+        connect_after(
+            signal: 'download-complete',
+            callback: (_source: this, item: MediaItem, location: string) => void,
+        ): number;
+        emit(signal: 'download-complete', item: MediaItem, location: string): void;
+        connect(
             signal: 'error',
             callback: (_source: this, error: GLib.Error, debug_info: string | null) => void,
         ): number;
@@ -1187,6 +1490,27 @@ export namespace Clapper {
          * @param feature a #ClapperFeature
          */
         add_feature(feature: Feature): void;
+        /**
+         * Get last fragment download bandwidth (bits/s) during
+         * adaptive streaming.
+         * @returns the adaptive bandwidth.
+         */
+        get_adaptive_bandwidth(): number;
+        /**
+         * Get currently set maximal bitrate (bits/s) for adaptive streaming.
+         * @returns the maximal bitrate value.
+         */
+        get_adaptive_max_bitrate(): number;
+        /**
+         * Get currently set minimal bitrate (bits/s) for adaptive streaming.
+         * @returns the minimal bitrate value.
+         */
+        get_adaptive_min_bitrate(): number;
+        /**
+         * Get currently set initial bitrate (bits/s) for adaptive streaming.
+         * @returns the start bitrate value.
+         */
+        get_adaptive_start_bitrate(): number;
         /**
          * Get whether audio stream is enabled.
          * @returns %TRUE if enabled, %FALSE otherwise.
@@ -1229,6 +1553,16 @@ export namespace Clapper {
          * @returns #GstElement currently used as video decoder.
          */
         get_current_video_decoder(): Gst.Element;
+        /**
+         * Get path to a directory set for media downloads.
+         * @returns the path of a directory   set for media downloads or %NULL if no directory was set yet.
+         */
+        get_download_dir(): string | null;
+        /**
+         * Get whether progressive download buffering is enabled.
+         * @returns %TRUE if enabled, %FALSE otherwise.
+         */
+        get_download_enabled(): boolean;
         /**
          * Get the mute state of the player.
          * @returns %TRUE if player is muted, %FALSE otherwise.
@@ -1345,6 +1679,24 @@ export namespace Clapper {
          */
         seek_custom(position: number, method: PlayerSeekMethod | null): void;
         /**
+         * Set maximal bitrate to select for adaptive streaming
+         * such as DASH or HLS.
+         * @param bitrate a bitrate to set (bits/s)
+         */
+        set_adaptive_max_bitrate(bitrate: number): void;
+        /**
+         * Set minimal bitrate to select for adaptive streaming
+         * such as DASH or HLS.
+         * @param bitrate a bitrate to set (bits/s)
+         */
+        set_adaptive_min_bitrate(bitrate: number): void;
+        /**
+         * Set initial bitrate to select when starting adaptive
+         * streaming such as DASH or HLS.
+         * @param bitrate a bitrate to set (bits/s)
+         */
+        set_adaptive_start_bitrate(bitrate: number): void;
+        /**
          * Set whether enable audio stream.
          * @param enabled whether enabled
          */
@@ -1376,6 +1728,22 @@ export namespace Clapper {
          * @param enabled %TRUE to enable autoplay, %FALSE otherwise.
          */
         set_autoplay(enabled: boolean): void;
+        /**
+         * Set a directory that `player` will use to store downloads.
+         *
+         * See [property`Clapper`.Player:download-enabled] description for more
+         * info how this works.
+         * @param path the path of a directory to use for media downloads
+         */
+        set_download_dir(path: string): void;
+        /**
+         * Set whether player should attempt progressive download buffering.
+         *
+         * For this to actually work a [property`Clapper`.Player:download-dir]
+         * must also be set.
+         * @param enabled whether enabled
+         */
+        set_download_enabled(enabled: boolean): void;
         /**
          * Set the mute state of the player.
          * @param mute %TRUE if player should be muted, %FALSE otherwise.
@@ -2175,151 +2543,6 @@ export namespace Clapper {
         block_signal_handler(id: number): any;
         unblock_signal_handler(id: number): any;
         stop_emission_by_name(detailedName: string): any;
-    }
-
-    module Server {
-        // Signal callback interfaces
-
-        interface Error {
-            (error: GLib.Error): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends Feature.ConstructorProps {
-            current_port: number;
-            currentPort: number;
-            enabled: boolean;
-            port: number;
-            queue_controllable: boolean;
-            queueControllable: boolean;
-            running: boolean;
-        }
-    }
-
-    /**
-     * An optional Server feature to add to the player.
-     *
-     * #ClapperServer is a feature that hosts a local server
-     * providing an ability to both monitor and control playback
-     * through WebSocket messages and HTTP requests.
-     *
-     * Use [const`Clapper`.HAVE_SERVER] macro to check if Clapper API
-     * was compiled with this feature.
-     */
-    class Server extends Feature {
-        static $gtype: GObject.GType<Server>;
-
-        // Properties
-
-        /**
-         * Port on which server is currently listening on or 0 if not listening.
-         */
-        get current_port(): number;
-        /**
-         * Port on which server is currently listening on or 0 if not listening.
-         */
-        get currentPort(): number;
-        /**
-         * Whether server is enabled.
-         */
-        get enabled(): boolean;
-        set enabled(val: boolean);
-        /**
-         * Port to listen on or 0 for using random unused port.
-         */
-        get port(): number;
-        set port(val: number);
-        /**
-         * Whether remote server clients can control #ClapperQueue.
-         */
-        get queue_controllable(): boolean;
-        set queue_controllable(val: boolean);
-        /**
-         * Whether remote server clients can control #ClapperQueue.
-         */
-        get queueControllable(): boolean;
-        set queueControllable(val: boolean);
-        /**
-         * Whether server is currently running.
-         */
-        get running(): boolean;
-
-        // Constructors
-
-        constructor(properties?: Partial<Server.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): Server;
-
-        // Signals
-
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'error', callback: (_source: this, error: GLib.Error) => void): number;
-        connect_after(signal: 'error', callback: (_source: this, error: GLib.Error) => void): number;
-        emit(signal: 'error', error: GLib.Error): void;
-
-        // Methods
-
-        /**
-         * Get port on which server is currently listening on.
-         * @returns Current listening port or 0 if server is not listening.
-         */
-        get_current_port(): number;
-        /**
-         * Get whether #ClapperServer is set to be running.
-         * @returns %TRUE if enabled, %FALSE otherwise.
-         */
-        get_enabled(): boolean;
-        /**
-         * Get requested server listening port.
-         *
-         * If you want to know the port server is currently listening on,
-         * use [method`Clapper`.Server.get_current_port] instead.
-         * @returns Requested listening port or 0 when using random port.
-         */
-        get_port(): number;
-        /**
-         * Get whether remote `server` clients can control [class`Clapper`.Queue].
-         * @returns %TRUE if control over #ClapperQueue is allowed, %FALSE otherwise.
-         */
-        get_queue_controllable(): boolean;
-        /**
-         * Get whether #ClapperServer is currently running.
-         * @returns %TRUE if running, %FALSE otherwise.
-         */
-        get_running(): boolean;
-        /**
-         * Set whether #ClapperServer should be running.
-         *
-         * Note that server feature will run only after being added to the player.
-         * It can be however set to enabled earlier. If server was already added,
-         * changing this property allows to start/stop server at any time.
-         *
-         * To be notified when server is actually running/stopped after being enabled/disabled,
-         * you can listen for changes to [property`Clapper`.Server:running] property.
-         * @param enabled if #ClapperServer should run
-         */
-        set_enabled(enabled: boolean): void;
-        /**
-         * Set server listening port.
-         * @param port a port number or 0 for random free port
-         */
-        set_port(port: number): void;
-        /**
-         * Set whether remote `server` clients can control [class`Clapper`.Queue].
-         *
-         * This includes ability to add/remove items from the queue and selecting
-         * current item for playback remotely using WebSocket messages.
-         *
-         * You probably want to keep this disabled if your application
-         * is supposed to manage what is played now and not WebSocket client.
-         * @param controllable if #ClapperQueue should be controllable
-         */
-        set_queue_controllable(controllable: boolean): void;
     }
 
     module Stream {
@@ -3747,19 +3970,46 @@ export namespace Clapper {
 
     type AudioStreamClass = typeof AudioStream;
     type DiscovererClass = typeof Discoverer;
+    type ExtractableInterface = typeof Extractable;
     type FeatureClass = typeof Feature;
+    type HarvestClass = typeof Harvest;
     type MarkerClass = typeof Marker;
     type MediaItemClass = typeof MediaItem;
     type MprisClass = typeof Mpris;
     type PlayerClass = typeof Player;
     type QueueClass = typeof Queue;
-    type ServerClass = typeof Server;
     type StreamClass = typeof Stream;
     type StreamListClass = typeof StreamList;
     type SubtitleStreamClass = typeof SubtitleStream;
     type ThreadedObjectClass = typeof ThreadedObject;
     type TimelineClass = typeof Timeline;
     type VideoStreamClass = typeof VideoStream;
+    module Extractable {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface ExtractableNamespace {
+        $gtype: GObject.GType<Extractable>;
+        prototype: Extractable;
+    }
+    interface Extractable extends GObject.Object {
+        // Virtual methods
+
+        /**
+         * Extract data and fill harvest.
+         * @param uri a #GUri
+         * @param harvest
+         * @param cancellable a #GCancellable object
+         */
+        vfunc_extract(uri: GLib.Uri, harvest: Harvest, cancellable?: Gio.Cancellable | null): boolean;
+    }
+
+    export const Extractable: ExtractableNamespace & {
+        new (): Extractable; // This allows `obj instanceof Extractable`
+    };
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

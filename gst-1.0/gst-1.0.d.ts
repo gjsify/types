@@ -3763,8 +3763,6 @@ export namespace Gst {
      * @returns a string with the name of the state    result.
      */
     function state_change_get_name(transition: StateChange | null): string;
-    function static_caps_get_type(): GObject.GType;
-    function static_pad_template_get_type(): GObject.GType;
     function stream_error_quark(): GLib.Quark;
     /**
      * Get a descriptive string for a given #GstStreamType
@@ -3868,7 +3866,6 @@ export namespace Gst {
      * @param func the callback
      */
     function tracing_register_hook(tracer: Tracer, detail: string, func: GObject.Callback): void;
-    function type_find_get_type(): GObject.GType;
     /**
      * Registers a new typefind function to be used for typefinding. After
      * registering this function will be available for typefinding.
@@ -4048,7 +4045,7 @@ export namespace Gst {
         search_data?: any | null,
     ): any | null;
     /**
-     * Return a max num of log2.
+     * Returns smallest integral value not less than log2(v).
      * @param v a #guint32 value.
      * @returns a computed #guint val.
      */

@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/rsvg-2.0)
 
 
-GJS TypeScript type definitions for Rsvg-2.0, generated from library version 2.59.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.19.
+GJS TypeScript type definitions for Rsvg-2.0, generated from library version 2.59.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.19.
 
 
 ## Install

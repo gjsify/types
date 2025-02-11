@@ -11,7 +11,6 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
 
 export namespace CMenu {
     /**
@@ -239,53 +238,53 @@ export namespace CMenu {
          * Adds a content type to the application information to indicate the
          * application is capable of opening files with the given content type.
          * @param content_type a string.
-         * @returns `TRUE` on success, `FALSE` on error.
+         * @returns %TRUE on success, %FALSE on error.
          */
         add_supports_type(content_type: string): boolean;
         /**
-         * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
-         * See [method`Gio`.AppInfo.delete].
-         * @returns `TRUE` if @appinfo can be deleted
+         * Obtains the information whether the #GAppInfo can be deleted.
+         * See g_app_info_delete().
+         * @returns %TRUE if @appinfo can be deleted
          */
         can_delete(): boolean;
         /**
          * Checks if a supported content type can be removed from an application.
-         * @returns `TRUE` if it is possible to remove supported content types from a   given @appinfo, `FALSE` if not.
+         * @returns %TRUE if it is possible to remove supported     content types from a given @appinfo, %FALSE if not.
          */
         can_remove_supports_type(): boolean;
         /**
-         * Tries to delete a [iface`Gio`.AppInfo].
+         * Tries to delete a #GAppInfo.
          *
          * On some platforms, there may be a difference between user-defined
-         * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
-         * See [method`Gio`.AppInfo.can_delete].
-         * @returns `TRUE` if @appinfo has been deleted
+         * #GAppInfos which can be deleted, and system-wide ones which cannot.
+         * See g_app_info_can_delete().
+         * @returns %TRUE if @appinfo has been deleted
          */
         ['delete'](): boolean;
         /**
-         * Creates a duplicate of a [iface`Gio`.AppInfo].
+         * Creates a duplicate of a #GAppInfo.
          * @returns a duplicate of @appinfo.
          */
         dup(): Gio.AppInfo;
         /**
-         * Checks if two [iface`Gio`.AppInfo]s are equal.
+         * Checks if two #GAppInfos are equal.
          *
-         * Note that the check *may not* compare each individual field, and only does
-         * an identity check. In case detecting changes in the contents is needed,
-         * program code must additionally compare relevant fields.
-         * @param appinfo2 the second [iface@Gio.AppInfo].
-         * @returns `TRUE` if @appinfo1 is equal to @appinfo2. `FALSE` otherwise.
+         * Note that the check *may not* compare each individual
+         * field, and only does an identity check. In case detecting changes in the
+         * contents is needed, program code must additionally compare relevant fields.
+         * @param appinfo2 the second #GAppInfo.
+         * @returns %TRUE if @appinfo1 is equal to @appinfo2. %FALSE otherwise.
          */
         equal(appinfo2: Gio.AppInfo): boolean;
         /**
          * Gets the commandline with which the application will be
          * started.
-         * @returns a string containing the @appinfo’s   commandline, or `NULL` if this information is not available
+         * @returns a string containing the @appinfo's commandline,     or %NULL if this information is not available
          */
         get_commandline(): string | null;
         /**
          * Gets a human-readable description of an installed application.
-         * @returns a string containing a description of the application @appinfo, or `NULL` if none.
+         * @returns a string containing a description of the application @appinfo, or %NULL if none.
          */
         get_description(): string | null;
         /**
@@ -295,27 +294,28 @@ export namespace CMenu {
          */
         get_display_name(): string;
         /**
-         * Gets the executable’s name for the installed application.
+         * Gets the executable's name for the installed application.
          *
          * This is intended to be used for debugging or labelling what program is going
-         * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
+         * to be run. To launch the executable, use g_app_info_launch() and related
          * functions, rather than spawning the return value from this function.
-         * @returns a string containing the @appinfo’s application binaries name
+         * @returns a string containing the @appinfo's application binaries name
          */
         get_executable(): string;
         /**
          * Gets the icon for the application.
-         * @returns the default [iface@Gio.Icon] for   @appinfo or `NULL` if there is no default icon.
+         * @returns the default #GIcon for @appinfo or %NULL if there is no default icon.
          */
         get_icon(): Gio.Icon | null;
         /**
-         * Gets the ID of an application. An id is a string that identifies the
-         * application. The exact format of the id is platform dependent. For instance,
-         * on Unix this is the desktop file id from the xdg menu specification.
+         * Gets the ID of an application. An id is a string that
+         * identifies the application. The exact format of the id is
+         * platform dependent. For instance, on Unix this is the
+         * desktop file id from the xdg menu specification.
          *
-         * Note that the returned ID may be `NULL`, depending on how the `appinfo` has
-         * been constructed.
-         * @returns a string containing the application’s ID.
+         * Note that the returned ID may be %NULL, depending on how
+         * the `appinfo` has been constructed.
+         * @returns a string containing the application's ID.
          */
         get_id(): string | null;
         /**
@@ -326,10 +326,9 @@ export namespace CMenu {
         /**
          * Retrieves the list of content types that `app_info` claims to support.
          * If this information is not provided by the environment, this function
-         * will return `NULL`.
-         *
+         * will return %NULL.
          * This function does not take in consideration associations added with
-         * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
+         * g_app_info_add_supports_type(), but only those exported directly by
          * the application.
          * @returns a list of content types.
          */
@@ -340,7 +339,7 @@ export namespace CMenu {
          * about the details of the launcher (like what screen it is on).
          * On error, `error` will be set accordingly.
          *
-         * To launch the application without arguments pass a `NULL` `files` list.
+         * To launch the application without arguments pass a %NULL `files` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
@@ -349,11 +348,11 @@ export namespace CMenu {
          * Some URIs can be changed when passed through a GFile (for instance
          * unsupported URIs with strange formats like mailto:), so if you have
          * a textual URI you want to pass in as argument, consider using
-         * [method`Gio`.AppInfo.launch_uris] instead.
+         * g_app_info_launch_uris() instead.
          *
          * The launched application inherits the environment of the launching
-         * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
-         * and [method`Gio`.AppLaunchContext.unsetenv].
+         * process, but it can be modified with g_app_launch_context_setenv()
+         * and g_app_launch_context_unsetenv().
          *
          * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
          * environment variable with the path of the launched desktop file and
@@ -362,9 +361,9 @@ export namespace CMenu {
          * should it be inherited by further processes. The `DISPLAY`,
          * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
          * variables are also set, based on information provided in `context`.
-         * @param files a list of [iface@Gio.File] objects
-         * @param context the launch context
-         * @returns `TRUE` on successful launch, `FALSE` otherwise.
+         * @param files a #GList of #GFile objects
+         * @param context a #GAppLaunchContext or %NULL
+         * @returns %TRUE on successful launch, %FALSE otherwise.
          */
         launch(files?: Gio.File[] | null, context?: Gio.AppLaunchContext | null): boolean;
         /**
@@ -375,26 +374,26 @@ export namespace CMenu {
          * one URI per invocation as part of their command-line, multiple instances
          * of the application will be spawned.
          *
-         * To launch the application without arguments pass a `NULL` `uris` list.
+         * To launch the application without arguments pass a %NULL `uris` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
          * no way to detect this.
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @returns `TRUE` on successful launch, `FALSE` otherwise.
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
+         * @returns %TRUE on successful launch, %FALSE otherwise.
          */
         launch_uris(uris?: string[] | null, context?: Gio.AppLaunchContext | null): boolean;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of g_app_info_launch_uris().
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
+         * g_app_info_launch_default_for_uri_async().
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
+         * @param cancellable a #GCancellable
          */
         launch_uris_async(
             uris?: string[] | null,
@@ -402,16 +401,16 @@ export namespace CMenu {
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of g_app_info_launch_uris().
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
-         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         * g_app_info_launch_default_for_uri_async().
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to call when the request is done
          */
         launch_uris_async(
             uris: string[] | null,
@@ -420,16 +419,16 @@ export namespace CMenu {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of g_app_info_launch_uris().
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
-         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         * g_app_info_launch_default_for_uri_async().
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to call when the request is done
          */
         launch_uris_async(
             uris?: string[] | null,
@@ -438,52 +437,52 @@ export namespace CMenu {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
         /**
-         * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
-         * @param result the async result
-         * @returns `TRUE` on successful launch, `FALSE` otherwise.
+         * Finishes a g_app_info_launch_uris_async() operation.
+         * @param result a #GAsyncResult
+         * @returns %TRUE on successful launch, %FALSE otherwise.
          */
         launch_uris_finish(result: Gio.AsyncResult): boolean;
         /**
          * Removes a supported type from an application, if possible.
          * @param content_type a string.
-         * @returns `TRUE` on success, `FALSE` on error.
+         * @returns %TRUE on success, %FALSE on error.
          */
         remove_supports_type(content_type: string): boolean;
         /**
          * Sets the application as the default handler for the given file extension.
-         * @param extension a string containing the file extension (without   the dot).
-         * @returns `TRUE` on success, `FALSE` on error.
+         * @param extension a string containing the file extension     (without the dot).
+         * @returns %TRUE on success, %FALSE on error.
          */
         set_as_default_for_extension(extension: string): boolean;
         /**
          * Sets the application as the default handler for a given type.
          * @param content_type the content type.
-         * @returns `TRUE` on success, `FALSE` on error.
+         * @returns %TRUE on success, %FALSE on error.
          */
         set_as_default_for_type(content_type: string): boolean;
         /**
-         * Sets the application as the last used application for a given type. This
-         * will make the application appear as first in the list returned by
-         * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
+         * Sets the application as the last used application for a given type.
+         * This will make the application appear as first in the list returned
+         * by g_app_info_get_recommended_for_type(), regardless of the default
          * application for that content type.
          * @param content_type the content type.
-         * @returns `TRUE` on success, `FALSE` on error.
+         * @returns %TRUE on success, %FALSE on error.
          */
         set_as_last_used_for_type(content_type: string): boolean;
         /**
          * Checks if the application info should be shown in menus that
          * list available applications.
-         * @returns `TRUE` if the @appinfo should be shown, `FALSE` otherwise.
+         * @returns %TRUE if the @appinfo should be shown, %FALSE otherwise.
          */
         should_show(): boolean;
         /**
          * Checks if the application accepts files as arguments.
-         * @returns `TRUE` if the @appinfo supports files.
+         * @returns %TRUE if the @appinfo supports files.
          */
         supports_files(): boolean;
         /**
          * Checks if the application supports reading files and directories from URIs.
-         * @returns `TRUE` if the @appinfo supports URIs.
+         * @returns %TRUE if the @appinfo supports URIs.
          */
         supports_uris(): boolean;
         /**
@@ -493,8 +492,8 @@ export namespace CMenu {
          */
         vfunc_add_supports_type(content_type: string): boolean;
         /**
-         * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
-         * See [method`Gio`.AppInfo.delete].
+         * Obtains the information whether the #GAppInfo can be deleted.
+         * See g_app_info_delete().
          */
         vfunc_can_delete(): boolean;
         /**
@@ -502,24 +501,24 @@ export namespace CMenu {
          */
         vfunc_can_remove_supports_type(): boolean;
         /**
-         * Tries to delete a [iface`Gio`.AppInfo].
+         * Tries to delete a #GAppInfo.
          *
          * On some platforms, there may be a difference between user-defined
-         * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
-         * See [method`Gio`.AppInfo.can_delete].
+         * #GAppInfos which can be deleted, and system-wide ones which cannot.
+         * See g_app_info_can_delete().
          */
         vfunc_do_delete(): boolean;
         /**
-         * Creates a duplicate of a [iface`Gio`.AppInfo].
+         * Creates a duplicate of a #GAppInfo.
          */
         vfunc_dup(): Gio.AppInfo;
         /**
-         * Checks if two [iface`Gio`.AppInfo]s are equal.
+         * Checks if two #GAppInfos are equal.
          *
-         * Note that the check *may not* compare each individual field, and only does
-         * an identity check. In case detecting changes in the contents is needed,
-         * program code must additionally compare relevant fields.
-         * @param appinfo2 the second [iface@Gio.AppInfo].
+         * Note that the check *may not* compare each individual
+         * field, and only does an identity check. In case detecting changes in the
+         * contents is needed, program code must additionally compare relevant fields.
+         * @param appinfo2 the second #GAppInfo.
          */
         vfunc_equal(appinfo2: Gio.AppInfo): boolean;
         /**
@@ -537,10 +536,10 @@ export namespace CMenu {
          */
         vfunc_get_display_name(): string;
         /**
-         * Gets the executable’s name for the installed application.
+         * Gets the executable's name for the installed application.
          *
          * This is intended to be used for debugging or labelling what program is going
-         * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
+         * to be run. To launch the executable, use g_app_info_launch() and related
          * functions, rather than spawning the return value from this function.
          */
         vfunc_get_executable(): string;
@@ -549,12 +548,13 @@ export namespace CMenu {
          */
         vfunc_get_icon(): Gio.Icon | null;
         /**
-         * Gets the ID of an application. An id is a string that identifies the
-         * application. The exact format of the id is platform dependent. For instance,
-         * on Unix this is the desktop file id from the xdg menu specification.
+         * Gets the ID of an application. An id is a string that
+         * identifies the application. The exact format of the id is
+         * platform dependent. For instance, on Unix this is the
+         * desktop file id from the xdg menu specification.
          *
-         * Note that the returned ID may be `NULL`, depending on how the `appinfo` has
-         * been constructed.
+         * Note that the returned ID may be %NULL, depending on how
+         * the `appinfo` has been constructed.
          */
         vfunc_get_id(): string | null;
         /**
@@ -564,10 +564,9 @@ export namespace CMenu {
         /**
          * Retrieves the list of content types that `app_info` claims to support.
          * If this information is not provided by the environment, this function
-         * will return `NULL`.
-         *
+         * will return %NULL.
          * This function does not take in consideration associations added with
-         * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
+         * g_app_info_add_supports_type(), but only those exported directly by
          * the application.
          */
         vfunc_get_supported_types(): string[];
@@ -577,7 +576,7 @@ export namespace CMenu {
          * about the details of the launcher (like what screen it is on).
          * On error, `error` will be set accordingly.
          *
-         * To launch the application without arguments pass a `NULL` `files` list.
+         * To launch the application without arguments pass a %NULL `files` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
@@ -586,11 +585,11 @@ export namespace CMenu {
          * Some URIs can be changed when passed through a GFile (for instance
          * unsupported URIs with strange formats like mailto:), so if you have
          * a textual URI you want to pass in as argument, consider using
-         * [method`Gio`.AppInfo.launch_uris] instead.
+         * g_app_info_launch_uris() instead.
          *
          * The launched application inherits the environment of the launching
-         * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
-         * and [method`Gio`.AppLaunchContext.unsetenv].
+         * process, but it can be modified with g_app_launch_context_setenv()
+         * and g_app_launch_context_unsetenv().
          *
          * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
          * environment variable with the path of the launched desktop file and
@@ -599,8 +598,8 @@ export namespace CMenu {
          * should it be inherited by further processes. The `DISPLAY`,
          * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
          * variables are also set, based on information provided in `context`.
-         * @param files a list of [iface@Gio.File] objects
-         * @param context the launch context
+         * @param files a #GList of #GFile objects
+         * @param context a #GAppLaunchContext or %NULL
          */
         vfunc_launch(files?: Gio.File[] | null, context?: Gio.AppLaunchContext | null): boolean;
         /**
@@ -611,26 +610,26 @@ export namespace CMenu {
          * one URI per invocation as part of their command-line, multiple instances
          * of the application will be spawned.
          *
-         * To launch the application without arguments pass a `NULL` `uris` list.
+         * To launch the application without arguments pass a %NULL `uris` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
          * no way to detect this.
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
          */
         vfunc_launch_uris(uris?: string[] | null, context?: Gio.AppLaunchContext | null): boolean;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of g_app_info_launch_uris().
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
-         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         * g_app_info_launch_default_for_uri_async().
+         * @param uris a #GList containing URIs to launch.
+         * @param context a #GAppLaunchContext or %NULL
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to call when the request is done
          */
         vfunc_launch_uris_async(
             uris?: string[] | null,
@@ -639,8 +638,8 @@ export namespace CMenu {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
-         * @param result the async result
+         * Finishes a g_app_info_launch_uris_async() operation.
+         * @param result a #GAsyncResult
          */
         vfunc_launch_uris_finish(result: Gio.AsyncResult): boolean;
         /**
@@ -650,7 +649,7 @@ export namespace CMenu {
         vfunc_remove_supports_type(content_type: string): boolean;
         /**
          * Sets the application as the default handler for the given file extension.
-         * @param extension a string containing the file extension (without   the dot).
+         * @param extension a string containing the file extension     (without the dot).
          */
         vfunc_set_as_default_for_extension(extension: string): boolean;
         /**
@@ -659,9 +658,9 @@ export namespace CMenu {
          */
         vfunc_set_as_default_for_type(content_type: string): boolean;
         /**
-         * Sets the application as the last used application for a given type. This
-         * will make the application appear as first in the list returned by
-         * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
+         * Sets the application as the last used application for a given type.
+         * This will make the application appear as first in the list returned
+         * by g_app_info_get_recommended_for_type(), regardless of the default
          * application for that content type.
          * @param content_type the content type.
          */

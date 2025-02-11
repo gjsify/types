@@ -20,8 +20,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Gst from '@girs/gst-1.0';
 import type Clapper from '@girs/clapper-0.0';
 import type GstTag from '@girs/gsttag-1.0';
@@ -17222,10 +17222,12 @@ export namespace ClapperGtk {
          * A delay in milliseconds before trying to fade all fading overlays.
          */
         get fade_delay(): number;
+        set fade_delay(val: number);
         /**
          * A delay in milliseconds before trying to fade all fading overlays.
          */
         get fadeDelay(): number;
+        set fadeDelay(val: number);
         /**
          * Get whether session is currently inhibited by the video.
          */
@@ -17239,11 +17241,13 @@ export namespace ClapperGtk {
          * after revealed using touchscreen.
          */
         get touch_fade_delay(): number;
+        set touch_fade_delay(val: number);
         /**
          * A delay in milliseconds before trying to fade all fading overlays
          * after revealed using touchscreen.
          */
         get touchFadeDelay(): number;
+        set touchFadeDelay(val: number);
 
         // Constructors
 
