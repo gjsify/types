@@ -63,7 +63,7 @@ export namespace Gspell {
      */
     function language_get_default(): Language | null;
     function language_lookup(language_code: string): Language | null;
-    module Checker {
+    namespace Checker {
         // Signal callback interfaces
 
         interface SessionCleared {
@@ -182,7 +182,7 @@ export namespace Gspell {
         set_language(language?: Language | null): void;
     }
 
-    module CheckerDialog {
+    namespace CheckerDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -626,7 +626,7 @@ export namespace Gspell {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Entry {
+    namespace Entry {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -728,7 +728,7 @@ export namespace Gspell {
         set_inline_spell_checking(enable: boolean): void;
     }
 
-    module EntryBuffer {
+    namespace EntryBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -786,7 +786,7 @@ export namespace Gspell {
         set_spell_checker(spell_checker?: Checker | null): void;
     }
 
-    module LanguageChooserButton {
+    namespace LanguageChooserButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5330,7 +5330,7 @@ export namespace Gspell {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module LanguageChooserDialog {
+    namespace LanguageChooserDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5796,7 +5796,7 @@ export namespace Gspell {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module NavigatorTextView {
+    namespace NavigatorTextView {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Navigator.ConstructorProps {
@@ -5885,7 +5885,7 @@ export namespace Gspell {
         vfunc_goto_next(): [boolean, string, Checker | null];
     }
 
-    module TextBuffer {
+    namespace TextBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5943,7 +5943,7 @@ export namespace Gspell {
         set_spell_checker(spell_checker?: Checker | null): void;
     }
 
-    module TextView {
+    namespace TextView {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6118,7 +6118,7 @@ export namespace Gspell {
     type NavigatorTextViewClass = typeof NavigatorTextView;
     type TextBufferClass = typeof TextBuffer;
     type TextViewClass = typeof TextView;
-    module LanguageChooser {
+    namespace LanguageChooser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6180,7 +6180,7 @@ export namespace Gspell {
         new (): LanguageChooser; // This allows `obj instanceof LanguageChooser`
     };
 
-    module Navigator {
+    namespace Navigator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}

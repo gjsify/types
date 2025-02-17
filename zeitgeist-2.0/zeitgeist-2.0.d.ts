@@ -263,7 +263,7 @@ export namespace Zeitgeist {
     function interpretation_for_mimetype(mimetype?: string | null): string | null;
     function register_uri_scheme(uri_scheme: string, manifestation_type: string): void;
     function manifestation_for_uri(uri: string): string | null;
-    module DataSourceRegistry {
+    namespace DataSourceRegistry {
         // Signal callback interfaces
 
         interface SourceDisconnected {
@@ -371,7 +371,7 @@ export namespace Zeitgeist {
         set_data_source_enabled_finish(_res_: Gio.AsyncResult): void;
     }
 
-    module Index {
+    namespace Index {
         // Constructor properties interface
 
         interface ConstructorProps extends QueuedProxyWrapper.ConstructorProps {}
@@ -455,7 +455,7 @@ export namespace Zeitgeist {
         search_with_relevancies_finish(_res_: Gio.AsyncResult): [ResultSet, number[]];
     }
 
-    module Log {
+    namespace Log {
         // Constructor properties interface
 
         interface ConstructorProps extends QueuedProxyWrapper.ConstructorProps {}
@@ -626,7 +626,7 @@ export namespace Zeitgeist {
         datapath(): string;
     }
 
-    module Monitor {
+    namespace Monitor {
         // Signal callback interfaces
 
         interface EventsInserted {
@@ -1141,7 +1141,7 @@ export namespace Zeitgeist {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module QueuedProxyWrapper {
+    namespace QueuedProxyWrapper {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1211,7 +1211,7 @@ export namespace Zeitgeist {
         get_queued_method(): [GLib.SourceFunc, any];
     }
 
-    module DataSource {
+    namespace DataSource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1282,7 +1282,7 @@ export namespace Zeitgeist {
         set_timestamp(value: number): void;
     }
 
-    module Event {
+    namespace Event {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1357,7 +1357,7 @@ export namespace Zeitgeist {
         set_payload(value?: GLib.ByteArray | null): void;
     }
 
-    module Subject {
+    namespace Subject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1459,7 +1459,7 @@ export namespace Zeitgeist {
         set_manifestation(value?: string | null): void;
     }
 
-    module TimeRange {
+    namespace TimeRange {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1502,7 +1502,7 @@ export namespace Zeitgeist {
         get_end(): number;
     }
 
-    module SimpleResultSet {
+    namespace SimpleResultSet {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ResultSet.ConstructorProps {}
@@ -2064,7 +2064,7 @@ export namespace Zeitgeist {
         _init(...args: any[]): void;
     }
 
-    module RemoteRegistry {
+    namespace RemoteRegistry {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2178,7 +2178,7 @@ export namespace Zeitgeist {
         new (): RemoteRegistry; // This allows `obj instanceof RemoteRegistry`
     };
 
-    module RemoteLog {
+    namespace RemoteLog {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2460,7 +2460,7 @@ export namespace Zeitgeist {
         new (): RemoteLog; // This allows `obj instanceof RemoteLog`
     };
 
-    module RemoteMonitor {
+    namespace RemoteMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2518,7 +2518,7 @@ export namespace Zeitgeist {
         new (): RemoteMonitor; // This allows `obj instanceof RemoteMonitor`
     };
 
-    module RemoteSimpleIndexer {
+    namespace RemoteSimpleIndexer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2626,7 +2626,7 @@ export namespace Zeitgeist {
         new (): RemoteSimpleIndexer; // This allows `obj instanceof RemoteSimpleIndexer`
     };
 
-    module NetworkManagerDBus {
+    namespace NetworkManagerDBus {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2650,7 +2650,7 @@ export namespace Zeitgeist {
         new (): NetworkManagerDBus; // This allows `obj instanceof NetworkManagerDBus`
     };
 
-    module ConnmanManagerDBus {
+    namespace ConnmanManagerDBus {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2674,7 +2674,7 @@ export namespace Zeitgeist {
         new (): ConnmanManagerDBus; // This allows `obj instanceof ConnmanManagerDBus`
     };
 
-    module ResultSet {
+    namespace ResultSet {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

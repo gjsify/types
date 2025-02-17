@@ -41,7 +41,7 @@ export namespace Cally {
      */
     function get_cally_initialized(): boolean;
     function snoop_key_event(stage: Clutter.Stage, key: Clutter.KeyEvent): boolean;
-    module Actor {
+    namespace Actor {
         // Constructor properties interface
 
         interface ConstructorProps extends Atk.GObjectAccessible.ConstructorProps, Atk.Component.ConstructorProps {}
@@ -701,7 +701,7 @@ export namespace Cally {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Clone {
+    namespace Clone {
         // Constructor properties interface
 
         interface ConstructorProps extends Actor.ConstructorProps, Atk.Component.ConstructorProps {}
@@ -1363,7 +1363,7 @@ export namespace Cally {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Root {
+    namespace Root {
         // Constructor properties interface
 
         interface ConstructorProps extends Atk.GObjectAccessible.ConstructorProps {}
@@ -1393,7 +1393,7 @@ export namespace Cally {
         static ['new'](): Root;
     }
 
-    module Stage {
+    namespace Stage {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2435,7 +2435,7 @@ export namespace Cally {
         vfunc_visible_data_changed(): void;
     }
 
-    module Text {
+    namespace Text {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3843,7 +3843,7 @@ export namespace Cally {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Util {
+    namespace Util {
         // Constructor properties interface
 
         interface ConstructorProps extends Atk.Util.ConstructorProps {}

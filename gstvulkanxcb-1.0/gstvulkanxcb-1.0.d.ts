@@ -22,7 +22,7 @@ export namespace GstVulkanXCB {
      * GstVulkanXCB-1.0
      */
 
-    module VulkanDisplayXCB {
+    namespace VulkanDisplayXCB {
         // Constructor properties interface
 
         interface ConstructorProps extends GstVulkan.VulkanDisplay.ConstructorProps {}

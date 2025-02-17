@@ -122,7 +122,7 @@ export namespace GCab {
     interface FileCallback {
         (file: File): boolean;
     }
-    module Cabinet {
+    namespace Cabinet {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -249,7 +249,7 @@ export namespace GCab {
         ): boolean;
     }
 
-    module File {
+    namespace File {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -363,7 +363,7 @@ export namespace GCab {
         set_extract_name(name?: string | null): void;
     }
 
-    module Folder {
+    namespace Folder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

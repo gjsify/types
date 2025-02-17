@@ -108,7 +108,7 @@ export namespace DbusmenuGtk3 {
      * @returns Whether it was successful at setting the property.
      */
     function menuitem_property_set_shortcut_string(menuitem: Dbusmenu.Menuitem, shortcut: string): boolean;
-    module Client {
+    namespace Client {
         // Constructor properties interface
 
         interface ConstructorProps extends Dbusmenu.Client.ConstructorProps {}
@@ -171,7 +171,7 @@ export namespace DbusmenuGtk3 {
         set_accel_group(agroup: Gtk.AccelGroup): void;
     }
 
-    module Menu {
+    namespace Menu {
         // Constructor properties interface
 
         interface ConstructorProps

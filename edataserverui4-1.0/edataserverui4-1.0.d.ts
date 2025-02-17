@@ -223,7 +223,7 @@ export namespace EDataServerUI4 {
          */
         ALLOW_STORED_CREDENTIALS,
     }
-    module CellRendererColor {
+    namespace CellRendererColor {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRenderer.ConstructorProps {
@@ -248,7 +248,7 @@ export namespace EDataServerUI4 {
         static ['new'](): CellRendererColor;
     }
 
-    module CertificateWidget {
+    namespace CertificateWidget {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -714,7 +714,7 @@ export namespace EDataServerUI4 {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CredentialsPrompter {
+    namespace CredentialsPrompter {
         // Signal callback interfaces
 
         interface GetDialogParent {
@@ -1444,7 +1444,7 @@ export namespace EDataServerUI4 {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CredentialsPrompterImpl {
+    namespace CredentialsPrompterImpl {
         // Signal callback interfaces
 
         interface PromptFinished {
@@ -1553,7 +1553,7 @@ export namespace EDataServerUI4 {
         prompt_finish(prompt_id?: any | null, credentials?: EDataServer.NamedParameters | null): void;
     }
 
-    module CredentialsPrompterImplOAuth2 {
+    namespace CredentialsPrompterImplOAuth2 {
         // Constructor properties interface
 
         interface ConstructorProps extends CredentialsPrompterImpl.ConstructorProps {}
@@ -1575,7 +1575,7 @@ export namespace EDataServerUI4 {
         static ['new'](): CredentialsPrompterImplOAuth2;
     }
 
-    module CredentialsPrompterImplPassword {
+    namespace CredentialsPrompterImplPassword {
         // Constructor properties interface
 
         interface ConstructorProps extends CredentialsPrompterImpl.ConstructorProps {}
@@ -1597,7 +1597,7 @@ export namespace EDataServerUI4 {
         static ['new'](): CredentialsPrompterImplPassword;
     }
 
-    module RemindersWidget {
+    namespace RemindersWidget {
         // Signal callback interfaces
 
         interface Activated {
@@ -2127,7 +2127,7 @@ export namespace EDataServerUI4 {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WebDAVDiscoverContent {
+    namespace WebDAVDiscoverContent {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2695,7 +2695,7 @@ export namespace EDataServerUI4 {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WebDAVDiscoverDialog {
+    namespace WebDAVDiscoverDialog {
         // Constructor properties interface
 
         interface ConstructorProps

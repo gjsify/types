@@ -438,7 +438,7 @@ export namespace Json {
     interface ObjectForeach {
         (object: Object, member_name: string, member_node: Node): void;
     }
-    module Builder {
+    namespace Builder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -648,7 +648,7 @@ export namespace Json {
         set_member_name(member_name: string): Builder | null;
     }
 
-    module Generator {
+    namespace Generator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -799,7 +799,7 @@ export namespace Json {
         to_stream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): boolean;
     }
 
-    module Parser {
+    namespace Parser {
         // Signal callback interfaces
 
         interface ArrayElement {
@@ -1173,7 +1173,7 @@ export namespace Json {
         steal_root(): Node | null;
     }
 
-    module Path {
+    namespace Path {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1355,7 +1355,7 @@ export namespace Json {
         match(root: Node): Node;
     }
 
-    module Reader {
+    namespace Reader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2836,7 +2836,7 @@ export namespace Json {
     }
 
     type SerializableIface = typeof Serializable;
-    module Serializable {
+    namespace Serializable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

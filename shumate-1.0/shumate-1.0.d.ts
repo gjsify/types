@@ -340,7 +340,7 @@ export namespace Shumate {
     interface VectorSpriteFallbackFunc {
         (sprite_sheet: VectorSpriteSheet, name: string, scale: number): VectorSprite | null;
     }
-    module Compass {
+    namespace Compass {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1079,7 +1079,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Coordinate {
+    namespace Coordinate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Location.ConstructorProps {}
@@ -1556,7 +1556,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataSource {
+    namespace DataSource {
         // Signal callback interfaces
 
         interface ReceivedData {
@@ -1768,7 +1768,7 @@ export namespace Shumate {
         ): DataSourceRequest;
     }
 
-    module DataSourceRequest {
+    namespace DataSourceRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1911,7 +1911,7 @@ export namespace Shumate {
         is_completed(): boolean;
     }
 
-    module FileCache {
+    namespace FileCache {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2167,7 +2167,7 @@ export namespace Shumate {
         store_tile_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module Layer {
+    namespace Layer {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2897,7 +2897,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module License {
+    namespace License {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3655,7 +3655,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Map {
+    namespace Map {
         // Signal callback interfaces
 
         interface AnimationCompleted {
@@ -4569,7 +4569,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MapLayer {
+    namespace MapLayer {
         // Signal callback interfaces
 
         interface SymbolClicked {
@@ -5020,7 +5020,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MapSource {
+    namespace MapSource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5321,7 +5321,7 @@ export namespace Shumate {
         set_tile_size(tile_size: number): void;
     }
 
-    module MapSourceRegistry {
+    namespace MapSourceRegistry {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -5872,7 +5872,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Marker {
+    namespace Marker {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6689,7 +6689,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MarkerLayer {
+    namespace MarkerLayer {
         // Signal callback interfaces
 
         interface MarkerSelected {
@@ -7225,7 +7225,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PathLayer {
+    namespace PathLayer {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7864,7 +7864,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Point {
+    namespace Point {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8345,7 +8345,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RasterRenderer {
+    namespace RasterRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends MapSource.ConstructorProps {
@@ -8405,7 +8405,7 @@ export namespace Shumate {
         ): RasterRenderer;
     }
 
-    module Scale {
+    namespace Scale {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9181,7 +9181,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SimpleMap {
+    namespace SimpleMap {
         // Signal callback interfaces
 
         interface SymbolClicked {
@@ -9992,7 +9992,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SymbolEvent {
+    namespace SymbolEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Location.ConstructorProps {
@@ -10548,7 +10548,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Tile {
+    namespace Tile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10724,7 +10724,7 @@ export namespace Shumate {
         set_zoom_level(zoom_level: number): void;
     }
 
-    module TileDownloader {
+    namespace TileDownloader {
         // Constructor properties interface
 
         interface ConstructorProps extends DataSource.ConstructorProps {
@@ -10776,7 +10776,7 @@ export namespace Shumate {
         static ['new'](url_template: string): TileDownloader;
     }
 
-    module VectorReader {
+    namespace VectorReader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10811,7 +10811,7 @@ export namespace Shumate {
         iterate(): VectorReaderIter;
     }
 
-    module VectorReaderIter {
+    namespace VectorReaderIter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10981,7 +10981,7 @@ export namespace Shumate {
         read_layer_by_name(name: string): boolean;
     }
 
-    module VectorRenderer {
+    namespace VectorRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends MapSource.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -11565,7 +11565,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module VectorSprite {
+    namespace VectorSprite {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12304,7 +12304,7 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module VectorSpriteSheet {
+    namespace VectorSpriteSheet {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -12405,7 +12405,7 @@ export namespace Shumate {
         set_fallback(fallback?: VectorSpriteFallbackFunc | null): void;
     }
 
-    module Viewport {
+    namespace Viewport {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Location.ConstructorProps {
@@ -13037,7 +13037,7 @@ export namespace Shumate {
     type VectorSpriteClass = typeof VectorSprite;
     type VectorSpriteSheetClass = typeof VectorSpriteSheet;
     type ViewportClass = typeof Viewport;
-    module Location {
+    namespace Location {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

@@ -108,7 +108,7 @@ export namespace CoglPango {
      * @param flags
      */
     function render_layout_subpixel(layout: Pango.Layout, x: number, y: number, color: Cogl.Color, flags: number): void;
-    module Renderer {
+    namespace Renderer {
         // Constructor properties interface
 
         interface ConstructorProps extends Pango.Renderer.ConstructorProps {

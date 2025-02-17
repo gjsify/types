@@ -466,7 +466,7 @@ export namespace Xmlb {
          */
         OPTIMIZER,
     }
-    module Builder {
+    namespace Builder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -551,7 +551,7 @@ export namespace Xmlb {
         set_profile_flags(profile_flags: SiloProfileFlags | null): void;
     }
 
-    module BuilderFixup {
+    namespace BuilderFixup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -586,7 +586,7 @@ export namespace Xmlb {
         set_max_depth(max_depth: number): void;
     }
 
-    module BuilderNode {
+    namespace BuilderNode {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -782,7 +782,7 @@ export namespace Xmlb {
         unlink(): void;
     }
 
-    module BuilderSource {
+    namespace BuilderSource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -842,7 +842,7 @@ export namespace Xmlb {
         set_prefix(prefix?: string | null): void;
     }
 
-    module BuilderSourceCtx {
+    namespace BuilderSourceCtx {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -881,7 +881,7 @@ export namespace Xmlb {
         get_stream(): Gio.InputStream;
     }
 
-    module Machine {
+    namespace Machine {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1060,7 +1060,7 @@ export namespace Xmlb {
         stack_push_text_steal(stack: Stack, str: string): boolean;
     }
 
-    module Node {
+    namespace Node {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1318,7 +1318,7 @@ export namespace Xmlb {
         transmogrify(func_text: NodeTransmogrifyFunc, func_tail: NodeTransmogrifyFunc): boolean;
     }
 
-    module Query {
+    namespace Query {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1380,7 +1380,7 @@ export namespace Xmlb {
         set_limit(limit: number): void;
     }
 
-    module Silo {
+    namespace Silo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

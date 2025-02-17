@@ -67,7 +67,7 @@ export namespace OsmGpsMap {
     const MAP_CACHE_DISABLED: string;
     const MAP_CACHE_FRIENDLY: string;
     const MAP_INVALID: number;
-    module Map {
+    namespace Map {
         // Signal callback interfaces
 
         interface Changed {
@@ -966,7 +966,7 @@ export namespace OsmGpsMap {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MapImage {
+    namespace MapImage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1023,7 +1023,7 @@ export namespace OsmGpsMap {
         set_rotation(rot: number): void;
     }
 
-    module MapOsd {
+    namespace MapOsd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MapLayer.ConstructorProps {
@@ -1575,7 +1575,7 @@ export namespace OsmGpsMap {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MapPolygon {
+    namespace MapPolygon {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1609,7 +1609,7 @@ export namespace OsmGpsMap {
         static ['new'](): MapPolygon;
     }
 
-    module MapTrack {
+    namespace MapTrack {
         // Signal callback interfaces
 
         interface PointAdded {
@@ -1798,7 +1798,7 @@ export namespace OsmGpsMap {
         _init(...args: any[]): void;
     }
 
-    module MapLayer {
+    namespace MapLayer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

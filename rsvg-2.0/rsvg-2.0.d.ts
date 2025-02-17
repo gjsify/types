@@ -318,7 +318,7 @@ export namespace Rsvg {
          */
         FLAG_KEEP_IMAGE_DATA,
     }
-    module Handle {
+    namespace Handle {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

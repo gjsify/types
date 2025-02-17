@@ -68,7 +68,7 @@ export namespace SugarGestures {
         UP,
         DOWN,
     }
-    module EventController {
+    namespace EventController {
         // Signal callback interfaces
 
         interface Began {
@@ -139,7 +139,7 @@ export namespace SugarGestures {
         reset(): boolean;
     }
 
-    module LongPressController {
+    namespace LongPressController {
         // Signal callback interfaces
 
         interface Pressed {
@@ -189,7 +189,7 @@ export namespace SugarGestures {
         vfunc_pressed(x: number, y: number): void;
     }
 
-    module RotateController {
+    namespace RotateController {
         // Signal callback interfaces
 
         interface AngleChanged {
@@ -243,7 +243,7 @@ export namespace SugarGestures {
         get_angle_delta(): [boolean, number];
     }
 
-    module SwipeController {
+    namespace SwipeController {
         // Signal callback interfaces
 
         interface SwipeEnded {
@@ -286,7 +286,7 @@ export namespace SugarGestures {
         vfunc_swipe_ended(direction: SwipeDirection): void;
     }
 
-    module TouchController {
+    namespace TouchController {
         // Constructor properties interface
 
         interface ConstructorProps extends EventController.ConstructorProps {
@@ -344,7 +344,7 @@ export namespace SugarGestures {
         get_sequences(): Gdk.EventSequence[];
     }
 
-    module ZoomController {
+    namespace ZoomController {
         // Signal callback interfaces
 
         interface ScaleChanged {

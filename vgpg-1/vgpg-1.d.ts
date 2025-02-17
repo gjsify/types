@@ -24,7 +24,7 @@ export namespace Vgpg {
      * Vgpg-1
      */
 
-    module Connection {
+    namespace Connection {
         // Constructor properties interface
 
         interface ConstructorProps extends Vgda.GProvider.ConstructorProps {}

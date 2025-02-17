@@ -426,7 +426,7 @@ export namespace Modulemd {
     interface WriteHandler {
         (data: any, size: number): number;
     }
-    module BuildConfig {
+    namespace BuildConfig {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -524,7 +524,7 @@ export namespace Modulemd {
         validate(): boolean;
     }
 
-    module Buildopts {
+    namespace Buildopts {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -588,7 +588,7 @@ export namespace Modulemd {
         set_rpm_macros(rpm_macros: string): void;
     }
 
-    module Component {
+    namespace Component {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -663,7 +663,7 @@ export namespace Modulemd {
         validate(): boolean;
     }
 
-    module ComponentModule {
+    namespace ComponentModule {
         // Constructor properties interface
 
         interface ConstructorProps extends Component.ConstructorProps {
@@ -698,7 +698,7 @@ export namespace Modulemd {
         set_repository(repository?: string | null): void;
     }
 
-    module ComponentRpm {
+    namespace ComponentRpm {
         // Constructor properties interface
 
         interface ConstructorProps extends Component.ConstructorProps {
@@ -784,7 +784,7 @@ export namespace Modulemd {
         set_srpm_buildroot(srpm_buildroot: boolean): void;
     }
 
-    module Defaults {
+    namespace Defaults {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -830,7 +830,7 @@ export namespace Modulemd {
         validate(): boolean;
     }
 
-    module DefaultsV1 {
+    namespace DefaultsV1 {
         // Constructor properties interface
 
         interface ConstructorProps extends Defaults.ConstructorProps {}
@@ -886,7 +886,7 @@ export namespace Modulemd {
         set_empty_default_profiles_for_stream(stream_name: string, intent?: string | null): void;
     }
 
-    module Dependencies {
+    namespace Dependencies {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -958,7 +958,7 @@ export namespace Modulemd {
         set_empty_runtime_dependencies_for_module(module_name: string): void;
     }
 
-    module Module {
+    namespace Module {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1045,7 +1045,7 @@ export namespace Modulemd {
         validate(): boolean;
     }
 
-    module ModuleIndex {
+    namespace ModuleIndex {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1166,7 +1166,7 @@ export namespace Modulemd {
         upgrade_streams(mdversion: ModuleStreamVersionEnum | null): boolean;
     }
 
-    module ModuleIndexMerger {
+    namespace ModuleIndexMerger {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1225,7 +1225,7 @@ export namespace Modulemd {
         resolve_ext(strict_default_streams: boolean): ModuleIndex;
     }
 
-    module ModuleStream {
+    namespace ModuleStream {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1390,7 +1390,7 @@ export namespace Modulemd {
         validate(): boolean;
     }
 
-    module ModuleStreamV1 {
+    namespace ModuleStreamV1 {
         // Constructor properties interface
 
         interface ConstructorProps extends ModuleStream.ConstructorProps {
@@ -1618,7 +1618,7 @@ export namespace Modulemd {
         set_xmd(xmd: GLib.Variant): void;
     }
 
-    module ModuleStreamV2 {
+    namespace ModuleStreamV2 {
         // Constructor properties interface
 
         interface ConstructorProps extends ModuleStream.ConstructorProps {
@@ -1861,7 +1861,7 @@ export namespace Modulemd {
         unset_static_context(): void;
     }
 
-    module Obsoletes {
+    namespace Obsoletes {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1973,7 +1973,7 @@ export namespace Modulemd {
         validate(): boolean;
     }
 
-    module PackagerV3 {
+    namespace PackagerV3 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2149,7 +2149,7 @@ export namespace Modulemd {
         set_xmd(xmd: GLib.Variant): void;
     }
 
-    module Profile {
+    namespace Profile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2205,7 +2205,7 @@ export namespace Modulemd {
         unset_default(): void;
     }
 
-    module RpmMapEntry {
+    namespace RpmMapEntry {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2261,7 +2261,7 @@ export namespace Modulemd {
         validate(): boolean;
     }
 
-    module ServiceLevel {
+    namespace ServiceLevel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2312,7 +2312,7 @@ export namespace Modulemd {
         set_eol_ymd(year: GLib.DateYear, month: GLib.DateMonth | null, day: GLib.DateDay): void;
     }
 
-    module SubdocumentInfo {
+    namespace SubdocumentInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2333,7 +2333,7 @@ export namespace Modulemd {
         get_yaml(): string;
     }
 
-    module Translation {
+    namespace Translation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2387,7 +2387,7 @@ export namespace Modulemd {
         validate(): boolean;
     }
 
-    module TranslationEntry {
+    namespace TranslationEntry {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

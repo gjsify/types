@@ -128,7 +128,7 @@ export namespace GstPlayer {
     interface PlayerSignalDispatcherFunc {
         (data?: any | null): void;
     }
-    module Player {
+    namespace Player {
         // Signal callback interfaces
 
         interface Buffering {
@@ -595,7 +595,7 @@ export namespace GstPlayer {
         stop(): void;
     }
 
-    module PlayerAudioInfo {
+    namespace PlayerAudioInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends PlayerStreamInfo.ConstructorProps {}
@@ -622,7 +622,7 @@ export namespace GstPlayer {
         get_sample_rate(): number;
     }
 
-    module PlayerGMainContextSignalDispatcher {
+    namespace PlayerGMainContextSignalDispatcher {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PlayerSignalDispatcher.ConstructorProps {
@@ -1058,7 +1058,7 @@ export namespace GstPlayer {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PlayerMediaInfo {
+    namespace PlayerMediaInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1101,7 +1101,7 @@ export namespace GstPlayer {
         is_seekable(): boolean;
     }
 
-    module PlayerStreamInfo {
+    namespace PlayerStreamInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1144,7 +1144,7 @@ export namespace GstPlayer {
         get_tags(): Gst.TagList | null;
     }
 
-    module PlayerSubtitleInfo {
+    namespace PlayerSubtitleInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends PlayerStreamInfo.ConstructorProps {}
@@ -1167,7 +1167,7 @@ export namespace GstPlayer {
         get_language(): string | null;
     }
 
-    module PlayerVideoInfo {
+    namespace PlayerVideoInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends PlayerStreamInfo.ConstructorProps {}
@@ -1198,7 +1198,7 @@ export namespace GstPlayer {
         get_width(): number;
     }
 
-    module PlayerVideoOverlayVideoRenderer {
+    namespace PlayerVideoOverlayVideoRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PlayerVideoRenderer.ConstructorProps {
@@ -1719,7 +1719,7 @@ export namespace GstPlayer {
         free(): void;
     }
 
-    module PlayerSignalDispatcher {
+    namespace PlayerSignalDispatcher {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1739,7 +1739,7 @@ export namespace GstPlayer {
         new (): PlayerSignalDispatcher; // This allows `obj instanceof PlayerSignalDispatcher`
     };
 
-    module PlayerVideoRenderer {
+    namespace PlayerVideoRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

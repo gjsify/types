@@ -352,7 +352,7 @@ export namespace gSignon {
          */
         NETWORK,
     }
-    module AuthService {
+    namespace AuthService {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -422,7 +422,7 @@ export namespace gSignon {
         query_methods(cb: QueryMethodsCb): void;
     }
 
-    module AuthSession {
+    namespace AuthSession {
         // Signal callback interfaces
 
         interface StateChanged {
@@ -585,7 +585,7 @@ export namespace gSignon {
         query_available_mechanisms(wanted_mechanisms: string, cb: AuthSessionQueryAvailableMechanismsCb): void;
     }
 
-    module Identity {
+    namespace Identity {
         // Signal callback interfaces
 
         interface Removed {

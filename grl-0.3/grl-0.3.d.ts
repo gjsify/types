@@ -750,7 +750,7 @@ export namespace Grl {
          */
         FULL,
     }
-    module Caps {
+    namespace Caps {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -800,7 +800,7 @@ export namespace Grl {
         test_option(key: string, value: GObject.Value | any): boolean;
     }
 
-    module Config {
+    namespace Config {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -929,7 +929,7 @@ export namespace Grl {
         set_username(username: string): void;
     }
 
-    module Data {
+    namespace Data {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1221,7 +1221,7 @@ export namespace Grl {
         set_string(key: KeyID, strvalue: string): void;
     }
 
-    module Media {
+    namespace Media {
         // Constructor properties interface
 
         interface ConstructorProps extends Data.ConstructorProps {
@@ -1837,7 +1837,7 @@ export namespace Grl {
         set_width(width: number): void;
     }
 
-    module OperationOptions {
+    namespace OperationOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1949,7 +1949,7 @@ export namespace Grl {
         set_type_filter(filter: TypeFilter | null): boolean;
     }
 
-    module Plugin {
+    namespace Plugin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2027,7 +2027,7 @@ export namespace Grl {
         get_version(): string;
     }
 
-    module Registry {
+    namespace Registry {
         // Signal callback interfaces
 
         interface MetadataKeyAdded {
@@ -2263,7 +2263,7 @@ export namespace Grl {
         unregister_source(source: Source): boolean;
     }
 
-    module RelatedKeys {
+    namespace RelatedKeys {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2441,7 +2441,7 @@ export namespace Grl {
         set_string(key: KeyID, strvalue: string): void;
     }
 
-    module Source {
+    namespace Source {
         // Signal callback interfaces
 
         interface ContentChanged {

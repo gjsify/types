@@ -310,7 +310,7 @@ export namespace Gpseq {
         CONCURRENT,
         UNORDERED,
     }
-    module ArraySpliterator {
+    namespace ArraySpliterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
@@ -771,7 +771,7 @@ export namespace Gpseq {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ForkJoinTask {
+    namespace ForkJoinTask {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Task.ConstructorProps {
@@ -1285,7 +1285,7 @@ export namespace Gpseq {
         bake_promise(promise: Promise): void;
     }
 
-    module FuncTask {
+    namespace FuncTask {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Task.ConstructorProps {
@@ -1729,7 +1729,7 @@ export namespace Gpseq {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Future {
+    namespace Future {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2228,7 +2228,7 @@ export namespace Gpseq {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GenericArraySpliterator {
+    namespace GenericArraySpliterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
@@ -2689,7 +2689,7 @@ export namespace Gpseq {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module IteratorSpliterator {
+    namespace IteratorSpliterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
@@ -3156,7 +3156,7 @@ export namespace Gpseq {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ListSpliterator {
+    namespace ListSpliterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
@@ -3617,7 +3617,7 @@ export namespace Gpseq {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Optional {
+    namespace Optional {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3699,7 +3699,7 @@ export namespace Gpseq {
         set_exception(exception: GLib.Error): void;
     }
 
-    module Seq {
+    namespace Seq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3878,7 +3878,7 @@ export namespace Gpseq {
         ): Future;
     }
 
-    module SpliteratorTask {
+    namespace SpliteratorTask {
         // Constructor properties interface
 
         interface ConstructorProps extends ForkJoinTask.ConstructorProps {
@@ -3964,7 +3964,7 @@ export namespace Gpseq {
         make_child(spliterator: Spliterator): SpliteratorTask;
     }
 
-    module SubArray {
+    namespace SubArray {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4455,7 +4455,7 @@ export namespace Gpseq {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SubArraySpliterator {
+    namespace SubArraySpliterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
@@ -4916,7 +4916,7 @@ export namespace Gpseq {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SupplierSpliterator {
+    namespace SupplierSpliterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
@@ -5375,7 +5375,7 @@ export namespace Gpseq {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TaskEnv {
+    namespace TaskEnv {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5418,7 +5418,7 @@ export namespace Gpseq {
         resolve_max_depth(elements: number, threads: number): number;
     }
 
-    module WaitGroup {
+    namespace WaitGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5445,7 +5445,7 @@ export namespace Gpseq {
         wait_until(end_time: number): boolean;
     }
 
-    module WorkerPool {
+    namespace WorkerPool {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Executor.ConstructorProps {
@@ -5920,7 +5920,7 @@ export namespace Gpseq {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WorkerThread {
+    namespace WorkerThread {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5977,7 +5977,7 @@ export namespace Gpseq {
         blocking(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: TaskFunc): any;
     }
 
-    module Wrapper {
+    namespace Wrapper {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6221,7 +6221,7 @@ export namespace Gpseq {
         _init(...args: any[]): void;
     }
 
-    module Channel {
+    namespace Channel {
         // Constructor properties interface
 
         interface ConstructorProps extends Sender.ConstructorProps {}
@@ -6240,7 +6240,7 @@ export namespace Gpseq {
         new (): Channel; // This allows `obj instanceof Channel`
     };
 
-    module ChannelBase {
+    namespace ChannelBase {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6280,7 +6280,7 @@ export namespace Gpseq {
         new (): ChannelBase; // This allows `obj instanceof ChannelBase`
     };
 
-    module Collector {
+    namespace Collector {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6318,7 +6318,7 @@ export namespace Gpseq {
         new (): Collector; // This allows `obj instanceof Collector`
     };
 
-    module Executor {
+    namespace Executor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6350,7 +6350,7 @@ export namespace Gpseq {
         new (): Executor; // This allows `obj instanceof Executor`
     };
 
-    module Receiver {
+    namespace Receiver {
         // Constructor properties interface
 
         interface ConstructorProps extends ChannelBase.ConstructorProps {}
@@ -6378,7 +6378,7 @@ export namespace Gpseq {
         new (): Receiver; // This allows `obj instanceof Receiver`
     };
 
-    module Result {
+    namespace Result {
         interface TransformFunc {
             (
                 a_type: GObject.GType,
@@ -6493,7 +6493,7 @@ export namespace Gpseq {
         new (): Result; // This allows `obj instanceof Result`
     };
 
-    module Sender {
+    namespace Sender {
         // Constructor properties interface
 
         interface ConstructorProps extends ChannelBase.ConstructorProps {}
@@ -6521,7 +6521,7 @@ export namespace Gpseq {
         new (): Sender; // This allows `obj instanceof Sender`
     };
 
-    module Spliterator {
+    namespace Spliterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6570,7 +6570,7 @@ export namespace Gpseq {
         new (): Spliterator; // This allows `obj instanceof Spliterator`
     };
 
-    module Supplier {
+    namespace Supplier {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6596,7 +6596,7 @@ export namespace Gpseq {
         new (): Supplier; // This allows `obj instanceof Supplier`
     };
 
-    module Task {
+    namespace Task {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6629,7 +6629,7 @@ export namespace Gpseq {
         new (): Task; // This allows `obj instanceof Task`
     };
 
-    module ThreadFactory {
+    namespace ThreadFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

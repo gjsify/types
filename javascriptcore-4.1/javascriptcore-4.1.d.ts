@@ -416,7 +416,7 @@ export namespace JavaScriptCore {
          */
         WRITABLE,
     }
-    module Class {
+    namespace Class {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -587,7 +587,7 @@ export namespace JavaScriptCore {
         get_parent(): Class;
     }
 
-    module Context {
+    namespace Context {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -786,7 +786,7 @@ export namespace JavaScriptCore {
         throw_with_name(error_name: string, error_message: string): void;
     }
 
-    module Exception {
+    namespace Exception {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -853,7 +853,7 @@ export namespace JavaScriptCore {
         to_string(): string;
     }
 
-    module Value {
+    namespace Value {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1249,7 +1249,7 @@ export namespace JavaScriptCore {
         typed_array_get_type(): TypedArrayType;
     }
 
-    module VirtualMachine {
+    namespace VirtualMachine {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1275,7 +1275,7 @@ export namespace JavaScriptCore {
         static ['new'](): VirtualMachine;
     }
 
-    module WeakValue {
+    namespace WeakValue {
         // Signal callback interfaces
 
         interface Cleared {

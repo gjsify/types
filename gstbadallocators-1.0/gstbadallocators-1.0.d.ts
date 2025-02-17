@@ -21,7 +21,7 @@ export namespace GstBadAllocators {
     function is_phys_memory(mem: Gst.Memory): boolean;
     function phys_memory_get_phys_addr(mem: Gst.Memory): never;
     type PhysMemoryAllocatorInterface = typeof PhysMemoryAllocator;
-    module PhysMemoryAllocator {
+    namespace PhysMemoryAllocator {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {}

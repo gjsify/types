@@ -2082,7 +2082,7 @@ export namespace Gda {
         NO_MODIF,
         UNUSED,
     }
-    module Batch {
+    namespace Batch {
         // Signal callback interfaces
 
         interface Changed {
@@ -2166,7 +2166,7 @@ export namespace Gda {
         serialize(): string;
     }
 
-    module BlobOp {
+    namespace BlobOp {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2249,7 +2249,7 @@ export namespace Gda {
         write_all(blob: Blob): boolean;
     }
 
-    module Column {
+    namespace Column {
         // Signal callback interfaces
 
         interface GTypeChanged {
@@ -2406,7 +2406,7 @@ export namespace Gda {
         set_position(position: number): void;
     }
 
-    module Config {
+    namespace Config {
         // Signal callback interfaces
 
         interface DsnAdded {
@@ -2595,7 +2595,7 @@ export namespace Gda {
         vfunc_dsn_to_be_removed(old_dsn: DsnInfo): void;
     }
 
-    module Connection {
+    namespace Connection {
         // Signal callback interfaces
 
         interface ConnClosed {
@@ -3942,7 +3942,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ConnectionEvent {
+    namespace ConnectionEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4038,7 +4038,7 @@ export namespace Gda {
         set_sqlstate(sqlstate: string): void;
     }
 
-    module DataAccessWrapper {
+    namespace DataAccessWrapper {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -5165,7 +5165,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataComparator {
+    namespace DataComparator {
         // Signal callback interfaces
 
         interface DiffComputed {
@@ -5255,7 +5255,7 @@ export namespace Gda {
         set_key_columns(col_numbers: number[]): void;
     }
 
-    module DataModelArray {
+    namespace DataModelArray {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -6396,7 +6396,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataModelDir {
+    namespace DataModelDir {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -7510,7 +7510,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataModelImport {
+    namespace DataModelImport {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -8707,7 +8707,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataModelIter {
+    namespace DataModelIter {
         // Signal callback interfaces
 
         interface EndOfData {
@@ -8896,7 +8896,7 @@ export namespace Gda {
         set_value_at(col: number, value: GObject.Value | any): boolean;
     }
 
-    module DataModelLdap {
+    namespace DataModelLdap {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -10054,7 +10054,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataPivot {
+    namespace DataPivot {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -11208,7 +11208,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataProxy {
+    namespace DataProxy {
         // Signal callback interfaces
 
         interface FilterChanged {
@@ -12637,7 +12637,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataSelect {
+    namespace DataSelect {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -13951,7 +13951,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HandlerBin {
+    namespace HandlerBin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -14511,7 +14511,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HandlerBoolean {
+    namespace HandlerBoolean {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -15071,7 +15071,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HandlerNumerical {
+    namespace HandlerNumerical {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -15631,7 +15631,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HandlerString {
+    namespace HandlerString {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -16198,7 +16198,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HandlerTime {
+    namespace HandlerTime {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -16815,7 +16815,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HandlerType {
+    namespace HandlerType {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -17375,7 +17375,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Holder {
+    namespace Holder {
         // Signal callback interfaces
 
         interface AttributeChanged {
@@ -18198,7 +18198,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MetaStore {
+    namespace MetaStore {
         // Signal callback interfaces
 
         interface MetaChanged {
@@ -18542,7 +18542,7 @@ export namespace Gda {
         ): boolean;
     }
 
-    module MetaStruct {
+    namespace MetaStruct {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -18695,7 +18695,7 @@ export namespace Gda {
         sort_db_objects(sort_type: MetaSortType | null): boolean;
     }
 
-    module PStmt {
+    namespace PStmt {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18741,7 +18741,7 @@ export namespace Gda {
         set_gda_statement(stmt?: Statement | null): void;
     }
 
-    module RepetitiveStatement {
+    namespace RepetitiveStatement {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -18792,7 +18792,7 @@ export namespace Gda {
         get_template_set(set: Set): boolean;
     }
 
-    module Row {
+    namespace Row {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -18864,7 +18864,7 @@ export namespace Gda {
         value_is_valid_e(value: GObject.Value | any): boolean;
     }
 
-    module ServerOperation {
+    namespace ServerOperation {
         // Signal callback interfaces
 
         interface SequenceItemAdded {
@@ -19123,7 +19123,7 @@ export namespace Gda {
         set_value_at(value: string | null, path: string): boolean;
     }
 
-    module ServerProvider {
+    namespace ServerProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19445,7 +19445,7 @@ export namespace Gda {
         value_to_sql_string(cnc: Connection | null, from: GObject.Value | any): string;
     }
 
-    module Set {
+    namespace Set {
         // Signal callback interfaces
 
         interface HolderAttrChanged {
@@ -19690,7 +19690,7 @@ export namespace Gda {
         _init(...args: any[]): void;
     }
 
-    module SqlBuilder {
+    namespace SqlBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19978,7 +19978,7 @@ export namespace Gda {
         set_where(cond_id: SqlBuilderId): void;
     }
 
-    module SqlParser {
+    namespace SqlParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Lockable.ConstructorProps {
@@ -20502,7 +20502,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Statement {
+    namespace Statement {
         // Signal callback interfaces
 
         interface Checked {
@@ -20643,7 +20643,7 @@ export namespace Gda {
         to_sql_real(context: SqlRenderingContext): string;
     }
 
-    module ThreadWrapper {
+    namespace ThreadWrapper {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -20829,7 +20829,7 @@ export namespace Gda {
         unset_io_channel(): void;
     }
 
-    module TransactionStatus {
+    namespace TransactionStatus {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -20866,7 +20866,7 @@ export namespace Gda {
         free_events(event: TransactionStatusEvent, free_after: boolean): void;
     }
 
-    module Tree {
+    namespace Tree {
         // Signal callback interfaces
 
         interface NodeChanged {
@@ -21021,7 +21021,7 @@ export namespace Gda {
         update_part(node: TreeNode): boolean;
     }
 
-    module TreeManager {
+    namespace TreeManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -21106,7 +21106,7 @@ export namespace Gda {
         get_managers(): TreeManager[];
     }
 
-    module TreeMgrColumns {
+    namespace TreeMgrColumns {
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -21167,7 +21167,7 @@ export namespace Gda {
         static ['new'](cnc: Connection, schema: string, table_name: string): TreeMgrColumns;
     }
 
-    module TreeMgrLabel {
+    namespace TreeMgrLabel {
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -21195,7 +21195,7 @@ export namespace Gda {
         static ['new'](label: string): TreeMgrLabel;
     }
 
-    module TreeMgrLdap {
+    namespace TreeMgrLdap {
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -21226,7 +21226,7 @@ export namespace Gda {
         static ['new'](cnc: Connection, dn?: string | null): TreeMgrLdap;
     }
 
-    module TreeMgrSchemas {
+    namespace TreeMgrSchemas {
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -21272,7 +21272,7 @@ export namespace Gda {
         static ['new'](cnc: Connection): TreeMgrSchemas;
     }
 
-    module TreeMgrSelect {
+    namespace TreeMgrSelect {
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -21304,7 +21304,7 @@ export namespace Gda {
         static ['new'](cnc: Connection, stmt: Statement, params: Set): TreeMgrSelect;
     }
 
-    module TreeMgrTables {
+    namespace TreeMgrTables {
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -21357,7 +21357,7 @@ export namespace Gda {
         static ['new'](cnc: Connection, schema?: string | null): TreeMgrTables;
     }
 
-    module TreeNode {
+    namespace TreeNode {
         // Signal callback interfaces
 
         interface NodeChanged {
@@ -21512,7 +21512,7 @@ export namespace Gda {
         _init(...args: any[]): void;
     }
 
-    module XaTransaction {
+    namespace XaTransaction {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -23088,7 +23088,7 @@ export namespace Gda {
         _init(...args: any[]): void;
     }
 
-    module DataHandler {
+    namespace DataHandler {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -23251,7 +23251,7 @@ export namespace Gda {
         new (): DataHandler; // This allows `obj instanceof DataHandler`
     };
 
-    module DataModel {
+    namespace DataModel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -23941,7 +23941,7 @@ export namespace Gda {
         new (): DataModel; // This allows `obj instanceof DataModel`
     };
 
-    module Lockable {
+    namespace Lockable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

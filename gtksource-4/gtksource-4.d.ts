@@ -547,7 +547,7 @@ export namespace GtkSource {
          */
         ALL,
     }
-    module Buffer {
+    namespace Buffer {
         // Signal callback interfaces
 
         interface BracketMatched {
@@ -1029,7 +1029,7 @@ export namespace GtkSource {
         undo(): void;
     }
 
-    module Completion {
+    namespace Completion {
         // Signal callback interfaces
 
         interface ActivateProposal {
@@ -1903,7 +1903,7 @@ export namespace GtkSource {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CompletionContext {
+    namespace CompletionContext {
         // Signal callback interfaces
 
         interface Cancelled {
@@ -1985,7 +1985,7 @@ export namespace GtkSource {
         get_iter(): [boolean, Gtk.TextIter];
     }
 
-    module CompletionInfo {
+    namespace CompletionInfo {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2420,7 +2420,7 @@ export namespace GtkSource {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CompletionItem {
+    namespace CompletionItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, CompletionProposal.ConstructorProps {
@@ -3031,7 +3031,7 @@ export namespace GtkSource {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CompletionWords {
+    namespace CompletionWords {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, CompletionProvider.ConstructorProps {
@@ -3738,7 +3738,7 @@ export namespace GtkSource {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module File {
+    namespace File {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3866,7 +3866,7 @@ export namespace GtkSource {
         set_location(location?: Gio.File | null): void;
     }
 
-    module FileLoader {
+    namespace FileLoader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4005,7 +4005,7 @@ export namespace GtkSource {
         set_candidate_encodings(candidate_encodings: Encoding[]): void;
     }
 
-    module FileSaver {
+    namespace FileSaver {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4175,7 +4175,7 @@ export namespace GtkSource {
         set_newline_type(newline_type: NewlineType | null): void;
     }
 
-    module Gutter {
+    namespace Gutter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4247,7 +4247,7 @@ export namespace GtkSource {
         reorder(renderer: GutterRenderer, position: number): void;
     }
 
-    module GutterRenderer {
+    namespace GutterRenderer {
         // Signal callback interfaces
 
         interface Activate {
@@ -4737,7 +4737,7 @@ export namespace GtkSource {
         set_visible(visible: boolean): void;
     }
 
-    module GutterRendererPixbuf {
+    namespace GutterRendererPixbuf {
         // Constructor properties interface
 
         interface ConstructorProps extends GutterRenderer.ConstructorProps {
@@ -4788,7 +4788,7 @@ export namespace GtkSource {
         set_pixbuf(pixbuf?: GdkPixbuf.Pixbuf | null): void;
     }
 
-    module GutterRendererText {
+    namespace GutterRendererText {
         // Constructor properties interface
 
         interface ConstructorProps extends GutterRenderer.ConstructorProps {
@@ -4833,7 +4833,7 @@ export namespace GtkSource {
         set_text(text: string, length: number): void;
     }
 
-    module Language {
+    namespace Language {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4926,7 +4926,7 @@ export namespace GtkSource {
         get_style_name(style_id: string): string | null;
     }
 
-    module LanguageManager {
+    namespace LanguageManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5039,7 +5039,7 @@ export namespace GtkSource {
         set_search_path(dirs?: string[] | null): void;
     }
 
-    module Map {
+    namespace Map {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5489,7 +5489,7 @@ export namespace GtkSource {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Mark {
+    namespace Mark {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TextMark.ConstructorProps {
@@ -5546,7 +5546,7 @@ export namespace GtkSource {
         prev(category?: string | null): Mark | null;
     }
 
-    module MarkAttributes {
+    namespace MarkAttributes {
         // Signal callback interfaces
 
         interface QueryTooltipMarkup {
@@ -5692,7 +5692,7 @@ export namespace GtkSource {
         set_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
     }
 
-    module PrintCompositor {
+    namespace PrintCompositor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6367,7 +6367,7 @@ export namespace GtkSource {
         set_wrap_mode(wrap_mode: Gtk.WrapMode | null): void;
     }
 
-    module Region {
+    namespace Region {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6460,7 +6460,7 @@ export namespace GtkSource {
         to_string(): string | null;
     }
 
-    module SearchContext {
+    namespace SearchContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6785,7 +6785,7 @@ export namespace GtkSource {
         set_match_style(match_style?: Style | null): void;
     }
 
-    module SearchSettings {
+    namespace SearchSettings {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6936,7 +6936,7 @@ export namespace GtkSource {
         set_wrap_around(wrap_around: boolean): void;
     }
 
-    module SpaceDrawer {
+    namespace SpaceDrawer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7052,7 +7052,7 @@ export namespace GtkSource {
         set_types_for_locations(locations: SpaceLocationFlags | null, types: SpaceTypeFlags | null): void;
     }
 
-    module Style {
+    namespace Style {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7152,7 +7152,7 @@ export namespace GtkSource {
         copy(): Style;
     }
 
-    module StyleScheme {
+    namespace StyleScheme {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7206,7 +7206,7 @@ export namespace GtkSource {
         get_style(style_id: string): Style | null;
     }
 
-    module StyleSchemeChooserButton {
+    namespace StyleSchemeChooserButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11747,7 +11747,7 @@ export namespace GtkSource {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module StyleSchemeChooserWidget {
+    namespace StyleSchemeChooserWidget {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12206,7 +12206,7 @@ export namespace GtkSource {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StyleSchemeManager {
+    namespace StyleSchemeManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12292,7 +12292,7 @@ export namespace GtkSource {
         set_search_path(path?: string[] | null): void;
     }
 
-    module Tag {
+    namespace Tag {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TextTag.ConstructorProps {
@@ -12350,7 +12350,7 @@ export namespace GtkSource {
         static ['new'](name?: string | null): Tag;
     }
 
-    module View {
+    namespace View {
         // Signal callback interfaces
 
         interface ChangeCase {
@@ -13682,7 +13682,7 @@ export namespace GtkSource {
         _init(...args: any[]): void;
     }
 
-    module CompletionProposal {
+    namespace CompletionProposal {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -13833,7 +13833,7 @@ export namespace GtkSource {
         new (): CompletionProposal; // This allows `obj instanceof CompletionProposal`
     };
 
-    module CompletionProvider {
+    namespace CompletionProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -14086,7 +14086,7 @@ export namespace GtkSource {
         new (): CompletionProvider; // This allows `obj instanceof CompletionProvider`
     };
 
-    module StyleSchemeChooser {
+    namespace StyleSchemeChooser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -14147,7 +14147,7 @@ export namespace GtkSource {
         new (): StyleSchemeChooser; // This allows `obj instanceof StyleSchemeChooser`
     };
 
-    module UndoManager {
+    namespace UndoManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

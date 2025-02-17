@@ -71,7 +71,7 @@ export namespace GPasteGtk {
     interface TextCallback {
         (data: string): void;
     }
-    module SettingsUiPanel {
+    namespace SettingsUiPanel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -567,7 +567,7 @@ export namespace GPasteGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SettingsUiStack {
+    namespace SettingsUiStack {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1004,7 +1004,7 @@ export namespace GPasteGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SettingsUiWidget {
+    namespace SettingsUiWidget {
         // Constructor properties interface
 
         interface ConstructorProps

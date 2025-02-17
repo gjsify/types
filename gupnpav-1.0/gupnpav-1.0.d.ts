@@ -387,7 +387,7 @@ export namespace GUPnPAV {
          */
         CHANGE_METADATA,
     }
-    module CDSLastChangeParser {
+    namespace CDSLastChangeParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -415,7 +415,7 @@ export namespace GUPnPAV {
         parse(last_change: string): CDSLastChangeEntry[];
     }
 
-    module DIDLLiteContainer {
+    namespace DIDLLiteContainer {
         // Constructor properties interface
 
         interface ConstructorProps extends DIDLLiteObject.ConstructorProps {
@@ -599,7 +599,7 @@ export namespace GUPnPAV {
         unset_total_deleted_child_count(): void;
     }
 
-    module DIDLLiteContributor {
+    namespace DIDLLiteContributor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -669,7 +669,7 @@ export namespace GUPnPAV {
         set_role(role: string): void;
     }
 
-    module DIDLLiteCreateClass {
+    namespace DIDLLiteCreateClass {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -767,7 +767,7 @@ export namespace GUPnPAV {
         set_include_derived(include_derived: boolean): void;
     }
 
-    module DIDLLiteDescriptor {
+    namespace DIDLLiteDescriptor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -883,7 +883,7 @@ export namespace GUPnPAV {
         set_name_space(name_space: string): void;
     }
 
-    module DIDLLiteItem {
+    namespace DIDLLiteItem {
         // Constructor properties interface
 
         interface ConstructorProps extends DIDLLiteObject.ConstructorProps {
@@ -936,7 +936,7 @@ export namespace GUPnPAV {
         set_ref_id(ref_id: string): void;
     }
 
-    module DIDLLiteObject {
+    namespace DIDLLiteObject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1502,7 +1502,7 @@ export namespace GUPnPAV {
         update_id_is_set(): boolean;
     }
 
-    module DIDLLiteParser {
+    namespace DIDLLiteParser {
         // Signal callback interfaces
 
         interface ContainerAvailable {
@@ -1569,7 +1569,7 @@ export namespace GUPnPAV {
         parse_didl(didl: string): boolean;
     }
 
-    module DIDLLiteResource {
+    namespace DIDLLiteResource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2027,7 +2027,7 @@ export namespace GUPnPAV {
         update_count_is_set(): boolean;
     }
 
-    module DIDLLiteWriter {
+    namespace DIDLLiteWriter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2106,7 +2106,7 @@ export namespace GUPnPAV {
         get_xml_node(): libxml2.Node;
     }
 
-    module Feature {
+    namespace Feature {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2164,7 +2164,7 @@ export namespace GUPnPAV {
         get_version(): string;
     }
 
-    module FeatureListParser {
+    namespace FeatureListParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2192,7 +2192,7 @@ export namespace GUPnPAV {
         parse_text(text: string): Feature[] | null;
     }
 
-    module LastChangeParser {
+    namespace LastChangeParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2210,7 +2210,7 @@ export namespace GUPnPAV {
         static ['new'](): LastChangeParser;
     }
 
-    module MediaCollection {
+    namespace MediaCollection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2277,7 +2277,7 @@ export namespace GUPnPAV {
         set_title(title: string): void;
     }
 
-    module ProtocolInfo {
+    namespace ProtocolInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2481,7 +2481,7 @@ export namespace GUPnPAV {
         to_string(): string | null;
     }
 
-    module SearchCriteriaParser {
+    namespace SearchCriteriaParser {
         // Signal callback interfaces
 
         interface BeginParens {

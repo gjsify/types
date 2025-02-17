@@ -96,7 +96,7 @@ export namespace Gm {
         _function: GLib.SourceOnceFunc,
         notify?: GLib.DestroyNotify | null,
     ): number;
-    module Cutout {
+    namespace Cutout {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -163,7 +163,7 @@ export namespace Gm {
         get_path(): string;
     }
 
-    module DeviceInfo {
+    namespace DeviceInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -208,7 +208,7 @@ export namespace Gm {
         get_display_panel(): DisplayPanel;
     }
 
-    module DisplayPanel {
+    namespace DisplayPanel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

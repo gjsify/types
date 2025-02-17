@@ -316,7 +316,7 @@ export namespace Libxfce4panel {
     interface PanelPluginPreInit {
         (argc: number, argv: string): boolean;
     }
-    module ArrowButton {
+    namespace ArrowButton {
         // Signal callback interfaces
 
         interface ArrowTypeChanged {
@@ -4646,7 +4646,7 @@ export namespace Libxfce4panel {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module PanelImage {
+    namespace PanelImage {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5296,7 +5296,7 @@ export namespace Libxfce4panel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PanelPlugin {
+    namespace PanelPlugin {
         // Signal callback interfaces
 
         interface About {
@@ -6377,7 +6377,7 @@ export namespace Libxfce4panel {
     }
 
     type PanelPluginProviderInterface = typeof PanelPluginProvider;
-    module PanelPluginProvider {
+    namespace PanelPluginProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

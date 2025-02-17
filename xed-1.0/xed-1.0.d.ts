@@ -295,7 +295,7 @@ export namespace Xed {
         ERROR,
         SAVING_SESSION,
     }
-    module App {
+    namespace App {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -750,7 +750,7 @@ export namespace Xed {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Document {
+    namespace Document {
         // Signal callback interfaces
 
         interface CursorMoved {
@@ -936,7 +936,7 @@ export namespace Xed {
         set_short_name_for_display(short_name?: string | null): void;
     }
 
-    module EncodingsComboBox {
+    namespace EncodingsComboBox {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5424,7 +5424,7 @@ export namespace Xed {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module FileChooserDialog {
+    namespace FileChooserDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6518,7 +6518,7 @@ export namespace Xed {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Message {
+    namespace Message {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6597,7 +6597,7 @@ export namespace Xed {
         validate(): boolean;
     }
 
-    module MessageBus {
+    namespace MessageBus {
         // Signal callback interfaces
 
         interface Dispatch {
@@ -6760,7 +6760,7 @@ export namespace Xed {
         unregister_all(object_path: string): void;
     }
 
-    module Notebook {
+    namespace Notebook {
         // Signal callback interfaces
 
         interface TabAdded {
@@ -7311,7 +7311,7 @@ export namespace Xed {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Panel {
+    namespace Panel {
         // Signal callback interfaces
 
         interface Close {
@@ -7822,7 +7822,7 @@ export namespace Xed {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ProgressInfoBar {
+    namespace ProgressInfoBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8265,7 +8265,7 @@ export namespace Xed {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Searchbar {
+    namespace Searchbar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8737,7 +8737,7 @@ export namespace Xed {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Statusbar {
+    namespace Statusbar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9172,7 +9172,7 @@ export namespace Xed {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Tab {
+    namespace Tab {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9686,7 +9686,7 @@ export namespace Xed {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module View {
+    namespace View {
         // Signal callback interfaces
 
         interface DropUris {
@@ -10179,7 +10179,7 @@ export namespace Xed {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Window {
+    namespace Window {
         // Signal callback interfaces
 
         interface ActiveTabChanged {
@@ -11509,7 +11509,7 @@ export namespace Xed {
         _init(...args: any[]): void;
     }
 
-    module AppActivatable {
+    namespace AppActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11557,7 +11557,7 @@ export namespace Xed {
         new (): AppActivatable; // This allows `obj instanceof AppActivatable`
     };
 
-    module ViewActivatable {
+    namespace ViewActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11605,7 +11605,7 @@ export namespace Xed {
         new (): ViewActivatable; // This allows `obj instanceof ViewActivatable`
     };
 
-    module WindowActivatable {
+    namespace WindowActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

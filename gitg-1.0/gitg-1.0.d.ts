@@ -241,7 +241,7 @@ export namespace Gitg {
         SKIP_HOOKS,
         SIGN_COMMIT,
     }
-    module Async {
+    namespace Async {
         interface ThreadFunc {
             (): void;
         }
@@ -268,7 +268,7 @@ export namespace Gitg {
         static thread_try_finish(_res_: Gio.AsyncResult): void;
     }
 
-    module AuthenticationDialog {
+    namespace AuthenticationDialog {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Dialog.ConstructorProps {
@@ -307,7 +307,7 @@ export namespace Gitg {
         get_life_time(): AuthenticationLifeTime;
     }
 
-    module AvatarCache {
+    namespace AvatarCache {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -344,7 +344,7 @@ export namespace Gitg {
         load_finish(_res_: Gio.AsyncResult): GdkPixbuf.Pixbuf | null;
     }
 
-    module BranchBase {
+    namespace BranchBase {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -569,7 +569,7 @@ export namespace Gitg {
         set_upstream(upstream_branch_name: string): void;
     }
 
-    module CellRendererLanes {
+    namespace CellRendererLanes {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRendererText.ConstructorProps {
@@ -629,7 +629,7 @@ export namespace Gitg {
         set_labels(value: Ref[]): void;
     }
 
-    module Color {
+    namespace Color {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -675,7 +675,7 @@ export namespace Gitg {
         get_b(): number;
     }
 
-    module CommitListView {
+    namespace CommitListView {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Gtk.Buildable.ConstructorProps {}
@@ -1104,7 +1104,7 @@ export namespace Gitg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CommitModel {
+    namespace CommitModel {
         // Signal callback interfaces
 
         interface Started {
@@ -2004,7 +2004,7 @@ export namespace Gitg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Commit {
+    namespace Commit {
         // Constructor properties interface
 
         interface ConstructorProps extends Ggit.Commit.ConstructorProps {
@@ -2085,7 +2085,7 @@ export namespace Gitg {
         credentials(url: string, username: string | null, allowed_types: Ggit.Credtype | null): Ggit.Cred | null;
     }
 
-    module Date {
+    namespace Date {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -2615,7 +2615,7 @@ export namespace Gitg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DiffStat {
+    namespace DiffStat {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.DrawingArea.ConstructorProps {
@@ -2650,7 +2650,7 @@ export namespace Gitg {
         set_removed(value: number): void;
     }
 
-    module DiffViewOptions {
+    namespace DiffViewOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Toolbar.ConstructorProps {
@@ -2691,7 +2691,7 @@ export namespace Gitg {
         set_view(value?: DiffView | null): void;
     }
 
-    module DiffView {
+    namespace DiffView {
         // Signal callback interfaces
 
         interface OptionsChanged {
@@ -2866,7 +2866,7 @@ export namespace Gitg {
         set_context_lines(value: number): void;
     }
 
-    module FontManager {
+    namespace FontManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2902,7 +2902,7 @@ export namespace Gitg {
         static sign_commit_object(commit_content: string, signing_key: string): string;
     }
 
-    module Hook {
+    namespace Hook {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2993,7 +2993,7 @@ export namespace Gitg {
         ): GdkPixbuf.Pixbuf;
     }
 
-    module Lanes {
+    namespace Lanes {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3060,7 +3060,7 @@ export namespace Gitg {
         set_miss_commits(value: Gee.LinkedList): void;
     }
 
-    module Lane {
+    namespace Lane {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3091,7 +3091,7 @@ export namespace Gitg {
         dup(): Lane;
     }
 
-    module ProgressBin {
+    namespace ProgressBin {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Bin.ConstructorProps {
@@ -3121,7 +3121,7 @@ export namespace Gitg {
         set_fraction(value: number): void;
     }
 
-    module RefBase {
+    namespace RefBase {
         // Constructor properties interface
 
         interface ConstructorProps extends Ggit.Ref.ConstructorProps, Ref.ConstructorProps {}
@@ -3322,7 +3322,7 @@ export namespace Gitg {
         to_string(): string | null;
     }
 
-    module ParsedRefName {
+    namespace ParsedRefName {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3370,7 +3370,7 @@ export namespace Gitg {
         get_prefix(): string | null;
     }
 
-    module Remote {
+    namespace Remote {
         // Signal callback interfaces
 
         interface TipUpdated {
@@ -3499,7 +3499,7 @@ export namespace Gitg {
         set_credentials_provider(value?: CredentialsProvider | null): void;
     }
 
-    module RepositoryListBox {
+    namespace RepositoryListBox {
         // Signal callback interfaces
 
         interface RepositoryActivated {
@@ -3584,7 +3584,7 @@ export namespace Gitg {
         get_has_selection(): boolean;
     }
 
-    module RepositoryListBoxRow {
+    namespace RepositoryListBoxRow {
         // Signal callback interfaces
 
         interface RequestRemove {
@@ -3691,7 +3691,7 @@ export namespace Gitg {
         set_loading(value: boolean): void;
     }
 
-    module Repository {
+    namespace Repository {
         // Constructor properties interface
 
         interface ConstructorProps extends Ggit.Repository.ConstructorProps {
@@ -3770,7 +3770,7 @@ export namespace Gitg {
         static load_css(id: string): Gtk.CssProvider | null;
     }
 
-    module SidebarStore {
+    namespace SidebarStore {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TreeStore.ConstructorProps {
@@ -3809,7 +3809,7 @@ export namespace Gitg {
         get_clearing(): boolean;
     }
 
-    module SidebarStoreSidebarText {
+    namespace SidebarStoreSidebarText {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SidebarItem.ConstructorProps {}
@@ -4240,7 +4240,7 @@ export namespace Gitg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SidebarStoreSidebarHeader {
+    namespace SidebarStoreSidebarHeader {
         // Constructor properties interface
 
         interface ConstructorProps extends SidebarStoreSidebarText.ConstructorProps {
@@ -4271,7 +4271,7 @@ export namespace Gitg {
         get_id(): number;
     }
 
-    module Sidebar {
+    namespace Sidebar {
         // Signal callback interfaces
 
         interface Deselected {
@@ -4340,7 +4340,7 @@ export namespace Gitg {
         set_model(value: SidebarStore): void;
     }
 
-    module StageStatusFile {
+    namespace StageStatusFile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, StageStatusItem.ConstructorProps {
@@ -4791,7 +4791,7 @@ export namespace Gitg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StageStatusSubmodule {
+    namespace StageStatusSubmodule {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, StageStatusItem.ConstructorProps {
@@ -5250,7 +5250,7 @@ export namespace Gitg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StageStatusEnumerator {
+    namespace StageStatusEnumerator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5294,7 +5294,7 @@ export namespace Gitg {
         reversed(): PatchSet;
     }
 
-    module Stage {
+    namespace Stage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5531,7 +5531,7 @@ export namespace Gitg {
         ): Uint8Array;
     }
 
-    module Theme {
+    namespace Theme {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
@@ -5576,7 +5576,7 @@ export namespace Gitg {
         static expand_home_dir(path: string): string;
     }
 
-    module WhenMapped {
+    namespace WhenMapped {
         interface OnMapped {
             (): void;
         }
@@ -5989,7 +5989,7 @@ export namespace Gitg {
     type CredentialsProviderIface = typeof CredentialsProvider;
     type SidebarItemIface = typeof SidebarItem;
     type StageStatusItemIface = typeof StageStatusItem;
-    module Branch {
+    namespace Branch {
         // Constructor properties interface
 
         interface ConstructorProps extends Ggit.Branch.ConstructorProps {}
@@ -6015,7 +6015,7 @@ export namespace Gitg {
         new (): Branch; // This allows `obj instanceof Branch`
     };
 
-    module Ref {
+    namespace Ref {
         // Constructor properties interface
 
         interface ConstructorProps extends Ggit.Ref.ConstructorProps {
@@ -6081,7 +6081,7 @@ export namespace Gitg {
         new (): Ref; // This allows `obj instanceof Ref`
     };
 
-    module CredentialsProvider {
+    namespace CredentialsProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6113,7 +6113,7 @@ export namespace Gitg {
         new (): CredentialsProvider; // This allows `obj instanceof CredentialsProvider`
     };
 
-    module SidebarItem {
+    namespace SidebarItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6151,7 +6151,7 @@ export namespace Gitg {
         new (): SidebarItem; // This allows `obj instanceof SidebarItem`
     };
 
-    module StageStatusItem {
+    namespace StageStatusItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

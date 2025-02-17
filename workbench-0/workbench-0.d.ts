@@ -54,7 +54,7 @@ export namespace Workbench {
          */
         COMPLETE,
     }
-    module CompletionProvider {
+    namespace CompletionProvider {
         // Signal callback interfaces
 
         interface CompletionRequest {
@@ -792,7 +792,7 @@ export namespace Workbench {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CompletionRequest {
+    namespace CompletionRequest {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -1416,7 +1416,7 @@ export namespace Workbench {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PreviewWindow {
+    namespace PreviewWindow {
         // Constructor properties interface
 
         interface ConstructorProps

@@ -197,7 +197,7 @@ export namespace GdkX11 {
      * @returns the corresponding #GdkAtom.
      */
     function x11_xatom_to_atom_for_display(display: X11Display, xatom: xlib.Atom): Gdk.Atom;
-    module X11AppLaunchContext {
+    namespace X11AppLaunchContext {
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.AppLaunchContext.ConstructorProps {}
@@ -213,7 +213,7 @@ export namespace GdkX11 {
         _init(...args: any[]): void;
     }
 
-    module X11Cursor {
+    namespace X11Cursor {
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Cursor.ConstructorProps {}
@@ -242,7 +242,7 @@ export namespace GdkX11 {
         get_xdisplay(): xlib.Display;
     }
 
-    module X11DeviceCore {
+    namespace X11DeviceCore {
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Device.ConstructorProps {}
@@ -258,7 +258,7 @@ export namespace GdkX11 {
         _init(...args: any[]): void;
     }
 
-    module X11DeviceManagerCore {
+    namespace X11DeviceManagerCore {
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.DeviceManager.ConstructorProps {}
@@ -274,7 +274,7 @@ export namespace GdkX11 {
         _init(...args: any[]): void;
     }
 
-    module X11DeviceManagerXI2 {
+    namespace X11DeviceManagerXI2 {
         // Constructor properties interface
 
         interface ConstructorProps extends X11DeviceManagerCore.ConstructorProps {
@@ -300,7 +300,7 @@ export namespace GdkX11 {
         _init(...args: any[]): void;
     }
 
-    module X11DeviceXI2 {
+    namespace X11DeviceXI2 {
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Device.ConstructorProps {
@@ -324,7 +324,7 @@ export namespace GdkX11 {
         _init(...args: any[]): void;
     }
 
-    module X11Display {
+    namespace X11Display {
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Display.ConstructorProps {}
@@ -492,7 +492,7 @@ export namespace GdkX11 {
         utf8_to_compound_text(str: string): [boolean, Gdk.Atom, number, Uint8Array];
     }
 
-    module X11DisplayManager {
+    namespace X11DisplayManager {
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.DisplayManager.ConstructorProps {}
@@ -508,7 +508,7 @@ export namespace GdkX11 {
         _init(...args: any[]): void;
     }
 
-    module X11DragContext {
+    namespace X11DragContext {
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.DragContext.ConstructorProps {}
@@ -524,7 +524,7 @@ export namespace GdkX11 {
         _init(...args: any[]): void;
     }
 
-    module X11GLContext {
+    namespace X11GLContext {
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.GLContext.ConstructorProps {}
@@ -540,7 +540,7 @@ export namespace GdkX11 {
         _init(...args: any[]): void;
     }
 
-    module X11Keymap {
+    namespace X11Keymap {
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Keymap.ConstructorProps {}
@@ -578,7 +578,7 @@ export namespace GdkX11 {
         key_is_modifier(keycode: number): boolean;
     }
 
-    module X11Monitor {
+    namespace X11Monitor {
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Monitor.ConstructorProps {}
@@ -598,7 +598,7 @@ export namespace GdkX11 {
         static get_output(monitor: Gdk.Monitor): xlib.XID;
     }
 
-    module X11Screen {
+    namespace X11Screen {
         // Signal callback interfaces
 
         interface WindowManagerChanged {
@@ -694,7 +694,7 @@ export namespace GdkX11 {
         supports_net_wm_hint(property: Gdk.Atom): boolean;
     }
 
-    module X11Visual {
+    namespace X11Visual {
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Visual.ConstructorProps {}
@@ -718,7 +718,7 @@ export namespace GdkX11 {
         get_xvisual(): xlib.Visual;
     }
 
-    module X11Window {
+    namespace X11Window {
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Window.ConstructorProps {}

@@ -163,7 +163,7 @@ export namespace PackageKitPlugin {
     interface PluginTransactionFunc {
         (plugin: Plugin, transaction: Transaction): void;
     }
-    module Backend {
+    namespace Backend {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -314,7 +314,7 @@ export namespace PackageKitPlugin {
         what_provides(job: BackendJob, filters: PackageKitGlib.Bitfield, search: string): void;
     }
 
-    module BackendJob {
+    namespace BackendJob {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -465,7 +465,7 @@ export namespace PackageKitPlugin {
         use_background(): boolean;
     }
 
-    module Transaction {
+    namespace Transaction {
         // Signal callback interfaces
 
         interface Finished {

@@ -30,7 +30,7 @@ export namespace GcrGtk4 {
      * GcrGtk4-4
      */
 
-    module CertificateWidget {
+    namespace CertificateWidget {
         // Constructor properties interface
 
         interface ConstructorProps

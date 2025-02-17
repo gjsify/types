@@ -153,7 +153,7 @@ export namespace NMA {
     interface MobileWizardCallback {
         (self: MobileWizard, canceled: boolean, method: MobileWizardAccessMethod): void;
     }
-    module BarCode {
+    namespace BarCode {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -193,7 +193,7 @@ export namespace NMA {
         set_text(text: string): void;
     }
 
-    module BarCodeWidget {
+    namespace BarCodeWidget {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -639,7 +639,7 @@ export namespace NMA {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CertChooser {
+    namespace CertChooser {
         // Signal callback interfaces
 
         interface CertPasswordValidate {
@@ -1287,7 +1287,7 @@ export namespace NMA {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MobileProvidersDatabase {
+    namespace MobileProvidersDatabase {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2035,7 +2035,7 @@ export namespace NMA {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MobileWizard {
+    namespace MobileWizard {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2056,7 +2056,7 @@ export namespace NMA {
         present(): void;
     }
 
-    module VpnPasswordDialog {
+    namespace VpnPasswordDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2501,7 +2501,7 @@ export namespace NMA {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WifiDialog {
+    namespace WifiDialog {
         // Constructor properties interface
 
         interface ConstructorProps

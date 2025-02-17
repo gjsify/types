@@ -94,7 +94,7 @@ export namespace GstController {
     interface DirectControlBindingConvertValue {
         (self: DirectControlBinding, src_value: number, dest_value?: any | null): void;
     }
-    module ARGBControlBinding {
+    namespace ARGBControlBinding {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.ControlBinding.ConstructorProps {
@@ -152,7 +152,7 @@ export namespace GstController {
         ): ARGBControlBinding;
     }
 
-    module DirectControlBinding {
+    namespace DirectControlBinding {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.ControlBinding.ConstructorProps {
@@ -192,7 +192,7 @@ export namespace GstController {
         static new_absolute(object: Gst.Object, property_name: string, cs: Gst.ControlSource): DirectControlBinding;
     }
 
-    module InterpolationControlSource {
+    namespace InterpolationControlSource {
         // Constructor properties interface
 
         interface ConstructorProps extends TimedValueControlSource.ConstructorProps {
@@ -227,7 +227,7 @@ export namespace GstController {
         static ['new'](): InterpolationControlSource;
     }
 
-    module LFOControlSource {
+    namespace LFOControlSource {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.ControlSource.ConstructorProps {
@@ -295,7 +295,7 @@ export namespace GstController {
         static ['new'](): LFOControlSource;
     }
 
-    module ProxyControlBinding {
+    namespace ProxyControlBinding {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.ControlBinding.ConstructorProps {}
@@ -321,7 +321,7 @@ export namespace GstController {
         ): ProxyControlBinding;
     }
 
-    module TimedValueControlSource {
+    namespace TimedValueControlSource {
         // Signal callback interfaces
 
         interface ValueAdded {
@@ -429,7 +429,7 @@ export namespace GstController {
         unset_all(): void;
     }
 
-    module TriggerControlSource {
+    namespace TriggerControlSource {
         // Constructor properties interface
 
         interface ConstructorProps extends TimedValueControlSource.ConstructorProps {

@@ -35,7 +35,7 @@ export namespace Parquet {
      * for snapshot version.
      */
     const VERSION_TAG: string;
-    module ArrowFileReader {
+    namespace ArrowFileReader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -72,7 +72,7 @@ export namespace Parquet {
         set_use_threads(use_threads: boolean): void;
     }
 
-    module ArrowFileWriter {
+    namespace ArrowFileWriter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -113,7 +113,7 @@ export namespace Parquet {
         write_table(table: Arrow.Table, chunk_size: number): boolean;
     }
 
-    module WriterProperties {
+    namespace WriterProperties {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

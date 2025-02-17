@@ -6735,7 +6735,7 @@ export namespace Gst {
          */
         AGGREGATED,
     }
-    module Allocator {
+    namespace Allocator {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -6852,7 +6852,7 @@ export namespace Gst {
         set_default(): void;
     }
 
-    module Bin {
+    namespace Bin {
         // Signal callback interfaces
 
         interface DeepElementAdded {
@@ -7784,7 +7784,7 @@ export namespace Gst {
         _init(...args: any[]): void;
     }
 
-    module BufferPool {
+    namespace BufferPool {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -8124,7 +8124,7 @@ export namespace Gst {
         set_flushing(flushing: boolean): void;
     }
 
-    module Bus {
+    namespace Bus {
         // Signal callback interfaces
 
         interface Message {
@@ -8502,7 +8502,7 @@ export namespace Gst {
         timed_pop_filtered(timeout: ClockTime, types: MessageType | null): Message | null;
     }
 
-    module Clock {
+    namespace Clock {
         // Signal callback interfaces
 
         interface Synced {
@@ -9001,7 +9001,7 @@ export namespace Gst {
         wait_for_sync(timeout: ClockTime): boolean;
     }
 
-    module ControlBinding {
+    namespace ControlBinding {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -9118,7 +9118,7 @@ export namespace Gst {
         sync_values(...args: never[]): any;
     }
 
-    module ControlSource {
+    namespace ControlSource {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -9173,7 +9173,7 @@ export namespace Gst {
         control_source_get_value_array(timestamp: ClockTime, interval: ClockTime, values: number[]): boolean;
     }
 
-    module Device {
+    namespace Device {
         // Signal callback interfaces
 
         interface Removed {
@@ -9302,7 +9302,7 @@ export namespace Gst {
         reconfigure_element(element: Element): boolean;
     }
 
-    module DeviceMonitor {
+    namespace DeviceMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -9463,7 +9463,7 @@ export namespace Gst {
         stop(): void;
     }
 
-    module DeviceProvider {
+    namespace DeviceProvider {
         // Signal callback interfaces
 
         interface ProviderHidden {
@@ -9666,7 +9666,7 @@ export namespace Gst {
         unhide_provider(name: string): void;
     }
 
-    module DeviceProviderFactory {
+    namespace DeviceProviderFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends PluginFeature.ConstructorProps {}
@@ -9763,7 +9763,7 @@ export namespace Gst {
         _init(...args: any[]): void;
     }
 
-    module DynamicTypeFactory {
+    namespace DynamicTypeFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends PluginFeature.ConstructorProps {}
@@ -9806,7 +9806,7 @@ export namespace Gst {
         static load(factoryname: string): GObject.GType;
     }
 
-    module Element {
+    namespace Element {
         // Signal callback interfaces
 
         interface NoMorePads {
@@ -10890,7 +10890,7 @@ export namespace Gst {
         unlink_pads(srcpadname: string, dest: Element, destpadname: string): void;
     }
 
-    module ElementFactory {
+    namespace ElementFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends PluginFeature.ConstructorProps {}
@@ -11138,7 +11138,7 @@ export namespace Gst {
         _init(...args: any[]): void;
     }
 
-    module GhostPad {
+    namespace GhostPad {
         // Constructor properties interface
 
         interface ConstructorProps extends ProxyPad.ConstructorProps {}
@@ -11255,7 +11255,7 @@ export namespace Gst {
         _init(...args: any[]): void;
     }
 
-    module Object {
+    namespace Object {
         // Signal callback interfaces
 
         interface DeepNotify {
@@ -11626,7 +11626,7 @@ export namespace Gst {
         unref(): void;
     }
 
-    module Pad {
+    namespace Pad {
         // Signal callback interfaces
 
         interface Linked {
@@ -12556,7 +12556,7 @@ export namespace Gst {
         use_fixed_caps(): void;
     }
 
-    module PadTemplate {
+    namespace PadTemplate {
         // Signal callback interfaces
 
         interface PadCreated {
@@ -12740,7 +12740,7 @@ export namespace Gst {
         set_documentation_caps(caps: Caps): void;
     }
 
-    module Pipeline {
+    namespace Pipeline {
         // Constructor properties interface
 
         interface ConstructorProps extends Bin.ConstructorProps, ChildProxy.ConstructorProps {
@@ -13461,7 +13461,7 @@ export namespace Gst {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Plugin {
+    namespace Plugin {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -13722,7 +13722,7 @@ export namespace Gst {
         set_cache_data(cache_data: Structure): void;
     }
 
-    module PluginFeature {
+    namespace PluginFeature {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -13823,7 +13823,7 @@ export namespace Gst {
         set_rank(rank: number): void;
     }
 
-    module ProxyPad {
+    namespace ProxyPad {
         // Constructor properties interface
 
         interface ConstructorProps extends Pad.ConstructorProps {}
@@ -13885,7 +13885,7 @@ export namespace Gst {
         get_internal(): ProxyPad | null;
     }
 
-    module Registry {
+    namespace Registry {
         // Signal callback interfaces
 
         interface FeatureAdded {
@@ -14137,7 +14137,7 @@ export namespace Gst {
         scan_path(path: string): boolean;
     }
 
-    module SharedTaskPool {
+    namespace SharedTaskPool {
         // Constructor properties interface
 
         interface ConstructorProps extends TaskPool.ConstructorProps {}
@@ -14171,7 +14171,7 @@ export namespace Gst {
         set_max_threads(max_threads: number): void;
     }
 
-    module Stream {
+    namespace Stream {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -14297,7 +14297,7 @@ export namespace Gst {
         set_tags(tags?: TagList | null): void;
     }
 
-    module StreamCollection {
+    namespace StreamCollection {
         // Signal callback interfaces
 
         interface StreamNotify {
@@ -14406,7 +14406,7 @@ export namespace Gst {
         get_upstream_id(): string | null;
     }
 
-    module SystemClock {
+    namespace SystemClock {
         // Constructor properties interface
 
         interface ConstructorProps extends Clock.ConstructorProps {
@@ -14468,7 +14468,7 @@ export namespace Gst {
         static set_default(new_clock?: Clock | null): void;
     }
 
-    module Task {
+    namespace Task {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -14648,7 +14648,7 @@ export namespace Gst {
         stop(): boolean;
     }
 
-    module TaskPool {
+    namespace TaskPool {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -14765,7 +14765,7 @@ export namespace Gst {
         push(func: TaskPoolFunction): any | null;
     }
 
-    module Tracer {
+    namespace Tracer {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -14805,7 +14805,7 @@ export namespace Gst {
         static register(plugin: Plugin | null, name: string, type: GObject.GType): boolean;
     }
 
-    module TracerFactory {
+    namespace TracerFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends PluginFeature.ConstructorProps {}
@@ -14847,7 +14847,7 @@ export namespace Gst {
         get_tracer_type(): GObject.GType;
     }
 
-    module TracerRecord {
+    namespace TracerRecord {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -14867,7 +14867,7 @@ export namespace Gst {
         _init(...args: any[]): void;
     }
 
-    module TypeFindFactory {
+    namespace TypeFindFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends PluginFeature.ConstructorProps {}
@@ -21896,7 +21896,7 @@ export namespace Gst {
         _init(...args: any[]): void;
     }
 
-    module ChildProxy {
+    namespace ChildProxy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -22016,7 +22016,7 @@ export namespace Gst {
         new (): ChildProxy; // This allows `obj instanceof ChildProxy`
     };
 
-    module Preset {
+    namespace Preset {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -22158,7 +22158,7 @@ export namespace Gst {
         new (): Preset; // This allows `obj instanceof Preset`
     };
 
-    module TagSetter {
+    namespace TagSetter {
         // Constructor properties interface
 
         interface ConstructorProps extends Element.ConstructorProps {}
@@ -22216,7 +22216,7 @@ export namespace Gst {
         new (): TagSetter; // This allows `obj instanceof TagSetter`
     };
 
-    module TocSetter {
+    namespace TocSetter {
         // Constructor properties interface
 
         interface ConstructorProps extends Element.ConstructorProps {}
@@ -22252,7 +22252,7 @@ export namespace Gst {
         new (): TocSetter; // This allows `obj instanceof TocSetter`
     };
 
-    module URIHandler {
+    namespace URIHandler {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -318,7 +318,7 @@ export namespace Gthree {
     interface TraverseCallback {
         (object: Object): boolean;
     }
-    module AmbientLight {
+    namespace AmbientLight {
         // Constructor properties interface
 
         interface ConstructorProps extends Light.ConstructorProps {}
@@ -339,7 +339,7 @@ export namespace Gthree {
         static ['new'](...args: never[]): any;
     }
 
-    module AnimationAction {
+    namespace AnimationAction {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -389,7 +389,7 @@ export namespace Gthree {
         warp(start_time_scale: number, end_time_scale: number, duration: number): void;
     }
 
-    module AnimationClip {
+    namespace AnimationClip {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -417,7 +417,7 @@ export namespace Gthree {
         trim(): void;
     }
 
-    module AnimationMixer {
+    namespace AnimationMixer {
         // Signal callback interfaces
 
         interface Finished {
@@ -472,7 +472,7 @@ export namespace Gthree {
         update(delta_time: number): void;
     }
 
-    module Attribute {
+    namespace Attribute {
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps {}
@@ -577,7 +577,7 @@ export namespace Gthree {
         update(renderer: Renderer, buffer_type: number): void;
     }
 
-    module BloomPass {
+    namespace BloomPass {
         // Constructor properties interface
 
         interface ConstructorProps extends Pass.ConstructorProps {}
@@ -595,7 +595,7 @@ export namespace Gthree {
         static ['new'](strength: number, sigma: number, resolution: number): BloomPass;
     }
 
-    module Bone {
+    namespace Bone {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -613,7 +613,7 @@ export namespace Gthree {
         static ['new'](): Bone;
     }
 
-    module Camera {
+    namespace Camera {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -666,7 +666,7 @@ export namespace Gthree {
         update_matrix(): void;
     }
 
-    module ClearPass {
+    namespace ClearPass {
         // Constructor properties interface
 
         interface ConstructorProps extends Pass.ConstructorProps {}
@@ -688,7 +688,7 @@ export namespace Gthree {
         set_clear_depth(clear_depth: boolean): void;
     }
 
-    module ColorKeyframeTrack {
+    namespace ColorKeyframeTrack {
         // Constructor properties interface
 
         interface ConstructorProps extends KeyframeTrack.ConstructorProps {}
@@ -706,7 +706,7 @@ export namespace Gthree {
         static ['new'](name: string, times: AttributeArray, values: AttributeArray): ColorKeyframeTrack;
     }
 
-    module CubeTexture {
+    namespace CubeTexture {
         // Constructor properties interface
 
         interface ConstructorProps extends Texture.ConstructorProps {}
@@ -736,7 +736,7 @@ export namespace Gthree {
         static new_from_array(pixbufs: GdkPixbuf.Pixbuf): CubeTexture;
     }
 
-    module CubicInterpolant {
+    namespace CubicInterpolant {
         // Constructor properties interface
 
         interface ConstructorProps extends Interpolant.ConstructorProps {}
@@ -754,7 +754,7 @@ export namespace Gthree {
         static ['new'](parameter_positions: AttributeArray, sample_values: AttributeArray): CubicInterpolant;
     }
 
-    module DirectionalLight {
+    namespace DirectionalLight {
         // Constructor properties interface
 
         interface ConstructorProps extends Light.ConstructorProps {
@@ -786,7 +786,7 @@ export namespace Gthree {
         set_target(target: Object): void;
     }
 
-    module DirectionalLightShadow {
+    namespace DirectionalLightShadow {
         // Constructor properties interface
 
         interface ConstructorProps extends LightShadow.ConstructorProps {}
@@ -802,7 +802,7 @@ export namespace Gthree {
         _init(...args: any[]): void;
     }
 
-    module DiscreteInterpolant {
+    namespace DiscreteInterpolant {
         // Constructor properties interface
 
         interface ConstructorProps extends Interpolant.ConstructorProps {}
@@ -820,7 +820,7 @@ export namespace Gthree {
         static ['new'](parameter_positions: AttributeArray, sample_values: AttributeArray): DiscreteInterpolant;
     }
 
-    module EffectComposer {
+    namespace EffectComposer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -845,7 +845,7 @@ export namespace Gthree {
         set_size(width: number, height: number): void;
     }
 
-    module Fog {
+    namespace Fog {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -878,7 +878,7 @@ export namespace Gthree {
         set_style(style: FogStyle | null): void;
     }
 
-    module FullscreenQuadPass {
+    namespace FullscreenQuadPass {
         // Constructor properties interface
 
         interface ConstructorProps extends Pass.ConstructorProps {}
@@ -900,7 +900,7 @@ export namespace Gthree {
         set_material(material: Material): void;
     }
 
-    module Geometry {
+    namespace Geometry {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1020,7 +1020,7 @@ export namespace Gthree {
         set_index(index: Attribute): void;
     }
 
-    module Group {
+    namespace Group {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1038,7 +1038,7 @@ export namespace Gthree {
         static ['new'](): Group;
     }
 
-    module HemisphereLight {
+    namespace HemisphereLight {
         // Constructor properties interface
 
         interface ConstructorProps extends Light.ConstructorProps {
@@ -1069,7 +1069,7 @@ export namespace Gthree {
         static ['new'](...args: never[]): any;
     }
 
-    module Interpolant {
+    namespace Interpolant {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1099,7 +1099,7 @@ export namespace Gthree {
         set_settings(settings: InterpolantSettings): void;
     }
 
-    module InterpolantSettings {
+    namespace InterpolantSettings {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1124,7 +1124,7 @@ export namespace Gthree {
         set_start_ending_mode(mode: EndingMode | null): void;
     }
 
-    module KeyframeTrack {
+    namespace KeyframeTrack {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1151,7 +1151,7 @@ export namespace Gthree {
         trim(start_time: number, end_time: number): void;
     }
 
-    module Light {
+    namespace Light {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -1190,7 +1190,7 @@ export namespace Gthree {
         set_intensity(intensity: number): void;
     }
 
-    module LightShadow {
+    namespace LightShadow {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1216,7 +1216,7 @@ export namespace Gthree {
         set_radius(radiuso: number): void;
     }
 
-    module Line {
+    namespace Line {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -1245,7 +1245,7 @@ export namespace Gthree {
         static ['new'](...args: never[]): any;
     }
 
-    module LineBasicMaterial {
+    namespace LineBasicMaterial {
         // Constructor properties interface
 
         interface ConstructorProps extends Material.ConstructorProps {
@@ -1283,7 +1283,7 @@ export namespace Gthree {
         set_line_width(line_width: number): void;
     }
 
-    module LineSegments {
+    namespace LineSegments {
         // Constructor properties interface
 
         interface ConstructorProps extends Line.ConstructorProps {}
@@ -1304,7 +1304,7 @@ export namespace Gthree {
         static ['new'](...args: never[]): any;
     }
 
-    module LinearInterpolant {
+    namespace LinearInterpolant {
         // Constructor properties interface
 
         interface ConstructorProps extends Interpolant.ConstructorProps {}
@@ -1322,7 +1322,7 @@ export namespace Gthree {
         static ['new'](parameter_positions: AttributeArray, sample_values: AttributeArray): LinearInterpolant;
     }
 
-    module Loader {
+    namespace Loader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1348,7 +1348,7 @@ export namespace Gthree {
         get_n_scenes(): number;
     }
 
-    module Material {
+    namespace Material {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1443,7 +1443,7 @@ export namespace Gthree {
         set_vertex_colors(vertex_colors: boolean): void;
     }
 
-    module Mesh {
+    namespace Mesh {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -1483,7 +1483,7 @@ export namespace Gthree {
         update_morph_targets(): void;
     }
 
-    module MeshBasicMaterial {
+    namespace MeshBasicMaterial {
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {
@@ -1539,7 +1539,7 @@ export namespace Gthree {
         set_refraction_ratio(ratio: number): void;
     }
 
-    module MeshDepthMaterial {
+    namespace MeshDepthMaterial {
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {}
@@ -1562,7 +1562,7 @@ export namespace Gthree {
         set_depth_packing_format(format: DepthPackingFormat | null): void;
     }
 
-    module MeshDistanceMaterial {
+    namespace MeshDistanceMaterial {
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {}
@@ -1589,7 +1589,7 @@ export namespace Gthree {
         set_reference_point(ref_point: Graphene.Vec3): void;
     }
 
-    module MeshLambertMaterial {
+    namespace MeshLambertMaterial {
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {
@@ -1653,7 +1653,7 @@ export namespace Gthree {
         set_refraction_ratio(ratio: number): void;
     }
 
-    module MeshMaterial {
+    namespace MeshMaterial {
         // Constructor properties interface
 
         interface ConstructorProps extends Material.ConstructorProps {
@@ -1710,7 +1710,7 @@ export namespace Gthree {
         set_wireframe_line_width(line_width: number): void;
     }
 
-    module MeshNormalMaterial {
+    namespace MeshNormalMaterial {
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {}
@@ -1733,7 +1733,7 @@ export namespace Gthree {
         set_shading_type(shading_type: ShadingType | null): void;
     }
 
-    module MeshPhongMaterial {
+    namespace MeshPhongMaterial {
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {
@@ -1842,7 +1842,7 @@ export namespace Gthree {
         set_specular_map(texture: Texture): void;
     }
 
-    module MeshSpecglosMaterial {
+    namespace MeshSpecglosMaterial {
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {
@@ -2041,7 +2041,7 @@ export namespace Gthree {
         set_specular_map(texture: Texture): void;
     }
 
-    module MeshStandardMaterial {
+    namespace MeshStandardMaterial {
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {
@@ -2237,7 +2237,7 @@ export namespace Gthree {
         set_roughness_map(texture: Texture): void;
     }
 
-    module MeshToonMaterial {
+    namespace MeshToonMaterial {
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {
@@ -2393,7 +2393,7 @@ export namespace Gthree {
         set_normal_map_type(type: NormalMapType | null): void;
     }
 
-    module NumberKeyframeTrack {
+    namespace NumberKeyframeTrack {
         // Constructor properties interface
 
         interface ConstructorProps extends KeyframeTrack.ConstructorProps {}
@@ -2411,7 +2411,7 @@ export namespace Gthree {
         static ['new'](name: string, times: AttributeArray, values: AttributeArray): NumberKeyframeTrack;
     }
 
-    module Object {
+    namespace Object {
         // Signal callback interfaces
 
         interface Destroy {
@@ -2552,7 +2552,7 @@ export namespace Gthree {
         update_matrix_world(force: boolean): void;
     }
 
-    module OrthographicCamera {
+    namespace OrthographicCamera {
         // Constructor properties interface
 
         interface ConstructorProps extends Camera.ConstructorProps {
@@ -2607,7 +2607,7 @@ export namespace Gthree {
         set_top(top: number): void;
     }
 
-    module Pass {
+    namespace Pass {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2658,7 +2658,7 @@ export namespace Gthree {
         set_enabled(enabled: boolean): void;
     }
 
-    module PerspectiveCamera {
+    namespace PerspectiveCamera {
         // Constructor properties interface
 
         interface ConstructorProps extends Camera.ConstructorProps {
@@ -2696,7 +2696,7 @@ export namespace Gthree {
         set_fov(aspect: number): void;
     }
 
-    module PlaneHelper {
+    namespace PlaneHelper {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -2739,7 +2739,7 @@ export namespace Gthree {
         set_size(size: number): void;
     }
 
-    module PointLight {
+    namespace PointLight {
         // Constructor properties interface
 
         interface ConstructorProps extends Light.ConstructorProps {
@@ -2777,7 +2777,7 @@ export namespace Gthree {
         set_distance(distance: number): void;
     }
 
-    module Points {
+    namespace Points {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -2811,7 +2811,7 @@ export namespace Gthree {
         set_material(material: Material): void;
     }
 
-    module PointsMaterial {
+    namespace PointsMaterial {
         // Constructor properties interface
 
         interface ConstructorProps extends Material.ConstructorProps {
@@ -2858,7 +2858,7 @@ export namespace Gthree {
         set_size_attenuation(size_attenuation: boolean): void;
     }
 
-    module Program {
+    namespace Program {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2884,7 +2884,7 @@ export namespace Gthree {
         use(): void;
     }
 
-    module QuaternionInterpolant {
+    namespace QuaternionInterpolant {
         // Constructor properties interface
 
         interface ConstructorProps extends Interpolant.ConstructorProps {}
@@ -2902,7 +2902,7 @@ export namespace Gthree {
         static ['new'](parameter_positions: AttributeArray, sample_values: AttributeArray): QuaternionInterpolant;
     }
 
-    module QuaternionKeyframeTrack {
+    namespace QuaternionKeyframeTrack {
         // Constructor properties interface
 
         interface ConstructorProps extends KeyframeTrack.ConstructorProps {}
@@ -2920,7 +2920,7 @@ export namespace Gthree {
         static ['new'](name: string, times: AttributeArray, values: AttributeArray): QuaternionKeyframeTrack;
     }
 
-    module Raycaster {
+    namespace Raycaster {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2948,7 +2948,7 @@ export namespace Gthree {
         set_ray(ray: Graphene.Ray): void;
     }
 
-    module RenderPass {
+    namespace RenderPass {
         // Constructor properties interface
 
         interface ConstructorProps extends Pass.ConstructorProps {}
@@ -2970,7 +2970,7 @@ export namespace Gthree {
         set_clear_depth(clear_depth: boolean): void;
     }
 
-    module RenderTarget {
+    namespace RenderTarget {
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps {}
@@ -3002,7 +3002,7 @@ export namespace Gthree {
         update_mipmap(renderer: Renderer): void;
     }
 
-    module Renderer {
+    namespace Renderer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3063,7 +3063,7 @@ export namespace Gthree {
         unrealize(): void;
     }
 
-    module Resource {
+    namespace Resource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3093,7 +3093,7 @@ export namespace Gthree {
         unrealize(renderer: Renderer): void;
     }
 
-    module Scene {
+    namespace Scene {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -3121,7 +3121,7 @@ export namespace Gthree {
         set_override_material(material: Material): void;
     }
 
-    module Shader {
+    namespace Shader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3147,7 +3147,7 @@ export namespace Gthree {
         update_uniform_locations_for_program(program: Program): void;
     }
 
-    module ShaderMaterial {
+    namespace ShaderMaterial {
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {
@@ -3192,7 +3192,7 @@ export namespace Gthree {
         set_vertex_colors(vertex_color: boolean): void;
     }
 
-    module ShaderPass {
+    namespace ShaderPass {
         // Constructor properties interface
 
         interface ConstructorProps extends Pass.ConstructorProps {}
@@ -3210,7 +3210,7 @@ export namespace Gthree {
         static ['new'](shader: Shader, texture_id: string): ShaderPass;
     }
 
-    module Skeleton {
+    namespace Skeleton {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3234,7 +3234,7 @@ export namespace Gthree {
         pose(): void;
     }
 
-    module SkeletonHelper {
+    namespace SkeletonHelper {
         // Constructor properties interface
 
         interface ConstructorProps extends LineSegments.ConstructorProps {
@@ -3261,7 +3261,7 @@ export namespace Gthree {
         static ['new'](...args: never[]): any;
     }
 
-    module SkinnedMesh {
+    namespace SkinnedMesh {
         // Constructor properties interface
 
         interface ConstructorProps extends Mesh.ConstructorProps {}
@@ -3291,7 +3291,7 @@ export namespace Gthree {
         set_bind_mode(bind_mode: BindMode | null): void;
     }
 
-    module SpotLight {
+    namespace SpotLight {
         // Constructor properties interface
 
         interface ConstructorProps extends Light.ConstructorProps {
@@ -3349,7 +3349,7 @@ export namespace Gthree {
         set_target(object: Object): void;
     }
 
-    module SpotLightShadow {
+    namespace SpotLightShadow {
         // Constructor properties interface
 
         interface ConstructorProps extends LightShadow.ConstructorProps {}
@@ -3365,7 +3365,7 @@ export namespace Gthree {
         _init(...args: any[]): void;
     }
 
-    module Sprite {
+    namespace Sprite {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -3399,7 +3399,7 @@ export namespace Gthree {
         set_material(material: Material): void;
     }
 
-    module SpriteMaterial {
+    namespace SpriteMaterial {
         // Constructor properties interface
 
         interface ConstructorProps extends Material.ConstructorProps {
@@ -3446,7 +3446,7 @@ export namespace Gthree {
         set_size_attenuation(size_attenuation: boolean): void;
     }
 
-    module Texture {
+    namespace Texture {
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps {
@@ -3515,7 +3515,7 @@ export namespace Gthree {
         set_wrap_t(wrap_t: Wrapping | null): void;
     }
 
-    module Uniforms {
+    namespace Uniforms {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3548,7 +3548,7 @@ export namespace Gthree {
         set_vec4(name: string, value: Graphene.Vec4): void;
     }
 
-    module VectorKeyframeTrack {
+    namespace VectorKeyframeTrack {
         // Constructor properties interface
 
         interface ConstructorProps extends KeyframeTrack.ConstructorProps {}

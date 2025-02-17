@@ -87,7 +87,7 @@ export namespace Egg {
     interface TaskCacheCallback {
         (self: TaskCache, key: any | null, task: Gio.Task): void;
     }
-    module Animation {
+    namespace Animation {
         // Signal callback interfaces
 
         interface Tick {
@@ -175,7 +175,7 @@ export namespace Egg {
         stop(): void;
     }
 
-    module BindingGroup {
+    namespace BindingGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -297,7 +297,7 @@ export namespace Egg {
         set_source(source?: GObject.Object | null): void;
     }
 
-    module Box {
+    namespace Box {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -753,7 +753,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CenteringBin {
+    namespace CenteringBin {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1195,7 +1195,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ColumnLayout {
+    namespace ColumnLayout {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1657,7 +1657,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ElasticBin {
+    namespace ElasticBin {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2080,7 +2080,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module EmptyState {
+    namespace EmptyState {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2537,7 +2537,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module EntryBox {
+    namespace EntryBox {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2988,7 +2988,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FileChooserEntry {
+    namespace FileChooserEntry {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3466,7 +3466,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ListBox {
+    namespace ListBox {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3915,7 +3915,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MenuManager {
+    namespace MenuManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3960,7 +3960,7 @@ export namespace Egg {
         remove(merge_id: number): void;
     }
 
-    module PillBox {
+    namespace PillBox {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4398,7 +4398,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PriorityBox {
+    namespace PriorityBox {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4842,7 +4842,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ProgressButton {
+    namespace ProgressButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9369,7 +9369,7 @@ export namespace Egg {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module RadioBox {
+    namespace RadioBox {
         // Signal callback interfaces
 
         interface Changed {
@@ -9833,7 +9833,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScrolledWindow {
+    namespace ScrolledWindow {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10254,7 +10254,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SearchBar {
+    namespace SearchBar {
         // Signal callback interfaces
 
         interface Activate {
@@ -10723,7 +10723,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SettingsFlagAction {
+    namespace SettingsFlagAction {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Action.ConstructorProps {
@@ -11404,7 +11404,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SettingsSandwich {
+    namespace SettingsSandwich {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11470,7 +11470,7 @@ export namespace Egg {
         unbind(property: string): void;
     }
 
-    module SignalGroup {
+    namespace SignalGroup {
         // Signal callback interfaces
 
         interface Bind {
@@ -11615,7 +11615,7 @@ export namespace Egg {
         unblock(): void;
     }
 
-    module SimpleLabel {
+    namespace SimpleLabel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12239,7 +12239,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SimplePopover {
+    namespace SimplePopover {
         // Signal callback interfaces
 
         interface Activate {
@@ -12738,7 +12738,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Slider {
+    namespace Slider {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13174,7 +13174,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StateMachine {
+    namespace StateMachine {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.Buildable.ConstructorProps {
@@ -13816,7 +13816,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Suggestion {
+    namespace Suggestion {
         // Signal callback interfaces
 
         interface ReplaceTypedText {
@@ -13927,7 +13927,7 @@ export namespace Egg {
         suggest_suffix(typed_text: string): string | null;
     }
 
-    module SuggestionEntry {
+    namespace SuggestionEntry {
         // Signal callback interfaces
 
         interface ActivateSuggestion {
@@ -18518,7 +18518,7 @@ export namespace Egg {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module SuggestionEntryBuffer {
+    namespace SuggestionEntryBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EntryBuffer.ConstructorProps {
@@ -18564,7 +18564,7 @@ export namespace Egg {
         set_suggestion(suggestion?: Suggestion | null): void;
     }
 
-    module SuggestionPopover {
+    namespace SuggestionPopover {
         // Signal callback interfaces
 
         interface SuggestionActivated {
@@ -19039,7 +19039,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SuggestionRow {
+    namespace SuggestionRow {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19478,7 +19478,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TaskCache {
+    namespace TaskCache {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -19586,7 +19586,7 @@ export namespace Egg {
         set_name(name: string): void;
     }
 
-    module ThreeGrid {
+    namespace ThreeGrid {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20025,7 +20025,7 @@ export namespace Egg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WidgetActionGroup {
+    namespace WidgetActionGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {

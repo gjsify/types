@@ -218,7 +218,7 @@ export namespace Amtk {
          */
         IGNORE_ACCELS_FOR_APP,
     }
-    module ActionInfoCentralStore {
+    namespace ActionInfoCentralStore {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -242,7 +242,7 @@ export namespace Amtk {
         lookup(action_name: string): ActionInfo;
     }
 
-    module ActionInfoStore {
+    namespace ActionInfoStore {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -293,7 +293,7 @@ export namespace Amtk {
         lookup(action_name: string): ActionInfo;
     }
 
-    module ApplicationWindow {
+    namespace ApplicationWindow {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -394,7 +394,7 @@ export namespace Amtk {
         set_statusbar(statusbar?: Gtk.Statusbar | null): void;
     }
 
-    module Factory {
+    namespace Factory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -521,7 +521,7 @@ export namespace Amtk {
         set_default_flags(default_flags: FactoryFlags | null): void;
     }
 
-    module MenuShell {
+    namespace MenuShell {
         // Signal callback interfaces
 
         interface MenuItemDeselected {

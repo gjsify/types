@@ -225,7 +225,7 @@ export namespace ClutterX11 {
     interface FilterFunc {
         (xev: xlib.XEvent, cev: Clutter.Event): FilterReturn;
     }
-    module TexturePixmap {
+    namespace TexturePixmap {
         // Signal callback interfaces
 
         interface QueueDamageRedraw {

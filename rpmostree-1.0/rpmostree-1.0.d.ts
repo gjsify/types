@@ -98,7 +98,7 @@ export namespace RpmOstree {
         NONE,
         ALLOW_NOENT,
     }
-    module Package {
+    namespace Package {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

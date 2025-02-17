@@ -72,7 +72,7 @@ export namespace GtkClutter {
         entries?: GLib.OptionEntry[] | null,
         translation_domain?: string | null,
     ): [Clutter.InitError, string[] | null];
-    module Actor {
+    namespace Actor {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -980,7 +980,7 @@ export namespace GtkClutter {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Embed {
+    namespace Embed {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1458,7 +1458,7 @@ export namespace GtkClutter {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Texture {
+    namespace Texture {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1921,7 +1921,7 @@ export namespace GtkClutter {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Window {
+    namespace Window {
         // Constructor properties interface
 
         interface ConstructorProps

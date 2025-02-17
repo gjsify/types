@@ -1166,7 +1166,7 @@ export namespace ICalGLib {
     interface ParserLineGenFunc {
         (bytes: number[]): string;
     }
-    module Array {
+    namespace Array {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1203,7 +1203,7 @@ export namespace ICalGLib {
         size(): number;
     }
 
-    module Attach {
+    namespace Attach {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1248,7 +1248,7 @@ export namespace ICalGLib {
         get_url(): string | null;
     }
 
-    module CompIter {
+    namespace CompIter {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1285,7 +1285,7 @@ export namespace ICalGLib {
         prior(): Component;
     }
 
-    module Component {
+    namespace Component {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1684,7 +1684,7 @@ export namespace ICalGLib {
         strip_errors(): void;
     }
 
-    module Datetimeperiod {
+    namespace Datetimeperiod {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1728,7 +1728,7 @@ export namespace ICalGLib {
         set_time(time: Time): void;
     }
 
-    module Duration {
+    namespace Duration {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1838,7 +1838,7 @@ export namespace ICalGLib {
         set_weeks(weeks: number): void;
     }
 
-    module Geo {
+    namespace Geo {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1887,7 +1887,7 @@ export namespace ICalGLib {
         set_lon(lon: number): void;
     }
 
-    module Object {
+    namespace Object {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2030,7 +2030,7 @@ export namespace ICalGLib {
         steal_native(): any | null;
     }
 
-    module Parameter {
+    namespace Parameter {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2357,7 +2357,7 @@ export namespace ICalGLib {
         set_xvalue(v: string): void;
     }
 
-    module Parser {
+    namespace Parser {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2425,7 +2425,7 @@ export namespace ICalGLib {
         parse(func: ParserLineGenFunc): Component;
     }
 
-    module Period {
+    namespace Period {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2496,7 +2496,7 @@ export namespace ICalGLib {
         set_start(start: Time): void;
     }
 
-    module Property {
+    namespace Property {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4096,7 +4096,7 @@ export namespace ICalGLib {
         set_xlicmimeoptinfo(v: string): void;
     }
 
-    module RecurIterator {
+    namespace RecurIterator {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4133,7 +4133,7 @@ export namespace ICalGLib {
         set_start(start: Time): number;
     }
 
-    module Recurrence {
+    namespace Recurrence {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4482,7 +4482,7 @@ export namespace ICalGLib {
         to_string(): string;
     }
 
-    module Reqstat {
+    namespace Reqstat {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4531,7 +4531,7 @@ export namespace ICalGLib {
         to_string(): string;
     }
 
-    module Time {
+    namespace Time {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4838,7 +4838,7 @@ export namespace ICalGLib {
         week_number(): number;
     }
 
-    module TimeSpan {
+    namespace TimeSpan {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4911,7 +4911,7 @@ export namespace ICalGLib {
         set_start(start: number): void;
     }
 
-    module Timezone {
+    namespace Timezone {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -5099,7 +5099,7 @@ export namespace ICalGLib {
         set_component(comp: Component): number;
     }
 
-    module Trigger {
+    namespace Trigger {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -5155,7 +5155,7 @@ export namespace ICalGLib {
         set_time(time: Time): void;
     }
 
-    module Value {
+    namespace Value {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}

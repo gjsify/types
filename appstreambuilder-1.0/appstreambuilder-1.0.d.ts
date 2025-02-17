@@ -150,7 +150,7 @@ export namespace AppStreamBuilder {
          */
         ADD_DEFAULT_ICONS,
     }
-    module App {
+    namespace App {
         // Constructor properties interface
 
         interface ConstructorProps extends AppStreamGlib.App.ConstructorProps {}
@@ -195,7 +195,7 @@ export namespace AppStreamBuilder {
         set_package(pkg: Package): void;
     }
 
-    module Context {
+    namespace Context {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -354,7 +354,7 @@ export namespace AppStreamBuilder {
         setup(): boolean;
     }
 
-    module Package {
+    namespace Package {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -652,7 +652,7 @@ export namespace AppStreamBuilder {
         set_version(version: string): void;
     }
 
-    module Task {
+    namespace Task {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

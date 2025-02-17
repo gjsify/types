@@ -2701,7 +2701,7 @@ export namespace Gda {
          */
         READ_ONLY,
     }
-    module Batch {
+    namespace Batch {
         // Signal callback interfaces
 
         interface Changed {
@@ -2782,7 +2782,7 @@ export namespace Gda {
         serialize(): string;
     }
 
-    module BlobOp {
+    namespace BlobOp {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2840,7 +2840,7 @@ export namespace Gda {
         write_all(blob: Blob): boolean;
     }
 
-    module Column {
+    namespace Column {
         // Signal callback interfaces
 
         interface GTypeChanged {
@@ -2965,7 +2965,7 @@ export namespace Gda {
         set_position(position: number): void;
     }
 
-    module Config {
+    namespace Config {
         // Signal callback interfaces
 
         interface DsnAdded {
@@ -3150,7 +3150,7 @@ export namespace Gda {
         vfunc_dsn_to_be_removed(old_dsn: DsnInfo): void;
     }
 
-    module Connection {
+    namespace Connection {
         // Signal callback interfaces
 
         interface Closed {
@@ -4611,7 +4611,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ConnectionEvent {
+    namespace ConnectionEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4703,7 +4703,7 @@ export namespace Gda {
         set_sqlstate(sqlstate: string): void;
     }
 
-    module ConnectionModelParams {
+    namespace ConnectionModelParams {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4746,7 +4746,7 @@ export namespace Gda {
         set_user(value: string): void;
     }
 
-    module DataAccessWrapper {
+    namespace DataAccessWrapper {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -5647,7 +5647,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataComparator {
+    namespace DataComparator {
         // Signal callback interfaces
 
         interface DiffComputed {
@@ -5733,7 +5733,7 @@ export namespace Gda {
         set_key_columns(col_numbers: number[]): void;
     }
 
-    module DataModelArray {
+    namespace DataModelArray {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -6648,7 +6648,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataModelDir {
+    namespace DataModelDir {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -7536,7 +7536,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataModelImport {
+    namespace DataModelImport {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -8507,7 +8507,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataModelImportIter {
+    namespace DataModelImportIter {
         // Constructor properties interface
 
         interface ConstructorProps extends DataModelIter.ConstructorProps {}
@@ -8523,7 +8523,7 @@ export namespace Gda {
         _init(...args: any[]): void;
     }
 
-    module DataModelIter {
+    namespace DataModelIter {
         // Signal callback interfaces
 
         interface EndOfData {
@@ -8749,7 +8749,7 @@ export namespace Gda {
         set_value_at(col: number, value: GObject.Value | any): boolean;
     }
 
-    module DataModelSelect {
+    namespace DataModelSelect {
         // Signal callback interfaces
 
         interface Updated {
@@ -9651,7 +9651,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataPivot {
+    namespace DataPivot {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -10579,7 +10579,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataProxy {
+    namespace DataProxy {
         // Signal callback interfaces
 
         interface FilterChanged {
@@ -11782,7 +11782,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataSelect {
+    namespace DataSelect {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -12866,7 +12866,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataSelectIter {
+    namespace DataSelectIter {
         // Constructor properties interface
 
         interface ConstructorProps extends DataModelIter.ConstructorProps {}
@@ -12882,7 +12882,7 @@ export namespace Gda {
         _init(...args: any[]): void;
     }
 
-    module DbBase {
+    namespace DbBase {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -12957,7 +12957,7 @@ export namespace Gda {
         set_schema(schema: string): void;
     }
 
-    module DbCatalog {
+    namespace DbCatalog {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13121,7 +13121,7 @@ export namespace Gda {
         write_to_path(path: string): boolean;
     }
 
-    module DbColumn {
+    namespace DbColumn {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13769,7 +13769,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DbFkey {
+    namespace DbFkey {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DbBuildable.ConstructorProps {}
@@ -14253,7 +14253,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DbIndex {
+    namespace DbIndex {
         // Constructor properties interface
 
         interface ConstructorProps extends DbBase.ConstructorProps, DdlModifiable.ConstructorProps {
@@ -14746,7 +14746,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DbIndexField {
+    namespace DbIndexField {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -14791,7 +14791,7 @@ export namespace Gda {
         set_sort_order(sorder: DbIndexSortOrder | null): void;
     }
 
-    module DbTable {
+    namespace DbTable {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15350,7 +15350,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DbView {
+    namespace DbView {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15868,7 +15868,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HandlerBin {
+    namespace HandlerBin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -16419,7 +16419,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HandlerBoolean {
+    namespace HandlerBoolean {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -16970,7 +16970,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HandlerNumerical {
+    namespace HandlerNumerical {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -17521,7 +17521,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HandlerString {
+    namespace HandlerString {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -18074,7 +18074,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HandlerText {
+    namespace HandlerText {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -18632,7 +18632,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HandlerTime {
+    namespace HandlerTime {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -19243,7 +19243,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HandlerType {
+    namespace HandlerType {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -19794,7 +19794,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Holder {
+    namespace Holder {
         // Signal callback interfaces
 
         interface Changed {
@@ -20602,7 +20602,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MetaStore {
+    namespace MetaStore {
         // Signal callback interfaces
 
         interface MetaChanged {
@@ -20941,7 +20941,7 @@ export namespace Gda {
         ): boolean;
     }
 
-    module MetaStruct {
+    namespace MetaStruct {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -21095,7 +21095,7 @@ export namespace Gda {
         sort_db_objects(sort_type: MetaSortType | null): boolean;
     }
 
-    module PStmt {
+    namespace PStmt {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -21178,7 +21178,7 @@ export namespace Gda {
         set_tmpl_columns(columns: Column[]): void;
     }
 
-    module RepetitiveStatement {
+    namespace RepetitiveStatement {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -21229,7 +21229,7 @@ export namespace Gda {
         get_template_set(set: Set): boolean;
     }
 
-    module Row {
+    namespace Row {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -21305,7 +21305,7 @@ export namespace Gda {
         value_is_valid_e(value: GObject.Value | any): boolean;
     }
 
-    module ServerOperation {
+    namespace ServerOperation {
         // Signal callback interfaces
 
         interface SequenceItemAdded {
@@ -21554,7 +21554,7 @@ export namespace Gda {
         set_value_at(value: string | null, path: string): boolean;
     }
 
-    module ServerProvider {
+    namespace ServerProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Lockable.ConstructorProps {}
@@ -22243,7 +22243,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Set {
+    namespace Set {
         // Signal callback interfaces
 
         interface HolderAttrChanged {
@@ -22488,7 +22488,7 @@ export namespace Gda {
         _init(...args: any[]): void;
     }
 
-    module SqlBuilder {
+    namespace SqlBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -22822,7 +22822,7 @@ export namespace Gda {
         set_where(cond_id: SqlBuilderId): void;
     }
 
-    module SqlParser {
+    namespace SqlParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Lockable.ConstructorProps {
@@ -23354,7 +23354,7 @@ export namespace Gda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Statement {
+    namespace Statement {
         // Signal callback interfaces
 
         interface Checked {
@@ -23500,7 +23500,7 @@ export namespace Gda {
         ): [string, Holder[] | null];
     }
 
-    module TransactionStatus {
+    namespace TransactionStatus {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -23537,7 +23537,7 @@ export namespace Gda {
         set_state(state: TransactionStatusState | null): void;
     }
 
-    module Tree {
+    namespace Tree {
         // Signal callback interfaces
 
         interface NodeChanged {
@@ -23688,7 +23688,7 @@ export namespace Gda {
         update_part(node: TreeNode): boolean;
     }
 
-    module TreeManager {
+    namespace TreeManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -23780,7 +23780,7 @@ export namespace Gda {
         set_node_create_func(func?: TreeManagerNodeFunc | null): void;
     }
 
-    module TreeMgrColumns {
+    namespace TreeMgrColumns {
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -23837,7 +23837,7 @@ export namespace Gda {
         static ['new'](cnc: Connection, schema: string, table_name: string): TreeMgrColumns;
     }
 
-    module TreeMgrLabel {
+    namespace TreeMgrLabel {
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -23861,7 +23861,7 @@ export namespace Gda {
         static ['new'](label: string): TreeMgrLabel;
     }
 
-    module TreeMgrSchemas {
+    namespace TreeMgrSchemas {
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -23903,7 +23903,7 @@ export namespace Gda {
         static ['new'](cnc: Connection): TreeMgrSchemas;
     }
 
-    module TreeMgrSelect {
+    namespace TreeMgrSelect {
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -23931,7 +23931,7 @@ export namespace Gda {
         static ['new'](cnc: Connection, stmt: Statement, params: Set): TreeMgrSelect;
     }
 
-    module TreeMgrTables {
+    namespace TreeMgrTables {
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -23980,7 +23980,7 @@ export namespace Gda {
         static ['new'](cnc: Connection, schema?: string | null): TreeMgrTables;
     }
 
-    module TreeNode {
+    namespace TreeNode {
         // Signal callback interfaces
 
         interface NodeChanged {
@@ -24131,7 +24131,7 @@ export namespace Gda {
         _init(...args: any[]): void;
     }
 
-    module XaTransaction {
+    namespace XaTransaction {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -26641,7 +26641,7 @@ export namespace Gda {
         to_string(): string;
     }
 
-    module AfectedRows {
+    namespace AfectedRows {
         // Constructor properties interface
 
         interface ConstructorProps extends Result.ConstructorProps {
@@ -26671,7 +26671,7 @@ export namespace Gda {
         new (): AfectedRows; // This allows `obj instanceof AfectedRows`
     };
 
-    module ColumnModel {
+    namespace ColumnModel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -26733,7 +26733,7 @@ export namespace Gda {
         new (): ColumnModel; // This allows `obj instanceof ColumnModel`
     };
 
-    module ConnectionModel {
+    namespace ConnectionModel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -26779,7 +26779,7 @@ export namespace Gda {
         new (): ConnectionModel; // This allows `obj instanceof ConnectionModel`
     };
 
-    module CreateDatabaseBuilder {
+    namespace CreateDatabaseBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends QueryBuilder.ConstructorProps {
@@ -26815,7 +26815,7 @@ export namespace Gda {
         new (): CreateDatabaseBuilder; // This allows `obj instanceof CreateDatabaseBuilder`
     };
 
-    module CreateTableBuilder {
+    namespace CreateTableBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends QueryBuilder.ConstructorProps {
@@ -26861,7 +26861,7 @@ export namespace Gda {
         new (): CreateTableBuilder; // This allows `obj instanceof CreateTableBuilder`
     };
 
-    module DataHandler {
+    namespace DataHandler {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -27024,7 +27024,7 @@ export namespace Gda {
         new (): DataHandler; // This allows `obj instanceof DataHandler`
     };
 
-    module DataModel {
+    namespace DataModel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -27489,7 +27489,7 @@ export namespace Gda {
         new (): DataModel; // This allows `obj instanceof DataModel`
     };
 
-    module DbBuildable {
+    namespace DbBuildable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -27533,7 +27533,7 @@ export namespace Gda {
         new (): DbBuildable; // This allows `obj instanceof DbBuildable`
     };
 
-    module DdlModifiable {
+    namespace DdlModifiable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -27596,7 +27596,7 @@ export namespace Gda {
         new (): DdlModifiable; // This allows `obj instanceof DdlModifiable`
     };
 
-    module DropDatabaseBuilder {
+    namespace DropDatabaseBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends QueryBuilder.ConstructorProps {
@@ -27632,7 +27632,7 @@ export namespace Gda {
         new (): DropDatabaseBuilder; // This allows `obj instanceof DropDatabaseBuilder`
     };
 
-    module DropTableBuilder {
+    namespace DropTableBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends QueryBuilder.ConstructorProps {
@@ -27675,7 +27675,7 @@ export namespace Gda {
         new (): DropTableBuilder; // This allows `obj instanceof DropTableBuilder`
     };
 
-    module ForeignKey {
+    namespace ForeignKey {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -27754,7 +27754,7 @@ export namespace Gda {
         new (): ForeignKey; // This allows `obj instanceof ForeignKey`
     };
 
-    module Inserted {
+    namespace Inserted {
         // Constructor properties interface
 
         interface ConstructorProps extends Result.ConstructorProps {
@@ -27788,7 +27788,7 @@ export namespace Gda {
         new (): Inserted; // This allows `obj instanceof Inserted`
     };
 
-    module Lockable {
+    namespace Lockable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -27853,7 +27853,7 @@ export namespace Gda {
         new (): Lockable; // This allows `obj instanceof Lockable`
     };
 
-    module MetaCatalog {
+    namespace MetaCatalog {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -27884,7 +27884,7 @@ export namespace Gda {
         new (): MetaCatalog; // This allows `obj instanceof MetaCatalog`
     };
 
-    module MetaColumn {
+    namespace MetaColumn {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -27929,7 +27929,7 @@ export namespace Gda {
         new (): MetaColumn; // This allows `obj instanceof MetaColumn`
     };
 
-    module MetaTable {
+    namespace MetaTable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -27978,7 +27978,7 @@ export namespace Gda {
         new (): MetaTable; // This allows `obj instanceof MetaTable`
     };
 
-    module Parameters {
+    namespace Parameters {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -28005,7 +28005,7 @@ export namespace Gda {
         new (): Parameters; // This allows `obj instanceof Parameters`
     };
 
-    module PreparedQuery {
+    namespace PreparedQuery {
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {
@@ -28037,7 +28037,7 @@ export namespace Gda {
         new (): PreparedQuery; // This allows `obj instanceof PreparedQuery`
     };
 
-    module Provider {
+    namespace Provider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -28155,7 +28155,7 @@ export namespace Gda {
         new (): Provider; // This allows `obj instanceof Provider`
     };
 
-    module ProviderMeta {
+    namespace ProviderMeta {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -28338,7 +28338,7 @@ export namespace Gda {
         new (): ProviderMeta; // This allows `obj instanceof ProviderMeta`
     };
 
-    module Query {
+    namespace Query {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -28380,7 +28380,7 @@ export namespace Gda {
         new (): Query; // This allows `obj instanceof Query`
     };
 
-    module QueryBuilder {
+    namespace QueryBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -28434,7 +28434,7 @@ export namespace Gda {
         new (): QueryBuilder; // This allows `obj instanceof QueryBuilder`
     };
 
-    module ReadonlyTableModel {
+    namespace ReadonlyTableModel {
         // Constructor properties interface
 
         interface ConstructorProps extends MetaTable.ConstructorProps {
@@ -28466,7 +28466,7 @@ export namespace Gda {
         new (): ReadonlyTableModel; // This allows `obj instanceof ReadonlyTableModel`
     };
 
-    module ReferencedColumn {
+    namespace ReferencedColumn {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -28502,7 +28502,7 @@ export namespace Gda {
         new (): ReferencedColumn; // This allows `obj instanceof ReferencedColumn`
     };
 
-    module Result {
+    namespace Result {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -28518,7 +28518,7 @@ export namespace Gda {
         new (): Result; // This allows `obj instanceof Result`
     };
 
-    module ResultTable {
+    namespace ResultTable {
         // Constructor properties interface
 
         interface ConstructorProps extends MetaTable.ConstructorProps {}
@@ -28534,7 +28534,7 @@ export namespace Gda {
         new (): ResultTable; // This allows `obj instanceof ResultTable`
     };
 
-    module RowModel {
+    namespace RowModel {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -28567,7 +28567,7 @@ export namespace Gda {
         new (): RowModel; // This allows `obj instanceof RowModel`
     };
 
-    module TableConstraint {
+    namespace TableConstraint {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -28593,7 +28593,7 @@ export namespace Gda {
         new (): TableConstraint; // This allows `obj instanceof TableConstraint`
     };
 
-    module TableModel {
+    namespace TableModel {
         // Constructor properties interface
 
         interface ConstructorProps extends MetaTable.ConstructorProps {}
@@ -28609,7 +28609,7 @@ export namespace Gda {
         new (): TableModel; // This allows `obj instanceof TableModel`
     };
 
-    module WritableTableModel {
+    namespace WritableTableModel {
         // Constructor properties interface
 
         interface ConstructorProps extends MetaTable.ConstructorProps {}

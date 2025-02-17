@@ -27,7 +27,7 @@ export namespace Govf {
         XML,
         LAST,
     }
-    module Disk {
+    namespace Disk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -88,7 +88,7 @@ export namespace Govf {
         set_format(format: string): void;
     }
 
-    module Package {
+    namespace Package {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -87,7 +87,7 @@ export namespace PangoFc {
     interface SubstituteFunc {
         (pattern: fontconfig.Pattern, data?: any | null): void;
     }
-    module Decoder {
+    namespace Decoder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -167,7 +167,7 @@ export namespace PangoFc {
         get_glyph(fcfont: Font, wc: number): Pango.Glyph;
     }
 
-    module Font {
+    namespace Font {
         // Constructor properties interface
 
         interface ConstructorProps extends Pango.Font.ConstructorProps {
@@ -280,7 +280,7 @@ export namespace PangoFc {
         unlock_face(): void;
     }
 
-    module FontMap {
+    namespace FontMap {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>

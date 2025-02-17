@@ -142,7 +142,7 @@ export namespace CoglPango {
         y: number,
         color: Cogl.Color,
     ): void;
-    module Renderer {
+    namespace Renderer {
         // Constructor properties interface
 
         interface ConstructorProps extends Pango.Renderer.ConstructorProps {

@@ -31,7 +31,7 @@ export namespace PQMarble {
     function get_css_provider_for_data(data: string): Gtk.CssProvider | null;
     function set_theming_for_data(widget: Gtk.Widget, data: string, class_name: string | null, priority: number): void;
     function add_css_provider_from_resource(resource: string, priority: number, display: Gdk.Display): void;
-    module Settings {
+    namespace Settings {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

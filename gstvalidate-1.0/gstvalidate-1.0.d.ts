@@ -513,7 +513,7 @@ export namespace GstValidate {
         NEW_ELEMENTS,
         ALL,
     }
-    module BinMonitor {
+    namespace BinMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends ElementMonitor.ConstructorProps, Reporter.ConstructorProps {
@@ -957,7 +957,7 @@ export namespace GstValidate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ElementMonitor {
+    namespace ElementMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends Monitor.ConstructorProps, Reporter.ConstructorProps {}
@@ -1435,7 +1435,7 @@ export namespace GstValidate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MediaDescriptor {
+    namespace MediaDescriptor {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps, Reporter.ConstructorProps {
@@ -1918,7 +1918,7 @@ export namespace GstValidate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MediaDescriptorParser {
+    namespace MediaDescriptorParser {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaDescriptor.ConstructorProps, Reporter.ConstructorProps {}
@@ -2401,7 +2401,7 @@ export namespace GstValidate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MediaDescriptorWriter {
+    namespace MediaDescriptorWriter {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaDescriptor.ConstructorProps, Reporter.ConstructorProps {}
@@ -2894,7 +2894,7 @@ export namespace GstValidate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Monitor {
+    namespace Monitor {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps, Reporter.ConstructorProps {
@@ -3418,7 +3418,7 @@ export namespace GstValidate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Override {
+    namespace Override {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps, Reporter.ConstructorProps {
@@ -3912,7 +3912,7 @@ export namespace GstValidate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PadMonitor {
+    namespace PadMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends Monitor.ConstructorProps, Reporter.ConstructorProps {}
@@ -4401,7 +4401,7 @@ export namespace GstValidate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PipelineMonitor {
+    namespace PipelineMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends BinMonitor.ConstructorProps, Reporter.ConstructorProps {}
@@ -4828,7 +4828,7 @@ export namespace GstValidate {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Runner {
+    namespace Runner {
         // Signal callback interfaces
 
         interface ReportAdded {
@@ -4903,7 +4903,7 @@ export namespace GstValidate {
         printf(): number;
     }
 
-    module Scenario {
+    namespace Scenario {
         // Signal callback interfaces
 
         interface ActionDone {
@@ -5796,7 +5796,7 @@ export namespace GstValidate {
         _init(...args: any[]): void;
     }
 
-    module Reporter {
+    namespace Reporter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

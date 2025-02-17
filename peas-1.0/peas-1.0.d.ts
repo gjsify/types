@@ -58,7 +58,7 @@ export namespace Peas {
     interface FactoryFunc {
         (parameters: GObject.Parameter[]): GObject.Object;
     }
-    module Engine {
+    namespace Engine {
         // Signal callback interfaces
 
         interface LoadPlugin {
@@ -355,7 +355,7 @@ export namespace Peas {
         unload_plugin(info: PluginInfo): boolean;
     }
 
-    module ExtensionBase {
+    namespace ExtensionBase {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -420,7 +420,7 @@ export namespace Peas {
         get_plugin_info(): PluginInfo;
     }
 
-    module ExtensionSet {
+    namespace ExtensionSet {
         // Signal callback interfaces
 
         interface ExtensionAdded {
@@ -1015,7 +1015,7 @@ export namespace Peas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ObjectModule {
+    namespace ObjectModule {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {
@@ -1766,7 +1766,7 @@ export namespace Peas {
         is_loaded(): boolean;
     }
 
-    module Activatable {
+    namespace Activatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

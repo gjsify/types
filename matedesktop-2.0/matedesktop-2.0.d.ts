@@ -371,7 +371,7 @@ export namespace MateDesktop {
         REFLECT_X,
         REFLECT_Y,
     }
-    module BG {
+    namespace BG {
         // Signal callback interfaces
 
         interface Changed {
@@ -524,7 +524,7 @@ export namespace MateDesktop {
         set_placement(placement: BGPlacement | null): void;
     }
 
-    module BGCrossfade {
+    namespace BGCrossfade {
         // Signal callback interfaces
 
         interface Finished {
@@ -633,7 +633,7 @@ export namespace MateDesktop {
         stop(): void;
     }
 
-    module ColorSelection {
+    namespace ColorSelection {
         // Signal callback interfaces
 
         interface ColorChanged {
@@ -1222,7 +1222,7 @@ export namespace MateDesktop {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ColorSelectionDialog {
+    namespace ColorSelectionDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1680,7 +1680,7 @@ export namespace MateDesktop {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DesktopThumbnailFactory {
+    namespace DesktopThumbnailFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1761,7 +1761,7 @@ export namespace MateDesktop {
         save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: never): void;
     }
 
-    module HSV {
+    namespace HSV {
         // Signal callback interfaces
 
         interface Changed {
@@ -2421,7 +2421,7 @@ export namespace MateDesktop {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ImageMenuItem {
+    namespace ImageMenuItem {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6966,7 +6966,7 @@ export namespace MateDesktop {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module RRConfig {
+    namespace RRConfig {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7013,7 +7013,7 @@ export namespace MateDesktop {
         set_clone(clone: boolean): void;
     }
 
-    module RRLabeler {
+    namespace RRLabeler {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7049,7 +7049,7 @@ export namespace MateDesktop {
         hide(): void;
     }
 
-    module RROutputInfo {
+    namespace RROutputInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7094,7 +7094,7 @@ export namespace MateDesktop {
         set_rotation(rotation: RRRotation | null): void;
     }
 
-    module RRScreen {
+    namespace RRScreen {
         // Signal callback interfaces
 
         interface Changed {

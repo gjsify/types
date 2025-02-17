@@ -377,7 +377,7 @@ export namespace Gck {
          */
         FOR_ANY,
     }
-    module Enumerator {
+    namespace Enumerator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -529,7 +529,7 @@ export namespace Gck {
         set_object_type(object_type: GObject.GType, attr_types: number[]): void;
     }
 
-    module Module {
+    namespace Module {
         // Signal callback interfaces
 
         interface AuthenticateObject {
@@ -678,7 +678,7 @@ export namespace Gck {
         match(uri: UriData): boolean;
     }
 
-    module Object {
+    namespace Object {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1184,7 +1184,7 @@ export namespace Gck {
         set_template_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module Password {
+    namespace Password {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.TlsPassword.ConstructorProps {
@@ -1248,7 +1248,7 @@ export namespace Gck {
         get_token(): Slot;
     }
 
-    module Session {
+    namespace Session {
         // Signal callback interfaces
 
         interface DiscardHandle {
@@ -3260,7 +3260,7 @@ export namespace Gck {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Slot {
+    namespace Slot {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4421,7 +4421,7 @@ export namespace Gck {
         free(): void;
     }
 
-    module ObjectCache {
+    namespace ObjectCache {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {

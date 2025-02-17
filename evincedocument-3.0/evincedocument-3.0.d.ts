@@ -469,7 +469,7 @@ export namespace EvinceDocument {
         CASE_SENSITIVE,
         WHOLE_WORDS_ONLY,
     }
-    module Annotation {
+    namespace Annotation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -636,7 +636,7 @@ export namespace EvinceDocument {
         set_rgba(rgba: Gdk.RGBA): boolean;
     }
 
-    module AnnotationAttachment {
+    namespace AnnotationAttachment {
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
@@ -834,7 +834,7 @@ export namespace EvinceDocument {
         set_rgba(rgba: Gdk.RGBA): boolean;
     }
 
-    module AnnotationText {
+    namespace AnnotationText {
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
@@ -1040,7 +1040,7 @@ export namespace EvinceDocument {
         set_rgba(rgba: Gdk.RGBA): boolean;
     }
 
-    module AnnotationTextMarkup {
+    namespace AnnotationTextMarkup {
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
@@ -1244,7 +1244,7 @@ export namespace EvinceDocument {
         set_rgba(rgba: Gdk.RGBA): boolean;
     }
 
-    module Attachment {
+    namespace Attachment {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1303,7 +1303,7 @@ export namespace EvinceDocument {
         save(file: Gio.File): boolean;
     }
 
-    module Document {
+    namespace Document {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1678,7 +1678,7 @@ export namespace EvinceDocument {
         synctex_backward_search(page_index: number, x: number, y: number): SourceLink;
     }
 
-    module FormField {
+    namespace FormField {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1703,7 +1703,7 @@ export namespace EvinceDocument {
         _init(...args: any[]): void;
     }
 
-    module FormFieldButton {
+    namespace FormFieldButton {
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1726,7 +1726,7 @@ export namespace EvinceDocument {
         static ['new'](id: number, type: FormFieldButtonType): FormFieldButton;
     }
 
-    module FormFieldChoice {
+    namespace FormFieldChoice {
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1754,7 +1754,7 @@ export namespace EvinceDocument {
         static ['new'](id: number, type: FormFieldChoiceType): FormFieldChoice;
     }
 
-    module FormFieldSignature {
+    namespace FormFieldSignature {
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1772,7 +1772,7 @@ export namespace EvinceDocument {
         static ['new'](id: number): FormFieldSignature;
     }
 
-    module FormFieldText {
+    namespace FormFieldText {
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1801,7 +1801,7 @@ export namespace EvinceDocument {
         static ['new'](id: number, type: FormFieldTextType): FormFieldText;
     }
 
-    module Image {
+    namespace Image {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1833,7 +1833,7 @@ export namespace EvinceDocument {
         save_tmp(pixbuf: GdkPixbuf.Pixbuf): string;
     }
 
-    module Layer {
+    namespace Layer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1860,7 +1860,7 @@ export namespace EvinceDocument {
         is_parent(): boolean;
     }
 
-    module Link {
+    namespace Link {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1891,7 +1891,7 @@ export namespace EvinceDocument {
         get_title(): string;
     }
 
-    module LinkAction {
+    namespace LinkAction {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1977,7 +1977,7 @@ export namespace EvinceDocument {
         get_uri(): string;
     }
 
-    module LinkDest {
+    namespace LinkDest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2061,7 +2061,7 @@ export namespace EvinceDocument {
         get_zoom(change_zoom: boolean): number;
     }
 
-    module Media {
+    namespace Media {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2090,7 +2090,7 @@ export namespace EvinceDocument {
         set_show_controls(show_controls: boolean): void;
     }
 
-    module Page {
+    namespace Page {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2115,7 +2115,7 @@ export namespace EvinceDocument {
         static ['new'](index: number): Page;
     }
 
-    module RenderContext {
+    namespace RenderContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2161,7 +2161,7 @@ export namespace EvinceDocument {
         set_target_size(target_width: number, target_height: number): void;
     }
 
-    module TransitionEffect {
+    namespace TransitionEffect {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2618,7 +2618,7 @@ export namespace EvinceDocument {
         _init(...args: any[]): void;
     }
 
-    module AnnotationMarkup {
+    namespace AnnotationMarkup {
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps {
@@ -2677,7 +2677,7 @@ export namespace EvinceDocument {
         new (): AnnotationMarkup; // This allows `obj instanceof AnnotationMarkup`
     };
 
-    module AsyncRenderer {
+    namespace AsyncRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2702,7 +2702,7 @@ export namespace EvinceDocument {
         new (): AsyncRenderer; // This allows `obj instanceof AsyncRenderer`
     };
 
-    module DocumentAnnotations {
+    namespace DocumentAnnotations {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2738,7 +2738,7 @@ export namespace EvinceDocument {
         new (): DocumentAnnotations; // This allows `obj instanceof DocumentAnnotations`
     };
 
-    module DocumentAttachments {
+    namespace DocumentAttachments {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2764,7 +2764,7 @@ export namespace EvinceDocument {
         new (): DocumentAttachments; // This allows `obj instanceof DocumentAttachments`
     };
 
-    module DocumentFind {
+    namespace DocumentFind {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2794,7 +2794,7 @@ export namespace EvinceDocument {
         new (): DocumentFind; // This allows `obj instanceof DocumentFind`
     };
 
-    module DocumentFonts {
+    namespace DocumentFonts {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2824,7 +2824,7 @@ export namespace EvinceDocument {
         new (): DocumentFonts; // This allows `obj instanceof DocumentFonts`
     };
 
-    module DocumentForms {
+    namespace DocumentForms {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2876,7 +2876,7 @@ export namespace EvinceDocument {
         new (): DocumentForms; // This allows `obj instanceof DocumentForms`
     };
 
-    module DocumentImages {
+    namespace DocumentImages {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2902,7 +2902,7 @@ export namespace EvinceDocument {
         new (): DocumentImages; // This allows `obj instanceof DocumentImages`
     };
 
-    module DocumentLayers {
+    namespace DocumentLayers {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2934,7 +2934,7 @@ export namespace EvinceDocument {
         new (): DocumentLayers; // This allows `obj instanceof DocumentLayers`
     };
 
-    module DocumentLinks {
+    namespace DocumentLinks {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2970,7 +2970,7 @@ export namespace EvinceDocument {
         new (): DocumentLinks; // This allows `obj instanceof DocumentLinks`
     };
 
-    module DocumentMedia {
+    namespace DocumentMedia {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2994,7 +2994,7 @@ export namespace EvinceDocument {
         new (): DocumentMedia; // This allows `obj instanceof DocumentMedia`
     };
 
-    module DocumentPrint {
+    namespace DocumentPrint {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3018,7 +3018,7 @@ export namespace EvinceDocument {
         new (): DocumentPrint; // This allows `obj instanceof DocumentPrint`
     };
 
-    module DocumentSecurity {
+    namespace DocumentSecurity {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3044,7 +3044,7 @@ export namespace EvinceDocument {
         new (): DocumentSecurity; // This allows `obj instanceof DocumentSecurity`
     };
 
-    module DocumentText {
+    namespace DocumentText {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3083,7 +3083,7 @@ export namespace EvinceDocument {
         new (): DocumentText; // This allows `obj instanceof DocumentText`
     };
 
-    module DocumentTransition {
+    namespace DocumentTransition {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3109,7 +3109,7 @@ export namespace EvinceDocument {
         new (): DocumentTransition; // This allows `obj instanceof DocumentTransition`
     };
 
-    module FileExporter {
+    namespace FileExporter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3143,7 +3143,7 @@ export namespace EvinceDocument {
         new (): FileExporter; // This allows `obj instanceof FileExporter`
     };
 
-    module Selection {
+    namespace Selection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -518,7 +518,7 @@ export namespace Libxfce4util {
     interface PosixSignalHandler {
         (signal: number): void;
     }
-    module Kiosk {
+    namespace Kiosk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -63,7 +63,7 @@ export namespace Passim {
      * @returns version string
      */
     function version_string(): string;
-    module Client {
+    namespace Client {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -139,7 +139,7 @@ export namespace Passim {
         unpublish(hash: string): boolean;
     }
 
-    module Item {
+    namespace Item {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

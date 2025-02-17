@@ -30,7 +30,7 @@ export namespace Spelling {
      */
 
     function init(): void;
-    module Checker {
+    namespace Checker {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -107,7 +107,7 @@ export namespace Spelling {
         set_language(language: string): void;
     }
 
-    module Language {
+    namespace Language {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -144,7 +144,7 @@ export namespace Spelling {
         list_corrections(word: string, word_len: number): string[] | null;
     }
 
-    module LanguageInfo {
+    namespace LanguageInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -176,7 +176,7 @@ export namespace Spelling {
         get_name(): string;
     }
 
-    module Provider {
+    namespace Provider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -230,7 +230,7 @@ export namespace Spelling {
         supports_language(language: string): boolean;
     }
 
-    module TextBufferAdapter {
+    namespace TextBufferAdapter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {

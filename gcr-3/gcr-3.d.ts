@@ -1043,7 +1043,7 @@ export namespace Gcr {
         HIDDEN,
         SORTABLE,
     }
-    module CertificateChain {
+    namespace CertificateChain {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1332,7 +1332,7 @@ export namespace Gcr {
         get_status(): CertificateChainStatus;
     }
 
-    module CertificateRequest {
+    namespace CertificateRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1481,7 +1481,7 @@ export namespace Gcr {
         set_cn(cn: string): void;
     }
 
-    module FilterCollection {
+    namespace FilterCollection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Collection.ConstructorProps {
@@ -1985,7 +1985,7 @@ export namespace Gcr {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Parser {
+    namespace Parser {
         // Signal callback interfaces
 
         interface Authenticate {
@@ -2238,7 +2238,7 @@ export namespace Gcr {
         set_filename(filename?: string | null): void;
     }
 
-    module Pkcs11Certificate {
+    namespace Pkcs11Certificate {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2959,7 +2959,7 @@ export namespace Gcr {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SecretExchange {
+    namespace SecretExchange {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3072,7 +3072,7 @@ export namespace Gcr {
         send(secret: string | null, secret_len: number): string;
     }
 
-    module SimpleCertificate {
+    namespace SimpleCertificate {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3728,7 +3728,7 @@ export namespace Gcr {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SimpleCollection {
+    namespace SimpleCollection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Collection.ConstructorProps {}
@@ -4211,7 +4211,7 @@ export namespace Gcr {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SshAskpass {
+    namespace SshAskpass {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4259,7 +4259,7 @@ export namespace Gcr {
         get_interaction(): Gio.TlsInteraction;
     }
 
-    module SystemPrompt {
+    namespace SystemPrompt {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5695,7 +5695,7 @@ export namespace Gcr {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SystemPrompter {
+    namespace SystemPrompter {
         // Signal callback interfaces
 
         interface NewPrompt {
@@ -5803,7 +5803,7 @@ export namespace Gcr {
         unregister(wait: boolean): void;
     }
 
-    module UnionCollection {
+    namespace UnionCollection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Collection.ConstructorProps {}
@@ -6486,7 +6486,7 @@ export namespace Gcr {
         _init(...args: any[]): void;
     }
 
-    module Certificate {
+    namespace Certificate {
         // Constructor properties interface
 
         interface ConstructorProps extends Comparable.ConstructorProps {
@@ -6742,7 +6742,7 @@ export namespace Gcr {
         new (): Certificate; // This allows `obj instanceof Certificate`
     };
 
-    module Collection {
+    namespace Collection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6807,7 +6807,7 @@ export namespace Gcr {
         new (): Collection; // This allows `obj instanceof Collection`
     };
 
-    module Comparable {
+    namespace Comparable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6842,7 +6842,7 @@ export namespace Gcr {
         new (): Comparable; // This allows `obj instanceof Comparable`
     };
 
-    module ImportInteraction {
+    namespace ImportInteraction {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.TlsInteraction.ConstructorProps {}
@@ -6981,7 +6981,7 @@ export namespace Gcr {
         new (): ImportInteraction; // This allows `obj instanceof ImportInteraction`
     };
 
-    module Importer {
+    namespace Importer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7139,7 +7139,7 @@ export namespace Gcr {
         new (): Importer; // This allows `obj instanceof Importer`
     };
 
-    module Prompt {
+    namespace Prompt {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

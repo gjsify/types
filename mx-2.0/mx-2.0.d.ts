@@ -483,7 +483,7 @@ export namespace Mx {
          */
         INVALIDATE_CACHE,
     }
-    module Action {
+    namespace Action {
         // Signal callback interfaces
 
         interface Activate {
@@ -1227,7 +1227,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ActorManager {
+    namespace ActorManager {
         // Signal callback interfaces
 
         interface ActorAdded {
@@ -1436,7 +1436,7 @@ export namespace Mx {
         set_time_slice(msecs: number): void;
     }
 
-    module Adjustment {
+    namespace Adjustment {
         // Signal callback interfaces
 
         interface Changed {
@@ -1663,7 +1663,7 @@ export namespace Mx {
         ): void;
     }
 
-    module Application {
+    namespace Application {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2648,7 +2648,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Bin {
+    namespace Bin {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3372,7 +3372,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BoxLayout {
+    namespace BoxLayout {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4143,7 +4143,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BoxLayoutChild {
+    namespace BoxLayoutChild {
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.ChildMeta.ConstructorProps {
@@ -4194,7 +4194,7 @@ export namespace Mx {
         _init(...args: any[]): void;
     }
 
-    module Button {
+    namespace Button {
         // Signal callback interfaces
 
         interface Clicked {
@@ -4976,7 +4976,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ButtonGroup {
+    namespace ButtonGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -5058,7 +5058,7 @@ export namespace Mx {
         set_allow_no_active(allow_no_active: boolean): void;
     }
 
-    module Clipboard {
+    namespace Clipboard {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5099,7 +5099,7 @@ export namespace Mx {
         set_text(text: string): void;
     }
 
-    module ComboBox {
+    namespace ComboBox {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5793,7 +5793,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Dialog {
+    namespace Dialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6433,7 +6433,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Entry {
+    namespace Entry {
         // Signal callback interfaces
 
         interface PrimaryIconClicked {
@@ -7177,7 +7177,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Expander {
+    namespace Expander {
         // Signal callback interfaces
 
         interface ExpandComplete {
@@ -7810,7 +7810,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FadeEffect {
+    namespace FadeEffect {
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.OffscreenEffect.ConstructorProps {
@@ -7935,7 +7935,7 @@ export namespace Mx {
         set_color(color: Clutter.Color): void;
     }
 
-    module FloatingWidget {
+    namespace FloatingWidget {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8518,7 +8518,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FocusManager {
+    namespace FocusManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8591,7 +8591,7 @@ export namespace Mx {
         push_focus_with_hint(focusable: Focusable, hint: FocusHint | null): void;
     }
 
-    module Frame {
+    namespace Frame {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9176,7 +9176,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Grid {
+    namespace Grid {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9890,7 +9890,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Icon {
+    namespace Icon {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10498,7 +10498,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module IconTheme {
+    namespace IconTheme {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10583,7 +10583,7 @@ export namespace Mx {
         set_theme_name(theme_name: string): void;
     }
 
-    module Image {
+    namespace Image {
         // Signal callback interfaces
 
         interface ImageLoadError {
@@ -11411,7 +11411,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ItemView {
+    namespace ItemView {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11966,7 +11966,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module KineticScrollView {
+    namespace KineticScrollView {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12811,7 +12811,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Label {
+    namespace Label {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13554,7 +13554,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ListView {
+    namespace ListView {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14109,7 +14109,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Menu {
+    namespace Menu {
         // Signal callback interfaces
 
         interface ActionActivated {
@@ -14613,7 +14613,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Notebook {
+    namespace Notebook {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15250,7 +15250,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Pager {
+    namespace Pager {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15765,7 +15765,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PathBar {
+    namespace PathBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16440,7 +16440,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ProgressBar {
+    namespace ProgressBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17045,7 +17045,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScrollBar {
+    namespace ScrollBar {
         // Signal callback interfaces
 
         interface ScrollStart {
@@ -17681,7 +17681,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScrollView {
+    namespace ScrollView {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18303,7 +18303,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Settings {
+    namespace Settings {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -18366,7 +18366,7 @@ export namespace Mx {
         static get_default(): Settings;
     }
 
-    module Slider {
+    namespace Slider {
         // Signal callback interfaces
 
         interface SlideStart {
@@ -19034,7 +19034,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Spinner {
+    namespace Spinner {
         // Signal callback interfaces
 
         interface Looped {
@@ -19659,7 +19659,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Stack {
+    namespace Stack {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20344,7 +20344,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StackChild {
+    namespace StackChild {
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.ChildMeta.ConstructorProps {
@@ -20398,7 +20398,7 @@ export namespace Mx {
         _init(...args: any[]): void;
     }
 
-    module Style {
+    namespace Style {
         // Signal callback interfaces
 
         interface Changed {
@@ -20474,7 +20474,7 @@ export namespace Mx {
         load_from_resource(path: string): boolean;
     }
 
-    module Table {
+    namespace Table {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21285,7 +21285,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TableChild {
+    namespace TableChild {
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.ChildMeta.ConstructorProps {
@@ -21363,7 +21363,7 @@ export namespace Mx {
         _init(...args: any[]): void;
     }
 
-    module TextureCache {
+    namespace TextureCache {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -21487,7 +21487,7 @@ export namespace Mx {
         load_cache(filename: string): void;
     }
 
-    module TextureFrame {
+    namespace TextureFrame {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22442,7 +22442,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Toggle {
+    namespace Toggle {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23064,7 +23064,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Toolbar {
+    namespace Toolbar {
         // Signal callback interfaces
 
         interface CloseButtonClicked {
@@ -23716,7 +23716,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Tooltip {
+    namespace Tooltip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -24208,7 +24208,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Viewport {
+    namespace Viewport {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -24731,7 +24731,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Widget {
+    namespace Widget {
         // Signal callback interfaces
 
         interface LongPress {
@@ -25905,7 +25905,7 @@ export namespace Mx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Window {
+    namespace Window {
         // Signal callback interfaces
 
         interface Destroy {
@@ -26698,7 +26698,7 @@ export namespace Mx {
         _init(...args: any[]): void;
     }
 
-    module Draggable {
+    namespace Draggable {
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.Actor.ConstructorProps {
@@ -26763,7 +26763,7 @@ export namespace Mx {
         new (): Draggable; // This allows `obj instanceof Draggable`
     };
 
-    module Droppable {
+    namespace Droppable {
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.Actor.ConstructorProps {
@@ -26811,7 +26811,7 @@ export namespace Mx {
         new (): Droppable; // This allows `obj instanceof Droppable`
     };
 
-    module Focusable {
+    namespace Focusable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -26857,7 +26857,7 @@ export namespace Mx {
         new (): Focusable; // This allows `obj instanceof Focusable`
     };
 
-    module ItemFactory {
+    namespace ItemFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -26888,7 +26888,7 @@ export namespace Mx {
         new (): ItemFactory; // This allows `obj instanceof ItemFactory`
     };
 
-    module Scrollable {
+    namespace Scrollable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -26938,7 +26938,7 @@ export namespace Mx {
         new (): Scrollable; // This allows `obj instanceof Scrollable`
     };
 
-    module Stylable {
+    namespace Stylable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

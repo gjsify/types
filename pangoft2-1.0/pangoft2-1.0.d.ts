@@ -139,7 +139,7 @@ export namespace PangoFT2 {
     interface SubstituteFunc {
         (pattern: fontconfig.Pattern, data?: any | null): void;
     }
-    module FontMap {
+    namespace FontMap {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>

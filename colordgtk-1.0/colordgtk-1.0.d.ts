@@ -49,7 +49,7 @@ export namespace ColordGtk {
     const GTK_MAJOR_VERSION: number;
     const GTK_MICRO_VERSION: number;
     const GTK_MINOR_VERSION: number;
-    module SampleWidget {
+    namespace SampleWidget {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -487,7 +487,7 @@ export namespace ColordGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SampleWindow {
+    namespace SampleWindow {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -923,7 +923,7 @@ export namespace ColordGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Window {
+    namespace Window {
         // Signal callback interfaces
 
         interface Changed {

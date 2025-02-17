@@ -441,7 +441,7 @@ export namespace Retro {
      * @returns a #RetroVideoFilter
      */
     function video_filter_from_string(filter: string): VideoFilter;
-    module ControllerIterator {
+    namespace ControllerIterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -465,7 +465,7 @@ export namespace Retro {
         next(): [boolean, number, Controller | null];
     }
 
-    module Core {
+    namespace Core {
         // Signal callback interfaces
 
         interface Crashed {
@@ -876,7 +876,7 @@ export namespace Retro {
         stop(): void;
     }
 
-    module CoreDescriptor {
+    namespace CoreDescriptor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1009,7 +1009,7 @@ export namespace Retro {
         has_platform(platform: string): boolean;
     }
 
-    module CoreView {
+    namespace CoreView {
         // Signal callback interfaces
 
         interface ControllerStateChanged {
@@ -1837,7 +1837,7 @@ export namespace Retro {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module KeyJoypadMapping {
+    namespace KeyJoypadMapping {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1872,7 +1872,7 @@ export namespace Retro {
         set_button_key(button: JoypadId | null, hardware_keycode: number): void;
     }
 
-    module ModuleIterator {
+    namespace ModuleIterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1904,7 +1904,7 @@ export namespace Retro {
         next(): boolean;
     }
 
-    module ModuleQuery {
+    namespace ModuleQuery {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1930,7 +1930,7 @@ export namespace Retro {
         iterator(): ModuleIterator;
     }
 
-    module Option {
+    namespace Option {
         // Signal callback interfaces
 
         interface ValueChanged {
@@ -1990,7 +1990,7 @@ export namespace Retro {
         set_value(value: string): void;
     }
 
-    module OptionIterator {
+    namespace OptionIterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2125,7 +2125,7 @@ export namespace Retro {
         get_pointer(): [boolean, PointerId];
     }
 
-    module Controller {
+    namespace Controller {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

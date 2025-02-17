@@ -29,7 +29,7 @@ export namespace PeasGtk {
      * PeasGtk-1.0
      */
 
-    module PluginManager {
+    namespace PluginManager {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -503,7 +503,7 @@ export namespace PeasGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PluginManagerView {
+    namespace PluginManagerView {
         // Signal callback interfaces
 
         interface PopulatePopup {
@@ -1112,7 +1112,7 @@ export namespace PeasGtk {
         _init(...args: any[]): void;
     }
 
-    module Configurable {
+    namespace Configurable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

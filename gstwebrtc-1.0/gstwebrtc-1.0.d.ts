@@ -612,7 +612,7 @@ export namespace GstWebRTC {
     interface WebRTCICEOnCandidateFunc {
         (ice: WebRTCICE, stream_id: number, candidate: string): void;
     }
-    module WebRTCDTLSTransport {
+    namespace WebRTCDTLSTransport {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -650,7 +650,7 @@ export namespace GstWebRTC {
         _init(...args: any[]): void;
     }
 
-    module WebRTCDataChannel {
+    namespace WebRTCDataChannel {
         // Signal callback interfaces
 
         interface Close {
@@ -804,7 +804,7 @@ export namespace GstWebRTC {
         send_string_full(str?: string | null): boolean;
     }
 
-    module WebRTCICE {
+    namespace WebRTCICE {
         // Signal callback interfaces
 
         interface AddLocalIpAddress {
@@ -931,7 +931,7 @@ export namespace GstWebRTC {
         set_turn_server(uri?: string | null): void;
     }
 
-    module WebRTCICEStream {
+    namespace WebRTCICEStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -965,7 +965,7 @@ export namespace GstWebRTC {
         gather_candidates(): boolean;
     }
 
-    module WebRTCICETransport {
+    namespace WebRTCICETransport {
         // Signal callback interfaces
 
         interface OnNewCandidate {
@@ -1032,7 +1032,7 @@ export namespace GstWebRTC {
         selected_pair_change(): void;
     }
 
-    module WebRTCRTPReceiver {
+    namespace WebRTCRTPReceiver {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -1062,7 +1062,7 @@ export namespace GstWebRTC {
         _init(...args: any[]): void;
     }
 
-    module WebRTCRTPSender {
+    namespace WebRTCRTPSender {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -1108,7 +1108,7 @@ export namespace GstWebRTC {
         set_priority(priority: WebRTCPriorityType | null): void;
     }
 
-    module WebRTCRTPTransceiver {
+    namespace WebRTCRTPTransceiver {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -1186,7 +1186,7 @@ export namespace GstWebRTC {
         _init(...args: any[]): void;
     }
 
-    module WebRTCSCTPTransport {
+    namespace WebRTCSCTPTransport {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {

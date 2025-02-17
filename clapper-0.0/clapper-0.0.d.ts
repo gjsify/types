@@ -261,7 +261,7 @@ export namespace Clapper {
      * @returns %TRUE if Clapper could be initialized, %FALSE otherwise.
      */
     function init_check(argv?: string[] | null): [boolean, string[] | null];
-    module AudioStream {
+    namespace AudioStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {
@@ -380,7 +380,7 @@ export namespace Clapper {
         get_sample_rate(): number;
     }
 
-    module Discoverer {
+    namespace Discoverer {
         // Constructor properties interface
 
         interface ConstructorProps extends Feature.ConstructorProps {
@@ -446,7 +446,7 @@ export namespace Clapper {
         set_discovery_mode(mode: DiscovererDiscoveryMode | null): void;
     }
 
-    module Feature {
+    namespace Feature {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -565,7 +565,7 @@ export namespace Clapper {
         vfunc_volume_changed(volume: number): void;
     }
 
-    module Harvest {
+    namespace Harvest {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -645,7 +645,7 @@ export namespace Clapper {
         toc_add(type: Gst.TocEntryType | null, title: string, start: number, end: number): void;
     }
 
-    module Marker {
+    namespace Marker {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -753,7 +753,7 @@ export namespace Clapper {
         get_title(): string | null;
     }
 
-    module MediaItem {
+    namespace MediaItem {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -885,7 +885,7 @@ export namespace Clapper {
         set_suburi(suburi: string): void;
     }
 
-    module Mpris {
+    namespace Mpris {
         // Constructor properties interface
 
         interface ConstructorProps extends Feature.ConstructorProps {
@@ -1004,7 +1004,7 @@ export namespace Clapper {
         set_queue_controllable(controllable: boolean): void;
     }
 
-    module Player {
+    namespace Player {
         // Signal callback interfaces
 
         interface DownloadComplete {
@@ -1804,7 +1804,7 @@ export namespace Clapper {
         stop(): void;
     }
 
-    module Queue {
+    namespace Queue {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -2545,7 +2545,7 @@ export namespace Clapper {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Stream {
+    namespace Stream {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -2609,7 +2609,7 @@ export namespace Clapper {
         get_title(): string | null;
     }
 
-    module StreamList {
+    namespace StreamList {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -3206,7 +3206,7 @@ export namespace Clapper {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SubtitleStream {
+    namespace SubtitleStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {
@@ -3265,7 +3265,7 @@ export namespace Clapper {
         get_lang_name(): string | null;
     }
 
-    module ThreadedObject {
+    namespace ThreadedObject {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -3310,7 +3310,7 @@ export namespace Clapper {
         get_context(): GLib.MainContext;
     }
 
-    module Timeline {
+    namespace Timeline {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -3877,7 +3877,7 @@ export namespace Clapper {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module VideoStream {
+    namespace VideoStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {
@@ -3984,7 +3984,7 @@ export namespace Clapper {
     type ThreadedObjectClass = typeof ThreadedObject;
     type TimelineClass = typeof Timeline;
     type VideoStreamClass = typeof VideoStream;
-    module Extractable {
+    namespace Extractable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -24,7 +24,7 @@ export namespace RygelRenderer {
      * RygelRenderer-2.8
      */
 
-    module MediaRendererPlugin {
+    namespace MediaRendererPlugin {
         // Constructor properties interface
 
         interface ConstructorProps extends RygelCore.Plugin.ConstructorProps {
@@ -73,7 +73,7 @@ export namespace RygelRenderer {
         set_supported_profiles(value: RygelCore.DLNAProfile[]): void;
     }
 
-    module MediaRenderer {
+    namespace MediaRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends RygelCore.MediaDevice.ConstructorProps {
@@ -117,7 +117,7 @@ export namespace RygelRenderer {
 
     type MediaPlayerIface = typeof MediaPlayer;
     type PlayerControllerIface = typeof PlayerController;
-    module MediaPlayer {
+    namespace MediaPlayer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -262,7 +262,7 @@ export namespace RygelRenderer {
         new (): MediaPlayer; // This allows `obj instanceof MediaPlayer`
     };
 
-    module PlayerController {
+    namespace PlayerController {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

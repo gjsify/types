@@ -74,7 +74,7 @@ export namespace Qrtr {
      * @returns a string with the URI, or %NULL if none given. The returned value  should be freed with g_free().
      */
     function get_uri_for_node(node_id: number): string;
-    module Bus {
+    namespace Bus {
         // Signal callback interfaces
 
         interface NodeAdded {
@@ -837,7 +837,7 @@ export namespace Qrtr {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface ClientMessage {
@@ -1399,7 +1399,7 @@ export namespace Qrtr {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Node {
+    namespace Node {
         // Signal callback interfaces
 
         interface NodeRemoved {

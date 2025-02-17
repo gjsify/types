@@ -29,7 +29,7 @@ export namespace BudgieRaven {
      * BudgieRaven-1.0
      */
 
-    module RavenWidget {
+    namespace RavenWidget {
         // Signal callback interfaces
 
         interface RavenExpanded {
@@ -494,7 +494,7 @@ export namespace BudgieRaven {
         _init(...args: any[]): void;
     }
 
-    module RavenPlugin {
+    namespace RavenPlugin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

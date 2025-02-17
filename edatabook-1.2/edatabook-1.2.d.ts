@@ -415,7 +415,7 @@ export namespace EDataBook {
          */
         FETCH,
     }
-    module BookBackend {
+    namespace BookBackend {
         // Signal callback interfaces
 
         interface Closed {
@@ -1536,7 +1536,7 @@ export namespace EDataBook {
         take_view_user_data(view_id: number, user_data?: GObject.Object | null): void;
     }
 
-    module BookBackendFactory {
+    namespace BookBackendFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends EBackend.BackendFactory.ConstructorProps {}
@@ -1556,7 +1556,7 @@ export namespace EDataBook {
         _init(...args: any[]): void;
     }
 
-    module BookBackendSExp {
+    namespace BookBackendSExp {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1618,7 +1618,7 @@ export namespace EDataBook {
         unlock(): void;
     }
 
-    module BookBackendSync {
+    namespace BookBackendSync {
         // Constructor properties interface
 
         interface ConstructorProps extends BookBackend.ConstructorProps {}
@@ -1782,7 +1782,7 @@ export namespace EDataBook {
         remove_contacts(...args: never[]): any;
     }
 
-    module BookCache {
+    namespace BookCache {
         // Signal callback interfaces
 
         interface CategoriesChanged {
@@ -2705,7 +2705,7 @@ export namespace EDataBook {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BookMetaBackend {
+    namespace BookMetaBackend {
         // Signal callback interfaces
 
         interface RefreshCompleted {
@@ -3370,7 +3370,7 @@ export namespace EDataBook {
         store_inline_photos_sync(contact: EBookContacts.Contact, cancellable?: Gio.Cancellable | null): boolean;
     }
 
-    module BookSqlite {
+    namespace BookSqlite {
         // Signal callback interfaces
 
         interface BeforeInsertContact {
@@ -4244,7 +4244,7 @@ export namespace EDataBook {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataBook {
+    namespace DataBook {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -4875,7 +4875,7 @@ export namespace EDataBook {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataBookCursor {
+    namespace DataBookCursor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5073,7 +5073,7 @@ export namespace EDataBook {
         ): [number, string[] | null];
     }
 
-    module DataBookCursorCache {
+    namespace DataBookCursorCache {
         // Constructor properties interface
 
         interface ConstructorProps extends DataBookCursor.ConstructorProps {
@@ -5109,7 +5109,7 @@ export namespace EDataBook {
         ): DataBookCursorCache;
     }
 
-    module DataBookCursorSqlite {
+    namespace DataBookCursorSqlite {
         // Constructor properties interface
 
         interface ConstructorProps extends DataBookCursor.ConstructorProps {
@@ -5148,7 +5148,7 @@ export namespace EDataBook {
         ): DataBookCursorSqlite;
     }
 
-    module DataBookDirect {
+    namespace DataBookDirect {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5175,7 +5175,7 @@ export namespace EDataBook {
         register_gdbus_object(connection: Gio.DBusConnection, object_path: string): boolean;
     }
 
-    module DataBookFactory {
+    namespace DataBookFactory {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5683,7 +5683,7 @@ export namespace EDataBook {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataBookView {
+    namespace DataBookView {
         // Signal callback interfaces
 
         interface ObjectsAdded {
@@ -6438,7 +6438,7 @@ export namespace EDataBook {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataBookViewWatcherCache {
+    namespace DataBookViewWatcherCache {
         // Constructor properties interface
 
         interface ConstructorProps extends EBookContacts.BookIndicesUpdater.ConstructorProps {}
@@ -6480,7 +6480,7 @@ export namespace EDataBook {
         take_sort_fields(sort_fields?: EBookContacts.BookClientViewSortFields | null): void;
     }
 
-    module DataBookViewWatcherMemory {
+    namespace DataBookViewWatcherMemory {
         // Constructor properties interface
 
         interface ConstructorProps extends EBookContacts.BookIndicesUpdater.ConstructorProps {}
@@ -6528,7 +6528,7 @@ export namespace EDataBook {
         take_sort_fields(sort_fields?: EBookContacts.BookClientViewSortFields | null): void;
     }
 
-    module DataBookViewWatcherSqlite {
+    namespace DataBookViewWatcherSqlite {
         // Constructor properties interface
 
         interface ConstructorProps extends EBookContacts.BookIndicesUpdater.ConstructorProps {}
@@ -6570,7 +6570,7 @@ export namespace EDataBook {
         take_sort_fields(sort_fields?: EBookContacts.BookClientViewSortFields | null): void;
     }
 
-    module SubprocessBookFactory {
+    namespace SubprocessBookFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends EBackend.SubprocessFactory.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -7075,7 +7075,7 @@ export namespace EDataBook {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SystemLocaleWatcher {
+    namespace SystemLocaleWatcher {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

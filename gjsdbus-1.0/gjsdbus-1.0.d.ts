@@ -17,7 +17,7 @@ export namespace GjsDBus {
      * GjsDBus-1.0
      */
 
-    module Implementation {
+    namespace Implementation {
         // Signal callback interfaces
 
         interface HandleMethodCall {

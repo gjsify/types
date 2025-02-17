@@ -1,6 +1,6 @@
 {
     "name": "@girs/gucharmap-2.90",
-    "version": "15.1.5-4.0.0-beta.19",
+    "version": "15.1.5-4.0.0-beta.20",
     "description": "GJS TypeScript type definitions for Gucharmap-2.90, generated from library version 15.1.5",
     "type": "module",
     "module": "gucharmap-2.90.js",

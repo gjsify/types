@@ -219,7 +219,7 @@ export namespace GnomeBluetooth {
          */
         SPEAKERS,
     }
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface DeviceAdded {
@@ -424,7 +424,7 @@ export namespace GnomeBluetooth {
         has_connected_input_devices(): boolean;
     }
 
-    module Device {
+    namespace Device {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

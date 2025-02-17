@@ -824,7 +824,7 @@ export namespace Snapd {
          */
         PURGE,
     }
-    module Alias {
+    namespace Alias {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -905,7 +905,7 @@ export namespace Snapd {
         get_status(): AliasStatus;
     }
 
-    module App {
+    namespace App {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -995,7 +995,7 @@ export namespace Snapd {
         get_snap(): string;
     }
 
-    module Assertion {
+    namespace Assertion {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1049,7 +1049,7 @@ export namespace Snapd {
         get_signature(): string;
     }
 
-    module AuthData {
+    namespace AuthData {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1095,7 +1095,7 @@ export namespace Snapd {
         get_macaroon(): string;
     }
 
-    module Change {
+    namespace Change {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1188,7 +1188,7 @@ export namespace Snapd {
         get_tasks(): Task[];
     }
 
-    module Channel {
+    namespace Channel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1295,7 +1295,7 @@ export namespace Snapd {
         get_version(): string;
     }
 
-    module Client {
+    namespace Client {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4398,7 +4398,7 @@ export namespace Snapd {
         ): boolean;
     }
 
-    module Connection {
+    namespace Connection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4515,7 +4515,7 @@ export namespace Snapd {
         has_slot_attribute(name: string): boolean;
     }
 
-    module Icon {
+    namespace Icon {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4559,7 +4559,7 @@ export namespace Snapd {
         get_mime_type(): string;
     }
 
-    module Interface {
+    namespace Interface {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4627,7 +4627,7 @@ export namespace Snapd {
         make_label(): string;
     }
 
-    module Maintenance {
+    namespace Maintenance {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4667,7 +4667,7 @@ export namespace Snapd {
         get_message(): string;
     }
 
-    module MarkdownNode {
+    namespace MarkdownNode {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4718,7 +4718,7 @@ export namespace Snapd {
         get_text(): string;
     }
 
-    module MarkdownParser {
+    namespace MarkdownParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4762,7 +4762,7 @@ export namespace Snapd {
         set_preserve_whitespace(preserve_whitespace: boolean): void;
     }
 
-    module Media {
+    namespace Media {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4816,7 +4816,7 @@ export namespace Snapd {
         get_width(): number;
     }
 
-    module Plug {
+    namespace Plug {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4901,7 +4901,7 @@ export namespace Snapd {
         has_attribute(name: string): boolean;
     }
 
-    module PlugRef {
+    namespace PlugRef {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4941,7 +4941,7 @@ export namespace Snapd {
         get_snap(): string;
     }
 
-    module Price {
+    namespace Price {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4981,7 +4981,7 @@ export namespace Snapd {
         get_currency(): string;
     }
 
-    module Screenshot {
+    namespace Screenshot {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5028,7 +5028,7 @@ export namespace Snapd {
         get_width(): number;
     }
 
-    module Slot {
+    namespace Slot {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5113,7 +5113,7 @@ export namespace Snapd {
         has_attribute(name: string): boolean;
     }
 
-    module SlotRef {
+    namespace SlotRef {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5153,7 +5153,7 @@ export namespace Snapd {
         get_snap(): string;
     }
 
-    module Snap {
+    namespace Snap {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5481,7 +5481,7 @@ export namespace Snapd {
         match_channel(name: string): Channel | null;
     }
 
-    module SystemInformation {
+    namespace SystemInformation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5661,7 +5661,7 @@ export namespace Snapd {
         get_version(): string;
     }
 
-    module Task {
+    namespace Task {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5767,7 +5767,7 @@ export namespace Snapd {
         get_summary(): string;
     }
 
-    module UserInformation {
+    namespace UserInformation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

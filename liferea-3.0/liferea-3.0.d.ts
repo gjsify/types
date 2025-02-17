@@ -258,7 +258,7 @@ export namespace Liferea {
         LIST,
         LOGIN,
     }
-    module Application {
+    namespace Application {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -687,7 +687,7 @@ export namespace Liferea {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Browser {
+    namespace Browser {
         // Signal callback interfaces
 
         interface LocationChanged {
@@ -802,7 +802,7 @@ export namespace Liferea {
         update_stylesheet(): void;
     }
 
-    module BrowserTabs {
+    namespace BrowserTabs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -848,7 +848,7 @@ export namespace Liferea {
         static show_headlines(): void;
     }
 
-    module FeedList {
+    namespace FeedList {
         // Signal callback interfaces
 
         interface ItemsUpdated {
@@ -919,7 +919,7 @@ export namespace Liferea {
         static reset_new_item_count(): void;
     }
 
-    module Item {
+    namespace Item {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -968,7 +968,7 @@ export namespace Liferea {
         get_title(): string;
     }
 
-    module ItemList {
+    namespace ItemList {
         // Signal callback interfaces
 
         interface ItemUpdated {
@@ -1012,7 +1012,7 @@ export namespace Liferea {
         static update_item(item: itemPtr): void;
     }
 
-    module ItemListView {
+    namespace ItemListView {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1059,7 +1059,7 @@ export namespace Liferea {
         set_sort_column(sortType: nodeViewSortType | null, sortReversed: boolean): void;
     }
 
-    module ItemView {
+    namespace ItemView {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1150,7 +1150,7 @@ export namespace Liferea {
         open_next_enclosure(): void;
     }
 
-    module NetworkMonitor {
+    namespace NetworkMonitor {
         // Signal callback interfaces
 
         interface OnlineStatusChanged {
@@ -1204,7 +1204,7 @@ export namespace Liferea {
         static set_online(mode: boolean): void;
     }
 
-    module Shell {
+    namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1567,7 +1567,7 @@ export namespace Liferea {
         _init(...args: any[]): void;
     }
 
-    module AuthActivatable {
+    namespace AuthActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1637,7 +1637,7 @@ export namespace Liferea {
         new (): AuthActivatable; // This allows `obj instanceof AuthActivatable`
     };
 
-    module NodeSourceActivatable {
+    namespace NodeSourceActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1663,7 +1663,7 @@ export namespace Liferea {
         new (): NodeSourceActivatable; // This allows `obj instanceof NodeSourceActivatable`
     };
 
-    module ShellActivatable {
+    namespace ShellActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

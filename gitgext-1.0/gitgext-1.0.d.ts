@@ -57,7 +57,7 @@ export namespace GitgExt {
         REFS,
         INDEX,
     }
-    module CommandLines {
+    namespace CommandLines {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -81,7 +81,7 @@ export namespace GitgExt {
         apply(application: Application): void;
     }
 
-    module MessageBus {
+    namespace MessageBus {
         // Signal callback interfaces
 
         interface Registered {
@@ -146,7 +146,7 @@ export namespace GitgExt {
         send_message(message: Message): Message;
     }
 
-    module MessageId {
+    namespace MessageId {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -194,7 +194,7 @@ export namespace GitgExt {
         get_id(): string;
     }
 
-    module Message {
+    namespace Message {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -242,7 +242,7 @@ export namespace GitgExt {
         static ['new'](): UI;
     }
 
-    module UserQueryResponse {
+    namespace UserQueryResponse {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -265,7 +265,7 @@ export namespace GitgExt {
         static ['new'](text: string, response_type: Gtk.ResponseType): UserQueryResponse;
     }
 
-    module UserQuery {
+    namespace UserQuery {
         // Signal callback interfaces
 
         interface Quit {
@@ -438,7 +438,7 @@ export namespace GitgExt {
     type SearchableIface = typeof Searchable;
     type SelectableIface = typeof Selectable;
     type UIElementIface = typeof UIElement;
-    module Action {
+    namespace Action {
         // Constructor properties interface
 
         interface ConstructorProps extends UIElement.ConstructorProps {}
@@ -468,7 +468,7 @@ export namespace GitgExt {
         new (): Action; // This allows `obj instanceof Action`
     };
 
-    module Activity {
+    namespace Activity {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -494,7 +494,7 @@ export namespace GitgExt {
         new (): Activity; // This allows `obj instanceof Activity`
     };
 
-    module Application {
+    namespace Application {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -583,7 +583,7 @@ export namespace GitgExt {
         new (): Application; // This allows `obj instanceof Application`
     };
 
-    module CommandLine {
+    namespace CommandLine {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -611,7 +611,7 @@ export namespace GitgExt {
         new (): CommandLine; // This allows `obj instanceof CommandLine`
     };
 
-    module CommitAction {
+    namespace CommitAction {
         // Constructor properties interface
 
         interface ConstructorProps extends Action.ConstructorProps {
@@ -654,7 +654,7 @@ export namespace GitgExt {
         new (): CommitAction; // This allows `obj instanceof CommitAction`
     };
 
-    module HistoryPanel {
+    namespace HistoryPanel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -687,7 +687,7 @@ export namespace GitgExt {
         new (): HistoryPanel; // This allows `obj instanceof HistoryPanel`
     };
 
-    module History {
+    namespace History {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -713,7 +713,7 @@ export namespace GitgExt {
         new (): History; // This allows `obj instanceof History`
     };
 
-    module Notification {
+    namespace Notification {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -743,7 +743,7 @@ export namespace GitgExt {
         new (): Notification; // This allows `obj instanceof Notification`
     };
 
-    module Notifications {
+    namespace Notifications {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -769,7 +769,7 @@ export namespace GitgExt {
         new (): Notifications; // This allows `obj instanceof Notifications`
     };
 
-    module Preferences {
+    namespace Preferences {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -809,7 +809,7 @@ export namespace GitgExt {
         new (): Preferences; // This allows `obj instanceof Preferences`
     };
 
-    module RefActionInterface {
+    namespace RefActionInterface {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -858,7 +858,7 @@ export namespace GitgExt {
         new (): RefActionInterface; // This allows `obj instanceof RefActionInterface`
     };
 
-    module RefAction {
+    namespace RefAction {
         // Constructor properties interface
 
         interface ConstructorProps extends Action.ConstructorProps {
@@ -901,7 +901,7 @@ export namespace GitgExt {
         new (): RefAction; // This allows `obj instanceof RefAction`
     };
 
-    module RemoteLookup {
+    namespace RemoteLookup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -925,7 +925,7 @@ export namespace GitgExt {
         new (): RemoteLookup; // This allows `obj instanceof RemoteLookup`
     };
 
-    module Searchable {
+    namespace Searchable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -983,7 +983,7 @@ export namespace GitgExt {
         new (): Searchable; // This allows `obj instanceof Searchable`
     };
 
-    module Selectable {
+    namespace Selectable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1037,7 +1037,7 @@ export namespace GitgExt {
         new (): Selectable; // This allows `obj instanceof Selectable`
     };
 
-    module UIElement {
+    namespace UIElement {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

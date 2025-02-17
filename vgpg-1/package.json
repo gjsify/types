@@ -1,6 +1,6 @@
 {
     "name": "@girs/vgpg-1",
-    "version": "1.0.0-4.0.0-beta.19",
+    "version": "1.0.0-4.0.0-beta.20",
     "description": "GJS TypeScript type definitions for Vgpg-1, generated from library version 1.0.0",
     "type": "module",
     "module": "vgpg-1.js",

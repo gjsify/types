@@ -222,7 +222,7 @@ export namespace Vte {
          */
         DEFAULT,
     }
-    module Pty {
+    namespace Pty {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -794,7 +794,7 @@ export namespace Vte {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Terminal {
+    namespace Terminal {
         // Signal callback interfaces
 
         interface Beep {

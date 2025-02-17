@@ -59,7 +59,7 @@ export namespace GnomeMaps {
     interface ContactStoreLookupCallback {
         (contact: Contact): void;
     }
-    module Contact {
+    namespace Contact {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -115,7 +115,7 @@ export namespace GnomeMaps {
         get_places(): GeocodeGlib.Place[];
     }
 
-    module ContactStore {
+    namespace ContactStore {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -151,7 +151,7 @@ export namespace GnomeMaps {
         lookup(id: string, callback: ContactStoreLookupCallback): void;
     }
 
-    module FileTileSource {
+    namespace FileTileSource {
         // Constructor properties interface
 
         interface ConstructorProps extends Champlain.TileSource.ConstructorProps {
@@ -212,7 +212,7 @@ export namespace GnomeMaps {
         prepare(): boolean;
     }
 
-    module OSMChangeset {
+    namespace OSMChangeset {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -250,7 +250,7 @@ export namespace GnomeMaps {
         serialize(): string;
     }
 
-    module OSMNode {
+    namespace OSMNode {
         // Constructor properties interface
 
         interface ConstructorProps extends OSMObject.ConstructorProps {
@@ -284,7 +284,7 @@ export namespace GnomeMaps {
         static ['new'](id: number, version: number, changeset: number, longitude: number, latitude: number): OSMNode;
     }
 
-    module OSMOAuthProxyCall {
+    namespace OSMOAuthProxyCall {
         // Constructor properties interface
 
         interface ConstructorProps extends Rest.OAuthProxyCall.ConstructorProps {}
@@ -302,7 +302,7 @@ export namespace GnomeMaps {
         static ['new'](proxy: Rest.OAuthProxy, content: string): OSMOAuthProxyCall;
     }
 
-    module OSMObject {
+    namespace OSMObject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -347,7 +347,7 @@ export namespace GnomeMaps {
         set_tag(key: string, value: string): void;
     }
 
-    module OSMRelation {
+    namespace OSMRelation {
         // Constructor properties interface
 
         interface ConstructorProps extends OSMObject.ConstructorProps {}
@@ -369,7 +369,7 @@ export namespace GnomeMaps {
         add_member(role: string, type: number, ref: number): void;
     }
 
-    module OSMWay {
+    namespace OSMWay {
         // Constructor properties interface
 
         interface ConstructorProps extends OSMObject.ConstructorProps {}

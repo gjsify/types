@@ -303,7 +303,7 @@ export namespace Dee {
          */
         PREFIX,
     }
-    module Analyzer {
+    namespace Analyzer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -454,7 +454,7 @@ export namespace Dee {
         tokenize(data: string, terms_out: TermList): void;
     }
 
-    module Client {
+    namespace Client {
         // Constructor properties interface
 
         interface ConstructorProps extends Peer.ConstructorProps {
@@ -482,7 +482,7 @@ export namespace Dee {
         static new_for_address(swarm_name: string, bus_address: string): Client;
     }
 
-    module FileResourceManager {
+    namespace FileResourceManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ResourceManager.ConstructorProps {
@@ -989,7 +989,7 @@ export namespace Dee {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FilterModel {
+    namespace FilterModel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1490,7 +1490,7 @@ export namespace Dee {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GListResultSet {
+    namespace GListResultSet {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ResultSet.ConstructorProps {}
@@ -1990,7 +1990,7 @@ export namespace Dee {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HashIndex {
+    namespace HashIndex {
         // Constructor properties interface
 
         interface ConstructorProps extends Index.ConstructorProps {}
@@ -2012,7 +2012,7 @@ export namespace Dee {
         static ['new'](model: Model, analyzer: Analyzer, reader: ModelReader): HashIndex;
     }
 
-    module Index {
+    namespace Index {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2145,7 +2145,7 @@ export namespace Dee {
         lookup_one(term: string): ModelIter;
     }
 
-    module Peer {
+    namespace Peer {
         // Signal callback interfaces
 
         interface ConnectionAcquired {
@@ -2282,7 +2282,7 @@ export namespace Dee {
         list_peers(): string[];
     }
 
-    module ProxyModel {
+    namespace ProxyModel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3402,7 +3402,7 @@ export namespace Dee {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SequenceModel {
+    namespace SequenceModel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4478,7 +4478,7 @@ export namespace Dee {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SerializableModel {
+    namespace SerializableModel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5565,7 +5565,7 @@ export namespace Dee {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Server {
+    namespace Server {
         // Constructor properties interface
 
         interface ConstructorProps extends Peer.ConstructorProps {
@@ -5615,7 +5615,7 @@ export namespace Dee {
         get_client_address(): string;
     }
 
-    module SharedModel {
+    namespace SharedModel {
         // Signal callback interfaces
 
         interface BeginTransaction {
@@ -6216,7 +6216,7 @@ export namespace Dee {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TermList {
+    namespace TermList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6326,7 +6326,7 @@ export namespace Dee {
         num_terms(): number;
     }
 
-    module TextAnalyzer {
+    namespace TextAnalyzer {
         // Constructor properties interface
 
         interface ConstructorProps extends Analyzer.ConstructorProps {}
@@ -6348,7 +6348,7 @@ export namespace Dee {
         static ['new'](): TextAnalyzer;
     }
 
-    module Transaction {
+    namespace Transaction {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7455,7 +7455,7 @@ export namespace Dee {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TreeIndex {
+    namespace TreeIndex {
         // Constructor properties interface
 
         interface ConstructorProps extends Index.ConstructorProps {}
@@ -7872,7 +7872,7 @@ export namespace Dee {
         _init(...args: any[]): void;
     }
 
-    module Model {
+    namespace Model {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8516,7 +8516,7 @@ export namespace Dee {
         new (): Model; // This allows `obj instanceof Model`
     };
 
-    module ResourceManager {
+    namespace ResourceManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8601,7 +8601,7 @@ export namespace Dee {
         new (): ResourceManager; // This allows `obj instanceof ResourceManager`
     };
 
-    module ResultSet {
+    namespace ResultSet {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8705,7 +8705,7 @@ export namespace Dee {
         new (): ResultSet; // This allows `obj instanceof ResultSet`
     };
 
-    module Serializable {
+    namespace Serializable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

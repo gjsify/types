@@ -249,7 +249,7 @@ export namespace Unity {
     interface AbstractPreviewCallback {
         (previewer: ResultPreviewer, preview: AbstractPreview): void;
     }
-    module AppInfoManager {
+    namespace AppInfoManager {
         // Signal callback interfaces
 
         interface Changed {
@@ -300,7 +300,7 @@ export namespace Unity {
         clear(): void;
     }
 
-    module AnnotatedIcon {
+    namespace AnnotatedIcon {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -350,7 +350,7 @@ export namespace Unity {
         set_size_hint(value: IconSizeHint | null): void;
     }
 
-    module Inspector {
+    namespace Inspector {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -387,7 +387,7 @@ export namespace Unity {
         get_unity_bus_name(): string;
     }
 
-    module LauncherEntry {
+    namespace LauncherEntry {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Dee.Serializable.ConstructorProps {
@@ -889,7 +889,7 @@ export namespace Unity {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LauncherFavorites {
+    namespace LauncherFavorites {
         // Signal callback interfaces
 
         interface Changed {
@@ -932,7 +932,7 @@ export namespace Unity {
         enumerate_app_infos(): Gio.AppInfo[];
     }
 
-    module MetadataProvider {
+    namespace MetadataProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -948,7 +948,7 @@ export namespace Unity {
         _init(...args: any[]): void;
     }
 
-    module ProgressSourceProvider {
+    namespace ProgressSourceProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends MetadataProvider.ConstructorProps {
@@ -983,7 +983,7 @@ export namespace Unity {
         get_dbus_path(): string;
     }
 
-    module Category {
+    namespace Category {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1044,7 +1044,7 @@ export namespace Unity {
         get_renderer(): string;
     }
 
-    module Filter {
+    namespace Filter {
         // Signal callback interfaces
 
         interface Changed {
@@ -1542,7 +1542,7 @@ export namespace Unity {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FilterOption {
+    namespace FilterOption {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1585,7 +1585,7 @@ export namespace Unity {
         set_active(value: boolean): void;
     }
 
-    module OptionsFilter {
+    namespace OptionsFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {
@@ -1633,7 +1633,7 @@ export namespace Unity {
         set_show_all_button(value: boolean): void;
     }
 
-    module RadioOptionFilter {
+    namespace RadioOptionFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends OptionsFilter.ConstructorProps {}
@@ -1658,7 +1658,7 @@ export namespace Unity {
         get_active_option(): FilterOption;
     }
 
-    module CheckOptionFilter {
+    namespace CheckOptionFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends OptionsFilter.ConstructorProps {}
@@ -1679,7 +1679,7 @@ export namespace Unity {
         static ['new'](...args: never[]): any;
     }
 
-    module CheckOptionFilterCompact {
+    namespace CheckOptionFilterCompact {
         // Constructor properties interface
 
         interface ConstructorProps extends OptionsFilter.ConstructorProps {}
@@ -1705,7 +1705,7 @@ export namespace Unity {
         static ['new'](...args: never[]): any;
     }
 
-    module RatingsFilter {
+    namespace RatingsFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {
@@ -1734,7 +1734,7 @@ export namespace Unity {
         get_rating(): number;
     }
 
-    module MultiRangeFilter {
+    namespace MultiRangeFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends OptionsFilter.ConstructorProps {}
@@ -1760,7 +1760,7 @@ export namespace Unity {
         get_last_active(): FilterOption;
     }
 
-    module PreferencesManager {
+    namespace PreferencesManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1827,7 +1827,7 @@ export namespace Unity {
         set_disabled_scopes(value: string[]): void;
     }
 
-    module DeprecatedScopeSearch {
+    namespace DeprecatedScopeSearch {
         // Signal callback interfaces
 
         interface Finished {
@@ -1894,7 +1894,7 @@ export namespace Unity {
         get_owner(): DeprecatedScopeBase;
     }
 
-    module AggregatedScopeSearch {
+    namespace AggregatedScopeSearch {
         // Signal callback interfaces
 
         interface TransactionComplete {
@@ -1987,7 +1987,7 @@ export namespace Unity {
         push_filter_settings(filters: FilterSet): void;
     }
 
-    module Preview {
+    namespace Preview {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractPreview.ConstructorProps, Dee.Serializable.ConstructorProps {
@@ -2472,7 +2472,7 @@ export namespace Unity {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PreviewAction {
+    namespace PreviewAction {
         // Signal callback interfaces
 
         interface Activated {
@@ -2979,7 +2979,7 @@ export namespace Unity {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module InfoHint {
+    namespace InfoHint {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -3024,7 +3024,7 @@ export namespace Unity {
         get_data(...args: never[]): any;
     }
 
-    module GenericPreview {
+    namespace GenericPreview {
         // Constructor properties interface
 
         interface ConstructorProps extends Preview.ConstructorProps {}
@@ -3042,7 +3042,7 @@ export namespace Unity {
         static ['new'](title: string, description: string, image: Gio.Icon): GenericPreview;
     }
 
-    module ApplicationPreview {
+    namespace ApplicationPreview {
         // Constructor properties interface
 
         interface ConstructorProps extends Preview.ConstructorProps {
@@ -3100,7 +3100,7 @@ export namespace Unity {
         set_last_update(value: string): void;
     }
 
-    module MusicPreview {
+    namespace MusicPreview {
         // Constructor properties interface
 
         interface ConstructorProps extends Preview.ConstructorProps {}
@@ -3122,7 +3122,7 @@ export namespace Unity {
         add_track(track: TrackMetadata): void;
     }
 
-    module PaymentPreview {
+    namespace PaymentPreview {
         // Constructor properties interface
 
         interface ConstructorProps extends Preview.ConstructorProps {
@@ -3197,7 +3197,7 @@ export namespace Unity {
         set_preview_type(value: PaymentPreviewType | null): void;
     }
 
-    module MoviePreview {
+    namespace MoviePreview {
         // Constructor properties interface
 
         interface ConstructorProps extends Preview.ConstructorProps {
@@ -3228,7 +3228,7 @@ export namespace Unity {
         set_year(value: string): void;
     }
 
-    module SocialPreview {
+    namespace SocialPreview {
         // Constructor properties interface
 
         interface ConstructorProps extends Preview.ConstructorProps {
@@ -3269,7 +3269,7 @@ export namespace Unity {
         set_sender(value: string): void;
     }
 
-    module SocialPreviewComment {
+    namespace SocialPreviewComment {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -3306,7 +3306,7 @@ export namespace Unity {
         get_time(): string;
     }
 
-    module ActivationResponse {
+    namespace ActivationResponse {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3350,7 +3350,7 @@ export namespace Unity {
         set_goto_uri(value: string): void;
     }
 
-    module AggregatorActivation {
+    namespace AggregatorActivation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3416,7 +3416,7 @@ export namespace Unity {
         get_hints(): GLib.HashTable<string, GLib.Variant>;
     }
 
-    module FilterSet {
+    namespace FilterSet {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3446,7 +3446,7 @@ export namespace Unity {
         get_filters(): Filter[];
     }
 
-    module CategorySet {
+    namespace CategorySet {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3474,7 +3474,7 @@ export namespace Unity {
         get_categories(): Category[];
     }
 
-    module Schema {
+    namespace Schema {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3502,7 +3502,7 @@ export namespace Unity {
         get_fields(): SchemaFieldInfo[];
     }
 
-    module Cancellable {
+    namespace Cancellable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3534,7 +3534,7 @@ export namespace Unity {
         get_gcancellable(): Gio.Cancellable;
     }
 
-    module ScopeSearchBase {
+    namespace ScopeSearchBase {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3562,7 +3562,7 @@ export namespace Unity {
         set_search_context(ctx: SearchContext): void;
     }
 
-    module ResultSet {
+    namespace ResultSet {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3594,7 +3594,7 @@ export namespace Unity {
         flush(): void;
     }
 
-    module AbstractPreview {
+    namespace AbstractPreview {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3618,7 +3618,7 @@ export namespace Unity {
         serialize_as(serialization_type: SerializationType | null): Uint8Array;
     }
 
-    module ResultPreviewer {
+    namespace ResultPreviewer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3651,7 +3651,7 @@ export namespace Unity {
         set_search_metadata(search_metadata: SearchMetadata): void;
     }
 
-    module SearchMetadata {
+    namespace SearchMetadata {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3692,7 +3692,7 @@ export namespace Unity {
         get_location(): GeoCoordinate;
     }
 
-    module GeoCoordinate {
+    namespace GeoCoordinate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3722,7 +3722,7 @@ export namespace Unity {
         has_valid_altitude(): boolean;
     }
 
-    module AbstractScope {
+    namespace AbstractScope {
         // Signal callback interfaces
 
         interface ResultsInvalidatedInternal {
@@ -3786,7 +3786,7 @@ export namespace Unity {
         results_invalidated(search_type: SearchType | null): void;
     }
 
-    module ScopeDBusConnector {
+    namespace ScopeDBusConnector {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3821,7 +3821,7 @@ export namespace Unity {
         get_scope(): AbstractScope;
     }
 
-    module DeprecatedScopeBase {
+    namespace DeprecatedScopeBase {
         // Signal callback interfaces
 
         interface ActiveSourcesChanged {
@@ -3917,7 +3917,7 @@ export namespace Unity {
         set_schema(value: Schema): void;
     }
 
-    module DeprecatedScope {
+    namespace DeprecatedScope {
         // Signal callback interfaces
 
         interface ActivateUri {
@@ -4020,7 +4020,7 @@ export namespace Unity {
         queue_search_changed(search_type: SearchType | null): void;
     }
 
-    module AggregatorScope {
+    namespace AggregatorScope {
         // Constructor properties interface
 
         interface ConstructorProps extends DeprecatedScopeBase.ConstructorProps {
@@ -4089,7 +4089,7 @@ export namespace Unity {
         set_automatic_flushing(value: boolean): void;
     }
 
-    module MasterScope {
+    namespace MasterScope {
         // Constructor properties interface
 
         interface ConstructorProps extends AggregatorScope.ConstructorProps {
@@ -4122,7 +4122,7 @@ export namespace Unity {
         set_no_content_hint(value: string): void;
     }
 
-    module SimpleScope {
+    namespace SimpleScope {
         interface SearchRunFunc {
             (search: ScopeSearchBase): void;
         }
@@ -4213,7 +4213,7 @@ export namespace Unity {
         set_unique_name(value: string): void;
     }
 
-    module ScopeLoader {
+    namespace ScopeLoader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4244,7 +4244,7 @@ export namespace Unity {
         load_module(module: string, module_type: string): void;
     }
 
-    module TrackMetadata {
+    namespace TrackMetadata {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4327,7 +4327,7 @@ export namespace Unity {
         set_art_icon(value: Gio.Icon): void;
     }
 
-    module Playlist {
+    namespace Playlist {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4389,7 +4389,7 @@ export namespace Unity {
         set_last_play_date(value: GLib.DateTime): void;
     }
 
-    module MusicPlayer {
+    namespace MusicPlayer {
         // Signal callback interfaces
 
         interface Raise {

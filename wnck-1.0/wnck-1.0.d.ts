@@ -551,7 +551,7 @@ export namespace Wnck {
          */
         BELOW,
     }
-    module ActionMenu {
+    namespace ActionMenu {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -988,7 +988,7 @@ export namespace Wnck {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Application {
+    namespace Application {
         // Signal callback interfaces
 
         interface IconChanged {
@@ -1095,7 +1095,7 @@ export namespace Wnck {
         get_xid(): number;
     }
 
-    module ClassGroup {
+    namespace ClassGroup {
         // Signal callback interfaces
 
         interface IconChanged {
@@ -1169,7 +1169,7 @@ export namespace Wnck {
         get_windows(): Window[];
     }
 
-    module Pager {
+    namespace Pager {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1836,7 +1836,7 @@ export namespace Wnck {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Screen {
+    namespace Screen {
         // Signal callback interfaces
 
         interface ActiveWindowChanged {
@@ -2209,7 +2209,7 @@ export namespace Wnck {
         try_set_workspace_layout(current_token: number, rows: number, columns: number): number;
     }
 
-    module Selector {
+    namespace Selector {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2636,7 +2636,7 @@ export namespace Wnck {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Tasklist {
+    namespace Tasklist {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3144,7 +3144,7 @@ export namespace Wnck {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Window {
+    namespace Window {
         // Signal callback interfaces
 
         interface ActionsChanged {
@@ -3746,7 +3746,7 @@ export namespace Wnck {
         unstick(): void;
     }
 
-    module Workspace {
+    namespace Workspace {
         // Signal callback interfaces
 
         interface NameChanged {

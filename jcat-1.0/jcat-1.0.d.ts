@@ -230,7 +230,7 @@ export namespace Jcat {
          */
         REQUIRE_SIGNATURE,
     }
-    module Blob {
+    namespace Blob {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -325,7 +325,7 @@ export namespace Jcat {
         to_string(): string;
     }
 
-    module BtCheckpoint {
+    namespace BtCheckpoint {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -387,7 +387,7 @@ export namespace Jcat {
         to_string(): string;
     }
 
-    module BtVerifier {
+    namespace BtVerifier {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -433,7 +433,7 @@ export namespace Jcat {
         to_string(): string;
     }
 
-    module Context {
+    namespace Context {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -522,7 +522,7 @@ export namespace Jcat {
         verify_target(item_target: Item, item: Item, flags: VerifyFlags | null): Result[];
     }
 
-    module Engine {
+    namespace Engine {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -667,7 +667,7 @@ export namespace Jcat {
         ): Result;
     }
 
-    module File {
+    namespace File {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -778,7 +778,7 @@ export namespace Jcat {
         to_string(): string;
     }
 
-    module Item {
+    namespace Item {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -854,7 +854,7 @@ export namespace Jcat {
         to_string(): string;
     }
 
-    module Result {
+    namespace Result {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

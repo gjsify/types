@@ -953,7 +953,7 @@ export namespace GstRtp {
          */
         TWO_BYTE,
     }
-    module RTPBaseAudioPayload {
+    namespace RTPBaseAudioPayload {
         // Constructor properties interface
 
         interface ConstructorProps extends RTPBasePayload.ConstructorProps {
@@ -1074,7 +1074,7 @@ export namespace GstRtp {
         set_samplebits_options(sample_size: number): void;
     }
 
-    module RTPBaseDepayload {
+    namespace RTPBaseDepayload {
         // Signal callback interfaces
 
         interface AddExtension {
@@ -1245,7 +1245,7 @@ export namespace GstRtp {
         set_source_info_enabled(enable: boolean): void;
     }
 
-    module RTPBasePayload {
+    namespace RTPBasePayload {
         // Signal callback interfaces
 
         interface AddExtension {
@@ -1579,7 +1579,7 @@ export namespace GstRtp {
         set_source_info_enabled(enable: boolean): void;
     }
 
-    module RTPHeaderExtension {
+    namespace RTPHeaderExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {}

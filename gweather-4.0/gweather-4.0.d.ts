@@ -619,7 +619,7 @@ export namespace GWeather {
          */
         ALL,
     }
-    module Info {
+    namespace Info {
         // Signal callback interfaces
 
         interface Updated {
@@ -858,7 +858,7 @@ export namespace GWeather {
         update(): void;
     }
 
-    module Location {
+    namespace Location {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

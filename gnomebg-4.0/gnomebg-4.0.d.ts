@@ -27,7 +27,7 @@ export namespace GnomeBG {
      * GnomeBG-4.0
      */
 
-    module BG {
+    namespace BG {
         // Signal callback interfaces
 
         interface Changed {
@@ -121,7 +121,7 @@ export namespace GnomeBG {
         set_rgba(type: GDesktopEnums.BackgroundShading | null, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
     }
 
-    module BGSlideShow {
+    namespace BGSlideShow {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

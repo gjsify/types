@@ -374,7 +374,7 @@ export namespace EBackend {
          */
         REMOVABLE,
     }
-    module Backend {
+    namespace Backend {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -739,7 +739,7 @@ export namespace EBackend {
         ): EDataServer.TrustPromptResponse;
     }
 
-    module BackendFactory {
+    namespace BackendFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends EDataServer.Extension.ConstructorProps {}
@@ -805,7 +805,7 @@ export namespace EBackend {
         share_subprocess(): boolean;
     }
 
-    module Cache {
+    namespace Cache {
         // Signal callback interfaces
 
         interface BeforePut {
@@ -1243,7 +1243,7 @@ export namespace EBackend {
         unlock(action: CacheUnlockAction | null): void;
     }
 
-    module CacheKeys {
+    namespace CacheKeys {
         // Signal callback interfaces
 
         interface Changed {
@@ -1414,7 +1414,7 @@ export namespace EBackend {
         remove_sync(key: string, dec_ref_counts: number, cancellable?: Gio.Cancellable | null): boolean;
     }
 
-    module CacheReaper {
+    namespace CacheReaper {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1883,7 +1883,7 @@ export namespace EBackend {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CollectionBackend {
+    namespace CollectionBackend {
         // Signal callback interfaces
 
         interface ChildAdded {
@@ -2413,7 +2413,7 @@ export namespace EBackend {
         thaw_populate(): void;
     }
 
-    module CollectionBackendFactory {
+    namespace CollectionBackendFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends BackendFactory.ConstructorProps {}
@@ -2469,7 +2469,7 @@ export namespace EBackend {
         ): void;
     }
 
-    module DBusServer {
+    namespace DBusServer {
         // Signal callback interfaces
 
         interface BusAcquired {
@@ -3022,7 +3022,7 @@ export namespace EBackend {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataFactory {
+    namespace DataFactory {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3668,7 +3668,7 @@ export namespace EBackend {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FileCache {
+    namespace FileCache {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3768,7 +3768,7 @@ export namespace EBackend {
         thaw_changes(): void;
     }
 
-    module ServerSideSource {
+    namespace ServerSideSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4608,7 +4608,7 @@ export namespace EBackend {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ServerSideSourceCredentialsProvider {
+    namespace ServerSideSourceCredentialsProvider {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5064,7 +5064,7 @@ export namespace EBackend {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SourceRegistryServer {
+    namespace SourceRegistryServer {
         // Signal callback interfaces
 
         interface FilesLoaded {
@@ -5901,7 +5901,7 @@ export namespace EBackend {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SubprocessFactory {
+    namespace SubprocessFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -6499,7 +6499,7 @@ export namespace EBackend {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UserPrompter {
+    namespace UserPrompter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6756,7 +6756,7 @@ export namespace EBackend {
         ): number;
     }
 
-    module UserPrompterServer {
+    namespace UserPrompterServer {
         // Signal callback interfaces
 
         interface Prompt {
@@ -7287,7 +7287,7 @@ export namespace EBackend {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UserPrompterServerExtension {
+    namespace UserPrompterServerExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends EDataServer.Extension.ConstructorProps {}
@@ -7363,7 +7363,7 @@ export namespace EBackend {
         response(prompt_id: number, response: number, values?: EDataServer.NamedParameters | null): void;
     }
 
-    module WebDAVCollectionBackend {
+    namespace WebDAVCollectionBackend {
         // Constructor properties interface
 
         interface ConstructorProps extends CollectionBackend.ConstructorProps {}
@@ -7734,7 +7734,7 @@ export namespace EBackend {
         _init(...args: any[]): void;
     }
 
-    module OAuth2Support {
+    namespace OAuth2Support {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -792,7 +792,7 @@ export namespace Arrow {
      */
     function s3_initialize(options?: S3GlobalOptions | null): boolean;
     function s3_is_enabled(): boolean;
-    module AggregateNodeOptions {
+    namespace AggregateNodeOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
@@ -810,7 +810,7 @@ export namespace Arrow {
         static ['new'](aggregations: Aggregation[], keys?: string[] | null): AggregateNodeOptions;
     }
 
-    module Aggregation {
+    namespace Aggregation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -852,7 +852,7 @@ export namespace Arrow {
         static ['new'](_function: string, options: FunctionOptions | null, input: string, output: string): Aggregation;
     }
 
-    module Array {
+    namespace Array {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -932,7 +932,7 @@ export namespace Arrow {
         view(return_type: DataType): Array | null;
     }
 
-    module ArrayBuilder {
+    namespace ArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -986,7 +986,7 @@ export namespace Arrow {
         resize(capacity: number): boolean;
     }
 
-    module ArrayDatum {
+    namespace ArrayDatum {
         // Constructor properties interface
 
         interface ConstructorProps extends Datum.ConstructorProps {
@@ -1010,7 +1010,7 @@ export namespace Arrow {
         static ['new'](value: Array): ArrayDatum;
     }
 
-    module ArraySortOptions {
+    namespace ArraySortOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -1044,7 +1044,7 @@ export namespace Arrow {
         equal(...args: never[]): any;
     }
 
-    module BaseBinaryScalar {
+    namespace BaseBinaryScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {
@@ -1073,7 +1073,7 @@ export namespace Arrow {
         get_value(): Buffer;
     }
 
-    module BaseListScalar {
+    namespace BaseListScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {
@@ -1102,7 +1102,7 @@ export namespace Arrow {
         get_value(): Array;
     }
 
-    module BinaryArray {
+    namespace BinaryArray {
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {}
@@ -1133,7 +1133,7 @@ export namespace Arrow {
         get_value(i: number): GLib.Bytes;
     }
 
-    module BinaryArrayBuilder {
+    namespace BinaryArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -1165,7 +1165,7 @@ export namespace Arrow {
         append_values(values: (GLib.Bytes | Uint8Array)[], is_valids?: boolean[] | null): boolean;
     }
 
-    module BinaryDataType {
+    namespace BinaryDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -1183,7 +1183,7 @@ export namespace Arrow {
         static ['new'](): BinaryDataType;
     }
 
-    module BinaryDictionaryArrayBuilder {
+    namespace BinaryDictionaryArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -1221,7 +1221,7 @@ export namespace Arrow {
         reset_full(): void;
     }
 
-    module BinaryScalar {
+    namespace BinaryScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
@@ -1239,7 +1239,7 @@ export namespace Arrow {
         static ['new'](value: Buffer): BinaryScalar;
     }
 
-    module BooleanArray {
+    namespace BooleanArray {
         // Constructor properties interface
 
         interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
@@ -1266,7 +1266,7 @@ export namespace Arrow {
         xor(right: BooleanArray): BooleanArray;
     }
 
-    module BooleanArrayBuilder {
+    namespace BooleanArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -1297,7 +1297,7 @@ export namespace Arrow {
         append_values(values: boolean[], is_valids?: boolean[] | null): boolean;
     }
 
-    module BooleanDataType {
+    namespace BooleanDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
@@ -1315,7 +1315,7 @@ export namespace Arrow {
         static ['new'](): BooleanDataType;
     }
 
-    module BooleanScalar {
+    namespace BooleanScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -1337,7 +1337,7 @@ export namespace Arrow {
         get_value(): boolean;
     }
 
-    module Buffer {
+    namespace Buffer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1382,7 +1382,7 @@ export namespace Arrow {
         slice(offset: number, size: number): Buffer;
     }
 
-    module BufferInputStream {
+    namespace BufferInputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1815,7 +1815,7 @@ export namespace Arrow {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BufferOutputStream {
+    namespace BufferOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2248,7 +2248,7 @@ export namespace Arrow {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CSVReadOptions {
+    namespace CSVReadOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2470,7 +2470,7 @@ export namespace Arrow {
         set_true_values(true_values: string[]): void;
     }
 
-    module CSVReader {
+    namespace CSVReader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2502,7 +2502,7 @@ export namespace Arrow {
         read(): Table | null;
     }
 
-    module CallExpression {
+    namespace CallExpression {
         // Constructor properties interface
 
         interface ConstructorProps extends Expression.ConstructorProps {}
@@ -2520,7 +2520,7 @@ export namespace Arrow {
         static ['new'](_function: string, _arguments: Expression[], options?: FunctionOptions | null): CallExpression;
     }
 
-    module CastOptions {
+    namespace CastOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -2626,7 +2626,7 @@ export namespace Arrow {
         static ['new'](): CastOptions;
     }
 
-    module ChunkedArray {
+    namespace ChunkedArray {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2678,7 +2678,7 @@ export namespace Arrow {
         to_string(): string | null;
     }
 
-    module ChunkedArrayDatum {
+    namespace ChunkedArrayDatum {
         // Constructor properties interface
 
         interface ConstructorProps extends Datum.ConstructorProps {
@@ -2702,7 +2702,7 @@ export namespace Arrow {
         static ['new'](value: ChunkedArray): ChunkedArrayDatum;
     }
 
-    module Codec {
+    namespace Codec {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2732,7 +2732,7 @@ export namespace Arrow {
         get_name(): string;
     }
 
-    module CompressedInputStream {
+    namespace CompressedInputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3173,7 +3173,7 @@ export namespace Arrow {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CompressedOutputStream {
+    namespace CompressedOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3614,7 +3614,7 @@ export namespace Arrow {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CountOptions {
+    namespace CountOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -3639,7 +3639,7 @@ export namespace Arrow {
         static ['new'](): CountOptions;
     }
 
-    module DataType {
+    namespace DataType {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3675,7 +3675,7 @@ export namespace Arrow {
         to_string(): string;
     }
 
-    module Date32Array {
+    namespace Date32Array {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -3698,7 +3698,7 @@ export namespace Arrow {
         get_values(): number[];
     }
 
-    module Date32ArrayBuilder {
+    namespace Date32ArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -3729,7 +3729,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module Date32DataType {
+    namespace Date32DataType {
         // Constructor properties interface
 
         interface ConstructorProps extends TemporalDataType.ConstructorProps {}
@@ -3747,7 +3747,7 @@ export namespace Arrow {
         static ['new'](): Date32DataType;
     }
 
-    module Date32Scalar {
+    namespace Date32Scalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -3769,7 +3769,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module Date64Array {
+    namespace Date64Array {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -3792,7 +3792,7 @@ export namespace Arrow {
         get_values(): number[];
     }
 
-    module Date64ArrayBuilder {
+    namespace Date64ArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -3823,7 +3823,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module Date64DataType {
+    namespace Date64DataType {
         // Constructor properties interface
 
         interface ConstructorProps extends TemporalDataType.ConstructorProps {}
@@ -3841,7 +3841,7 @@ export namespace Arrow {
         static ['new'](): Date64DataType;
     }
 
-    module Date64Scalar {
+    namespace Date64Scalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -3863,7 +3863,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module Datum {
+    namespace Datum {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3894,7 +3894,7 @@ export namespace Arrow {
         to_string(): string;
     }
 
-    module DayMillisecond {
+    namespace DayMillisecond {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3933,7 +3933,7 @@ export namespace Arrow {
         less_than(other_day_millisecond: DayMillisecond): boolean;
     }
 
-    module DayTimeIntervalArray {
+    namespace DayTimeIntervalArray {
         // Constructor properties interface
 
         interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
@@ -3956,7 +3956,7 @@ export namespace Arrow {
         get_values(): DayMillisecond[] | null;
     }
 
-    module DayTimeIntervalArrayBuilder {
+    namespace DayTimeIntervalArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -3986,7 +3986,7 @@ export namespace Arrow {
         append_values(values: DayMillisecond[], is_valids?: boolean[] | null): boolean;
     }
 
-    module DayTimeIntervalDataType {
+    namespace DayTimeIntervalDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends IntervalDataType.ConstructorProps {}
@@ -4004,7 +4004,7 @@ export namespace Arrow {
         static ['new'](): DayTimeIntervalDataType;
     }
 
-    module DayTimeIntervalScalar {
+    namespace DayTimeIntervalScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -4026,7 +4026,7 @@ export namespace Arrow {
         get_value(): DayMillisecond;
     }
 
-    module Decimal128 {
+    namespace Decimal128 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4079,7 +4079,7 @@ export namespace Arrow {
         to_string_scale(scale: number): string;
     }
 
-    module Decimal128Array {
+    namespace Decimal128Array {
         // Constructor properties interface
 
         interface ConstructorProps extends FixedSizeBinaryArray.ConstructorProps {}
@@ -4102,7 +4102,7 @@ export namespace Arrow {
         get_value(...args: never[]): any;
     }
 
-    module Decimal128ArrayBuilder {
+    namespace Decimal128ArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends FixedSizeBinaryArrayBuilder.ConstructorProps {}
@@ -4137,7 +4137,7 @@ export namespace Arrow {
         append_values(...args: never[]): any;
     }
 
-    module Decimal128DataType {
+    namespace Decimal128DataType {
         // Constructor properties interface
 
         interface ConstructorProps extends DecimalDataType.ConstructorProps {}
@@ -4162,7 +4162,7 @@ export namespace Arrow {
         static max_precision(): number;
     }
 
-    module Decimal128Scalar {
+    namespace Decimal128Scalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {
@@ -4193,7 +4193,7 @@ export namespace Arrow {
         get_value(): Decimal128;
     }
 
-    module Decimal256 {
+    namespace Decimal256 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4244,7 +4244,7 @@ export namespace Arrow {
         to_string_scale(scale: number): string;
     }
 
-    module Decimal256Array {
+    namespace Decimal256Array {
         // Constructor properties interface
 
         interface ConstructorProps extends FixedSizeBinaryArray.ConstructorProps {}
@@ -4267,7 +4267,7 @@ export namespace Arrow {
         get_value(...args: never[]): any;
     }
 
-    module Decimal256ArrayBuilder {
+    namespace Decimal256ArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends FixedSizeBinaryArrayBuilder.ConstructorProps {}
@@ -4301,7 +4301,7 @@ export namespace Arrow {
         append_values(...args: never[]): any;
     }
 
-    module Decimal256DataType {
+    namespace Decimal256DataType {
         // Constructor properties interface
 
         interface ConstructorProps extends DecimalDataType.ConstructorProps {}
@@ -4326,7 +4326,7 @@ export namespace Arrow {
         static max_precision(): number;
     }
 
-    module Decimal256Scalar {
+    namespace Decimal256Scalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {
@@ -4357,7 +4357,7 @@ export namespace Arrow {
         get_value(): Decimal256;
     }
 
-    module DecimalDataType {
+    namespace DecimalDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends FixedSizeBinaryDataType.ConstructorProps {}
@@ -4383,7 +4383,7 @@ export namespace Arrow {
         get_scale(): number;
     }
 
-    module DenseUnionArray {
+    namespace DenseUnionArray {
         // Constructor properties interface
 
         interface ConstructorProps extends UnionArray.ConstructorProps {
@@ -4420,7 +4420,7 @@ export namespace Arrow {
         get_value_offset(i: number): number;
     }
 
-    module DenseUnionArrayBuilder {
+    namespace DenseUnionArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends UnionArrayBuilder.ConstructorProps {}
@@ -4438,7 +4438,7 @@ export namespace Arrow {
         static ['new'](data_type?: DenseUnionDataType | null): DenseUnionArrayBuilder;
     }
 
-    module DenseUnionDataType {
+    namespace DenseUnionDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends UnionDataType.ConstructorProps {}
@@ -4456,7 +4456,7 @@ export namespace Arrow {
         static ['new'](fields: Field[], type_codes: Uint8Array | string): DenseUnionDataType;
     }
 
-    module DenseUnionScalar {
+    namespace DenseUnionScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends UnionScalar.ConstructorProps {}
@@ -4474,7 +4474,7 @@ export namespace Arrow {
         static ['new'](data_type: DenseUnionDataType, type_code: number, value: Scalar): DenseUnionScalar;
     }
 
-    module DictionaryArray {
+    namespace DictionaryArray {
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {
@@ -4506,7 +4506,7 @@ export namespace Arrow {
         get_indices(): Array;
     }
 
-    module DictionaryDataType {
+    namespace DictionaryDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
@@ -4530,7 +4530,7 @@ export namespace Arrow {
         is_ordered(): boolean;
     }
 
-    module DoubleArray {
+    namespace DoubleArray {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -4554,7 +4554,7 @@ export namespace Arrow {
         sum(): number;
     }
 
-    module DoubleArrayBuilder {
+    namespace DoubleArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -4585,7 +4585,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module DoubleDataType {
+    namespace DoubleDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends FloatingPointDataType.ConstructorProps {}
@@ -4603,7 +4603,7 @@ export namespace Arrow {
         static ['new'](): DoubleDataType;
     }
 
-    module DoubleScalar {
+    namespace DoubleScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -4625,7 +4625,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module EqualOptions {
+    namespace EqualOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4683,7 +4683,7 @@ export namespace Arrow {
         is_approx(): boolean;
     }
 
-    module ExecuteContext {
+    namespace ExecuteContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4701,7 +4701,7 @@ export namespace Arrow {
         static ['new'](): ExecuteContext;
     }
 
-    module ExecuteNode {
+    namespace ExecuteNode {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4730,7 +4730,7 @@ export namespace Arrow {
         get_output_schema(): Schema;
     }
 
-    module ExecuteNodeOptions {
+    namespace ExecuteNodeOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4752,7 +4752,7 @@ export namespace Arrow {
         _init(...args: any[]): void;
     }
 
-    module ExecutePlan {
+    namespace ExecutePlan {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4843,7 +4843,7 @@ export namespace Arrow {
         wait(): boolean;
     }
 
-    module Expression {
+    namespace Expression {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4864,7 +4864,7 @@ export namespace Arrow {
         to_string(): string;
     }
 
-    module ExtensionArray {
+    namespace ExtensionArray {
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {
@@ -4890,7 +4890,7 @@ export namespace Arrow {
         get_storage(): Array;
     }
 
-    module ExtensionDataType {
+    namespace ExtensionDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {
@@ -4943,7 +4943,7 @@ export namespace Arrow {
         wrap_chunked_array(storage: ChunkedArray): ChunkedArray;
     }
 
-    module ExtensionDataTypeRegistry {
+    namespace ExtensionDataTypeRegistry {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4986,7 +4986,7 @@ export namespace Arrow {
         unregister(name: string): boolean;
     }
 
-    module ExtensionScalar {
+    namespace ExtensionScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -5002,7 +5002,7 @@ export namespace Arrow {
         _init(...args: any[]): void;
     }
 
-    module FeatherFileReader {
+    namespace FeatherFileReader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5035,7 +5035,7 @@ export namespace Arrow {
         read_names(names: string[]): Table;
     }
 
-    module FeatherWriteProperties {
+    namespace FeatherWriteProperties {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5070,7 +5070,7 @@ export namespace Arrow {
         static ['new'](): FeatherWriteProperties;
     }
 
-    module Field {
+    namespace Field {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5119,7 +5119,7 @@ export namespace Arrow {
         with_metadata(metadata: { [key: string]: any } | GLib.HashTable<string, string>): Field;
     }
 
-    module FieldExpression {
+    namespace FieldExpression {
         // Constructor properties interface
 
         interface ConstructorProps extends Expression.ConstructorProps {}
@@ -5137,7 +5137,7 @@ export namespace Arrow {
         static ['new'](reference: string): FieldExpression;
     }
 
-    module FileInfo {
+    namespace FileInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5216,7 +5216,7 @@ export namespace Arrow {
         to_string(): string;
     }
 
-    module FileInputStream {
+    namespace FileInputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5645,7 +5645,7 @@ export namespace Arrow {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FileOutputStream {
+    namespace FileOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6078,7 +6078,7 @@ export namespace Arrow {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FileSelector {
+    namespace FileSelector {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6146,7 +6146,7 @@ export namespace Arrow {
         _init(...args: any[]): void;
     }
 
-    module FileSystem {
+    namespace FileSystem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6293,7 +6293,7 @@ export namespace Arrow {
         open_output_stream(path: string): OutputStream | null;
     }
 
-    module FilterNodeOptions {
+    namespace FilterNodeOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
@@ -6311,7 +6311,7 @@ export namespace Arrow {
         static ['new'](expression: Expression): FilterNodeOptions;
     }
 
-    module FilterOptions {
+    namespace FilterOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -6345,7 +6345,7 @@ export namespace Arrow {
         static ['new'](): FilterOptions;
     }
 
-    module FixedSizeBinaryArray {
+    namespace FixedSizeBinaryArray {
         // Constructor properties interface
 
         interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
@@ -6375,7 +6375,7 @@ export namespace Arrow {
         get_values_bytes(): GLib.Bytes;
     }
 
-    module FixedSizeBinaryArrayBuilder {
+    namespace FixedSizeBinaryArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -6417,7 +6417,7 @@ export namespace Arrow {
         append_values_packed(values: GLib.Bytes | Uint8Array, is_valids?: boolean[] | null): boolean;
     }
 
-    module FixedSizeBinaryDataType {
+    namespace FixedSizeBinaryDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
@@ -6439,7 +6439,7 @@ export namespace Arrow {
         get_byte_width(): number;
     }
 
-    module FixedSizeBinaryScalar {
+    namespace FixedSizeBinaryScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
@@ -6457,7 +6457,7 @@ export namespace Arrow {
         static ['new'](data_type: FixedSizeBinaryDataType, value: Buffer): FixedSizeBinaryScalar;
     }
 
-    module FixedWidthDataType {
+    namespace FixedWidthDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -6477,7 +6477,7 @@ export namespace Arrow {
         get_bit_width(): number;
     }
 
-    module FloatArray {
+    namespace FloatArray {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -6501,7 +6501,7 @@ export namespace Arrow {
         sum(): number;
     }
 
-    module FloatArrayBuilder {
+    namespace FloatArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -6532,7 +6532,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module FloatDataType {
+    namespace FloatDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends FloatingPointDataType.ConstructorProps {}
@@ -6550,7 +6550,7 @@ export namespace Arrow {
         static ['new'](): FloatDataType;
     }
 
-    module FloatScalar {
+    namespace FloatScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -6572,7 +6572,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module FloatingPointDataType {
+    namespace FloatingPointDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericDataType.ConstructorProps {}
@@ -6588,7 +6588,7 @@ export namespace Arrow {
         _init(...args: any[]): void;
     }
 
-    module Function {
+    namespace Function {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6625,7 +6625,7 @@ export namespace Arrow {
         to_string(): string;
     }
 
-    module FunctionDoc {
+    namespace FunctionDoc {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6654,7 +6654,7 @@ export namespace Arrow {
         get_summary(): string;
     }
 
-    module FunctionOptions {
+    namespace FunctionOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6675,7 +6675,7 @@ export namespace Arrow {
         to_string(): string;
     }
 
-    module GCSFileSystem {
+    namespace GCSFileSystem {
         // Constructor properties interface
 
         interface ConstructorProps extends FileSystem.ConstructorProps {}
@@ -6691,7 +6691,7 @@ export namespace Arrow {
         _init(...args: any[]): void;
     }
 
-    module GIOInputStream {
+    namespace GIOInputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7124,7 +7124,7 @@ export namespace Arrow {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GIOOutputStream {
+    namespace GIOOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7567,7 +7567,7 @@ export namespace Arrow {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HDFSFileSystem {
+    namespace HDFSFileSystem {
         // Constructor properties interface
 
         interface ConstructorProps extends FileSystem.ConstructorProps {}
@@ -7583,7 +7583,7 @@ export namespace Arrow {
         _init(...args: any[]): void;
     }
 
-    module HalfFloatArray {
+    namespace HalfFloatArray {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -7606,7 +7606,7 @@ export namespace Arrow {
         get_values(): number[];
     }
 
-    module HalfFloatArrayBuilder {
+    namespace HalfFloatArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -7636,7 +7636,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module HalfFloatDataType {
+    namespace HalfFloatDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends FloatingPointDataType.ConstructorProps {}
@@ -7654,7 +7654,7 @@ export namespace Arrow {
         static ['new'](): HalfFloatDataType;
     }
 
-    module HalfFloatScalar {
+    namespace HalfFloatScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -7676,7 +7676,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module HashJoinNodeOptions {
+    namespace HashJoinNodeOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
@@ -7699,7 +7699,7 @@ export namespace Arrow {
         set_right_outputs(outputs: string[]): boolean;
     }
 
-    module ISO8601TimestampParser {
+    namespace ISO8601TimestampParser {
         // Constructor properties interface
 
         interface ConstructorProps extends TimestampParser.ConstructorProps {}
@@ -7717,7 +7717,7 @@ export namespace Arrow {
         static ['new'](): ISO8601TimestampParser;
     }
 
-    module IndexOptions {
+    namespace IndexOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -7745,7 +7745,7 @@ export namespace Arrow {
         static ['new'](): IndexOptions;
     }
 
-    module InputStream {
+    namespace InputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8191,7 +8191,7 @@ export namespace Arrow {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Int16Array {
+    namespace Int16Array {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -8215,7 +8215,7 @@ export namespace Arrow {
         sum(): number;
     }
 
-    module Int16ArrayBuilder {
+    namespace Int16ArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -8246,7 +8246,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module Int16DataType {
+    namespace Int16DataType {
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -8264,7 +8264,7 @@ export namespace Arrow {
         static ['new'](): Int16DataType;
     }
 
-    module Int16Scalar {
+    namespace Int16Scalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -8286,7 +8286,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module Int32Array {
+    namespace Int32Array {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -8310,7 +8310,7 @@ export namespace Arrow {
         sum(): number;
     }
 
-    module Int32ArrayBuilder {
+    namespace Int32ArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -8341,7 +8341,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module Int32DataType {
+    namespace Int32DataType {
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -8359,7 +8359,7 @@ export namespace Arrow {
         static ['new'](): Int32DataType;
     }
 
-    module Int32Scalar {
+    namespace Int32Scalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -8381,7 +8381,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module Int64Array {
+    namespace Int64Array {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -8405,7 +8405,7 @@ export namespace Arrow {
         sum(): number;
     }
 
-    module Int64ArrayBuilder {
+    namespace Int64ArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -8436,7 +8436,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module Int64DataType {
+    namespace Int64DataType {
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -8454,7 +8454,7 @@ export namespace Arrow {
         static ['new'](): Int64DataType;
     }
 
-    module Int64Scalar {
+    namespace Int64Scalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -8476,7 +8476,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module Int8Array {
+    namespace Int8Array {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -8500,7 +8500,7 @@ export namespace Arrow {
         sum(): number;
     }
 
-    module Int8ArrayBuilder {
+    namespace Int8ArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -8531,7 +8531,7 @@ export namespace Arrow {
         append_values(values: Uint8Array | string, is_valids?: boolean[] | null): boolean;
     }
 
-    module Int8DataType {
+    namespace Int8DataType {
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -8549,7 +8549,7 @@ export namespace Arrow {
         static ['new'](): Int8DataType;
     }
 
-    module Int8Scalar {
+    namespace Int8Scalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -8571,7 +8571,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module IntArrayBuilder {
+    namespace IntArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -8602,7 +8602,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module IntegerDataType {
+    namespace IntegerDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericDataType.ConstructorProps {}
@@ -8622,7 +8622,7 @@ export namespace Arrow {
         is_signed(): boolean;
     }
 
-    module IntervalDataType {
+    namespace IntervalDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends TemporalDataType.ConstructorProps {}
@@ -8642,7 +8642,7 @@ export namespace Arrow {
         get_interval_type(): IntervalType;
     }
 
-    module JSONReadOptions {
+    namespace JSONReadOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8722,7 +8722,7 @@ export namespace Arrow {
         static ['new'](): JSONReadOptions;
     }
 
-    module JSONReader {
+    namespace JSONReader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8754,7 +8754,7 @@ export namespace Arrow {
         read(): Table | null;
     }
 
-    module LargeBinaryArray {
+    namespace LargeBinaryArray {
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {}
@@ -8785,7 +8785,7 @@ export namespace Arrow {
         get_value(i: number): GLib.Bytes;
     }
 
-    module LargeBinaryArrayBuilder {
+    namespace LargeBinaryArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -8816,7 +8816,7 @@ export namespace Arrow {
         append_values(values: (GLib.Bytes | Uint8Array)[], is_valids?: boolean[] | null): boolean;
     }
 
-    module LargeBinaryDataType {
+    namespace LargeBinaryDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -8834,7 +8834,7 @@ export namespace Arrow {
         static ['new'](): LargeBinaryDataType;
     }
 
-    module LargeBinaryScalar {
+    namespace LargeBinaryScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
@@ -8852,7 +8852,7 @@ export namespace Arrow {
         static ['new'](value: Buffer): LargeBinaryScalar;
     }
 
-    module LargeListArray {
+    namespace LargeListArray {
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {
@@ -8896,7 +8896,7 @@ export namespace Arrow {
         get_values(): Array;
     }
 
-    module LargeListArrayBuilder {
+    namespace LargeListArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -8919,7 +8919,7 @@ export namespace Arrow {
         get_value_builder(): ArrayBuilder;
     }
 
-    module LargeListDataType {
+    namespace LargeListDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -8941,7 +8941,7 @@ export namespace Arrow {
         get_field(): Field;
     }
 
-    module LargeListScalar {
+    namespace LargeListScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseListScalar.ConstructorProps {}
@@ -8959,7 +8959,7 @@ export namespace Arrow {
         static ['new'](value: LargeListArray): LargeListScalar;
     }
 
-    module LargeStringArray {
+    namespace LargeStringArray {
         // Constructor properties interface
 
         interface ConstructorProps extends LargeBinaryArray.ConstructorProps {}
@@ -8987,7 +8987,7 @@ export namespace Arrow {
         get_string(i: number): string;
     }
 
-    module LargeStringArrayBuilder {
+    namespace LargeStringArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends LargeBinaryArrayBuilder.ConstructorProps {}
@@ -9018,7 +9018,7 @@ export namespace Arrow {
         append_strings(values: string[], is_valids?: boolean[] | null): boolean;
     }
 
-    module LargeStringDataType {
+    namespace LargeStringDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -9036,7 +9036,7 @@ export namespace Arrow {
         static ['new'](): LargeStringDataType;
     }
 
-    module LargeStringScalar {
+    namespace LargeStringScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
@@ -9054,7 +9054,7 @@ export namespace Arrow {
         static ['new'](value: Buffer): LargeStringScalar;
     }
 
-    module ListArray {
+    namespace ListArray {
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {
@@ -9098,7 +9098,7 @@ export namespace Arrow {
         get_values(): Array;
     }
 
-    module ListArrayBuilder {
+    namespace ListArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -9122,7 +9122,7 @@ export namespace Arrow {
         get_value_builder(): ArrayBuilder;
     }
 
-    module ListDataType {
+    namespace ListDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -9145,7 +9145,7 @@ export namespace Arrow {
         get_value_field(): Field;
     }
 
-    module ListScalar {
+    namespace ListScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseListScalar.ConstructorProps {}
@@ -9163,7 +9163,7 @@ export namespace Arrow {
         static ['new'](value: ListArray): ListScalar;
     }
 
-    module LiteralExpression {
+    namespace LiteralExpression {
         // Constructor properties interface
 
         interface ConstructorProps extends Expression.ConstructorProps {}
@@ -9181,7 +9181,7 @@ export namespace Arrow {
         static ['new'](datum: Datum): LiteralExpression;
     }
 
-    module LocalFileSystem {
+    namespace LocalFileSystem {
         // Constructor properties interface
 
         interface ConstructorProps extends FileSystem.ConstructorProps {}
@@ -9199,7 +9199,7 @@ export namespace Arrow {
         static ['new'](options?: LocalFileSystemOptions | null): LocalFileSystem;
     }
 
-    module LocalFileSystemOptions {
+    namespace LocalFileSystemOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9235,7 +9235,7 @@ export namespace Arrow {
         static ['new'](): LocalFileSystemOptions;
     }
 
-    module MapArray {
+    namespace MapArray {
         // Constructor properties interface
 
         interface ConstructorProps extends ListArray.ConstructorProps {
@@ -9271,7 +9271,7 @@ export namespace Arrow {
         get_keys(): Array;
     }
 
-    module MapArrayBuilder {
+    namespace MapArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -9304,7 +9304,7 @@ export namespace Arrow {
         get_value_builder(): ArrayBuilder;
     }
 
-    module MapDataType {
+    namespace MapDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends ListDataType.ConstructorProps {}
@@ -9330,7 +9330,7 @@ export namespace Arrow {
         get_key_type(): DataType;
     }
 
-    module MapScalar {
+    namespace MapScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseListScalar.ConstructorProps {}
@@ -9348,7 +9348,7 @@ export namespace Arrow {
         static ['new'](value: StructArray): MapScalar;
     }
 
-    module MatchSubstringOptions {
+    namespace MatchSubstringOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -9389,7 +9389,7 @@ export namespace Arrow {
         static ['new'](): MatchSubstringOptions;
     }
 
-    module MemoryMappedInputStream {
+    namespace MemoryMappedInputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9812,7 +9812,7 @@ export namespace Arrow {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MemoryPool {
+    namespace MemoryPool {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9850,7 +9850,7 @@ export namespace Arrow {
         get_max_memory(): number;
     }
 
-    module MockFileSystem {
+    namespace MockFileSystem {
         // Constructor properties interface
 
         interface ConstructorProps extends FileSystem.ConstructorProps {}
@@ -9866,7 +9866,7 @@ export namespace Arrow {
         _init(...args: any[]): void;
     }
 
-    module MonthDayNano {
+    namespace MonthDayNano {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9910,7 +9910,7 @@ export namespace Arrow {
         equal(other_month_nano_day: MonthDayNano): boolean;
     }
 
-    module MonthDayNanoIntervalArray {
+    namespace MonthDayNanoIntervalArray {
         // Constructor properties interface
 
         interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
@@ -9938,7 +9938,7 @@ export namespace Arrow {
         get_values(): MonthDayNano[] | null;
     }
 
-    module MonthDayNanoIntervalArrayBuilder {
+    namespace MonthDayNanoIntervalArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -9968,7 +9968,7 @@ export namespace Arrow {
         append_values(values: MonthDayNano[], is_valids?: boolean[] | null): boolean;
     }
 
-    module MonthDayNanoIntervalDataType {
+    namespace MonthDayNanoIntervalDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends IntervalDataType.ConstructorProps {}
@@ -9986,7 +9986,7 @@ export namespace Arrow {
         static ['new'](): MonthDayNanoIntervalDataType;
     }
 
-    module MonthDayNanoIntervalScalar {
+    namespace MonthDayNanoIntervalScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -10008,7 +10008,7 @@ export namespace Arrow {
         get_value(): MonthDayNano;
     }
 
-    module MonthIntervalArray {
+    namespace MonthIntervalArray {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -10031,7 +10031,7 @@ export namespace Arrow {
         get_values(): number[];
     }
 
-    module MonthIntervalArrayBuilder {
+    namespace MonthIntervalArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -10061,7 +10061,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module MonthIntervalDataType {
+    namespace MonthIntervalDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends IntervalDataType.ConstructorProps {}
@@ -10079,7 +10079,7 @@ export namespace Arrow {
         static ['new'](): MonthIntervalDataType;
     }
 
-    module MonthIntervalScalar {
+    namespace MonthIntervalScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -10101,7 +10101,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module MutableBuffer {
+    namespace MutableBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends Buffer.ConstructorProps {}
@@ -10128,7 +10128,7 @@ export namespace Arrow {
         slice(offset: number, size: number): MutableBuffer;
     }
 
-    module NullArray {
+    namespace NullArray {
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {}
@@ -10146,7 +10146,7 @@ export namespace Arrow {
         static ['new'](length: number): NullArray;
     }
 
-    module NullArrayBuilder {
+    namespace NullArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -10164,7 +10164,7 @@ export namespace Arrow {
         static ['new'](): NullArrayBuilder;
     }
 
-    module NullDataType {
+    namespace NullDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -10182,7 +10182,7 @@ export namespace Arrow {
         static ['new'](): NullDataType;
     }
 
-    module NullScalar {
+    namespace NullScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -10200,7 +10200,7 @@ export namespace Arrow {
         static ['new'](): NullScalar;
     }
 
-    module NumericArray {
+    namespace NumericArray {
         // Constructor properties interface
 
         interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
@@ -10220,7 +10220,7 @@ export namespace Arrow {
         mean(): number;
     }
 
-    module NumericDataType {
+    namespace NumericDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
@@ -10236,7 +10236,7 @@ export namespace Arrow {
         _init(...args: any[]): void;
     }
 
-    module ORCFileReader {
+    namespace ORCFileReader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10276,7 +10276,7 @@ export namespace Arrow {
         set_field_indices(field_indices?: number[] | null): void;
     }
 
-    module OutputStream {
+    namespace OutputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10721,7 +10721,7 @@ export namespace Arrow {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PrimitiveArray {
+    namespace PrimitiveArray {
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {}
@@ -10742,7 +10742,7 @@ export namespace Arrow {
         get_data_buffer(): Buffer;
     }
 
-    module ProjectNodeOptions {
+    namespace ProjectNodeOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
@@ -10760,7 +10760,7 @@ export namespace Arrow {
         static ['new'](expressions: Expression[], names?: string[] | null): ProjectNodeOptions;
     }
 
-    module QuantileOptions {
+    namespace QuantileOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -10821,7 +10821,7 @@ export namespace Arrow {
         set_qs(qs: number[]): void;
     }
 
-    module RankOptions {
+    namespace RankOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -10878,7 +10878,7 @@ export namespace Arrow {
         set_sort_keys(sort_keys: SortKey[]): void;
     }
 
-    module ReadOptions {
+    namespace ReadOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10929,7 +10929,7 @@ export namespace Arrow {
         set_included_fields(fields: number[]): void;
     }
 
-    module RecordBatch {
+    namespace RecordBatch {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10978,7 +10978,7 @@ export namespace Arrow {
         to_string(): string | null;
     }
 
-    module RecordBatchBuilder {
+    namespace RecordBatchBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11015,7 +11015,7 @@ export namespace Arrow {
         set_initial_capacity(capacity: number): void;
     }
 
-    module RecordBatchDatum {
+    namespace RecordBatchDatum {
         // Constructor properties interface
 
         interface ConstructorProps extends Datum.ConstructorProps {
@@ -11039,7 +11039,7 @@ export namespace Arrow {
         static ['new'](value: RecordBatch): RecordBatchDatum;
     }
 
-    module RecordBatchFileReader {
+    namespace RecordBatchFileReader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11073,7 +11073,7 @@ export namespace Arrow {
         read_record_batch(i: number): RecordBatch | null;
     }
 
-    module RecordBatchFileWriter {
+    namespace RecordBatchFileWriter {
         // Constructor properties interface
 
         interface ConstructorProps extends RecordBatchStreamWriter.ConstructorProps {}
@@ -11091,7 +11091,7 @@ export namespace Arrow {
         static ['new'](sink: OutputStream, schema: Schema): RecordBatchFileWriter;
     }
 
-    module RecordBatchIterator {
+    namespace RecordBatchIterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11121,7 +11121,7 @@ export namespace Arrow {
         to_list(): RecordBatch[];
     }
 
-    module RecordBatchReader {
+    namespace RecordBatchReader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11163,7 +11163,7 @@ export namespace Arrow {
         read_next_record_batch(): RecordBatch | null;
     }
 
-    module RecordBatchStreamReader {
+    namespace RecordBatchStreamReader {
         // Constructor properties interface
 
         interface ConstructorProps extends RecordBatchReader.ConstructorProps {}
@@ -11184,7 +11184,7 @@ export namespace Arrow {
         static ['new'](...args: never[]): any;
     }
 
-    module RecordBatchStreamWriter {
+    namespace RecordBatchStreamWriter {
         // Constructor properties interface
 
         interface ConstructorProps extends RecordBatchWriter.ConstructorProps {}
@@ -11202,7 +11202,7 @@ export namespace Arrow {
         static ['new'](sink: OutputStream, schema: Schema): RecordBatchStreamWriter;
     }
 
-    module RecordBatchWriter {
+    namespace RecordBatchWriter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11232,7 +11232,7 @@ export namespace Arrow {
         write_table(table: Table): boolean;
     }
 
-    module ResizableBuffer {
+    namespace ResizableBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends MutableBuffer.ConstructorProps {}
@@ -11258,7 +11258,7 @@ export namespace Arrow {
         resize(new_size: number): boolean;
     }
 
-    module RoundOptions {
+    namespace RoundOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -11298,7 +11298,7 @@ export namespace Arrow {
         static ['new'](): RoundOptions;
     }
 
-    module RoundToMultipleOptions {
+    namespace RoundToMultipleOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -11337,7 +11337,7 @@ export namespace Arrow {
         static ['new'](): RoundToMultipleOptions;
     }
 
-    module RunEndEncodeOptions {
+    namespace RunEndEncodeOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -11371,7 +11371,7 @@ export namespace Arrow {
         static ['new'](run_end_data_type?: DataType | null): RunEndEncodeOptions;
     }
 
-    module RunEndEncodedArray {
+    namespace RunEndEncodedArray {
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {
@@ -11415,7 +11415,7 @@ export namespace Arrow {
         get_values(): Array;
     }
 
-    module RunEndEncodedDataType {
+    namespace RunEndEncodedDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
@@ -11438,7 +11438,7 @@ export namespace Arrow {
         get_value_data_type(): DataType;
     }
 
-    module S3FileSystem {
+    namespace S3FileSystem {
         // Constructor properties interface
 
         interface ConstructorProps extends FileSystem.ConstructorProps {}
@@ -11454,7 +11454,7 @@ export namespace Arrow {
         _init(...args: any[]): void;
     }
 
-    module S3GlobalOptions {
+    namespace S3GlobalOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11488,7 +11488,7 @@ export namespace Arrow {
         static ['new'](): S3GlobalOptions;
     }
 
-    module Scalar {
+    namespace Scalar {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11533,7 +11533,7 @@ export namespace Arrow {
         to_string(): string;
     }
 
-    module ScalarAggregateOptions {
+    namespace ScalarAggregateOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -11579,7 +11579,7 @@ export namespace Arrow {
         static ['new'](): ScalarAggregateOptions;
     }
 
-    module ScalarDatum {
+    namespace ScalarDatum {
         // Constructor properties interface
 
         interface ConstructorProps extends Datum.ConstructorProps {
@@ -11603,7 +11603,7 @@ export namespace Arrow {
         static ['new'](value: Scalar): ScalarDatum;
     }
 
-    module Schema {
+    namespace Schema {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11649,7 +11649,7 @@ export namespace Arrow {
         with_metadata(metadata: { [key: string]: any } | GLib.HashTable<string, string>): Schema;
     }
 
-    module SeekableInputStream {
+    namespace SeekableInputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12088,7 +12088,7 @@ export namespace Arrow {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SetLookupOptions {
+    namespace SetLookupOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -12134,7 +12134,7 @@ export namespace Arrow {
         static ['new'](value_set?: Datum | null): SetLookupOptions;
     }
 
-    module SinkNodeOptions {
+    namespace SinkNodeOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
@@ -12156,7 +12156,7 @@ export namespace Arrow {
         get_reader(schema: Schema): RecordBatchReader;
     }
 
-    module SlowFileSystem {
+    namespace SlowFileSystem {
         // Constructor properties interface
 
         interface ConstructorProps extends FileSystem.ConstructorProps {
@@ -12188,7 +12188,7 @@ export namespace Arrow {
         ): SlowFileSystem;
     }
 
-    module SortKey {
+    namespace SortKey {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12228,7 +12228,7 @@ export namespace Arrow {
         equal(other_sort_key: SortKey): boolean;
     }
 
-    module SortOptions {
+    namespace SortOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {}
@@ -12263,7 +12263,7 @@ export namespace Arrow {
         set_sort_keys(sort_keys: SortKey[]): void;
     }
 
-    module SourceNodeOptions {
+    namespace SourceNodeOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {
@@ -12295,7 +12295,7 @@ export namespace Arrow {
         static new_table(table: Table): SourceNodeOptions;
     }
 
-    module SparseUnionArray {
+    namespace SparseUnionArray {
         // Constructor properties interface
 
         interface ConstructorProps extends UnionArray.ConstructorProps {}
@@ -12315,7 +12315,7 @@ export namespace Arrow {
         static new_data_type(data_type: SparseUnionDataType, type_ids: Int8Array, fields: Array[]): SparseUnionArray;
     }
 
-    module SparseUnionArrayBuilder {
+    namespace SparseUnionArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends UnionArrayBuilder.ConstructorProps {}
@@ -12333,7 +12333,7 @@ export namespace Arrow {
         static ['new'](data_type?: SparseUnionDataType | null): SparseUnionArrayBuilder;
     }
 
-    module SparseUnionDataType {
+    namespace SparseUnionDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends UnionDataType.ConstructorProps {}
@@ -12351,7 +12351,7 @@ export namespace Arrow {
         static ['new'](fields: Field[], type_codes: Uint8Array | string): SparseUnionDataType;
     }
 
-    module SparseUnionScalar {
+    namespace SparseUnionScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends UnionScalar.ConstructorProps {}
@@ -12369,7 +12369,7 @@ export namespace Arrow {
         static ['new'](data_type: SparseUnionDataType, type_code: number, value: Scalar): SparseUnionScalar;
     }
 
-    module SplitPatternOptions {
+    namespace SplitPatternOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -12410,7 +12410,7 @@ export namespace Arrow {
         static ['new'](): SplitPatternOptions;
     }
 
-    module StrftimeOptions {
+    namespace StrftimeOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -12444,7 +12444,7 @@ export namespace Arrow {
         static ['new'](): StrftimeOptions;
     }
 
-    module StringArray {
+    namespace StringArray {
         // Constructor properties interface
 
         interface ConstructorProps extends BinaryArray.ConstructorProps {}
@@ -12472,7 +12472,7 @@ export namespace Arrow {
         get_string(i: number): string;
     }
 
-    module StringArrayBuilder {
+    namespace StringArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends BinaryArrayBuilder.ConstructorProps {}
@@ -12506,7 +12506,7 @@ export namespace Arrow {
         append_strings(values: string[], is_valids?: boolean[] | null): boolean;
     }
 
-    module StringDataType {
+    namespace StringDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -12524,7 +12524,7 @@ export namespace Arrow {
         static ['new'](): StringDataType;
     }
 
-    module StringDictionaryArrayBuilder {
+    namespace StringDictionaryArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -12561,7 +12561,7 @@ export namespace Arrow {
         reset_full(): void;
     }
 
-    module StringScalar {
+    namespace StringScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
@@ -12579,7 +12579,7 @@ export namespace Arrow {
         static ['new'](value: Buffer): StringScalar;
     }
 
-    module StrptimeOptions {
+    namespace StrptimeOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -12625,7 +12625,7 @@ export namespace Arrow {
         static ['new'](): StrptimeOptions;
     }
 
-    module StrptimeTimestampParser {
+    namespace StrptimeTimestampParser {
         // Constructor properties interface
 
         interface ConstructorProps extends TimestampParser.ConstructorProps {}
@@ -12647,7 +12647,7 @@ export namespace Arrow {
         get_format(): string;
     }
 
-    module StructArray {
+    namespace StructArray {
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {}
@@ -12677,7 +12677,7 @@ export namespace Arrow {
         get_fields(): Array[];
     }
 
-    module StructArrayBuilder {
+    namespace StructArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -12702,7 +12702,7 @@ export namespace Arrow {
         get_field_builders(): ArrayBuilder[];
     }
 
-    module StructDataType {
+    namespace StructDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -12728,7 +12728,7 @@ export namespace Arrow {
         get_n_fields(): number;
     }
 
-    module StructFieldOptions {
+    namespace StructFieldOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -12758,7 +12758,7 @@ export namespace Arrow {
         set_field_ref(field_ref: string): void;
     }
 
-    module StructScalar {
+    namespace StructScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -12780,7 +12780,7 @@ export namespace Arrow {
         get_value(): Scalar[];
     }
 
-    module SubTreeFileSystem {
+    namespace SubTreeFileSystem {
         // Constructor properties interface
 
         interface ConstructorProps extends FileSystem.ConstructorProps {
@@ -12806,7 +12806,7 @@ export namespace Arrow {
         static ['new'](base_path: string, base_file_system: FileSystem): SubTreeFileSystem;
     }
 
-    module Table {
+    namespace Table {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12862,7 +12862,7 @@ export namespace Arrow {
         write_as_feather(sink: OutputStream, properties?: FeatherWriteProperties | null): boolean;
     }
 
-    module TableBatchReader {
+    namespace TableBatchReader {
         // Constructor properties interface
 
         interface ConstructorProps extends RecordBatchReader.ConstructorProps {}
@@ -12894,7 +12894,7 @@ export namespace Arrow {
         set_max_chunk_size(max_chunk_size: number): void;
     }
 
-    module TableConcatenateOptions {
+    namespace TableConcatenateOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12962,7 +12962,7 @@ export namespace Arrow {
         static ['new'](): TableConcatenateOptions;
     }
 
-    module TableDatum {
+    namespace TableDatum {
         // Constructor properties interface
 
         interface ConstructorProps extends Datum.ConstructorProps {
@@ -12986,7 +12986,7 @@ export namespace Arrow {
         static ['new'](value: Table): TableDatum;
     }
 
-    module TakeOptions {
+    namespace TakeOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {}
@@ -13004,7 +13004,7 @@ export namespace Arrow {
         static ['new'](): TakeOptions;
     }
 
-    module TemporalDataType {
+    namespace TemporalDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
@@ -13020,7 +13020,7 @@ export namespace Arrow {
         _init(...args: any[]): void;
     }
 
-    module Tensor {
+    namespace Tensor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13068,7 +13068,7 @@ export namespace Arrow {
         is_row_major(): boolean;
     }
 
-    module Time32Array {
+    namespace Time32Array {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -13097,7 +13097,7 @@ export namespace Arrow {
         get_values(): number[];
     }
 
-    module Time32ArrayBuilder {
+    namespace Time32ArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -13128,7 +13128,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module Time32DataType {
+    namespace Time32DataType {
         // Constructor properties interface
 
         interface ConstructorProps extends TimeDataType.ConstructorProps {}
@@ -13146,7 +13146,7 @@ export namespace Arrow {
         static ['new'](unit: TimeUnit): Time32DataType;
     }
 
-    module Time32Scalar {
+    namespace Time32Scalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -13168,7 +13168,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module Time64Array {
+    namespace Time64Array {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -13197,7 +13197,7 @@ export namespace Arrow {
         get_values(): number[];
     }
 
-    module Time64ArrayBuilder {
+    namespace Time64ArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -13228,7 +13228,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module Time64DataType {
+    namespace Time64DataType {
         // Constructor properties interface
 
         interface ConstructorProps extends TimeDataType.ConstructorProps {}
@@ -13246,7 +13246,7 @@ export namespace Arrow {
         static ['new'](unit: TimeUnit): Time64DataType;
     }
 
-    module Time64Scalar {
+    namespace Time64Scalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -13268,7 +13268,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module TimeDataType {
+    namespace TimeDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends TemporalDataType.ConstructorProps {}
@@ -13288,7 +13288,7 @@ export namespace Arrow {
         get_unit(): TimeUnit;
     }
 
-    module TimestampArray {
+    namespace TimestampArray {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -13317,7 +13317,7 @@ export namespace Arrow {
         get_values(): number[];
     }
 
-    module TimestampArrayBuilder {
+    namespace TimestampArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -13348,7 +13348,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module TimestampDataType {
+    namespace TimestampDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends TemporalDataType.ConstructorProps {
@@ -13384,7 +13384,7 @@ export namespace Arrow {
         get_unit(): TimeUnit;
     }
 
-    module TimestampParser {
+    namespace TimestampParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13410,7 +13410,7 @@ export namespace Arrow {
         get_kind(): string;
     }
 
-    module TimestampScalar {
+    namespace TimestampScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -13432,7 +13432,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module UInt16Array {
+    namespace UInt16Array {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -13456,7 +13456,7 @@ export namespace Arrow {
         sum(): number;
     }
 
-    module UInt16ArrayBuilder {
+    namespace UInt16ArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -13487,7 +13487,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module UInt16DataType {
+    namespace UInt16DataType {
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -13505,7 +13505,7 @@ export namespace Arrow {
         static ['new'](): UInt16DataType;
     }
 
-    module UInt16Scalar {
+    namespace UInt16Scalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -13527,7 +13527,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module UInt32Array {
+    namespace UInt32Array {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -13551,7 +13551,7 @@ export namespace Arrow {
         sum(): number;
     }
 
-    module UInt32ArrayBuilder {
+    namespace UInt32ArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -13582,7 +13582,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module UInt32DataType {
+    namespace UInt32DataType {
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -13600,7 +13600,7 @@ export namespace Arrow {
         static ['new'](): UInt32DataType;
     }
 
-    module UInt32Scalar {
+    namespace UInt32Scalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -13622,7 +13622,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module UInt64Array {
+    namespace UInt64Array {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -13646,7 +13646,7 @@ export namespace Arrow {
         sum(): number;
     }
 
-    module UInt64ArrayBuilder {
+    namespace UInt64ArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -13677,7 +13677,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module UInt64DataType {
+    namespace UInt64DataType {
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -13695,7 +13695,7 @@ export namespace Arrow {
         static ['new'](): UInt64DataType;
     }
 
-    module UInt64Scalar {
+    namespace UInt64Scalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -13717,7 +13717,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module UInt8Array {
+    namespace UInt8Array {
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -13741,7 +13741,7 @@ export namespace Arrow {
         sum(): number;
     }
 
-    module UInt8ArrayBuilder {
+    namespace UInt8ArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -13772,7 +13772,7 @@ export namespace Arrow {
         append_values(values: Uint8Array | string, is_valids?: boolean[] | null): boolean;
     }
 
-    module UInt8DataType {
+    namespace UInt8DataType {
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -13790,7 +13790,7 @@ export namespace Arrow {
         static ['new'](): UInt8DataType;
     }
 
-    module UInt8Scalar {
+    namespace UInt8Scalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -13812,7 +13812,7 @@ export namespace Arrow {
         get_value(): number;
     }
 
-    module UIntArrayBuilder {
+    namespace UIntArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -13843,7 +13843,7 @@ export namespace Arrow {
         append_values(values: number[], is_valids?: boolean[] | null): boolean;
     }
 
-    module UTF8NormalizeOptions {
+    namespace UTF8NormalizeOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -13871,7 +13871,7 @@ export namespace Arrow {
         static ['new'](): UTF8NormalizeOptions;
     }
 
-    module UnionArray {
+    namespace UnionArray {
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {
@@ -13901,7 +13901,7 @@ export namespace Arrow {
         get_type_code(i: number): number;
     }
 
-    module UnionArrayBuilder {
+    namespace UnionArrayBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -13936,7 +13936,7 @@ export namespace Arrow {
         append_value(value: number): boolean;
     }
 
-    module UnionDataType {
+    namespace UnionDataType {
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -13959,7 +13959,7 @@ export namespace Arrow {
         get_type_codes(): Uint8Array;
     }
 
-    module UnionScalar {
+    namespace UnionScalar {
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {
@@ -13989,7 +13989,7 @@ export namespace Arrow {
         get_value(): Scalar;
     }
 
-    module VarianceOptions {
+    namespace VarianceOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -14041,7 +14041,7 @@ export namespace Arrow {
         static ['new'](): VarianceOptions;
     }
 
-    module WriteOptions {
+    namespace WriteOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -14412,7 +14412,7 @@ export namespace Arrow {
     type WritableFileInterface = typeof WritableFile;
     type WritableInterface = typeof Writable;
     type WriteOptionsClass = typeof WriteOptions;
-    module File {
+    namespace File {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -14435,7 +14435,7 @@ export namespace Arrow {
         new (): File; // This allows `obj instanceof File`
     };
 
-    module Readable {
+    namespace Readable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -14456,7 +14456,7 @@ export namespace Arrow {
         new (): Readable; // This allows `obj instanceof Readable`
     };
 
-    module Writable {
+    namespace Writable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -14481,7 +14481,7 @@ export namespace Arrow {
         new (): Writable; // This allows `obj instanceof Writable`
     };
 
-    module WritableFile {
+    namespace WritableFile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

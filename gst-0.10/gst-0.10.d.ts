@@ -2100,7 +2100,7 @@ export namespace Gst {
         SEGMENT,
         SKIP,
     }
-    module Adapter {
+    namespace Adapter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2147,7 +2147,7 @@ export namespace Gst {
         masked_scan_uint32_peek(mask: number, pattern: number, offset: number, size: number): [number, number];
     }
 
-    module BaseSink {
+    namespace BaseSink {
         // Constructor properties interface
 
         interface ConstructorProps extends Element.ConstructorProps {
@@ -2283,7 +2283,7 @@ export namespace Gst {
         wait_eos(time: ClockTime, jitter: ClockTimeDiff): FlowReturn;
     }
 
-    module BaseSrc {
+    namespace BaseSrc {
         // Constructor properties interface
 
         interface ConstructorProps extends Element.ConstructorProps {
@@ -2374,7 +2374,7 @@ export namespace Gst {
         new_seamless_segment(start: number, stop: number, position: number): boolean;
     }
 
-    module BaseTransform {
+    namespace BaseTransform {
         // Constructor properties interface
 
         interface ConstructorProps extends Element.ConstructorProps {
@@ -2445,7 +2445,7 @@ export namespace Gst {
         reconfigure(): void;
     }
 
-    module Bin {
+    namespace Bin {
         // Signal callback interfaces
 
         interface DoLatency {
@@ -2632,7 +2632,7 @@ export namespace Gst {
         iterate(): BufferListIterator;
     }
 
-    module Bus {
+    namespace Bus {
         // Signal callback interfaces
 
         interface Message {
@@ -2707,7 +2707,7 @@ export namespace Gst {
         disable_sync_message_emission(): void;
     }
 
-    module Clock {
+    namespace Clock {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -2802,7 +2802,7 @@ export namespace Gst {
         new_periodic_id(start_time: ClockTime, interval: ClockTime): ClockID;
     }
 
-    module CollectPads {
+    namespace CollectPads {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2858,7 +2858,7 @@ export namespace Gst {
         flush(data: CollectData, size: number): number;
     }
 
-    module DataQueue {
+    namespace DataQueue {
         // Signal callback interfaces
 
         interface Empty {
@@ -2946,7 +2946,7 @@ export namespace Gst {
         limits_changed(): void;
     }
 
-    module Element {
+    namespace Element {
         // Signal callback interfaces
 
         interface NoMorePads {
@@ -3119,7 +3119,7 @@ export namespace Gst {
         found_tags(list: TagList): void;
     }
 
-    module ElementFactory {
+    namespace ElementFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends PluginFeature.ConstructorProps {}
@@ -3264,7 +3264,7 @@ export namespace Gst {
         parse_sink_message(msg: Message): void;
     }
 
-    module GParamSpecMiniObject {
+    namespace GParamSpecMiniObject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3280,7 +3280,7 @@ export namespace Gst {
         _init(...args: any[]): void;
     }
 
-    module GhostPad {
+    namespace GhostPad {
         // Constructor properties interface
 
         interface ConstructorProps extends ProxyPad.ConstructorProps {}
@@ -3323,7 +3323,7 @@ export namespace Gst {
         construct(): boolean;
     }
 
-    module Index {
+    namespace Index {
         // Signal callback interfaces
 
         interface EntryAdded {
@@ -3428,7 +3428,7 @@ export namespace Gst {
         ): IndexEntry;
     }
 
-    module IndexFactory {
+    namespace IndexFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends PluginFeature.ConstructorProps {}
@@ -3627,7 +3627,7 @@ export namespace Gst {
         replace(newdata: MiniObject): void;
     }
 
-    module Object {
+    namespace Object {
         // Signal callback interfaces
 
         interface DeepNotify {
@@ -3736,7 +3736,7 @@ export namespace Gst {
         default_error(error: GLib.Error, debug: string): void;
     }
 
-    module Pad {
+    namespace Pad {
         // Signal callback interfaces
 
         interface HaveData {
@@ -3941,7 +3941,7 @@ export namespace Gst {
         remove_buffer_probe(handler_id: number): void;
     }
 
-    module PadTemplate {
+    namespace PadTemplate {
         // Signal callback interfaces
 
         interface PadCreated {
@@ -4000,7 +4000,7 @@ export namespace Gst {
         pad_created(pad: Pad): void;
     }
 
-    module ParamFraction {
+    namespace ParamFraction {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4016,7 +4016,7 @@ export namespace Gst {
         _init(...args: any[]): void;
     }
 
-    module Pipeline {
+    namespace Pipeline {
         // Constructor properties interface
 
         interface ConstructorProps extends Bin.ConstructorProps, ChildProxy.ConstructorProps {
@@ -4096,7 +4096,7 @@ export namespace Gst {
         vfunc_restore_thyself(self: libxml2.NodePtr): void;
     }
 
-    module Plugin {
+    namespace Plugin {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4179,7 +4179,7 @@ export namespace Gst {
         ): void;
     }
 
-    module PluginFeature {
+    namespace PluginFeature {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4220,7 +4220,7 @@ export namespace Gst {
         check_version(min_major: number, min_minor: number, min_micro: number): boolean;
     }
 
-    module ProxyPad {
+    namespace ProxyPad {
         // Constructor properties interface
 
         interface ConstructorProps extends Pad.ConstructorProps {}
@@ -4240,7 +4240,7 @@ export namespace Gst {
         _init(...args: any[]): void;
     }
 
-    module PushSrc {
+    namespace PushSrc {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseSrc.ConstructorProps {}
@@ -4338,7 +4338,7 @@ export namespace Gst {
         set_uri(uri: string): void;
     }
 
-    module Registry {
+    namespace Registry {
         // Signal callback interfaces
 
         interface FeatureAdded {
@@ -4409,7 +4409,7 @@ export namespace Gst {
         xml_write_cache(location: string): boolean;
     }
 
-    module SystemClock {
+    namespace SystemClock {
         // Constructor properties interface
 
         interface ConstructorProps extends Clock.ConstructorProps {
@@ -4447,7 +4447,7 @@ export namespace Gst {
         static obtain(): Clock;
     }
 
-    module Task {
+    namespace Task {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4494,7 +4494,7 @@ export namespace Gst {
         join(): boolean;
     }
 
-    module TaskPool {
+    namespace TaskPool {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4533,7 +4533,7 @@ export namespace Gst {
         cleanup(): void;
     }
 
-    module TypeFindFactory {
+    namespace TypeFindFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends PluginFeature.ConstructorProps {}
@@ -4566,7 +4566,7 @@ export namespace Gst {
         call_function(find: TypeFind): void;
     }
 
-    module XML {
+    namespace XML {
         // Signal callback interfaces
 
         interface ObjectLoaded {
@@ -5917,7 +5917,7 @@ export namespace Gst {
     }
 
     type XMLClass = typeof XML;
-    module ChildProxy {
+    namespace ChildProxy {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -5944,7 +5944,7 @@ export namespace Gst {
         new (): ChildProxy; // This allows `obj instanceof ChildProxy`
     };
 
-    module ImplementsInterface {
+    namespace ImplementsInterface {
         // Constructor properties interface
 
         interface ConstructorProps extends Element.ConstructorProps {}
@@ -5964,7 +5964,7 @@ export namespace Gst {
         new (): ImplementsInterface; // This allows `obj instanceof ImplementsInterface`
     };
 
-    module TagSetter {
+    namespace TagSetter {
         // Constructor properties interface
 
         interface ConstructorProps extends Element.ConstructorProps {}
@@ -5989,7 +5989,7 @@ export namespace Gst {
         new (): TagSetter; // This allows `obj instanceof TagSetter`
     };
 
-    module URIHandler {
+    namespace URIHandler {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

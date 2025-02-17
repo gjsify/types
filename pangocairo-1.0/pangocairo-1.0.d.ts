@@ -282,7 +282,7 @@ export namespace PangoCairo {
     interface ShapeRendererFunc {
         (cr: cairo.Context, attr: Pango.AttrShape, do_path: boolean): void;
     }
-    module Font {
+    namespace Font {
         // Constructor properties interface
 
         interface ConstructorProps extends Pango.Font.ConstructorProps {}
@@ -308,7 +308,7 @@ export namespace PangoCairo {
         new (): Font; // This allows `obj instanceof Font`
     };
 
-    module FontMap {
+    namespace FontMap {
         // Constructor properties interface
 
         interface ConstructorProps extends Pango.FontMap.ConstructorProps {}

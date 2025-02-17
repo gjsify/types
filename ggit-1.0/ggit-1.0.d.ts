@@ -1372,7 +1372,7 @@ export namespace Ggit {
         WD_WD_MODIFIED,
         WD_UNTRACKED,
     }
-    module Blame {
+    namespace Blame {
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -1423,7 +1423,7 @@ export namespace Ggit {
         get_hunk_count(): number;
     }
 
-    module Blob {
+    namespace Blob {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1460,7 +1460,7 @@ export namespace Ggit {
         is_binary(): boolean;
     }
 
-    module BlobOutputStream {
+    namespace BlobOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.OutputStream.ConstructorProps {
@@ -1495,7 +1495,7 @@ export namespace Ggit {
         get_id(): OId | null;
     }
 
-    module Branch {
+    namespace Branch {
         // Constructor properties interface
 
         interface ConstructorProps extends Ref.ConstructorProps {}
@@ -1552,7 +1552,7 @@ export namespace Ggit {
         set_upstream(upstream_branch_name: string): void;
     }
 
-    module CheckoutOptions {
+    namespace CheckoutOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1783,7 +1783,7 @@ export namespace Ggit {
         set_their_label(label?: string | null): void;
     }
 
-    module CherryPickOptions {
+    namespace CherryPickOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1856,7 +1856,7 @@ export namespace Ggit {
         set_merge_options(merge_options?: MergeOptions | null): void;
     }
 
-    module CloneOptions {
+    namespace CloneOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1930,7 +1930,7 @@ export namespace Ggit {
         set_local(local: CloneLocal | null): void;
     }
 
-    module Commit {
+    namespace Commit {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2035,7 +2035,7 @@ export namespace Ggit {
         get_tree_id(): OId | null;
     }
 
-    module CommitParents {
+    namespace CommitParents {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2084,7 +2084,7 @@ export namespace Ggit {
         get_size(): number;
     }
 
-    module Config {
+    namespace Config {
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -2245,7 +2245,7 @@ export namespace Ggit {
         snapshot(): Config;
     }
 
-    module Cred {
+    namespace Cred {
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -2264,7 +2264,7 @@ export namespace Ggit {
         _init(...args: any[]): void;
     }
 
-    module CredPlaintext {
+    namespace CredPlaintext {
         // Constructor properties interface
 
         interface ConstructorProps extends Cred.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -2785,7 +2785,7 @@ export namespace Ggit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CredSshInteractive {
+    namespace CredSshInteractive {
         // Constructor properties interface
 
         interface ConstructorProps extends Cred.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -3307,7 +3307,7 @@ export namespace Ggit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CredSshKeyFromAgent {
+    namespace CredSshKeyFromAgent {
         // Constructor properties interface
 
         interface ConstructorProps extends Cred.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -3829,7 +3829,7 @@ export namespace Ggit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Diff {
+    namespace Diff {
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {
@@ -3994,7 +3994,7 @@ export namespace Ggit {
         print(type: DiffFormatType | null, print_cb: DiffLineCallback): void;
     }
 
-    module DiffFindOptions {
+    namespace DiffFindOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4115,7 +4115,7 @@ export namespace Ggit {
         set_rename_threshold(threshold: number): void;
     }
 
-    module DiffFormatEmailOptions {
+    namespace DiffFormatEmailOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4237,7 +4237,7 @@ export namespace Ggit {
         set_total_patches(patches: number): void;
     }
 
-    module DiffOptions {
+    namespace DiffOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4358,7 +4358,7 @@ export namespace Ggit {
         set_pathspec(pathspec?: string[] | null): void;
     }
 
-    module Index {
+    namespace Index {
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -4969,7 +4969,7 @@ export namespace Ggit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Mailmap {
+    namespace Mailmap {
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -5026,7 +5026,7 @@ export namespace Ggit {
         resolve_signature(signature: Signature): Signature | null;
     }
 
-    module Native {
+    namespace Native {
         // Constructor properties interface
 
         interface ConstructorProps extends ObjectFactoryBase.ConstructorProps {
@@ -5051,7 +5051,7 @@ export namespace Ggit {
         _init(...args: any[]): void;
     }
 
-    module Object {
+    namespace Object {
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -5083,7 +5083,7 @@ export namespace Ggit {
         get_owner(): Repository | null;
     }
 
-    module ObjectFactory {
+    namespace ObjectFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5138,7 +5138,7 @@ export namespace Ggit {
         unregister(basetype: GObject.GType, subtype: GObject.GType): void;
     }
 
-    module ObjectFactoryBase {
+    namespace ObjectFactoryBase {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5157,7 +5157,7 @@ export namespace Ggit {
         _init(...args: any[]): void;
     }
 
-    module ProxyOptions {
+    namespace ProxyOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5178,7 +5178,7 @@ export namespace Ggit {
         static ['new'](): ProxyOptions;
     }
 
-    module PushOptions {
+    namespace PushOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5236,7 +5236,7 @@ export namespace Ggit {
         set_remote_callbacks(callbacks: RemoteCallbacks): void;
     }
 
-    module Rebase {
+    namespace Rebase {
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -5307,7 +5307,7 @@ export namespace Ggit {
         next(): RebaseOperation | null;
     }
 
-    module Ref {
+    namespace Ref {
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -5494,7 +5494,7 @@ export namespace Ggit {
         to_string(): string | null;
     }
 
-    module Remote {
+    namespace Remote {
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -5621,7 +5621,7 @@ export namespace Ggit {
         upload(specs: string[] | null, push_options: PushOptions): boolean;
     }
 
-    module RemoteCallbacks {
+    namespace RemoteCallbacks {
         // Signal callback interfaces
 
         interface Completion {
@@ -5687,7 +5687,7 @@ export namespace Ggit {
         vfunc_update_tips(refname: string, a: OId, b: OId): void;
     }
 
-    module Repository {
+    namespace Repository {
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -7031,7 +7031,7 @@ export namespace Ggit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RevisionWalker {
+    namespace RevisionWalker {
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -7653,7 +7653,7 @@ export namespace Ggit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Signature {
+    namespace Signature {
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {
@@ -7711,7 +7711,7 @@ export namespace Ggit {
         get_time_zone(): GLib.TimeZone | null;
     }
 
-    module SubmoduleUpdateOptions {
+    namespace SubmoduleUpdateOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7767,7 +7767,7 @@ export namespace Ggit {
         set_fetch_options(fetch_options?: FetchOptions | null): void;
     }
 
-    module Tag {
+    namespace Tag {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -7828,7 +7828,7 @@ export namespace Ggit {
         peel(): Object | null;
     }
 
-    module Tree {
+    namespace Tree {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -7887,7 +7887,7 @@ export namespace Ggit {
         walk(mode: TreeWalkMode | null, callback: TreeWalkCallback): void;
     }
 
-    module TreeBuilder {
+    namespace TreeBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}

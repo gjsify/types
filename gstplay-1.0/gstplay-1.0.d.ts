@@ -255,7 +255,7 @@ export namespace GstPlay {
      * @returns a string with the name of the state.
      */
     function play_state_get_name(state: PlayState | null): string;
-    module Play {
+    namespace Play {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -621,7 +621,7 @@ export namespace GstPlay {
         stop(): void;
     }
 
-    module PlayAudioInfo {
+    namespace PlayAudioInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends PlayStreamInfo.ConstructorProps {}
@@ -648,7 +648,7 @@ export namespace GstPlay {
         get_sample_rate(): number;
     }
 
-    module PlayMediaInfo {
+    namespace PlayMediaInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -691,7 +691,7 @@ export namespace GstPlay {
         is_seekable(): boolean;
     }
 
-    module PlaySignalAdapter {
+    namespace PlaySignalAdapter {
         // Signal callback interfaces
 
         interface Buffering {
@@ -840,7 +840,7 @@ export namespace GstPlay {
         get_play(): Play;
     }
 
-    module PlayStreamInfo {
+    namespace PlayStreamInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -883,7 +883,7 @@ export namespace GstPlay {
         get_tags(): Gst.TagList | null;
     }
 
-    module PlaySubtitleInfo {
+    namespace PlaySubtitleInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends PlayStreamInfo.ConstructorProps {}
@@ -906,7 +906,7 @@ export namespace GstPlay {
         get_language(): string | null;
     }
 
-    module PlayVideoInfo {
+    namespace PlayVideoInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends PlayStreamInfo.ConstructorProps {}
@@ -937,7 +937,7 @@ export namespace GstPlay {
         get_width(): number;
     }
 
-    module PlayVideoOverlayVideoRenderer {
+    namespace PlayVideoOverlayVideoRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PlayVideoRenderer.ConstructorProps {
@@ -1457,7 +1457,7 @@ export namespace GstPlay {
         free(): void;
     }
 
-    module PlayVideoRenderer {
+    namespace PlayVideoRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

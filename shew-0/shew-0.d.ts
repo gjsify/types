@@ -28,7 +28,7 @@ export namespace Shew {
      * Shew-0
      */
 
-    module ExternalWindow {
+    namespace ExternalWindow {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -61,7 +61,7 @@ export namespace Shew {
         set_parent_of(child_surface: Gdk.Surface): void;
     }
 
-    module WindowExporter {
+    namespace WindowExporter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

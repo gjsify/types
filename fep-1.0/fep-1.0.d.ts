@@ -97,7 +97,7 @@ export namespace Fep {
          */
         RESIZED,
     }
-    module GClient {
+    namespace GClient {
         // Signal callback interfaces
 
         interface FilterEvent {

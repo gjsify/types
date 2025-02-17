@@ -3755,7 +3755,7 @@ export namespace Vips {
          */
         REVALIDATE,
     }
-    module Foreign {
+    namespace Foreign {
         // Constructor properties interface
 
         interface ConstructorProps extends Operation.ConstructorProps {}
@@ -3877,7 +3877,7 @@ export namespace Vips {
         static map(base: string, fn: SListMap2Fn, a?: any | null, b?: any | null): any | null;
     }
 
-    module ForeignLoad {
+    namespace ForeignLoad {
         // Constructor properties interface
 
         interface ConstructorProps extends Foreign.ConstructorProps {
@@ -3942,7 +3942,7 @@ export namespace Vips {
         vfunc_load(): number;
     }
 
-    module ForeignSave {
+    namespace ForeignSave {
         // Constructor properties interface
 
         interface ConstructorProps extends Foreign.ConstructorProps {
@@ -3988,7 +3988,7 @@ export namespace Vips {
         _init(...args: any[]): void;
     }
 
-    module Image {
+    namespace Image {
         // Signal callback interfaces
 
         interface Eval {
@@ -4908,7 +4908,7 @@ export namespace Vips {
         write_to_memory(): Uint8Array;
     }
 
-    module Interpolate {
+    namespace Interpolate {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4975,7 +4975,7 @@ export namespace Vips {
         get_window_size(): number;
     }
 
-    module Object {
+    namespace Object {
         // Signal callback interfaces
 
         interface Close {
@@ -5157,7 +5157,7 @@ export namespace Vips {
         unref_outputs(): void;
     }
 
-    module Operation {
+    namespace Operation {
         // Signal callback interfaces
 
         interface Invalidate {
@@ -5240,7 +5240,7 @@ export namespace Vips {
         invalidate(): void;
     }
 
-    module Region {
+    namespace Region {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}

@@ -108,7 +108,7 @@ export namespace Avahi {
         GA_RESOLVER_FAILURE,
     }
     function error_quark(): GLib.Quark;
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface StateChanged {
@@ -154,7 +154,7 @@ export namespace Avahi {
         start_in_context(context: GLib.MainContext): boolean;
     }
 
-    module EntryGroup {
+    namespace EntryGroup {
         // Signal callback interfaces
 
         interface StateChanged {
@@ -218,7 +218,7 @@ export namespace Avahi {
         reset(): boolean;
     }
 
-    module RecordBrowser {
+    namespace RecordBrowser {
         // Signal callback interfaces
 
         interface AllForNow {
@@ -404,7 +404,7 @@ export namespace Avahi {
         attach(client: Client): boolean;
     }
 
-    module ServiceBrowser {
+    namespace ServiceBrowser {
         // Signal callback interfaces
 
         interface AllForNow {
@@ -556,7 +556,7 @@ export namespace Avahi {
         attach(client: Client): boolean;
     }
 
-    module ServiceResolver {
+    namespace ServiceResolver {
         // Signal callback interfaces
 
         interface Failure {

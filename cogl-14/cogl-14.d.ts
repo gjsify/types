@@ -2445,7 +2445,7 @@ export namespace Cogl {
          */
         EGL,
     }
-    module AtlasTexture {
+    namespace AtlasTexture {
         // Constructor properties interface
 
         interface ConstructorProps extends Texture.ConstructorProps {}
@@ -2496,7 +2496,7 @@ export namespace Cogl {
         static new_with_size(ctx: Context, width: number, height: number): AtlasTexture;
     }
 
-    module Attribute {
+    namespace Attribute {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2577,7 +2577,7 @@ export namespace Cogl {
         set_normalized(normalized: boolean): void;
     }
 
-    module AttributeBuffer {
+    namespace AttributeBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends Buffer.ConstructorProps {}
@@ -2600,7 +2600,7 @@ export namespace Cogl {
         static new_with_size(context: Context, bytes: number): AttributeBuffer;
     }
 
-    module Bitmap {
+    namespace Bitmap {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2654,7 +2654,7 @@ export namespace Cogl {
         get_width(): number;
     }
 
-    module Buffer {
+    namespace Buffer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2783,7 +2783,7 @@ export namespace Cogl {
         unmap(): void;
     }
 
-    module Context {
+    namespace Context {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2882,7 +2882,7 @@ export namespace Cogl {
         timestamp_query_get_time_ns(query: TimestampQuery): number;
     }
 
-    module Display {
+    namespace Display {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2963,7 +2963,7 @@ export namespace Cogl {
         setup(): boolean;
     }
 
-    module FrameInfo {
+    namespace FrameInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3024,7 +3024,7 @@ export namespace Cogl {
         is_zero_copy(): boolean;
     }
 
-    module Framebuffer {
+    namespace Framebuffer {
         // Signal callback interfaces
 
         interface Destroy {
@@ -3840,7 +3840,7 @@ export namespace Cogl {
         translate(x: number, y: number, z: number): void;
     }
 
-    module IndexBuffer {
+    namespace IndexBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends Buffer.ConstructorProps {}
@@ -3861,7 +3861,7 @@ export namespace Cogl {
         static ['new'](context: Context, bytes: number): IndexBuffer;
     }
 
-    module Indices {
+    namespace Indices {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3944,7 +3944,7 @@ export namespace Cogl {
         set_offset(offset: number): void;
     }
 
-    module MatrixStack {
+    namespace MatrixStack {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4147,7 +4147,7 @@ export namespace Cogl {
         translate(x: number, y: number, z: number): void;
     }
 
-    module Offscreen {
+    namespace Offscreen {
         // Constructor properties interface
 
         interface ConstructorProps extends Framebuffer.ConstructorProps {}
@@ -4172,7 +4172,7 @@ export namespace Cogl {
         get_texture(): Texture;
     }
 
-    module Onscreen {
+    namespace Onscreen {
         // Constructor properties interface
 
         interface ConstructorProps extends Framebuffer.ConstructorProps {}
@@ -4554,7 +4554,7 @@ export namespace Cogl {
         swap_region(rectangles: number[], info: FrameInfo, user_data?: any | null): void;
     }
 
-    module OnscreenTemplate {
+    namespace OnscreenTemplate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4602,7 +4602,7 @@ export namespace Cogl {
         set_stereo_enabled(enabled: boolean): void;
     }
 
-    module Output {
+    namespace Output {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4692,7 +4692,7 @@ export namespace Cogl {
         get_y(): number;
     }
 
-    module Pipeline {
+    namespace Pipeline {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5270,7 +5270,7 @@ export namespace Cogl {
         set_user_program(program: Program): void;
     }
 
-    module PixelBuffer {
+    namespace PixelBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends Buffer.ConstructorProps {}
@@ -5288,7 +5288,7 @@ export namespace Cogl {
         static ['new'](context: Context, data: Uint8Array | string): PixelBuffer;
     }
 
-    module Primitive {
+    namespace Primitive {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5423,7 +5423,7 @@ export namespace Cogl {
         set_n_vertices(n_vertices: number): void;
     }
 
-    module Program {
+    namespace Program {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5503,7 +5503,7 @@ export namespace Cogl {
         set_uniform_matrix(uniform_location: number, dimensions: number, transpose: boolean, value: number[]): void;
     }
 
-    module Renderer {
+    namespace Renderer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5629,7 +5629,7 @@ export namespace Cogl {
         set_winsys_id(winsys_id: WinsysID | null): void;
     }
 
-    module Scanout {
+    namespace Scanout {
         // Signal callback interfaces
 
         interface ScanoutFailed {
@@ -5676,7 +5676,7 @@ export namespace Cogl {
         set_src_rect(rect: Graphene.Rect): void;
     }
 
-    module Shader {
+    namespace Shader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5785,7 +5785,7 @@ export namespace Cogl {
         source(source: string): void;
     }
 
-    module Snippet {
+    namespace Snippet {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6035,7 +6035,7 @@ export namespace Cogl {
         set_replace(replace: string): void;
     }
 
-    module SubTexture {
+    namespace SubTexture {
         // Constructor properties interface
 
         interface ConstructorProps extends Texture.ConstructorProps {}
@@ -6077,7 +6077,7 @@ export namespace Cogl {
         get_parent(): Texture;
     }
 
-    module SwapChain {
+    namespace SwapChain {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6100,7 +6100,7 @@ export namespace Cogl {
         set_length(length: number): void;
     }
 
-    module Texture {
+    namespace Texture {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6372,7 +6372,7 @@ export namespace Cogl {
         ): boolean;
     }
 
-    module Texture2D {
+    namespace Texture2D {
         // Constructor properties interface
 
         interface ConstructorProps extends Texture.ConstructorProps {}
@@ -6412,7 +6412,7 @@ export namespace Cogl {
         static new_with_size(ctx: Context, width: number, height: number): Texture2D;
     }
 
-    module Texture2DSliced {
+    namespace Texture2DSliced {
         // Constructor properties interface
 
         interface ConstructorProps extends Texture.ConstructorProps {}
@@ -7251,7 +7251,7 @@ export namespace Cogl {
         _init(...args: any[]): void;
     }
 
-    module ScanoutBuffer {
+    namespace ScanoutBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

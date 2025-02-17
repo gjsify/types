@@ -62,7 +62,7 @@ export namespace GtkFrdp {
         BUTTON5,
         HWHEEL,
     }
-    module Display {
+    namespace Display {
         // Signal callback interfaces
 
         interface RdpAuthFailure {
@@ -716,7 +716,7 @@ export namespace GtkFrdp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Session {
+    namespace Session {
         // Signal callback interfaces
 
         interface RdpAuthFailure {

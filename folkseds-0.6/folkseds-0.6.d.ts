@@ -25,7 +25,7 @@ export namespace FolksEds {
      * FolksEds-0.6
      */
 
-    module PersonaStore {
+    namespace PersonaStore {
         // Constructor properties interface
 
         interface ConstructorProps extends Folks.PersonaStore.ConstructorProps {
@@ -62,7 +62,7 @@ export namespace FolksEds {
         get_source(): EDataServer.Source;
     }
 
-    module Persona {
+    namespace Persona {
         // Constructor properties interface
 
         interface ConstructorProps

@@ -1,6 +1,6 @@
 {
     "name": "@girs/workbench-0",
-    "version": "0.0.0-4.0.0-beta.19",
+    "version": "0.0.0-4.0.0-beta.20",
     "description": "GJS TypeScript type definitions for Workbench-0, generated from library version 0.0.0",
     "type": "module",
     "module": "workbench-0.js",

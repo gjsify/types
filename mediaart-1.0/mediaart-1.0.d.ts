@@ -212,7 +212,7 @@ export namespace MediaArt {
          */
         FORCE,
     }
-    module Process {
+    namespace Process {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}

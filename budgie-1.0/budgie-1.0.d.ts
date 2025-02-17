@@ -127,7 +127,7 @@ export namespace Budgie {
          */
         RIGHT,
     }
-    module Applet {
+    namespace Applet {
         // Signal callback interfaces
 
         interface PanelPositionChanged {
@@ -877,7 +877,7 @@ export namespace Budgie {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AppletInfo {
+    namespace AppletInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -929,7 +929,7 @@ export namespace Budgie {
         static new_from_uuid(uuid: string): AppletInfo;
     }
 
-    module Popover {
+    namespace Popover {
         // Signal callback interfaces
 
         interface Closed {
@@ -1412,7 +1412,7 @@ export namespace Budgie {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PopoverManager {
+    namespace PopoverManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1492,7 +1492,7 @@ export namespace Budgie {
         _init(...args: any[]): void;
     }
 
-    module Plugin {
+    namespace Plugin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

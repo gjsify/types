@@ -79,7 +79,7 @@ export namespace Gom {
     interface ResourceToBytesFunc {
         (value: GObject.Value | any): GLib.Bytes;
     }
-    module Adapter {
+    namespace Adapter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -157,7 +157,7 @@ export namespace Gom {
         queue_write(callback: AdapterCallback): void;
     }
 
-    module Command {
+    namespace Command {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -197,7 +197,7 @@ export namespace Gom {
         set_sql(sql: string): void;
     }
 
-    module CommandBuilder {
+    namespace CommandBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -287,7 +287,7 @@ export namespace Gom {
         build_update(resource: Resource): Command;
     }
 
-    module Cursor {
+    namespace Cursor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -324,7 +324,7 @@ export namespace Gom {
         next(): boolean;
     }
 
-    module Filter {
+    namespace Filter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -388,7 +388,7 @@ export namespace Gom {
         get_values(): unknown[];
     }
 
-    module Repository {
+    namespace Repository {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -583,7 +583,7 @@ export namespace Gom {
         migrate_sync(version: number, migrator: RepositoryMigrator): boolean;
     }
 
-    module Resource {
+    namespace Resource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -664,7 +664,7 @@ export namespace Gom {
         save_sync(): boolean;
     }
 
-    module ResourceGroup {
+    namespace ResourceGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -750,7 +750,7 @@ export namespace Gom {
         write_sync(): boolean;
     }
 
-    module Sorting {
+    namespace Sorting {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}

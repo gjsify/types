@@ -29,7 +29,7 @@ export namespace Translit {
     }
     function error_quark(): GLib.Quark;
     function implement_transliterator(backend: string, type: GObject.GType): void;
-    module Transliterator {
+    namespace Transliterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

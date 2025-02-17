@@ -1590,7 +1590,7 @@ export namespace GIRepository {
         is_boxed(): boolean;
     }
 
-    module Repository {
+    namespace Repository {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

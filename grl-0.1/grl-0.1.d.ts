@@ -400,7 +400,7 @@ export namespace Grl {
         MEDIA_FROM_URI,
         NOTIFY_CHANGE,
     }
-    module Config {
+    namespace Config {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -488,7 +488,7 @@ export namespace Grl {
         set_username(username: string): void;
     }
 
-    module Data {
+    namespace Data {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -764,7 +764,7 @@ export namespace Grl {
         set_string(key: GObject.ParamSpec, strvalue: string): void;
     }
 
-    module Media {
+    namespace Media {
         // Constructor properties interface
 
         interface ConstructorProps extends Data.ConstructorProps {}
@@ -993,7 +993,7 @@ export namespace Grl {
         set_url_data(url: string, mime: string): void;
     }
 
-    module MediaAudio {
+    namespace MediaAudio {
         // Constructor properties interface
 
         interface ConstructorProps extends Media.ConstructorProps {}
@@ -1098,7 +1098,7 @@ export namespace Grl {
         set_url_data(...args: never[]): any;
     }
 
-    module MediaBox {
+    namespace MediaBox {
         // Constructor properties interface
 
         interface ConstructorProps extends Media.ConstructorProps {}
@@ -1132,7 +1132,7 @@ export namespace Grl {
         set_childcount(childcount: number): void;
     }
 
-    module MediaImage {
+    namespace MediaImage {
         // Constructor properties interface
 
         interface ConstructorProps extends Media.ConstructorProps {}
@@ -1220,7 +1220,7 @@ export namespace Grl {
         set_width(width: number): void;
     }
 
-    module MediaPlugin {
+    namespace MediaPlugin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1300,7 +1300,7 @@ export namespace Grl {
         set_plugin_info(info: PluginInfo): void;
     }
 
-    module MediaSource {
+    namespace MediaSource {
         // Signal callback interfaces
 
         interface ContentChanged {
@@ -1754,7 +1754,7 @@ export namespace Grl {
         test_media_from_uri(uri: string): boolean;
     }
 
-    module MediaVideo {
+    namespace MediaVideo {
         // Constructor properties interface
 
         interface ConstructorProps extends Media.ConstructorProps {}
@@ -1854,7 +1854,7 @@ export namespace Grl {
         set_width(width: number): void;
     }
 
-    module MetadataSource {
+    namespace MetadataSource {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaPlugin.ConstructorProps {
@@ -2174,7 +2174,7 @@ export namespace Grl {
         writable_keys(): GObject.ParamSpec[];
     }
 
-    module PluginRegistry {
+    namespace PluginRegistry {
         // Signal callback interfaces
 
         interface SourceAdded {
@@ -2381,7 +2381,7 @@ export namespace Grl {
         unregister_source(source: MediaPlugin): boolean;
     }
 
-    module RelatedKeys {
+    namespace RelatedKeys {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

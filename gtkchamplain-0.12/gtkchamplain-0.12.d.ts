@@ -34,7 +34,7 @@ export namespace GtkChamplain {
      * GtkChamplain-0.12
      */
 
-    module Embed {
+    namespace Embed {
         // Constructor properties interface
 
         interface ConstructorProps

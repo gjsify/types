@@ -3012,7 +3012,7 @@ export namespace Camel {
         ICASE,
         NEWLINE,
     }
-    module Address {
+    namespace Address {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3121,7 +3121,7 @@ export namespace Camel {
         unformat(raw: string): number;
     }
 
-    module BlockFile {
+    namespace BlockFile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3207,7 +3207,7 @@ export namespace Camel {
         unref_block(bl: Block): void;
     }
 
-    module CertDB {
+    namespace CertDB {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3269,7 +3269,7 @@ export namespace Camel {
         touch(): void;
     }
 
-    module CipherContext {
+    namespace CipherContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3676,7 +3676,7 @@ export namespace Camel {
         verify_sync(ipart: MimePart, cancellable?: Gio.Cancellable | null): CipherValidity;
     }
 
-    module DB {
+    namespace DB {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3956,7 +3956,7 @@ export namespace Camel {
         write_message_info_record(folder_name: string, record: MIRecord): number;
     }
 
-    module DataCache {
+    namespace DataCache {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4099,7 +4099,7 @@ export namespace Camel {
         set_path(path: string): void;
     }
 
-    module DataWrapper {
+    namespace DataWrapper {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4720,7 +4720,7 @@ export namespace Camel {
         write_to_stream_sync(stream: Stream, cancellable?: Gio.Cancellable | null): number;
     }
 
-    module FilterDriver {
+    namespace FilterDriver {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4841,7 +4841,7 @@ export namespace Camel {
         set_system_beep_func(func: FilterSystemBeepFunc): void;
     }
 
-    module FilterInputStream {
+    namespace FilterInputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.FilterInputStream.ConstructorProps {
@@ -4873,7 +4873,7 @@ export namespace Camel {
         get_filter(): MimeFilter;
     }
 
-    module FilterOutputStream {
+    namespace FilterOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.FilterOutputStream.ConstructorProps {
@@ -4905,7 +4905,7 @@ export namespace Camel {
         get_filter(): MimeFilter;
     }
 
-    module Folder {
+    namespace Folder {
         // Signal callback interfaces
 
         interface Changed {
@@ -6134,7 +6134,7 @@ export namespace Camel {
         unlock(): void;
     }
 
-    module FolderSearch {
+    namespace FolderSearch {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6255,7 +6255,7 @@ export namespace Camel {
         take_current_message_info(info?: MessageInfo | null): void;
     }
 
-    module FolderSummary {
+    namespace FolderSummary {
         // Signal callback interfaces
 
         interface Changed {
@@ -6632,7 +6632,7 @@ export namespace Camel {
         unlock(): void;
     }
 
-    module GpgContext {
+    namespace GpgContext {
         // Constructor properties interface
 
         interface ConstructorProps extends CipherContext.ConstructorProps {
@@ -6787,7 +6787,7 @@ export namespace Camel {
         set_prefer_inline(prefer_inline: boolean): void;
     }
 
-    module HTMLParser {
+    namespace HTMLParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6822,7 +6822,7 @@ export namespace Camel {
         tag(): string;
     }
 
-    module Index {
+    namespace Index {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6885,7 +6885,7 @@ export namespace Camel {
         write_name(idn: IndexName): number;
     }
 
-    module IndexCursor {
+    namespace IndexCursor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6913,7 +6913,7 @@ export namespace Camel {
         next(): string;
     }
 
-    module IndexName {
+    namespace IndexName {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6945,7 +6945,7 @@ export namespace Camel {
         add_word(word: string): void;
     }
 
-    module InternetAddress {
+    namespace InternetAddress {
         // Constructor properties interface
 
         interface ConstructorProps extends Address.ConstructorProps {}
@@ -7025,7 +7025,7 @@ export namespace Camel {
         sanitize_ascii_domain(): boolean;
     }
 
-    module KeyFile {
+    namespace KeyFile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7063,7 +7063,7 @@ export namespace Camel {
         write(parent: _block_t, records: _key_t[]): number;
     }
 
-    module KeyTable {
+    namespace KeyTable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7092,7 +7092,7 @@ export namespace Camel {
         sync(): number;
     }
 
-    module LocalSettings {
+    namespace LocalSettings {
         // Constructor properties interface
 
         interface ConstructorProps extends StoreSettings.ConstructorProps {
@@ -7199,7 +7199,7 @@ export namespace Camel {
         set_path(path: string): void;
     }
 
-    module Medium {
+    namespace Medium {
         // Constructor properties interface
 
         interface ConstructorProps extends DataWrapper.ConstructorProps {
@@ -7336,7 +7336,7 @@ export namespace Camel {
         set_header(name: string, value?: string | null): void;
     }
 
-    module MessageInfo {
+    namespace MessageInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8323,7 +8323,7 @@ export namespace Camel {
         thaw_notifications(): void;
     }
 
-    module MessageInfoBase {
+    namespace MessageInfoBase {
         // Constructor properties interface
 
         interface ConstructorProps extends MessageInfo.ConstructorProps {}
@@ -8339,7 +8339,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    module MimeFilter {
+    namespace MimeFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8431,7 +8431,7 @@ export namespace Camel {
         set_size(size: number, keep: number): void;
     }
 
-    module MimeFilterBasic {
+    namespace MimeFilterBasic {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8452,7 +8452,7 @@ export namespace Camel {
         static ['new'](...args: never[]): any;
     }
 
-    module MimeFilterBestenc {
+    namespace MimeFilterBestenc {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8493,7 +8493,7 @@ export namespace Camel {
         set_flags(flags: number): void;
     }
 
-    module MimeFilterCRLF {
+    namespace MimeFilterCRLF {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8525,7 +8525,7 @@ export namespace Camel {
         set_ensure_crlf_end(ensure_crlf_end: boolean): void;
     }
 
-    module MimeFilterCanon {
+    namespace MimeFilterCanon {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8546,7 +8546,7 @@ export namespace Camel {
         static ['new'](...args: never[]): any;
     }
 
-    module MimeFilterCharset {
+    namespace MimeFilterCharset {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8567,7 +8567,7 @@ export namespace Camel {
         static ['new'](...args: never[]): any;
     }
 
-    module MimeFilterEnriched {
+    namespace MimeFilterEnriched {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8588,7 +8588,7 @@ export namespace Camel {
         static ['new'](...args: never[]): any;
     }
 
-    module MimeFilterFrom {
+    namespace MimeFilterFrom {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8606,7 +8606,7 @@ export namespace Camel {
         static ['new'](): MimeFilterFrom;
     }
 
-    module MimeFilterGZip {
+    namespace MimeFilterGZip {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8627,7 +8627,7 @@ export namespace Camel {
         static ['new'](...args: never[]): any;
     }
 
-    module MimeFilterHTML {
+    namespace MimeFilterHTML {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8645,7 +8645,7 @@ export namespace Camel {
         static ['new'](): MimeFilterHTML;
     }
 
-    module MimeFilterIndex {
+    namespace MimeFilterIndex {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8679,7 +8679,7 @@ export namespace Camel {
         set_name(name: IndexName): void;
     }
 
-    module MimeFilterLinewrap {
+    namespace MimeFilterLinewrap {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8700,7 +8700,7 @@ export namespace Camel {
         static ['new'](...args: never[]): any;
     }
 
-    module MimeFilterPgp {
+    namespace MimeFilterPgp {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8718,7 +8718,7 @@ export namespace Camel {
         static ['new'](): MimeFilterPgp;
     }
 
-    module MimeFilterProgress {
+    namespace MimeFilterProgress {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8739,7 +8739,7 @@ export namespace Camel {
         static ['new'](...args: never[]): any;
     }
 
-    module MimeFilterToHTML {
+    namespace MimeFilterToHTML {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8760,7 +8760,7 @@ export namespace Camel {
         static ['new'](...args: never[]): any;
     }
 
-    module MimeFilterWindows {
+    namespace MimeFilterWindows {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8799,7 +8799,7 @@ export namespace Camel {
         real_charset(): string;
     }
 
-    module MimeFilterYenc {
+    namespace MimeFilterYenc {
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8843,7 +8843,7 @@ export namespace Camel {
         set_state(state: number): void;
     }
 
-    module MimeMessage {
+    namespace MimeMessage {
         // Constructor properties interface
 
         interface ConstructorProps extends MimePart.ConstructorProps {}
@@ -9000,7 +9000,7 @@ export namespace Camel {
         set_subject(subject?: string | null): void;
     }
 
-    module MimeParser {
+    namespace MimeParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9261,7 +9261,7 @@ export namespace Camel {
         unstep(): void;
     }
 
-    module MimePart {
+    namespace MimePart {
         // Constructor properties interface
 
         interface ConstructorProps extends Medium.ConstructorProps {
@@ -9489,7 +9489,7 @@ export namespace Camel {
         set_filename(filename?: string | null): void;
     }
 
-    module Multipart {
+    namespace Multipart {
         // Constructor properties interface
 
         interface ConstructorProps extends DataWrapper.ConstructorProps {}
@@ -9582,7 +9582,7 @@ export namespace Camel {
         set_preface(preface: string): void;
     }
 
-    module MultipartEncrypted {
+    namespace MultipartEncrypted {
         // Constructor properties interface
 
         interface ConstructorProps extends Multipart.ConstructorProps {}
@@ -9600,7 +9600,7 @@ export namespace Camel {
         static ['new'](): MultipartEncrypted;
     }
 
-    module MultipartSigned {
+    namespace MultipartSigned {
         // Constructor properties interface
 
         interface ConstructorProps extends Multipart.ConstructorProps {}
@@ -9638,7 +9638,7 @@ export namespace Camel {
         set_signature(signature: MimePart): void;
     }
 
-    module NNTPAddress {
+    namespace NNTPAddress {
         // Constructor properties interface
 
         interface ConstructorProps extends Address.ConstructorProps {}
@@ -9672,7 +9672,7 @@ export namespace Camel {
         get(index: number, namep: string): boolean;
     }
 
-    module NullOutputStream {
+    namespace NullOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.OutputStream.ConstructorProps {}
@@ -9699,7 +9699,7 @@ export namespace Camel {
         get_ends_with_crlf(): boolean;
     }
 
-    module Object {
+    namespace Object {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9765,7 +9765,7 @@ export namespace Camel {
         state_write(): number;
     }
 
-    module OfflineFolder {
+    namespace OfflineFolder {
         // Constructor properties interface
 
         interface ConstructorProps extends Folder.ConstructorProps {
@@ -9883,7 +9883,7 @@ export namespace Camel {
         set_offline_sync(offline_sync: ThreeState | null): void;
     }
 
-    module OfflineSettings {
+    namespace OfflineSettings {
         // Constructor properties interface
 
         interface ConstructorProps extends StoreSettings.ConstructorProps {
@@ -9982,7 +9982,7 @@ export namespace Camel {
         set_store_changes_interval(interval: number): void;
     }
 
-    module OfflineStore {
+    namespace OfflineStore {
         // Constructor properties interface
 
         interface ConstructorProps extends Store.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -10509,7 +10509,7 @@ export namespace Camel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Operation {
+    namespace Operation {
         // Signal callback interfaces
 
         interface PopMessage {
@@ -10591,7 +10591,7 @@ export namespace Camel {
         vfunc_status(what: string, pc: number): void;
     }
 
-    module PartitionTable {
+    namespace PartitionTable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10616,7 +10616,7 @@ export namespace Camel {
         sync(): number;
     }
 
-    module SExp {
+    namespace SExp {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10705,7 +10705,7 @@ export namespace Camel {
         set_scope(scope: number): number;
     }
 
-    module SMIMEContext {
+    namespace SMIMEContext {
         // Constructor properties interface
 
         interface ConstructorProps extends CipherContext.ConstructorProps {}
@@ -10732,7 +10732,7 @@ export namespace Camel {
         set_sign_mode(type: SMIMESign | null): void;
     }
 
-    module Sasl {
+    namespace Sasl {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10986,7 +10986,7 @@ export namespace Camel {
         try_empty_password_sync(cancellable?: Gio.Cancellable | null): boolean;
     }
 
-    module SaslAnonymous {
+    namespace SaslAnonymous {
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11007,7 +11007,7 @@ export namespace Camel {
         static ['new'](...args: never[]): any;
     }
 
-    module SaslCramMd5 {
+    namespace SaslCramMd5 {
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11023,7 +11023,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    module SaslDigestMd5 {
+    namespace SaslDigestMd5 {
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11039,7 +11039,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    module SaslGssapi {
+    namespace SaslGssapi {
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11070,7 +11070,7 @@ export namespace Camel {
         override_host_and_user(override_host?: string | null, override_user?: string | null): void;
     }
 
-    module SaslLogin {
+    namespace SaslLogin {
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11086,7 +11086,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    module SaslNTLM {
+    namespace SaslNTLM {
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11102,7 +11102,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    module SaslPOPB4SMTP {
+    namespace SaslPOPB4SMTP {
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11118,7 +11118,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    module SaslPlain {
+    namespace SaslPlain {
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11134,7 +11134,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    module SaslXOAuth2 {
+    namespace SaslXOAuth2 {
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11150,7 +11150,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    module SaslXOAuth2Google {
+    namespace SaslXOAuth2Google {
         // Constructor properties interface
 
         interface ConstructorProps extends SaslXOAuth2.ConstructorProps {}
@@ -11166,7 +11166,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    module SaslXOAuth2Outlook {
+    namespace SaslXOAuth2Outlook {
         // Constructor properties interface
 
         interface ConstructorProps extends SaslXOAuth2.ConstructorProps {}
@@ -11182,7 +11182,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    module SaslXOAuth2Yahoo {
+    namespace SaslXOAuth2Yahoo {
         // Constructor properties interface
 
         interface ConstructorProps extends SaslXOAuth2.ConstructorProps {}
@@ -11198,7 +11198,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    module Service {
+    namespace Service {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -12267,7 +12267,7 @@ export namespace Camel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Session {
+    namespace Session {
         // Signal callback interfaces
 
         interface JobFinished {
@@ -13060,7 +13060,7 @@ export namespace Camel {
         user_alert(service: Service, type: SessionAlertType | null, message: string): void;
     }
 
-    module Settings {
+    namespace Settings {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -13128,7 +13128,7 @@ export namespace Camel {
         equal(settings_b: Settings): boolean;
     }
 
-    module Store {
+    namespace Store {
         // Signal callback interfaces
 
         interface FolderCreated {
@@ -14611,7 +14611,7 @@ export namespace Camel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StoreSettings {
+    namespace StoreSettings {
         // Constructor properties interface
 
         interface ConstructorProps extends Settings.ConstructorProps {
@@ -14676,7 +14676,7 @@ export namespace Camel {
         set_store_changes_interval(interval: number): void;
     }
 
-    module StoreSummary {
+    namespace StoreSummary {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -14803,7 +14803,7 @@ export namespace Camel {
         touch(): void;
     }
 
-    module Stream {
+    namespace Stream {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Seekable.ConstructorProps {
@@ -15429,7 +15429,7 @@ export namespace Camel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StreamBuffer {
+    namespace StreamBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -15983,7 +15983,7 @@ export namespace Camel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StreamFilter {
+    namespace StreamFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -16524,7 +16524,7 @@ export namespace Camel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StreamFs {
+    namespace StreamFs {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -17049,7 +17049,7 @@ export namespace Camel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StreamMem {
+    namespace StreamMem {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -17598,7 +17598,7 @@ export namespace Camel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StreamNull {
+    namespace StreamNull {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -18122,7 +18122,7 @@ export namespace Camel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StreamProcess {
+    namespace StreamProcess {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -18646,7 +18646,7 @@ export namespace Camel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TextIndex {
+    namespace TextIndex {
         // Constructor properties interface
 
         interface ConstructorProps extends Index.ConstructorProps {}
@@ -18676,7 +18676,7 @@ export namespace Camel {
         validate(): void;
     }
 
-    module TextIndexCursor {
+    namespace TextIndexCursor {
         // Constructor properties interface
 
         interface ConstructorProps extends IndexCursor.ConstructorProps {}
@@ -18692,7 +18692,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    module TextIndexKeyCursor {
+    namespace TextIndexKeyCursor {
         // Constructor properties interface
 
         interface ConstructorProps extends IndexCursor.ConstructorProps {}
@@ -18708,7 +18708,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    module TextIndexName {
+    namespace TextIndexName {
         // Constructor properties interface
 
         interface ConstructorProps extends IndexName.ConstructorProps {}
@@ -18724,7 +18724,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    module Transport {
+    namespace Transport {
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -19348,7 +19348,7 @@ export namespace Camel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module VTrashFolder {
+    namespace VTrashFolder {
         // Constructor properties interface
 
         interface ConstructorProps extends VeeFolder.ConstructorProps {}
@@ -19373,7 +19373,7 @@ export namespace Camel {
         get_folder_type(): VTrashFolderType;
     }
 
-    module VeeDataCache {
+    namespace VeeDataCache {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19451,7 +19451,7 @@ export namespace Camel {
         remove_subfolder(subfolder: Folder): void;
     }
 
-    module VeeFolder {
+    namespace VeeFolder {
         // Constructor properties interface
 
         interface ConstructorProps extends Folder.ConstructorProps {
@@ -19614,7 +19614,7 @@ export namespace Camel {
         set_folders(folders: Folder[], cancellable?: Gio.Cancellable | null): void;
     }
 
-    module VeeMessageInfo {
+    namespace VeeMessageInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends MessageInfo.ConstructorProps {}
@@ -19640,7 +19640,7 @@ export namespace Camel {
         get_original_summary(): FolderSummary;
     }
 
-    module VeeMessageInfoData {
+    namespace VeeMessageInfoData {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19668,7 +19668,7 @@ export namespace Camel {
         get_vee_message_uid(): string;
     }
 
-    module VeeStore {
+    namespace VeeStore {
         // Constructor properties interface
 
         interface ConstructorProps extends Store.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -20149,7 +20149,7 @@ export namespace Camel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module VeeSubfolderData {
+    namespace VeeSubfolderData {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -20176,7 +20176,7 @@ export namespace Camel {
         get_folder_id(): string;
     }
 
-    module VeeSummary {
+    namespace VeeSummary {
         // Constructor properties interface
 
         interface ConstructorProps extends FolderSummary.ConstructorProps {}
@@ -23148,7 +23148,7 @@ export namespace Camel {
         _init(...args: any[]): void;
     }
 
-    module JunkFilter {
+    namespace JunkFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -23250,7 +23250,7 @@ export namespace Camel {
         new (): JunkFilter; // This allows `obj instanceof JunkFilter`
     };
 
-    module NetworkService {
+    namespace NetworkService {
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {
@@ -23439,7 +23439,7 @@ export namespace Camel {
         new (): NetworkService; // This allows `obj instanceof NetworkService`
     };
 
-    module NetworkSettings {
+    namespace NetworkSettings {
         // Constructor properties interface
 
         interface ConstructorProps extends Settings.ConstructorProps {
@@ -23575,7 +23575,7 @@ export namespace Camel {
         new (): NetworkSettings; // This allows `obj instanceof NetworkSettings`
     };
 
-    module Subscribable {
+    namespace Subscribable {
         // Constructor properties interface
 
         interface ConstructorProps extends Store.ConstructorProps {}

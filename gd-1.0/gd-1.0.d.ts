@@ -67,7 +67,7 @@ export namespace Gd {
      * to make sure the widget types are available to GtkBuilder.
      */
     function ensure_types(): void;
-    module HeaderBar {
+    namespace HeaderBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -561,7 +561,7 @@ export namespace Gd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HeaderMenuButton {
+    namespace HeaderMenuButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5060,7 +5060,7 @@ export namespace Gd {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module HeaderRadioButton {
+    namespace HeaderRadioButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9555,7 +9555,7 @@ export namespace Gd {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module HeaderSimpleButton {
+    namespace HeaderSimpleButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14295,7 +14295,7 @@ export namespace Gd {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module HeaderToggleButton {
+    namespace HeaderToggleButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18790,7 +18790,7 @@ export namespace Gd {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module MainIconView {
+    namespace MainIconView {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23319,7 +23319,7 @@ export namespace Gd {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module MainListView {
+    namespace MainListView {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -27699,7 +27699,7 @@ export namespace Gd {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module MainToolbar {
+    namespace MainToolbar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -32110,7 +32110,7 @@ export namespace Gd {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module MainView {
+    namespace MainView {
         // Signal callback interfaces
 
         interface ItemActivated {
@@ -32600,7 +32600,7 @@ export namespace Gd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Revealer {
+    namespace Revealer {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33056,7 +33056,7 @@ export namespace Gd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Stack {
+    namespace Stack {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33531,7 +33531,7 @@ export namespace Gd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StackSwitcher {
+    namespace StackSwitcher {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33997,7 +33997,7 @@ export namespace Gd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StyledTextRenderer {
+    namespace StyledTextRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRendererText.ConstructorProps {}
@@ -34020,7 +34020,7 @@ export namespace Gd {
         remove_class(_class: string): void;
     }
 
-    module TaggedEntry {
+    namespace TaggedEntry {
         // Signal callback interfaces
 
         interface TagButtonClicked {
@@ -38318,7 +38318,7 @@ export namespace Gd {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module TaggedEntryTag {
+    namespace TaggedEntryTag {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -38362,7 +38362,7 @@ export namespace Gd {
         set_style(style: string): void;
     }
 
-    module TogglePixbufRenderer {
+    namespace TogglePixbufRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRendererPixbuf.ConstructorProps {
@@ -38396,7 +38396,7 @@ export namespace Gd {
         static ['new'](): TogglePixbufRenderer;
     }
 
-    module TwoLinesRenderer {
+    namespace TwoLinesRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRendererText.ConstructorProps {
@@ -38548,7 +38548,7 @@ export namespace Gd {
         _init(...args: any[]): void;
     }
 
-    module HeaderButton {
+    namespace HeaderButton {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Button.ConstructorProps {
@@ -38609,7 +38609,7 @@ export namespace Gd {
         new (): HeaderButton; // This allows `obj instanceof HeaderButton`
     };
 
-    module MainViewGeneric {
+    namespace MainViewGeneric {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {}

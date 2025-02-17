@@ -740,7 +740,7 @@ export namespace AgsGui {
         L_SHIFT,
         R_SHIFT,
     }
-    module Cartesian {
+    namespace Cartesian {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2525,7 +2525,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Dial {
+    namespace Dial {
         // Signal callback interfaces
 
         interface ValueChanged {
@@ -3468,7 +3468,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Expander {
+    namespace Expander {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3941,7 +3941,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpanderSet {
+    namespace ExpanderSet {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4413,7 +4413,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FileDialog {
+    namespace FileDialog {
         // Signal callback interfaces
 
         interface Response {
@@ -7335,7 +7335,7 @@ export namespace AgsGui {
         vfunc_unroot(): void;
     }
 
-    module FileWidget {
+    namespace FileWidget {
         // Signal callback interfaces
 
         interface CreateDir {
@@ -8158,7 +8158,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module IconLink {
+    namespace IconLink {
         // Signal callback interfaces
 
         interface Clicked {
@@ -8720,7 +8720,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Indicator {
+    namespace Indicator {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9549,7 +9549,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module InputDialog {
+    namespace InputDialog {
         // Signal callback interfaces
 
         interface Response {
@@ -12509,7 +12509,7 @@ export namespace AgsGui {
         vfunc_unroot(): void;
     }
 
-    module Led {
+    namespace Led {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13277,7 +13277,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LedArray {
+    namespace LedArray {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13814,7 +13814,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Level {
+    namespace Level {
         // Signal callback interfaces
 
         interface ValueChanged {
@@ -14657,7 +14657,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LevelBox {
+    namespace LevelBox {
         // Signal callback interfaces
 
         interface ChildHeightRequest {
@@ -15183,7 +15183,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Notebook {
+    namespace Notebook {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15693,7 +15693,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Piano {
+    namespace Piano {
         // Signal callback interfaces
 
         interface KeyClicked {
@@ -16630,7 +16630,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Ruler {
+    namespace Ruler {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17513,7 +17513,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Scale {
+    namespace Scale {
         // Signal callback interfaces
 
         interface ValueChanged {
@@ -18351,7 +18351,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScaleBox {
+    namespace ScaleBox {
         // Signal callback interfaces
 
         interface ChildHeightRequest {
@@ -18877,7 +18877,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScrolledLevelBox {
+    namespace ScrolledLevelBox {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19341,7 +19341,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScrolledPiano {
+    namespace ScrolledPiano {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19805,7 +19805,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScrolledScaleBox {
+    namespace ScrolledScaleBox {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20264,7 +20264,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Tempo {
+    namespace Tempo {
         // Signal callback interfaces
 
         interface ValueChanged {

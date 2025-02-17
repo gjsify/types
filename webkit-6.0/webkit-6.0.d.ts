@@ -1833,7 +1833,7 @@ export namespace WebKit {
          */
         ALL,
     }
-    module AuthenticationRequest {
+    namespace AuthenticationRequest {
         // Signal callback interfaces
 
         interface Authenticated {
@@ -1994,7 +1994,7 @@ export namespace WebKit {
         set_proposed_credential(credential: Credential): void;
     }
 
-    module AutomationSession {
+    namespace AutomationSession {
         // Signal callback interfaces
 
         interface CreateWebView {
@@ -2078,7 +2078,7 @@ export namespace WebKit {
         set_application_info(info: ApplicationInfo): void;
     }
 
-    module BackForwardList {
+    namespace BackForwardList {
         // Signal callback interfaces
 
         interface Changed {
@@ -2183,7 +2183,7 @@ export namespace WebKit {
         get_nth_item(index: number): BackForwardListItem | null;
     }
 
-    module BackForwardListItem {
+    namespace BackForwardListItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -2229,7 +2229,7 @@ export namespace WebKit {
         get_uri(): string;
     }
 
-    module ClipboardPermissionRequest {
+    namespace ClipboardPermissionRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
@@ -2673,7 +2673,7 @@ export namespace WebKit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ColorChooserRequest {
+    namespace ColorChooserRequest {
         // Signal callback interfaces
 
         interface Finished {
@@ -2766,7 +2766,7 @@ export namespace WebKit {
         set_rgba(rgba: Gdk.RGBA): void;
     }
 
-    module ContextMenu {
+    namespace ContextMenu {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2909,7 +2909,7 @@ export namespace WebKit {
         set_user_data(user_data: GLib.Variant): void;
     }
 
-    module ContextMenuItem {
+    namespace ContextMenuItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -2980,7 +2980,7 @@ export namespace WebKit {
         set_submenu(submenu?: ContextMenu | null): void;
     }
 
-    module CookieManager {
+    namespace CookieManager {
         // Signal callback interfaces
 
         interface Changed {
@@ -3318,7 +3318,7 @@ export namespace WebKit {
         set_persistent_storage(filename: string, storage: CookiePersistentStorage | null): void;
     }
 
-    module DeviceInfoPermissionRequest {
+    namespace DeviceInfoPermissionRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
@@ -3762,7 +3762,7 @@ export namespace WebKit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Download {
+    namespace Download {
         // Signal callback interfaces
 
         interface CreatedDestination {
@@ -3985,7 +3985,7 @@ export namespace WebKit {
         set_destination(destination: string): void;
     }
 
-    module EditorState {
+    namespace EditorState {
         // Signal callback interfaces
 
         interface Changed {
@@ -4077,7 +4077,7 @@ export namespace WebKit {
         is_undo_available(): boolean;
     }
 
-    module FaviconDatabase {
+    namespace FaviconDatabase {
         // Signal callback interfaces
 
         interface FaviconChanged {
@@ -4198,7 +4198,7 @@ export namespace WebKit {
         get_favicon_uri(page_uri: string): string;
     }
 
-    module FileChooserRequest {
+    namespace FileChooserRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4358,7 +4358,7 @@ export namespace WebKit {
         select_files(files: string[]): void;
     }
 
-    module FindController {
+    namespace FindController {
         // Signal callback interfaces
 
         interface CountedMatches {
@@ -4554,7 +4554,7 @@ export namespace WebKit {
         search_previous(): void;
     }
 
-    module FormSubmissionRequest {
+    namespace FormSubmissionRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4599,7 +4599,7 @@ export namespace WebKit {
         submit(): void;
     }
 
-    module GeolocationManager {
+    namespace GeolocationManager {
         // Signal callback interfaces
 
         interface Start {
@@ -4683,7 +4683,7 @@ export namespace WebKit {
         update_position(position: GeolocationPosition): void;
     }
 
-    module GeolocationPermissionRequest {
+    namespace GeolocationPermissionRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
@@ -5143,7 +5143,7 @@ export namespace WebKit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HitTestResult {
+    namespace HitTestResult {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5320,7 +5320,7 @@ export namespace WebKit {
         get_media_uri(): string;
     }
 
-    module InputMethodContext {
+    namespace InputMethodContext {
         // Signal callback interfaces
 
         interface Committed {
@@ -5561,7 +5561,7 @@ export namespace WebKit {
         set_input_purpose(purpose: InputPurpose | null): void;
     }
 
-    module MediaKeySystemPermissionRequest {
+    namespace MediaKeySystemPermissionRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
@@ -6008,7 +6008,7 @@ export namespace WebKit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module NavigationPolicyDecision {
+    namespace NavigationPolicyDecision {
         // Constructor properties interface
 
         interface ConstructorProps extends PolicyDecision.ConstructorProps {
@@ -6053,7 +6053,7 @@ export namespace WebKit {
         get_navigation_action(): NavigationAction;
     }
 
-    module NetworkSession {
+    namespace NetworkSession {
         // Signal callback interfaces
 
         interface DownloadStarted {
@@ -6287,7 +6287,7 @@ export namespace WebKit {
         set_tls_errors_policy(policy: TLSErrorsPolicy | null): void;
     }
 
-    module Notification {
+    namespace Notification {
         // Signal callback interfaces
 
         interface Clicked {
@@ -6386,7 +6386,7 @@ export namespace WebKit {
         get_title(): string;
     }
 
-    module NotificationPermissionRequest {
+    namespace NotificationPermissionRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
@@ -6830,7 +6830,7 @@ export namespace WebKit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module OptionMenu {
+    namespace OptionMenu {
         // Signal callback interfaces
 
         interface Close {
@@ -6919,7 +6919,7 @@ export namespace WebKit {
         select_item(index: number): void;
     }
 
-    module PointerLockPermissionRequest {
+    namespace PointerLockPermissionRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
@@ -7363,7 +7363,7 @@ export namespace WebKit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PolicyDecision {
+    namespace PolicyDecision {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7423,7 +7423,7 @@ export namespace WebKit {
         use_with_policies(policies: WebsitePolicies): void;
     }
 
-    module PrintOperation {
+    namespace PrintOperation {
         // Signal callback interfaces
 
         interface Failed {
@@ -7583,7 +7583,7 @@ export namespace WebKit {
         set_print_settings(print_settings: Gtk.PrintSettings): void;
     }
 
-    module ResponsePolicyDecision {
+    namespace ResponsePolicyDecision {
         // Constructor properties interface
 
         interface ConstructorProps extends PolicyDecision.ConstructorProps {
@@ -7656,7 +7656,7 @@ export namespace WebKit {
         is_mime_type_supported(): boolean;
     }
 
-    module SecurityManager {
+    namespace SecurityManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7781,7 +7781,7 @@ export namespace WebKit {
         uri_scheme_is_secure(scheme: string): boolean;
     }
 
-    module Settings {
+    namespace Settings {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9404,7 +9404,7 @@ export namespace WebKit {
         set_zoom_text_only(zoom_text_only: boolean): void;
     }
 
-    module URIRequest {
+    namespace URIRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9462,7 +9462,7 @@ export namespace WebKit {
         set_uri(uri: string): void;
     }
 
-    module URIResponse {
+    namespace URIResponse {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9588,7 +9588,7 @@ export namespace WebKit {
         get_uri(): string;
     }
 
-    module URISchemeRequest {
+    namespace URISchemeRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9671,7 +9671,7 @@ export namespace WebKit {
         get_web_view(): WebView;
     }
 
-    module URISchemeResponse {
+    namespace URISchemeResponse {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9746,7 +9746,7 @@ export namespace WebKit {
         set_status(status_code: number, reason_phrase?: string | null): void;
     }
 
-    module UserContentFilterStore {
+    namespace UserContentFilterStore {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10081,7 +10081,7 @@ export namespace WebKit {
         save_from_file_finish(result: Gio.AsyncResult): UserContentFilter;
     }
 
-    module UserContentManager {
+    namespace UserContentManager {
         // Signal callback interfaces
 
         interface ScriptMessageReceived {
@@ -10292,7 +10292,7 @@ export namespace WebKit {
         unregister_script_message_handler(name: string, world_name?: string | null): void;
     }
 
-    module UserMediaPermissionRequest {
+    namespace UserMediaPermissionRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {
@@ -10760,7 +10760,7 @@ export namespace WebKit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UserMessage {
+    namespace UserMessage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -10847,7 +10847,7 @@ export namespace WebKit {
         send_reply(reply: UserMessage): void;
     }
 
-    module WebContext {
+    namespace WebContext {
         // Signal callback interfaces
 
         interface AutomationStarted {
@@ -11216,7 +11216,7 @@ export namespace WebKit {
         set_web_process_extensions_initialization_user_data(user_data: GLib.Variant): void;
     }
 
-    module WebInspector {
+    namespace WebInspector {
         // Signal callback interfaces
 
         interface Attach {
@@ -11400,7 +11400,7 @@ export namespace WebKit {
         show(): void;
     }
 
-    module WebResource {
+    namespace WebResource {
         // Signal callback interfaces
 
         interface Failed {
@@ -11572,7 +11572,7 @@ export namespace WebKit {
         get_uri(): string;
     }
 
-    module WebView {
+    namespace WebView {
         // Signal callback interfaces
 
         interface Authenticate {
@@ -13994,7 +13994,7 @@ export namespace WebKit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WebViewBase {
+    namespace WebViewBase {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14694,7 +14694,7 @@ export namespace WebKit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WebsiteDataAccessPermissionRequest {
+    namespace WebsiteDataAccessPermissionRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
@@ -15150,7 +15150,7 @@ export namespace WebKit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WebsiteDataManager {
+    namespace WebsiteDataManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -15504,7 +15504,7 @@ export namespace WebKit {
         set_favicons_enabled(enabled: boolean): void;
     }
 
-    module WebsitePolicies {
+    namespace WebsitePolicies {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -15545,7 +15545,7 @@ export namespace WebKit {
         get_autoplay_policy(): AutoplayPolicy;
     }
 
-    module WindowProperties {
+    namespace WindowProperties {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -17077,7 +17077,7 @@ export namespace WebKit {
     type WebsiteDataManagerClass = typeof WebsiteDataManager;
     type WebsitePoliciesClass = typeof WebsitePolicies;
     type WindowPropertiesClass = typeof WindowProperties;
-    module PermissionRequest {
+    namespace PermissionRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

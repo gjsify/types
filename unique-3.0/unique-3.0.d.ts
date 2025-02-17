@@ -69,7 +69,7 @@ export namespace Unique {
         FAIL,
         PASSTHROUGH,
     }
-    module App {
+    namespace App {
         // Signal callback interfaces
 
         interface MessageReceived {
@@ -193,7 +193,7 @@ export namespace Unique {
         watch_window(window: Gtk.Window): void;
     }
 
-    module Backend {
+    namespace Backend {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

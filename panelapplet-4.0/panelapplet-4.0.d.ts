@@ -72,7 +72,7 @@ export namespace PanelApplet {
         EXPAND_MINOR,
         HAS_HANDLE,
     }
-    module Applet {
+    namespace Applet {
         // Signal callback interfaces
 
         interface ChangeBackground {

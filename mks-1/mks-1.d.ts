@@ -183,7 +183,7 @@ export namespace Mks {
          */
         CAPS_LOCK,
     }
-    module Device {
+    namespace Device {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -218,7 +218,7 @@ export namespace Mks {
         get_name(): string;
     }
 
-    module Display {
+    namespace Display {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -974,7 +974,7 @@ export namespace Mks {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Keyboard {
+    namespace Keyboard {
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {
@@ -1100,7 +1100,7 @@ export namespace Mks {
         release_sync(keycode: number, cancellable?: Gio.Cancellable | null): boolean;
     }
 
-    module Mouse {
+    namespace Mouse {
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {
@@ -1316,7 +1316,7 @@ export namespace Mks {
         release_sync(button: MouseButton | null, cancellable?: Gio.Cancellable | null): boolean;
     }
 
-    module Screen {
+    namespace Screen {
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {
@@ -1473,7 +1473,7 @@ export namespace Mks {
         get_width(): number;
     }
 
-    module Session {
+    namespace Session {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2286,7 +2286,7 @@ export namespace Mks {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Touchable {
+    namespace Touchable {
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {

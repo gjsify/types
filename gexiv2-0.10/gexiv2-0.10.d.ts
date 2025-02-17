@@ -236,7 +236,7 @@ export namespace GExiv2 {
          */
         OMIT_ALL_FORMATTING,
     }
-    module Metadata {
+    namespace Metadata {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -988,7 +988,7 @@ export namespace GExiv2 {
         update_gps_info(longitude: number, latitude: number, altitude: number): boolean;
     }
 
-    module PreviewImage {
+    namespace PreviewImage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1020,7 +1020,7 @@ export namespace GExiv2 {
         write_file(path: string): number;
     }
 
-    module PreviewProperties {
+    namespace PreviewProperties {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -29,7 +29,7 @@ export namespace RestExtras {
             weak_object: A,
         ): void;
     }
-    module FlickrProxy {
+    namespace FlickrProxy {
         // Constructor properties interface
 
         interface ConstructorProps extends Rest.Proxy.ConstructorProps {
@@ -122,7 +122,7 @@ export namespace RestExtras {
         sign(params: { [key: string]: any } | GLib.HashTable<any, any>): string;
     }
 
-    module FlickrProxyCall {
+    namespace FlickrProxyCall {
         // Constructor properties interface
 
         interface ConstructorProps extends Rest.ProxyCall.ConstructorProps {
@@ -149,7 +149,7 @@ export namespace RestExtras {
         _init(...args: any[]): void;
     }
 
-    module LastfmProxy {
+    namespace LastfmProxy {
         // Constructor properties interface
 
         interface ConstructorProps extends Rest.Proxy.ConstructorProps {
@@ -222,7 +222,7 @@ export namespace RestExtras {
         sign(params: { [key: string]: any } | GLib.HashTable<any, any>): string;
     }
 
-    module LastfmProxyCall {
+    namespace LastfmProxyCall {
         // Constructor properties interface
 
         interface ConstructorProps extends Rest.ProxyCall.ConstructorProps {}
@@ -241,7 +241,7 @@ export namespace RestExtras {
         _init(...args: any[]): void;
     }
 
-    module YoutubeProxy {
+    namespace YoutubeProxy {
         // Constructor properties interface
 
         interface ConstructorProps extends Rest.Proxy.ConstructorProps {

@@ -306,7 +306,7 @@ export namespace GXml {
         CONTAINED_BY,
         IMPLEMENTATION_SPECIFIC,
     }
-    module ElementList {
+    namespace ElementList {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {}
@@ -745,7 +745,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module NodeList {
+    namespace NodeList {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps {}
@@ -772,7 +772,7 @@ export namespace GXml {
         to_array(...args: never[]): any;
     }
 
-    module SerializableBool {
+    namespace SerializableBool {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {}
@@ -1212,7 +1212,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SerializableDouble {
+    namespace SerializableDouble {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {}
@@ -1655,7 +1655,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SerializableFloat {
+    namespace SerializableFloat {
         // Constructor properties interface
 
         interface ConstructorProps extends SerializableDouble.ConstructorProps {}
@@ -1678,7 +1678,7 @@ export namespace GXml {
         set_value(val: number): void;
     }
 
-    module SerializableEnum {
+    namespace SerializableEnum {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {}
@@ -2123,7 +2123,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SerializableInt {
+    namespace SerializableInt {
         // Constructor properties interface
 
         interface ConstructorProps extends SerializableDouble.ConstructorProps {}
@@ -2146,7 +2146,7 @@ export namespace GXml {
         set_value(val: number): void;
     }
 
-    module SerializableValueList {
+    namespace SerializableValueList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {}
@@ -2603,7 +2603,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SerializableObjectModel {
+    namespace SerializableObjectModel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Serializable.ConstructorProps {
@@ -3097,7 +3097,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SerializableTreeMap {
+    namespace SerializableTreeMap {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3605,7 +3605,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SerializableHashMap {
+    namespace SerializableHashMap {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4113,7 +4113,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SerializableDualKeyMap {
+    namespace SerializableDualKeyMap {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4688,7 +4688,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SerializableArrayList {
+    namespace SerializableArrayList {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5196,7 +5196,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SerializableContainer {
+    namespace SerializableContainer {
         // Constructor properties interface
 
         interface ConstructorProps extends SerializableObjectModel.ConstructorProps {}
@@ -5220,7 +5220,7 @@ export namespace GXml {
         init_containers(): void;
     }
 
-    module TAttribute {
+    namespace TAttribute {
         // Constructor properties interface
 
         interface ConstructorProps extends TNode.ConstructorProps, Attribute.ConstructorProps {}
@@ -5655,7 +5655,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TComment {
+    namespace TComment {
         // Constructor properties interface
 
         interface ConstructorProps extends TNode.ConstructorProps, Comment.ConstructorProps {}
@@ -6083,7 +6083,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TCDATA {
+    namespace TCDATA {
         // Constructor properties interface
 
         interface ConstructorProps extends TNode.ConstructorProps, CDATA.ConstructorProps {}
@@ -6508,7 +6508,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TDocument {
+    namespace TDocument {
         interface ReadTypeFunc {
             (node: Node, tr: libxml2.TextReader): TDocumentReadType;
         }
@@ -7024,7 +7024,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TElement {
+    namespace TElement {
         // Constructor properties interface
 
         interface ConstructorProps extends TNode.ConstructorProps, Element.ConstructorProps {}
@@ -7470,7 +7470,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TNamespace {
+    namespace TNamespace {
         // Constructor properties interface
 
         interface ConstructorProps extends TNode.ConstructorProps, Namespace.ConstructorProps {}
@@ -7898,7 +7898,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TNode {
+    namespace TNode {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Node.ConstructorProps {
@@ -8383,7 +8383,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TNodeTChildrenList {
+    namespace TNodeTChildrenList {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.AbstractBidirList.ConstructorProps {}
@@ -8401,7 +8401,7 @@ export namespace GXml {
         static ['new'](e: Node): TNodeTChildrenList;
     }
 
-    module TProcessingInstruction {
+    namespace TProcessingInstruction {
         // Constructor properties interface
 
         interface ConstructorProps extends TNode.ConstructorProps, ProcessingInstruction.ConstructorProps {}
@@ -8813,7 +8813,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TText {
+    namespace TText {
         // Constructor properties interface
 
         interface ConstructorProps extends TNode.ConstructorProps, Text.ConstructorProps {}
@@ -9241,7 +9241,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HtmlDocument {
+    namespace HtmlDocument {
         // Constructor properties interface
 
         interface ConstructorProps extends GDocument.ConstructorProps {
@@ -9279,7 +9279,7 @@ export namespace GXml {
         static get_default_options(): number;
     }
 
-    module GAttribute {
+    namespace GAttribute {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9737,7 +9737,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GComment {
+    namespace GComment {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10171,7 +10171,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GCharacterData {
+    namespace GCharacterData {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10602,7 +10602,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GChildNode {
+    namespace GChildNode {
         // Constructor properties interface
 
         interface ConstructorProps extends GNode.ConstructorProps, DomChildNode.ConstructorProps {}
@@ -11024,7 +11024,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GNonDocumentChildNode {
+    namespace GNonDocumentChildNode {
         // Constructor properties interface
 
         interface ConstructorProps extends GChildNode.ConstructorProps, DomNonDocumentTypeChildNode.ConstructorProps {}
@@ -11454,7 +11454,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GCDATA {
+    namespace GCDATA {
         // Constructor properties interface
 
         interface ConstructorProps extends GNode.ConstructorProps, CDATA.ConstructorProps {}
@@ -11879,7 +11879,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDocument {
+    namespace GDocument {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12480,7 +12480,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GImplementation {
+    namespace GImplementation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DomImplementation.ConstructorProps {}
@@ -12908,7 +12908,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDocumentType {
+    namespace GDocumentType {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13351,7 +13351,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDocumentFragment {
+    namespace GDocumentFragment {
         // Constructor properties interface
 
         interface ConstructorProps extends GDocument.ConstructorProps, DomDocumentFragment.ConstructorProps {}
@@ -13774,7 +13774,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDomNodeIterator {
+    namespace GDomNodeIterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DomNodeIterator.ConstructorProps {}
@@ -14220,7 +14220,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDomTreeWalker {
+    namespace GDomTreeWalker {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DomTreeWalker.ConstructorProps {}
@@ -14670,7 +14670,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDomTokenList {
+    namespace GDomTokenList {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomTokenList.ConstructorProps {}
@@ -15128,7 +15128,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDomSettableTokenList {
+    namespace GDomSettableTokenList {
         // Constructor properties interface
 
         interface ConstructorProps extends GDomTokenList.ConstructorProps, DomSettableTokenList.ConstructorProps {}
@@ -15186,7 +15186,7 @@ export namespace GXml {
         vfunc_get_length(): number;
     }
 
-    module GDomHTMLCollection {
+    namespace GDomHTMLCollection {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {}
@@ -15625,7 +15625,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDomEvent {
+    namespace GDomEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DomEvent.ConstructorProps {}
@@ -16088,7 +16088,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDomCustomEvent {
+    namespace GDomCustomEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends GDomEvent.ConstructorProps {
@@ -16117,7 +16117,7 @@ export namespace GXml {
         get_detail(): unknown;
     }
 
-    module GDomRange {
+    namespace GDomRange {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DomRange.ConstructorProps {}
@@ -16604,7 +16604,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GElement {
+    namespace GElement {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17139,7 +17139,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GNamespace {
+    namespace GNamespace {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Namespace.ConstructorProps {}
@@ -17571,7 +17571,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GNode {
+    namespace GNode {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18161,7 +18161,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GProcessingInstruction {
+    namespace GProcessingInstruction {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18592,7 +18592,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GText {
+    namespace GText {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19032,7 +19032,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GHashMapAttr {
+    namespace GHashMapAttr {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.AbstractMap.ConstructorProps, DomNamedNodeMap.ConstructorProps {}
@@ -19473,7 +19473,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GHashMapAttrEntry {
+    namespace GHashMapAttrEntry {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.MapEntry.ConstructorProps {}
@@ -19491,7 +19491,7 @@ export namespace GXml {
         static ['new'](doc: GDocument, attr: any): GHashMapAttrEntry;
     }
 
-    module GHashMapAttrIterator {
+    namespace GHashMapAttrIterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gee.MapIterator.ConstructorProps {}
@@ -19939,7 +19939,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GListChildren {
+    namespace GListChildren {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20385,7 +20385,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GListChildrenIterator {
+    namespace GListChildrenIterator {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20880,7 +20880,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GListNamespaces {
+    namespace GListNamespaces {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.AbstractList.ConstructorProps {}
@@ -20898,7 +20898,7 @@ export namespace GXml {
         static ['new'](doc: GDocument, node: any): GListNamespaces;
     }
 
-    module GListNamespacesIterator {
+    namespace GListNamespacesIterator {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21378,7 +21378,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DomNodeFilter {
+    namespace DomNodeFilter {
         interface AcceptNode {
             (node: Node): number;
         }
@@ -21400,7 +21400,7 @@ export namespace GXml {
         static ['new'](): DomNodeFilter;
     }
 
-    module DomElementList {
+    namespace DomElementList {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {}
@@ -21839,7 +21839,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DomEventInit {
+    namespace DomEventInit {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -21874,7 +21874,7 @@ export namespace GXml {
         set_cancelable(value: boolean): void;
     }
 
-    module DomCustomEventInit {
+    namespace DomCustomEventInit {
         // Constructor properties interface
 
         interface ConstructorProps extends DomEventInit.ConstructorProps {
@@ -21904,7 +21904,7 @@ export namespace GXml {
         set_detail(value: GObject.Value | any): void;
     }
 
-    module DomTimeStamp {
+    namespace DomTimeStamp {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -21935,7 +21935,7 @@ export namespace GXml {
         set_time(value: GLib.DateTime): void;
     }
 
-    module DomMutationObserverInit {
+    namespace DomMutationObserverInit {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -22010,7 +22010,7 @@ export namespace GXml {
         set_attribute_filter(value: Gee.List): void;
     }
 
-    module DomErrorName {
+    namespace DomErrorName {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -22033,7 +22033,7 @@ export namespace GXml {
         get_code(error_name: string): number;
     }
 
-    module GXPathObject {
+    namespace GXPathObject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, XPathObject.ConstructorProps {}
@@ -22474,7 +22474,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomDocument {
+    namespace GomDocument {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23005,7 +23005,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomImplementation {
+    namespace GomImplementation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DomImplementation.ConstructorProps {}
@@ -23433,7 +23433,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomDocumentType {
+    namespace GomDocumentType {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23966,7 +23966,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomDocumentFragment {
+    namespace GomDocumentFragment {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -24418,7 +24418,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomElement {
+    namespace GomElement {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -25004,7 +25004,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomElementAttributes {
+    namespace GomElementAttributes {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.HashMap.ConstructorProps, DomNamedNodeMap.ConstructorProps {}
@@ -25448,7 +25448,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomAttr {
+    namespace GomAttr {
         // Constructor properties interface
 
         interface ConstructorProps extends GomNode.ConstructorProps, DomAttr.ConstructorProps {}
@@ -25904,7 +25904,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomNode {
+    namespace GomNode {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -26425,7 +26425,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomNodeList {
+    namespace GomNodeList {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomNodeList.ConstructorProps {}
@@ -26854,7 +26854,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomCharacterData {
+    namespace GomCharacterData {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -27290,7 +27290,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomText {
+    namespace GomText {
         // Constructor properties interface
 
         interface ConstructorProps extends GomCharacterData.ConstructorProps, DomText.ConstructorProps {}
@@ -27342,7 +27342,7 @@ export namespace GXml {
         vfunc_get_length(): number;
     }
 
-    module GomProcessingInstruction {
+    namespace GomProcessingInstruction {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -27393,7 +27393,7 @@ export namespace GXml {
         vfunc_get_length(): number;
     }
 
-    module GomComment {
+    namespace GomComment {
         // Constructor properties interface
 
         interface ConstructorProps extends GomCharacterData.ConstructorProps, DomComment.ConstructorProps {}
@@ -27439,7 +27439,7 @@ export namespace GXml {
         vfunc_get_length(): number;
     }
 
-    module BaseCollection {
+    namespace BaseCollection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -27494,7 +27494,7 @@ export namespace GXml {
         set_element(value: GomElement): void;
     }
 
-    module GomArrayList {
+    namespace GomArrayList {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseCollection.ConstructorProps, GomCollection.ConstructorProps {}
@@ -27953,7 +27953,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomHashMap {
+    namespace GomHashMap {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseCollection.ConstructorProps, GomCollection.ConstructorProps {
@@ -28432,7 +28432,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomHashPairedMap {
+    namespace GomHashPairedMap {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseCollection.ConstructorProps, GomCollection.ConstructorProps {
@@ -28930,7 +28930,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomHashThreeMap {
+    namespace GomHashThreeMap {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseCollection.ConstructorProps, GomCollection.ConstructorProps {
@@ -29440,7 +29440,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomBaseProperty {
+    namespace GomBaseProperty {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, GomProperty.ConstructorProps {
@@ -29877,7 +29877,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomString {
+    namespace GomString {
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {}
@@ -29895,7 +29895,7 @@ export namespace GXml {
         static ['new'](): GomString;
     }
 
-    module GomArrayString {
+    namespace GomArrayString {
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {}
@@ -29921,7 +29921,7 @@ export namespace GXml {
         search(str: string): boolean;
     }
 
-    module GomXsdArrayString {
+    namespace GomXsdArrayString {
         // Constructor properties interface
 
         interface ConstructorProps extends GomArrayString.ConstructorProps {
@@ -29960,7 +29960,7 @@ export namespace GXml {
         set_source(value: Gio.File): void;
     }
 
-    module GomDouble {
+    namespace GomDouble {
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {
@@ -29992,7 +29992,7 @@ export namespace GXml {
         set_decimals(value: number): void;
     }
 
-    module GomFloat {
+    namespace GomFloat {
         // Constructor properties interface
 
         interface ConstructorProps extends GomDouble.ConstructorProps {}
@@ -30015,7 +30015,7 @@ export namespace GXml {
         set_float(value: number): void;
     }
 
-    module GomInt {
+    namespace GomInt {
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {}
@@ -30038,7 +30038,7 @@ export namespace GXml {
         set_integer(value: number): void;
     }
 
-    module GomBoolean {
+    namespace GomBoolean {
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {}
@@ -30061,7 +30061,7 @@ export namespace GXml {
         set_boolean(value: boolean): void;
     }
 
-    module GomEnum {
+    namespace GomEnum {
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {
@@ -30097,7 +30097,7 @@ export namespace GXml {
         set_enum_type(value: GObject.GType): void;
     }
 
-    module GomDate {
+    namespace GomDate {
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {}
@@ -30120,7 +30120,7 @@ export namespace GXml {
         set_date(date: GLib.Date): void;
     }
 
-    module GomDateTime {
+    namespace GomDateTime {
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {
@@ -30152,7 +30152,7 @@ export namespace GXml {
         set_format(value: string): void;
     }
 
-    module XParser {
+    namespace XParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Parser.ConstructorProps {}
@@ -30621,7 +30621,7 @@ export namespace GXml {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GomXsdSchema {
+    namespace GomXsdSchema {
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -30670,7 +30670,7 @@ export namespace GXml {
         set_complex_type_definitions(value: GomXsdListComplexTypes): void;
     }
 
-    module GomXsdSimpleType {
+    namespace GomXsdSimpleType {
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -30725,7 +30725,7 @@ export namespace GXml {
         set_restriction(value: GomXsdTypeRestriction): void;
     }
 
-    module GomXsdTypeDefinition {
+    namespace GomXsdTypeDefinition {
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -30755,7 +30755,7 @@ export namespace GXml {
         set_annotation(value: GomXsdAnnotation): void;
     }
 
-    module GomXsdTypeList {
+    namespace GomXsdTypeList {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeDefinition.ConstructorProps {}
@@ -30773,7 +30773,7 @@ export namespace GXml {
         static ['new'](): GomXsdTypeList;
     }
 
-    module GomXsdTypeUnion {
+    namespace GomXsdTypeUnion {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeDefinition.ConstructorProps {}
@@ -30791,7 +30791,7 @@ export namespace GXml {
         static ['new'](): GomXsdTypeUnion;
     }
 
-    module GomXsdTypeRestriction {
+    namespace GomXsdTypeRestriction {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeDefinition.ConstructorProps {
@@ -30842,7 +30842,7 @@ export namespace GXml {
         set_white_spaces(value: GomXsdListTypeRestrictionWhiteSpaces): void;
     }
 
-    module GomXsdTypeRestrictionDef {
+    namespace GomXsdTypeRestrictionDef {
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -30872,7 +30872,7 @@ export namespace GXml {
         set_annotation(value: GomXsdAnnotation): void;
     }
 
-    module GomXsdTypeRestrictionMinExclusive {
+    namespace GomXsdTypeRestrictionMinExclusive {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -30890,7 +30890,7 @@ export namespace GXml {
         static ['new'](): GomXsdTypeRestrictionMinExclusive;
     }
 
-    module GomXsdTypeRestrictionMinInclusive {
+    namespace GomXsdTypeRestrictionMinInclusive {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -30908,7 +30908,7 @@ export namespace GXml {
         static ['new'](): GomXsdTypeRestrictionMinInclusive;
     }
 
-    module GomXsdTypeRestrictionMaxExclusive {
+    namespace GomXsdTypeRestrictionMaxExclusive {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -30926,7 +30926,7 @@ export namespace GXml {
         static ['new'](): GomXsdTypeRestrictionMaxExclusive;
     }
 
-    module GomXsdTypeRestrictionMaxInclusive {
+    namespace GomXsdTypeRestrictionMaxInclusive {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -30944,7 +30944,7 @@ export namespace GXml {
         static ['new'](): GomXsdTypeRestrictionMaxInclusive;
     }
 
-    module GomXsdTypeRestrictionTotalDigits {
+    namespace GomXsdTypeRestrictionTotalDigits {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -30962,7 +30962,7 @@ export namespace GXml {
         static ['new'](): GomXsdTypeRestrictionTotalDigits;
     }
 
-    module GomXsdTypeRestrictionFractionDigits {
+    namespace GomXsdTypeRestrictionFractionDigits {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -30980,7 +30980,7 @@ export namespace GXml {
         static ['new'](): GomXsdTypeRestrictionFractionDigits;
     }
 
-    module GomXsdTypeRestrictionLength {
+    namespace GomXsdTypeRestrictionLength {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -30998,7 +30998,7 @@ export namespace GXml {
         static ['new'](): GomXsdTypeRestrictionLength;
     }
 
-    module GomXsdTypeRestrictionMinLength {
+    namespace GomXsdTypeRestrictionMinLength {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -31016,7 +31016,7 @@ export namespace GXml {
         static ['new'](): GomXsdTypeRestrictionMinLength;
     }
 
-    module GomXsdTypeRestrictionMaxLength {
+    namespace GomXsdTypeRestrictionMaxLength {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -31034,7 +31034,7 @@ export namespace GXml {
         static ['new'](): GomXsdTypeRestrictionMaxLength;
     }
 
-    module GomXsdTypeRestrictionEnumeration {
+    namespace GomXsdTypeRestrictionEnumeration {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
@@ -31064,7 +31064,7 @@ export namespace GXml {
         set_value(value: string): void;
     }
 
-    module GomXsdTypeRestrictionWhiteSpace {
+    namespace GomXsdTypeRestrictionWhiteSpace {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
@@ -31099,7 +31099,7 @@ export namespace GXml {
         set_value(value: string): void;
     }
 
-    module GomXsdTypeRestrictionWhiteSpaceFixed {
+    namespace GomXsdTypeRestrictionWhiteSpaceFixed {
         // Constructor properties interface
 
         interface ConstructorProps extends GomBoolean.ConstructorProps {}
@@ -31117,7 +31117,7 @@ export namespace GXml {
         static ['new'](): GomXsdTypeRestrictionWhiteSpaceFixed;
     }
 
-    module GomXsdTypeRestrictionPattern {
+    namespace GomXsdTypeRestrictionPattern {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -31135,7 +31135,7 @@ export namespace GXml {
         static ['new'](): GomXsdTypeRestrictionPattern;
     }
 
-    module GomXsdTypeRestrictionAssertion {
+    namespace GomXsdTypeRestrictionAssertion {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -31153,7 +31153,7 @@ export namespace GXml {
         static ['new'](): GomXsdTypeRestrictionAssertion;
     }
 
-    module GomXsdTypeRestrictionExplicitTimezone {
+    namespace GomXsdTypeRestrictionExplicitTimezone {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -31171,7 +31171,7 @@ export namespace GXml {
         static ['new'](): GomXsdTypeRestrictionExplicitTimezone;
     }
 
-    module GomXsdComplexType {
+    namespace GomXsdComplexType {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdBaseType.ConstructorProps {
@@ -31247,7 +31247,7 @@ export namespace GXml {
         get_group_attributes(): GomXsdList;
     }
 
-    module GomXsdExtension {
+    namespace GomXsdExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -31277,7 +31277,7 @@ export namespace GXml {
         set_base(value: string): void;
     }
 
-    module GomXsdElement {
+    namespace GomXsdElement {
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -31408,7 +31408,7 @@ export namespace GXml {
         set_complex_type(value: GomXsdComplexType): void;
     }
 
-    module GomXsdAnnotation {
+    namespace GomXsdAnnotation {
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {}
@@ -31426,7 +31426,7 @@ export namespace GXml {
         static ['new'](): GomXsdAnnotation;
     }
 
-    module GomXsdBaseType {
+    namespace GomXsdBaseType {
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -31456,7 +31456,7 @@ export namespace GXml {
         set_anotation(value: GomXsdAnnotation): void;
     }
 
-    module GomXsdBaseContent {
+    namespace GomXsdBaseContent {
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -31486,7 +31486,7 @@ export namespace GXml {
         set_anotation(value: GomXsdAnnotation): void;
     }
 
-    module GomXsdSimpleContent {
+    namespace GomXsdSimpleContent {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdBaseContent.ConstructorProps {}
@@ -31504,7 +31504,7 @@ export namespace GXml {
         static ['new'](): GomXsdSimpleContent;
     }
 
-    module GomXsdComplexContent {
+    namespace GomXsdComplexContent {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdBaseContent.ConstructorProps {}
@@ -31522,7 +31522,7 @@ export namespace GXml {
         static ['new'](): GomXsdComplexContent;
     }
 
-    module GomXsdOpenContent {
+    namespace GomXsdOpenContent {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdBaseContent.ConstructorProps {}
@@ -31540,7 +31540,7 @@ export namespace GXml {
         static ['new'](): GomXsdOpenContent;
     }
 
-    module GomXsdBaseAttribute {
+    namespace GomXsdBaseAttribute {
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -31570,7 +31570,7 @@ export namespace GXml {
         set_anotation(value: GomXsdAnnotation): void;
     }
 
-    module GomXsdAttribute {
+    namespace GomXsdAttribute {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdBaseAttribute.ConstructorProps {}
@@ -31588,7 +31588,7 @@ export namespace GXml {
         static ['new'](): GomXsdAttribute;
     }
 
-    module GomXsdAttributeGroup {
+    namespace GomXsdAttributeGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdBaseAttribute.ConstructorProps {}
@@ -31606,7 +31606,7 @@ export namespace GXml {
         static ['new'](): GomXsdAttributeGroup;
     }
 
-    module GomXsdList {
+    namespace GomXsdList {
         // Constructor properties interface
 
         interface ConstructorProps extends GomArrayList.ConstructorProps {
@@ -31636,7 +31636,7 @@ export namespace GXml {
         get_length(): number;
     }
 
-    module GomXsdListElements {
+    namespace GomXsdListElements {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdList.ConstructorProps {}
@@ -31654,7 +31654,7 @@ export namespace GXml {
         static ['new'](): GomXsdListElements;
     }
 
-    module GomXsdListSimpleTypes {
+    namespace GomXsdListSimpleTypes {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdList.ConstructorProps {}
@@ -31672,7 +31672,7 @@ export namespace GXml {
         static ['new'](): GomXsdListSimpleTypes;
     }
 
-    module GomXsdListComplexTypes {
+    namespace GomXsdListComplexTypes {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdList.ConstructorProps {}
@@ -31690,7 +31690,7 @@ export namespace GXml {
         static ['new'](): GomXsdListComplexTypes;
     }
 
-    module GomXsdListTypeRestrictionEnumerations {
+    namespace GomXsdListTypeRestrictionEnumerations {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdList.ConstructorProps {}
@@ -31708,7 +31708,7 @@ export namespace GXml {
         static ['new'](): GomXsdListTypeRestrictionEnumerations;
     }
 
-    module GomXsdListTypeRestrictionWhiteSpaces {
+    namespace GomXsdListTypeRestrictionWhiteSpaces {
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdList.ConstructorProps {}
@@ -33035,7 +33035,7 @@ export namespace GXml {
     type IXsdListAttributesGroupIface = typeof IXsdListAttributesGroup;
     type IXsdListTypeRestrictionEnumerationsIface = typeof IXsdListTypeRestrictionEnumerations;
     type IXsdListTypeRestrictionWhiteSpacesIface = typeof IXsdListTypeRestrictionWhiteSpaces;
-    module Attribute {
+    namespace Attribute {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33072,7 +33072,7 @@ export namespace GXml {
         new (): Attribute; // This allows `obj instanceof Attribute`
     };
 
-    module Comment {
+    namespace Comment {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33105,7 +33105,7 @@ export namespace GXml {
         new (): Comment; // This allows `obj instanceof Comment`
     };
 
-    module CDATA {
+    namespace CDATA {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33135,7 +33135,7 @@ export namespace GXml {
         new (): CDATA; // This allows `obj instanceof CDATA`
     };
 
-    module Character {
+    namespace Character {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33168,7 +33168,7 @@ export namespace GXml {
         new (): Character; // This allows `obj instanceof Character`
     };
 
-    module Document {
+    namespace Document {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33257,7 +33257,7 @@ export namespace GXml {
         new (): Document; // This allows `obj instanceof Document`
     };
 
-    module DocumentType {
+    namespace DocumentType {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -33273,7 +33273,7 @@ export namespace GXml {
         new (): DocumentType; // This allows `obj instanceof DocumentType`
     };
 
-    module Element {
+    namespace Element {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33326,7 +33326,7 @@ export namespace GXml {
         new (): Element; // This allows `obj instanceof Element`
     };
 
-    module Namespace {
+    namespace Namespace {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33360,7 +33360,7 @@ export namespace GXml {
         new (): Namespace; // This allows `obj instanceof Namespace`
     };
 
-    module Node {
+    namespace Node {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33443,7 +33443,7 @@ export namespace GXml {
         new (): Node; // This allows `obj instanceof Node`
     };
 
-    module Notation {
+    namespace Notation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33481,7 +33481,7 @@ export namespace GXml {
         new (): Notation; // This allows `obj instanceof Notation`
     };
 
-    module Entity {
+    namespace Entity {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -33497,7 +33497,7 @@ export namespace GXml {
         new (): Entity; // This allows `obj instanceof Entity`
     };
 
-    module ProcessingInstruction {
+    namespace ProcessingInstruction {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33536,7 +33536,7 @@ export namespace GXml {
         new (): ProcessingInstruction; // This allows `obj instanceof ProcessingInstruction`
     };
 
-    module Text {
+    namespace Text {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33569,7 +33569,7 @@ export namespace GXml {
         new (): Text; // This allows `obj instanceof Text`
     };
 
-    module Serializable {
+    namespace Serializable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33646,7 +33646,7 @@ export namespace GXml {
         new (): Serializable; // This allows `obj instanceof Serializable`
     };
 
-    module SerializableProperty {
+    namespace SerializableProperty {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -33682,7 +33682,7 @@ export namespace GXml {
         new (): SerializableProperty; // This allows `obj instanceof SerializableProperty`
     };
 
-    module SerializableMapKey {
+    namespace SerializableMapKey {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -33706,7 +33706,7 @@ export namespace GXml {
         new (): SerializableMapKey; // This allows `obj instanceof SerializableMapKey`
     };
 
-    module SerializableMapDualKey {
+    namespace SerializableMapDualKey {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -33732,7 +33732,7 @@ export namespace GXml {
         new (): SerializableMapDualKey; // This allows `obj instanceof SerializableMapDualKey`
     };
 
-    module SerializableCollection {
+    namespace SerializableCollection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -33764,7 +33764,7 @@ export namespace GXml {
         new (): SerializableCollection; // This allows `obj instanceof SerializableCollection`
     };
 
-    module DomAttr {
+    namespace DomAttr {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33821,7 +33821,7 @@ export namespace GXml {
         new (): DomAttr; // This allows `obj instanceof DomAttr`
     };
 
-    module DomCharacterData {
+    namespace DomCharacterData {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33870,7 +33870,7 @@ export namespace GXml {
         new (): DomCharacterData; // This allows `obj instanceof DomCharacterData`
     };
 
-    module DomText {
+    namespace DomText {
         // Constructor properties interface
 
         interface ConstructorProps extends DomCharacterData.ConstructorProps {
@@ -33904,7 +33904,7 @@ export namespace GXml {
         new (): DomText; // This allows `obj instanceof DomText`
     };
 
-    module DomProcessingInstruction {
+    namespace DomProcessingInstruction {
         // Constructor properties interface
 
         interface ConstructorProps extends DomCharacterData.ConstructorProps {
@@ -33934,7 +33934,7 @@ export namespace GXml {
         new (): DomProcessingInstruction; // This allows `obj instanceof DomProcessingInstruction`
     };
 
-    module DomComment {
+    namespace DomComment {
         // Constructor properties interface
 
         interface ConstructorProps extends DomCharacterData.ConstructorProps {}
@@ -33950,7 +33950,7 @@ export namespace GXml {
         new (): DomComment; // This allows `obj instanceof DomComment`
     };
 
-    module DomNonElementParentNode {
+    namespace DomNonElementParentNode {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -33974,7 +33974,7 @@ export namespace GXml {
         new (): DomNonElementParentNode; // This allows `obj instanceof DomNonElementParentNode`
     };
 
-    module DomParentNode {
+    namespace DomParentNode {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34028,7 +34028,7 @@ export namespace GXml {
         new (): DomParentNode; // This allows `obj instanceof DomParentNode`
     };
 
-    module DomNonDocumentTypeChildNode {
+    namespace DomNonDocumentTypeChildNode {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34066,7 +34066,7 @@ export namespace GXml {
         new (): DomNonDocumentTypeChildNode; // This allows `obj instanceof DomNonDocumentTypeChildNode`
     };
 
-    module DomChildNode {
+    namespace DomChildNode {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -34090,7 +34090,7 @@ export namespace GXml {
         new (): DomChildNode; // This allows `obj instanceof DomChildNode`
     };
 
-    module DomNodeList {
+    namespace DomNodeList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34122,7 +34122,7 @@ export namespace GXml {
         new (): DomNodeList; // This allows `obj instanceof DomNodeList`
     };
 
-    module DomHTMLCollection {
+    namespace DomHTMLCollection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34160,7 +34160,7 @@ export namespace GXml {
         new (): DomHTMLCollection; // This allows `obj instanceof DomHTMLCollection`
     };
 
-    module DomNodeIterator {
+    namespace DomNodeIterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34218,7 +34218,7 @@ export namespace GXml {
         new (): DomNodeIterator; // This allows `obj instanceof DomNodeIterator`
     };
 
-    module DomTreeWalker {
+    namespace DomTreeWalker {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34278,7 +34278,7 @@ export namespace GXml {
         new (): DomTreeWalker; // This allows `obj instanceof DomTreeWalker`
     };
 
-    module DomNamedNodeMap {
+    namespace DomNamedNodeMap {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34322,7 +34322,7 @@ export namespace GXml {
         new (): DomNamedNodeMap; // This allows `obj instanceof DomNamedNodeMap`
     };
 
-    module DomTokenList {
+    namespace DomTokenList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34364,7 +34364,7 @@ export namespace GXml {
         new (): DomTokenList; // This allows `obj instanceof DomTokenList`
     };
 
-    module DomSettableTokenList {
+    namespace DomSettableTokenList {
         // Constructor properties interface
 
         interface ConstructorProps extends DomTokenList.ConstructorProps {
@@ -34397,7 +34397,7 @@ export namespace GXml {
         new (): DomSettableTokenList; // This allows `obj instanceof DomSettableTokenList`
     };
 
-    module DomDocument {
+    namespace DomDocument {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34499,7 +34499,7 @@ export namespace GXml {
         new (): DomDocument; // This allows `obj instanceof DomDocument`
     };
 
-    module DomXMLDocument {
+    namespace DomXMLDocument {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -34515,7 +34515,7 @@ export namespace GXml {
         new (): DomXMLDocument; // This allows `obj instanceof DomXMLDocument`
     };
 
-    module DomImplementation {
+    namespace DomImplementation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -34545,7 +34545,7 @@ export namespace GXml {
         new (): DomImplementation; // This allows `obj instanceof DomImplementation`
     };
 
-    module DomDocumentFragment {
+    namespace DomDocumentFragment {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -34561,7 +34561,7 @@ export namespace GXml {
         new (): DomDocumentFragment; // This allows `obj instanceof DomDocumentFragment`
     };
 
-    module DomDocumentType {
+    namespace DomDocumentType {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34603,7 +34603,7 @@ export namespace GXml {
         new (): DomDocumentType; // This allows `obj instanceof DomDocumentType`
     };
 
-    module DomElement {
+    namespace DomElement {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34700,7 +34700,7 @@ export namespace GXml {
         new (): DomElement; // This allows `obj instanceof DomElement`
     };
 
-    module DomEventTarget {
+    namespace DomEventTarget {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -34728,7 +34728,7 @@ export namespace GXml {
         new (): DomEventTarget; // This allows `obj instanceof DomEventTarget`
     };
 
-    module DomEventListener {
+    namespace DomEventListener {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -34752,7 +34752,7 @@ export namespace GXml {
         new (): DomEventListener; // This allows `obj instanceof DomEventListener`
     };
 
-    module DomEvent {
+    namespace DomEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34834,7 +34834,7 @@ export namespace GXml {
         new (): DomEvent; // This allows `obj instanceof DomEvent`
     };
 
-    module DomCustomEvent {
+    namespace DomCustomEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34866,7 +34866,7 @@ export namespace GXml {
         new (): DomCustomEvent; // This allows `obj instanceof DomCustomEvent`
     };
 
-    module DomMutationObserver {
+    namespace DomMutationObserver {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -34894,7 +34894,7 @@ export namespace GXml {
         new (): DomMutationObserver; // This allows `obj instanceof DomMutationObserver`
     };
 
-    module DomMutationRecord {
+    namespace DomMutationRecord {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34978,7 +34978,7 @@ export namespace GXml {
         new (): DomMutationRecord; // This allows `obj instanceof DomMutationRecord`
     };
 
-    module DomNode {
+    namespace DomNode {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -35122,7 +35122,7 @@ export namespace GXml {
         new (): DomNode; // This allows `obj instanceof DomNode`
     };
 
-    module DomRange {
+    namespace DomRange {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -35224,7 +35224,7 @@ export namespace GXml {
         new (): DomRange; // This allows `obj instanceof DomRange`
     };
 
-    module XPathContext {
+    namespace XPathContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35248,7 +35248,7 @@ export namespace GXml {
         new (): XPathContext; // This allows `obj instanceof XPathContext`
     };
 
-    module XPathObject {
+    namespace XPathObject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -35302,7 +35302,7 @@ export namespace GXml {
         new (): XPathObject; // This allows `obj instanceof XPathObject`
     };
 
-    module GomObject {
+    namespace GomObject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35348,7 +35348,7 @@ export namespace GXml {
         new (): GomObject; // This allows `obj instanceof GomObject`
     };
 
-    module GomCollection {
+    namespace GomCollection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -35419,7 +35419,7 @@ export namespace GXml {
         new (): GomCollection; // This allows `obj instanceof GomCollection`
     };
 
-    module MappeableElement {
+    namespace MappeableElement {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35443,7 +35443,7 @@ export namespace GXml {
         new (): MappeableElement; // This allows `obj instanceof MappeableElement`
     };
 
-    module MappeableElementPairKey {
+    namespace MappeableElementPairKey {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35469,7 +35469,7 @@ export namespace GXml {
         new (): MappeableElementPairKey; // This allows `obj instanceof MappeableElementPairKey`
     };
 
-    module MappeableElementThreeKey {
+    namespace MappeableElementThreeKey {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35497,7 +35497,7 @@ export namespace GXml {
         new (): MappeableElementThreeKey; // This allows `obj instanceof MappeableElementThreeKey`
     };
 
-    module GomProperty {
+    namespace GomProperty {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -35532,7 +35532,7 @@ export namespace GXml {
         new (): GomProperty; // This allows `obj instanceof GomProperty`
     };
 
-    module Parser {
+    namespace Parser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -35588,7 +35588,7 @@ export namespace GXml {
         new (): Parser; // This allows `obj instanceof Parser`
     };
 
-    module IXsdSchema {
+    namespace IXsdSchema {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -35644,7 +35644,7 @@ export namespace GXml {
         new (): IXsdSchema; // This allows `obj instanceof IXsdSchema`
     };
 
-    module IXsdBaseType {
+    namespace IXsdBaseType {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -35677,7 +35677,7 @@ export namespace GXml {
         new (): IXsdBaseType; // This allows `obj instanceof IXsdBaseType`
     };
 
-    module IXsdSimpleType {
+    namespace IXsdSimpleType {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -35752,7 +35752,7 @@ export namespace GXml {
         new (): IXsdSimpleType; // This allows `obj instanceof IXsdSimpleType`
     };
 
-    module IXsdTypeDef {
+    namespace IXsdTypeDef {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35768,7 +35768,7 @@ export namespace GXml {
         new (): IXsdTypeDef; // This allows `obj instanceof IXsdTypeDef`
     };
 
-    module IXsdTypeRestriction {
+    namespace IXsdTypeRestriction {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -35835,7 +35835,7 @@ export namespace GXml {
         new (): IXsdTypeRestriction; // This allows `obj instanceof IXsdTypeRestriction`
     };
 
-    module IXsdTypeList {
+    namespace IXsdTypeList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35851,7 +35851,7 @@ export namespace GXml {
         new (): IXsdTypeList; // This allows `obj instanceof IXsdTypeList`
     };
 
-    module IXsdTypeUnion {
+    namespace IXsdTypeUnion {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35867,7 +35867,7 @@ export namespace GXml {
         new (): IXsdTypeUnion; // This allows `obj instanceof IXsdTypeUnion`
     };
 
-    module IXsdTypeRestrictionDef {
+    namespace IXsdTypeRestrictionDef {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -35900,7 +35900,7 @@ export namespace GXml {
         new (): IXsdTypeRestrictionDef; // This allows `obj instanceof IXsdTypeRestrictionDef`
     };
 
-    module IXsdTypeRestrictionMinExclusive {
+    namespace IXsdTypeRestrictionMinExclusive {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35916,7 +35916,7 @@ export namespace GXml {
         new (): IXsdTypeRestrictionMinExclusive; // This allows `obj instanceof IXsdTypeRestrictionMinExclusive`
     };
 
-    module IXsdTypeRestrictionMinInclusive {
+    namespace IXsdTypeRestrictionMinInclusive {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35932,7 +35932,7 @@ export namespace GXml {
         new (): IXsdTypeRestrictionMinInclusive; // This allows `obj instanceof IXsdTypeRestrictionMinInclusive`
     };
 
-    module IXsdTypeRestrictionMaxExclusive {
+    namespace IXsdTypeRestrictionMaxExclusive {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35948,7 +35948,7 @@ export namespace GXml {
         new (): IXsdTypeRestrictionMaxExclusive; // This allows `obj instanceof IXsdTypeRestrictionMaxExclusive`
     };
 
-    module IXsdTypeRestrictionMaxInclusive {
+    namespace IXsdTypeRestrictionMaxInclusive {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35964,7 +35964,7 @@ export namespace GXml {
         new (): IXsdTypeRestrictionMaxInclusive; // This allows `obj instanceof IXsdTypeRestrictionMaxInclusive`
     };
 
-    module IXsdTypeRestrictionTotalDigits {
+    namespace IXsdTypeRestrictionTotalDigits {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35980,7 +35980,7 @@ export namespace GXml {
         new (): IXsdTypeRestrictionTotalDigits; // This allows `obj instanceof IXsdTypeRestrictionTotalDigits`
     };
 
-    module IXsdTypeRestrictionFractionDigits {
+    namespace IXsdTypeRestrictionFractionDigits {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35996,7 +35996,7 @@ export namespace GXml {
         new (): IXsdTypeRestrictionFractionDigits; // This allows `obj instanceof IXsdTypeRestrictionFractionDigits`
     };
 
-    module IXsdTypeRestrictionLength {
+    namespace IXsdTypeRestrictionLength {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36012,7 +36012,7 @@ export namespace GXml {
         new (): IXsdTypeRestrictionLength; // This allows `obj instanceof IXsdTypeRestrictionLength`
     };
 
-    module IXsdTypeRestrictionMinLength {
+    namespace IXsdTypeRestrictionMinLength {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36028,7 +36028,7 @@ export namespace GXml {
         new (): IXsdTypeRestrictionMinLength; // This allows `obj instanceof IXsdTypeRestrictionMinLength`
     };
 
-    module IXsdTypeRestrictionMaxLength {
+    namespace IXsdTypeRestrictionMaxLength {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36044,7 +36044,7 @@ export namespace GXml {
         new (): IXsdTypeRestrictionMaxLength; // This allows `obj instanceof IXsdTypeRestrictionMaxLength`
     };
 
-    module IXsdTypeRestrictionEnumeration {
+    namespace IXsdTypeRestrictionEnumeration {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -36084,7 +36084,7 @@ export namespace GXml {
         new (): IXsdTypeRestrictionEnumeration; // This allows `obj instanceof IXsdTypeRestrictionEnumeration`
     };
 
-    module IXsdTypeRestrictionWhiteSpace {
+    namespace IXsdTypeRestrictionWhiteSpace {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -36131,7 +36131,7 @@ export namespace GXml {
         new (): IXsdTypeRestrictionWhiteSpace; // This allows `obj instanceof IXsdTypeRestrictionWhiteSpace`
     };
 
-    module IXsdTypeRestrictionPattern {
+    namespace IXsdTypeRestrictionPattern {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36147,7 +36147,7 @@ export namespace GXml {
         new (): IXsdTypeRestrictionPattern; // This allows `obj instanceof IXsdTypeRestrictionPattern`
     };
 
-    module IXsdTypeRestrictionAssertion {
+    namespace IXsdTypeRestrictionAssertion {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36163,7 +36163,7 @@ export namespace GXml {
         new (): IXsdTypeRestrictionAssertion; // This allows `obj instanceof IXsdTypeRestrictionAssertion`
     };
 
-    module IXsdTypeRestrictionExplicitTimezone {
+    namespace IXsdTypeRestrictionExplicitTimezone {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36179,7 +36179,7 @@ export namespace GXml {
         new (): IXsdTypeRestrictionExplicitTimezone; // This allows `obj instanceof IXsdTypeRestrictionExplicitTimezone`
     };
 
-    module IXsdComplexType {
+    namespace IXsdComplexType {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -36272,7 +36272,7 @@ export namespace GXml {
         new (): IXsdComplexType; // This allows `obj instanceof IXsdComplexType`
     };
 
-    module IXsdExtension {
+    namespace IXsdExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -36305,7 +36305,7 @@ export namespace GXml {
         new (): IXsdExtension; // This allows `obj instanceof IXsdExtension`
     };
 
-    module IXsdElement {
+    namespace IXsdElement {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -36472,7 +36472,7 @@ export namespace GXml {
         new (): IXsdElement; // This allows `obj instanceof IXsdElement`
     };
 
-    module IXsdAnnotation {
+    namespace IXsdAnnotation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36488,7 +36488,7 @@ export namespace GXml {
         new (): IXsdAnnotation; // This allows `obj instanceof IXsdAnnotation`
     };
 
-    module IXsdBaseContent {
+    namespace IXsdBaseContent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -36521,7 +36521,7 @@ export namespace GXml {
         new (): IXsdBaseContent; // This allows `obj instanceof IXsdBaseContent`
     };
 
-    module IXsdSimpleContent {
+    namespace IXsdSimpleContent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36537,7 +36537,7 @@ export namespace GXml {
         new (): IXsdSimpleContent; // This allows `obj instanceof IXsdSimpleContent`
     };
 
-    module IXsdComplexContent {
+    namespace IXsdComplexContent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36553,7 +36553,7 @@ export namespace GXml {
         new (): IXsdComplexContent; // This allows `obj instanceof IXsdComplexContent`
     };
 
-    module IXsdOpenContent {
+    namespace IXsdOpenContent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36569,7 +36569,7 @@ export namespace GXml {
         new (): IXsdOpenContent; // This allows `obj instanceof IXsdOpenContent`
     };
 
-    module IXsdBaseAttribute {
+    namespace IXsdBaseAttribute {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -36602,7 +36602,7 @@ export namespace GXml {
         new (): IXsdBaseAttribute; // This allows `obj instanceof IXsdBaseAttribute`
     };
 
-    module IXsdAttribute {
+    namespace IXsdAttribute {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36618,7 +36618,7 @@ export namespace GXml {
         new (): IXsdAttribute; // This allows `obj instanceof IXsdAttribute`
     };
 
-    module IXsdAttributeGroup {
+    namespace IXsdAttributeGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36634,7 +36634,7 @@ export namespace GXml {
         new (): IXsdAttributeGroup; // This allows `obj instanceof IXsdAttributeGroup`
     };
 
-    module IXsdList {
+    namespace IXsdList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -36699,7 +36699,7 @@ export namespace GXml {
         new (): IXsdList; // This allows `obj instanceof IXsdList`
     };
 
-    module IXsdListElements {
+    namespace IXsdListElements {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36715,7 +36715,7 @@ export namespace GXml {
         new (): IXsdListElements; // This allows `obj instanceof IXsdListElements`
     };
 
-    module IXsdListSimpleTypes {
+    namespace IXsdListSimpleTypes {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36731,7 +36731,7 @@ export namespace GXml {
         new (): IXsdListSimpleTypes; // This allows `obj instanceof IXsdListSimpleTypes`
     };
 
-    module IXsdListComplexTypes {
+    namespace IXsdListComplexTypes {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36747,7 +36747,7 @@ export namespace GXml {
         new (): IXsdListComplexTypes; // This allows `obj instanceof IXsdListComplexTypes`
     };
 
-    module IXsdListAttributes {
+    namespace IXsdListAttributes {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36763,7 +36763,7 @@ export namespace GXml {
         new (): IXsdListAttributes; // This allows `obj instanceof IXsdListAttributes`
     };
 
-    module IXsdListAttributesGroup {
+    namespace IXsdListAttributesGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36779,7 +36779,7 @@ export namespace GXml {
         new (): IXsdListAttributesGroup; // This allows `obj instanceof IXsdListAttributesGroup`
     };
 
-    module IXsdListTypeRestrictionEnumerations {
+    namespace IXsdListTypeRestrictionEnumerations {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36795,7 +36795,7 @@ export namespace GXml {
         new (): IXsdListTypeRestrictionEnumerations; // This allows `obj instanceof IXsdListTypeRestrictionEnumerations`
     };
 
-    module IXsdListTypeRestrictionWhiteSpaces {
+    namespace IXsdListTypeRestrictionWhiteSpaces {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -4932,7 +4932,7 @@ export namespace Gdk {
         ABOVE,
         BELOW,
     }
-    module AppLaunchContext {
+    namespace AppLaunchContext {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.AppLaunchContext.ConstructorProps {}
@@ -5016,7 +5016,7 @@ export namespace Gdk {
         set_timestamp(timestamp: number): void;
     }
 
-    module Colormap {
+    namespace Colormap {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5108,7 +5108,7 @@ export namespace Gdk {
         unref(): void;
     }
 
-    module Device {
+    namespace Device {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5216,7 +5216,7 @@ export namespace Gdk {
         set_source(source: InputSource | null): void;
     }
 
-    module Display {
+    namespace Display {
         // Signal callback interfaces
 
         interface Closed {
@@ -5475,7 +5475,7 @@ export namespace Gdk {
         warp_pointer(screen: Screen, x: number, y: number): void;
     }
 
-    module DisplayManager {
+    namespace DisplayManager {
         // Signal callback interfaces
 
         interface DisplayOpened {
@@ -5545,7 +5545,7 @@ export namespace Gdk {
         set_default_display(display: Display): void;
     }
 
-    module DragContext {
+    namespace DragContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5624,7 +5624,7 @@ export namespace Gdk {
         unref(): void;
     }
 
-    module Drawable {
+    namespace Drawable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5796,7 +5796,7 @@ export namespace Gdk {
         unref(): void;
     }
 
-    module GC {
+    namespace GC {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6063,7 +6063,7 @@ export namespace Gdk {
         unref(): void;
     }
 
-    module Image {
+    namespace Image {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6158,7 +6158,7 @@ export namespace Gdk {
         unref(): void;
     }
 
-    module Keymap {
+    namespace Keymap {
         // Signal callback interfaces
 
         interface DirectionChanged {
@@ -6377,7 +6377,7 @@ export namespace Gdk {
         ): [boolean, number, number, number, ModifierType | null];
     }
 
-    module PangoRenderer {
+    namespace PangoRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends Pango.Renderer.ConstructorProps {
@@ -6457,7 +6457,7 @@ export namespace Gdk {
         set_stipple(part: Pango.RenderPart | null, stipple: Bitmap): void;
     }
 
-    module Pixmap {
+    namespace Pixmap {
         // Constructor properties interface
 
         interface ConstructorProps extends Drawable.ConstructorProps {}
@@ -6544,7 +6544,7 @@ export namespace Gdk {
         get_size(): [number, number];
     }
 
-    module Screen {
+    namespace Screen {
         // Signal callback interfaces
 
         interface CompositedChanged {
@@ -6888,7 +6888,7 @@ export namespace Gdk {
         set_resolution(dpi: number): void;
     }
 
-    module Visual {
+    namespace Visual {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7024,7 +7024,7 @@ export namespace Gdk {
         get_visual_type(): VisualType;
     }
 
-    module Window {
+    namespace Window {
         // Signal callback interfaces
 
         interface FromEmbedder {

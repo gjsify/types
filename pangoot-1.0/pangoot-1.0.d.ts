@@ -124,7 +124,7 @@ export namespace PangoOT {
      * @returns `PangoScript` corresponding to @script_tag or %PANGO_SCRIPT_UNKNOWN if none found.
      */
     function tag_to_script(script_tag: Tag): Pango.Script;
-    module Info {
+    namespace Info {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -230,7 +230,7 @@ export namespace PangoOT {
         list_scripts(table_type: TableType | null): Tag;
     }
 
-    module Ruleset {
+    namespace Ruleset {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -163,7 +163,7 @@ export namespace Garcon {
      * @param fallback_env fallback value
      */
     function set_environment_xdg(fallback_env: string): void;
-    module Menu {
+    namespace Menu {
         // Signal callback interfaces
 
         interface DirectoryChanged {
@@ -727,7 +727,7 @@ export namespace Garcon {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MenuDirectory {
+    namespace MenuDirectory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -864,7 +864,7 @@ export namespace Garcon {
         set_no_display(no_display: boolean): void;
     }
 
-    module MenuItem {
+    namespace MenuItem {
         // Signal callback interfaces
 
         interface Changed {
@@ -1496,7 +1496,7 @@ export namespace Garcon {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MenuItemAction {
+    namespace MenuItemAction {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1559,7 +1559,7 @@ export namespace Garcon {
         unref(): void;
     }
 
-    module MenuItemCache {
+    namespace MenuItemCache {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1584,7 +1584,7 @@ export namespace Garcon {
         lookup(uri: string, desktop_id: string): MenuItem | null;
     }
 
-    module MenuItemPool {
+    namespace MenuItemPool {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1612,7 +1612,7 @@ export namespace Garcon {
         lookup_file(file: Gio.File): MenuItem;
     }
 
-    module MenuMerger {
+    namespace MenuMerger {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MenuTreeProvider.ConstructorProps {
@@ -2046,7 +2046,7 @@ export namespace Garcon {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MenuNode {
+    namespace MenuNode {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2103,7 +2103,7 @@ export namespace Garcon {
         set_string(value: string): void;
     }
 
-    module MenuParser {
+    namespace MenuParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MenuTreeProvider.ConstructorProps {
@@ -2535,7 +2535,7 @@ export namespace Garcon {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MenuSeparator {
+    namespace MenuSeparator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MenuElement.ConstructorProps {}
@@ -3053,7 +3053,7 @@ export namespace Garcon {
         _init(...args: any[]): void;
     }
 
-    module MenuElement {
+    namespace MenuElement {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3089,7 +3089,7 @@ export namespace Garcon {
         new (): MenuElement; // This allows `obj instanceof MenuElement`
     };
 
-    module MenuTreeProvider {
+    namespace MenuTreeProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

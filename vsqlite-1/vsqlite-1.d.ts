@@ -36,7 +36,7 @@ export namespace Vsqlite {
         _init(...args: any[]): void;
     }
 
-    module Connection {
+    namespace Connection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Vda.Connection.ConstructorProps {}

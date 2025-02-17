@@ -980,7 +980,7 @@ export namespace Ide {
         NONE,
         BACKGROUND,
     }
-    module Application {
+    namespace Application {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1494,7 +1494,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BackForwardItem {
+    namespace BackForwardItem {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -1544,7 +1544,7 @@ export namespace Ide {
         get_uri(): Uri | null;
     }
 
-    module BackForwardList {
+    namespace BackForwardList {
         // Signal callback interfaces
 
         interface NavigateTo {
@@ -1615,7 +1615,7 @@ export namespace Ide {
         push(item: BackForwardItem): void;
     }
 
-    module Buffer {
+    namespace Buffer {
         // Signal callback interfaces
 
         interface CursorMoved {
@@ -1922,7 +1922,7 @@ export namespace Ide {
         trim_trailing_whitespace(): void;
     }
 
-    module BufferChangeMonitor {
+    namespace BufferChangeMonitor {
         // Signal callback interfaces
 
         interface Changed {
@@ -1971,7 +1971,7 @@ export namespace Ide {
         reload(): void;
     }
 
-    module BufferManager {
+    namespace BufferManager {
         // Signal callback interfaces
 
         interface BufferFocusEnter {
@@ -2818,7 +2818,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BuildManager {
+    namespace BuildManager {
         // Signal callback interfaces
 
         interface BuildFailed {
@@ -3992,7 +3992,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BuildPipeline {
+    namespace BuildPipeline {
         // Signal callback interfaces
 
         interface Diagnostic {
@@ -4786,7 +4786,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BuildStage {
+    namespace BuildStage {
         // Signal callback interfaces
 
         interface Chain {
@@ -5007,7 +5007,7 @@ export namespace Ide {
         unpause(): void;
     }
 
-    module BuildStageLauncher {
+    namespace BuildStageLauncher {
         // Constructor properties interface
 
         interface ConstructorProps extends BuildStage.ConstructorProps {
@@ -5066,7 +5066,7 @@ export namespace Ide {
         set_launcher(launcher: SubprocessLauncher): void;
     }
 
-    module BuildStageMkdirs {
+    namespace BuildStageMkdirs {
         // Constructor properties interface
 
         interface ConstructorProps extends BuildStage.ConstructorProps {}
@@ -5088,7 +5088,7 @@ export namespace Ide {
         add_path(path: string, with_parents: boolean, mode: number): void;
     }
 
-    module BuildStageTransfer {
+    namespace BuildStageTransfer {
         // Constructor properties interface
 
         interface ConstructorProps extends BuildStage.ConstructorProps {
@@ -5118,7 +5118,7 @@ export namespace Ide {
         static ['new'](context: Context, transfer: Transfer): BuildStageTransfer;
     }
 
-    module BuildconfigConfiguration {
+    namespace BuildconfigConfiguration {
         // Constructor properties interface
 
         interface ConstructorProps extends Configuration.ConstructorProps {
@@ -5151,7 +5151,7 @@ export namespace Ide {
         set_prebuild(prebuild: string): void;
     }
 
-    module BuildconfigConfigurationProvider {
+    namespace BuildconfigConfigurationProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ConfigurationProvider.ConstructorProps {}
@@ -5602,7 +5602,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CompletionItem {
+    namespace CompletionItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5644,7 +5644,7 @@ export namespace Ide {
         set_priority(priority: number): void;
     }
 
-    module CompletionResults {
+    namespace CompletionResults {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5681,7 +5681,7 @@ export namespace Ide {
         take_proposal(proposal: CompletionItem): void;
     }
 
-    module CompletionWords {
+    namespace CompletionWords {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6338,7 +6338,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Configuration {
+    namespace Configuration {
         // Signal callback interfaces
 
         interface Changed {
@@ -6560,7 +6560,7 @@ export namespace Ide {
         supports_runtime(runtime: Runtime): boolean;
     }
 
-    module ConfigurationManager {
+    namespace ConfigurationManager {
         // Signal callback interfaces
 
         interface Invalidate {
@@ -7334,7 +7334,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Context {
+    namespace Context {
         // Signal callback interfaces
 
         interface Loaded {
@@ -8247,7 +8247,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Cursor {
+    namespace Cursor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8280,7 +8280,7 @@ export namespace Ide {
         remove_cursors(): void;
     }
 
-    module Device {
+    namespace Device {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -8355,7 +8355,7 @@ export namespace Ide {
         set_id(id: string): void;
     }
 
-    module DeviceManager {
+    namespace DeviceManager {
         // Signal callback interfaces
 
         interface DeviceAdded {
@@ -8923,7 +8923,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DiagnosticsManager {
+    namespace DiagnosticsManager {
         // Signal callback interfaces
 
         interface Changed {
@@ -9468,7 +9468,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DirectoryBuildSystem {
+    namespace DirectoryBuildSystem {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10172,7 +10172,7 @@ export namespace Ide {
         vfunc_set_context(context: Context): void;
     }
 
-    module DirectoryVcs {
+    namespace DirectoryVcs {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10881,7 +10881,7 @@ export namespace Ide {
         vfunc_set_context(context: Context): void;
     }
 
-    module Doap {
+    namespace Doap {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10947,7 +10947,7 @@ export namespace Ide {
         load_from_file(file: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
     }
 
-    module DoapPerson {
+    namespace DoapPerson {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10982,7 +10982,7 @@ export namespace Ide {
         set_name(name: string): void;
     }
 
-    module EditorPerspective {
+    namespace EditorPerspective {
         // Signal callback interfaces
 
         interface ViewAdded {
@@ -15943,7 +15943,7 @@ export namespace Ide {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EditorView {
+    namespace EditorView {
         // Signal callback interfaces
 
         interface RequestDocumentation {
@@ -16391,7 +16391,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Environment {
+    namespace Environment {
         // Signal callback interfaces
 
         interface Changed {
@@ -16940,7 +16940,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module EnvironmentVariable {
+    namespace EnvironmentVariable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -16975,7 +16975,7 @@ export namespace Ide {
         set_value(value: string): void;
     }
 
-    module ExtensionAdapter {
+    namespace ExtensionAdapter {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -17035,7 +17035,7 @@ export namespace Ide {
         set_value(value: string): void;
     }
 
-    module ExtensionSetAdapter {
+    namespace ExtensionSetAdapter {
         // Signal callback interfaces
 
         interface ExtensionAdded {
@@ -17128,7 +17128,7 @@ export namespace Ide {
         set_value(value: string): void;
     }
 
-    module File {
+    namespace File {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -17220,7 +17220,7 @@ export namespace Ide {
         load_settings_finish(result: Gio.AsyncResult): FileSettings;
     }
 
-    module FileSettings {
+    namespace FileSettings {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -17393,7 +17393,7 @@ export namespace Ide {
         get_settled(): boolean;
     }
 
-    module FormatterOptions {
+    namespace FormatterOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -17434,7 +17434,7 @@ export namespace Ide {
         set_tab_width(tab_width: number): void;
     }
 
-    module HighlightEngine {
+    namespace HighlightEngine {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -17495,7 +17495,7 @@ export namespace Ide {
         rebuild(): void;
     }
 
-    module LangservClient {
+    namespace LangservClient {
         // Signal callback interfaces
 
         interface Notification {
@@ -17664,7 +17664,7 @@ export namespace Ide {
         stop(): void;
     }
 
-    module LangservCompletionProvider {
+    namespace LangservCompletionProvider {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18343,7 +18343,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LangservDiagnosticProvider {
+    namespace LangservDiagnosticProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, DiagnosticProvider.ConstructorProps {
@@ -18443,7 +18443,7 @@ export namespace Ide {
         vfunc_set_context(context: Context): void;
     }
 
-    module LangservFormatter {
+    namespace LangservFormatter {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, Formatter.ConstructorProps {
@@ -18933,7 +18933,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LangservHighlighter {
+    namespace LangservHighlighter {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, Highlighter.ConstructorProps {
@@ -19023,7 +19023,7 @@ export namespace Ide {
         vfunc_set_context(context: Context): void;
     }
 
-    module LangservRenameProvider {
+    namespace LangservRenameProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, RenameProvider.ConstructorProps {
@@ -19169,7 +19169,7 @@ export namespace Ide {
         vfunc_set_context(context: Context): void;
     }
 
-    module LangservSymbolNode {
+    namespace LangservSymbolNode {
         // Constructor properties interface
 
         interface ConstructorProps extends SymbolNode.ConstructorProps {}
@@ -19201,7 +19201,7 @@ export namespace Ide {
         is_parent_of(other: LangservSymbolNode): boolean;
     }
 
-    module LangservSymbolResolver {
+    namespace LangservSymbolResolver {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, SymbolResolver.ConstructorProps {
@@ -19418,7 +19418,7 @@ export namespace Ide {
         vfunc_set_context(context: Context): void;
     }
 
-    module LangservSymbolTree {
+    namespace LangservSymbolTree {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SymbolTree.ConstructorProps {}
@@ -19864,7 +19864,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Layout {
+    namespace Layout {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -24637,7 +24637,7 @@ export namespace Ide {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module LayoutGrid {
+    namespace LayoutGrid {
         // Signal callback interfaces
 
         interface Empty {
@@ -25098,7 +25098,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LayoutPane {
+    namespace LayoutPane {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -29496,7 +29496,7 @@ export namespace Ide {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module LayoutStack {
+    namespace LayoutStack {
         // Signal callback interfaces
 
         interface Empty {
@@ -29965,7 +29965,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LayoutView {
+    namespace LayoutView {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -30487,7 +30487,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LocalDevice {
+    namespace LocalDevice {
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {}
@@ -30503,7 +30503,7 @@ export namespace Ide {
         _init(...args: any[]): void;
     }
 
-    module Object {
+    namespace Object {
         // Signal callback interfaces
 
         interface Destroy {
@@ -30582,7 +30582,7 @@ export namespace Ide {
         set_context(context: Context): void;
     }
 
-    module OmniBar {
+    namespace OmniBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31023,7 +31023,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module OmniSearchDisplay {
+    namespace OmniSearchDisplay {
         // Signal callback interfaces
 
         interface Activate {
@@ -31499,7 +31499,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module OmniSearchEntry {
+    namespace OmniSearchEntry {
         // Signal callback interfaces
 
         interface ClearSearch {
@@ -36051,7 +36051,7 @@ export namespace Ide {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module OmniSearchGroup {
+    namespace OmniSearchGroup {
         // Signal callback interfaces
 
         interface ResultActivated {
@@ -36540,7 +36540,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module OmniSearchRow {
+    namespace OmniSearchRow {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -36977,7 +36977,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PkconTransfer {
+    namespace PkconTransfer {
         // Constructor properties interface
 
         interface ConstructorProps extends Transfer.ConstructorProps {
@@ -37001,7 +37001,7 @@ export namespace Ide {
         static ['new'](packages: string): PkconTransfer;
     }
 
-    module PreferencesPerspective {
+    namespace PreferencesPerspective {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -37737,7 +37737,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Progress {
+    namespace Progress {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -37794,7 +37794,7 @@ export namespace Ide {
         set_message(message: string): void;
     }
 
-    module Project {
+    namespace Project {
         // Signal callback interfaces
 
         interface FileRenamed {
@@ -37922,7 +37922,7 @@ export namespace Ide {
         writer_unlock(): void;
     }
 
-    module ProjectEdit {
+    namespace ProjectEdit {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -37961,7 +37961,7 @@ export namespace Ide {
         set_replacement(replacement: string): void;
     }
 
-    module ProjectFile {
+    namespace ProjectFile {
         // Constructor properties interface
 
         interface ConstructorProps extends ProjectItem.ConstructorProps {
@@ -38016,7 +38016,7 @@ export namespace Ide {
         get_path(): string;
     }
 
-    module ProjectFiles {
+    namespace ProjectFiles {
         // Constructor properties interface
 
         interface ConstructorProps extends ProjectItem.ConstructorProps {}
@@ -38050,7 +38050,7 @@ export namespace Ide {
         get_file_for_path(path: string): File | null;
     }
 
-    module ProjectInfo {
+    namespace ProjectInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -38145,7 +38145,7 @@ export namespace Ide {
         set_priority(priority: number): void;
     }
 
-    module ProjectItem {
+    namespace ProjectItem {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -38184,7 +38184,7 @@ export namespace Ide {
         remove(child: ProjectItem): void;
     }
 
-    module RecentProjects {
+    namespace RecentProjects {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -38726,7 +38726,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RunButton {
+    namespace RunButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -39167,7 +39167,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RunManager {
+    namespace RunManager {
         // Signal callback interfaces
 
         interface Run {
@@ -40190,7 +40190,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Runner {
+    namespace Runner {
         // Signal callback interfaces
 
         interface Exited {
@@ -40334,7 +40334,7 @@ export namespace Ide {
         take_fd(source_fd: number, dest_fd: number): number;
     }
 
-    module Runtime {
+    namespace Runtime {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -40426,7 +40426,7 @@ export namespace Ide {
         translate_file(file: Gio.File): Gio.File;
     }
 
-    module RuntimeManager {
+    namespace RuntimeManager {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -41090,7 +41090,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SearchContext {
+    namespace SearchContext {
         // Signal callback interfaces
 
         interface Completed {
@@ -41172,7 +41172,7 @@ export namespace Ide {
         set_provider_count(provider: SearchProvider, count: number): void;
     }
 
-    module SearchEngine {
+    namespace SearchEngine {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -41199,7 +41199,7 @@ export namespace Ide {
         search(search_terms: string): SearchContext | null;
     }
 
-    module SearchResult {
+    namespace SearchResult {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -41247,7 +41247,7 @@ export namespace Ide {
         get_title(): string;
     }
 
-    module Settings {
+    namespace Settings {
         // Signal callback interfaces
 
         interface Changed {
@@ -41345,7 +41345,7 @@ export namespace Ide {
         unbind(property: string): void;
     }
 
-    module SourceMap {
+    namespace SourceMap {
         // Signal callback interfaces
 
         interface HideMap {
@@ -41789,7 +41789,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SourceSnippet {
+    namespace SourceSnippet {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -41860,7 +41860,7 @@ export namespace Ide {
         set_trigger(trigger: string): void;
     }
 
-    module SourceSnippetChunk {
+    namespace SourceSnippetChunk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -41925,7 +41925,7 @@ export namespace Ide {
         set_text_set(text_set: boolean): void;
     }
 
-    module SourceSnippetContext {
+    namespace SourceSnippetContext {
         // Signal callback interfaces
 
         interface Changed {
@@ -41980,7 +41980,7 @@ export namespace Ide {
         set_use_spaces(use_spaces: boolean): void;
     }
 
-    module SourceSnippets {
+    namespace SourceSnippets {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -42006,7 +42006,7 @@ export namespace Ide {
         merge(other: SourceSnippets): void;
     }
 
-    module SourceSnippetsManager {
+    namespace SourceSnippetsManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -42044,7 +42044,7 @@ export namespace Ide {
         load_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module SourceView {
+    namespace SourceView {
         // Signal callback interfaces
 
         interface Action {
@@ -43274,7 +43274,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SourceViewMode {
+    namespace SourceViewMode {
         // Signal callback interfaces
 
         interface Action {
@@ -44463,7 +44463,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SubprocessLauncher {
+    namespace SubprocessLauncher {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -44568,7 +44568,7 @@ export namespace Ide {
         take_stdout_fd(stdout_fd: number): void;
     }
 
-    module SubprocessSupervisor {
+    namespace SubprocessSupervisor {
         // Signal callback interfaces
 
         interface Spawned {
@@ -44634,7 +44634,7 @@ export namespace Ide {
         stop(): void;
     }
 
-    module SymbolNode {
+    namespace SymbolNode {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -44700,7 +44700,7 @@ export namespace Ide {
         get_use_markup(): boolean;
     }
 
-    module TemplateBase {
+    namespace TemplateBase {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -44748,7 +44748,7 @@ export namespace Ide {
         set_locator(locator: Template.TemplateLocator): void;
     }
 
-    module Transfer {
+    namespace Transfer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -44817,7 +44817,7 @@ export namespace Ide {
         set_title(title: string): void;
     }
 
-    module TransferButton {
+    namespace TransferButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -49088,7 +49088,7 @@ export namespace Ide {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module TransferManager {
+    namespace TransferManager {
         // Signal callback interfaces
 
         interface AllTransfersCompleted {
@@ -49709,7 +49709,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TransferRow {
+    namespace TransferRow {
         // Signal callback interfaces
 
         interface Cancelled {
@@ -50157,7 +50157,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TransfersButton {
+    namespace TransfersButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -54423,7 +54423,7 @@ export namespace Ide {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module TransfersProgressIcon {
+    namespace TransfersProgressIcon {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -54858,7 +54858,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UnsavedFiles {
+    namespace UnsavedFiles {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -54915,7 +54915,7 @@ export namespace Ide {
         update(file: Gio.File, content: GLib.Bytes | Uint8Array): void;
     }
 
-    module Workbench {
+    namespace Workbench {
         // Signal callback interfaces
 
         interface Action {
@@ -56100,7 +56100,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WorkbenchHeaderBar {
+    namespace WorkbenchHeaderBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -56530,7 +56530,7 @@ export namespace Ide {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WorkbenchMessage {
+    namespace WorkbenchMessage {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -57863,7 +57863,7 @@ export namespace Ide {
     type WorkbenchHeaderBarClass = typeof WorkbenchHeaderBar;
     type WorkbenchMessageClass = typeof WorkbenchMessage;
     type WorkerInterface = typeof Worker;
-    module ApplicationAddin {
+    namespace ApplicationAddin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -57919,7 +57919,7 @@ export namespace Ide {
         new (): ApplicationAddin; // This allows `obj instanceof ApplicationAddin`
     };
 
-    module ApplicationTool {
+    namespace ApplicationTool {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -57986,7 +57986,7 @@ export namespace Ide {
         new (): ApplicationTool; // This allows `obj instanceof ApplicationTool`
     };
 
-    module BuildPipelineAddin {
+    namespace BuildPipelineAddin {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -58025,7 +58025,7 @@ export namespace Ide {
         new (): BuildPipelineAddin; // This allows `obj instanceof BuildPipelineAddin`
     };
 
-    module BuildSystem {
+    namespace BuildSystem {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -58125,7 +58125,7 @@ export namespace Ide {
         new (): BuildSystem; // This allows `obj instanceof BuildSystem`
     };
 
-    module BuildSystemDiscovery {
+    namespace BuildSystemDiscovery {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -58166,7 +58166,7 @@ export namespace Ide {
         new (): BuildSystemDiscovery; // This allows `obj instanceof BuildSystemDiscovery`
     };
 
-    module BuildTarget {
+    namespace BuildTarget {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -58192,7 +58192,7 @@ export namespace Ide {
         new (): BuildTarget; // This allows `obj instanceof BuildTarget`
     };
 
-    module CompletionProvider {
+    namespace CompletionProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GtkSource.CompletionProvider.ConstructorProps {}
@@ -58220,7 +58220,7 @@ export namespace Ide {
         new (): CompletionProvider; // This allows `obj instanceof CompletionProvider`
     };
 
-    module ConfigurationProvider {
+    namespace ConfigurationProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -58271,7 +58271,7 @@ export namespace Ide {
         new (): ConfigurationProvider; // This allows `obj instanceof ConfigurationProvider`
     };
 
-    module DeviceProvider {
+    namespace DeviceProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -58314,7 +58314,7 @@ export namespace Ide {
         new (): DeviceProvider; // This allows `obj instanceof DeviceProvider`
     };
 
-    module DiagnosticProvider {
+    namespace DiagnosticProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -58369,7 +58369,7 @@ export namespace Ide {
         new (): DiagnosticProvider; // This allows `obj instanceof DiagnosticProvider`
     };
 
-    module EditorViewAddin {
+    namespace EditorViewAddin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -58393,7 +58393,7 @@ export namespace Ide {
         new (): EditorViewAddin; // This allows `obj instanceof EditorViewAddin`
     };
 
-    module Formatter {
+    namespace Formatter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -58471,7 +58471,7 @@ export namespace Ide {
         new (): Formatter; // This allows `obj instanceof Formatter`
     };
 
-    module GenesisAddin {
+    namespace GenesisAddin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -58522,7 +58522,7 @@ export namespace Ide {
         new (): GenesisAddin; // This allows `obj instanceof GenesisAddin`
     };
 
-    module Highlighter {
+    namespace Highlighter {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -58577,7 +58577,7 @@ export namespace Ide {
         new (): Highlighter; // This allows `obj instanceof Highlighter`
     };
 
-    module Indenter {
+    namespace Indenter {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -58651,7 +58651,7 @@ export namespace Ide {
         new (): Indenter; // This allows `obj instanceof Indenter`
     };
 
-    module LayoutStackAddin {
+    namespace LayoutStackAddin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -58725,7 +58725,7 @@ export namespace Ide {
         new (): LayoutStackAddin; // This allows `obj instanceof LayoutStackAddin`
     };
 
-    module Perspective {
+    namespace Perspective {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -58907,7 +58907,7 @@ export namespace Ide {
         new (): Perspective; // This allows `obj instanceof Perspective`
     };
 
-    module PreferencesAddin {
+    namespace PreferencesAddin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -58963,7 +58963,7 @@ export namespace Ide {
         new (): PreferencesAddin; // This allows `obj instanceof PreferencesAddin`
     };
 
-    module ProjectMiner {
+    namespace ProjectMiner {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -58996,7 +58996,7 @@ export namespace Ide {
         new (): ProjectMiner; // This allows `obj instanceof ProjectMiner`
     };
 
-    module ProjectTemplate {
+    namespace ProjectTemplate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -59110,7 +59110,7 @@ export namespace Ide {
         new (): ProjectTemplate; // This allows `obj instanceof ProjectTemplate`
     };
 
-    module RenameProvider {
+    namespace RenameProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -59219,7 +59219,7 @@ export namespace Ide {
         new (): RenameProvider; // This allows `obj instanceof RenameProvider`
     };
 
-    module RunnerAddin {
+    namespace RunnerAddin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -59266,7 +59266,7 @@ export namespace Ide {
         new (): RunnerAddin; // This allows `obj instanceof RunnerAddin`
     };
 
-    module RuntimeProvider {
+    namespace RuntimeProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -59312,7 +59312,7 @@ export namespace Ide {
         new (): RuntimeProvider; // This allows `obj instanceof RuntimeProvider`
     };
 
-    module SearchProvider {
+    namespace SearchProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -59365,7 +59365,7 @@ export namespace Ide {
         new (): SearchProvider; // This allows `obj instanceof SearchProvider`
     };
 
-    module Service {
+    namespace Service {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -59394,7 +59394,7 @@ export namespace Ide {
         new (): Service; // This allows `obj instanceof Service`
     };
 
-    module Subprocess {
+    namespace Subprocess {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -59590,7 +59590,7 @@ export namespace Ide {
         new (): Subprocess; // This allows `obj instanceof Subprocess`
     };
 
-    module SymbolResolver {
+    namespace SymbolResolver {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -59762,7 +59762,7 @@ export namespace Ide {
         new (): SymbolResolver; // This allows `obj instanceof SymbolResolver`
     };
 
-    module SymbolTree {
+    namespace SymbolTree {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -59810,7 +59810,7 @@ export namespace Ide {
         new (): SymbolTree; // This allows `obj instanceof SymbolTree`
     };
 
-    module TagsBuilder {
+    namespace TagsBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -59857,7 +59857,7 @@ export namespace Ide {
         new (): TagsBuilder; // This allows `obj instanceof TagsBuilder`
     };
 
-    module TemplateProvider {
+    namespace TemplateProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -59894,7 +59894,7 @@ export namespace Ide {
         new (): TemplateProvider; // This allows `obj instanceof TemplateProvider`
     };
 
-    module Vcs {
+    namespace Vcs {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -59994,7 +59994,7 @@ export namespace Ide {
         new (): Vcs; // This allows `obj instanceof Vcs`
     };
 
-    module VcsConfig {
+    namespace VcsConfig {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -60020,7 +60020,7 @@ export namespace Ide {
         new (): VcsConfig; // This allows `obj instanceof VcsConfig`
     };
 
-    module VcsInitializer {
+    namespace VcsInitializer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -60062,7 +60062,7 @@ export namespace Ide {
         new (): VcsInitializer; // This allows `obj instanceof VcsInitializer`
     };
 
-    module WorkbenchAddin {
+    namespace WorkbenchAddin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -60203,7 +60203,7 @@ export namespace Ide {
         new (): WorkbenchAddin; // This allows `obj instanceof WorkbenchAddin`
     };
 
-    module Worker {
+    namespace Worker {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

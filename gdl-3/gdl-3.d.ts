@@ -338,7 +338,7 @@ export namespace Gdl {
          */
         AFTER,
     }
-    module Dock {
+    namespace Dock {
         // Signal callback interfaces
 
         interface LayoutChanged {
@@ -902,7 +902,7 @@ export namespace Gdl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DockBar {
+    namespace DockBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1379,7 +1379,7 @@ export namespace Gdl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DockItem {
+    namespace DockItem {
         // Signal callback interfaces
 
         interface Deselected {
@@ -2106,7 +2106,7 @@ export namespace Gdl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DockItemButtonImage {
+    namespace DockItemButtonImage {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2709,7 +2709,7 @@ export namespace Gdl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DockItemGrip {
+    namespace DockItemGrip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3165,7 +3165,7 @@ export namespace Gdl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DockLayout {
+    namespace DockLayout {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3273,7 +3273,7 @@ export namespace Gdl {
         set_master(master: GObject.Object): void;
     }
 
-    module DockMaster {
+    namespace DockMaster {
         // Signal callback interfaces
 
         interface LayoutChanged {
@@ -3389,7 +3389,7 @@ export namespace Gdl {
         set_controller(new_controller: DockObject): void;
     }
 
-    module DockNotebook {
+    namespace DockNotebook {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3823,7 +3823,7 @@ export namespace Gdl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DockObject {
+    namespace DockObject {
         // Signal callback interfaces
 
         interface Detach {
@@ -4601,7 +4601,7 @@ export namespace Gdl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DockPaned {
+    namespace DockPaned {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5046,7 +5046,7 @@ export namespace Gdl {
         _init(...args: any[]): void;
     }
 
-    module DockPlaceholder {
+    namespace DockPlaceholder {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5508,7 +5508,7 @@ export namespace Gdl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DockTablabel {
+    namespace DockTablabel {
         // Signal callback interfaces
 
         interface ButtonPressedHandle {
@@ -5977,7 +5977,7 @@ export namespace Gdl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PreviewWindow {
+    namespace PreviewWindow {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6414,7 +6414,7 @@ export namespace Gdl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Switcher {
+    namespace Switcher {
         // Constructor properties interface
 
         interface ConstructorProps

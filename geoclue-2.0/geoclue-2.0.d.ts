@@ -77,7 +77,7 @@ export namespace Geoclue {
         NONE,
         AUTO_DELETE,
     }
-    module ClientProxy {
+    namespace ClientProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1182,7 +1182,7 @@ export namespace Geoclue {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ClientSkeleton {
+    namespace ClientSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1829,7 +1829,7 @@ export namespace Geoclue {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LocationProxy {
+    namespace LocationProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2716,7 +2716,7 @@ export namespace Geoclue {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LocationSkeleton {
+    namespace LocationSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3234,7 +3234,7 @@ export namespace Geoclue {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ManagerProxy {
+    namespace ManagerProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4329,7 +4329,7 @@ export namespace Geoclue {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ManagerSkeleton {
+    namespace ManagerSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5055,7 +5055,7 @@ export namespace Geoclue {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Simple {
+    namespace Simple {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps {
@@ -5885,7 +5885,7 @@ export namespace Geoclue {
         _init(...args: any[]): void;
     }
 
-    module Client {
+    namespace Client {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6118,7 +6118,7 @@ export namespace Geoclue {
         new (): Client; // This allows `obj instanceof Client`
     };
 
-    module Location {
+    namespace Location {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6214,7 +6214,7 @@ export namespace Geoclue {
         new (): Location; // This allows `obj instanceof Location`
     };
 
-    module Manager {
+    namespace Manager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

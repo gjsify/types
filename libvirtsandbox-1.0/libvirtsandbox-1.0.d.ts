@@ -25,7 +25,7 @@ export namespace LibvirtSandbox {
     function init_check(argv?: string[] | null): [boolean, string[] | null];
     function util_disk_format_from_str(value: string): number;
     function util_guess_image_format(path: string): number;
-    module Builder {
+    namespace Builder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -112,7 +112,7 @@ export namespace LibvirtSandbox {
         set_filterref(iface: LibvirtGConfig.DomainInterface, filterref: ConfigNetworkFilterref): void;
     }
 
-    module BuilderContainer {
+    namespace BuilderContainer {
         // Constructor properties interface
 
         interface ConstructorProps extends Builder.ConstructorProps {}
@@ -130,7 +130,7 @@ export namespace LibvirtSandbox {
         static ['new'](connection: LibvirtGObject.Connection): BuilderContainer;
     }
 
-    module BuilderInitrd {
+    namespace BuilderInitrd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -152,7 +152,7 @@ export namespace LibvirtSandbox {
         construct(config: ConfigInitrd, outputfile: string): boolean;
     }
 
-    module BuilderMachine {
+    namespace BuilderMachine {
         // Constructor properties interface
 
         interface ConstructorProps extends Builder.ConstructorProps {}
@@ -170,7 +170,7 @@ export namespace LibvirtSandbox {
         static ['new'](connection: LibvirtGObject.Connection): BuilderMachine;
     }
 
-    module Config {
+    namespace Config {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -579,7 +579,7 @@ export namespace LibvirtSandbox {
         set_verbose(verbose: boolean): void;
     }
 
-    module ConfigDisk {
+    namespace ConfigDisk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -630,7 +630,7 @@ export namespace LibvirtSandbox {
         get_tag(): string;
     }
 
-    module ConfigInitrd {
+    namespace ConfigInitrd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -707,7 +707,7 @@ export namespace LibvirtSandbox {
         set_kver(version: string): void;
     }
 
-    module ConfigInteractive {
+    namespace ConfigInteractive {
         // Constructor properties interface
 
         interface ConstructorProps extends Config.ConstructorProps {
@@ -751,7 +751,7 @@ export namespace LibvirtSandbox {
         set_tty(tty: boolean): void;
     }
 
-    module ConfigMount {
+    namespace ConfigMount {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -793,7 +793,7 @@ export namespace LibvirtSandbox {
         get_target(): string;
     }
 
-    module ConfigMountFile {
+    namespace ConfigMountFile {
         // Constructor properties interface
 
         interface ConstructorProps extends ConfigMount.ConstructorProps {
@@ -831,7 +831,7 @@ export namespace LibvirtSandbox {
         set_source(source: string): void;
     }
 
-    module ConfigMountGuestBind {
+    namespace ConfigMountGuestBind {
         // Constructor properties interface
 
         interface ConstructorProps extends ConfigMountFile.ConstructorProps {}
@@ -849,7 +849,7 @@ export namespace LibvirtSandbox {
         static ['new'](source: string, targetdir: string): ConfigMountGuestBind;
     }
 
-    module ConfigMountHostBind {
+    namespace ConfigMountHostBind {
         // Constructor properties interface
 
         interface ConstructorProps extends ConfigMountFile.ConstructorProps {}
@@ -867,7 +867,7 @@ export namespace LibvirtSandbox {
         static ['new'](source: string, targetdir: string): ConfigMountHostBind;
     }
 
-    module ConfigMountHostImage {
+    namespace ConfigMountHostImage {
         // Constructor properties interface
 
         interface ConstructorProps extends ConfigMountFile.ConstructorProps {
@@ -903,7 +903,7 @@ export namespace LibvirtSandbox {
         get_format(): LibvirtGConfig.DomainDiskFormat;
     }
 
-    module ConfigMountRam {
+    namespace ConfigMountRam {
         // Constructor properties interface
 
         interface ConstructorProps extends ConfigMount.ConstructorProps {
@@ -940,7 +940,7 @@ export namespace LibvirtSandbox {
         set_usage(usage: number): void;
     }
 
-    module ConfigNetwork {
+    namespace ConfigNetwork {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1012,7 +1012,7 @@ export namespace LibvirtSandbox {
         set_source(network: string): void;
     }
 
-    module ConfigNetworkAddress {
+    namespace ConfigNetworkAddress {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1073,7 +1073,7 @@ export namespace LibvirtSandbox {
         set_primary(addr: Gio.InetAddress): void;
     }
 
-    module ConfigNetworkFilterref {
+    namespace ConfigNetworkFilterref {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1117,7 +1117,7 @@ export namespace LibvirtSandbox {
         set_name(name: string): void;
     }
 
-    module ConfigNetworkFilterrefParameter {
+    namespace ConfigNetworkFilterrefParameter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1152,7 +1152,7 @@ export namespace LibvirtSandbox {
         set_value(value: string): void;
     }
 
-    module ConfigNetworkRoute {
+    namespace ConfigNetworkRoute {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1213,7 +1213,7 @@ export namespace LibvirtSandbox {
         set_target(addr: Gio.InetAddress): void;
     }
 
-    module ConfigService {
+    namespace ConfigService {
         // Constructor properties interface
 
         interface ConstructorProps extends Config.ConstructorProps {}
@@ -1229,7 +1229,7 @@ export namespace LibvirtSandbox {
         _init(...args: any[]): void;
     }
 
-    module ConfigServiceGeneric {
+    namespace ConfigServiceGeneric {
         // Constructor properties interface
 
         interface ConstructorProps extends ConfigService.ConstructorProps {}
@@ -1256,7 +1256,7 @@ export namespace LibvirtSandbox {
         set_command(argv: string[]): void;
     }
 
-    module ConfigServiceSystemd {
+    namespace ConfigServiceSystemd {
         // Constructor properties interface
 
         interface ConstructorProps extends ConfigService.ConstructorProps {}
@@ -1279,7 +1279,7 @@ export namespace LibvirtSandbox {
         set_boot_target(target: string): void;
     }
 
-    module Console {
+    namespace Console {
         // Signal callback interfaces
 
         interface Closed {
@@ -1350,7 +1350,7 @@ export namespace LibvirtSandbox {
         set_escape(escape: number): void;
     }
 
-    module ConsoleRaw {
+    namespace ConsoleRaw {
         // Constructor properties interface
 
         interface ConstructorProps extends Console.ConstructorProps {}
@@ -1376,7 +1376,7 @@ export namespace LibvirtSandbox {
         vfunc_closed(err: boolean): void;
     }
 
-    module ConsoleRpc {
+    namespace ConsoleRpc {
         // Signal callback interfaces
 
         interface Exited {
@@ -1418,7 +1418,7 @@ export namespace LibvirtSandbox {
         vfunc_exited(status: number): void;
     }
 
-    module Context {
+    namespace Context {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1477,7 +1477,7 @@ export namespace LibvirtSandbox {
         stop(): boolean;
     }
 
-    module ContextInteractive {
+    namespace ContextInteractive {
         // Constructor properties interface
 
         interface ConstructorProps extends Context.ConstructorProps {}
@@ -1499,7 +1499,7 @@ export namespace LibvirtSandbox {
         get_app_console(): Console | null;
     }
 
-    module ContextService {
+    namespace ContextService {
         // Constructor properties interface
 
         interface ConstructorProps extends Context.ConstructorProps {}

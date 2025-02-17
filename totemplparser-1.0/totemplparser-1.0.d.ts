@@ -267,7 +267,7 @@ export namespace TotemPlParser {
     const PARSER_VERSION_MINOR: number;
     function parser_error_quark(): GLib.Quark;
     function parser_metadata_get_type(): GObject.GType;
-    module Parser {
+    namespace Parser {
         // Signal callback interfaces
 
         interface EntryParsed {
@@ -643,7 +643,7 @@ export namespace TotemPlParser {
         save_finish(async_result: Gio.AsyncResult): boolean;
     }
 
-    module Playlist {
+    namespace Playlist {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

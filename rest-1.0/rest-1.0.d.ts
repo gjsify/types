@@ -279,7 +279,7 @@ export namespace Rest {
             userdata?: any | null,
         ): void;
     }
-    module OAuth2Proxy {
+    namespace OAuth2Proxy {
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -412,7 +412,7 @@ export namespace Rest {
         set_token_url(tokenurl: string): void;
     }
 
-    module OAuth2ProxyCall {
+    namespace OAuth2ProxyCall {
         // Constructor properties interface
 
         interface ConstructorProps extends ProxyCall.ConstructorProps {}
@@ -428,7 +428,7 @@ export namespace Rest {
         _init(...args: any[]): void;
     }
 
-    module Proxy {
+    namespace Proxy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -538,7 +538,7 @@ export namespace Rest {
         set_user_agent(user_agent: string): void;
     }
 
-    module ProxyAuth {
+    namespace ProxyAuth {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -578,7 +578,7 @@ export namespace Rest {
         unpause(): void;
     }
 
-    module ProxyCall {
+    namespace ProxyCall {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -755,7 +755,7 @@ export namespace Rest {
         upload(callback: ProxyCallUploadCallback, weak_object: GObject.Object): boolean;
     }
 
-    module XmlParser {
+    namespace XmlParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

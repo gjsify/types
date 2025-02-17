@@ -958,7 +958,7 @@ export namespace GstPbutils {
          */
         METADATA,
     }
-    module AudioVisualizer {
+    namespace AudioVisualizer {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -1006,7 +1006,7 @@ export namespace GstPbutils {
         vfunc_setup(): boolean;
     }
 
-    module Discoverer {
+    namespace Discoverer {
         // Signal callback interfaces
 
         interface Discovered {
@@ -1163,7 +1163,7 @@ export namespace GstPbutils {
         stop(): void;
     }
 
-    module DiscovererAudioInfo {
+    namespace DiscovererAudioInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {}
@@ -1192,7 +1192,7 @@ export namespace GstPbutils {
         get_sample_rate(): number;
     }
 
-    module DiscovererContainerInfo {
+    namespace DiscovererContainerInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {}
@@ -1216,7 +1216,7 @@ export namespace GstPbutils {
         get_tags(): Gst.TagList | null;
     }
 
-    module DiscovererInfo {
+    namespace DiscovererInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1300,7 +1300,7 @@ export namespace GstPbutils {
         to_variant(flags: DiscovererSerializeFlags | null): GLib.Variant;
     }
 
-    module DiscovererStreamInfo {
+    namespace DiscovererStreamInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1354,7 +1354,7 @@ export namespace GstPbutils {
         get_toc(): Gst.Toc | null;
     }
 
-    module DiscovererSubtitleInfo {
+    namespace DiscovererSubtitleInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {}
@@ -1378,7 +1378,7 @@ export namespace GstPbutils {
         get_language(): string | null;
     }
 
-    module DiscovererVideoInfo {
+    namespace DiscovererVideoInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {}
@@ -1411,7 +1411,7 @@ export namespace GstPbutils {
         is_interlaced(): boolean;
     }
 
-    module EncodingAudioProfile {
+    namespace EncodingAudioProfile {
         // Constructor properties interface
 
         interface ConstructorProps extends EncodingProfile.ConstructorProps {}
@@ -1437,7 +1437,7 @@ export namespace GstPbutils {
         ): EncodingAudioProfile;
     }
 
-    module EncodingContainerProfile {
+    namespace EncodingContainerProfile {
         // Constructor properties interface
 
         interface ConstructorProps extends EncodingProfile.ConstructorProps {}
@@ -1483,7 +1483,7 @@ export namespace GstPbutils {
         get_profiles(): EncodingProfile[];
     }
 
-    module EncodingProfile {
+    namespace EncodingProfile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1674,7 +1674,7 @@ export namespace GstPbutils {
         set_single_segment(single_segment: boolean): void;
     }
 
-    module EncodingTarget {
+    namespace EncodingTarget {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1752,7 +1752,7 @@ export namespace GstPbutils {
         save_to_file(filepath: string): boolean;
     }
 
-    module EncodingVideoProfile {
+    namespace EncodingVideoProfile {
         // Constructor properties interface
 
         interface ConstructorProps extends EncodingProfile.ConstructorProps {}

@@ -42,7 +42,7 @@ export namespace TrackerControl {
          */
         NOENT,
     }
-    module MinerManager {
+    namespace MinerManager {
         // Signal callback interfaces
 
         interface MinerActivated {

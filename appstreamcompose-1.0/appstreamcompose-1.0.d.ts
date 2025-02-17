@@ -408,7 +408,7 @@ export namespace AppStreamCompose {
          */
         BLUR,
     }
-    module Canvas {
+    namespace Canvas {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -447,7 +447,7 @@ export namespace AppStreamCompose {
         save_png(fname: string): boolean;
     }
 
-    module Compose {
+    namespace Compose {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -682,7 +682,7 @@ export namespace AppStreamCompose {
         set_prefix(prefix: string): void;
     }
 
-    module DirectoryUnit {
+    namespace DirectoryUnit {
         // Constructor properties interface
 
         interface ConstructorProps extends Unit.ConstructorProps {}
@@ -715,7 +715,7 @@ export namespace AppStreamCompose {
         set_root(root_dir: string): void;
     }
 
-    module Hint {
+    namespace Hint {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -790,7 +790,7 @@ export namespace AppStreamCompose {
         set_tag(tag: string): void;
     }
 
-    module IconPolicy {
+    namespace IconPolicy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -828,7 +828,7 @@ export namespace AppStreamCompose {
         to_string(): string;
     }
 
-    module Image {
+    namespace Image {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -935,7 +935,7 @@ export namespace AppStreamCompose {
         set_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
     }
 
-    module Result {
+    namespace Result {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1101,7 +1101,7 @@ export namespace AppStreamCompose {
         update_component_gcid_with_string(cpt: AppStream.Component, data?: string | null): boolean;
     }
 
-    module Unit {
+    namespace Unit {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

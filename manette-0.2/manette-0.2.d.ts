@@ -52,7 +52,7 @@ export namespace Manette {
         EVENT_HAT,
     }
     function get_resource(): Gio.Resource;
-    module Device {
+    namespace Device {
         // Signal callback interfaces
 
         interface AbsoluteAxisEvent {
@@ -151,7 +151,7 @@ export namespace Manette {
         save_user_mapping(mapping_string: string): void;
     }
 
-    module Monitor {
+    namespace Monitor {
         // Signal callback interfaces
 
         interface DeviceConnected {

@@ -2129,7 +2129,7 @@ export namespace PackageKitGlib {
          */
         INTERACTIVE,
     }
-    module Category {
+    namespace Category {
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -2225,7 +2225,7 @@ export namespace PackageKitGlib {
         set_summary(summary: string): void;
     }
 
-    module Client {
+    namespace Client {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3465,7 +3465,7 @@ export namespace PackageKitGlib {
         ): void;
     }
 
-    module ClientHelper {
+    namespace ClientHelper {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3511,7 +3511,7 @@ export namespace PackageKitGlib {
         stop(): boolean;
     }
 
-    module Control {
+    namespace Control {
         // Signal callback interfaces
 
         interface RepoListChanged {
@@ -3992,7 +3992,7 @@ export namespace PackageKitGlib {
         suggest_daemon_quit_finish(res: Gio.AsyncResult): boolean;
     }
 
-    module Desktop {
+    namespace Desktop {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4039,7 +4039,7 @@ export namespace PackageKitGlib {
         open_database(): boolean;
     }
 
-    module Details {
+    namespace Details {
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -4135,7 +4135,7 @@ export namespace PackageKitGlib {
         get_url(): string;
     }
 
-    module DistroUpgrade {
+    namespace DistroUpgrade {
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -4185,7 +4185,7 @@ export namespace PackageKitGlib {
         get_summary(): string;
     }
 
-    module Error {
+    namespace Error {
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -4226,7 +4226,7 @@ export namespace PackageKitGlib {
         get_details(): string;
     }
 
-    module EulaRequired {
+    namespace EulaRequired {
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -4319,7 +4319,7 @@ export namespace PackageKitGlib {
         get_vendor_name(): string;
     }
 
-    module Files {
+    namespace Files {
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -4363,7 +4363,7 @@ export namespace PackageKitGlib {
         get_package_id(): string;
     }
 
-    module ItemProgress {
+    namespace ItemProgress {
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -4415,7 +4415,7 @@ export namespace PackageKitGlib {
         get_status(): StatusEnum;
     }
 
-    module MediaChangeRequired {
+    namespace MediaChangeRequired {
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -4455,7 +4455,7 @@ export namespace PackageKitGlib {
         static ['new'](): MediaChangeRequired;
     }
 
-    module Package {
+    namespace Package {
         // Signal callback interfaces
 
         interface Changed {
@@ -4775,7 +4775,7 @@ export namespace PackageKitGlib {
         set_update_severity(update_severity: InfoEnum | null): void;
     }
 
-    module PackageSack {
+    namespace PackageSack {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4964,7 +4964,7 @@ export namespace PackageKitGlib {
         to_file(file: Gio.File): boolean;
     }
 
-    module Progress {
+    namespace Progress {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5315,7 +5315,7 @@ export namespace PackageKitGlib {
         set_uid(uid: number): boolean;
     }
 
-    module RepoDetail {
+    namespace RepoDetail {
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -5367,7 +5367,7 @@ export namespace PackageKitGlib {
         get_id(): string;
     }
 
-    module RepoSignatureRequired {
+    namespace RepoSignatureRequired {
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -5434,7 +5434,7 @@ export namespace PackageKitGlib {
         static ['new'](): RepoSignatureRequired;
     }
 
-    module RequireRestart {
+    namespace RequireRestart {
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -5465,7 +5465,7 @@ export namespace PackageKitGlib {
         static ['new'](): RequireRestart;
     }
 
-    module Results {
+    namespace Results {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5701,7 +5701,7 @@ export namespace PackageKitGlib {
         set_role(role: RoleEnum | null): boolean;
     }
 
-    module Source {
+    namespace Source {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5732,7 +5732,7 @@ export namespace PackageKitGlib {
         static ['new'](): Source;
     }
 
-    module Task {
+    namespace Task {
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {
@@ -6578,7 +6578,7 @@ export namespace PackageKitGlib {
         ): Results;
     }
 
-    module TransactionList {
+    namespace TransactionList {
         // Signal callback interfaces
 
         interface Added {
@@ -6631,7 +6631,7 @@ export namespace PackageKitGlib {
         get_ids(): string[];
     }
 
-    module TransactionPast {
+    namespace TransactionPast {
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -6732,7 +6732,7 @@ export namespace PackageKitGlib {
         get_uid(): number;
     }
 
-    module UpdateDetail {
+    namespace UpdateDetail {
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {

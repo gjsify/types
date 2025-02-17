@@ -161,7 +161,7 @@ export namespace GstClapper {
     interface ClapperSignalDispatcherFunc {
         (data?: any | null): void;
     }
-    module Clapper {
+    namespace Clapper {
         // Signal callback interfaces
 
         interface AudioDecoderChanged {
@@ -608,7 +608,7 @@ export namespace GstClapper {
         toggle_play(): void;
     }
 
-    module ClapperAudioInfo {
+    namespace ClapperAudioInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends ClapperStreamInfo.ConstructorProps {}
@@ -635,7 +635,7 @@ export namespace GstClapper {
         get_sample_rate(): number;
     }
 
-    module ClapperGMainContextSignalDispatcher {
+    namespace ClapperGMainContextSignalDispatcher {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ClapperSignalDispatcher.ConstructorProps {
@@ -1071,7 +1071,7 @@ export namespace GstClapper {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ClapperGtk4Plugin {
+    namespace ClapperGtk4Plugin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1100,7 +1100,7 @@ export namespace GstClapper {
         static ['new'](): ClapperGtk4Plugin;
     }
 
-    module ClapperMediaInfo {
+    namespace ClapperMediaInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1144,7 +1144,7 @@ export namespace GstClapper {
         is_seekable(): boolean;
     }
 
-    module ClapperMpris {
+    namespace ClapperMpris {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1193,7 +1193,7 @@ export namespace GstClapper {
         ): ClapperMpris;
     }
 
-    module ClapperStreamInfo {
+    namespace ClapperStreamInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1235,7 +1235,7 @@ export namespace GstClapper {
         get_tags(): Gst.TagList;
     }
 
-    module ClapperSubtitleInfo {
+    namespace ClapperSubtitleInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends ClapperStreamInfo.ConstructorProps {}
@@ -1259,7 +1259,7 @@ export namespace GstClapper {
         get_title(): string;
     }
 
-    module ClapperVideoInfo {
+    namespace ClapperVideoInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends ClapperStreamInfo.ConstructorProps {}
@@ -1290,7 +1290,7 @@ export namespace GstClapper {
         get_width(): number;
     }
 
-    module ClapperVideoOverlayVideoRenderer {
+    namespace ClapperVideoOverlayVideoRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ClapperVideoRenderer.ConstructorProps {
@@ -1813,7 +1813,7 @@ export namespace GstClapper {
         free(): void;
     }
 
-    module ClapperSignalDispatcher {
+    namespace ClapperSignalDispatcher {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1833,7 +1833,7 @@ export namespace GstClapper {
         new (): ClapperSignalDispatcher; // This allows `obj instanceof ClapperSignalDispatcher`
     };
 
-    module ClapperVideoRenderer {
+    namespace ClapperVideoRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

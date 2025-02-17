@@ -294,7 +294,7 @@ export namespace Totem {
     ): Gtk.Builder;
     function remote_command_quark(): GLib.Quark;
     function remote_setting_quark(): GLib.Quark;
-    module Object {
+    namespace Object {
         // Signal callback interfaces
 
         interface FileClosed {

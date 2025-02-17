@@ -68,7 +68,7 @@ export namespace Libxfce4windowingui {
      * @returns %NULL if the library is compatible with the given version, or a string describing the version mismatch. The returned string is owned by the library and must not be freed or modified by the caller.
      */
     function check_version(required_major: number, required_minor: number, required_micro: number): string | null;
-    module WindowActionMenu {
+    namespace WindowActionMenu {
         // Constructor properties interface
 
         interface ConstructorProps

@@ -73,7 +73,7 @@ export namespace EDataCal {
             offline_state: EBackend.OfflineState,
         ): boolean;
     }
-    module CalBackend {
+    namespace CalBackend {
         // Signal callback interfaces
 
         interface Closed {
@@ -1900,7 +1900,7 @@ export namespace EDataCal {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CalBackendFactory {
+    namespace CalBackendFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends EBackend.BackendFactory.ConstructorProps {}
@@ -1920,7 +1920,7 @@ export namespace EDataCal {
         _init(...args: any[]): void;
     }
 
-    module CalBackendSExp {
+    namespace CalBackendSExp {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1976,7 +1976,7 @@ export namespace EDataCal {
         unlock(): void;
     }
 
-    module CalBackendSync {
+    namespace CalBackendSync {
         // Constructor properties interface
 
         interface ConstructorProps extends CalBackend.ConstructorProps, ECal.TimezoneCache.ConstructorProps {}
@@ -2641,7 +2641,7 @@ export namespace EDataCal {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CalCache {
+    namespace CalCache {
         // Signal callback interfaces
 
         interface DupComponentRevision {
@@ -3536,7 +3536,7 @@ export namespace EDataCal {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CalMetaBackend {
+    namespace CalMetaBackend {
         // Signal callback interfaces
 
         interface RefreshCompleted {
@@ -4652,7 +4652,7 @@ export namespace EDataCal {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataCal {
+    namespace DataCal {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -5321,7 +5321,7 @@ export namespace EDataCal {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataCalFactory {
+    namespace DataCalFactory {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5829,7 +5829,7 @@ export namespace EDataCal {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataCalView {
+    namespace DataCalView {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -6479,7 +6479,7 @@ export namespace EDataCal {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module IntervalTree {
+    namespace IntervalTree {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6509,7 +6509,7 @@ export namespace EDataCal {
         search(start: number, end: number): ECal.Component[] | null;
     }
 
-    module SubprocessCalFactory {
+    namespace SubprocessCalFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends EBackend.SubprocessFactory.ConstructorProps, Gio.Initable.ConstructorProps {}

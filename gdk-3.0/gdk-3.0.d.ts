@@ -6477,7 +6477,7 @@ export namespace Gdk {
          */
         LEFT_RESIZABLE,
     }
-    module AppLaunchContext {
+    namespace AppLaunchContext {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.AppLaunchContext.ConstructorProps {
@@ -6593,7 +6593,7 @@ export namespace Gdk {
         set_timestamp(timestamp: number): void;
     }
 
-    module Cursor {
+    namespace Cursor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6673,7 +6673,7 @@ export namespace Gdk {
         unref(): void;
     }
 
-    module Device {
+    namespace Device {
         // Signal callback interfaces
 
         interface Changed {
@@ -7116,7 +7116,7 @@ export namespace Gdk {
         warp(screen: Screen, x: number, y: number): void;
     }
 
-    module DeviceManager {
+    namespace DeviceManager {
         // Signal callback interfaces
 
         interface DeviceAdded {
@@ -7310,7 +7310,7 @@ export namespace Gdk {
         list_devices(type: DeviceType | null): Device[];
     }
 
-    module DeviceTool {
+    namespace DeviceTool {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7369,7 +7369,7 @@ export namespace Gdk {
         get_tool_type(): DeviceToolType;
     }
 
-    module Display {
+    namespace Display {
         // Signal callback interfaces
 
         interface Closed {
@@ -7793,7 +7793,7 @@ export namespace Gdk {
         warp_pointer(screen: Screen, x: number, y: number): void;
     }
 
-    module DisplayManager {
+    namespace DisplayManager {
         // Signal callback interfaces
 
         interface DisplayOpened {
@@ -7914,7 +7914,7 @@ export namespace Gdk {
         set_default_display(display: Display): void;
     }
 
-    module DragContext {
+    namespace DragContext {
         // Signal callback interfaces
 
         interface ActionChanged {
@@ -8056,7 +8056,7 @@ export namespace Gdk {
         set_hotspot(hot_x: number, hot_y: number): void;
     }
 
-    module DrawingContext {
+    namespace DrawingContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8126,7 +8126,7 @@ export namespace Gdk {
         is_valid(): boolean;
     }
 
-    module FrameClock {
+    namespace FrameClock {
         // Signal callback interfaces
 
         interface AfterPaint {
@@ -8313,7 +8313,7 @@ export namespace Gdk {
         request_phase(phase: FrameClockPhase | null): void;
     }
 
-    module GLContext {
+    namespace GLContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8547,7 +8547,7 @@ export namespace Gdk {
         set_use_es(use_es: number): void;
     }
 
-    module Keymap {
+    namespace Keymap {
         // Signal callback interfaces
 
         interface DirectionChanged {
@@ -8784,7 +8784,7 @@ export namespace Gdk {
         ): [boolean, number, number, number, ModifierType | null];
     }
 
-    module Monitor {
+    namespace Monitor {
         // Signal callback interfaces
 
         interface Invalidate {
@@ -8944,7 +8944,7 @@ export namespace Gdk {
         is_primary(): boolean;
     }
 
-    module Screen {
+    namespace Screen {
         // Signal callback interfaces
 
         interface CompositedChanged {
@@ -9328,7 +9328,7 @@ export namespace Gdk {
         set_resolution(dpi: number): void;
     }
 
-    module Seat {
+    namespace Seat {
         // Signal callback interfaces
 
         interface DeviceAdded {
@@ -9467,7 +9467,7 @@ export namespace Gdk {
         ungrab(): void;
     }
 
-    module Visual {
+    namespace Visual {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9599,7 +9599,7 @@ export namespace Gdk {
         get_visual_type(): VisualType;
     }
 
-    module Window {
+    namespace Window {
         // Signal callback interfaces
 
         interface CreateSurface {
@@ -13072,7 +13072,7 @@ export namespace Gdk {
         triggers_context_menu(): boolean;
     }
 
-    module DevicePad {
+    namespace DevicePad {
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {}

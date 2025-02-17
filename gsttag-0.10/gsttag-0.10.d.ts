@@ -130,7 +130,7 @@ export namespace GstTag {
     function register_musicbrainz_tags(): void;
     function to_id3_tag(gst_tag: string): string;
     function to_vorbis_tag(gst_tag: string): string;
-    module Demux {
+    namespace Demux {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {}

@@ -23,7 +23,7 @@ export namespace Vgda {
      * Vgda-1
      */
 
-    module GProvider {
+    namespace GProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Vda.Connection.ConstructorProps {}

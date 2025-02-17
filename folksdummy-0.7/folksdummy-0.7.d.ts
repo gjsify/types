@@ -19,7 +19,7 @@ export namespace FolksDummy {
      * FolksDummy-0.7
      */
 
-    module Backend {
+    namespace Backend {
         // Constructor properties interface
 
         interface ConstructorProps extends Folks.Backend.ConstructorProps {}
@@ -42,7 +42,7 @@ export namespace FolksDummy {
         unregister_persona_stores(stores: Gee.Set): void;
     }
 
-    module FullPersona {
+    namespace FullPersona {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -884,7 +884,7 @@ export namespace FolksDummy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PersonaStore {
+    namespace PersonaStore {
         interface AddPersonaFromDetailsMock {
             (persona: Persona): number;
         }
@@ -942,7 +942,7 @@ export namespace FolksDummy {
         set_persona_type(value: GObject.GType): void;
     }
 
-    module Persona {
+    namespace Persona {
         interface ChangePropertyCallback {
             (): void;
         }

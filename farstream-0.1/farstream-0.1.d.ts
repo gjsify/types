@@ -354,7 +354,7 @@ export namespace Farstream {
         RECV,
         BOTH,
     }
-    module Conference {
+    namespace Conference {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Bin.ConstructorProps, Gst.ChildProxy.ConstructorProps {}
@@ -425,7 +425,7 @@ export namespace Farstream {
         vfunc_restore_thyself(self: libxml2.NodePtr): void;
     }
 
-    module ElementAddedNotifier {
+    namespace ElementAddedNotifier {
         // Signal callback interfaces
 
         interface ElementAdded {
@@ -506,7 +506,7 @@ export namespace Farstream {
         set_properties_from_keyfile(keyfile: GLib.KeyFile): void;
     }
 
-    module Participant {
+    namespace Participant {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -525,7 +525,7 @@ export namespace Farstream {
         _init(...args: any[]): void;
     }
 
-    module Plugin {
+    namespace Plugin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {}
@@ -990,7 +990,7 @@ export namespace Farstream {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Session {
+    namespace Session {
         // Signal callback interfaces
 
         interface Error {
@@ -1390,7 +1390,7 @@ export namespace Farstream {
         stop_telephony_event(): boolean;
     }
 
-    module Stream {
+    namespace Stream {
         // Signal callback interfaces
 
         interface Error {
@@ -1691,7 +1691,7 @@ export namespace Farstream {
         ): boolean;
     }
 
-    module StreamTransmitter {
+    namespace StreamTransmitter {
         // Signal callback interfaces
 
         interface Error {
@@ -1869,7 +1869,7 @@ export namespace Farstream {
         stop(): void;
     }
 
-    module Transmitter {
+    namespace Transmitter {
         // Signal callback interfaces
 
         interface Error {

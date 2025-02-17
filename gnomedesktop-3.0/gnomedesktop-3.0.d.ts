@@ -318,7 +318,7 @@ export namespace GnomeDesktop {
         REFLECT_X,
         REFLECT_Y,
     }
-    module BG {
+    namespace BG {
         // Signal callback interfaces
 
         interface Changed {
@@ -412,7 +412,7 @@ export namespace GnomeDesktop {
         set_rgba(type: GDesktopEnums.BackgroundShading | null, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
     }
 
-    module BGCrossfade {
+    namespace BGCrossfade {
         // Signal callback interfaces
 
         interface Finished {
@@ -510,7 +510,7 @@ export namespace GnomeDesktop {
         stop(): void;
     }
 
-    module BGSlideShow {
+    namespace BGSlideShow {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -601,7 +601,7 @@ export namespace GnomeDesktop {
         load_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
     }
 
-    module DesktopThumbnailFactory {
+    namespace DesktopThumbnailFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -830,7 +830,7 @@ export namespace GnomeDesktop {
         save_thumbnail_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module IdleMonitor {
+    namespace IdleMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -1348,7 +1348,7 @@ export namespace GnomeDesktop {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PnpIds {
+    namespace PnpIds {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1375,7 +1375,7 @@ export namespace GnomeDesktop {
         get_pnp_id(pnp_id: string): string;
     }
 
-    module RRConfig {
+    namespace RRConfig {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1413,7 +1413,7 @@ export namespace GnomeDesktop {
         set_clone(clone: boolean): void;
     }
 
-    module RROutputInfo {
+    namespace RROutputInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1467,7 +1467,7 @@ export namespace GnomeDesktop {
         supports_rotation(rotation: RRRotation | null): boolean;
     }
 
-    module RRScreen {
+    namespace RRScreen {
         // Signal callback interfaces
 
         interface Changed {
@@ -2270,7 +2270,7 @@ export namespace GnomeDesktop {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WallClock {
+    namespace WallClock {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2357,7 +2357,7 @@ export namespace GnomeDesktop {
         ): string;
     }
 
-    module XkbInfo {
+    namespace XkbInfo {
         // Signal callback interfaces
 
         interface LayoutsChanged {

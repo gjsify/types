@@ -660,7 +660,7 @@ export namespace SpiceClientGLib {
          */
         SUBJECT,
     }
-    module Audio {
+    namespace Audio {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -734,7 +734,7 @@ export namespace SpiceClientGLib {
         ): boolean;
     }
 
-    module Channel {
+    namespace Channel {
         // Signal callback interfaces
 
         interface ChannelEvent {
@@ -921,7 +921,7 @@ export namespace SpiceClientGLib {
         test_common_capability(cap: number): boolean;
     }
 
-    module CursorChannel {
+    namespace CursorChannel {
         // Signal callback interfaces
 
         interface CursorHide {
@@ -1004,7 +1004,7 @@ export namespace SpiceClientGLib {
         vfunc_cursor_set(width: number, height: number, hot_x: number, hot_y: number, rgba?: any | null): void;
     }
 
-    module DisplayChannel {
+    namespace DisplayChannel {
         // Signal callback interfaces
 
         interface DisplayInvalidate {
@@ -1180,7 +1180,7 @@ export namespace SpiceClientGLib {
         gl_draw_done(): void;
     }
 
-    module FileTransferTask {
+    namespace FileTransferTask {
         // Signal callback interfaces
 
         interface Finished {
@@ -1241,7 +1241,7 @@ export namespace SpiceClientGLib {
         get_transferred_bytes(): number;
     }
 
-    module InputsChannel {
+    namespace InputsChannel {
         // Signal callback interfaces
 
         interface InputsModifiers {
@@ -1331,7 +1331,7 @@ export namespace SpiceClientGLib {
         set_key_locks(locks: number): void;
     }
 
-    module MainChannel {
+    namespace MainChannel {
         // Signal callback interfaces
 
         interface MainAgentUpdate {
@@ -1732,7 +1732,7 @@ export namespace SpiceClientGLib {
         update_display_enabled(id: number, enabled: boolean, update: boolean): void;
     }
 
-    module PlaybackChannel {
+    namespace PlaybackChannel {
         // Signal callback interfaces
 
         interface PlaybackData {
@@ -1821,7 +1821,7 @@ export namespace SpiceClientGLib {
         set_delay(delay_ms: number): void;
     }
 
-    module PortChannel {
+    namespace PortChannel {
         // Signal callback interfaces
 
         interface PortData {
@@ -1926,7 +1926,7 @@ export namespace SpiceClientGLib {
         write_finish(result: Gio.AsyncResult): number;
     }
 
-    module QmpPort {
+    namespace QmpPort {
         // Signal callback interfaces
 
         interface Event {
@@ -2039,7 +2039,7 @@ export namespace SpiceClientGLib {
         vm_action_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module RecordChannel {
+    namespace RecordChannel {
         // Signal callback interfaces
 
         interface RecordStart {
@@ -2109,7 +2109,7 @@ export namespace SpiceClientGLib {
         send_data(data: any | null, bytes: number, time: number): void;
     }
 
-    module Session {
+    namespace Session {
         // Signal callback interfaces
 
         interface ChannelDestroy {
@@ -2573,7 +2573,7 @@ export namespace SpiceClientGLib {
         open_fd(fd: number): boolean;
     }
 
-    module SmartcardChannel {
+    namespace SmartcardChannel {
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {}
@@ -2592,7 +2592,7 @@ export namespace SpiceClientGLib {
         _init(...args: any[]): void;
     }
 
-    module SmartcardManager {
+    namespace SmartcardManager {
         // Signal callback interfaces
 
         interface CardInserted {
@@ -2688,7 +2688,7 @@ export namespace SpiceClientGLib {
         remove_card(): boolean;
     }
 
-    module URI {
+    namespace URI {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2740,7 +2740,7 @@ export namespace SpiceClientGLib {
         to_string(): string;
     }
 
-    module UsbDeviceManager {
+    namespace UsbDeviceManager {
         // Signal callback interfaces
 
         interface AutoConnectFailed {
@@ -3535,7 +3535,7 @@ export namespace SpiceClientGLib {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UsbredirChannel {
+    namespace UsbredirChannel {
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {}
@@ -3554,7 +3554,7 @@ export namespace SpiceClientGLib {
         _init(...args: any[]): void;
     }
 
-    module WebdavChannel {
+    namespace WebdavChannel {
         // Constructor properties interface
 
         interface ConstructorProps extends PortChannel.ConstructorProps {}

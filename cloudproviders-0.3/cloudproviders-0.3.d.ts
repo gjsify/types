@@ -55,7 +55,7 @@ export namespace CloudProviders {
      * @returns The last property id.
      */
     function dbus_provider_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
-    module Account {
+    namespace Account {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -140,7 +140,7 @@ export namespace CloudProviders {
         get_status_details(): string;
     }
 
-    module AccountExporter {
+    namespace AccountExporter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -217,7 +217,7 @@ export namespace CloudProviders {
         set_status_details(status_details: string): void;
     }
 
-    module Collector {
+    namespace Collector {
         // Signal callback interfaces
 
         interface ProvidersChanged {
@@ -266,7 +266,7 @@ export namespace CloudProviders {
         update(): void;
     }
 
-    module DbusAccountProxy {
+    namespace DbusAccountProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1139,7 +1139,7 @@ export namespace CloudProviders {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DbusAccountSkeleton {
+    namespace DbusAccountSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1643,7 +1643,7 @@ export namespace CloudProviders {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DbusObjectManagerClient {
+    namespace DbusObjectManagerClient {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2516,7 +2516,7 @@ export namespace CloudProviders {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DbusObjectProxy {
+    namespace DbusObjectProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3009,7 +3009,7 @@ export namespace CloudProviders {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DbusObjectSkeleton {
+    namespace DbusObjectSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3515,7 +3515,7 @@ export namespace CloudProviders {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DbusProviderProxy {
+    namespace DbusProviderProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4353,7 +4353,7 @@ export namespace CloudProviders {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DbusProviderSkeleton {
+    namespace DbusProviderSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4822,7 +4822,7 @@ export namespace CloudProviders {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Provider {
+    namespace Provider {
         // Signal callback interfaces
 
         interface AccountsChanged {
@@ -4878,7 +4878,7 @@ export namespace CloudProviders {
         get_name(): string;
     }
 
-    module ProviderExporter {
+    namespace ProviderExporter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5032,7 +5032,7 @@ export namespace CloudProviders {
         _init(...args: any[]): void;
     }
 
-    module DbusAccount {
+    namespace DbusAccount {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5112,7 +5112,7 @@ export namespace CloudProviders {
         new (): DbusAccount; // This allows `obj instanceof DbusAccount`
     };
 
-    module DbusObject {
+    namespace DbusObject {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.DBusObject.ConstructorProps {
@@ -5161,7 +5161,7 @@ export namespace CloudProviders {
         new (): DbusObject; // This allows `obj instanceof DbusObject`
     };
 
-    module DbusProvider {
+    namespace DbusProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

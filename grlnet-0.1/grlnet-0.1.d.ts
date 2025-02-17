@@ -41,7 +41,7 @@ export namespace GrlNet {
         PROXY_ERROR,
         CANCELLED,
     }
-    module Wc {
+    namespace Wc {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

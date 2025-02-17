@@ -334,7 +334,7 @@ export namespace Dex {
         set_cancel_on_discard(cancel_on_discard: boolean): void;
     }
 
-    module AsyncResult {
+    namespace AsyncResult {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncResult.ConstructorProps {}

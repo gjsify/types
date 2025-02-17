@@ -1,6 +1,6 @@
 {
     "name": "@girs/gstplayer-1.0",
-    "version": "1.0.0-4.0.0-beta.19",
+    "version": "1.0.0-4.0.0-beta.20",
     "description": "GJS TypeScript type definitions for GstPlayer-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gstplayer-1.0.js",

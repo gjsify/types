@@ -55,7 +55,7 @@ export namespace SpiceClientGtk {
          */
         CLICK,
     }
-    module Display {
+    namespace Display {
         // Signal callback interfaces
 
         interface GrabKeysPressed {
@@ -671,7 +671,7 @@ export namespace SpiceClientGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GtkSession {
+    namespace GtkSession {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -779,7 +779,7 @@ export namespace SpiceClientGtk {
         paste_from_guest(): void;
     }
 
-    module UsbDeviceWidget {
+    namespace UsbDeviceWidget {
         // Signal callback interfaces
 
         interface ConnectFailed {

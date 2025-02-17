@@ -306,7 +306,7 @@ export namespace GnomeAutoar {
     interface FormatFunc {
         (a?: any | null): number;
     }
-    module Compressor {
+    namespace Compressor {
         // Signal callback interfaces
 
         interface Cancelled {
@@ -534,7 +534,7 @@ export namespace GnomeAutoar {
         start_async(cancellable?: Gio.Cancellable | null): void;
     }
 
-    module Extractor {
+    namespace Extractor {
         // Signal callback interfaces
 
         interface Cancelled {

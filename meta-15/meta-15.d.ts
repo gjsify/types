@@ -1862,7 +1862,7 @@ export namespace Meta {
          */
         BOTH,
     }
-    module Backend {
+    namespace Backend {
         // Signal callback interfaces
 
         interface GpuAdded {
@@ -2475,7 +2475,7 @@ export namespace Meta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Background {
+    namespace Background {
         // Signal callback interfaces
 
         interface Changed {
@@ -2547,7 +2547,7 @@ export namespace Meta {
         ): void;
     }
 
-    module BackgroundActor {
+    namespace BackgroundActor {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3067,7 +3067,7 @@ export namespace Meta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BackgroundContent {
+    namespace BackgroundContent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Clutter.Content.ConstructorProps {
@@ -3674,7 +3674,7 @@ export namespace Meta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BackgroundGroup {
+    namespace BackgroundGroup {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4183,7 +4183,7 @@ export namespace Meta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BackgroundImage {
+    namespace BackgroundImage {
         // Signal callback interfaces
 
         interface Loaded {
@@ -4229,7 +4229,7 @@ export namespace Meta {
         is_loaded(): boolean;
     }
 
-    module BackgroundImageCache {
+    namespace BackgroundImageCache {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4277,7 +4277,7 @@ export namespace Meta {
         purge(file: Gio.File): void;
     }
 
-    module Barrier {
+    namespace Barrier {
         // Signal callback interfaces
 
         interface Hit {
@@ -4846,7 +4846,7 @@ export namespace Meta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Compositor {
+    namespace Compositor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4922,7 +4922,7 @@ export namespace Meta {
         get_laters(): Laters;
     }
 
-    module Context {
+    namespace Context {
         // Signal callback interfaces
 
         interface PrepareShutdown {
@@ -5019,7 +5019,7 @@ export namespace Meta {
         terminate_with_error(error: GLib.Error): void;
     }
 
-    module CursorTracker {
+    namespace CursorTracker {
         // Signal callback interfaces
 
         interface CursorChanged {
@@ -5105,7 +5105,7 @@ export namespace Meta {
         set_pointer_visible(visible: boolean): void;
     }
 
-    module DebugControl {
+    namespace DebugControl {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5572,7 +5572,7 @@ export namespace Meta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Display {
+    namespace Display {
         // Signal callback interfaces
 
         interface AcceleratorActivated {
@@ -6099,7 +6099,7 @@ export namespace Meta {
         xserver_time_is_before(time1: number, time2: number): boolean;
     }
 
-    module Dnd {
+    namespace Dnd {
         // Signal callback interfaces
 
         interface DndEnter {
@@ -6147,7 +6147,7 @@ export namespace Meta {
         emit(signal: 'dnd-position-change', object: number, p0: number): void;
     }
 
-    module IdleMonitor {
+    namespace IdleMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6188,7 +6188,7 @@ export namespace Meta {
         remove_watch(id: number): void;
     }
 
-    module Laters {
+    namespace Laters {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6224,7 +6224,7 @@ export namespace Meta {
         remove(later_id: number): void;
     }
 
-    module LaunchContext {
+    namespace LaunchContext {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.AppLaunchContext.ConstructorProps {
@@ -6257,7 +6257,7 @@ export namespace Meta {
         set_workspace(workspace: Workspace): void;
     }
 
-    module MonitorManager {
+    namespace MonitorManager {
         // Signal callback interfaces
 
         interface ConfirmDisplayChange {
@@ -6370,7 +6370,7 @@ export namespace Meta {
         switch_config(config_type: MonitorSwitchConfigType | null): void;
     }
 
-    module MultiTexture {
+    namespace MultiTexture {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6457,7 +6457,7 @@ export namespace Meta {
         to_string(): string;
     }
 
-    module OrientationManager {
+    namespace OrientationManager {
         // Signal callback interfaces
 
         interface OrientationChanged {
@@ -6507,7 +6507,7 @@ export namespace Meta {
         get_orientation(): Orientation;
     }
 
-    module Plugin {
+    namespace Plugin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6644,7 +6644,7 @@ export namespace Meta {
         unminimize_completed(actor: WindowActor): void;
     }
 
-    module RemoteAccessController {
+    namespace RemoteAccessController {
         // Signal callback interfaces
 
         interface NewHandle {
@@ -6689,7 +6689,7 @@ export namespace Meta {
         uninhibit_remote_access(): void;
     }
 
-    module RemoteAccessHandle {
+    namespace RemoteAccessHandle {
         // Signal callback interfaces
 
         interface Stopped {
@@ -6743,7 +6743,7 @@ export namespace Meta {
         stop(): void;
     }
 
-    module Selection {
+    namespace Selection {
         // Signal callback interfaces
 
         interface OwnerChanged {
@@ -6863,7 +6863,7 @@ export namespace Meta {
         unset_owner(selection_type: SelectionType | null, owner: SelectionSource): void;
     }
 
-    module SelectionSource {
+    namespace SelectionSource {
         // Signal callback interfaces
 
         interface Activated {
@@ -6950,7 +6950,7 @@ export namespace Meta {
         read_finish(result: Gio.AsyncResult): Gio.InputStream;
     }
 
-    module SelectionSourceMemory {
+    namespace SelectionSourceMemory {
         // Constructor properties interface
 
         interface ConstructorProps extends SelectionSource.ConstructorProps {}
@@ -6968,7 +6968,7 @@ export namespace Meta {
         static ['new'](mimetype: string, content: GLib.Bytes | Uint8Array): SelectionSourceMemory;
     }
 
-    module ShapedTexture {
+    namespace ShapedTexture {
         // Signal callback interfaces
 
         interface SizeChanged {
@@ -7504,7 +7504,7 @@ export namespace Meta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SoundPlayer {
+    namespace SoundPlayer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7537,7 +7537,7 @@ export namespace Meta {
         play_from_theme(name: string, description: string, cancellable?: Gio.Cancellable | null): void;
     }
 
-    module Stage {
+    namespace Stage {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7958,7 +7958,7 @@ export namespace Meta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StartupNotification {
+    namespace StartupNotification {
         // Signal callback interfaces
 
         interface Changed {
@@ -8008,7 +8008,7 @@ export namespace Meta {
         get_sequences(): StartupSequence[];
     }
 
-    module StartupSequence {
+    namespace StartupSequence {
         // Signal callback interfaces
 
         interface Complete {
@@ -8094,7 +8094,7 @@ export namespace Meta {
         get_workspace(): number;
     }
 
-    module WaylandClient {
+    namespace WaylandClient {
         // Signal callback interfaces
 
         interface ClientDestroyed {
@@ -8161,7 +8161,7 @@ export namespace Meta {
         spawnv(display: Display, argv: string[]): Gio.Subprocess;
     }
 
-    module WaylandCompositor {
+    namespace WaylandCompositor {
         // Signal callback interfaces
 
         interface PrepareShutdown {
@@ -8196,7 +8196,7 @@ export namespace Meta {
         get_wayland_display(): any | null;
     }
 
-    module WaylandSurface {
+    namespace WaylandSurface {
         // Signal callback interfaces
 
         interface ActorChanged {
@@ -8290,7 +8290,7 @@ export namespace Meta {
         get_window(): Window | null;
     }
 
-    module Window {
+    namespace Window {
         // Signal callback interfaces
 
         interface Focus {
@@ -9339,7 +9339,7 @@ export namespace Meta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WindowActor {
+    namespace WindowActor {
         // Signal callback interfaces
 
         interface Damaged {
@@ -9934,7 +9934,7 @@ export namespace Meta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WindowGroup {
+    namespace WindowGroup {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10430,7 +10430,7 @@ export namespace Meta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Workspace {
+    namespace Workspace {
         // Signal callback interfaces
 
         interface WindowAdded {
@@ -10549,7 +10549,7 @@ export namespace Meta {
         set_builtin_struts(struts: Strut[]): void;
     }
 
-    module WorkspaceManager {
+    namespace WorkspaceManager {
         // Signal callback interfaces
 
         interface ActiveWorkspaceChanged {
@@ -10687,7 +10687,7 @@ export namespace Meta {
         reorder_workspace(workspace: Workspace, new_index: number): void;
     }
 
-    module X11Display {
+    namespace X11Display {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10932,7 +10932,7 @@ export namespace Meta {
     type WorkspaceClass = typeof Workspace;
     type WorkspaceManagerClass = typeof WorkspaceManager;
     type X11DisplayClass = typeof X11Display;
-    module CloseDialog {
+    namespace CloseDialog {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10997,7 +10997,7 @@ export namespace Meta {
         new (): CloseDialog; // This allows `obj instanceof CloseDialog`
     };
 
-    module InhibitShortcutsDialog {
+    namespace InhibitShortcutsDialog {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

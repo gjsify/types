@@ -215,7 +215,7 @@ export namespace GVnc {
      * @param enabled TRUE to turn on verbose debugging
      */
     function util_set_debug(enabled: boolean): void;
-    module BaseAudio {
+    namespace BaseAudio {
         // Signal callback interfaces
 
         interface VncAudioPlaybackData {
@@ -692,7 +692,7 @@ export namespace GVnc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BaseFramebuffer {
+    namespace BaseFramebuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Framebuffer.ConstructorProps {
@@ -1316,7 +1316,7 @@ export namespace GVnc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Connection {
+    namespace Connection {
         // Signal callback interfaces
 
         interface VncAuthChooseSubtype {
@@ -1816,7 +1816,7 @@ export namespace GVnc {
         shutdown(): void;
     }
 
-    module Cursor {
+    namespace Cursor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2126,7 +2126,7 @@ export namespace GVnc {
         match(other: PixelFormat): boolean;
     }
 
-    module Audio {
+    namespace Audio {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2167,7 +2167,7 @@ export namespace GVnc {
         new (): Audio; // This allows `obj instanceof Audio`
     };
 
-    module Framebuffer {
+    namespace Framebuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

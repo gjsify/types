@@ -201,7 +201,7 @@ export namespace Champlain {
      * string concatenation)
      */
     const VERSION_S: string;
-    module Adjustment {
+    namespace Adjustment {
         // Signal callback interfaces
 
         interface Changed {
@@ -272,7 +272,7 @@ export namespace Champlain {
         set_values(value: number, lower: number, upper: number, step_increment: number): void;
     }
 
-    module Coordinate {
+    namespace Coordinate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Location.ConstructorProps {}
@@ -740,7 +740,7 @@ export namespace Champlain {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CustomMarker {
+    namespace CustomMarker {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1215,7 +1215,7 @@ export namespace Champlain {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ErrorTileRenderer {
+    namespace ErrorTileRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends Renderer.ConstructorProps {
@@ -1266,7 +1266,7 @@ export namespace Champlain {
         set_tile_size(size: number): void;
     }
 
-    module FileCache {
+    namespace FileCache {
         // Constructor properties interface
 
         interface ConstructorProps extends TileCache.ConstructorProps {
@@ -1345,7 +1345,7 @@ export namespace Champlain {
         set_size_limit(size_limit: number): void;
     }
 
-    module FileTileSource {
+    namespace FileTileSource {
         // Constructor properties interface
 
         interface ConstructorProps extends TileSource.ConstructorProps {}
@@ -1385,7 +1385,7 @@ export namespace Champlain {
         load_map_data(map_path: string): void;
     }
 
-    module ImageRenderer {
+    namespace ImageRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends Renderer.ConstructorProps {}
@@ -1407,7 +1407,7 @@ export namespace Champlain {
         static ['new'](): ImageRenderer;
     }
 
-    module KineticScrollView {
+    namespace KineticScrollView {
         // Signal callback interfaces
 
         interface PanningCompleted {
@@ -2317,7 +2317,7 @@ export namespace Champlain {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Label {
+    namespace Label {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3072,7 +3072,7 @@ export namespace Champlain {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Layer {
+    namespace Layer {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3976,7 +3976,7 @@ export namespace Champlain {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module License {
+    namespace License {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4909,7 +4909,7 @@ export namespace Champlain {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MapSource {
+    namespace MapSource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -5114,7 +5114,7 @@ export namespace Champlain {
         set_renderer(renderer: Renderer): void;
     }
 
-    module MapSourceChain {
+    namespace MapSourceChain {
         // Constructor properties interface
 
         interface ConstructorProps extends MapSource.ConstructorProps {}
@@ -5148,7 +5148,7 @@ export namespace Champlain {
         push(map_source: MapSource): void;
     }
 
-    module MapSourceDesc {
+    namespace MapSourceDesc {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5300,7 +5300,7 @@ export namespace Champlain {
         get_uri_format(): string;
     }
 
-    module MapSourceFactory {
+    namespace MapSourceFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5369,7 +5369,7 @@ export namespace Champlain {
         register(desc: MapSourceDesc): boolean;
     }
 
-    module Marker {
+    namespace Marker {
         // Signal callback interfaces
 
         interface ButtonPress {
@@ -6426,7 +6426,7 @@ export namespace Champlain {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MarkerLayer {
+    namespace MarkerLayer {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6976,7 +6976,7 @@ export namespace Champlain {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MemoryCache {
+    namespace MemoryCache {
         // Constructor properties interface
 
         interface ConstructorProps extends TileCache.ConstructorProps {
@@ -7031,7 +7031,7 @@ export namespace Champlain {
         set_size_limit(size_limit: number): void;
     }
 
-    module NetworkBboxTileSource {
+    namespace NetworkBboxTileSource {
         // Constructor properties interface
 
         interface ConstructorProps extends TileSource.ConstructorProps {
@@ -7137,7 +7137,7 @@ export namespace Champlain {
         set_user_agent(user_agent: string): void;
     }
 
-    module NetworkTileSource {
+    namespace NetworkTileSource {
         // Constructor properties interface
 
         interface ConstructorProps extends TileSource.ConstructorProps {
@@ -7293,7 +7293,7 @@ export namespace Champlain {
         set_user_agent(user_agent: string): void;
     }
 
-    module NullTileSource {
+    namespace NullTileSource {
         // Constructor properties interface
 
         interface ConstructorProps extends TileSource.ConstructorProps {}
@@ -7315,7 +7315,7 @@ export namespace Champlain {
         static new_full(renderer: Renderer): NullTileSource;
     }
 
-    module PathLayer {
+    namespace PathLayer {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7952,7 +7952,7 @@ export namespace Champlain {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Point {
+    namespace Point {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8491,7 +8491,7 @@ export namespace Champlain {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Renderer {
+    namespace Renderer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -8545,7 +8545,7 @@ export namespace Champlain {
         set_data(...args: never[]): any;
     }
 
-    module Scale {
+    namespace Scale {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9473,7 +9473,7 @@ export namespace Champlain {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Tile {
+    namespace Tile {
         // Signal callback interfaces
 
         interface RenderComplete {
@@ -10571,7 +10571,7 @@ export namespace Champlain {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TileCache {
+    namespace TileCache {
         // Constructor properties interface
 
         interface ConstructorProps extends MapSource.ConstructorProps {}
@@ -10643,7 +10643,7 @@ export namespace Champlain {
         store_tile(tile: Tile, contents: string, size: number): void;
     }
 
-    module TileSource {
+    namespace TileSource {
         // Constructor properties interface
 
         interface ConstructorProps extends MapSource.ConstructorProps {
@@ -10798,7 +10798,7 @@ export namespace Champlain {
         set_tile_size(tile_size: number): void;
     }
 
-    module View {
+    namespace View {
         // Signal callback interfaces
 
         interface AnimationCompleted {
@@ -12181,7 +12181,7 @@ export namespace Champlain {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Viewport {
+    namespace Viewport {
         // Signal callback interfaces
 
         interface Relocated {
@@ -13424,7 +13424,7 @@ export namespace Champlain {
         _init(...args: any[]): void;
     }
 
-    module Exportable {
+    namespace Exportable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13475,7 +13475,7 @@ export namespace Champlain {
         new (): Exportable; // This allows `obj instanceof Exportable`
     };
 
-    module Location {
+    namespace Location {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

@@ -19,7 +19,7 @@ export namespace Grss {
      * Grss-0.7
      */
 
-    module FeedAtomFormatter {
+    namespace FeedAtomFormatter {
         // Constructor properties interface
 
         interface ConstructorProps extends FeedFormatter.ConstructorProps {}
@@ -37,7 +37,7 @@ export namespace Grss {
         static ['new'](): FeedAtomFormatter;
     }
 
-    module FeedChannel {
+    namespace FeedChannel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -355,7 +355,7 @@ export namespace Grss {
         set_webmaster(webmaster: string): void;
     }
 
-    module FeedEnclosure {
+    namespace FeedEnclosure {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -429,7 +429,7 @@ export namespace Grss {
         set_length(length: number): void;
     }
 
-    module FeedFormatter {
+    namespace FeedFormatter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -495,7 +495,7 @@ export namespace Grss {
         set_channel(channel: FeedChannel): void;
     }
 
-    module FeedItem {
+    namespace FeedItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -680,7 +680,7 @@ export namespace Grss {
         set_title(title: string): void;
     }
 
-    module FeedParser {
+    namespace FeedParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -718,7 +718,7 @@ export namespace Grss {
         parse_channel(feed: FeedChannel, doc: libxml2.DocPtr): void;
     }
 
-    module FeedRssFormatter {
+    namespace FeedRssFormatter {
         // Constructor properties interface
 
         interface ConstructorProps extends FeedFormatter.ConstructorProps {}
@@ -736,7 +736,7 @@ export namespace Grss {
         static ['new'](): FeedRssFormatter;
     }
 
-    module FeedsGroup {
+    namespace FeedsGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -777,7 +777,7 @@ export namespace Grss {
         parse_file(path: string): FeedChannel[];
     }
 
-    module FeedsPool {
+    namespace FeedsPool {
         // Signal callback interfaces
 
         interface FeedFail {
@@ -873,7 +873,7 @@ export namespace Grss {
         ['switch'](run: boolean): void;
     }
 
-    module FeedsPublisher {
+    namespace FeedsPublisher {
         // Signal callback interfaces
 
         interface DeleteSubscription {
@@ -980,7 +980,7 @@ export namespace Grss {
         publish_web(channel: FeedChannel, items: FeedItem[], id: string): boolean;
     }
 
-    module FeedsStore {
+    namespace FeedsStore {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1058,7 +1058,7 @@ export namespace Grss {
         ['switch'](run: boolean): void;
     }
 
-    module FeedsSubscriber {
+    namespace FeedsSubscriber {
         // Signal callback interfaces
 
         interface NotificationReceived {

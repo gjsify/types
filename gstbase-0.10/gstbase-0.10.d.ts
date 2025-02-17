@@ -83,7 +83,7 @@ export namespace GstBase {
         STARTED,
         FLAG_LAST,
     }
-    module GstAdapter {
+    namespace GstAdapter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -130,7 +130,7 @@ export namespace GstBase {
         masked_scan_uint32_peek(mask: number, pattern: number, offset: number, size: number): [number, number];
     }
 
-    module GstCollectPads {
+    namespace GstCollectPads {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -186,7 +186,7 @@ export namespace GstBase {
         flush(data: Gst.CollectData, size: number): number;
     }
 
-    module GstDataQueue {
+    namespace GstDataQueue {
         // Signal callback interfaces
 
         interface Empty {
@@ -274,7 +274,7 @@ export namespace GstBase {
         limits_changed(): void;
     }
 
-    module GstPushSrc {
+    namespace GstPushSrc {
         // Constructor properties interface
 
         interface ConstructorProps extends Src.ConstructorProps {}
@@ -293,7 +293,7 @@ export namespace GstBase {
         _init(...args: any[]): void;
     }
 
-    module Sink {
+    namespace Sink {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -411,7 +411,7 @@ export namespace GstBase {
         wait_eos(time: Gst.ClockTime, jitter: Gst.ClockTimeDiff): Gst.FlowReturn;
     }
 
-    module Src {
+    namespace Src {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -481,7 +481,7 @@ export namespace GstBase {
         new_seamless_segment(start: number, stop: number, position: number): boolean;
     }
 
-    module Transform {
+    namespace Transform {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {

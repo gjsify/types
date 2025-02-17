@@ -415,7 +415,7 @@ export namespace Tsparql {
          */
         ANONYMOUS_BNODES,
     }
-    module Batch {
+    namespace Batch {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -572,7 +572,7 @@ export namespace Tsparql {
         get_connection(): SparqlConnection;
     }
 
-    module Endpoint {
+    namespace Endpoint {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -744,7 +744,7 @@ export namespace Tsparql {
         set_readonly(readonly: boolean): void;
     }
 
-    module EndpointDBus {
+    namespace EndpointDBus {
         // Signal callback interfaces
 
         interface BlockCall {
@@ -1336,7 +1336,7 @@ export namespace Tsparql {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module EndpointHttp {
+    namespace EndpointHttp {
         // Signal callback interfaces
 
         interface BlockRemoteAddress {
@@ -1932,7 +1932,7 @@ export namespace Tsparql {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module NamespaceManager {
+    namespace NamespaceManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2031,7 +2031,7 @@ export namespace Tsparql {
         print_turtle(): string;
     }
 
-    module Notifier {
+    namespace Notifier {
         // Signal callback interfaces
 
         interface Events {
@@ -2149,7 +2149,7 @@ export namespace Tsparql {
         signal_unsubscribe(handler_id: number): void;
     }
 
-    module Resource {
+    namespace Resource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2605,7 +2605,7 @@ export namespace Tsparql {
         set_uri(property_uri: string, value: string): void;
     }
 
-    module SparqlConnection {
+    namespace SparqlConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3409,7 +3409,7 @@ export namespace Tsparql {
         update_statement(sparql: string, cancellable?: Gio.Cancellable | null): SparqlStatement | null;
     }
 
-    module SparqlCursor {
+    namespace SparqlCursor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3647,7 +3647,7 @@ export namespace Tsparql {
         rewind(): void;
     }
 
-    module SparqlStatement {
+    namespace SparqlStatement {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

@@ -153,7 +153,7 @@ export namespace Libinsane {
         MUST_RELOAD_OPTIONS,
         MUST_RELOAD_PARAMS,
     }
-    module Api {
+    namespace Api {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -183,7 +183,7 @@ export namespace Libinsane {
         list_devices(locations: DeviceLocations | null): DeviceDescriptor[];
     }
 
-    module DeviceDescriptor {
+    namespace DeviceDescriptor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -211,7 +211,7 @@ export namespace Libinsane {
         to_string(): string;
     }
 
-    module Item {
+    namespace Item {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -244,7 +244,7 @@ export namespace Libinsane {
         scan_start(): ScanSession;
     }
 
-    module OptionDescriptor {
+    namespace OptionDescriptor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -279,7 +279,7 @@ export namespace Libinsane {
         set_value(value: GObject.Value | any): SetFlag;
     }
 
-    module ScanParameters {
+    namespace ScanParameters {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -302,7 +302,7 @@ export namespace Libinsane {
         get_width(): number;
     }
 
-    module ScanSession {
+    namespace ScanSession {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -388,7 +388,7 @@ export namespace Libinsane {
         _init(...args: any[]): void;
     }
 
-    module Logger {
+    namespace Logger {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

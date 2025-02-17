@@ -153,7 +153,7 @@ export namespace Template {
     interface ScopeResolver {
         (scope: Scope, name: string, symbol: Symbol): boolean;
     }
-    module Template {
+    namespace Template {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -213,7 +213,7 @@ export namespace Template {
         set_locator(locator: TemplateLocator): void;
     }
 
-    module TemplateLocator {
+    namespace TemplateLocator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

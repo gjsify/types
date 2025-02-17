@@ -118,7 +118,7 @@ export namespace Panel {
     interface WorkspaceForeach {
         (workspace: Workspace): void;
     }
-    module ActionMuxer {
+    namespace ActionMuxer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {}
@@ -999,7 +999,7 @@ export namespace Panel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Application {
+    namespace Application {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1425,7 +1425,7 @@ export namespace Panel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ChangesDialog {
+    namespace ChangesDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1883,7 +1883,7 @@ export namespace Panel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Dock {
+    namespace Dock {
         // Signal callback interfaces
 
         interface AdoptWidget {
@@ -2818,7 +2818,7 @@ export namespace Panel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DocumentWorkspace {
+    namespace DocumentWorkspace {
         // Signal callback interfaces
 
         interface AddWidget {
@@ -5750,7 +5750,7 @@ export namespace Panel {
         vfunc_unroot(): void;
     }
 
-    module Frame {
+    namespace Frame {
         // Signal callback interfaces
 
         interface AdoptWidget {
@@ -6619,7 +6619,7 @@ export namespace Panel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FrameHeaderBar {
+    namespace FrameHeaderBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9841,7 +9841,7 @@ export namespace Panel {
         vfunc_unroot(): void;
     }
 
-    module FrameSwitcher {
+    namespace FrameSwitcher {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13043,7 +13043,7 @@ export namespace Panel {
         vfunc_unroot(): void;
     }
 
-    module FrameTabBar {
+    namespace FrameTabBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16286,7 +16286,7 @@ export namespace Panel {
         vfunc_unroot(): void;
     }
 
-    module GSettingsActionGroup {
+    namespace GSettingsActionGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {
@@ -17160,7 +17160,7 @@ export namespace Panel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Grid {
+    namespace Grid {
         // Signal callback interfaces
 
         interface CreateFrame {
@@ -17926,7 +17926,7 @@ export namespace Panel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GridColumn {
+    namespace GridColumn {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18648,7 +18648,7 @@ export namespace Panel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Inhibitor {
+    namespace Inhibitor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18668,7 +18668,7 @@ export namespace Panel {
         uninhibit(): void;
     }
 
-    module LayeredSettings {
+    namespace LayeredSettings {
         // Signal callback interfaces
 
         interface Changed {
@@ -18767,7 +18767,7 @@ export namespace Panel {
         unbind(property: string): void;
     }
 
-    module MenuManager {
+    namespace MenuManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18850,7 +18850,7 @@ export namespace Panel {
         set_attribute_string(menu: Gio.Menu, position: number, attribute: string, value: string): void;
     }
 
-    module OmniBar {
+    namespace OmniBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22207,7 +22207,7 @@ export namespace Panel {
         vfunc_unroot(): void;
     }
 
-    module Paned {
+    namespace Paned {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22971,7 +22971,7 @@ export namespace Panel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Position {
+    namespace Position {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -23104,7 +23104,7 @@ export namespace Panel {
         to_variant(): GLib.Variant | null;
     }
 
-    module SaveDelegate {
+    namespace SaveDelegate {
         // Signal callback interfaces
 
         interface Close {
@@ -23289,7 +23289,7 @@ export namespace Panel {
         set_title(title?: string | null): void;
     }
 
-    module SaveDialog {
+    namespace SaveDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -26161,7 +26161,7 @@ export namespace Panel {
         vfunc_unroot(): void;
     }
 
-    module Session {
+    namespace Session {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -26212,7 +26212,7 @@ export namespace Panel {
         to_variant(): GLib.Variant;
     }
 
-    module SessionItem {
+    namespace SessionItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -26353,7 +26353,7 @@ export namespace Panel {
         set_workspace(workspace?: string | null): void;
     }
 
-    module Settings {
+    namespace Settings {
         // Signal callback interfaces
 
         interface Changed {
@@ -27319,7 +27319,7 @@ export namespace Panel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Statusbar {
+    namespace Statusbar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -28047,7 +28047,7 @@ export namespace Panel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ThemeSelector {
+    namespace ThemeSelector {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -28790,7 +28790,7 @@ export namespace Panel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ToggleButton {
+    namespace ToggleButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -29519,7 +29519,7 @@ export namespace Panel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Widget {
+    namespace Widget {
         // Signal callback interfaces
 
         interface GetDefaultFocus {
@@ -30511,7 +30511,7 @@ export namespace Panel {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Workbench {
+    namespace Workbench {
         // Signal callback interfaces
 
         interface Activate {
@@ -30594,7 +30594,7 @@ export namespace Panel {
         set_id(id: string): void;
     }
 
-    module Workspace {
+    namespace Workspace {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33527,7 +33527,7 @@ export namespace Panel {
     type WidgetClass = typeof Widget;
     type WorkbenchClass = typeof Workbench;
     type WorkspaceClass = typeof Workspace;
-    module FrameHeader {
+    namespace FrameHeader {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {

@@ -474,7 +474,7 @@ export namespace GSystem {
      * @returns %TRUE if stdout is (probably) connnected to the systemd journal
      */
     function stdout_is_journal(): boolean;
-    module Console {
+    namespace Console {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -545,7 +545,7 @@ export namespace GSystem {
         read_password(prompt: string, cancellable?: Gio.Cancellable | null): string;
     }
 
-    module Subprocess {
+    namespace Subprocess {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -1178,7 +1178,7 @@ export namespace GSystem {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SubprocessContext {
+    namespace SubprocessContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

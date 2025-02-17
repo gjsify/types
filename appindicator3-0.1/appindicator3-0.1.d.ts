@@ -121,7 +121,7 @@ export namespace AppIndicator3 {
      * String identifier for the #AppIndicator::scroll-event signal.
      */
     const INDICATOR_SIGNAL_SCROLL_EVENT: string;
-    module Indicator {
+    namespace Indicator {
         // Signal callback interfaces
 
         interface ConnectionChanged {

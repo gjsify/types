@@ -172,7 +172,7 @@ export namespace BraseroMedia {
         ALL_BUT_FILE,
         ALL,
     }
-    module Drive {
+    namespace Drive {
         // Signal callback interfaces
 
         interface MediumAdded {
@@ -356,7 +356,7 @@ export namespace BraseroMedia {
         unlock(): boolean;
     }
 
-    module DriveSelection {
+    namespace DriveSelection {
         // Signal callback interfaces
 
         interface DriveChanged {
@@ -4870,7 +4870,7 @@ export namespace BraseroMedia {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module Medium {
+    namespace Medium {
         // Signal callback interfaces
 
         interface Probed {
@@ -5060,7 +5060,7 @@ export namespace BraseroMedia {
         get_write_speeds(): number;
     }
 
-    module MediumMonitor {
+    namespace MediumMonitor {
         // Signal callback interfaces
 
         interface DriveAdded {
@@ -5139,7 +5139,7 @@ export namespace BraseroMedia {
         is_probing(): boolean;
     }
 
-    module MediumSelection {
+    namespace MediumSelection {
         // Signal callback interfaces
 
         interface MediumChanged {
@@ -9654,7 +9654,7 @@ export namespace BraseroMedia {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module Volume {
+    namespace Volume {
         // Constructor properties interface
 
         interface ConstructorProps extends Medium.ConstructorProps {}

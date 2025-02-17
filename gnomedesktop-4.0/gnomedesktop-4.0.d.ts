@@ -246,7 +246,7 @@ export namespace GnomeDesktop {
     interface IdleMonitorWatchFunc {
         (monitor: IdleMonitor, id: number): void;
     }
-    module DesktopThumbnailFactory {
+    namespace DesktopThumbnailFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -475,7 +475,7 @@ export namespace GnomeDesktop {
         save_thumbnail_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module IdleMonitor {
+    namespace IdleMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -993,7 +993,7 @@ export namespace GnomeDesktop {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PnpIds {
+    namespace PnpIds {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1020,7 +1020,7 @@ export namespace GnomeDesktop {
         get_pnp_id(pnp_id: string): string;
     }
 
-    module WallClock {
+    namespace WallClock {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1107,7 +1107,7 @@ export namespace GnomeDesktop {
         ): string;
     }
 
-    module XkbInfo {
+    namespace XkbInfo {
         // Signal callback interfaces
 
         interface LayoutsChanged {

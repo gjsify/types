@@ -478,7 +478,7 @@ export namespace GstInterfaces {
         FREQUENCY,
         AUDIO,
     }
-    module ColorBalanceChannel {
+    namespace ColorBalanceChannel {
         // Signal callback interfaces
 
         interface ValueChanged {
@@ -515,7 +515,7 @@ export namespace GstInterfaces {
         emit(signal: 'value-changed', object: number): void;
     }
 
-    module MixerOptions {
+    namespace MixerOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends MixerTrack.ConstructorProps {}
@@ -535,7 +535,7 @@ export namespace GstInterfaces {
         _init(...args: any[]): void;
     }
 
-    module MixerTrack {
+    namespace MixerTrack {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -577,7 +577,7 @@ export namespace GstInterfaces {
         _init(...args: any[]): void;
     }
 
-    module TunerChannel {
+    namespace TunerChannel {
         // Signal callback interfaces
 
         interface FrequencyChanged {
@@ -625,7 +625,7 @@ export namespace GstInterfaces {
         emit(signal: 'signal-changed', object: number): void;
     }
 
-    module TunerNorm {
+    namespace TunerNorm {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -697,7 +697,7 @@ export namespace GstInterfaces {
         _init(...args: any[]): void;
     }
 
-    module ColorBalance {
+    namespace ColorBalance {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {}
@@ -755,7 +755,7 @@ export namespace GstInterfaces {
         new (): ColorBalance; // This allows `obj instanceof ColorBalance`
     };
 
-    module Mixer {
+    namespace Mixer {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {}
@@ -899,7 +899,7 @@ export namespace GstInterfaces {
         new (): Mixer; // This allows `obj instanceof Mixer`
     };
 
-    module Navigation {
+    namespace Navigation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -940,7 +940,7 @@ export namespace GstInterfaces {
         new (): Navigation; // This allows `obj instanceof Navigation`
     };
 
-    module PropertyProbe {
+    namespace PropertyProbe {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1037,7 +1037,7 @@ export namespace GstInterfaces {
         new (): PropertyProbe; // This allows `obj instanceof PropertyProbe`
     };
 
-    module StreamVolume {
+    namespace StreamVolume {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1070,7 +1070,7 @@ export namespace GstInterfaces {
         new (): StreamVolume; // This allows `obj instanceof StreamVolume`
     };
 
-    module Tuner {
+    namespace Tuner {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {}
@@ -1179,7 +1179,7 @@ export namespace GstInterfaces {
         new (): Tuner; // This allows `obj instanceof Tuner`
     };
 
-    module VideoOrientation {
+    namespace VideoOrientation {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {}
@@ -1289,7 +1289,7 @@ export namespace GstInterfaces {
         new (): VideoOrientation; // This allows `obj instanceof VideoOrientation`
     };
 
-    module XOverlay {
+    namespace XOverlay {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {}

@@ -189,7 +189,7 @@ export namespace GstCuda {
          */
         SYNC,
     }
-    module CudaAllocator {
+    namespace CudaAllocator {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
@@ -278,7 +278,7 @@ export namespace GstCuda {
         ): Gst.Memory | null;
     }
 
-    module CudaBufferPool {
+    namespace CudaBufferPool {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.BufferPool.ConstructorProps {}
@@ -303,7 +303,7 @@ export namespace GstCuda {
         static ['new'](...args: never[]): any;
     }
 
-    module CudaContext {
+    namespace CudaContext {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -390,7 +390,7 @@ export namespace GstCuda {
         push(): boolean;
     }
 
-    module CudaPoolAllocator {
+    namespace CudaPoolAllocator {
         // Constructor properties interface
 
         interface ConstructorProps extends CudaAllocator.ConstructorProps {}

@@ -4896,7 +4896,7 @@ export namespace TelepathyGLib {
          */
         SERVICE,
     }
-    module Account {
+    namespace Account {
         // Signal callback interfaces
 
         interface AvatarChanged {
@@ -6826,7 +6826,7 @@ export namespace TelepathyGLib {
         update_parameters_vardict_finish(result: Gio.AsyncResult): [boolean, string[]];
     }
 
-    module AccountChannelRequest {
+    namespace AccountChannelRequest {
         // Signal callback interfaces
 
         interface ReHandled {
@@ -7756,7 +7756,7 @@ export namespace TelepathyGLib {
         set_target_id(handle_type: HandleType | null, identifier: string): void;
     }
 
-    module AccountManager {
+    namespace AccountManager {
         // Signal callback interfaces
 
         interface AccountDisabled {
@@ -8110,7 +8110,7 @@ export namespace TelepathyGLib {
         set_default(): void;
     }
 
-    module AccountRequest {
+    namespace AccountRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8521,7 +8521,7 @@ export namespace TelepathyGLib {
         unset_parameter(key: string): void;
     }
 
-    module AddDispatchOperationContext {
+    namespace AddDispatchOperationContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8612,7 +8612,7 @@ export namespace TelepathyGLib {
         fail(error: GLib.Error): void;
     }
 
-    module AutomaticClientFactory {
+    namespace AutomaticClientFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends SimpleClientFactory.ConstructorProps {}
@@ -8633,7 +8633,7 @@ export namespace TelepathyGLib {
         static ['new'](dbus?: DBusDaemon | null): AutomaticClientFactory;
     }
 
-    module AutomaticProxyFactory {
+    namespace AutomaticProxyFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ClientChannelFactory.ConstructorProps {}
@@ -9093,7 +9093,7 @@ export namespace TelepathyGLib {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BaseClient {
+    namespace BaseClient {
         // Signal callback interfaces
 
         interface RequestAdded {
@@ -9677,7 +9677,7 @@ export namespace TelepathyGLib {
         unregister(): void;
     }
 
-    module BaseConnection {
+    namespace BaseConnection {
         // Signal callback interfaces
 
         interface ClientsInterested {
@@ -9946,7 +9946,7 @@ export namespace TelepathyGLib {
         set_self_handle(self_handle: Handle): void;
     }
 
-    module BasicProxyFactory {
+    namespace BasicProxyFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ClientChannelFactory.ConstructorProps {}
@@ -10406,7 +10406,7 @@ export namespace TelepathyGLib {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CallChannel {
+    namespace CallChannel {
         // Signal callback interfaces
 
         interface ContentAdded {
@@ -10958,7 +10958,7 @@ export namespace TelepathyGLib {
         set_ringing_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module CallContent {
+    namespace CallContent {
         // Signal callback interfaces
 
         interface Removed {
@@ -11156,7 +11156,7 @@ export namespace TelepathyGLib {
         send_tones_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module CallStream {
+    namespace CallStream {
         // Signal callback interfaces
 
         interface LocalSendingStateChanged {
@@ -11384,7 +11384,7 @@ export namespace TelepathyGLib {
         set_sending_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module Capabilities {
+    namespace Capabilities {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11643,7 +11643,7 @@ export namespace TelepathyGLib {
         supports_text_chats(): boolean;
     }
 
-    module Channel {
+    namespace Channel {
         // Signal callback interfaces
 
         interface ChatStateChanged {
@@ -12716,7 +12716,7 @@ export namespace TelepathyGLib {
         provide_password_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module ChannelDispatchOperation {
+    namespace ChannelDispatchOperation {
         // Signal callback interfaces
 
         interface ChannelLost {
@@ -13360,7 +13360,7 @@ export namespace TelepathyGLib {
         leave_channels_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module ChannelDispatcher {
+    namespace ChannelDispatcher {
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {}
@@ -13454,7 +13454,7 @@ export namespace TelepathyGLib {
         present_channel_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module ChannelRequest {
+    namespace ChannelRequest {
         // Signal callback interfaces
 
         interface Succeeded {
@@ -13702,7 +13702,7 @@ export namespace TelepathyGLib {
         set_channel_factory(factory: ClientChannelFactory): void;
     }
 
-    module ClientMessage {
+    namespace ClientMessage {
         // Constructor properties interface
 
         interface ConstructorProps extends Message.ConstructorProps {}
@@ -13726,7 +13726,7 @@ export namespace TelepathyGLib {
         static new_text(type: ChannelTextMessageType, text: string): ClientMessage;
     }
 
-    module Connection {
+    namespace Connection {
         // Signal callback interfaces
 
         interface BalanceChanged {
@@ -15451,7 +15451,7 @@ export namespace TelepathyGLib {
         upgrade_contacts_finish(result: Gio.AsyncResult): [boolean, Contact[] | null];
     }
 
-    module ConnectionManager {
+    namespace ConnectionManager {
         // Signal callback interfaces
 
         interface Activated {
@@ -15730,7 +15730,7 @@ export namespace TelepathyGLib {
         is_running(): boolean;
     }
 
-    module Contact {
+    namespace Contact {
         // Signal callback interfaces
 
         interface ContactGroupsChanged {
@@ -16710,7 +16710,7 @@ export namespace TelepathyGLib {
         unsubscribe_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module ContactSearch {
+    namespace ContactSearch {
         // Signal callback interfaces
 
         interface SearchResultsReceived {
@@ -17487,7 +17487,7 @@ export namespace TelepathyGLib {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ContactSearchResult {
+    namespace ContactSearchResult {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -17538,7 +17538,7 @@ export namespace TelepathyGLib {
         get_identifier(): string;
     }
 
-    module DBusDaemon {
+    namespace DBusDaemon {
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {}
@@ -17657,7 +17657,7 @@ export namespace TelepathyGLib {
         watch_name_owner(name: string, callback: DBusDaemonNameOwnerChangedCb): void;
     }
 
-    module DBusTubeChannel {
+    namespace DBusTubeChannel {
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {
@@ -17796,7 +17796,7 @@ export namespace TelepathyGLib {
         offer_finish(result: Gio.AsyncResult): Gio.DBusConnection;
     }
 
-    module DebugClient {
+    namespace DebugClient {
         // Signal callback interfaces
 
         interface NewDebugMessage {
@@ -17917,7 +17917,7 @@ export namespace TelepathyGLib {
         set_enabled_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module DebugMessage {
+    namespace DebugMessage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -17993,7 +17993,7 @@ export namespace TelepathyGLib {
         get_time(): GLib.DateTime;
     }
 
-    module FileTransferChannel {
+    namespace FileTransferChannel {
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {
@@ -18343,7 +18343,7 @@ export namespace TelepathyGLib {
         provide_file_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module HandleChannelsContext {
+    namespace HandleChannelsContext {
         // Signal callback interfaces
 
         interface Done {
@@ -18488,7 +18488,7 @@ export namespace TelepathyGLib {
         get_requests(): ChannelRequest[];
     }
 
-    module Message {
+    namespace Message {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18757,7 +18757,7 @@ export namespace TelepathyGLib {
         to_text(): [string, ChannelTextMessageFlags];
     }
 
-    module ObserveChannelsContext {
+    namespace ObserveChannelsContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -18869,7 +18869,7 @@ export namespace TelepathyGLib {
         is_recovering(): boolean;
     }
 
-    module Protocol {
+    namespace Protocol {
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -19409,7 +19409,7 @@ export namespace TelepathyGLib {
         normalize_vcard_address_finish(result: Gio.AsyncResult): string;
     }
 
-    module Proxy {
+    namespace Proxy {
         // Signal callback interfaces
 
         interface InterfaceAdded {
@@ -19751,7 +19751,7 @@ export namespace TelepathyGLib {
         prepare_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module RoomInfo {
+    namespace RoomInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19831,7 +19831,7 @@ export namespace TelepathyGLib {
         get_subject(): string;
     }
 
-    module RoomList {
+    namespace RoomList {
         // Signal callback interfaces
 
         interface Failed {
@@ -20535,7 +20535,7 @@ export namespace TelepathyGLib {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SignalledMessage {
+    namespace SignalledMessage {
         // Constructor properties interface
 
         interface ConstructorProps extends Message.ConstructorProps {
@@ -20574,7 +20574,7 @@ export namespace TelepathyGLib {
         static get_sender(message: Message): Contact;
     }
 
-    module SimpleApprover {
+    namespace SimpleApprover {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseClient.ConstructorProps {
@@ -20642,7 +20642,7 @@ export namespace TelepathyGLib {
         ): SimpleApprover;
     }
 
-    module SimpleClientFactory {
+    namespace SimpleClientFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -20950,7 +20950,7 @@ export namespace TelepathyGLib {
         upgrade_contacts_finish(result: Gio.AsyncResult): [boolean, Contact[] | null];
     }
 
-    module SimpleHandler {
+    namespace SimpleHandler {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseClient.ConstructorProps {
@@ -21039,7 +21039,7 @@ export namespace TelepathyGLib {
         ): SimpleHandler;
     }
 
-    module SimpleObserver {
+    namespace SimpleObserver {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseClient.ConstructorProps {
@@ -21117,7 +21117,7 @@ export namespace TelepathyGLib {
         ): SimpleObserver;
     }
 
-    module StreamTubeChannel {
+    namespace StreamTubeChannel {
         // Signal callback interfaces
 
         interface Incoming {
@@ -21279,7 +21279,7 @@ export namespace TelepathyGLib {
         offer_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module StreamTubeConnection {
+    namespace StreamTubeConnection {
         // Signal callback interfaces
 
         interface Closed {
@@ -21368,7 +21368,7 @@ export namespace TelepathyGLib {
         get_socket_connection(): Gio.SocketConnection;
     }
 
-    module TLSCertificate {
+    namespace TLSCertificate {
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -21606,7 +21606,7 @@ export namespace TelepathyGLib {
         reject_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module TLSCertificateRejection {
+    namespace TLSCertificateRejection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -21684,7 +21684,7 @@ export namespace TelepathyGLib {
         raise_error(): boolean;
     }
 
-    module TextChannel {
+    namespace TextChannel {
         // Signal callback interfaces
 
         interface ContactChatStateChanged {
@@ -23658,7 +23658,7 @@ export namespace TelepathyGLib {
         _init(...args: any[]): void;
     }
 
-    module ClientChannelFactory {
+    namespace ClientChannelFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -23705,7 +23705,7 @@ export namespace TelepathyGLib {
         new (): ClientChannelFactory; // This allows `obj instanceof ClientChannelFactory`
     };
 
-    module HandleRepoIface {
+    namespace HandleRepoIface {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

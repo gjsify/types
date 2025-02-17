@@ -284,7 +284,7 @@ export namespace CinnamonDesktop {
         REFLECT_X,
         REFLECT_Y,
     }
-    module BG {
+    namespace BG {
         // Signal callback interfaces
 
         interface Changed {
@@ -417,7 +417,7 @@ export namespace CinnamonDesktop {
         set_placement(placement: CDesktopEnums.BackgroundStyle | null): void;
     }
 
-    module BGCrossfade {
+    namespace BGCrossfade {
         // Signal callback interfaces
 
         interface Finished {
@@ -515,7 +515,7 @@ export namespace CinnamonDesktop {
         stop(): void;
     }
 
-    module DesktopThumbnailFactory {
+    namespace DesktopThumbnailFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -596,7 +596,7 @@ export namespace CinnamonDesktop {
         save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: never): void;
     }
 
-    module IdleMonitor {
+    namespace IdleMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -1114,7 +1114,7 @@ export namespace CinnamonDesktop {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PnpIds {
+    namespace PnpIds {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1141,7 +1141,7 @@ export namespace CinnamonDesktop {
         get_pnp_id(pnp_id: string): string;
     }
 
-    module RRConfig {
+    namespace RRConfig {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1193,7 +1193,7 @@ export namespace CinnamonDesktop {
         set_clone(clone: boolean): void;
     }
 
-    module RRLabeler {
+    namespace RRLabeler {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1233,7 +1233,7 @@ export namespace CinnamonDesktop {
         show(): void;
     }
 
-    module RROutputInfo {
+    namespace RROutputInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1277,7 +1277,7 @@ export namespace CinnamonDesktop {
         set_scale(scale: number): void;
     }
 
-    module RRScreen {
+    namespace RRScreen {
         // Signal callback interfaces
 
         interface Changed {
@@ -1874,7 +1874,7 @@ export namespace CinnamonDesktop {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WallClock {
+    namespace WallClock {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1972,7 +1972,7 @@ export namespace CinnamonDesktop {
         set_format_string(format_string?: string | null): boolean;
     }
 
-    module XkbInfo {
+    namespace XkbInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

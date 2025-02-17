@@ -17,7 +17,7 @@ export namespace FcitxG {
      * FcitxG-1.0
      */
 
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface CommitString {
@@ -326,7 +326,7 @@ export namespace FcitxG {
         set_use_batch_process_key_event(batch: boolean): void;
     }
 
-    module Watcher {
+    namespace Watcher {
         // Signal callback interfaces
 
         interface AvailabilityChanged {

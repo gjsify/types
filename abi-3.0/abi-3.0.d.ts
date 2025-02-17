@@ -54,7 +54,7 @@ export namespace Abi {
     interface Signal {
         (arg0: Widget, closure?: any | null): boolean;
     }
-    module Table {
+    namespace Table {
         // Signal callback interfaces
 
         interface Selected {
@@ -4593,7 +4593,7 @@ export namespace Abi {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module Widget {
+    namespace Widget {
         // Signal callback interfaces
 
         interface Bold {

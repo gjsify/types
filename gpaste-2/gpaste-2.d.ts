@@ -329,7 +329,7 @@ export namespace GPaste {
         NON_MASKABLE,
         IGNORE_AUTOREPEAT,
     }
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface DeleteHistory {
@@ -2053,7 +2053,7 @@ export namespace GPaste {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ClientItem {
+    namespace ClientItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2082,7 +2082,7 @@ export namespace GPaste {
         get_value(): string;
     }
 
-    module GnomeShellClient {
+    namespace GnomeShellClient {
         // Signal callback interfaces
 
         interface AcceleratorActivated {
@@ -2955,7 +2955,7 @@ export namespace GPaste {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScreensaverClient {
+    namespace ScreensaverClient {
         // Signal callback interfaces
 
         interface ActiveChanged {
@@ -3732,7 +3732,7 @@ export namespace GPaste {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Settings {
+    namespace Settings {
         // Signal callback interfaces
 
         interface Changed {

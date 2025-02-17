@@ -160,7 +160,7 @@ export namespace Libmsi {
         TRANSACT,
         PATCH,
     }
-    module Database {
+    namespace Database {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -224,7 +224,7 @@ export namespace Libmsi {
         merge(merge: Database, table?: string | null): boolean;
     }
 
-    module Query {
+    namespace Query {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -280,7 +280,7 @@ export namespace Libmsi {
         get_error(): string;
     }
 
-    module Record {
+    namespace Record {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -364,7 +364,7 @@ export namespace Libmsi {
         set_string(field: number, val: string): boolean;
     }
 
-    module SummaryInfo {
+    namespace SummaryInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

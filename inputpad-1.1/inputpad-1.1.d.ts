@@ -127,7 +127,7 @@ export namespace InputPad {
     function window_set_show_layout(window_data: any | null, type: WindowShowLayoutType | null): void;
     function window_set_show_table(window_data: any | null, type: WindowShowTableType | null): void;
     function window_show(window_data?: any | null): void;
-    module GtkApplication {
+    namespace GtkApplication {
         // Signal callback interfaces
 
         interface Activated {
@@ -569,7 +569,7 @@ export namespace InputPad {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GtkButton {
+    namespace GtkButton {
         // Signal callback interfaces
 
         interface PressedRepeat {
@@ -5110,7 +5110,7 @@ export namespace InputPad {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module GtkComboBox {
+    namespace GtkComboBox {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9581,7 +9581,7 @@ export namespace InputPad {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module GtkKbdui {
+    namespace GtkKbdui {
         // Signal callback interfaces
 
         interface CreateKeyboardLayout {
@@ -9636,7 +9636,7 @@ export namespace InputPad {
         vfunc_destroy_keyboard_layout(vbox: Gtk.Widget, window: GtkWindow): void;
     }
 
-    module GtkViewport {
+    namespace GtkViewport {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10167,7 +10167,7 @@ export namespace InputPad {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GtkWindow {
+    namespace GtkWindow {
         // Signal callback interfaces
 
         interface ButtonPressed {

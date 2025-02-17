@@ -103,7 +103,7 @@ export namespace AccountsService {
         NONE,
     }
     function user_manager_error_quark(): GLib.Quark;
-    module User {
+    namespace User {
         // Signal callback interfaces
 
         interface Changed {
@@ -557,7 +557,7 @@ export namespace AccountsService {
         set_x_session(x_session: string): void;
     }
 
-    module UserManager {
+    namespace UserManager {
         // Signal callback interfaces
 
         interface UserAdded {

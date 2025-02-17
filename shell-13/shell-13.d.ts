@@ -348,7 +348,7 @@ export namespace Shell {
          */
         ALL,
     }
-    module App {
+    namespace App {
         // Signal callback interfaces
 
         interface WindowsChanged {
@@ -532,7 +532,7 @@ export namespace Shell {
         update_window_actions(window: Meta.Window): void;
     }
 
-    module AppSystem {
+    namespace AppSystem {
         // Signal callback interfaces
 
         interface AppStateChanged {
@@ -622,7 +622,7 @@ export namespace Shell {
         lookup_startup_wmclass(wmclass?: string | null): App;
     }
 
-    module AppUsage {
+    namespace AppUsage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -653,7 +653,7 @@ export namespace Shell {
         get_most_used(): App[];
     }
 
-    module BlurEffect {
+    namespace BlurEffect {
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.Effect.ConstructorProps {
@@ -693,7 +693,7 @@ export namespace Shell {
         set_sigma(sigma: number): void;
     }
 
-    module CameraMonitor {
+    namespace CameraMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -717,7 +717,7 @@ export namespace Shell {
         _init(...args: any[]): void;
     }
 
-    module GLSLEffect {
+    namespace GLSLEffect {
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.OffscreenEffect.ConstructorProps {}
@@ -755,7 +755,7 @@ export namespace Shell {
         set_uniform_matrix(uniform: number, transpose: boolean, dimensions: number, value: number[]): void;
     }
 
-    module Global {
+    namespace Global {
         // Signal callback interfaces
 
         interface LocatePointer {
@@ -1016,7 +1016,7 @@ export namespace Shell {
         set_stage_input_region(rectangles: Mtk.Rectangle[]): void;
     }
 
-    module InvertLightnessEffect {
+    namespace InvertLightnessEffect {
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.OffscreenEffect.ConstructorProps {}
@@ -1034,7 +1034,7 @@ export namespace Shell {
         static ['new'](): InvertLightnessEffect;
     }
 
-    module KeyringPrompt {
+    namespace KeyringPrompt {
         // Signal callback interfaces
 
         interface ShowConfirm {
@@ -2121,7 +2121,7 @@ export namespace Shell {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MountOperation {
+    namespace MountOperation {
         // Signal callback interfaces
 
         interface ShowProcesses2 {
@@ -2160,7 +2160,7 @@ export namespace Shell {
         get_show_processes_pids(): GLib.Pid[];
     }
 
-    module NetworkAgent {
+    namespace NetworkAgent {
         // Signal callback interfaces
 
         interface CancelRequest {
@@ -2906,7 +2906,7 @@ export namespace Shell {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PerfLog {
+    namespace PerfLog {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3039,7 +3039,7 @@ export namespace Shell {
         update_statistic_x(name: string, value: number): void;
     }
 
-    module PolkitAuthenticationAgent {
+    namespace PolkitAuthenticationAgent {
         // Signal callback interfaces
 
         interface Cancel {
@@ -3093,7 +3093,7 @@ export namespace Shell {
         unregister(): void;
     }
 
-    module Screenshot {
+    namespace Screenshot {
         // Signal callback interfaces
 
         interface ScreenshotTaken {
@@ -3366,7 +3366,7 @@ export namespace Shell {
         screenshot_window_finish(result: Gio.AsyncResult): [boolean, Mtk.Rectangle];
     }
 
-    module SecureTextBuffer {
+    namespace SecureTextBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.TextBuffer.ConstructorProps {}
@@ -3384,7 +3384,7 @@ export namespace Shell {
         static ['new'](): SecureTextBuffer;
     }
 
-    module SquareBin {
+    namespace SquareBin {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
@@ -3966,7 +3966,7 @@ export namespace Shell {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Stack {
+    namespace Stack {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
@@ -4548,7 +4548,7 @@ export namespace Shell {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TrayIcon {
+    namespace TrayIcon {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
@@ -5154,7 +5154,7 @@ export namespace Shell {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TrayManager {
+    namespace TrayManager {
         // Signal callback interfaces
 
         interface TrayIconAdded {
@@ -5207,7 +5207,7 @@ export namespace Shell {
         unmanage_screen(): void;
     }
 
-    module WM {
+    namespace WM {
         // Signal callback interfaces
 
         interface ConfirmDisplayChange {
@@ -5439,7 +5439,7 @@ export namespace Shell {
         completed_unminimize(actor: Meta.WindowActor): void;
     }
 
-    module WindowPreview {
+    namespace WindowPreview {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
@@ -6031,7 +6031,7 @@ export namespace Shell {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WindowPreviewLayout {
+    namespace WindowPreviewLayout {
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.LayoutManager.ConstructorProps {
@@ -6080,7 +6080,7 @@ export namespace Shell {
         remove_window(window: Meta.Window): void;
     }
 
-    module WindowTracker {
+    namespace WindowTracker {
         // Signal callback interfaces
 
         interface StartupSequenceChanged {
@@ -6147,7 +6147,7 @@ export namespace Shell {
         get_window_app(metawin: Meta.Window): App;
     }
 
-    module WorkspaceBackground {
+    namespace WorkspaceBackground {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>

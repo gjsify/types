@@ -118,7 +118,7 @@ export namespace Epc {
         DEFAULT,
         PASSWORD_TEXT_NEEDED,
     }
-    module Consumer {
+    namespace Consumer {
         // Signal callback interfaces
 
         interface Authenticate {
@@ -212,7 +212,7 @@ export namespace Epc {
         set_username(username: string): void;
     }
 
-    module Dispatcher {
+    namespace Dispatcher {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -261,7 +261,7 @@ export namespace Epc {
         set_name(name: string): void;
     }
 
-    module Publisher {
+    namespace Publisher {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -375,7 +375,7 @@ export namespace Epc {
         set_service_name(name: string): void;
     }
 
-    module ServiceMonitor {
+    namespace ServiceMonitor {
         // Signal callback interfaces
 
         interface ScanningDone {

@@ -71,7 +71,7 @@ export namespace Gepub {
      * @returns a new #GBytes containing the updated XML data
      */
     function utils_replace_resources(content: GLib.Bytes | Uint8Array, path: string): GLib.Bytes;
-    module Archive {
+    namespace Archive {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -95,7 +95,7 @@ export namespace Gepub {
         read_entry(path: string): GLib.Bytes;
     }
 
-    module Doc {
+    namespace Doc {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -654,7 +654,7 @@ export namespace Gepub {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TextChunk {
+    namespace TextChunk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -678,7 +678,7 @@ export namespace Gepub {
         type_str(): string;
     }
 
-    module Widget {
+    namespace Widget {
         // Constructor properties interface
 
         interface ConstructorProps

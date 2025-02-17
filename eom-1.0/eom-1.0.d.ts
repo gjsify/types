@@ -279,7 +279,7 @@ export namespace Eom {
         SLIDE_SHOW,
         DISABLE_COLLECTION,
     }
-    module Application {
+    namespace Application {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -752,7 +752,7 @@ export namespace Eom {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ClipboardHandler {
+    namespace ClipboardHandler {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -782,7 +782,7 @@ export namespace Eom {
         copy_to_clipboard(clipboard: Gtk.Clipboard): void;
     }
 
-    module FileChooser {
+    namespace FileChooser {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1875,7 +1875,7 @@ export namespace Eom {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Image {
+    namespace Image {
         // Signal callback interfaces
 
         interface Changed {
@@ -2042,7 +2042,7 @@ export namespace Eom {
         undo(): void;
     }
 
-    module ImageSaveInfo {
+    namespace ImageSaveInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2075,7 +2075,7 @@ export namespace Eom {
         static new_from_uri(uri: string, format: GdkPixbuf.PixbufFormat): ImageSaveInfo;
     }
 
-    module Job {
+    namespace Job {
         // Signal callback interfaces
 
         interface Finished {
@@ -2144,7 +2144,7 @@ export namespace Eom {
         set_progress(progress: number): void;
     }
 
-    module JobCopy {
+    namespace JobCopy {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2168,7 +2168,7 @@ export namespace Eom {
         static ['new'](images: Image[], dest: string): JobCopy;
     }
 
-    module JobLoad {
+    namespace JobLoad {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2191,7 +2191,7 @@ export namespace Eom {
         static ['new'](image: Image, data: ImageData): JobLoad;
     }
 
-    module JobModel {
+    namespace JobModel {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2214,7 +2214,7 @@ export namespace Eom {
         static ['new'](file_list: Gio.File[]): JobModel;
     }
 
-    module JobSave {
+    namespace JobSave {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2238,7 +2238,7 @@ export namespace Eom {
         static ['new'](images: Image[]): JobSave;
     }
 
-    module JobSaveAs {
+    namespace JobSaveAs {
         // Constructor properties interface
 
         interface ConstructorProps extends JobSave.ConstructorProps {}
@@ -2263,7 +2263,7 @@ export namespace Eom {
         static ['new'](...args: never[]): any;
     }
 
-    module JobThumbnail {
+    namespace JobThumbnail {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2286,7 +2286,7 @@ export namespace Eom {
         static ['new'](image: Image): JobThumbnail;
     }
 
-    module JobTransform {
+    namespace JobTransform {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2309,7 +2309,7 @@ export namespace Eom {
         static ['new'](images: Image[], trans: Transform): JobTransform;
     }
 
-    module ListStore {
+    namespace ListStore {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3607,7 +3607,7 @@ export namespace Eom {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PropertiesDialog {
+    namespace PropertiesDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4060,7 +4060,7 @@ export namespace Eom {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScrollView {
+    namespace ScrollView {
         // Signal callback interfaces
 
         interface ZoomChanged {
@@ -4650,7 +4650,7 @@ export namespace Eom {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Sidebar {
+    namespace Sidebar {
         // Signal callback interfaces
 
         interface PageAdded {
@@ -5140,7 +5140,7 @@ export namespace Eom {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Statusbar {
+    namespace Statusbar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5569,7 +5569,7 @@ export namespace Eom {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ThumbNav {
+    namespace ThumbNav {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6056,7 +6056,7 @@ export namespace Eom {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ThumbView {
+    namespace ThumbView {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6811,7 +6811,7 @@ export namespace Eom {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Transform {
+    namespace Transform {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6854,7 +6854,7 @@ export namespace Eom {
         reverse(): Transform;
     }
 
-    module Window {
+    namespace Window {
         // Signal callback interfaces
 
         interface Prepared {
@@ -8087,7 +8087,7 @@ export namespace Eom {
         _init(...args: any[]): void;
     }
 
-    module ApplicationActivatable {
+    namespace ApplicationActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8123,7 +8123,7 @@ export namespace Eom {
         new (): ApplicationActivatable; // This allows `obj instanceof ApplicationActivatable`
     };
 
-    module WindowActivatable {
+    namespace WindowActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

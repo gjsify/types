@@ -907,7 +907,7 @@ export namespace Gladeui {
          */
         UNRECOGNIZED,
     }
-    module AdaptorChooser {
+    namespace AdaptorChooser {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1360,7 +1360,7 @@ export namespace Gladeui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module App {
+    namespace App {
         // Signal callback interfaces
 
         interface DocSearch {
@@ -1480,7 +1480,7 @@ export namespace Gladeui {
         static set_window(window: Gtk.Widget): void;
     }
 
-    module BaseEditor {
+    namespace BaseEditor {
         // Signal callback interfaces
 
         interface BuildChild {
@@ -2045,7 +2045,7 @@ export namespace Gladeui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CellRendererIcon {
+    namespace CellRendererIcon {
         // Signal callback interfaces
 
         interface Activate {
@@ -2101,7 +2101,7 @@ export namespace Gladeui {
         set_active(setting: boolean): void;
     }
 
-    module Clipboard {
+    namespace Clipboard {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2142,7 +2142,7 @@ export namespace Gladeui {
         widgets(): Widget[];
     }
 
-    module Command {
+    namespace Command {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2363,7 +2363,7 @@ export namespace Gladeui {
         unifies(other: Command): boolean;
     }
 
-    module DesignView {
+    namespace DesignView {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2821,7 +2821,7 @@ export namespace Gladeui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module EPropBool {
+    namespace EPropBool {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7118,7 +7118,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EPropCheck {
+    namespace EPropCheck {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11415,7 +11415,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EPropColor {
+    namespace EPropColor {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15712,7 +15712,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EPropEnum {
+    namespace EPropEnum {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20009,7 +20009,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EPropFlags {
+    namespace EPropFlags {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -24306,7 +24306,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EPropNamedIcon {
+    namespace EPropNamedIcon {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -28606,7 +28606,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EPropNumeric {
+    namespace EPropNumeric {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -32903,7 +32903,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EPropObject {
+    namespace EPropObject {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -37200,7 +37200,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EPropObjects {
+    namespace EPropObjects {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -41497,7 +41497,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EPropText {
+    namespace EPropText {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -45794,7 +45794,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EPropUnichar {
+    namespace EPropUnichar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -50091,7 +50091,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module Editor {
+    namespace Editor {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -50584,7 +50584,7 @@ export namespace Gladeui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module EditorProperty {
+    namespace EditorProperty {
         // Signal callback interfaces
 
         interface Commit {
@@ -55001,7 +55001,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EditorSkeleton {
+    namespace EditorSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -59313,7 +59313,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EditorTable {
+    namespace EditorTable {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -63632,7 +63632,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module Inspector {
+    namespace Inspector {
         // Signal callback interfaces
 
         interface ItemActivated {
@@ -64131,7 +64131,7 @@ export namespace Gladeui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module NamedIconChooserDialog {
+    namespace NamedIconChooserDialog {
         // Signal callback interfaces
 
         interface IconActivated {
@@ -64590,7 +64590,7 @@ export namespace Gladeui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Palette {
+    namespace Palette {
         // Signal callback interfaces
 
         interface Refresh {
@@ -65099,7 +65099,7 @@ export namespace Gladeui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Placeholder {
+    namespace Placeholder {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -65810,7 +65810,7 @@ export namespace Gladeui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Project {
+    namespace Project {
         // Signal callback interfaces
 
         interface ActivateSignalHandler {
@@ -67182,7 +67182,7 @@ export namespace Gladeui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Property {
+    namespace Property {
         // Signal callback interfaces
 
         interface TooltipChanged {
@@ -67401,7 +67401,7 @@ export namespace Gladeui {
         write(context: XmlContext, node: XmlNode): void;
     }
 
-    module PropertyLabel {
+    namespace PropertyLabel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -71744,7 +71744,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module PropertyShell {
+    namespace PropertyShell {
         // Signal callback interfaces
 
         interface PostCommit {
@@ -76122,7 +76122,7 @@ export namespace Gladeui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module Signal {
+    namespace Signal {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -76255,7 +76255,7 @@ export namespace Gladeui {
         write(context: XmlContext, node: XmlNode): void;
     }
 
-    module SignalEditor {
+    namespace SignalEditor {
         // Signal callback interfaces
 
         interface CallbackSuggestions {
@@ -76753,7 +76753,7 @@ export namespace Gladeui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SignalModel {
+    namespace SignalModel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -77646,7 +77646,7 @@ export namespace Gladeui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Widget {
+    namespace Widget {
         // Signal callback interfaces
 
         interface AddSignalHandler {
@@ -78351,7 +78351,7 @@ export namespace Gladeui {
         write_special_child_prop(object: GObject.Object, context: XmlContext, node: XmlNode): void;
     }
 
-    module WidgetAction {
+    namespace WidgetAction {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -78392,7 +78392,7 @@ export namespace Gladeui {
         set_visible(visible: boolean): void;
     }
 
-    module WidgetAdaptor {
+    namespace WidgetAdaptor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -79669,7 +79669,7 @@ export namespace Gladeui {
         verify_silent(name: string): boolean;
     }
 
-    module Editable {
+    namespace Editable {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {}

@@ -54,7 +54,7 @@ export namespace Gdm {
     function user_verifier_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     function worker_manager_interface_info(): Gio.DBusInterfaceInfo;
     function worker_manager_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
-    module ChooserProxy {
+    namespace ChooserProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -848,7 +848,7 @@ export namespace Gdm {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ChooserSkeleton {
+    namespace ChooserSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1328,7 +1328,7 @@ export namespace Gdm {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Client {
+    namespace Client {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1564,7 +1564,7 @@ export namespace Gdm {
         set_enabled_extensions(extensions: string[]): void;
     }
 
-    module GreeterProxy {
+    namespace GreeterProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2447,7 +2447,7 @@ export namespace Gdm {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GreeterSkeleton {
+    namespace GreeterSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3016,7 +3016,7 @@ export namespace Gdm {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ManagerProxy {
+    namespace ManagerProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3855,7 +3855,7 @@ export namespace Gdm {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ManagerSkeleton {
+    namespace ManagerSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4380,7 +4380,7 @@ export namespace Gdm {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RemoteGreeterProxy {
+    namespace RemoteGreeterProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5159,7 +5159,7 @@ export namespace Gdm {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RemoteGreeterSkeleton {
+    namespace RemoteGreeterSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5624,7 +5624,7 @@ export namespace Gdm {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UserVerifierChoiceListProxy {
+    namespace UserVerifierChoiceListProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6428,7 +6428,7 @@ export namespace Gdm {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UserVerifierChoiceListSkeleton {
+    namespace UserVerifierChoiceListSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6917,7 +6917,7 @@ export namespace Gdm {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UserVerifierProxy {
+    namespace UserVerifierProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7806,7 +7806,7 @@ export namespace Gdm {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UserVerifierSkeleton {
+    namespace UserVerifierSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8381,7 +8381,7 @@ export namespace Gdm {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WorkerManagerProxy {
+    namespace WorkerManagerProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9297,7 +9297,7 @@ export namespace Gdm {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WorkerManagerSkeleton {
+    namespace WorkerManagerSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10033,7 +10033,7 @@ export namespace Gdm {
         _init(...args: any[]): void;
     }
 
-    module Chooser {
+    namespace Chooser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10083,7 +10083,7 @@ export namespace Gdm {
         new (): Chooser; // This allows `obj instanceof Chooser`
     };
 
-    module Greeter {
+    namespace Greeter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10222,7 +10222,7 @@ export namespace Gdm {
         new (): Greeter; // This allows `obj instanceof Greeter`
     };
 
-    module Manager {
+    namespace Manager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10320,7 +10320,7 @@ export namespace Gdm {
         new (): Manager; // This allows `obj instanceof Manager`
     };
 
-    module RemoteGreeter {
+    namespace RemoteGreeter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10355,7 +10355,7 @@ export namespace Gdm {
         new (): RemoteGreeter; // This allows `obj instanceof RemoteGreeter`
     };
 
-    module UserVerifier {
+    namespace UserVerifier {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10500,7 +10500,7 @@ export namespace Gdm {
         new (): UserVerifier; // This allows `obj instanceof UserVerifier`
     };
 
-    module UserVerifierChoiceList {
+    namespace UserVerifierChoiceList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10556,7 +10556,7 @@ export namespace Gdm {
         new (): UserVerifierChoiceList; // This allows `obj instanceof UserVerifierChoiceList`
     };
 
-    module WorkerManager {
+    namespace WorkerManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

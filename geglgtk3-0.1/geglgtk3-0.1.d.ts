@@ -54,7 +54,7 @@ export namespace GeglGtk3 {
          */
         CONTENT,
     }
-    module View {
+    namespace View {
         // Signal callback interfaces
 
         interface DrawBackground {

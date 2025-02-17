@@ -501,7 +501,7 @@ export namespace Wp {
     enum SpaDeviceFeatures {
         ENABLED,
     }
-    module Client {
+    namespace Client {
         // Constructor properties interface
 
         interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
@@ -761,7 +761,7 @@ export namespace Wp {
         vfunc_pw_proxy_destroyed(): void;
     }
 
-    module ComponentLoader {
+    namespace ComponentLoader {
         // Constructor properties interface
 
         interface ConstructorProps extends Plugin.ConstructorProps {}
@@ -792,7 +792,7 @@ export namespace Wp {
         vfunc_supports_type(type: string): boolean;
     }
 
-    module Core {
+    namespace Core {
         // Signal callback interfaces
 
         interface Connected {
@@ -1067,7 +1067,7 @@ export namespace Wp {
         update_properties(updates: Properties): void;
     }
 
-    module Dbus {
+    namespace Dbus {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -1098,7 +1098,7 @@ export namespace Wp {
         get_state(): DBusState;
     }
 
-    module Device {
+    namespace Device {
         // Constructor properties interface
 
         interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
@@ -1351,7 +1351,7 @@ export namespace Wp {
         vfunc_pw_proxy_destroyed(): void;
     }
 
-    module Endpoint {
+    namespace Endpoint {
         // Constructor properties interface
 
         interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {
@@ -1641,7 +1641,7 @@ export namespace Wp {
         vfunc_pw_proxy_destroyed(): void;
     }
 
-    module Factory {
+    namespace Factory {
         // Constructor properties interface
 
         interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
@@ -1892,7 +1892,7 @@ export namespace Wp {
         vfunc_pw_proxy_destroyed(): void;
     }
 
-    module FeatureActivationTransition {
+    namespace FeatureActivationTransition {
         // Constructor properties interface
 
         interface ConstructorProps extends Transition.ConstructorProps, Gio.AsyncResult.ConstructorProps {}
@@ -2370,7 +2370,7 @@ export namespace Wp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GlobalProxy {
+    namespace GlobalProxy {
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -2433,7 +2433,7 @@ export namespace Wp {
         request_destroy(): void;
     }
 
-    module ImplEndpoint {
+    namespace ImplEndpoint {
         // Constructor properties interface
 
         interface ConstructorProps extends Endpoint.ConstructorProps, PipewireObject.ConstructorProps {
@@ -2688,7 +2688,7 @@ export namespace Wp {
         vfunc_pw_proxy_destroyed(): void;
     }
 
-    module ImplMetadata {
+    namespace ImplMetadata {
         // Constructor properties interface
 
         interface ConstructorProps extends Metadata.ConstructorProps {
@@ -2720,7 +2720,7 @@ export namespace Wp {
         static new_full(core: Core, name?: string | null, properties?: Properties | null): ImplMetadata;
     }
 
-    module ImplModule {
+    namespace ImplModule {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2780,7 +2780,7 @@ export namespace Wp {
         static load_file(core: Core, name: string, filename: string, properties?: Properties | null): ImplModule | null;
     }
 
-    module ImplNode {
+    namespace ImplNode {
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps, PipewireObject.ConstructorProps {
@@ -3042,7 +3042,7 @@ export namespace Wp {
         vfunc_pw_proxy_destroyed(): void;
     }
 
-    module Link {
+    namespace Link {
         // Signal callback interfaces
 
         interface StateChanged {
@@ -3334,7 +3334,7 @@ export namespace Wp {
         vfunc_pw_proxy_destroyed(): void;
     }
 
-    module Metadata {
+    namespace Metadata {
         // Signal callback interfaces
 
         interface Changed {
@@ -3417,7 +3417,7 @@ export namespace Wp {
         set(...args: never[]): any;
     }
 
-    module Node {
+    namespace Node {
         // Signal callback interfaces
 
         interface PortsChanged {
@@ -3784,7 +3784,7 @@ export namespace Wp {
         vfunc_pw_proxy_destroyed(): void;
     }
 
-    module Object {
+    namespace Object {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3931,7 +3931,7 @@ export namespace Wp {
         update_features(activated: ObjectFeatures, deactivated: ObjectFeatures): void;
     }
 
-    module ObjectManager {
+    namespace ObjectManager {
         // Signal callback interfaces
 
         interface Installed {
@@ -4052,7 +4052,7 @@ export namespace Wp {
         request_object_features(object_type: GObject.GType, wanted_features: ObjectFeatures): void;
     }
 
-    module Plugin {
+    namespace Plugin {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -4105,7 +4105,7 @@ export namespace Wp {
         register(): void;
     }
 
-    module Port {
+    namespace Port {
         // Constructor properties interface
 
         interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
@@ -4367,7 +4367,7 @@ export namespace Wp {
         vfunc_pw_proxy_destroyed(): void;
     }
 
-    module Proxy {
+    namespace Proxy {
         // Signal callback interfaces
 
         interface Bound {
@@ -4475,7 +4475,7 @@ export namespace Wp {
         set_pw_proxy(proxy?: any | null): void;
     }
 
-    module SessionItem {
+    namespace SessionItem {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -4611,7 +4611,7 @@ export namespace Wp {
         set_properties(props: Properties): void;
     }
 
-    module SiFactory {
+    namespace SiFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4688,7 +4688,7 @@ export namespace Wp {
         get_name(): string;
     }
 
-    module SpaDevice {
+    namespace SpaDevice {
         // Signal callback interfaces
 
         interface CreateObject {
@@ -4833,7 +4833,7 @@ export namespace Wp {
         parent(): SpaType;
     }
 
-    module State {
+    namespace State {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4891,7 +4891,7 @@ export namespace Wp {
         save(props: Properties): boolean;
     }
 
-    module Transition {
+    namespace Transition {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncResult.ConstructorProps {
@@ -6675,7 +6675,7 @@ export namespace Wp {
 
     type StateClass = typeof State;
     type TransitionClass = typeof Transition;
-    module PipewireObject {
+    namespace PipewireObject {
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -6898,7 +6898,7 @@ export namespace Wp {
         new (): PipewireObject; // This allows `obj instanceof PipewireObject`
     };
 
-    module SiAcquisition {
+    namespace SiAcquisition {
         // Constructor properties interface
 
         interface ConstructorProps extends SessionItem.ConstructorProps {}
@@ -6990,7 +6990,7 @@ export namespace Wp {
         new (): SiAcquisition; // This allows `obj instanceof SiAcquisition`
     };
 
-    module SiAdapter {
+    namespace SiAdapter {
         // Constructor properties interface
 
         interface ConstructorProps extends SessionItem.ConstructorProps {}
@@ -7092,7 +7092,7 @@ export namespace Wp {
         new (): SiAdapter; // This allows `obj instanceof SiAdapter`
     };
 
-    module SiEndpoint {
+    namespace SiEndpoint {
         // Constructor properties interface
 
         interface ConstructorProps extends SessionItem.ConstructorProps {}
@@ -7148,7 +7148,7 @@ export namespace Wp {
         new (): SiEndpoint; // This allows `obj instanceof SiEndpoint`
     };
 
-    module SiLink {
+    namespace SiLink {
         // Constructor properties interface
 
         interface ConstructorProps extends SessionItem.ConstructorProps {}
@@ -7208,7 +7208,7 @@ export namespace Wp {
         new (): SiLink; // This allows `obj instanceof SiLink`
     };
 
-    module SiLinkable {
+    namespace SiLinkable {
         // Constructor properties interface
 
         interface ConstructorProps extends SessionItem.ConstructorProps {}

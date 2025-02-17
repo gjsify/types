@@ -374,7 +374,7 @@ export namespace Goa {
      * @returns The last property id.
      */
     function todo_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
-    module AccountProxy {
+    namespace AccountProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1619,7 +1619,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AccountSkeleton {
+    namespace AccountSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2495,7 +2495,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CalendarProxy {
+    namespace CalendarProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3347,7 +3347,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CalendarSkeleton {
+    namespace CalendarSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3830,7 +3830,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ChatProxy {
+    namespace ChatProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4659,7 +4659,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ChatSkeleton {
+    namespace ChatSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5119,7 +5119,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface AccountAdded {
@@ -5921,7 +5921,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ContactsProxy {
+    namespace ContactsProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6773,7 +6773,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ContactsSkeleton {
+    namespace ContactsSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7256,7 +7256,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DocumentsProxy {
+    namespace DocumentsProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8085,7 +8085,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DocumentsSkeleton {
+    namespace DocumentsSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8545,7 +8545,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExchangeProxy {
+    namespace ExchangeProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9397,7 +9397,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExchangeSkeleton {
+    namespace ExchangeSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9880,7 +9880,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FilesProxy {
+    namespace FilesProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10732,7 +10732,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FilesSkeleton {
+    namespace FilesSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11215,7 +11215,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MailProxy {
+    namespace MailProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12291,7 +12291,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MailSkeleton {
+    namespace MailSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12998,7 +12998,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ManagerProxy {
+    namespace ManagerProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14017,7 +14017,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ManagerSkeleton {
+    namespace ManagerSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14667,7 +14667,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MapsProxy {
+    namespace MapsProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15496,7 +15496,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MapsSkeleton {
+    namespace MapsSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15956,7 +15956,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MediaServerProxy {
+    namespace MediaServerProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16808,7 +16808,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MediaServerSkeleton {
+    namespace MediaServerSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17291,7 +17291,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MusicProxy {
+    namespace MusicProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18120,7 +18120,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MusicSkeleton {
+    namespace MusicSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18580,7 +18580,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module OAuth2BasedProxy {
+    namespace OAuth2BasedProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19499,7 +19499,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module OAuth2BasedSkeleton {
+    namespace OAuth2BasedSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20049,7 +20049,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module OAuthBasedProxy {
+    namespace OAuthBasedProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20974,7 +20974,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module OAuthBasedSkeleton {
+    namespace OAuthBasedSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21530,7 +21530,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ObjectManagerClient {
+    namespace ObjectManagerClient {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22403,7 +22403,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ObjectProxy {
+    namespace ObjectProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23147,7 +23147,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ObjectSkeleton {
+    namespace ObjectSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23994,7 +23994,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PasswordBasedProxy {
+    namespace PasswordBasedProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -24892,7 +24892,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PasswordBasedSkeleton {
+    namespace PasswordBasedSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -25421,7 +25421,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PhotosProxy {
+    namespace PhotosProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -26250,7 +26250,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PhotosSkeleton {
+    namespace PhotosSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -26710,7 +26710,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PrintersProxy {
+    namespace PrintersProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -27539,7 +27539,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PrintersSkeleton {
+    namespace PrintersSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -27999,7 +27999,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ReadLaterProxy {
+    namespace ReadLaterProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -28828,7 +28828,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ReadLaterSkeleton {
+    namespace ReadLaterSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -29288,7 +29288,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TicketingProxy {
+    namespace TicketingProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -30184,7 +30184,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TicketingSkeleton {
+    namespace TicketingSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -30711,7 +30711,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TodoProxy {
+    namespace TodoProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31540,7 +31540,7 @@ export namespace Goa {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TodoSkeleton {
+    namespace TodoSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -32409,7 +32409,7 @@ export namespace Goa {
         _init(...args: any[]): void;
     }
 
-    module Account {
+    namespace Account {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -32903,7 +32903,7 @@ export namespace Goa {
         new (): Account; // This allows `obj instanceof Account`
     };
 
-    module Calendar {
+    namespace Calendar {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -32959,7 +32959,7 @@ export namespace Goa {
         new (): Calendar; // This allows `obj instanceof Calendar`
     };
 
-    module Chat {
+    namespace Chat {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -32987,7 +32987,7 @@ export namespace Goa {
         new (): Chat; // This allows `obj instanceof Chat`
     };
 
-    module Contacts {
+    namespace Contacts {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33043,7 +33043,7 @@ export namespace Goa {
         new (): Contacts; // This allows `obj instanceof Contacts`
     };
 
-    module Documents {
+    namespace Documents {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -33071,7 +33071,7 @@ export namespace Goa {
         new (): Documents; // This allows `obj instanceof Documents`
     };
 
-    module Exchange {
+    namespace Exchange {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33127,7 +33127,7 @@ export namespace Goa {
         new (): Exchange; // This allows `obj instanceof Exchange`
     };
 
-    module Files {
+    namespace Files {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33183,7 +33183,7 @@ export namespace Goa {
         new (): Files; // This allows `obj instanceof Files`
     };
 
-    module Mail {
+    namespace Mail {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33495,7 +33495,7 @@ export namespace Goa {
         new (): Mail; // This allows `obj instanceof Mail`
     };
 
-    module Manager {
+    namespace Manager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -33719,7 +33719,7 @@ export namespace Goa {
         new (): Manager; // This allows `obj instanceof Manager`
     };
 
-    module Maps {
+    namespace Maps {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -33747,7 +33747,7 @@ export namespace Goa {
         new (): Maps; // This allows `obj instanceof Maps`
     };
 
-    module MediaServer {
+    namespace MediaServer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33803,7 +33803,7 @@ export namespace Goa {
         new (): MediaServer; // This allows `obj instanceof MediaServer`
     };
 
-    module Music {
+    namespace Music {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -33831,7 +33831,7 @@ export namespace Goa {
         new (): Music; // This allows `obj instanceof Music`
     };
 
-    module OAuth2Based {
+    namespace OAuth2Based {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33961,7 +33961,7 @@ export namespace Goa {
         new (): OAuth2Based; // This allows `obj instanceof OAuth2Based`
     };
 
-    module OAuthBased {
+    namespace OAuthBased {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34097,7 +34097,7 @@ export namespace Goa {
         new (): OAuthBased; // This allows `obj instanceof OAuthBased`
     };
 
-    module Object {
+    namespace Object {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.DBusObject.ConstructorProps {
@@ -34420,7 +34420,7 @@ export namespace Goa {
         new (): Object; // This allows `obj instanceof Object`
     };
 
-    module PasswordBased {
+    namespace PasswordBased {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -34523,7 +34523,7 @@ export namespace Goa {
         new (): PasswordBased; // This allows `obj instanceof PasswordBased`
     };
 
-    module Photos {
+    namespace Photos {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -34551,7 +34551,7 @@ export namespace Goa {
         new (): Photos; // This allows `obj instanceof Photos`
     };
 
-    module Printers {
+    namespace Printers {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -34579,7 +34579,7 @@ export namespace Goa {
         new (): Printers; // This allows `obj instanceof Printers`
     };
 
-    module ReadLater {
+    namespace ReadLater {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -34607,7 +34607,7 @@ export namespace Goa {
         new (): ReadLater; // This allows `obj instanceof ReadLater`
     };
 
-    module Ticketing {
+    namespace Ticketing {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34711,7 +34711,7 @@ export namespace Goa {
         new (): Ticketing; // This allows `obj instanceof Ticketing`
     };
 
-    module Todo {
+    namespace Todo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

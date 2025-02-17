@@ -44,7 +44,7 @@ export namespace GSSDP {
      */
     const ALL_RESOURCES: string;
     function error_quark(): GLib.Quark;
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface MessageReceived {
@@ -722,7 +722,7 @@ export namespace GSSDP {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ResourceBrowser {
+    namespace ResourceBrowser {
         // Signal callback interfaces
 
         interface ResourceAvailable {
@@ -828,7 +828,7 @@ export namespace GSSDP {
         set_target(target: string): void;
     }
 
-    module ResourceGroup {
+    namespace ResourceGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

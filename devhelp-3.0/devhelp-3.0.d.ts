@@ -135,7 +135,7 @@ export namespace Devhelp {
          */
         DEPRECATED,
     }
-    module AssistantView {
+    namespace AssistantView {
         // Signal callback interfaces
 
         interface OpenUri {
@@ -588,7 +588,7 @@ export namespace Devhelp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Book {
+    namespace Book {
         // Signal callback interfaces
 
         interface Deleted {
@@ -664,7 +664,7 @@ export namespace Devhelp {
         get_tree(): GLib.Node;
     }
 
-    module BookList {
+    namespace BookList {
         // Signal callback interfaces
 
         interface AddBook {
@@ -763,7 +763,7 @@ export namespace Devhelp {
         remove_book(book: Book): void;
     }
 
-    module BookListBuilder {
+    namespace BookListBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -843,7 +843,7 @@ export namespace Devhelp {
         read_books_disabled_setting(settings?: Settings | null): void;
     }
 
-    module BookListDirectory {
+    namespace BookListDirectory {
         // Constructor properties interface
 
         interface ConstructorProps extends BookList.ConstructorProps {
@@ -877,7 +877,7 @@ export namespace Devhelp {
         get_directory(): Gio.File;
     }
 
-    module BookManager {
+    namespace BookManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -899,7 +899,7 @@ export namespace Devhelp {
         populate(): void;
     }
 
-    module BookTree {
+    namespace BookTree {
         // Signal callback interfaces
 
         interface LinkSelected {
@@ -1462,7 +1462,7 @@ export namespace Devhelp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Completion {
+    namespace Completion {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1519,7 +1519,7 @@ export namespace Devhelp {
         sort(): void;
     }
 
-    module KeywordModel {
+    namespace KeywordModel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.TreeModel.ConstructorProps {}
@@ -2365,7 +2365,7 @@ export namespace Devhelp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Notebook {
+    namespace Notebook {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2816,7 +2816,7 @@ export namespace Devhelp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Profile {
+    namespace Profile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2856,7 +2856,7 @@ export namespace Devhelp {
         get_settings(): Settings;
     }
 
-    module ProfileBuilder {
+    namespace ProfileBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2894,7 +2894,7 @@ export namespace Devhelp {
         set_settings(settings: Settings): void;
     }
 
-    module SearchBar {
+    namespace SearchBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3338,7 +3338,7 @@ export namespace Devhelp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Settings {
+    namespace Settings {
         // Signal callback interfaces
 
         interface BooksDisabledChanged {
@@ -3540,7 +3540,7 @@ export namespace Devhelp {
         thaw_books_disabled_changed(): void;
     }
 
-    module SettingsBuilder {
+    namespace SettingsBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3578,7 +3578,7 @@ export namespace Devhelp {
         set_fonts_path(fonts_path: string): void;
     }
 
-    module Sidebar {
+    namespace Sidebar {
         // Signal callback interfaces
 
         interface LinkSelected {
@@ -4076,7 +4076,7 @@ export namespace Devhelp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Tab {
+    namespace Tab {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4540,7 +4540,7 @@ export namespace Devhelp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TabLabel {
+    namespace TabLabel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4998,7 +4998,7 @@ export namespace Devhelp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WebView {
+    namespace WebView {
         // Signal callback interfaces
 
         interface OpenNewTab {

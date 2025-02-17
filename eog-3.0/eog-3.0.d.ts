@@ -349,7 +349,7 @@ export namespace Eog {
         DISABLE_GALLERY,
         SINGLE_WINDOW,
     }
-    module Application {
+    namespace Application {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -825,7 +825,7 @@ export namespace Eog {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ClipboardHandler {
+    namespace ClipboardHandler {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -855,7 +855,7 @@ export namespace Eog {
         copy_to_clipboard(clipboard: Gtk.Clipboard): void;
     }
 
-    module DetailsDialog {
+    namespace DetailsDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1290,7 +1290,7 @@ export namespace Eog {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FileChooser {
+    namespace FileChooser {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2383,7 +2383,7 @@ export namespace Eog {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Image {
+    namespace Image {
         // Signal callback interfaces
 
         interface Changed {
@@ -2555,7 +2555,7 @@ export namespace Eog {
         undo(): void;
     }
 
-    module ImageSaveInfo {
+    namespace ImageSaveInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2588,7 +2588,7 @@ export namespace Eog {
         static new_from_uri(uri: string, format: GdkPixbuf.PixbufFormat): ImageSaveInfo;
     }
 
-    module Job {
+    namespace Job {
         // Signal callback interfaces
 
         interface Cancelled {
@@ -2663,7 +2663,7 @@ export namespace Eog {
         set_progress(progress: number): void;
     }
 
-    module JobCopy {
+    namespace JobCopy {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2687,7 +2687,7 @@ export namespace Eog {
         static ['new'](images: Image[], destination: string): JobCopy;
     }
 
-    module JobLoad {
+    namespace JobLoad {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2710,7 +2710,7 @@ export namespace Eog {
         static ['new'](image: Image, data: ImageData): JobLoad;
     }
 
-    module JobModel {
+    namespace JobModel {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2733,7 +2733,7 @@ export namespace Eog {
         static ['new'](file_list: Gio.File[]): JobModel;
     }
 
-    module JobSave {
+    namespace JobSave {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2757,7 +2757,7 @@ export namespace Eog {
         static ['new'](images: Image[]): JobSave;
     }
 
-    module JobSaveAs {
+    namespace JobSaveAs {
         // Constructor properties interface
 
         interface ConstructorProps extends JobSave.ConstructorProps {}
@@ -2783,7 +2783,7 @@ export namespace Eog {
         static ['new'](...args: never[]): any;
     }
 
-    module JobThumbnail {
+    namespace JobThumbnail {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2806,7 +2806,7 @@ export namespace Eog {
         static ['new'](image: Image): JobThumbnail;
     }
 
-    module JobTransform {
+    namespace JobTransform {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2829,7 +2829,7 @@ export namespace Eog {
         static ['new'](images: Image[], transform: Transform): JobTransform;
     }
 
-    module ListStore {
+    namespace ListStore {
         // Signal callback interfaces
 
         interface DrawThumbnail {
@@ -4145,7 +4145,7 @@ export namespace Eog {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RemotePresenter {
+    namespace RemotePresenter {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4599,7 +4599,7 @@ export namespace Eog {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScrollView {
+    namespace ScrollView {
         // Signal callback interfaces
 
         interface NextImage {
@@ -5328,7 +5328,7 @@ export namespace Eog {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Sidebar {
+    namespace Sidebar {
         // Signal callback interfaces
 
         interface PageAdded {
@@ -5820,7 +5820,7 @@ export namespace Eog {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Statusbar {
+    namespace Statusbar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6249,7 +6249,7 @@ export namespace Eog {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ThumbNav {
+    namespace ThumbNav {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6736,7 +6736,7 @@ export namespace Eog {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ThumbView {
+    namespace ThumbView {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7491,7 +7491,7 @@ export namespace Eog {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Transform {
+    namespace Transform {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7534,7 +7534,7 @@ export namespace Eog {
         reverse(): Transform;
     }
 
-    module URIConverter {
+    namespace URIConverter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7603,7 +7603,7 @@ export namespace Eog {
         requires_exif(): boolean;
     }
 
-    module Window {
+    namespace Window {
         // Signal callback interfaces
 
         interface Prepared {
@@ -8863,7 +8863,7 @@ export namespace Eog {
         _init(...args: any[]): void;
     }
 
-    module ApplicationActivatable {
+    namespace ApplicationActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8899,7 +8899,7 @@ export namespace Eog {
         new (): ApplicationActivatable; // This allows `obj instanceof ApplicationActivatable`
     };
 
-    module WindowActivatable {
+    namespace WindowActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

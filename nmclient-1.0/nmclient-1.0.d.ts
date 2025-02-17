@@ -1229,7 +1229,7 @@ export namespace NMClient {
          */
         USER_REQUESTED,
     }
-    module AccessPoint {
+    namespace AccessPoint {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2110,7 +2110,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ActiveConnection {
+    namespace ActiveConnection {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3004,7 +3004,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface AnyDeviceAdded {
@@ -4226,7 +4226,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DHCP4Config {
+    namespace DHCP4Config {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4956,7 +4956,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DHCP6Config {
+    namespace DHCP6Config {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5686,7 +5686,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Device {
+    namespace Device {
         // Signal callback interfaces
 
         interface StateChanged {
@@ -6886,7 +6886,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DeviceAdsl {
+    namespace DeviceAdsl {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7527,7 +7527,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DeviceBond {
+    namespace DeviceBond {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8193,7 +8193,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DeviceBridge {
+    namespace DeviceBridge {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8859,7 +8859,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DeviceBt {
+    namespace DeviceBt {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9532,7 +9532,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DeviceEthernet {
+    namespace DeviceEthernet {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10213,7 +10213,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DeviceGeneric {
+    namespace DeviceGeneric {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10871,7 +10871,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DeviceInfiniband {
+    namespace DeviceInfiniband {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11527,7 +11527,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DeviceModem {
+    namespace DeviceModem {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12198,7 +12198,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DeviceOlpcMesh {
+    namespace DeviceOlpcMesh {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12869,7 +12869,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DeviceTeam {
+    namespace DeviceTeam {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13535,7 +13535,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DeviceVlan {
+    namespace DeviceVlan {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14208,7 +14208,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DeviceWifi {
+    namespace DeviceWifi {
         // Signal callback interfaces
 
         interface AccessPointAdded {
@@ -14976,7 +14976,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DeviceWimax {
+    namespace DeviceWimax {
         // Signal callback interfaces
 
         interface NspAdded {
@@ -15763,7 +15763,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module IP4Config {
+    namespace IP4Config {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16552,7 +16552,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module IP6Config {
+    namespace IP6Config {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17337,7 +17337,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Object {
+    namespace Object {
         // Signal callback interfaces
 
         interface ObjectCreationFailed {
@@ -18088,7 +18088,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RemoteConnection {
+    namespace RemoteConnection {
         // Signal callback interfaces
 
         interface Removed {
@@ -18884,7 +18884,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RemoteSettings {
+    namespace RemoteSettings {
         // Signal callback interfaces
 
         interface ConnectionsRead {
@@ -19751,7 +19751,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SecretAgent {
+    namespace SecretAgent {
         // Signal callback interfaces
 
         interface RegistrationResult {
@@ -19935,7 +19935,7 @@ export namespace NMClient {
         unregister(): boolean;
     }
 
-    module VPNConnection {
+    namespace VPNConnection {
         // Signal callback interfaces
 
         interface VpnStateChanged {
@@ -20614,7 +20614,7 @@ export namespace NMClient {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WimaxNsp {
+    namespace WimaxNsp {
         // Constructor properties interface
 
         interface ConstructorProps

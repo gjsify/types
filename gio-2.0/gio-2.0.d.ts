@@ -6833,7 +6833,7 @@ export namespace Gio {
          */
         PKCS11_CONTEXT_SPECIFIC,
     }
-    module AppInfoMonitor {
+    namespace AppInfoMonitor {
         // Signal callback interfaces
 
         interface Changed {
@@ -6924,7 +6924,7 @@ export namespace Gio {
         static get(): AppInfoMonitor;
     }
 
-    module AppLaunchContext {
+    namespace AppLaunchContext {
         // Signal callback interfaces
 
         interface LaunchFailed {
@@ -7083,7 +7083,7 @@ export namespace Gio {
         unsetenv(variable: string): void;
     }
 
-    module Application {
+    namespace Application {
         // Signal callback interfaces
 
         interface Activate {
@@ -9114,7 +9114,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ApplicationCommandLine {
+    namespace ApplicationCommandLine {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9583,7 +9583,7 @@ export namespace Gio {
         set_exit_status(exit_status: number): void;
     }
 
-    module BufferedInputStream {
+    namespace BufferedInputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends FilterInputStream.ConstructorProps, Seekable.ConstructorProps {
@@ -10327,7 +10327,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BufferedOutputStream {
+    namespace BufferedOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends FilterOutputStream.ConstructorProps, Seekable.ConstructorProps {
@@ -10917,7 +10917,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BytesIcon {
+    namespace BytesIcon {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11492,7 +11492,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Cancellable {
+    namespace Cancellable {
         // Signal callback interfaces
 
         interface Cancelled {
@@ -11712,7 +11712,7 @@ export namespace Gio {
         source_new(): GLib.Source;
     }
 
-    module CharsetConverter {
+    namespace CharsetConverter {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12475,7 +12475,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ConverterInputStream {
+    namespace ConverterInputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends FilterInputStream.ConstructorProps, PollableInputStream.ConstructorProps {
@@ -13387,7 +13387,7 @@ export namespace Gio {
         createSyncIterator(count?: number, priority?: number): IterableIterator<GLib.Bytes>;
     }
 
-    module ConverterOutputStream {
+    namespace ConverterOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends FilterOutputStream.ConstructorProps, PollableOutputStream.ConstructorProps {
@@ -14783,7 +14783,7 @@ export namespace Gio {
         vfunc_writev_fn(vectors: OutputVector[], cancellable?: Cancellable | null): [boolean, number];
     }
 
-    module Credentials {
+    namespace Credentials {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -14900,7 +14900,7 @@ export namespace Gio {
         to_string(): string;
     }
 
-    module DBusActionGroup {
+    namespace DBusActionGroup {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15856,7 +15856,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DBusAuthObserver {
+    namespace DBusAuthObserver {
         // Signal callback interfaces
 
         interface AllowMechanism {
@@ -15983,7 +15983,7 @@ export namespace Gio {
         authorize_authenticated_peer(stream: IOStream, credentials?: Credentials | null): boolean;
     }
 
-    module DBusConnection {
+    namespace DBusConnection {
         // Signal callback interfaces
 
         interface Closed {
@@ -18250,7 +18250,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DBusInterfaceSkeleton {
+    namespace DBusInterfaceSkeleton {
         // Signal callback interfaces
 
         interface GAuthorizeMethod {
@@ -18857,7 +18857,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DBusMenuModel {
+    namespace DBusMenuModel {
         // Constructor properties interface
 
         interface ConstructorProps extends MenuModel.ConstructorProps {}
@@ -18895,7 +18895,7 @@ export namespace Gio {
         static get(connection: DBusConnection, bus_name: string | null, object_path: string): DBusMenuModel;
     }
 
-    module DBusMessage {
+    namespace DBusMessage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -19245,7 +19245,7 @@ export namespace Gio {
         to_gerror(): boolean;
     }
 
-    module DBusMethodInvocation {
+    namespace DBusMethodInvocation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19428,7 +19428,7 @@ export namespace Gio {
         return_value_with_unix_fd_list(parameters?: GLib.Variant | null, fd_list?: UnixFDList | null): void;
     }
 
-    module DBusObjectManagerClient {
+    namespace DBusObjectManagerClient {
         // Signal callback interfaces
 
         interface InterfaceProxyPropertiesChanged {
@@ -20603,7 +20603,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DBusObjectManagerServer {
+    namespace DBusObjectManagerServer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DBusObjectManager.ConstructorProps {
@@ -21184,7 +21184,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DBusObjectProxy {
+    namespace DBusObjectProxy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DBusObject.ConstructorProps {
@@ -21683,7 +21683,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DBusObjectSkeleton {
+    namespace DBusObjectSkeleton {
         // Signal callback interfaces
 
         interface AuthorizeMethod {
@@ -22235,7 +22235,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DBusProxy {
+    namespace DBusProxy {
         // Signal callback interfaces
 
         interface GPropertiesChanged {
@@ -23815,7 +23815,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DBusServer {
+    namespace DBusServer {
         // Signal callback interfaces
 
         interface NewConnection {
@@ -24447,7 +24447,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataInputStream {
+    namespace DataInputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends BufferedInputStream.ConstructorProps, Seekable.ConstructorProps {
@@ -25406,7 +25406,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataOutputStream {
+    namespace DataOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends FilterOutputStream.ConstructorProps, Seekable.ConstructorProps {
@@ -26016,7 +26016,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DebugControllerDBus {
+    namespace DebugControllerDBus {
         // Signal callback interfaces
 
         interface Authorize {
@@ -26721,7 +26721,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DesktopAppInfo {
+    namespace DesktopAppInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, AppInfo.ConstructorProps {
@@ -27840,7 +27840,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Emblem {
+    namespace Emblem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Icon.ConstructorProps {
@@ -28359,7 +28359,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module EmblemedIcon {
+    namespace EmblemedIcon {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Icon.ConstructorProps {
@@ -28880,7 +28880,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FileEnumerator {
+    namespace FileEnumerator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -29516,7 +29516,7 @@ export namespace Gio {
         set_pending(pending: boolean): void;
     }
 
-    module FileIOStream {
+    namespace FileIOStream {
         // Constructor properties interface
 
         interface ConstructorProps extends IOStream.ConstructorProps, Seekable.ConstructorProps {}
@@ -30155,7 +30155,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FileIcon {
+    namespace FileIcon {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -30732,7 +30732,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FileInfo {
+    namespace FileInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -31322,7 +31322,7 @@ export namespace Gio {
         unset_attribute_mask(): void;
     }
 
-    module FileInputStream {
+    namespace FileInputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends InputStream.ConstructorProps, Seekable.ConstructorProps {}
@@ -31949,7 +31949,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FileMonitor {
+    namespace FileMonitor {
         // Signal callback interfaces
 
         interface Changed {
@@ -32062,7 +32062,7 @@ export namespace Gio {
         set_rate_limit(limit_msecs: number): void;
     }
 
-    module FileOutputStream {
+    namespace FileOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends OutputStream.ConstructorProps, Seekable.ConstructorProps {}
@@ -32696,7 +32696,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FilenameCompleter {
+    namespace FilenameCompleter {
         // Signal callback interfaces
 
         interface GotCompletionData {
@@ -32759,7 +32759,7 @@ export namespace Gio {
         set_dirs_only(dirs_only: boolean): void;
     }
 
-    module FilterInputStream {
+    namespace FilterInputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends InputStream.ConstructorProps {
@@ -32826,7 +32826,7 @@ export namespace Gio {
         set_close_base_stream(close_base: boolean): void;
     }
 
-    module FilterOutputStream {
+    namespace FilterOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends OutputStream.ConstructorProps {
@@ -32885,7 +32885,7 @@ export namespace Gio {
         set_close_base_stream(close_base: boolean): void;
     }
 
-    module IOModule {
+    namespace IOModule {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {}
@@ -33383,7 +33383,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module IOStream {
+    namespace IOStream {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33681,7 +33681,7 @@ export namespace Gio {
         ): void;
     }
 
-    module InetAddress {
+    namespace InetAddress {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33938,7 +33938,7 @@ export namespace Gio {
         to_string(): string;
     }
 
-    module InetAddressMask {
+    namespace InetAddressMask {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Initable.ConstructorProps {
@@ -34507,7 +34507,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module InetSocketAddress {
+    namespace InetSocketAddress {
         // Constructor properties interface
 
         interface ConstructorProps extends SocketAddress.ConstructorProps, SocketConnectable.ConstructorProps {
@@ -35041,7 +35041,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module InputStream {
+    namespace InputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35829,7 +35829,7 @@ export namespace Gio {
         createSyncIterator(count?: number, priority?: number): IterableIterator<GLib.Bytes>;
     }
 
-    module ListStore {
+    namespace ListStore {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -36496,7 +36496,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MemoryInputStream {
+    namespace MemoryInputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -37911,7 +37911,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MemoryOutputStream {
+    namespace MemoryOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -39855,7 +39855,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Menu {
+    namespace Menu {
         // Constructor properties interface
 
         interface ConstructorProps extends MenuModel.ConstructorProps {}
@@ -40026,7 +40026,7 @@ export namespace Gio {
         remove_all(): void;
     }
 
-    module MenuAttributeIter {
+    namespace MenuAttributeIter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -40117,7 +40117,7 @@ export namespace Gio {
         next(): boolean;
     }
 
-    module MenuItem {
+    namespace MenuItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -40306,7 +40306,7 @@ export namespace Gio {
         set_submenu(submenu?: MenuModel | null): void;
     }
 
-    module MenuLinkIter {
+    namespace MenuLinkIter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -40393,7 +40393,7 @@ export namespace Gio {
         next(): boolean;
     }
 
-    module MenuModel {
+    namespace MenuModel {
         // Signal callback interfaces
 
         interface ItemsChanged {
@@ -40705,7 +40705,7 @@ export namespace Gio {
         iterate_item_links(item_index: number): MenuLinkIter;
     }
 
-    module MountOperation {
+    namespace MountOperation {
         // Signal callback interfaces
 
         interface Aborted {
@@ -41056,7 +41056,7 @@ export namespace Gio {
         set_username(username?: string | null): void;
     }
 
-    module NativeSocketAddress {
+    namespace NativeSocketAddress {
         // Constructor properties interface
 
         interface ConstructorProps extends SocketAddress.ConstructorProps, SocketConnectable.ConstructorProps {}
@@ -41533,7 +41533,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module NativeVolumeMonitor {
+    namespace NativeVolumeMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends VolumeMonitor.ConstructorProps {}
@@ -41549,7 +41549,7 @@ export namespace Gio {
         _init(...args: any[]): void;
     }
 
-    module NetworkAddress {
+    namespace NetworkAddress {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SocketConnectable.ConstructorProps {
@@ -42112,7 +42112,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module NetworkService {
+    namespace NetworkService {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SocketConnectable.ConstructorProps {
@@ -42650,7 +42650,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Notification {
+    namespace Notification {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -42807,7 +42807,7 @@ export namespace Gio {
         set_urgent(urgent: boolean): void;
     }
 
-    module OutputStream {
+    namespace OutputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -44025,7 +44025,7 @@ export namespace Gio {
         writev_finish(result: AsyncResult): [boolean, number];
     }
 
-    module Permission {
+    namespace Permission {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -44322,7 +44322,7 @@ export namespace Gio {
         release_finish(result: AsyncResult): boolean;
     }
 
-    module PropertyAction {
+    namespace PropertyAction {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Action.ConstructorProps {
@@ -45072,7 +45072,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ProxyAddress {
+    namespace ProxyAddress {
         // Constructor properties interface
 
         interface ConstructorProps extends InetSocketAddress.ConstructorProps, SocketConnectable.ConstructorProps {
@@ -45606,7 +45606,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ProxyAddressEnumerator {
+    namespace ProxyAddressEnumerator {
         // Constructor properties interface
 
         interface ConstructorProps extends SocketAddressEnumerator.ConstructorProps {
@@ -45672,7 +45672,7 @@ export namespace Gio {
         _init(...args: any[]): void;
     }
 
-    module Resolver {
+    namespace Resolver {
         // Signal callback interfaces
 
         interface Reload {
@@ -46360,7 +46360,7 @@ export namespace Gio {
         set_timeout(timeout_ms: number): void;
     }
 
-    module Settings {
+    namespace Settings {
         // Signal callback interfaces
 
         interface ChangeEvent {
@@ -47374,7 +47374,7 @@ export namespace Gio {
         set_value(key: string, value: GLib.Variant): boolean;
     }
 
-    module SettingsBackend {
+    namespace SettingsBackend {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47599,7 +47599,7 @@ export namespace Gio {
         writable_changed(key: string): void;
     }
 
-    module SimpleAction {
+    namespace SimpleAction {
         // Signal callback interfaces
 
         interface Activate {
@@ -48327,7 +48327,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SimpleActionGroup {
+    namespace SimpleActionGroup {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -49315,7 +49315,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SimpleAsyncResult {
+    namespace SimpleAsyncResult {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, AsyncResult.ConstructorProps {}
@@ -50066,7 +50066,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SimpleIOStream {
+    namespace SimpleIOStream {
         // Constructor properties interface
 
         interface ConstructorProps extends IOStream.ConstructorProps {
@@ -50120,7 +50120,7 @@ export namespace Gio {
         static ['new'](input_stream: InputStream, output_stream: OutputStream): SimpleIOStream;
     }
 
-    module SimplePermission {
+    namespace SimplePermission {
         // Constructor properties interface
 
         interface ConstructorProps extends Permission.ConstructorProps {}
@@ -50146,7 +50146,7 @@ export namespace Gio {
         static ['new'](allowed: boolean): SimplePermission;
     }
 
-    module SimpleProxyResolver {
+    namespace SimpleProxyResolver {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ProxyResolver.ConstructorProps {
@@ -50835,7 +50835,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Socket {
+    namespace Socket {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -52696,7 +52696,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SocketAddress {
+    namespace SocketAddress {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SocketConnectable.ConstructorProps {
@@ -53233,7 +53233,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SocketAddressEnumerator {
+    namespace SocketAddressEnumerator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -53366,7 +53366,7 @@ export namespace Gio {
         next_finish(result: AsyncResult): SocketAddress | null;
     }
 
-    module SocketClient {
+    namespace SocketClient {
         // Signal callback interfaces
 
         interface Event {
@@ -54080,7 +54080,7 @@ export namespace Gio {
         set_tls_validation_flags(flags: TlsCertificateFlags | null): void;
     }
 
-    module SocketConnection {
+    namespace SocketConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends IOStream.ConstructorProps {
@@ -54254,7 +54254,7 @@ export namespace Gio {
         is_connected(): boolean;
     }
 
-    module SocketControlMessage {
+    namespace SocketControlMessage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -54366,7 +54366,7 @@ export namespace Gio {
         serialize(data: any): void;
     }
 
-    module SocketListener {
+    namespace SocketListener {
         // Signal callback interfaces
 
         interface Event {
@@ -54658,7 +54658,7 @@ export namespace Gio {
         set_backlog(listen_backlog: number): void;
     }
 
-    module SocketService {
+    namespace SocketService {
         // Signal callback interfaces
 
         interface Incoming {
@@ -54783,7 +54783,7 @@ export namespace Gio {
         stop(): void;
     }
 
-    module Subprocess {
+    namespace Subprocess {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Initable.ConstructorProps {
@@ -55711,7 +55711,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SubprocessLauncher {
+    namespace SubprocessLauncher {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -55976,7 +55976,7 @@ export namespace Gio {
         unsetenv(variable: string): void;
     }
 
-    module Task {
+    namespace Task {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, AsyncResult.ConstructorProps {
@@ -57370,7 +57370,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TcpConnection {
+    namespace TcpConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends SocketConnection.ConstructorProps {
@@ -57428,7 +57428,7 @@ export namespace Gio {
         set_graceful_disconnect(graceful_disconnect: boolean): void;
     }
 
-    module TcpWrapperConnection {
+    namespace TcpWrapperConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends TcpConnection.ConstructorProps {
@@ -57476,7 +57476,7 @@ export namespace Gio {
         get_base_io_stream(): IOStream;
     }
 
-    module TestDBus {
+    namespace TestDBus {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -57645,7 +57645,7 @@ export namespace Gio {
         up(): void;
     }
 
-    module ThemedIcon {
+    namespace ThemedIcon {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Icon.ConstructorProps {
@@ -58222,7 +58222,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ThreadedResolver {
+    namespace ThreadedResolver {
         // Constructor properties interface
 
         interface ConstructorProps extends Resolver.ConstructorProps {}
@@ -58242,7 +58242,7 @@ export namespace Gio {
         _init(...args: any[]): void;
     }
 
-    module ThreadedSocketService {
+    namespace ThreadedSocketService {
         // Signal callback interfaces
 
         interface Run {
@@ -58320,7 +58320,7 @@ export namespace Gio {
         vfunc_run(connection: SocketConnection, source_object: GObject.Object): boolean;
     }
 
-    module TlsCertificate {
+    namespace TlsCertificate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -58747,7 +58747,7 @@ export namespace Gio {
         verify(identity?: SocketConnectable | null, trusted_ca?: TlsCertificate | null): TlsCertificateFlags;
     }
 
-    module TlsConnection {
+    namespace TlsConnection {
         // Signal callback interfaces
 
         interface AcceptCertificate {
@@ -59376,7 +59376,7 @@ export namespace Gio {
         set_use_system_certdb(use_system_certdb: boolean): void;
     }
 
-    module TlsDatabase {
+    namespace TlsDatabase {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -60094,7 +60094,7 @@ export namespace Gio {
         verify_chain_finish(result: AsyncResult): TlsCertificateFlags;
     }
 
-    module TlsInteraction {
+    namespace TlsInteraction {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -60513,7 +60513,7 @@ export namespace Gio {
         request_certificate_finish(result: AsyncResult): TlsInteractionResult;
     }
 
-    module TlsPassword {
+    namespace TlsPassword {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -60658,7 +60658,7 @@ export namespace Gio {
         set_warning(warning: string): void;
     }
 
-    module UnixConnection {
+    namespace UnixConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends SocketConnection.ConstructorProps {}
@@ -60853,7 +60853,7 @@ export namespace Gio {
         send_fd(fd: number, cancellable?: Cancellable | null): boolean;
     }
 
-    module UnixCredentialsMessage {
+    namespace UnixCredentialsMessage {
         // Constructor properties interface
 
         interface ConstructorProps extends SocketControlMessage.ConstructorProps {
@@ -60918,7 +60918,7 @@ export namespace Gio {
         get_credentials(): Credentials;
     }
 
-    module UnixFDList {
+    namespace UnixFDList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -61036,7 +61036,7 @@ export namespace Gio {
         steal_fds(): number[];
     }
 
-    module UnixFDMessage {
+    namespace UnixFDMessage {
         // Constructor properties interface
 
         interface ConstructorProps extends SocketControlMessage.ConstructorProps {
@@ -61129,7 +61129,7 @@ export namespace Gio {
         steal_fds(): number[];
     }
 
-    module UnixInputStream {
+    namespace UnixInputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -62476,7 +62476,7 @@ export namespace Gio {
         createSyncIterator(count?: number, priority?: number): IterableIterator<GLib.Bytes>;
     }
 
-    module UnixMountMonitor {
+    namespace UnixMountMonitor {
         // Signal callback interfaces
 
         interface MountpointsChanged {
@@ -62548,7 +62548,7 @@ export namespace Gio {
         set_rate_limit(limit_msec: number): void;
     }
 
-    module UnixOutputStream {
+    namespace UnixOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -64379,7 +64379,7 @@ export namespace Gio {
         vfunc_writev_fn(vectors: OutputVector[], cancellable?: Cancellable | null): [boolean, number];
     }
 
-    module UnixSocketAddress {
+    namespace UnixSocketAddress {
         // Constructor properties interface
 
         interface ConstructorProps extends SocketAddress.ConstructorProps, SocketConnectable.ConstructorProps {
@@ -64946,7 +64946,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Vfs {
+    namespace Vfs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -65104,7 +65104,7 @@ export namespace Gio {
         unregister_uri_scheme(scheme: string): boolean;
     }
 
-    module VolumeMonitor {
+    namespace VolumeMonitor {
         // Signal callback interfaces
 
         interface DriveChanged {
@@ -65349,7 +65349,7 @@ export namespace Gio {
         get_volumes(): Volume[];
     }
 
-    module ZlibCompressor {
+    namespace ZlibCompressor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Converter.ConstructorProps {
@@ -66021,7 +66021,7 @@ export namespace Gio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ZlibDecompressor {
+    namespace ZlibDecompressor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Converter.ConstructorProps {
@@ -69178,7 +69178,7 @@ export namespace Gio {
     type VolumeMonitorClass = typeof VolumeMonitor;
     type ZlibCompressorClass = typeof ZlibCompressor;
     type ZlibDecompressorClass = typeof ZlibDecompressor;
-    module Action {
+    namespace Action {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -69504,7 +69504,7 @@ export namespace Gio {
         new (): Action; // This allows `obj instanceof Action`
     };
 
-    module ActionGroup {
+    namespace ActionGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -69968,7 +69968,7 @@ export namespace Gio {
         new (): ActionGroup; // This allows `obj instanceof ActionGroup`
     };
 
-    module ActionMap {
+    namespace ActionMap {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -70073,7 +70073,7 @@ export namespace Gio {
         new (): ActionMap; // This allows `obj instanceof ActionMap`
     };
 
-    module AppInfo {
+    namespace AppInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -70699,7 +70699,7 @@ export namespace Gio {
         new (): AppInfo; // This allows `obj instanceof AppInfo`
     };
 
-    module AsyncInitable {
+    namespace AsyncInitable {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps {}
@@ -70943,7 +70943,7 @@ export namespace Gio {
         new (): AsyncInitable; // This allows `obj instanceof AsyncInitable`
     };
 
-    module AsyncResult {
+    namespace AsyncResult {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -71010,7 +71010,7 @@ export namespace Gio {
         new (): AsyncResult; // This allows `obj instanceof AsyncResult`
     };
 
-    module Converter {
+    namespace Converter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -71229,7 +71229,7 @@ export namespace Gio {
         new (): Converter; // This allows `obj instanceof Converter`
     };
 
-    module DBusInterface {
+    namespace DBusInterface {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -71285,7 +71285,7 @@ export namespace Gio {
         new (): DBusInterface; // This allows `obj instanceof DBusInterface`
     };
 
-    module DBusObject {
+    namespace DBusObject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -71348,7 +71348,7 @@ export namespace Gio {
         new (): DBusObject; // This allows `obj instanceof DBusObject`
     };
 
-    module DBusObjectManager {
+    namespace DBusObjectManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -71436,7 +71436,7 @@ export namespace Gio {
         new (): DBusObjectManager; // This allows `obj instanceof DBusObjectManager`
     };
 
-    module DatagramBased {
+    namespace DatagramBased {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -71835,7 +71835,7 @@ export namespace Gio {
         new (): DatagramBased; // This allows `obj instanceof DatagramBased`
     };
 
-    module DebugController {
+    namespace DebugController {
         // Constructor properties interface
 
         interface ConstructorProps extends Initable.ConstructorProps {
@@ -71882,7 +71882,7 @@ export namespace Gio {
         new (): DebugController; // This allows `obj instanceof DebugController`
     };
 
-    module DesktopAppInfoLookup {
+    namespace DesktopAppInfoLookup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -71929,7 +71929,7 @@ export namespace Gio {
         new (): DesktopAppInfoLookup; // This allows `obj instanceof DesktopAppInfoLookup`
     };
 
-    module Drive {
+    namespace Drive {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -72495,7 +72495,7 @@ export namespace Gio {
         new (): Drive; // This allows `obj instanceof Drive`
     };
 
-    module DtlsClientConnection {
+    namespace DtlsClientConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends DatagramBased.ConstructorProps {
@@ -72672,7 +72672,7 @@ export namespace Gio {
         new (): DtlsClientConnection; // This allows `obj instanceof DtlsClientConnection`
     };
 
-    module DtlsConnection {
+    namespace DtlsConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends DatagramBased.ConstructorProps {
@@ -73414,7 +73414,7 @@ export namespace Gio {
         new (): DtlsConnection; // This allows `obj instanceof DtlsConnection`
     };
 
-    module DtlsServerConnection {
+    namespace DtlsServerConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends DatagramBased.ConstructorProps {
@@ -73457,7 +73457,7 @@ export namespace Gio {
         new (): DtlsServerConnection; // This allows `obj instanceof DtlsServerConnection`
     };
 
-    module File {
+    namespace File {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -78419,7 +78419,7 @@ export namespace Gio {
         new (): File; // This allows `obj instanceof File`
     };
 
-    module FileDescriptorBased {
+    namespace FileDescriptorBased {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -78450,7 +78450,7 @@ export namespace Gio {
         new (): FileDescriptorBased; // This allows `obj instanceof FileDescriptorBased`
     };
 
-    module Icon {
+    namespace Icon {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -78550,7 +78550,7 @@ export namespace Gio {
         new (): Icon; // This allows `obj instanceof Icon`
     };
 
-    module Initable {
+    namespace Initable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -78672,7 +78672,7 @@ export namespace Gio {
         new (): Initable; // This allows `obj instanceof Initable`
     };
 
-    module ListModel {
+    namespace ListModel {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps {}
@@ -78788,7 +78788,7 @@ export namespace Gio {
         new (): ListModel; // This allows `obj instanceof ListModel`
     };
 
-    module LoadableIcon {
+    namespace LoadableIcon {
         // Constructor properties interface
 
         interface ConstructorProps extends Icon.ConstructorProps {}
@@ -78879,7 +78879,7 @@ export namespace Gio {
         new (): LoadableIcon; // This allows `obj instanceof LoadableIcon`
     };
 
-    module MemoryMonitor {
+    namespace MemoryMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends Initable.ConstructorProps {}
@@ -78909,7 +78909,7 @@ export namespace Gio {
         new (): MemoryMonitor; // This allows `obj instanceof MemoryMonitor`
     };
 
-    module Mount {
+    namespace Mount {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -79583,7 +79583,7 @@ export namespace Gio {
         new (): Mount; // This allows `obj instanceof Mount`
     };
 
-    module NetworkMonitor {
+    namespace NetworkMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends Initable.ConstructorProps {
@@ -79885,7 +79885,7 @@ export namespace Gio {
         new (): NetworkMonitor; // This allows `obj instanceof NetworkMonitor`
     };
 
-    module PollableInputStream {
+    namespace PollableInputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends InputStream.ConstructorProps {}
@@ -80024,7 +80024,7 @@ export namespace Gio {
         new (): PollableInputStream; // This allows `obj instanceof PollableInputStream`
     };
 
-    module PollableOutputStream {
+    namespace PollableOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends OutputStream.ConstructorProps {}
@@ -80221,7 +80221,7 @@ export namespace Gio {
         new (): PollableOutputStream; // This allows `obj instanceof PollableOutputStream`
     };
 
-    module PowerProfileMonitor {
+    namespace PowerProfileMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends Initable.ConstructorProps {
@@ -80268,7 +80268,7 @@ export namespace Gio {
         new (): PowerProfileMonitor; // This allows `obj instanceof PowerProfileMonitor`
     };
 
-    module Proxy {
+    namespace Proxy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -80401,7 +80401,7 @@ export namespace Gio {
         new (): Proxy; // This allows `obj instanceof Proxy`
     };
 
-    module ProxyResolver {
+    namespace ProxyResolver {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -80536,7 +80536,7 @@ export namespace Gio {
         new (): ProxyResolver; // This allows `obj instanceof ProxyResolver`
     };
 
-    module RemoteActionGroup {
+    namespace RemoteActionGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends ActionGroup.ConstructorProps {}
@@ -80622,7 +80622,7 @@ export namespace Gio {
         new (): RemoteActionGroup; // This allows `obj instanceof RemoteActionGroup`
     };
 
-    module Seekable {
+    namespace Seekable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -80743,7 +80743,7 @@ export namespace Gio {
         new (): Seekable; // This allows `obj instanceof Seekable`
     };
 
-    module SocketConnectable {
+    namespace SocketConnectable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -80816,7 +80816,7 @@ export namespace Gio {
         new (): SocketConnectable; // This allows `obj instanceof SocketConnectable`
     };
 
-    module TlsBackend {
+    namespace TlsBackend {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -80916,7 +80916,7 @@ export namespace Gio {
         new (): TlsBackend; // This allows `obj instanceof TlsBackend`
     };
 
-    module TlsClientConnection {
+    namespace TlsClientConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends TlsConnection.ConstructorProps {
@@ -81199,7 +81199,7 @@ export namespace Gio {
         new (): TlsClientConnection; // This allows `obj instanceof TlsClientConnection`
     };
 
-    module TlsFileDatabase {
+    namespace TlsFileDatabase {
         // Constructor properties interface
 
         interface ConstructorProps extends TlsDatabase.ConstructorProps {
@@ -81237,7 +81237,7 @@ export namespace Gio {
         new (): TlsFileDatabase; // This allows `obj instanceof TlsFileDatabase`
     };
 
-    module TlsServerConnection {
+    namespace TlsServerConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends TlsConnection.ConstructorProps {
@@ -81285,7 +81285,7 @@ export namespace Gio {
         new (): TlsServerConnection; // This allows `obj instanceof TlsServerConnection`
     };
 
-    module Volume {
+    namespace Volume {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

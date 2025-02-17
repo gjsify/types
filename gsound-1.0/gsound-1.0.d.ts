@@ -333,7 +333,7 @@ export namespace GSound {
      */
     const ATTR_WINDOW_Y: string;
     function error_quark(): GLib.Quark;
-    module Context {
+    namespace Context {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}

@@ -140,7 +140,7 @@ export namespace SugarExt {
      * Shuts down the XSMP server and closes the ICE listening socket
      */
     function xsmp_shutdown(): void;
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface Quit {
@@ -285,7 +285,7 @@ export namespace SugarExt {
         will_quit(will_quit: boolean): void;
     }
 
-    module ClientXSMP {
+    namespace ClientXSMP {
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -320,7 +320,7 @@ export namespace SugarExt {
         _init(...args: any[]): void;
     }
 
-    module CursorTracker {
+    namespace CursorTracker {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -338,7 +338,7 @@ export namespace SugarExt {
         static ['new'](): CursorTracker;
     }
 
-    module GestureGrabber {
+    namespace GestureGrabber {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -361,7 +361,7 @@ export namespace SugarExt {
         remove(controller: SugarGestures.EventController): void;
     }
 
-    module Grid {
+    namespace Grid {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -391,7 +391,7 @@ export namespace SugarExt {
         setup(width: number, height: number): void;
     }
 
-    module KeyGrabber {
+    namespace KeyGrabber {
         // Signal callback interfaces
 
         interface KeyPressed {
@@ -462,7 +462,7 @@ export namespace SugarExt {
         is_modifier(keycode: number, mask: number): boolean;
     }
 
-    module Session {
+    namespace Session {
         // Signal callback interfaces
 
         interface ShutdownCompleted {
@@ -513,7 +513,7 @@ export namespace SugarExt {
         start(): void;
     }
 
-    module Volume {
+    namespace Volume {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -548,7 +548,7 @@ export namespace SugarExt {
         set_volume(val: number): void;
     }
 
-    module VolumeAlsa {
+    namespace VolumeAlsa {
         // Constructor properties interface
 
         interface ConstructorProps extends Volume.ConstructorProps {}

@@ -456,7 +456,7 @@ export namespace Libosinfo {
     enum MediaDetectFlags {
         BOOTABLE,
     }
-    module AvatarFormat {
+    namespace AvatarFormat {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -510,7 +510,7 @@ export namespace Libosinfo {
         get_width(): number;
     }
 
-    module Datamap {
+    namespace Datamap {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {}
@@ -548,7 +548,7 @@ export namespace Libosinfo {
         reverse_lookup(outval: string): string;
     }
 
-    module DatamapList {
+    namespace DatamapList {
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -566,7 +566,7 @@ export namespace Libosinfo {
         static ['new'](): DatamapList;
     }
 
-    module Db {
+    namespace Db {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -722,7 +722,7 @@ export namespace Libosinfo {
         unique_values_for_property_in_platform(propName: string): string[];
     }
 
-    module Deployment {
+    namespace Deployment {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -801,7 +801,7 @@ export namespace Libosinfo {
         get_preferred_device_link(filter?: Filter | null): DeviceLink;
     }
 
-    module DeploymentList {
+    namespace DeploymentList {
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -849,7 +849,7 @@ export namespace Libosinfo {
         new_union(sourceTwo: DeploymentList): DeploymentList;
     }
 
-    module Device {
+    namespace Device {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {}
@@ -878,7 +878,7 @@ export namespace Libosinfo {
         get_vendor_id(): string;
     }
 
-    module DeviceDriver {
+    namespace DeviceDriver {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {}
@@ -927,7 +927,7 @@ export namespace Libosinfo {
         get_signed(): boolean;
     }
 
-    module DeviceDriverList {
+    namespace DeviceDriverList {
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -945,7 +945,7 @@ export namespace Libosinfo {
         static ['new'](): DeviceDriverList;
     }
 
-    module DeviceLink {
+    namespace DeviceLink {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -981,7 +981,7 @@ export namespace Libosinfo {
         get_target(): Device;
     }
 
-    module DeviceLinkFilter {
+    namespace DeviceLinkFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {
@@ -1025,7 +1025,7 @@ export namespace Libosinfo {
         get_target_filter(): Filter;
     }
 
-    module DeviceLinkList {
+    namespace DeviceLinkList {
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -1079,7 +1079,7 @@ export namespace Libosinfo {
         new_union(sourceTwo: DeviceLinkList): DeviceLinkList;
     }
 
-    module DeviceList {
+    namespace DeviceList {
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -1127,7 +1127,7 @@ export namespace Libosinfo {
         new_union(sourceTwo: DeviceList): DeviceList;
     }
 
-    module Entity {
+    namespace Entity {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1279,7 +1279,7 @@ export namespace Libosinfo {
         set_param_int64(key: string, value: number): void;
     }
 
-    module Filter {
+    namespace Filter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1345,7 +1345,7 @@ export namespace Libosinfo {
         matches(entity: Entity): boolean;
     }
 
-    module Firmware {
+    namespace Firmware {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -1394,7 +1394,7 @@ export namespace Libosinfo {
         is_supported(): boolean;
     }
 
-    module FirmwareList {
+    namespace FirmwareList {
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -1412,7 +1412,7 @@ export namespace Libosinfo {
         static ['new'](): FirmwareList;
     }
 
-    module Image {
+    namespace Image {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -1498,7 +1498,7 @@ export namespace Libosinfo {
         set_os(os: Os): void;
     }
 
-    module ImageList {
+    namespace ImageList {
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -1516,7 +1516,7 @@ export namespace Libosinfo {
         static ['new'](): ImageList;
     }
 
-    module InstallConfig {
+    namespace InstallConfig {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {}
@@ -1761,7 +1761,7 @@ export namespace Libosinfo {
         set_user_realname(name: string): void;
     }
 
-    module InstallConfigParam {
+    namespace InstallConfigParam {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -1822,7 +1822,7 @@ export namespace Libosinfo {
         set_value_map(datamap: Datamap): void;
     }
 
-    module InstallConfigParamList {
+    namespace InstallConfigParamList {
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -1840,7 +1840,7 @@ export namespace Libosinfo {
         static ['new'](): InstallConfigParamList;
     }
 
-    module InstallScript {
+    namespace InstallScript {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -2463,7 +2463,7 @@ export namespace Libosinfo {
         set_preferred_injection_method(method: InstallScriptInjectionMethod | null): void;
     }
 
-    module InstallScriptList {
+    namespace InstallScriptList {
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -2511,7 +2511,7 @@ export namespace Libosinfo {
         new_union(sourceTwo: InstallScriptList): InstallScriptList;
     }
 
-    module List {
+    namespace List {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2645,7 +2645,7 @@ export namespace Libosinfo {
         new_union(sourceTwo: List): List;
     }
 
-    module Loader {
+    namespace Loader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2700,7 +2700,7 @@ export namespace Libosinfo {
         process_user_path(): void;
     }
 
-    module Media {
+    namespace Media {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -3121,7 +3121,7 @@ export namespace Libosinfo {
         supports_installer_script(): boolean;
     }
 
-    module MediaList {
+    namespace MediaList {
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -3169,7 +3169,7 @@ export namespace Libosinfo {
         new_union(sourceTwo: MediaList): MediaList;
     }
 
-    module Os {
+    namespace Os {
         // Constructor properties interface
 
         interface ConstructorProps extends Product.ConstructorProps {
@@ -3424,7 +3424,7 @@ export namespace Libosinfo {
         get_variant_list(): OsVariantList;
     }
 
-    module OsList {
+    namespace OsList {
         // Constructor properties interface
 
         interface ConstructorProps extends ProductList.ConstructorProps {}
@@ -3472,7 +3472,7 @@ export namespace Libosinfo {
         new_union(sourceTwo: OsList): OsList;
     }
 
-    module OsVariant {
+    namespace OsVariant {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -3508,7 +3508,7 @@ export namespace Libosinfo {
         get_name(): string;
     }
 
-    module OsVariantList {
+    namespace OsVariantList {
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -3526,7 +3526,7 @@ export namespace Libosinfo {
         static ['new'](): OsVariantList;
     }
 
-    module Platform {
+    namespace Platform {
         // Constructor properties interface
 
         interface ConstructorProps extends Product.ConstructorProps {}
@@ -3576,7 +3576,7 @@ export namespace Libosinfo {
         get_devices(filter?: Filter | null): DeviceList;
     }
 
-    module PlatformList {
+    namespace PlatformList {
         // Constructor properties interface
 
         interface ConstructorProps extends ProductList.ConstructorProps {}
@@ -3624,7 +3624,7 @@ export namespace Libosinfo {
         new_union(sourceTwo: PlatformList): PlatformList;
     }
 
-    module Product {
+    namespace Product {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -3710,7 +3710,7 @@ export namespace Libosinfo {
         get_version(): string;
     }
 
-    module ProductFilter {
+    namespace ProductFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3758,7 +3758,7 @@ export namespace Libosinfo {
         get_product_constraint_values(relshp: ProductRelationship | null): Product[];
     }
 
-    module ProductList {
+    namespace ProductList {
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -3806,7 +3806,7 @@ export namespace Libosinfo {
         new_union(sourceTwo: ProductList): ProductList;
     }
 
-    module Resources {
+    namespace Resources {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -3917,7 +3917,7 @@ export namespace Libosinfo {
         set_storage(storage: number): void;
     }
 
-    module ResourcesList {
+    namespace ResourcesList {
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -3965,7 +3965,7 @@ export namespace Libosinfo {
         new_union(sourceTwo: ResourcesList): ResourcesList;
     }
 
-    module Tree {
+    namespace Tree {
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -4226,7 +4226,7 @@ export namespace Libosinfo {
         set_os(os: Os): void;
     }
 
-    module TreeList {
+    namespace TreeList {
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}

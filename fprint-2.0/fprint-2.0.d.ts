@@ -327,7 +327,7 @@ export namespace FPrint {
          */
         PRESENT,
     }
-    module Context {
+    namespace Context {
         // Signal callback interfaces
 
         interface DeviceAdded {
@@ -394,7 +394,7 @@ export namespace FPrint {
         get_devices(): Device[];
     }
 
-    module Device {
+    namespace Device {
         // Signal callback interfaces
 
         interface Removed {
@@ -1699,7 +1699,7 @@ export namespace FPrint {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Image {
+    namespace Image {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1792,7 +1792,7 @@ export namespace FPrint {
         get_width(): number;
     }
 
-    module ImageDevice {
+    namespace ImageDevice {
         // Signal callback interfaces
 
         interface FpiImageDeviceStateChanged {
@@ -2430,7 +2430,7 @@ export namespace FPrint {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Print {
+    namespace Print {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {

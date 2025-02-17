@@ -89,7 +89,7 @@ export namespace GnomeRR {
         REFLECT_X,
         REFLECT_Y,
     }
-    module Config {
+    namespace Config {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -127,7 +127,7 @@ export namespace GnomeRR {
         set_clone(clone: boolean): void;
     }
 
-    module OutputInfo {
+    namespace OutputInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -191,7 +191,7 @@ export namespace GnomeRR {
         supports_rotation(rotation: Rotation | null): boolean;
     }
 
-    module Screen {
+    namespace Screen {
         // Signal callback interfaces
 
         interface Changed {

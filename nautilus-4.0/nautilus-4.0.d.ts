@@ -59,7 +59,7 @@ export namespace Nautilus {
         handle: OperationHandle,
         result: OperationResult | null,
     ): void;
-    module Column {
+    namespace Column {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -145,7 +145,7 @@ export namespace Nautilus {
         static ['new'](name: string, attribute: string, label: string, description: string): Column;
     }
 
-    module Menu {
+    namespace Menu {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -168,7 +168,7 @@ export namespace Nautilus {
         get_items(): MenuItem[] | null;
     }
 
-    module MenuItem {
+    namespace MenuItem {
         // Signal callback interfaces
 
         interface Activate {
@@ -248,7 +248,7 @@ export namespace Nautilus {
         set_submenu(menu: Menu): void;
     }
 
-    module PropertiesItem {
+    namespace PropertiesItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -279,7 +279,7 @@ export namespace Nautilus {
         get_value(): string;
     }
 
-    module PropertiesModel {
+    namespace PropertiesModel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -335,7 +335,7 @@ export namespace Nautilus {
     type PropertiesItemClass = typeof PropertiesItem;
     type PropertiesModelClass = typeof PropertiesModel;
     type PropertiesModelProviderInterface = typeof PropertiesModelProvider;
-    module ColumnProvider {
+    namespace ColumnProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -363,7 +363,7 @@ export namespace Nautilus {
         new (): ColumnProvider; // This allows `obj instanceof ColumnProvider`
     };
 
-    module FileInfo {
+    namespace FileInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -516,7 +516,7 @@ export namespace Nautilus {
         new (): FileInfo; // This allows `obj instanceof FileInfo`
     };
 
-    module InfoProvider {
+    namespace InfoProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -563,7 +563,7 @@ export namespace Nautilus {
         new (): InfoProvider; // This allows `obj instanceof InfoProvider`
     };
 
-    module MenuProvider {
+    namespace MenuProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -603,7 +603,7 @@ export namespace Nautilus {
         new (): MenuProvider; // This allows `obj instanceof MenuProvider`
     };
 
-    module PropertiesModelProvider {
+    namespace PropertiesModelProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

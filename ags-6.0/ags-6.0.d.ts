@@ -2237,7 +2237,7 @@ export namespace Ags {
          */
         WORKER_THREAD_STATUS_RUN_SYNC,
     }
-    module ApplicationContext {
+    namespace ApplicationContext {
         // Signal callback interfaces
 
         interface LoadConfig {
@@ -2931,7 +2931,7 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AuthSecurityContext {
+    namespace AuthSecurityContext {
         // Constructor properties interface
 
         interface ConstructorProps extends SecurityContext.ConstructorProps {}
@@ -2960,7 +2960,7 @@ export namespace Ags {
         static get_instance(): AuthSecurityContext;
     }
 
-    module AuthenticationManager {
+    namespace AuthenticationManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3064,7 +3064,7 @@ export namespace Ags {
         remove_login(login: string): void;
     }
 
-    module BusinessGroupManager {
+    namespace BusinessGroupManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3112,7 +3112,7 @@ export namespace Ags {
         remove_business_group(business_group: GObject.Object): void;
     }
 
-    module CertificateManager {
+    namespace CertificateManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3175,7 +3175,7 @@ export namespace Ags {
         remove_certificate(certificate: GObject.Object): void;
     }
 
-    module Config {
+    namespace Config {
         // Signal callback interfaces
 
         interface GetValue {
@@ -3308,7 +3308,7 @@ export namespace Ags {
         to_data(buffer: string, buffer_length: number): void;
     }
 
-    module Controller {
+    namespace Controller {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3388,7 +3388,7 @@ export namespace Ags {
         remove_resource(resource_name: string): void;
     }
 
-    module Conversion {
+    namespace Conversion {
         // Signal callback interfaces
 
         interface Convert {
@@ -3462,7 +3462,7 @@ export namespace Ags {
         convert(x: number, reverse: boolean): number;
     }
 
-    module DestroyWorker {
+    namespace DestroyWorker {
         // Constructor properties interface
 
         interface ConstructorProps extends WorkerThread.ConstructorProps, Connectable.ConstructorProps {}
@@ -3904,7 +3904,7 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module File {
+    namespace File {
         // Signal callback interfaces
 
         interface Open {
@@ -4301,7 +4301,7 @@ export namespace Ags {
         xml_set_root_element(doc: libxml2.Doc, root_node: libxml2.Node): void;
     }
 
-    module FileIdRef {
+    namespace FileIdRef {
         // Signal callback interfaces
 
         interface Resolved {
@@ -4383,7 +4383,7 @@ export namespace Ags {
         resolved(): void;
     }
 
-    module FileLaunch {
+    namespace FileLaunch {
         // Signal callback interfaces
 
         interface Start {
@@ -4456,7 +4456,7 @@ export namespace Ags {
         start(): void;
     }
 
-    module FileLink {
+    namespace FileLink {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Plugin.ConstructorProps {
@@ -4999,7 +4999,7 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FileLookup {
+    namespace FileLookup {
         // Signal callback interfaces
 
         interface Resolve {
@@ -5081,7 +5081,7 @@ export namespace Ags {
         resolve(): void;
     }
 
-    module FrontController {
+    namespace FrontController {
         // Signal callback interfaces
 
         interface DoRequest {
@@ -5196,7 +5196,7 @@ export namespace Ags {
         ): any | null;
     }
 
-    module Function {
+    namespace Function {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5282,7 +5282,7 @@ export namespace Ags {
         remove_matrix(solver_matrix: SolverMatrix): void;
     }
 
-    module GenericMainLoop {
+    namespace GenericMainLoop {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5904,7 +5904,7 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Log {
+    namespace Log {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5948,7 +5948,7 @@ export namespace Ags {
         get_messages(): string[];
     }
 
-    module MessageDelivery {
+    namespace MessageDelivery {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6049,7 +6049,7 @@ export namespace Ags {
         set_message_queue(message_queue: MessageQueue[]): void;
     }
 
-    module MessageEnvelope {
+    namespace MessageEnvelope {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6136,7 +6136,7 @@ export namespace Ags {
         get_sender<T = GObject.Object>(): T;
     }
 
-    module MessageQueue {
+    namespace MessageQueue {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6248,7 +6248,7 @@ export namespace Ags {
         set_sender_namespace(sender_namespace: string): void;
     }
 
-    module PasswordStoreManager {
+    namespace PasswordStoreManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6304,7 +6304,7 @@ export namespace Ags {
         remove_password_store(password_store: GObject.Object): void;
     }
 
-    module Priority {
+    namespace Priority {
         // Signal callback interfaces
 
         interface GetValue {
@@ -6417,7 +6417,7 @@ export namespace Ags {
         set_value(group: string, key: string, value: string): void;
     }
 
-    module Registry {
+    namespace Registry {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6460,7 +6460,7 @@ export namespace Ags {
         add_entry(registry_entry: RegistryEntry): void;
     }
 
-    module ReturnableThread {
+    namespace ReturnableThread {
         // Signal callback interfaces
 
         interface SafeRun {
@@ -7074,7 +7074,7 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SecurityContext {
+    namespace SecurityContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7139,7 +7139,7 @@ export namespace Ags {
         remove_server_context(server_context: string): boolean;
     }
 
-    module Server {
+    namespace Server {
         // Signal callback interfaces
 
         interface Listen {
@@ -7323,7 +7323,7 @@ export namespace Ags {
         unset_flags(flags: ServerFlags | null): void;
     }
 
-    module ServerApplicationContext {
+    namespace ServerApplicationContext {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7983,7 +7983,7 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ServerStatus {
+    namespace ServerStatus {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Connectable.ConstructorProps {}
@@ -8527,7 +8527,7 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SolverMatrix {
+    namespace SolverMatrix {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8651,7 +8651,7 @@ export namespace Ags {
         to_string(): string;
     }
 
-    module SolverPolynomial {
+    namespace SolverPolynomial {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8817,7 +8817,7 @@ export namespace Ags {
         update(): void;
     }
 
-    module SolverVector {
+    namespace SolverVector {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8897,7 +8897,7 @@ export namespace Ags {
         set_source_polynomial(source_polynomial: string): void;
     }
 
-    module Task {
+    namespace Task {
         // Signal callback interfaces
 
         interface Failure {
@@ -8999,7 +8999,7 @@ export namespace Ags {
         unset_flags(flags: TaskFlags | null): void;
     }
 
-    module TaskCompletion {
+    namespace TaskCompletion {
         // Signal callback interfaces
 
         interface Complete {
@@ -9596,7 +9596,7 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TaskLauncher {
+    namespace TaskLauncher {
         // Signal callback interfaces
 
         interface Run {
@@ -10197,7 +10197,7 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Thread {
+    namespace Thread {
         // Signal callback interfaces
 
         interface Clock {
@@ -11044,7 +11044,7 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ThreadApplicationContext {
+    namespace ThreadApplicationContext {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11682,7 +11682,7 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ThreadPool {
+    namespace ThreadPool {
         // Signal callback interfaces
 
         interface Start {
@@ -11772,7 +11772,7 @@ export namespace Ags {
         start(): void;
     }
 
-    module Timestamp {
+    namespace Timestamp {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11836,7 +11836,7 @@ export namespace Ags {
         unset_flags(flags: TimestampFlags | null): void;
     }
 
-    module Turtle {
+    namespace Turtle {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12237,7 +12237,7 @@ export namespace Ags {
         string_convert(str: string): string;
     }
 
-    module TurtleManager {
+    namespace TurtleManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -12281,7 +12281,7 @@ export namespace Ags {
         find<T = GObject.Object>(filename: string): T;
     }
 
-    module WorkerThread {
+    namespace WorkerThread {
         // Signal callback interfaces
 
         interface DoPoll {
@@ -12871,7 +12871,7 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module XmlAuthentication {
+    namespace XmlAuthentication {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authentication.ConstructorProps {}
@@ -13388,7 +13388,7 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module XmlBusinessGroup {
+    namespace XmlBusinessGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, BusinessGroup.ConstructorProps {}
@@ -13952,7 +13952,7 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module XmlCertificate {
+    namespace XmlCertificate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Certificate.ConstructorProps {}
@@ -14630,7 +14630,7 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module XmlPasswordStore {
+    namespace XmlPasswordStore {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PasswordStore.ConstructorProps {}
@@ -16203,7 +16203,7 @@ export namespace Ags {
     type XmlBusinessGroupClass = typeof XmlBusinessGroup;
     type XmlCertificateClass = typeof XmlCertificate;
     type XmlPasswordStoreClass = typeof XmlPasswordStore;
-    module Applicable {
+    namespace Applicable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -16251,7 +16251,7 @@ export namespace Ags {
         new (): Applicable; // This allows `obj instanceof Applicable`
     };
 
-    module Authentication {
+    namespace Authentication {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -16349,7 +16349,7 @@ export namespace Ags {
         new (): Authentication; // This allows `obj instanceof Authentication`
     };
 
-    module BusinessGroup {
+    namespace BusinessGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -16500,7 +16500,7 @@ export namespace Ags {
         new (): BusinessGroup; // This allows `obj instanceof BusinessGroup`
     };
 
-    module Certificate {
+    namespace Certificate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -16765,7 +16765,7 @@ export namespace Ags {
         new (): Certificate; // This allows `obj instanceof Certificate`
     };
 
-    module ConcurrencyProvider {
+    namespace ConcurrencyProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -16863,7 +16863,7 @@ export namespace Ags {
         new (): ConcurrencyProvider; // This allows `obj instanceof ConcurrencyProvider`
     };
 
-    module Connectable {
+    namespace Connectable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17002,7 +17002,7 @@ export namespace Ags {
         new (): Connectable; // This allows `obj instanceof Connectable`
     };
 
-    module Countable {
+    namespace Countable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17060,7 +17060,7 @@ export namespace Ags {
         new (): Countable; // This allows `obj instanceof Countable`
     };
 
-    module Cursor {
+    namespace Cursor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17189,7 +17189,7 @@ export namespace Ags {
         new (): Cursor; // This allows `obj instanceof Cursor`
     };
 
-    module MainLoop {
+    namespace MainLoop {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17293,7 +17293,7 @@ export namespace Ags {
         new (): MainLoop; // This allows `obj instanceof MainLoop`
     };
 
-    module Mutable {
+    namespace Mutable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17325,7 +17325,7 @@ export namespace Ags {
         new (): Mutable; // This allows `obj instanceof Mutable`
     };
 
-    module PasswordStore {
+    namespace PasswordStore {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17442,7 +17442,7 @@ export namespace Ags {
         new (): PasswordStore; // This allows `obj instanceof PasswordStore`
     };
 
-    module Plugin {
+    namespace Plugin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17574,7 +17574,7 @@ export namespace Ags {
         new (): Plugin; // This allows `obj instanceof Plugin`
     };
 
-    module PluginController {
+    namespace PluginController {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17631,7 +17631,7 @@ export namespace Ags {
         new (): PluginController; // This allows `obj instanceof PluginController`
     };
 
-    module Portlet {
+    namespace Portlet {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17705,7 +17705,7 @@ export namespace Ags {
         new (): Portlet; // This allows `obj instanceof Portlet`
     };
 
-    module Seekable {
+    namespace Seekable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17739,7 +17739,7 @@ export namespace Ags {
         new (): Seekable; // This allows `obj instanceof Seekable`
     };
 
-    module Sequencer {
+    namespace Sequencer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17991,7 +17991,7 @@ export namespace Ags {
         new (): Sequencer; // This allows `obj instanceof Sequencer`
     };
 
-    module ServiceProvider {
+    namespace ServiceProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18051,7 +18051,7 @@ export namespace Ags {
         new (): ServiceProvider; // This allows `obj instanceof ServiceProvider`
     };
 
-    module SoundServer {
+    namespace SoundServer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18193,7 +18193,7 @@ export namespace Ags {
         new (): SoundServer; // This allows `obj instanceof SoundServer`
     };
 
-    module Soundcard {
+    namespace Soundcard {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18737,7 +18737,7 @@ export namespace Ags {
         new (): Soundcard; // This allows `obj instanceof Soundcard`
     };
 
-    module Tactable {
+    namespace Tactable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

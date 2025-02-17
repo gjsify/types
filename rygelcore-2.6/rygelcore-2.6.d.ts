@@ -105,7 +105,7 @@ export namespace RygelCore {
         DIAGNOSTICS,
         ENERGY_MANAGEMENT,
     }
-    module ConnectionManager {
+    namespace ConnectionManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GUPnP.Service.ConstructorProps {}
@@ -140,7 +140,7 @@ export namespace RygelCore {
         get_current_protocol_info(): string;
     }
 
-    module BasicManagement {
+    namespace BasicManagement {
         // Constructor properties interface
 
         interface ConstructorProps extends GUPnP.Service.ConstructorProps {
@@ -177,7 +177,7 @@ export namespace RygelCore {
         set_max_history_size(value: number): void;
     }
 
-    module DescriptionFile {
+    namespace DescriptionFile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -238,7 +238,7 @@ export namespace RygelCore {
         static compare_by_name(a: DLNAProfile, b: DLNAProfile): number;
     }
 
-    module EnergyManagement {
+    namespace EnergyManagement {
         // Constructor properties interface
 
         interface ConstructorProps extends GUPnP.Service.ConstructorProps {}
@@ -256,7 +256,7 @@ export namespace RygelCore {
         static ['new'](): EnergyManagement;
     }
 
-    module RootDevice {
+    namespace RootDevice {
         // Constructor properties interface
 
         interface ConstructorProps extends GUPnP.RootDevice.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -781,7 +781,7 @@ export namespace RygelCore {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RootDeviceFactory {
+    namespace RootDeviceFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -1297,7 +1297,7 @@ export namespace RygelCore {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LogHandler {
+    namespace LogHandler {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1317,7 +1317,7 @@ export namespace RygelCore {
         static get_default(): LogHandler;
     }
 
-    module MetaConfig {
+    namespace MetaConfig {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
@@ -1783,7 +1783,7 @@ export namespace RygelCore {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PluginLoader {
+    namespace PluginLoader {
         // Signal callback interfaces
 
         interface PluginAvailable {
@@ -1823,7 +1823,7 @@ export namespace RygelCore {
         list_plugins(): Gee.Collection;
     }
 
-    module RecursiveModuleLoader {
+    namespace RecursiveModuleLoader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1863,7 +1863,7 @@ export namespace RygelCore {
         set_base_path(value: string): void;
     }
 
-    module Plugin {
+    namespace Plugin {
         // Constructor properties interface
 
         interface ConstructorProps extends GUPnP.ResourceFactory.ConstructorProps {
@@ -1969,7 +1969,7 @@ export namespace RygelCore {
         static ['new'](upnp_id: string, upnp_type: string, description_path: string, type: GObject.GType): ResourceInfo;
     }
 
-    module MediaDevice {
+    namespace MediaDevice {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2006,7 +2006,7 @@ export namespace RygelCore {
         get_capabilities(): PluginCapabilities;
     }
 
-    module BaseConfiguration {
+    namespace BaseConfiguration {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
@@ -2472,7 +2472,7 @@ export namespace RygelCore {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CmdlineConfig {
+    namespace CmdlineConfig {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
@@ -2941,7 +2941,7 @@ export namespace RygelCore {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module EnvironmentConfig {
+    namespace EnvironmentConfig {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
@@ -3405,7 +3405,7 @@ export namespace RygelCore {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UserConfig {
+    namespace UserConfig {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
@@ -3876,7 +3876,7 @@ export namespace RygelCore {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module V1Hacks {
+    namespace V1Hacks {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3984,7 +3984,7 @@ export namespace RygelCore {
         static ['new'](node?: any | null): XMLUtilsChildIterator;
     }
 
-    module PluginInformation {
+    namespace PluginInformation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4250,7 +4250,7 @@ export namespace RygelCore {
     type DBusAclProviderIface = typeof DBusAclProvider;
     type ConfigurationIface = typeof Configuration;
     type StateMachineIface = typeof StateMachine;
-    module DBusInterface {
+    namespace DBusInterface {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4274,7 +4274,7 @@ export namespace RygelCore {
         new (): DBusInterface; // This allows `obj instanceof DBusInterface`
     };
 
-    module DBusAclProvider {
+    namespace DBusAclProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4329,7 +4329,7 @@ export namespace RygelCore {
         new (): DBusAclProvider; // This allows `obj instanceof DBusAclProvider`
     };
 
-    module Configuration {
+    namespace Configuration {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4391,7 +4391,7 @@ export namespace RygelCore {
         new (): Configuration; // This allows `obj instanceof Configuration`
     };
 
-    module StateMachine {
+    namespace StateMachine {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

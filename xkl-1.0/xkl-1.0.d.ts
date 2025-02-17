@@ -137,7 +137,7 @@ export namespace Xkl {
          */
         DEVICE_DISCOVERY,
     }
-    module ConfigItem {
+    namespace ConfigItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -185,7 +185,7 @@ export namespace Xkl {
         set_short_description(short_description?: string | null): void;
     }
 
-    module ConfigRec {
+    namespace ConfigRec {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -301,7 +301,7 @@ export namespace Xkl {
         set_variants(new_variants: string[]): void;
     }
 
-    module ConfigRegistry {
+    namespace ConfigRegistry {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -439,7 +439,7 @@ export namespace Xkl {
         search_by_pattern(pattern: string, func: TwoConfigItemsProcessFunc): void;
     }
 
-    module Engine {
+    namespace Engine {
         // Signal callback interfaces
 
         interface XConfigChanged {

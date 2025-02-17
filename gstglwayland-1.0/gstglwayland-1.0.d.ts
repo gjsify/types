@@ -21,7 +21,7 @@ export namespace GstGLWayland {
      * GstGLWayland-1.0
      */
 
-    module GLDisplayWayland {
+    namespace GLDisplayWayland {
         // Constructor properties interface
 
         interface ConstructorProps extends GstGL.GLDisplay.ConstructorProps {}

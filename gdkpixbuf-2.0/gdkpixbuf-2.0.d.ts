@@ -306,7 +306,7 @@ export namespace GdkPixbuf {
          */
         THREADSAFE,
     }
-    module Pixbuf {
+    namespace Pixbuf {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1800,7 +1800,7 @@ export namespace GdkPixbuf {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PixbufAnimation {
+    namespace PixbufAnimation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2002,7 +2002,7 @@ export namespace GdkPixbuf {
         is_static_image(): boolean;
     }
 
-    module PixbufAnimationIter {
+    namespace PixbufAnimationIter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2160,7 +2160,7 @@ export namespace GdkPixbuf {
         on_currently_loading_frame(): boolean;
     }
 
-    module PixbufLoader {
+    namespace PixbufLoader {
         // Signal callback interfaces
 
         interface AreaPrepared {
@@ -2365,7 +2365,7 @@ export namespace GdkPixbuf {
         write_bytes(buffer: GLib.Bytes | Uint8Array): boolean;
     }
 
-    module PixbufNonAnim {
+    namespace PixbufNonAnim {
         // Constructor properties interface
 
         interface ConstructorProps extends PixbufAnimation.ConstructorProps {}
@@ -2383,7 +2383,7 @@ export namespace GdkPixbuf {
         static ['new'](pixbuf: Pixbuf): PixbufNonAnim;
     }
 
-    module PixbufSimpleAnim {
+    namespace PixbufSimpleAnim {
         // Constructor properties interface
 
         interface ConstructorProps extends PixbufAnimation.ConstructorProps {
@@ -2434,7 +2434,7 @@ export namespace GdkPixbuf {
         set_loop(loop: boolean): void;
     }
 
-    module PixbufSimpleAnimIter {
+    namespace PixbufSimpleAnimIter {
         // Constructor properties interface
 
         interface ConstructorProps extends PixbufAnimationIter.ConstructorProps {}

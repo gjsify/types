@@ -204,7 +204,7 @@ export namespace Folks {
         PERMISSION_DENIED,
         SEPARATED,
     }
-    module AbstractFieldDetails {
+    namespace AbstractFieldDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -286,7 +286,7 @@ export namespace Folks {
         set_parameters(value: Gee.MultiMap): void;
     }
 
-    module AvatarCache {
+    namespace AvatarCache {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -326,7 +326,7 @@ export namespace Folks {
         build_uri_for_avatar(id: string): string;
     }
 
-    module BackendStore {
+    namespace BackendStore {
         // Signal callback interfaces
 
         interface BackendAvailable {
@@ -405,7 +405,7 @@ export namespace Folks {
         get_is_prepared(): boolean;
     }
 
-    module Backend {
+    namespace Backend {
         // Signal callback interfaces
 
         interface PersonaStoreAdded {
@@ -493,7 +493,7 @@ export namespace Folks {
         get_persona_stores(): Gee.Map;
     }
 
-    module Debug {
+    namespace Debug {
         // Signal callback interfaces
 
         interface PrintStatus {
@@ -555,7 +555,7 @@ export namespace Folks {
         set_debug_output_enabled(value: boolean): void;
     }
 
-    module EmailFieldDetails {
+    namespace EmailFieldDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -573,7 +573,7 @@ export namespace Folks {
         static ['new'](value: string, parameters: Gee.MultiMap): EmailFieldDetails;
     }
 
-    module ExtendedFieldDetails {
+    namespace ExtendedFieldDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -591,7 +591,7 @@ export namespace Folks {
         static ['new'](value: string, parameters: Gee.MultiMap): ExtendedFieldDetails;
     }
 
-    module ImFieldDetails {
+    namespace ImFieldDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -609,7 +609,7 @@ export namespace Folks {
         static ['new'](value: string, parameters: Gee.MultiMap): ImFieldDetails;
     }
 
-    module IndividualAggregator {
+    namespace IndividualAggregator {
         // Signal callback interfaces
 
         interface IndividualsChanged {
@@ -784,7 +784,7 @@ export namespace Folks {
         get_user(): Individual;
     }
 
-    module Individual {
+    namespace Individual {
         // Signal callback interfaces
 
         interface Removed {
@@ -1678,7 +1678,7 @@ export namespace Folks {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Location {
+    namespace Location {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1706,7 +1706,7 @@ export namespace Folks {
         equal_coordinates(latitude: number, longitude: number): boolean;
     }
 
-    module StructuredName {
+    namespace StructuredName {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1777,7 +1777,7 @@ export namespace Folks {
         set_suffixes(value: string): void;
     }
 
-    module NoteFieldDetails {
+    namespace NoteFieldDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
@@ -1807,7 +1807,7 @@ export namespace Folks {
         set_uid(value: string): void;
     }
 
-    module ObjectCache {
+    namespace ObjectCache {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1877,7 +1877,7 @@ export namespace Folks {
         get_id(): string;
     }
 
-    module PersonaStore {
+    namespace PersonaStore {
         // Signal callback interfaces
 
         interface PersonasChanged {
@@ -2088,7 +2088,7 @@ export namespace Folks {
         get_is_user_set_default(): boolean;
     }
 
-    module Persona {
+    namespace Persona {
         interface LinkablePropertyCallback {
             (link: string): void;
         }
@@ -2160,7 +2160,7 @@ export namespace Folks {
         get_writeable_properties(): string[];
     }
 
-    module PhoneFieldDetails {
+    namespace PhoneFieldDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -2182,7 +2182,7 @@ export namespace Folks {
         get_normalised(): string;
     }
 
-    module PostalAddress {
+    namespace PostalAddress {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2274,7 +2274,7 @@ export namespace Folks {
         set_uid(value: string): void;
     }
 
-    module PostalAddressFieldDetails {
+    namespace PostalAddressFieldDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -2292,7 +2292,7 @@ export namespace Folks {
         static ['new'](value: PostalAddress, parameters: Gee.MultiMap): PostalAddressFieldDetails;
     }
 
-    module PotentialMatch {
+    namespace PotentialMatch {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2318,7 +2318,7 @@ export namespace Folks {
         potential_match(a: Individual, b: Individual): MatchResult;
     }
 
-    module Query {
+    namespace Query {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2352,7 +2352,7 @@ export namespace Folks {
         get_match_fields(): string[];
     }
 
-    module Role {
+    namespace Role {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2407,7 +2407,7 @@ export namespace Folks {
         set_uid(value: string): void;
     }
 
-    module RoleFieldDetails {
+    namespace RoleFieldDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -2425,7 +2425,7 @@ export namespace Folks {
         static ['new'](value: Role, parameters: Gee.MultiMap): RoleFieldDetails;
     }
 
-    module SearchView {
+    namespace SearchView {
         // Signal callback interfaces
 
         interface IndividualsChangedDetailed {
@@ -2504,7 +2504,7 @@ export namespace Folks {
         get_is_quiescent(): boolean;
     }
 
-    module SimpleQuery {
+    namespace SimpleQuery {
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {
@@ -2545,7 +2545,7 @@ export namespace Folks {
         set_query_locale(value: string): void;
     }
 
-    module UrlFieldDetails {
+    namespace UrlFieldDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -2563,7 +2563,7 @@ export namespace Folks {
         static ['new'](value: string, parameters: Gee.MultiMap): UrlFieldDetails;
     }
 
-    module Utils {
+    namespace Utils {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2588,7 +2588,7 @@ export namespace Folks {
         static set_string_afd_equal(a: Gee.Set, b: Gee.Set): boolean;
     }
 
-    module WebServiceFieldDetails {
+    namespace WebServiceFieldDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -2879,7 +2879,7 @@ export namespace Folks {
     type RoleDetailsIface = typeof RoleDetails;
     type UrlDetailsIface = typeof UrlDetails;
     type WebServiceDetailsIface = typeof WebServiceDetails;
-    module AliasDetails {
+    namespace AliasDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2918,7 +2918,7 @@ export namespace Folks {
         new (): AliasDetails; // This allows `obj instanceof AliasDetails`
     };
 
-    module AntiLinkable {
+    namespace AntiLinkable {
         // Constructor properties interface
 
         interface ConstructorProps extends Persona.ConstructorProps {
@@ -2978,7 +2978,7 @@ export namespace Folks {
         new (): AntiLinkable; // This allows `obj instanceof AntiLinkable`
     };
 
-    module AvatarDetails {
+    namespace AvatarDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3017,7 +3017,7 @@ export namespace Folks {
         new (): AvatarDetails; // This allows `obj instanceof AvatarDetails`
     };
 
-    module BirthdayDetails {
+    namespace BirthdayDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3072,7 +3072,7 @@ export namespace Folks {
         new (): BirthdayDetails; // This allows `obj instanceof BirthdayDetails`
     };
 
-    module EmailDetails {
+    namespace EmailDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3117,7 +3117,7 @@ export namespace Folks {
         new (): EmailDetails; // This allows `obj instanceof EmailDetails`
     };
 
-    module ExtendedInfo {
+    namespace ExtendedInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3165,7 +3165,7 @@ export namespace Folks {
         new (): ExtendedInfo; // This allows `obj instanceof ExtendedInfo`
     };
 
-    module FavouriteDetails {
+    namespace FavouriteDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3207,7 +3207,7 @@ export namespace Folks {
         new (): FavouriteDetails; // This allows `obj instanceof FavouriteDetails`
     };
 
-    module GenderDetails {
+    namespace GenderDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3246,7 +3246,7 @@ export namespace Folks {
         new (): GenderDetails; // This allows `obj instanceof GenderDetails`
     };
 
-    module GroupDetails {
+    namespace GroupDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3295,7 +3295,7 @@ export namespace Folks {
         new (): GroupDetails; // This allows `obj instanceof GroupDetails`
     };
 
-    module ImDetails {
+    namespace ImDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3342,7 +3342,7 @@ export namespace Folks {
         new (): ImDetails; // This allows `obj instanceof ImDetails`
     };
 
-    module InteractionDetails {
+    namespace InteractionDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3392,7 +3392,7 @@ export namespace Folks {
         new (): InteractionDetails; // This allows `obj instanceof InteractionDetails`
     };
 
-    module LocalIdDetails {
+    namespace LocalIdDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3434,7 +3434,7 @@ export namespace Folks {
         new (): LocalIdDetails; // This allows `obj instanceof LocalIdDetails`
     };
 
-    module LocationDetails {
+    namespace LocationDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3473,7 +3473,7 @@ export namespace Folks {
         new (): LocationDetails; // This allows `obj instanceof LocationDetails`
     };
 
-    module NameDetails {
+    namespace NameDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3544,7 +3544,7 @@ export namespace Folks {
         new (): NameDetails; // This allows `obj instanceof NameDetails`
     };
 
-    module NoteDetails {
+    namespace NoteDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3583,7 +3583,7 @@ export namespace Folks {
         new (): NoteDetails; // This allows `obj instanceof NoteDetails`
     };
 
-    module PhoneDetails {
+    namespace PhoneDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3625,7 +3625,7 @@ export namespace Folks {
         new (): PhoneDetails; // This allows `obj instanceof PhoneDetails`
     };
 
-    module PostalAddressDetails {
+    namespace PostalAddressDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3670,7 +3670,7 @@ export namespace Folks {
         new (): PostalAddressDetails; // This allows `obj instanceof PostalAddressDetails`
     };
 
-    module PresenceDetails {
+    namespace PresenceDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3740,7 +3740,7 @@ export namespace Folks {
         new (): PresenceDetails; // This allows `obj instanceof PresenceDetails`
     };
 
-    module RoleDetails {
+    namespace RoleDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3779,7 +3779,7 @@ export namespace Folks {
         new (): RoleDetails; // This allows `obj instanceof RoleDetails`
     };
 
-    module UrlDetails {
+    namespace UrlDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3818,7 +3818,7 @@ export namespace Folks {
         new (): UrlDetails; // This allows `obj instanceof UrlDetails`
     };
 
-    module WebServiceDetails {
+    namespace WebServiceDetails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

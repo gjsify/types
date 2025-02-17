@@ -170,7 +170,7 @@ export namespace Granite {
     function accel_to_string(accel?: string | null): string;
     function markup_accel_tooltip(accels?: string[] | null, description?: string | null): string;
     function contrasting_foreground_color(bg_color: Gdk.RGBA): Gdk.RGBA;
-    module ServicesContractorProxy {
+    namespace ServicesContractorProxy {
         // Signal callback interfaces
 
         interface ContractsChanged {
@@ -210,7 +210,7 @@ export namespace Granite {
         static get_contracts_for_files(files: Gio.File[]): Gee.List;
     }
 
-    module ServicesSystem {
+    namespace ServicesSystem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -232,7 +232,7 @@ export namespace Granite {
         static history_is_enabled(): boolean;
     }
 
-    module SettingsPage {
+    namespace SettingsPage {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
@@ -294,7 +294,7 @@ export namespace Granite {
         set_child(value: Gtk.Widget): void;
     }
 
-    module SimpleSettingsPage {
+    namespace SimpleSettingsPage {
         // Constructor properties interface
 
         interface ConstructorProps extends SettingsPage.ConstructorProps {
@@ -340,7 +340,7 @@ export namespace Granite {
         set_description(value: string): void;
     }
 
-    module AccelLabel {
+    namespace AccelLabel {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
@@ -391,7 +391,7 @@ export namespace Granite {
         set_label(value: string): void;
     }
 
-    module DatePicker {
+    namespace DatePicker {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Entry.ConstructorProps, Gtk.Buildable.ConstructorProps {
@@ -828,7 +828,7 @@ export namespace Granite {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Dialog {
+    namespace Dialog {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Dialog.ConstructorProps {}
@@ -846,7 +846,7 @@ export namespace Granite {
         static ['new'](): Dialog;
     }
 
-    module HeaderLabel {
+    namespace HeaderLabel {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
@@ -884,7 +884,7 @@ export namespace Granite {
         set_secondary_text(value?: string | null): void;
     }
 
-    module HyperTextView {
+    namespace HyperTextView {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TextView.ConstructorProps {}
@@ -902,7 +902,7 @@ export namespace Granite {
         static ['new'](): HyperTextView;
     }
 
-    module MessageDialog {
+    namespace MessageDialog {
         // Constructor properties interface
 
         interface ConstructorProps extends Dialog.ConstructorProps {
@@ -992,7 +992,7 @@ export namespace Granite {
         show_error_details(error_message: string): void;
     }
 
-    module ModeSwitch {
+    namespace ModeSwitch {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
@@ -1075,7 +1075,7 @@ export namespace Granite {
         set_secondary_icon_tooltip_text(value: string): void;
     }
 
-    module OverlayBar {
+    namespace OverlayBar {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
@@ -1113,7 +1113,7 @@ export namespace Granite {
         set_active(value: boolean): void;
     }
 
-    module Placeholder {
+    namespace Placeholder {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
@@ -1154,7 +1154,7 @@ export namespace Granite {
         append_button(icon: Gio.Icon, label: string, description: string): Gtk.Button;
     }
 
-    module SettingsSidebar {
+    namespace SettingsSidebar {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
@@ -1190,7 +1190,7 @@ export namespace Granite {
         set_visible_child_name(value?: string | null): void;
     }
 
-    module Settings {
+    namespace Settings {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1224,7 +1224,7 @@ export namespace Granite {
         get_prefers_color_scheme(): SettingsColorScheme;
     }
 
-    module SwitchModelButton {
+    namespace SwitchModelButton {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ToggleButton.ConstructorProps {
@@ -1262,7 +1262,7 @@ export namespace Granite {
         set_description(value?: string | null): void;
     }
 
-    module TimePicker {
+    namespace TimePicker {
         // Signal callback interfaces
 
         interface TimeChanged {
@@ -1319,7 +1319,7 @@ export namespace Granite {
         set_time(value: GLib.DateTime): void;
     }
 
-    module Toast {
+    namespace Toast {
         // Signal callback interfaces
 
         interface Closed {
@@ -1373,7 +1373,7 @@ export namespace Granite {
         send_notification(): void;
     }
 
-    module ValidatedEntry {
+    namespace ValidatedEntry {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Entry.ConstructorProps {
@@ -1594,7 +1594,7 @@ export namespace Granite {
         _init(...args: any[]): void;
     }
 
-    module ServicesContract {
+    namespace ServicesContract {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1626,7 +1626,7 @@ export namespace Granite {
         new (): ServicesContract; // This allows `obj instanceof ServicesContract`
     };
 
-    module ServicesSettingsSerializable {
+    namespace ServicesSettingsSerializable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

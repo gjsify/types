@@ -100,7 +100,7 @@ export namespace ClapperGtk {
          */
         ANY,
     }
-    module Billboard {
+    namespace Billboard {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -579,7 +579,7 @@ export namespace ClapperGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Container {
+    namespace Container {
         // Signal callback interfaces
 
         interface Adapt {
@@ -1424,7 +1424,7 @@ export namespace ClapperGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExtraMenuButton {
+    namespace ExtraMenuButton {
         // Signal callback interfaces
 
         interface OpenSubtitles {
@@ -2221,7 +2221,7 @@ export namespace ClapperGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LeadContainer {
+    namespace LeadContainer {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2708,7 +2708,7 @@ export namespace ClapperGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module NextItemButton {
+    namespace NextItemButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5677,7 +5677,7 @@ export namespace ClapperGtk {
         vfunc_unroot(): void;
     }
 
-    module PreviousItemButton {
+    namespace PreviousItemButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8646,7 +8646,7 @@ export namespace ClapperGtk {
         vfunc_unroot(): void;
     }
 
-    module SeekBar {
+    namespace SeekBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9402,7 +9402,7 @@ export namespace ClapperGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SimpleControls {
+    namespace SimpleControls {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9901,7 +9901,7 @@ export namespace ClapperGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TitleHeader {
+    namespace TitleHeader {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10381,7 +10381,7 @@ export namespace ClapperGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TitleLabel {
+    namespace TitleLabel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11164,7 +11164,7 @@ export namespace ClapperGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ToggleFullscreenButton {
+    namespace ToggleFullscreenButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14133,7 +14133,7 @@ export namespace ClapperGtk {
         vfunc_unroot(): void;
     }
 
-    module TogglePlayButton {
+    namespace TogglePlayButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17102,7 +17102,7 @@ export namespace ClapperGtk {
         vfunc_unroot(): void;
     }
 
-    module Video {
+    namespace Video {
         // Signal callback interfaces
 
         interface SeekRequest {

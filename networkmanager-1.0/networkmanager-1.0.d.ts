@@ -3682,7 +3682,7 @@ export namespace NetworkManager {
          */
         FREQ_5GHZ,
     }
-    module Connection {
+    namespace Connection {
         // Signal callback interfaces
 
         interface Changed {
@@ -4111,7 +4111,7 @@ export namespace NetworkManager {
         verify(): boolean;
     }
 
-    module Setting {
+    namespace Setting {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4285,7 +4285,7 @@ export namespace NetworkManager {
         verify(all_settings: Setting[]): boolean;
     }
 
-    module Setting8021x {
+    namespace Setting8021x {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5124,7 +5124,7 @@ export namespace NetworkManager {
         ): boolean;
     }
 
-    module SettingAdsl {
+    namespace SettingAdsl {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5204,7 +5204,7 @@ export namespace NetworkManager {
         get_vpi(): number;
     }
 
-    module SettingBluetooth {
+    namespace SettingBluetooth {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5248,7 +5248,7 @@ export namespace NetworkManager {
         get_connection_type(): string;
     }
 
-    module SettingBond {
+    namespace SettingBond {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5346,7 +5346,7 @@ export namespace NetworkManager {
         remove_option(name: string): boolean;
     }
 
-    module SettingBridge {
+    namespace SettingBridge {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5453,7 +5453,7 @@ export namespace NetworkManager {
         get_stp(): boolean;
     }
 
-    module SettingBridgePort {
+    namespace SettingBridgePort {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5515,7 +5515,7 @@ export namespace NetworkManager {
         get_priority(): number;
     }
 
-    module SettingCdma {
+    namespace SettingCdma {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5580,7 +5580,7 @@ export namespace NetworkManager {
         get_username(): string;
     }
 
-    module SettingConnection {
+    namespace SettingConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5875,7 +5875,7 @@ export namespace NetworkManager {
         remove_secondary_by_value(sec_uuid: string): boolean;
     }
 
-    module SettingDcb {
+    namespace SettingDcb {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -6093,7 +6093,7 @@ export namespace NetworkManager {
         set_priority_traffic_class(user_priority: number, traffic_class: number): void;
     }
 
-    module SettingGeneric {
+    namespace SettingGeneric {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {}
@@ -6111,7 +6111,7 @@ export namespace NetworkManager {
         static ['new'](): SettingGeneric;
     }
 
-    module SettingGsm {
+    namespace SettingGsm {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -6294,7 +6294,7 @@ export namespace NetworkManager {
         get_username(): string;
     }
 
-    module SettingIP4Config {
+    namespace SettingIP4Config {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -6645,7 +6645,7 @@ export namespace NetworkManager {
         remove_route_by_value(route: IP4Route): boolean;
     }
 
-    module SettingIP6Config {
+    namespace SettingIP6Config {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -6960,7 +6960,7 @@ export namespace NetworkManager {
         remove_route_by_value(route: IP6Route): boolean;
     }
 
-    module SettingInfiniband {
+    namespace SettingInfiniband {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7053,7 +7053,7 @@ export namespace NetworkManager {
         get_transport_mode(): string;
     }
 
-    module SettingOlpcMesh {
+    namespace SettingOlpcMesh {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7087,7 +7087,7 @@ export namespace NetworkManager {
         get_ssid(): Uint8Array;
     }
 
-    module SettingPPP {
+    namespace SettingPPP {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7337,7 +7337,7 @@ export namespace NetworkManager {
         get_require_mppe_128(): boolean;
     }
 
-    module SettingPPPOE {
+    namespace SettingPPPOE {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7399,7 +7399,7 @@ export namespace NetworkManager {
         get_username(): string;
     }
 
-    module SettingSerial {
+    namespace SettingSerial {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7469,7 +7469,7 @@ export namespace NetworkManager {
         get_stopbits(): number;
     }
 
-    module SettingTeam {
+    namespace SettingTeam {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7517,7 +7517,7 @@ export namespace NetworkManager {
         get_interface_name(): string;
     }
 
-    module SettingTeamPort {
+    namespace SettingTeamPort {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7552,7 +7552,7 @@ export namespace NetworkManager {
         get_config(): string;
     }
 
-    module SettingVPN {
+    namespace SettingVPN {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7698,7 +7698,7 @@ export namespace NetworkManager {
         remove_secret(key: string): boolean;
     }
 
-    module SettingVlan {
+    namespace SettingVlan {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7849,7 +7849,7 @@ export namespace NetworkManager {
         remove_priority_str_by_value(map: VlanPriorityMap | null, str: string): boolean;
     }
 
-    module SettingWimax {
+    namespace SettingWimax {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7900,7 +7900,7 @@ export namespace NetworkManager {
         get_network_name(): string;
     }
 
-    module SettingWired {
+    namespace SettingWired {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -8075,7 +8075,7 @@ export namespace NetworkManager {
         remove_s390_option(key: string): boolean;
     }
 
-    module SettingWireless {
+    namespace SettingWireless {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -8256,7 +8256,7 @@ export namespace NetworkManager {
         remove_mac_blacklist_item_by_value(mac: string): boolean;
     }
 
-    module SettingWirelessSecurity {
+    namespace SettingWirelessSecurity {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {

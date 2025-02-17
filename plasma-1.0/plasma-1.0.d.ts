@@ -19,7 +19,7 @@ export namespace Plasma {
      * Plasma-1.0
      */
 
-    module Client {
+    namespace Client {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -51,7 +51,7 @@ export namespace Plasma {
         refer_object(id: ObjectID, timeout_ms: number): ReferredObject | null;
     }
 
-    module ClientCreateOptions {
+    namespace ClientCreateOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -84,7 +84,7 @@ export namespace Plasma {
         set_metadata(metadata?: Uint8Array | null): void;
     }
 
-    module ClientOptions {
+    namespace ClientOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -117,7 +117,7 @@ export namespace Plasma {
         set_n_retries(n_retries: number): void;
     }
 
-    module CreatedObject {
+    namespace CreatedObject {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -148,7 +148,7 @@ export namespace Plasma {
         seal(): boolean;
     }
 
-    module Object {
+    namespace Object {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -188,7 +188,7 @@ export namespace Plasma {
         _init(...args: any[]): void;
     }
 
-    module ObjectID {
+    namespace ObjectID {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -211,7 +211,7 @@ export namespace Plasma {
         to_hex(): string;
     }
 
-    module ReferredObject {
+    namespace ReferredObject {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}

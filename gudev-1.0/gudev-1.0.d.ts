@@ -41,7 +41,7 @@ export namespace GUdev {
          */
         CHAR,
     }
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface Uevent {
@@ -154,7 +154,7 @@ export namespace GUdev {
         query_by_sysfs_path(sysfs_path: string): Device | null;
     }
 
-    module Device {
+    namespace Device {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -526,7 +526,7 @@ export namespace GUdev {
         has_sysfs_attr_uncached(key: string): boolean;
     }
 
-    module Enumerator {
+    namespace Enumerator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

@@ -82,7 +82,7 @@ export namespace TelepathyLogger {
          */
         ANY,
     }
-    module CallEvent {
+    namespace CallEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends Event.ConstructorProps {
@@ -126,7 +126,7 @@ export namespace TelepathyLogger {
         get_end_reason(): TelepathyGLib.CallStateChangeReason;
     }
 
-    module Entity {
+    namespace Entity {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -187,7 +187,7 @@ export namespace TelepathyLogger {
         get_identifier(): string;
     }
 
-    module Event {
+    namespace Event {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -248,7 +248,7 @@ export namespace TelepathyLogger {
         get_timestamp(): number;
     }
 
-    module LogManager {
+    namespace LogManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -513,7 +513,7 @@ export namespace TelepathyLogger {
         ): LogWalker;
     }
 
-    module LogWalker {
+    namespace LogWalker {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -597,7 +597,7 @@ export namespace TelepathyLogger {
         rewind_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module TextEvent {
+    namespace TextEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends Event.ConstructorProps {

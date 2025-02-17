@@ -18,7 +18,7 @@ export namespace ArrowCUDA {
      * ArrowCUDA-1.0
      */
 
-    module Buffer {
+    namespace Buffer {
         // Constructor properties interface
 
         interface ConstructorProps extends Arrow.Buffer.ConstructorProps {}
@@ -51,7 +51,7 @@ export namespace ArrowCUDA {
         read_record_batch(schema: Arrow.Schema, options?: Arrow.ReadOptions | null): Arrow.RecordBatch;
     }
 
-    module BufferInputStream {
+    namespace BufferInputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -474,7 +474,7 @@ export namespace ArrowCUDA {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BufferOutputStream {
+    namespace BufferOutputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -913,7 +913,7 @@ export namespace ArrowCUDA {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Context {
+    namespace Context {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -939,7 +939,7 @@ export namespace ArrowCUDA {
         get_allocated_size(): number;
     }
 
-    module DeviceManager {
+    namespace DeviceManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -962,7 +962,7 @@ export namespace ArrowCUDA {
         get_n_devices(): number;
     }
 
-    module HostBuffer {
+    namespace HostBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends Arrow.MutableBuffer.ConstructorProps {}
@@ -983,7 +983,7 @@ export namespace ArrowCUDA {
         static ['new'](...args: never[]): any;
     }
 
-    module IPCMemoryHandle {
+    namespace IPCMemoryHandle {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

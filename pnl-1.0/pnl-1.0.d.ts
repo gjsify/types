@@ -81,7 +81,7 @@ export namespace Pnl {
     function gtk_bin_draw(widget: Gtk.Widget, cr: cairo.Context): boolean;
     function gtk_bin_size_allocate(widget: Gtk.Widget, allocation: Gtk.Allocation): void;
     function overlay_add_child(self: DockOverlay, child: Gtk.Widget, type: string): void;
-    module Animation {
+    namespace Animation {
         // Signal callback interfaces
 
         interface Tick {
@@ -169,7 +169,7 @@ export namespace Pnl {
         stop(): void;
     }
 
-    module DockBin {
+    namespace DockBin {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4810,7 +4810,7 @@ export namespace Pnl {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module DockBinEdge {
+    namespace DockBinEdge {
         // Signal callback interfaces
 
         interface MoveToBinChild {
@@ -9105,7 +9105,7 @@ export namespace Pnl {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module DockManager {
+    namespace DockManager {
         // Signal callback interfaces
 
         interface RegisterDock {
@@ -9155,7 +9155,7 @@ export namespace Pnl {
         unregister_dock(dock: Dock): void;
     }
 
-    module DockOverlay {
+    namespace DockOverlay {
         // Signal callback interfaces
 
         interface HideEdges {
@@ -13808,7 +13808,7 @@ export namespace Pnl {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module DockOverlayEdge {
+    namespace DockOverlayEdge {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18089,7 +18089,7 @@ export namespace Pnl {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module DockPaned {
+    namespace DockPaned {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22375,7 +22375,7 @@ export namespace Pnl {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module DockRevealer {
+    namespace DockRevealer {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22857,7 +22857,7 @@ export namespace Pnl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DockStack {
+    namespace DockStack {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -27151,7 +27151,7 @@ export namespace Pnl {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module DockTabStrip {
+    namespace DockTabStrip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -27575,7 +27575,7 @@ export namespace Pnl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DockTransientGrab {
+    namespace DockTransientGrab {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -27612,7 +27612,7 @@ export namespace Pnl {
         steal_common_ancestors(other: DockTransientGrab): void;
     }
 
-    module DockWidget {
+    namespace DockWidget {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31893,7 +31893,7 @@ export namespace Pnl {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module DockWindow {
+    namespace DockWindow {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -36524,7 +36524,7 @@ export namespace Pnl {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module MultiPaned {
+    namespace MultiPaned {
         // Signal callback interfaces
 
         interface ResizeDragBegin {
@@ -37001,7 +37001,7 @@ export namespace Pnl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Tab {
+    namespace Tab {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -41280,7 +41280,7 @@ export namespace Pnl {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module TabStrip {
+    namespace TabStrip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -41758,7 +41758,7 @@ export namespace Pnl {
     type MultiPanedClass = typeof MultiPaned;
     type TabClass = typeof Tab;
     type TabStripClass = typeof TabStrip;
-    module Dock {
+    namespace Dock {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Container.ConstructorProps {
@@ -41781,7 +41781,7 @@ export namespace Pnl {
         new (): Dock; // This allows `obj instanceof Dock`
     };
 
-    module DockItem {
+    namespace DockItem {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {}

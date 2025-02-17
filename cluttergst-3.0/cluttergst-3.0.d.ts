@@ -136,7 +136,7 @@ export namespace ClutterGst {
          */
         ACCURATE,
     }
-    module Aspectratio {
+    namespace Aspectratio {
         // Constructor properties interface
 
         interface ConstructorProps extends Content.ConstructorProps, Clutter.Content.ConstructorProps {
@@ -631,7 +631,7 @@ export namespace ClutterGst {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Camera {
+    namespace Camera {
         // Signal callback interfaces
 
         interface PhotoSaved {
@@ -1404,7 +1404,7 @@ export namespace ClutterGst {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CameraDevice {
+    namespace CameraDevice {
         // Signal callback interfaces
 
         interface CaptureResolutionChanged {
@@ -1503,7 +1503,7 @@ export namespace ClutterGst {
         set_capture_resolution(width: number, height: number): void;
     }
 
-    module CameraManager {
+    namespace CameraManager {
         // Signal callback interfaces
 
         interface CameraAdded {
@@ -1565,7 +1565,7 @@ export namespace ClutterGst {
         get_camera_devices(): CameraDevice[];
     }
 
-    module Content {
+    namespace Content {
         // Signal callback interfaces
 
         interface SizeChange {
@@ -2086,7 +2086,7 @@ export namespace ClutterGst {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Crop {
+    namespace Crop {
         // Constructor properties interface
 
         interface ConstructorProps extends Content.ConstructorProps, Clutter.Content.ConstructorProps {
@@ -2604,7 +2604,7 @@ export namespace ClutterGst {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Playback {
+    namespace Playback {
         // Signal callback interfaces
 
         interface ShouldBuffer {
@@ -3484,7 +3484,7 @@ export namespace ClutterGst {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module VideoSink {
+    namespace VideoSink {
         // Signal callback interfaces
 
         interface NewFrame {
@@ -4317,7 +4317,7 @@ export namespace ClutterGst {
         _init(...args: any[]): void;
     }
 
-    module Player {
+    namespace Player {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

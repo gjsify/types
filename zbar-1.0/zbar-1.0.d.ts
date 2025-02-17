@@ -28,7 +28,7 @@ export namespace ZBar {
      * ZBar-1.0
      */
 
-    module Gtk {
+    namespace Gtk {
         // Signal callback interfaces
 
         interface Decoded {

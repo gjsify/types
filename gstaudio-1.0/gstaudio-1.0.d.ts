@@ -1670,7 +1670,7 @@ export namespace GstAudio {
          */
         VARIABLE_RATE,
     }
-    module AudioAggregator {
+    namespace AudioAggregator {
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.Aggregator.ConstructorProps {
@@ -1824,7 +1824,7 @@ export namespace GstAudio {
         set_sink_caps(pad: AudioAggregatorPad, caps: Gst.Caps): void;
     }
 
-    module AudioAggregatorConvertPad {
+    namespace AudioAggregatorConvertPad {
         // Constructor properties interface
 
         interface ConstructorProps extends AudioAggregatorPad.ConstructorProps {
@@ -1855,7 +1855,7 @@ export namespace GstAudio {
         _init(...args: any[]): void;
     }
 
-    module AudioAggregatorPad {
+    namespace AudioAggregatorPad {
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.AggregatorPad.ConstructorProps {
@@ -1895,7 +1895,7 @@ export namespace GstAudio {
         vfunc_update_conversion_info(): void;
     }
 
-    module AudioBaseSink {
+    namespace AudioBaseSink {
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseSink.ConstructorProps {
@@ -2086,7 +2086,7 @@ export namespace GstAudio {
         set_slave_method(method: AudioBaseSinkSlaveMethod | null): void;
     }
 
-    module AudioBaseSrc {
+    namespace AudioBaseSrc {
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.PushSrc.ConstructorProps {
@@ -2204,7 +2204,7 @@ export namespace GstAudio {
         set_slave_method(method: AudioBaseSrcSlaveMethod | null): void;
     }
 
-    module AudioCdSrc {
+    namespace AudioCdSrc {
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.PushSrc.ConstructorProps, Gst.URIHandler.ConstructorProps {
@@ -2735,7 +2735,7 @@ export namespace GstAudio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AudioClock {
+    namespace AudioClock {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.SystemClock.ConstructorProps {}
@@ -2798,7 +2798,7 @@ export namespace GstAudio {
         reset(time: Gst.ClockTime): void;
     }
 
-    module AudioDecoder {
+    namespace AudioDecoder {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -3187,7 +3187,7 @@ export namespace GstAudio {
         set_use_default_pad_acceptcaps(use: boolean): void;
     }
 
-    module AudioEncoder {
+    namespace AudioEncoder {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps, Gst.Preset.ConstructorProps {
@@ -4070,7 +4070,7 @@ export namespace GstAudio {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AudioFilter {
+    namespace AudioFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseTransform.ConstructorProps {}
@@ -4113,7 +4113,7 @@ export namespace GstAudio {
         vfunc_setup(info: AudioInfo): boolean;
     }
 
-    module AudioRingBuffer {
+    namespace AudioRingBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -4485,7 +4485,7 @@ export namespace GstAudio {
         stop(): boolean;
     }
 
-    module AudioSink {
+    namespace AudioSink {
         // Constructor properties interface
 
         interface ConstructorProps extends AudioBaseSink.ConstructorProps {}
@@ -4549,7 +4549,7 @@ export namespace GstAudio {
         vfunc_write(data: Uint8Array | string): number;
     }
 
-    module AudioSrc {
+    namespace AudioSrc {
         // Constructor properties interface
 
         interface ConstructorProps extends AudioBaseSrc.ConstructorProps {}
@@ -5517,7 +5517,7 @@ export namespace GstAudio {
     }
 
     type StreamVolumeInterface = typeof StreamVolume;
-    module StreamVolume {
+    namespace StreamVolume {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

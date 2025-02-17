@@ -1748,7 +1748,7 @@ export namespace RB {
     interface UriRecurseFunc {
         (file: Gio.File, info: Gio.FileInfo, data?: any | null): boolean;
     }
-    module Application {
+    namespace Application {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2249,7 +2249,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AsyncCopy {
+    namespace AsyncCopy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2289,7 +2289,7 @@ export namespace RB {
         start(src: string, dest: string, callback: AsyncCopyCallback): void;
     }
 
-    module AutoPlaylistSource {
+    namespace AutoPlaylistSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2721,7 +2721,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BrowserSource {
+    namespace BrowserSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3169,7 +3169,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ButtonBar {
+    namespace ButtonBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3635,7 +3635,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CellRendererPixbuf {
+    namespace CellRendererPixbuf {
         // Signal callback interfaces
 
         interface PixbufClicked {
@@ -3672,7 +3672,7 @@ export namespace RB {
         vfunc_pixbuf_clicked(path: Gtk.TreePath): void;
     }
 
-    module CellRendererRating {
+    namespace CellRendererRating {
         // Signal callback interfaces
 
         interface Rated {
@@ -3720,7 +3720,7 @@ export namespace RB {
         vfunc_rated(path: string, rating: number): void;
     }
 
-    module ChunkLoader {
+    namespace ChunkLoader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3770,7 +3770,7 @@ export namespace RB {
         start(uri: string, chunk_size: number): void;
     }
 
-    module DisplayPage {
+    namespace DisplayPage {
         // Signal callback interfaces
 
         interface Deleted {
@@ -4384,7 +4384,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DisplayPageGroup {
+    namespace DisplayPageGroup {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4847,7 +4847,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DisplayPageModel {
+    namespace DisplayPageModel {
         // Signal callback interfaces
 
         interface DropReceived {
@@ -5807,7 +5807,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DisplayPageTree {
+    namespace DisplayPageTree {
         // Signal callback interfaces
 
         interface DropReceived {
@@ -6316,7 +6316,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module EncoderFactory {
+    namespace EncoderFactory {
         // Signal callback interfaces
 
         interface PrepareSink {
@@ -6379,7 +6379,7 @@ export namespace RB {
         vfunc_prepare_source(uri: string, source: GObject.Object): void;
     }
 
-    module EntryView {
+    namespace EntryView {
         // Signal callback interfaces
 
         interface EntriesReplaced {
@@ -7166,7 +7166,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExtDB {
+    namespace ExtDB {
         // Signal callback interfaces
 
         interface Added {
@@ -7295,7 +7295,7 @@ export namespace RB {
         store_uri(key: ExtDBKey, source_type: ExtDBSourceType | null, uri?: string | null): void;
     }
 
-    module FadingImage {
+    namespace FadingImage {
         // Signal callback interfaces
 
         interface PixbufDropped {
@@ -7950,7 +7950,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module History {
+    namespace History {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8110,7 +8110,7 @@ export namespace RB {
         set_truncate_on_play(truncate_on_play: boolean): void;
     }
 
-    module LibraryBrowser {
+    namespace LibraryBrowser {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8670,7 +8670,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ListModel {
+    namespace ListModel {
         // Signal callback interfaces
 
         interface ItemsChanged {
@@ -8764,7 +8764,7 @@ export namespace RB {
         remove_item(item?: any | null): void;
     }
 
-    module MediaPlayerEntryType {
+    namespace MediaPlayerEntryType {
         // Constructor properties interface
 
         interface ConstructorProps extends RhythmDBEntryType.ConstructorProps {
@@ -8792,7 +8792,7 @@ export namespace RB {
         _init(...args: any[]): void;
     }
 
-    module MediaPlayerSource {
+    namespace MediaPlayerSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9264,7 +9264,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MetaData {
+    namespace MetaData {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9371,7 +9371,7 @@ export namespace RB {
         set(...args: never[]): any;
     }
 
-    module PlayOrder {
+    namespace PlayOrder {
         // Signal callback interfaces
 
         interface HaveNextPreviousChanged {
@@ -9565,7 +9565,7 @@ export namespace RB {
         set_playing_entry(entry?: RhythmDBEntry | null): void;
     }
 
-    module PlaylistManager {
+    namespace PlaylistManager {
         // Signal callback interfaces
 
         interface LoadFinish {
@@ -9746,7 +9746,7 @@ export namespace RB {
         shutdown(): void;
     }
 
-    module PlaylistSource {
+    namespace PlaylistSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10273,7 +10273,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PodcastManager {
+    namespace PodcastManager {
         // Signal callback interfaces
 
         interface FeedUpdateStatus {
@@ -10383,7 +10383,7 @@ export namespace RB {
         update_feeds(): void;
     }
 
-    module PodcastSearch {
+    namespace PodcastSearch {
         // Signal callback interfaces
 
         interface Finished {
@@ -10433,7 +10433,7 @@ export namespace RB {
         start(text: string, max_results: number): void;
     }
 
-    module PodcastSearchITunes {
+    namespace PodcastSearchITunes {
         // Constructor properties interface
 
         interface ConstructorProps extends PodcastSearch.ConstructorProps {}
@@ -10449,7 +10449,7 @@ export namespace RB {
         _init(...args: any[]): void;
     }
 
-    module PropertyView {
+    namespace PropertyView {
         // Signal callback interfaces
 
         interface PropertiesSelected {
@@ -11019,7 +11019,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Rating {
+    namespace Rating {
         // Signal callback interfaces
 
         interface AdjustRating {
@@ -11664,7 +11664,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RemovableMediaManager {
+    namespace RemovableMediaManager {
         // Signal callback interfaces
 
         interface CreateSourceDevice {
@@ -11770,7 +11770,7 @@ export namespace RB {
         scan(): void;
     }
 
-    module RhythmDB {
+    namespace RhythmDB {
         // Signal callback interfaces
 
         interface CreateMountOp {
@@ -12418,7 +12418,7 @@ export namespace RB {
         start_action_thread(): void;
     }
 
-    module RhythmDBEntryType {
+    namespace RhythmDBEntryType {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12517,7 +12517,7 @@ export namespace RB {
         purge_metadata_cache(prefix: string, max_age: number): void;
     }
 
-    module RhythmDBImportJob {
+    namespace RhythmDBImportJob {
         // Signal callback interfaces
 
         interface Complete {
@@ -13088,7 +13088,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RhythmDBPropertyModel {
+    namespace RhythmDBPropertyModel {
         // Signal callback interfaces
 
         interface PreRowDeletion {
@@ -13971,7 +13971,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RhythmDBQueryModel {
+    namespace RhythmDBQueryModel {
         // Signal callback interfaces
 
         interface Complete {
@@ -15191,7 +15191,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RhythmDBQueryResultList {
+    namespace RhythmDBQueryResultList {
         // Signal callback interfaces
 
         interface Complete {
@@ -15666,7 +15666,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SearchEntry {
+    namespace SearchEntry {
         // Signal callback interfaces
 
         interface Activate {
@@ -16207,7 +16207,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SegmentedBar {
+    namespace SegmentedBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16861,7 +16861,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Shell {
+    namespace Shell {
         // Signal callback interfaces
 
         interface CreateSongInfo {
@@ -17275,7 +17275,7 @@ export namespace RB {
         toggle_visibility(): void;
     }
 
-    module ShellPlayer {
+    namespace ShellPlayer {
         // Signal callback interfaces
 
         interface ElapsedChanged {
@@ -17674,7 +17674,7 @@ export namespace RB {
         stop(): void;
     }
 
-    module ShellPreferences {
+    namespace ShellPreferences {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18125,7 +18125,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SongInfo {
+    namespace SongInfo {
         // Signal callback interfaces
 
         interface PostMetadataChange {
@@ -18638,7 +18638,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Source {
+    namespace Source {
         // Signal callback interfaces
 
         interface FilterChanged {
@@ -19599,7 +19599,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SourceSearch {
+    namespace SourceSearch {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19682,7 +19682,7 @@ export namespace RB {
         register(name: string): void;
     }
 
-    module SourceSearchBasic {
+    namespace SourceSearchBasic {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceSearch.ConstructorProps {
@@ -19743,7 +19743,7 @@ export namespace RB {
         static register(prop: RhythmDBPropType, name: string, description: string): void;
     }
 
-    module SourceToolbar {
+    namespace SourceToolbar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20224,7 +20224,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StaticPlaylistSource {
+    namespace StaticPlaylistSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20708,7 +20708,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StreamingSource {
+    namespace StreamingSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21156,7 +21156,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StringValueMap {
+    namespace StringValueMap {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -21216,7 +21216,7 @@ export namespace RB {
         steal_hashtable(): GLib.HashTable<any, any>;
     }
 
-    module TaskList {
+    namespace TaskList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -21250,7 +21250,7 @@ export namespace RB {
         remove_task(task: TaskProgress): void;
     }
 
-    module TaskProgressSimple {
+    namespace TaskProgressSimple {
         // Signal callback interfaces
 
         interface CancelTask {
@@ -21718,7 +21718,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TrackTransferBatch {
+    namespace TrackTransferBatch {
         // Signal callback interfaces
 
         interface Cancelled {
@@ -22464,7 +22464,7 @@ export namespace RB {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TrackTransferQueue {
+    namespace TrackTransferQueue {
         // Signal callback interfaces
 
         interface MissingPlugins {
@@ -22565,7 +22565,7 @@ export namespace RB {
         start_batch(batch: TrackTransferBatch): void;
     }
 
-    module URIDialog {
+    namespace URIDialog {
         // Signal callback interfaces
 
         interface LocationAdded {
@@ -23843,7 +23843,7 @@ export namespace RB {
         _init(...args: any[]): void;
     }
 
-    module DeviceSource {
+    namespace DeviceSource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -23903,7 +23903,7 @@ export namespace RB {
         new (): DeviceSource; // This allows `obj instanceof DeviceSource`
     };
 
-    module Encoder {
+    namespace Encoder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -23979,7 +23979,7 @@ export namespace RB {
         new (): Encoder; // This allows `obj instanceof Encoder`
     };
 
-    module Player {
+    namespace Player {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -24214,7 +24214,7 @@ export namespace RB {
         new (): Player; // This allows `obj instanceof Player`
     };
 
-    module PlayerGstFilter {
+    namespace PlayerGstFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -24268,7 +24268,7 @@ export namespace RB {
         new (): PlayerGstFilter; // This allows `obj instanceof PlayerGstFilter`
     };
 
-    module PlayerGstTee {
+    namespace PlayerGstTee {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -24322,7 +24322,7 @@ export namespace RB {
         new (): PlayerGstTee; // This allows `obj instanceof PlayerGstTee`
     };
 
-    module RhythmDBQueryResults {
+    namespace RhythmDBQueryResults {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -24372,7 +24372,7 @@ export namespace RB {
         new (): RhythmDBQueryResults; // This allows `obj instanceof RhythmDBQueryResults`
     };
 
-    module TaskProgress {
+    namespace TaskProgress {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -24436,7 +24436,7 @@ export namespace RB {
         new (): TaskProgress; // This allows `obj instanceof TaskProgress`
     };
 
-    module TransferTarget {
+    namespace TransferTarget {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

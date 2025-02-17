@@ -33,7 +33,7 @@ export namespace CambalachePrivate {
         property_name: string,
         value?: string | null,
     ): void;
-    module BuilderScope {
+    namespace BuilderScope {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.BuilderCScope.ConstructorProps, Gtk.BuilderScope.ConstructorProps {}

@@ -1699,7 +1699,7 @@ export namespace GIRepository {
          */
         THROWS,
     }
-    module Repository {
+    namespace Repository {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

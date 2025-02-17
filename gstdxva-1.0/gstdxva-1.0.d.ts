@@ -36,7 +36,7 @@ export namespace GstDxva {
         LAST,
     }
     function dxva_codec_to_string(codec: DxvaCodec | null): string;
-    module DxvaAV1Decoder {
+    namespace DxvaAV1Decoder {
         // Constructor properties interface
 
         interface ConstructorProps extends GstCodecs.AV1Decoder.ConstructorProps {}
@@ -83,7 +83,7 @@ export namespace GstDxva {
         vfunc_start_picture(...args: never[]): any;
     }
 
-    module DxvaH264Decoder {
+    namespace DxvaH264Decoder {
         // Constructor properties interface
 
         interface ConstructorProps extends GstCodecs.H264Decoder.ConstructorProps {}
@@ -128,7 +128,7 @@ export namespace GstDxva {
         vfunc_start_picture(...args: never[]): any;
     }
 
-    module DxvaH265Decoder {
+    namespace DxvaH265Decoder {
         // Constructor properties interface
 
         interface ConstructorProps extends GstCodecs.H265Decoder.ConstructorProps {}
@@ -172,7 +172,7 @@ export namespace GstDxva {
         vfunc_start_picture(...args: never[]): any;
     }
 
-    module DxvaMpeg2Decoder {
+    namespace DxvaMpeg2Decoder {
         // Constructor properties interface
 
         interface ConstructorProps extends GstCodecs.Mpeg2Decoder.ConstructorProps {}
@@ -221,7 +221,7 @@ export namespace GstDxva {
         disable_postproc(): void;
     }
 
-    module DxvaVp8Decoder {
+    namespace DxvaVp8Decoder {
         // Constructor properties interface
 
         interface ConstructorProps extends GstCodecs.Vp8Decoder.ConstructorProps {}
@@ -265,7 +265,7 @@ export namespace GstDxva {
         vfunc_start_picture(...args: never[]): any;
     }
 
-    module DxvaVp9Decoder {
+    namespace DxvaVp9Decoder {
         // Constructor properties interface
 
         interface ConstructorProps extends GstCodecs.Vp9Decoder.ConstructorProps {}

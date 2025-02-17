@@ -546,7 +546,7 @@ export namespace GooCanvas {
          */
         ALL,
     }
-    module Canvas {
+    namespace Canvas {
         // Signal callback interfaces
 
         interface ItemCreated {
@@ -1762,7 +1762,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasAccessibleFactory {
+    namespace CanvasAccessibleFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {}
@@ -1778,7 +1778,7 @@ export namespace GooCanvas {
         _init(...args: any[]): void;
     }
 
-    module CanvasEllipse {
+    namespace CanvasEllipse {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -2925,7 +2925,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasEllipseModel {
+    namespace CanvasEllipseModel {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -3712,7 +3712,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasGrid {
+    namespace CanvasGrid {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -5010,7 +5010,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasGridModel {
+    namespace CanvasGridModel {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -5932,7 +5932,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasGroup {
+    namespace CanvasGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -7060,7 +7060,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasGroupModel {
+    namespace CanvasGroupModel {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -7825,7 +7825,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasImage {
+    namespace CanvasImage {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -8962,7 +8962,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasImageModel {
+    namespace CanvasImageModel {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -9741,7 +9741,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasItemAccessibleFactory {
+    namespace CanvasItemAccessibleFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {}
@@ -9757,7 +9757,7 @@ export namespace GooCanvas {
         _init(...args: any[]): void;
     }
 
-    module CanvasItemModelSimple {
+    namespace CanvasItemModelSimple {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -10632,7 +10632,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasItemSimple {
+    namespace CanvasItemSimple {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, CanvasItem.ConstructorProps {
@@ -11976,7 +11976,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasPath {
+    namespace CanvasPath {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -13106,7 +13106,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasPathModel {
+    namespace CanvasPathModel {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -13872,7 +13872,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasPolyline {
+    namespace CanvasPolyline {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -15031,7 +15031,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasPolylineModel {
+    namespace CanvasPolylineModel {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -15831,7 +15831,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasRect {
+    namespace CanvasRect {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -17009,7 +17009,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasRectModel {
+    namespace CanvasRectModel {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -17828,7 +17828,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasStyle {
+    namespace CanvasStyle {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17923,7 +17923,7 @@ export namespace GooCanvas {
         set_stroke_options(cr: cairo.Context): boolean;
     }
 
-    module CanvasTable {
+    namespace CanvasTable {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasGroup.ConstructorProps, CanvasItem.ConstructorProps {
@@ -18420,7 +18420,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasTableModel {
+    namespace CanvasTableModel {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasGroupModel.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -18921,7 +18921,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasText {
+    namespace CanvasText {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -20075,7 +20075,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasTextModel {
+    namespace CanvasTextModel {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -20855,7 +20855,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasWidget {
+    namespace CanvasWidget {
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -21989,7 +21989,7 @@ export namespace GooCanvas {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CanvasWidgetAccessibleFactory {
+    namespace CanvasWidgetAccessibleFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {}
@@ -22467,7 +22467,7 @@ export namespace GooCanvas {
         _init(...args: any[]): void;
     }
 
-    module CanvasItem {
+    namespace CanvasItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -23200,7 +23200,7 @@ export namespace GooCanvas {
         new (): CanvasItem; // This allows `obj instanceof CanvasItem`
     };
 
-    module CanvasItemModel {
+    namespace CanvasItemModel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

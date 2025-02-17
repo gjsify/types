@@ -66,7 +66,7 @@ export namespace Builder {
     interface TreeNodeCompareFunc {
         (a: TreeNode, b: TreeNode): number;
     }
-    module Application {
+    namespace Application {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -570,7 +570,7 @@ export namespace Builder {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module EditorView {
+    namespace EditorView {
         // Signal callback interfaces
 
         interface RequestDocumentation {
@@ -1007,7 +1007,7 @@ export namespace Builder {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MenuExtension {
+    namespace MenuExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1039,7 +1039,7 @@ export namespace Builder {
         remove_items(): void;
     }
 
-    module Tree {
+    namespace Tree {
         // Signal callback interfaces
 
         interface Action {
@@ -1672,7 +1672,7 @@ export namespace Builder {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TreeBuilder {
+    namespace TreeBuilder {
         // Signal callback interfaces
 
         interface Added {
@@ -1769,7 +1769,7 @@ export namespace Builder {
         get_tree(): Tree | null;
     }
 
-    module TreeNode {
+    namespace TreeNode {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -1959,7 +1959,7 @@ export namespace Builder {
         show_popover(popover: Gtk.Popover): void;
     }
 
-    module View {
+    namespace View {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2486,7 +2486,7 @@ export namespace Builder {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ViewGrid {
+    namespace ViewGrid {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2930,7 +2930,7 @@ export namespace Builder {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ViewStack {
+    namespace ViewStack {
         // Signal callback interfaces
 
         interface Empty {
@@ -3401,7 +3401,7 @@ export namespace Builder {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Workbench {
+    namespace Workbench {
         // Signal callback interfaces
 
         interface Unload {
@@ -4438,7 +4438,7 @@ export namespace Builder {
     type ViewGridClass = typeof ViewGrid;
     type ViewStackClass = typeof ViewStack;
     type WorkbenchClass = typeof Workbench;
-    module ApplicationAddin {
+    namespace ApplicationAddin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4464,7 +4464,7 @@ export namespace Builder {
         new (): ApplicationAddin; // This allows `obj instanceof ApplicationAddin`
     };
 
-    module Document {
+    namespace Document {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4546,7 +4546,7 @@ export namespace Builder {
         new (): Document; // This allows `obj instanceof Document`
     };
 
-    module EditorViewAddin {
+    namespace EditorViewAddin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

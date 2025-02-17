@@ -81,7 +81,7 @@ export namespace Bamf {
     interface TabPreviewReadyCallback {
         (self: Tab, preview_data: string): void;
     }
-    module Application {
+    namespace Application {
         // Signal callback interfaces
 
         interface DesktopFileUpdated {
@@ -164,7 +164,7 @@ export namespace Bamf {
         get_xids(): number[];
     }
 
-    module Control {
+    namespace Control {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -191,7 +191,7 @@ export namespace Bamf {
         set_approver_behavior(behavior: number): void;
     }
 
-    module Matcher {
+    namespace Matcher {
         // Signal callback interfaces
 
         interface ActiveApplicationChanged {
@@ -342,7 +342,7 @@ export namespace Bamf {
         register_favorites(favorites: string[]): void;
     }
 
-    module Tab {
+    namespace Tab {
         // Constructor properties interface
 
         interface ConstructorProps extends View.ConstructorProps {
@@ -413,7 +413,7 @@ export namespace Bamf {
         request_preview(callback: TabPreviewReadyCallback): void;
     }
 
-    module View {
+    namespace View {
         // Signal callback interfaces
 
         interface ActiveChanged {
@@ -635,7 +635,7 @@ export namespace Bamf {
         set_sticky(value: boolean): void;
     }
 
-    module Window {
+    namespace Window {
         // Signal callback interfaces
 
         interface MaximizedChanged {

@@ -16,7 +16,7 @@ export namespace Gamerzilla {
      * Gamerzilla-0.1
      */
 
-    module GamerzillaGobj {
+    namespace GamerzillaGobj {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

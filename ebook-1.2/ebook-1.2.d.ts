@@ -83,7 +83,7 @@ export namespace EBook {
         recipients: string[],
         cancellable?: Gio.Cancellable | null,
     ): [boolean, string[]];
-    module BookClient {
+    namespace BookClient {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1799,7 +1799,7 @@ export namespace EBook {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BookClientCursor {
+    namespace BookClientCursor {
         // Signal callback interfaces
 
         interface Refresh {
@@ -2767,7 +2767,7 @@ export namespace EBook {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BookClientView {
+    namespace BookClientView {
         // Signal callback interfaces
 
         interface Complete {
@@ -3501,7 +3501,7 @@ export namespace EBook {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Destination {
+    namespace Destination {
         // Signal callback interfaces
 
         interface Changed {

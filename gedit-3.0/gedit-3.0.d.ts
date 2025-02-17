@@ -289,7 +289,7 @@ export namespace Gedit {
         LOADING,
         ERROR,
     }
-    module App {
+    namespace App {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -746,7 +746,7 @@ export namespace Gedit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Document {
+    namespace Document {
         // Signal callback interfaces
 
         interface Load {
@@ -906,7 +906,7 @@ export namespace Gedit {
         set_search_context(search_context?: GtkSource.SearchContext | null): void;
     }
 
-    module EncodingsComboBox {
+    namespace EncodingsComboBox {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5404,7 +5404,7 @@ export namespace Gedit {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module MenuExtension {
+    namespace MenuExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5434,7 +5434,7 @@ export namespace Gedit {
         remove_items(): void;
     }
 
-    module Message {
+    namespace Message {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5501,7 +5501,7 @@ export namespace Gedit {
         has(propname: string): boolean;
     }
 
-    module MessageBus {
+    namespace MessageBus {
         // Signal callback interfaces
 
         interface Dispatch {
@@ -5688,7 +5688,7 @@ export namespace Gedit {
         unregister_all(object_path: string): void;
     }
 
-    module Statusbar {
+    namespace Statusbar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6122,7 +6122,7 @@ export namespace Gedit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Tab {
+    namespace Tab {
         // Signal callback interfaces
 
         interface DropUris {
@@ -6647,7 +6647,7 @@ export namespace Gedit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module View {
+    namespace View {
         // Signal callback interfaces
 
         interface DropUris {
@@ -7093,7 +7093,7 @@ export namespace Gedit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Window {
+    namespace Window {
         // Signal callback interfaces
 
         interface ActiveTabChanged {
@@ -8278,7 +8278,7 @@ export namespace Gedit {
         _init(...args: any[]): void;
     }
 
-    module AppActivatable {
+    namespace AppActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8334,7 +8334,7 @@ export namespace Gedit {
         new (): AppActivatable; // This allows `obj instanceof AppActivatable`
     };
 
-    module ViewActivatable {
+    namespace ViewActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8382,7 +8382,7 @@ export namespace Gedit {
         new (): ViewActivatable; // This allows `obj instanceof ViewActivatable`
     };
 
-    module WindowActivatable {
+    namespace WindowActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

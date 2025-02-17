@@ -300,7 +300,7 @@ export namespace TrackerMiner {
          */
         CHECK_DELETED,
     }
-    module Decorator {
+    namespace Decorator {
         // Signal callback interfaces
 
         interface Finished {
@@ -960,7 +960,7 @@ export namespace TrackerMiner {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DecoratorFS {
+    namespace DecoratorFS {
         // Constructor properties interface
 
         interface ConstructorProps extends Decorator.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -1394,7 +1394,7 @@ export namespace TrackerMiner {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module IndexingTree {
+    namespace IndexingTree {
         // Signal callback interfaces
 
         interface ChildUpdated {
@@ -1634,7 +1634,7 @@ export namespace TrackerMiner {
         set_filter_hidden(filter_hidden: boolean): void;
     }
 
-    module Miner {
+    namespace Miner {
         // Signal callback interfaces
 
         interface Paused {
@@ -2257,7 +2257,7 @@ export namespace TrackerMiner {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MinerFS {
+    namespace MinerFS {
         // Signal callback interfaces
 
         interface Finished {
@@ -3007,7 +3007,7 @@ export namespace TrackerMiner {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MinerOnline {
+    namespace MinerOnline {
         // Signal callback interfaces
 
         interface Connected {
@@ -3548,7 +3548,7 @@ export namespace TrackerMiner {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MinerProxy {
+    namespace MinerProxy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -4160,7 +4160,7 @@ export namespace TrackerMiner {
     }
 
     type MinerProxyClass = typeof MinerProxy;
-    module DataProvider {
+    namespace DataProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

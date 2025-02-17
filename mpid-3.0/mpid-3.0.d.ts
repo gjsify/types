@@ -79,7 +79,7 @@ export namespace MPID {
      * @param debug whether to enable debug output
      */
     function enable_debug(debug: boolean): void;
-    module Device {
+    namespace Device {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

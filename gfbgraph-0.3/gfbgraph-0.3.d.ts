@@ -35,7 +35,7 @@ export namespace GFBGraph {
      * @returns a new #RestProxyCall or %NULL in case of error.
      */
     function new_rest_call(authorizer: Authorizer): Rest.ProxyCall;
-    module Album {
+    namespace Album {
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps, Connectable.ConstructorProps {
@@ -268,7 +268,7 @@ export namespace GFBGraph {
         set_id(id: string): void;
     }
 
-    module GoaAuthorizer {
+    namespace GoaAuthorizer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {}
@@ -733,7 +733,7 @@ export namespace GFBGraph {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Node {
+    namespace Node {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -883,7 +883,7 @@ export namespace GFBGraph {
         set_id(id: string): void;
     }
 
-    module Photo {
+    namespace Photo {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1693,7 +1693,7 @@ export namespace GFBGraph {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SimpleAuthorizer {
+    namespace SimpleAuthorizer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
@@ -2170,7 +2170,7 @@ export namespace GFBGraph {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module User {
+    namespace User {
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps {
@@ -2384,7 +2384,7 @@ export namespace GFBGraph {
         _init(...args: any[]): void;
     }
 
-    module Authorizer {
+    namespace Authorizer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2453,7 +2453,7 @@ export namespace GFBGraph {
         new (): Authorizer; // This allows `obj instanceof Authorizer`
     };
 
-    module Connectable {
+    namespace Connectable {
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps {}

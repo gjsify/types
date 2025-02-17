@@ -185,7 +185,7 @@ export namespace Gdaui {
         HIDE_DSN_SELECTION_MODE,
         HIDE_DIRECT_CONNECTION_MODE,
     }
-    module BasicForm {
+    namespace BasicForm {
         // Signal callback interfaces
 
         interface Activated {
@@ -833,7 +833,7 @@ export namespace Gdaui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Cloud {
+    namespace Cloud {
         // Signal callback interfaces
 
         interface Activate {
@@ -1466,7 +1466,7 @@ export namespace Gdaui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Combo {
+    namespace Combo {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6084,7 +6084,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module DataCellRendererBin {
+    namespace DataCellRendererBin {
         // Signal callback interfaces
 
         interface Changed {
@@ -6144,7 +6144,7 @@ export namespace Gdaui {
         vfunc_changed(path: string, new_value: GObject.Value | any): void;
     }
 
-    module DataCellRendererBoolean {
+    namespace DataCellRendererBoolean {
         // Signal callback interfaces
 
         interface Changed {
@@ -6204,7 +6204,7 @@ export namespace Gdaui {
         vfunc_changed(path: string, new_value: GObject.Value | any): void;
     }
 
-    module DataCellRendererCombo {
+    namespace DataCellRendererCombo {
         // Signal callback interfaces
 
         interface Changed {
@@ -6278,7 +6278,7 @@ export namespace Gdaui {
         emit(signal: 'changed', object: string, p0?: any | null, p1?: any | null): void;
     }
 
-    module DataCellRendererInfo {
+    namespace DataCellRendererInfo {
         // Signal callback interfaces
 
         interface StatusChanged {
@@ -6332,7 +6332,7 @@ export namespace Gdaui {
         vfunc_status_changed(path: string, requested_action: Gda.ValueAttribute): void;
     }
 
-    module DataCellRendererTextual {
+    namespace DataCellRendererTextual {
         // Signal callback interfaces
 
         interface Changed {
@@ -6390,7 +6390,7 @@ export namespace Gdaui {
         vfunc_changed(path: string, new_value: GObject.Value | any): void;
     }
 
-    module DataFilter {
+    namespace DataFilter {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6848,7 +6848,7 @@ export namespace Gdaui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataProxyInfo {
+    namespace DataProxyInfo {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7318,7 +7318,7 @@ export namespace Gdaui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DataStore {
+    namespace DataStore {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.TreeModel.ConstructorProps {
@@ -8207,7 +8207,7 @@ export namespace Gdaui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Entry {
+    namespace Entry {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12814,7 +12814,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EntryBin {
+    namespace EntryBin {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17249,7 +17249,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EntryBoolean {
+    namespace EntryBoolean {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21684,7 +21684,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EntryCombo {
+    namespace EntryCombo {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -26178,7 +26178,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EntryCommonTime {
+    namespace EntryCommonTime {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -30669,7 +30669,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EntryDate {
+    namespace EntryDate {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -34993,7 +34993,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EntryNone {
+    namespace EntryNone {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -39428,7 +39428,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EntryNumber {
+    namespace EntryNumber {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -43927,7 +43927,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EntryShell {
+    namespace EntryShell {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -44495,7 +44495,7 @@ export namespace Gdaui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module EntryString {
+    namespace EntryString {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -48993,7 +48993,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EntryTime {
+    namespace EntryTime {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -53317,7 +53317,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EntryTimestamp {
+    namespace EntryTimestamp {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -57641,7 +57641,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EntryWrapper {
+    namespace EntryWrapper {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -62089,7 +62089,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module Form {
+    namespace Form {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -62753,7 +62753,7 @@ export namespace Gdaui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FormattedEntry {
+    namespace FormattedEntry {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -67043,7 +67043,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module Grid {
+    namespace Grid {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -67717,7 +67717,7 @@ export namespace Gdaui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Login {
+    namespace Login {
         // Signal callback interfaces
 
         interface Changed {
@@ -68227,7 +68227,7 @@ export namespace Gdaui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module NumericEntry {
+    namespace NumericEntry {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -72520,7 +72520,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module ProviderSelector {
+    namespace ProviderSelector {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -76919,7 +76919,7 @@ export namespace Gdaui {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module RawForm {
+    namespace RawForm {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -77564,7 +77564,7 @@ export namespace Gdaui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RawGrid {
+    namespace RawGrid {
         // Signal callback interfaces
 
         interface DoubleClicked {
@@ -78387,7 +78387,7 @@ export namespace Gdaui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RtEditor {
+    namespace RtEditor {
         // Signal callback interfaces
 
         interface Changed {
@@ -78923,7 +78923,7 @@ export namespace Gdaui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ServerOperation {
+    namespace ServerOperation {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -79392,7 +79392,7 @@ export namespace Gdaui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Set {
+    namespace Set {
         // Signal callback interfaces
 
         interface PublicDataChanged {
@@ -79452,7 +79452,7 @@ export namespace Gdaui {
         get_group(holder: Gda.Holder): SetGroup;
     }
 
-    module TreeStore {
+    namespace TreeStore {
         // Signal callback interfaces
 
         interface DragCanDrag {
@@ -80946,7 +80946,7 @@ export namespace Gdaui {
         _init(...args: any[]): void;
     }
 
-    module DataEntry {
+    namespace DataEntry {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
@@ -81165,7 +81165,7 @@ export namespace Gdaui {
         new (): DataEntry; // This allows `obj instanceof DataEntry`
     };
 
-    module DataProxy {
+    namespace DataProxy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -81278,7 +81278,7 @@ export namespace Gdaui {
         new (): DataProxy; // This allows `obj instanceof DataProxy`
     };
 
-    module DataSelector {
+    namespace DataSelector {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

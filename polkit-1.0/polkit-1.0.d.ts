@@ -158,7 +158,7 @@ export namespace Polkit {
          */
         ALLOW_USER_INTERACTION,
     }
-    module ActionDescription {
+    namespace ActionDescription {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -239,7 +239,7 @@ export namespace Polkit {
         get_vendor_url(): string;
     }
 
-    module Authority {
+    namespace Authority {
         // Signal callback interfaces
 
         interface Changed {
@@ -1876,7 +1876,7 @@ export namespace Polkit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AuthorizationResult {
+    namespace AuthorizationResult {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1958,7 +1958,7 @@ export namespace Polkit {
         get_temporary_authorization_id(): string | null;
     }
 
-    module Details {
+    namespace Details {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2001,7 +2001,7 @@ export namespace Polkit {
         lookup(key: string): string | null;
     }
 
-    module Permission {
+    namespace Permission {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2775,7 +2775,7 @@ export namespace Polkit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SystemBusName {
+    namespace SystemBusName {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Subject.ConstructorProps {
@@ -3360,7 +3360,7 @@ export namespace Polkit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TemporaryAuthorization {
+    namespace TemporaryAuthorization {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3413,7 +3413,7 @@ export namespace Polkit {
         get_time_obtained(): number;
     }
 
-    module UnixGroup {
+    namespace UnixGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Identity.ConstructorProps {
@@ -3906,7 +3906,7 @@ export namespace Polkit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UnixNetgroup {
+    namespace UnixNetgroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Identity.ConstructorProps {
@@ -4393,7 +4393,7 @@ export namespace Polkit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UnixProcess {
+    namespace UnixProcess {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Subject.ConstructorProps {
@@ -5051,7 +5051,7 @@ export namespace Polkit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UnixSession {
+    namespace UnixSession {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5960,7 +5960,7 @@ export namespace Polkit {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UnixUser {
+    namespace UnixUser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Identity.ConstructorProps {
@@ -6471,7 +6471,7 @@ export namespace Polkit {
     type UnixProcessClass = typeof UnixProcess;
     type UnixSessionClass = typeof UnixSession;
     type UnixUserClass = typeof UnixUser;
-    module Identity {
+    namespace Identity {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6535,7 +6535,7 @@ export namespace Polkit {
         new (): Identity; // This allows `obj instanceof Identity`
     };
 
-    module Subject {
+    namespace Subject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -88,7 +88,7 @@ export namespace GcrUi {
      * @returns a #GcrViewer which is also a #GtkWidget
      */
     function viewer_new_scrolled(): Viewer;
-    module CertificateRenderer {
+    namespace CertificateRenderer {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -811,7 +811,7 @@ export namespace GcrUi {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CertificateWidget {
+    namespace CertificateWidget {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1283,7 +1283,7 @@ export namespace GcrUi {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CollectionModel {
+    namespace CollectionModel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2314,7 +2314,7 @@ export namespace GcrUi {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ComboSelector {
+    namespace ComboSelector {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6815,7 +6815,7 @@ export namespace GcrUi {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module FailureRenderer {
+    namespace FailureRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Renderer.ConstructorProps {
@@ -7290,7 +7290,7 @@ export namespace GcrUi {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ImportButton {
+    namespace ImportButton {
         // Signal callback interfaces
 
         interface Imported {
@@ -11848,7 +11848,7 @@ export namespace GcrUi {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module KeyRenderer {
+    namespace KeyRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Renderer.ConstructorProps {
@@ -12328,7 +12328,7 @@ export namespace GcrUi {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module KeyWidget {
+    namespace KeyWidget {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12784,7 +12784,7 @@ export namespace GcrUi {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ListSelector {
+    namespace ListSelector {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13342,7 +13342,7 @@ export namespace GcrUi {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PromptDialog {
+    namespace PromptDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14356,7 +14356,7 @@ export namespace GcrUi {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SecureEntryBuffer {
+    namespace SecureEntryBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EntryBuffer.ConstructorProps {}
@@ -14389,7 +14389,7 @@ export namespace GcrUi {
         static ['new'](): SecureEntryBuffer;
     }
 
-    module TreeSelector {
+    namespace TreeSelector {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14946,7 +14946,7 @@ export namespace GcrUi {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UnlockOptionsWidget {
+    namespace UnlockOptionsWidget {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15449,7 +15449,7 @@ export namespace GcrUi {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ViewerWidget {
+    namespace ViewerWidget {
         // Signal callback interfaces
 
         interface Added {
@@ -16128,7 +16128,7 @@ export namespace GcrUi {
 
     type ViewerIface = typeof Viewer;
     type ViewerWidgetClass = typeof ViewerWidget;
-    module Renderer {
+    namespace Renderer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -16220,7 +16220,7 @@ export namespace GcrUi {
         new (): Renderer; // This allows `obj instanceof Renderer`
     };
 
-    module Viewer {
+    namespace Viewer {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {}

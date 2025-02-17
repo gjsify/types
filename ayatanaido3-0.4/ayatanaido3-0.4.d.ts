@@ -65,7 +65,7 @@ export namespace AyatanaIdo3 {
         EXPONENTIAL,
         EASE_IN_EASE_OUT,
     }
-    module CalendarMenuItem {
+    namespace CalendarMenuItem {
         // Signal callback interfaces
 
         interface DaySelected {
@@ -4653,7 +4653,7 @@ export namespace AyatanaIdo3 {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EntryMenuItem {
+    namespace EntryMenuItem {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9172,7 +9172,7 @@ export namespace AyatanaIdo3 {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module Range {
+    namespace Range {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9599,7 +9599,7 @@ export namespace AyatanaIdo3 {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScaleMenuItem {
+    namespace ScaleMenuItem {
         // Signal callback interfaces
 
         interface PrimaryClicked {
@@ -14266,7 +14266,7 @@ export namespace AyatanaIdo3 {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module SwitchMenuItem {
+    namespace SwitchMenuItem {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18554,7 +18554,7 @@ export namespace AyatanaIdo3 {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module Timeline {
+    namespace Timeline {
         // Signal callback interfaces
 
         interface Finished {

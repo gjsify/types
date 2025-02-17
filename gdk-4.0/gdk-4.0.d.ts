@@ -4557,7 +4557,7 @@ export namespace Gdk {
          */
         SUSPENDED,
     }
-    module AppLaunchContext {
+    namespace AppLaunchContext {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.AppLaunchContext.ConstructorProps {
@@ -4686,7 +4686,7 @@ export namespace Gdk {
         get_button(): number;
     }
 
-    module CairoContext {
+    namespace CairoContext {
         // Constructor properties interface
 
         interface ConstructorProps extends DrawContext.ConstructorProps {}
@@ -4725,7 +4725,7 @@ export namespace Gdk {
         cairo_create(): cairo.Context | null;
     }
 
-    module CicpParams {
+    namespace CicpParams {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4915,7 +4915,7 @@ export namespace Gdk {
         set_transfer_function(transfer_function: number): void;
     }
 
-    module Clipboard {
+    namespace Clipboard {
         // Signal callback interfaces
 
         interface Changed {
@@ -5312,7 +5312,7 @@ export namespace Gdk {
         store_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module ContentDeserializer {
+    namespace ContentDeserializer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncResult.ConstructorProps {}
@@ -5850,7 +5850,7 @@ export namespace Gdk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ContentProvider {
+    namespace ContentProvider {
         // Signal callback interfaces
 
         interface ContentChanged {
@@ -6083,7 +6083,7 @@ export namespace Gdk {
         write_mime_type_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module ContentSerializer {
+    namespace ContentSerializer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncResult.ConstructorProps {}
@@ -6651,7 +6651,7 @@ export namespace Gdk {
         get_mode(): CrossingMode;
     }
 
-    module Cursor {
+    namespace Cursor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6837,7 +6837,7 @@ export namespace Gdk {
         _init(...args: any[]): void;
     }
 
-    module Device {
+    namespace Device {
         // Signal callback interfaces
 
         interface Changed {
@@ -7190,7 +7190,7 @@ export namespace Gdk {
         get_vendor_id(): string | null;
     }
 
-    module DeviceTool {
+    namespace DeviceTool {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7279,7 +7279,7 @@ export namespace Gdk {
         get_tool_type(): DeviceToolType;
     }
 
-    module Display {
+    namespace Display {
         // Signal callback interfaces
 
         interface Closed {
@@ -7706,7 +7706,7 @@ export namespace Gdk {
         ): [boolean, number, number, number, ModifierType | null];
     }
 
-    module DisplayManager {
+    namespace DisplayManager {
         // Signal callback interfaces
 
         interface DisplayOpened {
@@ -7836,7 +7836,7 @@ export namespace Gdk {
         set_default_display(display: Display): void;
     }
 
-    module DmabufTexture {
+    namespace DmabufTexture {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8602,7 +8602,7 @@ export namespace Gdk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DmabufTextureBuilder {
+    namespace DmabufTextureBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8975,7 +8975,7 @@ export namespace Gdk {
         set_width(width: number): void;
     }
 
-    module Drag {
+    namespace Drag {
         // Signal callback interfaces
 
         interface Cancel {
@@ -9185,7 +9185,7 @@ export namespace Gdk {
         set_hotspot(hot_x: number, hot_y: number): void;
     }
 
-    module DrawContext {
+    namespace DrawContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9299,7 +9299,7 @@ export namespace Gdk {
         is_in_frame(): boolean;
     }
 
-    module Drop {
+    namespace Drop {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9755,7 +9755,7 @@ export namespace Gdk {
         get_in(): boolean;
     }
 
-    module FrameClock {
+    namespace FrameClock {
         // Signal callback interfaces
 
         interface AfterPaint {
@@ -9959,7 +9959,7 @@ export namespace Gdk {
         request_phase(phase: FrameClockPhase | null): void;
     }
 
-    module GLContext {
+    namespace GLContext {
         // Constructor properties interface
 
         interface ConstructorProps extends DrawContext.ConstructorProps {
@@ -10258,7 +10258,7 @@ export namespace Gdk {
         set_use_es(use_es: number): void;
     }
 
-    module GLTexture {
+    namespace GLTexture {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11032,7 +11032,7 @@ export namespace Gdk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GLTextureBuilder {
+    namespace GLTextureBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11420,7 +11420,7 @@ export namespace Gdk {
         matches(keyval: number, modifiers: ModifierType | null): KeyMatch;
     }
 
-    module MemoryTexture {
+    namespace MemoryTexture {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12189,7 +12189,7 @@ export namespace Gdk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MemoryTextureBuilder {
+    namespace MemoryTextureBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12417,7 +12417,7 @@ export namespace Gdk {
         set_width(width: number): void;
     }
 
-    module Monitor {
+    namespace Monitor {
         // Signal callback interfaces
 
         interface Invalidate {
@@ -12761,7 +12761,7 @@ export namespace Gdk {
         is_stop(): boolean;
     }
 
-    module Seat {
+    namespace Seat {
         // Signal callback interfaces
 
         interface DeviceAdded {
@@ -12860,7 +12860,7 @@ export namespace Gdk {
         get_tools(): DeviceTool[];
     }
 
-    module Snapshot {
+    namespace Snapshot {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -12881,7 +12881,7 @@ export namespace Gdk {
         _init(...args: any[]): void;
     }
 
-    module Surface {
+    namespace Surface {
         // Signal callback interfaces
 
         interface EnterMonitor {
@@ -13279,7 +13279,7 @@ export namespace Gdk {
         translate_coordinates(to: Surface, x: number, y: number): [boolean, number, number];
     }
 
-    module Texture {
+    namespace Texture {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14273,7 +14273,7 @@ export namespace Gdk {
         get_pinch_scale(): number;
     }
 
-    module VulkanContext {
+    namespace VulkanContext {
         // Signal callback interfaces
 
         interface ImagesUpdated {
@@ -16023,7 +16023,7 @@ export namespace Gdk {
         set_size(width: number, height: number): void;
     }
 
-    module DevicePad {
+    namespace DevicePad {
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {}
@@ -16072,7 +16072,7 @@ export namespace Gdk {
         new (): DevicePad; // This allows `obj instanceof DevicePad`
     };
 
-    module DragSurface {
+    namespace DragSurface {
         // Constructor properties interface
 
         interface ConstructorProps extends Surface.ConstructorProps {}
@@ -16098,7 +16098,7 @@ export namespace Gdk {
         new (): DragSurface; // This allows `obj instanceof DragSurface`
     };
 
-    module Paintable {
+    namespace Paintable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -16334,7 +16334,7 @@ export namespace Gdk {
         new (): Paintable; // This allows `obj instanceof Paintable`
     };
 
-    module Popup {
+    namespace Popup {
         // Constructor properties interface
 
         interface ConstructorProps extends Surface.ConstructorProps {
@@ -16425,7 +16425,7 @@ export namespace Gdk {
         new (): Popup; // This allows `obj instanceof Popup`
     };
 
-    module Toplevel {
+    namespace Toplevel {
         // Constructor properties interface
 
         interface ConstructorProps extends Surface.ConstructorProps {

@@ -250,7 +250,7 @@ export namespace GtkSource {
         TEXT_ONLY,
         CASE_INSENSITIVE,
     }
-    module Buffer {
+    namespace Buffer {
         // Signal callback interfaces
 
         interface BracketMatched {
@@ -642,7 +642,7 @@ export namespace GtkSource {
         undo(): void;
     }
 
-    module Completion {
+    namespace Completion {
         // Signal callback interfaces
 
         interface ActivateProposal {
@@ -895,7 +895,7 @@ export namespace GtkSource {
         unblock_interactive(): void;
     }
 
-    module CompletionContext {
+    namespace CompletionContext {
         // Signal callback interfaces
 
         interface Cancelled {
@@ -959,7 +959,7 @@ export namespace GtkSource {
         get_iter(iter: Gtk.TextIter): void;
     }
 
-    module CompletionInfo {
+    namespace CompletionInfo {
         // Signal callback interfaces
 
         interface BeforeShow {
@@ -1466,7 +1466,7 @@ export namespace GtkSource {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CompletionItem {
+    namespace CompletionItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, CompletionProposal.ConstructorProps {
@@ -2032,7 +2032,7 @@ export namespace GtkSource {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Gutter {
+    namespace Gutter {
         // Signal callback interfaces
 
         interface CellActivated {
@@ -2156,7 +2156,7 @@ export namespace GtkSource {
         ): void;
     }
 
-    module Language {
+    namespace Language {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2222,7 +2222,7 @@ export namespace GtkSource {
         get_style_name(style_id: string): string;
     }
 
-    module LanguageManager {
+    namespace LanguageManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2328,7 +2328,7 @@ export namespace GtkSource {
         set_search_path(dirs?: string[] | null): void;
     }
 
-    module Mark {
+    namespace Mark {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TextMark.ConstructorProps {
@@ -2367,7 +2367,7 @@ export namespace GtkSource {
         get_category(): string;
     }
 
-    module PrintCompositor {
+    namespace PrintCompositor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3055,7 +3055,7 @@ export namespace GtkSource {
         set_wrap_mode(wrap_mode: Gtk.WrapMode | null): void;
     }
 
-    module Style {
+    namespace Style {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3119,7 +3119,7 @@ export namespace GtkSource {
         _init(...args: any[]): void;
     }
 
-    module StyleScheme {
+    namespace StyleScheme {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3169,7 +3169,7 @@ export namespace GtkSource {
         get_name(): string;
     }
 
-    module StyleSchemeManager {
+    namespace StyleSchemeManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3248,7 +3248,7 @@ export namespace GtkSource {
         set_search_path(path?: string[] | null): void;
     }
 
-    module View {
+    namespace View {
         // Signal callback interfaces
 
         interface LineMarkActivated {
@@ -4225,7 +4225,7 @@ export namespace GtkSource {
         _init(...args: any[]): void;
     }
 
-    module CompletionProposal {
+    namespace CompletionProposal {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4345,7 +4345,7 @@ export namespace GtkSource {
         new (): CompletionProposal; // This allows `obj instanceof CompletionProposal`
     };
 
-    module CompletionProvider {
+    namespace CompletionProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4494,7 +4494,7 @@ export namespace GtkSource {
         new (): CompletionProvider; // This allows `obj instanceof CompletionProvider`
     };
 
-    module UndoManager {
+    namespace UndoManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -152,7 +152,7 @@ export namespace Notify {
     interface ActionCallback {
         (notification: Notification, action: string): void;
     }
-    module Notification {
+    namespace Notification {
         // Signal callback interfaces
 
         interface Closed {

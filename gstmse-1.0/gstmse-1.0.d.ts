@@ -177,7 +177,7 @@ export namespace GstMse {
      * Any error type that can be reported by the Media Source API.
      */
     function media_source_error_quark(): GLib.Quark;
-    module MediaSource {
+    namespace MediaSource {
         // Signal callback interfaces
 
         interface OnSourceClose {
@@ -430,7 +430,7 @@ export namespace GstMse {
         set_live_seekable_range(start: Gst.ClockTime, end: Gst.ClockTime): boolean;
     }
 
-    module MseSrc {
+    namespace MseSrc {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps, Gst.URIHandler.ConstructorProps {
@@ -992,7 +992,7 @@ export namespace GstMse {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MseSrcPad {
+    namespace MseSrcPad {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Pad.ConstructorProps {}
@@ -1008,7 +1008,7 @@ export namespace GstMse {
         _init(...args: any[]): void;
     }
 
-    module SourceBuffer {
+    namespace SourceBuffer {
         // Signal callback interfaces
 
         interface OnAbort {
@@ -1325,7 +1325,7 @@ export namespace GstMse {
         set_timestamp_offset(offset: Gst.ClockTime): boolean;
     }
 
-    module SourceBufferList {
+    namespace SourceBufferList {
         // Signal callback interfaces
 
         interface OnSourcebufferAdded {

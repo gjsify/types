@@ -74,7 +74,7 @@ export namespace GstApp {
          */
         RANDOM_ACCESS,
     }
-    module AppSink {
+    namespace AppSink {
         // Signal callback interfaces
 
         interface Eos {
@@ -934,7 +934,7 @@ export namespace GstApp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AppSrc {
+    namespace AppSrc {
         // Signal callback interfaces
 
         interface EndOfStream {

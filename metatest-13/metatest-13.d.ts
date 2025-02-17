@@ -62,7 +62,7 @@ export namespace MetaTest {
         NONE,
         CAN_SKIP,
     }
-    module ContextTest {
+    namespace ContextTest {
         // Signal callback interfaces
 
         interface AfterTests {
@@ -112,7 +112,7 @@ export namespace MetaTest {
         wait_for_x11_display(): void;
     }
 
-    module TestMonitor {
+    namespace TestMonitor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

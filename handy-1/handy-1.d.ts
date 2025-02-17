@@ -369,7 +369,7 @@ export namespace Handy {
     interface ComboRowGetNameFunc<A = GObject.Object> {
         (item: A): string;
     }
-    module ActionRow {
+    namespace ActionRow {
         // Signal callback interfaces
 
         interface Activated {
@@ -4860,7 +4860,7 @@ export namespace Handy {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module ApplicationWindow {
+    namespace ApplicationWindow {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5825,7 +5825,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Avatar {
+    namespace Avatar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6465,7 +6465,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Carousel {
+    namespace Carousel {
         // Signal callback interfaces
 
         interface PageChanged {
@@ -11117,7 +11117,7 @@ export namespace Handy {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module CarouselIndicatorDots {
+    namespace CarouselIndicatorDots {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11596,7 +11596,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CarouselIndicatorLines {
+    namespace CarouselIndicatorLines {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12077,7 +12077,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Clamp {
+    namespace Clamp {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12620,7 +12620,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ComboRow {
+    namespace ComboRow {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17031,7 +17031,7 @@ export namespace Handy {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module Deck {
+    namespace Deck {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21724,7 +21724,7 @@ export namespace Handy {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EnumValueObject {
+    namespace EnumValueObject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -21766,7 +21766,7 @@ export namespace Handy {
         get_value(): number;
     }
 
-    module ExpanderRow {
+    namespace ExpanderRow {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -26186,7 +26186,7 @@ export namespace Handy {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module Flap {
+    namespace Flap {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -30982,7 +30982,7 @@ export namespace Handy {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module HeaderBar {
+    namespace HeaderBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31736,7 +31736,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HeaderGroup {
+    namespace HeaderGroup {
         // Signal callback interfaces
 
         interface UpdateDecorationLayouts {
@@ -32468,7 +32468,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HeaderGroupChild {
+    namespace HeaderGroupChild {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -32516,7 +32516,7 @@ export namespace Handy {
         get_header_group(): HeaderGroup;
     }
 
-    module Keypad {
+    namespace Keypad {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33114,7 +33114,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Leaflet {
+    namespace Leaflet {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -37898,7 +37898,7 @@ export namespace Handy {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module PreferencesGroup {
+    namespace PreferencesGroup {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -38392,7 +38392,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PreferencesPage {
+    namespace PreferencesPage {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -38870,7 +38870,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PreferencesRow {
+    namespace PreferencesRow {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -43309,7 +43309,7 @@ export namespace Handy {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module PreferencesWindow {
+    namespace PreferencesWindow {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -43810,7 +43810,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SearchBar {
+    namespace SearchBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -44366,7 +44366,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Squeezer {
+    namespace Squeezer {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -45036,7 +45036,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StatusPage {
+    namespace StatusPage {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -45530,7 +45530,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StyleManager {
+    namespace StyleManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45755,7 +45755,7 @@ export namespace Handy {
         set_color_scheme(color_scheme: ColorScheme | null): void;
     }
 
-    module SwipeGroup {
+    namespace SwipeGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.Buildable.ConstructorProps {}
@@ -46402,7 +46402,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SwipeTracker {
+    namespace SwipeTracker {
         // Signal callback interfaces
 
         interface BeginSwipe {
@@ -47013,7 +47013,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TabBar {
+    namespace TabBar {
         // Signal callback interfaces
 
         interface ExtraDragDataReceived {
@@ -47737,7 +47737,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TabPage {
+    namespace TabPage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -47995,7 +47995,7 @@ export namespace Handy {
         set_tooltip(tooltip?: string | null): void;
     }
 
-    module TabView {
+    namespace TabView {
         // Signal callback interfaces
 
         interface ClosePage {
@@ -48985,7 +48985,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TitleBar {
+    namespace TitleBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -49455,7 +49455,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueObject {
+    namespace ValueObject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -49511,7 +49511,7 @@ export namespace Handy {
         get_value(): unknown;
     }
 
-    module ViewSwitcher {
+    namespace ViewSwitcher {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -50029,7 +50029,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ViewSwitcherBar {
+    namespace ViewSwitcherBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -50559,7 +50559,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ViewSwitcherTitle {
+    namespace ViewSwitcherTitle {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -51163,7 +51163,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Window {
+    namespace Window {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -51643,7 +51643,7 @@ export namespace Handy {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WindowHandle {
+    namespace WindowHandle {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -52120,7 +52120,7 @@ export namespace Handy {
     type ViewSwitcherTitleClass = typeof ViewSwitcherTitle;
     type WindowClass = typeof Window;
     type WindowHandleClass = typeof WindowHandle;
-    module Swipeable {
+    namespace Swipeable {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {}

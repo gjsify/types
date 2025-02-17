@@ -1075,7 +1075,7 @@ export namespace Fwupd {
          */
         METADATA,
     }
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface Changed {
@@ -3285,7 +3285,7 @@ export namespace Fwupd {
         verify_update_finish(res: Gio.AsyncResult): boolean;
     }
 
-    module Device {
+    namespace Device {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3808,7 +3808,7 @@ export namespace Fwupd {
         to_variant_full(flags: DeviceFlags): GLib.Variant;
     }
 
-    module Plugin {
+    namespace Plugin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3908,7 +3908,7 @@ export namespace Fwupd {
         to_variant(): GLib.Variant;
     }
 
-    module Release {
+    namespace Release {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4325,7 +4325,7 @@ export namespace Fwupd {
         to_variant(): GLib.Variant;
     }
 
-    module Remote {
+    namespace Remote {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4610,7 +4610,7 @@ export namespace Fwupd {
         to_variant(): GLib.Variant;
     }
 
-    module SecurityAttr {
+    namespace SecurityAttr {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

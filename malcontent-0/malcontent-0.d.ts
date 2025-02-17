@@ -215,7 +215,7 @@ export namespace Malcontent {
          */
         INTERACTIVE,
     }
-    module Manager {
+    namespace Manager {
         // Signal callback interfaces
 
         interface AppFilterChanged {

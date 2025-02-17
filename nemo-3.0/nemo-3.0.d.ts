@@ -69,7 +69,7 @@ export namespace Nemo {
     interface InfoProviderUpdateComplete {
         (provider: InfoProvider, handle: OperationHandle, result: OperationResult): void;
     }
-    module Column {
+    namespace Column {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -138,7 +138,7 @@ export namespace Nemo {
         ): Column;
     }
 
-    module DesktopPreferences {
+    namespace DesktopPreferences {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -561,7 +561,7 @@ export namespace Nemo {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Menu {
+    namespace Menu {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -584,7 +584,7 @@ export namespace Nemo {
         get_items(): MenuItem[];
     }
 
-    module MenuItem {
+    namespace MenuItem {
         // Signal callback interfaces
 
         interface Activate {
@@ -686,7 +686,7 @@ export namespace Nemo {
         set_widget_b(widget: Gtk.Widget): void;
     }
 
-    module PropertyPage {
+    namespace PropertyPage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -716,7 +716,7 @@ export namespace Nemo {
         static ['new'](name: string, label: Gtk.Widget, page: Gtk.Widget): PropertyPage;
     }
 
-    module SimpleButton {
+    namespace SimpleButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5316,7 +5316,7 @@ export namespace Nemo {
     }
 
     type SimpleButtonClass = typeof SimpleButton;
-    module ColumnProvider {
+    namespace ColumnProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5336,7 +5336,7 @@ export namespace Nemo {
         new (): ColumnProvider; // This allows `obj instanceof ColumnProvider`
     };
 
-    module FileInfo {
+    namespace FileInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5429,7 +5429,7 @@ export namespace Nemo {
         new (): FileInfo; // This allows `obj instanceof FileInfo`
     };
 
-    module InfoProvider {
+    namespace InfoProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5457,7 +5457,7 @@ export namespace Nemo {
         new (): InfoProvider; // This allows `obj instanceof InfoProvider`
     };
 
-    module LocationWidgetProvider {
+    namespace LocationWidgetProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5477,7 +5477,7 @@ export namespace Nemo {
         new (): LocationWidgetProvider; // This allows `obj instanceof LocationWidgetProvider`
     };
 
-    module MenuProvider {
+    namespace MenuProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5499,7 +5499,7 @@ export namespace Nemo {
         new (): MenuProvider; // This allows `obj instanceof MenuProvider`
     };
 
-    module NameAndDescProvider {
+    namespace NameAndDescProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5519,7 +5519,7 @@ export namespace Nemo {
         new (): NameAndDescProvider; // This allows `obj instanceof NameAndDescProvider`
     };
 
-    module PropertyPageProvider {
+    namespace PropertyPageProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

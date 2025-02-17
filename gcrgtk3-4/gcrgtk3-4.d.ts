@@ -29,7 +29,7 @@ export namespace GcrGtk3 {
      * GcrGtk3-4
      */
 
-    module CertificateWidget {
+    namespace CertificateWidget {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -493,7 +493,7 @@ export namespace GcrGtk3 {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SecureEntryBuffer {
+    namespace SecureEntryBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EntryBuffer.ConstructorProps {}

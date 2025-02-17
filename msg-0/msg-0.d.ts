@@ -85,7 +85,7 @@ export namespace Msg {
     const API_ENDPOINT: string;
     function error_quark(): GLib.Quark;
     function json_object_get_string(object: Json.Object, name: string): string;
-    module Contact {
+    namespace Contact {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -139,7 +139,7 @@ export namespace Msg {
         set_surname(surname: string): void;
     }
 
-    module ContactService {
+    namespace ContactService {
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -180,7 +180,7 @@ export namespace Msg {
         get_contacts(cancellable?: Gio.Cancellable | null): Contact[];
     }
 
-    module Drive {
+    namespace Drive {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -248,7 +248,7 @@ export namespace Msg {
         get_used(): number;
     }
 
-    module DriveItem {
+    namespace DriveItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -334,7 +334,7 @@ export namespace Msg {
         set_parent_id(parent_id: string): void;
     }
 
-    module DriveItemFile {
+    namespace DriveItemFile {
         // Constructor properties interface
 
         interface ConstructorProps extends DriveItem.ConstructorProps {}
@@ -367,7 +367,7 @@ export namespace Msg {
         get_thumbnail_uri(): string;
     }
 
-    module DriveItemFolder {
+    namespace DriveItemFolder {
         // Constructor properties interface
 
         interface ConstructorProps extends DriveItem.ConstructorProps {}
@@ -387,7 +387,7 @@ export namespace Msg {
         static new_from_json(object: Json.Object): DriveItemFolder;
     }
 
-    module DriveService {
+    namespace DriveService {
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -510,7 +510,7 @@ export namespace Msg {
         update_finish(item: DriveItem, stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): DriveItem;
     }
 
-    module GoaAuthorizer {
+    namespace GoaAuthorizer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
@@ -985,7 +985,7 @@ export namespace Msg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module InputStream {
+    namespace InputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.InputStream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -1519,7 +1519,7 @@ export namespace Msg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MailFolder {
+    namespace MailFolder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1548,7 +1548,7 @@ export namespace Msg {
         get_unread_item_count(): number;
     }
 
-    module Message {
+    namespace Message {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1581,7 +1581,7 @@ export namespace Msg {
         set_subject(subject: string): boolean;
     }
 
-    module MessageService {
+    namespace MessageService {
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -1635,7 +1635,7 @@ export namespace Msg {
         get_messages(cancellable?: Gio.Cancellable | null): Message[];
     }
 
-    module OAuth2Authorizer {
+    namespace OAuth2Authorizer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
@@ -2118,7 +2118,7 @@ export namespace Msg {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Service {
+    namespace Service {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2211,7 +2211,7 @@ export namespace Msg {
         send_and_read(message: Soup.Message, cancellable?: Gio.Cancellable | null): GLib.Bytes;
     }
 
-    module User {
+    namespace User {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2238,7 +2238,7 @@ export namespace Msg {
         get_mail(): string;
     }
 
-    module UserService {
+    namespace UserService {
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -2331,7 +2331,7 @@ export namespace Msg {
         _init(...args: any[]): void;
     }
 
-    module Authorizer {
+    namespace Authorizer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

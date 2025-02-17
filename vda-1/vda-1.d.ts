@@ -269,7 +269,7 @@ export namespace Vda {
         USAGE,
         PRIVILEGES,
     }
-    module AffectedRows {
+    namespace AffectedRows {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -697,7 +697,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CommandDelete {
+    namespace CommandDelete {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1164,7 +1164,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CommandInsert {
+    namespace CommandInsert {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1595,7 +1595,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CommandModification {
+    namespace CommandModification {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2059,7 +2059,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CommandSelect {
+    namespace CommandSelect {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2521,7 +2521,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CommandUpdate {
+    namespace CommandUpdate {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2958,7 +2958,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ConnectionParameter {
+    namespace ConnectionParameter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2993,7 +2993,7 @@ export namespace Vda {
         set_value(value: string): void;
     }
 
-    module ConnectionParameterDbName {
+    namespace ConnectionParameterDbName {
         // Constructor properties interface
 
         interface ConstructorProps extends ConnectionParameter.ConstructorProps {}
@@ -3011,7 +3011,7 @@ export namespace Vda {
         static ['new'](): ConnectionParameterDbName;
     }
 
-    module ConnectionParameterHost {
+    namespace ConnectionParameterHost {
         // Constructor properties interface
 
         interface ConstructorProps extends ConnectionParameter.ConstructorProps {}
@@ -3029,7 +3029,7 @@ export namespace Vda {
         static ['new'](): ConnectionParameterHost;
     }
 
-    module ConnectionParameterPort {
+    namespace ConnectionParameterPort {
         // Constructor properties interface
 
         interface ConstructorProps extends ConnectionParameter.ConstructorProps {}
@@ -3047,7 +3047,7 @@ export namespace Vda {
         static ['new'](): ConnectionParameterPort;
     }
 
-    module ConnectionParameterUserName {
+    namespace ConnectionParameterUserName {
         // Constructor properties interface
 
         interface ConstructorProps extends ConnectionParameter.ConstructorProps {}
@@ -3065,7 +3065,7 @@ export namespace Vda {
         static ['new'](): ConnectionParameterUserName;
     }
 
-    module ConnectionParameterPassword {
+    namespace ConnectionParameterPassword {
         // Constructor properties interface
 
         interface ConstructorProps extends ConnectionParameter.ConstructorProps {}
@@ -3083,7 +3083,7 @@ export namespace Vda {
         static ['new'](): ConnectionParameterPassword;
     }
 
-    module ConnectionParameters {
+    namespace ConnectionParameters {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.HashMap.ConstructorProps {}
@@ -3114,7 +3114,7 @@ export namespace Vda {
         has_param(name: string): boolean;
     }
 
-    module Expression {
+    namespace Expression {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -3650,7 +3650,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionField {
+    namespace ExpressionField {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -4099,7 +4099,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperator {
+    namespace ExpressionOperator {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -4626,7 +4626,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorGroup {
+    namespace ExpressionOperatorGroup {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -5053,7 +5053,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorMultiterm {
+    namespace ExpressionOperatorMultiterm {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -5480,7 +5480,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorAnd {
+    namespace ExpressionOperatorAnd {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -5907,7 +5907,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorOr {
+    namespace ExpressionOperatorOr {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -6334,7 +6334,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorBinaryterm {
+    namespace ExpressionOperatorBinaryterm {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -6761,7 +6761,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorEq {
+    namespace ExpressionOperatorEq {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -7188,7 +7188,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorNotEq {
+    namespace ExpressionOperatorNotEq {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -7615,7 +7615,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorDiff {
+    namespace ExpressionOperatorDiff {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -8042,7 +8042,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorGt {
+    namespace ExpressionOperatorGt {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -8469,7 +8469,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorLt {
+    namespace ExpressionOperatorLt {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -8896,7 +8896,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorGeq {
+    namespace ExpressionOperatorGeq {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -9323,7 +9323,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorLeq {
+    namespace ExpressionOperatorLeq {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -9750,7 +9750,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorRegexp {
+    namespace ExpressionOperatorRegexp {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -10177,7 +10177,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorStar {
+    namespace ExpressionOperatorStar {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -10604,7 +10604,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorDiv {
+    namespace ExpressionOperatorDiv {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -11031,7 +11031,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIn {
+    namespace ExpressionOperatorIn {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -11458,7 +11458,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorNotIn {
+    namespace ExpressionOperatorNotIn {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -11885,7 +11885,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorConcatenate {
+    namespace ExpressionOperatorConcatenate {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -12312,7 +12312,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorSimilarTo {
+    namespace ExpressionOperatorSimilarTo {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -12739,7 +12739,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorLike {
+    namespace ExpressionOperatorLike {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -13166,7 +13166,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorNotLike {
+    namespace ExpressionOperatorNotLike {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -13593,7 +13593,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIlike {
+    namespace ExpressionOperatorIlike {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -14020,7 +14020,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorNotIlike {
+    namespace ExpressionOperatorNotIlike {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -14447,7 +14447,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorBinaryUnaryterm {
+    namespace ExpressionOperatorBinaryUnaryterm {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -14874,7 +14874,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorMinus {
+    namespace ExpressionOperatorMinus {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -15301,7 +15301,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorPlus {
+    namespace ExpressionOperatorPlus {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -15728,7 +15728,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorInitialUnaryterm {
+    namespace ExpressionOperatorInitialUnaryterm {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -16155,7 +16155,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorNot {
+    namespace ExpressionOperatorNot {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -16582,7 +16582,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorFinalUnaryterm {
+    namespace ExpressionOperatorFinalUnaryterm {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -17009,7 +17009,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIs {
+    namespace ExpressionOperatorIs {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -17436,7 +17436,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIsNot {
+    namespace ExpressionOperatorIsNot {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -17863,7 +17863,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIsNull {
+    namespace ExpressionOperatorIsNull {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -18290,7 +18290,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIsNotNull {
+    namespace ExpressionOperatorIsNotNull {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -18717,7 +18717,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIsTrue {
+    namespace ExpressionOperatorIsTrue {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -19144,7 +19144,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIsNotTrue {
+    namespace ExpressionOperatorIsNotTrue {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -19571,7 +19571,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIsFalse {
+    namespace ExpressionOperatorIsFalse {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -19998,7 +19998,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIsNotFalse {
+    namespace ExpressionOperatorIsNotFalse {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -20425,7 +20425,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIsNotUnknown {
+    namespace ExpressionOperatorIsNotUnknown {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -20852,7 +20852,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIsUnknown {
+    namespace ExpressionOperatorIsUnknown {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -21279,7 +21279,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIsDistinct {
+    namespace ExpressionOperatorIsDistinct {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -21706,7 +21706,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIsNotDistinct {
+    namespace ExpressionOperatorIsNotDistinct {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -22133,7 +22133,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIsDistinctFrom {
+    namespace ExpressionOperatorIsDistinctFrom {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -22560,7 +22560,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorIsNotDistinctFrom {
+    namespace ExpressionOperatorIsNotDistinctFrom {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -22987,7 +22987,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorThreeterm {
+    namespace ExpressionOperatorThreeterm {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -23414,7 +23414,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorBetween {
+    namespace ExpressionOperatorBetween {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -23841,7 +23841,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorBetweenAnd {
+    namespace ExpressionOperatorBetweenAnd {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -24268,7 +24268,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorNotBetween {
+    namespace ExpressionOperatorNotBetween {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -24695,7 +24695,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorNotBetweenAnd {
+    namespace ExpressionOperatorNotBetweenAnd {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -25122,7 +25122,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorBetweenSymmetric {
+    namespace ExpressionOperatorBetweenSymmetric {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -25549,7 +25549,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorBetweenSymmetricAnd {
+    namespace ExpressionOperatorBetweenSymmetricAnd {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -25976,7 +25976,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorNotBetweenSymmetric {
+    namespace ExpressionOperatorNotBetweenSymmetric {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -26403,7 +26403,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionOperatorNotBetweenSymmetricAnd {
+    namespace ExpressionOperatorNotBetweenSymmetricAnd {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -26830,7 +26830,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionValue {
+    namespace ExpressionValue {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -27273,7 +27273,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionValueParameter {
+    namespace ExpressionValueParameter {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -27722,7 +27722,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HashList {
+    namespace HashList {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -28258,7 +28258,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module InvalidQuery {
+    namespace InvalidQuery {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Query.ConstructorProps {
@@ -28712,7 +28712,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module InvalidPreparedQuery {
+    namespace InvalidPreparedQuery {
         // Constructor properties interface
 
         interface ConstructorProps extends InvalidQuery.ConstructorProps, PreparedQuery.ConstructorProps {}
@@ -29140,7 +29140,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module InvalidResult {
+    namespace InvalidResult {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Result.ConstructorProps {
@@ -29572,7 +29572,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Parameters {
+    namespace Parameters {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.HashMap.ConstructorProps, SqlParameters.ConstructorProps {}
@@ -30004,7 +30004,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Parser {
+    namespace Parser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SqlParser.ConstructorProps {}
@@ -30426,7 +30426,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TableReference {
+    namespace TableReference {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SqlTableReference.ConstructorProps {}
@@ -30860,7 +30860,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Value {
+    namespace Value {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31312,7 +31312,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueNull {
+    namespace ValueNull {
         // Constructor properties interface
 
         interface ConstructorProps extends Value.ConstructorProps, SqlValueNull.ConstructorProps {}
@@ -31732,7 +31732,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueString {
+    namespace ValueString {
         // Constructor properties interface
 
         interface ConstructorProps extends Value.ConstructorProps, SqlValueString.ConstructorProps {}
@@ -32152,7 +32152,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueXml {
+    namespace ValueXml {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueString.ConstructorProps, SqlValueXml.ConstructorProps {}
@@ -32577,7 +32577,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueJson {
+    namespace ValueJson {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueString.ConstructorProps, SqlValueJson.ConstructorProps {}
@@ -33002,7 +33002,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueText {
+    namespace ValueText {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueString.ConstructorProps, SqlValueText.ConstructorProps {}
@@ -33422,7 +33422,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueName {
+    namespace ValueName {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueString.ConstructorProps, SqlValueName.ConstructorProps {}
@@ -33842,7 +33842,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueBool {
+    namespace ValueBool {
         // Constructor properties interface
 
         interface ConstructorProps extends Value.ConstructorProps, SqlValueBool.ConstructorProps {}
@@ -34262,7 +34262,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueBit {
+    namespace ValueBit {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueBool.ConstructorProps, SqlValueBit.ConstructorProps {}
@@ -34682,7 +34682,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueInteger {
+    namespace ValueInteger {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -35124,7 +35124,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueByte {
+    namespace ValueByte {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueByte.ConstructorProps {}
@@ -35544,7 +35544,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueInt2 {
+    namespace ValueInt2 {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueInt2.ConstructorProps {}
@@ -35964,7 +35964,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueInt4 {
+    namespace ValueInt4 {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueInt4.ConstructorProps {}
@@ -36384,7 +36384,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueInt8 {
+    namespace ValueInt8 {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueInt8.ConstructorProps {}
@@ -36804,7 +36804,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueUnsignedInteger {
+    namespace ValueUnsignedInteger {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -37246,7 +37246,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueUnsignedByte {
+    namespace ValueUnsignedByte {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -37668,7 +37668,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueUnsignedInt2 {
+    namespace ValueUnsignedInt2 {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -38090,7 +38090,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueUnsignedInt4 {
+    namespace ValueUnsignedInt4 {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -38512,7 +38512,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueUnsignedInt8 {
+    namespace ValueUnsignedInt8 {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -38934,7 +38934,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueOid {
+    namespace ValueOid {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueOid.ConstructorProps {}
@@ -39354,7 +39354,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueNumeric {
+    namespace ValueNumeric {
         // Constructor properties interface
 
         interface ConstructorProps extends Value.ConstructorProps, SqlValueNumeric.ConstructorProps {}
@@ -39798,7 +39798,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueFloat {
+    namespace ValueFloat {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueNumeric.ConstructorProps, SqlValueFloat.ConstructorProps {}
@@ -40220,7 +40220,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueDouble {
+    namespace ValueDouble {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueNumeric.ConstructorProps, SqlValueDouble.ConstructorProps {}
@@ -40640,7 +40640,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueMoney {
+    namespace ValueMoney {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueNumeric.ConstructorProps, SqlValueMoney.ConstructorProps {}
@@ -41068,7 +41068,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueTimestamp {
+    namespace ValueTimestamp {
         // Constructor properties interface
 
         interface ConstructorProps extends Value.ConstructorProps, SqlValueTimestamp.ConstructorProps {}
@@ -41514,7 +41514,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueTimestampNtz {
+    namespace ValueTimestampNtz {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueTimestamp.ConstructorProps, SqlValueTimestampNtz.ConstructorProps {}
@@ -41934,7 +41934,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueTime {
+    namespace ValueTime {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueTimestamp.ConstructorProps, SqlValueTime.ConstructorProps {}
@@ -42354,7 +42354,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueTimeNtz {
+    namespace ValueTimeNtz {
         // Constructor properties interface
 
         interface ConstructorProps extends ValueTimestampNtz.ConstructorProps, SqlValueTimeNtz.ConstructorProps {}
@@ -42774,7 +42774,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueDate {
+    namespace ValueDate {
         // Constructor properties interface
 
         interface ConstructorProps extends Value.ConstructorProps, SqlValueDate.ConstructorProps {}
@@ -43202,7 +43202,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueBinary {
+    namespace ValueBinary {
         // Constructor properties interface
 
         interface ConstructorProps extends Value.ConstructorProps, SqlValueBinary.ConstructorProps {}
@@ -43637,7 +43637,7 @@ export namespace Vda {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ValueMathExp {
+    namespace ValueMathExp {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -45196,7 +45196,7 @@ export namespace Vda {
     type SqlValueMathExpIface = typeof SqlValueMathExp;
     type TableModelIface = typeof TableModel;
     type TableModelSequentialIface = typeof TableModelSequential;
-    module MetaObject {
+    namespace MetaObject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45229,7 +45229,7 @@ export namespace Vda {
         new (): MetaObject; // This allows `obj instanceof MetaObject`
     };
 
-    module MetaNamedObject {
+    namespace MetaNamedObject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45262,7 +45262,7 @@ export namespace Vda {
         new (): MetaNamedObject; // This allows `obj instanceof MetaNamedObject`
     };
 
-    module ColumnModel {
+    namespace ColumnModel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45298,7 +45298,7 @@ export namespace Vda {
         new (): ColumnModel; // This allows `obj instanceof ColumnModel`
     };
 
-    module Connection {
+    namespace Connection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45380,7 +45380,7 @@ export namespace Vda {
         new (): Connection; // This allows `obj instanceof Connection`
     };
 
-    module ConnectionBlob {
+    namespace ConnectionBlob {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -45406,7 +45406,7 @@ export namespace Vda {
         new (): ConnectionBlob; // This allows `obj instanceof ConnectionBlob`
     };
 
-    module ConnectionRolebased {
+    namespace ConnectionRolebased {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -45432,7 +45432,7 @@ export namespace Vda {
         new (): ConnectionRolebased; // This allows `obj instanceof ConnectionRolebased`
     };
 
-    module ConnectionTransactional {
+    namespace ConnectionTransactional {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -45466,7 +45466,7 @@ export namespace Vda {
         new (): ConnectionTransactional; // This allows `obj instanceof ConnectionTransactional`
     };
 
-    module DataObject {
+    namespace DataObject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45587,7 +45587,7 @@ export namespace Vda {
         new (): DataObject; // This allows `obj instanceof DataObject`
     };
 
-    module DataCollection {
+    namespace DataCollection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45658,7 +45658,7 @@ export namespace Vda {
         new (): DataCollection; // This allows `obj instanceof DataCollection`
     };
 
-    module HashModel {
+    namespace HashModel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -45686,7 +45686,7 @@ export namespace Vda {
         new (): HashModel; // This allows `obj instanceof HashModel`
     };
 
-    module Inserted {
+    namespace Inserted {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45722,7 +45722,7 @@ export namespace Vda {
         new (): Inserted; // This allows `obj instanceof Inserted`
     };
 
-    module ParsedQuery {
+    namespace ParsedQuery {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45752,7 +45752,7 @@ export namespace Vda {
         new (): ParsedQuery; // This allows `obj instanceof ParsedQuery`
     };
 
-    module PreparedQuery {
+    namespace PreparedQuery {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45786,7 +45786,7 @@ export namespace Vda {
         new (): PreparedQuery; // This allows `obj instanceof PreparedQuery`
     };
 
-    module Query {
+    namespace Query {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45834,7 +45834,7 @@ export namespace Vda {
         new (): Query; // This allows `obj instanceof Query`
     };
 
-    module Result {
+    namespace Result {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -45850,7 +45850,7 @@ export namespace Vda {
         new (): Result; // This allows `obj instanceof Result`
     };
 
-    module Role {
+    namespace Role {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45908,7 +45908,7 @@ export namespace Vda {
         new (): Role; // This allows `obj instanceof Role`
     };
 
-    module RowModel {
+    namespace RowModel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45952,7 +45952,7 @@ export namespace Vda {
         new (): RowModel; // This allows `obj instanceof RowModel`
     };
 
-    module SqlAffectedRows {
+    namespace SqlAffectedRows {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45982,7 +45982,7 @@ export namespace Vda {
         new (): SqlAffectedRows; // This allows `obj instanceof SqlAffectedRows`
     };
 
-    module SqlCommand {
+    namespace SqlCommand {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -46012,7 +46012,7 @@ export namespace Vda {
         new (): SqlCommand; // This allows `obj instanceof SqlCommand`
     };
 
-    module SqlCommandConditional {
+    namespace SqlCommandConditional {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -46042,7 +46042,7 @@ export namespace Vda {
         new (): SqlCommandConditional; // This allows `obj instanceof SqlCommandConditional`
     };
 
-    module SqlCommandDelete {
+    namespace SqlCommandDelete {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46070,7 +46070,7 @@ export namespace Vda {
         new (): SqlCommandDelete; // This allows `obj instanceof SqlCommandDelete`
     };
 
-    module SqlCommandInsert {
+    namespace SqlCommandInsert {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46098,7 +46098,7 @@ export namespace Vda {
         new (): SqlCommandInsert; // This allows `obj instanceof SqlCommandInsert`
     };
 
-    module SqlCommandModification {
+    namespace SqlCommandModification {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -46142,7 +46142,7 @@ export namespace Vda {
         new (): SqlCommandModification; // This allows `obj instanceof SqlCommandModification`
     };
 
-    module SqlCommandParametrized {
+    namespace SqlCommandParametrized {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -46172,7 +46172,7 @@ export namespace Vda {
         new (): SqlCommandParametrized; // This allows `obj instanceof SqlCommandParametrized`
     };
 
-    module SqlCommandSelect {
+    namespace SqlCommandSelect {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -46220,7 +46220,7 @@ export namespace Vda {
         new (): SqlCommandSelect; // This allows `obj instanceof SqlCommandSelect`
     };
 
-    module SqlCommandTableRelated {
+    namespace SqlCommandTableRelated {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -46260,7 +46260,7 @@ export namespace Vda {
         new (): SqlCommandTableRelated; // This allows `obj instanceof SqlCommandTableRelated`
     };
 
-    module SqlCommandUpdate {
+    namespace SqlCommandUpdate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46288,7 +46288,7 @@ export namespace Vda {
         new (): SqlCommandUpdate; // This allows `obj instanceof SqlCommandUpdate`
     };
 
-    module SqlExpression {
+    namespace SqlExpression {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46320,7 +46320,7 @@ export namespace Vda {
         new (): SqlExpression; // This allows `obj instanceof SqlExpression`
     };
 
-    module SqlExpressionField {
+    namespace SqlExpressionField {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -46370,7 +46370,7 @@ export namespace Vda {
         new (): SqlExpressionField; // This allows `obj instanceof SqlExpressionField`
     };
 
-    module SqlExpressionOperator {
+    namespace SqlExpressionOperator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -46496,7 +46496,7 @@ export namespace Vda {
         new (): SqlExpressionOperator; // This allows `obj instanceof SqlExpressionOperator`
     };
 
-    module SqlExpressionOperatorGroup {
+    namespace SqlExpressionOperatorGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46512,7 +46512,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorGroup; // This allows `obj instanceof SqlExpressionOperatorGroup`
     };
 
-    module SqlExpressionOperatorMultiterm {
+    namespace SqlExpressionOperatorMultiterm {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46528,7 +46528,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorMultiterm; // This allows `obj instanceof SqlExpressionOperatorMultiterm`
     };
 
-    module SqlExpressionOperatorAnd {
+    namespace SqlExpressionOperatorAnd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46544,7 +46544,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorAnd; // This allows `obj instanceof SqlExpressionOperatorAnd`
     };
 
-    module SqlExpressionOperatorOr {
+    namespace SqlExpressionOperatorOr {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46560,7 +46560,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorOr; // This allows `obj instanceof SqlExpressionOperatorOr`
     };
 
-    module SqlExpressionOperatorBinaryterm {
+    namespace SqlExpressionOperatorBinaryterm {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46576,7 +46576,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorBinaryterm; // This allows `obj instanceof SqlExpressionOperatorBinaryterm`
     };
 
-    module SqlExpressionOperatorEq {
+    namespace SqlExpressionOperatorEq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46592,7 +46592,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorEq; // This allows `obj instanceof SqlExpressionOperatorEq`
     };
 
-    module SqlExpressionOperatorNotEq {
+    namespace SqlExpressionOperatorNotEq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46608,7 +46608,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorNotEq; // This allows `obj instanceof SqlExpressionOperatorNotEq`
     };
 
-    module SqlExpressionOperatorDiff {
+    namespace SqlExpressionOperatorDiff {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46624,7 +46624,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorDiff; // This allows `obj instanceof SqlExpressionOperatorDiff`
     };
 
-    module SqlExpressionOperatorGt {
+    namespace SqlExpressionOperatorGt {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46640,7 +46640,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorGt; // This allows `obj instanceof SqlExpressionOperatorGt`
     };
 
-    module SqlExpressionOperatorLt {
+    namespace SqlExpressionOperatorLt {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46656,7 +46656,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorLt; // This allows `obj instanceof SqlExpressionOperatorLt`
     };
 
-    module SqlExpressionOperatorGeq {
+    namespace SqlExpressionOperatorGeq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46672,7 +46672,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorGeq; // This allows `obj instanceof SqlExpressionOperatorGeq`
     };
 
-    module SqlExpressionOperatorLeq {
+    namespace SqlExpressionOperatorLeq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46688,7 +46688,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorLeq; // This allows `obj instanceof SqlExpressionOperatorLeq`
     };
 
-    module SqlExpressionOperatorRegexp {
+    namespace SqlExpressionOperatorRegexp {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46704,7 +46704,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorRegexp; // This allows `obj instanceof SqlExpressionOperatorRegexp`
     };
 
-    module SqlExpressionOperatorStar {
+    namespace SqlExpressionOperatorStar {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46720,7 +46720,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorStar; // This allows `obj instanceof SqlExpressionOperatorStar`
     };
 
-    module SqlExpressionOperatorDiv {
+    namespace SqlExpressionOperatorDiv {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46736,7 +46736,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorDiv; // This allows `obj instanceof SqlExpressionOperatorDiv`
     };
 
-    module SqlExpressionOperatorIn {
+    namespace SqlExpressionOperatorIn {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46752,7 +46752,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIn; // This allows `obj instanceof SqlExpressionOperatorIn`
     };
 
-    module SqlExpressionOperatorNotIn {
+    namespace SqlExpressionOperatorNotIn {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46768,7 +46768,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorNotIn; // This allows `obj instanceof SqlExpressionOperatorNotIn`
     };
 
-    module SqlExpressionOperatorConcatenate {
+    namespace SqlExpressionOperatorConcatenate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46784,7 +46784,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorConcatenate; // This allows `obj instanceof SqlExpressionOperatorConcatenate`
     };
 
-    module SqlExpressionOperatorSimilarTo {
+    namespace SqlExpressionOperatorSimilarTo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46800,7 +46800,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorSimilarTo; // This allows `obj instanceof SqlExpressionOperatorSimilarTo`
     };
 
-    module SqlExpressionOperatorLike {
+    namespace SqlExpressionOperatorLike {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46816,7 +46816,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorLike; // This allows `obj instanceof SqlExpressionOperatorLike`
     };
 
-    module SqlExpressionOperatorNotLike {
+    namespace SqlExpressionOperatorNotLike {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46832,7 +46832,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorNotLike; // This allows `obj instanceof SqlExpressionOperatorNotLike`
     };
 
-    module SqlExpressionOperatorIlike {
+    namespace SqlExpressionOperatorIlike {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46848,7 +46848,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIlike; // This allows `obj instanceof SqlExpressionOperatorIlike`
     };
 
-    module SqlExpressionOperatorNotIlike {
+    namespace SqlExpressionOperatorNotIlike {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46864,7 +46864,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorNotIlike; // This allows `obj instanceof SqlExpressionOperatorNotIlike`
     };
 
-    module SqlExpressionOperatorBinaryUnaryterm {
+    namespace SqlExpressionOperatorBinaryUnaryterm {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46880,7 +46880,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorBinaryUnaryterm; // This allows `obj instanceof SqlExpressionOperatorBinaryUnaryterm`
     };
 
-    module SqlExpressionOperatorMinus {
+    namespace SqlExpressionOperatorMinus {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46896,7 +46896,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorMinus; // This allows `obj instanceof SqlExpressionOperatorMinus`
     };
 
-    module SqlExpressionOperatorPlus {
+    namespace SqlExpressionOperatorPlus {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46912,7 +46912,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorPlus; // This allows `obj instanceof SqlExpressionOperatorPlus`
     };
 
-    module SqlExpressionOperatorInitialUnaryterm {
+    namespace SqlExpressionOperatorInitialUnaryterm {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46928,7 +46928,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorInitialUnaryterm; // This allows `obj instanceof SqlExpressionOperatorInitialUnaryterm`
     };
 
-    module SqlExpressionOperatorNot {
+    namespace SqlExpressionOperatorNot {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46944,7 +46944,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorNot; // This allows `obj instanceof SqlExpressionOperatorNot`
     };
 
-    module SqlExpressionOperatorFinalUnaryterm {
+    namespace SqlExpressionOperatorFinalUnaryterm {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46960,7 +46960,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorFinalUnaryterm; // This allows `obj instanceof SqlExpressionOperatorFinalUnaryterm`
     };
 
-    module SqlExpressionOperatorIs {
+    namespace SqlExpressionOperatorIs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46976,7 +46976,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIs; // This allows `obj instanceof SqlExpressionOperatorIs`
     };
 
-    module SqlExpressionOperatorIsNot {
+    namespace SqlExpressionOperatorIsNot {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -46992,7 +46992,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIsNot; // This allows `obj instanceof SqlExpressionOperatorIsNot`
     };
 
-    module SqlExpressionOperatorIsNull {
+    namespace SqlExpressionOperatorIsNull {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47008,7 +47008,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIsNull; // This allows `obj instanceof SqlExpressionOperatorIsNull`
     };
 
-    module SqlExpressionOperatorIsNotNull {
+    namespace SqlExpressionOperatorIsNotNull {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47024,7 +47024,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIsNotNull; // This allows `obj instanceof SqlExpressionOperatorIsNotNull`
     };
 
-    module SqlExpressionOperatorIsTrue {
+    namespace SqlExpressionOperatorIsTrue {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47040,7 +47040,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIsTrue; // This allows `obj instanceof SqlExpressionOperatorIsTrue`
     };
 
-    module SqlExpressionOperatorIsNotTrue {
+    namespace SqlExpressionOperatorIsNotTrue {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47056,7 +47056,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIsNotTrue; // This allows `obj instanceof SqlExpressionOperatorIsNotTrue`
     };
 
-    module SqlExpressionOperatorIsFalse {
+    namespace SqlExpressionOperatorIsFalse {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47072,7 +47072,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIsFalse; // This allows `obj instanceof SqlExpressionOperatorIsFalse`
     };
 
-    module SqlExpressionOperatorIsNotFalse {
+    namespace SqlExpressionOperatorIsNotFalse {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47088,7 +47088,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIsNotFalse; // This allows `obj instanceof SqlExpressionOperatorIsNotFalse`
     };
 
-    module SqlExpressionOperatorIsUnknown {
+    namespace SqlExpressionOperatorIsUnknown {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47104,7 +47104,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIsUnknown; // This allows `obj instanceof SqlExpressionOperatorIsUnknown`
     };
 
-    module SqlExpressionOperatorIsNotUnknown {
+    namespace SqlExpressionOperatorIsNotUnknown {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47120,7 +47120,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIsNotUnknown; // This allows `obj instanceof SqlExpressionOperatorIsNotUnknown`
     };
 
-    module SqlExpressionOperatorIsDistinct {
+    namespace SqlExpressionOperatorIsDistinct {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47136,7 +47136,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIsDistinct; // This allows `obj instanceof SqlExpressionOperatorIsDistinct`
     };
 
-    module SqlExpressionOperatorIsNotDistinct {
+    namespace SqlExpressionOperatorIsNotDistinct {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47152,7 +47152,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIsNotDistinct; // This allows `obj instanceof SqlExpressionOperatorIsNotDistinct`
     };
 
-    module SqlExpressionOperatorIsDistinctFrom {
+    namespace SqlExpressionOperatorIsDistinctFrom {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47168,7 +47168,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIsDistinctFrom; // This allows `obj instanceof SqlExpressionOperatorIsDistinctFrom`
     };
 
-    module SqlExpressionOperatorIsNotDistinctFrom {
+    namespace SqlExpressionOperatorIsNotDistinctFrom {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47184,7 +47184,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorIsNotDistinctFrom; // This allows `obj instanceof SqlExpressionOperatorIsNotDistinctFrom`
     };
 
-    module SqlExpressionOperatorThreeterm {
+    namespace SqlExpressionOperatorThreeterm {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47200,7 +47200,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorThreeterm; // This allows `obj instanceof SqlExpressionOperatorThreeterm`
     };
 
-    module SqlExpressionOperatorBetween {
+    namespace SqlExpressionOperatorBetween {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47216,7 +47216,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorBetween; // This allows `obj instanceof SqlExpressionOperatorBetween`
     };
 
-    module SqlExpressionOperatorBetweenAnd {
+    namespace SqlExpressionOperatorBetweenAnd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47232,7 +47232,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorBetweenAnd; // This allows `obj instanceof SqlExpressionOperatorBetweenAnd`
     };
 
-    module SqlExpressionOperatorNotBetween {
+    namespace SqlExpressionOperatorNotBetween {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47248,7 +47248,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorNotBetween; // This allows `obj instanceof SqlExpressionOperatorNotBetween`
     };
 
-    module SqlExpressionOperatorNotBetweenAnd {
+    namespace SqlExpressionOperatorNotBetweenAnd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47264,7 +47264,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorNotBetweenAnd; // This allows `obj instanceof SqlExpressionOperatorNotBetweenAnd`
     };
 
-    module SqlExpressionOperatorBetweenSymmetric {
+    namespace SqlExpressionOperatorBetweenSymmetric {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47280,7 +47280,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorBetweenSymmetric; // This allows `obj instanceof SqlExpressionOperatorBetweenSymmetric`
     };
 
-    module SqlExpressionOperatorBetweenSymmetricAnd {
+    namespace SqlExpressionOperatorBetweenSymmetricAnd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47296,7 +47296,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorBetweenSymmetricAnd; // This allows `obj instanceof SqlExpressionOperatorBetweenSymmetricAnd`
     };
 
-    module SqlExpressionOperatorNotBetweenSymmetric {
+    namespace SqlExpressionOperatorNotBetweenSymmetric {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47312,7 +47312,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorNotBetweenSymmetric; // This allows `obj instanceof SqlExpressionOperatorNotBetweenSymmetric`
     };
 
-    module SqlExpressionOperatorNotBetweenSymmetricAnd {
+    namespace SqlExpressionOperatorNotBetweenSymmetricAnd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47328,7 +47328,7 @@ export namespace Vda {
         new (): SqlExpressionOperatorNotBetweenSymmetricAnd; // This allows `obj instanceof SqlExpressionOperatorNotBetweenSymmetricAnd`
     };
 
-    module SqlExpressionValue {
+    namespace SqlExpressionValue {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -47370,7 +47370,7 @@ export namespace Vda {
         new (): SqlExpressionValue; // This allows `obj instanceof SqlExpressionValue`
     };
 
-    module SqlExpressionValueParameter {
+    namespace SqlExpressionValueParameter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -47421,7 +47421,7 @@ export namespace Vda {
         new (): SqlExpressionValueParameter; // This allows `obj instanceof SqlExpressionValueParameter`
     };
 
-    module SqlParameters {
+    namespace SqlParameters {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47453,7 +47453,7 @@ export namespace Vda {
         new (): SqlParameters; // This allows `obj instanceof SqlParameters`
     };
 
-    module SqlParser {
+    namespace SqlParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47477,7 +47477,7 @@ export namespace Vda {
         new (): SqlParser; // This allows `obj instanceof SqlParser`
     };
 
-    module SqlTableReference {
+    namespace SqlTableReference {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -47517,7 +47517,7 @@ export namespace Vda {
         new (): SqlTableReference; // This allows `obj instanceof SqlTableReference`
     };
 
-    module Stringifiable {
+    namespace Stringifiable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47541,7 +47541,7 @@ export namespace Vda {
         new (): Stringifiable; // This allows `obj instanceof Stringifiable`
     };
 
-    module SqlValue {
+    namespace SqlValue {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -47588,7 +47588,7 @@ export namespace Vda {
         new (): SqlValue; // This allows `obj instanceof SqlValue`
     };
 
-    module SqlValueNull {
+    namespace SqlValueNull {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47604,7 +47604,7 @@ export namespace Vda {
         new (): SqlValueNull; // This allows `obj instanceof SqlValueNull`
     };
 
-    module SqlValueBool {
+    namespace SqlValueBool {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47620,7 +47620,7 @@ export namespace Vda {
         new (): SqlValueBool; // This allows `obj instanceof SqlValueBool`
     };
 
-    module SqlValueBit {
+    namespace SqlValueBit {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47636,7 +47636,7 @@ export namespace Vda {
         new (): SqlValueBit; // This allows `obj instanceof SqlValueBit`
     };
 
-    module SqlValueString {
+    namespace SqlValueString {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47652,7 +47652,7 @@ export namespace Vda {
         new (): SqlValueString; // This allows `obj instanceof SqlValueString`
     };
 
-    module SqlValueXml {
+    namespace SqlValueXml {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -47682,7 +47682,7 @@ export namespace Vda {
         new (): SqlValueXml; // This allows `obj instanceof SqlValueXml`
     };
 
-    module SqlValueJson {
+    namespace SqlValueJson {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -47712,7 +47712,7 @@ export namespace Vda {
         new (): SqlValueJson; // This allows `obj instanceof SqlValueJson`
     };
 
-    module SqlValueText {
+    namespace SqlValueText {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47728,7 +47728,7 @@ export namespace Vda {
         new (): SqlValueText; // This allows `obj instanceof SqlValueText`
     };
 
-    module SqlValueName {
+    namespace SqlValueName {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47744,7 +47744,7 @@ export namespace Vda {
         new (): SqlValueName; // This allows `obj instanceof SqlValueName`
     };
 
-    module SqlValueInteger {
+    namespace SqlValueInteger {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47760,7 +47760,7 @@ export namespace Vda {
         new (): SqlValueInteger; // This allows `obj instanceof SqlValueInteger`
     };
 
-    module SqlValueByte {
+    namespace SqlValueByte {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47776,7 +47776,7 @@ export namespace Vda {
         new (): SqlValueByte; // This allows `obj instanceof SqlValueByte`
     };
 
-    module SqlValueInt2 {
+    namespace SqlValueInt2 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47792,7 +47792,7 @@ export namespace Vda {
         new (): SqlValueInt2; // This allows `obj instanceof SqlValueInt2`
     };
 
-    module SqlValueInt4 {
+    namespace SqlValueInt4 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47808,7 +47808,7 @@ export namespace Vda {
         new (): SqlValueInt4; // This allows `obj instanceof SqlValueInt4`
     };
 
-    module SqlValueInt8 {
+    namespace SqlValueInt8 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47824,7 +47824,7 @@ export namespace Vda {
         new (): SqlValueInt8; // This allows `obj instanceof SqlValueInt8`
     };
 
-    module SqlValueUnsignedInteger {
+    namespace SqlValueUnsignedInteger {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47840,7 +47840,7 @@ export namespace Vda {
         new (): SqlValueUnsignedInteger; // This allows `obj instanceof SqlValueUnsignedInteger`
     };
 
-    module SqlValueUnsignedByte {
+    namespace SqlValueUnsignedByte {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47856,7 +47856,7 @@ export namespace Vda {
         new (): SqlValueUnsignedByte; // This allows `obj instanceof SqlValueUnsignedByte`
     };
 
-    module SqlValueUnsignedInt2 {
+    namespace SqlValueUnsignedInt2 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47872,7 +47872,7 @@ export namespace Vda {
         new (): SqlValueUnsignedInt2; // This allows `obj instanceof SqlValueUnsignedInt2`
     };
 
-    module SqlValueUnsignedInt4 {
+    namespace SqlValueUnsignedInt4 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47888,7 +47888,7 @@ export namespace Vda {
         new (): SqlValueUnsignedInt4; // This allows `obj instanceof SqlValueUnsignedInt4`
     };
 
-    module SqlValueUnsignedInt8 {
+    namespace SqlValueUnsignedInt8 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47904,7 +47904,7 @@ export namespace Vda {
         new (): SqlValueUnsignedInt8; // This allows `obj instanceof SqlValueUnsignedInt8`
     };
 
-    module SqlValueOid {
+    namespace SqlValueOid {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47920,7 +47920,7 @@ export namespace Vda {
         new (): SqlValueOid; // This allows `obj instanceof SqlValueOid`
     };
 
-    module SqlValueNumeric {
+    namespace SqlValueNumeric {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47960,7 +47960,7 @@ export namespace Vda {
         new (): SqlValueNumeric; // This allows `obj instanceof SqlValueNumeric`
     };
 
-    module SqlValueFloat {
+    namespace SqlValueFloat {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47984,7 +47984,7 @@ export namespace Vda {
         new (): SqlValueFloat; // This allows `obj instanceof SqlValueFloat`
     };
 
-    module SqlValueDouble {
+    namespace SqlValueDouble {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -48000,7 +48000,7 @@ export namespace Vda {
         new (): SqlValueDouble; // This allows `obj instanceof SqlValueDouble`
     };
 
-    module SqlValueMoney {
+    namespace SqlValueMoney {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -48030,7 +48030,7 @@ export namespace Vda {
         new (): SqlValueMoney; // This allows `obj instanceof SqlValueMoney`
     };
 
-    module SqlValueDate {
+    namespace SqlValueDate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -48056,7 +48056,7 @@ export namespace Vda {
         new (): SqlValueDate; // This allows `obj instanceof SqlValueDate`
     };
 
-    module SqlValueTimestamp {
+    namespace SqlValueTimestamp {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -48098,7 +48098,7 @@ export namespace Vda {
         new (): SqlValueTimestamp; // This allows `obj instanceof SqlValueTimestamp`
     };
 
-    module SqlValueTimestampNtz {
+    namespace SqlValueTimestampNtz {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -48114,7 +48114,7 @@ export namespace Vda {
         new (): SqlValueTimestampNtz; // This allows `obj instanceof SqlValueTimestampNtz`
     };
 
-    module SqlValueTime {
+    namespace SqlValueTime {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -48130,7 +48130,7 @@ export namespace Vda {
         new (): SqlValueTime; // This allows `obj instanceof SqlValueTime`
     };
 
-    module SqlValueTimeNtz {
+    namespace SqlValueTimeNtz {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -48146,7 +48146,7 @@ export namespace Vda {
         new (): SqlValueTimeNtz; // This allows `obj instanceof SqlValueTimeNtz`
     };
 
-    module SqlValueBinary {
+    namespace SqlValueBinary {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -48182,7 +48182,7 @@ export namespace Vda {
         new (): SqlValueBinary; // This allows `obj instanceof SqlValueBinary`
     };
 
-    module SqlValueBlob {
+    namespace SqlValueBlob {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -48220,7 +48220,7 @@ export namespace Vda {
         new (): SqlValueBlob; // This allows `obj instanceof SqlValueBlob`
     };
 
-    module SqlValueBlobOid {
+    namespace SqlValueBlobOid {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -48250,7 +48250,7 @@ export namespace Vda {
         new (): SqlValueBlobOid; // This allows `obj instanceof SqlValueBlobOid`
     };
 
-    module SqlValueGeometricPoint {
+    namespace SqlValueGeometricPoint {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -48290,7 +48290,7 @@ export namespace Vda {
         new (): SqlValueGeometricPoint; // This allows `obj instanceof SqlValueGeometricPoint`
     };
 
-    module SqlValueMathExp {
+    namespace SqlValueMathExp {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -48323,7 +48323,7 @@ export namespace Vda {
         new (): SqlValueMathExp; // This allows `obj instanceof SqlValueMathExp`
     };
 
-    module TableModel {
+    namespace TableModel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -48339,7 +48339,7 @@ export namespace Vda {
         new (): TableModel; // This allows `obj instanceof TableModel`
     };
 
-    module TableModelSequential {
+    namespace TableModelSequential {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

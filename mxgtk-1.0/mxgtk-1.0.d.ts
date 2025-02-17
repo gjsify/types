@@ -26,7 +26,7 @@ export namespace MxGtk {
      * MxGtk-1.0
      */
 
-    module Frame {
+    namespace Frame {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -453,7 +453,7 @@ export namespace MxGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LightSwitch {
+    namespace LightSwitch {
         // Signal callback interfaces
 
         interface SwitchFlipped {

@@ -21,7 +21,7 @@ export namespace GstInsertBin {
     interface InsertBinCallback {
         (insertbin: InsertBin, element: Gst.Element, success: boolean): void;
     }
-    module InsertBin {
+    namespace InsertBin {
         // Signal callback interfaces
 
         interface Append {

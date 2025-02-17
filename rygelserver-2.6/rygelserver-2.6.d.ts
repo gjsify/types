@@ -141,7 +141,7 @@ export namespace RygelServer {
         _init(...args: any[]): void;
     }
 
-    module AudioItem {
+    namespace AudioItem {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaFileItem.ConstructorProps {
@@ -202,7 +202,7 @@ export namespace RygelServer {
         set_album(value: string): void;
     }
 
-    module ImageItem {
+    namespace ImageItem {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaFileItem.ConstructorProps, VisualItem.ConstructorProps {}
@@ -295,7 +295,7 @@ export namespace RygelServer {
         static ['new'](): LogicalExpression;
     }
 
-    module MediaArtStore {
+    namespace MediaArtStore {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -321,7 +321,7 @@ export namespace RygelServer {
         search_media_art_for_file(item: MusicItem, file: Gio.File): void;
     }
 
-    module MediaObjects {
+    namespace MediaObjects {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps {}
@@ -343,7 +343,7 @@ export namespace RygelServer {
         sort_by_criteria(sort_criteria: string): void;
     }
 
-    module MusicItem {
+    namespace MusicItem {
         // Constructor properties interface
 
         interface ConstructorProps extends AudioItem.ConstructorProps {
@@ -385,7 +385,7 @@ export namespace RygelServer {
         set_album_art(value: Thumbnail): void;
     }
 
-    module PhotoItem {
+    namespace PhotoItem {
         // Constructor properties interface
 
         interface ConstructorProps extends ImageItem.ConstructorProps {}
@@ -419,7 +419,7 @@ export namespace RygelServer {
         compare_uint(integer: number): boolean;
     }
 
-    module SimpleContainer {
+    namespace SimpleContainer {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaContainer.ConstructorProps, SearchableContainer.ConstructorProps {}
@@ -648,7 +648,7 @@ export namespace RygelServer {
         get_resource(protocol: string, index: number): MediaResource;
     }
 
-    module VideoItem {
+    namespace VideoItem {
         // Constructor properties interface
 
         interface ConstructorProps extends AudioItem.ConstructorProps, VisualItem.ConstructorProps {
@@ -753,7 +753,7 @@ export namespace RygelServer {
         vfunc_add_additional_resources(server: HTTPServer): void;
     }
 
-    module MediaContainer {
+    namespace MediaContainer {
         // Signal callback interfaces
 
         interface ContainerUpdated {
@@ -931,7 +931,7 @@ export namespace RygelServer {
         set_sort_criteria(value: string): void;
     }
 
-    module MediaItem {
+    namespace MediaItem {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaObject.ConstructorProps {
@@ -959,7 +959,7 @@ export namespace RygelServer {
         set_description(value: string): void;
     }
 
-    module MediaFileItem {
+    namespace MediaFileItem {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaItem.ConstructorProps {
@@ -1031,7 +1031,7 @@ export namespace RygelServer {
         set_place_holder(value: boolean): void;
     }
 
-    module MediaObject {
+    namespace MediaObject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1177,7 +1177,7 @@ export namespace RygelServer {
         get_ocm_flags(): GUPnPAV.OCMFlags;
     }
 
-    module MediaResource {
+    namespace MediaResource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1368,7 +1368,7 @@ export namespace RygelServer {
         set_dlna_operation(value: GUPnPAV.DLNAOperation | null): void;
     }
 
-    module MediaServerPlugin {
+    namespace MediaServerPlugin {
         // Constructor properties interface
 
         interface ConstructorProps extends RygelCore.Plugin.ConstructorProps {
@@ -1446,7 +1446,7 @@ export namespace RygelServer {
         to_string(): string;
     }
 
-    module MediaServer {
+    namespace MediaServer {
         // Constructor properties interface
 
         interface ConstructorProps extends RygelCore.MediaDevice.ConstructorProps {
@@ -1476,7 +1476,7 @@ export namespace RygelServer {
         ): MediaServer;
     }
 
-    module MediaEngine {
+    namespace MediaEngine {
         // Signal callback interfaces
 
         interface ResourceChanged {
@@ -1543,7 +1543,7 @@ export namespace RygelServer {
         get_internal_protocol_schemes(): string[];
     }
 
-    module HTTPSeekRequest {
+    namespace HTTPSeekRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1559,7 +1559,7 @@ export namespace RygelServer {
         _init(...args: any[]): void;
     }
 
-    module PlaylistItem {
+    namespace PlaylistItem {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaFileItem.ConstructorProps {}
@@ -1577,7 +1577,7 @@ export namespace RygelServer {
         static ['new'](id: string, parent: MediaContainer, title: string, upnp_class: string): PlaylistItem;
     }
 
-    module ContentDirectory {
+    namespace ContentDirectory {
         // Constructor properties interface
 
         interface ConstructorProps extends GUPnP.Service.ConstructorProps {}
@@ -1603,7 +1603,7 @@ export namespace RygelServer {
         static ['new'](): ContentDirectory;
     }
 
-    module HTTPByteSeekRequest {
+    namespace HTTPByteSeekRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {
@@ -1664,7 +1664,7 @@ export namespace RygelServer {
         set_total_size(value: number): void;
     }
 
-    module HTTPByteSeekResponse {
+    namespace HTTPByteSeekResponse {
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
@@ -1722,7 +1722,7 @@ export namespace RygelServer {
         set_total_size(value: number): void;
     }
 
-    module HTTPGetHandler {
+    namespace HTTPGetHandler {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1771,7 +1771,7 @@ export namespace RygelServer {
         set_cancellable(value: Gio.Cancellable): void;
     }
 
-    module HTTPGet {
+    namespace HTTPGet {
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPRequest.ConstructorProps {}
@@ -1795,7 +1795,7 @@ export namespace RygelServer {
         static ['new'](http_server: HTTPServer, server: Soup.Server, msg: Soup.Message): HTTPGet;
     }
 
-    module HTTPItemURI {
+    namespace HTTPItemURI {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1878,7 +1878,7 @@ export namespace RygelServer {
         set_extension(value: string): void;
     }
 
-    module HTTPRequest {
+    namespace HTTPRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, RygelCore.StateMachine.ConstructorProps {}
@@ -2339,7 +2339,7 @@ export namespace RygelServer {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HTTPResponse {
+    namespace HTTPResponse {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, RygelCore.StateMachine.ConstructorProps {
@@ -2799,7 +2799,7 @@ export namespace RygelServer {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HTTPResponseElement {
+    namespace HTTPResponseElement {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2825,7 +2825,7 @@ export namespace RygelServer {
         to_string(): string;
     }
 
-    module HTTPServer {
+    namespace HTTPServer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, RygelCore.StateMachine.ConstructorProps {
@@ -3297,7 +3297,7 @@ export namespace RygelServer {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HTTPTimeSeekRequest {
+    namespace HTTPTimeSeekRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {}
@@ -3329,7 +3329,7 @@ export namespace RygelServer {
         to_string(): string;
     }
 
-    module HTTPTimeSeekResponse {
+    namespace HTTPTimeSeekResponse {
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
@@ -3431,7 +3431,7 @@ export namespace RygelServer {
         get_total_size(): number;
     }
 
-    module Serializer {
+    namespace Serializer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3491,7 +3491,7 @@ export namespace RygelServer {
         to_double(): number;
     }
 
-    module PlaySpeedRequest {
+    namespace PlaySpeedRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3527,7 +3527,7 @@ export namespace RygelServer {
         get_speed(): PlaySpeed;
     }
 
-    module PlaySpeedResponse {
+    namespace PlaySpeedResponse {
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {}
@@ -3557,7 +3557,7 @@ export namespace RygelServer {
         equals(that: PlaySpeedRequest): boolean;
     }
 
-    module DTCPCleartextRequest {
+    namespace DTCPCleartextRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {
@@ -3615,7 +3615,7 @@ export namespace RygelServer {
         get_total_size(): number;
     }
 
-    module DTCPCleartextResponse {
+    namespace DTCPCleartextResponse {
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
@@ -3683,7 +3683,7 @@ export namespace RygelServer {
         set_encrypted_length(value: number): void;
     }
 
-    module DLNAAvailableSeekRangeRequest {
+    namespace DLNAAvailableSeekRangeRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {}
@@ -3704,7 +3704,7 @@ export namespace RygelServer {
         static requested(message: Soup.Message): boolean;
     }
 
-    module DLNAAvailableSeekRangeResponse {
+    namespace DLNAAvailableSeekRangeResponse {
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
@@ -4170,7 +4170,7 @@ export namespace RygelServer {
     type WritableContainerIface = typeof WritableContainer;
     type DataSourceIface = typeof DataSource;
     type UpdatableObjectIface = typeof UpdatableObject;
-    module SearchableContainer {
+    namespace SearchableContainer {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaContainer.ConstructorProps {
@@ -4275,7 +4275,7 @@ export namespace RygelServer {
         new (): SearchableContainer; // This allows `obj instanceof SearchableContainer`
     };
 
-    module TrackableContainer {
+    namespace TrackableContainer {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaContainer.ConstructorProps {}
@@ -4330,7 +4330,7 @@ export namespace RygelServer {
         new (): TrackableContainer; // This allows `obj instanceof TrackableContainer`
     };
 
-    module TrackableItem {
+    namespace TrackableItem {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaItem.ConstructorProps {}
@@ -4350,7 +4350,7 @@ export namespace RygelServer {
         new (): TrackableItem; // This allows `obj instanceof TrackableItem`
     };
 
-    module VisualItem {
+    namespace VisualItem {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaFileItem.ConstructorProps {
@@ -4407,7 +4407,7 @@ export namespace RygelServer {
         new (): VisualItem; // This allows `obj instanceof VisualItem`
     };
 
-    module WritableContainer {
+    namespace WritableContainer {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaContainer.ConstructorProps {
@@ -4534,7 +4534,7 @@ export namespace RygelServer {
         new (): WritableContainer; // This allows `obj instanceof WritableContainer`
     };
 
-    module DataSource {
+    namespace DataSource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4566,7 +4566,7 @@ export namespace RygelServer {
         new (): DataSource; // This allows `obj instanceof DataSource`
     };
 
-    module UpdatableObject {
+    namespace UpdatableObject {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaObject.ConstructorProps {}

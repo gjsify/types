@@ -712,7 +712,7 @@ export namespace Gsf {
             attributes: libxml2.Char,
         ): boolean;
     }
-    module Blob {
+    namespace Blob {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -750,7 +750,7 @@ export namespace Gsf {
         peek_data(): any | null;
     }
 
-    module ClipData {
+    namespace ClipData {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -803,7 +803,7 @@ export namespace Gsf {
         peek_real_data(ret_size: number): any | null;
     }
 
-    module DocMetaData {
+    namespace DocMetaData {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -871,7 +871,7 @@ export namespace Gsf {
         write_to_odf(output: XMLOut): boolean;
     }
 
-    module DocPropVector {
+    namespace DocPropVector {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -904,7 +904,7 @@ export namespace Gsf {
         as_string(): string;
     }
 
-    module Infile {
+    namespace Infile {
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {}
@@ -962,7 +962,7 @@ export namespace Gsf {
         num_children(): number;
     }
 
-    module InfileMSOle {
+    namespace InfileMSOle {
         // Constructor properties interface
 
         interface ConstructorProps extends Infile.ConstructorProps {}
@@ -990,7 +990,7 @@ export namespace Gsf {
         get_class_id(res: number): boolean;
     }
 
-    module InfileMSVBA {
+    namespace InfileMSVBA {
         // Constructor properties interface
 
         interface ConstructorProps extends Infile.ConstructorProps {}
@@ -1021,7 +1021,7 @@ export namespace Gsf {
         steal_modules(): GLib.HashTable<string, any> | null;
     }
 
-    module InfileStdio {
+    namespace InfileStdio {
         // Constructor properties interface
 
         interface ConstructorProps extends Infile.ConstructorProps {}
@@ -1039,7 +1039,7 @@ export namespace Gsf {
         static ['new'](root: string): InfileStdio;
     }
 
-    module InfileTar {
+    namespace InfileTar {
         // Constructor properties interface
 
         interface ConstructorProps extends Infile.ConstructorProps {
@@ -1063,7 +1063,7 @@ export namespace Gsf {
         static ['new'](source: Input): InfileTar;
     }
 
-    module InfileZip {
+    namespace InfileZip {
         // Constructor properties interface
 
         interface ConstructorProps extends Infile.ConstructorProps {
@@ -1103,7 +1103,7 @@ export namespace Gsf {
         static ['new'](source: Input): InfileZip;
     }
 
-    module Input {
+    namespace Input {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1281,7 +1281,7 @@ export namespace Gsf {
         uncompress(): Input;
     }
 
-    module InputGZip {
+    namespace InputGZip {
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {
@@ -1311,7 +1311,7 @@ export namespace Gsf {
         static ['new'](source: Input): InputGZip;
     }
 
-    module InputGio {
+    namespace InputGio {
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {}
@@ -1333,7 +1333,7 @@ export namespace Gsf {
         static new_for_uri(uri: string): InputGio;
     }
 
-    module InputHTTP {
+    namespace InputHTTP {
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {
@@ -1366,7 +1366,7 @@ export namespace Gsf {
         get_url(): string;
     }
 
-    module InputMemory {
+    namespace InputMemory {
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {}
@@ -1390,7 +1390,7 @@ export namespace Gsf {
         static new_from_iochannel(channel: GLib.IOChannel): InputMemory;
     }
 
-    module InputProxy {
+    namespace InputProxy {
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {}
@@ -1410,7 +1410,7 @@ export namespace Gsf {
         static new_section(source: Input, offset: gsf_off_t, size: gsf_off_t): InputProxy;
     }
 
-    module InputStdio {
+    namespace InputStdio {
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {}
@@ -1430,7 +1430,7 @@ export namespace Gsf {
         static new_FILE(filename: string, file: any | null, keep_open: boolean): InputStdio;
     }
 
-    module InputTextline {
+    namespace InputTextline {
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {}
@@ -1465,7 +1465,7 @@ export namespace Gsf {
         utf8_gets(): Uint8Array | null;
     }
 
-    module ODFOut {
+    namespace ODFOut {
         // Constructor properties interface
 
         interface ConstructorProps extends XMLOut.ConstructorProps {
@@ -1499,7 +1499,7 @@ export namespace Gsf {
         get_version_string(): string;
     }
 
-    module Outfile {
+    namespace Outfile {
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {}
@@ -1532,7 +1532,7 @@ export namespace Gsf {
         open_pkg_add_rel(name: string, content_type: string, parent: Outfile, type: string): Output;
     }
 
-    module OutfileMSOle {
+    namespace OutfileMSOle {
         // Constructor properties interface
 
         interface ConstructorProps extends Outfile.ConstructorProps {
@@ -1575,7 +1575,7 @@ export namespace Gsf {
         set_class_id(clsid: Uint8Array | string): boolean;
     }
 
-    module OutfileOpenPkg {
+    namespace OutfileOpenPkg {
         // Constructor properties interface
 
         interface ConstructorProps extends Outfile.ConstructorProps {
@@ -1630,7 +1630,7 @@ export namespace Gsf {
         set_sink(sink: Output): void;
     }
 
-    module OutfileStdio {
+    namespace OutfileStdio {
         // Constructor properties interface
 
         interface ConstructorProps extends Outfile.ConstructorProps {}
@@ -1648,7 +1648,7 @@ export namespace Gsf {
         static ['new'](root: string): OutfileStdio;
     }
 
-    module OutfileZip {
+    namespace OutfileZip {
         // Constructor properties interface
 
         interface ConstructorProps extends Outfile.ConstructorProps {
@@ -1690,7 +1690,7 @@ export namespace Gsf {
         set_compression_method(method: ZipCompressionMethod | null): boolean;
     }
 
-    module Output {
+    namespace Output {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1852,7 +1852,7 @@ export namespace Gsf {
         write(data: Uint8Array | string): boolean;
     }
 
-    module OutputBzip {
+    namespace OutputBzip {
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {}
@@ -1870,7 +1870,7 @@ export namespace Gsf {
         static ['new'](sink: Output): OutputBzip;
     }
 
-    module OutputCsv {
+    namespace OutputCsv {
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {
@@ -1934,7 +1934,7 @@ export namespace Gsf {
         write_field(field: string, len: number): boolean;
     }
 
-    module OutputGZip {
+    namespace OutputGZip {
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {
@@ -1966,7 +1966,7 @@ export namespace Gsf {
         static ['new'](sink: Output): OutputGZip;
     }
 
-    module OutputGio {
+    namespace OutputGio {
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {}
@@ -1988,7 +1988,7 @@ export namespace Gsf {
         static new_for_uri(uri: string): OutputGio;
     }
 
-    module OutputIOChannel {
+    namespace OutputIOChannel {
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {}
@@ -2006,7 +2006,7 @@ export namespace Gsf {
         static ['new'](channel: GLib.IOChannel): OutputIOChannel;
     }
 
-    module OutputIconv {
+    namespace OutputIconv {
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {
@@ -2046,7 +2046,7 @@ export namespace Gsf {
         static ['new'](sink: Output, dst: string, src: string): OutputIconv;
     }
 
-    module OutputMemory {
+    namespace OutputMemory {
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {}
@@ -2069,7 +2069,7 @@ export namespace Gsf {
         steal_bytes(): Uint8Array | null;
     }
 
-    module OutputStdio {
+    namespace OutputStdio {
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {}
@@ -2087,7 +2087,7 @@ export namespace Gsf {
         static ['new'](filename: string): OutputStdio;
     }
 
-    module SharedMemory {
+    namespace SharedMemory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2115,7 +2115,7 @@ export namespace Gsf {
         static ['new'](buf: any | null, size: gsf_off_t, needs_free: boolean): SharedMemory;
     }
 
-    module StructuredBlob {
+    namespace StructuredBlob {
         // Constructor properties interface
 
         interface ConstructorProps extends Infile.ConstructorProps {}
@@ -2150,7 +2150,7 @@ export namespace Gsf {
         write(container: Outfile): boolean;
     }
 
-    module XMLOut {
+    namespace XMLOut {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

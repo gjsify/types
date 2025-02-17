@@ -20,7 +20,7 @@ export namespace FolksLibsocialweb {
      * FolksLibsocialweb-0.6
      */
 
-    module Persona {
+    namespace Persona {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -594,7 +594,7 @@ export namespace FolksLibsocialweb {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PersonaStore {
+    namespace PersonaStore {
         // Constructor properties interface
 
         interface ConstructorProps extends Folks.PersonaStore.ConstructorProps {

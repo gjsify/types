@@ -283,7 +283,7 @@ export namespace Signon {
          */
         NETWORK,
     }
-    module AuthService {
+    namespace AuthService {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -382,7 +382,7 @@ export namespace Signon {
         get_methods_sync(cancellable?: Gio.Cancellable | null): string[];
     }
 
-    module AuthSession {
+    namespace AuthSession {
         // Signal callback interfaces
 
         interface StateChanged {
@@ -491,7 +491,7 @@ export namespace Signon {
         process_finish(res: Gio.AsyncResult): GLib.Variant;
     }
 
-    module Identity {
+    namespace Identity {
         // Signal callback interfaces
 
         interface SignedOut {

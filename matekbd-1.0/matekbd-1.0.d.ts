@@ -73,7 +73,7 @@ export namespace Matekbd {
     function preview_load_position(): Gdk.Rectangle;
     function preview_save_position(rect: Gdk.Rectangle): void;
     function strv_append(arr: string, element: string): string[];
-    module Indicator {
+    namespace Indicator {
         // Signal callback interfaces
 
         interface ReinitUi {
@@ -529,7 +529,7 @@ export namespace Matekbd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module KeyboardDrawing {
+    namespace KeyboardDrawing {
         // Signal callback interfaces
 
         interface BadKeycode {
@@ -1009,7 +1009,7 @@ export namespace Matekbd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Status {
+    namespace Status {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.StatusIcon.ConstructorProps {}

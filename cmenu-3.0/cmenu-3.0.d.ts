@@ -44,7 +44,7 @@ export namespace CMenu {
         SORT_DISPLAY_NAME,
         INCLUDE_UNALLOCATED,
     }
-    module DesktopAppInfo {
+    namespace DesktopAppInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AppInfo.ConstructorProps {}
@@ -1080,7 +1080,7 @@ export namespace CMenu {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Tree {
+    namespace Tree {
         // Signal callback interfaces
 
         interface Changed {

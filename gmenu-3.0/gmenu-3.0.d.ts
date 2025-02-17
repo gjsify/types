@@ -43,7 +43,7 @@ export namespace GMenu {
         SORT_DISPLAY_NAME,
         INCLUDE_UNALLOCATED,
     }
-    module Tree {
+    namespace Tree {
         // Signal callback interfaces
 
         interface Changed {

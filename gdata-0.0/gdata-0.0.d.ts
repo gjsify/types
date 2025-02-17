@@ -1437,7 +1437,7 @@ export namespace GData {
     interface QueryProgressCallback {
         (entry: Entry, entry_key: number, entry_count: number): void;
     }
-    module APPCategories {
+    namespace APPCategories {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -1482,7 +1482,7 @@ export namespace GData {
         get_categories(): Category[];
     }
 
-    module AccessRule {
+    namespace AccessRule {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {
@@ -1605,7 +1605,7 @@ export namespace GData {
         set_scope(type: string, value?: string | null): void;
     }
 
-    module Author {
+    namespace Author {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -2118,7 +2118,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AuthorizationDomain {
+    namespace AuthorizationDomain {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2172,7 +2172,7 @@ export namespace GData {
         get_service_name(): string;
     }
 
-    module BatchOperation {
+    namespace BatchOperation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2369,7 +2369,7 @@ export namespace GData {
         run_finish(async_result: Gio.AsyncResult): boolean;
     }
 
-    module CalendarAccessRule {
+    namespace CalendarAccessRule {
         // Constructor properties interface
 
         interface ConstructorProps extends AccessRule.ConstructorProps {}
@@ -2394,7 +2394,7 @@ export namespace GData {
         static ['new'](...args: never[]): any;
     }
 
-    module CalendarCalendar {
+    namespace CalendarCalendar {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps, AccessHandler.ConstructorProps {
@@ -2799,7 +2799,7 @@ export namespace GData {
         set_title(title?: string | null): void;
     }
 
-    module CalendarEvent {
+    namespace CalendarEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {
@@ -3170,7 +3170,7 @@ export namespace GData {
         set_visibility(visibility?: string | null): void;
     }
 
-    module CalendarFeed {
+    namespace CalendarFeed {
         // Constructor properties interface
 
         interface ConstructorProps extends Feed.ConstructorProps {}
@@ -3189,7 +3189,7 @@ export namespace GData {
         _init(...args: any[]): void;
     }
 
-    module CalendarQuery {
+    namespace CalendarQuery {
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {
@@ -3424,7 +3424,7 @@ export namespace GData {
         set_timezone(_timezone?: string | null): void;
     }
 
-    module CalendarService {
+    namespace CalendarService {
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps, Batchable.ConstructorProps {}
@@ -4213,7 +4213,7 @@ export namespace GData {
         ): void;
     }
 
-    module Category {
+    namespace Category {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -4720,7 +4720,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Comment {
+    namespace Comment {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {}
@@ -4739,7 +4739,7 @@ export namespace GData {
         _init(...args: any[]): void;
     }
 
-    module DocumentsAccessRule {
+    namespace DocumentsAccessRule {
         // Constructor properties interface
 
         interface ConstructorProps extends AccessRule.ConstructorProps {}
@@ -4764,7 +4764,7 @@ export namespace GData {
         static ['new'](...args: never[]): any;
     }
 
-    module DocumentsDocument {
+    namespace DocumentsDocument {
         // Constructor properties interface
 
         interface ConstructorProps extends DocumentsEntry.ConstructorProps, AccessHandler.ConstructorProps {}
@@ -5164,7 +5164,7 @@ export namespace GData {
         set_title(title?: string | null): void;
     }
 
-    module DocumentsDrawing {
+    namespace DocumentsDrawing {
         // Constructor properties interface
 
         interface ConstructorProps extends DocumentsDocument.ConstructorProps, AccessHandler.ConstructorProps {}
@@ -5410,7 +5410,7 @@ export namespace GData {
         set_title(title?: string | null): void;
     }
 
-    module DocumentsDrive {
+    namespace DocumentsDrive {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {
@@ -5443,7 +5443,7 @@ export namespace GData {
         get_name(): string | null;
     }
 
-    module DocumentsDriveQuery {
+    namespace DocumentsDriveQuery {
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {}
@@ -5461,7 +5461,7 @@ export namespace GData {
         static ['new'](q?: string | null): DocumentsDriveQuery;
     }
 
-    module DocumentsEntry {
+    namespace DocumentsEntry {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps, AccessHandler.ConstructorProps {
@@ -5974,7 +5974,7 @@ export namespace GData {
         set_title(title?: string | null): void;
     }
 
-    module DocumentsFeed {
+    namespace DocumentsFeed {
         // Constructor properties interface
 
         interface ConstructorProps extends Feed.ConstructorProps {}
@@ -5993,7 +5993,7 @@ export namespace GData {
         _init(...args: any[]): void;
     }
 
-    module DocumentsFolder {
+    namespace DocumentsFolder {
         // Constructor properties interface
 
         interface ConstructorProps extends DocumentsEntry.ConstructorProps, AccessHandler.ConstructorProps {}
@@ -6302,7 +6302,7 @@ export namespace GData {
         set_title(title?: string | null): void;
     }
 
-    module DocumentsMetadata {
+    namespace DocumentsMetadata {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -6358,7 +6358,7 @@ export namespace GData {
         get_quota_used(): number;
     }
 
-    module DocumentsPdf {
+    namespace DocumentsPdf {
         // Constructor properties interface
 
         interface ConstructorProps extends DocumentsDocument.ConstructorProps, AccessHandler.ConstructorProps {}
@@ -6604,7 +6604,7 @@ export namespace GData {
         set_title(title?: string | null): void;
     }
 
-    module DocumentsPresentation {
+    namespace DocumentsPresentation {
         // Constructor properties interface
 
         interface ConstructorProps extends DocumentsDocument.ConstructorProps, AccessHandler.ConstructorProps {}
@@ -6850,7 +6850,7 @@ export namespace GData {
         set_title(title?: string | null): void;
     }
 
-    module DocumentsProperty {
+    namespace DocumentsProperty {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -7363,7 +7363,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DocumentsQuery {
+    namespace DocumentsQuery {
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {
@@ -7508,7 +7508,7 @@ export namespace GData {
         set_title(title: string | null, exact_title: boolean): void;
     }
 
-    module DocumentsService {
+    namespace DocumentsService {
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps, Batchable.ConstructorProps {}
@@ -8657,7 +8657,7 @@ export namespace GData {
         ): void;
     }
 
-    module DocumentsSpreadsheet {
+    namespace DocumentsSpreadsheet {
         // Constructor properties interface
 
         interface ConstructorProps extends DocumentsDocument.ConstructorProps, AccessHandler.ConstructorProps {}
@@ -8922,7 +8922,7 @@ export namespace GData {
         set_title(title?: string | null): void;
     }
 
-    module DocumentsText {
+    namespace DocumentsText {
         // Constructor properties interface
 
         interface ConstructorProps extends DocumentsDocument.ConstructorProps, AccessHandler.ConstructorProps {}
@@ -9168,7 +9168,7 @@ export namespace GData {
         set_title(title?: string | null): void;
     }
 
-    module DocumentsUploadQuery {
+    namespace DocumentsUploadQuery {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9245,7 +9245,7 @@ export namespace GData {
         set_folder(folder?: DocumentsFolder | null): void;
     }
 
-    module DownloadStream {
+    namespace DownloadStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.InputStream.ConstructorProps, Gio.Seekable.ConstructorProps {
@@ -9892,7 +9892,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Entry {
+    namespace Entry {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -10153,7 +10153,7 @@ export namespace GData {
         set_title(title?: string | null): void;
     }
 
-    module Feed {
+    namespace Feed {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -10429,7 +10429,7 @@ export namespace GData {
         look_up_link(rel: string): Link;
     }
 
-    module GContactCalendar {
+    namespace GContactCalendar {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -10975,7 +10975,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GContactEvent {
+    namespace GContactEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -11078,7 +11078,7 @@ export namespace GData {
         set_relation_type(relation_type?: string | null): void;
     }
 
-    module GContactExternalID {
+    namespace GContactExternalID {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -11596,7 +11596,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GContactJot {
+    namespace GContactJot {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -11672,7 +11672,7 @@ export namespace GData {
         set_relation_type(relation_type: string): void;
     }
 
-    module GContactLanguage {
+    namespace GContactLanguage {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -12159,7 +12159,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GContactRelation {
+    namespace GContactRelation {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -12262,7 +12262,7 @@ export namespace GData {
         set_relation_type(relation_type?: string | null): void;
     }
 
-    module GContactWebsite {
+    namespace GContactWebsite {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -12804,7 +12804,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDEmailAddress {
+    namespace GDEmailAddress {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -13375,7 +13375,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDIMAddress {
+    namespace GDIMAddress {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -13936,7 +13936,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDName {
+    namespace GDName {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -14531,7 +14531,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDOrganization {
+    namespace GDOrganization {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -15190,7 +15190,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDPhoneNumber {
+    namespace GDPhoneNumber {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -15753,7 +15753,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDPostalAddress {
+    namespace GDPostalAddress {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -16599,7 +16599,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDReminder {
+    namespace GDReminder {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -17139,7 +17139,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDWhen {
+    namespace GDWhen {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -17709,7 +17709,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDWhere {
+    namespace GDWhere {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -18235,7 +18235,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDWho {
+    namespace GDWho {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -18774,7 +18774,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Generator {
+    namespace Generator {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -19257,7 +19257,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GoaAuthorizer {
+    namespace GoaAuthorizer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
@@ -19907,7 +19907,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Link {
+    namespace Link {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -20502,7 +20502,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MediaCategory {
+    namespace MediaCategory {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -20588,7 +20588,7 @@ export namespace GData {
         set_scheme(scheme?: string | null): void;
     }
 
-    module MediaContent {
+    namespace MediaContent {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -20747,7 +20747,7 @@ export namespace GData {
         get_width(): number;
     }
 
-    module MediaCredit {
+    namespace MediaCredit {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -20809,7 +20809,7 @@ export namespace GData {
         get_scheme(): string;
     }
 
-    module MediaThumbnail {
+    namespace MediaThumbnail {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -20898,7 +20898,7 @@ export namespace GData {
         get_width(): number;
     }
 
-    module OAuth2Authorizer {
+    namespace OAuth2Authorizer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
@@ -21868,7 +21868,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Parsable {
+    namespace Parsable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -21937,7 +21937,7 @@ export namespace GData {
         get_xml(): string;
     }
 
-    module PicasaWebAlbum {
+    namespace PicasaWebAlbum {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {
@@ -22258,7 +22258,7 @@ export namespace GData {
         set_visibility(visibility: PicasaWebVisibility | null): void;
     }
 
-    module PicasaWebComment {
+    namespace PicasaWebComment {
         // Constructor properties interface
 
         interface ConstructorProps extends Comment.ConstructorProps {}
@@ -22282,7 +22282,7 @@ export namespace GData {
         static ['new'](...args: never[]): any;
     }
 
-    module PicasaWebFeed {
+    namespace PicasaWebFeed {
         // Constructor properties interface
 
         interface ConstructorProps extends Feed.ConstructorProps {}
@@ -22301,7 +22301,7 @@ export namespace GData {
         _init(...args: any[]): void;
     }
 
-    module PicasaWebFile {
+    namespace PicasaWebFile {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps, Commentable.ConstructorProps {
@@ -23262,7 +23262,7 @@ export namespace GData {
         set_title(title?: string | null): void;
     }
 
-    module PicasaWebQuery {
+    namespace PicasaWebQuery {
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {
@@ -23422,7 +23422,7 @@ export namespace GData {
         set_visibility(visibility: PicasaWebVisibility | null): void;
     }
 
-    module PicasaWebService {
+    namespace PicasaWebService {
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -23663,7 +23663,7 @@ export namespace GData {
         ): UploadStream;
     }
 
-    module PicasaWebUser {
+    namespace PicasaWebUser {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {
@@ -23797,7 +23797,7 @@ export namespace GData {
         get_user(): string;
     }
 
-    module Query {
+    namespace Query {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -24142,7 +24142,7 @@ export namespace GData {
         set_updated_min(updated_min: number): void;
     }
 
-    module Service {
+    namespace Service {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -24779,7 +24779,7 @@ export namespace GData {
         update_entry_finish(async_result: Gio.AsyncResult): Entry;
     }
 
-    module TasksQuery {
+    namespace TasksQuery {
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {
@@ -24981,7 +24981,7 @@ export namespace GData {
         set_show_hidden(show_hidden: boolean): void;
     }
 
-    module TasksService {
+    namespace TasksService {
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -25255,7 +25255,7 @@ export namespace GData {
         ): void;
     }
 
-    module TasksTask {
+    namespace TasksTask {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {
@@ -25434,7 +25434,7 @@ export namespace GData {
         set_status(status?: string | null): void;
     }
 
-    module TasksTasklist {
+    namespace TasksTasklist {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {}
@@ -25455,7 +25455,7 @@ export namespace GData {
         static ['new'](id?: string | null): TasksTasklist;
     }
 
-    module UploadStream {
+    namespace UploadStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.OutputStream.ConstructorProps {
@@ -25648,7 +25648,7 @@ export namespace GData {
         get_upload_uri(): string;
     }
 
-    module YouTubeCategory {
+    namespace YouTubeCategory {
         // Constructor properties interface
 
         interface ConstructorProps extends Category.ConstructorProps, Comparable.ConstructorProps {
@@ -26116,7 +26116,7 @@ export namespace GData {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module YouTubeComment {
+    namespace YouTubeComment {
         // Constructor properties interface
 
         interface ConstructorProps extends Comment.ConstructorProps {
@@ -26179,7 +26179,7 @@ export namespace GData {
         set_parent_comment_uri(parent_comment_uri: string): void;
     }
 
-    module YouTubeFeed {
+    namespace YouTubeFeed {
         // Constructor properties interface
 
         interface ConstructorProps extends Feed.ConstructorProps {}
@@ -26199,7 +26199,7 @@ export namespace GData {
         _init(...args: any[]): void;
     }
 
-    module YouTubeQuery {
+    namespace YouTubeQuery {
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {
@@ -26422,7 +26422,7 @@ export namespace GData {
         set_safe_search(safe_search: YouTubeSafeSearch | null): void;
     }
 
-    module YouTubeService {
+    namespace YouTubeService {
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps, Batchable.ConstructorProps {
@@ -27300,7 +27300,7 @@ export namespace GData {
         ): void;
     }
 
-    module YouTubeState {
+    namespace YouTubeState {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -27396,7 +27396,7 @@ export namespace GData {
         get_reason_code(): string;
     }
 
-    module YouTubeVideo {
+    namespace YouTubeVideo {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps, Commentable.ConstructorProps {
@@ -29005,7 +29005,7 @@ export namespace GData {
         _init(...args: any[]): void;
     }
 
-    module AccessHandler {
+    namespace AccessHandler {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {}
@@ -29090,7 +29090,7 @@ export namespace GData {
         new (): AccessHandler; // This allows `obj instanceof AccessHandler`
     };
 
-    module Authorizer {
+    namespace Authorizer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -29317,7 +29317,7 @@ export namespace GData {
         new (): Authorizer; // This allows `obj instanceof Authorizer`
     };
 
-    module Batchable {
+    namespace Batchable {
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -29346,7 +29346,7 @@ export namespace GData {
         new (): Batchable; // This allows `obj instanceof Batchable`
     };
 
-    module Commentable {
+    namespace Commentable {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {}
@@ -29605,7 +29605,7 @@ export namespace GData {
         new (): Commentable; // This allows `obj instanceof Commentable`
     };
 
-    module Comparable {
+    namespace Comparable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -1795,7 +1795,7 @@ export namespace ColorHug {
         RED,
         BLUE,
     }
-    module DeviceQueue {
+    namespace DeviceQueue {
         // Signal callback interfaces
 
         interface DeviceFailed {

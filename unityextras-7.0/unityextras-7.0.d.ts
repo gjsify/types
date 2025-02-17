@@ -27,7 +27,7 @@ export namespace UnityExtras {
     interface CreateScopeCallback {
         (): void;
     }
-    module PreviewPlayer {
+    namespace PreviewPlayer {
         // Signal callback interfaces
 
         interface Progress {

@@ -46,7 +46,7 @@ export namespace PolkitAgent {
          */
         RUN_IN_THREAD,
     }
-    module Listener {
+    namespace Listener {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -294,7 +294,7 @@ export namespace PolkitAgent {
         ): any | null;
     }
 
-    module Session {
+    namespace Session {
         // Signal callback interfaces
 
         interface Completed {
@@ -410,7 +410,7 @@ export namespace PolkitAgent {
         response(response: string): void;
     }
 
-    module TextListener {
+    namespace TextListener {
         // Constructor properties interface
 
         interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {}

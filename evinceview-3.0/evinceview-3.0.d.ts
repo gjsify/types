@@ -133,7 +133,7 @@ export namespace EvinceView {
         MEDIA,
         ALL,
     }
-    module DocumentModel {
+    namespace DocumentModel {
         // Signal callback interfaces
 
         interface PageChanged {
@@ -280,7 +280,7 @@ export namespace EvinceView {
         set_sizing_mode(mode: SizingMode | null): void;
     }
 
-    module Job {
+    namespace Job {
         // Signal callback interfaces
 
         interface Cancelled {
@@ -357,7 +357,7 @@ export namespace EvinceView {
         succeeded(): void;
     }
 
-    module JobAnnots {
+    namespace JobAnnots {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -379,7 +379,7 @@ export namespace EvinceView {
         static ['new'](document: EvinceDocument.Document): JobAnnots;
     }
 
-    module JobAttachments {
+    namespace JobAttachments {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -401,7 +401,7 @@ export namespace EvinceView {
         static ['new'](document: EvinceDocument.Document): JobAttachments;
     }
 
-    module JobExport {
+    namespace JobExport {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -428,7 +428,7 @@ export namespace EvinceView {
         set_page(page: number): void;
     }
 
-    module JobFind {
+    namespace JobFind {
         // Signal callback interfaces
 
         interface Updated {
@@ -496,7 +496,7 @@ export namespace EvinceView {
         set_options(options: EvinceDocument.FindOptions | null): void;
     }
 
-    module JobFonts {
+    namespace JobFonts {
         // Signal callback interfaces
 
         interface Updated {
@@ -537,7 +537,7 @@ export namespace EvinceView {
         vfunc_updated(progress: number): void;
     }
 
-    module JobLayers {
+    namespace JobLayers {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -559,7 +559,7 @@ export namespace EvinceView {
         static ['new'](document: EvinceDocument.Document): JobLayers;
     }
 
-    module JobLinks {
+    namespace JobLinks {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -589,7 +589,7 @@ export namespace EvinceView {
         get_model(): Gtk.TreeModel;
     }
 
-    module JobLoad {
+    namespace JobLoad {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -617,7 +617,7 @@ export namespace EvinceView {
         set_uri(uri: string): void;
     }
 
-    module JobLoadFd {
+    namespace JobLoadFd {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -668,7 +668,7 @@ export namespace EvinceView {
         take_fd(fd: number): void;
     }
 
-    module JobLoadGFile {
+    namespace JobLoadGFile {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -701,7 +701,7 @@ export namespace EvinceView {
         set_password(password: string): void;
     }
 
-    module JobLoadStream {
+    namespace JobLoadStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -735,7 +735,7 @@ export namespace EvinceView {
         set_stream(stream: Gio.InputStream): void;
     }
 
-    module JobPageData {
+    namespace JobPageData {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -763,7 +763,7 @@ export namespace EvinceView {
         static ['new'](document: EvinceDocument.Document, page: number, flags: JobPageDataFlags): JobPageData;
     }
 
-    module JobPrint {
+    namespace JobPrint {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -790,7 +790,7 @@ export namespace EvinceView {
         set_page(page: number): void;
     }
 
-    module JobRender {
+    namespace JobRender {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -838,7 +838,7 @@ export namespace EvinceView {
         ): void;
     }
 
-    module JobSave {
+    namespace JobSave {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -861,7 +861,7 @@ export namespace EvinceView {
         static ['new'](document: EvinceDocument.Document, uri: string, document_uri: string): JobSave;
     }
 
-    module JobThumbnail {
+    namespace JobThumbnail {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -907,7 +907,7 @@ export namespace EvinceView {
         set_output_format(format: JobThumbnailFormat | null): void;
     }
 
-    module PrintOperation {
+    namespace PrintOperation {
         // Signal callback interfaces
 
         interface BeginPrint {
@@ -981,7 +981,7 @@ export namespace EvinceView {
         set_print_settings(print_settings: Gtk.PrintSettings): void;
     }
 
-    module View {
+    namespace View {
         // Signal callback interfaces
 
         interface Activate {
@@ -1743,7 +1743,7 @@ export namespace EvinceView {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ViewPresentation {
+    namespace ViewPresentation {
         // Signal callback interfaces
 
         interface ChangePage {

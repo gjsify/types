@@ -4417,7 +4417,7 @@ export namespace GstVideo {
          */
         INTERLACED,
     }
-    module ColorBalanceChannel {
+    namespace ColorBalanceChannel {
         // Signal callback interfaces
 
         interface ValueChanged {
@@ -4463,7 +4463,7 @@ export namespace GstVideo {
         vfunc_value_changed(value: number): void;
     }
 
-    module VideoAggregator {
+    namespace VideoAggregator {
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.Aggregator.ConstructorProps {
@@ -4533,7 +4533,7 @@ export namespace GstVideo {
         get_execution_task_pool(): Gst.TaskPool;
     }
 
-    module VideoAggregatorConvertPad {
+    namespace VideoAggregatorConvertPad {
         // Constructor properties interface
 
         interface ConstructorProps extends VideoAggregatorPad.ConstructorProps {
@@ -4576,7 +4576,7 @@ export namespace GstVideo {
         update_conversion_info(): void;
     }
 
-    module VideoAggregatorPad {
+    namespace VideoAggregatorPad {
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.AggregatorPad.ConstructorProps {
@@ -4679,7 +4679,7 @@ export namespace GstVideo {
         set_needs_alpha(needs_alpha: boolean): void;
     }
 
-    module VideoAggregatorParallelConvertPad {
+    namespace VideoAggregatorParallelConvertPad {
         // Constructor properties interface
 
         interface ConstructorProps extends VideoAggregatorConvertPad.ConstructorProps {}
@@ -4700,7 +4700,7 @@ export namespace GstVideo {
         _init(...args: any[]): void;
     }
 
-    module VideoBufferPool {
+    namespace VideoBufferPool {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.BufferPool.ConstructorProps {}
@@ -4722,7 +4722,7 @@ export namespace GstVideo {
         static ['new'](): VideoBufferPool;
     }
 
-    module VideoDecoder {
+    namespace VideoDecoder {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -5347,7 +5347,7 @@ export namespace GstVideo {
         set_use_default_pad_acceptcaps(use: boolean): void;
     }
 
-    module VideoEncoder {
+    namespace VideoEncoder {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps, Gst.Preset.ConstructorProps {
@@ -6175,7 +6175,7 @@ export namespace GstVideo {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module VideoFilter {
+    namespace VideoFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseTransform.ConstructorProps {}
@@ -6219,7 +6219,7 @@ export namespace GstVideo {
         _init(...args: any[]): void;
     }
 
-    module VideoSink {
+    namespace VideoSink {
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseSink.ConstructorProps {
@@ -8387,7 +8387,7 @@ export namespace GstVideo {
         get_ancillary(): [VideoVBIParserResult, VideoAncillary];
     }
 
-    module ColorBalance {
+    namespace ColorBalance {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8488,7 +8488,7 @@ export namespace GstVideo {
         new (): ColorBalance; // This allows `obj instanceof ColorBalance`
     };
 
-    module Navigation {
+    namespace Navigation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8835,7 +8835,7 @@ export namespace GstVideo {
         new (): Navigation; // This allows `obj instanceof Navigation`
     };
 
-    module VideoDirection {
+    namespace VideoDirection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8861,7 +8861,7 @@ export namespace GstVideo {
         new (): VideoDirection; // This allows `obj instanceof VideoDirection`
     };
 
-    module VideoOrientation {
+    namespace VideoOrientation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8970,7 +8970,7 @@ export namespace GstVideo {
         new (): VideoOrientation; // This allows `obj instanceof VideoOrientation`
     };
 
-    module VideoOverlay {
+    namespace VideoOverlay {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

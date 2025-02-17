@@ -30,7 +30,7 @@ export namespace GarconGtk {
      * GarconGtk-1.0
      */
 
-    module Menu {
+    namespace Menu {
         // Constructor properties interface
 
         interface ConstructorProps

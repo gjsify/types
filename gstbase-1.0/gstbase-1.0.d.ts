@@ -419,7 +419,7 @@ export namespace GstBase {
          */
         LOCKED,
     }
-    module Adapter {
+    namespace Adapter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -868,7 +868,7 @@ export namespace GstBase {
         unmap(): void;
     }
 
-    module Aggregator {
+    namespace Aggregator {
         // Signal callback interfaces
 
         interface SamplesSelected {
@@ -1343,7 +1343,7 @@ export namespace GstBase {
         update_segment(segment: Gst.Segment): void;
     }
 
-    module AggregatorPad {
+    namespace AggregatorPad {
         // Signal callback interfaces
 
         interface BufferConsumed {
@@ -1441,7 +1441,7 @@ export namespace GstBase {
         pop_buffer(): Gst.Buffer | null;
     }
 
-    module BaseParse {
+    namespace BaseParse {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -1904,7 +1904,7 @@ export namespace GstBase {
         set_ts_at_offset(offset: number): void;
     }
 
-    module BaseSink {
+    namespace BaseSink {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -2580,7 +2580,7 @@ export namespace GstBase {
         wait_preroll(): Gst.FlowReturn;
     }
 
-    module BaseSrc {
+    namespace BaseSrc {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -3095,7 +3095,7 @@ export namespace GstBase {
         wait_playing(): Gst.FlowReturn;
     }
 
-    module BaseTransform {
+    namespace BaseTransform {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -3514,7 +3514,7 @@ export namespace GstBase {
         update_src_caps(updated_caps: Gst.Caps): boolean;
     }
 
-    module CollectPads {
+    namespace CollectPads {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -3844,7 +3844,7 @@ export namespace GstBase {
         take_buffer(data: CollectData, size: number): Gst.Buffer | null;
     }
 
-    module DataQueue {
+    namespace DataQueue {
         // Signal callback interfaces
 
         interface Empty {
@@ -3912,7 +3912,7 @@ export namespace GstBase {
         vfunc_full(): void;
     }
 
-    module PushSrc {
+    namespace PushSrc {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseSrc.ConstructorProps {}

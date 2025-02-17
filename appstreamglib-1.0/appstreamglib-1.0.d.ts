@@ -3075,7 +3075,7 @@ export namespace AppStreamGlib {
          */
         USE_BCD,
     }
-    module Agreement {
+    namespace Agreement {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3140,7 +3140,7 @@ export namespace AppStreamGlib {
         set_version_id(version_id: string): void;
     }
 
-    module AgreementSection {
+    namespace AgreementSection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3195,7 +3195,7 @@ export namespace AppStreamGlib {
         set_name(locale: string | null, name: string): void;
     }
 
-    module App {
+    namespace App {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4080,7 +4080,7 @@ export namespace AppStreamGlib {
         validate(flags: number): Problem[];
     }
 
-    module Bundle {
+    namespace Bundle {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4154,7 +4154,7 @@ export namespace AppStreamGlib {
         set_sdk(sdk: string): void;
     }
 
-    module Checksum {
+    namespace Checksum {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4228,7 +4228,7 @@ export namespace AppStreamGlib {
         set_value(value: string): void;
     }
 
-    module ContentRating {
+    namespace ContentRating {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4373,7 +4373,7 @@ export namespace AppStreamGlib {
         set_kind(kind: string): void;
     }
 
-    module Format {
+    namespace Format {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4434,7 +4434,7 @@ export namespace AppStreamGlib {
         set_kind(kind: FormatKind | null): void;
     }
 
-    module Icon {
+    namespace Icon {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4573,7 +4573,7 @@ export namespace AppStreamGlib {
         set_width(width: number): void;
     }
 
-    module Image {
+    namespace Image {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4728,7 +4728,7 @@ export namespace AppStreamGlib {
         set_width(width: number): void;
     }
 
-    module Launchable {
+    namespace Launchable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4782,7 +4782,7 @@ export namespace AppStreamGlib {
         set_value(value: string): void;
     }
 
-    module Problem {
+    namespace Problem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4841,7 +4841,7 @@ export namespace AppStreamGlib {
         set_message(message: string): void;
     }
 
-    module Provide {
+    namespace Provide {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4895,7 +4895,7 @@ export namespace AppStreamGlib {
         set_value(value: string): void;
     }
 
-    module Release {
+    namespace Release {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5092,7 +5092,7 @@ export namespace AppStreamGlib {
         vercmp(rel2: Release): number;
     }
 
-    module Require {
+    namespace Require {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5188,7 +5188,7 @@ export namespace AppStreamGlib {
         version_compare(version: string): boolean;
     }
 
-    module Review {
+    namespace Review {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5390,7 +5390,7 @@ export namespace AppStreamGlib {
         set_version(version: string): void;
     }
 
-    module Screenshot {
+    namespace Screenshot {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5505,7 +5505,7 @@ export namespace AppStreamGlib {
         set_priority(priority: number): void;
     }
 
-    module Store {
+    namespace Store {
         // Signal callback interfaces
 
         interface AppAdded {
@@ -5979,7 +5979,7 @@ export namespace AppStreamGlib {
         validate(flags: number): Problem[];
     }
 
-    module Suggest {
+    namespace Suggest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6033,7 +6033,7 @@ export namespace AppStreamGlib {
         set_kind(kind: SuggestKind | null): void;
     }
 
-    module Translation {
+    namespace Translation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

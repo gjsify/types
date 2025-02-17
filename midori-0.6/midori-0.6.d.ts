@@ -83,7 +83,7 @@ export namespace Midori {
     interface DatabaseCallback {
         (): boolean;
     }
-    module App {
+    namespace App {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Application.ConstructorProps {
@@ -116,7 +116,7 @@ export namespace Midori {
         set_exec_path(value?: Gio.File | null): void;
     }
 
-    module Browser {
+    namespace Browser {
         // Signal callback interfaces
 
         interface DefaultTab {
@@ -217,7 +217,7 @@ export namespace Midori {
         set_is_locked(value: boolean): void;
     }
 
-    module ClearPrivateData {
+    namespace ClearPrivateData {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Dialog.ConstructorProps {}
@@ -238,7 +238,7 @@ export namespace Midori {
         static ['new'](...args: never[]): any;
     }
 
-    module SuggestionItem {
+    namespace SuggestionItem {
         // Constructor properties interface
 
         interface ConstructorProps extends DatabaseItem.ConstructorProps {
@@ -268,7 +268,7 @@ export namespace Midori {
         set_search(value?: string | null): void;
     }
 
-    module Completion {
+    namespace Completion {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -802,7 +802,7 @@ export namespace Midori {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DatabaseStatement {
+    namespace DatabaseStatement {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -1250,7 +1250,7 @@ export namespace Midori {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DatabaseItem {
+    namespace DatabaseItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1304,7 +1304,7 @@ export namespace Midori {
         set_date(value: number): void;
     }
 
-    module Database {
+    namespace Database {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -1939,7 +1939,7 @@ export namespace Midori {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DownloadButton {
+    namespace DownloadButton {
         // Signal callback interfaces
 
         interface ShowDownloads {
@@ -1986,7 +1986,7 @@ export namespace Midori {
         create_row(item: GObject.Object): Gtk.Widget;
     }
 
-    module DownloadItem {
+    namespace DownloadItem {
         // Signal callback interfaces
 
         interface Finished {
@@ -2071,7 +2071,7 @@ export namespace Midori {
         set_error(value?: string | null): void;
     }
 
-    module DownloadRow {
+    namespace DownloadRow {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps {
@@ -2114,7 +2114,7 @@ export namespace Midori {
         set_item(value: DownloadItem): void;
     }
 
-    module Favicon {
+    namespace Favicon {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Image.ConstructorProps {
@@ -2147,7 +2147,7 @@ export namespace Midori {
         set_uri(value?: string | null): void;
     }
 
-    module HistoryDatabase {
+    namespace HistoryDatabase {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Database.ConstructorProps<A> {}
@@ -2167,7 +2167,7 @@ export namespace Midori {
         static get_default(incognito: boolean): HistoryDatabase;
     }
 
-    module Navigationbar {
+    namespace Navigationbar {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ActionBar.ConstructorProps {}
@@ -2196,7 +2196,7 @@ export namespace Midori {
         static ['new'](): Navigationbar;
     }
 
-    module NetworkCheck {
+    namespace NetworkCheck {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ActionBar.ConstructorProps {}
@@ -2214,7 +2214,7 @@ export namespace Midori {
         static ['new'](): NetworkCheck;
     }
 
-    module Plugins {
+    namespace Plugins {
         // Constructor properties interface
 
         interface ConstructorProps extends Peas.Engine.ConstructorProps, Loggable.ConstructorProps {
@@ -2655,7 +2655,7 @@ export namespace Midori {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LabelWidget {
+    namespace LabelWidget {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
@@ -2698,7 +2698,7 @@ export namespace Midori {
         set_widget(value?: Gtk.Widget | null): void;
     }
 
-    module Preferences {
+    namespace Preferences {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Dialog.ConstructorProps {}
@@ -2725,7 +2725,7 @@ export namespace Midori {
         add(...args: never[]): any;
     }
 
-    module CoreSettings {
+    namespace CoreSettings {
         // Constructor properties interface
 
         interface ConstructorProps extends Settings.ConstructorProps {
@@ -2880,7 +2880,7 @@ export namespace Midori {
         set_maximum_history_age(value: number): void;
     }
 
-    module Settings {
+    namespace Settings {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2914,7 +2914,7 @@ export namespace Midori {
         set_filename(value: string): void;
     }
 
-    module Statusbar {
+    namespace Statusbar {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Statusbar.ConstructorProps {
@@ -2948,7 +2948,7 @@ export namespace Midori {
         set_label(value?: string | null): void;
     }
 
-    module SuggestionRow {
+    namespace SuggestionRow {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps {
@@ -2996,7 +2996,7 @@ export namespace Midori {
         set_key(value?: string | null): void;
     }
 
-    module Switcher {
+    namespace Switcher {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
@@ -3034,7 +3034,7 @@ export namespace Midori {
         set_show_close_buttons(value: boolean): void;
     }
 
-    module Tab {
+    namespace Tab {
         // Constructor properties interface
 
         interface ConstructorProps extends WebKit2.WebView.ConstructorProps {
@@ -3139,7 +3139,7 @@ export namespace Midori {
         set_link_uri(value: string): void;
     }
 
-    module Tally {
+    namespace Tally {
         // Signal callback interfaces
 
         interface Clicked {
@@ -3210,7 +3210,7 @@ export namespace Midori {
         set_active(value: boolean): void;
     }
 
-    module Urlbar {
+    namespace Urlbar {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Entry.ConstructorProps {
@@ -3503,7 +3503,7 @@ export namespace Midori {
     type LoggableIface = typeof Loggable;
     type PreferencesActivatableIface = typeof PreferencesActivatable;
     type TabActivatableIface = typeof TabActivatable;
-    module AppActivatable {
+    namespace AppActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends Peas.ExtensionBase.ConstructorProps {
@@ -3538,7 +3538,7 @@ export namespace Midori {
         new (): AppActivatable; // This allows `obj instanceof AppActivatable`
     };
 
-    module BrowserActivatable {
+    namespace BrowserActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3573,7 +3573,7 @@ export namespace Midori {
         new (): BrowserActivatable; // This allows `obj instanceof BrowserActivatable`
     };
 
-    module ClearPrivateDataActivatable {
+    namespace ClearPrivateDataActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3614,7 +3614,7 @@ export namespace Midori {
         new (): ClearPrivateDataActivatable; // This allows `obj instanceof ClearPrivateDataActivatable`
     };
 
-    module CompletionActivatable {
+    namespace CompletionActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends Peas.ExtensionBase.ConstructorProps {
@@ -3649,7 +3649,7 @@ export namespace Midori {
         new (): CompletionActivatable; // This allows `obj instanceof CompletionActivatable`
     };
 
-    module Loggable {
+    namespace Loggable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3670,7 +3670,7 @@ export namespace Midori {
         new (): Loggable; // This allows `obj instanceof Loggable`
     };
 
-    module PreferencesActivatable {
+    namespace PreferencesActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3705,7 +3705,7 @@ export namespace Midori {
         new (): PreferencesActivatable; // This allows `obj instanceof PreferencesActivatable`
     };
 
-    module TabActivatable {
+    namespace TabActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends Peas.ExtensionBase.ConstructorProps {

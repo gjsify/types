@@ -1705,7 +1705,7 @@ export namespace Cogl {
         is_zero_copy(): boolean;
     }
 
-    module Framebuffer {
+    namespace Framebuffer {
         // Signal callback interfaces
 
         interface Destroy {
@@ -2504,7 +2504,7 @@ export namespace Cogl {
         _init(...args: any[]): void;
     }
 
-    module Offscreen {
+    namespace Offscreen {
         // Constructor properties interface
 
         interface ConstructorProps extends Framebuffer.ConstructorProps {}
@@ -2522,7 +2522,7 @@ export namespace Cogl {
         static new_with_texture(texture: Texture): Offscreen;
     }
 
-    module Onscreen {
+    namespace Onscreen {
         // Constructor properties interface
 
         interface ConstructorProps extends Framebuffer.ConstructorProps {}

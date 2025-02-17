@@ -235,7 +235,7 @@ export namespace Xfconf {
      * @param v_uint16 A guint16.
      */
     function value_set_uint16(value: GObject.Value | any, v_uint16: number): void;
-    module Channel {
+    namespace Channel {
         // Signal callback interfaces
 
         interface PropertyChanged {

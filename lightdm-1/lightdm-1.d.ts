@@ -214,7 +214,7 @@ export namespace LightDM {
      * @returns #TRUE if suspend initiated.
      */
     function suspend(): boolean;
-    module Greeter {
+    namespace Greeter {
         // Signal callback interfaces
 
         interface AuthenticationComplete {
@@ -682,7 +682,7 @@ export namespace LightDM {
         start_session_sync(session?: string | null): boolean;
     }
 
-    module Language {
+    namespace Language {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -736,7 +736,7 @@ export namespace LightDM {
         matches(code: string): boolean;
     }
 
-    module Layout {
+    namespace Layout {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -786,7 +786,7 @@ export namespace LightDM {
         get_short_description(): string;
     }
 
-    module Session {
+    namespace Session {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -839,7 +839,7 @@ export namespace LightDM {
         get_session_type(): string;
     }
 
-    module User {
+    namespace User {
         // Signal callback interfaces
 
         interface Changed {
@@ -995,7 +995,7 @@ export namespace LightDM {
         get_uid(): number;
     }
 
-    module UserList {
+    namespace UserList {
         // Signal callback interfaces
 
         interface UserAdded {

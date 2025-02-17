@@ -62,7 +62,7 @@ export namespace Gandiva {
      * for snapshot version.
      */
     const VERSION_TAG: string;
-    module AndNode {
+    namespace AndNode {
         // Constructor properties interface
 
         interface ConstructorProps extends BooleanNode.ConstructorProps {}
@@ -80,7 +80,7 @@ export namespace Gandiva {
         static ['new'](children: Node[]): AndNode;
     }
 
-    module BinaryLiteralNode {
+    namespace BinaryLiteralNode {
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -104,7 +104,7 @@ export namespace Gandiva {
         get_value(): GLib.Bytes;
     }
 
-    module BooleanLiteralNode {
+    namespace BooleanLiteralNode {
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -126,7 +126,7 @@ export namespace Gandiva {
         get_value(): boolean;
     }
 
-    module BooleanNode {
+    namespace BooleanNode {
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps {}
@@ -146,7 +146,7 @@ export namespace Gandiva {
         get_children(): Node[];
     }
 
-    module DoubleLiteralNode {
+    namespace DoubleLiteralNode {
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -168,7 +168,7 @@ export namespace Gandiva {
         get_value(): number;
     }
 
-    module Expression {
+    namespace Expression {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -204,7 +204,7 @@ export namespace Gandiva {
         to_string(): string;
     }
 
-    module FieldNode {
+    namespace FieldNode {
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps {
@@ -228,7 +228,7 @@ export namespace Gandiva {
         static ['new'](field: Arrow.Field): FieldNode;
     }
 
-    module FloatLiteralNode {
+    namespace FloatLiteralNode {
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -250,7 +250,7 @@ export namespace Gandiva {
         get_value(): number;
     }
 
-    module FunctionNode {
+    namespace FunctionNode {
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps {
@@ -278,7 +278,7 @@ export namespace Gandiva {
         get_parameters(): Node[];
     }
 
-    module FunctionRegistry {
+    namespace FunctionRegistry {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -301,7 +301,7 @@ export namespace Gandiva {
         lookup(function_signature: FunctionSignature): NativeFunction | null;
     }
 
-    module FunctionSignature {
+    namespace FunctionSignature {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -339,7 +339,7 @@ export namespace Gandiva {
         to_string(): string;
     }
 
-    module IfNode {
+    namespace IfNode {
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps {
@@ -373,7 +373,7 @@ export namespace Gandiva {
         static ['new'](condition_node: Node, then_node: Node, else_node: Node, return_type: Arrow.DataType): IfNode;
     }
 
-    module Int16LiteralNode {
+    namespace Int16LiteralNode {
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -395,7 +395,7 @@ export namespace Gandiva {
         get_value(): number;
     }
 
-    module Int32LiteralNode {
+    namespace Int32LiteralNode {
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -417,7 +417,7 @@ export namespace Gandiva {
         get_value(): number;
     }
 
-    module Int64LiteralNode {
+    namespace Int64LiteralNode {
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -439,7 +439,7 @@ export namespace Gandiva {
         get_value(): number;
     }
 
-    module Int8LiteralNode {
+    namespace Int8LiteralNode {
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -461,7 +461,7 @@ export namespace Gandiva {
         get_value(): number;
     }
 
-    module LiteralNode {
+    namespace LiteralNode {
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps {}
@@ -477,7 +477,7 @@ export namespace Gandiva {
         _init(...args: any[]): void;
     }
 
-    module NativeFunction {
+    namespace NativeFunction {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -511,7 +511,7 @@ export namespace Gandiva {
         to_string(): string;
     }
 
-    module Node {
+    namespace Node {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -541,7 +541,7 @@ export namespace Gandiva {
         to_string(): string;
     }
 
-    module NullLiteralNode {
+    namespace NullLiteralNode {
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -559,7 +559,7 @@ export namespace Gandiva {
         static ['new'](return_type: Arrow.DataType): NullLiteralNode;
     }
 
-    module OrNode {
+    namespace OrNode {
         // Constructor properties interface
 
         interface ConstructorProps extends BooleanNode.ConstructorProps {}
@@ -577,7 +577,7 @@ export namespace Gandiva {
         static ['new'](children: Node[]): OrNode;
     }
 
-    module Projector {
+    namespace Projector {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -605,7 +605,7 @@ export namespace Gandiva {
         evaluate(record_batch: Arrow.RecordBatch): Arrow.Array[] | null;
     }
 
-    module StringLiteralNode {
+    namespace StringLiteralNode {
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -627,7 +627,7 @@ export namespace Gandiva {
         get_value(): string;
     }
 
-    module UInt16LiteralNode {
+    namespace UInt16LiteralNode {
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -649,7 +649,7 @@ export namespace Gandiva {
         get_value(): number;
     }
 
-    module UInt32LiteralNode {
+    namespace UInt32LiteralNode {
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -671,7 +671,7 @@ export namespace Gandiva {
         get_value(): number;
     }
 
-    module UInt64LiteralNode {
+    namespace UInt64LiteralNode {
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -693,7 +693,7 @@ export namespace Gandiva {
         get_value(): number;
     }
 
-    module UInt8LiteralNode {
+    namespace UInt8LiteralNode {
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}

@@ -1228,7 +1228,7 @@ export namespace GES {
          */
         CUSTOM,
     }
-    module Asset {
+    namespace Asset {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2695,7 +2695,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AudioSource {
+    namespace AudioSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3125,7 +3125,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AudioTestSource {
+    namespace AudioTestSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3574,7 +3574,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AudioTrack {
+    namespace AudioTrack {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4394,7 +4394,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AudioTransition {
+    namespace AudioTransition {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4817,7 +4817,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AudioUriSource {
+    namespace AudioUriSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5252,7 +5252,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BaseEffect {
+    namespace BaseEffect {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5778,7 +5778,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BaseEffectClip {
+    namespace BaseEffectClip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6213,7 +6213,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BaseTransitionClip {
+    namespace BaseTransitionClip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6634,7 +6634,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BaseXmlFormatter {
+    namespace BaseXmlFormatter {
         // Constructor properties interface
 
         interface ConstructorProps extends Formatter.ConstructorProps, Extractable.ConstructorProps {}
@@ -6710,7 +6710,7 @@ export namespace GES {
         vfunc_set_asset_full(asset: Asset): boolean;
     }
 
-    module Clip {
+    namespace Clip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7724,7 +7724,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ClipAsset {
+    namespace ClipAsset {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8856,7 +8856,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CommandLineFormatter {
+    namespace CommandLineFormatter {
         // Constructor properties interface
 
         interface ConstructorProps extends Formatter.ConstructorProps, Extractable.ConstructorProps {}
@@ -8943,7 +8943,7 @@ export namespace GES {
         vfunc_set_asset_full(asset: Asset): boolean;
     }
 
-    module Container {
+    namespace Container {
         // Signal callback interfaces
 
         interface ChildAdded {
@@ -9979,7 +9979,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DiscovererManager {
+    namespace DiscovererManager {
         // Signal callback interfaces
 
         interface Discovered {
@@ -10071,7 +10071,7 @@ export namespace GES {
         set_use_cache(use_cache: boolean): void;
     }
 
-    module Effect {
+    namespace Effect {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10541,7 +10541,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module EffectAsset {
+    namespace EffectAsset {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11166,7 +11166,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module EffectClip {
+    namespace EffectClip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11635,7 +11635,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Formatter {
+    namespace Formatter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Extractable.ConstructorProps {}
@@ -11781,7 +11781,7 @@ export namespace GES {
         vfunc_set_asset_full(asset: Asset): boolean;
     }
 
-    module Group {
+    namespace Group {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12298,7 +12298,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ImageSource {
+    namespace ImageSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12733,7 +12733,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Layer {
+    namespace Layer {
         // Signal callback interfaces
 
         interface ActiveChanged {
@@ -13827,7 +13827,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Marker {
+    namespace Marker {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MetaContainer.ConstructorProps {
@@ -14628,7 +14628,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MarkerList {
+    namespace MarkerList {
         // Signal callback interfaces
 
         interface MarkerAdded {
@@ -14717,7 +14717,7 @@ export namespace GES {
         size(): number;
     }
 
-    module MultiFileSource {
+    namespace MultiFileSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15166,7 +15166,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Operation {
+    namespace Operation {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15590,7 +15590,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module OperationClip {
+    namespace OperationClip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16014,7 +16014,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module OverlayClip {
+    namespace OverlayClip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16443,7 +16443,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Pipeline {
+    namespace Pipeline {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17144,7 +17144,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PitiviFormatter {
+    namespace PitiviFormatter {
         // Constructor properties interface
 
         interface ConstructorProps extends Formatter.ConstructorProps, Extractable.ConstructorProps {}
@@ -17226,7 +17226,7 @@ export namespace GES {
         vfunc_set_asset_full(asset: Asset): boolean;
     }
 
-    module Project {
+    namespace Project {
         // Signal callback interfaces
 
         interface AssetAdded {
@@ -18533,7 +18533,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Source {
+    namespace Source {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18971,7 +18971,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SourceClip {
+    namespace SourceClip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19404,7 +19404,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SourceClipAsset {
+    namespace SourceClipAsset {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20028,7 +20028,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TestClip {
+    namespace TestClip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20538,7 +20538,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TextOverlay {
+    namespace TextOverlay {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21035,7 +21035,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TextOverlayClip {
+    namespace TextOverlayClip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21586,7 +21586,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Timeline {
+    namespace Timeline {
         // Signal callback interfaces
 
         interface Commited {
@@ -23083,7 +23083,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TimelineElement {
+    namespace TimelineElement {
         // Signal callback interfaces
 
         interface ChildPropertyAdded {
@@ -24795,7 +24795,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TitleClip {
+    namespace TitleClip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -25363,7 +25363,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TitleSource {
+    namespace TitleSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -25872,7 +25872,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Track {
+    namespace Track {
         // Signal callback interfaces
 
         interface Commited {
@@ -27037,7 +27037,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TrackElement {
+    namespace TrackElement {
         // Signal callback interfaces
 
         interface ControlBindingAdded {
@@ -28301,7 +28301,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TrackElementAsset {
+    namespace TrackElementAsset {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -29414,7 +29414,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Transition {
+    namespace Transition {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -29838,7 +29838,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TransitionClip {
+    namespace TransitionClip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -30287,7 +30287,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UriClip {
+    namespace UriClip {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -30772,7 +30772,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UriClipAsset {
+    namespace UriClipAsset {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31499,7 +31499,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UriSourceAsset {
+    namespace UriSourceAsset {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -32148,7 +32148,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module VideoSource {
+    namespace VideoSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -32586,7 +32586,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module VideoTestSource {
+    namespace VideoTestSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33025,7 +33025,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module VideoTrack {
+    namespace VideoTrack {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33844,7 +33844,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module VideoTransition {
+    namespace VideoTransition {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -34331,7 +34331,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module VideoUriSource {
+    namespace VideoUriSource {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -34766,7 +34766,7 @@ export namespace GES {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module XmlFormatter {
+    namespace XmlFormatter {
         // Constructor properties interface
 
         interface ConstructorProps extends BaseXmlFormatter.ConstructorProps, Extractable.ConstructorProps {}
@@ -35286,7 +35286,7 @@ export namespace GES {
         _init(...args: any[]): void;
     }
 
-    module Extractable {
+    namespace Extractable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -35366,7 +35366,7 @@ export namespace GES {
         new (): Extractable; // This allows `obj instanceof Extractable`
     };
 
-    module MetaContainer {
+    namespace MetaContainer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

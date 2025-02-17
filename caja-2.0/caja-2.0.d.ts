@@ -66,7 +66,7 @@ export namespace Caja {
     interface InfoProviderUpdateComplete {
         (provider: InfoProvider, handle: OperationHandle, result: OperationResult): void;
     }
-    module Column {
+    namespace Column {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -106,7 +106,7 @@ export namespace Caja {
         static ['new'](name: string, attribute: string, label: string, description: string): Column;
     }
 
-    module Menu {
+    namespace Menu {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -129,7 +129,7 @@ export namespace Caja {
         get_items(): MenuItem[];
     }
 
-    module MenuItem {
+    namespace MenuItem {
         // Signal callback interfaces
 
         interface Activate {
@@ -209,7 +209,7 @@ export namespace Caja {
         set_submenu(menu: Menu): void;
     }
 
-    module PropertyPage {
+    namespace PropertyPage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -304,7 +304,7 @@ export namespace Caja {
 
     type PropertyPageProviderIface = typeof PropertyPageProvider;
     type WidgetViewProviderIface = typeof WidgetViewProvider;
-    module ColumnProvider {
+    namespace ColumnProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -332,7 +332,7 @@ export namespace Caja {
         new (): ColumnProvider; // This allows `obj instanceof ColumnProvider`
     };
 
-    module Configurable {
+    namespace Configurable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -356,7 +356,7 @@ export namespace Caja {
         new (): Configurable; // This allows `obj instanceof Configurable`
     };
 
-    module FileInfo {
+    namespace FileInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -504,7 +504,7 @@ export namespace Caja {
         new (): FileInfo; // This allows `obj instanceof FileInfo`
     };
 
-    module InfoProvider {
+    namespace InfoProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -553,7 +553,7 @@ export namespace Caja {
         new (): InfoProvider; // This allows `obj instanceof InfoProvider`
     };
 
-    module LocationWidgetProvider {
+    namespace LocationWidgetProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -583,7 +583,7 @@ export namespace Caja {
         new (): LocationWidgetProvider; // This allows `obj instanceof LocationWidgetProvider`
     };
 
-    module MenuProvider {
+    namespace MenuProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -630,7 +630,7 @@ export namespace Caja {
         new (): MenuProvider; // This allows `obj instanceof MenuProvider`
     };
 
-    module PropertyPageProvider {
+    namespace PropertyPageProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -671,7 +671,7 @@ export namespace Caja {
         new (): PropertyPageProvider; // This allows `obj instanceof PropertyPageProvider`
     };
 
-    module WidgetViewProvider {
+    namespace WidgetViewProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

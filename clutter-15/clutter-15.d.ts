@@ -4659,7 +4659,7 @@ export namespace Clutter {
         POINTER,
         TOUCHSCREEN,
     }
-    module Action {
+    namespace Action {
         // Constructor properties interface
 
         interface ConstructorProps extends ActorMeta.ConstructorProps {}
@@ -4699,7 +4699,7 @@ export namespace Clutter {
         get_phase(): EventPhase;
     }
 
-    module Actor {
+    namespace Actor {
         // Signal callback interfaces
 
         interface ButtonPressEvent {
@@ -9557,7 +9557,7 @@ export namespace Clutter {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ActorAccessible {
+    namespace ActorAccessible {
         // Constructor properties interface
 
         interface ConstructorProps extends Atk.GObjectAccessible.ConstructorProps, Atk.Component.ConstructorProps {}
@@ -10215,7 +10215,7 @@ export namespace Clutter {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ActorMeta {
+    namespace ActorMeta {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -10319,7 +10319,7 @@ export namespace Clutter {
         static ['new'](actor: Actor, opacity: number): ActorNode;
     }
 
-    module AlignConstraint {
+    namespace AlignConstraint {
         // Constructor properties interface
 
         interface ConstructorProps extends Constraint.ConstructorProps {
@@ -10474,7 +10474,7 @@ export namespace Clutter {
         set_source(source?: Actor | null): void;
     }
 
-    module Backend {
+    namespace Backend {
         // Signal callback interfaces
 
         interface FontChanged {
@@ -10599,7 +10599,7 @@ export namespace Clutter {
         set_input_method(method?: InputMethod | null): void;
     }
 
-    module BinLayout {
+    namespace BinLayout {
         // Constructor properties interface
 
         interface ConstructorProps extends LayoutManager.ConstructorProps {}
@@ -10631,7 +10631,7 @@ export namespace Clutter {
         static ['new'](): BinLayout;
     }
 
-    module BindConstraint {
+    namespace BindConstraint {
         // Constructor properties interface
 
         interface ConstructorProps extends Constraint.ConstructorProps {
@@ -10763,7 +10763,7 @@ export namespace Clutter {
         set_source(source?: Actor | null): void;
     }
 
-    module BindingPool {
+    namespace BindingPool {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11053,7 +11053,7 @@ export namespace Clutter {
         ): void;
     }
 
-    module BlurEffect {
+    namespace BlurEffect {
         // Constructor properties interface
 
         interface ConstructorProps extends OffscreenEffect.ConstructorProps {}
@@ -11087,7 +11087,7 @@ export namespace Clutter {
         static ['new'](width: number, height: number, radius: number): BlurNode;
     }
 
-    module BoxLayout {
+    namespace BoxLayout {
         // Constructor properties interface
 
         interface ConstructorProps extends LayoutManager.ConstructorProps {
@@ -11181,7 +11181,7 @@ export namespace Clutter {
         set_spacing(spacing: number): void;
     }
 
-    module BrightnessContrastEffect {
+    namespace BrightnessContrastEffect {
         // Constructor properties interface
 
         interface ConstructorProps extends OffscreenEffect.ConstructorProps {
@@ -11276,7 +11276,7 @@ export namespace Clutter {
         set_contrast_full(red: number, green: number, blue: number): void;
     }
 
-    module ClickAction {
+    namespace ClickAction {
         // Signal callback interfaces
 
         interface Clicked {
@@ -11490,7 +11490,7 @@ export namespace Clutter {
         static ['new'](): ClipNode;
     }
 
-    module Clone {
+    namespace Clone {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Actor = Actor>
@@ -12021,7 +12021,7 @@ export namespace Clutter {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ColorManager {
+    namespace ColorManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12059,7 +12059,7 @@ export namespace Clutter {
         static ['new'](...args: never[]): any;
     }
 
-    module ColorState {
+    namespace ColorState {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12185,7 +12185,7 @@ export namespace Clutter {
         update_uniforms(target_color_state: ColorState, pipeline: Cogl.Pipeline): void;
     }
 
-    module ColorizeEffect {
+    namespace ColorizeEffect {
         // Constructor properties interface
 
         interface ConstructorProps extends OffscreenEffect.ConstructorProps {
@@ -12231,7 +12231,7 @@ export namespace Clutter {
         set_tint(tint: Cogl.Color): void;
     }
 
-    module Constraint {
+    namespace Constraint {
         // Constructor properties interface
 
         interface ConstructorProps extends ActorMeta.ConstructorProps {}
@@ -12361,7 +12361,7 @@ export namespace Clutter {
         ): [number, number];
     }
 
-    module Context {
+    namespace Context {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -12384,7 +12384,7 @@ export namespace Clutter {
         get_text_direction(): TextDirection;
     }
 
-    module DeformEffect {
+    namespace DeformEffect {
         // Constructor properties interface
 
         interface ConstructorProps extends OffscreenEffect.ConstructorProps {
@@ -12518,7 +12518,7 @@ export namespace Clutter {
         set_n_tiles(x_tiles: number, y_tiles: number): void;
     }
 
-    module DesaturateEffect {
+    namespace DesaturateEffect {
         // Constructor properties interface
 
         interface ConstructorProps extends OffscreenEffect.ConstructorProps {
@@ -12569,7 +12569,7 @@ export namespace Clutter {
         set_factor(factor: number): void;
     }
 
-    module Effect {
+    namespace Effect {
         // Constructor properties interface
 
         interface ConstructorProps extends ActorMeta.ConstructorProps {}
@@ -12796,7 +12796,7 @@ export namespace Clutter {
         queue_repaint(): void;
     }
 
-    module FixedLayout {
+    namespace FixedLayout {
         // Constructor properties interface
 
         interface ConstructorProps extends LayoutManager.ConstructorProps {}
@@ -12820,7 +12820,7 @@ export namespace Clutter {
         static ['new'](): FixedLayout;
     }
 
-    module FlowLayout {
+    namespace FlowLayout {
         // Constructor properties interface
 
         interface ConstructorProps extends LayoutManager.ConstructorProps {
@@ -13057,7 +13057,7 @@ export namespace Clutter {
         set_snap_to_grid(snap_to_grid: boolean): void;
     }
 
-    module FrameClock {
+    namespace FrameClock {
         // Signal callback interfaces
 
         interface Destroy {
@@ -13104,7 +13104,7 @@ export namespace Clutter {
         uninhibit(): void;
     }
 
-    module Gesture {
+    namespace Gesture {
         // Signal callback interfaces
 
         interface Cancel {
@@ -13297,7 +13297,7 @@ export namespace Clutter {
         get_state(): GestureState;
     }
 
-    module GestureAction {
+    namespace GestureAction {
         // Signal callback interfaces
 
         interface GestureBegin {
@@ -13600,7 +13600,7 @@ export namespace Clutter {
         set_threshold_trigger_edge(edge: GestureTriggerEdge | null): void;
     }
 
-    module Grab {
+    namespace Grab {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13650,7 +13650,7 @@ export namespace Clutter {
         is_revoked(): boolean;
     }
 
-    module GridLayout {
+    namespace GridLayout {
         // Constructor properties interface
 
         interface ConstructorProps extends LayoutManager.ConstructorProps {
@@ -13875,7 +13875,7 @@ export namespace Clutter {
         set_row_spacing(spacing: number): void;
     }
 
-    module Image {
+    namespace Image {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Content.ConstructorProps {}
@@ -14470,7 +14470,7 @@ export namespace Clutter {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module InputDevice {
+    namespace InputDevice {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -14640,7 +14640,7 @@ export namespace Clutter {
         is_mode_switch_button(group: number, button: number): boolean;
     }
 
-    module InputDeviceTool {
+    namespace InputDeviceTool {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -14689,7 +14689,7 @@ export namespace Clutter {
         get_tool_type(): InputDeviceToolType;
     }
 
-    module InputFocus {
+    namespace InputFocus {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -14727,7 +14727,7 @@ export namespace Clutter {
         set_surrounding(text: string, cursor: number, anchor: number): void;
     }
 
-    module InputMethod {
+    namespace InputMethod {
         // Signal callback interfaces
 
         interface Commit {
@@ -14844,7 +14844,7 @@ export namespace Clutter {
         set_preedit_text(preedit: string | null, cursor: number, anchor: number, mode: PreeditResetMode | null): void;
     }
 
-    module Interval {
+    namespace Interval {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -15008,7 +15008,7 @@ export namespace Clutter {
         validate(pspec: GObject.ParamSpec): boolean;
     }
 
-    module KeyframeTransition {
+    namespace KeyframeTransition {
         // Constructor properties interface
 
         interface ConstructorProps extends PropertyTransition.ConstructorProps {}
@@ -15123,7 +15123,7 @@ export namespace Clutter {
         set_values(values: (GObject.Value | any)[]): void;
     }
 
-    module Keymap {
+    namespace Keymap {
         // Signal callback interfaces
 
         interface StateChanged {
@@ -15186,7 +15186,7 @@ export namespace Clutter {
         static new_to_framebuffer(framebuffer: Cogl.Framebuffer, pipeline: Cogl.Pipeline): LayerNode;
     }
 
-    module LayoutManager {
+    namespace LayoutManager {
         // Signal callback interfaces
 
         interface LayoutChanged {
@@ -15421,7 +15421,7 @@ export namespace Clutter {
         set_container(container?: Actor | null): void;
     }
 
-    module LayoutMeta {
+    namespace LayoutMeta {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -15485,7 +15485,7 @@ export namespace Clutter {
         is_for(manager: LayoutManager, container: Actor, actor: Actor): boolean;
     }
 
-    module OffscreenEffect {
+    namespace OffscreenEffect {
         // Constructor properties interface
 
         interface ConstructorProps extends Effect.ConstructorProps {}
@@ -15625,7 +15625,7 @@ export namespace Clutter {
         paint_target(node: PaintNode, paint_context: PaintContext): void;
     }
 
-    module PageTurnEffect {
+    namespace PageTurnEffect {
         // Constructor properties interface
 
         interface ConstructorProps extends DeformEffect.ConstructorProps {
@@ -15817,7 +15817,7 @@ export namespace Clutter {
         unref(): void;
     }
 
-    module PanAction {
+    namespace PanAction {
         // Signal callback interfaces
 
         interface Pan {
@@ -16029,7 +16029,7 @@ export namespace Clutter {
         set_pan_axis(axis: PanAxis | null): void;
     }
 
-    module PipelineCache {
+    namespace PipelineCache {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -16066,7 +16066,7 @@ export namespace Clutter {
         static ['new'](pipeline?: Cogl.Pipeline | null): PipelineNode;
     }
 
-    module PropertyTransition {
+    namespace PropertyTransition {
         // Constructor properties interface
 
         interface ConstructorProps extends Transition.ConstructorProps {
@@ -16135,7 +16135,7 @@ export namespace Clutter {
         static ['new'](framebuffer: Cogl.Framebuffer, clear_color: Cogl.Color, clear_flags: Cogl.BufferBit): RootNode;
     }
 
-    module RotateAction {
+    namespace RotateAction {
         // Signal callback interfaces
 
         interface Rotate {
@@ -16174,7 +16174,7 @@ export namespace Clutter {
         emit(signal: 'rotate', actor: Actor, angle: number): void;
     }
 
-    module Seat {
+    namespace Seat {
         // Signal callback interfaces
 
         interface DeviceAdded {
@@ -16442,7 +16442,7 @@ export namespace Clutter {
         warp_pointer(x: number, y: number): void;
     }
 
-    module Settings {
+    namespace Settings {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -16665,7 +16665,7 @@ export namespace Clutter {
         static get_default(): Settings;
     }
 
-    module ShaderEffect {
+    namespace ShaderEffect {
         // Constructor properties interface
 
         interface ConstructorProps extends OffscreenEffect.ConstructorProps {
@@ -16861,7 +16861,7 @@ export namespace Clutter {
         _init(...args: any[]): void;
     }
 
-    module SnapConstraint {
+    namespace SnapConstraint {
         // Constructor properties interface
 
         interface ConstructorProps extends Constraint.ConstructorProps {
@@ -16965,7 +16965,7 @@ export namespace Clutter {
         set_source(source?: Actor | null): void;
     }
 
-    module Stage {
+    namespace Stage {
         // Signal callback interfaces
 
         interface AfterPaint {
@@ -17769,7 +17769,7 @@ export namespace Clutter {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StageView {
+    namespace StageView {
         // Signal callback interfaces
 
         interface Destroy {
@@ -17874,7 +17874,7 @@ export namespace Clutter {
         schedule_update_now(): void;
     }
 
-    module SwipeAction {
+    namespace SwipeAction {
         // Signal callback interfaces
 
         interface Swipe {
@@ -17925,7 +17925,7 @@ export namespace Clutter {
         vfunc_swipe(actor: Actor, direction: SwipeDirection): void;
     }
 
-    module TapAction {
+    namespace TapAction {
         // Signal callback interfaces
 
         interface Tap {
@@ -17983,7 +17983,7 @@ export namespace Clutter {
         vfunc_tap(actor: Actor): boolean;
     }
 
-    module Text {
+    namespace Text {
         // Signal callback interfaces
 
         interface Activate {
@@ -19454,7 +19454,7 @@ export namespace Clutter {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TextBuffer {
+    namespace TextBuffer {
         // Signal callback interfaces
 
         interface DeletedText {
@@ -19703,7 +19703,7 @@ export namespace Clutter {
         static ['new'](layout?: Pango.Layout | null, color?: Cogl.Color | null): TextNode;
     }
 
-    module TextureContent {
+    namespace TextureContent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Content.ConstructorProps {}
@@ -20234,7 +20234,7 @@ export namespace Clutter {
         static ['new'](...args: never[]): any;
     }
 
-    module Timeline {
+    namespace Timeline {
         // Signal callback interfaces
 
         interface Completed {
@@ -20798,7 +20798,7 @@ export namespace Clutter {
         static ['new'](projection: Graphene.Matrix): TransformNode;
     }
 
-    module Transition {
+    namespace Transition {
         // Constructor properties interface
 
         interface ConstructorProps extends Timeline.ConstructorProps {
@@ -20967,7 +20967,7 @@ export namespace Clutter {
         set_to(value: GObject.Value | any): void;
     }
 
-    module TransitionGroup {
+    namespace TransitionGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends Transition.ConstructorProps {}
@@ -21022,7 +21022,7 @@ export namespace Clutter {
         remove_transition(transition: Transition): void;
     }
 
-    module VirtualInputDevice {
+    namespace VirtualInputDevice {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -21092,7 +21092,7 @@ export namespace Clutter {
         notify_touch_up(time_us: number, slot: number): void;
     }
 
-    module ZoomAction {
+    namespace ZoomAction {
         // Signal callback interfaces
 
         interface Zoom {
@@ -22359,7 +22359,7 @@ export namespace Clutter {
         type(): EventType;
     }
 
-    module Animatable {
+    namespace Animatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -22452,7 +22452,7 @@ export namespace Clutter {
         new (): Animatable; // This allows `obj instanceof Animatable`
     };
 
-    module Content {
+    namespace Content {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

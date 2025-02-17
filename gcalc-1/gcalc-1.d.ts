@@ -172,7 +172,7 @@ export namespace GCalc {
         TWO,
         THREE,
     }
-    module ExpressionContainer {
+    namespace ExpressionContainer {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -717,7 +717,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ExpressionHashMap {
+    namespace ExpressionHashMap {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.HashMap.ConstructorProps {
@@ -752,7 +752,7 @@ export namespace GCalc {
         set_parent(value: Expression): void;
     }
 
-    module GFunctionAcos {
+    namespace GFunctionAcos {
         // Constructor properties interface
 
         interface ConstructorProps extends GFunction.ConstructorProps {}
@@ -770,7 +770,7 @@ export namespace GCalc {
         static ['new'](): GFunctionAcos;
     }
 
-    module GFunctionAcosh {
+    namespace GFunctionAcosh {
         // Constructor properties interface
 
         interface ConstructorProps extends GFunction.ConstructorProps {}
@@ -788,7 +788,7 @@ export namespace GCalc {
         static ['new'](): GFunctionAcosh;
     }
 
-    module GFunctionAsin {
+    namespace GFunctionAsin {
         // Constructor properties interface
 
         interface ConstructorProps extends GFunction.ConstructorProps {}
@@ -806,7 +806,7 @@ export namespace GCalc {
         static ['new'](): GFunctionAsin;
     }
 
-    module GFunctionAsinh {
+    namespace GFunctionAsinh {
         // Constructor properties interface
 
         interface ConstructorProps extends GFunction.ConstructorProps {}
@@ -824,7 +824,7 @@ export namespace GCalc {
         static ['new'](): GFunctionAsinh;
     }
 
-    module GFunctionAtan {
+    namespace GFunctionAtan {
         // Constructor properties interface
 
         interface ConstructorProps extends GFunction.ConstructorProps {}
@@ -842,7 +842,7 @@ export namespace GCalc {
         static ['new'](): GFunctionAtan;
     }
 
-    module GFunctionAtanh {
+    namespace GFunctionAtanh {
         // Constructor properties interface
 
         interface ConstructorProps extends GFunction.ConstructorProps {}
@@ -860,7 +860,7 @@ export namespace GCalc {
         static ['new'](): GFunctionAtanh;
     }
 
-    module GFunctionCos {
+    namespace GFunctionCos {
         // Constructor properties interface
 
         interface ConstructorProps extends GFunction.ConstructorProps {}
@@ -878,7 +878,7 @@ export namespace GCalc {
         static ['new'](): GFunctionCos;
     }
 
-    module GFunctionCosh {
+    namespace GFunctionCosh {
         // Constructor properties interface
 
         interface ConstructorProps extends GFunction.ConstructorProps {}
@@ -896,7 +896,7 @@ export namespace GCalc {
         static ['new'](): GFunctionCosh;
     }
 
-    module GFunctionExp {
+    namespace GFunctionExp {
         // Constructor properties interface
 
         interface ConstructorProps extends GFunction.ConstructorProps {}
@@ -914,7 +914,7 @@ export namespace GCalc {
         static ['new'](): GFunctionExp;
     }
 
-    module GFunctionLog {
+    namespace GFunctionLog {
         // Constructor properties interface
 
         interface ConstructorProps extends GFunction.ConstructorProps {}
@@ -932,7 +932,7 @@ export namespace GCalc {
         static ['new'](): GFunctionLog;
     }
 
-    module GFunctionSin {
+    namespace GFunctionSin {
         // Constructor properties interface
 
         interface ConstructorProps extends GFunction.ConstructorProps {}
@@ -950,7 +950,7 @@ export namespace GCalc {
         static ['new'](): GFunctionSin;
     }
 
-    module GFunctionSinh {
+    namespace GFunctionSinh {
         // Constructor properties interface
 
         interface ConstructorProps extends GFunction.ConstructorProps {}
@@ -968,7 +968,7 @@ export namespace GCalc {
         static ['new'](): GFunctionSinh;
     }
 
-    module GFunctionSqrt {
+    namespace GFunctionSqrt {
         // Constructor properties interface
 
         interface ConstructorProps extends GFunction.ConstructorProps {}
@@ -986,7 +986,7 @@ export namespace GCalc {
         static ['new'](): GFunctionSqrt;
     }
 
-    module GFunctionTan {
+    namespace GFunctionTan {
         // Constructor properties interface
 
         interface ConstructorProps extends GFunction.ConstructorProps {}
@@ -1004,7 +1004,7 @@ export namespace GCalc {
         static ['new'](): GFunctionTan;
     }
 
-    module GFunctionTanh {
+    namespace GFunctionTanh {
         // Constructor properties interface
 
         interface ConstructorProps extends GFunction.ConstructorProps {}
@@ -1022,7 +1022,7 @@ export namespace GCalc {
         static ['new'](): GFunctionTanh;
     }
 
-    module GExpression {
+    namespace GExpression {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Expression.ConstructorProps {}
@@ -1463,7 +1463,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GErrorExpression {
+    namespace GErrorExpression {
         // Constructor properties interface
 
         interface ConstructorProps extends GExpression.ConstructorProps, ErrorExpression.ConstructorProps {}
@@ -1883,7 +1883,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GAssign {
+    namespace GAssign {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2308,7 +2308,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GConstant {
+    namespace GConstant {
         // Constructor properties interface
 
         interface ConstructorProps extends GExpression.ConstructorProps, Constant.ConstructorProps {}
@@ -2756,7 +2756,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GDivision {
+    namespace GDivision {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3180,7 +3180,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GErrorResult {
+    namespace GErrorResult {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3613,7 +3613,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GFunction {
+    namespace GFunction {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4076,7 +4076,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GMathEquation {
+    namespace GMathEquation {
         // Constructor properties interface
 
         interface ConstructorProps extends GExpression.ConstructorProps, MathEquation.ConstructorProps {}
@@ -4501,7 +4501,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GMathEquationManager {
+    namespace GMathEquationManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MathEquationManager.ConstructorProps {}
@@ -4931,7 +4931,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GMinus {
+    namespace GMinus {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5355,7 +5355,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GMultiply {
+    namespace GMultiply {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5779,7 +5779,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GParser {
+    namespace GParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5803,7 +5803,7 @@ export namespace GCalc {
         token_to_string(): string;
     }
 
-    module GPlus {
+    namespace GPlus {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6227,7 +6227,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GPolynomial {
+    namespace GPolynomial {
         // Constructor properties interface
 
         interface ConstructorProps extends GExpression.ConstructorProps, Polynomial.ConstructorProps {}
@@ -6649,7 +6649,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GPow {
+    namespace GPow {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7072,7 +7072,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GResult {
+    namespace GResult {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Result.ConstructorProps {}
@@ -7499,7 +7499,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GGroup {
+    namespace GGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GExpression.ConstructorProps, Group.ConstructorProps {}
@@ -7935,7 +7935,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GSolver {
+    namespace GSolver {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Solver.ConstructorProps {}
@@ -8367,7 +8367,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GTerm {
+    namespace GTerm {
         // Constructor properties interface
 
         interface ConstructorProps extends GExpression.ConstructorProps, Term.ConstructorProps {}
@@ -8791,7 +8791,7 @@ export namespace GCalc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GVariable {
+    namespace GVariable {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9598,7 +9598,7 @@ export namespace GCalc {
     type SolverIface = typeof Solver;
     type TermIface = typeof Term;
     type VariableIface = typeof Variable;
-    module Assign {
+    namespace Assign {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9618,7 +9618,7 @@ export namespace GCalc {
         new (): Assign; // This allows `obj instanceof Assign`
     };
 
-    module BinaryOperator {
+    namespace BinaryOperator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9634,7 +9634,7 @@ export namespace GCalc {
         new (): BinaryOperator; // This allows `obj instanceof BinaryOperator`
     };
 
-    module Constant {
+    namespace Constant {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9672,7 +9672,7 @@ export namespace GCalc {
         new (): Constant; // This allows `obj instanceof Constant`
     };
 
-    module Division {
+    namespace Division {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9688,7 +9688,7 @@ export namespace GCalc {
         new (): Division; // This allows `obj instanceof Division`
     };
 
-    module Expression {
+    namespace Expression {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9729,7 +9729,7 @@ export namespace GCalc {
         new (): Expression; // This allows `obj instanceof Expression`
     };
 
-    module ErrorExpression {
+    namespace ErrorExpression {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9745,7 +9745,7 @@ export namespace GCalc {
         new (): ErrorExpression; // This allows `obj instanceof ErrorExpression`
     };
 
-    module Function {
+    namespace Function {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9805,7 +9805,7 @@ export namespace GCalc {
         new (): Function; // This allows `obj instanceof Function`
     };
 
-    module ErrorResult {
+    namespace ErrorResult {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9835,7 +9835,7 @@ export namespace GCalc {
         new (): ErrorResult; // This allows `obj instanceof ErrorResult`
     };
 
-    module Group {
+    namespace Group {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9877,7 +9877,7 @@ export namespace GCalc {
         new (): Group; // This allows `obj instanceof Group`
     };
 
-    module Hashable {
+    namespace Hashable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9901,7 +9901,7 @@ export namespace GCalc {
         new (): Hashable; // This allows `obj instanceof Hashable`
     };
 
-    module MathEquation {
+    namespace MathEquation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9931,7 +9931,7 @@ export namespace GCalc {
         new (): MathEquation; // This allows `obj instanceof MathEquation`
     };
 
-    module MathEquationManager {
+    namespace MathEquationManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9967,7 +9967,7 @@ export namespace GCalc {
         new (): MathEquationManager; // This allows `obj instanceof MathEquationManager`
     };
 
-    module Minus {
+    namespace Minus {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9983,7 +9983,7 @@ export namespace GCalc {
         new (): Minus; // This allows `obj instanceof Minus`
     };
 
-    module Multiply {
+    namespace Multiply {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9999,7 +9999,7 @@ export namespace GCalc {
         new (): Multiply; // This allows `obj instanceof Multiply`
     };
 
-    module Operator {
+    namespace Operator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10015,7 +10015,7 @@ export namespace GCalc {
         new (): Operator; // This allows `obj instanceof Operator`
     };
 
-    module Plus {
+    namespace Plus {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10031,7 +10031,7 @@ export namespace GCalc {
         new (): Plus; // This allows `obj instanceof Plus`
     };
 
-    module Polynomial {
+    namespace Polynomial {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10055,7 +10055,7 @@ export namespace GCalc {
         new (): Polynomial; // This allows `obj instanceof Polynomial`
     };
 
-    module Pow {
+    namespace Pow {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10071,7 +10071,7 @@ export namespace GCalc {
         new (): Pow; // This allows `obj instanceof Pow`
     };
 
-    module Result {
+    namespace Result {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10103,7 +10103,7 @@ export namespace GCalc {
         new (): Result; // This allows `obj instanceof Result`
     };
 
-    module Solver {
+    namespace Solver {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10141,7 +10141,7 @@ export namespace GCalc {
         new (): Solver; // This allows `obj instanceof Solver`
     };
 
-    module Term {
+    namespace Term {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10169,7 +10169,7 @@ export namespace GCalc {
         new (): Term; // This allows `obj instanceof Term`
     };
 
-    module Variable {
+    namespace Variable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

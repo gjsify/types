@@ -39,7 +39,7 @@ export namespace ArrowDataset {
          */
         URI,
     }
-    module CSVFileFormat {
+    namespace CSVFileFormat {
         // Constructor properties interface
 
         interface ConstructorProps extends FileFormat.ConstructorProps {}
@@ -57,7 +57,7 @@ export namespace ArrowDataset {
         static ['new'](): CSVFileFormat;
     }
 
-    module Dataset {
+    namespace Dataset {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -85,7 +85,7 @@ export namespace ArrowDataset {
         to_table(): Arrow.Table | null;
     }
 
-    module DatasetFactory {
+    namespace DatasetFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -113,7 +113,7 @@ export namespace ArrowDataset {
         finish(options?: FinishOptions | null): Dataset | null;
     }
 
-    module DirectoryPartitioning {
+    namespace DirectoryPartitioning {
         // Constructor properties interface
 
         interface ConstructorProps extends KeyValuePartitioning.ConstructorProps {}
@@ -135,7 +135,7 @@ export namespace ArrowDataset {
         ): DirectoryPartitioning;
     }
 
-    module FileFormat {
+    namespace FileFormat {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -170,7 +170,7 @@ export namespace ArrowDataset {
         ): FileWriter;
     }
 
-    module FileSystemDataset {
+    namespace FileSystemDataset {
         // Constructor properties interface
 
         interface ConstructorProps extends Dataset.ConstructorProps {
@@ -214,7 +214,7 @@ export namespace ArrowDataset {
         static write_scanner(scanner: Scanner, options: FileSystemDatasetWriteOptions): boolean;
     }
 
-    module FileSystemDatasetFactory {
+    namespace FileSystemDatasetFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends DatasetFactory.ConstructorProps {
@@ -276,7 +276,7 @@ export namespace ArrowDataset {
         set_file_system_uri(uri: string): boolean;
     }
 
-    module FileSystemDatasetWriteOptions {
+    namespace FileSystemDatasetWriteOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -348,7 +348,7 @@ export namespace ArrowDataset {
         static ['new'](): FileSystemDatasetWriteOptions;
     }
 
-    module FileWriteOptions {
+    namespace FileWriteOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -370,7 +370,7 @@ export namespace ArrowDataset {
         _init(...args: any[]): void;
     }
 
-    module FileWriter {
+    namespace FileWriter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -398,7 +398,7 @@ export namespace ArrowDataset {
         write_record_batch_reader(reader: Arrow.RecordBatchReader): boolean;
     }
 
-    module FinishOptions {
+    namespace FinishOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -454,7 +454,7 @@ export namespace ArrowDataset {
         static ['new'](): FinishOptions;
     }
 
-    module Fragment {
+    namespace Fragment {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -476,7 +476,7 @@ export namespace ArrowDataset {
         _init(...args: any[]): void;
     }
 
-    module HivePartitioning {
+    namespace HivePartitioning {
         // Constructor properties interface
 
         interface ConstructorProps extends KeyValuePartitioning.ConstructorProps {}
@@ -502,7 +502,7 @@ export namespace ArrowDataset {
         get_null_fallback(): string;
     }
 
-    module HivePartitioningOptions {
+    namespace HivePartitioningOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends KeyValuePartitioningOptions.ConstructorProps {
@@ -538,7 +538,7 @@ export namespace ArrowDataset {
         static ['new'](): HivePartitioningOptions;
     }
 
-    module IPCFileFormat {
+    namespace IPCFileFormat {
         // Constructor properties interface
 
         interface ConstructorProps extends FileFormat.ConstructorProps {}
@@ -556,7 +556,7 @@ export namespace ArrowDataset {
         static ['new'](): IPCFileFormat;
     }
 
-    module InMemoryFragment {
+    namespace InMemoryFragment {
         // Constructor properties interface
 
         interface ConstructorProps extends Fragment.ConstructorProps {}
@@ -574,7 +574,7 @@ export namespace ArrowDataset {
         static ['new'](schema: Arrow.Schema, record_batches: Arrow.RecordBatch[]): InMemoryFragment;
     }
 
-    module KeyValuePartitioning {
+    namespace KeyValuePartitioning {
         // Constructor properties interface
 
         interface ConstructorProps extends Partitioning.ConstructorProps {}
@@ -590,7 +590,7 @@ export namespace ArrowDataset {
         _init(...args: any[]): void;
     }
 
-    module KeyValuePartitioningOptions {
+    namespace KeyValuePartitioningOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -626,7 +626,7 @@ export namespace ArrowDataset {
         static ['new'](): KeyValuePartitioningOptions;
     }
 
-    module ParquetFileFormat {
+    namespace ParquetFileFormat {
         // Constructor properties interface
 
         interface ConstructorProps extends FileFormat.ConstructorProps {}
@@ -644,7 +644,7 @@ export namespace ArrowDataset {
         static ['new'](): ParquetFileFormat;
     }
 
-    module Partitioning {
+    namespace Partitioning {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -674,7 +674,7 @@ export namespace ArrowDataset {
         get_type_name(): string;
     }
 
-    module PartitioningFactoryOptions {
+    namespace PartitioningFactoryOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -738,7 +738,7 @@ export namespace ArrowDataset {
         static ['new'](): PartitioningFactoryOptions;
     }
 
-    module Scanner {
+    namespace Scanner {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -764,7 +764,7 @@ export namespace ArrowDataset {
         to_table(): Arrow.Table | null;
     }
 
-    module ScannerBuilder {
+    namespace ScannerBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

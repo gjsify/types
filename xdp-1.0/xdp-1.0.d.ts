@@ -662,7 +662,7 @@ export namespace Xdp {
          */
         PREVIEW,
     }
-    module Portal {
+    namespace Portal {
         // Signal callback interfaces
 
         interface LocationUpdated {
@@ -3448,7 +3448,7 @@ export namespace Xdp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Session {
+    namespace Session {
         // Signal callback interfaces
 
         interface Closed {

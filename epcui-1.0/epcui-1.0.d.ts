@@ -28,7 +28,7 @@ export namespace EpcUi {
      * EpcUi-1.0
      */
 
-    module PasswordDialog {
+    namespace PasswordDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -488,7 +488,7 @@ export namespace EpcUi {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ProgressWindow {
+    namespace ProgressWindow {
         // Constructor properties interface
 
         interface ConstructorProps

@@ -84,7 +84,7 @@ export namespace GPluginGtk4 {
      * @returns %NULL if the GPluginGtk library is compatible with the given          version, or a string describing the version mismatch. The returned          string is owned by GPluginGtk and must not be modified or freed.
      */
     function version_check(major: number, minor: number, micro: number): string;
-    module PluginPage {
+    namespace PluginPage {
         // Signal callback interfaces
 
         interface PluginStateSet {
@@ -601,7 +601,7 @@ export namespace GPluginGtk4 {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PluginRow {
+    namespace PluginRow {
         // Signal callback interfaces
 
         interface PluginStateSet {
@@ -3622,7 +3622,7 @@ export namespace GPluginGtk4 {
         vfunc_unroot(): void;
     }
 
-    module PluginSettingsList {
+    namespace PluginSettingsList {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4095,7 +4095,7 @@ export namespace GPluginGtk4 {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module View {
+    namespace View {
         // Constructor properties interface
 
         interface ConstructorProps

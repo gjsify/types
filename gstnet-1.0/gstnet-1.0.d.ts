@@ -121,7 +121,7 @@ export namespace GstNet {
     interface PtpStatisticsCallback {
         (domain: number, stats: Gst.Structure): boolean;
     }
-    module NetClientClock {
+    namespace NetClientClock {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.SystemClock.ConstructorProps {
@@ -211,7 +211,7 @@ export namespace GstNet {
         ): NetClientClock;
     }
 
-    module NetTimeProvider {
+    namespace NetTimeProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -748,7 +748,7 @@ export namespace GstNet {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module NtpClock {
+    namespace NtpClock {
         // Constructor properties interface
 
         interface ConstructorProps extends NetClientClock.ConstructorProps {}
@@ -775,7 +775,7 @@ export namespace GstNet {
         ): NtpClock;
     }
 
-    module PtpClock {
+    namespace PtpClock {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.SystemClock.ConstructorProps {

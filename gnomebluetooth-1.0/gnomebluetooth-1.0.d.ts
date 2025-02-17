@@ -335,7 +335,7 @@ export namespace GnomeBluetooth {
          */
         TOY,
     }
-    module Chooser {
+    namespace Chooser {
         // Signal callback interfaces
 
         interface SelectedDeviceActivated {
@@ -927,7 +927,7 @@ export namespace GnomeBluetooth {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ChooserButton {
+    namespace ChooserButton {
         // Signal callback interfaces
 
         interface ChooserCreated {
@@ -5489,7 +5489,7 @@ export namespace GnomeBluetooth {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module ChooserCombo {
+    namespace ChooserCombo {
         // Signal callback interfaces
 
         interface ChooserCreated {
@@ -5968,7 +5968,7 @@ export namespace GnomeBluetooth {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface DeviceRemoved {
@@ -6135,7 +6135,7 @@ export namespace GnomeBluetooth {
         get_model(): Gtk.TreeModel;
     }
 
-    module FilterWidget {
+    namespace FilterWidget {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6618,7 +6618,7 @@ export namespace GnomeBluetooth {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SettingsWidget {
+    namespace SettingsWidget {
         // Signal callback interfaces
 
         interface AdapterStatusChanged {

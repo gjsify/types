@@ -23,7 +23,7 @@ export namespace GUPnPDLNA {
      * GUPnPDLNA-1.0
      */
 
-    module Discoverer {
+    namespace Discoverer {
         // Signal callback interfaces
 
         interface Done {
@@ -110,7 +110,7 @@ export namespace GUPnPDLNA {
         list_profiles(): Profile[];
     }
 
-    module Information {
+    namespace Information {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -144,7 +144,7 @@ export namespace GUPnPDLNA {
         get_name(): string;
     }
 
-    module Profile {
+    namespace Profile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

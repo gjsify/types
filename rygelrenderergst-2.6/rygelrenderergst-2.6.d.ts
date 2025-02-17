@@ -40,7 +40,7 @@ export namespace RygelRendererGst {
         _init(...args: any[]): void;
     }
 
-    module PlaybinPlayer {
+    namespace PlaybinPlayer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, RygelRenderer.MediaPlayer.ConstructorProps {
@@ -575,7 +575,7 @@ export namespace RygelRendererGst {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PlaybinRenderer {
+    namespace PlaybinRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends RygelRenderer.MediaRenderer.ConstructorProps {}

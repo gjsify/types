@@ -18,7 +18,7 @@ export namespace ArrowFlight {
      * ArrowFlight-1.0
      */
 
-    module CallOptions {
+    namespace CallOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36,7 +36,7 @@ export namespace ArrowFlight {
         static ['new'](): CallOptions;
     }
 
-    module Client {
+    namespace Client {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -65,7 +65,7 @@ export namespace ArrowFlight {
         list_flights(criteria?: Criteria | null, options?: CallOptions | null): Info[] | null;
     }
 
-    module ClientOptions {
+    namespace ClientOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -83,7 +83,7 @@ export namespace ArrowFlight {
         static ['new'](): ClientOptions;
     }
 
-    module CommandDescriptor {
+    namespace CommandDescriptor {
         // Constructor properties interface
 
         interface ConstructorProps extends Descriptor.ConstructorProps {}
@@ -105,7 +105,7 @@ export namespace ArrowFlight {
         get_command(): string;
     }
 
-    module Criteria {
+    namespace Criteria {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -133,7 +133,7 @@ export namespace ArrowFlight {
         static ['new'](expression: GLib.Bytes | Uint8Array): Criteria;
     }
 
-    module DataStream {
+    namespace DataStream {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -155,7 +155,7 @@ export namespace ArrowFlight {
         _init(...args: any[]): void;
     }
 
-    module Descriptor {
+    namespace Descriptor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -182,7 +182,7 @@ export namespace ArrowFlight {
         to_string(): string;
     }
 
-    module Endpoint {
+    namespace Endpoint {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -214,7 +214,7 @@ export namespace ArrowFlight {
         get_locations(): Location[] | null;
     }
 
-    module Info {
+    namespace Info {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -253,7 +253,7 @@ export namespace ArrowFlight {
         get_total_records(): number;
     }
 
-    module Location {
+    namespace Location {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -277,7 +277,7 @@ export namespace ArrowFlight {
         to_string(): string;
     }
 
-    module PathDescriptor {
+    namespace PathDescriptor {
         // Constructor properties interface
 
         interface ConstructorProps extends Descriptor.ConstructorProps {}
@@ -299,7 +299,7 @@ export namespace ArrowFlight {
         get_paths(): string[] | null;
     }
 
-    module RecordBatchReader {
+    namespace RecordBatchReader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -326,7 +326,7 @@ export namespace ArrowFlight {
         read_next(): StreamChunk;
     }
 
-    module RecordBatchStream {
+    namespace RecordBatchStream {
         // Constructor properties interface
 
         interface ConstructorProps extends DataStream.ConstructorProps {
@@ -353,7 +353,7 @@ export namespace ArrowFlight {
         static ['new'](reader: Arrow.RecordBatchReader, options?: Arrow.WriteOptions | null): RecordBatchStream;
     }
 
-    module Server {
+    namespace Server {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -388,7 +388,7 @@ export namespace ArrowFlight {
         wait(): boolean;
     }
 
-    module ServerCallContext {
+    namespace ServerCallContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -412,7 +412,7 @@ export namespace ArrowFlight {
         _init(...args: any[]): void;
     }
 
-    module ServerOptions {
+    namespace ServerOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -436,7 +436,7 @@ export namespace ArrowFlight {
         static ['new'](location: Location): ServerOptions;
     }
 
-    module StreamChunk {
+    namespace StreamChunk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -465,7 +465,7 @@ export namespace ArrowFlight {
         get_metadata(): Arrow.Buffer | null;
     }
 
-    module StreamReader {
+    namespace StreamReader {
         // Constructor properties interface
 
         interface ConstructorProps extends RecordBatchReader.ConstructorProps {}
@@ -481,7 +481,7 @@ export namespace ArrowFlight {
         _init(...args: any[]): void;
     }
 
-    module Ticket {
+    namespace Ticket {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

@@ -141,7 +141,7 @@ export namespace GConf {
     enum UnsetFlags {
         NAMES,
     }
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface Error {

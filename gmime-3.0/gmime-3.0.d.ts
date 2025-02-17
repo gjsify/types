@@ -1695,7 +1695,7 @@ export namespace GMime {
          */
         ENABLE_ONLINE_CERTIFICATE_CHECKS,
     }
-    module ApplicationPkcs7Mime {
+    namespace ApplicationPkcs7Mime {
         // Constructor properties interface
 
         interface ConstructorProps extends Part.ConstructorProps {}
@@ -1775,7 +1775,7 @@ export namespace GMime {
         verify(flags: VerifyFlags | null): [SignatureList | null, Object];
     }
 
-    module AutocryptHeader {
+    namespace AutocryptHeader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1900,7 +1900,7 @@ export namespace GMime {
         to_string(gossip: boolean): string;
     }
 
-    module AutocryptHeaderList {
+    namespace AutocryptHeaderList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1961,7 +1961,7 @@ export namespace GMime {
         remove_incomplete(): void;
     }
 
-    module Certificate {
+    namespace Certificate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2167,7 +2167,7 @@ export namespace GMime {
         set_user_id(user_id: string): void;
     }
 
-    module CertificateList {
+    namespace CertificateList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2257,7 +2257,7 @@ export namespace GMime {
         set_certificate(index: number, cert: Certificate): void;
     }
 
-    module ContentDisposition {
+    namespace ContentDisposition {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2340,7 +2340,7 @@ export namespace GMime {
         set_parameter(name: string, value: string): void;
     }
 
-    module ContentType {
+    namespace ContentType {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2440,7 +2440,7 @@ export namespace GMime {
         set_parameter(name: string, value: string): void;
     }
 
-    module CryptoContext {
+    namespace CryptoContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2702,7 +2702,7 @@ export namespace GMime {
         ): SignatureList | null;
     }
 
-    module DataWrapper {
+    namespace DataWrapper {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2773,7 +2773,7 @@ export namespace GMime {
         write_to_stream(stream: Stream): number;
     }
 
-    module DecryptResult {
+    namespace DecryptResult {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2856,7 +2856,7 @@ export namespace GMime {
         set_signatures(signatures: SignatureList): void;
     }
 
-    module Filter {
+    namespace Filter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2947,7 +2947,7 @@ export namespace GMime {
         set_size(size: number, keep: boolean): void;
     }
 
-    module FilterBasic {
+    namespace FilterBasic {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -2972,7 +2972,7 @@ export namespace GMime {
         static ['new'](encoding: ContentEncoding, encode: boolean): FilterBasic;
     }
 
-    module FilterBest {
+    namespace FilterBest {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3026,7 +3026,7 @@ export namespace GMime {
         encoding(constraint: EncodingConstraint | null): ContentEncoding;
     }
 
-    module FilterCharset {
+    namespace FilterCharset {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3054,7 +3054,7 @@ export namespace GMime {
         static ['new'](from_charset: string, to_charset: string): FilterCharset;
     }
 
-    module FilterChecksum {
+    namespace FilterChecksum {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3093,7 +3093,7 @@ export namespace GMime {
         get_string(): string;
     }
 
-    module FilterDos2Unix {
+    namespace FilterDos2Unix {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3120,7 +3120,7 @@ export namespace GMime {
         static ['new'](ensure_newline: boolean): FilterDos2Unix;
     }
 
-    module FilterEnriched {
+    namespace FilterEnriched {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3148,7 +3148,7 @@ export namespace GMime {
         static ['new'](flags: number): FilterEnriched;
     }
 
-    module FilterFrom {
+    namespace FilterFrom {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3175,7 +3175,7 @@ export namespace GMime {
         static ['new'](mode: FilterFromMode): FilterFrom;
     }
 
-    module FilterGZip {
+    namespace FilterGZip {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3226,7 +3226,7 @@ export namespace GMime {
         set_filename(filename: string): void;
     }
 
-    module FilterHTML {
+    namespace FilterHTML {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3257,7 +3257,7 @@ export namespace GMime {
         static ['new'](flags: number, colour: number): FilterHTML;
     }
 
-    module FilterOpenPGP {
+    namespace FilterOpenPGP {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3300,7 +3300,7 @@ export namespace GMime {
         get_end_offset(): number;
     }
 
-    module FilterSmtpData {
+    namespace FilterSmtpData {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3326,7 +3326,7 @@ export namespace GMime {
         static ['new'](): FilterSmtpData;
     }
 
-    module FilterStrip {
+    namespace FilterStrip {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3351,7 +3351,7 @@ export namespace GMime {
         static ['new'](): FilterStrip;
     }
 
-    module FilterUnix2Dos {
+    namespace FilterUnix2Dos {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3378,7 +3378,7 @@ export namespace GMime {
         static ['new'](ensure_newline: boolean): FilterUnix2Dos;
     }
 
-    module FilterWindows {
+    namespace FilterWindows {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3421,7 +3421,7 @@ export namespace GMime {
         real_charset(): string;
     }
 
-    module FilterYenc {
+    namespace FilterYenc {
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3474,7 +3474,7 @@ export namespace GMime {
         set_state(state: number): void;
     }
 
-    module GpgContext {
+    namespace GpgContext {
         // Constructor properties interface
 
         interface ConstructorProps extends CryptoContext.ConstructorProps {}
@@ -3495,7 +3495,7 @@ export namespace GMime {
         static ['new'](): GpgContext;
     }
 
-    module Header {
+    namespace Header {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3628,7 +3628,7 @@ export namespace GMime {
         write_to_stream(options: FormatOptions | null, stream: Stream): number;
     }
 
-    module HeaderList {
+    namespace HeaderList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3742,7 +3742,7 @@ export namespace GMime {
         write_to_stream(options: FormatOptions | null, stream: Stream): number;
     }
 
-    module InternetAddress {
+    namespace InternetAddress {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3804,7 +3804,7 @@ export namespace GMime {
         to_string(options: FormatOptions | null, encode: boolean): string;
     }
 
-    module InternetAddressGroup {
+    namespace InternetAddressGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends InternetAddress.ConstructorProps {}
@@ -3850,7 +3850,7 @@ export namespace GMime {
         set_members(members: InternetAddressList): void;
     }
 
-    module InternetAddressList {
+    namespace InternetAddressList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3980,7 +3980,7 @@ export namespace GMime {
         to_string(options: FormatOptions | null, encode: boolean): string | null;
     }
 
-    module InternetAddressMailbox {
+    namespace InternetAddressMailbox {
         // Constructor properties interface
 
         interface ConstructorProps extends InternetAddress.ConstructorProps {}
@@ -4026,7 +4026,7 @@ export namespace GMime {
         set_addr(addr: string): void;
     }
 
-    module Message {
+    namespace Message {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4278,7 +4278,7 @@ export namespace GMime {
         set_subject(subject: string, charset?: string | null): void;
     }
 
-    module MessagePart {
+    namespace MessagePart {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4322,7 +4322,7 @@ export namespace GMime {
         set_message(message: Message): void;
     }
 
-    module MessagePartial {
+    namespace MessagePartial {
         // Constructor properties interface
 
         interface ConstructorProps extends Part.ConstructorProps {}
@@ -4381,7 +4381,7 @@ export namespace GMime {
         get_total(): number;
     }
 
-    module Multipart {
+    namespace Multipart {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4577,7 +4577,7 @@ export namespace GMime {
         set_prologue(prologue: string): void;
     }
 
-    module MultipartEncrypted {
+    namespace MultipartEncrypted {
         // Constructor properties interface
 
         interface ConstructorProps extends Multipart.ConstructorProps {}
@@ -4645,7 +4645,7 @@ export namespace GMime {
         decrypt(flags: DecryptFlags | null, session_key: string | null): [Object | null, DecryptResult];
     }
 
-    module MultipartSigned {
+    namespace MultipartSigned {
         // Constructor properties interface
 
         interface ConstructorProps extends Multipart.ConstructorProps {}
@@ -4692,7 +4692,7 @@ export namespace GMime {
         verify(flags: VerifyFlags | null): SignatureList | null;
     }
 
-    module Object {
+    namespace Object {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4961,7 +4961,7 @@ export namespace GMime {
         write_to_stream(options: FormatOptions | null, stream: Stream): number;
     }
 
-    module Param {
+    namespace Param {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5037,7 +5037,7 @@ export namespace GMime {
         set_value(value: string): void;
     }
 
-    module ParamList {
+    namespace ParamList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5115,7 +5115,7 @@ export namespace GMime {
         set_parameter(name: string, value: string): void;
     }
 
-    module Parser {
+    namespace Parser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5262,7 +5262,7 @@ export namespace GMime {
         tell(): number;
     }
 
-    module Part {
+    namespace Part {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -5452,7 +5452,7 @@ export namespace GMime {
         verify_content_md5(): boolean;
     }
 
-    module Pkcs7Context {
+    namespace Pkcs7Context {
         // Constructor properties interface
 
         interface ConstructorProps extends CryptoContext.ConstructorProps {}
@@ -5473,7 +5473,7 @@ export namespace GMime {
         static ['new'](): Pkcs7Context;
     }
 
-    module Signature {
+    namespace Signature {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5558,7 +5558,7 @@ export namespace GMime {
         set_status(status: SignatureStatus | null): void;
     }
 
-    module SignatureList {
+    namespace SignatureList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5647,7 +5647,7 @@ export namespace GMime {
         set_signature(index: number, sig: Signature): void;
     }
 
-    module Stream {
+    namespace Stream {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5841,7 +5841,7 @@ export namespace GMime {
         writev(vector: StreamIOVector[]): number;
     }
 
-    module StreamBuffer {
+    namespace StreamBuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -5872,7 +5872,7 @@ export namespace GMime {
         static ['new'](source: Stream, mode: StreamBufferMode): StreamBuffer;
     }
 
-    module StreamCat {
+    namespace StreamCat {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -5908,7 +5908,7 @@ export namespace GMime {
         add_source(source: Stream): number;
     }
 
-    module StreamFile {
+    namespace StreamFile {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -5962,7 +5962,7 @@ export namespace GMime {
         set_owner(owner: boolean): void;
     }
 
-    module StreamFilter {
+    namespace StreamFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -6019,7 +6019,7 @@ export namespace GMime {
         set_owner(owner: boolean): void;
     }
 
-    module StreamFs {
+    namespace StreamFs {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -6077,7 +6077,7 @@ export namespace GMime {
         set_owner(owner: boolean): void;
     }
 
-    module StreamGIO {
+    namespace StreamGIO {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -6127,7 +6127,7 @@ export namespace GMime {
         set_owner(owner: boolean): void;
     }
 
-    module StreamMem {
+    namespace StreamMem {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -6187,7 +6187,7 @@ export namespace GMime {
         set_owner(owner: boolean): void;
     }
 
-    module StreamMmap {
+    namespace StreamMmap {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -6237,7 +6237,7 @@ export namespace GMime {
         set_owner(owner: boolean): void;
     }
 
-    module StreamNull {
+    namespace StreamNull {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -6280,7 +6280,7 @@ export namespace GMime {
         set_count_newlines(count: boolean): void;
     }
 
-    module StreamPipe {
+    namespace StreamPipe {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -6326,7 +6326,7 @@ export namespace GMime {
         set_owner(owner: boolean): void;
     }
 
-    module TextPart {
+    namespace TextPart {
         // Constructor properties interface
 
         interface ConstructorProps extends Part.ConstructorProps {}

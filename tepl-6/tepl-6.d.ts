@@ -523,7 +523,7 @@ export namespace Tepl {
          */
         END,
     }
-    module AbstractFactory {
+    namespace AbstractFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -608,7 +608,7 @@ export namespace Tepl {
         set_singleton(): void;
     }
 
-    module Application {
+    namespace Application {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -708,7 +708,7 @@ export namespace Tepl {
         open_simple(file: Gio.File): void;
     }
 
-    module ApplicationWindow {
+    namespace ApplicationWindow {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, TabGroup.ConstructorProps {
@@ -1318,7 +1318,7 @@ export namespace Tepl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Buffer {
+    namespace Buffer {
         // Signal callback interfaces
 
         interface TeplCursorMoved {
@@ -1464,7 +1464,7 @@ export namespace Tepl {
         set_style_scheme_id(style_scheme_id: string): void;
     }
 
-    module File {
+    namespace File {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1585,7 +1585,7 @@ export namespace Tepl {
         set_location(location?: Gio.File | null): void;
     }
 
-    module FileLoader {
+    namespace FileLoader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1671,7 +1671,7 @@ export namespace Tepl {
         load_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module FileSaver {
+    namespace FileSaver {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1793,7 +1793,7 @@ export namespace Tepl {
         set_newline_type(newline_type: NewlineType | null): void;
     }
 
-    module FoldRegion {
+    namespace FoldRegion {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1848,7 +1848,7 @@ export namespace Tepl {
         set_folded(folded: boolean): void;
     }
 
-    module GotoLineBar {
+    namespace GotoLineBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2304,7 +2304,7 @@ export namespace Tepl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GutterRendererFolds {
+    namespace GutterRendererFolds {
         // Constructor properties interface
 
         interface ConstructorProps extends GtkSource.GutterRenderer.ConstructorProps {}
@@ -2333,7 +2333,7 @@ export namespace Tepl {
         set_state(state: GutterRendererFoldsState | null): void;
     }
 
-    module InfoBar {
+    namespace InfoBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2900,7 +2900,7 @@ export namespace Tepl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LanguageChooserDialog {
+    namespace LanguageChooserDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3338,7 +3338,7 @@ export namespace Tepl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LanguageChooserWidget {
+    namespace LanguageChooserWidget {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3794,7 +3794,7 @@ export namespace Tepl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Metadata {
+    namespace Metadata {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3836,7 +3836,7 @@ export namespace Tepl {
         set(...args: never[]): any;
     }
 
-    module MetadataManager {
+    namespace MetadataManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3919,7 +3919,7 @@ export namespace Tepl {
         trim(max_number_of_locations: number): void;
     }
 
-    module Notebook {
+    namespace Notebook {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4429,7 +4429,7 @@ export namespace Tepl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Panel {
+    namespace Panel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4911,7 +4911,7 @@ export namespace Tepl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ProgressInfoBar {
+    namespace ProgressInfoBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5378,7 +5378,7 @@ export namespace Tepl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SpaceDrawerPrefs {
+    namespace SpaceDrawerPrefs {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5829,7 +5829,7 @@ export namespace Tepl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Statusbar {
+    namespace Statusbar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6284,7 +6284,7 @@ export namespace Tepl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StyleSchemeChooserWidget {
+    namespace StyleSchemeChooserWidget {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6783,7 +6783,7 @@ export namespace Tepl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Tab {
+    namespace Tab {
         // Signal callback interfaces
 
         interface CloseRequest {
@@ -7450,7 +7450,7 @@ export namespace Tepl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TabLabel {
+    namespace TabLabel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7918,7 +7918,7 @@ export namespace Tepl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module View {
+    namespace View {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8583,7 +8583,7 @@ export namespace Tepl {
     }
 
     type ViewClass = typeof View;
-    module LanguageChooser {
+    namespace LanguageChooser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8616,7 +8616,7 @@ export namespace Tepl {
         new (): LanguageChooser; // This allows `obj instanceof LanguageChooser`
     };
 
-    module TabGroup {
+    namespace TabGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

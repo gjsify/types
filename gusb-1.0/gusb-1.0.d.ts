@@ -255,7 +255,7 @@ export namespace GUsb {
         NONE,
         BIND_KERNEL_DRIVER,
     }
-    module BosDescriptor {
+    namespace BosDescriptor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -284,7 +284,7 @@ export namespace GUsb {
         get_extra(): GLib.Bytes;
     }
 
-    module Context {
+    namespace Context {
         // Signal callback interfaces
 
         interface DeviceAdded {
@@ -958,7 +958,7 @@ export namespace GUsb {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Device {
+    namespace Device {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -2018,7 +2018,7 @@ export namespace GUsb {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DeviceEvent {
+    namespace DeviceEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2062,7 +2062,7 @@ export namespace GUsb {
         set_bytes(bytes: GLib.Bytes | Uint8Array): void;
     }
 
-    module DeviceList {
+    namespace DeviceList {
         // Signal callback interfaces
 
         interface DeviceAdded {
@@ -2135,7 +2135,7 @@ export namespace GUsb {
         get_devices(): Device[];
     }
 
-    module Endpoint {
+    namespace Endpoint {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2199,7 +2199,7 @@ export namespace GUsb {
         get_synch_address(): number;
     }
 
-    module Interface {
+    namespace Interface {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

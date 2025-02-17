@@ -554,7 +554,7 @@ export namespace Flatpak {
          */
         NO_TRIGGERS,
     }
-    module BundleRef {
+    namespace BundleRef {
         // Constructor properties interface
 
         interface ConstructorProps extends Ref.ConstructorProps {
@@ -620,7 +620,7 @@ export namespace Flatpak {
         get_runtime_repo_url(): string;
     }
 
-    module Installation {
+    namespace Installation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1422,7 +1422,7 @@ export namespace Flatpak {
         update_remote_sync(name: string, cancellable?: Gio.Cancellable | null): boolean;
     }
 
-    module InstalledRef {
+    namespace InstalledRef {
         // Constructor properties interface
 
         interface ConstructorProps extends Ref.ConstructorProps {
@@ -1599,7 +1599,7 @@ export namespace Flatpak {
         load_metadata(cancellable?: Gio.Cancellable | null): GLib.Bytes;
     }
 
-    module Instance {
+    namespace Instance {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1696,7 +1696,7 @@ export namespace Flatpak {
         is_running(): boolean;
     }
 
-    module Ref {
+    namespace Ref {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1784,7 +1784,7 @@ export namespace Flatpak {
         get_name(): string;
     }
 
-    module RelatedRef {
+    namespace RelatedRef {
         // Constructor properties interface
 
         interface ConstructorProps extends Ref.ConstructorProps {
@@ -1827,7 +1827,7 @@ export namespace Flatpak {
         get_subpaths(): string[];
     }
 
-    module Remote {
+    namespace Remote {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2117,7 +2117,7 @@ export namespace Flatpak {
         set_url(url: string): void;
     }
 
-    module RemoteRef {
+    namespace RemoteRef {
         // Constructor properties interface
 
         interface ConstructorProps extends Ref.ConstructorProps {
@@ -2194,7 +2194,7 @@ export namespace Flatpak {
         get_remote_name(): string;
     }
 
-    module Transaction {
+    namespace Transaction {
         // Signal callback interfaces
 
         interface AddNewRemote {
@@ -3339,7 +3339,7 @@ export namespace Flatpak {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TransactionOperation {
+    namespace TransactionOperation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3490,7 +3490,7 @@ export namespace Flatpak {
         get_subpaths(): string[];
     }
 
-    module TransactionProgress {
+    namespace TransactionProgress {
         // Signal callback interfaces
 
         interface Changed {

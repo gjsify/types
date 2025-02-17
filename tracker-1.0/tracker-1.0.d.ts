@@ -60,7 +60,7 @@ export namespace Tracker {
     function sparql_escape_uri(uri: string): string;
     function sparql_escape_string(literal: string): string;
     function sparql_get_uuid_urn(): string;
-    module SparqlBuilder {
+    namespace SparqlBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -126,7 +126,7 @@ export namespace Tracker {
         get_state(): SparqlBuilderState;
     }
 
-    module SparqlConnection {
+    namespace SparqlConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -263,7 +263,7 @@ export namespace Tracker {
         statistics_finish(_res_: Gio.AsyncResult): SparqlCursor;
     }
 
-    module SparqlCursor {
+    namespace SparqlCursor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

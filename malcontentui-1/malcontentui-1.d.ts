@@ -31,7 +31,7 @@ export namespace MalcontentUi {
      * MalcontentUi-1
      */
 
-    module RestrictApplicationsDialog {
+    namespace RestrictApplicationsDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2960,7 +2960,7 @@ export namespace MalcontentUi {
         vfunc_unroot(): void;
     }
 
-    module RestrictApplicationsSelector {
+    namespace RestrictApplicationsSelector {
         // Signal callback interfaces
 
         interface Changed {
@@ -3478,7 +3478,7 @@ export namespace MalcontentUi {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UserControls {
+    namespace UserControls {
         // Constructor properties interface
 
         interface ConstructorProps

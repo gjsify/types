@@ -97,7 +97,7 @@ export namespace Gucharmap {
     function unicode_get_locale_character(): number;
     function unicode_get_script_for_char(wc: number): string;
     function unicode_version_to_string(version: UnicodeVersion | null): string;
-    module BlockChaptersModel {
+    namespace BlockChaptersModel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -528,7 +528,7 @@ export namespace Gucharmap {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BlockCodepointList {
+    namespace BlockCodepointList {
         // Constructor properties interface
 
         interface ConstructorProps extends CodepointList.ConstructorProps {
@@ -558,7 +558,7 @@ export namespace Gucharmap {
         static ['new'](start: number, end: number): BlockCodepointList;
     }
 
-    module ChaptersModel {
+    namespace ChaptersModel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1789,7 +1789,7 @@ export namespace Gucharmap {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ChaptersView {
+    namespace ChaptersView {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2324,7 +2324,7 @@ export namespace Gucharmap {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Charmap {
+    namespace Charmap {
         // Signal callback interfaces
 
         interface LinkClicked {
@@ -2862,7 +2862,7 @@ export namespace Gucharmap {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Chartable {
+    namespace Chartable {
         // Signal callback interfaces
 
         interface Activate {
@@ -3502,7 +3502,7 @@ export namespace Gucharmap {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CodepointList {
+    namespace CodepointList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3530,7 +3530,7 @@ export namespace Gucharmap {
         get_last_index(): number;
     }
 
-    module ScriptChaptersModel {
+    namespace ScriptChaptersModel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3961,7 +3961,7 @@ export namespace Gucharmap {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScriptCodepointList {
+    namespace ScriptCodepointList {
         // Constructor properties interface
 
         interface ConstructorProps extends CodepointList.ConstructorProps {}

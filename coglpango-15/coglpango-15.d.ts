@@ -68,7 +68,7 @@ export namespace CoglPango {
     interface PipelineSetup {
         (pipeline: Cogl.Pipeline): void;
     }
-    module Renderer {
+    namespace Renderer {
         // Constructor properties interface
 
         interface ConstructorProps extends Pango.Renderer.ConstructorProps {

@@ -777,7 +777,7 @@ export namespace OSTree {
         NONE,
         ALLOW_OLDER,
     }
-    module AsyncProgress {
+    namespace AsyncProgress {
         // Signal callback interfaces
 
         interface Changed {
@@ -831,7 +831,7 @@ export namespace OSTree {
         set_uint64(key: string, value: number): void;
     }
 
-    module BootconfigParser {
+    namespace BootconfigParser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -867,7 +867,7 @@ export namespace OSTree {
         write_at(dfd: number, path: string, cancellable?: Gio.Cancellable | null): boolean;
     }
 
-    module ChecksumInputStream {
+    namespace ChecksumInputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.FilterInputStream.ConstructorProps {
@@ -891,7 +891,7 @@ export namespace OSTree {
         static ['new'](stream: Gio.InputStream, checksum: GLib.Checksum): ChecksumInputStream;
     }
 
-    module Deployment {
+    namespace Deployment {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -946,7 +946,7 @@ export namespace OSTree {
         set_origin(origin: GLib.KeyFile): void;
     }
 
-    module GpgVerifyResult {
+    namespace GpgVerifyResult {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -1565,7 +1565,7 @@ export namespace OSTree {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MutableTree {
+    namespace MutableTree {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1612,7 +1612,7 @@ export namespace OSTree {
         walk(split_path: string[], start: number): [boolean, MutableTree];
     }
 
-    module Repo {
+    namespace Repo {
         // Signal callback interfaces
 
         interface GpgVerifyResult {
@@ -2849,7 +2849,7 @@ export namespace OSTree {
         write_mtree(mtree: MutableTree, cancellable?: Gio.Cancellable | null): [boolean, Gio.File];
     }
 
-    module RepoFile {
+    namespace RepoFile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.File.ConstructorProps {}
@@ -8109,7 +8109,7 @@ export namespace OSTree {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SePolicy {
+    namespace SePolicy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -8659,7 +8659,7 @@ export namespace OSTree {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Sysroot {
+    namespace Sysroot {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8922,7 +8922,7 @@ export namespace OSTree {
         ): boolean;
     }
 
-    module SysrootUpgrader {
+    namespace SysrootUpgrader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {

@@ -5434,7 +5434,7 @@ export namespace IBus {
          */
         RESERVED_2,
     }
-    module AttrList {
+    namespace AttrList {
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {}
@@ -5473,7 +5473,7 @@ export namespace IBus {
         get(index: number): Attribute;
     }
 
-    module Attribute {
+    namespace Attribute {
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {}
@@ -5532,7 +5532,7 @@ export namespace IBus {
         get_value(): number;
     }
 
-    module Bus {
+    namespace Bus {
         // Signal callback interfaces
 
         interface Connected {
@@ -6657,7 +6657,7 @@ export namespace IBus {
         set_watch_ibus_signal(watch: boolean): void;
     }
 
-    module Component {
+    namespace Component {
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {
@@ -6835,7 +6835,7 @@ export namespace IBus {
         output_engines(output: GLib.String, indent: number): void;
     }
 
-    module Config {
+    namespace Config {
         // Signal callback interfaces
 
         interface ValueChanged {
@@ -7730,7 +7730,7 @@ export namespace IBus {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ConfigService {
+    namespace ConfigService {
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -7872,7 +7872,7 @@ export namespace IBus {
         value_changed(section: string, name: string, value: GLib.Variant): void;
     }
 
-    module EmojiData {
+    namespace EmojiData {
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {
@@ -7961,7 +7961,7 @@ export namespace IBus {
         set_description(description: string): void;
     }
 
-    module Engine {
+    namespace Engine {
         // Signal callback interfaces
 
         interface CancelHandWriting {
@@ -8436,7 +8436,7 @@ export namespace IBus {
         update_property(prop: Property): void;
     }
 
-    module EngineDesc {
+    namespace EngineDesc {
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {
@@ -8680,7 +8680,7 @@ export namespace IBus {
         output(output: GLib.String, indent: number): void;
     }
 
-    module EngineSimple {
+    namespace EngineSimple {
         // Constructor properties interface
 
         interface ConstructorProps extends Engine.ConstructorProps {}
@@ -8729,7 +8729,7 @@ export namespace IBus {
         add_table_by_locale(locale?: string | null): boolean;
     }
 
-    module ExtensionEvent {
+    namespace ExtensionEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {
@@ -8801,7 +8801,7 @@ export namespace IBus {
         get_version(): number;
     }
 
-    module Factory {
+    namespace Factory {
         // Signal callback interfaces
 
         interface CreateEngine {
@@ -8867,7 +8867,7 @@ export namespace IBus {
         create_engine(engine_name: string): Engine;
     }
 
-    module HotkeyProfile {
+    namespace HotkeyProfile {
         // Signal callback interfaces
 
         interface Trigger {
@@ -8960,7 +8960,7 @@ export namespace IBus {
         remove_hotkey_by_event(event: GLib.Quark): boolean;
     }
 
-    module InputContext {
+    namespace InputContext {
         // Signal callback interfaces
 
         interface CommitText {
@@ -10133,7 +10133,7 @@ export namespace IBus {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Keymap {
+    namespace Keymap {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -10194,7 +10194,7 @@ export namespace IBus {
         lookup_keysym(keycode: number, state: number): number;
     }
 
-    module LookupTable {
+    namespace LookupTable {
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {}
@@ -10370,7 +10370,7 @@ export namespace IBus {
         set_round(round: boolean): void;
     }
 
-    module Object {
+    namespace Object {
         // Signal callback interfaces
 
         interface Destroy {
@@ -10434,7 +10434,7 @@ export namespace IBus {
         destroy(): void;
     }
 
-    module ObservedPath {
+    namespace ObservedPath {
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {}
@@ -10492,7 +10492,7 @@ export namespace IBus {
         traverse(dir_only: boolean): ObservedPath[];
     }
 
-    module PanelService {
+    namespace PanelService {
         // Signal callback interfaces
 
         interface CandidateClickedLookupTable {
@@ -10918,7 +10918,7 @@ export namespace IBus {
         update_preedit_text_received(text: Text, cursor_pos: number, visible: boolean): void;
     }
 
-    module PropList {
+    namespace PropList {
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {}
@@ -10963,7 +10963,7 @@ export namespace IBus {
         update_property(prop: Property): boolean;
     }
 
-    module Property {
+    namespace Property {
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {
@@ -11138,7 +11138,7 @@ export namespace IBus {
         update(prop_update: Property): boolean;
     }
 
-    module Proxy {
+    namespace Proxy {
         // Signal callback interfaces
 
         interface Destroy {
@@ -11937,7 +11937,7 @@ export namespace IBus {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Registry {
+    namespace Registry {
         // Signal callback interfaces
 
         interface Changed {
@@ -12043,7 +12043,7 @@ export namespace IBus {
         start_monitor_changes(): void;
     }
 
-    module Serializable {
+    namespace Serializable {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -12132,7 +12132,7 @@ export namespace IBus {
         set_qattachment(key: GLib.Quark, value: GLib.Variant): void;
     }
 
-    module Service {
+    namespace Service {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -12268,7 +12268,7 @@ export namespace IBus {
         unregister(connection: Gio.DBusConnection): void;
     }
 
-    module Text {
+    namespace Text {
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {}
@@ -12333,7 +12333,7 @@ export namespace IBus {
         set_attributes(attrs: AttrList): void;
     }
 
-    module UnicodeBlock {
+    namespace UnicodeBlock {
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {
@@ -12397,7 +12397,7 @@ export namespace IBus {
         get_start(): number;
     }
 
-    module UnicodeData {
+    namespace UnicodeData {
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {
@@ -12501,7 +12501,7 @@ export namespace IBus {
         set_block_name(block_name: string): void;
     }
 
-    module XEvent {
+    namespace XEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {

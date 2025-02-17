@@ -21,7 +21,7 @@ export namespace TelepathyFarstream {
      * TelepathyFarstream-0.6
      */
 
-    module Channel {
+    namespace Channel {
         // Signal callback interfaces
 
         interface Closed {
@@ -732,7 +732,7 @@ export namespace TelepathyFarstream {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Content {
+    namespace Content {
         // Signal callback interfaces
 
         interface RestartSource {

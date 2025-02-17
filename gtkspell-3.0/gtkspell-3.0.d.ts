@@ -51,7 +51,7 @@ export namespace GtkSpell {
     }
 
     function error_quark(): GLib.Quark;
-    module Checker {
+    namespace Checker {
         // Signal callback interfaces
 
         interface LanguageChanged {

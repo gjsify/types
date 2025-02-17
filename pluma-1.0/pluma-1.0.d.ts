@@ -323,7 +323,7 @@ export namespace Pluma {
         ERROR,
         SAVING_SESSION,
     }
-    module App {
+    namespace App {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -392,7 +392,7 @@ export namespace Pluma {
         get_windows(): Window[];
     }
 
-    module Document {
+    namespace Document {
         // Signal callback interfaces
 
         interface CursorMoved {
@@ -655,7 +655,7 @@ export namespace Pluma {
         set_uri(uri: string): void;
     }
 
-    module EncodingsComboBox {
+    namespace EncodingsComboBox {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5139,7 +5139,7 @@ export namespace Pluma {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module Message {
+    namespace Message {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5218,7 +5218,7 @@ export namespace Pluma {
         validate(): boolean;
     }
 
-    module MessageBus {
+    namespace MessageBus {
         // Signal callback interfaces
 
         interface Dispatch {
@@ -5381,7 +5381,7 @@ export namespace Pluma {
         unregister_all(object_path: string): void;
     }
 
-    module Notebook {
+    namespace Notebook {
         // Signal callback interfaces
 
         interface TabAdded {
@@ -5917,7 +5917,7 @@ export namespace Pluma {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Panel {
+    namespace Panel {
         // Signal callback interfaces
 
         interface Close {
@@ -6454,7 +6454,7 @@ export namespace Pluma {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ProgressMessageArea {
+    namespace ProgressMessageArea {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6897,7 +6897,7 @@ export namespace Pluma {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StatusComboBox {
+    namespace StatusComboBox {
         // Signal callback interfaces
 
         interface Changed {
@@ -7360,7 +7360,7 @@ export namespace Pluma {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Statusbar {
+    namespace Statusbar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7795,7 +7795,7 @@ export namespace Pluma {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Tab {
+    namespace Tab {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8308,7 +8308,7 @@ export namespace Pluma {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module View {
+    namespace View {
         // Signal callback interfaces
 
         interface DropUris {
@@ -8812,7 +8812,7 @@ export namespace Pluma {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Window {
+    namespace Window {
         // Signal callback interfaces
 
         interface ActiveTabChanged {
@@ -9617,7 +9617,7 @@ export namespace Pluma {
         _init(...args: any[]): void;
     }
 
-    module AppActivatable {
+    namespace AppActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9665,7 +9665,7 @@ export namespace Pluma {
         new (): AppActivatable; // This allows `obj instanceof AppActivatable`
     };
 
-    module ViewActivatable {
+    namespace ViewActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9713,7 +9713,7 @@ export namespace Pluma {
         new (): ViewActivatable; // This allows `obj instanceof ViewActivatable`
     };
 
-    module WindowActivatable {
+    namespace WindowActivatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

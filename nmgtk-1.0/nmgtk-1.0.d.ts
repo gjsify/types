@@ -141,7 +141,7 @@ export namespace NMGtk {
     interface MobileWizardCallback {
         (self: MobileWizard, canceled: boolean, method: MobileWizardAccessMethod): void;
     }
-    module MobileProvidersDatabase {
+    namespace MobileProvidersDatabase {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -889,7 +889,7 @@ export namespace NMGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module VpnPasswordDialog {
+    namespace VpnPasswordDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1334,7 +1334,7 @@ export namespace NMGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WifiDialog {
+    namespace WifiDialog {
         // Constructor properties interface
 
         interface ConstructorProps

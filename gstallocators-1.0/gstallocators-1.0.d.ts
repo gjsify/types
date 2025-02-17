@@ -120,7 +120,7 @@ export namespace GstAllocators {
          */
         DONT_CLOSE,
     }
-    module DRMDumbAllocator {
+    namespace DRMDumbAllocator {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {
@@ -176,7 +176,7 @@ export namespace GstAllocators {
         has_prime_export(): boolean;
     }
 
-    module DmaBufAllocator {
+    namespace DmaBufAllocator {
         // Constructor properties interface
 
         interface ConstructorProps extends FdAllocator.ConstructorProps {}
@@ -220,7 +220,7 @@ export namespace GstAllocators {
         ): Gst.Memory | null;
     }
 
-    module FdAllocator {
+    namespace FdAllocator {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
@@ -256,7 +256,7 @@ export namespace GstAllocators {
     type DmaBufAllocatorClass = typeof DmaBufAllocator;
     type FdAllocatorClass = typeof FdAllocator;
     type PhysMemoryAllocatorInterface = typeof PhysMemoryAllocator;
-    module PhysMemoryAllocator {
+    namespace PhysMemoryAllocator {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {}

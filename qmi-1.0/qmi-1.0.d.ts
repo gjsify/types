@@ -19124,7 +19124,7 @@ export namespace Qmi {
          */
         '3GPP2',
     }
-    module Client {
+    namespace Client {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -19243,7 +19243,7 @@ export namespace Qmi {
         peek_device<T = GObject.Object>(): T;
     }
 
-    module ClientAtr {
+    namespace ClientAtr {
         // Signal callback interfaces
 
         interface Received {
@@ -19339,7 +19339,7 @@ export namespace Qmi {
         send_finish(res: Gio.AsyncResult): MessageAtrSendOutput;
     }
 
-    module ClientDms {
+    namespace ClientDms {
         // Signal callback interfaces
 
         interface EventReport {
@@ -22793,7 +22793,7 @@ export namespace Qmi {
         write_user_data_finish(res: Gio.AsyncResult): MessageDmsWriteUserDataOutput;
     }
 
-    module ClientDpm {
+    namespace ClientDpm {
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -22926,7 +22926,7 @@ export namespace Qmi {
         open_port_finish(res: Gio.AsyncResult): MessageDpmOpenPortOutput;
     }
 
-    module ClientDsd {
+    namespace ClientDsd {
         // Signal callback interfaces
 
         interface SystemStatus {
@@ -23190,7 +23190,7 @@ export namespace Qmi {
         system_status_change_finish(res: Gio.AsyncResult): MessageDsdSystemStatusChangeOutput;
     }
 
-    module ClientFox {
+    namespace ClientFox {
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -23268,7 +23268,7 @@ export namespace Qmi {
         get_firmware_version_finish(res: Gio.AsyncResult): MessageFoxGetFirmwareVersionOutput;
     }
 
-    module ClientGas {
+    namespace ClientGas {
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -23511,7 +23511,7 @@ export namespace Qmi {
         dms_set_usb_composition_finish(res: Gio.AsyncResult): MessageGasDmsSetUsbCompositionOutput;
     }
 
-    module ClientGms {
+    namespace ClientGms {
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -23644,7 +23644,7 @@ export namespace Qmi {
         test_set_value_finish(res: Gio.AsyncResult): MessageGmsTestSetValueOutput;
     }
 
-    module ClientIms {
+    namespace ClientIms {
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -23722,7 +23722,7 @@ export namespace Qmi {
         get_ims_services_enabled_setting_finish(res: Gio.AsyncResult): MessageImsGetImsServicesEnabledSettingOutput;
     }
 
-    module ClientImsa {
+    namespace ClientImsa {
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -23855,7 +23855,7 @@ export namespace Qmi {
         get_ims_services_status_finish(res: Gio.AsyncResult): MessageImsaGetImsServicesStatusOutput;
     }
 
-    module ClientImsp {
+    namespace ClientImsp {
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -23933,7 +23933,7 @@ export namespace Qmi {
         get_enabler_state_finish(res: Gio.AsyncResult): MessageImspGetEnablerStateOutput;
     }
 
-    module ClientLoc {
+    namespace ClientLoc {
         // Signal callback interfaces
 
         interface DeleteAssistanceData {
@@ -24998,7 +24998,7 @@ export namespace Qmi {
         stop_finish(res: Gio.AsyncResult): MessageLocStopOutput;
     }
 
-    module ClientNas {
+    namespace ClientNas {
         // Signal callback interfaces
 
         interface EventReport {
@@ -26791,7 +26791,7 @@ export namespace Qmi {
         swi_get_status_finish(res: Gio.AsyncResult): MessageNasSwiGetStatusOutput;
     }
 
-    module ClientOma {
+    namespace ClientOma {
         // Signal callback interfaces
 
         interface EventReport {
@@ -27275,7 +27275,7 @@ export namespace Qmi {
         start_session_finish(res: Gio.AsyncResult): MessageOmaStartSessionOutput;
     }
 
-    module ClientPbm {
+    namespace ClientPbm {
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -27463,7 +27463,7 @@ export namespace Qmi {
         indication_register_finish(res: Gio.AsyncResult): MessagePbmIndicationRegisterOutput;
     }
 
-    module ClientPdc {
+    namespace ClientPdc {
         // Signal callback interfaces
 
         interface ActivateConfig {
@@ -28307,7 +28307,7 @@ export namespace Qmi {
         set_selected_config_finish(res: Gio.AsyncResult): MessagePdcSetSelectedConfigOutput;
     }
 
-    module ClientPds {
+    namespace ClientPds {
         // Signal callback interfaces
 
         interface EventReport {
@@ -28908,7 +28908,7 @@ export namespace Qmi {
         set_gps_service_state_finish(res: Gio.AsyncResult): MessagePdsSetGpsServiceStateOutput;
     }
 
-    module ClientQos {
+    namespace ClientQos {
         // Signal callback interfaces
 
         interface FlowStatus {
@@ -29185,7 +29185,7 @@ export namespace Qmi {
         swi_read_data_stats_finish(res: Gio.AsyncResult): MessageQosSwiReadDataStatsOutput;
     }
 
-    module ClientSar {
+    namespace ClientSar {
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -29318,7 +29318,7 @@ export namespace Qmi {
         rf_set_state_finish(res: Gio.AsyncResult): MessageSarRfSetStateOutput;
     }
 
-    module ClientSsc {
+    namespace ClientSsc {
         // Signal callback interfaces
 
         interface ReportLarge {
@@ -29430,7 +29430,7 @@ export namespace Qmi {
         control_finish(res: Gio.AsyncResult): MessageSscControlOutput;
     }
 
-    module ClientUim {
+    namespace ClientUim {
         // Signal callback interfaces
 
         interface CardStatus {
@@ -30704,7 +30704,7 @@ export namespace Qmi {
         verify_pin_finish(res: Gio.AsyncResult): MessageUimVerifyPinOutput;
     }
 
-    module ClientVoice {
+    namespace ClientVoice {
         // Signal callback interfaces
 
         interface AllCallStatus {
@@ -31723,7 +31723,7 @@ export namespace Qmi {
         stop_continuous_dtmf_finish(res: Gio.AsyncResult): MessageVoiceStopContinuousDtmfOutput;
     }
 
-    module ClientWda {
+    namespace ClientWda {
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -31911,7 +31911,7 @@ export namespace Qmi {
         set_data_format_finish(res: Gio.AsyncResult): MessageWdaSetDataFormatOutput;
     }
 
-    module ClientWds {
+    namespace ClientWds {
         // Signal callback interfaces
 
         interface EventReport {
@@ -33953,7 +33953,7 @@ export namespace Qmi {
         swi_create_profile_indexed_finish(res: Gio.AsyncResult): MessageWdsSwiCreateProfileIndexedOutput;
     }
 
-    module ClientWms {
+    namespace ClientWms {
         // Signal callback interfaces
 
         interface EventReport {
@@ -34780,7 +34780,7 @@ export namespace Qmi {
         set_routes_finish(res: Gio.AsyncResult): MessageWmsSetRoutesOutput;
     }
 
-    module Device {
+    namespace Device {
         // Signal callback interfaces
 
         interface DeviceRemoved {
@@ -36459,7 +36459,7 @@ export namespace Qmi {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Proxy {
+    namespace Proxy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

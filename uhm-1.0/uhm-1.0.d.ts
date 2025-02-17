@@ -50,7 +50,7 @@ export namespace Uhm {
      * (e.g. in libuhttpmock version 1.2.3 this is 2).
      */
     const MINOR_VERSION: number;
-    module Message {
+    namespace Message {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -90,7 +90,7 @@ export namespace Uhm {
         set_status(status: number, reason_phrase: string): void;
     }
 
-    module Resolver {
+    namespace Resolver {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.Resolver.ConstructorProps {}
@@ -135,7 +135,7 @@ export namespace Uhm {
         reset(): void;
     }
 
-    module Server {
+    namespace Server {
         // Signal callback interfaces
 
         interface CompareMessages {

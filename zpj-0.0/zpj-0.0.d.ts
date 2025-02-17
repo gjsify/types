@@ -143,7 +143,7 @@ export namespace Zpj {
      */
     const SKYDRIVE_FOLDER_SKYDRIVE: string;
     function error_quark(): GLib.Quark;
-    module AuthorizationDomain {
+    namespace AuthorizationDomain {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -174,7 +174,7 @@ export namespace Zpj {
         get_service_name(): string;
     }
 
-    module GoaAuthorizer {
+    namespace GoaAuthorizer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {}
@@ -720,7 +720,7 @@ export namespace Zpj {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Skydrive {
+    namespace Skydrive {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1134,7 +1134,7 @@ export namespace Zpj {
         upload_path_to_folder_id(path: string, folder_id: string, cancellable?: Gio.Cancellable | null): boolean;
     }
 
-    module SkydriveEntry {
+    namespace SkydriveEntry {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1260,7 +1260,7 @@ export namespace Zpj {
         is_folder(): boolean;
     }
 
-    module SkydriveFile {
+    namespace SkydriveFile {
         // Constructor properties interface
 
         interface ConstructorProps extends SkydriveEntry.ConstructorProps {
@@ -1298,7 +1298,7 @@ export namespace Zpj {
         get_size(): number;
     }
 
-    module SkydriveFolder {
+    namespace SkydriveFolder {
         // Constructor properties interface
 
         interface ConstructorProps extends SkydriveEntry.ConstructorProps {}
@@ -1320,7 +1320,7 @@ export namespace Zpj {
         static ['new'](node: Json.Node): SkydriveFolder;
     }
 
-    module SkydrivePhoto {
+    namespace SkydrivePhoto {
         // Constructor properties interface
 
         interface ConstructorProps extends SkydriveFile.ConstructorProps {}
@@ -1342,7 +1342,7 @@ export namespace Zpj {
         static ['new'](node: Json.Node): SkydrivePhoto;
     }
 
-    module SkydriveVideo {
+    namespace SkydriveVideo {
         // Constructor properties interface
 
         interface ConstructorProps extends SkydriveFile.ConstructorProps {
@@ -1466,7 +1466,7 @@ export namespace Zpj {
         _init(...args: any[]): void;
     }
 
-    module Authorizer {
+    namespace Authorizer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

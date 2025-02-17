@@ -21,7 +21,7 @@ export namespace CoglGst {
      * CoglGst-2.0
      */
 
-    module VideoSink {
+    namespace VideoSink {
         // Signal callback interfaces
 
         interface NewFrame {

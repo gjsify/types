@@ -591,7 +591,7 @@ export namespace Gegl {
         VERSION,
         INDENT,
     }
-    module AudioFragment {
+    namespace AudioFragment {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -640,7 +640,7 @@ export namespace Gegl {
         set_sample_rate(sample_rate: number): void;
     }
 
-    module Buffer {
+    namespace Buffer {
         // Signal callback interfaces
 
         interface Changed {
@@ -896,7 +896,7 @@ export namespace Gegl {
         signal_connect(detailed_signal: string, c_handler: GObject.Callback): number;
     }
 
-    module Color {
+    namespace Color {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -954,7 +954,7 @@ export namespace Gegl {
         set_rgba(red: number, green: number, blue: number, alpha: number): void;
     }
 
-    module Config {
+    namespace Config {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1025,7 +1025,7 @@ export namespace Gegl {
         _init(...args: any[]): void;
     }
 
-    module Curve {
+    namespace Curve {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1090,7 +1090,7 @@ export namespace Gegl {
         set_point(index: number, x: number, y: number): void;
     }
 
-    module Node {
+    namespace Node {
         // Signal callback interfaces
 
         interface Computed {
@@ -1384,7 +1384,7 @@ export namespace Gegl {
         to_xml_full(tail: Node | null, path_root: string): string;
     }
 
-    module Operation {
+    namespace Operation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1414,7 +1414,7 @@ export namespace Gegl {
         static list_property_keys(operation_type: string, property_name: string): string[];
     }
 
-    module Path {
+    namespace Path {
         // Signal callback interfaces
 
         interface Changed {
@@ -1578,7 +1578,7 @@ export namespace Gegl {
         to_string(): string;
     }
 
-    module Processor {
+    namespace Processor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1632,7 +1632,7 @@ export namespace Gegl {
         work(): [boolean, number];
     }
 
-    module Stats {
+    namespace Stats {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1688,7 +1688,7 @@ export namespace Gegl {
         _init(...args: any[]): void;
     }
 
-    module TileBackend {
+    namespace TileBackend {
         // Constructor properties interface
 
         interface ConstructorProps extends TileSource.ConstructorProps {
@@ -1770,7 +1770,7 @@ export namespace Gegl {
         set_flush_on_destroy(flush_on_destroy: boolean): void;
     }
 
-    module TileHandler {
+    namespace TileHandler {
         // Constructor properties interface
 
         interface ConstructorProps extends TileSource.ConstructorProps {
@@ -1798,7 +1798,7 @@ export namespace Gegl {
         set_source(source: TileSource): void;
     }
 
-    module TileSource {
+    namespace TileSource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

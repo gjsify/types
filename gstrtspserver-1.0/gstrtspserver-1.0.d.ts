@@ -396,7 +396,7 @@ export namespace GstRtspServer {
          */
         RECORD,
     }
-    module RTSPAddressPool {
+    namespace RTSPAddressPool {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -481,7 +481,7 @@ export namespace GstRtspServer {
         ): [RTSPAddressPoolResult, RTSPAddress];
     }
 
-    module RTSPAuth {
+    namespace RTSPAuth {
         // Signal callback interfaces
 
         interface AcceptCertificate {
@@ -666,7 +666,7 @@ export namespace GstRtspServer {
         set_tls_database(database?: Gio.TlsDatabase | null): void;
     }
 
-    module RTSPClient {
+    namespace RTSPClient {
         // Signal callback interfaces
 
         interface AnnounceRequest {
@@ -1179,7 +1179,7 @@ export namespace GstRtspServer {
         set_thread_pool(pool?: RTSPThreadPool | null): void;
     }
 
-    module RTSPMedia {
+    namespace RTSPMedia {
         // Signal callback interfaces
 
         interface HandleMessage {
@@ -1850,7 +1850,7 @@ export namespace GstRtspServer {
         use_time_provider(time_provider: boolean): void;
     }
 
-    module RTSPMediaFactory {
+    namespace RTSPMediaFactory {
         // Signal callback interfaces
 
         interface MediaConfigure {
@@ -2277,7 +2277,7 @@ export namespace GstRtspServer {
         set_transport_mode(mode: RTSPTransportMode | null): void;
     }
 
-    module RTSPMediaFactoryURI {
+    namespace RTSPMediaFactoryURI {
         // Constructor properties interface
 
         interface ConstructorProps extends RTSPMediaFactory.ConstructorProps {
@@ -2324,7 +2324,7 @@ export namespace GstRtspServer {
         set_uri(uri: string): void;
     }
 
-    module RTSPMountPoints {
+    namespace RTSPMountPoints {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2388,7 +2388,7 @@ export namespace GstRtspServer {
         remove_factory(path: string): void;
     }
 
-    module RTSPOnvifClient {
+    namespace RTSPOnvifClient {
         // Constructor properties interface
 
         interface ConstructorProps extends RTSPClient.ConstructorProps {}
@@ -2406,7 +2406,7 @@ export namespace GstRtspServer {
         static ['new'](): RTSPOnvifClient;
     }
 
-    module RTSPOnvifMedia {
+    namespace RTSPOnvifMedia {
         // Constructor properties interface
 
         interface ConstructorProps extends RTSPMedia.ConstructorProps {}
@@ -2447,7 +2447,7 @@ export namespace GstRtspServer {
         set_backchannel_bandwidth(bandwidth: number): void;
     }
 
-    module RTSPOnvifMediaFactory {
+    namespace RTSPOnvifMediaFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends RTSPMediaFactory.ConstructorProps {}
@@ -2533,7 +2533,7 @@ export namespace GstRtspServer {
         set_replay_support(has_replay_support: boolean): void;
     }
 
-    module RTSPOnvifServer {
+    namespace RTSPOnvifServer {
         // Constructor properties interface
 
         interface ConstructorProps extends RTSPServer.ConstructorProps {}
@@ -2551,7 +2551,7 @@ export namespace GstRtspServer {
         static ['new'](): RTSPOnvifServer;
     }
 
-    module RTSPServer {
+    namespace RTSPServer {
         // Signal callback interfaces
 
         interface ClientConnected {
@@ -2809,7 +2809,7 @@ export namespace GstRtspServer {
         transfer_connection(socket: Gio.Socket, ip: string, port: number, initial_buffer?: string | null): boolean;
     }
 
-    module RTSPSession {
+    namespace RTSPSession {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2963,7 +2963,7 @@ export namespace GstRtspServer {
         touch(): void;
     }
 
-    module RTSPSessionMedia {
+    namespace RTSPSessionMedia {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3050,7 +3050,7 @@ export namespace GstRtspServer {
         set_transport(stream: RTSPStream, tr: GstRtsp.RTSPTransport): RTSPStreamTransport;
     }
 
-    module RTSPSessionPool {
+    namespace RTSPSessionPool {
         // Signal callback interfaces
 
         interface SessionRemoved {
@@ -3171,7 +3171,7 @@ export namespace GstRtspServer {
         set_max_sessions(max: number): void;
     }
 
-    module RTSPStream {
+    namespace RTSPStream {
         // Signal callback interfaces
 
         interface NewRtcpEncoder {
@@ -3751,7 +3751,7 @@ export namespace GstRtspServer {
         verify_mcast_ttl(ttl: number): boolean;
     }
 
-    module RTSPStreamTransport {
+    namespace RTSPStreamTransport {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3901,7 +3901,7 @@ export namespace GstRtspServer {
         set_url(url?: GstRtsp.RTSPUrl | null): void;
     }
 
-    module RTSPThreadPool {
+    namespace RTSPThreadPool {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

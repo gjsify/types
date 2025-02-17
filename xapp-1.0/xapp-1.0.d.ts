@@ -254,7 +254,7 @@ export namespace XApp {
     interface FavoritesItemSelectedCallback {
         (favorites: Favorites, uri: string): void;
     }
-    module DarkModeManager {
+    namespace DarkModeManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -272,7 +272,7 @@ export namespace XApp {
         static ['new'](prefer_dark_mode: boolean): DarkModeManager;
     }
 
-    module Favorites {
+    namespace Favorites {
         // Signal callback interfaces
 
         interface Changed {
@@ -371,7 +371,7 @@ export namespace XApp {
         rename(old_uri: string, new_uri: string): void;
     }
 
-    module GpuOffloadHelper {
+    namespace GpuOffloadHelper {
         // Signal callback interfaces
 
         interface Ready {
@@ -453,7 +453,7 @@ export namespace XApp {
         is_ready(): boolean;
     }
 
-    module GtkWindow {
+    namespace GtkWindow {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -927,7 +927,7 @@ export namespace XApp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module IconChooserButton {
+    namespace IconChooserButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5495,7 +5495,7 @@ export namespace XApp {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module IconChooserDialog {
+    namespace IconChooserDialog {
         // Signal callback interfaces
 
         interface Close {
@@ -6059,7 +6059,7 @@ export namespace XApp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module KbdLayoutController {
+    namespace KbdLayoutController {
         // Signal callback interfaces
 
         interface ConfigChanged {
@@ -6204,7 +6204,7 @@ export namespace XApp {
         set_current_group(group: number): void;
     }
 
-    module MonitorBlanker {
+    namespace MonitorBlanker {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6241,7 +6241,7 @@ export namespace XApp {
         unblank_monitors(): void;
     }
 
-    module ObjectManagerClient {
+    namespace ObjectManagerClient {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7114,7 +7114,7 @@ export namespace XApp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ObjectProxy {
+    namespace ObjectProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7602,7 +7602,7 @@ export namespace XApp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ObjectSkeleton {
+    namespace ObjectSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8098,7 +8098,7 @@ export namespace XApp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PreferencesWindow {
+    namespace PreferencesWindow {
         // Signal callback interfaces
 
         interface Close {
@@ -8561,7 +8561,7 @@ export namespace XApp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StackSidebar {
+    namespace StackSidebar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9008,7 +9008,7 @@ export namespace XApp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StatusIcon {
+    namespace StatusIcon {
         // Signal callback interfaces
 
         interface Activate {
@@ -9353,7 +9353,7 @@ export namespace XApp {
         set_visible(visible: boolean): void;
     }
 
-    module StatusIconInterfaceProxy {
+    namespace StatusIconInterfaceProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10613,7 +10613,7 @@ export namespace XApp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StatusIconInterfaceSkeleton {
+    namespace StatusIconInterfaceSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11507,7 +11507,7 @@ export namespace XApp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StatusIconMonitor {
+    namespace StatusIconMonitor {
         // Signal callback interfaces
 
         interface IconAdded {
@@ -11558,7 +11558,7 @@ export namespace XApp {
         list_icons(): StatusIconMonitor[];
     }
 
-    module StyleManager {
+    namespace StyleManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11615,7 +11615,7 @@ export namespace XApp {
         set_widget(widget: Gtk.Widget): void;
     }
 
-    module SwitcherooControlProxy {
+    namespace SwitcherooControlProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12481,7 +12481,7 @@ export namespace XApp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SwitcherooControlSkeleton {
+    namespace SwitcherooControlSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13217,7 +13217,7 @@ export namespace XApp {
         show(): void;
     }
 
-    module Object {
+    namespace Object {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.DBusObject.ConstructorProps {
@@ -13261,7 +13261,7 @@ export namespace XApp {
         new (): Object; // This allows `obj instanceof Object`
     };
 
-    module StatusIconInterface {
+    namespace StatusIconInterface {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13742,7 +13742,7 @@ export namespace XApp {
         new (): StatusIconInterface; // This allows `obj instanceof StatusIconInterface`
     };
 
-    module SwitcherooControl {
+    namespace SwitcherooControl {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

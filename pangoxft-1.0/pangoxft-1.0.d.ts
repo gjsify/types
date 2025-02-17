@@ -148,7 +148,7 @@ export namespace PangoXft {
     interface SubstituteFunc {
         (pattern: fontconfig.Pattern, data?: any | null): void;
     }
-    module Font {
+    namespace Font {
         // Constructor properties interface
 
         interface ConstructorProps extends PangoFc.Font.ConstructorProps {}
@@ -200,7 +200,7 @@ export namespace PangoXft {
         has_char(wc: number): boolean;
     }
 
-    module FontMap {
+    namespace FontMap {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -719,7 +719,7 @@ export namespace PangoXft {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Renderer {
+    namespace Renderer {
         // Constructor properties interface
 
         interface ConstructorProps extends Pango.Renderer.ConstructorProps {

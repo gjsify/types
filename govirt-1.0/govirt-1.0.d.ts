@@ -75,7 +75,7 @@ export namespace GoVirt {
     }
     function proxy_error_quark(): GLib.Quark;
     function rest_call_error_quark(): GLib.Quark;
-    module Proxy {
+    namespace Proxy {
         // Constructor properties interface
 
         interface ConstructorProps extends Rest.Proxy.ConstructorProps {
@@ -139,7 +139,7 @@ export namespace GoVirt {
         lookup_vm(vm_name: string): Vm;
     }
 
-    module Vm {
+    namespace Vm {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -206,7 +206,7 @@ export namespace GoVirt {
         stop_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module VmDisplay {
+    namespace VmDisplay {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

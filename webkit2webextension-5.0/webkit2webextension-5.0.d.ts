@@ -528,7 +528,7 @@ export namespace WebKit2WebExtension {
          */
         SELECTION,
     }
-    module ContextMenu {
+    namespace ContextMenu {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -651,7 +651,7 @@ export namespace WebKit2WebExtension {
         set_user_data(user_data: GLib.Variant): void;
     }
 
-    module ContextMenuItem {
+    namespace ContextMenuItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -722,7 +722,7 @@ export namespace WebKit2WebExtension {
         set_submenu(submenu?: ContextMenu | null): void;
     }
 
-    module DOMAttr {
+    namespace DOMAttr {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -1186,7 +1186,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMBlob {
+    namespace DOMBlob {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -1212,7 +1212,7 @@ export namespace WebKit2WebExtension {
         get_size(): number;
     }
 
-    module DOMCDATASection {
+    namespace DOMCDATASection {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMText.ConstructorProps, DOMEventTarget.ConstructorProps {}
@@ -1634,7 +1634,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMCSSRule {
+    namespace DOMCSSRule {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -1678,7 +1678,7 @@ export namespace WebKit2WebExtension {
         set_css_text(value: string): void;
     }
 
-    module DOMCSSRuleList {
+    namespace DOMCSSRuleList {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -1705,7 +1705,7 @@ export namespace WebKit2WebExtension {
         item(index: number): DOMCSSRule;
     }
 
-    module DOMCSSStyleDeclaration {
+    namespace DOMCSSStyleDeclaration {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -1753,7 +1753,7 @@ export namespace WebKit2WebExtension {
         set_property(...args: never[]): any;
     }
 
-    module DOMCSSStyleSheet {
+    namespace DOMCSSStyleSheet {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMStyleSheet.ConstructorProps {
@@ -1793,7 +1793,7 @@ export namespace WebKit2WebExtension {
         remove_rule(index: number): void;
     }
 
-    module DOMCSSValue {
+    namespace DOMCSSValue {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -1829,7 +1829,7 @@ export namespace WebKit2WebExtension {
         set_css_text(value: string): void;
     }
 
-    module DOMCharacterData {
+    namespace DOMCharacterData {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -2258,7 +2258,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMClientRect {
+    namespace DOMClientRect {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -2323,7 +2323,7 @@ export namespace WebKit2WebExtension {
         get_width(): number;
     }
 
-    module DOMClientRectList {
+    namespace DOMClientRectList {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -2359,7 +2359,7 @@ export namespace WebKit2WebExtension {
         item(index: number): DOMClientRect;
     }
 
-    module DOMComment {
+    namespace DOMComment {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMCharacterData.ConstructorProps, DOMEventTarget.ConstructorProps {}
@@ -2781,7 +2781,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMDOMImplementation {
+    namespace DOMDOMImplementation {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {}
@@ -2809,7 +2809,7 @@ export namespace WebKit2WebExtension {
         has_feature(feature: string, version: string): boolean;
     }
 
-    module DOMDOMSelection {
+    namespace DOMDOMSelection {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -2899,7 +2899,7 @@ export namespace WebKit2WebExtension {
         set_position(node: DOMNode, offset: number): void;
     }
 
-    module DOMDOMTokenList {
+    namespace DOMDOMTokenList {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -2934,7 +2934,7 @@ export namespace WebKit2WebExtension {
         toggle(token: string, force: boolean): boolean;
     }
 
-    module DOMDOMWindow {
+    namespace DOMDOMWindow {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -3520,7 +3520,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMDocument {
+    namespace DOMDocument {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -4267,7 +4267,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMDocumentFragment {
+    namespace DOMDocumentFragment {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -4723,7 +4723,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMDocumentType {
+    namespace DOMDocumentType {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -5182,7 +5182,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMElement {
+    namespace DOMElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -5851,7 +5851,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMEntityReference {
+    namespace DOMEntityReference {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {}
@@ -6279,7 +6279,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMEvent {
+    namespace DOMEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -6353,7 +6353,7 @@ export namespace WebKit2WebExtension {
         stop_propagation(): void;
     }
 
-    module DOMFile {
+    namespace DOMFile {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMBlob.ConstructorProps {
@@ -6379,7 +6379,7 @@ export namespace WebKit2WebExtension {
         get_name(): string;
     }
 
-    module DOMFileList {
+    namespace DOMFileList {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -6406,7 +6406,7 @@ export namespace WebKit2WebExtension {
         item(index: number): DOMFile;
     }
 
-    module DOMHTMLAnchorElement {
+    namespace DOMHTMLAnchorElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -6921,7 +6921,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLAppletElement {
+    namespace DOMHTMLAppletElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -7404,7 +7404,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLAreaElement {
+    namespace DOMHTMLAreaElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -7897,7 +7897,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLBRElement {
+    namespace DOMHTMLBRElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -8327,7 +8327,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLBaseElement {
+    namespace DOMHTMLBaseElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -8762,7 +8762,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLBaseFontElement {
+    namespace DOMHTMLBaseFontElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {}
@@ -9213,7 +9213,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLBodyElement {
+    namespace DOMHTMLBodyElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -9677,7 +9677,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLButtonElement {
+    namespace DOMHTMLButtonElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -10135,7 +10135,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLCanvasElement {
+    namespace DOMHTMLCanvasElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -10570,7 +10570,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLCollection {
+    namespace DOMHTMLCollection {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -10598,7 +10598,7 @@ export namespace WebKit2WebExtension {
         named_item(name: string): DOMNode;
     }
 
-    module DOMHTMLDListElement {
+    namespace DOMHTMLDListElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -11028,7 +11028,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLDirectoryElement {
+    namespace DOMHTMLDirectoryElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -11458,7 +11458,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLDivElement {
+    namespace DOMHTMLDivElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -11888,7 +11888,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLDocument {
+    namespace DOMHTMLDocument {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMDocument.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -12374,7 +12374,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLElement {
+    namespace DOMHTMLElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -12890,7 +12890,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLEmbedElement {
+    namespace DOMHTMLEmbedElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -13345,7 +13345,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLFieldSetElement {
+    namespace DOMHTMLFieldSetElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -13773,7 +13773,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLFontElement {
+    namespace DOMHTMLFontElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -14213,7 +14213,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLFormElement {
+    namespace DOMHTMLFormElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -14684,7 +14684,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLFrameElement {
+    namespace DOMHTMLFrameElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -15180,7 +15180,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLFrameSetElement {
+    namespace DOMHTMLFrameSetElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -15615,7 +15615,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLHRElement {
+    namespace DOMHTMLHRElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -16063,7 +16063,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLHeadElement {
+    namespace DOMHTMLHeadElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -16493,7 +16493,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLHeadingElement {
+    namespace DOMHTMLHeadingElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -16923,7 +16923,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLHtmlElement {
+    namespace DOMHTMLHtmlElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -17353,7 +17353,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLIFrameElement {
+    namespace DOMHTMLIFrameElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -17850,7 +17850,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLImageElement {
+    namespace DOMHTMLImageElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -18368,7 +18368,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLInputElement {
+    namespace DOMHTMLInputElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -18931,7 +18931,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLLIElement {
+    namespace DOMHTMLLIElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -19366,7 +19366,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLLabelElement {
+    namespace DOMHTMLLabelElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -19802,7 +19802,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLLegendElement {
+    namespace DOMHTMLLegendElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -20235,7 +20235,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLLinkElement {
+    namespace DOMHTMLLinkElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -20712,7 +20712,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLMapElement {
+    namespace DOMHTMLMapElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -21145,7 +21145,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLMarqueeElement {
+    namespace DOMHTMLMarqueeElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {}
@@ -21568,7 +21568,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLMenuElement {
+    namespace DOMHTMLMenuElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -21998,7 +21998,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLMetaElement {
+    namespace DOMHTMLMetaElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -22446,7 +22446,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLModElement {
+    namespace DOMHTMLModElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -22884,7 +22884,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLOListElement {
+    namespace DOMHTMLOListElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -23324,7 +23324,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLObjectElement {
+    namespace DOMHTMLObjectElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -23827,7 +23827,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLOptGroupElement {
+    namespace DOMHTMLOptGroupElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -24262,7 +24262,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLOptionElement {
+    namespace DOMHTMLOptionElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -24724,7 +24724,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLOptionsCollection {
+    namespace DOMHTMLOptionsCollection {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLCollection.ConstructorProps {
@@ -24759,7 +24759,7 @@ export namespace WebKit2WebExtension {
         set_selected_index(value: number): void;
     }
 
-    module DOMHTMLParagraphElement {
+    namespace DOMHTMLParagraphElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -25189,7 +25189,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLParamElement {
+    namespace DOMHTMLParamElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -25637,7 +25637,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLPreElement {
+    namespace DOMHTMLPreElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -26072,7 +26072,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLQuoteElement {
+    namespace DOMHTMLQuoteElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -26502,7 +26502,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLScriptElement {
+    namespace DOMHTMLScriptElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -26965,7 +26965,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLSelectElement {
+    namespace DOMHTMLSelectElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -27453,7 +27453,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLStyleElement {
+    namespace DOMHTMLStyleElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -27896,7 +27896,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLTableCaptionElement {
+    namespace DOMHTMLTableCaptionElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -28326,7 +28326,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLTableCellElement {
+    namespace DOMHTMLTableCellElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -28844,7 +28844,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLTableColElement {
+    namespace DOMHTMLTableColElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -29305,7 +29305,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLTableElement {
+    namespace DOMHTMLTableElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -29811,7 +29811,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLTableRowElement {
+    namespace DOMHTMLTableRowElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -30285,7 +30285,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLTableSectionElement {
+    namespace DOMHTMLTableSectionElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -30741,7 +30741,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLTextAreaElement {
+    namespace DOMHTMLTextAreaElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -31242,7 +31242,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLTitleElement {
+    namespace DOMHTMLTitleElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -31672,7 +31672,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMHTMLUListElement {
+    namespace DOMHTMLUListElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -32107,7 +32107,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMKeyboardEvent {
+    namespace DOMKeyboardEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMUIEvent.ConstructorProps {
@@ -32179,7 +32179,7 @@ export namespace WebKit2WebExtension {
         ): void;
     }
 
-    module DOMMediaList {
+    namespace DOMMediaList {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -32216,7 +32216,7 @@ export namespace WebKit2WebExtension {
         set_media_text(value: string): void;
     }
 
-    module DOMMouseEvent {
+    namespace DOMMouseEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMUIEvent.ConstructorProps {
@@ -32330,7 +32330,7 @@ export namespace WebKit2WebExtension {
         ): void;
     }
 
-    module DOMNamedNodeMap {
+    namespace DOMNamedNodeMap {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -32363,7 +32363,7 @@ export namespace WebKit2WebExtension {
         set_named_item_ns(node: DOMNode): DOMNode;
     }
 
-    module DOMNode {
+    namespace DOMNode {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -32897,7 +32897,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMNodeIterator {
+    namespace DOMNodeIterator {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -32949,7 +32949,7 @@ export namespace WebKit2WebExtension {
         previous_node(): DOMNode;
     }
 
-    module DOMNodeList {
+    namespace DOMNodeList {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -32976,7 +32976,7 @@ export namespace WebKit2WebExtension {
         item(index: number): DOMNode;
     }
 
-    module DOMObject {
+    namespace DOMObject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -33004,7 +33004,7 @@ export namespace WebKit2WebExtension {
         _init(...args: any[]): void;
     }
 
-    module DOMProcessingInstruction {
+    namespace DOMProcessingInstruction {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMCharacterData.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -33439,7 +33439,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMRange {
+    namespace DOMRange {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -33517,7 +33517,7 @@ export namespace WebKit2WebExtension {
         to_string(): string;
     }
 
-    module DOMStyleSheet {
+    namespace DOMStyleSheet {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -33567,7 +33567,7 @@ export namespace WebKit2WebExtension {
         set_disabled(value: boolean): void;
     }
 
-    module DOMStyleSheetList {
+    namespace DOMStyleSheetList {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -33594,7 +33594,7 @@ export namespace WebKit2WebExtension {
         item(index: number): DOMStyleSheet;
     }
 
-    module DOMText {
+    namespace DOMText {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMCharacterData.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -34030,7 +34030,7 @@ export namespace WebKit2WebExtension {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DOMTreeWalker {
+    namespace DOMTreeWalker {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -34082,7 +34082,7 @@ export namespace WebKit2WebExtension {
         set_current_node(value: DOMNode): void;
     }
 
-    module DOMUIEvent {
+    namespace DOMUIEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMEvent.ConstructorProps {
@@ -34142,7 +34142,7 @@ export namespace WebKit2WebExtension {
         init_ui_event(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: number): void;
     }
 
-    module DOMWheelEvent {
+    namespace DOMWheelEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMMouseEvent.ConstructorProps {
@@ -34193,7 +34193,7 @@ export namespace WebKit2WebExtension {
         ): void;
     }
 
-    module DOMXPathExpression {
+    namespace DOMXPathExpression {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {}
@@ -34213,7 +34213,7 @@ export namespace WebKit2WebExtension {
         evaluate(contextNode: DOMNode, type: number, inResult: DOMXPathResult): DOMXPathResult;
     }
 
-    module DOMXPathResult {
+    namespace DOMXPathResult {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -34273,7 +34273,7 @@ export namespace WebKit2WebExtension {
         snapshot_item(index: number): DOMNode;
     }
 
-    module Frame {
+    namespace Frame {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -34342,7 +34342,7 @@ export namespace WebKit2WebExtension {
         is_main_frame(): boolean;
     }
 
-    module HitTestResult {
+    namespace HitTestResult {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34519,7 +34519,7 @@ export namespace WebKit2WebExtension {
         get_media_uri(): string;
     }
 
-    module ScriptWorld {
+    namespace ScriptWorld {
         // Signal callback interfaces
 
         interface WindowObjectCleared {
@@ -34578,7 +34578,7 @@ export namespace WebKit2WebExtension {
         get_name(): string;
     }
 
-    module URIRequest {
+    namespace URIRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34636,7 +34636,7 @@ export namespace WebKit2WebExtension {
         set_uri(uri: string): void;
     }
 
-    module URIResponse {
+    namespace URIResponse {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34762,7 +34762,7 @@ export namespace WebKit2WebExtension {
         get_uri(): string;
     }
 
-    module UserMessage {
+    namespace UserMessage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -34856,7 +34856,7 @@ export namespace WebKit2WebExtension {
         send_reply(reply: UserMessage): void;
     }
 
-    module WebEditor {
+    namespace WebEditor {
         // Signal callback interfaces
 
         interface SelectionChanged {
@@ -34903,7 +34903,7 @@ export namespace WebKit2WebExtension {
         get_page(): WebPage;
     }
 
-    module WebExtension {
+    namespace WebExtension {
         // Signal callback interfaces
 
         interface PageCreated {
@@ -35069,7 +35069,7 @@ export namespace WebKit2WebExtension {
         send_message_to_context_finish(result: Gio.AsyncResult): UserMessage;
     }
 
-    module WebHitTestResult {
+    namespace WebHitTestResult {
         // Constructor properties interface
 
         interface ConstructorProps extends HitTestResult.ConstructorProps {
@@ -35108,7 +35108,7 @@ export namespace WebKit2WebExtension {
         get_node(): DOMNode;
     }
 
-    module WebPage {
+    namespace WebPage {
         // Signal callback interfaces
 
         interface ConsoleMessageSent {
@@ -35616,7 +35616,7 @@ export namespace WebKit2WebExtension {
         _init(...args: any[]): void;
     }
 
-    module DOMEventTarget {
+    namespace DOMEventTarget {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35662,7 +35662,7 @@ export namespace WebKit2WebExtension {
         new (): DOMEventTarget; // This allows `obj instanceof DOMEventTarget`
     };
 
-    module DOMNodeFilter {
+    namespace DOMNodeFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -35686,7 +35686,7 @@ export namespace WebKit2WebExtension {
         new (): DOMNodeFilter; // This allows `obj instanceof DOMNodeFilter`
     };
 
-    module DOMXPathNSResolver {
+    namespace DOMXPathNSResolver {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

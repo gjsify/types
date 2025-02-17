@@ -35,7 +35,7 @@ export namespace TimezoneMap {
     const TIMEZONE_COMPLETION_LONGITUDE: number;
     const TIMEZONE_COMPLETION_NAME: number;
     const TIMEZONE_COMPLETION_ZONE: number;
-    module TimezoneCompletion {
+    namespace TimezoneCompletion {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -788,7 +788,7 @@ export namespace TimezoneMap {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TimezoneLocation {
+    namespace TimezoneLocation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -828,7 +828,7 @@ export namespace TimezoneMap {
         static ['new'](): TimezoneLocation;
     }
 
-    module TimezoneMap {
+    namespace TimezoneMap {
         // Signal callback interfaces
 
         interface LocationChanged {

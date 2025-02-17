@@ -103,7 +103,7 @@ export namespace XreaderView {
         ANNOTS,
         ALL,
     }
-    module DocumentModel {
+    namespace DocumentModel {
         // Signal callback interfaces
 
         interface PageChanged {
@@ -221,7 +221,7 @@ export namespace XreaderView {
         set_sizing_mode(mode: SizingMode | null): void;
     }
 
-    module Job {
+    namespace Job {
         // Signal callback interfaces
 
         interface Cancelled {
@@ -289,7 +289,7 @@ export namespace XreaderView {
         succeeded(): void;
     }
 
-    module JobAnnots {
+    namespace JobAnnots {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -311,7 +311,7 @@ export namespace XreaderView {
         static ['new'](document: XreaderDocument.Document): JobAnnots;
     }
 
-    module JobAttachments {
+    namespace JobAttachments {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -333,7 +333,7 @@ export namespace XreaderView {
         static ['new'](document: XreaderDocument.Document): JobAttachments;
     }
 
-    module JobExport {
+    namespace JobExport {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -360,7 +360,7 @@ export namespace XreaderView {
         set_page(page: number): void;
     }
 
-    module JobFind {
+    namespace JobFind {
         // Signal callback interfaces
 
         interface Updated {
@@ -421,7 +421,7 @@ export namespace XreaderView {
         has_results(): boolean;
     }
 
-    module JobFonts {
+    namespace JobFonts {
         // Signal callback interfaces
 
         interface Updated {
@@ -462,7 +462,7 @@ export namespace XreaderView {
         vfunc_updated(progress: number): void;
     }
 
-    module JobLayers {
+    namespace JobLayers {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -484,7 +484,7 @@ export namespace XreaderView {
         static ['new'](document: XreaderDocument.Document): JobLayers;
     }
 
-    module JobLinks {
+    namespace JobLinks {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -506,7 +506,7 @@ export namespace XreaderView {
         static ['new'](document: XreaderDocument.Document): JobLinks;
     }
 
-    module JobLoad {
+    namespace JobLoad {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -534,7 +534,7 @@ export namespace XreaderView {
         set_uri(uri: string): void;
     }
 
-    module JobPageData {
+    namespace JobPageData {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -560,7 +560,7 @@ export namespace XreaderView {
         static ['new'](document: XreaderDocument.Document, page: number, flags: JobPageDataFlags): JobPageData;
     }
 
-    module JobPrint {
+    namespace JobPrint {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -587,7 +587,7 @@ export namespace XreaderView {
         set_page(page: number): void;
     }
 
-    module JobRender {
+    namespace JobRender {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -635,7 +635,7 @@ export namespace XreaderView {
         ): void;
     }
 
-    module JobSave {
+    namespace JobSave {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -658,7 +658,7 @@ export namespace XreaderView {
         static ['new'](document: XreaderDocument.Document, uri: string, document_uri: string): JobSave;
     }
 
-    module JobThumbnail {
+    namespace JobThumbnail {
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -683,7 +683,7 @@ export namespace XreaderView {
         static ['new'](document: XreaderDocument.Document, page: number, rotation: number, scale: number): JobThumbnail;
     }
 
-    module PrintOperation {
+    namespace PrintOperation {
         // Signal callback interfaces
 
         interface BeginPrint {
@@ -755,7 +755,7 @@ export namespace XreaderView {
         set_print_settings(print_settings: Gtk.PrintSettings): void;
     }
 
-    module View {
+    namespace View {
         // Signal callback interfaces
 
         interface Activate {
@@ -1416,7 +1416,7 @@ export namespace XreaderView {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ViewPresentation {
+    namespace ViewPresentation {
         // Signal callback interfaces
 
         interface ChangePage {
@@ -2075,7 +2075,7 @@ export namespace XreaderView {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WebView {
+    namespace WebView {
         // Constructor properties interface
 
         interface ConstructorProps

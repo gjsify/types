@@ -290,7 +290,7 @@ export namespace BraseroBurn {
         METADATA_INFO,
         AUDIO_FORMAT_RAW_LITTLE_ENDIAN,
     }
-    module Burn {
+    namespace Burn {
         // Signal callback interfaces
 
         interface ActionChanged {
@@ -495,7 +495,7 @@ export namespace BraseroBurn {
         record(session: BurnSession): BurnResult;
     }
 
-    module BurnDialog {
+    namespace BurnDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -944,7 +944,7 @@ export namespace BraseroBurn {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BurnOptions {
+    namespace BurnOptions {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1384,7 +1384,7 @@ export namespace BraseroBurn {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BurnSession {
+    namespace BurnSession {
         // Signal callback interfaces
 
         interface OutputChanged {
@@ -1722,7 +1722,7 @@ export namespace BraseroBurn {
         tag_remove(tag: string): BurnResult;
     }
 
-    module SessionCfg {
+    namespace SessionCfg {
         // Signal callback interfaces
 
         interface IsValid {
@@ -1808,7 +1808,7 @@ export namespace BraseroBurn {
         remove_flags(flags: BurnFlag | null): void;
     }
 
-    module SessionSpan {
+    namespace SessionSpan {
         // Constructor properties interface
 
         interface ConstructorProps extends BurnSession.ConstructorProps {}
@@ -1868,7 +1868,7 @@ export namespace BraseroBurn {
         stop(): void;
     }
 
-    module Status {
+    namespace Status {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1939,7 +1939,7 @@ export namespace BraseroBurn {
         set_running(progress: number, current_action: string): void;
     }
 
-    module SumDialog {
+    namespace SumDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2362,7 +2362,7 @@ export namespace BraseroBurn {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ToolDialog {
+    namespace ToolDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2798,7 +2798,7 @@ export namespace BraseroBurn {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Track {
+    namespace Track {
         // Signal callback interfaces
 
         interface Changed {
@@ -2950,7 +2950,7 @@ export namespace BraseroBurn {
         tag_lookup_string(tag: string): string;
     }
 
-    module TrackData {
+    namespace TrackData {
         // Constructor properties interface
 
         interface ConstructorProps extends Track.ConstructorProps {}
@@ -3094,7 +3094,7 @@ export namespace BraseroBurn {
         ): BurnResult;
     }
 
-    module TrackDataCfg {
+    namespace TrackDataCfg {
         // Signal callback interfaces
 
         interface DeepDirectory {
@@ -4351,7 +4351,7 @@ export namespace BraseroBurn {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TrackDisc {
+    namespace TrackDisc {
         // Constructor properties interface
 
         interface ConstructorProps extends Track.ConstructorProps {}
@@ -4385,7 +4385,7 @@ export namespace BraseroBurn {
         set_track_num(num: number): BurnResult;
     }
 
-    module TrackImage {
+    namespace TrackImage {
         // Constructor properties interface
 
         interface ConstructorProps extends Track.ConstructorProps {}
@@ -4464,7 +4464,7 @@ export namespace BraseroBurn {
         set_source(image: string, toc: string, format: ImageFormat | null): BurnResult;
     }
 
-    module TrackImageCfg {
+    namespace TrackImageCfg {
         // Constructor properties interface
 
         interface ConstructorProps extends TrackImage.ConstructorProps {}
@@ -4506,7 +4506,7 @@ export namespace BraseroBurn {
         set_source(uri: string): BurnResult;
     }
 
-    module TrackStream {
+    namespace TrackStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Track.ConstructorProps {}
@@ -4612,7 +4612,7 @@ export namespace BraseroBurn {
         set_source(uri: string): BurnResult;
     }
 
-    module TrackStreamCfg {
+    namespace TrackStreamCfg {
         // Constructor properties interface
 
         interface ConstructorProps extends TrackStream.ConstructorProps {}

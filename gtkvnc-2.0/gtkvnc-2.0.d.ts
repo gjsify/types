@@ -59,7 +59,7 @@ export namespace GtkVnc {
         RELEASE,
         CLICK,
     }
-    module CairoFramebuffer {
+    namespace CairoFramebuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends GVnc.BaseFramebuffer.ConstructorProps, GVnc.Framebuffer.ConstructorProps {
@@ -668,7 +668,7 @@ export namespace GtkVnc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Display {
+    namespace Display {
         // Signal callback interfaces
 
         interface VncAuthCredential {

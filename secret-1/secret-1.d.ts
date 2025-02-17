@@ -932,7 +932,7 @@ export namespace Secret {
          */
         LOAD_COLLECTIONS,
     }
-    module Collection {
+    namespace Collection {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2192,7 +2192,7 @@ export namespace Secret {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Item {
+    namespace Item {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3571,7 +3571,7 @@ export namespace Secret {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Prompt {
+    namespace Prompt {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4457,7 +4457,7 @@ export namespace Secret {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Service {
+    namespace Service {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6723,7 +6723,7 @@ export namespace Secret {
         unref_to_password(length: number): [string, number];
     }
 
-    module Backend {
+    namespace Backend {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.AsyncInitable.ConstructorProps<Backend> {
@@ -6813,7 +6813,7 @@ export namespace Secret {
         new (): Backend; // This allows `obj instanceof Backend`
     };
 
-    module Retrievable {
+    namespace Retrievable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

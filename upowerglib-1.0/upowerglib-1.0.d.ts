@@ -150,7 +150,7 @@ export namespace UPowerGlib {
      * @returns The last property id.
      */
     function wakeups_glue_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface DeviceAdded {
@@ -278,7 +278,7 @@ export namespace UPowerGlib {
         get_on_battery(): boolean;
     }
 
-    module ClientGlueProxy {
+    namespace ClientGlueProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1351,7 +1351,7 @@ export namespace UPowerGlib {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ClientGlueSkeleton {
+    namespace ClientGlueSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2055,7 +2055,7 @@ export namespace UPowerGlib {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Device {
+    namespace Device {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2433,7 +2433,7 @@ export namespace UPowerGlib {
         to_text(): string;
     }
 
-    module DeviceGlueProxy {
+    namespace DeviceGlueProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3774,7 +3774,7 @@ export namespace UPowerGlib {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DeviceGlueSkeleton {
+    namespace DeviceGlueSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4746,7 +4746,7 @@ export namespace UPowerGlib {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HistoryItem {
+    namespace HistoryItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4820,7 +4820,7 @@ export namespace UPowerGlib {
         to_string(): string;
     }
 
-    module StatsItem {
+    namespace StatsItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4869,7 +4869,7 @@ export namespace UPowerGlib {
         set_value(value: number): void;
     }
 
-    module WakeupItem {
+    namespace WakeupItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4975,7 +4975,7 @@ export namespace UPowerGlib {
         set_value(value: number): void;
     }
 
-    module Wakeups {
+    namespace Wakeups {
         // Signal callback interfaces
 
         interface DataChanged {
@@ -5046,7 +5046,7 @@ export namespace UPowerGlib {
         get_total_sync(cancellable?: Gio.Cancellable | null): number;
     }
 
-    module WakeupsGlueProxy {
+    namespace WakeupsGlueProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6012,7 +6012,7 @@ export namespace UPowerGlib {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WakeupsGlueSkeleton {
+    namespace WakeupsGlueSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6726,7 +6726,7 @@ export namespace UPowerGlib {
         _init(...args: any[]): void;
     }
 
-    module ClientGlue {
+    namespace ClientGlue {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7014,7 +7014,7 @@ export namespace UPowerGlib {
         new (): ClientGlue; // This allows `obj instanceof ClientGlue`
     };
 
-    module DeviceGlue {
+    namespace DeviceGlue {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7605,7 +7605,7 @@ export namespace UPowerGlib {
         new (): DeviceGlue; // This allows `obj instanceof DeviceGlue`
     };
 
-    module WakeupsGlue {
+    namespace WakeupsGlue {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

@@ -97,7 +97,7 @@ export namespace Playerctl {
      * @returns A list of player names.
      */
     function list_players(): PlayerName[];
-    module Player {
+    namespace Player {
         // Signal callback interfaces
 
         interface Exit {
@@ -355,7 +355,7 @@ export namespace Playerctl {
         stop(): void;
     }
 
-    module PlayerManager {
+    namespace PlayerManager {
         // Signal callback interfaces
 
         interface NameAppeared {

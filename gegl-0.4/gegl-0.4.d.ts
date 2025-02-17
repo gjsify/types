@@ -717,7 +717,7 @@ export namespace Gegl {
         INDENT,
         BAKE_ANIM,
     }
-    module AudioFragment {
+    namespace AudioFragment {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -766,7 +766,7 @@ export namespace Gegl {
         set_sample_rate(sample_rate: number): void;
     }
 
-    module Buffer {
+    namespace Buffer {
         // Signal callback interfaces
 
         interface Changed {
@@ -1079,7 +1079,7 @@ export namespace Gegl {
         thaw_changed(): void;
     }
 
-    module Color {
+    namespace Color {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1186,7 +1186,7 @@ export namespace Gegl {
         set_rgba_with_space(red: number, green: number, blue: number, alpha: number, space: Babl.Object): void;
     }
 
-    module Config {
+    namespace Config {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1269,7 +1269,7 @@ export namespace Gegl {
         _init(...args: any[]): void;
     }
 
-    module Curve {
+    namespace Curve {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1334,7 +1334,7 @@ export namespace Gegl {
         set_point(index: number, x: number, y: number): void;
     }
 
-    module MetadataHash {
+    namespace MetadataHash {
         // Constructor properties interface
 
         interface ConstructorProps extends MetadataStore.ConstructorProps, Metadata.ConstructorProps {}
@@ -1894,7 +1894,7 @@ export namespace Gegl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MetadataStore {
+    namespace MetadataStore {
         // Signal callback interfaces
 
         interface Changed {
@@ -2866,7 +2866,7 @@ export namespace Gegl {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Node {
+    namespace Node {
         // Signal callback interfaces
 
         interface Computed {
@@ -3180,7 +3180,7 @@ export namespace Gegl {
         to_xml_full(tail: Node | null, path_root: string): string;
     }
 
-    module Operation {
+    namespace Operation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3210,7 +3210,7 @@ export namespace Gegl {
         static list_property_keys(operation_type: string, property_name: string): string[];
     }
 
-    module Path {
+    namespace Path {
         // Signal callback interfaces
 
         interface Changed {
@@ -3379,7 +3379,7 @@ export namespace Gegl {
         to_string(): string;
     }
 
-    module Processor {
+    namespace Processor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3440,7 +3440,7 @@ export namespace Gegl {
         work(): [boolean, number];
     }
 
-    module Stats {
+    namespace Stats {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3544,7 +3544,7 @@ export namespace Gegl {
         _init(...args: any[]): void;
     }
 
-    module TileBackend {
+    namespace TileBackend {
         // Constructor properties interface
 
         interface ConstructorProps extends TileSource.ConstructorProps {
@@ -3625,7 +3625,7 @@ export namespace Gegl {
         set_flush_on_destroy(flush_on_destroy: boolean): void;
     }
 
-    module TileHandler {
+    namespace TileHandler {
         // Constructor properties interface
 
         interface ConstructorProps extends TileSource.ConstructorProps {
@@ -3656,7 +3656,7 @@ export namespace Gegl {
         unlock(): void;
     }
 
-    module TileSource {
+    namespace TileSource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4433,7 +4433,7 @@ export namespace Gegl {
     }
 
     type TileSourceClass = typeof TileSource;
-    module Metadata {
+    namespace Metadata {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

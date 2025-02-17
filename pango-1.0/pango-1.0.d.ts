@@ -3087,7 +3087,7 @@ export namespace Pango {
          */
         IGNORABLES,
     }
-    module Context {
+    namespace Context {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3316,7 +3316,7 @@ export namespace Pango {
         set_round_glyph_positions(round_positions: boolean): void;
     }
 
-    module Coverage {
+    namespace Coverage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3397,7 +3397,7 @@ export namespace Pango {
         unref(): void;
     }
 
-    module Font {
+    namespace Font {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3621,7 +3621,7 @@ export namespace Pango {
         serialize(): GLib.Bytes;
     }
 
-    module FontFace {
+    namespace FontFace {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3725,7 +3725,7 @@ export namespace Pango {
         list_sizes(): number[] | null;
     }
 
-    module FontFamily {
+    namespace FontFamily {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -4383,7 +4383,7 @@ export namespace Pango {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FontMap {
+    namespace FontMap {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -5072,7 +5072,7 @@ export namespace Pango {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Fontset {
+    namespace Fontset {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5144,7 +5144,7 @@ export namespace Pango {
         get_metrics(): FontMetrics;
     }
 
-    module FontsetSimple {
+    namespace FontsetSimple {
         // Constructor properties interface
 
         interface ConstructorProps extends Fontset.ConstructorProps {}
@@ -5184,7 +5184,7 @@ export namespace Pango {
         size(): number;
     }
 
-    module Layout {
+    namespace Layout {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5968,7 +5968,7 @@ export namespace Pango {
         xy_to_index(x: number, y: number): [boolean, number, number];
     }
 
-    module Renderer {
+    namespace Renderer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

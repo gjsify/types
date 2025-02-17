@@ -49,7 +49,7 @@ export namespace Anthy {
     interface logger {
         (level: number, arg1: string): void;
     }
-    module GContext {
+    namespace GContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}

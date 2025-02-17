@@ -622,7 +622,7 @@ export namespace Anjuta {
         IGNORED,
         ALL,
     }
-    module AsyncCommand {
+    namespace AsyncCommand {
         // Constructor properties interface
 
         interface ConstructorProps extends Command.ConstructorProps {}
@@ -659,7 +659,7 @@ export namespace Anjuta {
         unlock(): void;
     }
 
-    module AsyncNotify {
+    namespace AsyncNotify {
         // Signal callback interfaces
 
         interface Finished {
@@ -714,7 +714,7 @@ export namespace Anjuta {
         set_error(error: GLib.Error): void;
     }
 
-    module Autogen {
+    namespace Autogen {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -811,7 +811,7 @@ export namespace Anjuta {
         write_definition_file(values: { [key: string]: any } | GLib.HashTable<string, string>): boolean;
     }
 
-    module CModule {
+    namespace CModule {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {}
@@ -1275,7 +1275,7 @@ export namespace Anjuta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CPluginFactory {
+    namespace CPluginFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1300,7 +1300,7 @@ export namespace Anjuta {
         free(): void;
     }
 
-    module CellRendererCaptionedImage {
+    namespace CellRendererCaptionedImage {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRenderer.ConstructorProps {
@@ -1333,7 +1333,7 @@ export namespace Anjuta {
         static ['new'](): CellRendererCaptionedImage;
     }
 
-    module CellRendererDiff {
+    namespace CellRendererDiff {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRenderer.ConstructorProps {
@@ -1361,7 +1361,7 @@ export namespace Anjuta {
         set_diff(diff: string): void;
     }
 
-    module CloseButton {
+    namespace CloseButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5868,7 +5868,7 @@ export namespace Anjuta {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module ColumnTextView {
+    namespace ColumnTextView {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6313,7 +6313,7 @@ export namespace Anjuta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Command {
+    namespace Command {
         // Signal callback interfaces
 
         interface CommandFinished {
@@ -6485,7 +6485,7 @@ export namespace Anjuta {
         stop_automatic_monitor(): void;
     }
 
-    module CommandBar {
+    namespace CommandBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6937,7 +6937,7 @@ export namespace Anjuta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CommandQueue {
+    namespace CommandQueue {
         // Signal callback interfaces
 
         interface Finished {
@@ -6984,7 +6984,7 @@ export namespace Anjuta {
         start(): boolean;
     }
 
-    module Completion {
+    namespace Completion {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7025,7 +7025,7 @@ export namespace Anjuta {
         set_item_destroy_func(item_destroy_func?: GLib.DestroyNotify | null): void;
     }
 
-    module Dock {
+    namespace Dock {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7545,7 +7545,7 @@ export namespace Anjuta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DockPane {
+    namespace DockPane {
         // Signal callback interfaces
 
         interface MultipleSelectionChanged {
@@ -7616,7 +7616,7 @@ export namespace Anjuta {
         refresh(): void;
     }
 
-    module DropEntry {
+    namespace DropEntry {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11873,7 +11873,7 @@ export namespace Anjuta {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module Entry {
+    namespace Entry {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16405,7 +16405,7 @@ export namespace Anjuta {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module EnvironmentEditor {
+    namespace EnvironmentEditor {
         // Signal callback interfaces
 
         interface Changed {
@@ -16852,7 +16852,7 @@ export namespace Anjuta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FileDropEntry {
+    namespace FileDropEntry {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21126,7 +21126,7 @@ export namespace Anjuta {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module FileList {
+    namespace FileList {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21588,7 +21588,7 @@ export namespace Anjuta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LanguageProvider {
+    namespace LanguageProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -21649,7 +21649,7 @@ export namespace Anjuta {
         populate(iprov: GObject.Object, cursor: GObject.Object): void;
     }
 
-    module Launcher {
+    namespace Launcher {
         // Signal callback interfaces
 
         interface Busy {
@@ -21773,7 +21773,7 @@ export namespace Anjuta {
         signal(sig: number): void;
     }
 
-    module PkgConfigChooser {
+    namespace PkgConfigChooser {
         // Signal callback interfaces
 
         interface PackageActivated {
@@ -22329,7 +22329,7 @@ export namespace Anjuta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PkgScanner {
+    namespace PkgScanner {
         // Constructor properties interface
 
         interface ConstructorProps extends AsyncCommand.ConstructorProps {
@@ -22362,7 +22362,7 @@ export namespace Anjuta {
         get_version(): string;
     }
 
-    module Plugin {
+    namespace Plugin {
         // Signal callback interfaces
 
         interface Activated {
@@ -22471,7 +22471,7 @@ export namespace Anjuta {
         remove_watch(id: number, send_remove: boolean): void;
     }
 
-    module PluginHandle {
+    namespace PluginHandle {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -22560,7 +22560,7 @@ export namespace Anjuta {
         unresolve_dependencies(): void;
     }
 
-    module PluginManager {
+    namespace PluginManager {
         // Signal callback interfaces
 
         interface PluginActivated {
@@ -22685,7 +22685,7 @@ export namespace Anjuta {
         unload_plugin_by_handle(handle: PluginHandle): boolean;
     }
 
-    module Preferences {
+    namespace Preferences {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -22738,7 +22738,7 @@ export namespace Anjuta {
         remove_page(page_name: string): void;
     }
 
-    module PreferencesDialog {
+    namespace PreferencesDialog {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23178,7 +23178,7 @@ export namespace Anjuta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Profile {
+    namespace Profile {
         // Signal callback interfaces
 
         interface Changed {
@@ -23323,7 +23323,7 @@ export namespace Anjuta {
         unload(): boolean;
     }
 
-    module ProfileManager {
+    namespace ProfileManager {
         // Signal callback interfaces
 
         interface ProfilePopped {
@@ -23427,7 +23427,7 @@ export namespace Anjuta {
         thaw(): boolean;
     }
 
-    module ProjectNode {
+    namespace ProjectNode {
         // Signal callback interfaces
 
         interface Loaded {
@@ -23526,7 +23526,7 @@ export namespace Anjuta {
         traverse(order: GLib.TraverseType | null, func: ProjectNodeTraverseFunc): ProjectNode;
     }
 
-    module SavePrompt {
+    namespace SavePrompt {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23956,7 +23956,7 @@ export namespace Anjuta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Serializer {
+    namespace Serializer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -23991,7 +23991,7 @@ export namespace Anjuta {
         write_string(name: string, value: string): boolean;
     }
 
-    module Session {
+    namespace Session {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -24100,7 +24100,7 @@ export namespace Anjuta {
         sync(): void;
     }
 
-    module Status {
+    namespace Status {
         // Signal callback interfaces
 
         interface Busy {
@@ -24577,7 +24577,7 @@ export namespace Anjuta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SyncCommand {
+    namespace SyncCommand {
         // Constructor properties interface
 
         interface ConstructorProps extends Command.ConstructorProps {}
@@ -24593,7 +24593,7 @@ export namespace Anjuta {
         _init(...args: any[]): void;
     }
 
-    module Tabber {
+    namespace Tabber {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -25035,7 +25035,7 @@ export namespace Anjuta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TokenFile {
+    namespace TokenFile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -25077,7 +25077,7 @@ export namespace Anjuta {
         update(token: Token): boolean;
     }
 
-    module TreeComboBox {
+    namespace TreeComboBox {
         // Signal callback interfaces
 
         interface Changed {
@@ -29541,7 +29541,7 @@ export namespace Anjuta {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module UI {
+    namespace UI {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.UIManager.ConstructorProps, Gtk.Buildable.ConstructorProps {}
@@ -30277,7 +30277,7 @@ export namespace Anjuta {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module VcsStatusTreeView {
+    namespace VcsStatusTreeView {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31530,7 +31530,7 @@ export namespace Anjuta {
         _init(...args: any[]): void;
     }
 
-    module Shell {
+    namespace Shell {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

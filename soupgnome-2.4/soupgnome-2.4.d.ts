@@ -20,7 +20,7 @@ export namespace SoupGNOME {
 
     const COOKIE_JAR_SQLITE_FILENAME: string;
     function gnome_features_2_26_get_type(): GObject.GType;
-    module CookieJarSqlite {
+    namespace CookieJarSqlite {
         // Constructor properties interface
 
         interface ConstructorProps extends Soup.CookieJarDB.ConstructorProps, Soup.SessionFeature.ConstructorProps {}
@@ -443,7 +443,7 @@ export namespace SoupGNOME {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PasswordManagerGNOME {
+    namespace PasswordManagerGNOME {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Soup.SessionFeature.ConstructorProps {}
@@ -935,7 +935,7 @@ export namespace SoupGNOME {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ProxyResolverGNOME {
+    namespace ProxyResolverGNOME {
         // Constructor properties interface
 
         interface ConstructorProps

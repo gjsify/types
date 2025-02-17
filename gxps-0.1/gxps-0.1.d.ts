@@ -107,7 +107,7 @@ export namespace GXPS {
      */
     const VERSION_STRING: string;
     function error_quark(): GLib.Quark;
-    module CoreProperties {
+    namespace CoreProperties {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -704,7 +704,7 @@ export namespace GXPS {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Document {
+    namespace Document {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -1258,7 +1258,7 @@ export namespace GXPS {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DocumentStructure {
+    namespace DocumentStructure {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1326,7 +1326,7 @@ export namespace GXPS {
         has_outline(): boolean;
     }
 
-    module File {
+    namespace File {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -1879,7 +1879,7 @@ export namespace GXPS {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Page {
+    namespace Page {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {

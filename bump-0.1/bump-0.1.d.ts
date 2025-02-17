@@ -21,7 +21,7 @@ export namespace Bump {
     interface Callback {
         (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): any;
     }
-    module AsyncPriorityQueue {
+    namespace AsyncPriorityQueue {
         // Signal callback interfaces
 
         interface ConsumerShortage {
@@ -90,7 +90,7 @@ export namespace Bump {
         get_waiting_threads(): number;
     }
 
-    module Claim {
+    namespace Claim {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -578,7 +578,7 @@ export namespace Bump {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Event {
+    namespace Event {
         interface Callback {
             (
                 a_type: GObject.GType,
@@ -702,7 +702,7 @@ export namespace Bump {
         get_triggered(): boolean;
     }
 
-    module Factory {
+    namespace Factory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -810,7 +810,7 @@ export namespace Bump {
         set_construct_properties(value: GObject.Parameter[]): void;
     }
 
-    module Lazy {
+    namespace Lazy {
         // Constructor properties interface
 
         interface ConstructorProps extends Factory.ConstructorProps {
@@ -858,7 +858,7 @@ export namespace Bump {
         get_is_initialized(): boolean;
     }
 
-    module ResourceClaim {
+    namespace ResourceClaim {
         // Constructor properties interface
 
         interface ConstructorProps extends Claim.ConstructorProps {
@@ -904,7 +904,7 @@ export namespace Bump {
         get_resource(): any;
     }
 
-    module ResourcePool {
+    namespace ResourcePool {
         interface Callback {
             (
                 t_type: GObject.GType,
@@ -1057,7 +1057,7 @@ export namespace Bump {
         get_pool(): TaskQueue;
     }
 
-    module Semaphore {
+    namespace Semaphore {
         // Constructor properties interface
 
         interface ConstructorProps extends TaskQueue.ConstructorProps {
@@ -1126,7 +1126,7 @@ export namespace Bump {
         get_pool(): TaskQueue;
     }
 
-    module SemaphoreClaim {
+    namespace SemaphoreClaim {
         // Constructor properties interface
 
         interface ConstructorProps extends Claim.ConstructorProps {
@@ -1152,7 +1152,7 @@ export namespace Bump {
         get_semaphore(): Semaphore;
     }
 
-    module TaskQueue {
+    namespace TaskQueue {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1784,7 +1784,7 @@ export namespace Bump {
 
     type QueueIface = typeof Queue;
     type ThreadingIface = typeof Threading;
-    module Queue {
+    namespace Queue {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1816,7 +1816,7 @@ export namespace Bump {
         new (): Queue; // This allows `obj instanceof Queue`
     };
 
-    module Threading {
+    namespace Threading {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

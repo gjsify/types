@@ -418,7 +418,7 @@ export namespace XreaderDocument {
         PREVIEW,
         NUMBER_UP,
     }
-    module Annotation {
+    namespace Annotation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -573,7 +573,7 @@ export namespace XreaderDocument {
         set_rgba(rgba: Gdk.RGBA): boolean;
     }
 
-    module AnnotationAttachment {
+    namespace AnnotationAttachment {
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
@@ -759,7 +759,7 @@ export namespace XreaderDocument {
         set_rgba(rgba: Gdk.RGBA): boolean;
     }
 
-    module AnnotationText {
+    namespace AnnotationText {
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
@@ -953,7 +953,7 @@ export namespace XreaderDocument {
         set_rgba(rgba: Gdk.RGBA): boolean;
     }
 
-    module AnnotationTextMarkup {
+    namespace AnnotationTextMarkup {
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
@@ -1145,7 +1145,7 @@ export namespace XreaderDocument {
         set_rgba(rgba: Gdk.RGBA): boolean;
     }
 
-    module Attachment {
+    namespace Attachment {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1204,7 +1204,7 @@ export namespace XreaderDocument {
         save(file: Gio.File): boolean;
     }
 
-    module Document {
+    namespace Document {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1358,7 +1358,7 @@ export namespace XreaderDocument {
         toggle_night_mode(night: boolean): void;
     }
 
-    module FormField {
+    namespace FormField {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1382,7 +1382,7 @@ export namespace XreaderDocument {
         _init(...args: any[]): void;
     }
 
-    module FormFieldButton {
+    namespace FormFieldButton {
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1406,7 +1406,7 @@ export namespace XreaderDocument {
         static ['new'](id: number, type: FormFieldButtonType): FormFieldButton;
     }
 
-    module FormFieldChoice {
+    namespace FormFieldChoice {
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1435,7 +1435,7 @@ export namespace XreaderDocument {
         static ['new'](id: number, type: FormFieldChoiceType): FormFieldChoice;
     }
 
-    module FormFieldSignature {
+    namespace FormFieldSignature {
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1457,7 +1457,7 @@ export namespace XreaderDocument {
         static ['new'](id: number): FormFieldSignature;
     }
 
-    module FormFieldText {
+    namespace FormFieldText {
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1487,7 +1487,7 @@ export namespace XreaderDocument {
         static ['new'](id: number, type: FormFieldTextType): FormFieldText;
     }
 
-    module Image {
+    namespace Image {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1518,7 +1518,7 @@ export namespace XreaderDocument {
         save_tmp(pixbuf: GdkPixbuf.Pixbuf): string;
     }
 
-    module Layer {
+    namespace Layer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1545,7 +1545,7 @@ export namespace XreaderDocument {
         is_parent(): boolean;
     }
 
-    module Link {
+    namespace Link {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1575,7 +1575,7 @@ export namespace XreaderDocument {
         get_title(): string;
     }
 
-    module LinkAction {
+    namespace LinkAction {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1638,7 +1638,7 @@ export namespace XreaderDocument {
         get_uri(): string;
     }
 
-    module LinkDest {
+    namespace LinkDest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1719,7 +1719,7 @@ export namespace XreaderDocument {
         get_zoom(change_zoom: boolean): number;
     }
 
-    module Page {
+    namespace Page {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1744,7 +1744,7 @@ export namespace XreaderDocument {
         static ['new'](index: number): Page;
     }
 
-    module RenderContext {
+    namespace RenderContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1774,7 +1774,7 @@ export namespace XreaderDocument {
         set_scale(scale: number): void;
     }
 
-    module TransitionEffect {
+    namespace TransitionEffect {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2141,7 +2141,7 @@ export namespace XreaderDocument {
         _init(...args: any[]): void;
     }
 
-    module AnnotationMarkup {
+    namespace AnnotationMarkup {
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps {
@@ -2200,7 +2200,7 @@ export namespace XreaderDocument {
         new (): AnnotationMarkup; // This allows `obj instanceof AnnotationMarkup`
     };
 
-    module AsyncRenderer {
+    namespace AsyncRenderer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2225,7 +2225,7 @@ export namespace XreaderDocument {
         new (): AsyncRenderer; // This allows `obj instanceof AsyncRenderer`
     };
 
-    module DocumentAnnotations {
+    namespace DocumentAnnotations {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2257,7 +2257,7 @@ export namespace XreaderDocument {
         new (): DocumentAnnotations; // This allows `obj instanceof DocumentAnnotations`
     };
 
-    module DocumentAttachments {
+    namespace DocumentAttachments {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2281,7 +2281,7 @@ export namespace XreaderDocument {
         new (): DocumentAttachments; // This allows `obj instanceof DocumentAttachments`
     };
 
-    module DocumentFind {
+    namespace DocumentFind {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2305,7 +2305,7 @@ export namespace XreaderDocument {
         new (): DocumentFind; // This allows `obj instanceof DocumentFind`
     };
 
-    module DocumentFonts {
+    namespace DocumentFonts {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2333,7 +2333,7 @@ export namespace XreaderDocument {
         new (): DocumentFonts; // This allows `obj instanceof DocumentFonts`
     };
 
-    module DocumentForms {
+    namespace DocumentForms {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2381,7 +2381,7 @@ export namespace XreaderDocument {
         new (): DocumentForms; // This allows `obj instanceof DocumentForms`
     };
 
-    module DocumentImages {
+    namespace DocumentImages {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2397,7 +2397,7 @@ export namespace XreaderDocument {
         new (): DocumentImages; // This allows `obj instanceof DocumentImages`
     };
 
-    module DocumentLayers {
+    namespace DocumentLayers {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2427,7 +2427,7 @@ export namespace XreaderDocument {
         new (): DocumentLayers; // This allows `obj instanceof DocumentLayers`
     };
 
-    module DocumentLinks {
+    namespace DocumentLinks {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2457,7 +2457,7 @@ export namespace XreaderDocument {
         new (): DocumentLinks; // This allows `obj instanceof DocumentLinks`
     };
 
-    module DocumentPrint {
+    namespace DocumentPrint {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2481,7 +2481,7 @@ export namespace XreaderDocument {
         new (): DocumentPrint; // This allows `obj instanceof DocumentPrint`
     };
 
-    module DocumentSecurity {
+    namespace DocumentSecurity {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2507,7 +2507,7 @@ export namespace XreaderDocument {
         new (): DocumentSecurity; // This allows `obj instanceof DocumentSecurity`
     };
 
-    module DocumentText {
+    namespace DocumentText {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2535,7 +2535,7 @@ export namespace XreaderDocument {
         new (): DocumentText; // This allows `obj instanceof DocumentText`
     };
 
-    module DocumentThumbnails {
+    namespace DocumentThumbnails {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2559,7 +2559,7 @@ export namespace XreaderDocument {
         new (): DocumentThumbnails; // This allows `obj instanceof DocumentThumbnails`
     };
 
-    module DocumentTransition {
+    namespace DocumentTransition {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2583,7 +2583,7 @@ export namespace XreaderDocument {
         new (): DocumentTransition; // This allows `obj instanceof DocumentTransition`
     };
 
-    module FileExporter {
+    namespace FileExporter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2617,7 +2617,7 @@ export namespace XreaderDocument {
         new (): FileExporter; // This allows `obj instanceof FileExporter`
     };
 
-    module Selection {
+    namespace Selection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -77,7 +77,7 @@ export namespace Gkbd {
     function strv_append(arr: string, element: string): string[];
     function strv_behead(arr: string): void;
     function strv_remove(arr: string, element: string): boolean;
-    module Configuration {
+    namespace Configuration {
         // Signal callback interfaces
 
         interface Changed {
@@ -158,7 +158,7 @@ export namespace Gkbd {
         stop_listen(): void;
     }
 
-    module Indicator {
+    namespace Indicator {
         // Signal callback interfaces
 
         interface ReinitUi {
@@ -613,7 +613,7 @@ export namespace Gkbd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module KeyboardDrawing {
+    namespace KeyboardDrawing {
         // Signal callback interfaces
 
         interface BadKeycode {
@@ -1099,7 +1099,7 @@ export namespace Gkbd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Status {
+    namespace Status {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.StatusIcon.ConstructorProps {}

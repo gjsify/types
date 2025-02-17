@@ -124,7 +124,7 @@ export namespace Entangle {
         applyOrientation: boolean,
         metadata?: GExiv2.Metadata | null,
     ): GdkPixbuf.Pixbuf;
-    module Application {
+    namespace Application {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -584,7 +584,7 @@ export namespace Entangle {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Camera {
+    namespace Camera {
         // Signal callback interfaces
 
         interface CameraClosed {
@@ -1714,7 +1714,7 @@ export namespace Entangle {
         unmount_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module CameraAutomata {
+    namespace CameraAutomata {
         // Signal callback interfaces
 
         interface CameraCaptureBegin {
@@ -1806,7 +1806,7 @@ export namespace Entangle {
         set_session(session: Session): void;
     }
 
-    module CameraFile {
+    namespace CameraFile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1896,7 +1896,7 @@ export namespace Entangle {
         set_mimetype(mimetype?: string | null): void;
     }
 
-    module CameraList {
+    namespace CameraList {
         // Signal callback interfaces
 
         interface CameraAdded {
@@ -1988,7 +1988,7 @@ export namespace Entangle {
         remove(cam: Camera): void;
     }
 
-    module CameraManager {
+    namespace CameraManager {
         // Signal callback interfaces
 
         interface Closed {
@@ -2989,7 +2989,7 @@ export namespace Entangle {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CameraPicker {
+    namespace CameraPicker {
         // Signal callback interfaces
 
         interface PickerConnect {
@@ -3445,7 +3445,7 @@ export namespace Entangle {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CameraPreferences {
+    namespace CameraPreferences {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3485,7 +3485,7 @@ export namespace Entangle {
         set_controls(controls: string): void;
     }
 
-    module CameraSupport {
+    namespace CameraSupport {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3931,7 +3931,7 @@ export namespace Entangle {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ColourProfile {
+    namespace ColourProfile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3982,7 +3982,7 @@ export namespace Entangle {
         model(): string;
     }
 
-    module ColourProfileTransform {
+    namespace ColourProfileTransform {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4024,7 +4024,7 @@ export namespace Entangle {
         apply(srcpixbuf: GdkPixbuf.Pixbuf): GdkPixbuf.Pixbuf;
     }
 
-    module Control {
+    namespace Control {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4069,7 +4069,7 @@ export namespace Entangle {
         set_readonly(ro: boolean): void;
     }
 
-    module ControlButton {
+    namespace ControlButton {
         // Constructor properties interface
 
         interface ConstructorProps extends Control.ConstructorProps {}
@@ -4087,7 +4087,7 @@ export namespace Entangle {
         static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlButton;
     }
 
-    module ControlChoice {
+    namespace ControlChoice {
         // Constructor properties interface
 
         interface ConstructorProps extends Control.ConstructorProps {
@@ -4119,7 +4119,7 @@ export namespace Entangle {
         entry_get(idx: number): string;
     }
 
-    module ControlDate {
+    namespace ControlDate {
         // Constructor properties interface
 
         interface ConstructorProps extends Control.ConstructorProps {
@@ -4144,7 +4144,7 @@ export namespace Entangle {
         static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlDate;
     }
 
-    module ControlGroup {
+    namespace ControlGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends Control.ConstructorProps {}
@@ -4183,7 +4183,7 @@ export namespace Entangle {
         get_by_path(path: string): Control;
     }
 
-    module ControlPanel {
+    namespace ControlPanel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4632,7 +4632,7 @@ export namespace Entangle {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ControlRange {
+    namespace ControlRange {
         // Constructor properties interface
 
         interface ConstructorProps extends Control.ConstructorProps {
@@ -4687,7 +4687,7 @@ export namespace Entangle {
         get_step(): number;
     }
 
-    module ControlText {
+    namespace ControlText {
         // Constructor properties interface
 
         interface ConstructorProps extends Control.ConstructorProps {
@@ -4712,7 +4712,7 @@ export namespace Entangle {
         static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlText;
     }
 
-    module ControlToggle {
+    namespace ControlToggle {
         // Constructor properties interface
 
         interface ConstructorProps extends Control.ConstructorProps {
@@ -4737,7 +4737,7 @@ export namespace Entangle {
         static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlToggle;
     }
 
-    module DeviceManager {
+    namespace DeviceManager {
         // Signal callback interfaces
 
         interface DeviceAdded {
@@ -4781,7 +4781,7 @@ export namespace Entangle {
         serial_id(devpath: string): string;
     }
 
-    module HelpAbout {
+    namespace HelpAbout {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5204,7 +5204,7 @@ export namespace Entangle {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Image {
+    namespace Image {
         // Constructor properties interface
 
         interface ConstructorProps extends Media.ConstructorProps {
@@ -5244,7 +5244,7 @@ export namespace Entangle {
         set_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
     }
 
-    module ImageDisplay {
+    namespace ImageDisplay {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5777,7 +5777,7 @@ export namespace Entangle {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ImageHistogram {
+    namespace ImageHistogram {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6222,7 +6222,7 @@ export namespace Entangle {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ImageLoader {
+    namespace ImageLoader {
         // Constructor properties interface
 
         interface ConstructorProps extends PixbufLoader.ConstructorProps {
@@ -6255,7 +6255,7 @@ export namespace Entangle {
         set_embedded_preview(enable: boolean): void;
     }
 
-    module Media {
+    namespace Media {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6311,7 +6311,7 @@ export namespace Entangle {
         set_metadata(metadata: GExiv2.Metadata): void;
     }
 
-    module MediaPopup {
+    namespace MediaPopup {
         // Signal callback interfaces
 
         interface PopupClose {
@@ -6776,7 +6776,7 @@ export namespace Entangle {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MediaStatusbar {
+    namespace MediaStatusbar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7237,7 +7237,7 @@ export namespace Entangle {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PixbufLoader {
+    namespace PixbufLoader {
         // Signal callback interfaces
 
         interface MetadataLoaded {
@@ -7380,7 +7380,7 @@ export namespace Entangle {
         unload(image: Image): boolean;
     }
 
-    module Preferences {
+    namespace Preferences {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7887,7 +7887,7 @@ export namespace Entangle {
         interface_set_screen_blank(blank: boolean): void;
     }
 
-    module PreferencesDisplay {
+    namespace PreferencesDisplay {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8310,7 +8310,7 @@ export namespace Entangle {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Script {
+    namespace Script {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8371,7 +8371,7 @@ export namespace Entangle {
         get_title(): string;
     }
 
-    module ScriptConfig {
+    namespace ScriptConfig {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8823,7 +8823,7 @@ export namespace Entangle {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScriptSimple {
+    namespace ScriptSimple {
         // Constructor properties interface
 
         interface ConstructorProps extends Script.ConstructorProps {}
@@ -8864,7 +8864,7 @@ export namespace Entangle {
         return_task_error(result: Gio.Task, message: string): void;
     }
 
-    module Session {
+    namespace Session {
         // Signal callback interfaces
 
         interface SessionMediaAdded {
@@ -8952,7 +8952,7 @@ export namespace Entangle {
         remove_media(media: Media): void;
     }
 
-    module SessionBrowser {
+    namespace SessionBrowser {
         // Signal callback interfaces
 
         interface SelectionChanged {
@@ -9548,7 +9548,7 @@ export namespace Entangle {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ThumbnailLoader {
+    namespace ThumbnailLoader {
         // Constructor properties interface
 
         interface ConstructorProps extends PixbufLoader.ConstructorProps {
@@ -9574,7 +9574,7 @@ export namespace Entangle {
         static ['new'](width: number, height: number): ThumbnailLoader;
     }
 
-    module Video {
+    namespace Video {
         // Constructor properties interface
 
         interface ConstructorProps extends Media.ConstructorProps {
@@ -9654,7 +9654,7 @@ export namespace Entangle {
     type SessionClass = typeof Session;
     type ThumbnailLoaderClass = typeof ThumbnailLoader;
     type VideoClass = typeof Video;
-    module Progress {
+    namespace Progress {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

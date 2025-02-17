@@ -505,7 +505,7 @@ export namespace Libxfce4windowing {
          */
         VIRTUAL,
     }
-    module Application {
+    namespace Application {
         // Signal callback interfaces
 
         interface IconChanged {
@@ -626,7 +626,7 @@ export namespace Libxfce4windowing {
         icon_is_fallback(): boolean;
     }
 
-    module ApplicationWayland {
+    namespace ApplicationWayland {
         // Constructor properties interface
 
         interface ConstructorProps extends Application.ConstructorProps {
@@ -650,7 +650,7 @@ export namespace Libxfce4windowing {
         _init(...args: any[]): void;
     }
 
-    module ApplicationX11 {
+    namespace ApplicationX11 {
         // Constructor properties interface
 
         interface ConstructorProps extends Application.ConstructorProps {}
@@ -666,7 +666,7 @@ export namespace Libxfce4windowing {
         _init(...args: any[]): void;
     }
 
-    module ScreenWayland {
+    namespace ScreenWayland {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Screen.ConstructorProps {}
@@ -1156,7 +1156,7 @@ export namespace Libxfce4windowing {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScreenX11 {
+    namespace ScreenX11 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Screen.ConstructorProps {}
@@ -1646,7 +1646,7 @@ export namespace Libxfce4windowing {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Window {
+    namespace Window {
         // Signal callback interfaces
 
         interface CapabilitiesChanged {
@@ -1915,7 +1915,7 @@ export namespace Libxfce4windowing {
         x11_get_xid(): xlib.Window;
     }
 
-    module WindowWayland {
+    namespace WindowWayland {
         // Constructor properties interface
 
         interface ConstructorProps extends Window.ConstructorProps {
@@ -1937,7 +1937,7 @@ export namespace Libxfce4windowing {
         _init(...args: any[]): void;
     }
 
-    module WindowX11 {
+    namespace WindowX11 {
         // Constructor properties interface
 
         interface ConstructorProps extends Window.ConstructorProps {}
@@ -1953,7 +1953,7 @@ export namespace Libxfce4windowing {
         _init(...args: any[]): void;
     }
 
-    module WnckIcon {
+    namespace WnckIcon {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2603,7 +2603,7 @@ export namespace Libxfce4windowing {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WorkspaceDummy {
+    namespace WorkspaceDummy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Workspace.ConstructorProps {}
@@ -3162,7 +3162,7 @@ export namespace Libxfce4windowing {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WorkspaceGroupDummy {
+    namespace WorkspaceGroupDummy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, WorkspaceGroup.ConstructorProps {
@@ -3696,7 +3696,7 @@ export namespace Libxfce4windowing {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WorkspaceGroupWayland {
+    namespace WorkspaceGroupWayland {
         // Signal callback interfaces
 
         interface Destroyed {
@@ -4223,7 +4223,7 @@ export namespace Libxfce4windowing {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WorkspaceManagerDummy {
+    namespace WorkspaceManagerDummy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, WorkspaceManager.ConstructorProps {}
@@ -4658,7 +4658,7 @@ export namespace Libxfce4windowing {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WorkspaceManagerWayland {
+    namespace WorkspaceManagerWayland {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, WorkspaceManager.ConstructorProps {
@@ -5105,7 +5105,7 @@ export namespace Libxfce4windowing {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WorkspaceManagerX11 {
+    namespace WorkspaceManagerX11 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, WorkspaceManager.ConstructorProps {}
@@ -5540,7 +5540,7 @@ export namespace Libxfce4windowing {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WorkspaceWayland {
+    namespace WorkspaceWayland {
         // Signal callback interfaces
 
         interface Destroyed {
@@ -6120,7 +6120,7 @@ export namespace Libxfce4windowing {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WorkspaceX11 {
+    namespace WorkspaceX11 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Workspace.ConstructorProps {}
@@ -6873,7 +6873,7 @@ export namespace Libxfce4windowing {
         _init(...args: any[]): void;
     }
 
-    module Screen {
+    namespace Screen {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6978,7 +6978,7 @@ export namespace Libxfce4windowing {
         new (): Screen; // This allows `obj instanceof Screen`
     };
 
-    module Workspace {
+    namespace Workspace {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7150,7 +7150,7 @@ export namespace Libxfce4windowing {
         new (): Workspace; // This allows `obj instanceof Workspace`
     };
 
-    module WorkspaceGroup {
+    namespace WorkspaceGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7272,7 +7272,7 @@ export namespace Libxfce4windowing {
         new (): WorkspaceGroup; // This allows `obj instanceof WorkspaceGroup`
     };
 
-    module WorkspaceManager {
+    namespace WorkspaceManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

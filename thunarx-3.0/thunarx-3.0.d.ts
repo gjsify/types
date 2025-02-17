@@ -78,7 +78,7 @@ export namespace Thunarx {
      */
     function file_info_list_free(file_infos: FileInfo[]): void;
     type FileInfoList = object | null;
-    module Menu {
+    namespace Menu {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -102,7 +102,7 @@ export namespace Thunarx {
         prepend_item(item: MenuItem): void;
     }
 
-    module MenuItem {
+    namespace MenuItem {
         // Signal callback interfaces
 
         interface Activate {
@@ -188,7 +188,7 @@ export namespace Thunarx {
         set_sensitive(sensitive: boolean): void;
     }
 
-    module PropertyPage {
+    namespace PropertyPage {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -654,7 +654,7 @@ export namespace Thunarx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ProviderFactory {
+    namespace ProviderFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -696,7 +696,7 @@ export namespace Thunarx {
         list_providers(type: GObject.GType): GObject.Object[];
     }
 
-    module ProviderModule {
+    namespace ProviderModule {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1322,7 +1322,7 @@ export namespace Thunarx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Renamer {
+    namespace Renamer {
         // Signal callback interfaces
 
         interface Changed {
@@ -2167,7 +2167,7 @@ export namespace Thunarx {
     }
 
     type RenamerProviderIface = typeof RenamerProvider;
-    module FileInfo {
+    namespace FileInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2435,7 +2435,7 @@ export namespace Thunarx {
         new (): FileInfo; // This allows `obj instanceof FileInfo`
     };
 
-    module MenuProvider {
+    namespace MenuProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2451,7 +2451,7 @@ export namespace Thunarx {
         new (): MenuProvider; // This allows `obj instanceof MenuProvider`
     };
 
-    module PreferencesProvider {
+    namespace PreferencesProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2467,7 +2467,7 @@ export namespace Thunarx {
         new (): PreferencesProvider; // This allows `obj instanceof PreferencesProvider`
     };
 
-    module PropertyPageProvider {
+    namespace PropertyPageProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2483,7 +2483,7 @@ export namespace Thunarx {
         new (): PropertyPageProvider; // This allows `obj instanceof PropertyPageProvider`
     };
 
-    module ProviderPlugin {
+    namespace ProviderPlugin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2665,7 +2665,7 @@ export namespace Thunarx {
         new (): ProviderPlugin; // This allows `obj instanceof ProviderPlugin`
     };
 
-    module RenamerProvider {
+    namespace RenamerProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

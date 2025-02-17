@@ -94,7 +94,7 @@ export namespace Cheese {
      * The filename suffix for videos saved by Cheese.
      */
     const VIDEO_NAME_SUFFIX: string;
-    module Camera {
+    namespace Camera {
         // Signal callback interfaces
 
         interface PhotoSaved {
@@ -312,7 +312,7 @@ export namespace Cheese {
         toggle_effects_pipeline(active: boolean): void;
     }
 
-    module CameraDevice {
+    namespace CameraDevice {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -883,7 +883,7 @@ export namespace Cheese {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CameraDeviceMonitor {
+    namespace CameraDeviceMonitor {
         // Signal callback interfaces
 
         interface Added {
@@ -1650,7 +1650,7 @@ export namespace Cheese {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Effect {
+    namespace Effect {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1742,7 +1742,7 @@ export namespace Cheese {
         is_preview_connected(): boolean;
     }
 
-    module FileUtil {
+    namespace FileUtil {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

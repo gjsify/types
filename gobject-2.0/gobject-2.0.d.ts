@@ -2898,7 +2898,7 @@ export namespace GObject {
          */
         DEEP_DERIVABLE,
     }
-    module Binding {
+    namespace Binding {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -3124,7 +3124,7 @@ export namespace GObject {
         unbind(): void;
     }
 
-    module BindingGroup {
+    namespace BindingGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -3239,7 +3239,7 @@ export namespace GObject {
         set_source(source?: Object | null): void;
     }
 
-    module InitiallyUnowned {
+    namespace InitiallyUnowned {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -3261,7 +3261,7 @@ export namespace GObject {
         _init(...args: any[]): void;
     }
 
-    module Object {
+    namespace Object {
         // Signal callback interfaces
 
         interface Notify {
@@ -4217,7 +4217,7 @@ export namespace GObject {
         override(name: string, oclass: Object | Function | GType): void;
     }
 
-    module SignalGroup {
+    namespace SignalGroup {
         // Signal callback interfaces
 
         interface Bind {
@@ -4368,7 +4368,7 @@ export namespace GObject {
         unblock(): void;
     }
 
-    module TypeModule {
+    namespace TypeModule {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, TypePlugin.ConstructorProps {}
@@ -6610,7 +6610,7 @@ export namespace GObject {
         _init(...args: any[]): void;
     }
 
-    module TypePlugin {
+    namespace TypePlugin {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}

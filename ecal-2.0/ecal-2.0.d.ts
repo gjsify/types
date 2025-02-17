@@ -1544,7 +1544,7 @@ export namespace ECal {
          */
         MARKUP,
     }
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface FreeBusyData {
@@ -3945,7 +3945,7 @@ export namespace ECal {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ClientView {
+    namespace ClientView {
         // Signal callback interfaces
 
         interface Complete {
@@ -4583,7 +4583,7 @@ export namespace ECal {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Component {
+    namespace Component {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5258,7 +5258,7 @@ export namespace ECal {
         strip_errors(): void;
     }
 
-    module ReminderWatcher {
+    namespace ReminderWatcher {
         // Signal callback interfaces
 
         interface Changed {
@@ -6806,7 +6806,7 @@ export namespace ECal {
     }
 
     type TimezoneCacheInterface = typeof TimezoneCache;
-    module TimezoneCache {
+    namespace TimezoneCache {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

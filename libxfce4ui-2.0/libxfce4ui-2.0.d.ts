@@ -786,7 +786,7 @@ export namespace Libxfce4ui {
      * @returns %TRUE if the widget could be moved, %FALSE otherwise.
      */
     function widget_reparent(widget: Gtk.Widget, new_parent: Gtk.Widget): boolean;
-    module FilenameInput {
+    namespace FilenameInput {
         // Signal callback interfaces
 
         interface TextInvalid {
@@ -1318,7 +1318,7 @@ export namespace Libxfce4ui {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SMClient {
+    namespace SMClient {
         // Signal callback interfaces
 
         interface Quit {
@@ -1614,7 +1614,7 @@ export namespace Libxfce4ui {
         set_restart_style(restart_style: SMClientRestartStyle | null): void;
     }
 
-    module Screensaver {
+    namespace Screensaver {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1674,7 +1674,7 @@ export namespace Libxfce4ui {
         lock(): boolean;
     }
 
-    module TitledDialog {
+    namespace TitledDialog {
         // Constructor properties interface
 
         interface ConstructorProps

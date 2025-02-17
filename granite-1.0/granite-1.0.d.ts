@@ -259,7 +259,7 @@ export namespace Granite {
     interface WidgetsDroppedDelegate {
         (): void;
     }
-    module DrawingBufferSurface {
+    namespace DrawingBufferSurface {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -309,7 +309,7 @@ export namespace Granite {
         gaussian_blur(radius: number): void;
     }
 
-    module DrawingColor {
+    namespace DrawingColor {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -778,7 +778,7 @@ export namespace Granite {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DrawingUtilities {
+    namespace DrawingUtilities {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -808,7 +808,7 @@ export namespace Granite {
         static average_color(source: GdkPixbuf.Pixbuf): DrawingColor;
     }
 
-    module ServicesContractorProxy {
+    namespace ServicesContractorProxy {
         // Signal callback interfaces
 
         interface ContractsChanged {
@@ -848,7 +848,7 @@ export namespace Granite {
         static get_contracts_for_files(files: Gio.File[]): Gee.List;
     }
 
-    module ServicesIconFactory {
+    namespace ServicesIconFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -875,7 +875,7 @@ export namespace Granite {
         load_symbolic_icon(style: Gtk.StyleContext, iconname: string, size: number): GdkPixbuf.Pixbuf | null;
     }
 
-    module ServicesLogger {
+    namespace ServicesLogger {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -900,7 +900,7 @@ export namespace Granite {
         static notification(msg: string): void;
     }
 
-    module ServicesPaths {
+    namespace ServicesPaths {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -941,7 +941,7 @@ export namespace Granite {
         static ensure_directory_exists(dir: Gio.File): boolean;
     }
 
-    module ServicesSettings {
+    namespace ServicesSettings {
         // Signal callback interfaces
 
         interface Changed {
@@ -987,7 +987,7 @@ export namespace Granite {
         verify(key: string): void;
     }
 
-    module ServicesSimpleCommand {
+    namespace ServicesSimpleCommand {
         // Signal callback interfaces
 
         interface Done {
@@ -1051,7 +1051,7 @@ export namespace Granite {
         run(): void;
     }
 
-    module ServicesSystem {
+    namespace ServicesSystem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1079,7 +1079,7 @@ export namespace Granite {
         static history_is_enabled(): boolean;
     }
 
-    module WidgetsAlertView {
+    namespace WidgetsAlertView {
         // Signal callback interfaces
 
         interface ActionActivated {
@@ -1142,7 +1142,7 @@ export namespace Granite {
         hide_action(): void;
     }
 
-    module WidgetsAvatar {
+    namespace WidgetsAvatar {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EventBox.ConstructorProps {
@@ -1179,7 +1179,7 @@ export namespace Granite {
         show_default(pixel_size: number): void;
     }
 
-    module WidgetsCellRendererBadge {
+    namespace WidgetsCellRendererBadge {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRenderer.ConstructorProps {
@@ -1209,7 +1209,7 @@ export namespace Granite {
         set_text(value: string): void;
     }
 
-    module WidgetsCellRendererExpander {
+    namespace WidgetsCellRendererExpander {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRenderer.ConstructorProps {
@@ -1247,7 +1247,7 @@ export namespace Granite {
         get_arrow_size(widget: Gtk.Widget): number;
     }
 
-    module WidgetsCollapsiblePaned {
+    namespace WidgetsCollapsiblePaned {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Paned.ConstructorProps {
@@ -1280,7 +1280,7 @@ export namespace Granite {
         set_collapse_mode(value: CollapseMode | null): void;
     }
 
-    module WidgetsCompositedWindow {
+    namespace WidgetsCompositedWindow {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Window.ConstructorProps, Gtk.Buildable.ConstructorProps {}
@@ -1700,7 +1700,7 @@ export namespace Granite {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WidgetsDatePicker {
+    namespace WidgetsDatePicker {
         // Signal callback interfaces
 
         interface DateChanged {
@@ -2162,7 +2162,7 @@ export namespace Granite {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WidgetsTab {
+    namespace WidgetsTab {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EventBox.ConstructorProps {
@@ -2279,7 +2279,7 @@ export namespace Granite {
         close(): void;
     }
 
-    module WidgetsDynamicNotebook {
+    namespace WidgetsDynamicNotebook {
         // Signal callback interfaces
 
         interface TabAdded {
@@ -2536,7 +2536,7 @@ export namespace Granite {
         insert_tab(tab: WidgetsTab, index: number): number;
     }
 
-    module WidgetsModeButton {
+    namespace WidgetsModeButton {
         // Signal callback interfaces
 
         interface ModeAdded {
@@ -2616,7 +2616,7 @@ export namespace Granite {
         clear_children(): void;
     }
 
-    module WidgetsOverlayBar {
+    namespace WidgetsOverlayBar {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EventBox.ConstructorProps {
@@ -2662,7 +2662,7 @@ export namespace Granite {
         set_active(value: boolean): void;
     }
 
-    module WidgetsSourceList {
+    namespace WidgetsSourceList {
         // Signal callback interfaces
 
         interface ItemSelected {
@@ -2758,7 +2758,7 @@ export namespace Granite {
         get_n_visible_children(parent: WidgetsSourceListExpandableItem): number;
     }
 
-    module WidgetsSourceListItem {
+    namespace WidgetsSourceListItem {
         // Signal callback interfaces
 
         interface Edited {
@@ -2877,7 +2877,7 @@ export namespace Granite {
         get_context_menu(): Gtk.Menu | null;
     }
 
-    module WidgetsSourceListExpandableItem {
+    namespace WidgetsSourceListExpandableItem {
         // Signal callback interfaces
 
         interface ChildAdded {
@@ -2961,7 +2961,7 @@ export namespace Granite {
         collapse_with_parents(): void;
     }
 
-    module WidgetsStorageBar {
+    namespace WidgetsStorageBar {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
@@ -3013,7 +3013,7 @@ export namespace Granite {
         update_block_size(description: WidgetsStorageBarItemDescription | null, size: number): void;
     }
 
-    module WidgetsTimePicker {
+    namespace WidgetsTimePicker {
         // Signal callback interfaces
 
         interface TimeChanged {
@@ -3075,7 +3075,7 @@ export namespace Granite {
         position_dropdown(): [number, number];
     }
 
-    module WidgetsToast {
+    namespace WidgetsToast {
         // Signal callback interfaces
 
         interface Closed {
@@ -3132,7 +3132,7 @@ export namespace Granite {
         send_notification(): void;
     }
 
-    module WidgetsWelcomeButton {
+    namespace WidgetsWelcomeButton {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Button.ConstructorProps {
@@ -3175,7 +3175,7 @@ export namespace Granite {
         set_icon(value?: Gtk.Image | null): void;
     }
 
-    module WidgetsWelcome {
+    namespace WidgetsWelcome {
         // Signal callback interfaces
 
         interface Activated {
@@ -3240,7 +3240,7 @@ export namespace Granite {
         get_button_from_index(index: number): WidgetsWelcomeButton | null;
     }
 
-    module Application {
+    namespace Application {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Application.ConstructorProps {}
@@ -3296,7 +3296,7 @@ export namespace Granite {
         set_options(): void;
     }
 
-    module SettingsPage {
+    namespace SettingsPage {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ScrolledWindow.ConstructorProps {
@@ -3353,7 +3353,7 @@ export namespace Granite {
         set_title(value: string): void;
     }
 
-    module SimpleSettingsPage {
+    namespace SimpleSettingsPage {
         // Constructor properties interface
 
         interface ConstructorProps extends SettingsPage.ConstructorProps {
@@ -3416,7 +3416,7 @@ export namespace Granite {
         set_title(value: string): void;
     }
 
-    module AccelLabel {
+    namespace AccelLabel {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Grid.ConstructorProps {
@@ -3467,7 +3467,7 @@ export namespace Granite {
         set_label(value: string): void;
     }
 
-    module AsyncImage {
+    namespace AsyncImage {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Image.ConstructorProps {
@@ -3587,7 +3587,7 @@ export namespace Granite {
         set_from_file_finish(_res_: Gio.AsyncResult): void;
     }
 
-    module Dialog {
+    namespace Dialog {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Dialog.ConstructorProps {}
@@ -3605,7 +3605,7 @@ export namespace Granite {
         static ['new'](): Dialog;
     }
 
-    module HeaderLabel {
+    namespace HeaderLabel {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Label.ConstructorProps {}
@@ -3626,7 +3626,7 @@ export namespace Granite {
         static ['new'](...args: never[]): any;
     }
 
-    module HyperTextView {
+    namespace HyperTextView {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TextView.ConstructorProps {}
@@ -3644,7 +3644,7 @@ export namespace Granite {
         static ['new'](): HyperTextView;
     }
 
-    module MessageDialog {
+    namespace MessageDialog {
         // Constructor properties interface
 
         interface ConstructorProps extends Dialog.ConstructorProps {
@@ -3734,7 +3734,7 @@ export namespace Granite {
         show_error_details(error_message: string): void;
     }
 
-    module ModeSwitch {
+    namespace ModeSwitch {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Grid.ConstructorProps {
@@ -3817,7 +3817,7 @@ export namespace Granite {
         set_secondary_icon_tooltip_text(value: string): void;
     }
 
-    module SeekBar {
+    namespace SeekBar {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Grid.ConstructorProps {
@@ -3896,7 +3896,7 @@ export namespace Granite {
         set_scale(value: Gtk.Scale): void;
     }
 
-    module SettingsSidebar {
+    namespace SettingsSidebar {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ScrolledWindow.ConstructorProps {
@@ -3935,7 +3935,7 @@ export namespace Granite {
         set_visible_child_name(value?: string | null): void;
     }
 
-    module Settings {
+    namespace Settings {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3969,7 +3969,7 @@ export namespace Granite {
         get_prefers_color_scheme(): SettingsColorScheme;
     }
 
-    module SwitchModelButton {
+    namespace SwitchModelButton {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ToggleButton.ConstructorProps {
@@ -4007,7 +4007,7 @@ export namespace Granite {
         set_description(value?: string | null): void;
     }
 
-    module ValidatedEntry {
+    namespace ValidatedEntry {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Entry.ConstructorProps {
@@ -4456,7 +4456,7 @@ export namespace Granite {
         _init(...args: any[]): void;
     }
 
-    module ServicesContract {
+    namespace ServicesContract {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4488,7 +4488,7 @@ export namespace Granite {
         new (): ServicesContract; // This allows `obj instanceof ServicesContract`
     };
 
-    module ServicesSettingsSerializable {
+    namespace ServicesSettingsSerializable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4514,7 +4514,7 @@ export namespace Granite {
         new (): ServicesSettingsSerializable; // This allows `obj instanceof ServicesSettingsSerializable`
     };
 
-    module WidgetsSourceListSortable {
+    namespace WidgetsSourceListSortable {
         // Constructor properties interface
 
         interface ConstructorProps extends WidgetsSourceListExpandableItem.ConstructorProps {}
@@ -4540,7 +4540,7 @@ export namespace Granite {
         new (): WidgetsSourceListSortable; // This allows `obj instanceof WidgetsSourceListSortable`
     };
 
-    module WidgetsSourceListDragSource {
+    namespace WidgetsSourceListDragSource {
         // Constructor properties interface
 
         interface ConstructorProps extends WidgetsSourceListItem.ConstructorProps {}
@@ -4566,7 +4566,7 @@ export namespace Granite {
         new (): WidgetsSourceListDragSource; // This allows `obj instanceof WidgetsSourceListDragSource`
     };
 
-    module WidgetsSourceListDragDest {
+    namespace WidgetsSourceListDragDest {
         // Constructor properties interface
 
         interface ConstructorProps extends WidgetsSourceListItem.ConstructorProps {}

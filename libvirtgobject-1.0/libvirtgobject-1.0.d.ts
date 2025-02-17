@@ -381,7 +381,7 @@ export namespace LibvirtGObject {
         HANGUP,
         ERROR,
     }
-    module Connection {
+    namespace Connection {
         // Signal callback interfaces
 
         interface ConnectionClosed {
@@ -720,7 +720,7 @@ export namespace LibvirtGObject {
         start_domain(conf: LibvirtGConfig.Domain, flags: number): Domain;
     }
 
-    module Domain {
+    namespace Domain {
         // Signal callback interfaces
 
         interface Pmsuspended {
@@ -1168,7 +1168,7 @@ export namespace LibvirtGObject {
         wakeup_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module DomainDevice {
+    namespace DomainDevice {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1197,7 +1197,7 @@ export namespace LibvirtGObject {
         get_domain(): Domain;
     }
 
-    module DomainDisk {
+    namespace DomainDisk {
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -1230,7 +1230,7 @@ export namespace LibvirtGObject {
         resize(size: number, flags: number): boolean;
     }
 
-    module DomainInterface {
+    namespace DomainInterface {
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -1256,7 +1256,7 @@ export namespace LibvirtGObject {
         get_stats(): DomainInterfaceStats;
     }
 
-    module DomainSnapshot {
+    namespace DomainSnapshot {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1317,7 +1317,7 @@ export namespace LibvirtGObject {
         set_config(conf: LibvirtGConfig.DomainSnapshot): boolean;
     }
 
-    module Interface {
+    namespace Interface {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1345,7 +1345,7 @@ export namespace LibvirtGObject {
         get_name(): string;
     }
 
-    module Manager {
+    namespace Manager {
         // Signal callback interfaces
 
         interface ConnectionAdded {
@@ -1397,7 +1397,7 @@ export namespace LibvirtGObject {
         remove_connection(conn: Connection): void;
     }
 
-    module Network {
+    namespace Network {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1440,7 +1440,7 @@ export namespace LibvirtGObject {
         get_uuid(): string;
     }
 
-    module NetworkDHCPLease {
+    namespace NetworkDHCPLease {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1474,7 +1474,7 @@ export namespace LibvirtGObject {
         get_prefix(): number;
     }
 
-    module NetworkFilter {
+    namespace NetworkFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1502,7 +1502,7 @@ export namespace LibvirtGObject {
         get_uuid(): string;
     }
 
-    module NodeDevice {
+    namespace NodeDevice {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1529,7 +1529,7 @@ export namespace LibvirtGObject {
         get_name(): string;
     }
 
-    module Secret {
+    namespace Secret {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1557,7 +1557,7 @@ export namespace LibvirtGObject {
         get_uuid(): string;
     }
 
-    module StoragePool {
+    namespace StoragePool {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1661,7 +1661,7 @@ export namespace LibvirtGObject {
         undefine_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module StorageVol {
+    namespace StorageVol {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1707,7 +1707,7 @@ export namespace LibvirtGObject {
         upload(stream: Stream, offset: number, length: number, flags: number): boolean;
     }
 
-    module Stream {
+    namespace Stream {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.IOStream.ConstructorProps {

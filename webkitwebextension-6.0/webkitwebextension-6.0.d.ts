@@ -297,7 +297,7 @@ export namespace WebKitWebExtension {
          */
         SELECTION,
     }
-    module ContextMenu {
+    namespace ContextMenu {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -440,7 +440,7 @@ export namespace WebKitWebExtension {
         set_user_data(user_data: GLib.Variant): void;
     }
 
-    module ContextMenuItem {
+    namespace ContextMenuItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -511,7 +511,7 @@ export namespace WebKitWebExtension {
         set_submenu(submenu?: ContextMenu | null): void;
     }
 
-    module Frame {
+    namespace Frame {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -565,7 +565,7 @@ export namespace WebKitWebExtension {
         is_main_frame(): boolean;
     }
 
-    module HitTestResult {
+    namespace HitTestResult {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -742,7 +742,7 @@ export namespace WebKitWebExtension {
         get_media_uri(): string;
     }
 
-    module ScriptWorld {
+    namespace ScriptWorld {
         // Signal callback interfaces
 
         interface WindowObjectCleared {
@@ -801,7 +801,7 @@ export namespace WebKitWebExtension {
         get_name(): string;
     }
 
-    module URIRequest {
+    namespace URIRequest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -859,7 +859,7 @@ export namespace WebKitWebExtension {
         set_uri(uri: string): void;
     }
 
-    module URIResponse {
+    namespace URIResponse {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -985,7 +985,7 @@ export namespace WebKitWebExtension {
         get_uri(): string;
     }
 
-    module UserMessage {
+    namespace UserMessage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -1079,7 +1079,7 @@ export namespace WebKitWebExtension {
         send_reply(reply: UserMessage): void;
     }
 
-    module WebEditor {
+    namespace WebEditor {
         // Signal callback interfaces
 
         interface SelectionChanged {
@@ -1125,7 +1125,7 @@ export namespace WebKitWebExtension {
         get_page(): WebPage;
     }
 
-    module WebExtension {
+    namespace WebExtension {
         // Signal callback interfaces
 
         interface PageCreated {
@@ -1291,7 +1291,7 @@ export namespace WebKitWebExtension {
         send_message_to_context_finish(result: Gio.AsyncResult): UserMessage;
     }
 
-    module WebFormManager {
+    namespace WebFormManager {
         // Signal callback interfaces
 
         interface FormControlsAssociated {
@@ -1383,7 +1383,7 @@ export namespace WebKitWebExtension {
         static input_element_is_user_edited(element: JavaScriptCore.Value): boolean;
     }
 
-    module WebHitTestResult {
+    namespace WebHitTestResult {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1492,7 +1492,7 @@ export namespace WebKitWebExtension {
         get_media_uri(): string;
     }
 
-    module WebPage {
+    namespace WebPage {
         // Signal callback interfaces
 
         interface ContextMenu {

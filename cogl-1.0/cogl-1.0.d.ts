@@ -3735,7 +3735,7 @@ export namespace Cogl {
         _init(...args: any[]): void;
     }
 
-    module Texture {
+    namespace Texture {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

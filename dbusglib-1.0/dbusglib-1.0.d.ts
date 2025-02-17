@@ -16,7 +16,7 @@ export namespace DBusGLib {
      * DBusGLib-1.0
      */
 
-    module Proxy {
+    namespace Proxy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -28,7 +28,7 @@ export namespace GCi {
      * GCi-1
      */
 
-    module EntryController {
+    namespace EntryController {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

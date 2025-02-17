@@ -137,7 +137,7 @@ export namespace Lfb {
      * on program shutdown.
      */
     function uninit(): void;
-    module Event {
+    namespace Event {
         // Signal callback interfaces
 
         interface FeedbackEnded {
@@ -454,7 +454,7 @@ export namespace Lfb {
         trigger_feedback_finish(res: Gio.AsyncResult): boolean;
     }
 
-    module GdbusFeedbackProxy {
+    namespace GdbusFeedbackProxy {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1480,7 +1480,7 @@ export namespace Lfb {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GdbusFeedbackSkeleton {
+    namespace GdbusFeedbackSkeleton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2157,7 +2157,7 @@ export namespace Lfb {
         _init(...args: any[]): void;
     }
 
-    module GdbusFeedback {
+    namespace GdbusFeedback {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

@@ -5749,7 +5749,7 @@ export namespace Mbim {
          */
         SIM_REMOVABLE,
     }
-    module Device {
+    namespace Device {
         // Signal callback interfaces
 
         interface DeviceError {
@@ -6943,7 +6943,7 @@ export namespace Mbim {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Proxy {
+    namespace Proxy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

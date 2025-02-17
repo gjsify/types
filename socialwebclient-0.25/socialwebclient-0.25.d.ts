@@ -35,7 +35,7 @@ export namespace SocialWebClient {
     interface ClientServiceUpdateStatusCallback {
         (service: ClientService, error: GLib.Error): void;
     }
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface OnlineChanged {
@@ -74,7 +74,7 @@ export namespace SocialWebClient {
         is_online(cb: ClientIsOnlineCallback): void;
     }
 
-    module ClientContactView {
+    namespace ClientContactView {
         // Signal callback interfaces
 
         interface ContactsAdded {
@@ -134,7 +134,7 @@ export namespace SocialWebClient {
         stop(): void;
     }
 
-    module ClientItemView {
+    namespace ClientItemView {
         // Signal callback interfaces
 
         interface ItemsAdded {
@@ -194,7 +194,7 @@ export namespace SocialWebClient {
         stop(): void;
     }
 
-    module ClientLastfm {
+    namespace ClientLastfm {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -234,7 +234,7 @@ export namespace SocialWebClient {
         ): void;
     }
 
-    module ClientService {
+    namespace ClientService {
         // Signal callback interfaces
 
         interface AvatarRetrieved {

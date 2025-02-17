@@ -849,7 +849,7 @@ export namespace GstTag {
          */
         FREE_SOFTWARE_FOUNDATION_LICENSE,
     }
-    module TagDemux {
+    namespace TagDemux {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {}
@@ -906,7 +906,7 @@ export namespace GstTag {
         vfunc_parse_tag(buffer: Gst.Buffer, start_tag: boolean, tag_size: number, tags: Gst.TagList): TagDemuxResult;
     }
 
-    module TagMux {
+    namespace TagMux {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps, Gst.TagSetter.ConstructorProps {}
@@ -1912,7 +1912,7 @@ export namespace GstTag {
     }
 
     type TagXmpWriterInterface = typeof TagXmpWriter;
-    module TagXmpWriter {
+    namespace TagXmpWriter {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {}

@@ -113,7 +113,7 @@ export namespace Lasem {
     function str_parse_double_list(str: string, n_values: number, values: number): number;
     function str_point_list_exents(point_list: string, extents: Extents): void;
     function str_to_uri(str: string): string;
-    module DomCharacterData {
+    namespace DomCharacterData {
         // Constructor properties interface
 
         interface ConstructorProps extends DomNode.ConstructorProps {}
@@ -141,7 +141,7 @@ export namespace Lasem {
         set_data(value: string): void;
     }
 
-    module DomDocument {
+    namespace DomDocument {
         // Constructor properties interface
 
         interface ConstructorProps extends DomNode.ConstructorProps {}
@@ -202,7 +202,7 @@ export namespace Lasem {
         set_url(url: string): void;
     }
 
-    module DomDocumentFragment {
+    namespace DomDocumentFragment {
         // Constructor properties interface
 
         interface ConstructorProps extends DomNode.ConstructorProps {}
@@ -224,7 +224,7 @@ export namespace Lasem {
         static ['new'](): DomDocumentFragment;
     }
 
-    module DomElement {
+    namespace DomElement {
         // Constructor properties interface
 
         interface ConstructorProps extends DomNode.ConstructorProps {}
@@ -266,7 +266,7 @@ export namespace Lasem {
         set_attribute(name: string, attribute_value: string): void;
     }
 
-    module DomNamedNodeMap {
+    namespace DomNamedNodeMap {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -299,7 +299,7 @@ export namespace Lasem {
         set_named_item(node: DomNode): DomNode;
     }
 
-    module DomNode {
+    namespace DomNode {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -399,7 +399,7 @@ export namespace Lasem {
         write_to_stream(stream: Gio.OutputStream): void;
     }
 
-    module DomNodeList {
+    namespace DomNodeList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -429,7 +429,7 @@ export namespace Lasem {
         get_length(): number;
     }
 
-    module DomText {
+    namespace DomText {
         // Constructor properties interface
 
         interface ConstructorProps extends DomCharacterData.ConstructorProps {}
@@ -451,7 +451,7 @@ export namespace Lasem {
         static ['new'](data: string): DomText;
     }
 
-    module DomView {
+    namespace DomView {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

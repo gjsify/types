@@ -1558,7 +1558,7 @@ export namespace IAnjuta {
     type TodoIface = typeof Todo;
     type VcsIface = typeof Vcs;
     type WizardIface = typeof Wizard;
-    module Buildable {
+    namespace Buildable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1673,7 +1673,7 @@ export namespace IAnjuta {
         new (): Buildable; // This allows `obj instanceof Buildable`
     };
 
-    module Builder {
+    namespace Builder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1733,7 +1733,7 @@ export namespace IAnjuta {
         new (): Builder; // This allows `obj instanceof Builder`
     };
 
-    module DebugManager {
+    namespace DebugManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1804,7 +1804,7 @@ export namespace IAnjuta {
         new (): DebugManager; // This allows `obj instanceof DebugManager`
     };
 
-    module Debugger {
+    namespace Debugger {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2116,7 +2116,7 @@ export namespace IAnjuta {
         new (): Debugger; // This allows `obj instanceof Debugger`
     };
 
-    module DebuggerBreakpoint {
+    namespace DebuggerBreakpoint {
         // Constructor properties interface
 
         interface ConstructorProps extends Debugger.ConstructorProps {}
@@ -2149,7 +2149,7 @@ export namespace IAnjuta {
         new (): DebuggerBreakpoint; // This allows `obj instanceof DebuggerBreakpoint`
     };
 
-    module DebuggerInstruction {
+    namespace DebuggerInstruction {
         // Constructor properties interface
 
         interface ConstructorProps extends Debugger.ConstructorProps {}
@@ -2215,7 +2215,7 @@ export namespace IAnjuta {
         new (): DebuggerInstruction; // This allows `obj instanceof DebuggerInstruction`
     };
 
-    module DebuggerMemory {
+    namespace DebuggerMemory {
         // Constructor properties interface
 
         interface ConstructorProps extends Debugger.ConstructorProps {}
@@ -2233,7 +2233,7 @@ export namespace IAnjuta {
         new (): DebuggerMemory; // This allows `obj instanceof DebuggerMemory`
     };
 
-    module DebuggerRegister {
+    namespace DebuggerRegister {
         // Constructor properties interface
 
         interface ConstructorProps extends Debugger.ConstructorProps {}
@@ -2268,7 +2268,7 @@ export namespace IAnjuta {
         new (): DebuggerRegister; // This allows `obj instanceof DebuggerRegister`
     };
 
-    module DebuggerVariable {
+    namespace DebuggerVariable {
         // Constructor properties interface
 
         interface ConstructorProps extends Debugger.ConstructorProps {}
@@ -2318,7 +2318,7 @@ export namespace IAnjuta {
         new (): DebuggerVariable; // This allows `obj instanceof DebuggerVariable`
     };
 
-    module Document {
+    namespace Document {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2444,7 +2444,7 @@ export namespace IAnjuta {
         new (): Document; // This allows `obj instanceof Document`
     };
 
-    module DocumentManager {
+    namespace DocumentManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2604,7 +2604,7 @@ export namespace IAnjuta {
         new (): DocumentManager; // This allows `obj instanceof DocumentManager`
     };
 
-    module Editor {
+    namespace Editor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2940,7 +2940,7 @@ export namespace IAnjuta {
         new (): Editor; // This allows `obj instanceof Editor`
     };
 
-    module EditorAssist {
+    namespace EditorAssist {
         // Constructor properties interface
 
         interface ConstructorProps extends Editor.ConstructorProps {}
@@ -2998,7 +2998,7 @@ export namespace IAnjuta {
         new (): EditorAssist; // This allows `obj instanceof EditorAssist`
     };
 
-    module EditorCell {
+    namespace EditorCell {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3073,7 +3073,7 @@ export namespace IAnjuta {
         new (): EditorCell; // This allows `obj instanceof EditorCell`
     };
 
-    module EditorCellStyle {
+    namespace EditorCellStyle {
         // Constructor properties interface
 
         interface ConstructorProps extends EditorCell.ConstructorProps {}
@@ -3103,7 +3103,7 @@ export namespace IAnjuta {
         new (): EditorCellStyle; // This allows `obj instanceof EditorCellStyle`
     };
 
-    module EditorComment {
+    namespace EditorComment {
         // Constructor properties interface
 
         interface ConstructorProps extends Editor.ConstructorProps {}
@@ -3151,7 +3151,7 @@ export namespace IAnjuta {
         new (): EditorComment; // This allows `obj instanceof EditorComment`
     };
 
-    module EditorConvert {
+    namespace EditorConvert {
         // Constructor properties interface
 
         interface ConstructorProps extends Editor.ConstructorProps {}
@@ -3199,7 +3199,7 @@ export namespace IAnjuta {
         new (): EditorConvert; // This allows `obj instanceof EditorConvert`
     };
 
-    module EditorFactory {
+    namespace EditorFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3217,7 +3217,7 @@ export namespace IAnjuta {
         new (): EditorFactory; // This allows `obj instanceof EditorFactory`
     };
 
-    module EditorFolds {
+    namespace EditorFolds {
         // Constructor properties interface
 
         interface ConstructorProps extends Editor.ConstructorProps {}
@@ -3247,7 +3247,7 @@ export namespace IAnjuta {
         new (): EditorFolds; // This allows `obj instanceof EditorFolds`
     };
 
-    module EditorGladeSignal {
+    namespace EditorGladeSignal {
         // Constructor properties interface
 
         interface ConstructorProps extends Editor.ConstructorProps {}
@@ -3270,7 +3270,7 @@ export namespace IAnjuta {
         new (): EditorGladeSignal; // This allows `obj instanceof EditorGladeSignal`
     };
 
-    module EditorGoto {
+    namespace EditorGoto {
         // Constructor properties interface
 
         interface ConstructorProps extends Editor.ConstructorProps {}
@@ -3318,7 +3318,7 @@ export namespace IAnjuta {
         new (): EditorGoto; // This allows `obj instanceof EditorGoto`
     };
 
-    module EditorHover {
+    namespace EditorHover {
         // Constructor properties interface
 
         interface ConstructorProps extends Editor.ConstructorProps {}
@@ -3356,7 +3356,7 @@ export namespace IAnjuta {
         new (): EditorHover; // This allows `obj instanceof EditorHover`
     };
 
-    module EditorLanguage {
+    namespace EditorLanguage {
         // Constructor properties interface
 
         interface ConstructorProps extends Editor.ConstructorProps {}
@@ -3413,7 +3413,7 @@ export namespace IAnjuta {
         new (): EditorLanguage; // This allows `obj instanceof EditorLanguage`
     };
 
-    module EditorLineMode {
+    namespace EditorLineMode {
         // Constructor properties interface
 
         interface ConstructorProps extends Editor.ConstructorProps {}
@@ -3485,7 +3485,7 @@ export namespace IAnjuta {
         new (): EditorLineMode; // This allows `obj instanceof EditorLineMode`
     };
 
-    module EditorSearch {
+    namespace EditorSearch {
         // Constructor properties interface
 
         interface ConstructorProps extends Editor.ConstructorProps {}
@@ -3561,7 +3561,7 @@ export namespace IAnjuta {
         new (): EditorSearch; // This allows `obj instanceof EditorSearch`
     };
 
-    module EditorSelection {
+    namespace EditorSelection {
         // Constructor properties interface
 
         interface ConstructorProps extends Editor.ConstructorProps {}
@@ -3669,7 +3669,7 @@ export namespace IAnjuta {
         new (): EditorSelection; // This allows `obj instanceof EditorSelection`
     };
 
-    module EditorTip {
+    namespace EditorTip {
         // Constructor properties interface
 
         interface ConstructorProps extends Editor.ConstructorProps {}
@@ -3725,7 +3725,7 @@ export namespace IAnjuta {
         new (): EditorTip; // This allows `obj instanceof EditorTip`
     };
 
-    module EditorView {
+    namespace EditorView {
         // Constructor properties interface
 
         interface ConstructorProps extends Editor.ConstructorProps {}
@@ -3781,7 +3781,7 @@ export namespace IAnjuta {
         new (): EditorView; // This allows `obj instanceof EditorView`
     };
 
-    module EditorZoom {
+    namespace EditorZoom {
         // Constructor properties interface
 
         interface ConstructorProps extends Editor.ConstructorProps {}
@@ -3821,7 +3821,7 @@ export namespace IAnjuta {
         new (): EditorZoom; // This allows `obj instanceof EditorZoom`
     };
 
-    module Environment {
+    namespace Environment {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3875,7 +3875,7 @@ export namespace IAnjuta {
         new (): Environment; // This allows `obj instanceof Environment`
     };
 
-    module File {
+    namespace File {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3919,7 +3919,7 @@ export namespace IAnjuta {
         new (): File; // This allows `obj instanceof File`
     };
 
-    module FileLoader {
+    namespace FileLoader {
         // Constructor properties interface
 
         interface ConstructorProps extends Loader.ConstructorProps {}
@@ -3945,7 +3945,7 @@ export namespace IAnjuta {
         new (): FileLoader; // This allows `obj instanceof FileLoader`
     };
 
-    module FileManager {
+    namespace FileManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3990,7 +3990,7 @@ export namespace IAnjuta {
         new (): FileManager; // This allows `obj instanceof FileManager`
     };
 
-    module FileSavable {
+    namespace FileSavable {
         // Constructor properties interface
 
         interface ConstructorProps extends File.ConstructorProps {}
@@ -4083,7 +4083,7 @@ export namespace IAnjuta {
         new (): FileSavable; // This allows `obj instanceof FileSavable`
     };
 
-    module Glade {
+    namespace Glade {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4109,7 +4109,7 @@ export namespace IAnjuta {
         new (): Glade; // This allows `obj instanceof Glade`
     };
 
-    module Help {
+    namespace Help {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4143,7 +4143,7 @@ export namespace IAnjuta {
         new (): Help; // This allows `obj instanceof Help`
     };
 
-    module Indenter {
+    namespace Indenter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4187,7 +4187,7 @@ export namespace IAnjuta {
         new (): Indenter; // This allows `obj instanceof Indenter`
     };
 
-    module Indicable {
+    namespace Indicable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4235,7 +4235,7 @@ export namespace IAnjuta {
         new (): Indicable; // This allows `obj instanceof Indicable`
     };
 
-    module Iterable {
+    namespace Iterable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4411,7 +4411,7 @@ export namespace IAnjuta {
         new (): Iterable; // This allows `obj instanceof Iterable`
     };
 
-    module IterableTree {
+    namespace IterableTree {
         // Constructor properties interface
 
         interface ConstructorProps extends Iterable.ConstructorProps {}
@@ -4466,7 +4466,7 @@ export namespace IAnjuta {
         new (): IterableTree; // This allows `obj instanceof IterableTree`
     };
 
-    module Language {
+    namespace Language {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4522,7 +4522,7 @@ export namespace IAnjuta {
         new (): Language; // This allows `obj instanceof Language`
     };
 
-    module LanguageProvider {
+    namespace LanguageProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends Provider.ConstructorProps {}
@@ -4599,7 +4599,7 @@ export namespace IAnjuta {
         new (): LanguageProvider; // This allows `obj instanceof LanguageProvider`
     };
 
-    module Loader {
+    namespace Loader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4617,7 +4617,7 @@ export namespace IAnjuta {
         new (): Loader; // This allows `obj instanceof Loader`
     };
 
-    module Markable {
+    namespace Markable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4711,7 +4711,7 @@ export namespace IAnjuta {
         new (): Markable; // This allows `obj instanceof Markable`
     };
 
-    module MessageManager {
+    namespace MessageManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4791,7 +4791,7 @@ export namespace IAnjuta {
         new (): MessageManager; // This allows `obj instanceof MessageManager`
     };
 
-    module MessageView {
+    namespace MessageView {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4875,7 +4875,7 @@ export namespace IAnjuta {
         new (): MessageView; // This allows `obj instanceof MessageView`
     };
 
-    module PluginFactory {
+    namespace PluginFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4891,7 +4891,7 @@ export namespace IAnjuta {
         new (): PluginFactory; // This allows `obj instanceof PluginFactory`
     };
 
-    module Preferences {
+    namespace Preferences {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4935,7 +4935,7 @@ export namespace IAnjuta {
         new (): Preferences; // This allows `obj instanceof Preferences`
     };
 
-    module Print {
+    namespace Print {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4977,7 +4977,7 @@ export namespace IAnjuta {
         new (): Print; // This allows `obj instanceof Print`
     };
 
-    module Project {
+    namespace Project {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5171,7 +5171,7 @@ export namespace IAnjuta {
         new (): Project; // This allows `obj instanceof Project`
     };
 
-    module ProjectBackend {
+    namespace ProjectBackend {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5219,7 +5219,7 @@ export namespace IAnjuta {
         new (): ProjectBackend; // This allows `obj instanceof ProjectBackend`
     };
 
-    module ProjectChooser {
+    namespace ProjectChooser {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5294,7 +5294,7 @@ export namespace IAnjuta {
         new (): ProjectChooser; // This allows `obj instanceof ProjectChooser`
     };
 
-    module ProjectManager {
+    namespace ProjectManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5530,7 +5530,7 @@ export namespace IAnjuta {
         new (): ProjectManager; // This allows `obj instanceof ProjectManager`
     };
 
-    module Provider {
+    namespace Provider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5601,7 +5601,7 @@ export namespace IAnjuta {
         new (): Provider; // This allows `obj instanceof Provider`
     };
 
-    module SnippetsManager {
+    namespace SnippetsManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5637,7 +5637,7 @@ export namespace IAnjuta {
         new (): SnippetsManager; // This allows `obj instanceof SnippetsManager`
     };
 
-    module Stream {
+    namespace Stream {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5671,7 +5671,7 @@ export namespace IAnjuta {
         new (): Stream; // This allows `obj instanceof Stream`
     };
 
-    module StreamLoader {
+    namespace StreamLoader {
         // Constructor properties interface
 
         interface ConstructorProps extends Loader.ConstructorProps {}
@@ -5708,7 +5708,7 @@ export namespace IAnjuta {
         new (): StreamLoader; // This allows `obj instanceof StreamLoader`
     };
 
-    module StreamSavable {
+    namespace StreamSavable {
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -5734,7 +5734,7 @@ export namespace IAnjuta {
         new (): StreamSavable; // This allows `obj instanceof StreamSavable`
     };
 
-    module Symbol {
+    namespace Symbol {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5815,7 +5815,7 @@ export namespace IAnjuta {
         new (): Symbol; // This allows `obj instanceof Symbol`
     };
 
-    module SymbolManager {
+    namespace SymbolManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5876,7 +5876,7 @@ export namespace IAnjuta {
         new (): SymbolManager; // This allows `obj instanceof SymbolManager`
     };
 
-    module SymbolQuery {
+    namespace SymbolQuery {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5995,7 +5995,7 @@ export namespace IAnjuta {
         new (): SymbolQuery; // This allows `obj instanceof SymbolQuery`
     };
 
-    module Terminal {
+    namespace Terminal {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6037,7 +6037,7 @@ export namespace IAnjuta {
         new (): Terminal; // This allows `obj instanceof Terminal`
     };
 
-    module Todo {
+    namespace Todo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6063,7 +6063,7 @@ export namespace IAnjuta {
         new (): Todo; // This allows `obj instanceof Todo`
     };
 
-    module Vcs {
+    namespace Vcs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6136,7 +6136,7 @@ export namespace IAnjuta {
         new (): Vcs; // This allows `obj instanceof Vcs`
     };
 
-    module Wizard {
+    namespace Wizard {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -81,7 +81,7 @@ export namespace CoglPango {
      * @param value %TRUE to enable the use of mipmapping
      */
     function font_map_set_use_mipmapping(font_map: FontMap, value: boolean): void;
-    module Renderer {
+    namespace Renderer {
         // Constructor properties interface
 
         interface ConstructorProps extends Pango.Renderer.ConstructorProps {

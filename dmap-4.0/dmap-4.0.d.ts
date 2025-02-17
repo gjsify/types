@@ -446,7 +446,7 @@ export namespace Dmap {
     interface IdRecordFunc {
         (id: number, record: Record): void;
     }
-    module AvConnection {
+    namespace AvConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends Connection.ConstructorProps {}
@@ -468,7 +468,7 @@ export namespace Dmap {
         static ['new'](name: string, host: string, port: number, db: Db, factory: RecordFactory): AvConnection;
     }
 
-    module AvShare {
+    namespace AvShare {
         // Constructor properties interface
 
         interface ConstructorProps extends Share.ConstructorProps {}
@@ -496,7 +496,7 @@ export namespace Dmap {
         ): AvShare;
     }
 
-    module Connection {
+    namespace Connection {
         // Signal callback interfaces
 
         interface Authenticate {
@@ -682,7 +682,7 @@ export namespace Dmap {
         stop(callback: ConnectionFunc): void;
     }
 
-    module ControlConnection {
+    namespace ControlConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends Connection.ConstructorProps {}
@@ -704,7 +704,7 @@ export namespace Dmap {
         static ['new'](name: string, host: string, port: number, db: Db, factory: RecordFactory): ControlConnection;
     }
 
-    module ControlShare {
+    namespace ControlShare {
         // Signal callback interfaces
 
         interface AddGuid {
@@ -813,7 +813,7 @@ export namespace Dmap {
         stop_lookup(): boolean;
     }
 
-    module ImageConnection {
+    namespace ImageConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends Connection.ConstructorProps {}
@@ -835,7 +835,7 @@ export namespace Dmap {
         static ['new'](name: string, host: string, port: number, db: Db, factory: RecordFactory): ImageConnection;
     }
 
-    module ImageShare {
+    namespace ImageShare {
         // Constructor properties interface
 
         interface ConstructorProps extends Share.ConstructorProps {}
@@ -863,7 +863,7 @@ export namespace Dmap {
         ): ImageShare;
     }
 
-    module MdnsBrowser {
+    namespace MdnsBrowser {
         // Signal callback interfaces
 
         interface ServiceAdded {
@@ -927,7 +927,7 @@ export namespace Dmap {
         stop(): boolean;
     }
 
-    module MdnsPublisher {
+    namespace MdnsPublisher {
         // Signal callback interfaces
 
         interface NameCollision {
@@ -988,7 +988,7 @@ export namespace Dmap {
         withdraw(port: number): boolean;
     }
 
-    module MdnsService {
+    namespace MdnsService {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1042,7 +1042,7 @@ export namespace Dmap {
         _init(...args: any[]): void;
     }
 
-    module Share {
+    namespace Share {
         // Signal callback interfaces
 
         interface Error {
@@ -1178,7 +1178,7 @@ export namespace Dmap {
         serve(): boolean;
     }
 
-    module TranscodeStream {
+    namespace TranscodeStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.InputStream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -1913,7 +1913,7 @@ export namespace Dmap {
         _init(...args: any[]): void;
     }
 
-    module AvRecord {
+    namespace AvRecord {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2024,7 +2024,7 @@ export namespace Dmap {
         new (): AvRecord; // This allows `obj instanceof AvRecord`
     };
 
-    module ContainerDb {
+    namespace ContainerDb {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2070,7 +2070,7 @@ export namespace Dmap {
         new (): ContainerDb; // This allows `obj instanceof ContainerDb`
     };
 
-    module ContainerRecord {
+    namespace ContainerRecord {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2119,7 +2119,7 @@ export namespace Dmap {
         new (): ContainerRecord; // This allows `obj instanceof ContainerRecord`
     };
 
-    module ControlPlayer {
+    namespace ControlPlayer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2188,7 +2188,7 @@ export namespace Dmap {
         new (): ControlPlayer; // This allows `obj instanceof ControlPlayer`
     };
 
-    module Db {
+    namespace Db {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2264,7 +2264,7 @@ export namespace Dmap {
         new (): Db; // This allows `obj instanceof Db`
     };
 
-    module ImageRecord {
+    namespace ImageRecord {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2343,7 +2343,7 @@ export namespace Dmap {
         new (): ImageRecord; // This allows `obj instanceof ImageRecord`
     };
 
-    module Record {
+    namespace Record {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2369,7 +2369,7 @@ export namespace Dmap {
         new (): Record; // This allows `obj instanceof Record`
     };
 
-    module RecordFactory {
+    namespace RecordFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

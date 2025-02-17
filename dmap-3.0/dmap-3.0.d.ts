@@ -312,7 +312,7 @@ export namespace DMAP {
     interface ResponseHandler {
         (connection: Connection, status: number, structure: GLib.Node): void;
     }
-    module Connection {
+    namespace Connection {
         // Signal callback interfaces
 
         interface Authenticate {
@@ -474,7 +474,7 @@ export namespace DMAP {
         setup(): void;
     }
 
-    module GstInputStream {
+    namespace GstInputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.InputStream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -997,7 +997,7 @@ export namespace DMAP {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MdnsBrowser {
+    namespace MdnsBrowser {
         // Signal callback interfaces
 
         interface ServiceAdded {
@@ -1060,7 +1060,7 @@ export namespace DMAP {
         stop(): boolean;
     }
 
-    module MdnsPublisher {
+    namespace MdnsPublisher {
         // Signal callback interfaces
 
         interface NameCollision {
@@ -1121,7 +1121,7 @@ export namespace DMAP {
         withdraw(port: number): boolean;
     }
 
-    module Share {
+    namespace Share {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1434,7 +1434,7 @@ export namespace DMAP {
         _init(...args: any[]): void;
     }
 
-    module ContainerDb {
+    namespace ContainerDb {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1468,7 +1468,7 @@ export namespace DMAP {
         new (): ContainerDb; // This allows `obj instanceof ContainerDb`
     };
 
-    module ContainerRecord {
+    namespace ContainerRecord {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1515,7 +1515,7 @@ export namespace DMAP {
         new (): ContainerRecord; // This allows `obj instanceof ContainerRecord`
     };
 
-    module Db {
+    namespace Db {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1576,7 +1576,7 @@ export namespace DMAP {
         new (): Db; // This allows `obj instanceof Db`
     };
 
-    module Record {
+    namespace Record {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1600,7 +1600,7 @@ export namespace DMAP {
         new (): Record; // This allows `obj instanceof Record`
     };
 
-    module RecordFactory {
+    namespace RecordFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

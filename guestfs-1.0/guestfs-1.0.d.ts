@@ -103,7 +103,7 @@ export namespace Guestfs {
          */
         NONE,
     }
-    module AddDomain {
+    namespace AddDomain {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -182,7 +182,7 @@ export namespace Guestfs {
         static ['new'](): AddDomain;
     }
 
-    module AddDrive {
+    namespace AddDrive {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -273,7 +273,7 @@ export namespace Guestfs {
         static ['new'](): AddDrive;
     }
 
-    module AddDriveScratch {
+    namespace AddDriveScratch {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -310,7 +310,7 @@ export namespace Guestfs {
         static ['new'](): AddDriveScratch;
     }
 
-    module AddLibvirtDom {
+    namespace AddLibvirtDom {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -377,7 +377,7 @@ export namespace Guestfs {
         static ['new'](): AddLibvirtDom;
     }
 
-    module AugTransform {
+    namespace AugTransform {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -408,7 +408,7 @@ export namespace Guestfs {
         static ['new'](): AugTransform;
     }
 
-    module BTRFSFilesystemDefragment {
+    namespace BTRFSFilesystemDefragment {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -445,7 +445,7 @@ export namespace Guestfs {
         static ['new'](): BTRFSFilesystemDefragment;
     }
 
-    module BTRFSFilesystemResize {
+    namespace BTRFSFilesystemResize {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -476,7 +476,7 @@ export namespace Guestfs {
         static ['new'](): BTRFSFilesystemResize;
     }
 
-    module BTRFSImage {
+    namespace BTRFSImage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -507,7 +507,7 @@ export namespace Guestfs {
         static ['new'](): BTRFSImage;
     }
 
-    module BTRFSSubvolumeCreate {
+    namespace BTRFSSubvolumeCreate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -538,7 +538,7 @@ export namespace Guestfs {
         static ['new'](): BTRFSSubvolumeCreate;
     }
 
-    module BTRFSSubvolumeSnapshot {
+    namespace BTRFSSubvolumeSnapshot {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -575,7 +575,7 @@ export namespace Guestfs {
         static ['new'](): BTRFSSubvolumeSnapshot;
     }
 
-    module BtrfsFsck {
+    namespace BtrfsFsck {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -612,7 +612,7 @@ export namespace Guestfs {
         static ['new'](): BtrfsFsck;
     }
 
-    module CompressDeviceOut {
+    namespace CompressDeviceOut {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -643,7 +643,7 @@ export namespace Guestfs {
         static ['new'](): CompressDeviceOut;
     }
 
-    module CompressOut {
+    namespace CompressOut {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -674,7 +674,7 @@ export namespace Guestfs {
         static ['new'](): CompressOut;
     }
 
-    module CopyAttributes {
+    namespace CopyAttributes {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -723,7 +723,7 @@ export namespace Guestfs {
         static ['new'](): CopyAttributes;
     }
 
-    module CopyDeviceToDevice {
+    namespace CopyDeviceToDevice {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -778,7 +778,7 @@ export namespace Guestfs {
         static ['new'](): CopyDeviceToDevice;
     }
 
-    module CopyDeviceToFile {
+    namespace CopyDeviceToFile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -833,7 +833,7 @@ export namespace Guestfs {
         static ['new'](): CopyDeviceToFile;
     }
 
-    module CopyFileToDevice {
+    namespace CopyFileToDevice {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -888,7 +888,7 @@ export namespace Guestfs {
         static ['new'](): CopyFileToDevice;
     }
 
-    module CopyFileToFile {
+    namespace CopyFileToFile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -943,7 +943,7 @@ export namespace Guestfs {
         static ['new'](): CopyFileToFile;
     }
 
-    module CpioOut {
+    namespace CpioOut {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -974,7 +974,7 @@ export namespace Guestfs {
         static ['new'](): CpioOut;
     }
 
-    module DiskCreate {
+    namespace DiskCreate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1029,7 +1029,7 @@ export namespace Guestfs {
         static ['new'](): DiskCreate;
     }
 
-    module DownloadBlocks {
+    namespace DownloadBlocks {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1060,7 +1060,7 @@ export namespace Guestfs {
         static ['new'](): DownloadBlocks;
     }
 
-    module E2fsck {
+    namespace E2fsck {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1097,7 +1097,7 @@ export namespace Guestfs {
         static ['new'](): E2fsck;
     }
 
-    module Fstrim {
+    namespace Fstrim {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1140,7 +1140,7 @@ export namespace Guestfs {
         static ['new'](): Fstrim;
     }
 
-    module GlobExpand {
+    namespace GlobExpand {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1171,7 +1171,7 @@ export namespace Guestfs {
         static ['new'](): GlobExpand;
     }
 
-    module Grep {
+    namespace Grep {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1220,7 +1220,7 @@ export namespace Guestfs {
         static ['new'](): Grep;
     }
 
-    module HivexOpen {
+    namespace HivexOpen {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1269,7 +1269,7 @@ export namespace Guestfs {
         static ['new'](): HivexOpen;
     }
 
-    module InspectGetIcon {
+    namespace InspectGetIcon {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1306,7 +1306,7 @@ export namespace Guestfs {
         static ['new'](): InspectGetIcon;
     }
 
-    module InternalTest {
+    namespace InternalTest {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1355,7 +1355,7 @@ export namespace Guestfs {
         static ['new'](): InternalTest;
     }
 
-    module InternalTest63Optargs {
+    namespace InternalTest63Optargs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1758,7 +1758,7 @@ export namespace Guestfs {
         static ['new'](): InternalTest63Optargs;
     }
 
-    module InternalTestOnlyOptargs {
+    namespace InternalTestOnlyOptargs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1789,7 +1789,7 @@ export namespace Guestfs {
         static ['new'](): InternalTestOnlyOptargs;
     }
 
-    module IsBlockdev {
+    namespace IsBlockdev {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1820,7 +1820,7 @@ export namespace Guestfs {
         static ['new'](): IsBlockdev;
     }
 
-    module IsChardev {
+    namespace IsChardev {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1851,7 +1851,7 @@ export namespace Guestfs {
         static ['new'](): IsChardev;
     }
 
-    module IsDir {
+    namespace IsDir {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1882,7 +1882,7 @@ export namespace Guestfs {
         static ['new'](): IsDir;
     }
 
-    module IsFifo {
+    namespace IsFifo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1913,7 +1913,7 @@ export namespace Guestfs {
         static ['new'](): IsFifo;
     }
 
-    module IsFile {
+    namespace IsFile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1944,7 +1944,7 @@ export namespace Guestfs {
         static ['new'](): IsFile;
     }
 
-    module IsSocket {
+    namespace IsSocket {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1975,7 +1975,7 @@ export namespace Guestfs {
         static ['new'](): IsSocket;
     }
 
-    module MDCreate {
+    namespace MDCreate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2030,7 +2030,7 @@ export namespace Guestfs {
         static ['new'](): MDCreate;
     }
 
-    module Mke2fs {
+    namespace Mke2fs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2283,7 +2283,7 @@ export namespace Guestfs {
         static ['new'](): Mke2fs;
     }
 
-    module Mkfs {
+    namespace Mkfs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2338,7 +2338,7 @@ export namespace Guestfs {
         static ['new'](): Mkfs;
     }
 
-    module MkfsBtrfs {
+    namespace MkfsBtrfs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2411,7 +2411,7 @@ export namespace Guestfs {
         static ['new'](): MkfsBtrfs;
     }
 
-    module Mksquashfs {
+    namespace Mksquashfs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2442,7 +2442,7 @@ export namespace Guestfs {
         static ['new'](): Mksquashfs;
     }
 
-    module Mkswap {
+    namespace Mkswap {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2479,7 +2479,7 @@ export namespace Guestfs {
         static ['new'](): Mkswap;
     }
 
-    module Mktemp {
+    namespace Mktemp {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2510,7 +2510,7 @@ export namespace Guestfs {
         static ['new'](): Mktemp;
     }
 
-    module Mount9P {
+    namespace Mount9P {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2541,7 +2541,7 @@ export namespace Guestfs {
         static ['new'](): Mount9P;
     }
 
-    module MountLocal {
+    namespace MountLocal {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2590,7 +2590,7 @@ export namespace Guestfs {
         static ['new'](): MountLocal;
     }
 
-    module NTFSResizeOpts {
+    namespace NTFSResizeOpts {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2627,7 +2627,7 @@ export namespace Guestfs {
         static ['new'](): NTFSResizeOpts;
     }
 
-    module NtfscloneOut {
+    namespace NtfscloneOut {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2682,7 +2682,7 @@ export namespace Guestfs {
         static ['new'](): NtfscloneOut;
     }
 
-    module Ntfsfix {
+    namespace Ntfsfix {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2713,7 +2713,7 @@ export namespace Guestfs {
         static ['new'](): Ntfsfix;
     }
 
-    module Remount {
+    namespace Remount {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2744,7 +2744,7 @@ export namespace Guestfs {
         static ['new'](): Remount;
     }
 
-    module Rsync {
+    namespace Rsync {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2781,7 +2781,7 @@ export namespace Guestfs {
         static ['new'](): Rsync;
     }
 
-    module RsyncIn {
+    namespace RsyncIn {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2818,7 +2818,7 @@ export namespace Guestfs {
         static ['new'](): RsyncIn;
     }
 
-    module RsyncOut {
+    namespace RsyncOut {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2855,7 +2855,7 @@ export namespace Guestfs {
         static ['new'](): RsyncOut;
     }
 
-    module SelinuxRelabel {
+    namespace SelinuxRelabel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2886,7 +2886,7 @@ export namespace Guestfs {
         static ['new'](): SelinuxRelabel;
     }
 
-    module Session {
+    namespace Session {
         // Signal callback interfaces
 
         interface Appliance {
@@ -13481,7 +13481,7 @@ export namespace Guestfs {
         zgrepi(regex: string, path: string): string[];
     }
 
-    module SetE2attrs {
+    namespace SetE2attrs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13512,7 +13512,7 @@ export namespace Guestfs {
         static ['new'](): SetE2attrs;
     }
 
-    module Syslinux {
+    namespace Syslinux {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13543,7 +13543,7 @@ export namespace Guestfs {
         static ['new'](): Syslinux;
     }
 
-    module TarIn {
+    namespace TarIn {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13592,7 +13592,7 @@ export namespace Guestfs {
         static ['new'](): TarIn;
     }
 
-    module TarOut {
+    namespace TarOut {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13647,7 +13647,7 @@ export namespace Guestfs {
         static ['new'](): TarOut;
     }
 
-    module Tune2FS {
+    namespace Tune2FS {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13732,7 +13732,7 @@ export namespace Guestfs {
         static ['new'](): Tune2FS;
     }
 
-    module Umount {
+    namespace Umount {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13769,7 +13769,7 @@ export namespace Guestfs {
         static ['new'](): Umount;
     }
 
-    module UmountLocal {
+    namespace UmountLocal {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13800,7 +13800,7 @@ export namespace Guestfs {
         static ['new'](): UmountLocal;
     }
 
-    module XfsAdmin {
+    namespace XfsAdmin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13867,7 +13867,7 @@ export namespace Guestfs {
         static ['new'](): XfsAdmin;
     }
 
-    module XfsGrowfs {
+    namespace XfsGrowfs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13940,7 +13940,7 @@ export namespace Guestfs {
         static ['new'](): XfsGrowfs;
     }
 
-    module XfsRepair {
+    namespace XfsRepair {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

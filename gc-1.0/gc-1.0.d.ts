@@ -74,7 +74,7 @@ export namespace Gc {
         NONE,
         WORD,
     }
-    module SearchContext {
+    namespace SearchContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

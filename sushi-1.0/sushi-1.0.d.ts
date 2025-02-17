@@ -57,7 +57,7 @@ export namespace Sushi {
     function create_foreign_window(xid: number): Gdk.Window;
     function create_rounded_background(): Clutter.Actor;
     function query_supported_document_types(): string[];
-    module CoverArtFetcher {
+    namespace CoverArtFetcher {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -84,7 +84,7 @@ export namespace Sushi {
         static ['new'](taglist: Gst.TagList): CoverArtFetcher;
     }
 
-    module FileLoader {
+    namespace FileLoader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -131,7 +131,7 @@ export namespace Sushi {
         stop(): void;
     }
 
-    module FontWidget {
+    namespace FontWidget {
         // Signal callback interfaces
 
         interface Loaded {
@@ -579,7 +579,7 @@ export namespace Sushi {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PdfLoader {
+    namespace PdfLoader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -611,7 +611,7 @@ export namespace Sushi {
         get_max_page_size(): [number, number];
     }
 
-    module SoundPlayer {
+    namespace SoundPlayer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -646,7 +646,7 @@ export namespace Sushi {
         _init(...args: any[]): void;
     }
 
-    module TextLoader {
+    namespace TextLoader {
         // Signal callback interfaces
 
         interface Loaded {

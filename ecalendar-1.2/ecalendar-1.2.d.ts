@@ -376,7 +376,7 @@ export namespace ECalendar {
         JOURNAL,
         ANYTYPE,
     }
-    module Cal {
+    namespace Cal {
         // Signal callback interfaces
 
         interface BackendDied {
@@ -676,7 +676,7 @@ export namespace ECalendar {
         remove_object(uid: string): boolean;
     }
 
-    module CalClient {
+    namespace CalClient {
         // Signal callback interfaces
 
         interface FreeBusyData {
@@ -1239,7 +1239,7 @@ export namespace ECalendar {
         remove_objects_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module CalClientView {
+    namespace CalClientView {
         // Signal callback interfaces
 
         interface Complete {
@@ -1359,7 +1359,7 @@ export namespace ECalendar {
         stop(): void;
     }
 
-    module CalComponent {
+    namespace CalComponent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1943,7 +1943,7 @@ export namespace ECalendar {
         strip_errors(): void;
     }
 
-    module CalView {
+    namespace CalView {
         // Signal callback interfaces
 
         interface ObjectsAdded {

@@ -82,7 +82,7 @@ export namespace GPasteGtk {
     interface TextCallback {
         (settings: GPaste.Settings, data: string): void;
     }
-    module PreferencesBehaviourPage {
+    namespace PreferencesBehaviourPage {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -512,7 +512,7 @@ export namespace GPasteGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PreferencesGroup {
+    namespace PreferencesGroup {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -990,7 +990,7 @@ export namespace GPasteGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PreferencesHistorySettingsPage {
+    namespace PreferencesHistorySettingsPage {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1420,7 +1420,7 @@ export namespace GPasteGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PreferencesManager {
+    namespace PreferencesManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1456,7 +1456,7 @@ export namespace GPasteGtk {
         register(page: PreferencesPage): void;
     }
 
-    module PreferencesPage {
+    namespace PreferencesPage {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1896,7 +1896,7 @@ export namespace GPasteGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PreferencesShortcutsPage {
+    namespace PreferencesShortcutsPage {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2326,7 +2326,7 @@ export namespace GPasteGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PreferencesWidget {
+    namespace PreferencesWidget {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2750,7 +2750,7 @@ export namespace GPasteGtk {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PreferencesWindow {
+    namespace PreferencesWindow {
         // Constructor properties interface
 
         interface ConstructorProps

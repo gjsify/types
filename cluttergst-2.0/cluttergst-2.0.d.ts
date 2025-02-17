@@ -133,7 +133,7 @@ export namespace ClutterGst {
          */
         ACCURATE,
     }
-    module VideoSink {
+    namespace VideoSink {
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseSink.ConstructorProps, GstVideo.Navigation.ConstructorProps {
@@ -642,7 +642,7 @@ export namespace ClutterGst {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module VideoTexture {
+    namespace VideoTexture {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1544,7 +1544,7 @@ export namespace ClutterGst {
         _init(...args: any[]): void;
     }
 
-    module Player {
+    namespace Player {
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.Media.ConstructorProps {

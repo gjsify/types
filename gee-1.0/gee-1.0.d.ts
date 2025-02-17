@@ -20,7 +20,7 @@ export namespace Gee {
     function functions_get_hash_func_for(t: GObject.Type): GLib.HashFunc;
     function functions_get_compare_func_for(t: GObject.Type): GLib.CompareFunc;
     function direct_compare(_val1: any, _val2: any): number;
-    module AbstractCollection {
+    namespace AbstractCollection {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -485,7 +485,7 @@ export namespace Gee {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AbstractList {
+    namespace AbstractList {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractCollection.ConstructorProps, List.ConstructorProps {
@@ -568,7 +568,7 @@ export namespace Gee {
         vfunc_iterator(): Iterator;
     }
 
-    module AbstractMap {
+    namespace AbstractMap {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1054,7 +1054,7 @@ export namespace Gee {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AbstractMultiMap {
+    namespace AbstractMultiMap {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MultiMap.ConstructorProps {}
@@ -1506,7 +1506,7 @@ export namespace Gee {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AbstractMultiSet {
+    namespace AbstractMultiSet {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractCollection.ConstructorProps, MultiSet.ConstructorProps {}
@@ -1555,7 +1555,7 @@ export namespace Gee {
         vfunc_iterator(): Iterator;
     }
 
-    module AbstractQueue {
+    namespace AbstractQueue {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractCollection.ConstructorProps, Queue.ConstructorProps {
@@ -1630,7 +1630,7 @@ export namespace Gee {
         vfunc_iterator(): Iterator;
     }
 
-    module AbstractSet {
+    namespace AbstractSet {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractCollection.ConstructorProps, Set.ConstructorProps {
@@ -1683,7 +1683,7 @@ export namespace Gee {
         vfunc_iterator(): Iterator;
     }
 
-    module ArrayList {
+    namespace ArrayList {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractList.ConstructorProps {
@@ -1715,7 +1715,7 @@ export namespace Gee {
         sort_with_data(compare: GLib.CompareDataFunc): void;
     }
 
-    module HashMap {
+    namespace HashMap {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMap.ConstructorProps {
@@ -1759,7 +1759,7 @@ export namespace Gee {
         ): HashMap;
     }
 
-    module HashMultiMap {
+    namespace HashMultiMap {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMultiMap.ConstructorProps {
@@ -1806,7 +1806,7 @@ export namespace Gee {
         ): HashMultiMap;
     }
 
-    module HashMultiSet {
+    namespace HashMultiSet {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMultiSet.ConstructorProps {
@@ -1836,7 +1836,7 @@ export namespace Gee {
         static ['new'](hash_func: GLib.HashFunc, equal_func: GLib.EqualFunc): HashMultiSet;
     }
 
-    module HashSet {
+    namespace HashSet {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractSet.ConstructorProps {
@@ -1870,7 +1870,7 @@ export namespace Gee {
         static ['new'](hash_func: GLib.HashFunc, equal_func: GLib.EqualFunc): HashSet;
     }
 
-    module LinkedList {
+    namespace LinkedList {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1938,7 +1938,7 @@ export namespace Gee {
         vfunc_drain_tail(recipient: Collection, amount: number): number;
     }
 
-    module PriorityQueue {
+    namespace PriorityQueue {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractQueue.ConstructorProps {
@@ -1966,7 +1966,7 @@ export namespace Gee {
         static ['new'](compare_func: GLib.CompareFunc): PriorityQueue;
     }
 
-    module TreeMap {
+    namespace TreeMap {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMap.ConstructorProps {
@@ -2000,7 +2000,7 @@ export namespace Gee {
         static ['new'](key_compare_func: GLib.CompareFunc, value_equal_func: GLib.EqualFunc): TreeMap;
     }
 
-    module TreeMultiMap {
+    namespace TreeMultiMap {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMultiMap.ConstructorProps {
@@ -2032,7 +2032,7 @@ export namespace Gee {
         static ['new'](key_compare_func: GLib.CompareFunc, value_compare_func: GLib.CompareFunc): TreeMultiMap;
     }
 
-    module TreeMultiSet {
+    namespace TreeMultiSet {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMultiSet.ConstructorProps {
@@ -2058,7 +2058,7 @@ export namespace Gee {
         static ['new'](compare_func: GLib.CompareFunc): TreeMultiSet;
     }
 
-    module TreeSet {
+    namespace TreeSet {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractSet.ConstructorProps, SortedSet.ConstructorProps {
@@ -2114,7 +2114,7 @@ export namespace Gee {
         vfunc_sub_set(from: any, to: any): SortedSet;
     }
 
-    module MapEntry {
+    namespace MapEntry {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2324,7 +2324,7 @@ export namespace Gee {
     type QueueIface = typeof Queue;
     type SetIface = typeof Set;
     type SortedSetIface = typeof SortedSet;
-    module BidirIterator {
+    namespace BidirIterator {
         // Constructor properties interface
 
         interface ConstructorProps extends Iterator.ConstructorProps {}
@@ -2352,7 +2352,7 @@ export namespace Gee {
         new (): BidirIterator; // This allows `obj instanceof BidirIterator`
     };
 
-    module Collection {
+    namespace Collection {
         // Constructor properties interface
 
         interface ConstructorProps extends Iterable.ConstructorProps {
@@ -2408,7 +2408,7 @@ export namespace Gee {
         new (): Collection; // This allows `obj instanceof Collection`
     };
 
-    module Comparable {
+    namespace Comparable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2432,7 +2432,7 @@ export namespace Gee {
         new (): Comparable; // This allows `obj instanceof Comparable`
     };
 
-    module Deque {
+    namespace Deque {
         // Constructor properties interface
 
         interface ConstructorProps extends Queue.ConstructorProps {}
@@ -2470,7 +2470,7 @@ export namespace Gee {
         new (): Deque; // This allows `obj instanceof Deque`
     };
 
-    module Iterable {
+    namespace Iterable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2502,7 +2502,7 @@ export namespace Gee {
         new (): Iterable; // This allows `obj instanceof Iterable`
     };
 
-    module Iterator {
+    namespace Iterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2534,7 +2534,7 @@ export namespace Gee {
         new (): Iterator; // This allows `obj instanceof Iterator`
     };
 
-    module List {
+    namespace List {
         // Constructor properties interface
 
         interface ConstructorProps extends Collection.ConstructorProps {
@@ -2590,7 +2590,7 @@ export namespace Gee {
         new (): List; // This allows `obj instanceof List`
     };
 
-    module ListIterator {
+    namespace ListIterator {
         // Constructor properties interface
 
         interface ConstructorProps extends BidirIterator.ConstructorProps {}
@@ -2622,7 +2622,7 @@ export namespace Gee {
         new (): ListIterator; // This allows `obj instanceof ListIterator`
     };
 
-    module Map {
+    namespace Map {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2704,7 +2704,7 @@ export namespace Gee {
         new (): Map; // This allows `obj instanceof Map`
     };
 
-    module MapIterator {
+    namespace MapIterator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2740,7 +2740,7 @@ export namespace Gee {
         new (): MapIterator; // This allows `obj instanceof MapIterator`
     };
 
-    module MultiMap {
+    namespace MultiMap {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2788,7 +2788,7 @@ export namespace Gee {
         new (): MultiMap; // This allows `obj instanceof MultiMap`
     };
 
-    module MultiSet {
+    namespace MultiSet {
         // Constructor properties interface
 
         interface ConstructorProps extends Collection.ConstructorProps {}
@@ -2812,7 +2812,7 @@ export namespace Gee {
         new (): MultiSet; // This allows `obj instanceof MultiSet`
     };
 
-    module Queue {
+    namespace Queue {
         // Constructor properties interface
 
         interface ConstructorProps extends Collection.ConstructorProps {
@@ -2856,7 +2856,7 @@ export namespace Gee {
         new (): Queue; // This allows `obj instanceof Queue`
     };
 
-    module Set {
+    namespace Set {
         // Constructor properties interface
 
         interface ConstructorProps extends Collection.ConstructorProps {
@@ -2882,7 +2882,7 @@ export namespace Gee {
         new (): Set; // This allows `obj instanceof Set`
     };
 
-    module SortedSet {
+    namespace SortedSet {
         // Constructor properties interface
 
         interface ConstructorProps extends Set.ConstructorProps {}

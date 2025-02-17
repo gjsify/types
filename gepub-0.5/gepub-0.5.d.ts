@@ -51,7 +51,7 @@ export namespace Gepub {
      * The book title.
      */
     const META_TITLE: string;
-    module Doc {
+    namespace Doc {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -591,7 +591,7 @@ export namespace Gepub {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Widget {
+    namespace Widget {
         // Constructor properties interface
 
         interface ConstructorProps

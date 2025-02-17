@@ -652,7 +652,7 @@ export namespace GWeather {
          */
         ALL,
     }
-    module Info {
+    namespace Info {
         // Signal callback interfaces
 
         interface Updated {
@@ -860,7 +860,7 @@ export namespace GWeather {
         update(): void;
     }
 
-    module LocationEntry {
+    namespace LocationEntry {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5173,7 +5173,7 @@ export namespace GWeather {
         vfunc_window_state_event(event: Gdk.EventWindowState): boolean;
     }
 
-    module TimezoneMenu {
+    namespace TimezoneMenu {
         // Constructor properties interface
 
         interface ConstructorProps

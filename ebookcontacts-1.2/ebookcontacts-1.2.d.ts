@@ -1154,7 +1154,7 @@ export namespace EBookContacts {
          */
         CONFLICT_WRITE_COPY,
     }
-    module BookIndicesUpdater {
+    namespace BookIndicesUpdater {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1215,7 +1215,7 @@ export namespace EBookContacts {
         take_indices(indices?: BookIndices | null): boolean;
     }
 
-    module Contact {
+    namespace Contact {
         // Constructor properties interface
 
         interface ConstructorProps extends VCard.ConstructorProps {
@@ -2094,7 +2094,7 @@ export namespace EBookContacts {
         set_attributes(field_id: ContactField | null, attributes: VCardAttribute[]): void;
     }
 
-    module SourceBackendSummarySetup {
+    namespace SourceBackendSummarySetup {
         // Constructor properties interface
 
         interface ConstructorProps extends EDataServer.SourceExtension.ConstructorProps {
@@ -2177,7 +2177,7 @@ export namespace EBookContacts {
         set_summary_fieldsv(fields: ContactField | null, n_fields: number): void;
     }
 
-    module VCard {
+    namespace VCard {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

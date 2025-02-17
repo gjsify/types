@@ -2795,7 +2795,7 @@ export namespace Soup {
          */
         IPV6_ONLY,
     }
-    module Address {
+    namespace Address {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.SocketConnectable.ConstructorProps {
@@ -3434,7 +3434,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Auth {
+    namespace Auth {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3613,7 +3613,7 @@ export namespace Soup {
         update(msg: Message, auth_header: string): boolean;
     }
 
-    module AuthBasic {
+    namespace AuthBasic {
         // Constructor properties interface
 
         interface ConstructorProps extends Auth.ConstructorProps {}
@@ -3629,7 +3629,7 @@ export namespace Soup {
         _init(...args: any[]): void;
     }
 
-    module AuthDigest {
+    namespace AuthDigest {
         // Constructor properties interface
 
         interface ConstructorProps extends Auth.ConstructorProps {}
@@ -3645,7 +3645,7 @@ export namespace Soup {
         _init(...args: any[]): void;
     }
 
-    module AuthDomain {
+    namespace AuthDomain {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3821,7 +3821,7 @@ export namespace Soup {
         try_generic_auth_callback(msg: Message, username: string): boolean;
     }
 
-    module AuthDomainBasic {
+    namespace AuthDomainBasic {
         // Constructor properties interface
 
         interface ConstructorProps extends AuthDomain.ConstructorProps {
@@ -3881,7 +3881,7 @@ export namespace Soup {
         set_auth_callback(callback: AuthDomainBasicAuthCallback): void;
     }
 
-    module AuthDomainDigest {
+    namespace AuthDomainDigest {
         // Constructor properties interface
 
         interface ConstructorProps extends AuthDomain.ConstructorProps {
@@ -3963,7 +3963,7 @@ export namespace Soup {
         set_auth_callback(callback: AuthDomainDigestAuthCallback): void;
     }
 
-    module AuthManager {
+    namespace AuthManager {
         // Signal callback interfaces
 
         interface Authenticate {
@@ -4501,7 +4501,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AuthNTLM {
+    namespace AuthNTLM {
         // Constructor properties interface
 
         interface ConstructorProps extends Auth.ConstructorProps {}
@@ -4517,7 +4517,7 @@ export namespace Soup {
         _init(...args: any[]): void;
     }
 
-    module AuthNegotiate {
+    namespace AuthNegotiate {
         // Constructor properties interface
 
         interface ConstructorProps extends Auth.ConstructorProps {}
@@ -4543,7 +4543,7 @@ export namespace Soup {
         static supported(): boolean;
     }
 
-    module Cache {
+    namespace Cache {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SessionFeature.ConstructorProps {
@@ -5092,7 +5092,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ContentDecoder {
+    namespace ContentDecoder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SessionFeature.ConstructorProps {}
@@ -5584,7 +5584,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ContentSniffer {
+    namespace ContentSniffer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SessionFeature.ConstructorProps {}
@@ -6112,7 +6112,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CookieJar {
+    namespace CookieJar {
         // Signal callback interfaces
 
         interface Changed {
@@ -6813,7 +6813,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CookieJarDB {
+    namespace CookieJarDB {
         // Constructor properties interface
 
         interface ConstructorProps extends CookieJar.ConstructorProps, SessionFeature.ConstructorProps {
@@ -7316,7 +7316,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module CookieJarText {
+    namespace CookieJarText {
         // Constructor properties interface
 
         interface ConstructorProps extends CookieJar.ConstructorProps, SessionFeature.ConstructorProps {
@@ -7819,7 +7819,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HSTSEnforcer {
+    namespace HSTSEnforcer {
         // Signal callback interfaces
 
         interface Changed {
@@ -8405,7 +8405,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module HSTSEnforcerDB {
+    namespace HSTSEnforcerDB {
         // Constructor properties interface
 
         interface ConstructorProps extends HSTSEnforcer.ConstructorProps, SessionFeature.ConstructorProps {
@@ -8911,7 +8911,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Logger {
+    namespace Logger {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SessionFeature.ConstructorProps {
@@ -9471,7 +9471,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Message {
+    namespace Message {
         // Signal callback interfaces
 
         interface ContentSniffed {
@@ -10035,7 +10035,7 @@ export namespace Soup {
         wrote_informational(): void;
     }
 
-    module MultipartInputStream {
+    namespace MultipartInputStream {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11003,7 +11003,7 @@ export namespace Soup {
         createSyncIterator(count?: number, priority?: number): IterableIterator<GLib.Bytes>;
     }
 
-    module ProxyResolverDefault {
+    namespace ProxyResolverDefault {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11551,7 +11551,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Request {
+    namespace Request {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -12192,7 +12192,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RequestData {
+    namespace RequestData {
         // Constructor properties interface
 
         interface ConstructorProps extends Request.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -12695,7 +12695,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RequestFile {
+    namespace RequestFile {
         // Constructor properties interface
 
         interface ConstructorProps extends Request.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -13206,7 +13206,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RequestHTTP {
+    namespace RequestHTTP {
         // Constructor properties interface
 
         interface ConstructorProps extends Request.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -13717,7 +13717,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Requester {
+    namespace Requester {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SessionFeature.ConstructorProps {}
@@ -14216,7 +14216,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Server {
+    namespace Server {
         // Signal callback interfaces
 
         interface RequestAborted {
@@ -14885,7 +14885,7 @@ export namespace Soup {
         unpause_message(msg: Message): void;
     }
 
-    module Session {
+    namespace Session {
         // Signal callback interfaces
 
         interface Authenticate {
@@ -16145,7 +16145,7 @@ export namespace Soup {
         would_redirect(msg: Message): boolean;
     }
 
-    module SessionAsync {
+    namespace SessionAsync {
         // Constructor properties interface
 
         interface ConstructorProps extends Session.ConstructorProps {}
@@ -16163,7 +16163,7 @@ export namespace Soup {
         static ['new'](): SessionAsync;
     }
 
-    module SessionSync {
+    namespace SessionSync {
         // Constructor properties interface
 
         interface ConstructorProps extends Session.ConstructorProps {}
@@ -16181,7 +16181,7 @@ export namespace Soup {
         static ['new'](): SessionSync;
     }
 
-    module Socket {
+    namespace Socket {
         // Signal callback interfaces
 
         interface Disconnected {
@@ -17023,7 +17023,7 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WebsocketConnection {
+    namespace WebsocketConnection {
         // Signal callback interfaces
 
         interface Closed {
@@ -17343,7 +17343,7 @@ export namespace Soup {
         set_max_incoming_payload_size(max_incoming_payload_size: number): void;
     }
 
-    module WebsocketExtension {
+    namespace WebsocketExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -17442,7 +17442,7 @@ export namespace Soup {
         process_outgoing_message(header: number, payload: GLib.Bytes | Uint8Array): [GLib.Bytes, number];
     }
 
-    module WebsocketExtensionDeflate {
+    namespace WebsocketExtensionDeflate {
         // Constructor properties interface
 
         interface ConstructorProps extends WebsocketExtension.ConstructorProps {}
@@ -17458,7 +17458,7 @@ export namespace Soup {
         _init(...args: any[]): void;
     }
 
-    module WebsocketExtensionManager {
+    namespace WebsocketExtensionManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SessionFeature.ConstructorProps {}
@@ -19683,7 +19683,7 @@ export namespace Soup {
         parse(signature?: string | null): GLib.Variant;
     }
 
-    module PasswordManager {
+    namespace PasswordManager {
         // Constructor properties interface
 
         interface ConstructorProps extends SessionFeature.ConstructorProps {}
@@ -19723,7 +19723,7 @@ export namespace Soup {
         new (): PasswordManager; // This allows `obj instanceof PasswordManager`
     };
 
-    module ProxyResolver {
+    namespace ProxyResolver {
         // Constructor properties interface
 
         interface ConstructorProps extends SessionFeature.ConstructorProps {}
@@ -19759,7 +19759,7 @@ export namespace Soup {
         new (): ProxyResolver; // This allows `obj instanceof ProxyResolver`
     };
 
-    module ProxyURIResolver {
+    namespace ProxyURIResolver {
         // Constructor properties interface
 
         interface ConstructorProps extends SessionFeature.ConstructorProps {}
@@ -19826,7 +19826,7 @@ export namespace Soup {
         new (): ProxyURIResolver; // This allows `obj instanceof ProxyURIResolver`
     };
 
-    module SessionFeature {
+    namespace SessionFeature {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

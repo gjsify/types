@@ -154,7 +154,7 @@ export namespace SecretUnstable {
          */
         LOAD_COLLECTIONS,
     }
-    module Collection {
+    namespace Collection {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1504,7 +1504,7 @@ export namespace SecretUnstable {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Item {
+    namespace Item {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2790,7 +2790,7 @@ export namespace SecretUnstable {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Prompt {
+    namespace Prompt {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3646,7 +3646,7 @@ export namespace SecretUnstable {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Service {
+    namespace Service {
         // Constructor properties interface
 
         interface ConstructorProps

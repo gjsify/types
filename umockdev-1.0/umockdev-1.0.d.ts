@@ -31,7 +31,7 @@ export namespace UMockdev {
     }
 
     function in_mock_environment(): boolean;
-    module Testbed {
+    namespace Testbed {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -89,7 +89,7 @@ export namespace UMockdev {
         get_dev_fd(devnode: string): number;
     }
 
-    module IoctlData {
+    namespace IoctlData {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -121,7 +121,7 @@ export namespace UMockdev {
         retrieve(): Uint8Array;
     }
 
-    module IoctlClient {
+    namespace IoctlClient {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -159,7 +159,7 @@ export namespace UMockdev {
         abort(): void;
     }
 
-    module IoctlBase {
+    namespace IoctlBase {
         // Signal callback interfaces
 
         interface ClientConnected {

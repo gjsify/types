@@ -2189,7 +2189,7 @@ export namespace Skk {
         META_MASK,
         RELEASE_MASK,
     }
-    module RomKanaConverter {
+    namespace RomKanaConverter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2244,7 +2244,7 @@ export namespace Skk {
         get_preedit(): string;
     }
 
-    module Dict {
+    namespace Dict {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2290,7 +2290,7 @@ export namespace Skk {
         get_read_only(): boolean;
     }
 
-    module EmptyDict {
+    namespace EmptyDict {
         // Constructor properties interface
 
         interface ConstructorProps extends Dict.ConstructorProps {}
@@ -2308,7 +2308,7 @@ export namespace Skk {
         static ['new'](): EmptyDict;
     }
 
-    module FileDict {
+    namespace FileDict {
         // Constructor properties interface
 
         interface ConstructorProps extends Dict.ConstructorProps {}
@@ -2326,7 +2326,7 @@ export namespace Skk {
         static ['new'](path: string, encoding: string): FileDict;
     }
 
-    module CdbDict {
+    namespace CdbDict {
         // Constructor properties interface
 
         interface ConstructorProps extends Dict.ConstructorProps {}
@@ -2344,7 +2344,7 @@ export namespace Skk {
         static ['new'](path: string, encoding: string): CdbDict;
     }
 
-    module UserDict {
+    namespace UserDict {
         // Constructor properties interface
 
         interface ConstructorProps extends Dict.ConstructorProps {}
@@ -2362,7 +2362,7 @@ export namespace Skk {
         static ['new'](path: string, encoding: string): UserDict;
     }
 
-    module SkkServ {
+    namespace SkkServ {
         // Constructor properties interface
 
         interface ConstructorProps extends Dict.ConstructorProps {}
@@ -2380,7 +2380,7 @@ export namespace Skk {
         static ['new'](host: string, port: number, encoding: string): SkkServ;
     }
 
-    module KeyEvent {
+    namespace KeyEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2425,7 +2425,7 @@ export namespace Skk {
         set_modifiers(value: ModifierType | null): void;
     }
 
-    module KeyEventFilter {
+    namespace KeyEventFilter {
         // Signal callback interfaces
 
         interface Forwarded {
@@ -2466,7 +2466,7 @@ export namespace Skk {
         reset(): void;
     }
 
-    module Rule {
+    namespace Rule {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2506,7 +2506,7 @@ export namespace Skk {
         get_metadata(): RuleMetadata;
     }
 
-    module Context {
+    namespace Context {
         // Signal callback interfaces
 
         interface RetrieveSurroundingText {
@@ -2630,7 +2630,7 @@ export namespace Skk {
         get_preedit(): string;
     }
 
-    module Candidate {
+    namespace Candidate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2685,7 +2685,7 @@ export namespace Skk {
         set_output(value: string): void;
     }
 
-    module CandidateList {
+    namespace CandidateList {
         // Signal callback interfaces
 
         interface Populated {
@@ -2794,7 +2794,7 @@ export namespace Skk {
         get_page_visible(): boolean;
     }
 
-    module NicolaKeyEventFilter {
+    namespace NicolaKeyEventFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends KeyEventFilter.ConstructorProps {}

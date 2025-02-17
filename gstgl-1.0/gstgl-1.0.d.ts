@@ -1039,7 +1039,7 @@ export namespace GstGL {
          */
         ANY,
     }
-    module GLBaseFilter {
+    namespace GLBaseFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseTransform.ConstructorProps {
@@ -1082,7 +1082,7 @@ export namespace GstGL {
         get_gl_context(): GLContext | null;
     }
 
-    module GLBaseMemoryAllocator {
+    namespace GLBaseMemoryAllocator {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
@@ -1107,7 +1107,7 @@ export namespace GstGL {
         vfunc_alloc(...args: never[]): any;
     }
 
-    module GLBaseMixer {
+    namespace GLBaseMixer {
         // Constructor properties interface
 
         interface ConstructorProps extends GstVideo.VideoAggregator.ConstructorProps {
@@ -1156,7 +1156,7 @@ export namespace GstGL {
         get_gl_context(): GLContext | null;
     }
 
-    module GLBaseMixerPad {
+    namespace GLBaseMixerPad {
         // Constructor properties interface
 
         interface ConstructorProps extends GstVideo.VideoAggregatorPad.ConstructorProps {}
@@ -1172,7 +1172,7 @@ export namespace GstGL {
         _init(...args: any[]): void;
     }
 
-    module GLBaseSrc {
+    namespace GLBaseSrc {
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.PushSrc.ConstructorProps {
@@ -1216,7 +1216,7 @@ export namespace GstGL {
         vfunc_gl_stop(): void;
     }
 
-    module GLBufferAllocator {
+    namespace GLBufferAllocator {
         // Constructor properties interface
 
         interface ConstructorProps extends GLBaseMemoryAllocator.ConstructorProps {}
@@ -1235,7 +1235,7 @@ export namespace GstGL {
         _init(...args: any[]): void;
     }
 
-    module GLBufferPool {
+    namespace GLBufferPool {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.BufferPool.ConstructorProps {}
@@ -1282,7 +1282,7 @@ export namespace GstGL {
         get_gl_allocation_params(): GLAllocationParams | null;
     }
 
-    module GLColorConvert {
+    namespace GLColorConvert {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -1357,7 +1357,7 @@ export namespace GstGL {
         set_caps(in_caps: Gst.Caps, out_caps: Gst.Caps): boolean;
     }
 
-    module GLContext {
+    namespace GLContext {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -1703,7 +1703,7 @@ export namespace GstGL {
         thread_add(func: GLContextThreadFunc): void;
     }
 
-    module GLDisplay {
+    namespace GLDisplay {
         // Signal callback interfaces
 
         interface CreateContext {
@@ -1828,7 +1828,7 @@ export namespace GstGL {
         retrieve_window(data: any | null, compare_func: GLib.CompareFunc): GLWindow | null;
     }
 
-    module GLFilter {
+    namespace GLFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends GLBaseFilter.ConstructorProps {}
@@ -1905,7 +1905,7 @@ export namespace GstGL {
         render_to_target_with_shader(input: GLMemory, output: GLMemory, shader: GLShader): void;
     }
 
-    module GLFramebuffer {
+    namespace GLFramebuffer {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -1977,7 +1977,7 @@ export namespace GstGL {
         get_id(): number;
     }
 
-    module GLMemoryAllocator {
+    namespace GLMemoryAllocator {
         // Constructor properties interface
 
         interface ConstructorProps extends GLBaseMemoryAllocator.ConstructorProps {}
@@ -2000,7 +2000,7 @@ export namespace GstGL {
         static get_default(context: GLContext): GLMemoryAllocator;
     }
 
-    module GLMemoryPBOAllocator {
+    namespace GLMemoryPBOAllocator {
         // Constructor properties interface
 
         interface ConstructorProps extends GLMemoryAllocator.ConstructorProps {}
@@ -2019,7 +2019,7 @@ export namespace GstGL {
         _init(...args: any[]): void;
     }
 
-    module GLMixer {
+    namespace GLMixer {
         // Constructor properties interface
 
         interface ConstructorProps extends GLBaseMixer.ConstructorProps {}
@@ -2070,7 +2070,7 @@ export namespace GstGL {
         process_textures(outbuf: Gst.Buffer): boolean;
     }
 
-    module GLMixerPad {
+    namespace GLMixerPad {
         // Constructor properties interface
 
         interface ConstructorProps extends GLBaseMixerPad.ConstructorProps {}
@@ -2090,7 +2090,7 @@ export namespace GstGL {
         _init(...args: any[]): void;
     }
 
-    module GLOverlayCompositor {
+    namespace GLOverlayCompositor {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -2128,7 +2128,7 @@ export namespace GstGL {
         upload_overlays(buf: Gst.Buffer): void;
     }
 
-    module GLRenderbufferAllocator {
+    namespace GLRenderbufferAllocator {
         // Constructor properties interface
 
         interface ConstructorProps extends GLBaseMemoryAllocator.ConstructorProps {}
@@ -2147,7 +2147,7 @@ export namespace GstGL {
         _init(...args: any[]): void;
     }
 
-    module GLSLStage {
+    namespace GLSLStage {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -2203,7 +2203,7 @@ export namespace GstGL {
         set_strings(version: GLSLVersion | null, profile: GLSLProfile | null, str: string[]): boolean;
     }
 
-    module GLShader {
+    namespace GLShader {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -2526,7 +2526,7 @@ export namespace GstGL {
         use(): void;
     }
 
-    module GLUpload {
+    namespace GLUpload {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -2588,7 +2588,7 @@ export namespace GstGL {
         ): Gst.Caps;
     }
 
-    module GLViewConvert {
+    namespace GLViewConvert {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -2709,7 +2709,7 @@ export namespace GstGL {
         transform_caps(direction: Gst.PadDirection | null, caps: Gst.Caps, filter: Gst.Caps): Gst.Caps;
     }
 
-    module GLWindow {
+    namespace GLWindow {
         // Signal callback interfaces
 
         interface KeyEvent {

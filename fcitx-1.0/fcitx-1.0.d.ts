@@ -17,7 +17,7 @@ export namespace Fcitx {
      * Fcitx-1.0
      */
 
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface CloseIm {
@@ -292,7 +292,7 @@ export namespace Fcitx {
         set_surrounding_text(text: string | null, cursor: number, anchor: number): void;
     }
 
-    module Connection {
+    namespace Connection {
         // Signal callback interfaces
 
         interface Connected {
@@ -348,7 +348,7 @@ export namespace Fcitx {
         is_valid(): boolean;
     }
 
-    module InputMethod {
+    namespace InputMethod {
         // Signal callback interfaces
 
         interface ImlistChanged {
@@ -1211,7 +1211,7 @@ export namespace Fcitx {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Kbd {
+    namespace Kbd {
         // Constructor properties interface
 
         interface ConstructorProps

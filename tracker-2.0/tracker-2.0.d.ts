@@ -167,7 +167,7 @@ export namespace Tracker {
          */
         NOTIFY_UNEXTRACTED,
     }
-    module NamespaceManager {
+    namespace NamespaceManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -235,7 +235,7 @@ export namespace Tracker {
         print_turtle(): string;
     }
 
-    module Notifier {
+    namespace Notifier {
         // Signal callback interfaces
 
         interface Events {
@@ -764,7 +764,7 @@ export namespace Tracker {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Resource {
+    namespace Resource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1028,7 +1028,7 @@ export namespace Tracker {
         set_uri(property_uri: string, value: string): void;
     }
 
-    module SparqlBuilder {
+    namespace SparqlBuilder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1094,7 +1094,7 @@ export namespace Tracker {
         get_state(): SparqlBuilderState;
     }
 
-    module SparqlConnection {
+    namespace SparqlConnection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1279,7 +1279,7 @@ export namespace Tracker {
         query_statement(sparql: string, cancellable?: Gio.Cancellable | null): SparqlStatement | null;
     }
 
-    module SparqlCursor {
+    namespace SparqlCursor {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1345,7 +1345,7 @@ export namespace Tracker {
         get_n_columns(): number;
     }
 
-    module SparqlStatement {
+    namespace SparqlStatement {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

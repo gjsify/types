@@ -59,7 +59,7 @@ export namespace Cvc {
         HEADSET,
         MIC,
     }
-    module ChannelMap {
+    namespace ChannelMap {
         // Signal callback interfaces
 
         interface VolumeChanged {
@@ -112,7 +112,7 @@ export namespace Cvc {
         set_lfe(value: number): void;
     }
 
-    module MixerCard {
+    namespace MixerCard {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -177,7 +177,7 @@ export namespace Cvc {
         set_profiles(profiles: MixerCardProfile[]): boolean;
     }
 
-    module MixerControl {
+    namespace MixerControl {
         // Signal callback interfaces
 
         interface ActiveInputUpdate {
@@ -367,7 +367,7 @@ export namespace Cvc {
         set_headset_port(id: number, choices: HeadsetPortChoice | null): void;
     }
 
-    module MixerEventRole {
+    namespace MixerEventRole {
         // Constructor properties interface
 
         interface ConstructorProps extends MixerStream.ConstructorProps {
@@ -390,7 +390,7 @@ export namespace Cvc {
         _init(...args: any[]): void;
     }
 
-    module MixerSink {
+    namespace MixerSink {
         // Constructor properties interface
 
         interface ConstructorProps extends MixerStream.ConstructorProps {}
@@ -406,7 +406,7 @@ export namespace Cvc {
         _init(...args: any[]): void;
     }
 
-    module MixerSinkInput {
+    namespace MixerSinkInput {
         // Constructor properties interface
 
         interface ConstructorProps extends MixerStream.ConstructorProps {}
@@ -422,7 +422,7 @@ export namespace Cvc {
         _init(...args: any[]): void;
     }
 
-    module MixerSource {
+    namespace MixerSource {
         // Constructor properties interface
 
         interface ConstructorProps extends MixerStream.ConstructorProps {}
@@ -438,7 +438,7 @@ export namespace Cvc {
         _init(...args: any[]): void;
     }
 
-    module MixerSourceOutput {
+    namespace MixerSourceOutput {
         // Constructor properties interface
 
         interface ConstructorProps extends MixerStream.ConstructorProps {}
@@ -454,7 +454,7 @@ export namespace Cvc {
         _init(...args: any[]): void;
     }
 
-    module MixerStream {
+    namespace MixerStream {
         // Signal callback interfaces
 
         interface MonitorSuspend {
@@ -635,7 +635,7 @@ export namespace Cvc {
         set_volume(volume: number): boolean;
     }
 
-    module MixerUIDevice {
+    namespace MixerUIDevice {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

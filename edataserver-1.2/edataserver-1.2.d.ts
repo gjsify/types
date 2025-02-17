@@ -2640,7 +2640,7 @@ export namespace EDataServer {
         WEBDAV_NOTES,
         LAST,
     }
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface BackendDied {
@@ -3461,7 +3461,7 @@ export namespace EDataServer {
         wait_for_connected_sync(timeout_seconds: number, cancellable?: Gio.Cancellable | null): boolean;
     }
 
-    module Extension {
+    namespace Extension {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3495,7 +3495,7 @@ export namespace EDataServer {
         get_extensible(): Extensible;
     }
 
-    module GDataSession {
+    namespace GDataSession {
         // Constructor properties interface
 
         interface ConstructorProps extends SoupSession.ConstructorProps {}
@@ -3692,7 +3692,7 @@ export namespace EDataServer {
         ): [boolean, Json.Object | null];
     }
 
-    module Module {
+    namespace Module {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {
@@ -4201,7 +4201,7 @@ export namespace EDataServer {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module NetworkMonitor {
+    namespace NetworkMonitor {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5028,7 +5028,7 @@ export namespace EDataServer {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module OAuth2ServiceBase {
+    namespace OAuth2ServiceBase {
         // Constructor properties interface
 
         interface ConstructorProps extends Extension.ConstructorProps {}
@@ -5044,7 +5044,7 @@ export namespace EDataServer {
         _init(...args: any[]): void;
     }
 
-    module OAuth2ServiceGoogle {
+    namespace OAuth2ServiceGoogle {
         // Constructor properties interface
 
         interface ConstructorProps extends OAuth2ServiceBase.ConstructorProps, OAuth2Service.ConstructorProps {}
@@ -5900,7 +5900,7 @@ export namespace EDataServer {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module OAuth2ServiceOutlook {
+    namespace OAuth2ServiceOutlook {
         // Constructor properties interface
 
         interface ConstructorProps extends OAuth2ServiceBase.ConstructorProps, OAuth2Service.ConstructorProps {}
@@ -6756,7 +6756,7 @@ export namespace EDataServer {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module OAuth2ServiceYahoo {
+    namespace OAuth2ServiceYahoo {
         // Constructor properties interface
 
         interface ConstructorProps extends OAuth2ServiceBase.ConstructorProps, OAuth2Service.ConstructorProps {}
@@ -7612,7 +7612,7 @@ export namespace EDataServer {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module OAuth2Services {
+    namespace OAuth2Services {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Extensible.ConstructorProps {}
@@ -8119,7 +8119,7 @@ export namespace EDataServer {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SoupAuthBearer {
+    namespace SoupAuthBearer {
         // Constructor properties interface
 
         interface ConstructorProps extends Soup.Auth.ConstructorProps {}
@@ -8154,7 +8154,7 @@ export namespace EDataServer {
         set_access_token(access_token: string, expires_in_seconds: number): void;
     }
 
-    module SoupSession {
+    namespace SoupSession {
         // Constructor properties interface
 
         interface ConstructorProps extends Soup.Session.ConstructorProps {
@@ -8515,7 +8515,7 @@ export namespace EDataServer {
         setup_logging(logging_level?: string | null): void;
     }
 
-    module Source {
+    namespace Source {
         // Signal callback interfaces
 
         interface Authenticate {
@@ -10822,7 +10822,7 @@ export namespace EDataServer {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SourceAddressBook {
+    namespace SourceAddressBook {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceBackend.ConstructorProps {
@@ -10858,7 +10858,7 @@ export namespace EDataServer {
         set_order(order: number): void;
     }
 
-    module SourceAlarms {
+    namespace SourceAlarms {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -10945,7 +10945,7 @@ export namespace EDataServer {
         set_last_notified(last_notified?: string | null): void;
     }
 
-    module SourceAuthentication {
+    namespace SourceAuthentication {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -11182,7 +11182,7 @@ export namespace EDataServer {
         set_user(user?: string | null): void;
     }
 
-    module SourceAutocomplete {
+    namespace SourceAutocomplete {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -11229,7 +11229,7 @@ export namespace EDataServer {
         set_include_me(include_me: boolean): void;
     }
 
-    module SourceAutoconfig {
+    namespace SourceAutoconfig {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -11294,7 +11294,7 @@ export namespace EDataServer {
         set_revision(revision: string): void;
     }
 
-    module SourceBackend {
+    namespace SourceBackend {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -11349,7 +11349,7 @@ export namespace EDataServer {
         set_backend_name(backend_name?: string | null): void;
     }
 
-    module SourceCalendar {
+    namespace SourceCalendar {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceSelectable.ConstructorProps {}
@@ -11369,7 +11369,7 @@ export namespace EDataServer {
         _init(...args: any[]): void;
     }
 
-    module SourceCamel {
+    namespace SourceCamel {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -11454,7 +11454,7 @@ export namespace EDataServer {
         get_settings(): Camel.Settings;
     }
 
-    module SourceCollection {
+    namespace SourceCollection {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceBackend.ConstructorProps {
@@ -11668,7 +11668,7 @@ export namespace EDataServer {
         set_mail_enabled(mail_enabled: boolean): void;
     }
 
-    module SourceContacts {
+    namespace SourceContacts {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -11699,7 +11699,7 @@ export namespace EDataServer {
         set_include_me(include_me: boolean): void;
     }
 
-    module SourceCredentialsProvider {
+    namespace SourceCredentialsProvider {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Extensible.ConstructorProps {
@@ -12417,7 +12417,7 @@ export namespace EDataServer {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SourceCredentialsProviderImpl {
+    namespace SourceCredentialsProviderImpl {
         // Constructor properties interface
 
         interface ConstructorProps extends Extension.ConstructorProps {}
@@ -12561,7 +12561,7 @@ export namespace EDataServer {
         ): boolean;
     }
 
-    module SourceCredentialsProviderImplOAuth2 {
+    namespace SourceCredentialsProviderImplOAuth2 {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceCredentialsProviderImpl.ConstructorProps {}
@@ -12580,7 +12580,7 @@ export namespace EDataServer {
         _init(...args: any[]): void;
     }
 
-    module SourceCredentialsProviderImplPassword {
+    namespace SourceCredentialsProviderImplPassword {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceCredentialsProviderImpl.ConstructorProps {}
@@ -12599,7 +12599,7 @@ export namespace EDataServer {
         _init(...args: any[]): void;
     }
 
-    module SourceExtension {
+    namespace SourceExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12654,7 +12654,7 @@ export namespace EDataServer {
         ref_source(): Source;
     }
 
-    module SourceGoa {
+    namespace SourceGoa {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -12829,7 +12829,7 @@ export namespace EDataServer {
         set_name(name?: string | null): void;
     }
 
-    module SourceLDAP {
+    namespace SourceLDAP {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -12895,7 +12895,7 @@ export namespace EDataServer {
         set_security(security: SourceLDAPSecurity | null): void;
     }
 
-    module SourceLocal {
+    namespace SourceLocal {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -12986,7 +12986,7 @@ export namespace EDataServer {
         set_writable(writable: boolean): void;
     }
 
-    module SourceMDN {
+    namespace SourceMDN {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -13031,7 +13031,7 @@ export namespace EDataServer {
         set_response_policy(response_policy: MdnResponsePolicy | null): void;
     }
 
-    module SourceMailAccount {
+    namespace SourceMailAccount {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceBackend.ConstructorProps {
@@ -13173,7 +13173,7 @@ export namespace EDataServer {
         set_needs_initial_setup(needs_initial_setup: boolean): void;
     }
 
-    module SourceMailComposition {
+    namespace SourceMailComposition {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -13420,7 +13420,7 @@ export namespace EDataServer {
         set_top_signature(top_signature: ThreeState | null): void;
     }
 
-    module SourceMailIdentity {
+    namespace SourceMailIdentity {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -13627,7 +13627,7 @@ export namespace EDataServer {
         set_signature_uid(signature_uid?: string | null): void;
     }
 
-    module SourceMailSignature {
+    namespace SourceMailSignature {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -13701,7 +13701,7 @@ export namespace EDataServer {
         set_mime_type(mime_type?: string | null): void;
     }
 
-    module SourceMailSubmission {
+    namespace SourceMailSubmission {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -13814,7 +13814,7 @@ export namespace EDataServer {
         set_use_sent_folder(use_sent_folder: boolean): void;
     }
 
-    module SourceMailTransport {
+    namespace SourceMailTransport {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceBackend.ConstructorProps {}
@@ -13834,7 +13834,7 @@ export namespace EDataServer {
         _init(...args: any[]): void;
     }
 
-    module SourceMemoList {
+    namespace SourceMemoList {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceSelectable.ConstructorProps {}
@@ -13854,7 +13854,7 @@ export namespace EDataServer {
         _init(...args: any[]): void;
     }
 
-    module SourceOffline {
+    namespace SourceOffline {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -13901,7 +13901,7 @@ export namespace EDataServer {
         set_stay_synchronized(stay_synchronized: boolean): void;
     }
 
-    module SourceOpenPGP {
+    namespace SourceOpenPGP {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -14127,7 +14127,7 @@ export namespace EDataServer {
         set_signing_algorithm(signing_algorithm: string): void;
     }
 
-    module SourceProxy {
+    namespace SourceProxy {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -14490,7 +14490,7 @@ export namespace EDataServer {
         set_socks_port(socks_port: number): void;
     }
 
-    module SourceRefresh {
+    namespace SourceRefresh {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -14582,7 +14582,7 @@ export namespace EDataServer {
         set_interval_minutes(interval_minutes: number): void;
     }
 
-    module SourceRegistry {
+    namespace SourceRegistry {
         // Signal callback interfaces
 
         interface CredentialsRequired {
@@ -16048,7 +16048,7 @@ export namespace EDataServer {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SourceRegistryWatcher {
+    namespace SourceRegistryWatcher {
         // Signal callback interfaces
 
         interface Appeared {
@@ -16145,7 +16145,7 @@ export namespace EDataServer {
         reclaim(): void;
     }
 
-    module SourceResource {
+    namespace SourceResource {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -16199,7 +16199,7 @@ export namespace EDataServer {
         set_identity(identity?: string | null): void;
     }
 
-    module SourceRevisionGuards {
+    namespace SourceRevisionGuards {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -16241,7 +16241,7 @@ export namespace EDataServer {
         set_enabled(enabled: boolean): void;
     }
 
-    module SourceSMIME {
+    namespace SourceSMIME {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -16402,7 +16402,7 @@ export namespace EDataServer {
         set_signing_certificate(signing_certificate?: string | null): void;
     }
 
-    module SourceSecurity {
+    namespace SourceSecurity {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -16479,7 +16479,7 @@ export namespace EDataServer {
         set_secure(secure: boolean): void;
     }
 
-    module SourceSelectable {
+    namespace SourceSelectable {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceBackend.ConstructorProps {
@@ -16566,7 +16566,7 @@ export namespace EDataServer {
         set_selected(selected: boolean): void;
     }
 
-    module SourceTaskList {
+    namespace SourceTaskList {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceSelectable.ConstructorProps {}
@@ -16586,7 +16586,7 @@ export namespace EDataServer {
         _init(...args: any[]): void;
     }
 
-    module SourceUoa {
+    namespace SourceUoa {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -16631,7 +16631,7 @@ export namespace EDataServer {
         set_account_id(account_id: number): void;
     }
 
-    module SourceWeather {
+    namespace SourceWeather {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -16665,7 +16665,7 @@ export namespace EDataServer {
         set_units(units: SourceWeatherUnits | null): void;
     }
 
-    module SourceWebDAVNotes {
+    namespace SourceWebDAVNotes {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -16720,7 +16720,7 @@ export namespace EDataServer {
         set_default_ext(default_ext?: string | null): void;
     }
 
-    module SourceWebdav {
+    namespace SourceWebdav {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -17046,7 +17046,7 @@ export namespace EDataServer {
         ): TrustPromptResponse;
     }
 
-    module WebDAVSession {
+    namespace WebDAVSession {
         // Constructor properties interface
 
         interface ConstructorProps extends SoupSession.ConstructorProps {}
@@ -17875,7 +17875,7 @@ export namespace EDataServer {
         ): boolean;
     }
 
-    module XmlDocument {
+    namespace XmlDocument {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19204,7 +19204,7 @@ export namespace EDataServer {
         _init(...args: any[]): void;
     }
 
-    module Extensible {
+    namespace Extensible {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19247,7 +19247,7 @@ export namespace EDataServer {
         new (): Extensible; // This allows `obj instanceof Extensible`
     };
 
-    module OAuth2Service {
+    namespace OAuth2Service {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

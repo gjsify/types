@@ -134,7 +134,7 @@ export namespace Hex {
          */
         IGNORE_CASE,
     }
-    module Document {
+    namespace Document {
         // Signal callback interfaces
 
         interface DocumentChanged {
@@ -629,7 +629,7 @@ export namespace Hex {
         ): void;
     }
 
-    module Widget {
+    namespace Widget {
         // Signal callback interfaces
 
         interface CopyClipboard {
@@ -1595,7 +1595,7 @@ export namespace Hex {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WidgetMark {
+    namespace WidgetMark {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1754,7 +1754,7 @@ export namespace Hex {
 
     type WidgetClass = typeof Widget;
     type WidgetMarkClass = typeof WidgetMark;
-    module Buffer {
+    namespace Buffer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

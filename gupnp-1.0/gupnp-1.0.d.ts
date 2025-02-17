@@ -204,7 +204,7 @@ export namespace GUPnP {
     type TimeTZ = object | null;
     type URI = object | null;
     type UUID = object | null;
-    module Context {
+    namespace Context {
         // Constructor properties interface
 
         interface ConstructorProps extends GSSDP.Client.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -864,7 +864,7 @@ export namespace GUPnP {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ContextManager {
+    namespace ContextManager {
         // Signal callback interfaces
 
         interface ContextAvailable {
@@ -981,7 +981,7 @@ export namespace GUPnP {
         rescan_control_points(): void;
     }
 
-    module ControlPoint {
+    namespace ControlPoint {
         // Signal callback interfaces
 
         interface DeviceProxyAvailable {
@@ -1096,7 +1096,7 @@ export namespace GUPnP {
         list_service_proxies(): ServiceProxy[];
     }
 
-    module Device {
+    namespace Device {
         // Constructor properties interface
 
         interface ConstructorProps extends DeviceInfo.ConstructorProps {
@@ -1132,7 +1132,7 @@ export namespace GUPnP {
         _init(...args: any[]): void;
     }
 
-    module DeviceInfo {
+    namespace DeviceInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1396,7 +1396,7 @@ export namespace GUPnP {
         list_services(): ServiceInfo[];
     }
 
-    module DeviceProxy {
+    namespace DeviceProxy {
         // Constructor properties interface
 
         interface ConstructorProps extends DeviceInfo.ConstructorProps {}
@@ -1416,7 +1416,7 @@ export namespace GUPnP {
         _init(...args: any[]): void;
     }
 
-    module ResourceFactory {
+    namespace ResourceFactory {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1483,7 +1483,7 @@ export namespace GUPnP {
         unregister_resource_type(upnp_type: string): boolean;
     }
 
-    module RootDevice {
+    namespace RootDevice {
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {
@@ -1590,7 +1590,7 @@ export namespace GUPnP {
         set_available(available: boolean): void;
     }
 
-    module Service {
+    namespace Service {
         // Signal callback interfaces
 
         interface ActionInvoked {
@@ -1716,7 +1716,7 @@ export namespace GUPnP {
         thaw_notify(): void;
     }
 
-    module ServiceInfo {
+    namespace ServiceInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1865,7 +1865,7 @@ export namespace GUPnP {
         get_url_base(): Soup.URI;
     }
 
-    module ServiceIntrospection {
+    namespace ServiceIntrospection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1931,7 +1931,7 @@ export namespace GUPnP {
         list_state_variables(): ServiceStateVariableInfo[];
     }
 
-    module ServiceProxy {
+    namespace ServiceProxy {
         // Signal callback interfaces
 
         interface SubscriptionLost {
@@ -2118,7 +2118,7 @@ export namespace GUPnP {
         set_subscribed(subscribed: boolean): void;
     }
 
-    module WhiteList {
+    namespace WhiteList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2215,7 +2215,7 @@ export namespace GUPnP {
         set_enabled(enable: boolean): void;
     }
 
-    module XMLDoc {
+    namespace XMLDoc {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2494,7 +2494,7 @@ export namespace GUPnP {
     }
 
     type XMLDocClass = typeof XMLDoc;
-    module Acl {
+    namespace Acl {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

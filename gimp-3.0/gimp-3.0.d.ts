@@ -7254,7 +7254,7 @@ export namespace Gimp {
         NO_IMAGE,
         ALWAYS,
     }
-    module BatchProcedure {
+    namespace BatchProcedure {
         // Constructor properties interface
 
         interface ConstructorProps extends Procedure.ConstructorProps {}
@@ -7324,7 +7324,7 @@ export namespace Gimp {
         set_interpreter_name(interpreter_name: string): void;
     }
 
-    module Brush {
+    namespace Brush {
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {}
@@ -7952,7 +7952,7 @@ export namespace Gimp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Channel {
+    namespace Channel {
         // Constructor properties interface
 
         interface ConstructorProps extends Drawable.ConstructorProps {}
@@ -8065,7 +8065,7 @@ export namespace Gimp {
         set_show_masked(show_masked: boolean): boolean;
     }
 
-    module Choice {
+    namespace Choice {
         // Signal callback interfaces
 
         interface SensitivityChanged {
@@ -8148,7 +8148,7 @@ export namespace Gimp {
         set_sensitive(nick: string, sensitive: boolean): void;
     }
 
-    module ColorConfig {
+    namespace ColorConfig {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ConfigInterface.ConstructorProps {
@@ -8690,7 +8690,7 @@ export namespace Gimp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ColorProfile {
+    namespace ColorProfile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8827,7 +8827,7 @@ export namespace Gimp {
         save_to_file(file: Gio.File): boolean;
     }
 
-    module ColorTransform {
+    namespace ColorTransform {
         // Signal callback interfaces
 
         interface Progress {
@@ -8987,7 +8987,7 @@ export namespace Gimp {
         static unexpand(path: string, recode: boolean): string;
     }
 
-    module Display {
+    namespace Display {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9096,7 +9096,7 @@ export namespace Gimp {
         present(): boolean;
     }
 
-    module Drawable {
+    namespace Drawable {
         // Constructor properties interface
 
         interface ConstructorProps extends Item.ConstructorProps {}
@@ -9826,7 +9826,7 @@ export namespace Gimp {
         update(x: number, y: number, width: number, height: number): boolean;
     }
 
-    module ExportOptions {
+    namespace ExportOptions {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9888,7 +9888,7 @@ export namespace Gimp {
         get_image(image: Image): [ExportReturn, Image];
     }
 
-    module ExportProcedure {
+    namespace ExportProcedure {
         // Constructor properties interface
 
         interface ConstructorProps extends FileProcedure.ConstructorProps {
@@ -10172,7 +10172,7 @@ export namespace Gimp {
         set_support_xmp(supports: boolean): void;
     }
 
-    module FileProcedure {
+    namespace FileProcedure {
         // Constructor properties interface
 
         interface ConstructorProps extends Procedure.ConstructorProps {}
@@ -10311,7 +10311,7 @@ export namespace Gimp {
         set_priority(priority: number): void;
     }
 
-    module Font {
+    namespace Font {
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {}
@@ -10758,7 +10758,7 @@ export namespace Gimp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Gradient {
+    namespace Gradient {
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {}
@@ -11511,7 +11511,7 @@ export namespace Gimp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module GroupLayer {
+    namespace GroupLayer {
         // Constructor properties interface
 
         interface ConstructorProps extends Layer.ConstructorProps {}
@@ -11554,7 +11554,7 @@ export namespace Gimp {
         merge(): Layer;
     }
 
-    module Image {
+    namespace Image {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13353,7 +13353,7 @@ export namespace Gimp {
         unset_active_channel(): boolean;
     }
 
-    module ImageProcedure {
+    namespace ImageProcedure {
         // Constructor properties interface
 
         interface ConstructorProps extends Procedure.ConstructorProps {}
@@ -13396,7 +13396,7 @@ export namespace Gimp {
         static ['new'](...args: never[]): any;
     }
 
-    module Item {
+    namespace Item {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -14139,7 +14139,7 @@ export namespace Gimp {
         transform_translate(off_x: number, off_y: number): Item;
     }
 
-    module Layer {
+    namespace Layer {
         // Constructor properties interface
 
         interface ConstructorProps extends Drawable.ConstructorProps {}
@@ -14520,7 +14520,7 @@ export namespace Gimp {
         set_show_mask(show_mask: boolean): boolean;
     }
 
-    module LayerMask {
+    namespace LayerMask {
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {}
@@ -14546,7 +14546,7 @@ export namespace Gimp {
         static get_by_id(layer_mask_id: number): LayerMask | null;
     }
 
-    module LoadProcedure {
+    namespace LoadProcedure {
         // Constructor properties interface
 
         interface ConstructorProps extends FileProcedure.ConstructorProps {}
@@ -14656,7 +14656,7 @@ export namespace Gimp {
         static serialize(memsize: number): string;
     }
 
-    module Metadata {
+    namespace Metadata {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -14781,7 +14781,7 @@ export namespace Gimp {
         set_resolution(xres: number, yres: number, unit: Unit): void;
     }
 
-    module Module {
+    namespace Module {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {
@@ -15301,7 +15301,7 @@ export namespace Gimp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ModuleDB {
+    namespace ModuleDB {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -15862,7 +15862,7 @@ export namespace Gimp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PDB {
+    namespace PDB {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -15975,7 +15975,7 @@ export namespace Gimp {
         temp_procedure_name(): string;
     }
 
-    module Palette {
+    namespace Palette {
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {}
@@ -16653,7 +16653,7 @@ export namespace Gimp {
         _init(...args: any[]): void;
     }
 
-    module Path {
+    namespace Path {
         // Constructor properties interface
 
         interface ConstructorProps extends Item.ConstructorProps {}
@@ -16928,7 +16928,7 @@ export namespace Gimp {
         stroke_translate(stroke_id: number, off_x: number, off_y: number): boolean;
     }
 
-    module Pattern {
+    namespace Pattern {
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {}
@@ -17390,7 +17390,7 @@ export namespace Gimp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PlugIn {
+    namespace PlugIn {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -17739,7 +17739,7 @@ export namespace Gimp {
         set_pdb_error_handler(handler: PDBErrorHandler | null): void;
     }
 
-    module Procedure {
+    namespace Procedure {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -19567,7 +19567,7 @@ export namespace Gimp {
         set_sensitivity_mask(sensitivity_mask: number): void;
     }
 
-    module ProcedureConfig {
+    namespace ProcedureConfig {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -19638,7 +19638,7 @@ export namespace Gimp {
         save_metadata(exported_image: Image, file: Gio.File): void;
     }
 
-    module Resource {
+    namespace Resource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ConfigInterface.ConstructorProps {
@@ -20246,7 +20246,7 @@ export namespace Gimp {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Selection {
+    namespace Selection {
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {}
@@ -20426,7 +20426,7 @@ export namespace Gimp {
         static value(image: Image, x: number, y: number): number;
     }
 
-    module TextLayer {
+    namespace TextLayer {
         // Constructor properties interface
 
         interface ConstructorProps extends Layer.ConstructorProps {}
@@ -20715,7 +20715,7 @@ export namespace Gimp {
         set_text(text: string): boolean;
     }
 
-    module ThumbnailProcedure {
+    namespace ThumbnailProcedure {
         // Constructor properties interface
 
         interface ConstructorProps extends Procedure.ConstructorProps {}
@@ -20742,7 +20742,7 @@ export namespace Gimp {
         static ['new'](...args: never[]): any;
     }
 
-    module Unit {
+    namespace Unit {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -20945,7 +20945,7 @@ export namespace Gimp {
         set_deletion_flag(deletion_flag: boolean): void;
     }
 
-    module VectorLoadProcedure {
+    namespace VectorLoadProcedure {
         // Constructor properties interface
 
         interface ConstructorProps extends LoadProcedure.ConstructorProps {}
@@ -22772,7 +22772,7 @@ export namespace Gimp {
     }
 
     type VectorLoadProcedureClass = typeof VectorLoadProcedure;
-    module ColorManaged {
+    namespace ColorManaged {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -22868,7 +22868,7 @@ export namespace Gimp {
         new (): ColorManaged; // This allows `obj instanceof ColorManaged`
     };
 
-    module ConfigInterface {
+    namespace ConfigInterface {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

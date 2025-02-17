@@ -419,7 +419,7 @@ export namespace St {
          */
         BLINK,
     }
-    module Adjustment {
+    namespace Adjustment {
         // Signal callback interfaces
 
         interface Changed {
@@ -1090,7 +1090,7 @@ export namespace St {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Bin {
+    namespace Bin {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
@@ -1541,7 +1541,7 @@ export namespace St {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module BorderImage {
+    namespace BorderImage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1581,7 +1581,7 @@ export namespace St {
         get_file(): Gio.File;
     }
 
-    module BoxLayout {
+    namespace BoxLayout {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2123,7 +2123,7 @@ export namespace St {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Button {
+    namespace Button {
         // Signal callback interfaces
 
         interface Clicked {
@@ -2705,7 +2705,7 @@ export namespace St {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Clipboard {
+    namespace Clipboard {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2771,7 +2771,7 @@ export namespace St {
         set_text(type: ClipboardType | null, text: string): void;
     }
 
-    module DrawingArea {
+    namespace DrawingArea {
         // Signal callback interfaces
 
         interface Repaint {
@@ -3253,7 +3253,7 @@ export namespace St {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Entry {
+    namespace Entry {
         // Signal callback interfaces
 
         interface PrimaryIconClicked {
@@ -3897,7 +3897,7 @@ export namespace St {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module FocusManager {
+    namespace FocusManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3955,7 +3955,7 @@ export namespace St {
         remove_group(root: Widget): void;
     }
 
-    module GenericAccessible {
+    namespace GenericAccessible {
         // Signal callback interfaces
 
         interface GetCurrentValue {
@@ -4552,7 +4552,7 @@ export namespace St {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Icon {
+    namespace Icon {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5111,7 +5111,7 @@ export namespace St {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module IconInfo {
+    namespace IconInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5291,7 +5291,7 @@ export namespace St {
         load_symbolic_finish(res: Gio.AsyncResult): [GdkPixbuf.Pixbuf, boolean];
     }
 
-    module IconTheme {
+    namespace IconTheme {
         // Signal callback interfaces
 
         interface Changed {
@@ -5587,7 +5587,7 @@ export namespace St {
         set_search_path(path: string[]): void;
     }
 
-    module ImageContent {
+    namespace ImageContent {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6239,7 +6239,7 @@ export namespace St {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Label {
+    namespace Label {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6708,7 +6708,7 @@ export namespace St {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PasswordEntry {
+    namespace PasswordEntry {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7186,7 +7186,7 @@ export namespace St {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScrollBar {
+    namespace ScrollBar {
         // Signal callback interfaces
 
         interface ScrollStart {
@@ -7664,7 +7664,7 @@ export namespace St {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScrollView {
+    namespace ScrollView {
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
@@ -8275,7 +8275,7 @@ export namespace St {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ScrollViewFade {
+    namespace ScrollViewFade {
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.ShaderEffect.ConstructorProps {
@@ -8333,7 +8333,7 @@ export namespace St {
         static ['new'](): ScrollViewFade;
     }
 
-    module Settings {
+    namespace Settings {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8469,7 +8469,7 @@ export namespace St {
         uninhibit_animations(): void;
     }
 
-    module TextureCache {
+    namespace TextureCache {
         // Signal callback interfaces
 
         interface IconThemeChanged {
@@ -8592,7 +8592,7 @@ export namespace St {
         rescan_icon_theme(): boolean;
     }
 
-    module Theme {
+    namespace Theme {
         // Signal callback interfaces
 
         interface CustomStylesheetsChanged {
@@ -8689,7 +8689,7 @@ export namespace St {
         unload_stylesheet(file: Gio.File): void;
     }
 
-    module ThemeContext {
+    namespace ThemeContext {
         // Signal callback interfaces
 
         interface Changed {
@@ -8794,7 +8794,7 @@ export namespace St {
         set_theme(theme: Theme): void;
     }
 
-    module ThemeNode {
+    namespace ThemeNode {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9248,7 +9248,7 @@ export namespace St {
         to_string(): string;
     }
 
-    module Viewport {
+    namespace Viewport {
         // Constructor properties interface
 
         interface ConstructorProps<
@@ -9756,7 +9756,7 @@ export namespace St {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Widget {
+    namespace Widget {
         // Signal callback interfaces
 
         interface PopupMenu {
@@ -10712,7 +10712,7 @@ export namespace St {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module WidgetAccessible {
+    namespace WidgetAccessible {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11798,7 +11798,7 @@ export namespace St {
     }
 
     type WidgetClass = typeof Widget;
-    module Scrollable {
+    namespace Scrollable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

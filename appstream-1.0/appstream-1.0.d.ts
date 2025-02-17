@@ -2632,7 +2632,7 @@ export namespace AppStream {
          */
         IGNORE_EPOCH,
     }
-    module Agreement {
+    namespace Agreement {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2684,7 +2684,7 @@ export namespace AppStream {
         set_version_id(version_id: string): void;
     }
 
-    module AgreementSection {
+    namespace AgreementSection {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2748,7 +2748,7 @@ export namespace AppStream {
         set_name(name: string, locale?: string | null): void;
     }
 
-    module Artifact {
+    namespace Artifact {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2848,7 +2848,7 @@ export namespace AppStream {
         set_size(size: number, kind: SizeKind | null): void;
     }
 
-    module Branding {
+    namespace Branding {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2892,7 +2892,7 @@ export namespace AppStream {
         set_color(kind: ColorKind | null, scheme_preference: ColorSchemeKind | null, colorcode: string): void;
     }
 
-    module Bundle {
+    namespace Bundle {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2933,7 +2933,7 @@ export namespace AppStream {
         set_kind(kind: BundleKind | null): void;
     }
 
-    module Category {
+    namespace Category {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3046,7 +3046,7 @@ export namespace AppStream {
         set_summary(value: string): void;
     }
 
-    module Checksum {
+    namespace Checksum {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3089,7 +3089,7 @@ export namespace AppStream {
         set_value(value: string): void;
     }
 
-    module Component {
+    namespace Component {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3952,7 +3952,7 @@ export namespace AppStream {
         to_xml_data(context: Context): string;
     }
 
-    module ContentRating {
+    namespace ContentRating {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4060,7 +4060,7 @@ export namespace AppStream {
         set_value(id: string, value: ContentRatingValue | null): void;
     }
 
-    module Context {
+    namespace Context {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4125,7 +4125,7 @@ export namespace AppStream {
         set_style(style: FormatStyle | null): void;
     }
 
-    module Icon {
+    namespace Icon {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4197,7 +4197,7 @@ export namespace AppStream {
         set_width(width: number): void;
     }
 
-    module Image {
+    namespace Image {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4268,7 +4268,7 @@ export namespace AppStream {
         set_width(width: number): void;
     }
 
-    module Issue {
+    namespace Issue {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4320,7 +4320,7 @@ export namespace AppStream {
         set_url(url: string): void;
     }
 
-    module Launchable {
+    namespace Launchable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4363,7 +4363,7 @@ export namespace AppStream {
         set_kind(kind: LaunchableKind | null): void;
     }
 
-    module Metadata {
+    namespace Metadata {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4583,7 +4583,7 @@ export namespace AppStream {
         set_write_header(wheader: boolean): void;
     }
 
-    module Pool {
+    namespace Pool {
         // Signal callback interfaces
 
         interface Changed {
@@ -4839,7 +4839,7 @@ export namespace AppStream {
         set_locale(locale: string): void;
     }
 
-    module Provided {
+    namespace Provided {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4887,7 +4887,7 @@ export namespace AppStream {
         set_kind(kind: ProvidedKind | null): void;
     }
 
-    module Relation {
+    namespace Relation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5046,7 +5046,7 @@ export namespace AppStream {
         version_compare(version: string): boolean;
     }
 
-    module Release {
+    namespace Release {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5206,7 +5206,7 @@ export namespace AppStream {
         vercmp(rel2: Release): number;
     }
 
-    module Review {
+    namespace Review {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5415,7 +5415,7 @@ export namespace AppStream {
         set_version(version: string): void;
     }
 
-    module Screenshot {
+    namespace Screenshot {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5530,7 +5530,7 @@ export namespace AppStream {
         set_kind(kind: ScreenshotKind | null): void;
     }
 
-    module Suggested {
+    namespace Suggested {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5577,7 +5577,7 @@ export namespace AppStream {
         set_kind(kind: SuggestedKind | null): void;
     }
 
-    module SystemInfo {
+    namespace SystemInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5696,7 +5696,7 @@ export namespace AppStream {
         set_input_control(kind: ControlKind | null, found: boolean): void;
     }
 
-    module Translation {
+    namespace Translation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5749,7 +5749,7 @@ export namespace AppStream {
         set_source_locale(locale?: string | null): void;
     }
 
-    module Validator {
+    namespace Validator {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5881,7 +5881,7 @@ export namespace AppStream {
         validate_tree(root_dir: string): boolean;
     }
 
-    module ValidatorIssue {
+    namespace ValidatorIssue {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5979,7 +5979,7 @@ export namespace AppStream {
         set_tag(tag: string): void;
     }
 
-    module Video {
+    namespace Video {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

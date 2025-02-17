@@ -2242,7 +2242,7 @@ export namespace Kkc {
         META_MASK,
         RELEASE_MASK,
     }
-    module MetadataFile {
+    namespace MetadataFile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -2842,7 +2842,7 @@ export namespace Kkc {
         get_right_node(): UnigramTrellisNode;
     }
 
-    module LanguageModelMetadata {
+    namespace LanguageModelMetadata {
         // Constructor properties interface
 
         interface ConstructorProps extends MetadataFile.ConstructorProps {
@@ -2880,7 +2880,7 @@ export namespace Kkc {
         set_model_type(value: GObject.GType): void;
     }
 
-    module LanguageModel {
+    namespace LanguageModel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -3418,7 +3418,7 @@ export namespace Kkc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TextBigramLanguageModel {
+    namespace TextBigramLanguageModel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3484,7 +3484,7 @@ export namespace Kkc {
         vfunc_get_eos(): LanguageModelEntry;
     }
 
-    module TextTrigramLanguageModel {
+    namespace TextTrigramLanguageModel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3526,7 +3526,7 @@ export namespace Kkc {
         vfunc_unigram_backoff(entry: LanguageModelEntry): number;
     }
 
-    module SortedBigramLanguageModel {
+    namespace SortedBigramLanguageModel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3593,7 +3593,7 @@ export namespace Kkc {
         vfunc_get_eos(): LanguageModelEntry;
     }
 
-    module SortedTrigramLanguageModel {
+    namespace SortedTrigramLanguageModel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3635,7 +3635,7 @@ export namespace Kkc {
         vfunc_unigram_backoff(entry: LanguageModelEntry): number;
     }
 
-    module Decoder {
+    namespace Decoder {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3677,7 +3677,7 @@ export namespace Kkc {
         ): Segment[];
     }
 
-    module BigramDecoder {
+    namespace BigramDecoder {
         // Constructor properties interface
 
         interface ConstructorProps extends Decoder.ConstructorProps {
@@ -3719,7 +3719,7 @@ export namespace Kkc {
         get_model(): BigramLanguageModel;
     }
 
-    module TrigramDecoder {
+    namespace TrigramDecoder {
         // Constructor properties interface
 
         interface ConstructorProps extends BigramDecoder.ConstructorProps {}
@@ -3737,7 +3737,7 @@ export namespace Kkc {
         static ['new'](model: TrigramLanguageModel): TrigramDecoder;
     }
 
-    module SegmentList {
+    namespace SegmentList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3785,7 +3785,7 @@ export namespace Kkc {
         get_size(): number;
     }
 
-    module Segment {
+    namespace Segment {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3824,7 +3824,7 @@ export namespace Kkc {
         set_output(value: string): void;
     }
 
-    module CandidateList {
+    namespace CandidateList {
         // Signal callback interfaces
 
         interface Populated {
@@ -3923,7 +3923,7 @@ export namespace Kkc {
         get_page_visible(): boolean;
     }
 
-    module Candidate {
+    namespace Candidate {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3980,7 +3980,7 @@ export namespace Kkc {
         set_output(value: string): void;
     }
 
-    module KeyEventFilter {
+    namespace KeyEventFilter {
         // Signal callback interfaces
 
         interface Forwarded {
@@ -4021,7 +4021,7 @@ export namespace Kkc {
         reset(): void;
     }
 
-    module KeyEvent {
+    namespace KeyEvent {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4076,7 +4076,7 @@ export namespace Kkc {
         set_modifiers(value: ModifierType | null): void;
     }
 
-    module Keymap {
+    namespace Keymap {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4118,7 +4118,7 @@ export namespace Kkc {
         set_parent(value?: Keymap | null): void;
     }
 
-    module NicolaKeyEventFilter {
+    namespace NicolaKeyEventFilter {
         // Constructor properties interface
 
         interface ConstructorProps extends KeyEventFilter.ConstructorProps {}
@@ -4145,7 +4145,7 @@ export namespace Kkc {
         static ['new'](): NicolaKeyEventFilter;
     }
 
-    module RomKanaCharacterList {
+    namespace RomKanaCharacterList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4183,7 +4183,7 @@ export namespace Kkc {
         get_size(): number;
     }
 
-    module RomKanaConverter {
+    namespace RomKanaConverter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4253,7 +4253,7 @@ export namespace Kkc {
         get_produced(): RomKanaCharacterList;
     }
 
-    module RuleMetadata {
+    namespace RuleMetadata {
         // Constructor properties interface
 
         interface ConstructorProps extends MetadataFile.ConstructorProps {
@@ -4294,7 +4294,7 @@ export namespace Kkc {
         set_priority(value: number): void;
     }
 
-    module Rule {
+    namespace Rule {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -4825,7 +4825,7 @@ export namespace Kkc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UserRule {
+    namespace UserRule {
         // Constructor properties interface
 
         interface ConstructorProps extends Rule.ConstructorProps {}
@@ -4850,7 +4850,7 @@ export namespace Kkc {
         write(input_mode: InputMode | null): void;
     }
 
-    module Context {
+    namespace Context {
         // Signal callback interfaces
 
         interface RequestSelectionText {
@@ -4959,7 +4959,7 @@ export namespace Kkc {
         get_key_event_filter(): KeyEventFilter;
     }
 
-    module EmptySegmentDictionary {
+    namespace EmptySegmentDictionary {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5394,7 +5394,7 @@ export namespace Kkc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SystemSegmentDictionary {
+    namespace SystemSegmentDictionary {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5829,7 +5829,7 @@ export namespace Kkc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UserSegmentDictionary {
+    namespace UserSegmentDictionary {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6264,7 +6264,7 @@ export namespace Kkc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UserSentenceDictionary {
+    namespace UserSentenceDictionary {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6697,7 +6697,7 @@ export namespace Kkc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module UserDictionary {
+    namespace UserDictionary {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7139,7 +7139,7 @@ export namespace Kkc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module DictionaryList {
+    namespace DictionaryList {
         interface DictionaryCallback {
             (dictionary: Dictionary): DictionaryCallbackReturn;
         }
@@ -7176,7 +7176,7 @@ export namespace Kkc {
         get_size(): number;
     }
 
-    module DBusCandidateList {
+    namespace DBusCandidateList {
         // Signal callback interfaces
 
         interface Populated {
@@ -7269,7 +7269,7 @@ export namespace Kkc {
         get_page_visible(): boolean;
     }
 
-    module DBusSegmentList {
+    namespace DBusSegmentList {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7309,7 +7309,7 @@ export namespace Kkc {
         get_size(): number;
     }
 
-    module DBusContext {
+    namespace DBusContext {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7373,7 +7373,7 @@ export namespace Kkc {
         set_auto_correct(value: boolean): void;
     }
 
-    module DBusServer {
+    namespace DBusServer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7793,7 +7793,7 @@ export namespace Kkc {
         _init(...args: any[]): void;
     }
 
-    module UnigramLanguageModel {
+    namespace UnigramLanguageModel {
         // Constructor properties interface
 
         interface ConstructorProps extends LanguageModel.ConstructorProps {}
@@ -7819,7 +7819,7 @@ export namespace Kkc {
         new (): UnigramLanguageModel; // This allows `obj instanceof UnigramLanguageModel`
     };
 
-    module BigramLanguageModel {
+    namespace BigramLanguageModel {
         // Constructor properties interface
 
         interface ConstructorProps extends UnigramLanguageModel.ConstructorProps {}
@@ -7848,7 +7848,7 @@ export namespace Kkc {
         new (): BigramLanguageModel; // This allows `obj instanceof BigramLanguageModel`
     };
 
-    module TrigramLanguageModel {
+    namespace TrigramLanguageModel {
         // Constructor properties interface
 
         interface ConstructorProps extends BigramLanguageModel.ConstructorProps {}
@@ -7879,7 +7879,7 @@ export namespace Kkc {
         new (): TrigramLanguageModel; // This allows `obj instanceof TrigramLanguageModel`
     };
 
-    module Dictionary {
+    namespace Dictionary {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7905,7 +7905,7 @@ export namespace Kkc {
         new (): Dictionary; // This allows `obj instanceof Dictionary`
     };
 
-    module SegmentDictionary {
+    namespace SegmentDictionary {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7935,7 +7935,7 @@ export namespace Kkc {
         new (): SegmentDictionary; // This allows `obj instanceof SegmentDictionary`
     };
 
-    module SentenceDictionary {
+    namespace SentenceDictionary {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

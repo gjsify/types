@@ -1587,7 +1587,7 @@ export namespace Poppler {
          */
         DIRECTION_RTL,
     }
-    module Annot {
+    namespace Annot {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1672,7 +1672,7 @@ export namespace Poppler {
         set_rectangle(poppler_rect: Rectangle): void;
     }
 
-    module AnnotCircle {
+    namespace AnnotCircle {
         // Constructor properties interface
 
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
@@ -1703,7 +1703,7 @@ export namespace Poppler {
         set_interior_color(poppler_color?: Color | null): void;
     }
 
-    module AnnotFileAttachment {
+    namespace AnnotFileAttachment {
         // Constructor properties interface
 
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
@@ -1733,7 +1733,7 @@ export namespace Poppler {
         get_name(): string;
     }
 
-    module AnnotFreeText {
+    namespace AnnotFreeText {
         // Constructor properties interface
 
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
@@ -1763,7 +1763,7 @@ export namespace Poppler {
         get_quadding(): AnnotFreeTextQuadding;
     }
 
-    module AnnotLine {
+    namespace AnnotLine {
         // Constructor properties interface
 
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
@@ -1790,7 +1790,7 @@ export namespace Poppler {
         set_vertices(start: Point, end: Point): void;
     }
 
-    module AnnotMarkup {
+    namespace AnnotMarkup {
         // Constructor properties interface
 
         interface ConstructorProps extends Annot.ConstructorProps {}
@@ -1885,7 +1885,7 @@ export namespace Poppler {
         set_popup_rectangle(poppler_rect: Rectangle): void;
     }
 
-    module AnnotMovie {
+    namespace AnnotMovie {
         // Constructor properties interface
 
         interface ConstructorProps extends Annot.ConstructorProps {}
@@ -1914,7 +1914,7 @@ export namespace Poppler {
         get_title(): string;
     }
 
-    module AnnotScreen {
+    namespace AnnotScreen {
         // Constructor properties interface
 
         interface ConstructorProps extends Annot.ConstructorProps {}
@@ -1938,7 +1938,7 @@ export namespace Poppler {
         get_action(): Action;
     }
 
-    module AnnotSquare {
+    namespace AnnotSquare {
         // Constructor properties interface
 
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
@@ -1969,7 +1969,7 @@ export namespace Poppler {
         set_interior_color(poppler_color?: Color | null): void;
     }
 
-    module AnnotStamp {
+    namespace AnnotStamp {
         // Constructor properties interface
 
         interface ConstructorProps extends Annot.ConstructorProps {}
@@ -2002,7 +2002,7 @@ export namespace Poppler {
         set_icon(icon: AnnotStampIcon | null): void;
     }
 
-    module AnnotText {
+    namespace AnnotText {
         // Constructor properties interface
 
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
@@ -2078,7 +2078,7 @@ export namespace Poppler {
         set_is_open(is_open: boolean): void;
     }
 
-    module AnnotTextMarkup {
+    namespace AnnotTextMarkup {
         // Constructor properties interface
 
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
@@ -2117,7 +2117,7 @@ export namespace Poppler {
         set_quadrilaterals(quadrilaterals: Quadrilateral[]): void;
     }
 
-    module Attachment {
+    namespace Attachment {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2179,7 +2179,7 @@ export namespace Poppler {
         save_to_fd(fd: number): boolean;
     }
 
-    module Document {
+    namespace Document {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2798,7 +2798,7 @@ export namespace Poppler {
         sign_finish(result: Gio.AsyncResult): boolean;
     }
 
-    module FontInfo {
+    namespace FontInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2846,7 +2846,7 @@ export namespace Poppler {
         scan(n_pages: number): [boolean, FontsIter];
     }
 
-    module FormField {
+    namespace FormField {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3088,7 +3088,7 @@ export namespace Poppler {
         text_set_text(text: string): void;
     }
 
-    module Layer {
+    namespace Layer {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3138,7 +3138,7 @@ export namespace Poppler {
         show(): void;
     }
 
-    module Media {
+    namespace Media {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3221,7 +3221,7 @@ export namespace Poppler {
         save_to_fd(fd: number): boolean;
     }
 
-    module Movie {
+    namespace Movie {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3301,7 +3301,7 @@ export namespace Poppler {
         show_controls(): boolean;
     }
 
-    module PSFile {
+    namespace PSFile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3341,7 +3341,7 @@ export namespace Poppler {
         set_paper_size(width: number, height: number): void;
     }
 
-    module Page {
+    namespace Page {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3697,7 +3697,7 @@ export namespace Poppler {
         render_to_ps(ps_file: PSFile): void;
     }
 
-    module StructureElement {
+    namespace StructureElement {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

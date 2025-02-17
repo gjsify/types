@@ -29,7 +29,7 @@ export namespace GthreeGtk3 {
      * GthreeGtk3-1.0
      */
 
-    module Area {
+    namespace Area {
         // Constructor properties interface
 
         interface ConstructorProps

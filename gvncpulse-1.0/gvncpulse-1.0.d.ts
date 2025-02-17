@@ -18,7 +18,7 @@ export namespace GVncPulse {
      * GVncPulse-1.0
      */
 
-    module AudioPulse {
+    namespace AudioPulse {
         // Constructor properties interface
 
         interface ConstructorProps extends GVnc.BaseAudio.ConstructorProps, GVnc.Audio.ConstructorProps {}

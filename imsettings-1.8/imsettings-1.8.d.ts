@@ -116,7 +116,7 @@ export namespace IMSettings {
      * @returns %TRUE if imsettings is enabled, otherwise %FALSE.
      */
     function is_enabled(): boolean;
-    module Client {
+    namespace Client {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -639,7 +639,7 @@ export namespace IMSettings {
         ): void;
     }
 
-    module Info {
+    namespace Info {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -100,7 +100,7 @@ export namespace Mash {
         NEGATE_Y,
         NEGATE_Z,
     }
-    module Data {
+    namespace Data {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -158,7 +158,7 @@ export namespace Mash {
         render(): void;
     }
 
-    module DataLoader {
+    namespace DataLoader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -201,7 +201,7 @@ export namespace Mash {
         load(flags: DataFlags | null, filename: string): boolean;
     }
 
-    module DirectionalLight {
+    namespace DirectionalLight {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -632,7 +632,7 @@ export namespace Mash {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Light {
+    namespace Light {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1829,7 +1829,7 @@ export namespace Mash {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LightSet {
+    namespace LightSet {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1865,7 +1865,7 @@ export namespace Mash {
         remove_light(light: Light): void;
     }
 
-    module Model {
+    namespace Model {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2810,7 +2810,7 @@ export namespace Mash {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module PlyLoader {
+    namespace PlyLoader {
         // Constructor properties interface
 
         interface ConstructorProps extends Data.ConstructorProps {}
@@ -2826,7 +2826,7 @@ export namespace Mash {
         _init(...args: any[]): void;
     }
 
-    module PointLight {
+    namespace PointLight {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3308,7 +3308,7 @@ export namespace Mash {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module SpotLight {
+    namespace SpotLight {
         // Constructor properties interface
 
         interface ConstructorProps

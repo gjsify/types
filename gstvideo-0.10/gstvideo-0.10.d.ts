@@ -150,7 +150,7 @@ export namespace GstVideo {
     function parse_caps_color_matrix(caps: Gst.Caps): string;
     function parse_caps_framerate(caps: Gst.Caps): [boolean, number, number];
     function parse_caps_pixel_aspect_ratio(caps: Gst.Caps): [boolean, number, number];
-    module Filter {
+    namespace Filter {
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.Transform.ConstructorProps {}
@@ -171,7 +171,7 @@ export namespace GstVideo {
         _init(...args: any[]): void;
     }
 
-    module Sink {
+    namespace Sink {
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.Sink.ConstructorProps {

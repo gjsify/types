@@ -418,7 +418,7 @@ export namespace GSignond {
      * @returns TRUE if wiping and removal was successful.
      */
     function wipe_file(filename: string): boolean;
-    module AccessControlManager {
+    namespace AccessControlManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -585,7 +585,7 @@ export namespace GSignond {
         ): void;
     }
 
-    module Config {
+    namespace Config {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -633,7 +633,7 @@ export namespace GSignond {
         set_string(key: string, value: string): void;
     }
 
-    module Credentials {
+    namespace Credentials {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -706,7 +706,7 @@ export namespace GSignond {
         set_username(username?: string | null): boolean;
     }
 
-    module Dictionary {
+    namespace Dictionary {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -870,7 +870,7 @@ export namespace GSignond {
         to_variant_builder(): GLib.VariantBuilder | null;
     }
 
-    module Extension {
+    namespace Extension {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -947,7 +947,7 @@ export namespace GSignond {
         get_version(): number;
     }
 
-    module SecretStorage {
+    namespace SecretStorage {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1120,7 +1120,7 @@ export namespace GSignond {
         update_data(id: number, method: number, data: Dictionary): boolean;
     }
 
-    module SessionData {
+    namespace SessionData {
         // Constructor properties interface
 
         interface ConstructorProps extends Dictionary.ConstructorProps {}
@@ -1259,7 +1259,7 @@ export namespace GSignond {
         set_window_id(window_id: number): void;
     }
 
-    module SignonuiData {
+    namespace SignonuiData {
         // Constructor properties interface
 
         interface ConstructorProps extends Dictionary.ConstructorProps {}
@@ -1502,7 +1502,7 @@ export namespace GSignond {
         set_username(username: string): void;
     }
 
-    module StorageManager {
+    namespace StorageManager {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1731,7 +1731,7 @@ export namespace GSignond {
         _init(...args: any[]): void;
     }
 
-    module Plugin {
+    namespace Plugin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {

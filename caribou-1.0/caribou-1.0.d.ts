@@ -47,7 +47,7 @@ export namespace Caribou {
     interface KeyButtonCallback {
         (keybuttoncode: number, pressed: boolean): void;
     }
-    module DisplayAdapter {
+    namespace DisplayAdapter {
         // Signal callback interfaces
 
         interface ModifiersChanged {
@@ -136,7 +136,7 @@ export namespace Caribou {
         get_display(): Gdk.Display;
     }
 
-    module NullAdapter {
+    namespace NullAdapter {
         // Constructor properties interface
 
         interface ConstructorProps extends DisplayAdapter.ConstructorProps {}
@@ -154,7 +154,7 @@ export namespace Caribou {
         static ['new'](): NullAdapter;
     }
 
-    module XAdapter {
+    namespace XAdapter {
         // Constructor properties interface
 
         interface ConstructorProps extends DisplayAdapter.ConstructorProps {}
@@ -172,7 +172,7 @@ export namespace Caribou {
         static ['new'](): XAdapter;
     }
 
-    module KeyboardModel {
+    namespace KeyboardModel {
         // Signal callback interfaces
 
         interface GroupAdded {
@@ -644,7 +644,7 @@ export namespace Caribou {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module KeyboardService {
+    namespace KeyboardService {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -677,7 +677,7 @@ export namespace Caribou {
         name_lost(name: string): void;
     }
 
-    module GroupModel {
+    namespace GroupModel {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, IKeyboardObject.ConstructorProps {
@@ -1126,7 +1126,7 @@ export namespace Caribou {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module LevelModel {
+    namespace LevelModel {
         // Signal callback interfaces
 
         interface LevelToggled {
@@ -1577,7 +1577,7 @@ export namespace Caribou {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module RowModel {
+    namespace RowModel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2026,7 +2026,7 @@ export namespace Caribou {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module KeyModel {
+    namespace KeyModel {
         // Signal callback interfaces
 
         interface KeyHoldEnd {
@@ -2560,7 +2560,7 @@ export namespace Caribou {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ColumnModel {
+    namespace ColumnModel {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3010,7 +3010,7 @@ export namespace Caribou {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Scanner {
+    namespace Scanner {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3111,7 +3111,7 @@ export namespace Caribou {
         set_inverse_scanning(value: boolean): void;
     }
 
-    module ScannableGroup {
+    namespace ScannableGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, IScannableGroup.ConstructorProps {}
@@ -3668,7 +3668,7 @@ export namespace Caribou {
     type IScannableItemIface = typeof IScannableItem;
     type IScannableGroupIface = typeof IScannableGroup;
     type IKeyboardObjectIface = typeof IKeyboardObject;
-    module IScannableItem {
+    namespace IScannableItem {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3714,7 +3714,7 @@ export namespace Caribou {
         new (): IScannableItem; // This allows `obj instanceof IScannableItem`
     };
 
-    module IScannableGroup {
+    namespace IScannableGroup {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3762,7 +3762,7 @@ export namespace Caribou {
         new (): IScannableGroup; // This allows `obj instanceof IScannableGroup`
     };
 
-    module IKeyboardObject {
+    namespace IKeyboardObject {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -126,7 +126,7 @@ export namespace Accounts {
     interface AccountStoreCb {
         (account: Account, error: GLib.Error): void;
     }
-    module Account {
+    namespace Account {
         // Signal callback interfaces
 
         interface Deleted {
@@ -903,7 +903,7 @@ export namespace Accounts {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module AccountService {
+    namespace AccountService {
         // Signal callback interfaces
 
         interface Changed {
@@ -1061,7 +1061,7 @@ export namespace Accounts {
         settings_iter_init(iter: AccountSettingIter, key_prefix?: string | null): void;
     }
 
-    module Manager {
+    namespace Manager {
         // Signal callback interfaces
 
         interface AccountCreated {

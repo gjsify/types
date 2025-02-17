@@ -48,7 +48,7 @@ export namespace Jsonrpc {
     interface ServerHandler {
         (self: Server, client: Client, method: string, id: GLib.Variant, params: GLib.Variant): void;
     }
-    module Client {
+    namespace Client {
         // Signal callback interfaces
 
         interface Failed {
@@ -530,7 +530,7 @@ export namespace Jsonrpc {
         start_listening(): void;
     }
 
-    module InputStream {
+    namespace InputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.DataInputStream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -961,7 +961,7 @@ export namespace Jsonrpc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module OutputStream {
+    namespace OutputStream {
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.DataOutputStream.ConstructorProps, Gio.Seekable.ConstructorProps {
@@ -1542,7 +1542,7 @@ export namespace Jsonrpc {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Server {
+    namespace Server {
         // Signal callback interfaces
 
         interface ClientAccepted {

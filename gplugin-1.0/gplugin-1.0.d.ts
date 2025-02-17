@@ -188,7 +188,7 @@ export namespace GPlugin {
          */
         LOG_PLUGIN_STATE_CHANGES,
     }
-    module FileSource {
+    namespace FileSource {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Source.ConstructorProps {
@@ -646,7 +646,7 @@ export namespace GPlugin {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Loader {
+    namespace Loader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -727,7 +727,7 @@ export namespace GPlugin {
         unload_plugin(plugin: Plugin, shutdown: boolean): boolean;
     }
 
-    module Manager {
+    namespace Manager {
         // Signal callback interfaces
 
         interface LoadPluginFailed {
@@ -1003,7 +1003,7 @@ export namespace GPlugin {
         unregister_loader(loader: Loader): boolean;
     }
 
-    module PluginInfo {
+    namespace PluginInfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1440,7 +1440,7 @@ export namespace GPlugin {
     type PluginInfoClass = typeof PluginInfo;
     type PluginInterface = typeof Plugin;
     type SourceInterface = typeof Source;
-    module Plugin {
+    namespace Plugin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1573,7 +1573,7 @@ export namespace GPlugin {
         new (): Plugin; // This allows `obj instanceof Plugin`
     };
 
-    module Source {
+    namespace Source {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

@@ -43,7 +43,7 @@ export namespace Gtd {
     interface TaskListViewHeaderFunc {
         (task: Task, previous_task: Task): Gtk.Widget | null;
     }
-    module BinLayout {
+    namespace BinLayout {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.LayoutManager.ConstructorProps {}
@@ -61,7 +61,7 @@ export namespace Gtd {
         static ['new'](): BinLayout;
     }
 
-    module Clock {
+    namespace Clock {
         // Signal callback interfaces
 
         interface DayChanged {
@@ -108,7 +108,7 @@ export namespace Gtd {
         emit(signal: 'minute-changed'): void;
     }
 
-    module ListModelFilter {
+    namespace ListModelFilter {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -645,7 +645,7 @@ export namespace Gtd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ListStore {
+    namespace ListStore {
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -1276,7 +1276,7 @@ export namespace Gtd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Manager {
+    namespace Manager {
         // Signal callback interfaces
 
         interface ListAdded {
@@ -1499,7 +1499,7 @@ export namespace Gtd {
         set_is_first_run(is_first_run: boolean): void;
     }
 
-    module MaxSizeLayout {
+    namespace MaxSizeLayout {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.LayoutManager.ConstructorProps {
@@ -1614,7 +1614,7 @@ export namespace Gtd {
         set_width_chars(width_chars: number): void;
     }
 
-    module MenuButton {
+    namespace MenuButton {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2516,7 +2516,7 @@ export namespace Gtd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Notification {
+    namespace Notification {
         // Signal callback interfaces
 
         interface Executed {
@@ -2631,7 +2631,7 @@ export namespace Gtd {
         stop(): void;
     }
 
-    module Object {
+    namespace Object {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2703,7 +2703,7 @@ export namespace Gtd {
         set_uid(uid: string): void;
     }
 
-    module OmniArea {
+    namespace OmniArea {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3141,7 +3141,7 @@ export namespace Gtd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module ProviderPopover {
+    namespace ProviderPopover {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5997,7 +5997,7 @@ export namespace Gtd {
         vfunc_unroot(): void;
     }
 
-    module StarWidget {
+    namespace StarWidget {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6437,7 +6437,7 @@ export namespace Gtd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Task {
+    namespace Task {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -6691,7 +6691,7 @@ export namespace Gtd {
         set_title(title?: string | null): void;
     }
 
-    module TaskList {
+    namespace TaskList {
         // Signal callback interfaces
 
         interface TaskAdded {
@@ -7368,7 +7368,7 @@ export namespace Gtd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module TaskListView {
+    namespace TaskListView {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7879,7 +7879,7 @@ export namespace Gtd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Widget {
+    namespace Widget {
         // Signal callback interfaces
 
         interface TransitionStopped {
@@ -8783,7 +8783,7 @@ export namespace Gtd {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Window {
+    namespace Window {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12315,7 +12315,7 @@ export namespace Gtd {
     type WidgetClass = typeof Widget;
     type WindowClass = typeof Window;
     type WorkspaceInterface = typeof Workspace;
-    module Activatable {
+    namespace Activatable {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12394,7 +12394,7 @@ export namespace Gtd {
         new (): Activatable; // This allows `obj instanceof Activatable`
     };
 
-    module OmniAreaAddin {
+    namespace OmniAreaAddin {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -12442,7 +12442,7 @@ export namespace Gtd {
         new (): OmniAreaAddin; // This allows `obj instanceof OmniAreaAddin`
     };
 
-    module Panel {
+    namespace Panel {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
@@ -12586,7 +12586,7 @@ export namespace Gtd {
         new (): Panel; // This allows `obj instanceof Panel`
     };
 
-    module Provider {
+    namespace Provider {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -13047,7 +13047,7 @@ export namespace Gtd {
         new (): Provider; // This allows `obj instanceof Provider`
     };
 
-    module Workspace {
+    namespace Workspace {
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {

@@ -306,7 +306,7 @@ export namespace GeocodeGlib {
      * @returns a #GQuark.
      */
     function error_quark(): GLib.Quark;
-    module BoundingBox {
+    namespace BoundingBox {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -384,7 +384,7 @@ export namespace GeocodeGlib {
         get_top(): number;
     }
 
-    module Forward {
+    namespace Forward {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -539,7 +539,7 @@ export namespace GeocodeGlib {
         set_search_area(box: BoundingBox): void;
     }
 
-    module Location {
+    namespace Location {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -708,7 +708,7 @@ export namespace GeocodeGlib {
         to_uri(scheme: LocationURIScheme | null): string;
     }
 
-    module MockBackend {
+    namespace MockBackend {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Backend.ConstructorProps {}
@@ -1481,7 +1481,7 @@ export namespace GeocodeGlib {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Nominatim {
+    namespace Nominatim {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Backend.ConstructorProps {
@@ -2268,7 +2268,7 @@ export namespace GeocodeGlib {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module Place {
+    namespace Place {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2639,7 +2639,7 @@ export namespace GeocodeGlib {
         set_town(town: string): void;
     }
 
-    module Reverse {
+    namespace Reverse {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2794,7 +2794,7 @@ export namespace GeocodeGlib {
         _init(...args: any[]): void;
     }
 
-    module Backend {
+    namespace Backend {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

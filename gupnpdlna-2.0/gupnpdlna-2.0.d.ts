@@ -41,7 +41,7 @@ export namespace GUPnPDLNA {
          */
         UNSUPPORTED,
     }
-    module AudioInformation {
+    namespace AudioInformation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -57,7 +57,7 @@ export namespace GUPnPDLNA {
         _init(...args: any[]): void;
     }
 
-    module ContainerInformation {
+    namespace ContainerInformation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -73,7 +73,7 @@ export namespace GUPnPDLNA {
         _init(...args: any[]): void;
     }
 
-    module ImageInformation {
+    namespace ImageInformation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -89,7 +89,7 @@ export namespace GUPnPDLNA {
         _init(...args: any[]): void;
     }
 
-    module Information {
+    namespace Information {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -207,7 +207,7 @@ export namespace GUPnPDLNA {
         get_video_information(): VideoInformation;
     }
 
-    module MetadataExtractor {
+    namespace MetadataExtractor {
         // Signal callback interfaces
 
         interface Done {
@@ -285,7 +285,7 @@ export namespace GUPnPDLNA {
         extract_sync(uri: string, timeout_in_ms: number): Information;
     }
 
-    module Profile {
+    namespace Profile {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -366,7 +366,7 @@ export namespace GUPnPDLNA {
         get_video_restrictions(): Restriction[];
     }
 
-    module ProfileGuesser {
+    namespace ProfileGuesser {
         // Signal callback interfaces
 
         interface Done {
@@ -480,7 +480,7 @@ export namespace GUPnPDLNA {
         list_profiles(): Profile[];
     }
 
-    module VideoInformation {
+    namespace VideoInformation {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

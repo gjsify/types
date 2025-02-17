@@ -312,7 +312,7 @@ export namespace Gtef {
          */
         END,
     }
-    module ActionInfoCentralStore {
+    namespace ActionInfoCentralStore {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -336,7 +336,7 @@ export namespace Gtef {
         lookup(action_name: string): ActionInfo;
     }
 
-    module ActionInfoStore {
+    namespace ActionInfoStore {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -416,7 +416,7 @@ export namespace Gtef {
         lookup(action_name: string): ActionInfo;
     }
 
-    module Application {
+    namespace Application {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -473,7 +473,7 @@ export namespace Gtef {
         open_simple(file: Gio.File): void;
     }
 
-    module ApplicationWindow {
+    namespace ApplicationWindow {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -570,7 +570,7 @@ export namespace Gtef {
         set_statusbar(statusbar?: Gtk.Statusbar | null): void;
     }
 
-    module Buffer {
+    namespace Buffer {
         // Signal callback interfaces
 
         interface GtefCursorMoved {
@@ -682,7 +682,7 @@ export namespace Gtef {
         set_style_scheme_id(style_scheme_id: string): void;
     }
 
-    module File {
+    namespace File {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -830,7 +830,7 @@ export namespace Gtef {
         set_location(location?: Gio.File | null): void;
     }
 
-    module FileLoader {
+    namespace FileLoader {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -979,7 +979,7 @@ export namespace Gtef {
         set_max_size(max_size: number): void;
     }
 
-    module FileMetadata {
+    namespace FileMetadata {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1155,7 +1155,7 @@ export namespace Gtef {
         set(...args: never[]): any;
     }
 
-    module FileSaver {
+    namespace FileSaver {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1325,7 +1325,7 @@ export namespace Gtef {
         set_newline_type(newline_type: NewlineType | null): void;
     }
 
-    module FoldRegion {
+    namespace FoldRegion {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1380,7 +1380,7 @@ export namespace Gtef {
         set_folded(folded: boolean): void;
     }
 
-    module GutterRendererFolds {
+    namespace GutterRendererFolds {
         // Constructor properties interface
 
         interface ConstructorProps extends GtkSource.GutterRenderer.ConstructorProps {}
@@ -1409,7 +1409,7 @@ export namespace Gtef {
         set_state(state: GutterRendererFoldsState | null): void;
     }
 
-    module InfoBar {
+    namespace InfoBar {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1882,7 +1882,7 @@ export namespace Gtef {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module MenuShell {
+    namespace MenuShell {
         // Signal callback interfaces
 
         interface MenuItemDeselected {
@@ -1955,7 +1955,7 @@ export namespace Gtef {
         get_menu_shell(): Gtk.MenuShell;
     }
 
-    module Tab {
+    namespace Tab {
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2411,7 +2411,7 @@ export namespace Gtef {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module View {
+    namespace View {
         // Constructor properties interface
 
         interface ConstructorProps

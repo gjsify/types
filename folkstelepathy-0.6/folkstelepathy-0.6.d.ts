@@ -20,7 +20,7 @@ export namespace FolksTelepathy {
      * FolksTelepathy-0.6
      */
 
-    module PersonaStore {
+    namespace PersonaStore {
         // Constructor properties interface
 
         interface ConstructorProps extends Folks.PersonaStore.ConstructorProps {
@@ -53,7 +53,7 @@ export namespace FolksTelepathy {
         get_account(): TelepathyGLib.Account;
     }
 
-    module Persona {
+    namespace Persona {
         // Constructor properties interface
 
         interface ConstructorProps
