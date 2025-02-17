@@ -2046,7 +2046,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -2087,7 +2087,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -2133,7 +2133,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -2193,7 +2193,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -8207,7 +8207,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -8248,7 +8248,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -8294,7 +8294,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -8354,7 +8354,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -10602,7 +10602,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -10643,7 +10643,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -10689,7 +10689,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -10749,7 +10749,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -16727,6 +16727,13 @@ export namespace GES {
          * @param handle_events a #gboolean indicating if events should be handled or not.
          */
         vfunc_handle_events(handle_events: boolean): void;
+        /**
+         * virtual method to set the render rectangle
+         * @param x
+         * @param y
+         * @param width
+         * @param height
+         */
         vfunc_set_render_rectangle(x: number, y: number, width: number, height: number): void;
         /**
          * This will call the video overlay's set_window_handle method. You
@@ -17884,7 +17891,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -17925,7 +17932,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -17971,7 +17978,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -18031,7 +18038,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -19464,7 +19471,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -19505,7 +19512,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -19551,7 +19558,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -19611,7 +19618,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -28765,7 +28772,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -28806,7 +28813,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -28852,7 +28859,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -28912,7 +28919,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -30935,7 +30942,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -30976,7 +30983,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -31022,7 +31029,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -31082,7 +31089,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -31584,7 +31591,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -31625,7 +31632,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -31671,7 +31678,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -31731,7 +31738,7 @@ export namespace GES {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */

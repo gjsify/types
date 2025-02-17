@@ -21,14 +21,18 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace Spelling {
     /**
      * Spelling-1
      */
 
+    /**
+     * Call this function before using any other libspelling functions in your
+     * applications. It will initialize everything needed to operate the library.
+     */
     function init(): void;
     namespace Checker {
         // Constructor properties interface
@@ -39,6 +43,10 @@ export namespace Spelling {
         }
     }
 
+    /**
+     * `SpellingChecker` is the core class of libspelling. It provides high-level
+     * APIs for spellchecking.
+     */
     class Checker extends GObject.Object {
         static $gtype: GObject.GType<Checker>;
 
@@ -46,7 +54,7 @@ export namespace Spelling {
 
         /**
          * The "language" to use when checking words with the configured
-         * #SpellingProvider. For example, `en_US`.
+         * `SpellingProvider`. For example, `en_US`.
          */
         get language(): string;
         set language(val: string);
@@ -55,7 +63,7 @@ export namespace Spelling {
          * information to the spell checker.
          *
          * Currently, only Enchant is supported, and requires using the
-         * #SpellingEnchantProvider. Setting this to %NULL will get
+         * `SpellingEnchantProvider`. Setting this to %NULL will get
          * the default provider.
          */
         get provider(): Provider;
@@ -66,19 +74,33 @@ export namespace Spelling {
 
         _init(...args: any[]): void;
 
-        static ['new'](provider: Provider, language: string): Checker;
+        static ['new'](provider?: Provider | null, language?: string | null): Checker;
 
         // Static methods
 
         /**
-         * Gets a default #SpellingChecker using the default provider and language.
+         * Gets a default `SpellingChecker` using the default provider and language.
          */
         static get_default(): Checker;
 
         // Methods
 
+        /**
+         * Adds `word` to the active dictionary.
+         * @param word a word to be added
+         */
         add_word(word: string): void;
+        /**
+         * Checks if the active dictionary contains `word`.
+         * @param word a word to be checked
+         * @param word_len length of the word, in bytes
+         * @returns %TRUE if the dictionary contains the word
+         */
         check_word(word: string, word_len: number): boolean;
+        /**
+         * Gets the extra word characters of the active dictionary.
+         * @returns extra word characters
+         */
         get_extra_word_chars(): string;
         /**
          * Gets the language being used by the spell checker.
@@ -89,9 +111,13 @@ export namespace Spelling {
          * Gets the spell provider used by the spell checker.
          *
          * Currently, only Enchant-2 is supported.
-         * @returns an #SpellingProvider
+         * @returns a `SpellingProvider`
          */
         get_provider(): Provider;
+        /**
+         * Requests the active dictionary to ignore `word`.
+         * @param word a word to be ignored
+         */
         ignore_word(word: string): void;
         /**
          * Retrieves a list of possible corrections for `word`.
@@ -107,7 +133,7 @@ export namespace Spelling {
         set_language(language: string): void;
     }
 
-    namespace Language {
+    namespace Dictionary {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -115,25 +141,53 @@ export namespace Spelling {
         }
     }
 
-    abstract class Language extends GObject.Object {
-        static $gtype: GObject.GType<Language>;
+    /**
+     * Abstract base class for spellchecking dictionaries.
+     */
+    abstract class Dictionary extends GObject.Object {
+        static $gtype: GObject.GType<Dictionary>;
 
         // Properties
 
+        /**
+         * The language code, for example `en_US`.
+         */
         get code(): string;
 
         // Constructors
 
-        constructor(properties?: Partial<Language.ConstructorProps>, ...args: any[]);
+        constructor(properties?: Partial<Dictionary.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Methods
 
+        /**
+         * Adds `word` to the dictionary.
+         * @param word a word to be added
+         */
         add_word(word: string): void;
+        /**
+         * Checks if the dictionary contains `word`.
+         * @param word a word to be checked
+         * @param word_len length of the word, in bytes
+         * @returns %TRUE if the dictionary contains the word
+         */
         contains_word(word: string, word_len: number): boolean;
-        get_code(): string;
+        /**
+         * Gets the language code of the dictionary, or %NULL if undefined.
+         * @returns the language code of the dictionary
+         */
+        get_code(): string | null;
+        /**
+         * Gets the extra word characters of the dictionary.
+         * @returns extra word characters
+         */
         get_extra_word_chars(): string;
+        /**
+         * Requests the dictionary to ignore `word`.
+         * @param word a word to be ignored
+         */
         ignore_word(word: string): void;
         /**
          * Retrieves a list of possible corrections for `word`.
@@ -144,7 +198,7 @@ export namespace Spelling {
         list_corrections(word: string, word_len: number): string[] | null;
     }
 
-    namespace LanguageInfo {
+    namespace Language {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -154,26 +208,50 @@ export namespace Spelling {
         }
     }
 
-    class LanguageInfo extends GObject.Object {
-        static $gtype: GObject.GType<LanguageInfo>;
+    /**
+     * Represents a spellchecking language.
+     */
+    class Language extends GObject.Object {
+        static $gtype: GObject.GType<Language>;
 
         // Properties
 
+        /**
+         * The language code.
+         */
         get code(): string;
+        /**
+         * A group for sorting, usually the country name.
+         */
         get group(): string;
+        /**
+         * The name of the language.
+         */
         get name(): string;
 
         // Constructors
 
-        constructor(properties?: Partial<LanguageInfo.ConstructorProps>, ...args: any[]);
+        constructor(properties?: Partial<Language.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Methods
 
-        get_code(): string;
-        get_group(): string;
-        get_name(): string;
+        /**
+         * Gets the code of the language, or %NULL if undefined.
+         * @returns the code of the language
+         */
+        get_code(): string | null;
+        /**
+         * Gets the group of the language, or %NULL if undefined.
+         * @returns the group of the language
+         */
+        get_group(): string | null;
+        /**
+         * Gets the name of the language, or %NULL if undefined.
+         * @returns the name of the language
+         */
+        get_name(): string | null;
     }
 
     namespace Provider {
@@ -185,12 +263,21 @@ export namespace Spelling {
         }
     }
 
+    /**
+     * Abstract base class for spellchecking providers.
+     */
     abstract class Provider extends GObject.Object {
         static $gtype: GObject.GType<Provider>;
 
         // Properties
 
+        /**
+         * The display name.
+         */
         get display_name(): string;
+        /**
+         * The display name.
+         */
         get displayName(): string;
 
         // Constructors
@@ -208,20 +295,29 @@ export namespace Spelling {
 
         // Methods
 
-        get_default_code(): string;
-        get_display_name(): string;
         /**
-         * Gets an #SpellingLanguage for the requested language, or %NULL
+         * Gets the default language code for the detected system locales, or %NULL
+         * if the provider doesn't support any of them.
+         * @returns the default language code
+         */
+        get_default_code(): string | null;
+        /**
+         * Gets the display name of the provider, or %NULL if undefined.
+         * @returns the display name of the provider
+         */
+        get_display_name(): string | null;
+        /**
+         * Gets a `GListModel` of languages supported by the provider.
+         * @returns a `GListModel` of `SpellingLanguage`
+         */
+        list_languages(): Gio.ListModel;
+        /**
+         * Gets a `SpellingDictionary` for the requested language, or %NULL
          * if the language is not supported.
          * @param language the language to load such as `en_US`.
-         * @returns an #SpellingProvider or %NULL
+         * @returns a `SpellingDictionary` or %NULL
          */
-        get_language(language: string): Language | null;
-        /**
-         * Gets a list of the languages supported by the provider.
-         * @returns an array of   #SpellingLanguageInfo.
-         */
-        list_languages(): LanguageInfo[];
+        load_dictionary(language: string): Dictionary | null;
         /**
          * Checks of `language` is supported by the provider.
          * @param language the language such as `en_US`.
@@ -241,16 +337,32 @@ export namespace Spelling {
         }
     }
 
+    /**
+     * `SpellingTextBufferAdapter` implements helpers to easily add spellchecking
+     * capabilities to a `GtkSourceBuffer`.
+     */
     class TextBufferAdapter extends GObject.Object implements Gio.ActionGroup {
         static $gtype: GObject.GType<TextBufferAdapter>;
 
         // Properties
 
+        /**
+         * The [class`GtkSource`.Buffer].
+         */
         get buffer(): GtkSource.Buffer;
+        /**
+         * The [class`Spelling`.Checker].
+         */
         get checker(): Checker;
         set checker(val: Checker);
+        /**
+         * Whether spellcheck is enabled.
+         */
         get enabled(): boolean;
         set enabled(val: boolean);
+        /**
+         * The language code, such as `en_US`.
+         */
         get language(): string;
         set language(val: string);
 
@@ -266,58 +378,92 @@ export namespace Spelling {
 
         /**
          * Gets the underlying buffer for the adapter.
-         * @returns a #GtkSourceBuffer
+         * @returns a `GtkSourceBuffer`
          */
         get_buffer(): GtkSource.Buffer | null;
         /**
          * Gets the checker used by the adapter.
-         * @returns a #SpellingChecker or %NULL
+         * @returns a `SpellingChecker` or %NULL
          */
         get_checker(): Checker | null;
+        /**
+         * Gets if the spellcheck is enabled.
+         * @returns %TRUE if enabled
+         */
         get_enabled(): boolean;
-        get_language(): string;
+        /**
+         * Gets the checker language.
+         * @returns a language code
+         */
+        get_language(): string | null;
         /**
          * Gets the menu model containing corrections
-         * @returns a #GMenuModel
+         * @returns a `GMenuModel`
          */
         get_menu_model(): Gio.MenuModel;
         /**
          * Gets the tag used for potentially misspelled words.
-         * @returns a #GtkTextTag or %NULL
+         * @returns a `GtkTextTag` or %NULL
          */
         get_tag(): Gtk.TextTag | null;
+        /**
+         * Invalidate the spelling engine, to force parsing again.
+         *
+         * Invalidation is automatically done on [property`GtkSource`.Buffer:loading]
+         * change.
+         */
         invalidate_all(): void;
+        /**
+         * Set the [class`Spelling`.Checker] used for spellchecking.
+         * @param checker a `SpellingChecker`
+         */
         set_checker(checker: Checker): void;
+        /**
+         * If %TRUE spellcheck is enabled.
+         * @param enabled whether the spellcheck is enabled
+         */
         set_enabled(enabled: boolean): void;
+        /**
+         * Sets the language code to use by the checker, such as `en_US`.
+         * @param language the language to use
+         */
         set_language(language: string): void;
+        /**
+         * Looks at the current cursor position and updates the list of
+         * corrections based on the current word.
+         *
+         * Use this to force an update immediately rather than after the
+         * automatic timeout caused by cursor movements.
+         */
+        update_corrections(): void;
 
         // Inherited methods
         /**
-         * Emits the #GActionGroup::action-added signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
          */
         action_added(action_name: string): void;
         /**
-         * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
-         * @param enabled whether or not the action is now enabled
+         * @param enabled whether the action is now enabled
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the #GActionGroup::action-removed signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
          */
         action_removed(action_name: string): void;
         /**
-         * Emits the #GActionGroup::action-state-changed signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
@@ -327,37 +473,35 @@ export namespace Spelling {
          *
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
-         * parameters then `parameter` must be %NULL.  See
-         * g_action_group_get_action_parameter_type().
+         * parameters then `parameter` must be `NULL`.  See
+         * [method`Gio`.ActionGroup.get_action_parameter_type].
          *
-         * If the #GActionGroup implementation supports asynchronous remote
+         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * g_dbus_connection_flush() should be called prior to the code, which
+         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
-         * example of a "quit" action being activated on the primary app
-         * instance over D-Bus. Here g_dbus_connection_flush() is called
-         * before `exit()`. Without g_dbus_connection_flush(), the "quit" action
+         * example of a ‘quit’ action being activated on the primary app
+         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
+         * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
          * may fail to be activated on the primary instance.
          *
-         *
          * ```c
-         * // call "quit" action on primary instance
+         * // call ‘quit’ action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
          * // make sure the action is activated now
-         * g_dbus_connection_flush (...);
+         * g_dbus_connection_flush (…);
          *
-         * g_debug ("application has been terminated. exiting.");
+         * g_debug ("Application has been terminated. Exiting.");
          *
          * exit (0);
          * ```
-         *
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
@@ -367,11 +511,11 @@ export namespace Spelling {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See g_action_group_get_action_state_type().
+         * See [method`Gio`.ActionGroup.get_action_state_type].
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See g_action_group_get_action_state_hint().
+         * See [method`Gio`.ActionGroup.get_action_state_hint].
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
@@ -384,19 +528,19 @@ export namespace Spelling {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
-         * @returns whether or not the action is currently enabled
+         * @returns whether the action is currently enabled
          */
         get_action_enabled(action_name: string): boolean;
         /**
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using g_action_group_activate_action(),
-         * the #GVariant given to that function must be of the type returned
+         * When activating the action using [method`Gio`.ActionGroup.activate_action],
+         * the [type`GLib`.Variant] given to that function must be of the type returned
          * by this function.
          *
-         * In the case that this function returns %NULL, you must not give any
-         * #GVariant, but %NULL instead.
+         * In the case that this function returns `NULL`, you must not give any
+         * [type`GLib`.Variant], but `NULL` instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -408,12 +552,12 @@ export namespace Spelling {
         /**
          * Queries the current state of the named action within `action_group`.
          *
-         * If the action is not stateful then %NULL will be returned.  If the
+         * If the action is not stateful then `NULL` will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by g_action_group_get_action_state_type().
+         * given by [method`Gio`.ActionGroup.get_action_state_type].
          *
-         * The return value (if non-%NULL) should be freed with
-         * g_variant_unref() when it is no longer required.
+         * The return value (if non-`NULL`) should be freed with
+         * [method`GLib`.Variant.unref] when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
@@ -422,12 +566,12 @@ export namespace Spelling {
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
          *
-         * If %NULL is returned it either means that the action is not stateful
+         * If `NULL` is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a #GVariant array is returned then each item in the array is a
-         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
+         * If a [type`GLib`.Variant] array is returned then each item in the array is a
+         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -435,8 +579,8 @@ export namespace Spelling {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-%NULL) should be freed with
-         * g_variant_unref() when it is no longer required.
+         * The return value (if non-`NULL`) should be freed with
+         * [method`GLib`.Variant.unref] when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
@@ -446,14 +590,14 @@ export namespace Spelling {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * #GVariantType of the state.  All calls to
-         * g_action_group_change_action_state() must give a #GVariant of this
-         * type and g_action_group_get_action_state() will return a #GVariant
+         * [type`GLib`.VariantType] of the state.  All calls to
+         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
+         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
          * of the same type.
          *
-         * If the action is not stateful then this function will return %NULL.
-         * In that case, g_action_group_get_action_state() will return %NULL
-         * and you must not call g_action_group_change_action_state().
+         * If the action is not stateful then this function will return `NULL`.
+         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
+         * and you must not call [method`Gio`.ActionGroup.change_action_state].
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -471,27 +615,27 @@ export namespace Spelling {
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with g_strfreev() when
+         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
          * it is no longer required.
-         * @returns a %NULL-terminated array of the names of the actions in the group
+         * @returns a `NULL`-terminated array   of the names of the actions in the group
          */
         list_actions(): string[];
         /**
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * g_action_group_has_action(), g_action_group_get_action_enabled(),
-         * g_action_group_get_action_parameter_type(),
-         * g_action_group_get_action_state_type(),
-         * g_action_group_get_action_state_hint() and
-         * g_action_group_get_action_state() with a single function call.
+         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
+         * [method`Gio`.ActionGroup.get_action_parameter_type],
+         * [method`Gio`.ActionGroup.get_action_state_type],
+         * [method`Gio`.ActionGroup.get_action_state_hint] and
+         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * #GActionGroup can now be done by only overriding this one virtual
+         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -500,12 +644,12 @@ export namespace Spelling {
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
          *
-         * If the action exists, %TRUE is returned and any of the requested
-         * fields (as indicated by having a non-%NULL reference passed in) are
-         * filled.  If the action doesn't exist, %FALSE is returned and the
+         * If the action exists, `TRUE` is returned and any of the requested
+         * fields (as indicated by having a non-`NULL` reference passed in) are
+         * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
-         * @returns %TRUE if the action exists, else %FALSE
+         * @returns `TRUE` if the action exists, else `FALSE`
          */
         query_action(
             action_name: string,
@@ -518,31 +662,31 @@ export namespace Spelling {
             GLib.Variant | null,
         ];
         /**
-         * Emits the #GActionGroup::action-added signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
          */
         vfunc_action_added(action_name: string): void;
         /**
-         * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
-         * @param enabled whether or not the action is now enabled
+         * @param enabled whether the action is now enabled
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the #GActionGroup::action-removed signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
          */
         vfunc_action_removed(action_name: string): void;
         /**
-         * Emits the #GActionGroup::action-state-changed signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
@@ -552,37 +696,35 @@ export namespace Spelling {
          *
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
-         * parameters then `parameter` must be %NULL.  See
-         * g_action_group_get_action_parameter_type().
+         * parameters then `parameter` must be `NULL`.  See
+         * [method`Gio`.ActionGroup.get_action_parameter_type].
          *
-         * If the #GActionGroup implementation supports asynchronous remote
+         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * g_dbus_connection_flush() should be called prior to the code, which
+         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
-         * example of a "quit" action being activated on the primary app
-         * instance over D-Bus. Here g_dbus_connection_flush() is called
-         * before `exit()`. Without g_dbus_connection_flush(), the "quit" action
+         * example of a ‘quit’ action being activated on the primary app
+         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
+         * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
          * may fail to be activated on the primary instance.
          *
-         *
          * ```c
-         * // call "quit" action on primary instance
+         * // call ‘quit’ action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
          * // make sure the action is activated now
-         * g_dbus_connection_flush (...);
+         * g_dbus_connection_flush (…);
          *
-         * g_debug ("application has been terminated. exiting.");
+         * g_debug ("Application has been terminated. Exiting.");
          *
          * exit (0);
          * ```
-         *
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
@@ -592,11 +734,11 @@ export namespace Spelling {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See g_action_group_get_action_state_type().
+         * See [method`Gio`.ActionGroup.get_action_state_type].
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See g_action_group_get_action_state_hint().
+         * See [method`Gio`.ActionGroup.get_action_state_hint].
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
@@ -615,12 +757,12 @@ export namespace Spelling {
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using g_action_group_activate_action(),
-         * the #GVariant given to that function must be of the type returned
+         * When activating the action using [method`Gio`.ActionGroup.activate_action],
+         * the [type`GLib`.Variant] given to that function must be of the type returned
          * by this function.
          *
-         * In the case that this function returns %NULL, you must not give any
-         * #GVariant, but %NULL instead.
+         * In the case that this function returns `NULL`, you must not give any
+         * [type`GLib`.Variant], but `NULL` instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -631,12 +773,12 @@ export namespace Spelling {
         /**
          * Queries the current state of the named action within `action_group`.
          *
-         * If the action is not stateful then %NULL will be returned.  If the
+         * If the action is not stateful then `NULL` will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by g_action_group_get_action_state_type().
+         * given by [method`Gio`.ActionGroup.get_action_state_type].
          *
-         * The return value (if non-%NULL) should be freed with
-         * g_variant_unref() when it is no longer required.
+         * The return value (if non-`NULL`) should be freed with
+         * [method`GLib`.Variant.unref] when it is no longer required.
          * @param action_name the name of the action to query
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -644,12 +786,12 @@ export namespace Spelling {
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
          *
-         * If %NULL is returned it either means that the action is not stateful
+         * If `NULL` is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a #GVariant array is returned then each item in the array is a
-         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
+         * If a [type`GLib`.Variant] array is returned then each item in the array is a
+         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -657,8 +799,8 @@ export namespace Spelling {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-%NULL) should be freed with
-         * g_variant_unref() when it is no longer required.
+         * The return value (if non-`NULL`) should be freed with
+         * [method`GLib`.Variant.unref] when it is no longer required.
          * @param action_name the name of the action to query
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -667,14 +809,14 @@ export namespace Spelling {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * #GVariantType of the state.  All calls to
-         * g_action_group_change_action_state() must give a #GVariant of this
-         * type and g_action_group_get_action_state() will return a #GVariant
+         * [type`GLib`.VariantType] of the state.  All calls to
+         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
+         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
          * of the same type.
          *
-         * If the action is not stateful then this function will return %NULL.
-         * In that case, g_action_group_get_action_state() will return %NULL
-         * and you must not call g_action_group_change_action_state().
+         * If the action is not stateful then this function will return `NULL`.
+         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
+         * and you must not call [method`Gio`.ActionGroup.change_action_state].
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -690,7 +832,7 @@ export namespace Spelling {
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with g_strfreev() when
+         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
          * it is no longer required.
          */
         vfunc_list_actions(): string[];
@@ -698,18 +840,18 @@ export namespace Spelling {
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * g_action_group_has_action(), g_action_group_get_action_enabled(),
-         * g_action_group_get_action_parameter_type(),
-         * g_action_group_get_action_state_type(),
-         * g_action_group_get_action_state_hint() and
-         * g_action_group_get_action_state() with a single function call.
+         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
+         * [method`Gio`.ActionGroup.get_action_parameter_type],
+         * [method`Gio`.ActionGroup.get_action_state_type],
+         * [method`Gio`.ActionGroup.get_action_state_hint] and
+         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * #GActionGroup can now be done by only overriding this one virtual
+         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -718,9 +860,9 @@ export namespace Spelling {
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
          *
-         * If the action exists, %TRUE is returned and any of the requested
-         * fields (as indicated by having a non-%NULL reference passed in) are
-         * filled.  If the action doesn't exist, %FALSE is returned and the
+         * If the action exists, `TRUE` is returned and any of the requested
+         * fields (as indicated by having a non-`NULL` reference passed in) are
+         * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          */
@@ -1137,8 +1279,8 @@ export namespace Spelling {
     }
 
     type CheckerClass = typeof Checker;
+    type DictionaryClass = typeof Dictionary;
     type LanguageClass = typeof Language;
-    type LanguageInfoClass = typeof LanguageInfo;
     type ProviderClass = typeof Provider;
     type TextBufferAdapterClass = typeof TextBufferAdapter;
     /**

@@ -1,6 +1,6 @@
 {
     "name": "@girs/meta-10",
-    "version": "10.0.0-4.0.0-beta.20",
+    "version": "10.0.0-4.0.0-beta.21",
     "description": "GJS TypeScript type definitions for Meta-10, generated from library version 10.0.0",
     "type": "module",
     "module": "meta-10.js",

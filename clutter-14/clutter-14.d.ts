@@ -14,6 +14,7 @@ import type GLib from '@girs/glib-2.0';
 import type Mtk from '@girs/mtk-14';
 import type Graphene from '@girs/graphene-1.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type GL from '@girs/gl-1.0';
 import type CoglPango from '@girs/coglpango-14';
 import type PangoCairo from '@girs/pangocairo-1.0';

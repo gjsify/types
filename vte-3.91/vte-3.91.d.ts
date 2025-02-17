@@ -15,13 +15,13 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Gtk from '@girs/gtk-4.0';
 import type Gsk from '@girs/gsk-4.0';
 import type Graphene from '@girs/graphene-1.0';
 import type Gdk from '@girs/gdk-4.0';
 import type PangoCairo from '@girs/pangocairo-1.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GModule from '@girs/gmodule-2.0';
 
 export namespace Vte {
     /**
@@ -171,6 +171,41 @@ export namespace Vte {
         HTML,
     }
     /**
+     * An enum describing how to interpret progress state, for the
+     * %VTE_TERMPROP_PROGRESS_HINT termprop.
+     */
+
+    /**
+     * An enum describing how to interpret progress state, for the
+     * %VTE_TERMPROP_PROGRESS_HINT termprop.
+     */
+    export namespace ProgressHint {
+        export const $gtype: GObject.GType<ProgressHint>;
+    }
+
+    enum ProgressHint {
+        /**
+         * no progress current
+         */
+        INACTIVE,
+        /**
+         * progress is normal
+         */
+        ACTIVE,
+        /**
+         * progress is aborted by an error
+         */
+        ERROR,
+        /**
+         * progress is indeterminate
+         */
+        INDETERMINATE,
+        /**
+         * progress is paused
+         */
+        PAUSED,
+    }
+    /**
      * An enum containing the IDs of the always-installed termprops.
      */
 
@@ -218,6 +253,22 @@ export namespace Vte {
          * the ID of the %VTE_TERMPROP_SHELL_POSTEXEC termprop
          */
         SHELL_POSTEXEC,
+        /**
+         * the ID of the %VTE_TERMPROP_PROGRESS_HINT termprop. Since: 0.80
+         */
+        PROGRESS_HINT,
+        /**
+         * the ID of the %VTE_TERMPROP_PROGRESS_VALUE termprop. Since: 0.80
+         */
+        PROGRESS_VALUE,
+        /**
+         * the ID of the %VTE_TERMPROP_ICON_COLOR termprop. Since: 0.80
+         */
+        ICON_COLOR,
+        /**
+         * the ID of the %VTE_TERMPROP_ICON_IMAGE termprop. Since: 0.80
+         */
+        ICON_IMAGE,
     }
     /**
      * An enumeration type describing types of properties.
@@ -275,6 +326,10 @@ export namespace Vte {
          * a URI
          */
         URI,
+        /**
+         * an image. Since: 0.80
+         */
+        IMAGE,
     }
     class PtyError extends GLib.Error {
         static $gtype: GObject.GType<PtyError>;
@@ -460,11 +515,51 @@ export namespace Vte {
      * Note that this termprop is not settable via the termprop OSC.
      */
     const TERMPROP_CURRENT_FILE_URI: string;
+    const TERMPROP_ICON_COLOR: string;
+    /**
+     * A %VTE_PROPERTY_IMAGE termprop to specify an image for use
+     * as a favicon.
+     *
+     * Applications should prefer to use this termprop, if set, over
+     * the %VTE_TERMPROP_ICON_COLOR color.
+     *
+     * Note that this termprop is not settable via the termprop OSC.
+     * Instead, if the #VteTerminal:enable-sixel property is %TRUE,
+     * this termprop can be set from a SIXEL image sequence with the
+     * fourth parameter (ID) set to 65535.
+     */
+    const TERMPROP_ICON_IMAGE: string;
     /**
      * The string prefix that any termprop's name must start with to be installed
      * by vte_install_termprop().
      */
     const TERMPROP_NAME_PREFIX: string;
+    /**
+     * A %VTE_PROPERTY_INT termprop that stores a hint how to interpret
+     * the %VTE_TERMPROP_PROGRESS_VALUE termprop value. If set, this
+     * termprop's value will be from the #VteProgressHint enumeration.
+     * An unset termprop should be treated as if it had value
+     * %VTE_PROGRESS_HINT_ACTIVE if the %VTE_TERMPROP_PROGRESS_VALUE
+     * termprop has a value
+     *
+     * Note that this termprop never will have the value
+     * %VTE_PROGRESS_HINT_INACTIVE.
+     *
+     * The value of this termprop should be ignored unless the
+     * %VTE_TERMPROP_PROGRESS_VALUE termprop has a value.
+     *
+     * Note that this termprop cannot be set by the termprop OSC, but instead
+     * only by OSC 9 ; 4 (ConEmu progress).
+     */
+    const TERMPROP_PROGRESS_HINT: string;
+    /**
+     * A %VTE_PROPERTY_UINT termprop that stores the progress of the running
+     * command as a value between 0 and 100.
+     *
+     * Note that this termprop cannot be set by the termprop OSC, but instead
+     * only by OSC 9 ; 4 (ConEmu progress).
+     */
+    const TERMPROP_PROGRESS_VALUE: string;
     /**
      * An ephemeral %VTE_PROPERTY_UINT termprop that signals that the shell
      * has executed the commands entered at the prompt and these commands
@@ -2364,14 +2459,14 @@ export namespace Vte {
          * @param prop a termprop name
          * @returns the property's value as a #VteUuid, or %NULL
          */
-        dup_termprop_uuid(prop: string): Uuid;
+        dup_termprop_uuid(prop: string): Uuid | null;
         /**
          * Like vte_terminal_dup_termprop_uuid() except that it takes the termprop
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns the property's value as a #VteUuid, or %NULL
          */
-        dup_termprop_uuid_by_id(prop: number): Uuid;
+        dup_termprop_uuid_by_id(prop: number): Uuid | null;
         /**
          * Interprets `data` as if it were data received from a child process.
          * @param data a string in the terminal's current encoding
@@ -2517,7 +2612,7 @@ export namespace Vte {
          * Returns the #VtePty of `terminal`.
          * @returns a #VtePty, or %NULL
          */
-        get_pty(): Pty;
+        get_pty(): Pty | null;
         /**
          * Checks whether or not the terminal will rewrap its contents upon resize.
          * @returns %TRUE if rewrapping is enabled, %FALSE if not
@@ -2549,14 +2644,14 @@ export namespace Vte {
          * @param prop a termprop name
          * @returns the property's value, or %NULL
          */
-        get_termprop_data(prop: string): Uint8Array;
+        get_termprop_data(prop: string): Uint8Array | null;
         /**
          * Like vte_terminal_get_termprop_data() except that it takes the termprop
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns the property's value, or %NULL
          */
-        get_termprop_data_by_id(prop: number): Uint8Array;
+        get_termprop_data_by_id(prop: number): Uint8Array | null;
         /**
          * For a %VTE_PROPERTY_DOUBLE termprop, sets `value` to `prop'`s value,
          *   which is finite; or to 0.0 if `prop` is unset, or `prop` is not a
@@ -2659,6 +2754,8 @@ export namespace Vte {
          * * A %VTE_PROPERTY_DATA termprop stores a boxed #GBytes value.
          * * A %VTE_PROPERTY_UUID termprop stores a boxed #VteUuid value.
          * * A %VTE_PROPERTY_URI termprop stores a boxed #GUri value.
+         * * A %VTE_PROPERTY_IMAGE termprop stores a boxed #cairo_surface_t value on gtk3,
+         *     and a boxed #GdkTexture on gtk4
          * @param prop a termprop name
          * @returns %TRUE iff the property has a value, with @gvalue containig   the property's value.
          */
@@ -2869,28 +2966,62 @@ export namespace Vte {
          * @param prop a termprop name
          * @returns the property's value as a #GBytes, or %NULL
          */
-        ref_termprop_data_bytes(prop: string): GLib.Bytes;
+        ref_termprop_data_bytes(prop: string): GLib.Bytes | null;
         /**
          * Like vte_terminal_ref_termprop_data_bytes() except that it takes the termprop
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns the property's value as a #GBytes, or %NULL
          */
-        ref_termprop_data_bytes_by_id(prop: number): GLib.Bytes;
+        ref_termprop_data_bytes_by_id(prop: number): GLib.Bytes | null;
+        /**
+         * Returns the value of a %VTE_PROPERTY_IMAGE termprop as a #cairo_surface_t,
+         *   or %NULL if `prop` is unset, or `prop` is not a registered property.
+         *
+         * The surface will be a %CAIRO_SURFACE_TYPE_IMAGE with format
+         * %CAIRO_FORMAT_ARGB32 or %CAIRO_FORMAT_RGB24.
+         *
+         * Note that the returned surface is owned by `terminal` and its contents
+         * must not be modified.
+         * @param prop a termprop name
+         * @returns the property's value as a #cairo_surface_t, or %NULL
+         */
+        ref_termprop_image_surface(prop: string): cairo.Surface | null;
+        /**
+         * Like vte_terminal_ref_termprop_image_surface() except that it takes the
+         * termprop by ID. See that function for more information.
+         * @param prop a termprop ID
+         * @returns the property's value as a #cairo_surface_t, or %NULL
+         */
+        ref_termprop_image_surface_by_id(prop: number): cairo.Surface | null;
+        /**
+         * Returns the value of a %VTE_PROPERTY_IMAGE termprop as a #GdkTexture, or %NULL if
+         *   `prop` is unset, or `prop` is not a registered property.
+         * @param prop a termprop name
+         * @returns the property's value as a #GdkTexture, or %NULL
+         */
+        ref_termprop_image_texture(prop: string): Gdk.Texture | null;
+        /**
+         * Like vte_terminal_ref_termprop_image_texture() except that it takes the
+         * termprop by ID. See that function for more information.
+         * @param prop a termprop ID
+         * @returns the property's value as a #GdkTexture, or %NULL
+         */
+        ref_termprop_image_texture_by_id(prop: number): Gdk.Texture | null;
         /**
          * Returns the value of a %VTE_PROPERTY_URI termprop as a #GUri, or %NULL if
          *   `prop` is unset, or `prop` is not a registered property.
          * @param prop a termprop name
          * @returns the property's value as a #GUri, or %NULL
          */
-        ref_termprop_uri(prop: string): GLib.Uri;
+        ref_termprop_uri(prop: string): GLib.Uri | null;
         /**
          * Like vte_terminal_ref_termprop_uri() except that it takes the termprop
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns the property's value as a #GUri, or %NULL
          */
-        ref_termprop_uri_by_id(prop: number): GLib.Uri;
+        ref_termprop_uri_by_id(prop: number): GLib.Uri | null;
         /**
          * Returns the value of `prop` as a #GVariant, or %NULL if
          *   `prop` unset, or `prop` is not a registered property.
@@ -2910,17 +3041,19 @@ export namespace Vte {
          *   containing a string representation of the UUID in simple form.
          * * A %VTE_PROPERTY_URI termprop returns a %G_VARIANT_TYPE_STRING variant
          *   containing a string representation of the URI
+         * * A %VTE_PROPERTY_IMAGE termprop returns %NULL since an image has no
+         *   variant representation.
          * @param prop a termprop name
          * @returns a floating #GVariant, or %NULL
          */
-        ref_termprop_variant(prop: string): GLib.Variant;
+        ref_termprop_variant(prop: string): GLib.Variant | null;
         /**
          * Like vte_terminal_ref_termprop_variant() except that it takes the termprop
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns a floating #GVariant, or %NULL
          */
-        ref_termprop_variant_by_id(prop: number): GLib.Variant;
+        ref_termprop_variant_by_id(prop: number): GLib.Variant | null;
         /**
          * Resets as much of the terminal's internal state as possible, discarding any
          * unprocessed input data, resetting character attributes, cursor state,
@@ -3592,7 +3725,7 @@ export namespace Vte {
          */
         get_accessible_role(): Gtk.AccessibleRole;
         /**
-         * Retrieves the accessible implementation for the given `GtkAccessible`.
+         * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
          */
         get_at_context(): Gtk.ATContext;
@@ -3616,30 +3749,28 @@ export namespace Vte {
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
-         * Query a platform state, such as focus.
-         *
-         * See gtk_accessible_platform_changed().
+         * Queries a platform state, such as focus.
          *
          * This functionality can be overridden by `GtkAccessible`
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for `GtkText` wrappers.
          * @param state platform state to query
-         * @returns the value of @state for the accessible
+         * @returns the value of state for the accessible
          */
         get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
         /**
-         * Resets the accessible `property` to its default value.
-         * @param property a `GtkAccessibleProperty`
+         * Resets the accessible property to its default value.
+         * @param property the accessible property
          */
         reset_property(property: Gtk.AccessibleProperty | null): void;
         /**
-         * Resets the accessible `relation` to its default value.
-         * @param relation a `GtkAccessibleRelation`
+         * Resets the accessible relation to its default value.
+         * @param relation the accessible relation
          */
         reset_relation(relation: Gtk.AccessibleRelation | null): void;
         /**
-         * Resets the accessible `state` to its default value.
-         * @param state a `GtkAccessibleState`
+         * Resets the accessible state to its default value.
+         * @param state the accessible state
          */
         reset_state(state: Gtk.AccessibleState | null): void;
         /**
@@ -3657,13 +3788,22 @@ export namespace Vte {
          */
         set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
         /**
-         * Updates the next accessible sibling of `self`.
+         * Updates the next accessible sibling.
          *
-         * That might be useful when a new child of a custom `GtkAccessible`
+         * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
         update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        /**
+         * Informs ATs that the platform state has changed.
+         *
+         * This function should be used by `GtkAccessible` implementations that
+         * have a platform state but are not widgets. Widgets handle platform
+         * states automatically.
+         * @param state the platform state to update
+         */
+        update_platform_state(state: Gtk.AccessiblePlatformState | null): void;
         /**
          * Updates an array of accessible properties.
          *
@@ -3671,7 +3811,7 @@ export namespace Vte {
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
-         * @param properties an array of `GtkAccessibleProperty`
+         * @param properties an array of accessible properties
          * @param values an array of `GValues`, one for each property
          */
         update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
@@ -3682,7 +3822,7 @@ export namespace Vte {
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
-         * @param relations an array of `GtkAccessibleRelation`
+         * @param relations an array of accessible relations
          * @param values an array of `GValues`, one for each relation
          */
         update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
@@ -3693,7 +3833,7 @@ export namespace Vte {
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
-         * @param states an array of `GtkAccessibleState`
+         * @param states an array of accessible states
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
@@ -3704,7 +3844,7 @@ export namespace Vte {
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
-         * Retrieves the accessible implementation for the given `GtkAccessible`.
+         * Retrieves the implementation for the given accessible object.
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
@@ -3724,9 +3864,7 @@ export namespace Vte {
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
-         * Query a platform state, such as focus.
-         *
-         * See gtk_accessible_platform_changed().
+         * Queries a platform state, such as focus.
          *
          * This functionality can be overridden by `GtkAccessible`
          * implementations, e.g. to get platform state from an ignored

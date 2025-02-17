@@ -261,6 +261,10 @@ export namespace GstRtsp {
          */
         OK,
         /**
+         * RTSP request is successful, but was redirected.
+         */
+        OK_REDIRECT,
+        /**
          * some unspecified error occurred
          */
         ERROR,
@@ -389,6 +393,14 @@ export namespace GstRtsp {
         SEE_OTHER,
         NOT_MODIFIED,
         USE_PROXY,
+        /**
+         * RTSP request is temporarily redirected
+         */
+        REDIRECT_TEMPORARILY,
+        /**
+         * RTSP request is permanently redirected
+         */
+        REDIRECT_PERMANENTLY,
         BAD_REQUEST,
         UNAUTHORIZED,
         PAYMENT_REQUIRED,
@@ -1039,6 +1051,15 @@ export namespace GstRtsp {
 
         // Methods
 
+        /**
+         * Add header to be appended to any HTTP request made by connection.
+         * If the header already exists then the old header is replaced by the new header.
+         *
+         * Only applicable in HTTP tunnel mode.
+         * @param key HTTP header name
+         * @param value HTTP header value
+         */
+        add_extra_http_request_header(key: string, value: string): void;
         /**
          * Clear the list of authentication directives stored in `conn`.
          */

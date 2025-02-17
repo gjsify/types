@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/imsettings-1.8)
 
 
-GJS TypeScript type definitions for IMSettings-1.8, generated from library version 1.8.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.20.
+GJS TypeScript type definitions for IMSettings-1.8, generated from library version 1.8.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.21.
 
 
 ## Install

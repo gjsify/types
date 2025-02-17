@@ -16,8 +16,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace Gdk {
     /**
@@ -649,7 +649,7 @@ export namespace Gdk {
         EXACT,
     }
     /**
-     * `GdkMemoryFormat` describes formats that image data can have in memory.
+     * Describes formats that image data can have in memory.
      *
      * It describes formats by listing the contents of the memory passed to it.
      * So `GDK_MEMORY_A8R8G8B8` will be 1 byte (8 bits) of alpha, followed by a
@@ -663,7 +663,7 @@ export namespace Gdk {
      */
 
     /**
-     * `GdkMemoryFormat` describes formats that image data can have in memory.
+     * Describes formats that image data can have in memory.
      *
      * It describes formats by listing the contents of the memory passed to it.
      * So `GDK_MEMORY_A8R8G8B8` will be 1 byte (8 bits) of alpha, followed by a
@@ -3543,7 +3543,7 @@ export namespace Gdk {
      */
     const PRIORITY_REDRAW: number;
     /**
-     * The main way to not draw GL content in GTK.
+     * Draws GL content onto a cairo context.
      *
      * It takes a render buffer ID (`source_type` == GL_RENDERBUFFER) or a texture
      * id (`source_type` == GL_TEXTURE) and draws it onto `cr` with an OVER operation,
@@ -3627,6 +3627,21 @@ export namespace Gdk {
      */
     function cairo_set_source_rgba(cr: cairo.Context, rgba: RGBA): void;
     /**
+     * Returns the color state object representing the oklab color space.
+     *
+     * This is a perceptually uniform color state.
+     * @returns the color state object for oklab
+     */
+    function color_state_get_oklab(): ColorState;
+    /**
+     * Returns the color state object representing the oklch color space.
+     *
+     * This is the polar variant of oklab, in which the hue is encoded as
+     * a polar coordinate.
+     * @returns the color state object for oklch
+     */
+    function color_state_get_oklch(): ColorState;
+    /**
      * Returns the color state object representing the linear rec2100 color space.
      *
      * This color state uses the primaries defined by BT.2020-2 and BT.2100-0 and a linear
@@ -3678,9 +3693,9 @@ export namespace Gdk {
      */
     function color_state_get_srgb_linear(): ColorState;
     /**
-     * Read content from the given input stream and deserialize it, asynchronously.
+     * Reads content from the given input stream and deserialize it, asynchronously.
      *
-     * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
+     * The default I/O priority is `G_PRIORITY_DEFAULT` (i.e. 0), and lower numbers
      * indicate a higher priority.
      * @param stream a `GInputStream` to read the serialized content from
      * @param mime_type the mime type to deserialize from
@@ -3696,9 +3711,9 @@ export namespace Gdk {
         cancellable?: Gio.Cancellable | null,
     ): Promise<[GObject.Value]>;
     /**
-     * Read content from the given input stream and deserialize it, asynchronously.
+     * Reads content from the given input stream and deserialize it, asynchronously.
      *
-     * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
+     * The default I/O priority is `G_PRIORITY_DEFAULT` (i.e. 0), and lower numbers
      * indicate a higher priority.
      * @param stream a `GInputStream` to read the serialized content from
      * @param mime_type the mime type to deserialize from
@@ -3716,9 +3731,9 @@ export namespace Gdk {
         callback: Gio.AsyncReadyCallback<Gio.InputStream> | null,
     ): void;
     /**
-     * Read content from the given input stream and deserialize it, asynchronously.
+     * Reads content from the given input stream and deserialize it, asynchronously.
      *
-     * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
+     * The default I/O priority is `G_PRIORITY_DEFAULT` (i.e. 0), and lower numbers
      * indicate a higher priority.
      * @param stream a `GInputStream` to read the serialized content from
      * @param mime_type the mime type to deserialize from
@@ -3913,19 +3928,19 @@ export namespace Gdk {
      * `gdk/gdkkeysyms.h` header file
      * but without the leading “GDK_KEY_”.
      * @param keyval_name a key name
-     * @returns the corresponding key value, or %GDK_KEY_VoidSymbol   if the key name is not a valid key
+     * @returns the corresponding key value, or `GDK_KEY_VoidSymbol`   if the key name is not a valid key
      */
     function keyval_from_name(keyval_name: string): number;
     /**
-     * Returns %TRUE if the given key value is in lower case.
+     * Returns true if the given key value is in lower case.
      * @param keyval a key value.
-     * @returns %TRUE if @keyval is in lower case, or if @keyval is not   subject to case conversion.
+     * @returns true if @keyval is in lower case, or if @keyval is not   subject to case conversion.
      */
     function keyval_is_lower(keyval: number): boolean;
     /**
-     * Returns %TRUE if the given key value is in upper case.
+     * Returns true if the given key value is in upper case.
      * @param keyval a key value.
-     * @returns %TRUE if @keyval is in upper case, or if @keyval is not subject to  case conversion.
+     * @returns true if @keyval is in upper case, or if @keyval is not subject to  case conversion.
      */
     function keyval_is_upper(keyval: number): boolean;
     /**
@@ -3945,12 +3960,12 @@ export namespace Gdk {
      */
     function keyval_to_lower(keyval: number): number;
     /**
-     * Convert from a GDK key symbol to the corresponding Unicode
+     * Converts from a GDK key symbol to the corresponding Unicode
      * character.
      *
      * Note that the conversion does not take the current locale
      * into consideration, which might be expected for particular
-     * keyvals, such as %GDK_KEY_KP_Decimal.
+     * keyvals, such as `GDK_KEY_KP_Decimal`.
      * @param keyval a GDK key symbol
      * @returns the corresponding unicode character, or 0 if there   is no corresponding character.
      */
@@ -4049,9 +4064,9 @@ export namespace Gdk {
      */
     function texture_error_quark(): GLib.Quark;
     /**
-     * Convert from a Unicode character to a key symbol.
+     * Converts from a Unicode character to a key symbol.
      * @param wc a Unicode character
-     * @returns the corresponding GDK key symbol, if one exists.   or, if there is no corresponding symbol, wc | 0x01000000
+     * @returns the corresponding GDK key symbol, if one exists,   or, if there is no corresponding symbol, `wc | 0x01000000`
      */
     function unicode_to_keyval(wc: number): number;
     /**
@@ -4566,7 +4581,7 @@ export namespace Gdk {
     }
 
     /**
-     * `GdkAppLaunchContext` handles launching an application in a graphical context.
+     * Handles launching an application in a graphical context.
      *
      * It is an implementation of `GAppLaunchContext` that provides startup
      * notification and allows to launch applications on a specific workspace.
@@ -4693,8 +4708,7 @@ export namespace Gdk {
     }
 
     /**
-     * `GdkCairoContext` is an object representing the platform-specific
-     * draw context.
+     * Represents the platform-specific draw context.
      *
      * `GdkCairoContext`s are created for a surface using
      * [method`Gdk`.Surface.create_cairo_context], and the context
@@ -4740,8 +4754,9 @@ export namespace Gdk {
     }
 
     /**
-     * The `GdkCicpParams` struct contains the parameters that define
-     * a colorstate according to the ITU-T H.273
+     * Contains the parameters that define a colorstate with cicp parameters.
+     *
+     * Cicp parameters are specified in the ITU-T H.273
      * [specification](https://www.itu.int/rec/T-REC-H.273/en).
      *
      * See the documentation of individual properties for supported values.
@@ -4870,7 +4885,7 @@ export namespace Gdk {
          * with an error message that can be presented to the user.
          * @returns A newly allocated `GdkColorState`
          */
-        build_color_state(): ColorState | null;
+        build_color_state(): ColorState;
         /**
          * Returns the value of the color-primaries property
          * of `self`.
@@ -4933,8 +4948,7 @@ export namespace Gdk {
     }
 
     /**
-     * The `GdkClipboard` object represents data shared between applications or
-     * inside an application.
+     * Represents data shared between applications or inside an application.
      *
      * To get a `GdkClipboard` object, use [method`Gdk`.Display.get_clipboard] or
      * [method`Gdk`.Display.get_primary_clipboard]. You can find out about the data
@@ -5319,8 +5333,7 @@ export namespace Gdk {
     }
 
     /**
-     * A `GdkContentDeserializer` is used to deserialize content received via
-     * inter-application data transfers.
+     * Deserializes content received via inter-application data transfers.
      *
      * The `GdkContentDeserializer` transforms serialized content that is
      * identified by a mime type into an object identified by a GType.
@@ -5409,37 +5422,37 @@ export namespace Gdk {
 
         // Inherited methods
         /**
-         * Gets the source object from a #GAsyncResult.
-         * @returns a new reference to the source    object for the @res, or %NULL if there is none.
+         * Gets the source object from a [iface`Gio`.AsyncResult].
+         * @returns a new reference to the source    object for the @res, or `NULL` if there is none.
          */
         get_source_object<T = GObject.Object>(): T;
         /**
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
-         * @returns %TRUE if @res has the indicated @source_tag, %FALSE if   not.
+         * @returns `TRUE` if @res has the indicated @source_tag, `FALSE` if   not.
          */
         is_tagged(source_tag?: any | null): boolean;
         /**
-         * If `res` is a #GSimpleAsyncResult, this is equivalent to
-         * g_simple_async_result_propagate_error(). Otherwise it returns
-         * %FALSE.
+         * If `res` is a [class`Gio`.SimpleAsyncResult], this is equivalent to
+         * [method`Gio`.SimpleAsyncResult.propagate_error]. Otherwise it returns
+         * `FALSE`.
          *
-         * This can be used for legacy error handling in async *_finish()
-         * wrapper functions that traditionally handled #GSimpleAsyncResult
+         * This can be used for legacy error handling in async `*_finish()`
+         * wrapper functions that traditionally handled [class`Gio`.SimpleAsyncResult]
          * error returns themselves rather than calling into the virtual method.
-         * This should not be used in new code; #GAsyncResult errors that are
+         * This should not be used in new code; [iface`Gio`.AsyncResult] errors that are
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
-         * @returns %TRUE if @error is has been filled in with an error from   @res, %FALSE if not.
+         * @returns `TRUE` if @error is has been filled in with an error from   @res, `FALSE` if not.
          */
         legacy_propagate_error(): boolean;
         /**
-         * Gets the source object from a #GAsyncResult.
+         * Gets the source object from a [iface`Gio`.AsyncResult].
          */
         vfunc_get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a #GAsyncResult.
+         * Gets the user data from a [iface`Gio`.AsyncResult].
          */
         vfunc_get_user_data(): any | null;
         /**
@@ -5867,8 +5880,8 @@ export namespace Gdk {
     }
 
     /**
-     * A `GdkContentProvider` is used to provide content for the clipboard or
-     * for drag-and-drop operations in a number of formats.
+     * Provides content for the clipboard or for drag-and-drop operations
+     * in a number of formats.
      *
      * To create a `GdkContentProvider`, use [ctor`Gdk`.ContentProvider.new_for_value]
      * or [ctor`Gdk`.ContentProvider.new_for_bytes].
@@ -6090,8 +6103,7 @@ export namespace Gdk {
     }
 
     /**
-     * A `GdkContentSerializer` is used to serialize content for
-     * inter-application data transfers.
+     * Serializes content for inter-application data transfers.
      *
      * The `GdkContentSerializer` transforms an object that is identified
      * by a GType into a serialized form (i.e. a byte stream) that is
@@ -6181,37 +6193,37 @@ export namespace Gdk {
 
         // Inherited methods
         /**
-         * Gets the source object from a #GAsyncResult.
-         * @returns a new reference to the source    object for the @res, or %NULL if there is none.
+         * Gets the source object from a [iface`Gio`.AsyncResult].
+         * @returns a new reference to the source    object for the @res, or `NULL` if there is none.
          */
         get_source_object<T = GObject.Object>(): T;
         /**
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
-         * @returns %TRUE if @res has the indicated @source_tag, %FALSE if   not.
+         * @returns `TRUE` if @res has the indicated @source_tag, `FALSE` if   not.
          */
         is_tagged(source_tag?: any | null): boolean;
         /**
-         * If `res` is a #GSimpleAsyncResult, this is equivalent to
-         * g_simple_async_result_propagate_error(). Otherwise it returns
-         * %FALSE.
+         * If `res` is a [class`Gio`.SimpleAsyncResult], this is equivalent to
+         * [method`Gio`.SimpleAsyncResult.propagate_error]. Otherwise it returns
+         * `FALSE`.
          *
-         * This can be used for legacy error handling in async *_finish()
-         * wrapper functions that traditionally handled #GSimpleAsyncResult
+         * This can be used for legacy error handling in async `*_finish()`
+         * wrapper functions that traditionally handled [class`Gio`.SimpleAsyncResult]
          * error returns themselves rather than calling into the virtual method.
-         * This should not be used in new code; #GAsyncResult errors that are
+         * This should not be used in new code; [iface`Gio`.AsyncResult] errors that are
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
-         * @returns %TRUE if @error is has been filled in with an error from   @res, %FALSE if not.
+         * @returns `TRUE` if @error is has been filled in with an error from   @res, `FALSE` if not.
          */
         legacy_propagate_error(): boolean;
         /**
-         * Gets the source object from a #GAsyncResult.
+         * Gets the source object from a [iface`Gio`.AsyncResult].
          */
         vfunc_get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a #GAsyncResult.
+         * Gets the user data from a [iface`Gio`.AsyncResult].
          */
         vfunc_get_user_data(): any | null;
         /**
@@ -6666,7 +6678,7 @@ export namespace Gdk {
     }
 
     /**
-     * `GdkCursor` is used to create and destroy cursors.
+     * Used to create and destroy cursors.
      *
      * Cursors are immutable objects, so once you created them, there is no way
      * to modify them later. You should create a new cursor when you want to change
@@ -6851,6 +6863,8 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            active_layout_index: number;
+            activeLayoutIndex: number;
             caps_lock_state: boolean;
             capsLockState: boolean;
             direction: Pango.Direction;
@@ -6859,6 +6873,8 @@ export namespace Gdk {
             hasBidiLayouts: boolean;
             has_cursor: boolean;
             hasCursor: boolean;
+            layout_names: string[];
+            layoutNames: string[];
             modifier_state: ModifierType;
             modifierState: ModifierType;
             n_axes: number;
@@ -6881,8 +6897,7 @@ export namespace Gdk {
     }
 
     /**
-     * The `GdkDevice` object represents an input device, such
-     * as a keyboard, a mouse, or a touchpad.
+     * Represents an input device, such as a keyboard, mouse or touchpad.
      *
      * See the [class`Gdk`.Seat] documentation for more information
      * about the various kinds of devices, and their relationships.
@@ -6892,6 +6907,22 @@ export namespace Gdk {
 
         // Properties
 
+        /**
+         * The index of the keyboard active layout of a `GdkDevice`.
+         *
+         * Will be -1 if there is no valid active layout.
+         *
+         * This is only relevant for keyboard devices.
+         */
+        get active_layout_index(): number;
+        /**
+         * The index of the keyboard active layout of a `GdkDevice`.
+         *
+         * Will be -1 if there is no valid active layout.
+         *
+         * This is only relevant for keyboard devices.
+         */
+        get activeLayoutIndex(): number;
         /**
          * Whether Caps Lock is on.
          *
@@ -6934,6 +6965,18 @@ export namespace Gdk {
          * Whether the device is represented by a cursor on the screen.
          */
         get hasCursor(): boolean;
+        /**
+         * The names of the keyboard layouts of a `GdkDevice`.
+         *
+         * This is only relevant for keyboard devices.
+         */
+        get layout_names(): string[];
+        /**
+         * The names of the keyboard layouts of a `GdkDevice`.
+         *
+         * This is only relevant for keyboard devices.
+         */
+        get layoutNames(): string[];
         /**
          * The current modifier state of the device.
          *
@@ -7055,6 +7098,16 @@ export namespace Gdk {
         // Methods
 
         /**
+         * Retrieves the index of the active layout of the keyboard.
+         *
+         * If there is no valid active layout for the `GdkDevice`, this function will
+         * return -1;
+         *
+         * This is only relevant for keyboard devices.
+         * @returns The layout index of the active layout or -1.
+         */
+        get_active_layout_index(): number;
+        /**
          * Retrieves whether the Caps Lock modifier of the keyboard is locked.
          *
          * This is only relevant for keyboard devices.
@@ -7089,6 +7142,13 @@ export namespace Gdk {
          * @returns %TRUE if the pointer follows device motion
          */
         get_has_cursor(): boolean;
+        /**
+         * Retrieves the names of the layouts of the keyboard.
+         *
+         * This is only relevant for keyboard devices.
+         * @returns %NULL-terminated array of strings of layouts,
+         */
+        get_layout_names(): string[] | null;
         /**
          * Retrieves the current modifier state of the keyboard.
          *
@@ -7317,7 +7377,7 @@ export namespace Gdk {
     }
 
     /**
-     * `GdkDisplay` objects are the GDK representation of a workstation.
+     * A representation of a workstation.
      *
      * Their purpose are two-fold:
      *
@@ -7722,8 +7782,9 @@ export namespace Gdk {
     }
 
     /**
-     * A singleton object that offers notification when displays appear or
-     * disappear.
+     * Offers notification when displays appear or disappear.
+     *
+     * `GdkDisplayManager` is a singleton object.
      *
      * You can use [func`Gdk`.DisplayManager.get] to obtain the `GdkDisplayManager`
      * singleton, but that should be rarely necessary. Typically, initializing
@@ -8624,8 +8685,7 @@ export namespace Gdk {
     }
 
     /**
-     * `GdkDmabufTextureBuilder` is a builder used to construct [class`Gdk`.Texture]
-     * objects from DMA buffers.
+     * Constructs [class`Gdk`.Texture] objects from DMA buffers.
      *
      * DMA buffers are commonly called **_dma-bufs_**.
      *
@@ -9005,7 +9065,7 @@ export namespace Gdk {
     }
 
     /**
-     * The `GdkDrag` object represents the source of an ongoing DND operation.
+     * Represents the source of an ongoing DND operation.
      *
      * A `GdkDrag` is created when a drag is started, and stays alive for duration of
      * the DND operation. After a drag has been started with [func`Gdk`.Drag.begin],
@@ -9313,7 +9373,7 @@ export namespace Gdk {
     }
 
     /**
-     * The `GdkDrop` object represents the target of an ongoing DND operation.
+     * Represents the target of an ongoing DND operation.
      *
      * Possible drop sites get informed about the status of the ongoing drag
      * operation with events of type %GDK_DRAG_ENTER, %GDK_DRAG_LEAVE,
@@ -9555,12 +9615,13 @@ export namespace Gdk {
     }
 
     /**
-     * `GdkEvent`s are immutable data structures, created by GDK to
-     * represent windowing system events.
+     * Represents windowing system events.
      *
      * In GTK applications the events are handled automatically by toplevel
      * widgets and passed on to the event controllers of appropriate widgets,
      * so using `GdkEvent` and its related API is rarely needed.
+     *
+     * `GdkEvent` structs are immutable.
      */
     abstract class Event {
         static $gtype: GObject.GType<Event>;
@@ -9792,8 +9853,7 @@ export namespace Gdk {
     }
 
     /**
-     * A `GdkFrameClock` tells the application when to update and repaint
-     * a surface.
+     * Tells the application when to update and repaint a surface.
      *
      * This may be synced to the vertical refresh rate of the monitor, for example.
      * Even when the frame clock uses a simple timer rather than a hardware-based
@@ -9972,8 +10032,7 @@ export namespace Gdk {
     }
 
     /**
-     * `GdkGLContext` is an object representing a platform-specific
-     * OpenGL draw context.
+     * Represents a platform-specific OpenGL draw context.
      *
      * `GdkGLContext`s are created for a surface using
      * [method`Gdk`.Surface.create_gl_context], and the context will match
@@ -10269,7 +10328,7 @@ export namespace Gdk {
     }
 
     /**
-     * A GdkTexture representing a GL texture object.
+     * A `GdkTexture` representing a GL texture object.
      */
     class GLTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
         static $gtype: GObject.GType<GLTexture>;
@@ -11054,8 +11113,7 @@ export namespace Gdk {
     }
 
     /**
-     * `GdkGLTextureBuilder` is a builder used to construct [class`Gdk`.Texture] objects from
-     * GL textures.
+     * Constructs [class`Gdk`.Texture] objects from GL textures.
      *
      * The operation is quite simple: Create a texture builder, set all the necessary
      * properties - keep in mind that the properties [property`Gdk`.GLTextureBuilder:context],
@@ -12208,8 +12266,8 @@ export namespace Gdk {
     }
 
     /**
-     * `GdkMemoryTextureBuilder` is a builder used to construct [class`Gdk`.Texture] objects
-     * from system memory provided via [struct`GLib`.Bytes].
+     * Constructs [class`Gdk`.Texture] objects from system memory provided
+     * via [struct`GLib`.Bytes].
      *
      * The operation is quite simple: Create a texture builder, set all the necessary
      * properties - keep in mind that the properties [property`Gdk`.MemoryTextureBuilder:bytes],
@@ -12449,8 +12507,7 @@ export namespace Gdk {
     }
 
     /**
-     * `GdkMonitor` objects represent the individual outputs that are
-     * associated with a `GdkDisplay`.
+     * Represents the individual outputs that are associated with a `GdkDisplay`.
      *
      * `GdkDisplay` keeps a `GListModel` to enumerate and monitor
      * monitors with [method`Gdk`.Display.get_monitors]. You can use
@@ -12788,8 +12845,7 @@ export namespace Gdk {
     }
 
     /**
-     * The `GdkSeat` object represents a collection of input devices
-     * that belong to a user.
+     * Represents a collection of input devices that belong to a user.
      */
     abstract class Seat extends GObject.Object {
         static $gtype: GObject.GType<Seat>;
@@ -12921,7 +12977,7 @@ export namespace Gdk {
     }
 
     /**
-     * A `GdkSurface` is a rectangular region on the screen.
+     * Represents a rectangular region on the screen.
      *
      * It’s a low-level object, used to implement high-level objects
      * such as [GtkWindow](../gtk4/class.Window.html).
@@ -13295,7 +13351,7 @@ export namespace Gdk {
     }
 
     /**
-     * `GdkTexture` is the basic element used to refer to pixel data.
+     * Refers to pixel data in various forms.
      *
      * It is primarily meant for pixel data that will not change over
      * multiple frames, and will be used for a long time.
@@ -14286,8 +14342,7 @@ export namespace Gdk {
     }
 
     /**
-     * `GdkVulkanContext` is an object representing the platform-specific
-     * Vulkan draw context.
+     * Represents the platform-specific Vulkan draw context.
      *
      * `GdkVulkanContext`s are created for a surface using
      * [method`Gdk`.Surface.create_vulkan_context], and the context will match
@@ -14804,8 +14859,7 @@ export namespace Gdk {
 
     type CicpParamsClass = typeof CicpParams;
     /**
-     * A `GdkColorState` object provides the information to interpret
-     * colors and pixels in a variety of ways.
+     * Provides information to interpret colors and pixels in a variety of ways.
      *
      * They are also known as
      * [*color spaces*](https://en.wikipedia.org/wiki/Color_space).
@@ -14824,6 +14878,19 @@ export namespace Gdk {
 
         // Static methods
 
+        /**
+         * Returns the color state object representing the oklab color space.
+         *
+         * This is a perceptually uniform color state.
+         */
+        static get_oklab(): ColorState;
+        /**
+         * Returns the color state object representing the oklch color space.
+         *
+         * This is the polar variant of oklab, in which the hue is encoded as
+         * a polar coordinate.
+         */
+        static get_oklch(): ColorState;
         /**
          * Returns the color state object representing the linear rec2100 color space.
          *
@@ -14908,8 +14975,7 @@ export namespace Gdk {
     }
 
     /**
-     * The `GdkContentFormats` structure is used to advertise and negotiate the
-     * format of content.
+     * Used to advertise and negotiate the format of content.
      *
      * You will encounter `GdkContentFormats` when interacting with objects
      * controlling operations that pass data between different widgets, window
@@ -14999,6 +15065,11 @@ export namespace Gdk {
          */
         get_mime_types(): string[] | null;
         /**
+         * Returns whether the content formats contain any formats.
+         * @returns true if @formats contains no mime types and no GTypes
+         */
+        is_empty(): boolean;
+        /**
          * Checks if `first` and `second` have any matching formats.
          * @param second the `GdkContentFormats` to intersect with
          * @returns %TRUE if a matching format was found.
@@ -15085,8 +15156,7 @@ export namespace Gdk {
     }
 
     /**
-     * A `GdkContentFormatsBuilder` is an auxiliary struct used to create
-     * new `GdkContentFormats`, and should not be kept around.
+     * Creates `GdkContentFormats` objects.
      */
     class ContentFormatsBuilder {
         static $gtype: GObject.GType<ContentFormatsBuilder>;
@@ -15144,8 +15214,7 @@ export namespace Gdk {
     type ContentProviderClass = typeof ContentProvider;
     type DevicePadInterface = typeof DevicePad;
     /**
-     * The `GdkDmabufFormats` struct provides information about
-     * supported DMA buffer formats.
+     * Provides information about supported DMA buffer formats.
      *
      * You can query whether a given format is supported with
      * [method`Gdk`.DmabufFormats.contains] and you can iterate
@@ -15222,8 +15291,7 @@ export namespace Gdk {
     type DmabufTextureClass = typeof DmabufTexture;
     type DragSurfaceInterface = typeof DragSurface;
     /**
-     * The `GdkDragSurfaceSize` struct contains information that is useful
-     * to compute the size of a drag surface.
+     * Contains information that is useful to compute the size of a drag surface.
      */
     abstract class DragSurfaceSize {
         static $gtype: GObject.GType<DragSurfaceSize>;
@@ -15243,8 +15311,7 @@ export namespace Gdk {
     }
 
     /**
-     * `GdkEventSequence` is an opaque type representing a sequence
-     * of related touch events.
+     * An opaque type representing a sequence of related events.
      */
     abstract class EventSequence {
         static $gtype: GObject.GType<EventSequence>;
@@ -15290,8 +15357,7 @@ export namespace Gdk {
     }
 
     /**
-     * A `GdkFrameTimings` object holds timing information for a single frame
-     * of the application’s displays.
+     * Holds timing information for a single frame of the application’s displays.
      *
      * To retrieve `GdkFrameTimings` objects, use [method`Gdk`.FrameClock.get_timings]
      * or [method`Gdk`.FrameClock.get_current_timings]. The information in
@@ -15387,7 +15453,7 @@ export namespace Gdk {
     type GLTextureBuilderClass = typeof GLTextureBuilder;
     type GLTextureClass = typeof GLTexture;
     /**
-     * A `GdkKeymapKey` is a hardware key that can be mapped to a keyval.
+     * Represents a hardware key that can be mapped to a keyval.
      */
     class KeymapKey {
         static $gtype: GObject.GType<KeymapKey>;
@@ -15416,8 +15482,8 @@ export namespace Gdk {
     type PaintableInterface = typeof Paintable;
     type PopupInterface = typeof Popup;
     /**
-     * The `GdkPopupLayout` struct contains information that is
-     * necessary position a [iface`Gdk`.Popup] relative to its parent.
+     * Contains information that is necessary position a [iface`Gdk`.Popup]
+     * relative to its parent.
      *
      * The positioning requires a negotiation with the windowing system,
      * since it depends on external constraints, such as the position of
@@ -15557,8 +15623,7 @@ export namespace Gdk {
     }
 
     /**
-     * A `GdkRGBA` is used to represent a color, in a way that is compatible
-     * with cairo’s notion of color.
+     * Represents a color, in a way that is compatible with cairo’s notion of color.
      *
      * `GdkRGBA` is a convenient way to pass colors around. It’s based on
      * cairo’s way to deal with colors and mirrors its behavior. All values
@@ -15674,7 +15739,7 @@ export namespace Gdk {
     }
 
     /**
-     * A `GdkRectangle` data type for representing rectangles.
+     * Represents a rectangle.
      *
      * `GdkRectangle` is identical to `cairo_rectangle_t`. Together with Cairo’s
      * `cairo_region_t` data type, these are the central types for representing
@@ -15757,8 +15822,7 @@ export namespace Gdk {
     type SurfaceClass = typeof Surface;
     type TextureClass = typeof Texture;
     /**
-     * The `GdkTextureDownloader` is used to download the contents of a
-     * [class`Gdk`.Texture].
+     * Used to download the contents of a [class`Gdk`.Texture].
      *
      * It is intended to be created as a short-term object for a single download,
      * but can be used for multiple downloads of different textures or with different
@@ -15846,7 +15910,7 @@ export namespace Gdk {
     }
 
     /**
-     * A `GdkTimeCoord` stores a single event in a motion history.
+     * Stores a single event in a motion history.
      *
      * To check whether an axis is present, check whether the corresponding
      * flag from the [flags`Gdk`.AxisFlags] enumeration is set in the `flags`
@@ -15869,8 +15933,8 @@ export namespace Gdk {
 
     type ToplevelInterface = typeof Toplevel;
     /**
-     * The `GdkToplevelLayout` struct contains information that
-     * is necessary to present a sovereign window on screen.
+     * Contains information that is necessary to present a sovereign
+     * window on screen.
      *
      * The `GdkToplevelLayout` struct is necessary for using
      * [method`Gdk`.Toplevel.present].
@@ -15959,8 +16023,7 @@ export namespace Gdk {
     }
 
     /**
-     * The `GdkToplevelSize` struct contains information that is useful
-     * to compute the size of a toplevel.
+     * Contains information that is useful to compute the size of a toplevel.
      */
     abstract class ToplevelSize {
         static $gtype: GObject.GType<ToplevelSize>;

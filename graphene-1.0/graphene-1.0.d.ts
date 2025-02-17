@@ -256,6 +256,51 @@ export namespace Graphene {
      */
     const VEC4_LEN: number;
     /**
+     * A degenerate #graphene_box2d_t that can only be expanded.
+     *
+     * The returned value is owned by Graphene and should not be modified or freed.
+     * @returns a #graphene_box2d_t
+     */
+    function box2d_empty(): Box2D;
+    /**
+     * A degenerate #graphene_box2d_t that cannot be expanded.
+     *
+     * The returned value is owned by Graphene and should not be modified or freed.
+     * @returns a #graphene_box2d_t
+     */
+    function box2d_infinite(): Box2D;
+    /**
+     * A #graphene_box2d_t with the minimum vertex set at (-1, -1) and the
+     * maximum vertex set at (0, 0).
+     *
+     * The returned value is owned by Graphene and should not be modified or freed.
+     * @returns a #graphene_box2d_t
+     */
+    function box2d_minus_one(): Box2D;
+    /**
+     * A #graphene_box2d_t with the minimum vertex set at (0, 0) and the
+     * maximum vertex set at (1, 1).
+     *
+     * The returned value is owned by Graphene and should not be modified or freed.
+     * @returns a #graphene_box2d_t
+     */
+    function box2d_one(): Box2D;
+    /**
+     * A #graphene_box2d_t with the minimum vertex set at (-1, -1) and the
+     * maximum vertex set at (1, 1).
+     *
+     * The returned value is owned by Graphene and should not be modified or freed.
+     * @returns a #graphene_box2d_t
+     */
+    function box2d_one_minus_one(): Box2D;
+    /**
+     * A #graphene_box2d_t with both the minimum and maximum vertices set at (0, 0).
+     *
+     * The returned value is owned by Graphene and should not be modified or freed.
+     * @returns a #graphene_box2d_t
+     */
+    function box2d_zero(): Box2D;
+    /**
      * A degenerate #graphene_box_t that can only be expanded.
      *
      * The returned value is owned by Graphene and should not be modified or freed.
@@ -545,6 +590,11 @@ export namespace Graphene {
          */
         get_min(): Point3D;
         /**
+         * Retrieves the coordinates of the minimum and maximum points of the
+         * given #graphene_box_t
+         */
+        get_minmax(): [Point3D | null, Point3D | null];
+        /**
          * Retrieves the size of the box on all three axes, and stores
          * it into the given `size` vector.
          */
@@ -614,6 +664,250 @@ export namespace Graphene {
          * @param b the box to union to @a
          */
         union(b: Box): Box;
+    }
+
+    /**
+     * A 2D box, described as the axis-aligned area between a minimum and
+     * a maximum vertices lying on the same plane.
+     */
+    class Box2D {
+        static $gtype: GObject.GType<Box2D>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+        _init(...args: any[]): void;
+
+        static alloc(): Box2D;
+
+        // Static methods
+
+        /**
+         * A degenerate #graphene_box2d_t that can only be expanded.
+         *
+         * The returned value is owned by Graphene and should not be modified or freed.
+         */
+        static empty(): Box2D;
+        /**
+         * A degenerate #graphene_box2d_t that cannot be expanded.
+         *
+         * The returned value is owned by Graphene and should not be modified or freed.
+         */
+        static infinite(): Box2D;
+        /**
+         * A #graphene_box2d_t with the minimum vertex set at (-1, -1) and the
+         * maximum vertex set at (0, 0).
+         *
+         * The returned value is owned by Graphene and should not be modified or freed.
+         */
+        static minus_one(): Box2D;
+        /**
+         * A #graphene_box2d_t with the minimum vertex set at (0, 0) and the
+         * maximum vertex set at (1, 1).
+         *
+         * The returned value is owned by Graphene and should not be modified or freed.
+         */
+        static one(): Box2D;
+        /**
+         * A #graphene_box2d_t with the minimum vertex set at (-1, -1) and the
+         * maximum vertex set at (1, 1).
+         *
+         * The returned value is owned by Graphene and should not be modified or freed.
+         */
+        static one_minus_one(): Box2D;
+        /**
+         * A #graphene_box2d_t with both the minimum and maximum vertices set at (0, 0).
+         *
+         * The returned value is owned by Graphene and should not be modified or freed.
+         */
+        static zero(): Box2D;
+
+        // Methods
+
+        /**
+         * Checks whether the #graphene_box2d_t `a` contains the given
+         * #graphene_box2d_t `b`.
+         * @param b a #graphene_box2d_t
+         * @returns `true` if the box is contained in the given box
+         */
+        contains_box(b: Box2D): boolean;
+        /**
+         * Checks whether `box` contains the given `point`.
+         * @param point the coordinates to check
+         * @returns `true` if the point is contained in the given box
+         */
+        contains_point(point: Point): boolean;
+        /**
+         * Checks whether `box` contains the given `rect`.
+         * @param rect the rectangle to check
+         * @returns `true` if the rectangle is contained in the given box
+         */
+        contains_rect(rect: Rect): boolean;
+        /**
+         * Checks whether the two given boxes are equal.
+         * @param b a #graphene_box2d_t
+         * @returns `true` if the boxes are equal
+         */
+        equal(b: Box2D): boolean;
+        /**
+         * Expands the dimensions of `box` to include the coordinates at `point`.
+         * @param point the coordinates of the point to include
+         */
+        expand(point: Point): Box2D;
+        /**
+         * Expands the dimensions of `box` by the given `scalar` value.
+         *
+         * If `scalar` is positive, the #graphene_box2d_t will grow; if `scalar` is
+         * negative, the #graphene_box2d_t will shrink.
+         * @param scalar a scalar value
+         */
+        expand_scalar(scalar: number): Box2D;
+        /**
+         * Expands the dimensions of `box` to include the coordinates of the
+         * given vector.
+         * @param vec the coordinates of the point to include, as a #graphene_vec2_t
+         */
+        expand_vec2(vec: Vec2): Box2D;
+        /**
+         * Frees the resources allocated by graphene_box2d_alloc().
+         */
+        free(): void;
+        /**
+         * Retrieves the coordinates of the center of a #graphene_box2d_t.
+         */
+        get_center(): Point;
+        /**
+         * Retrieves the size of the `box` on the Y axis.
+         * @returns the height of the box
+         */
+        get_height(): number;
+        /**
+         * Retrieves the coordinates of the maximum point of the given
+         * #graphene_box2d_t.
+         */
+        get_max(): Point;
+        /**
+         * Retrieves the coordinates of the minimum point of the given
+         * #graphene_box2d_t.
+         */
+        get_min(): Point;
+        /**
+         * Retrieves the coordinates of the minimum and maximum points of the
+         * given #graphene_box2d_t.
+         */
+        get_minmax(): [Point, Point];
+        /**
+         * Retrieves the size of the box on all three axes, and stores
+         * it into the given `size` vector.
+         */
+        get_size(): Vec2;
+        /**
+         * Computes the vertices of the given #graphene_box2d_t.
+         */
+        get_vertices(): Vec2[];
+        /**
+         * Retrieves the size of the `box` on the X axis.
+         * @returns the width of the box
+         */
+        get_width(): number;
+        /**
+         * Initializes the given #graphene_box2d_t with two vertices.
+         * @param min the coordinates of the minimum vertex
+         * @param max the coordinates of the maximum vertex
+         * @returns the initialized #graphene_box2d_t
+         */
+        init(min?: Point | null, max?: Point | null): Box2D;
+        /**
+         * Initializes the given #graphene_box2d_t with the vertices of
+         * another #graphene_box2d_t.
+         * @param src a #graphene_box2d_t
+         * @returns the initialized #graphene_box2d_t
+         */
+        init_from_box(src: Box2D): Box2D;
+        /**
+         * Initializes the given #graphene_box2d_t with the given array
+         * of vertices.
+         *
+         * If `n_points` is 0, the returned box is initialized with
+         * graphene_box2d_empty().
+         * @param points an array of #graphene_point_t
+         * @returns the initialized #graphene_box2d_t
+         */
+        init_from_points(points: Point[]): Box2D;
+        /**
+         * Initializes the given #graphene_box2d_t with the origin and
+         * size of a #graphene_rect_t.
+         * @param src a #graphene_rect_t
+         * @returns the initialized #graphene_box2d_t
+         */
+        init_from_rect(src: Rect): Box2D;
+        /**
+         * Initializes the given #graphene_box2d_t with two vertices
+         * stored inside #graphene_vec2_t.
+         * @param min the coordinates of the minimum vertex
+         * @param max the coordinates of the maximum vertex
+         * @returns the initialized #graphene_box2d_t
+         */
+        init_from_vec2(min?: Vec2 | null, max?: Vec2 | null): Box2D;
+        /**
+         * Initializes the given #graphene_box2d_t with the given array
+         * of vertices.
+         *
+         * If `n_vectors` is 0, the returned box is initialized with
+         * graphene_box2d_empty().
+         * @param vectors an array of #graphene_vec2_t
+         * @returns the initialized #graphene_box2d_t
+         */
+        init_from_vectors(vectors: Vec2[]): Box2D;
+        /**
+         * Intersects the two given #graphene_box2d_t.
+         *
+         * If the two boxes do not intersect, `res` will contain a degenerate box
+         * initialized with graphene_box2d_empty().
+         * @param b a #graphene_box2d_t
+         * @returns true if the two boxes intersect
+         */
+        intersection(b: Box2D): [boolean, Box2D | null];
+        /**
+         * Checks whether two boxes intersect.
+         *
+         * See also: graphene_box2d_intersection()
+         * @param b a #graphene_box2d_t
+         * @returns true if the boxes intersect, and false otherwise
+         */
+        intersects(b: Box2D): boolean;
+        /**
+         * Applies a scale and an offset to the vertices of the given box.
+         *
+         * If `scale` is %NULL, the box will be scaled by (1.0, 1.0).
+         *
+         * If `offset` is %NULL, the box will be offset by (0.0, 0.0).
+         * @param scale a vector with two scaling factors to be applied to the box
+         * @param offset the offset to apply to the box
+         */
+        scale_offset(scale: Vec2 | null, offset: Point | null): Box2D;
+        /**
+         * Stores the minimum and maximum vertices of the given #graphene_box2d_t
+         * into an array.
+         *
+         * The array layout is:
+         *
+         * - min_x
+         * - min_y
+         * - max_x
+         * - max_y
+         */
+        to_float(): number[];
+        /**
+         * Stores the minimum and maximum vertices of the given #graphene_box2d_t
+         * into a rectangle of equivalent origin and size.
+         */
+        to_rect(): Rect;
+        /**
+         * Unions the two given #graphene_box2d_t.
+         * @param b the box to union to @a
+         */
+        union(b: Box2D): Box2D;
     }
 
     /**

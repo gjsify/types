@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type EDataServer from '@girs/edataserver-1.2';
 import type libxml2 from '@girs/libxml2-2.0';
 import type Soup from '@girs/soup-3.0';
@@ -4105,7 +4106,7 @@ export namespace EBackend {
          * Looks into the system proxy configuration to determine what proxy,
          * if any, to use to connect to `uri`. The returned proxy URIs are of
          * the form `<protocol>://[user[:password]`]`host[:port]` or
-         * `direct://`, where <protocol> could be http, rtsp, socks
+         * `direct://`, where `<protocol>` could be http, rtsp, socks
          * or other proxying protocol.
          *
          * If you don't know what network protocol is being used on the
@@ -4171,7 +4172,7 @@ export namespace EBackend {
          * Looks into the system proxy configuration to determine what proxy,
          * if any, to use to connect to `uri`. The returned proxy URIs are of
          * the form `<protocol>://[user[:password]`]`host[:port]` or
-         * `direct://`, where <protocol> could be http, rtsp, socks
+         * `direct://`, where `<protocol>` could be http, rtsp, socks
          * or other proxying protocol.
          *
          * If you don't know what network protocol is being used on the

@@ -12,6 +12,7 @@ import type Soup from '@girs/soup-3.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type JavaScriptCore from '@girs/javascriptcore-4.1';
 import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
@@ -21,7 +22,6 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace WebKit2 {
@@ -1367,6 +1367,44 @@ export namespace WebKit2 {
         AUTHOR,
     }
     /**
+     * Enum values used to denote errors happening when creating a #WebKitWebExtensionMatchPattern
+     */
+    class WebExtensionMatchPatternError extends GLib.Error {
+        static $gtype: GObject.GType<WebExtensionMatchPatternError>;
+
+        // Static fields
+
+        /**
+         * An unknown error occured.
+         */
+        static UNKNOWN: number;
+        /**
+         * The scheme component was invalid.
+         */
+        static INVALID_SCHEME: number;
+        /**
+         * The host component was invalid.
+         */
+        static INVALID_HOST: number;
+        /**
+         * The path component was invalid.
+         */
+        static INVALID_PATH: number;
+
+        // Constructors
+
+        constructor(options: { message: string; code: number });
+        _init(...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Gets the quark for the domain of Web Extension Match Pattern errors.
+         */
+        static quark(): GLib.Quark;
+    }
+
+    /**
      * Enum values used for setting if a #WebKitWebView is intended for
      * WebExtensions.
      */
@@ -1632,6 +1670,19 @@ export namespace WebKit2 {
      * @returns user message error domain.
      */
     function user_message_error_quark(): GLib.Quark;
+    /**
+     * Gets the quark for the domain of Web Extension Match Pattern errors.
+     * @returns web extension match pattern error domain.
+     */
+    function web_extension_match_pattern_error_quark(): GLib.Quark;
+    /**
+     * Registers a custom URL scheme that can be used in match patterns.
+     *
+     * This method should be used to register any custom URL schemes used by the app for the extension base URLs,
+     * other than `webkit-extension`, or if extensions should have access to other supported URL schemes when using `<all_urls>`.
+     * @param urlScheme The custom URL scheme to register
+     */
+    function web_extension_match_pattern_register_custom_URL_scheme(urlScheme: string): void;
     interface URISchemeRequestCallback {
         (request: URISchemeRequest): void;
     }
@@ -1819,6 +1870,35 @@ export namespace WebKit2 {
          * rendering the snapshot. Since 2.8
          */
         TRANSPARENT_BACKGROUND,
+    }
+    /**
+     * Enum values representing matching options.
+     */
+
+    /**
+     * Enum values representing matching options.
+     */
+    export namespace WebExtensionMatchPatternOptions {
+        export const $gtype: GObject.GType<WebExtensionMatchPatternOptions>;
+    }
+
+    enum WebExtensionMatchPatternOptions {
+        /**
+         * No special matching options.
+         */
+        NONE,
+        /**
+         * The scheme components should be ignored while matching.
+         */
+        IGNORE_SCHEMES,
+        /**
+         * The host components should be ignored while matching.
+         */
+        IGNORE_PATHS,
+        /**
+         * Two patterns should be checked in either direction while matching (A matches B, or B matches A). Invalid for matching URLs.
+         */
+        MATCH_BIDIRECTIONALLY,
     }
     /**
      * Enum values with flags representing types of Website data.
@@ -8502,6 +8582,8 @@ export namespace WebKit2 {
             serifFontFamily: string;
             user_agent: string;
             userAgent: string;
+            webrtc_udp_ports_range: string;
+            webrtcUdpPortsRange: string;
             zoom_text_only: boolean;
             zoomTextOnly: boolean;
         }
@@ -9393,6 +9475,28 @@ export namespace WebKit2 {
         get userAgent(): string;
         set userAgent(val: string);
         /**
+         * Allow customization of the WebRTC UDP ports range.
+         *
+         * In some constrained environments where a firewall blocks UDP network traffic excepted on a
+         * specific port range, this settings can be used to give hints to the WebRTC backend regarding
+         * which ports to allocate. The format is min-port:max-port, so for instance 20000:30000. The
+         * default empty string value means the OS will use no hints from the WebRTC backend. Using 0
+         * for one of the values is allowed and means the value is unspecified.
+         */
+        get webrtc_udp_ports_range(): string;
+        set webrtc_udp_ports_range(val: string);
+        /**
+         * Allow customization of the WebRTC UDP ports range.
+         *
+         * In some constrained environments where a firewall blocks UDP network traffic excepted on a
+         * specific port range, this settings can be used to give hints to the WebRTC backend regarding
+         * which ports to allocate. The format is min-port:max-port, so for instance 20000:30000. The
+         * default empty string value means the OS will use no hints from the WebRTC backend. Using 0
+         * for one of the values is allowed and means the value is unspecified.
+         */
+        get webrtcUdpPortsRange(): string;
+        set webrtcUdpPortsRange(val: string);
+        /**
          * Whether #WebKitWebView:zoom-level affects only the
          * text of the page or all the contents. Other contents containing text
          * like form controls will be also affected by zoom factor when
@@ -9799,6 +9903,11 @@ export namespace WebKit2 {
          */
         get_user_agent(): string;
         /**
+         * Get the [property`Settings:`webrtc-udp-ports-range] property.
+         * @returns The WebRTC UDP ports range, or %NULL if un-set.
+         */
+        get_webrtc_udp_ports_range(): string;
+        /**
          * Get the #WebKitSettings:zoom-text-only property.
          * @returns %TRUE If zoom level of the view should only affect the text    or %FALSE if all view contents should be scaled.
          */
@@ -10136,6 +10245,11 @@ export namespace WebKit2 {
             application_name?: string | null,
             application_version?: string | null,
         ): void;
+        /**
+         * Set the [property`Settings:`webrtc-udp-ports-range] property.
+         * @param udp_port_range Value to be set
+         */
+        set_webrtc_udp_ports_range(udp_port_range: string): void;
         /**
          * Set the #WebKitSettings:zoom-text-only property.
          * @param zoom_text_only Value to be set
@@ -11818,9 +11932,8 @@ export namespace WebKit2 {
         /**
          * Adds a path to be mounted in the sandbox.
          *
-         * `path` must exist before any web process has been created; otherwise,
-         * it will be silently ignored. It is a fatal error to add paths after
-         * a web process has been spawned.
+         * `path` must exist before any web process has been created. It is a fatal error
+         * to add paths after a web process has been spawned.
          *
          * Paths under `/sys`, `/proc`, and `/dev` are invalid. Attempting to
          * add all of `/` is not valid. Since 2.40, adding the user's entire
@@ -12949,15 +13062,29 @@ export namespace WebKit2 {
          */
         get favicon(): any;
         /**
-         * Whether the #WebKitWebView is controlled by automation. This should only be used when
-         * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
-         * signal request.
+         * Whether the #WebKitWebView is controlled by automation tools (e.g. WebDriver, Selenium). This is
+         * required for views returned as a response to #WebKitAutomationSession::create-web-view signal,
+         * alongside any view you want to control during an automation session.
+         *
+         * As a %G_PARAM_CONSTRUCT_ONLY, you need to set it during construction and it can't be modified.
+         *
+         * If #WebKitWebView:related-view is also passed during construction, #WebKitWebView:is-controlled-by-automation
+         * ignores its own parameter and inherits directly from the related view #WebKitWebView:is-controlled-by-automation
+         * property. This is the recommended way when creating new views as a response to the #WebKitWebView::create
+         * signal. For example, as response to JavaScript `window.open()` calls during an automation session.
          */
         get is_controlled_by_automation(): boolean;
         /**
-         * Whether the #WebKitWebView is controlled by automation. This should only be used when
-         * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
-         * signal request.
+         * Whether the #WebKitWebView is controlled by automation tools (e.g. WebDriver, Selenium). This is
+         * required for views returned as a response to #WebKitAutomationSession::create-web-view signal,
+         * alongside any view you want to control during an automation session.
+         *
+         * As a %G_PARAM_CONSTRUCT_ONLY, you need to set it during construction and it can't be modified.
+         *
+         * If #WebKitWebView:related-view is also passed during construction, #WebKitWebView:is-controlled-by-automation
+         * ignores its own parameter and inherits directly from the related view #WebKitWebView:is-controlled-by-automation
+         * property. This is the recommended way when creating new views as a response to the #WebKitWebView::create
+         * signal. For example, as response to JavaScript `window.open()` calls during an automation session.
          */
         get isControlledByAutomation(): boolean;
         /**
@@ -18699,6 +18826,106 @@ export namespace WebKit2 {
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    /**
+     * Represents a way to specify a group of URLs for use in WebExtensions.
+     *
+     * All match patterns are specified as strings. Apart from the special `<all_urls>` pattern, match patterns
+     * consist of three parts: scheme, host, and path.
+     *
+     * Generally, match patterns are returned from a #WebKitWebExtension.
+     */
+    class WebExtensionMatchPattern {
+        static $gtype: GObject.GType<WebExtensionMatchPattern>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+        _init(...args: any[]): void;
+
+        static new_all_hosts_and_schemes(): WebExtensionMatchPattern;
+
+        static new_all_urls(): WebExtensionMatchPattern;
+
+        static new_with_scheme(scheme: string, host: string, path: string): WebExtensionMatchPattern;
+
+        static new_with_string(string: string): WebExtensionMatchPattern;
+
+        // Static methods
+
+        /**
+         * Registers a custom URL scheme that can be used in match patterns.
+         *
+         * This method should be used to register any custom URL schemes used by the app for the extension base URLs,
+         * other than `webkit-extension`, or if extensions should have access to other supported URL schemes when using `<all_urls>`.
+         * @param urlScheme The custom URL scheme to register
+         */
+        static register_custom_URL_scheme(urlScheme: string): void;
+
+        // Methods
+
+        /**
+         * Gets the host part of the pattern string, unless `webkit_web_extension_match_pattern_get_matches_all_urls` is %TRUE.
+         * @returns The host string.
+         */
+        get_host(): string;
+        /**
+         * Gets whether the match pattern matches all host. This happens when
+         * the pattern is `<all_urls>`, or if `*` is set as the host string.
+         * @returns Whether this match pattern matches all hosts.
+         */
+        get_matches_all_hosts(): boolean;
+        /**
+         * Gets whether the match pattern matches all URLs, in other words, whether
+         * the pattern is `<all_urls>`.
+         * @returns Whether this match pattern matches all URLs.
+         */
+        get_matches_all_urls(): boolean;
+        /**
+         * Gets the path part of the pattern string, unless [method`WebExtensionMatchPattern`.get_matches_all_urls] is %TRUE.
+         * @returns The path string.
+         */
+        get_path(): string;
+        /**
+         * Gets the scheme part of the pattern string, unless `webkit_web_extension_match_pattern_get_matches_all_urls` is %TRUE.
+         * @returns The scheme string.
+         */
+        get_scheme(): string;
+        /**
+         * Gets the original pattern string.
+         * @returns The original pattern string.
+         */
+        get_string(): string;
+        /**
+         * Matches the `matchPattern` against the specified `pattern` with options.
+         * @param pattern The #WebKitWebExtensionMatchPattern to match with @matchPattern.
+         * @param options The #WebKitWebExtensionMatchPatternOptions use while matching.
+         * @returns Whether the pattern matches the specified @pattern.
+         */
+        matches_pattern(pattern: WebExtensionMatchPattern, options: WebExtensionMatchPatternOptions | null): boolean;
+        /**
+         * Matches the `matchPattern` against the specified URL with options.
+         * @param url The URL to match against the pattern.
+         * @param options The #WebKitWebExtensionMatchPatternOptions use while matching.
+         * @returns Whether the pattern matches the specified URL.
+         */
+        matches_url(url: string, options: WebExtensionMatchPatternOptions | null): boolean;
+        /**
+         * Atomically acquires a reference on the given `matchPattern`.
+         *
+         * This function is MT-safe and may be called from any thread.
+         * @returns The same @matchPattern with an additional reference.
+         */
+        ref(): WebExtensionMatchPattern;
+        /**
+         * Atomically releases a reference on the given `matchPattern`.
+         *
+         * If the reference was the last, the resources associated to the
+         * `matchPattern` are freed. This function is MT-safe and may be called from
+         * any thread.
+         */
+        unref(): void;
     }
 
     type WebInspectorClass = typeof WebInspector;

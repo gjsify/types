@@ -1,6 +1,6 @@
 {
     "name": "@girs/gcalc-2",
-    "version": "2.0.0-4.0.0-beta.20",
+    "version": "2.0.0-4.0.0-beta.21",
     "description": "GJS TypeScript type definitions for GCalc-2, generated from library version 2.0.0",
     "type": "module",
     "module": "gcalc-2.js",
@@ -35,6 +35,7 @@
         "@girs/gio-2.0": "workspace:^",
         "@girs/gjs": "workspace:^",
         "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
         "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {

@@ -13,6 +13,7 @@ import type Dbusmenu from '@girs/dbusmenu-0.4';
 import type GObject from '@girs/gobject-2.0';
 import type Dee from '@girs/dee-1.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Unity {
     /**

@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Flatpak {
     /**
@@ -891,6 +892,7 @@ export namespace Flatpak {
          * @param name name of the app/runtime to fetch
          * @param arch which architecture to fetch (default: current architecture)
          * @param branch which branch to fetch (default: 'master')
+         * @param progress progress callback
          * @param cancellable a #GCancellable
          * @returns The ref for the newly installed app or %NULL on failure
          */
@@ -900,6 +902,7 @@ export namespace Flatpak {
             name: string,
             arch?: string | null,
             branch?: string | null,
+            progress?: ProgressCallback | null,
             cancellable?: Gio.Cancellable | null,
         ): InstalledRef;
         /**
@@ -910,10 +913,15 @@ export namespace Flatpak {
          * Install an application or runtime from an flatpak bundle file.
          * See flatpak-build-bundle(1) for how to create bundles.
          * @param file a #GFile that is an flatpak bundle
+         * @param progress progress callback
          * @param cancellable a #GCancellable
          * @returns The ref for the newly installed app or %NULL on failure
          */
-        install_bundle(file: Gio.File, cancellable?: Gio.Cancellable | null): InstalledRef;
+        install_bundle(
+            file: Gio.File,
+            progress?: ProgressCallback | null,
+            cancellable?: Gio.Cancellable | null,
+        ): InstalledRef;
         /**
          * This is an old deprecated function, you should use
          * #FlatpakTransaction and flatpak_transaction_add_install()
@@ -935,6 +943,7 @@ export namespace Flatpak {
          * @param arch which architecture to fetch (default: current architecture)
          * @param branch which branch to fetch (default: 'master')
          * @param subpaths A list of subpaths to fetch, or %NULL for everything
+         * @param progress progress callback
          * @param cancellable a #GCancellable
          * @returns The ref for the newly installed app or %NULL on failure
          */
@@ -946,6 +955,7 @@ export namespace Flatpak {
             arch?: string | null,
             branch?: string | null,
             subpaths?: string[] | null,
+            progress?: ProgressCallback | null,
             cancellable?: Gio.Cancellable | null,
         ): InstalledRef;
         /**
@@ -1191,10 +1201,9 @@ export namespace Flatpak {
          *
          *   * exclude-refs (as): Act as if these refs are not installed even if they
          *       are when determining the set of unused refs
-         *   * filter-by-eol (b): Return refs as unused if they are End-Of-Life.
-         *       Note that if this option is combined with other filters then non-EOL refs may also be returned.
-         *   * filter-by-autoprune (b): Return refs as unused if they should be autopruned.
-         *       Note that if this option is combined with other filters then non-autoprune refs may also be returned.
+         *   * filter-by-eol (b): Only return refs as unused if they are End-Of-Life.
+         *       Note that if this option is combined with other filters (of which there
+         *       are none currently) non-EOL refs may also be returned.
          * @param arch if non-%NULL, the architecture of refs to collect
          * @param metadata_injection if non-%NULL, a #GHashTable mapping refs to                                  #GKeyFile objects, which when available will                                  be used instead of installed metadata
          * @param options if non-%NULL, a GVariant a{sv} with an extensible set                       of options
@@ -1292,6 +1301,7 @@ export namespace Flatpak {
          * @param name name of the app or runtime to uninstall
          * @param arch architecture of the app or runtime to uninstall; if  %NULL, flatpak_get_default_arch() is assumed
          * @param branch name of the branch of the app or runtime to uninstall;  if %NULL, `master` is assumed
+         * @param progress the callback
          * @param cancellable a #GCancellable
          * @returns %TRUE on success
          */
@@ -1300,6 +1310,7 @@ export namespace Flatpak {
             name: string,
             arch?: string | null,
             branch?: string | null,
+            progress?: ProgressCallback | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -1313,6 +1324,7 @@ export namespace Flatpak {
          * @param name name of the app or runtime to uninstall
          * @param arch architecture of the app or runtime to uninstall; if  %NULL, flatpak_get_default_arch() is assumed
          * @param branch name of the branch of the app or runtime to uninstall;  if %NULL, `master` is assumed
+         * @param progress the callback
          * @param cancellable a #GCancellable
          * @returns %TRUE on success
          */
@@ -1322,6 +1334,7 @@ export namespace Flatpak {
             name: string,
             arch?: string | null,
             branch?: string | null,
+            progress?: ProgressCallback | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -1341,6 +1354,7 @@ export namespace Flatpak {
          * @param name name of the app or runtime to update
          * @param arch architecture of the app or runtime to update (default: current architecture)
          * @param branch name of the branch of the app or runtime to update (default: master)
+         * @param progress the callback
          * @param cancellable a #GCancellable
          * @returns The ref for the newly updated app or %NULL on failure
          */
@@ -1350,12 +1364,14 @@ export namespace Flatpak {
             name: string,
             arch?: string | null,
             branch?: string | null,
+            progress?: ProgressCallback | null,
             cancellable?: Gio.Cancellable | null,
         ): InstalledRef;
         /**
          * Updates the local copy of appstream for `remote_name` for the specified `arch`.
          * @param remote_name the name of the remote
          * @param arch Architecture to update, or %NULL for the local machine arch
+         * @param progress progress callback
          * @param out_changed Set to %TRUE if the contents of the appstream changed, %FALSE if nothing changed
          * @param cancellable a #GCancellable
          * @returns %TRUE on success, or %FALSE on error
@@ -1363,6 +1379,7 @@ export namespace Flatpak {
         update_appstream_full_sync(
             remote_name: string,
             arch?: string | null,
+            progress?: ProgressCallback | null,
             out_changed?: boolean | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
@@ -1399,6 +1416,7 @@ export namespace Flatpak {
          * @param arch architecture of the app or runtime to update (default: current architecture)
          * @param branch name of the branch of the app or runtime to update (default: master)
          * @param subpaths A list of subpaths to fetch, or %NULL for everything
+         * @param progress the callback
          * @param cancellable a #GCancellable
          * @returns The ref for the newly updated app or %NULL on failure
          */
@@ -1409,6 +1427,7 @@ export namespace Flatpak {
             arch?: string | null,
             branch?: string | null,
             subpaths?: string[] | null,
+            progress?: ProgressCallback | null,
             cancellable?: Gio.Cancellable | null,
         ): InstalledRef;
         /**

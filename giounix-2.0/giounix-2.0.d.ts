@@ -8,9 +8,10 @@
  */
 
 // Module dependencies
-import type GObject from '@girs/gobject-2.0';
 import type Gio from '@girs/gio-2.0';
+import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace GioUnix {
     /**
@@ -19,21 +20,22 @@ export namespace GioUnix {
 
     /**
      * Extension point for default handler to URI association. See
-     * [Extending GIO][extending-gio].
+     * [Extending GIO](overview.html#extending-gio).
      */
     const DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME: string;
     /**
      * Gets the default application for launching applications
-     * using this URI scheme for a particular #GDesktopAppInfoLookup
+     * using this URI scheme for a particular [iface`Gio`.DesktopAppInfoLookup]
      * implementation.
      *
-     * The #GDesktopAppInfoLookup interface and this function is used
-     * to implement g_app_info_get_default_for_uri_scheme() backends
+     * The [iface`Gio`.DesktopAppInfoLookup] interface and this function is used
+     * to implement [func`Gio`.AppInfo.get_default_for_uri_scheme] backends
      * in a GIO module. There is no reason for applications to use it
-     * directly. Applications should use g_app_info_get_default_for_uri_scheme().
-     * @param lookup a #GDesktopAppInfoLookup
+     * directly. Applications should use
+     * [func`Gio`.AppInfo.get_default_for_uri_scheme].
+     * @param lookup a [iface@Gio.DesktopAppInfoLookup]
      * @param uri_scheme a string containing a URI scheme.
-     * @returns #GAppInfo for given @uri_scheme or    %NULL on error.
+     * @returns [iface@Gio.AppInfo] for given   @uri_scheme or `NULL` on error.
      */
     function desktop_app_info_lookup_get_default_for_uri_scheme(
         lookup: Gio.DesktopAppInfoLookup,
@@ -47,293 +49,535 @@ export namespace GioUnix {
     function file_descriptor_based_get_fd(fd_based: Gio.FileDescriptorBased): number;
     /**
      * Determines if `mount_path` is considered an implementation of the
-     * OS. This is primarily used for hiding mountable and mounted volumes
+     * OS.
+     *
+     * This is primarily used for hiding mountable and mounted volumes
      * that only are used in the OS and has little to no relevance to the
      * casual user.
      * @param mount_path a mount path, e.g. `/media/disk` or `/usr`
-     * @returns %TRUE if @mount_path is considered an implementation detail     of the OS.
+     * @returns true if @mount_path is considered an implementation detail    of the OS; false otherwise
      */
     function is_mount_path_system_internal(mount_path: string): boolean;
     /**
      * Determines if `device_path` is considered a block device path which is only
-     * used in implementation of the OS. This is primarily used for hiding
-     * mounted volumes that are intended as APIs for programs to read, and system
-     * administrators at a shell; rather than something that should, for example,
-     * appear in a GUI. For example, the Linux `/proc` filesystem.
+     * used in implementation of the OS.
+     *
+     * This is primarily used for hiding mounted volumes that are intended as APIs
+     * for programs to read, and system administrators at a shell; rather than
+     * something that should, for example, appear in a GUI. For example, the Linux
+     * `/proc` filesystem.
      *
      * The list of device paths considered ‘system’ ones may change over time.
      * @param device_path a device path, e.g. `/dev/loop0` or `nfsd`
-     * @returns %TRUE if @device_path is considered an implementation detail of    the OS.
+     * @returns true if @device_path is considered an implementation detail of    the OS; false otherwise
      */
     function is_system_device_path(device_path: string): boolean;
     /**
      * Determines if `fs_type` is considered a type of file system which is only
-     * used in implementation of the OS. This is primarily used for hiding
-     * mounted volumes that are intended as APIs for programs to read, and system
-     * administrators at a shell; rather than something that should, for example,
-     * appear in a GUI. For example, the Linux `/proc` filesystem.
+     * used in implementation of the OS.
+     *
+     * This is primarily used for hiding mounted volumes that are intended as APIs
+     * for programs to read, and system administrators at a shell; rather than
+     * something that should, for example, appear in a GUI. For example, the Linux
+     * `/proc` filesystem.
      *
      * The list of file system types considered ‘system’ ones may change over time.
      * @param fs_type a file system type, e.g. `procfs` or `tmpfs`
-     * @returns %TRUE if @fs_type is considered an implementation detail of the OS.
+     * @returns true if @fs_type is considered an implementation detail of the OS;    false otherwise
      */
     function is_system_fs_type(fs_type: string): boolean;
     /**
-     * Gets a #GUnixMountEntry for a given mount path. If `time_read`
-     * is set, it will be filled with a unix timestamp for checking
-     * if the mounts have changed since with g_unix_mounts_changed_since().
+     * Gets a [struct`GioUnix`.MountEntry] for a given mount path.
+     *
+     * If `time_read` is set, it will be filled with a Unix timestamp for checking
+     * if the mounts have changed since with
+     * [func`GioUnix`.mount_entries_changed_since].
      *
      * If more mounts have the same mount path, the last matching mount
      * is returned.
      *
-     * This will return %NULL if there is no mount point at `mount_path`.
-     * @param mount_path path for a possible unix mount.
-     * @returns a #GUnixMountEntry.
+     * This will return `NULL` if there is no mount point at `mount_path`.
+     * @param mount_path path for a possible Unix mount
+     * @returns a [struct@GioUnix.MountEntry]
      */
     function mount_at(mount_path: string): [Gio.UnixMountEntry | null, number];
     /**
-     * Compares two unix mounts.
-     * @param mount1 first #GUnixMountEntry to compare.
-     * @param mount2 second #GUnixMountEntry to compare.
-     * @returns 1, 0 or -1 if @mount1 is greater than, equal to, or less than @mount2, respectively.
+     * Compares two Unix mounts.
+     * @param mount1 first [struct@GioUnix.MountEntry] to compare
+     * @param mount2 second [struct@GioUnix.MountEntry] to compare
+     * @returns `1`, `0` or `-1` if @mount1 is greater than, equal to,    or less than @mount2, respectively
      */
     function mount_compare(mount1: Gio.UnixMountEntry, mount2: Gio.UnixMountEntry): number;
     /**
      * Makes a copy of `mount_entry`.
-     * @param mount_entry a #GUnixMountEntry.
-     * @returns a new #GUnixMountEntry
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a new [struct@GioUnix.MountEntry]
      */
     function mount_copy(mount_entry: Gio.UnixMountEntry): Gio.UnixMountEntry;
     /**
-     * Gets a #GUnixMountEntry for a given file path. If `time_read`
-     * is set, it will be filled with a unix timestamp for checking
-     * if the mounts have changed since with g_unix_mounts_changed_since().
+     * Checks if the Unix mounts have changed since a given Unix time.
+     *
+     * This can only work reliably if a [class`GioUnix`.MountMonitor] is running in
+     * the process, otherwise changes in the mount entries file (such as
+     * `/proc/self/mountinfo` on Linux) cannot be detected and, as a result, this
+     * function has to conservatively always return `TRUE`.
+     *
+     * It is more efficient to use [signal`GioUnix`.MountMonitor::mounts-changed] to
+     * be signalled of changes to the mount entries, rather than polling using this
+     * function. This function is more appropriate for infrequently determining
+     * cache validity.
+     * @param time a timestamp
+     * @returns true if the mounts have changed since @time; false otherwise Since 2.84
+     */
+    function mount_entries_changed_since(time: number): boolean;
+    /**
+     * Gets a list of [struct`GioUnix`.MountEntry] instances representing the Unix
+     * mounts.
+     *
+     * If `time_read` is set, it will be filled with the mount timestamp, allowing
+     * for checking if the mounts have changed with
+     * [func`GioUnix`.mount_entries_changed_since].
+     * @returns a list of the    Unix mounts
+     */
+    function mount_entries_get(): [Gio.UnixMountEntry[], number];
+    /**
+     * Gets an array of [struct`Gio`.UnixMountEntry]s containing the Unix mounts
+     * listed in `table_path`.
+     *
+     * This is a generalized version of [func`GioUnix`.mount_entries_get], mainly
+     * intended for internal testing use. Note that [func`GioUnix`.mount_entries_get]
+     * may parse multiple hierarchical table files, so this function is not a direct
+     * superset of its functionality.
+     *
+     * If there is an error reading or parsing the file, `NULL` will be returned
+     * and both out parameters will be set to `0`.
+     * @param table_path path to the mounts table file (for example `/proc/self/mountinfo`)
+     * @returns mount   entries, or `NULL` if there was an error loading them
+     */
+    function mount_entries_get_from_file(table_path: string): [Gio.UnixMountEntry[] | null, number];
+    /**
+     * Gets a [struct`GioUnix`.MountEntry] for a given mount path.
+     *
+     * If `time_read` is set, it will be filled with a Unix timestamp for checking
+     * if the mounts have changed since with
+     * [func`GioUnix`.mount_entries_changed_since].
      *
      * If more mounts have the same mount path, the last matching mount
      * is returned.
      *
-     * This will return %NULL if looking up the mount entry fails, if
+     * This will return `NULL` if there is no mount point at `mount_path`.
+     * @param mount_path path for a possible Unix mount
+     * @returns a [struct@GioUnix.MountEntry]
+     */
+    function mount_entry_at(mount_path: string): [Gio.UnixMountEntry | null, number];
+    /**
+     * Compares two Unix mounts.
+     * @param mount1 first [struct@GioUnix.MountEntry] to compare
+     * @param mount2 second [struct@GioUnix.MountEntry] to compare
+     * @returns `1`, `0` or `-1` if @mount1 is greater than, equal to,    or less than @mount2, respectively
+     */
+    function mount_entry_compare(mount1: Gio.UnixMountEntry, mount2: Gio.UnixMountEntry): number;
+    /**
+     * Makes a copy of `mount_entry`.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a new [struct@GioUnix.MountEntry]
+     */
+    function mount_entry_copy(mount_entry: Gio.UnixMountEntry): Gio.UnixMountEntry;
+    /**
+     * Gets a [struct`GioUnix`.MountEntry] for a given file path.
+     *
+     * If `time_read` is set, it will be filled with a Unix timestamp for checking
+     * if the mounts have changed since with
+     * [func`GioUnix`.mount_entries_changed_since].
+     *
+     * If more mounts have the same mount path, the last matching mount
+     * is returned.
+     *
+     * This will return `NULL` if looking up the mount entry fails, if
      * `file_path` doesn’t exist or there is an I/O error.
-     * @param file_path file path on some unix mount.
-     * @returns a #GUnixMountEntry.
+     * @param file_path file path on some Unix mount
+     * @returns a [struct@GioUnix.MountEntry]
+     */
+    function mount_entry_for(file_path: string): [Gio.UnixMountEntry | null, number];
+    /**
+     * Frees a Unix mount.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     */
+    function mount_entry_free(mount_entry: Gio.UnixMountEntry): void;
+    /**
+     * Gets the device path for a Unix mount.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a string containing the device path
+     */
+    function mount_entry_get_device_path(mount_entry: Gio.UnixMountEntry): string;
+    /**
+     * Gets the filesystem type for the Unix mount.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a string containing the file system type
+     */
+    function mount_entry_get_fs_type(mount_entry: Gio.UnixMountEntry): string;
+    /**
+     * Gets the mount path for a Unix mount.
+     * @param mount_entry a [struct@GioUnix.MountEntry] to get the mount path for
+     * @returns the mount path for @mount_entry
+     */
+    function mount_entry_get_mount_path(mount_entry: Gio.UnixMountEntry): string;
+    /**
+     * Gets a comma separated list of mount options for the Unix mount.
+     *
+     * For example: `rw,relatime,seclabel,data=ordered`.
+     *
+     * This is similar to [func`GioUnix`.MountPoint.get_options], but it takes
+     * a [struct`GioUnix`.MountEntry] as an argument.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a string containing the options, or `NULL` if not    available.
+     */
+    function mount_entry_get_options(mount_entry: Gio.UnixMountEntry): string | null;
+    /**
+     * Gets the root of the mount within the filesystem. This is useful e.g. for
+     * mounts created by bind operation, or btrfs subvolumes.
+     *
+     * For example, the root path is equal to `/` for a mount created by
+     * `mount /dev/sda1 /mnt/foo` and `/bar` for
+     * `mount --bind /mnt/foo/bar /mnt/bar`.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a string containing the root, or `NULL` if not supported
+     */
+    function mount_entry_get_root_path(mount_entry: Gio.UnixMountEntry): string | null;
+    /**
+     * Guesses whether a Unix mount entry can be ejected.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns true if @mount_entry is deemed to be ejectable; false otherwise
+     */
+    function mount_entry_guess_can_eject(mount_entry: Gio.UnixMountEntry): boolean;
+    /**
+     * Guesses the icon of a Unix mount entry.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a [iface@Gio.Icon]
+     */
+    function mount_entry_guess_icon(mount_entry: Gio.UnixMountEntry): Gio.Icon;
+    /**
+     * Guesses the name of a Unix mount entry.
+     *
+     * The result is a translated string.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a newly allocated translated string
+     */
+    function mount_entry_guess_name(mount_entry: Gio.UnixMountEntry): string;
+    /**
+     * Guesses whether a Unix mount entry should be displayed in the UI.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns true if @mount_entry is deemed to be displayable; false otherwise
+     */
+    function mount_entry_guess_should_display(mount_entry: Gio.UnixMountEntry): boolean;
+    /**
+     * Guesses the symbolic icon of a Unix mount entry.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a [iface@Gio.Icon]
+     */
+    function mount_entry_guess_symbolic_icon(mount_entry: Gio.UnixMountEntry): Gio.Icon;
+    /**
+     * Checks if a Unix mount is mounted read only.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns true if @mount_entry is read only; false otherwise
+     */
+    function mount_entry_is_readonly(mount_entry: Gio.UnixMountEntry): boolean;
+    /**
+     * Checks if a Unix mount is a system mount.
+     *
+     * This is the Boolean OR of
+     * [func`GioUnix`.is_system_fs_type], [func`GioUnix`.is_system_device_path] and
+     * [func`GioUnix`.is_mount_path_system_internal] on `mount_entry’`s properties.
+     *
+     * The definition of what a ‘system’ mount entry is may change over time as new
+     * file system types and device paths are ignored.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns true if the Unix mount is for a system path; false otherwise
+     */
+    function mount_entry_is_system_internal(mount_entry: Gio.UnixMountEntry): boolean;
+    /**
+     * Gets a [struct`GioUnix`.MountEntry] for a given file path.
+     *
+     * If `time_read` is set, it will be filled with a Unix timestamp for checking
+     * if the mounts have changed since with
+     * [func`GioUnix`.mount_entries_changed_since].
+     *
+     * If more mounts have the same mount path, the last matching mount
+     * is returned.
+     *
+     * This will return `NULL` if looking up the mount entry fails, if
+     * `file_path` doesn’t exist or there is an I/O error.
+     * @param file_path file path on some Unix mount
+     * @returns a [struct@GioUnix.MountEntry]
      */
     function mount_for(file_path: string): [Gio.UnixMountEntry | null, number];
     /**
-     * Frees a unix mount.
-     * @param mount_entry a #GUnixMountEntry.
+     * Frees a Unix mount.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
      */
     function mount_free(mount_entry: Gio.UnixMountEntry): void;
     /**
-     * Gets the device path for a unix mount.
-     * @param mount_entry a #GUnixMount.
-     * @returns a string containing the device path.
+     * Gets the device path for a Unix mount.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a string containing the device path
      */
     function mount_get_device_path(mount_entry: Gio.UnixMountEntry): string;
     /**
-     * Gets the filesystem type for the unix mount.
-     * @param mount_entry a #GUnixMount.
-     * @returns a string containing the file system type.
+     * Gets the filesystem type for the Unix mount.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a string containing the file system type
      */
     function mount_get_fs_type(mount_entry: Gio.UnixMountEntry): string;
     /**
-     * Gets the mount path for a unix mount.
-     * @param mount_entry input #GUnixMountEntry to get the mount path for.
-     * @returns the mount path for @mount_entry.
+     * Gets the mount path for a Unix mount.
+     * @param mount_entry a [struct@GioUnix.MountEntry] to get the mount path for
+     * @returns the mount path for @mount_entry
      */
     function mount_get_mount_path(mount_entry: Gio.UnixMountEntry): string;
     /**
-     * Gets a comma-separated list of mount options for the unix mount. For example,
-     * `rw,relatime,seclabel,data=ordered`.
+     * Gets a comma separated list of mount options for the Unix mount.
      *
-     * This is similar to g_unix_mount_point_get_options(), but it takes
-     * a #GUnixMountEntry as an argument.
-     * @param mount_entry a #GUnixMountEntry.
-     * @returns a string containing the options, or %NULL if not available.
+     * For example: `rw,relatime,seclabel,data=ordered`.
+     *
+     * This is similar to [func`GioUnix`.MountPoint.get_options], but it takes
+     * a [struct`GioUnix`.MountEntry] as an argument.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a string containing the options, or `NULL` if not    available.
      */
     function mount_get_options(mount_entry: Gio.UnixMountEntry): string | null;
     /**
      * Gets the root of the mount within the filesystem. This is useful e.g. for
      * mounts created by bind operation, or btrfs subvolumes.
      *
-     * For example, the root path is equal to "/" for mount created by
-     * "mount /dev/sda1 /mnt/foo" and "/bar" for
-     * "mount --bind /mnt/foo/bar /mnt/bar".
-     * @param mount_entry a #GUnixMountEntry.
-     * @returns a string containing the root, or %NULL if not supported.
+     * For example, the root path is equal to `/` for a mount created by
+     * `mount /dev/sda1 /mnt/foo` and `/bar` for
+     * `mount --bind /mnt/foo/bar /mnt/bar`.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a string containing the root, or `NULL` if not supported
      */
     function mount_get_root_path(mount_entry: Gio.UnixMountEntry): string | null;
     /**
-     * Guesses whether a Unix mount can be ejected.
-     * @param mount_entry a #GUnixMountEntry
-     * @returns %TRUE if @mount_entry is deemed to be ejectable.
+     * Guesses whether a Unix mount entry can be ejected.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns true if @mount_entry is deemed to be ejectable; false otherwise
      */
     function mount_guess_can_eject(mount_entry: Gio.UnixMountEntry): boolean;
     /**
-     * Guesses the icon of a Unix mount.
-     * @param mount_entry a #GUnixMountEntry
-     * @returns a #GIcon
+     * Guesses the icon of a Unix mount entry.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a [iface@Gio.Icon]
      */
     function mount_guess_icon(mount_entry: Gio.UnixMountEntry): Gio.Icon;
     /**
-     * Guesses the name of a Unix mount.
+     * Guesses the name of a Unix mount entry.
+     *
      * The result is a translated string.
-     * @param mount_entry a #GUnixMountEntry
-     * @returns A newly allocated string that must     be freed with g_free()
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a newly allocated translated string
      */
     function mount_guess_name(mount_entry: Gio.UnixMountEntry): string;
     /**
-     * Guesses whether a Unix mount should be displayed in the UI.
-     * @param mount_entry a #GUnixMountEntry
-     * @returns %TRUE if @mount_entry is deemed to be displayable.
+     * Guesses whether a Unix mount entry should be displayed in the UI.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns true if @mount_entry is deemed to be displayable; false otherwise
      */
     function mount_guess_should_display(mount_entry: Gio.UnixMountEntry): boolean;
     /**
-     * Guesses the symbolic icon of a Unix mount.
-     * @param mount_entry a #GUnixMountEntry
-     * @returns a #GIcon
+     * Guesses the symbolic icon of a Unix mount entry.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a [iface@Gio.Icon]
      */
     function mount_guess_symbolic_icon(mount_entry: Gio.UnixMountEntry): Gio.Icon;
     /**
-     * Checks if a unix mount is mounted read only.
-     * @param mount_entry a #GUnixMount.
-     * @returns %TRUE if @mount_entry is read only.
+     * Checks if a Unix mount is mounted read only.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns true if @mount_entry is read only; false otherwise
      */
     function mount_is_readonly(mount_entry: Gio.UnixMountEntry): boolean;
     /**
-     * Checks if a Unix mount is a system mount. This is the Boolean OR of
-     * g_unix_is_system_fs_type(), g_unix_is_system_device_path() and
-     * g_unix_is_mount_path_system_internal() on `mount_entry’`s properties.
+     * Checks if a Unix mount is a system mount.
+     *
+     * This is the Boolean OR of
+     * [func`GioUnix`.is_system_fs_type], [func`GioUnix`.is_system_device_path] and
+     * [func`GioUnix`.is_mount_path_system_internal] on `mount_entry’`s properties.
      *
      * The definition of what a ‘system’ mount entry is may change over time as new
      * file system types and device paths are ignored.
-     * @param mount_entry a #GUnixMount.
-     * @returns %TRUE if the unix mount is for a system path.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns true if the Unix mount is for a system path; false otherwise
      */
     function mount_is_system_internal(mount_entry: Gio.UnixMountEntry): boolean;
     /**
-     * Gets a #GUnixMountPoint for a given mount path. If `time_read` is set, it
-     * will be filled with a unix timestamp for checking if the mount points have
-     * changed since with g_unix_mount_points_changed_since().
+     * Gets a [struct`GioUnix`.MountPoint] for a given mount path.
+     *
+     * If `time_read` is set, it will be filled with a Unix timestamp for checking if
+     * the mount points have changed since with
+     * [func`GioUnix`.mount_points_changed_since].
      *
      * If more mount points have the same mount path, the last matching mount point
      * is returned.
-     * @param mount_path path for a possible unix mount point.
-     * @returns a #GUnixMountPoint, or %NULL if no match is found.
+     * @param mount_path path for a possible Unix mount point
+     * @returns a [struct@GioUnix.MountPoint], or `NULL`    if no match is found
      */
     function mount_point_at(mount_path: string): [Gio.UnixMountPoint | null, number];
     /**
-     * Compares two unix mount points.
-     * @param mount1 a #GUnixMount.
-     * @param mount2 a #GUnixMount.
-     * @returns 1, 0 or -1 if @mount1 is greater than, equal to, or less than @mount2, respectively.
+     * Compares two Unix mount points.
+     * @param mount1 a [struct@GioUnix.MountPoint]
+     * @param mount2 a [struct@GioUnix.MountPoint]
+     * @returns `1`, `0` or `-1` if @mount1 is greater than, equal to,    or less than @mount2, respectively
      */
     function mount_point_compare(mount1: Gio.UnixMountPoint, mount2: Gio.UnixMountPoint): number;
     /**
      * Makes a copy of `mount_point`.
-     * @param mount_point a #GUnixMountPoint.
-     * @returns a new #GUnixMountPoint
+     * @param mount_point a [struct@GioUnix.MountPoint]
+     * @returns a new [struct@GioUnix.MountPoint]
      */
     function mount_point_copy(mount_point: Gio.UnixMountPoint): Gio.UnixMountPoint;
     /**
-     * Frees a unix mount point.
-     * @param mount_point unix mount point to free.
+     * Frees a Unix mount point.
+     * @param mount_point Unix mount point to free.
      */
     function mount_point_free(mount_point: Gio.UnixMountPoint): void;
     /**
-     * Gets the device path for a unix mount point.
-     * @param mount_point a #GUnixMountPoint.
-     * @returns a string containing the device path.
+     * Gets the device path for a Unix mount point.
+     * @param mount_point a [struct@GioUnix.MountPoint]
+     * @returns a string containing the device path
      */
     function mount_point_get_device_path(mount_point: Gio.UnixMountPoint): string;
     /**
      * Gets the file system type for the mount point.
-     * @param mount_point a #GUnixMountPoint.
-     * @returns a string containing the file system type.
+     * @param mount_point a [struct@GioUnix.MountPoint]
+     * @returns a string containing the file system type
      */
     function mount_point_get_fs_type(mount_point: Gio.UnixMountPoint): string;
     /**
-     * Gets the mount path for a unix mount point.
-     * @param mount_point a #GUnixMountPoint.
-     * @returns a string containing the mount path.
+     * Gets the mount path for a Unix mount point.
+     * @param mount_point a [struct@GioUnix.MountPoint]
+     * @returns a string containing the mount path
      */
     function mount_point_get_mount_path(mount_point: Gio.UnixMountPoint): string;
     /**
      * Gets the options for the mount point.
-     * @param mount_point a #GUnixMountPoint.
-     * @returns a string containing the options.
+     * @param mount_point a [struct@GioUnix.MountPoint]
+     * @returns a string containing the options
      */
     function mount_point_get_options(mount_point: Gio.UnixMountPoint): string | null;
     /**
      * Guesses whether a Unix mount point can be ejected.
-     * @param mount_point a #GUnixMountPoint
-     * @returns %TRUE if @mount_point is deemed to be ejectable.
+     * @param mount_point a [struct@GioUnix.MountPoint]
+     * @returns true if @mount_point is deemed to be ejectable; false otherwise
      */
     function mount_point_guess_can_eject(mount_point: Gio.UnixMountPoint): boolean;
     /**
      * Guesses the icon of a Unix mount point.
-     * @param mount_point a #GUnixMountPoint
-     * @returns a #GIcon
+     * @param mount_point a [struct@GioUnix.MountPoint]
+     * @returns a [iface@Gio.Icon]
      */
     function mount_point_guess_icon(mount_point: Gio.UnixMountPoint): Gio.Icon;
     /**
      * Guesses the name of a Unix mount point.
+     *
      * The result is a translated string.
-     * @param mount_point a #GUnixMountPoint
-     * @returns A newly allocated string that must     be freed with g_free()
+     * @param mount_point a [struct@GioUnix.MountPoint]
+     * @returns a newly allocated translated string
      */
     function mount_point_guess_name(mount_point: Gio.UnixMountPoint): string;
     /**
      * Guesses the symbolic icon of a Unix mount point.
-     * @param mount_point a #GUnixMountPoint
-     * @returns a #GIcon
+     * @param mount_point a [struct@GioUnix.MountPoint]
+     * @returns a [iface@Gio.Icon]
      */
     function mount_point_guess_symbolic_icon(mount_point: Gio.UnixMountPoint): Gio.Icon;
     /**
-     * Checks if a unix mount point is a loopback device.
-     * @param mount_point a #GUnixMountPoint.
-     * @returns %TRUE if the mount point is a loopback. %FALSE otherwise.
+     * Checks if a Unix mount point is a loopback device.
+     * @param mount_point a [struct@GioUnix.MountPoint]
+     * @returns true if the mount point is a loopback device; false otherwise
      */
     function mount_point_is_loopback(mount_point: Gio.UnixMountPoint): boolean;
     /**
-     * Checks if a unix mount point is read only.
-     * @param mount_point a #GUnixMountPoint.
-     * @returns %TRUE if a mount point is read only.
+     * Checks if a Unix mount point is read only.
+     * @param mount_point a [struct@GioUnix.MountPoint]
+     * @returns true if a mount point is read only; false otherwise
      */
     function mount_point_is_readonly(mount_point: Gio.UnixMountPoint): boolean;
     /**
-     * Checks if a unix mount point is mountable by the user.
-     * @param mount_point a #GUnixMountPoint.
-     * @returns %TRUE if the mount point is user mountable.
+     * Checks if a Unix mount point is mountable by the user.
+     * @param mount_point a [struct@GioUnix.MountPoint]
+     * @returns true if the mount point is user mountable; false otherwise
      */
     function mount_point_is_user_mountable(mount_point: Gio.UnixMountPoint): boolean;
     /**
-     * Checks if the unix mount points have changed since a given unix time.
-     * @param time guint64 to contain a timestamp.
-     * @returns %TRUE if the mount points have changed since @time.
+     * Checks if the Unix mount points have changed since a given Unix time.
+     *
+     * Unlike [func`GioUnix`.mount_entries_changed_since], this function can work
+     * reliably without a [class`GioUnix`.MountMonitor] running, as it accesses the
+     * static mount point information (such as `/etc/fstab` on Linux), which has a
+     * valid modification time.
+     *
+     * It is more efficient to use [signal`GioUnix`.MountMonitor::mountpoints-changed]
+     * to be signalled of changes to the mount points, rather than polling using
+     * this function. This function is more appropriate for infrequently determining
+     * cache validity.
+     * @param time a timestamp
+     * @returns true if the mount points have changed since @time; false otherwise
      */
     function mount_points_changed_since(time: number): boolean;
     /**
-     * Gets a #GList of #GUnixMountPoint containing the unix mount points.
-     * If `time_read` is set, it will be filled with the mount timestamp,
-     * allowing for checking if the mounts have changed with
-     * g_unix_mount_points_changed_since().
-     * @returns a #GList of the UNIX mountpoints.
+     * Gets a list of [struct`GioUnix`.MountPoint] instances representing the Unix
+     * mount points.
+     *
+     * If `time_read` is set, it will be filled with the mount timestamp, allowing
+     * for checking if the mounts have changed with
+     * [func`GioUnix`.mount_points_changed_since].
+     * @returns a list of the Unix    mount points
      */
     function mount_points_get(): [Gio.UnixMountPoint[], number];
     /**
-     * Checks if the unix mounts have changed since a given unix time.
-     * @param time guint64 to contain a timestamp.
-     * @returns %TRUE if the mounts have changed since @time.
+     * Gets an array of [struct`Gio`.UnixMountPoint]s containing the Unix mount
+     * points listed in `table_path`.
+     *
+     * This is a generalized version of [func`GioUnix`.mount_points_get], mainly
+     * intended for internal testing use. Note that [func`GioUnix`.mount_points_get]
+     * may parse multiple hierarchical table files, so this function is not a direct
+     * superset of its functionality.
+     *
+     * If there is an error reading or parsing the file, `NULL` will be returned
+     * and both out parameters will be set to `0`.
+     * @param table_path path to the mount points table file (for example `/etc/fstab`)
+     * @returns mount   points, or `NULL` if there was an error loading them
+     */
+    function mount_points_get_from_file(table_path: string): [Gio.UnixMountPoint[] | null, number];
+    /**
+     * Checks if the Unix mounts have changed since a given Unix time.
+     * @param time a timestamp
+     * @returns true if the mounts have changed since @time; false otherwise
      */
     function mounts_changed_since(time: number): boolean;
     /**
-     * Gets a #GList of #GUnixMountEntry containing the unix mounts.
-     * If `time_read` is set, it will be filled with the mount
-     * timestamp, allowing for checking if the mounts have changed
-     * with g_unix_mounts_changed_since().
-     * @returns a #GList of the UNIX mounts.
+     * Gets a list of [struct`GioUnix`.MountEntry] instances representing the Unix
+     * mounts.
+     *
+     * If `time_read` is set, it will be filled with the mount timestamp, allowing
+     * for checking if the mounts have changed with
+     * [func`GioUnix`.mount_entries_changed_since].
+     * @returns a list of the    Unix mounts
      */
     function mounts_get(): [Gio.UnixMountEntry[], number];
+    /**
+     * Gets an array of [struct`Gio`.UnixMountEntry]s containing the Unix mounts
+     * listed in `table_path`.
+     *
+     * This is a generalized version of [func`GioUnix`.mount_entries_get], mainly
+     * intended for internal testing use. Note that [func`GioUnix`.mount_entries_get]
+     * may parse multiple hierarchical table files, so this function is not a direct
+     * superset of its functionality.
+     *
+     * If there is an error reading or parsing the file, `NULL` will be returned
+     * and both out parameters will be set to `0`.
+     * @param table_path path to the mounts table file (for example `/proc/self/mountinfo`)
+     * @returns mount   entries, or `NULL` if there was an error loading them
+     */
+    function mounts_get_from_file(table_path: string): [Gio.UnixMountEntry[] | null, number];
     interface DesktopAppLaunchCallback {
         (appinfo: Gio.DesktopAppInfo, pid: GLib.Pid): void;
     }
@@ -359,7 +603,7 @@ export namespace GioUnix {
         // Properties
 
         /**
-         * The origin filename of this #GDesktopAppInfo
+         * The origin filename of this [class`Gio`.DesktopAppInfo]
          */
         get filename(): string;
 
@@ -378,118 +622,123 @@ export namespace GioUnix {
         // Static methods
 
         /**
-         * Gets the user-visible display name of the "additional application
-         * action" specified by `action_name`.
+         * Gets the user-visible display name of the
+         * [‘additional application actions’](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html)
+         * specified by `action_name`.
          *
-         * This corresponds to the "Name" key within the keyfile group for the
+         * This corresponds to the `Name` key within the keyfile group for the
          * action.
-         * @param info a #GDesktopAppInfo
-         * @param action_name the name of the action as from   g_desktop_app_info_list_actions()
+         * @param info a [class@Gio.DesktopAppInfo]
+         * @param action_name the name of the action as from   [method@Gio.DesktopAppInfo.list_actions]
          */
         static get_action_name(info: Gio.DesktopAppInfo, action_name: string): string;
         /**
          * Looks up a boolean value in the keyfile backing `info`.
          *
-         * The `key` is looked up in the "Desktop Entry" group.
-         * @param info a #GDesktopAppInfo
+         * The `key` is looked up in the `Desktop Entry` group.
+         * @param info a [class@Gio.DesktopAppInfo]
          * @param key the key to look up
          */
         static get_boolean(info: Gio.DesktopAppInfo, key: string): boolean;
         /**
          * Gets the categories from the desktop file.
-         * @param info a #GDesktopAppInfo
+         * @param info a [class@Gio.DesktopAppInfo]
          */
         static get_categories(info: Gio.DesktopAppInfo): string | null;
         /**
          * When `info` was created from a known filename, return it.  In some
-         * situations such as the #GDesktopAppInfo returned from
-         * g_desktop_app_info_new_from_keyfile(), this function will return %NULL.
-         * @param info a #GDesktopAppInfo
+         * situations such as a [class`Gio`.DesktopAppInfo] returned from
+         * [ctor`Gio`.DesktopAppInfo.new_from_keyfile], this function will return `NULL`.
+         * @param info a [class@Gio.DesktopAppInfo]
          */
         static get_filename(info: Gio.DesktopAppInfo): string | null;
         /**
          * Gets the generic name from the desktop file.
-         * @param info a #GDesktopAppInfo
+         * @param info a [class@Gio.DesktopAppInfo]
          */
         static get_generic_name(info: Gio.DesktopAppInfo): string | null;
         /**
          * Gets all applications that implement `interface`.
          *
          * An application implements an interface if that interface is listed in
-         * the Implements= line of the desktop file of the application.
+         * the `Implements` line of the desktop file of the application.
          * @param _interface the name of the interface
          */
         static get_implementations(_interface: string): Gio.DesktopAppInfo[];
         /**
-         * A desktop file is hidden if the Hidden key in it is
-         * set to True.
-         * @param info a #GDesktopAppInfo.
+         * A desktop file is hidden if the
+         * [`Hidden` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-hidden)
+         * in it is set to `True`.
+         * @param info a [class@Gio.DesktopAppInfo].
          */
         static get_is_hidden(info: Gio.DesktopAppInfo): boolean;
         /**
          * Gets the keywords from the desktop file.
-         * @param info a #GDesktopAppInfo
+         * @param info a [class@Gio.DesktopAppInfo]
          */
         static get_keywords(info: Gio.DesktopAppInfo): string[];
         /**
          * Looks up a localized string value in the keyfile backing `info`
          * translated to the current locale.
          *
-         * The `key` is looked up in the "Desktop Entry" group.
-         * @param info a #GDesktopAppInfo
+         * The `key` is looked up in the `Desktop Entry` group.
+         * @param info a [class@Gio.DesktopAppInfo]
          * @param key the key to look up
          */
         static get_locale_string(info: Gio.DesktopAppInfo, key: string): string | null;
         /**
-         * Gets the value of the NoDisplay key, which helps determine if the
-         * application info should be shown in menus. See
-         * %G_KEY_FILE_DESKTOP_KEY_NO_DISPLAY and g_app_info_should_show().
-         * @param info a #GDesktopAppInfo
+         * Gets the value of the
+         * [`NoDisplay` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-nodisplay)
+         *  which helps determine if the application info should be shown in menus. See
+         * `G_KEY_FILE_DESKTOP_KEY_NO_DISPLAY` and [method`Gio`.AppInfo.should_show].
+         * @param info a [class@Gio.DesktopAppInfo]
          */
         static get_nodisplay(info: Gio.DesktopAppInfo): boolean;
         /**
          * Checks if the application info should be shown in menus that list available
          * applications for a specific name of the desktop, based on the
-         * `OnlyShowIn` and `NotShowIn` keys.
+         * [`OnlyShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-onlyshowin)
+         * and [`NotShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-notshowin)
+         * keys.
          *
-         * `desktop_env` should typically be given as %NULL, in which case the
+         * `desktop_env` should typically be given as `NULL`, in which case the
          * `XDG_CURRENT_DESKTOP` environment variable is consulted.  If you want
          * to override the default mechanism then you may specify `desktop_env,`
          * but this is not recommended.
          *
-         * Note that g_app_info_should_show() for `info` will include this check (with
-         * %NULL for `desktop_env)` as well as additional checks.
-         * @param info a #GDesktopAppInfo
+         * Note that [method`Gio`.AppInfo.should_show] for `info` will include this check
+         * (with `NULL` for `desktop_env)` as well as additional checks.
+         * @param info a [class@Gio.DesktopAppInfo]
          * @param desktop_env a string specifying a desktop name
          */
         static get_show_in(info: Gio.DesktopAppInfo, desktop_env?: string | null): boolean;
         /**
-         * Retrieves the StartupWMClass field from `info`. This represents the
-         * WM_CLASS property of the main window of the application, if launched
+         * Retrieves the `StartupWMClass` field from `info`. This represents the
+         * `WM_CLASS` property of the main window of the application, if launched
          * through `info`.
-         * @param info a #GDesktopAppInfo that supports startup notify
+         * @param info a [class@Gio.DesktopAppInfo] that supports startup notify
          */
         static get_startup_wm_class(info: Gio.DesktopAppInfo): string | null;
         /**
          * Looks up a string value in the keyfile backing `info`.
          *
-         * The `key` is looked up in the "Desktop Entry" group.
-         * @param info a #GDesktopAppInfo
+         * The `key` is looked up in the `Desktop Entry` group.
+         * @param info a [class@Gio.DesktopAppInfo]
          * @param key the key to look up
          */
         static get_string(info: Gio.DesktopAppInfo, key: string): string | null;
         /**
          * Looks up a string list value in the keyfile backing `info`.
          *
-         * The `key` is looked up in the "Desktop Entry" group.
-         * @param info a #GDesktopAppInfo
+         * The `key` is looked up in the `Desktop Entry` group.
+         * @param info a [class@Gio.DesktopAppInfo]
          * @param key the key to look up
          */
         static get_string_list(info: Gio.DesktopAppInfo, key: string): string[];
         /**
-         * Returns whether `key` exists in the "Desktop Entry" group
+         * Returns whether `key` exists in the `Desktop Entry` group
          * of the keyfile backing `info`.
-         * @param info a #GDesktopAppInfo
+         * @param info a [class@Gio.DesktopAppInfo]
          * @param key the key to look up
          */
         static has_key(info: Gio.DesktopAppInfo, key: string): boolean;
@@ -497,21 +746,22 @@ export namespace GioUnix {
          * Activates the named application action.
          *
          * You may only call this function on action names that were
-         * returned from g_desktop_app_info_list_actions().
+         * returned from [method`Gio`.DesktopAppInfo.list_actions].
          *
          * Note that if the main entry of the desktop file indicates that the
          * application supports startup notification, and `launch_context` is
-         * non-%NULL, then startup notification will be used when activating the
+         * non-`NULL`, then startup notification will be used when activating the
          * action (and as such, invocation of the action on the receiving side
          * must signal the end of startup notification when it is completed).
          * This is the expected behaviour of applications declaring additional
-         * actions, as per the desktop file specification.
+         * actions, as per the
+         * [desktop file specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html).
          *
-         * As with g_app_info_launch() there is no way to detect failures that
+         * As with [method`Gio`.AppInfo.launch] there is no way to detect failures that
          * occur while using this function.
-         * @param info a #GDesktopAppInfo
-         * @param action_name the name of the action as from   g_desktop_app_info_list_actions()
-         * @param launch_context a #GAppLaunchContext
+         * @param info a [class@Gio.DesktopAppInfo]
+         * @param action_name the name of the action as from   [method@Gio.DesktopAppInfo.list_actions]
+         * @param launch_context a [class@Gio.AppLaunchContext]
          */
         static launch_action(
             info: Gio.DesktopAppInfo,
@@ -519,48 +769,53 @@ export namespace GioUnix {
             launch_context?: Gio.AppLaunchContext | null,
         ): void;
         /**
-         * This function performs the equivalent of g_app_info_launch_uris(),
+         * This function performs the equivalent of [method`Gio`.AppInfo.launch_uris],
          * but is intended primarily for operating system components that
          * launch applications.  Ordinary applications should use
-         * g_app_info_launch_uris().
+         * [method`Gio`.AppInfo.launch_uris].
          *
          * If the application is launched via GSpawn, then `spawn_flags,` `user_setup`
-         * and `user_setup_data` are used for the call to g_spawn_async().
+         * and `user_setup_data` are used for the call to [func`GLib`.spawn_async].
          * Additionally, `pid_callback` (with `pid_callback_data)` will be called to
-         * inform about the PID of the created process. See g_spawn_async_with_pipes()
-         * for information on certain parameter conditions that can enable an
-         * optimized posix_spawn() codepath to be used.
+         * inform about the PID of the created process. See
+         * [func`GLib`.spawn_async_with_pipes] for information on certain parameter
+         * conditions that can enable an optimized [`posix_spawn()`](man:posix_spawn(3))
+         * code path to be used.
          *
-         * If application launching occurs via some other mechanism (eg: D-Bus
+         * If application launching occurs via some other mechanism (for example, D-Bus
          * activation) then `spawn_flags,` `user_setup,` `user_setup_data,`
          * `pid_callback` and `pid_callback_data` are ignored.
-         * @param appinfo a #GDesktopAppInfo
+         * @param appinfo a [class@Gio.DesktopAppInfo]
          * @param uris List of URIs
-         * @param launch_context a #GAppLaunchContext
-         * @param spawn_flags #GSpawnFlags, used for each process
+         * @param launch_context a [class@Gio.AppLaunchContext]
+         * @param spawn_flags [flags@GLib.SpawnFlags], used for each process
+         * @param user_setup a [callback@GLib.SpawnChildSetupFunc],   used once  for each process.
+         * @param pid_callback Callback for child processes
          */
         static launch_uris_as_manager(
             appinfo: Gio.DesktopAppInfo,
             uris: string[],
             launch_context: Gio.AppLaunchContext | null,
             spawn_flags: GLib.SpawnFlags,
+            user_setup?: GLib.SpawnChildSetupFunc | null,
+            pid_callback?: Gio.DesktopAppLaunchCallback | null,
         ): boolean;
         /**
-         * Equivalent to g_desktop_app_info_launch_uris_as_manager() but allows
+         * Equivalent to [method`Gio`.DesktopAppInfo.launch_uris_as_manager] but allows
          * you to pass in file descriptors for the stdin, stdout and stderr streams
          * of the launched process.
          *
          * If application launching occurs via some non-spawn mechanism (e.g. D-Bus
          * activation) then `stdin_fd,` `stdout_fd` and `stderr_fd` are ignored.
-         * @param appinfo a #GDesktopAppInfo
+         * @param appinfo a [class@Gio.DesktopAppInfo]
          * @param uris List of URIs
-         * @param launch_context a #GAppLaunchContext
-         * @param spawn_flags #GSpawnFlags, used for each process
-         * @param user_setup a #GSpawnChildSetupFunc, used once     for each process.
+         * @param launch_context a [class@Gio.AppLaunchContext]
+         * @param spawn_flags [flags@GLib.SpawnFlags], used for each process
+         * @param user_setup a   [callback@GLib.SpawnChildSetupFunc], used once for each process.
          * @param pid_callback Callback for child processes
-         * @param stdin_fd file descriptor to use for child's stdin, or -1
-         * @param stdout_fd file descriptor to use for child's stdout, or -1
-         * @param stderr_fd file descriptor to use for child's stderr, or -1
+         * @param stdin_fd file descriptor to use for child’s stdin, or `-1`
+         * @param stdout_fd file descriptor to use for child’s stdout, or `-1`
+         * @param stderr_fd file descriptor to use for child’s stderr, or `-1`
          */
         static launch_uris_as_manager_with_fds(
             appinfo: Gio.DesktopAppInfo,
@@ -574,12 +829,13 @@ export namespace GioUnix {
             stderr_fd: number,
         ): boolean;
         /**
-         * Returns the list of "additional application actions" supported on the
-         * desktop file, as per the desktop file specification.
+         * Returns the list of
+         * [‘additional application actions’](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html)
+         * supported on the desktop file, as per the desktop file specification.
          *
          * As per the specification, this is the list of actions that are
-         * explicitly listed in the "Actions" key of the [Desktop Entry] group.
-         * @param info a #GDesktopAppInfo
+         * explicitly listed in the `Actions` key of the `Desktop Entry` group.
+         * @param info a [class@Gio.DesktopAppInfo]
          */
         static list_actions(info: Gio.DesktopAppInfo): string[];
         /**
@@ -593,20 +849,22 @@ export namespace GioUnix {
          * any time.
          *
          * None of the search results are subjected to the normal validation
-         * checks performed by g_desktop_app_info_new() (for example, checking that
+         * checks performed by [ctor`Gio`.DesktopAppInfo.new] (for example, checking that
          * the executable referenced by a result exists), and so it is possible for
-         * g_desktop_app_info_new() to return %NULL when passed an app ID returned by
-         * this function. It is expected that calling code will do this when
-         * subsequently creating a #GDesktopAppInfo for each result.
+         * [ctor`Gio`.DesktopAppInfo.new] to return `NULL` when passed an app ID returned
+         * by this function. It is expected that calling code will do this when
+         * subsequently creating a [class`Gio`.DesktopAppInfo] for each result.
          * @param search_string the search string to use
          */
         static search(search_string: string): string[][];
         /**
          * Sets the name of the desktop that the application is running in.
-         * This is used by g_app_info_should_show() and
-         * g_desktop_app_info_get_show_in() to evaluate the
-         * `OnlyShowIn` and `NotShowIn`
-         * desktop entry fields.
+         *
+         * This is used by [method`Gio`.AppInfo.should_show] and
+         * [method`Gio`.DesktopAppInfo.get_show_in] to evaluate the
+         * [`OnlyShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-onlyshowin)
+         * and [`NotShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-notshowin)
+         * keys.
          *
          * Should be called only once; subsequent calls are ignored.
          * @param desktop_env a string specifying what desktop this is
@@ -618,53 +876,53 @@ export namespace GioUnix {
          * Adds a content type to the application information to indicate the
          * application is capable of opening files with the given content type.
          * @param content_type a string.
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `TRUE` on success, `FALSE` on error.
          */
         add_supports_type(content_type: string): boolean;
         /**
-         * Obtains the information whether the #GAppInfo can be deleted.
-         * See g_app_info_delete().
-         * @returns %TRUE if @appinfo can be deleted
+         * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
+         * See [method`Gio`.AppInfo.delete].
+         * @returns `TRUE` if @appinfo can be deleted
          */
         can_delete(): boolean;
         /**
          * Checks if a supported content type can be removed from an application.
-         * @returns %TRUE if it is possible to remove supported     content types from a given @appinfo, %FALSE if not.
+         * @returns `TRUE` if it is possible to remove supported content types from a   given @appinfo, `FALSE` if not.
          */
         can_remove_supports_type(): boolean;
         /**
-         * Tries to delete a #GAppInfo.
+         * Tries to delete a [iface`Gio`.AppInfo].
          *
          * On some platforms, there may be a difference between user-defined
-         * #GAppInfos which can be deleted, and system-wide ones which cannot.
-         * See g_app_info_can_delete().
-         * @returns %TRUE if @appinfo has been deleted
+         * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
+         * See [method`Gio`.AppInfo.can_delete].
+         * @returns `TRUE` if @appinfo has been deleted
          */
         ['delete'](): boolean;
         /**
-         * Creates a duplicate of a #GAppInfo.
+         * Creates a duplicate of a [iface`Gio`.AppInfo].
          * @returns a duplicate of @appinfo.
          */
         dup(): Gio.AppInfo;
         /**
-         * Checks if two #GAppInfos are equal.
+         * Checks if two [iface`Gio`.AppInfo]s are equal.
          *
-         * Note that the check *may not* compare each individual
-         * field, and only does an identity check. In case detecting changes in the
-         * contents is needed, program code must additionally compare relevant fields.
-         * @param appinfo2 the second #GAppInfo.
-         * @returns %TRUE if @appinfo1 is equal to @appinfo2. %FALSE otherwise.
+         * Note that the check *may not* compare each individual field, and only does
+         * an identity check. In case detecting changes in the contents is needed,
+         * program code must additionally compare relevant fields.
+         * @param appinfo2 the second [iface@Gio.AppInfo].
+         * @returns `TRUE` if @appinfo1 is equal to @appinfo2. `FALSE` otherwise.
          */
         equal(appinfo2: Gio.AppInfo): boolean;
         /**
          * Gets the commandline with which the application will be
          * started.
-         * @returns a string containing the @appinfo's commandline,     or %NULL if this information is not available
+         * @returns a string containing the @appinfo’s   commandline, or `NULL` if this information is not available
          */
         get_commandline(): string | null;
         /**
          * Gets a human-readable description of an installed application.
-         * @returns a string containing a description of the application @appinfo, or %NULL if none.
+         * @returns a string containing a description of the application @appinfo, or `NULL` if none.
          */
         get_description(): string | null;
         /**
@@ -674,28 +932,27 @@ export namespace GioUnix {
          */
         get_display_name(): string;
         /**
-         * Gets the executable's name for the installed application.
+         * Gets the executable’s name for the installed application.
          *
          * This is intended to be used for debugging or labelling what program is going
-         * to be run. To launch the executable, use g_app_info_launch() and related
+         * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
          * functions, rather than spawning the return value from this function.
-         * @returns a string containing the @appinfo's application binaries name
+         * @returns a string containing the @appinfo’s application binaries name
          */
         get_executable(): string;
         /**
          * Gets the icon for the application.
-         * @returns the default #GIcon for @appinfo or %NULL if there is no default icon.
+         * @returns the default [iface@Gio.Icon] for   @appinfo or `NULL` if there is no default icon.
          */
         get_icon(): Gio.Icon | null;
         /**
-         * Gets the ID of an application. An id is a string that
-         * identifies the application. The exact format of the id is
-         * platform dependent. For instance, on Unix this is the
-         * desktop file id from the xdg menu specification.
+         * Gets the ID of an application. An id is a string that identifies the
+         * application. The exact format of the id is platform dependent. For instance,
+         * on Unix this is the desktop file id from the xdg menu specification.
          *
-         * Note that the returned ID may be %NULL, depending on how
-         * the `appinfo` has been constructed.
-         * @returns a string containing the application's ID.
+         * Note that the returned ID may be `NULL`, depending on how the `appinfo` has
+         * been constructed.
+         * @returns a string containing the application’s ID.
          */
         get_id(): string | null;
         /**
@@ -706,9 +963,10 @@ export namespace GioUnix {
         /**
          * Retrieves the list of content types that `app_info` claims to support.
          * If this information is not provided by the environment, this function
-         * will return %NULL.
+         * will return `NULL`.
+         *
          * This function does not take in consideration associations added with
-         * g_app_info_add_supports_type(), but only those exported directly by
+         * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
          * the application.
          * @returns a list of content types.
          */
@@ -719,7 +977,7 @@ export namespace GioUnix {
          * about the details of the launcher (like what screen it is on).
          * On error, `error` will be set accordingly.
          *
-         * To launch the application without arguments pass a %NULL `files` list.
+         * To launch the application without arguments pass a `NULL` `files` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
@@ -728,11 +986,11 @@ export namespace GioUnix {
          * Some URIs can be changed when passed through a GFile (for instance
          * unsupported URIs with strange formats like mailto:), so if you have
          * a textual URI you want to pass in as argument, consider using
-         * g_app_info_launch_uris() instead.
+         * [method`Gio`.AppInfo.launch_uris] instead.
          *
          * The launched application inherits the environment of the launching
-         * process, but it can be modified with g_app_launch_context_setenv()
-         * and g_app_launch_context_unsetenv().
+         * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
+         * and [method`Gio`.AppLaunchContext.unsetenv].
          *
          * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
          * environment variable with the path of the launched desktop file and
@@ -741,9 +999,9 @@ export namespace GioUnix {
          * should it be inherited by further processes. The `DISPLAY`,
          * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
          * variables are also set, based on information provided in `context`.
-         * @param files a #GList of #GFile objects
-         * @param context a #GAppLaunchContext or %NULL
-         * @returns %TRUE on successful launch, %FALSE otherwise.
+         * @param files a list of [iface@Gio.File] objects
+         * @param context the launch context
+         * @returns `TRUE` on successful launch, `FALSE` otherwise.
          */
         launch(files?: Gio.File[] | null, context?: Gio.AppLaunchContext | null): boolean;
         /**
@@ -754,26 +1012,26 @@ export namespace GioUnix {
          * one URI per invocation as part of their command-line, multiple instances
          * of the application will be spawned.
          *
-         * To launch the application without arguments pass a %NULL `uris` list.
+         * To launch the application without arguments pass a `NULL` `uris` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
          * no way to detect this.
-         * @param uris a #GList containing URIs to launch.
-         * @param context a #GAppLaunchContext or %NULL
-         * @returns %TRUE on successful launch, %FALSE otherwise.
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @returns `TRUE` on successful launch, `FALSE` otherwise.
          */
         launch_uris(uris?: string[] | null, context?: Gio.AppLaunchContext | null): boolean;
         /**
-         * Async version of g_app_info_launch_uris().
+         * Async version of [method`Gio`.AppInfo.launch_uris].
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * g_app_info_launch_default_for_uri_async().
-         * @param uris a #GList containing URIs to launch.
-         * @param context a #GAppLaunchContext or %NULL
-         * @param cancellable a #GCancellable
+         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @param cancellable a [class@Gio.Cancellable]
          */
         launch_uris_async(
             uris?: string[] | null,
@@ -781,16 +1039,16 @@ export namespace GioUnix {
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
-         * Async version of g_app_info_launch_uris().
+         * Async version of [method`Gio`.AppInfo.launch_uris].
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * g_app_info_launch_default_for_uri_async().
-         * @param uris a #GList containing URIs to launch.
-         * @param context a #GAppLaunchContext or %NULL
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to call when the request is done
+         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @param cancellable a [class@Gio.Cancellable]
+         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
          */
         launch_uris_async(
             uris: string[] | null,
@@ -799,16 +1057,16 @@ export namespace GioUnix {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Async version of g_app_info_launch_uris().
+         * Async version of [method`Gio`.AppInfo.launch_uris].
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * g_app_info_launch_default_for_uri_async().
-         * @param uris a #GList containing URIs to launch.
-         * @param context a #GAppLaunchContext or %NULL
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to call when the request is done
+         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @param cancellable a [class@Gio.Cancellable]
+         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
          */
         launch_uris_async(
             uris?: string[] | null,
@@ -817,52 +1075,52 @@ export namespace GioUnix {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
         /**
-         * Finishes a g_app_info_launch_uris_async() operation.
-         * @param result a #GAsyncResult
-         * @returns %TRUE on successful launch, %FALSE otherwise.
+         * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
+         * @param result the async result
+         * @returns `TRUE` on successful launch, `FALSE` otherwise.
          */
         launch_uris_finish(result: Gio.AsyncResult): boolean;
         /**
          * Removes a supported type from an application, if possible.
          * @param content_type a string.
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `TRUE` on success, `FALSE` on error.
          */
         remove_supports_type(content_type: string): boolean;
         /**
          * Sets the application as the default handler for the given file extension.
-         * @param extension a string containing the file extension     (without the dot).
-         * @returns %TRUE on success, %FALSE on error.
+         * @param extension a string containing the file extension (without   the dot).
+         * @returns `TRUE` on success, `FALSE` on error.
          */
         set_as_default_for_extension(extension: string): boolean;
         /**
          * Sets the application as the default handler for a given type.
          * @param content_type the content type.
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `TRUE` on success, `FALSE` on error.
          */
         set_as_default_for_type(content_type: string): boolean;
         /**
-         * Sets the application as the last used application for a given type.
-         * This will make the application appear as first in the list returned
-         * by g_app_info_get_recommended_for_type(), regardless of the default
+         * Sets the application as the last used application for a given type. This
+         * will make the application appear as first in the list returned by
+         * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
          * application for that content type.
          * @param content_type the content type.
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `TRUE` on success, `FALSE` on error.
          */
         set_as_last_used_for_type(content_type: string): boolean;
         /**
          * Checks if the application info should be shown in menus that
          * list available applications.
-         * @returns %TRUE if the @appinfo should be shown, %FALSE otherwise.
+         * @returns `TRUE` if the @appinfo should be shown, `FALSE` otherwise.
          */
         should_show(): boolean;
         /**
          * Checks if the application accepts files as arguments.
-         * @returns %TRUE if the @appinfo supports files.
+         * @returns `TRUE` if the @appinfo supports files.
          */
         supports_files(): boolean;
         /**
          * Checks if the application supports reading files and directories from URIs.
-         * @returns %TRUE if the @appinfo supports URIs.
+         * @returns `TRUE` if the @appinfo supports URIs.
          */
         supports_uris(): boolean;
         /**
@@ -872,8 +1130,8 @@ export namespace GioUnix {
          */
         vfunc_add_supports_type(content_type: string): boolean;
         /**
-         * Obtains the information whether the #GAppInfo can be deleted.
-         * See g_app_info_delete().
+         * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
+         * See [method`Gio`.AppInfo.delete].
          */
         vfunc_can_delete(): boolean;
         /**
@@ -881,24 +1139,24 @@ export namespace GioUnix {
          */
         vfunc_can_remove_supports_type(): boolean;
         /**
-         * Tries to delete a #GAppInfo.
+         * Tries to delete a [iface`Gio`.AppInfo].
          *
          * On some platforms, there may be a difference between user-defined
-         * #GAppInfos which can be deleted, and system-wide ones which cannot.
-         * See g_app_info_can_delete().
+         * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
+         * See [method`Gio`.AppInfo.can_delete].
          */
         vfunc_do_delete(): boolean;
         /**
-         * Creates a duplicate of a #GAppInfo.
+         * Creates a duplicate of a [iface`Gio`.AppInfo].
          */
         vfunc_dup(): Gio.AppInfo;
         /**
-         * Checks if two #GAppInfos are equal.
+         * Checks if two [iface`Gio`.AppInfo]s are equal.
          *
-         * Note that the check *may not* compare each individual
-         * field, and only does an identity check. In case detecting changes in the
-         * contents is needed, program code must additionally compare relevant fields.
-         * @param appinfo2 the second #GAppInfo.
+         * Note that the check *may not* compare each individual field, and only does
+         * an identity check. In case detecting changes in the contents is needed,
+         * program code must additionally compare relevant fields.
+         * @param appinfo2 the second [iface@Gio.AppInfo].
          */
         vfunc_equal(appinfo2: Gio.AppInfo): boolean;
         /**
@@ -916,10 +1174,10 @@ export namespace GioUnix {
          */
         vfunc_get_display_name(): string;
         /**
-         * Gets the executable's name for the installed application.
+         * Gets the executable’s name for the installed application.
          *
          * This is intended to be used for debugging or labelling what program is going
-         * to be run. To launch the executable, use g_app_info_launch() and related
+         * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
          * functions, rather than spawning the return value from this function.
          */
         vfunc_get_executable(): string;
@@ -928,13 +1186,12 @@ export namespace GioUnix {
          */
         vfunc_get_icon(): Gio.Icon | null;
         /**
-         * Gets the ID of an application. An id is a string that
-         * identifies the application. The exact format of the id is
-         * platform dependent. For instance, on Unix this is the
-         * desktop file id from the xdg menu specification.
+         * Gets the ID of an application. An id is a string that identifies the
+         * application. The exact format of the id is platform dependent. For instance,
+         * on Unix this is the desktop file id from the xdg menu specification.
          *
-         * Note that the returned ID may be %NULL, depending on how
-         * the `appinfo` has been constructed.
+         * Note that the returned ID may be `NULL`, depending on how the `appinfo` has
+         * been constructed.
          */
         vfunc_get_id(): string | null;
         /**
@@ -944,9 +1201,10 @@ export namespace GioUnix {
         /**
          * Retrieves the list of content types that `app_info` claims to support.
          * If this information is not provided by the environment, this function
-         * will return %NULL.
+         * will return `NULL`.
+         *
          * This function does not take in consideration associations added with
-         * g_app_info_add_supports_type(), but only those exported directly by
+         * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
          * the application.
          */
         vfunc_get_supported_types(): string[];
@@ -956,7 +1214,7 @@ export namespace GioUnix {
          * about the details of the launcher (like what screen it is on).
          * On error, `error` will be set accordingly.
          *
-         * To launch the application without arguments pass a %NULL `files` list.
+         * To launch the application without arguments pass a `NULL` `files` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
@@ -965,11 +1223,11 @@ export namespace GioUnix {
          * Some URIs can be changed when passed through a GFile (for instance
          * unsupported URIs with strange formats like mailto:), so if you have
          * a textual URI you want to pass in as argument, consider using
-         * g_app_info_launch_uris() instead.
+         * [method`Gio`.AppInfo.launch_uris] instead.
          *
          * The launched application inherits the environment of the launching
-         * process, but it can be modified with g_app_launch_context_setenv()
-         * and g_app_launch_context_unsetenv().
+         * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
+         * and [method`Gio`.AppLaunchContext.unsetenv].
          *
          * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
          * environment variable with the path of the launched desktop file and
@@ -978,8 +1236,8 @@ export namespace GioUnix {
          * should it be inherited by further processes. The `DISPLAY`,
          * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
          * variables are also set, based on information provided in `context`.
-         * @param files a #GList of #GFile objects
-         * @param context a #GAppLaunchContext or %NULL
+         * @param files a list of [iface@Gio.File] objects
+         * @param context the launch context
          */
         vfunc_launch(files?: Gio.File[] | null, context?: Gio.AppLaunchContext | null): boolean;
         /**
@@ -990,26 +1248,26 @@ export namespace GioUnix {
          * one URI per invocation as part of their command-line, multiple instances
          * of the application will be spawned.
          *
-         * To launch the application without arguments pass a %NULL `uris` list.
+         * To launch the application without arguments pass a `NULL` `uris` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
          * no way to detect this.
-         * @param uris a #GList containing URIs to launch.
-         * @param context a #GAppLaunchContext or %NULL
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
          */
         vfunc_launch_uris(uris?: string[] | null, context?: Gio.AppLaunchContext | null): boolean;
         /**
-         * Async version of g_app_info_launch_uris().
+         * Async version of [method`Gio`.AppInfo.launch_uris].
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * g_app_info_launch_default_for_uri_async().
-         * @param uris a #GList containing URIs to launch.
-         * @param context a #GAppLaunchContext or %NULL
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to call when the request is done
+         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @param cancellable a [class@Gio.Cancellable]
+         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
          */
         vfunc_launch_uris_async(
             uris?: string[] | null,
@@ -1018,8 +1276,8 @@ export namespace GioUnix {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finishes a g_app_info_launch_uris_async() operation.
-         * @param result a #GAsyncResult
+         * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
+         * @param result the async result
          */
         vfunc_launch_uris_finish(result: Gio.AsyncResult): boolean;
         /**
@@ -1029,7 +1287,7 @@ export namespace GioUnix {
         vfunc_remove_supports_type(content_type: string): boolean;
         /**
          * Sets the application as the default handler for the given file extension.
-         * @param extension a string containing the file extension     (without the dot).
+         * @param extension a string containing the file extension (without   the dot).
          */
         vfunc_set_as_default_for_extension(extension: string): boolean;
         /**
@@ -1038,9 +1296,9 @@ export namespace GioUnix {
          */
         vfunc_set_as_default_for_type(content_type: string): boolean;
         /**
-         * Sets the application as the last used application for a given type.
-         * This will make the application appear as first in the list returned
-         * by g_app_info_get_recommended_for_type(), regardless of the default
+         * Sets the application as the last used application for a given type. This
+         * will make the application appear as first in the list returned by
+         * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
          * application for that content type.
          * @param content_type the content type.
          */
@@ -1787,7 +2045,7 @@ export namespace GioUnix {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
          */
         close_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -1802,7 +2060,7 @@ export namespace GioUnix {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -1822,7 +2080,7 @@ export namespace GioUnix {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -1908,7 +2166,7 @@ export namespace GioUnix {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          */
         read_all_async(io_priority: number, cancellable?: Gio.Cancellable | null): [Promise<number>, Uint8Array];
@@ -1923,7 +2181,7 @@ export namespace GioUnix {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -1943,7 +2201,7 @@ export namespace GioUnix {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -1990,7 +2248,7 @@ export namespace GioUnix {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         read_async(io_priority: number, cancellable?: Gio.Cancellable | null): [Promise<number>, Uint8Array];
@@ -2018,7 +2276,7 @@ export namespace GioUnix {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -2051,7 +2309,7 @@ export namespace GioUnix {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -2111,7 +2369,7 @@ export namespace GioUnix {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         read_bytes_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<GLib.Bytes>;
@@ -2137,7 +2395,7 @@ export namespace GioUnix {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -2169,7 +2427,7 @@ export namespace GioUnix {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -2243,7 +2501,7 @@ export namespace GioUnix {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         skip_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<number>;
@@ -2272,7 +2530,7 @@ export namespace GioUnix {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -2307,7 +2565,7 @@ export namespace GioUnix {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -2334,7 +2592,7 @@ export namespace GioUnix {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -2373,7 +2631,7 @@ export namespace GioUnix {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -2432,7 +2690,7 @@ export namespace GioUnix {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -2914,7 +3172,14 @@ export namespace GioUnix {
     }
 
     /**
-     * Watches #GUnixMounts for changes.
+     * Watches for changes to the set of mount entries and mount points in the
+     * system.
+     *
+     * Connect to the [signal`GioUnix`.MountMonitor::mounts-changed] signal to be
+     * notified of changes to the [struct`GioUnix`.MountEntry] list.
+     *
+     * Connect to the [signal`GioUnix`.MountMonitor::mountpoints-changed] signal to
+     * be notified of changes to the [struct`GioUnix`.MountPoint] list.
      */
     class MountMonitor extends GObject.Object {
         static $gtype: GObject.GType<MountMonitor>;
@@ -2942,15 +3207,15 @@ export namespace GioUnix {
         // Static methods
 
         /**
-         * Gets the #GUnixMountMonitor for the current thread-default main
+         * Gets the [class`GioUnix`.MountMonitor] for the current thread-default main
          * context.
          *
          * The mount monitor can be used to monitor for changes to the list of
          * mounted filesystems as well as the list of mount points (ie: fstab
          * entries).
          *
-         * You must only call g_object_unref() on the return value from under
-         * the same main context as you called this function.
+         * You must only call [method`GObject`.Object.unref] on the return value from
+         * under the same main context as you called this function.
          */
         static get(): Gio.UnixMountMonitor;
         /**
@@ -2961,8 +3226,8 @@ export namespace GioUnix {
          * circumstances.  Since `mount_monitor` is a singleton, it also meant
          * that calling this function would have side effects for other users of
          * the monitor.
-         * @param mount_monitor a #GUnixMountMonitor
-         * @param limit_msec a integer with the limit in milliseconds to     poll for changes.
+         * @param mount_monitor a [class@GioUnix.MountMonitor]
+         * @param limit_msec a integer with the limit (in milliseconds) to poll for changes
          */
         static set_rate_limit(mount_monitor: Gio.UnixMountMonitor, limit_msec: number): void;
     }
@@ -4832,7 +5097,7 @@ export namespace GioUnix {
     }
 
     /**
-     * Defines a Unix mount entry (e.g. <filename>/media/cdrom</filename>).
+     * Defines a Unix mount entry (e.g. `/media/cdrom`).
      * This corresponds roughly to a mtab entry.
      */
     abstract class MountEntry {
@@ -4841,11 +5106,138 @@ export namespace GioUnix {
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Gets a [struct`GioUnix`.MountEntry] for a given mount path.
+         *
+         * If `time_read` is set, it will be filled with a Unix timestamp for checking
+         * if the mounts have changed since with
+         * [func`GioUnix`.mount_entries_changed_since].
+         *
+         * If more mounts have the same mount path, the last matching mount
+         * is returned.
+         *
+         * This will return `NULL` if there is no mount point at `mount_path`.
+         * @param mount_path path for a possible Unix mount
+         */
+        static at(mount_path: string): [Gio.UnixMountEntry | null, number];
+        /**
+         * Compares two Unix mounts.
+         * @param mount1 first [struct@GioUnix.MountEntry] to compare
+         * @param mount2 second [struct@GioUnix.MountEntry] to compare
+         */
+        static compare(mount1: Gio.UnixMountEntry, mount2: Gio.UnixMountEntry): number;
+        /**
+         * Makes a copy of `mount_entry`.
+         * @param mount_entry a [struct@GioUnix.MountEntry]
+         */
+        static copy(mount_entry: Gio.UnixMountEntry): Gio.UnixMountEntry;
+        /**
+         * Gets a [struct`GioUnix`.MountEntry] for a given file path.
+         *
+         * If `time_read` is set, it will be filled with a Unix timestamp for checking
+         * if the mounts have changed since with
+         * [func`GioUnix`.mount_entries_changed_since].
+         *
+         * If more mounts have the same mount path, the last matching mount
+         * is returned.
+         *
+         * This will return `NULL` if looking up the mount entry fails, if
+         * `file_path` doesn’t exist or there is an I/O error.
+         * @param file_path file path on some Unix mount
+         */
+        static ['for'](file_path: string): [Gio.UnixMountEntry | null, number];
+        /**
+         * Frees a Unix mount.
+         * @param mount_entry a [struct@GioUnix.MountEntry]
+         */
+        static free(mount_entry: Gio.UnixMountEntry): void;
+        /**
+         * Gets the device path for a Unix mount.
+         * @param mount_entry a [struct@GioUnix.MountEntry]
+         */
+        static get_device_path(mount_entry: Gio.UnixMountEntry): string;
+        /**
+         * Gets the filesystem type for the Unix mount.
+         * @param mount_entry a [struct@GioUnix.MountEntry]
+         */
+        static get_fs_type(mount_entry: Gio.UnixMountEntry): string;
+        /**
+         * Gets the mount path for a Unix mount.
+         * @param mount_entry a [struct@GioUnix.MountEntry] to get the mount path for
+         */
+        static get_mount_path(mount_entry: Gio.UnixMountEntry): string;
+        /**
+         * Gets a comma separated list of mount options for the Unix mount.
+         *
+         * For example: `rw,relatime,seclabel,data=ordered`.
+         *
+         * This is similar to [func`GioUnix`.MountPoint.get_options], but it takes
+         * a [struct`GioUnix`.MountEntry] as an argument.
+         * @param mount_entry a [struct@GioUnix.MountEntry]
+         */
+        static get_options(mount_entry: Gio.UnixMountEntry): string | null;
+        /**
+         * Gets the root of the mount within the filesystem. This is useful e.g. for
+         * mounts created by bind operation, or btrfs subvolumes.
+         *
+         * For example, the root path is equal to `/` for a mount created by
+         * `mount /dev/sda1 /mnt/foo` and `/bar` for
+         * `mount --bind /mnt/foo/bar /mnt/bar`.
+         * @param mount_entry a [struct@GioUnix.MountEntry]
+         */
+        static get_root_path(mount_entry: Gio.UnixMountEntry): string | null;
+        /**
+         * Guesses whether a Unix mount entry can be ejected.
+         * @param mount_entry a [struct@GioUnix.MountEntry]
+         */
+        static guess_can_eject(mount_entry: Gio.UnixMountEntry): boolean;
+        /**
+         * Guesses the icon of a Unix mount entry.
+         * @param mount_entry a [struct@GioUnix.MountEntry]
+         */
+        static guess_icon(mount_entry: Gio.UnixMountEntry): Gio.Icon;
+        /**
+         * Guesses the name of a Unix mount entry.
+         *
+         * The result is a translated string.
+         * @param mount_entry a [struct@GioUnix.MountEntry]
+         */
+        static guess_name(mount_entry: Gio.UnixMountEntry): string;
+        /**
+         * Guesses whether a Unix mount entry should be displayed in the UI.
+         * @param mount_entry a [struct@GioUnix.MountEntry]
+         */
+        static guess_should_display(mount_entry: Gio.UnixMountEntry): boolean;
+        /**
+         * Guesses the symbolic icon of a Unix mount entry.
+         * @param mount_entry a [struct@GioUnix.MountEntry]
+         */
+        static guess_symbolic_icon(mount_entry: Gio.UnixMountEntry): Gio.Icon;
+        /**
+         * Checks if a Unix mount is mounted read only.
+         * @param mount_entry a [struct@GioUnix.MountEntry]
+         */
+        static is_readonly(mount_entry: Gio.UnixMountEntry): boolean;
+        /**
+         * Checks if a Unix mount is a system mount.
+         *
+         * This is the Boolean OR of
+         * [func`GioUnix`.is_system_fs_type], [func`GioUnix`.is_system_device_path] and
+         * [func`GioUnix`.is_mount_path_system_internal] on `mount_entry’`s properties.
+         *
+         * The definition of what a ‘system’ mount entry is may change over time as new
+         * file system types and device paths are ignored.
+         * @param mount_entry a [struct@GioUnix.MountEntry]
+         */
+        static is_system_internal(mount_entry: Gio.UnixMountEntry): boolean;
     }
 
     type MountMonitorClass = typeof MountMonitor;
     /**
-     * Defines a Unix mount point (e.g. <filename>/dev</filename>).
+     * Defines a Unix mount point (e.g. `/dev`).
      * This corresponds roughly to a fstab entry.
      */
     abstract class MountPoint {
@@ -4858,85 +5250,88 @@ export namespace GioUnix {
         // Static methods
 
         /**
-         * Gets a #GUnixMountPoint for a given mount path. If `time_read` is set, it
-         * will be filled with a unix timestamp for checking if the mount points have
-         * changed since with g_unix_mount_points_changed_since().
+         * Gets a [struct`GioUnix`.MountPoint] for a given mount path.
+         *
+         * If `time_read` is set, it will be filled with a Unix timestamp for checking if
+         * the mount points have changed since with
+         * [func`GioUnix`.mount_points_changed_since].
          *
          * If more mount points have the same mount path, the last matching mount point
          * is returned.
-         * @param mount_path path for a possible unix mount point.
+         * @param mount_path path for a possible Unix mount point
          */
         static at(mount_path: string): [Gio.UnixMountPoint | null, number];
         /**
-         * Compares two unix mount points.
-         * @param mount1 a #GUnixMount.
-         * @param mount2 a #GUnixMount.
+         * Compares two Unix mount points.
+         * @param mount1 a [struct@GioUnix.MountPoint]
+         * @param mount2 a [struct@GioUnix.MountPoint]
          */
         static compare(mount1: Gio.UnixMountPoint, mount2: Gio.UnixMountPoint): number;
         /**
          * Makes a copy of `mount_point`.
-         * @param mount_point a #GUnixMountPoint.
+         * @param mount_point a [struct@GioUnix.MountPoint]
          */
         static copy(mount_point: Gio.UnixMountPoint): Gio.UnixMountPoint;
         /**
-         * Frees a unix mount point.
-         * @param mount_point unix mount point to free.
+         * Frees a Unix mount point.
+         * @param mount_point Unix mount point to free.
          */
         static free(mount_point: Gio.UnixMountPoint): void;
         /**
-         * Gets the device path for a unix mount point.
-         * @param mount_point a #GUnixMountPoint.
+         * Gets the device path for a Unix mount point.
+         * @param mount_point a [struct@GioUnix.MountPoint]
          */
         static get_device_path(mount_point: Gio.UnixMountPoint): string;
         /**
          * Gets the file system type for the mount point.
-         * @param mount_point a #GUnixMountPoint.
+         * @param mount_point a [struct@GioUnix.MountPoint]
          */
         static get_fs_type(mount_point: Gio.UnixMountPoint): string;
         /**
-         * Gets the mount path for a unix mount point.
-         * @param mount_point a #GUnixMountPoint.
+         * Gets the mount path for a Unix mount point.
+         * @param mount_point a [struct@GioUnix.MountPoint]
          */
         static get_mount_path(mount_point: Gio.UnixMountPoint): string;
         /**
          * Gets the options for the mount point.
-         * @param mount_point a #GUnixMountPoint.
+         * @param mount_point a [struct@GioUnix.MountPoint]
          */
         static get_options(mount_point: Gio.UnixMountPoint): string | null;
         /**
          * Guesses whether a Unix mount point can be ejected.
-         * @param mount_point a #GUnixMountPoint
+         * @param mount_point a [struct@GioUnix.MountPoint]
          */
         static guess_can_eject(mount_point: Gio.UnixMountPoint): boolean;
         /**
          * Guesses the icon of a Unix mount point.
-         * @param mount_point a #GUnixMountPoint
+         * @param mount_point a [struct@GioUnix.MountPoint]
          */
         static guess_icon(mount_point: Gio.UnixMountPoint): Gio.Icon;
         /**
          * Guesses the name of a Unix mount point.
+         *
          * The result is a translated string.
-         * @param mount_point a #GUnixMountPoint
+         * @param mount_point a [struct@GioUnix.MountPoint]
          */
         static guess_name(mount_point: Gio.UnixMountPoint): string;
         /**
          * Guesses the symbolic icon of a Unix mount point.
-         * @param mount_point a #GUnixMountPoint
+         * @param mount_point a [struct@GioUnix.MountPoint]
          */
         static guess_symbolic_icon(mount_point: Gio.UnixMountPoint): Gio.Icon;
         /**
-         * Checks if a unix mount point is a loopback device.
-         * @param mount_point a #GUnixMountPoint.
+         * Checks if a Unix mount point is a loopback device.
+         * @param mount_point a [struct@GioUnix.MountPoint]
          */
         static is_loopback(mount_point: Gio.UnixMountPoint): boolean;
         /**
-         * Checks if a unix mount point is read only.
-         * @param mount_point a #GUnixMountPoint.
+         * Checks if a Unix mount point is read only.
+         * @param mount_point a [struct@GioUnix.MountPoint]
          */
         static is_readonly(mount_point: Gio.UnixMountPoint): boolean;
         /**
-         * Checks if a unix mount point is mountable by the user.
-         * @param mount_point a #GUnixMountPoint.
+         * Checks if a Unix mount point is mountable by the user.
+         * @param mount_point a [struct@GioUnix.MountPoint]
          */
         static is_user_mountable(mount_point: Gio.UnixMountPoint): boolean;
     }
@@ -4962,14 +5357,15 @@ export namespace GioUnix {
 
         /**
          * Gets the default application for launching applications
-         * using this URI scheme for a particular #GDesktopAppInfoLookup
+         * using this URI scheme for a particular [iface`Gio`.DesktopAppInfoLookup]
          * implementation.
          *
-         * The #GDesktopAppInfoLookup interface and this function is used
-         * to implement g_app_info_get_default_for_uri_scheme() backends
+         * The [iface`Gio`.DesktopAppInfoLookup] interface and this function is used
+         * to implement [func`Gio`.AppInfo.get_default_for_uri_scheme] backends
          * in a GIO module. There is no reason for applications to use it
-         * directly. Applications should use g_app_info_get_default_for_uri_scheme().
-         * @param lookup a #GDesktopAppInfoLookup
+         * directly. Applications should use
+         * [func`Gio`.AppInfo.get_default_for_uri_scheme].
+         * @param lookup a [iface@Gio.DesktopAppInfoLookup]
          * @param uri_scheme a string containing a URI scheme.
          */
         get_default_for_uri_scheme(lookup: Gio.DesktopAppInfoLookup, uri_scheme: string): Gio.AppInfo | null;

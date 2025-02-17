@@ -892,6 +892,11 @@ export namespace Atk {
          */
         PUSH_BUTTON_MENU,
         /**
+         * A switch that can be toggled on/off.
+         * (Since: 2.56)
+         */
+        SWITCH,
+        /**
          * not a valid role, used for finding end of the enumeration
          */
         LAST_DEFINED,

@@ -20,8 +20,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace Mks {
     /**
@@ -337,7 +337,7 @@ export namespace Mks {
          */
         get_accessible_role(): Gtk.AccessibleRole;
         /**
-         * Retrieves the accessible implementation for the given `GtkAccessible`.
+         * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
          */
         get_at_context(): Gtk.ATContext;
@@ -361,30 +361,28 @@ export namespace Mks {
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
-         * Query a platform state, such as focus.
-         *
-         * See gtk_accessible_platform_changed().
+         * Queries a platform state, such as focus.
          *
          * This functionality can be overridden by `GtkAccessible`
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for `GtkText` wrappers.
          * @param state platform state to query
-         * @returns the value of @state for the accessible
+         * @returns the value of state for the accessible
          */
         get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
         /**
-         * Resets the accessible `property` to its default value.
-         * @param property a `GtkAccessibleProperty`
+         * Resets the accessible property to its default value.
+         * @param property the accessible property
          */
         reset_property(property: Gtk.AccessibleProperty | null): void;
         /**
-         * Resets the accessible `relation` to its default value.
-         * @param relation a `GtkAccessibleRelation`
+         * Resets the accessible relation to its default value.
+         * @param relation the accessible relation
          */
         reset_relation(relation: Gtk.AccessibleRelation | null): void;
         /**
-         * Resets the accessible `state` to its default value.
-         * @param state a `GtkAccessibleState`
+         * Resets the accessible state to its default value.
+         * @param state the accessible state
          */
         reset_state(state: Gtk.AccessibleState | null): void;
         /**
@@ -402,13 +400,22 @@ export namespace Mks {
          */
         set_accessible_parent(parent?: Gtk.Accessible | null, next_sibling?: Gtk.Accessible | null): void;
         /**
-         * Updates the next accessible sibling of `self`.
+         * Updates the next accessible sibling.
          *
-         * That might be useful when a new child of a custom `GtkAccessible`
+         * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
         update_next_accessible_sibling(new_sibling?: Gtk.Accessible | null): void;
+        /**
+         * Informs ATs that the platform state has changed.
+         *
+         * This function should be used by `GtkAccessible` implementations that
+         * have a platform state but are not widgets. Widgets handle platform
+         * states automatically.
+         * @param state the platform state to update
+         */
+        update_platform_state(state: Gtk.AccessiblePlatformState | null): void;
         /**
          * Updates an array of accessible properties.
          *
@@ -416,7 +423,7 @@ export namespace Mks {
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
-         * @param properties an array of `GtkAccessibleProperty`
+         * @param properties an array of accessible properties
          * @param values an array of `GValues`, one for each property
          */
         update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
@@ -427,7 +434,7 @@ export namespace Mks {
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
-         * @param relations an array of `GtkAccessibleRelation`
+         * @param relations an array of accessible relations
          * @param values an array of `GValues`, one for each relation
          */
         update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
@@ -438,7 +445,7 @@ export namespace Mks {
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
-         * @param states an array of `GtkAccessibleState`
+         * @param states an array of accessible states
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
@@ -449,7 +456,7 @@ export namespace Mks {
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
-         * Retrieves the accessible implementation for the given `GtkAccessible`.
+         * Retrieves the implementation for the given accessible object.
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
@@ -469,9 +476,7 @@ export namespace Mks {
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
-         * Query a platform state, such as focus.
-         *
-         * See gtk_accessible_platform_changed().
+         * Queries a platform state, such as focus.
          *
          * This functionality can be overridden by `GtkAccessible`
          * implementations, e.g. to get platform state from an ignored
@@ -1637,7 +1642,7 @@ export namespace Mks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -1678,7 +1683,7 @@ export namespace Mks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -1724,7 +1729,7 @@ export namespace Mks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -1784,7 +1789,7 @@ export namespace Mks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */

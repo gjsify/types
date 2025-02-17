@@ -883,36 +883,36 @@ export namespace GLib {
          */
         INT,
         /**
-         * The option provides a callback (of type
-         *     #GOptionArgFunc) to parse the extra argument.
+         * The option provides a callback (of type #GOptionArgFunc)
+         *   to parse the extra argument.
          */
         CALLBACK,
         /**
          * The option takes a filename as argument, which will
-         *        be in the GLib filename encoding rather than UTF-8.
+         *      be in the GLib filename encoding rather than UTF-8.
          */
         FILENAME,
         /**
          * The option takes a string argument, multiple
-         *     uses of the option are collected into an array of strings.
+         *   uses of the option are collected into an array of strings.
          */
         STRING_ARRAY,
         /**
          * The option takes a filename as argument,
-         *     multiple uses of the option are collected into an array of strings.
+         *   multiple uses of the option are collected into an array of strings.
          */
         FILENAME_ARRAY,
         /**
          * The option takes a double argument. The argument
-         *     can be formatted either for the user's locale or for the "C" locale.
-         *     Since 2.12
+         *   can be formatted either for the user's locale or for the "C" locale.
+         *   Since 2.12
          */
         DOUBLE,
         /**
          * The option takes a 64-bit integer. Like
-         *     %G_OPTION_ARG_INT but for larger numbers. The number can be in
-         *     decimal base, or in hexadecimal (when prefixed with `0x`, for
-         *     example, `0xffffffff`). Since 2.12
+         *   %G_OPTION_ARG_INT but for larger numbers. The number can be in
+         *   decimal base, or in hexadecimal (when prefixed with `0x`, for
+         *   example, `0xffffffff`). Since 2.12
          */
         INT64,
     }
@@ -1399,40 +1399,42 @@ export namespace GLib {
 
     /**
      * The type of file to return the filename for, when used with
-     * g_test_build_filename().
+     * [func`GLib`.test_build_filename].
      *
      * These two options correspond rather directly to the 'dist' and
      * 'built' terminology that automake uses and are explicitly used to
-     * distinguish between the 'srcdir' and 'builddir' being separate.  All
-     * files in your project should either be dist (in the
-     * `EXTRA_DIST` or `dist_schema_DATA`
-     * sense, in which case they will always be in the srcdir) or built (in
-     * the `BUILT_SOURCES` sense, in which case they will
-     * always be in the builddir).
+     * distinguish between the 'srcdir' and 'builddir' being separate. All
+     * files in your project should either be dist (in the `EXTRA_DIST` or
+     * `dist_schema_DATA` sense, in which case they will always be in the
+     * srcdir) or built (in the `BUILT_SOURCES` sense, in which case they
+     * will always be in the builddir).
      *
-     * Note: as a general rule of automake, files that are generated only as
+     * Note: As a general rule of automake, files that are generated only as
      * part of the build-from-git process (but then are distributed with the
      * tarball) always go in srcdir (even if doing a srcdir != builddir
      * build from git) and are considered as distributed files.
+     *
+     * The same principles apply for other build systems, such as meson.
      */
 
     /**
      * The type of file to return the filename for, when used with
-     * g_test_build_filename().
+     * [func`GLib`.test_build_filename].
      *
      * These two options correspond rather directly to the 'dist' and
      * 'built' terminology that automake uses and are explicitly used to
-     * distinguish between the 'srcdir' and 'builddir' being separate.  All
-     * files in your project should either be dist (in the
-     * `EXTRA_DIST` or `dist_schema_DATA`
-     * sense, in which case they will always be in the srcdir) or built (in
-     * the `BUILT_SOURCES` sense, in which case they will
-     * always be in the builddir).
+     * distinguish between the 'srcdir' and 'builddir' being separate. All
+     * files in your project should either be dist (in the `EXTRA_DIST` or
+     * `dist_schema_DATA` sense, in which case they will always be in the
+     * srcdir) or built (in the `BUILT_SOURCES` sense, in which case they
+     * will always be in the builddir).
      *
-     * Note: as a general rule of automake, files that are generated only as
+     * Note: As a general rule of automake, files that are generated only as
      * part of the build-from-git process (but then are distributed with the
      * tarball) always go in srcdir (even if doing a srcdir != builddir
      * build from git) and are considered as distributed files.
+     *
+     * The same principles apply for other build systems, such as meson.
      */
     export namespace TestFileType {
         export const $gtype: GObject.GType<TestFileType>;
@@ -1750,7 +1752,7 @@ export namespace GLib {
 
     enum TraverseType {
         /**
-         * vists a node's left child first, then the node itself,
+         * visits a node's left child first, then the node itself,
          *              then its right child. This is the one to use if you
          *              want the output sorted according to the compare
          *              function.
@@ -1766,9 +1768,9 @@ export namespace GLib {
         POST_ORDER,
         /**
          * is not implemented for
-         *              [balanced binary trees][glib-Balanced-Binary-Trees].
-         *              For [n-ary trees][glib-N-ary-Trees], it
-         *              vists the root node first, then its children, then
+         *              [balanced binary trees](data-structures.html#binary-trees).
+         *              For [n-ary trees](data-structures.html#n-ary-trees), it
+         *              visits the root node first, then its children, then
          *              its grandchildren, and so on. Note that this is less
          *              efficient than the other orders.
          */
@@ -1974,15 +1976,23 @@ export namespace GLib {
         ZERO_WIDTH_JOINER,
         /**
          * Aksara (AK). Since: 2.80
-         * `G_UNICODE_BREAK_AKSARA_PRE_BASE` (AP). Since: 2.80
-         * `G_UNICODE_BREAK_AKSARA_START` (AS). Since: 2.80
-         * `G_UNICODE_BREAK_VIRAMA_FINAL` (VF). Since: 2.80
-         * `G_UNICODE_BREAK_VIRAMA` (VI). Since: 2.80
          */
         AKSARA,
+        /**
+         * Aksara Pre-Base (AP). Since: 2.80
+         */
         AKSARA_PRE_BASE,
+        /**
+         * Aksara Start (AS). Since: 2.80
+         */
         AKSARA_START,
+        /**
+         * Virama Final (VF). Since: 2.80
+         */
         VIRAMA_FINAL,
+        /**
+         * Virama (VI). Since: 2.80
+         */
         VIRAMA,
     }
     /**
@@ -2676,6 +2686,34 @@ export namespace GLib {
          * Nag Mundari. Since 2.74
          */
         NAG_MUNDARI,
+        /**
+         * Todhri. Since: 2.84
+         */
+        TODHRI,
+        /**
+         * Garay. Since: 2.84
+         */
+        GARAY,
+        /**
+         * Tulu-Tigalari. Since: 2.84
+         */
+        TULU_TIGALARI,
+        /**
+         * Sunuwar. Since: 2.84
+         */
+        SUNUWAR,
+        /**
+         * Gurung Khema. Since: 2.84
+         */
+        GURUNG_KHEMA,
+        /**
+         * Kirat Rai. Since: 2.84
+         */
+        KIRAT_RAI,
+        /**
+         * Ol Onal. Since: 2.84
+         */
+        OL_ONAL,
     }
     /**
      * These are the possible character classifications from the
@@ -3227,12 +3265,14 @@ export namespace GLib {
     const DATE_BAD_YEAR: number;
     /**
      * The directory separator character.
-     * This is '/' on UNIX machines and '\' under Windows.
+     *
+     * This is `'/'` on UNIX machines and `'\'` under Windows.
      */
     const DIR_SEPARATOR: number;
     /**
      * The directory separator as a string.
-     * This is "/" on UNIX machines and "\" under Windows.
+     *
+     * This is `"/"` on UNIX machines and `"\"` under Windows.
      */
     const DIR_SEPARATOR_S: string;
     /**
@@ -3290,147 +3330,153 @@ export namespace GLib {
     const IEEE754_FLOAT_BIAS: number;
     /**
      * The name of the main group of a desktop entry file, as defined in the
-     * [Desktop Entry Specification](http://freedesktop.org/Standards/desktop-entry-spec).
+     * [Desktop Entry Specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/).
+     *
      * Consult the specification for more
      * details about the meanings of the keys below.
      */
     const KEY_FILE_DESKTOP_GROUP: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a string list
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a string list
      * giving the available application actions.
      */
     const KEY_FILE_DESKTOP_KEY_ACTIONS: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a list
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a list
      * of strings giving the categories in which the desktop entry
      * should be shown in a menu.
      */
     const KEY_FILE_DESKTOP_KEY_CATEGORIES: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a localized
      * string giving the tooltip for the desktop entry.
      */
     const KEY_FILE_DESKTOP_KEY_COMMENT: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a boolean
      * set to true if the application is D-Bus activatable.
      */
     const KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a string
-     * giving the command line to execute. It is only valid for desktop
-     * entries with the `Application` type.
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a string
+     * giving the command line to execute.
+     *
+     * It is only valid for desktop entries with the `Application` type.
      */
     const KEY_FILE_DESKTOP_KEY_EXEC: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a localized
      * string giving the generic name of the desktop entry.
      */
     const KEY_FILE_DESKTOP_KEY_GENERIC_NAME: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a boolean
      * stating whether the desktop entry has been deleted by the user.
      */
     const KEY_FILE_DESKTOP_KEY_HIDDEN: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a localized
      * string giving the name of the icon to be displayed for the desktop
      * entry.
      */
     const KEY_FILE_DESKTOP_KEY_ICON: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a list
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a list
      * of strings giving the MIME types supported by this desktop entry.
      */
     const KEY_FILE_DESKTOP_KEY_MIME_TYPE: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a localized
      * string giving the specific name of the desktop entry.
      */
     const KEY_FILE_DESKTOP_KEY_NAME: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a list of
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a list of
      * strings identifying the environments that should not display the
      * desktop entry.
      */
     const KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a boolean
      * stating whether the desktop entry should be shown in menus.
      */
     const KEY_FILE_DESKTOP_KEY_NO_DISPLAY: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a list of
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a list of
      * strings identifying the environments that should display the
      * desktop entry.
      */
     const KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a string
-     * containing the working directory to run the program in. It is only
-     * valid for desktop entries with the `Application` type.
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a string
+     * containing the working directory to run the program in.
+     *
+     * It is only valid for desktop entries with the `Application` type.
      */
     const KEY_FILE_DESKTOP_KEY_PATH: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a boolean
      * stating whether the application supports the
-     * [Startup Notification Protocol Specification](http://www.freedesktop.org/Standards/startup-notification-spec).
+     * [Startup Notification Protocol Specification](https://specifications.freedesktop.org/startup-notification-spec/latest/).
      */
     const KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is string
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is string
      * identifying the WM class or name hint of a window that the application
-     * will create, which can be used to emulate Startup Notification with
-     * older applications.
+     * will create, which can be used to emulate
+     * [Startup Notification](https://specifications.freedesktop.org/startup-notification-spec/latest/)
+     * with older applications.
      */
     const KEY_FILE_DESKTOP_KEY_STARTUP_WM_CLASS: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a boolean
      * stating whether the program should be run in a terminal window.
      *
      * It is only valid for desktop entries with the `Application` type.
      */
     const KEY_FILE_DESKTOP_KEY_TERMINAL: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a string
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a string
      * giving the file name of a binary on disk used to determine if the
-     * program is actually installed. It is only valid for desktop entries
-     * with the `Application` type.
+     * program is actually installed.
+     *
+     * It is only valid for desktop entries with the `Application` type.
      */
     const KEY_FILE_DESKTOP_KEY_TRY_EXEC: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a string
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a string
      * giving the type of the desktop entry.
      *
-     * Usually %G_KEY_FILE_DESKTOP_TYPE_APPLICATION,
-     * %G_KEY_FILE_DESKTOP_TYPE_LINK, or
-     * %G_KEY_FILE_DESKTOP_TYPE_DIRECTORY.
+     * Usually [const`GLib`.KEY_FILE_DESKTOP_TYPE_APPLICATION],
+     * [const`GLib`.KEY_FILE_DESKTOP_TYPE_LINK], or
+     * [const`GLib`.KEY_FILE_DESKTOP_TYPE_DIRECTORY].
      */
     const KEY_FILE_DESKTOP_KEY_TYPE: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a string
-     * giving the URL to access. It is only valid for desktop entries
-     * with the `Link` type.
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a string
+     * giving the URL to access.
+     *
+     * It is only valid for desktop entries with the `Link` type.
      */
     const KEY_FILE_DESKTOP_KEY_URL: string;
     /**
-     * A key under %G_KEY_FILE_DESKTOP_GROUP, whose value is a string
+     * A key under [const`GLib`.KEY_FILE_DESKTOP_GROUP], whose value is a string
      * giving the version of the Desktop Entry Specification used for
      * the desktop entry file.
      */
     const KEY_FILE_DESKTOP_KEY_VERSION: string;
     /**
-     * The value of the %G_KEY_FILE_DESKTOP_KEY_TYPE, key for desktop
+     * The value of the [const`GLib`.KEY_FILE_DESKTOP_KEY_TYPE], key for desktop
      * entries representing applications.
      */
     const KEY_FILE_DESKTOP_TYPE_APPLICATION: string;
     /**
-     * The value of the %G_KEY_FILE_DESKTOP_KEY_TYPE, key for desktop
+     * The value of the [const`GLib`.KEY_FILE_DESKTOP_KEY_TYPE], key for desktop
      * entries representing directories.
      */
     const KEY_FILE_DESKTOP_TYPE_DIRECTORY: string;
     /**
-     * The value of the %G_KEY_FILE_DESKTOP_KEY_TYPE, key for desktop
+     * The value of the [const`GLib`.KEY_FILE_DESKTOP_KEY_TYPE], key for desktop
      * entries representing links to documents.
      */
     const KEY_FILE_DESKTOP_TYPE_LINK: string;
@@ -3678,31 +3724,48 @@ export namespace GLib {
     const SYSDEF_MSG_OOB: number;
     const SYSDEF_MSG_PEEK: number;
     /**
-     * Creates a unique temporary directory for each unit test and uses
-     * g_set_user_dirs() to set XDG directories to point into subdirectories of it
-     * for the duration of the unit test. The directory tree is cleaned up after the
-     * test finishes successfully. Note that this doesn’t take effect until
-     * g_test_run() is called, so calls to (for example) g_get_user_home_dir() will
-     * return the system-wide value when made in a test program’s main() function.
+     * A value that can be passed as an option to [func`GLib`.test_init].
+     *
+     * Creates a unique temporary directory for each unit test and uses sets
+     * XDG directories to point into subdirectories of it for the duration of
+     * the unit test. The directory tree is cleaned up after the test finishes
+     * successfully.
+     *
+     * Note that this doesn’t take effect until [func`GLib`.test_run] is called,
+     * so calls to (for example) [func`GLib`.get_home_dir] will return the
+     * system-wide value when made in a test program’s main() function.
      *
      * The following functions will return subdirectories of the temporary directory
      * when this option is used. The specific subdirectory paths in use are not
      * guaranteed to be stable API — always use a getter function to retrieve them.
      *
-     *  - g_get_home_dir()
-     *  - g_get_user_cache_dir()
-     *  - g_get_system_config_dirs()
-     *  - g_get_user_config_dir()
-     *  - g_get_system_data_dirs()
-     *  - g_get_user_data_dir()
-     *  - g_get_user_state_dir()
-     *  - g_get_user_runtime_dir()
+     *  - [func`GLib`.get_home_dir]
+     *  - [func`GLib`.get_user_cache_dir]
+     *  - [func`GLib`.get_system_config_dirs]
+     *  - [func`GLib`.get_user_config_dir]
+     *  - [func`GLib`.get_system_data_dirs]
+     *  - [func`GLib`.get_user_data_dir]
+     *  - [func`GLib`.get_user_state_dir]
+     *  - [func`GLib`.get_user_runtime_dir]
      *
      * The subdirectories may not be created by the test harness; as with normal
-     * calls to functions like g_get_user_cache_dir(), the caller must be prepared
-     * to create the directory if it doesn’t exist.
+     * calls to functions like [func`GLib`.get_user_cache_dir], the caller must
+     * be prepared to create the directory if it doesn’t exist.
      */
     const TEST_OPTION_ISOLATE_DIRS: string;
+    /**
+     * A value that can be passed as an option to [func`GLib`.test_init].
+     *
+     * If this option is given, assertions will not abort the process, but
+     * call [func`GLib`.test_fail]. Equivalent to [func`GLib`.test_set_nonfatal_assertions].
+     */
+    const TEST_OPTION_NONFATAL_ASSERTIONS: string;
+    /**
+     * A value that can be passed as an option to [func`GLib`.test_init].
+     *
+     * If this option is given, [func`GLib`.test_init] will not call [func`GLib`.set_prgname].
+     */
+    const TEST_OPTION_NO_PRGNAME: string;
     /**
      * Evaluates to a time span of one day.
      */
@@ -3763,6 +3826,8 @@ export namespace GLib {
     const VERSION_MIN_REQUIRED: number;
     const WIN32_MSG_HANDLE: number;
     const macro__has_attribute___noreturn__: number;
+    const macro__has_attribute_ifunc: number;
+    const macro__has_attribute_no_sanitize_address: number;
     /**
      * A wrapper for the POSIX access() function. This function is used to
      * test a pathname for one or several of read, write or execute
@@ -5133,8 +5198,8 @@ export namespace GLib {
      */
     function chmod(filename: string, mode: number): number;
     /**
-     * If `err` or *`err` is %NULL, does nothing. Otherwise,
-     * calls g_error_free() on *`err` and sets *`err` to %NULL.
+     * If `err` or `*err` is %NULL, does nothing. Otherwise,
+     * calls g_error_free() on `*err` and sets `*err` to %NULL.
      */
     function clear_error(): void;
     /**
@@ -5383,9 +5448,8 @@ export namespace GLib {
      * This is more efficient than calling g_datalist_id_remove_data()
      * multiple times in a row.
      *
-     * Before 2.80, `n_keys` had to be not larger than 16. Now it can be larger, but
-     * note that GData does a linear search, so an excessive number of keys will
-     * perform badly.
+     * Before 2.80, `n_keys` had to be not larger than 16.
+     * Since 2.84, performance is improved for larger number of keys.
      * @param datalist a datalist
      * @param keys keys to remove
      */
@@ -5478,7 +5542,7 @@ export namespace GLib {
     function date_is_leap_year(year: DateYear): boolean;
     /**
      * Generates a printed representation of the date, in a
-     * [locale][setlocale]-specific way.
+     * [locale](running.html#locale)-specific way.
      * Works just like the platform's C library strftime() function,
      * but only accepts date-related formats; time-related formats
      * give undefined results. Date must be valid. Unlike strftime()
@@ -5494,7 +5558,7 @@ export namespace GLib {
      * @param slen buffer size
      * @param format format string
      * @param date valid #GDate
-     * @returns number of characters written to the buffer, or 0 the buffer was too small
+     * @returns number of characters written to the buffer, or `0` if the buffer was too small
      */
     function date_strftime(s: string, slen: number, format: string, date: Date): number;
     /**
@@ -6080,7 +6144,7 @@ export namespace GLib {
      * Converts a string from UTF-8 to the encoding GLib uses for
      * filenames. Note that on Windows GLib uses UTF-8 for filenames;
      * on other platforms, this function indirectly depends on the
-     * [current locale][setlocale].
+     * [current locale](running.html#locale).
      *
      * The input string shall not contain nul characters even if the `len`
      * argument is positive. A nul character found inside the string will result
@@ -6104,7 +6168,7 @@ export namespace GLib {
      * Converts a string which is in the encoding used by GLib for
      * filenames into a UTF-8 string. Note that on Windows GLib uses UTF-8
      * for filenames; on other platforms, this function indirectly depends on
-     * the [current locale][setlocale].
+     * the [current locale](running.html#locale).
      *
      * The input string shall not contain nul characters even if the `len`
      * argument is positive. A nul character found inside the string will result
@@ -6273,8 +6337,8 @@ export namespace GLib {
      */
     function get_application_name(): string | null;
     /**
-     * Obtains the character set for the [current locale][setlocale]; you
-     * might use this character set as an argument to g_convert(), to convert
+     * Obtains the character set for the [current locale](running.html#locale);
+     * you might use this character set as an argument to g_convert(), to convert
      * from the current locale's encoding to some other encoding. (Frequently
      * g_locale_to_utf8() and g_locale_from_utf8() are nice shortcuts, though.)
      *
@@ -6370,8 +6434,8 @@ export namespace GLib {
      * and said environment variables have no effect.
      *
      * `G_FILENAME_ENCODING` may be set to a comma-separated list of
-     * character set names. The special token "\`locale"` is taken
-     * to  mean the character set for the [current locale][setlocale].
+     * character set names. The special token ``locale`` is taken to mean the
+     * character set for the [current locale](running.html#locale).
      * If `G_FILENAME_ENCODING` is not set, but `G_BROKEN_FILENAMES` is,
      * the character set of the current locale is taken as the filename
      * encoding. If neither environment variable  is set, UTF-8 is taken
@@ -7307,8 +7371,8 @@ export namespace GLib {
     /**
      * Converts a string from UTF-8 to the encoding used for strings by
      * the C runtime (usually the same as that used by the operating
-     * system) in the [current locale][setlocale]. On Windows this means
-     * the system codepage.
+     * system) in the [current locale](running.html#locale).
+     * On Windows this means the system codepage.
      *
      * The input string shall not contain nul characters even if the `len`
      * argument is positive. A nul character found inside the string will result
@@ -7322,7 +7386,7 @@ export namespace GLib {
     /**
      * Converts a string which is in the encoding used for strings by
      * the C runtime (usually the same as that used by the operating
-     * system) in the [current locale][setlocale] into a UTF-8 string.
+     * system) in the [current locale](running.html#locale) into a UTF-8 string.
      *
      * If the source encoding is not UTF-8 and the conversion output contains a
      * nul character, the error %G_CONVERT_ERROR_EMBEDDED_NUL is set and the
@@ -7355,6 +7419,9 @@ export namespace GLib {
      *     which debug and informational messages are printed. By default
      *     these messages are not printed. If you need to set the allowed
      *     domains at runtime, use [func`GLib`.log_writer_default_set_debug_domains].
+     *   - `DEBUG_INVOCATION`: If set to `1`, this is equivalent to
+     *     `G_MESSAGES_DEBUG=all`. `DEBUG_INVOCATION` is a standard environment
+     *     variable set by systemd to prompt debug output. (Since: 2.84)
      *
      * `stderr` is used for levels [flags`GLib`.LogLevelFlags.LEVEL_ERROR],
      * [flags`GLib`.LogLevelFlags.LEVEL_CRITICAL], [flags`GLib`.LogLevelFlags.LEVEL_WARNING] and
@@ -7383,7 +7450,8 @@ export namespace GLib {
      * implementations.
      *
      * Note also that the value of this does not depend on `G_MESSAGES_DEBUG`, nor
-     * [func`GLib`.log_writer_default_set_debug_domains]; see the docs for [func`GLib`.log_set_debug_enabled].
+     * `DEBUG_INVOCATION`, nor [func`GLib`.log_writer_default_set_debug_domains]; see
+     * the docs for [func`GLib`.log_set_debug_enabled].
      * @returns `TRUE` if debug output is enabled, `FALSE` otherwise
      */
     function log_get_debug_enabled(): boolean;
@@ -7421,7 +7489,7 @@ export namespace GLib {
     /**
      * Enable or disable debug output from the GLib logging system for all domains.
      *
-     * This value interacts disjunctively with `G_MESSAGES_DEBUG` and
+     * This value interacts disjunctively with `G_MESSAGES_DEBUG`, `DEBUG_INVOCATION` and
      * [func`GLib`.log_writer_default_set_debug_domains] — if any of them would allow
      * a debug message to be outputted, it will be.
      *
@@ -7455,7 +7523,10 @@ export namespace GLib {
      *
      * This has no effect if structured logging is enabled; see
      * [Using Structured Logging](logging.html#using-structured-logging).
-     * @param log_domain the log domain, or `NULL` for the default `""`   application domain
+     *
+     * The `log_domain` parameter can be set to `NULL` or an empty string to use the default
+     * application domain.
+     * @param log_domain the log domain   application domain
      * @param log_levels the log levels to apply the log handler for.   To handle fatal and recursive messages as well, combine   the log levels with the [flags@GLib.LogLevelFlags.FLAG_FATAL] and   [flags@GLib.LogLevelFlags.FLAG_RECURSION] bit flags.
      * @param log_func the log handler function
      * @returns the ID of the new handler
@@ -7530,7 +7601,8 @@ export namespace GLib {
      *
      * As with [func`GLib`.log_default_handler], this function drops debug and informational
      * messages unless their log domain (or `all`) is listed in the space-separated
-     * `G_MESSAGES_DEBUG` environment variable, or set at runtime by [func`GLib`.log_writer_default_set_debug_domains].
+     * `G_MESSAGES_DEBUG` environment variable, or `DEBUG_INVOCATION=1` is set in
+     * the environment, or set at runtime by [func`GLib`.log_writer_default_set_debug_domains].
      *
      * [func`GLib`.log_writer_default] uses the mask set by [func`GLib`.log_set_always_fatal] to
      * determine which messages are fatal. When using a custom writer function instead it is
@@ -7547,7 +7619,7 @@ export namespace GLib {
     ): LogWriterOutput;
     /**
      * Reset the list of domains to be logged, that might be initially set by the
-     * `G_MESSAGES_DEBUG` environment variable.
+     * `G_MESSAGES_DEBUG` or `DEBUG_INVOCATION` environment variables.
      *
      * This function is thread-safe.
      * @param domains `NULL`-terminated array with domains to be printed.   `NULL` or an array with no values means none. Array with a single value `"all"` means all.
@@ -7578,7 +7650,8 @@ export namespace GLib {
      *
      * As with [func`GLib`.log_default_handler], this function drops debug and informational
      * messages unless their log domain (or `all`) is listed in the space-separated
-     * `G_MESSAGES_DEBUG` environment variable, or by [func`GLib`.log_writer_default_set_debug_domains].
+     * `G_MESSAGES_DEBUG` environment variable, or `DEBUG_INVOCATION=1` is set in
+     * the environment, or by [func`GLib`.log_writer_default_set_debug_domains].
      *
      * This can be used when implementing log writers with the same filtering
      * behaviour as the default, but a different destination or output format:
@@ -7590,7 +7663,7 @@ export namespace GLib {
      *
      *
      * or to skip an expensive computation if it is only needed for a debugging
-     * message, and `G_MESSAGES_DEBUG` is not set:
+     * message, and `G_MESSAGES_DEBUG` and `DEBUG_INVOCATION` are not set:
      *
      * ```c
      * if (!g_log_writer_default_would_drop (G_LOG_LEVEL_DEBUG, G_LOG_DOMAIN))
@@ -8079,9 +8152,9 @@ export namespace GLib {
      * exception, which will crash the program. If the `G_DEBUGGER` environment
      * variable is set, a debugger will be invoked to attach and
      * handle that exception (see [Running GLib Applications](glib-running.html)).
-     * @param prg_name the program name, needed by gdb for the "[S]tack trace"     option
+     * @param prg_name the program name, needed by gdb for the   "[S]tack trace" option, or `NULL` to use a default string
      */
-    function on_error_stack_trace(prg_name: string): void;
+    function on_error_stack_trace(prg_name?: string | null): void;
     /**
      * Function to be called when starting a critical initialization
      * section. The argument `location` must point to a static
@@ -8147,7 +8220,7 @@ export namespace GLib {
      * While `location` has a `volatile` qualifier, this is a historical artifact and
      * the pointer passed to it should not be `volatile`.
      * @param location location of a static initializable variable    containing 0
-     * @param result new non-0 value for *@value_location
+     * @param result new non-0 value for `*value_location`
      */
     function once_init_leave(location: any, result: number): any;
     /**
@@ -8399,14 +8472,14 @@ export namespace GLib {
      */
     function poll(fds: PollFD, nfds: number, timeout: number): number;
     /**
-     * Prefixes `prefix` to an existing error message. If `err` or *`err` is
+     * Prefixes `prefix` to an existing error message. If `err` or `*err` is
      * %NULL (i.e.: no error variable) then do nothing.
      * @param err a return location for a #GError, or %NULL
      * @param prefix string to prefix @err with
      */
     function prefix_error_literal(err: (Error | null) | null, prefix: string): (Error | null) | null;
     /**
-     * If `dest` is %NULL, free `src;` otherwise, moves `src` into *`dest`.
+     * If `dest` is %NULL, free `src;` otherwise, moves `src` into `*dest`.
      * The error variable `dest` points to must be %NULL.
      *
      * `src` must be non-%NULL.
@@ -8639,6 +8712,18 @@ export namespace GLib {
      * @returns the given string, with its reference count increased
      */
     function ref_string_acquire(str: string): string;
+    /**
+     * Compares two ref-counted strings for byte-by-byte equality.
+     *
+     * It can be passed to [func`GLib`.HashTable.new] as the key equality function,
+     * and behaves exactly the same as [func`GLib`.str_equal] (or `strcmp()`), but
+     * can return slightly faster as it can check the string lengths before checking
+     * all the bytes.
+     * @param str1 a reference counted string
+     * @param str2 a reference counted string
+     * @returns `TRUE` if the strings are equal, otherwise `FALSE`
+     */
+    function ref_string_equal(str1: string, str2: string): boolean;
     /**
      * Retrieves the length of `str`.
      * @param str a reference counted string
@@ -8971,8 +9056,8 @@ export namespace GLib {
      */
     function set_application_name(application_name: string): void;
     /**
-     * Does nothing if `err` is %NULL; if `err` is non-%NULL, then *`err`
-     * must be %NULL. A new #GError is created and assigned to *`err`.
+     * Does nothing if `err` is %NULL; if `err` is non-%NULL, then `*err`
+     * must be %NULL. A new #GError is created and assigned to `*err`.
      * Unlike g_set_error(), `message` is not a printf()-style format string.
      * Use this function if `message` contains text you don't have control over,
      * that could include printf() escape sequences.
@@ -9135,7 +9220,7 @@ export namespace GLib {
      * The memory must have been allocated via g_slice_alloc() or
      * g_slice_alloc0() and the `block_size` has to match the size
      * specified upon allocation. Note that the exact release behaviour
-     * can be changed with the [`G_DEBUG=gc-friendly`][G_DEBUG] environment
+     * can be changed with the [`G_DEBUG=gc-friendly`](running.html#environment-variables) environment
      * variable.
      *
      * If `mem_block` is %NULL, this function does nothing.
@@ -9154,7 +9239,7 @@ export namespace GLib {
      * `next` pointer (similar to #GSList). The offset of the `next`
      * field in each block is passed as third argument.
      * Note that the exact release behaviour can be changed with the
-     * [`G_DEBUG=gc-friendly`][G_DEBUG] environment variable.
+     * [`G_DEBUG=gc-friendly`](running.html#environment-variables) environment variable.
      *
      * If `mem_chain` is %NULL, this function does nothing.
      *
@@ -9914,12 +9999,13 @@ export namespace GLib {
      */
     function strchug(string: string): string;
     /**
-     * Compares `str1` and `str2` like strcmp(). Handles %NULL
-     * gracefully by sorting it before non-%NULL strings.
-     * Comparing two %NULL pointers returns 0.
-     * @param str1 a C string or %NULL
-     * @param str2 another C string or %NULL
-     * @returns an integer less than, equal to, or greater than zero, if @str1 is <, == or > than @str2.
+     * Compares `str1` and `str2` like `strcmp()`.
+     *
+     * Handles `NULL` gracefully by sorting it before non-`NULL` strings.
+     * Comparing two `NULL` pointers returns 0.
+     * @param str1 a string
+     * @param str2 another string
+     * @returns an integer less than, equal to, or greater than zero,   if @str1 is <, == or > than @str2
      */
     function strcmp0(str1?: string | null, str2?: string | null): number;
     /**
@@ -10016,14 +10102,14 @@ export namespace GLib {
      * It replaces the following special characters in the string `source`
      * with their corresponding C escape sequence:
      *
-     *  Symbol | Escape
-     * ---|---
-     *  [U+0008 Backspace](https://en.wikipedia.org/wiki/Backspace) | `\b`
-     *  [U+000C Form Feed](https://en.wikipedia.org/wiki/Form_feed) | `\f`
-     *  [U+000A Line Feed](https://en.wikipedia.org/wiki/Newline) | `\n`
-     *  [U+000D Carriage Return](https://en.wikipedia.org/wiki/Carriage_return) | `\r`
-     *  [U+0009 Horizontal Tabulation](https://en.wikipedia.org/wiki/Tab_character) | `\t`
-     *  [U+000B Vertical Tabulation](https://en.wikipedia.org/wiki/Vertical_Tab) | `\v`
+     * | Symbol                                                                      | Escape |
+     * |-----------------------------------------------------------------------------|--------|
+     * | [U+0008 Backspace](https://en.wikipedia.org/wiki/Backspace)                 | `\b`   |
+     * | [U+000C Form Feed](https://en.wikipedia.org/wiki/Form_feed)                 | `\f`   |
+     * | [U+000A Line Feed](https://en.wikipedia.org/wiki/Newline)                   | `\n`   |
+     * | [U+000D Carriage Return](https://en.wikipedia.org/wiki/Carriage_return)     | `\r`   |
+     * | [U+0009 Horizontal Tabulation](https://en.wikipedia.org/wiki/Tab_character) | `\t`   |
+     * | [U+000B Vertical Tabulation](https://en.wikipedia.org/wiki/Vertical_Tab)    | `\v`   |
      *
      * It also inserts a backslash (`\`) before any backslash or a double quote (`"`).
      * Additionally all characters in the range 0x01-0x1F (everything
@@ -10283,10 +10369,6 @@ export namespace GLib {
      * of order, sort the arrays first (using [func`GLib`.qsort_with_data]
      * or similar).
      *
-     * Elements are compared using [func`GLib`.str_equal]. To match independently
-     * of order, sort the arrays first (using [func`GLib`.qsort_with_data]
-     * or similar).
-     *
      * Two empty arrays are considered equal. Neither `strv1` nor `strv2` may be
      * `NULL`.
      * @param strv1 an array of strings to compare to @strv2
@@ -10302,69 +10384,76 @@ export namespace GLib {
      */
     function strv_length(str_array: string[]): number;
     /**
-     * Create a new test case, similar to g_test_create_case(). However
-     * the test is assumed to use no fixture, and test suites are automatically
-     * created on the fly and added to the root fixture, based on the
-     * slash-separated portions of `testpath`. The `test_data` argument
-     * will be passed as first argument to `test_func`.
+     * Creates a new test case.
+     *
+     * This function is similar to [func`GLib`.test_create_case].
+     * However the test is assumed to use no fixture, and test suites are
+     * automatically created on the fly and added to the root fixture,
+     * based on the /-separated portions of `testpath`. The `test_data`
+     * argument will be passed as first argument to `test_func`.
      *
      * If `testpath` includes the component "subprocess" anywhere in it,
      * the test will be skipped by default, and only run if explicitly
-     * required via the `-p` command-line option or g_test_trap_subprocess().
+     * required via the `-p` command-line option or [func`GLib`.test_trap_subprocess].
      *
      * No component of `testpath` may start with a dot (`.`) if the
-     * %G_TEST_OPTION_ISOLATE_DIRS option is being used; and it is recommended to
-     * do so even if it isn’t.
-     * @param testpath /-separated test case path name for the test.
-     * @param test_data Test data argument for the test function.
-     * @param test_func The test function to invoke for this test.
+     * [const`GLib`.TEST_OPTION_ISOLATE_DIRS] option is being used;
+     * and it is recommended to do so even if it isn’t.
+     * @param testpath a /-separated name for the test
+     * @param test_data data for the @test_func
+     * @param test_func the test function to invoke for this test
      */
     function test_add_data_func(testpath: string, test_data: any | null, test_func: TestDataFunc): void;
     /**
-     * Create a new test case, as with g_test_add_data_func(), but freeing
-     * `test_data` after the test run is complete.
-     * @param testpath /-separated test case path name for the test.
-     * @param test_data Test data argument for the test function.
-     * @param test_func The test function to invoke for this test.
+     * Creates a new test case.
+     *
+     * In constract to [func`GLib`.test_add_data_func], this function
+     * is freeing `test_data` after the test run is complete.
+     * @param testpath a /-separated name for the test
+     * @param test_data data for @test_func
+     * @param test_func the test function to invoke for this test
      */
     function test_add_data_func_full(testpath: string, test_data: any | null, test_func: TestDataFunc): void;
     /**
-     * Create a new test case, similar to g_test_create_case(). However
-     * the test is assumed to use no fixture, and test suites are automatically
-     * created on the fly and added to the root fixture, based on the
-     * slash-separated portions of `testpath`.
+     * Creates a new test case.
+     *
+     * This function is similar to [func`GLib`.test_create_case].
+     * However the test is assumed to use no fixture, and test suites are
+     * automatically created on the fly and added to the root fixture,
+     * based on the /-separated portions of `testpath`.
      *
      * If `testpath` includes the component "subprocess" anywhere in it,
      * the test will be skipped by default, and only run if explicitly
-     * required via the `-p` command-line option or g_test_trap_subprocess().
+     * required via the `-p` command-line option or [func`GLib`.test_trap_subprocess].
      *
      * No component of `testpath` may start with a dot (`.`) if the
-     * %G_TEST_OPTION_ISOLATE_DIRS option is being used; and it is recommended to
-     * do so even if it isn’t.
-     * @param testpath /-separated test case path name for the test.
-     * @param test_func The test function to invoke for this test.
+     * [const`GLib`.TEST_OPTION_ISOLATE_DIRS] option is being used; and
+     * it is recommended to do so even if it isn’t.
+     * @param testpath a /-separated name for the test
+     * @param test_func the test function to invoke for this test
      */
     function test_add_func(testpath: string, test_func: TestFunc): void;
     function test_assert_expected_messages_internal(domain: string, file: string, line: number, func: string): void;
     /**
-     * This function adds a message to test reports that
-     * associates a bug URI with a test case.
+     * Adds a message to test reports that associates a bug URI with a test case.
      *
-     * Bug URIs are constructed from a base URI set with g_test_bug_base()
-     * and `bug_uri_snippet`. If g_test_bug_base() has not been called, it is
+     * Bug URIs are constructed from a base URI set with [func`GLib`.test_bug_base]
+     * and `bug_uri_snippet`. If [func`GLib`.test_bug_base] has not been called, it is
      * assumed to be the empty string, so a full URI can be provided to
-     * g_test_bug() instead.
+     * [func`GLib`.test_bug] instead.
      *
-     * Since GLib 2.70, the base URI is not prepended to `bug_uri_snippet` if it
-     * is already a valid URI.
+     * See also [func`GLib`.test_summary].
+     *
+     * Since GLib 2.70, the base URI is not prepended to `bug_uri_snippet`
+     * if it is already a valid URI.
      * @param bug_uri_snippet Bug specific bug tracker URI or URI portion.
      */
     function test_bug(bug_uri_snippet: string): void;
     /**
-     * Specify the base URI for bug reports.
+     * Specifies the base URI for bug reports.
      *
      * The base URI is used to construct bug report messages for
-     * g_test_message() when g_test_bug() is called.
+     * [func`GLib`.test_message] when [func`GLib`.test_bug] is called.
      * Calling this function outside of a test case sets the
      * default base URI for all test cases. Calling it from within
      * a test case changes the base URI for the scope of the test
@@ -10373,13 +10462,13 @@ export namespace GLib {
      * portion to `uri_pattern,` or by replacing the special string
      * `%s` within `uri_pattern` if that is present.
      *
-     * If g_test_bug_base() is not called, bug URIs are formed solely
-     * from the value provided by g_test_bug().
+     * If [func`GLib`.test_bug_base] is not called, bug URIs are formed
+     * solely from the value provided by [func`GLib`.test_bug].
      * @param uri_pattern the base pattern for bug URIs
      */
     function test_bug_base(uri_pattern: string): void;
     /**
-     * Attempt to disable system crash reporting infrastructure.
+     * Attempts to disable system crash reporting infrastructure.
      *
      * This function should be called before exercising code paths that are
      * expected or intended to crash, to avoid wasting resources in system-wide
@@ -10428,9 +10517,10 @@ export namespace GLib {
      */
     function test_expect_message(log_domain: string | null, log_level: LogLevelFlags | null, pattern: string): void;
     /**
-     * Indicates that a test failed. This function can be called
-     * multiple times from the same test. You can use this function
-     * if your test failed in a recoverable way.
+     * Indicates that a test failed.
+     *
+     * This function can be called multiple times from the same test.
+     * You can use this function if your test failed in a recoverable way.
      *
      * Do not use this function if the failure of a test could cause
      * other tests to malfunction.
@@ -10442,32 +10532,33 @@ export namespace GLib {
      *
      * If not called from inside a test, this function does nothing.
      *
-     * Note that unlike g_test_skip() and g_test_incomplete(), this
-     * function does not log a message alongside the test failure.
+     * Note that unlike [func`GLib`.test_skip] and [func`GLib`.test_incomplete],
+     * this function does not log a message alongside the test failure.
      * If details of the test failure are available, either log them with
-     * g_test_message() before g_test_fail(), or use g_test_fail_printf()
-     * instead.
+     * [func`GLib`.test_message] before [func`GLib`.test_fail], or use
+     * [func`GLib`.test_fail_printf] instead.
      */
     function test_fail(): void;
     /**
-     * Returns whether a test has already failed. This will
-     * be the case when g_test_fail(), g_test_incomplete()
-     * or g_test_skip() have been called, but also if an
-     * assertion has failed.
+     * Returns whether a test has already failed.
+     *
+     * This will be the case when [func`GLib`.test_fail],
+     * [func`GLib`.test_incomplete] or [func`GLib`.test_skip] have
+     * been called, but also if an assertion has failed.
      *
      * This can be useful to return early from a test if
      * continuing after a failed assertion might be harmful.
      *
      * The return value of this function is only meaningful
      * if it is called from inside a test function.
-     * @returns %TRUE if the test has failed
+     * @returns true if the test has failed
      */
     function test_failed(): boolean;
     /**
      * Gets the pathname of the directory containing test files of the type
      * specified by `file_type`.
      *
-     * This is approximately the same as calling g_test_build_filename("."),
+     * This is approximately the same as calling `g_test_build_filename(".")`,
      * but you don't need to free the return value.
      * @param file_type the type of file (built vs. distributed)
      * @returns the path of the directory, owned by GLib
@@ -10476,8 +10567,8 @@ export namespace GLib {
     /**
      * Gets the test path for the test currently being run.
      *
-     * In essence, it will be the same string passed as the first argument to
-     * e.g. g_test_add() when the test was added.
+     * In essence, it will be the same string passed as the first argument
+     * to e.g. [func`GLib`.test_add] when the test was added.
      *
      * This function returns a valid string only within a test function.
      *
@@ -10487,8 +10578,9 @@ export namespace GLib {
     function test_get_path(): string;
     /**
      * Indicates that a test failed because of some incomplete
-     * functionality. This function can be called multiple times
-     * from the same test.
+     * functionality.
+     *
+     * This function can be called multiple times from the same test.
      *
      * Calling this function will not stop the test from running, you
      * need to return from the test function yourself. So you can
@@ -10504,36 +10596,40 @@ export namespace GLib {
      * Enqueues a callback `destroy_func` to be executed during the next test case
      * teardown phase.
      *
-     * This is most useful to auto destroy allocated test resources at the end of a
-     * test run. Resources are released in reverse queue order, that means
+     * This is most useful to auto destroy allocated test resources at the end
+     * of a test run. Resources are released in reverse queue order, that means
      * enqueueing callback `A` before callback `B` will cause `B()` to be called
      * before `A()` during teardown.
-     * @param destroy_data Destroy callback data.
+     * @param destroy_data destroy callback data
      */
     function test_queue_destroy(destroy_data?: any | null): void;
     /**
-     * Enqueue a pointer to be released with g_free() during the next
-     * teardown phase. This is equivalent to calling g_test_queue_destroy()
-     * with a destroy callback of g_free().
-     * @param gfree_pointer the pointer to be stored.
+     * Enqueues a pointer to be released with [func`GLib`.free]
+     * during the next teardown phase.
+     *
+     * This is equivalent to calling [func`GLib`.test_queue_destroy]
+     * with a destroy callback of [func`GLib`.free].
+     * @param gfree_pointer the pointer to be stored
      */
     function test_queue_free(gfree_pointer?: any | null): void;
     /**
-     * Get a reproducible random floating point number,
-     * see g_test_rand_int() for details on test case random numbers.
-     * @returns a random number from the seeded random number generator.
+     * Gets a reproducible random floating point number.
+     *
+     * See [func`GLib`.test_rand_int] for details on test case random numbers.
+     * @returns a random number from the seeded random number generator
      */
     function test_rand_double(): number;
     /**
-     * Get a reproducible random floating pointer number out of a specified range,
-     * see g_test_rand_int() for details on test case random numbers.
+     * Gets a reproducible random floating point number out of a specified range.
+     *
+     * See [func`GLib`.test_rand_int] for details on test case random numbers.
      * @param range_start the minimum value returned by this function
      * @param range_end the minimum value not returned by this function
-     * @returns a number with @range_start <= number < @range_end.
+     * @returns a number with @range_start <= number < @range_end
      */
     function test_rand_double_range(range_start: number, range_end: number): number;
     /**
-     * Get a reproducible random integer number.
+     * Gets a reproducible random integer number.
      *
      * The random numbers generated by the g_test_rand_*() family of functions
      * change with every new test program start, unless the --seed option is
@@ -10542,24 +10638,27 @@ export namespace GLib {
      * For individual test cases however, the random number generator is
      * reseeded, to avoid dependencies between tests and to make --seed
      * effective for all test cases.
-     * @returns a random number from the seeded random number generator.
+     * @returns a random number from the seeded random number generator
      */
     function test_rand_int(): number;
     /**
-     * Get a reproducible random integer number out of a specified range,
-     * see g_test_rand_int() for details on test case random numbers.
+     * Gets a reproducible random integer number out of a specified range.
+     *
+     * See [func`GLib`.test_rand_int] for details on test case random numbers.
      * @param begin the minimum value returned by this function
      * @param end the smallest value not to be returned by this function
-     * @returns a number with @begin <= number < @end.
+     * @returns a number with @begin <= number < @end
      */
     function test_rand_int_range(begin: number, end: number): number;
     /**
-     * Runs all tests under the toplevel suite which can be retrieved
-     * with g_test_get_root(). Similar to g_test_run_suite(), the test
-     * cases to be run are filtered according to test path arguments
-     * (`-p testpath` and `-s testpath`) as parsed by g_test_init().
-     * g_test_run_suite() or g_test_run() may only be called once in a
-     * program.
+     * Runs all tests under the toplevel suite.
+     *
+     * The toplevel suite can be retrieved with [func`GLib`.test_get_root].
+     *
+     * Similar to [func`GLib`.test_run_suite], the test cases to be run are
+     * filtered according to test path arguments (`-p testpath` and `-s testpath`)
+     * as parsed by [func`GLib`.test_init]. [func`GLib`.test_run_suite] or
+     * [func`GLib`.test_run] may only be called once in a program.
      *
      * In general, the tests and sub-suites within each suite are run in
      * the order in which they are defined. However, note that prior to
@@ -10567,7 +10666,7 @@ export namespace GLib {
      * functions which caused them to create multiple suites with the same
      * name, meaning that if you created tests "/foo/simple",
      * "/bar/simple", and "/foo/using-bar" in that order, they would get
-     * run in that order (since g_test_run() would run the first "/foo"
+     * run in that order (since [func`GLib`.test_run] would run the first "/foo"
      * suite, then the "/bar" suite, then the second "/foo" suite). As of
      * 2.36, this bug is fixed, and adding the tests in that order would
      * result in a running order of "/foo/simple", "/foo/using-bar",
@@ -10581,39 +10680,44 @@ export namespace GLib {
      * However, you should never make the actual result of a test depend
      * on the order that tests are run in. If you need to ensure that some
      * particular code runs before or after a given test case, use
-     * g_test_add(), which lets you specify setup and teardown functions.
+     * [func`GLib`.test_add], which lets you specify setup and teardown functions.
      *
      * If all tests are skipped or marked as incomplete (expected failures),
      * this function will return 0 if producing TAP output, or 77 (treated
      * as "skip test" by Automake) otherwise.
-     * @returns 0 on success, 1 on failure (assuming it returns at all),   0 or 77 if all tests were skipped with g_test_skip() and/or   g_test_incomplete()
+     * @returns 0 on success, 1 on failure (assuming it returns at all),   0 or 77 if all tests were skipped or marked as incomplete
      */
     function test_run(): number;
     /**
-     * Execute the tests within `suite` and all nested #GTestSuites.
+     * Executes the tests within `suite` and all nested test suites.
+     *
      * The test suites to be executed are filtered according to
      * test path arguments (`-p testpath` and `-s testpath`) as parsed by
-     * g_test_init(). See the g_test_run() documentation for more
-     * information on the order that tests are run in.
+     * [func`GLib`.test_init]. See the [func`GLib`.test_run] documentation
+     * for more information on the order that tests are run in.
      *
-     * g_test_run_suite() or g_test_run() may only be called once
-     * in a program.
-     * @param suite a #GTestSuite
+     * [func`GLib`.test_run_suite] or [func`GLib`.test_run] may only be
+     * called once in a program.
+     * @param suite a test suite
      * @returns 0 on success
      */
     function test_run_suite(suite: TestSuite): number;
     /**
-     * Changes the behaviour of the various `g_assert_*()` macros,
-     * g_test_assert_expected_messages() and the various
-     * `g_test_trap_assert_*()` macros to not abort to program, but instead
-     * call g_test_fail() and continue. (This also changes the behavior of
-     * g_test_fail() so that it will not cause the test program to abort
-     * after completing the failed test.)
+     * Changes the behaviour of the various assertion macros.
      *
-     * Note that the g_assert_not_reached() and g_assert() macros are not
-     * affected by this.
+     * The `g_assert_*()` macros, `g_test_assert_expected_messages()`
+     * and the various `g_test_trap_assert_*()` macros are changed
+     * to not abort to program.
      *
-     * This function can only be called after g_test_init().
+     * Instead, they will call [func`GLib`.test_fail] and continue.
+     * (This also changes the behavior of [func`GLib`.test_fail] so that
+     * it will not cause the test program to abort after completing
+     * the failed test.)
+     *
+     * Note that the [func`GLib`.assert_not_reached] and [func`GLib`.assert]
+     * macros are not affected by this.
+     *
+     * This function can only be called after [func`GLib`.test_init].
      */
     function test_set_nonfatal_assertions(): void;
     /**
@@ -10629,16 +10733,16 @@ export namespace GLib {
      */
     function test_skip(msg?: string | null): void;
     /**
-     * Returns %TRUE (after g_test_init() has been called) if the test
-     * program is running under g_test_trap_subprocess().
-     * @returns %TRUE if the test program is running under g_test_trap_subprocess().
+     * Returns true if the test program is running under [func`GLib`.test_trap_subprocess].
+     * @returns true if the test program is running under [func@GLib.test_trap_subprocess]
      */
     function test_subprocess(): boolean;
     /**
-     * Set the summary for a test, which describes what the test checks, and how it
-     * goes about checking it. This may be included in test report output, and is
-     * useful documentation for anyone reading the source code or modifying a test
-     * in future. It must be a single line.
+     * Sets the summary for a test.
+     *
+     * This may be included in test report output, and is useful documentation for
+     * anyone reading the source code or modifying a test in future. It must be a
+     * single line, and it should summarise what the test checks, and how.
      *
      * This should be called at the top of a test function.
      *
@@ -10651,26 +10755,29 @@ export namespace GLib {
      *   g_test_summary ("Test my_array_sort() sorts the array correctly and stably, "
      *                   "including testing zero length and one-element arrays.");
      *
-     *   …
+     *   // ...
      * }
      * ```
      *
-     * @param summary One or two sentences summarising what the test checks, and how it    checks it.
+     * See also [func`GLib`.test_bug].
+     * @param summary summary of the test purpose
      */
     function test_summary(summary: string): void;
     /**
-     * Get the number of seconds since the last start of the timer with
-     * g_test_timer_start().
-     * @returns the time since the last start of the timer in seconds, as a double
+     * Gets the number of seconds since the last start of the timer with
+     * [func`GLib`.test_timer_start].
+     * @returns the time since the last start of the timer in seconds
      */
     function test_timer_elapsed(): number;
     /**
-     * Report the last result of g_test_timer_elapsed().
-     * @returns the last result of g_test_timer_elapsed(), as a double
+     * Reports the last result of [func`GLib`.test_timer_elapsed].
+     * @returns the last result of [func@GLib.test_timer_elapsed]
      */
     function test_timer_last(): number;
     /**
-     * Start a timing test. Call g_test_timer_elapsed() when the task is supposed
+     * Starts a timing test.
+     *
+     * Call [func`GLib`.test_timer_elapsed] when the task is supposed
      * to be done. Call this function again to restart the timer.
      */
     function test_timer_start(): void;
@@ -10683,19 +10790,19 @@ export namespace GLib {
         pattern: string,
     ): void;
     /**
-     * Fork the current test program to execute a test case that might
+     * Forks the current test program to execute a test case that might
      * not return or that might abort.
      *
      * If `usec_timeout` is non-0, the forked test case is aborted and
      * considered failing if its run time exceeds it.
      *
-     * The forking behavior can be configured with the #GTestTrapFlags flags.
+     * The forking behavior can be configured with [flags`GLib`.TestTrapFlags]
+     * flags.
      *
      * In the following example, the test code forks, the forked child
      * process produces some sample output and exits successfully.
      * The forking parent process then asserts successful child program
      * termination and validates child program outputs.
-     *
      *
      * ```c
      *   static void
@@ -10703,8 +10810,10 @@ export namespace GLib {
      *   {
      *     if (g_test_trap_fork (0, G_TEST_TRAP_SILENCE_STDOUT | G_TEST_TRAP_SILENCE_STDERR))
      *       {
-     *         g_print ("some stdout text: somagic17\n");
-     *         g_printerr ("some stderr text: semagic43\n");
+     *         g_print ("some stdout text: somagic17
+     * ");
+     *         g_printerr ("some stderr text: semagic43
+     * ");
      *         exit (0); // successful test run
      *       }
      *     g_test_trap_assert_passed ();
@@ -10712,30 +10821,30 @@ export namespace GLib {
      *     g_test_trap_assert_stderr ("*semagic43*");
      *   }
      * ```
-     *
-     * @param usec_timeout Timeout for the forked test in micro seconds.
-     * @param test_trap_flags Flags to modify forking behaviour.
-     * @returns %TRUE for the forked child and %FALSE for the executing parent process.
+     * @param usec_timeout timeout for the forked test in microseconds
+     * @param test_trap_flags flags to modify forking behaviour
+     * @returns true for the forked child and false for the executing parent process.
      */
     function test_trap_fork(usec_timeout: number, test_trap_flags: TestTrapFlags | null): boolean;
     /**
-     * Check the result of the last g_test_trap_subprocess() call.
-     * @returns %TRUE if the last test subprocess terminated successfully.
+     * Checks the result of the last [func`GLib`.test_trap_subprocess] call.
+     * @returns true if the last test subprocess terminated successfully
      */
     function test_trap_has_passed(): boolean;
     /**
-     * Check the result of the last g_test_trap_subprocess() call.
-     * @returns %TRUE if the last test subprocess got killed due to a timeout.
+     * Checks the result of the last [func`GLib`.test_trap_subprocess] call.
+     * @returns true if the last test subprocess got killed due to a timeout
      */
     function test_trap_reached_timeout(): boolean;
     /**
      * Respawns the test program to run only `test_path` in a subprocess.
      *
-     * This is equivalent to calling g_test_trap_subprocess_with_envp() with `envp`
-     * set to %NULL. See the documentation for that function for full details.
-     * @param test_path Test to run in a subprocess
-     * @param usec_timeout Timeout for the subprocess test in micro seconds.
-     * @param test_flags Flags to modify subprocess behaviour.
+     * This is equivalent to calling [func`GLib`.test_trap_subprocess_with_envp]
+     * with `envp` set to `NULL`. See the documentation for that function
+     * for full details.
+     * @param test_path test to run in a subprocess
+     * @param usec_timeout timeout for the subprocess test in microseconds.
+     * @param test_flags flags to modify subprocess behaviour
      */
     function test_trap_subprocess(
         test_path: string | null,
@@ -10743,15 +10852,15 @@ export namespace GLib {
         test_flags: TestSubprocessFlags | null,
     ): void;
     /**
-     * Respawns the test program to run only `test_path` in a subprocess with the
-     * given `envp` environment.
+     * Respawns the test program to run only `test_path` in a subprocess with
+     * a given environment.
      *
      * This can be used for a test case that might not return, or that
      * might abort.
      *
-     * If `test_path` is %NULL then the same test is re-run in a subprocess.
-     * You can use g_test_subprocess() to determine whether the test is in
-     * a subprocess or not.
+     * If `test_path` is `NULL` then the same test is re-run in a subprocess.
+     * You can use [func`GLib`.test_subprocess] to determine whether the test
+     * is in a subprocess or not.
      *
      * `test_path` can also be the name of the parent test, followed by
      * "`/subprocess/`" and then a name for the specific subtest (or just
@@ -10759,34 +10868,32 @@ export namespace GLib {
      * tests with names of this form will automatically be skipped in the
      * parent process.
      *
-     * If `envp` is %NULL, the parent process’ environment will be inherited.
+     * If `envp` is `NULL`, the parent process’ environment will be inherited.
      *
      * If `usec_timeout` is non-0, the test subprocess is aborted and
      * considered failing if its run time exceeds it.
      *
-     * The subprocess behavior can be configured with the
-     * #GTestSubprocessFlags flags.
+     * The subprocess behavior can be configured with [flags`GLib`.TestSubprocessFlags]
+     * flags.
      *
-     * You can use methods such as g_test_trap_assert_passed(),
-     * g_test_trap_assert_failed(), and g_test_trap_assert_stderr() to
+     * You can use methods such as [func`GLib`.test_trap_assert_passed],
+     * [func`GLib`.test_trap_assert_failed], and [func`GLib`.test_trap_assert_stderr] to
      * check the results of the subprocess. (But note that
-     * g_test_trap_assert_stdout() and g_test_trap_assert_stderr()
+     * [func`GLib`.test_trap_assert_stdout] and [func`GLib`.test_trap_assert_stderr]
      * cannot be used if `test_flags` specifies that the child should
      * inherit the parent stdout/stderr.)
      *
-     * If your `main ()` needs to behave differently in
-     * the subprocess, you can call g_test_subprocess() (after calling
-     * g_test_init()) to see whether you are in a subprocess.
+     * If your `main ()` needs to behave differently in the subprocess, you can
+     * call [func`GLib`.test_subprocess] (after calling [func`GLib`.test_init])
+     * to see whether you are in a subprocess.
      *
      * Internally, this function tracks the child process using
-     * g_child_watch_source_new(), so your process must not ignore `SIGCHLD`, and
-     * must not attempt to watch or wait for the child process via another
-     * mechanism.
+     * [func`GLib`.child_watch_source_new], so your process must not ignore
+     * `SIGCHLD`, and must not attempt to watch or wait for the child process
+     * via another mechanism.
      *
-     * The following example tests that calling
-     * `my_object_new(1000000)` will abort with an error
-     * message.
-     *
+     * The following example tests that calling `my_object_new(1000000)` will
+     * abort with an error message.
      *
      * ```c
      *   static void
@@ -10834,11 +10941,10 @@ export namespace GLib {
      *     return g_test_run ();
      *   }
      * ```
-     *
-     * @param test_path Test to run in a subprocess
-     * @param envp Environment   to run the test in, or %NULL to inherit the parent’s environment. This must   be in the GLib filename encoding.
-     * @param usec_timeout Timeout for the subprocess test in micro seconds.
-     * @param test_flags Flags to modify subprocess behaviour.
+     * @param test_path test to run in a subprocess
+     * @param envp environment   to run the test in
+     * @param usec_timeout timeout for the subprocess test in microseconds
+     * @param test_flags flags to modify subprocess behaviour
      */
     function test_trap_subprocess_with_envp(
         test_path: string | null,
@@ -10902,7 +11008,7 @@ export namespace GLib {
      * If `max_threads` is -1, no limit is imposed on the number
      * of unused threads.
      *
-     * The default value is 2.
+     * The default value is 8 since GLib 2.84. Previously the default value was 2.
      * @param max_threads maximal number of unused threads
      */
     function thread_pool_set_max_unused_threads(max_threads: number): void;
@@ -11155,17 +11261,20 @@ export namespace GLib {
      */
     function try_realloc_n(mem: any | null, n_blocks: number, n_block_bytes: number): any | null;
     /**
-     * Convert a string from UCS-4 to UTF-16. A 0 character will be
-     * added to the result after the converted text.
+     * Convert a string from UCS-4 to UTF-16.
+     *
+     * A nul character (U+0000) will be added to the result after the converted text.
      * @param str a UCS-4 encoded string
-     * @returns a pointer to a newly allocated UTF-16 string.     This value must be freed with g_free(). If an error occurs,     %NULL will be returned and @error set.
+     * @returns a pointer to a newly allocated UTF-16 string.   This value must be freed with [func@GLib.free].
      */
     function ucs4_to_utf16(str: number[]): [number, number, number];
     /**
      * Convert a string from a 32-bit fixed width representation as UCS-4.
-     * to UTF-8. The result will be terminated with a 0 byte.
+     * to UTF-8.
+     *
+     * The result will be terminated with a nul byte.
      * @param str a UCS-4 encoded string
-     * @returns a pointer to a newly allocated UTF-8 string.     This value must be freed with g_free(). If an error occurs,     %NULL will be returned and @error set. In that case, @items_read     will be set to the position of the first invalid input character.
+     * @returns a pointer to a newly allocated UTF-8 string.   This value must be freed with [func@GLib.free]. If an error occurs,   @items_read will be set to the position of the first invalid input   character.
      */
     function ucs4_to_utf8(str: number[]): [string, number, number];
     /**
@@ -11215,10 +11324,10 @@ export namespace GLib {
      * decompositions. It does, however, include algorithmic
      * Hangul Jamo decomposition, as well as 'singleton'
      * decompositions which replace a character by a single
-     * other character. In the case of singletons *`b` will
+     * other character. In the case of singletons `*b` will
      * be set to zero.
      *
-     * If `ch` is not decomposable, *`a` is set to `ch` and *`b`
+     * If `ch` is not decomposable, `*a` is set to `ch` and `*b`
      * is set to zero.
      *
      * Note that the way Unicode decomposition pairs are
@@ -11484,11 +11593,12 @@ export namespace GLib {
      */
     function unichar_type(c: number): UnicodeType;
     /**
-     * Checks whether `ch` is a valid Unicode character. Some possible
-     * integer values of `ch` will not be valid. 0 is considered a valid
-     * character, though it's normally a string terminator.
+     * Checks whether `ch` is a valid Unicode character.
+     *
+     * Some possible integer values of `ch` will not be valid. U+0000 is considered a
+     * valid character, though it’s normally a string terminator.
      * @param ch a Unicode character
-     * @returns %TRUE if @ch is a valid Unicode character
+     * @returns `TRUE` if @ch is a valid Unicode character
      */
     function unichar_validate(ch: number): boolean;
     /**
@@ -12088,28 +12198,30 @@ export namespace GLib {
      */
     function usleep(microseconds: number): void;
     /**
-     * Convert a string from UTF-16 to UCS-4. The result will be
-     * nul-terminated.
+     * Convert a string from UTF-16 to UCS-4.
+     *
+     * The result will be nul-terminated.
      * @param str a UTF-16 encoded string
-     * @returns a pointer to a newly allocated UCS-4 string.     This value must be freed with g_free(). If an error occurs,     %NULL will be returned and @error set.
+     * @returns a pointer to a newly allocated UCS-4 string.   This value must be freed with [func@GLib.free].
      */
     function utf16_to_ucs4(str: number[]): [number, number, number];
     /**
-     * Convert a string from UTF-16 to UTF-8. The result will be
-     * terminated with a 0 byte.
+     * Convert a string from UTF-16 to UTF-8.
+     *
+     * The result will be terminated with a nul byte.
      *
      * Note that the input is expected to be already in native endianness,
      * an initial byte-order-mark character is not handled specially.
-     * g_convert() can be used to convert a byte buffer of UTF-16 data of
+     * [func`GLib`.convert] can be used to convert a byte buffer of UTF-16 data of
      * ambiguous endianness.
      *
      * Further note that this function does not validate the result
-     * string; it may e.g. include embedded NUL characters. The only
+     * string; it may (for example) include embedded nul characters. The only
      * validation done by this function is to ensure that the input can
-     * be correctly interpreted as UTF-16, i.e. it doesn't contain
+     * be correctly interpreted as UTF-16, i.e. it doesn’t contain
      * unpaired surrogates or partial character sequences.
      * @param str a UTF-16 encoded string
-     * @returns a pointer to a newly allocated UTF-8 string.     This value must be freed with g_free(). If an error occurs,     %NULL will be returned and @error set.
+     * @returns a pointer to a newly allocated UTF-8 string.   This value must be freed with [func@GLib.free].
      */
     function utf16_to_utf8(str: number[]): [string, number, number];
     /**
@@ -12131,7 +12243,7 @@ export namespace GLib {
     function utf8_casefold(str: string, len: number): string;
     /**
      * Compares two strings for ordering using the linguistically
-     * correct rules for the [current locale][setlocale].
+     * correct rules for the [current locale](running.html#locale).
      * When sorting a large number of strings, it will be significantly
      * faster to obtain collation keys with g_utf8_collate_key() and
      * compare the keys with strcmp() when sorting instead of sorting
@@ -12154,10 +12266,14 @@ export namespace GLib {
      * with strcmp() will always be the same as comparing the two
      * original keys with g_utf8_collate().
      *
-     * Note that this function depends on the [current locale][setlocale].
+     * Note that this function depends on the [current locale](running.html#locale).
+     *
+     * Note that the returned string is not guaranteed to be in any
+     * encoding, especially UTF-8. The returned value is meant to be
+     * used only for comparisons.
      * @param str a UTF-8 encoded string.
      * @param len length of @str, in bytes, or -1 if @str is nul-terminated.
-     * @returns a newly allocated string. This string should   be freed with g_free() when you are done with it.
+     * @returns a newly allocated string.   The contents of the string are only meant to be used when sorting.   This string should be freed with g_free() when you are done with it.
      */
     function utf8_collate_key(str: string, len: number): string;
     /**
@@ -12171,10 +12287,14 @@ export namespace GLib {
      * would like to treat numbers intelligently so that "file1" "file10" "file5"
      * is sorted as "file1" "file5" "file10".
      *
-     * Note that this function depends on the [current locale][setlocale].
+     * Note that this function depends on the [current locale](running.html#locale).
+     *
+     * Note that the returned string is not guaranteed to be in any
+     * encoding, especially UTF-8. The returned value is meant to be
+     * used only for comparisons.
      * @param str a UTF-8 encoded string.
      * @param len length of @str, in bytes, or -1 if @str is nul-terminated.
-     * @returns a newly allocated string. This string should   be freed with g_free() when you are done with it.
+     * @returns a newly allocated string.   The contents of the string are only meant to be used when sorting.   This string should be freed with g_free() when you are done with it.
      */
     function utf8_collate_key_for_filename(str: string, len: number): string;
     /**
@@ -12184,18 +12304,18 @@ export namespace GLib {
      * is made to see if the character found is actually valid other than
      * it starts with an appropriate byte.
      *
-     * If `end` is %NULL, the return value will never be %NULL: if the end of the
+     * If `end` is `NULL`, the return value will never be `NULL`: if the end of the
      * string is reached, a pointer to the terminating nul byte is returned. If
-     * `end` is non-%NULL, the return value will be %NULL if the end of the string
+     * `end` is non-`NULL`, the return value will be `NULL` if the end of the string
      * is reached.
      * @param p a pointer to a position within a UTF-8 encoded string
-     * @param end a pointer to the byte following the end of the string,     or %NULL to indicate that the string is nul-terminated
-     * @returns a pointer to the found character or %NULL if @end is    set and is reached
+     * @param end a pointer to the byte following the end of the string,     or `NULL` to indicate that the string is nul-terminated
+     * @returns a pointer to the found character or `NULL` if @end is    set and is reached
      */
     function utf8_find_next_char(p: string, end?: string | null): string | null;
     /**
      * Given a position `p` with a UTF-8 encoded string `str,` find the start
-     * of the previous UTF-8 character starting before `p`. Returns %NULL if no
+     * of the previous UTF-8 character starting before `p`. Returns `NULL` if no
      * UTF-8 characters are present in `str` before `p`.
      *
      * `p` does not have to be at the beginning of a UTF-8 character. No check
@@ -12203,7 +12323,7 @@ export namespace GLib {
      * it starts with an appropriate byte.
      * @param str pointer to the beginning of a UTF-8 encoded string
      * @param p pointer to some position within @str
-     * @returns a pointer to the found character or %NULL.
+     * @returns a pointer to the found character
      */
     function utf8_find_prev_char(str: string, p: string): string | null;
     /**
@@ -12211,7 +12331,7 @@ export namespace GLib {
      *
      * If `p` does not point to a valid UTF-8 encoded character, results
      * are undefined. If you are not sure that the bytes are complete
-     * valid Unicode characters, you should use g_utf8_get_char_validated()
+     * valid Unicode characters, you should use [func`GLib`.utf8_get_char_validated]
      * instead.
      * @param p a pointer to Unicode character encoded as UTF-8
      * @returns the resulting character
@@ -12219,16 +12339,17 @@ export namespace GLib {
     function utf8_get_char(p: string): number;
     /**
      * Convert a sequence of bytes encoded as UTF-8 to a Unicode character.
+     *
      * This function checks for incomplete characters, for invalid characters
      * such as characters that are out of the range of Unicode, and for
      * overlong encodings of valid characters.
      *
-     * Note that g_utf8_get_char_validated() returns (gunichar)-2 if
+     * Note that [func`GLib`.utf8_get_char_validated] returns `(gunichar)-2` if
      * `max_len` is positive and any of the bytes in the first UTF-8 character
      * sequence are nul.
      * @param p a pointer to Unicode character encoded as UTF-8
-     * @param max_len the maximum number of bytes to read, or -1 if @p is nul-terminated
-     * @returns the resulting character. If @p points to a partial     sequence at the end of a string that could begin a valid     character (or if @max_len is zero), returns (gunichar)-2;     otherwise, if @p does not point to a valid UTF-8 encoded     Unicode character, returns (gunichar)-1.
+     * @param max_len the maximum number of bytes to read, or `-1` if @p is nul-terminated
+     * @returns the resulting character. If @p points to a partial   sequence at the end of a string that could begin a valid   character (or if @max_len is zero), returns `(gunichar)-2`;   otherwise, if @p does not point to a valid UTF-8 encoded   Unicode character, returns `(gunichar)-1`.
      */
     function utf8_get_char_validated(p: string, max_len: number): number;
     /**
@@ -12242,7 +12363,7 @@ export namespace GLib {
      * assumption that it is close enough to ASCII or UTF-8 to be mostly
      * readable as-is.
      * @param str string to coerce into UTF-8
-     * @param len the maximum length of @str to use, in bytes. If @len < 0,     then the string is nul-terminated.
+     * @param len the maximum length of @str to use, in bytes. If @len is negative,   then the string is nul-terminated.
      * @returns a valid UTF-8 string whose content resembles @str
      */
     function utf8_make_valid(str: string, len: number): string;
@@ -12287,9 +12408,9 @@ export namespace GLib {
      * instead of forwards if `offset` is in the last fourth of the string,
      * since moving forward is about 3 times faster than moving backward.
      *
-     * Note that this function doesn't abort when reaching the end of `str`.
+     * Note that this function doesn’t abort when reaching the end of `str`.
      * Therefore you should be sure that `offset` is within string boundaries
-     * before calling that function. Call g_utf8_strlen() when unsure.
+     * before calling that function. Call [func`GLib`.utf8_strlen] when unsure.
      * This limitation exists as this function is called frequently during
      * text rendering and therefore has to be as fast as possible.
      * @param str a UTF-8 encoded string
@@ -12314,7 +12435,8 @@ export namespace GLib {
      * `p` does not have to be at the beginning of a UTF-8 character. No check
      * is made to see if the character found is actually valid other than
      * it starts with an appropriate byte. If `p` might be the first
-     * character of the string, you must use g_utf8_find_prev_char() instead.
+     * character of the string, you must use [func`GLib`.utf8_find_prev_char]
+     * instead.
      * @param p a pointer to a position within a UTF-8 encoded string
      * @returns a pointer to the found character
      */
@@ -12322,11 +12444,12 @@ export namespace GLib {
     /**
      * Finds the leftmost occurrence of the given Unicode character
      * in a UTF-8 encoded string, while limiting the search to `len` bytes.
-     * If `len` is -1, allow unbounded search.
+     *
+     * If `len` is `-1`, allow unbounded search.
      * @param p a nul-terminated UTF-8 encoded string
      * @param len the maximum length of @p
      * @param c a Unicode character
-     * @returns %NULL if the string does not contain the character,     otherwise, a pointer to the start of the leftmost occurrence     of the character in the string.
+     * @returns `NULL` if the string does not contain   the character, otherwise, a pointer to the start of the leftmost occurrence   of the character in the string.
      */
     function utf8_strchr(p: string, len: number, c: number): string | null;
     /**
@@ -12341,18 +12464,20 @@ export namespace GLib {
     function utf8_strdown(str: string, len: number): string;
     /**
      * Computes the length of the string in characters, not including
-     * the terminating nul character. If the `max'`th byte falls in the
+     * the terminating nul character. If the `max’`th byte falls in the
      * middle of a character, the last (partial) character is not counted.
      * @param p pointer to the start of a UTF-8 encoded string
-     * @param max the maximum number of bytes to examine. If @max       is less than 0, then the string is assumed to be       nul-terminated. If @max is 0, @p will not be examined and       may be %NULL. If @max is greater than 0, up to @max       bytes are examined
+     * @param max the maximum number of bytes to examine. If @max   is less than 0, then the string is assumed to be   nul-terminated. If @max is 0, @p will not be examined and   may be `NULL`. If @max is greater than 0, up to @max   bytes are examined
      * @returns the length of the string in characters
      */
     function utf8_strlen(p: string, max: number): number;
     /**
-     * Like the standard C strncpy() function, but copies a given number
-     * of characters instead of a given number of bytes. The `src` string
-     * must be valid UTF-8 encoded text. (Use g_utf8_validate() on all
-     * text before trying to use UTF-8 utility functions with it.)
+     * Like the standard C [`strncpy()`](man:strncpy) function, but copies a given
+     * number of characters instead of a given number of bytes.
+     *
+     * The `src` string must be valid UTF-8 encoded text. (Use
+     * [func`GLib`.utf8_validate] on all text before trying to use UTF-8 utility
+     * functions with it.)
      *
      * Note you must ensure `dest` is at least 4 * `n` + 1 to fit the
      * largest possible UTF-8 characters
@@ -12365,17 +12490,19 @@ export namespace GLib {
     /**
      * Find the rightmost occurrence of the given Unicode character
      * in a UTF-8 encoded string, while limiting the search to `len` bytes.
-     * If `len` is -1, allow unbounded search.
+     *
+     * If `len` is `-1`, allow unbounded search.
      * @param p a nul-terminated UTF-8 encoded string
      * @param len the maximum length of @p
      * @param c a Unicode character
-     * @returns %NULL if the string does not contain the character,     otherwise, a pointer to the start of the rightmost occurrence     of the character in the string.
+     * @returns `NULL` if the string does not contain   the character, otherwise, a pointer to the start of the rightmost   occurrence of the character in the string.
      */
     function utf8_strrchr(p: string, len: number, c: number): string | null;
     /**
-     * Reverses a UTF-8 string. `str` must be valid UTF-8 encoded text.
-     * (Use g_utf8_validate() on all text before trying to use UTF-8
-     * utility functions with it.)
+     * Reverses a UTF-8 string.
+     *
+     * `str` must be valid UTF-8 encoded text. (Use [func`GLib`.utf8_validate] on all
+     * text before trying to use UTF-8 utility functions with it.)
      *
      * This function is intended for programmatic uses of reversed strings.
      * It pays no attention to decomposed characters, combining marks, byte
@@ -12383,11 +12510,11 @@ export namespace GLib {
      * characters which might need special handling when reversing a string
      * for display purposes.
      *
-     * Note that unlike g_strreverse(), this function returns
-     * newly-allocated memory, which should be freed with g_free() when
+     * Note that unlike [func`GLib`.strreverse], this function returns
+     * newly-allocated memory, which should be freed with [func`GLib`.free] when
      * no longer needed.
      * @param str a UTF-8 encoded string
-     * @param len the maximum length of @str to use, in bytes. If @len < 0,     then the string is nul-terminated.
+     * @param len the maximum length of @str to use, in bytes. If @len is negative,   then the string is nul-terminated.
      * @returns a newly-allocated string which is the reverse of @str
      */
     function utf8_strreverse(str: string, len: number): string;
@@ -12411,35 +12538,38 @@ export namespace GLib {
      * @param str a UTF-8 encoded string
      * @param start_pos a character offset within @str
      * @param end_pos another character offset within @str,   or `-1` to indicate the end of the string
-     * @returns a newly allocated copy of the requested     substring. Free with g_free() when no longer needed.
+     * @returns a newly allocated copy of the requested   substring. Free with [func@GLib.free] when no longer needed.
      */
     function utf8_substring(str: string, start_pos: number, end_pos: number): string;
     /**
-     * Convert a string from UTF-8 to a 32-bit fixed width
-     * representation as UCS-4. A trailing 0 character will be added to the
-     * string after the converted text.
+     * Convert a string from UTF-8 to a 32-bit fixed width representation as UCS-4.
+     *
+     * A trailing nul character (U+0000) will be added to the string after the
+     * converted text.
      * @param str a UTF-8 encoded string
-     * @param len the maximum length of @str to use, in bytes. If @len < 0,     then the string is nul-terminated.
-     * @returns a pointer to a newly allocated UCS-4 string.     This value must be freed with g_free(). If an error occurs,     %NULL will be returned and @error set.
+     * @param len the maximum length of @str to use, in bytes. If @len is negative,   then the string is nul-terminated.
+     * @returns a pointer to a newly allocated UCS-4 string.   This value must be freed with [func@GLib.free].
      */
     function utf8_to_ucs4(str: string, len: number): [number, number, number];
     /**
      * Convert a string from UTF-8 to a 32-bit fixed width
      * representation as UCS-4, assuming valid UTF-8 input.
-     * This function is roughly twice as fast as g_utf8_to_ucs4()
-     * but does no error checking on the input. A trailing 0 character
+     *
+     * This function is roughly twice as fast as [func`GLib`.utf8_to_ucs4]
+     * but does no error checking on the input. A trailing nul character (U+0000)
      * will be added to the string after the converted text.
      * @param str a UTF-8 encoded string
-     * @param len the maximum length of @str to use, in bytes. If @len < 0,     then the string is nul-terminated.
-     * @returns a pointer to a newly allocated UCS-4 string.     This value must be freed with g_free().
+     * @param len the maximum length of @str to use, in bytes. If @len is negative,   then the string is nul-terminated.
+     * @returns a pointer to a newly allocated UCS-4 string.   This value must be freed with [func@GLib.free].
      */
     function utf8_to_ucs4_fast(str: string, len: number): [number, number];
     /**
-     * Convert a string from UTF-8 to UTF-16. A 0 character will be
-     * added to the result after the converted text.
+     * Convert a string from UTF-8 to UTF-16.
+     *
+     * A nul character (U+0000) will be added to the result after the converted text.
      * @param str a UTF-8 encoded string
-     * @param len the maximum length (number of bytes) of @str to use.     If @len < 0, then the string is nul-terminated.
-     * @returns a pointer to a newly allocated UTF-16 string.     This value must be freed with g_free(). If an error occurs,     %NULL will be returned and @error set.
+     * @param len the maximum length (number of bytes) of @str to use.   If @len is negative, then the string is nul-terminated.
+     * @returns a pointer to a newly allocated UTF-16 string.   This value must be freed with [func@GLib.free].
      */
     function utf8_to_utf16(str: string, len: number): [number, number, number];
     /**
@@ -12454,32 +12584,34 @@ export namespace GLib {
      */
     function utf8_truncate_middle(string: string, truncate_length: number): string;
     /**
-     * Validates UTF-8 encoded text. `str` is the text to validate;
-     * if `str` is nul-terminated, then `max_len` can be -1, otherwise
-     * `max_len` should be the number of bytes to validate.
-     * If `end` is non-%NULL, then the end of the valid range
-     * will be stored there (i.e. the start of the first invalid
-     * character if some bytes were invalid, or the end of the text
-     * being validated otherwise).
+     * Validates UTF-8 encoded text.
      *
-     * Note that g_utf8_validate() returns %FALSE if `max_len` is
-     * positive and any of the `max_len` bytes are nul.
+     * `str` is the text to validate; if `str` is nul-terminated, then `max_len` can be
+     * `-1`, otherwise `max_len` should be the number of bytes to validate.
      *
-     * Returns %TRUE if all of `str` was valid. Many GLib and GTK
+     * If `end` is non-`NULL`, then the end of the valid range will be stored there.
+     * This is the first byte of the first invalid character if some bytes were
+     * invalid, or the end of the text being validated otherwise — either the
+     * trailing nul byte, or the first byte beyond `max_len` (if it’s positive).
+     *
+     * Note that `g_utf8_validate()` returns `FALSE` if `max_len` is  positive and
+     * any of the `max_len` bytes are nul.
+     *
+     * Returns `TRUE` if all of `str` was valid. Many GLib and GTK
      * routines require valid UTF-8 as input; so data read from a file
-     * or the network should be checked with g_utf8_validate() before
+     * or the network should be checked with `g_utf8_validate()` before
      * doing anything else with it.
      * @param str a pointer to character data
-     * @returns %TRUE if the text was valid UTF-8
+     * @returns `TRUE` if the text was valid UTF-8
      */
     function utf8_validate(str: Uint8Array | string): [boolean, string];
     /**
      * Validates UTF-8 encoded text.
      *
-     * As with g_utf8_validate(), but `max_len` must be set, and hence this function
-     * will always return %FALSE if any of the bytes of `str` are nul.
+     * As with [func`GLib`.utf8_validate], but `max_len` must be set, and hence this
+     * function will always return `FALSE` if any of the bytes of `str` are nul.
      * @param str a pointer to character data
-     * @returns %TRUE if the text was valid UTF-8
+     * @returns `TRUE` if the text was valid UTF-8
      */
     function utf8_validate_len(str: Uint8Array | string): [boolean, string];
     /**
@@ -12634,15 +12766,18 @@ export namespace GLib {
     function variant_type_checked_(type_string: string): VariantType;
     function variant_type_string_get_depth_(type_string: string): number;
     /**
-     * Checks if `type_string` is a valid GVariant type string.  This call is
-     * equivalent to calling g_variant_type_string_scan() and confirming
-     * that the following character is a nul terminator.
+     * Checks if `type_string` is a valid
+     * [GVariant type string](./struct.VariantType.html#gvariant-type-strings).
+     *
+     * This call is equivalent to calling [func`GLib`.VariantType.string_scan] and
+     * confirming that the following character is a nul terminator.
      * @param type_string a pointer to any string
-     * @returns %TRUE if @type_string is exactly one valid type string Since 2.24
+     * @returns true if @type_string is exactly one valid type string Since 2.24
      */
     function variant_type_string_is_valid(type_string: string): boolean;
     /**
      * Scan for a single complete and valid GVariant type string in `string`.
+     *
      * The memory pointed to by `limit` (or bytes beyond it) is never
      * accessed.
      *
@@ -12654,10 +12789,10 @@ export namespace GLib {
      * string does not end before `limit` then %FALSE is returned.
      *
      * For the simple case of checking if a string is a valid type string,
-     * see g_variant_type_string_is_valid().
+     * see [func`GLib`.VariantType.string_is_valid].
      * @param string a pointer to any string
-     * @param limit the end of @string, or %NULL
-     * @returns %TRUE if a valid type string was found
+     * @param limit the end of @string
+     * @returns true if a valid type string was found
      */
     function variant_type_string_scan(string: string, limit: string | null): [boolean, string];
     interface CacheDestroyFunc {
@@ -12754,7 +12889,7 @@ export namespace GLib {
         (source: IOChannel, condition: IOCondition, data?: any | null): boolean;
     }
     interface LogFunc {
-        (log_domain: string, log_level: LogLevelFlags, message: string): void;
+        (log_domain: string | null, log_level: LogLevelFlags, message: string): void;
     }
     interface LogWriterFunc {
         (log_level: LogLevelFlags, fields: LogField[]): LogWriterOutput;
@@ -13276,7 +13411,7 @@ export namespace GLib {
          */
         STRDUP,
         /**
-         * expects a parameter of type (gboolean *)
+         * expects a parameter of type (`gboolean *`)
          *     and parses the attribute value as a boolean. Sets %FALSE if the
          *     attribute isn't present. Valid boolean values consist of
          *     (case-insensitive) "false", "f", "no", "n", "0" and "true", "t",
@@ -13286,7 +13421,7 @@ export namespace GLib {
         /**
          * as with %G_MARKUP_COLLECT_BOOLEAN, but
          *     in the case of a missing attribute a value is set that compares
-         *     equal to neither %FALSE nor %TRUE G_MARKUP_COLLECT_OPTIONAL is
+         *     equal to neither %FALSE nor %TRUE %G_MARKUP_COLLECT_OPTIONAL is
          *     implied
          */
         TRISTATE,
@@ -13354,7 +13489,7 @@ export namespace GLib {
 
     enum OptionFlags {
         /**
-         * No flags. Since: 2.42.
+         * No flags.
          */
         NONE,
         /**
@@ -13363,43 +13498,51 @@ export namespace GLib {
         HIDDEN,
         /**
          * The option appears in the main section of the
-         *     `--help` output, even if it is defined in a group.
+         *   `--help` output, even if it is defined in a group.
          */
         IN_MAIN,
         /**
          * For options of the %G_OPTION_ARG_NONE kind, this
-         *     flag indicates that the sense of the option is reversed. i.e. %FALSE will
-         *     be stored into the argument rather than %TRUE.
+         *   flag indicates that the sense of the option is reversed. i.e. %FALSE will
+         *   be stored into the argument rather than %TRUE.
          */
         REVERSE,
         /**
          * For options of the %G_OPTION_ARG_CALLBACK kind,
-         *     this flag indicates that the callback does not take any argument
-         *     (like a %G_OPTION_ARG_NONE option). Since 2.8
+         *   this flag indicates that the callback does not take any argument
+         *   (like a %G_OPTION_ARG_NONE option). Since 2.8
          */
         NO_ARG,
         /**
          * For options of the %G_OPTION_ARG_CALLBACK
-         *     kind, this flag indicates that the argument should be passed to the
-         *     callback in the GLib filename encoding rather than UTF-8. Since 2.8
+         *   kind, this flag indicates that the argument should be passed to the
+         *   callback in the GLib filename encoding rather than UTF-8. Since 2.8
          */
         FILENAME,
         /**
          * For options of the %G_OPTION_ARG_CALLBACK
-         *     kind, this flag indicates that the argument supply is optional.
-         *     If no argument is given then data of %GOptionParseFunc will be
-         *     set to NULL. Since 2.8
+         *   kind, this flag indicates that the argument supply is optional.
+         *   If no argument is given then data of %GOptionParseFunc will be
+         *   set to NULL. Since 2.8
          */
         OPTIONAL_ARG,
         /**
          * This flag turns off the automatic conflict
-         *     resolution which prefixes long option names with `groupname-` if
-         *     there is a conflict. This option should only be used in situations
-         *     where aliasing is necessary to model some legacy commandline interface.
-         *     It is not safe to use this option, unless all option groups are under
-         *     your direct control. Since 2.8.
+         *   resolution which prefixes long option names with `groupname-` if
+         *   there is a conflict. This option should only be used in situations
+         *   where aliasing is necessary to model some legacy commandline interface.
+         *   It is not safe to use this option, unless all option groups are under
+         *   your direct control. Since 2.8.
          */
         NOALIAS,
+        /**
+         * This flag marks the option as deprecated in the `--help`.
+         *
+         * You should update the description of the option to describe what
+         * the user should do in response to the deprecation, for instance:
+         * remove the option, or replace it with another one.
+         */
+        DEPRECATED,
     }
     /**
      * Flags specifying compile-time options.
@@ -13746,17 +13889,19 @@ export namespace GLib {
         STDIN_FROM_DEV_NULL,
     }
     /**
-     * Flags to pass to g_test_trap_subprocess() to control input and output.
+     * Flags to pass to [func`GLib`.test_trap_subprocess] to control input and output.
      *
-     * Note that in contrast with g_test_trap_fork(), the default is to
-     * not show stdout and stderr.
+     * Note that in contrast with [func`GLib`.test_trap_fork], the default
+     * behavior of [func`GLib`.test_trap_subprocess] is to not show stdout
+     * and stderr.
      */
 
     /**
-     * Flags to pass to g_test_trap_subprocess() to control input and output.
+     * Flags to pass to [func`GLib`.test_trap_subprocess] to control input and output.
      *
-     * Note that in contrast with g_test_trap_fork(), the default is to
-     * not show stdout and stderr.
+     * Note that in contrast with [func`GLib`.test_trap_fork], the default
+     * behavior of [func`GLib`.test_trap_subprocess] is to not show stdout
+     * and stderr.
      */
     export namespace TestSubprocessFlags {
         export const $gtype: GObject.GType<TestSubprocessFlags>;
@@ -13769,33 +13914,35 @@ export namespace GLib {
         DEFAULT,
         /**
          * If this flag is given, the child
-         *     process will inherit the parent's stdin. Otherwise, the child's
-         *     stdin is redirected to `/dev/null`.
+         *   process will inherit the parent's stdin. Otherwise, the child's
+         *   stdin is redirected to `/dev/null`.
          */
         INHERIT_STDIN,
         /**
          * If this flag is given, the child
-         *     process will inherit the parent's stdout. Otherwise, the child's
-         *     stdout will not be visible, but it will be captured to allow
-         *     later tests with g_test_trap_assert_stdout().
+         *   process will inherit the parent's stdout. Otherwise, the child's
+         *   stdout will not be visible, but it will be captured to allow
+         *   later tests with [func`GLib`.test_trap_assert_stdout].
          */
         INHERIT_STDOUT,
         /**
          * If this flag is given, the child
-         *     process will inherit the parent's stderr. Otherwise, the child's
-         *     stderr will not be visible, but it will be captured to allow
-         *     later tests with g_test_trap_assert_stderr().
+         *   process will inherit the parent's stderr. Otherwise, the child's
+         *   stderr will not be visible, but it will be captured to allow
+         *   later tests with [func`GLib`.test_trap_assert_stderr].
          */
         INHERIT_STDERR,
     }
     /**
-     * Test traps are guards around forked tests.
-     * These flags determine what traps to set.
+     * Flags to pass to [func`GLib`.test_trap_fork] to control input and output.
+     *
+     * Test traps are guards around forked tests. These flags determine what traps to set.
      */
 
     /**
-     * Test traps are guards around forked tests.
-     * These flags determine what traps to set.
+     * Flags to pass to [func`GLib`.test_trap_fork] to control input and output.
+     *
+     * Test traps are guards around forked tests. These flags determine what traps to set.
      */
     export namespace TestTrapFlags {
         export const $gtype: GObject.GType<TestTrapFlags>;
@@ -15112,30 +15259,33 @@ export namespace GLib {
     }
 
     /**
-     * A simple refcounted data type representing an immutable sequence of zero or
-     * more bytes from an unspecified origin.
+     * A simple reference counted data type representing an immutable sequence of
+     * zero or more bytes from an unspecified origin.
      *
-     * The purpose of a #GBytes is to keep the memory region that it holds
+     * The purpose of a `GBytes` is to keep the memory region that it holds
      * alive for as long as anyone holds a reference to the bytes.  When
      * the last reference count is dropped, the memory is released. Multiple
-     * unrelated callers can use byte data in the #GBytes without coordinating
+     * unrelated callers can use byte data in the `GBytes` without coordinating
      * their activities, resting assured that the byte data will not change or
      * move while they hold a reference.
      *
-     * A #GBytes can come from many different origins that may have
+     * A `GBytes` can come from many different origins that may have
      * different procedures for freeing the memory region.  Examples are
-     * memory from g_malloc(), from memory slices, from a #GMappedFile or
-     * memory from other allocators.
+     * memory from [func`GLib`.malloc], from memory slices, from a
+     * [struct`GLib`.MappedFile] or memory from other allocators.
      *
-     * #GBytes work well as keys in #GHashTable. Use g_bytes_equal() and
-     * g_bytes_hash() as parameters to g_hash_table_new() or g_hash_table_new_full().
-     * #GBytes can also be used as keys in a #GTree by passing the g_bytes_compare()
-     * function to g_tree_new().
+     * `GBytes` work well as keys in [struct`GLib`.HashTable]. Use
+     * [method`GLib`.Bytes.equal] and [method`GLib`.Bytes.hash] as parameters to
+     * [func`GLib`.HashTable.new] or [func`GLib`.HashTable.new_full].
+     * `GBytes` can also be used as keys in a [struct`GLib`.Tree] by passing the
+     * [method`GLib`.Bytes.compare] function to [ctor`GLib`.Tree.new].
      *
      * The data pointed to by this bytes must not be modified. For a mutable
-     * array of bytes see #GByteArray. Use g_bytes_unref_to_array() to create a
-     * mutable array for a #GBytes sequence. To create an immutable #GBytes from
-     * a mutable #GByteArray, use the g_byte_array_free_to_bytes() function.
+     * array of bytes see [struct`GLib`.ByteArray]. Use
+     * [method`GLib`.Bytes.unref_to_array] to create a mutable array for a `GBytes`
+     * sequence. To create an immutable `GBytes` from a mutable
+     * [struct`GLib`.ByteArray], use the [func`GLib`.ByteArray.free_to_bytes]
+     * function.
      */
     class Bytes {
         static $gtype: GObject.GType<Bytes>;
@@ -15152,38 +15302,42 @@ export namespace GLib {
         // Methods
 
         /**
-         * Compares the two #GBytes values.
+         * Compares the two [struct`GLib`.Bytes] values.
          *
-         * This function can be used to sort GBytes instances in lexicographical order.
+         * This function can be used to sort `GBytes` instances in lexicographical
+         * order.
          *
          * If `bytes1` and `bytes2` have different length but the shorter one is a
          * prefix of the longer one then the shorter one is considered to be less than
          * the longer one. Otherwise the first byte where both differ is used for
          * comparison. If `bytes1` has a smaller value at that position it is
          * considered less, otherwise greater than `bytes2`.
-         * @param bytes2 a pointer to a #GBytes to compare with @bytes1
-         * @returns a negative value if @bytes1 is less than @bytes2, a positive value          if @bytes1 is greater than @bytes2, and zero if @bytes1 is equal to          @bytes2
+         * @param bytes2 a pointer to a [struct@GLib.Bytes] to compare with @bytes1
+         * @returns a negative value if @bytes1 is less than @bytes2, a positive value   if @bytes1 is greater than @bytes2, and zero if @bytes1 is equal to @bytes2
          */
         compare(bytes2: Bytes | Uint8Array): number;
         /**
-         * Compares the two #GBytes values being pointed to and returns
-         * %TRUE if they are equal.
+         * Compares the two [struct`GLib`.Bytes] values being pointed to and returns
+         * `TRUE` if they are equal.
          *
-         * This function can be passed to g_hash_table_new() as the `key_equal_func`
-         * parameter, when using non-%NULL #GBytes pointers as keys in a #GHashTable.
-         * @param bytes2 a pointer to a #GBytes to compare with @bytes1
-         * @returns %TRUE if the two keys match.
+         * This function can be passed to [func`GLib`.HashTable.new] as the
+         * `key_equal_func` parameter, when using non-`NULL` `GBytes` pointers as keys in
+         * a [struct`GLib`.HashTable].
+         * @param bytes2 a pointer to a [struct@GLib.Bytes] to compare with @bytes1
+         * @returns `TRUE` if the two keys match.
          */
         equal(bytes2: Bytes | Uint8Array): boolean;
         /**
-         * Get the byte data in the #GBytes. This data should not be modified.
+         * Get the byte data in the [struct`GLib`.Bytes].
          *
-         * This function will always return the same pointer for a given #GBytes.
+         * This data should not be modified.
          *
-         * %NULL may be returned if `size` is 0. This is not guaranteed, as the #GBytes
-         * may represent an empty string with `data` non-%NULL and `size` as 0. %NULL will
-         * not be returned if `size` is non-zero.
-         * @returns a pointer to the byte data, or %NULL
+         * This function will always return the same pointer for a given `GBytes`.
+         *
+         * `NULL` may be returned if `size` is 0. This is not guaranteed, as the `GBytes`
+         * may represent an empty string with `data` non-`NULL` and `size` as 0. `NULL`
+         * will not be returned if `size` is non-zero.
+         * @returns a pointer to the byte data
          */
         get_data(): Uint8Array | null;
         /**
@@ -15193,81 +15347,87 @@ export namespace GLib {
          * and contains `n_elements` many elements of `element_size` size.
          *
          * `n_elements` may be zero, but `element_size` must always be non-zero.
-         * Ideally, `element_size` is a static constant (eg: sizeof a struct).
+         * Ideally, `element_size` is a static constant (eg: `sizeof` a struct).
          *
          * This function does careful bounds checking (including checking for
-         * arithmetic overflows) and returns a non-%NULL pointer if the
+         * arithmetic overflows) and returns a non-`NULL` pointer if the
          * specified region lies entirely within the `bytes`. If the region is
-         * in some way out of range, or if an overflow has occurred, then %NULL
+         * in some way out of range, or if an overflow has occurred, then `NULL`
          * is returned.
          *
          * Note: it is possible to have a valid zero-size region. In this case,
          * the returned pointer will be equal to the base pointer of the data of
-         * `bytes,` plus `offset`.  This will be non-%NULL except for the case
+         * `bytes,` plus `offset`.  This will be non-`NULL` except for the case
          * where `bytes` itself was a zero-sized region.  Since it is unlikely
          * that you will be using this function to check for a zero-sized region
-         * in a zero-sized `bytes,` %NULL effectively always means "error".
+         * in a zero-sized `bytes,` `NULL` effectively always means ‘error’.
          * @param element_size a non-zero element size
          * @param offset an offset to the start of the region within the @bytes
          * @param n_elements the number of elements in the region
-         * @returns the requested region, or %NULL in case of an error
+         * @returns the requested region, or `NULL` in case of an error
          */
         get_region(element_size: number, offset: number, n_elements: number): any | null;
         /**
-         * Get the size of the byte data in the #GBytes.
+         * Get the size of the byte data in the [struct`GLib`.Bytes].
          *
-         * This function will always return the same value for a given #GBytes.
+         * This function will always return the same value for a given `GBytes`.
          * @returns the size
          */
         get_size(): number;
         /**
-         * Creates an integer hash code for the byte data in the #GBytes.
+         * Creates an integer hash code for the byte data in the [struct`GLib`.Bytes].
          *
-         * This function can be passed to g_hash_table_new() as the `key_hash_func`
-         * parameter, when using non-%NULL #GBytes pointers as keys in a #GHashTable.
+         * This function can be passed to [func`GLib`.HashTable.new] as the
+         * `key_hash_func` parameter, when using non-`NULL` `GBytes` pointers as keys in
+         * a [struct`GLib`.HashTable].
          * @returns a hash value corresponding to the key.
          */
         hash(): number;
         /**
-         * Creates a #GBytes which is a subsection of another #GBytes. The `offset` +
-         * `length` may not be longer than the size of `bytes`.
+         * Creates a [struct`GLib`.Bytes] which is a subsection of another `GBytes`.
          *
-         * A reference to `bytes` will be held by the newly created #GBytes until
+         * The `offset` + `length` may not be longer than the size of `bytes`.
+         *
+         * A reference to `bytes` will be held by the newly created `GBytes` until
          * the byte data is no longer needed.
          *
          * Since 2.56, if `offset` is 0 and `length` matches the size of `bytes,` then
          * `bytes` will be returned with the reference count incremented by 1. If `bytes`
-         * is a slice of another #GBytes, then the resulting #GBytes will reference
-         * the same #GBytes instead of `bytes`. This allows consumers to simplify the
-         * usage of #GBytes when asynchronously writing to streams.
+         * is a slice of another `GBytes`, then the resulting `GBytes` will reference
+         * the same `GBytes` instead of `bytes`. This allows consumers to simplify the
+         * usage of `GBytes` when asynchronously writing to streams.
          * @param offset offset which subsection starts at
          * @param length length of subsection
-         * @returns a new #GBytes
+         * @returns a new [struct@GLib.Bytes]
          */
         new_from_bytes(offset: number, length: number): Bytes;
         /**
          * Increase the reference count on `bytes`.
-         * @returns the #GBytes
+         * @returns the [struct@GLib.Bytes]
          */
         ref(): Bytes;
         /**
-         * Releases a reference on `bytes`.  This may result in the bytes being
-         * freed. If `bytes` is %NULL, it will return immediately.
+         * Releases a reference on `bytes`.
+         *
+         * This may result in the bytes being freed. If `bytes` is `NULL`, it will
+         * return immediately.
          */
         unref(): void;
         /**
-         * Unreferences the bytes, and returns a new mutable #GByteArray containing
-         * the same byte data.
+         * Unreferences the bytes, and returns a new mutable [struct`GLib`.ByteArray]
+         * containing the same byte data.
          *
          * As an optimization, the byte data is transferred to the array without copying
-         * if this was the last reference to bytes and bytes was created with
-         * g_bytes_new(), g_bytes_new_take() or g_byte_array_free_to_bytes(). In all
-         * other cases the data is copied.
+         * if this was the last reference to `bytes` and `bytes` was created with
+         * [ctor`GLib`.Bytes.new], [ctor`GLib`.Bytes.new_take] or
+         * [func`GLib`.ByteArray.free_to_bytes] and the buffer was larger than the size
+         * [struct`GLib`.Bytes] may internalize within its allocation. In all other cases
+         * the data is copied.
          *
          * Do not use it if `bytes` contains more than %G_MAXUINT
-         * bytes. #GByteArray stores the length of its data in #guint, which
-         * may be shorter than #gsize, that `bytes` is using.
-         * @returns a new mutable #GByteArray containing the same byte data
+         * bytes. [struct`GLib`.ByteArray] stores the length of its data in `guint`,
+         * which may be shorter than `gsize`, that `bytes` is using.
+         * @returns a new mutable [struct@GLib.ByteArray] containing   the same byte data
          */
         unref_to_array(): Uint8Array;
         /**
@@ -15275,10 +15435,12 @@ export namespace GLib {
          * contents.
          *
          * As an optimization, the byte data is returned without copying if this was
-         * the last reference to bytes and bytes was created with g_bytes_new(),
-         * g_bytes_new_take() or g_byte_array_free_to_bytes(). In all other cases the
-         * data is copied.
-         * @returns a pointer to the same byte data, which should be          freed with g_free()
+         * the last reference to `bytes` and `bytes` was created with
+         * [ctor`GLib`.Bytes.new], [ctor`GLib`.Bytes.new_take] or
+         * [func`GLib`.ByteArray.free_to_bytes] and the buffer was larger than the size
+         * [struct`GLib`.Bytes] may internalize within its allocation. In all other cases
+         * the data is copied.
+         * @returns a pointer to the same byte data, which should be freed with [func@GLib.free]
          */
         unref_to_data(): Uint8Array;
         toArray(): Uint8Array;
@@ -15808,7 +15970,7 @@ export namespace GLib {
         static is_leap_year(year: DateYear): boolean;
         /**
          * Generates a printed representation of the date, in a
-         * [locale][setlocale]-specific way.
+         * [locale](running.html#locale)-specific way.
          * Works just like the platform's C library strftime() function,
          * but only accepts date-related formats; time-related formats
          * give undefined results. Date must be valid. Unlike strftime()
@@ -16037,10 +16199,10 @@ export namespace GLib {
         set_month(month: DateMonth | null): void;
         /**
          * Parses a user-inputted string `str,` and try to figure out what date it
-         * represents, taking the [current locale][setlocale] into account. If the
-         * string is successfully parsed, the date will be valid after the call.
-         * Otherwise, it will be invalid. You should check using g_date_valid()
-         * to see whether the parsing succeeded.
+         * represents, taking the [current locale](running.html#locale)
+         * into account. If the string is successfully parsed, the date will be
+         * valid after the call. Otherwise, it will be invalid. You should check
+         * using g_date_valid() to see whether the parsing succeeded.
          *
          * This function is not appropriate for file formats and the like; it
          * isn't very precise, and its exact behavior varies with the locale.
@@ -16904,7 +17066,7 @@ export namespace GLib {
 
     /**
      * The #GHashTable struct is an opaque data structure to represent a
-     * [Hash Table][glib-Hash-Tables]. It should only be accessed via the
+     * [Hash Table](data-structures.html#hash-tables). It should only be accessed via the
      * following functions.
      */
     abstract class HashTable<A = string, B = any> {
@@ -17600,7 +17762,8 @@ export namespace GLib {
         /**
          * This returns the string that #GIOChannel uses to determine
          * where in the file a line break occurs. A value of %NULL
-         * indicates autodetection.
+         * indicates autodetection. Since 2.84, the return value is always
+         * nul-terminated.
          * @returns The line termination string. This value   is owned by GLib and must not be freed.
          */
         get_line_term(): [string, number];
@@ -17826,13 +17989,13 @@ export namespace GLib {
      * `GKeyFile` parses .ini-like config files.
      *
      * `GKeyFile` lets you parse, edit or create files containing groups of
-     * key-value pairs, which we call "key files" for lack of a better name.
-     * Several freedesktop.org specifications use key files now, e.g the
-     * [Desktop Entry Specification](http://freedesktop.org/Standards/desktop-entry-spec)
-     * and the [Icon Theme Specification](http://freedesktop.org/Standards/icon-theme-spec).
+     * key-value pairs, which we call ‘key files’ for lack of a better name.
+     * Several freedesktop.org specifications use key files. For example, the
+     * [Desktop Entry Specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/)
+     * and the [Icon Theme Specification](https://specifications.freedesktop.org/icon-theme-spec/latest/).
      *
      * The syntax of key files is described in detail in the
-     * [Desktop Entry Specification](http://freedesktop.org/Standards/desktop-entry-spec),
+     * [Desktop Entry Specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/),
      * here is a quick summary: Key files consists of groups of key-value pairs, interspersed
      * with comments.
      *
@@ -17857,30 +18020,32 @@ export namespace GLib {
      * Booleans=true;false;true;true
      * ```
      *
-     * Lines beginning with a '#' and blank lines are considered comments.
+     * Lines beginning with a `#` and blank lines are considered comments.
      *
      * Groups are started by a header line containing the group name enclosed
-     * in '[' and ']', and ended implicitly by the start of the next group or
+     * in `[` and `]`, and ended implicitly by the start of the next group or
      * the end of the file. Each key-value pair must be contained in a group.
      *
      * Key-value pairs generally have the form `key=value`, with the exception
      * of localized strings, which have the form `key[locale]=value`, with a
      * locale identifier of the form `lang_COUNTRY`MODIFIER`` where `COUNTRY`
-     * and `MODIFIER` are optional. Space before and after the '=' character
-     * are ignored. Newline, tab, carriage return and backslash characters in
-     * value are escaped as `\n`, `\t`, `\r`, and `\\\\`, respectively. To preserve
-     * leading spaces in values, these can also be escaped as `\s`.
+     * and `MODIFIER` are optional. As a special case, the locale `C` is associated
+     * with the untranslated pair `key=value` (since GLib 2.84). Space before and
+     * after the `=` character is ignored. Newline, tab, carriage return and
+     * backslash characters in value are escaped as `\n`, `\t`, `\r`, and `\\\\`,
+     * respectively. To preserve leading spaces in values, these can also be escaped
+     * as `\s`.
      *
      * Key files can store strings (possibly with localized variants), integers,
      * booleans and lists of these. Lists are separated by a separator character,
-     * typically ';' or ','. To use the list separator character in a value in
+     * typically `;` or `,`. To use the list separator character in a value in
      * a list, it has to be escaped by prefixing it with a backslash.
      *
      * This syntax is obviously inspired by the .ini files commonly met
      * on Windows, but there are some important differences:
      *
-     * - .ini files use the ';' character to begin comments,
-     *   key files use the '#' character.
+     * - .ini files use the `;` character to begin comments,
+     *   key files use the `#` character.
      *
      * - Key files do not allow for ungrouped keys meaning only
      *   comments can precede the first group.
@@ -17888,14 +18053,14 @@ export namespace GLib {
      * - Key files are always encoded in UTF-8.
      *
      * - Key and Group names are case-sensitive. For example, a group called
-     *   [GROUP] is a different from [group].
+     *   `[GROUP]` is a different from `[group]`.
      *
-     * - .ini files don't have a strongly typed boolean entry type,
-     *    they only have GetProfileInt(). In key files, only
-     *    true and false (in lower case) are allowed.
+     * - .ini files don’t have a strongly typed boolean entry type,
+     *    they only have `GetProfileInt()`. In key files, only
+     *    `true` and `false` (in lower case) are allowed.
      *
      * Note that in contrast to the
-     * [Desktop Entry Specification](http://freedesktop.org/Standards/desktop-entry-spec),
+     * [Desktop Entry Specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/),
      * groups in key files may contain the same key multiple times; the last entry wins.
      * Key files may also contain multiple groups with the same name; they are merged
      * together. Another difference is that keys and group names in key files are not
@@ -17975,176 +18140,181 @@ export namespace GLib {
          * Returns the value associated with `key` under `group_name` as a
          * boolean.
          *
-         * If `key` cannot be found then %FALSE is returned and `error` is set
-         * to %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the value
-         * associated with `key` cannot be interpreted as a boolean then %FALSE
-         * is returned and `error` is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
+         * If `key` cannot be found then [error`GLib`.KeyFileError.KEY_NOT_FOUND] is
+         * returned. Likewise, if the value associated with `key` cannot be interpreted
+         * as a boolean then [error`GLib`.KeyFileError.INVALID_VALUE] is returned.
          * @param group_name a group name
          * @param key a key
-         * @returns the value associated with the key as a boolean,    or %FALSE if the key was not found or could not be parsed.
+         * @returns the value associated with the key as a boolean,    or false if the key was not found or could not be parsed.
          */
         get_boolean(group_name: string, key: string): boolean;
         /**
          * Returns the values associated with `key` under `group_name` as
          * booleans.
          *
-         * If `key` cannot be found then %NULL is returned and `error` is set to
-         * %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the values associated
-         * with `key` cannot be interpreted as booleans then %NULL is returned
-         * and `error` is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
+         * If `key` cannot be found then [error`GLib`.KeyFileError.KEY_NOT_FOUND] is
+         * returned. Likewise, if the values associated with `key` cannot be interpreted
+         * as booleans then [error`GLib`.KeyFileError.INVALID_VALUE] is returned.
          * @param group_name a group name
          * @param key a key
-         * @returns the values associated with the key as a list of booleans, or %NULL if the    key was not found or could not be parsed. The returned list of booleans    should be freed with g_free() when no longer needed.
+         * @returns the values associated with the key as a list of booleans, or `NULL` if the    key was not found or could not be parsed. The returned list of booleans    should be freed with [func@GLib.free] when no longer needed.
          */
         get_boolean_list(group_name: string, key: string): boolean[];
         /**
          * Retrieves a comment above `key` from `group_name`.
-         * If `key` is %NULL then `comment` will be read from above
-         * `group_name`. If both `key` and `group_name` are %NULL, then
+         *
+         * If `key` is `NULL` then `comment` will be read from above
+         * `group_name`. If both `key` and `group_name` are `NULL`, then
          * `comment` will be read from above the first group in the file.
          *
-         * Note that the returned string does not include the '#' comment markers,
+         * Note that the returned string does not include the `#` comment markers,
          * but does include any whitespace after them (on each line). It includes
          * the line breaks between lines, but does not include the final line break.
-         * @param group_name a group name, or %NULL
-         * @param key a key
-         * @returns a comment that should be freed with g_free()
+         * @param group_name a group name, or `NULL` to get a top-level comment
+         * @param key a key, or `NULL` to get a group comment
+         * @returns a comment that should be freed with [func@GLib.free]
          */
         get_comment(group_name?: string | null, key?: string | null): string;
         /**
-         * Returns the value associated with `key` under `group_name` as a
-         * double. If `group_name` is %NULL, the start_group is used.
+         * Returns the value associated with `key` under `group_name` as a double.
          *
-         * If `key` cannot be found then 0.0 is returned and `error` is set to
-         * %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the value associated
-         * with `key` cannot be interpreted as a double then 0.0 is returned
-         * and `error` is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
+         * If `key` cannot be found then [error`GLib`.KeyFileError.KEY_NOT_FOUND] is
+         * returned. Likewise, if the value associated with `key` cannot be interpreted
+         * as a double then [error`GLib`.KeyFileError.INVALID_VALUE] is returned.
          * @param group_name a group name
          * @param key a key
-         * @returns the value associated with the key as a double, or     0.0 if the key was not found or could not be parsed.
+         * @returns the value associated with the key as a double, or     `0.0` if the key was not found or could not be parsed.
          */
         get_double(group_name: string, key: string): number;
         /**
          * Returns the values associated with `key` under `group_name` as
          * doubles.
          *
-         * If `key` cannot be found then %NULL is returned and `error` is set to
-         * %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the values associated
-         * with `key` cannot be interpreted as doubles then %NULL is returned
-         * and `error` is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
+         * If `key` cannot be found then [error`GLib`.KeyFileError.KEY_NOT_FOUND] is
+         * returned. Likewise, if the values associated with `key` cannot be interpreted
+         * as doubles then [error`GLib`.KeyFileError.INVALID_VALUE] is returned.
          * @param group_name a group name
          * @param key a key
-         * @returns the values associated with the key as a list of doubles, or %NULL if the     key was not found or could not be parsed. The returned list of doubles     should be freed with g_free() when no longer needed.
+         * @returns the values associated with the key as a list of doubles, or `NULL` if the     key was not found or could not be parsed. The returned list of doubles     should be freed with [func@GLib.free] when no longer needed.
          */
         get_double_list(group_name: string, key: string): number[];
         /**
          * Returns all groups in the key file loaded with `key_file`.
-         * The array of returned groups will be %NULL-terminated, so
-         * `length` may optionally be %NULL.
-         * @returns a newly-allocated %NULL-terminated array of strings.   Use g_strfreev() to free it.
+         *
+         * The array of returned groups will be `NULL`-terminated, so
+         * `length` may optionally be `NULL`.
+         * @returns a newly-allocated    `NULL`-terminated array of strings. Use [func@GLib.strfreev] to free it.
          */
         get_groups(): [string[], number];
         /**
          * Returns the value associated with `key` under `group_name` as a signed
-         * 64-bit integer. This is similar to g_key_file_get_integer() but can return
+         * 64-bit integer.
+         *
+         * This is similar to [method`GLib`.KeyFile.get_integer] but can return
          * 64-bit results without truncation.
-         * @param group_name a non-%NULL group name
-         * @param key a non-%NULL key
-         * @returns the value associated with the key as a signed 64-bit integer, or 0 if the key was not found or could not be parsed.
+         * @param group_name a group name
+         * @param key a key
+         * @returns the value associated with the key as a signed 64-bit integer, or    `0` if the key was not found or could not be parsed.
          */
         get_int64(group_name: string, key: string): number;
         /**
          * Returns the value associated with `key` under `group_name` as an
          * integer.
          *
-         * If `key` cannot be found then 0 is returned and `error` is set to
-         * %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the value associated
-         * with `key` cannot be interpreted as an integer, or is out of range
-         * for a #gint, then 0 is returned
-         * and `error` is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
+         * If `key` cannot be found then [error`GLib`.KeyFileError.KEY_NOT_FOUND] is
+         * returned. Likewise, if the value associated with `key` cannot be interpreted
+         * as an integer, or is out of range for a `gint`, then
+         * [error`GLib`.KeyFileError.INVALID_VALUE] is returned.
          * @param group_name a group name
          * @param key a key
-         * @returns the value associated with the key as an integer, or     0 if the key was not found or could not be parsed.
+         * @returns the value associated with the key as an integer, or     `0` if the key was not found or could not be parsed.
          */
         get_integer(group_name: string, key: string): number;
         /**
          * Returns the values associated with `key` under `group_name` as
          * integers.
          *
-         * If `key` cannot be found then %NULL is returned and `error` is set to
-         * %G_KEY_FILE_ERROR_KEY_NOT_FOUND. Likewise, if the values associated
-         * with `key` cannot be interpreted as integers, or are out of range for
-         * #gint, then %NULL is returned
-         * and `error` is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
+         * If `key` cannot be found then [error`GLib`.KeyFileError.KEY_NOT_FOUND] is
+         * returned. Likewise, if the values associated with `key` cannot be interpreted
+         * as integers, or are out of range for `gint`, then
+         * [error`GLib`.KeyFileError.INVALID_VALUE] is returned.
          * @param group_name a group name
          * @param key a key
-         * @returns the values associated with the key as a list of integers, or %NULL if     the key was not found or could not be parsed. The returned list of     integers should be freed with g_free() when no longer needed.
+         * @returns the values associated with the key as a list of integers, or `NULL` if     the key was not found or could not be parsed. The returned list of     integers should be freed with [func@GLib.free] when no longer needed.
          */
         get_integer_list(group_name: string, key: string): number[];
         /**
-         * Returns all keys for the group name `group_name`.  The array of
-         * returned keys will be %NULL-terminated, so `length` may
-         * optionally be %NULL. In the event that the `group_name` cannot
-         * be found, %NULL is returned and `error` is set to
-         * %G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+         * Returns all keys for the group name `group_name`.
+         *
+         * The array of returned keys will be `NULL`-terminated, so `length` may
+         * optionally be `NULL`. If the `group_name` cannot be found,
+         * [error`GLib`.KeyFileError.GROUP_NOT_FOUND] is returned.
          * @param group_name a group name
-         * @returns a newly-allocated %NULL-terminated array of strings.     Use g_strfreev() to free it.
+         * @returns a newly-allocated    `NULL`-terminated array of strings. Use [func@GLib.strfreev] to free it.
          */
         get_keys(group_name: string): [string[], number];
         /**
          * Returns the actual locale which the result of
-         * g_key_file_get_locale_string() or g_key_file_get_locale_string_list()
-         * came from.
+         * [method`GLib`.KeyFile.get_locale_string] or
+         * [method`GLib`.KeyFile.get_locale_string_list] came from.
          *
-         * If calling g_key_file_get_locale_string() or
-         * g_key_file_get_locale_string_list() with exactly the same `key_file,`
+         * If calling [method`GLib`.KeyFile.get_locale_string] or
+         * [method`GLib`.KeyFile.get_locale_string_list] with exactly the same `key_file,`
          * `group_name,` `key` and `locale,` the result of those functions will
          * have originally been tagged with the locale that is the result of
          * this function.
          * @param group_name a group name
          * @param key a key
-         * @param locale a locale identifier or %NULL
-         * @returns the locale from the file, or %NULL if the key was not   found or the entry in the file was was untranslated
+         * @param locale a locale identifier or `NULL` to use the current locale
+         * @returns the locale from the file, or `NULL` if the key was not   found or the entry in the file was was untranslated
          */
         get_locale_for_key(group_name: string, key: string, locale?: string | null): string | null;
         /**
          * Returns the value associated with `key` under `group_name`
-         * translated in the given `locale` if available.  If `locale` is
-         * %NULL then the current locale is assumed.
+         * translated in the given `locale` if available.
          *
-         * If `locale` is to be non-%NULL, or if the current locale will change over
-         * the lifetime of the #GKeyFile, it must be loaded with
-         * %G_KEY_FILE_KEEP_TRANSLATIONS in order to load strings for all locales.
+         * If `locale` is `C` then the untranslated value is returned (since GLib 2.84).
          *
-         * If `key` cannot be found then %NULL is returned and `error` is set
-         * to %G_KEY_FILE_ERROR_KEY_NOT_FOUND. If the value associated
+         * If `locale` is `NULL` then the current locale is assumed.
+         *
+         * If `locale` is to be non-`NULL`, or if the current locale will change over
+         * the lifetime of the [struct`GLib`.KeyFile], it must be loaded with
+         * [flags`GLib`.KeyFileFlags.KEEP_TRANSLATIONS] in order to load strings for all
+         * locales.
+         *
+         * If `key` cannot be found then [error`GLib`.KeyFileError.KEY_NOT_FOUND] is
+         * returned. If the value associated
          * with `key` cannot be interpreted or no suitable translation can
          * be found then the untranslated value is returned.
          * @param group_name a group name
          * @param key a key
-         * @param locale a locale identifier or %NULL
-         * @returns a newly allocated string or %NULL if the specified   key cannot be found.
+         * @param locale a locale identifier or `NULL` to use the current locale
+         * @returns a newly allocated string or `NULL` if the specified   key cannot be found.
          */
         get_locale_string(group_name: string, key: string, locale?: string | null): string;
         /**
          * Returns the values associated with `key` under `group_name`
-         * translated in the given `locale` if available.  If `locale` is
-         * %NULL then the current locale is assumed.
+         * translated in the given `locale` if available.
          *
-         * If `locale` is to be non-%NULL, or if the current locale will change over
-         * the lifetime of the #GKeyFile, it must be loaded with
-         * %G_KEY_FILE_KEEP_TRANSLATIONS in order to load strings for all locales.
+         * If `locale` is `C` then the untranslated value is returned (since GLib 2.84).
          *
-         * If `key` cannot be found then %NULL is returned and `error` is set
-         * to %G_KEY_FILE_ERROR_KEY_NOT_FOUND. If the values associated
+         * If `locale` is `NULL` then the current locale is assumed.
+         *
+         * If `locale` is to be non-`NULL`, or if the current locale will change over
+         * the lifetime of the [struct`GLib`.KeyFile], it must be loaded with
+         * [flags`GLib`.KeyFileFlags.KEEP_TRANSLATIONS] in order to load strings for all
+         * locales.
+         *
+         * If `key` cannot be found then [error`GLib`.KeyFileError.KEY_NOT_FOUND] is
+         * returned. If the values associated
          * with `key` cannot be interpreted or no suitable translations
          * can be found then the untranslated values are returned. The
-         * returned array is %NULL-terminated, so `length` may optionally
-         * be %NULL.
+         * returned array is `NULL`-terminated, so `length` may optionally
+         * be `NULL`.
          * @param group_name a group name
          * @param key a key
-         * @param locale a locale identifier or %NULL
-         * @returns a newly allocated %NULL-terminated string array   or %NULL if the key isn't found. The string array should be freed   with g_strfreev().
+         * @param locale a locale identifier or `NULL` to use the current locale
+         * @returns a newly allocated `NULL`-terminated string array or `NULL` if the key    isn’t found. The string array should be freed with [func@GLib.strfreev].
          */
         get_locale_string_list(group_name: string, key: string, locale?: string | null): string[];
         /**
@@ -18154,164 +18324,174 @@ export namespace GLib {
         get_start_group(): string | null;
         /**
          * Returns the string value associated with `key` under `group_name`.
-         * Unlike g_key_file_get_value(), this function handles escape sequences
-         * like \s.
          *
-         * In the event the key cannot be found, %NULL is returned and
-         * `error` is set to %G_KEY_FILE_ERROR_KEY_NOT_FOUND.  In the
-         * event that the `group_name` cannot be found, %NULL is returned
-         * and `error` is set to %G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+         * Unlike [method`GLib`.KeyFile.get_value], this function handles escape
+         * sequences like `\s`.
+         *
+         * If the key cannot be found, [error`GLib`.KeyFileError.KEY_NOT_FOUND] is
+         * returned. If the `group_name` cannot be found,
+         * [error`GLib`.KeyFileError.GROUP_NOT_FOUND] is returned.
          * @param group_name a group name
          * @param key a key
-         * @returns a newly allocated string or %NULL if the specified   key cannot be found.
+         * @returns a newly allocated string or `NULL` if the specified   key cannot be found.
          */
         get_string(group_name: string, key: string): string;
         /**
          * Returns the values associated with `key` under `group_name`.
          *
-         * In the event the key cannot be found, %NULL is returned and
-         * `error` is set to %G_KEY_FILE_ERROR_KEY_NOT_FOUND.  In the
-         * event that the `group_name` cannot be found, %NULL is returned
-         * and `error` is set to %G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+         * If the key cannot be found, [error`GLib`.KeyFileError.KEY_NOT_FOUND] is
+         * returned. If the `group_name` cannot be found,
+         * [error`GLib`.KeyFileError.GROUP_NOT_FOUND] is returned.
          * @param group_name a group name
          * @param key a key
-         * @returns a %NULL-terminated string array or %NULL if the specified  key cannot be found. The array should be freed with g_strfreev().
+         * @returns a `NULL`-terminated string array or `NULL` if the specified  key cannot be found. The array should be freed with [func@GLib.strfreev].
          */
         get_string_list(group_name: string, key: string): string[];
         /**
          * Returns the value associated with `key` under `group_name` as an unsigned
-         * 64-bit integer. This is similar to g_key_file_get_integer() but can return
+         * 64-bit integer.
+         *
+         * This is similar to [method`GLib`.KeyFile.get_integer] but can return
          * large positive results without truncation.
-         * @param group_name a non-%NULL group name
-         * @param key a non-%NULL key
-         * @returns the value associated with the key as an unsigned 64-bit integer, or 0 if the key was not found or could not be parsed.
+         * @param group_name a group name
+         * @param key a key
+         * @returns the value associated with the key as an unsigned 64-bit integer,    or `0` if the key was not found or could not be parsed.
          */
         get_uint64(group_name: string, key: string): number;
         /**
          * Returns the raw value associated with `key` under `group_name`.
-         * Use g_key_file_get_string() to retrieve an unescaped UTF-8 string.
          *
-         * In the event the key cannot be found, %NULL is returned and
-         * `error` is set to %G_KEY_FILE_ERROR_KEY_NOT_FOUND.  In the
-         * event that the `group_name` cannot be found, %NULL is returned
-         * and `error` is set to %G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
+         * Use [method`GLib`.KeyFile.get_string] to retrieve an unescaped UTF-8 string.
+         *
+         * If the key cannot be found, [error`GLib`.KeyFileError.KEY_NOT_FOUND]
+         * is returned.  If the `group_name` cannot be found,
+         * [error`GLib`.KeyFileError.GROUP_NOT_FOUND] is returned.
          * @param group_name a group name
          * @param key a key
-         * @returns a newly allocated string or %NULL if the specified  key cannot be found.
+         * @returns a newly allocated string or `NULL` if the specified  key cannot be found.
          */
         get_value(group_name: string, key: string): string;
         /**
          * Looks whether the key file has the group `group_name`.
          * @param group_name a group name
-         * @returns %TRUE if @group_name is a part of @key_file, %FALSE otherwise.
+         * @returns true if @group_name is a part of @key_file, false otherwise.
          */
         has_group(group_name: string): boolean;
         /**
-         * Loads a key file from the data in `bytes` into an empty #GKeyFile structure.
-         * If the object cannot be created then %error is set to a #GKeyFileError.
-         * @param bytes a #GBytes
-         * @param flags flags from #GKeyFileFlags
-         * @returns %TRUE if a key file could be loaded, %FALSE otherwise
+         * Loads a key file from the data in `bytes` into an empty [struct`GLib`.KeyFile]
+         * structure.
+         *
+         * If the object cannot be created then a [error`GLib`.KeyFileError] is returned.
+         * @param bytes a [struct@GLib.Bytes]
+         * @param flags flags from [flags@GLib.KeyFileFlags]
+         * @returns true if a key file could be loaded, false otherwise
          */
         load_from_bytes(bytes: Bytes | Uint8Array, flags: KeyFileFlags | null): boolean;
         /**
-         * Loads a key file from memory into an empty #GKeyFile structure.
-         * If the object cannot be created then %error is set to a #GKeyFileError.
+         * Loads a key file from memory into an empty [struct`GLib`.KeyFile] structure.
+         *
+         * If the object cannot be created then a [error`GLib`.KeyFileError is returned.
          * @param data key file loaded in memory
-         * @param length the length of @data in bytes (or (gsize)-1 if data is nul-terminated)
-         * @param flags flags from #GKeyFileFlags
-         * @returns %TRUE if a key file could be loaded, %FALSE otherwise
+         * @param length the length of @data in bytes (or `(gsize)-1` if data is nul-terminated)
+         * @param flags flags from [flags@GLib.KeyFileFlags]
+         * @returns true if a key file could be loaded, false otherwise
          */
         load_from_data(data: string, length: number, flags: KeyFileFlags | null): boolean;
         /**
-         * This function looks for a key file named `file` in the paths
-         * returned from g_get_user_data_dir() and g_get_system_data_dirs(),
-         * loads the file into `key_file` and returns the file's full path in
-         * `full_path`.  If the file could not be loaded then an %error is
-         * set to either a #GFileError or #GKeyFileError.
+         * Looks for a key file named `file` in the paths returned from
+         * [func`GLib`.get_user_data_dir] and [func`GLib`.get_system_data_dirs],
+         * loads the file into `key_file` and returns the file’s full path in
+         * `full_path`.
+         *
+         * If the file could not be loaded then either a [error`GLib`.FileError] or
+         * [error`GLib`.KeyFileError] is returned.
          * @param file a relative path to a filename to open and parse
-         * @param flags flags from #GKeyFileFlags
-         * @returns %TRUE if a key file could be loaded, %FALSE otherwise
+         * @param flags flags from [flags@GLib.KeyFileFlags]
+         * @returns true if a key file could be loaded, false otherwise
          */
         load_from_data_dirs(file: string, flags: KeyFileFlags | null): [boolean, string];
         /**
-         * This function looks for a key file named `file` in the paths
-         * specified in `search_dirs,` loads the file into `key_file` and
-         * returns the file's full path in `full_path`.
+         * Looks for a key file named `file` in the paths specified in `search_dirs,`
+         * loads the file into `key_file` and returns the file’s full path in `full_path`.
          *
          * If the file could not be found in any of the `search_dirs,`
-         * %G_KEY_FILE_ERROR_NOT_FOUND is returned. If
+         * [error`GLib`.KeyFileError.NOT_FOUND] is returned. If
          * the file is found but the OS returns an error when opening or reading the
-         * file, a %G_FILE_ERROR is returned. If there is a problem parsing the file, a
-         * %G_KEY_FILE_ERROR is returned.
+         * file, a [error`GLib`.FileError] is returned. If there is a problem parsing the
+         * file, a [error`GLib`.KeyFileError] is returned.
          * @param file a relative path to a filename to open and parse
-         * @param search_dirs %NULL-terminated array of directories to search
-         * @param flags flags from #GKeyFileFlags
-         * @returns %TRUE if a key file could be loaded, %FALSE otherwise
+         * @param search_dirs `NULL`-terminated    array of directories to search
+         * @param flags flags from [flags@GLib.KeyFileFlags]
+         * @returns true if a key file could be loaded, false otherwise
          */
         load_from_dirs(file: string, search_dirs: string[], flags: KeyFileFlags | null): [boolean, string];
         /**
-         * Loads a key file into an empty #GKeyFile structure.
+         * Loads a key file into an empty [struct`GLib`.KeyFile] structure.
          *
          * If the OS returns an error when opening or reading the file, a
-         * %G_FILE_ERROR is returned. If there is a problem parsing the file, a
-         * %G_KEY_FILE_ERROR is returned.
+         * [error`GLib`.FileError] is returned. If there is a problem parsing the file,
+         * a [error`GLib`.KeyFileError] is returned.
          *
-         * This function will never return a %G_KEY_FILE_ERROR_NOT_FOUND error. If the
-         * `file` is not found, %G_FILE_ERROR_NOENT is returned.
+         * This function will never return a [error`GLib`.KeyFileError.NOT_FOUND]
+         * error. If the `file` is not found, [error`GLib`.FileError.NOENT] is returned.
          * @param file the path of a filename to load, in the GLib filename encoding
-         * @param flags flags from #GKeyFileFlags
-         * @returns %TRUE if a key file could be loaded, %FALSE otherwise
+         * @param flags flags from [flags@GLib.KeyFileFlags]
+         * @returns true if a key file could be loaded, false otherwise
          */
         load_from_file(file: string, flags: KeyFileFlags | null): boolean;
         /**
          * Removes a comment above `key` from `group_name`.
-         * If `key` is %NULL then `comment` will be removed above `group_name`.
-         * If both `key` and `group_name` are %NULL, then `comment` will
+         *
+         * If `key` is `NULL` then `comment` will be removed above `group_name`.
+         * If both `key` and `group_name` are `NULL`, then `comment` will
          * be removed above the first group in the file.
-         * @param group_name a group name, or %NULL
-         * @param key a key
-         * @returns %TRUE if the comment was removed, %FALSE otherwise
+         * @param group_name a group name, or `NULL` to get a top-level comment
+         * @param key a key, or `NULL` to get a group comment
+         * @returns true if the comment was removed, false otherwise
          */
         remove_comment(group_name?: string | null, key?: string | null): boolean;
         /**
          * Removes the specified group, `group_name,`
          * from the key file.
          * @param group_name a group name
-         * @returns %TRUE if the group was removed, %FALSE otherwise
+         * @returns true if the group was removed, false otherwise
          */
         remove_group(group_name: string): boolean;
         /**
          * Removes `key` in `group_name` from the key file.
          * @param group_name a group name
          * @param key a key name to remove
-         * @returns %TRUE if the key was removed, %FALSE otherwise
+         * @returns true if the key was removed, false otherwise
          */
         remove_key(group_name: string, key: string): boolean;
         /**
          * Writes the contents of `key_file` to `filename` using
-         * g_file_set_contents(). If you need stricter guarantees about durability of
-         * the written file than are provided by g_file_set_contents(), use
-         * g_file_set_contents_full() with the return value of g_key_file_to_data().
+         * [func`GLib`.file_set_contents].
+         *
+         * If you need stricter guarantees about durability of
+         * the written file than are provided by [func`GLib`.file_set_contents], use
+         * [func`GLib`.file_set_contents_full] with the return value of
+         * [method`GLib`.KeyFile.to_data].
          *
          * This function can fail for any of the reasons that
-         * g_file_set_contents() may fail.
+         * [func`GLib`.file_set_contents] may fail.
          * @param filename the name of the file to write to
-         * @returns %TRUE if successful, else %FALSE with @error set
+         * @returns true if successful, false otherwise
          */
         save_to_file(filename: string): boolean;
         /**
          * Associates a new boolean value with `key` under `group_name`.
+         *
          * If `key` cannot be found then it is created.
          * @param group_name a group name
          * @param key a key
-         * @param value %TRUE or %FALSE
+         * @param value true or false
          */
         set_boolean(group_name: string, key: string, value: boolean): void;
         /**
          * Associates a list of boolean values with `key` under `group_name`.
+         *
          * If `key` cannot be found then it is created.
-         * If `group_name` is %NULL, the start_group is used.
          * @param group_name a group name
          * @param key a key
          * @param list an array of boolean values
@@ -18320,20 +18500,21 @@ export namespace GLib {
         /**
          * Places a comment above `key` from `group_name`.
          *
-         * If `key` is %NULL then `comment` will be written above `group_name`.
-         * If both `key` and `group_name`  are %NULL, then `comment` will be
+         * If `key` is `NULL` then `comment` will be written above `group_name`.
+         * If both `key` and `group_name` are `NULL`, then `comment` will be
          * written above the first group in the file.
          *
-         * Note that this function prepends a '#' comment marker to
+         * Note that this function prepends a `#` comment marker to
          * each line of `comment`.
-         * @param group_name a group name, or %NULL
-         * @param key a key
+         * @param group_name a group name, or `NULL` to write a top-level comment
+         * @param key a key, or `NULL` to write a group comment
          * @param comment a comment
-         * @returns %TRUE if the comment was written, %FALSE otherwise
+         * @returns true if the comment was written, false otherwise
          */
         set_comment(group_name: string | null, key: string | null, comment: string): boolean;
         /**
          * Associates a new double value with `key` under `group_name`.
+         *
          * If `key` cannot be found then it is created.
          * @param group_name a group name
          * @param key a key
@@ -18341,8 +18522,9 @@ export namespace GLib {
          */
         set_double(group_name: string, key: string, value: number): void;
         /**
-         * Associates a list of double values with `key` under
-         * `group_name`.  If `key` cannot be found then it is created.
+         * Associates a list of double values with `key` under `group_name`.
+         *
+         * If `key` cannot be found then it is created.
          * @param group_name a group name
          * @param key a key
          * @param list an array of double values
@@ -18350,6 +18532,7 @@ export namespace GLib {
         set_double_list(group_name: string, key: string, list: number[]): void;
         /**
          * Associates a new integer value with `key` under `group_name`.
+         *
          * If `key` cannot be found then it is created.
          * @param group_name a group name
          * @param key a key
@@ -18358,6 +18541,7 @@ export namespace GLib {
         set_int64(group_name: string, key: string, value: number): void;
         /**
          * Associates a new integer value with `key` under `group_name`.
+         *
          * If `key` cannot be found then it is created.
          * @param group_name a group name
          * @param key a key
@@ -18366,6 +18550,7 @@ export namespace GLib {
         set_integer(group_name: string, key: string, value: number): void;
         /**
          * Associates a list of integer values with `key` under `group_name`.
+         *
          * If `key` cannot be found then it is created.
          * @param group_name a group name
          * @param key a key
@@ -18373,15 +18558,19 @@ export namespace GLib {
          */
         set_integer_list(group_name: string, key: string, list: number[]): void;
         /**
-         * Sets the character which is used to separate
-         * values in lists. Typically ';' or ',' are used
-         * as separators. The default list separator is ';'.
+         * Sets the character which is used to separate values in lists.
+         *
+         * Typically `;` or `,` are used as separators. The default list separator
+         * is `;`.
          * @param separator the separator
          */
         set_list_separator(separator: number): void;
         /**
          * Associates a string value for `key` and `locale` under `group_name`.
+         *
          * If the translation for `key` cannot be found then it is created.
+         *
+         * If `locale` is `C` then the untranslated value is set (since GLib 2.84).
          * @param group_name a group name
          * @param key a key
          * @param locale a locale identifier
@@ -18390,19 +18579,23 @@ export namespace GLib {
         set_locale_string(group_name: string, key: string, locale: string, string: string): void;
         /**
          * Associates a list of string values for `key` and `locale` under
-         * `group_name`.  If the translation for `key` cannot be found then
-         * it is created.
+         * `group_name`.
+         *
+         * If `locale` is `C` then the untranslated value is set (since GLib 2.84).
+         *
+         * If the translation for `key` cannot be found then it is created.
          * @param group_name a group name
          * @param key a key
          * @param locale a locale identifier
-         * @param list a %NULL-terminated array of locale string values
+         * @param list a `NULL`-terminated array of    locale string values
          */
         set_locale_string_list(group_name: string, key: string, locale: string, list: string[]): void;
         /**
          * Associates a new string value with `key` under `group_name`.
+         *
          * If `key` cannot be found then it is created.
          * If `group_name` cannot be found then it is created.
-         * Unlike g_key_file_set_value(), this function handles characters
+         * Unlike [method`GLib`.KeyFile.set_value], this function handles characters
          * that need escaping, such as newlines.
          * @param group_name a group name
          * @param key a key
@@ -18411,15 +18604,17 @@ export namespace GLib {
         set_string(group_name: string, key: string, string: string): void;
         /**
          * Associates a list of string values for `key` under `group_name`.
+         *
          * If `key` cannot be found then it is created.
          * If `group_name` cannot be found then it is created.
          * @param group_name a group name
          * @param key a key
-         * @param list an array of string values
+         * @param list an array    of string values
          */
         set_string_list(group_name: string, key: string, list: string[]): void;
         /**
          * Associates a new integer value with `key` under `group_name`.
+         *
          * If `key` cannot be found then it is created.
          * @param group_name a group name
          * @param key a key
@@ -18432,23 +18627,24 @@ export namespace GLib {
          * If `key` cannot be found then it is created. If `group_name` cannot
          * be found then it is created. To set an UTF-8 string which may contain
          * characters that need escaping (such as newlines or spaces), use
-         * g_key_file_set_string().
+         * [method`GLib`.KeyFile.set_string].
          * @param group_name a group name
          * @param key a key
          * @param value a string
          */
         set_value(group_name: string, key: string, value: string): void;
         /**
-         * This function outputs `key_file` as a string.
+         * Outputs `key_file` as a string.
          *
-         * Note that this function never reports an error,
-         * so it is safe to pass %NULL as `error`.
-         * @returns a newly allocated string holding   the contents of the #GKeyFile
+         * Note that this function never reports an error.
+         * @returns a newly allocated string holding the contents of the key file
          */
         to_data(): [string, number];
         /**
-         * Decreases the reference count of `key_file` by 1. If the reference count
-         * reaches zero, frees the key file and all its allocated memory.
+         * Decreases the reference count of `key_file` by 1.
+         *
+         * If the reference count reaches zero, frees the key file and all its allocated
+         * memory.
          */
         unref(): void;
     }
@@ -18710,7 +18906,7 @@ export namespace GLib {
         /**
          * Acquires `context` and sets it as the thread-default context for the
          * current thread. This will cause certain asynchronous operations
-         * (such as most [gio][gio]-based I/O) which are
+         * (such as most [Gio](../gio/index.html)-based I/O) which are
          * started in this thread to run under `context` and deliver their
          * results to its main loop, rather than running under the global
          * default main context in the main thread. Note that calling this function
@@ -18749,6 +18945,49 @@ export namespace GLib {
          * see g_file_supports_thread_contexts().
          */
         push_thread_default(): void;
+        /**
+         * Push `main_context` as the new thread-default main context for the current
+         * thread, using [method`GLib`.MainContext.push_thread_default], and return a
+         * new [alias`GLib`.MainContextPusher]. Pop with g_main_context_pusher_free().
+         * Using [method`GLib`.MainContext.pop_thread_default] on `main_context` while a
+         * [alias`GLib`.MainContextPusher] exists for it can lead to undefined behaviour.
+         *
+         * Using two [alias`GLib`.MainContextPusher]s in the same scope is not allowed,
+         * as it leads to an undefined pop order.
+         *
+         * This is intended to be used with g_autoptr().  Note that g_autoptr()
+         * is only available when using GCC or clang, so the following example
+         * will only work with those compilers:
+         *
+         * ```
+         * typedef struct
+         * {
+         *   ...
+         *   GMainContext *context;
+         *   ...
+         * } MyObject;
+         *
+         * static void
+         * my_object_do_stuff (MyObject *self)
+         * {
+         *   g_autoptr(GMainContextPusher) pusher = g_main_context_pusher_new (self->context);
+         *
+         *   // Code with main context as the thread default here
+         *
+         *   if (cond)
+         *     // No need to pop
+         *     return;
+         *
+         *   // Optionally early pop
+         *   g_clear_pointer (&pusher, g_main_context_pusher_free);
+         *
+         *   // Code with main context no longer the thread default here
+         * }
+         * ```
+         *
+         * @returns a #GMainContextPusher
+         */
+        pusher_new(): MainContextPusher;
         /**
          * Determines information necessary to poll this main loop. You should
          * be careful to pass the resulting `fds` array and its length `n_fds`
@@ -19470,7 +19709,7 @@ export namespace GLib {
     }
 
     /**
-     * The #GNode struct represents one node in a [n-ary tree][glib-N-ary-Trees].
+     * The #GNode struct represents one node in a [n-ary tree](data-structures.html#n-ary-trees).
      */
     class Node {
         static $gtype: GObject.GType<Node>;
@@ -19663,7 +19902,7 @@ export namespace GLib {
          * While `location` has a `volatile` qualifier, this is a historical artifact and
          * the pointer passed to it should not be `volatile`.
          * @param location location of a static initializable variable    containing 0
-         * @param result new non-0 value for *@value_location
+         * @param result new non-0 value for `*value_location`
          */
         static init_leave(location: any, result: number): any;
         /**
@@ -19783,9 +20022,9 @@ export namespace GLib {
          * this function will produce help output to stdout and
          * call `exit (0)`.
          *
-         * Note that function depends on the [current locale][setlocale] for
-         * automatic character set conversion of string and filename
-         * arguments.
+         * Note that function depends on the
+         * [current locale](running.html#locale) for automatic
+         * character set conversion of string and filename arguments.
          * @param argv a pointer to the array of command line arguments
          * @returns %TRUE if the parsing was successful,               %FALSE if an error occurred
          */
@@ -19910,6 +20149,19 @@ export namespace GLib {
     }
 
     /**
+     * - %G_OPTION_ARG_NONE: %gboolean
+     *     - %G_OPTION_ARG_STRING: %gchar*
+     *     - %G_OPTION_ARG_INT: %gint
+     *     - %G_OPTION_ARG_FILENAME: %gchar*
+     *     - %G_OPTION_ARG_STRING_ARRAY: %gchar**
+     *     - %G_OPTION_ARG_FILENAME_ARRAY: %gchar**
+     *     - %G_OPTION_ARG_DOUBLE: %gdouble
+     *
+     *     If `arg` type is %G_OPTION_ARG_STRING or %G_OPTION_ARG_FILENAME,
+     *     the location will contain a newly allocated string if the option
+     *     was given. That string needs to be freed by the callee using g_free().
+     *     Likewise if `arg` type is %G_OPTION_ARG_STRING_ARRAY or
+     *     %G_OPTION_ARG_FILENAME_ARRAY, the data should be freed using g_strfreev().
      * A GOptionEntry struct defines a single option. To have an effect, they
      * must be added to a #GOptionGroup with g_option_context_add_main_entries()
      * or g_option_group_add_entries().
@@ -20420,7 +20672,7 @@ export namespace GLib {
 
     /**
      * Contains the public fields of a
-     * [Queue][glib-Double-ended-Queues].
+     * [Queue](data-structures.html#double-ended-queues).
      */
     class Queue {
         static $gtype: GObject.GType<Queue>;
@@ -21871,7 +22123,7 @@ export namespace GLib {
 
     /**
      * The #GSequence struct is an opaque data type representing a
-     * [sequence][glib-Sequences] data type.
+     * [sequence](data-structures.html#scalable-lists) data type.
      */
     abstract class Sequence {
         static $gtype: GObject.GType<Sequence>;
@@ -23427,16 +23679,16 @@ export namespace GLib {
 
         /**
          * Adds `test_case` to `suite`.
-         * @param test_case a #GTestCase
+         * @param test_case a test case
          */
         add(test_case: TestCase): void;
         /**
          * Adds `nestedsuite` to `suite`.
-         * @param nestedsuite another #GTestSuite
+         * @param nestedsuite another test suite
          */
         add_suite(nestedsuite: TestSuite): void;
         /**
-         * Free the `suite` and all nested #GTestSuites.
+         * Frees the `suite` and all nested suites.
          */
         free(): void;
     }
@@ -23510,6 +23762,13 @@ export namespace GLib {
 
         // Methods
 
+        /**
+         * Gets the name of the thread.
+         *
+         * This function is intended for debugging purposes.
+         * @returns the name of the thread
+         */
+        get_name(): string;
         /**
          * Waits until `thread` finishes, i.e. the function `func,` as
          * given to g_thread_new(), returns or g_thread_exit() is called.
@@ -23624,7 +23883,7 @@ export namespace GLib {
          * If `max_threads` is -1, no limit is imposed on the number
          * of unused threads.
          *
-         * The default value is 2.
+         * The default value is 8 since GLib 2.84. Previously the default value was 2.
          * @param max_threads maximal number of unused threads
          */
         static set_max_unused_threads(max_threads: number): void;
@@ -24091,7 +24350,7 @@ export namespace GLib {
 
     /**
      * The GTree struct is an opaque data structure representing a
-     * [balanced binary tree][glib-Balanced-Binary-Trees]. It should be
+     * [balanced binary tree](data-structures.html#binary-trees). It should be
      * accessed only by using the following functions.
      */
     class Tree {
@@ -26749,14 +27008,17 @@ export namespace GLib {
         static checked_(type_string: string): VariantType;
         static string_get_depth_(type_string: string): number;
         /**
-         * Checks if `type_string` is a valid GVariant type string.  This call is
-         * equivalent to calling g_variant_type_string_scan() and confirming
-         * that the following character is a nul terminator.
+         * Checks if `type_string` is a valid
+         * [GVariant type string](./struct.VariantType.html#gvariant-type-strings).
+         *
+         * This call is equivalent to calling [func`GLib`.VariantType.string_scan] and
+         * confirming that the following character is a nul terminator.
          * @param type_string a pointer to any string
          */
         static string_is_valid(type_string: string): boolean;
         /**
          * Scan for a single complete and valid GVariant type string in `string`.
+         *
          * The memory pointed to by `limit` (or bytes beyond it) is never
          * accessed.
          *
@@ -26768,47 +27030,50 @@ export namespace GLib {
          * string does not end before `limit` then %FALSE is returned.
          *
          * For the simple case of checking if a string is a valid type string,
-         * see g_variant_type_string_is_valid().
+         * see [func`GLib`.VariantType.string_is_valid].
          * @param string a pointer to any string
-         * @param limit the end of @string, or %NULL
+         * @param limit the end of @string
          */
         static string_scan(string: string, limit: string | null): [boolean, string];
 
         // Methods
 
         /**
-         * Makes a copy of a #GVariantType.  It is appropriate to call
-         * g_variant_type_free() on the return value.  `type` may not be %NULL.
-         * @returns a new #GVariantType Since 2.24
+         * Makes a copy of a [type`GLib`.VariantType].
+         *
+         * It is appropriate to call [method`GLib`.VariantType.free] on the return value.
+         * `type` may not be `NULL`.
+         * @returns a new [type@GLib.VariantType] Since 2.24
          */
         copy(): VariantType;
         /**
-         * Returns a newly-allocated copy of the type string corresponding to
-         * `type`.  The returned string is nul-terminated.  It is appropriate to
-         * call g_free() on the return value.
+         * Returns a newly-allocated copy of the type string corresponding to `type`.
+         *
+         * The returned string is nul-terminated.  It is appropriate to call
+         * [func`GLib`.free] on the return value.
          * @returns the corresponding type string Since 2.24
          */
         dup_string(): string;
         /**
-         * Determines the element type of an array or maybe type.
+         * Determines the element type of an array or ‘maybe’ type.
          *
-         * This function may only be used with array or maybe types.
+         * This function may only be used with array or ‘maybe’ types.
          * @returns the element type of @type Since 2.24
          */
         element(): VariantType;
         /**
          * Compares `type1` and `type2` for equality.
          *
-         * Only returns %TRUE if the types are exactly equal.  Even if one type
-         * is an indefinite type and the other is a subtype of it, %FALSE will
+         * Only returns true if the types are exactly equal.  Even if one type
+         * is an indefinite type and the other is a subtype of it, false will
          * be returned if they are not exactly equal.  If you want to check for
-         * subtypes, use g_variant_type_is_subtype_of().
+         * subtypes, use [method`GLib`.VariantType.is_subtype_of].
          *
-         * The argument types of `type1` and `type2` are only #gconstpointer to
-         * allow use with #GHashTable without function pointer casting.  For
-         * both arguments, a valid #GVariantType must be provided.
-         * @param type2 a #GVariantType
-         * @returns %TRUE if @type1 and @type2 are exactly equal Since 2.24
+         * The argument types of `type1` and `type2` are only `gconstpointer` to
+         * allow use with [type`GLib`.HashTable] without function pointer casting.  For
+         * both arguments, a valid [type`GLib`.VariantType] must be provided.
+         * @param type2 another type to compare
+         * @returns true if @type1 and @type2 are exactly equal Since 2.24
          */
         equal(type2: VariantType): boolean;
         /**
@@ -26817,52 +27082,54 @@ export namespace GLib {
          *
          * This function may only be used with tuple or dictionary entry types,
          * but must not be used with the generic tuple type
-         * %G_VARIANT_TYPE_TUPLE.
+         * `G_VARIANT_TYPE_TUPLE`.
          *
          * In the case of a dictionary entry type, this returns the type of
          * the key.
          *
-         * %NULL is returned in case of `type` being %G_VARIANT_TYPE_UNIT.
+         * `NULL` is returned in case of `type` being `G_VARIANT_TYPE_UNIT`.
          *
-         * This call, together with g_variant_type_next() provides an iterator
+         * This call, together with [method`GLib`.VariantType.next] provides an iterator
          * interface over tuple and dictionary entry types.
-         * @returns the first item type of @type, or %NULL Since 2.24
+         * @returns the first item type of @type, or `NULL`   if the type has no item types Since 2.24
          */
-        first(): VariantType;
+        first(): VariantType | null;
         /**
-         * Frees a #GVariantType that was allocated with
-         * g_variant_type_copy(), g_variant_type_new() or one of the container
-         * type constructor functions.
+         * Frees a [type`GLib`.VariantType] that was allocated with
+         * [method`GLib`.VariantType.copy], [ctor`GLib`.VariantType.new] or one of the
+         * container type constructor functions.
          *
-         * In the case that `type` is %NULL, this function does nothing.
+         * In the case that `type` is `NULL`, this function does nothing.
          *
          * Since 2.24
          */
         free(): void;
         /**
-         * Returns the length of the type string corresponding to the given
-         * `type`.  This function must be used to determine the valid extent of
-         * the memory region returned by g_variant_type_peek_string().
+         * Returns the length of the type string corresponding to the given `type`.
+         *
+         * This function must be used to determine the valid extent of
+         * the memory region returned by [method`GLib`.VariantType.peek_string].
          * @returns the length of the corresponding type string Since 2.24
          */
         get_string_length(): number;
         /**
          * Hashes `type`.
          *
-         * The argument type of `type` is only #gconstpointer to allow use with
-         * #GHashTable without function pointer casting.  A valid
-         * #GVariantType must be provided.
+         * The argument type of `type` is only `gconstpointer` to allow use with
+         * [type`GLib`.HashTable] without function pointer casting.  A valid
+         * [type`GLib`.VariantType] must be provided.
          * @returns the hash value Since 2.24
          */
         hash(): number;
         /**
-         * Determines if the given `type` is an array type.  This is true if the
-         * type string for `type` starts with an 'a'.
+         * Determines if the given `type` is an array type.
          *
-         * This function returns %TRUE for any indefinite type for which every
-         * definite subtype is an array type -- %G_VARIANT_TYPE_ARRAY, for
+         * This is true if the type string for `type` starts with an `a`.
+         *
+         * This function returns true for any indefinite type for which every
+         * definite subtype is an array type — `G_VARIANT_TYPE_ARRAY`, for
          * example.
-         * @returns %TRUE if @type is an array type Since 2.24
+         * @returns true if @type is an array type Since 2.24
          */
         is_array(): boolean;
         /**
@@ -26873,9 +27140,9 @@ export namespace GLib {
          *
          * Only a basic type may be used as the key of a dictionary entry.
          *
-         * This function returns %FALSE for all indefinite types except
-         * %G_VARIANT_TYPE_BASIC.
-         * @returns %TRUE if @type is a basic type Since 2.24
+         * This function returns `FALSE` for all indefinite types except
+         * `G_VARIANT_TYPE_BASIC`.
+         * @returns true if @type is a basic type Since 2.24
          */
         is_basic(): boolean;
         /**
@@ -26884,70 +27151,73 @@ export namespace GLib {
          * Container types are any array, maybe, tuple, or dictionary
          * entry types plus the variant type.
          *
-         * This function returns %TRUE for any indefinite type for which every
-         * definite subtype is a container -- %G_VARIANT_TYPE_ARRAY, for
+         * This function returns true for any indefinite type for which every
+         * definite subtype is a container — `G_VARIANT_TYPE_ARRAY`, for
          * example.
-         * @returns %TRUE if @type is a container type Since 2.24
+         * @returns true if @type is a container type Since 2.24
          */
         is_container(): boolean;
         /**
          * Determines if the given `type` is definite (ie: not indefinite).
          *
          * A type is definite if its type string does not contain any indefinite
-         * type characters ('*', '?', or 'r').
+         * type characters (`*`, `?`, or `r`).
          *
-         * A #GVariant instance may not have an indefinite type, so calling
-         * this function on the result of g_variant_get_type() will always
-         * result in %TRUE being returned.  Calling this function on an
-         * indefinite type like %G_VARIANT_TYPE_ARRAY, however, will result in
-         * %FALSE being returned.
-         * @returns %TRUE if @type is definite Since 2.24
+         * A [type`GLib`.Variant] instance may not have an indefinite type, so calling
+         * this function on the result of [method`GLib`.Variant.get_type] will always
+         * result in true being returned.  Calling this function on an
+         * indefinite type like `G_VARIANT_TYPE_ARRAY`, however, will result in
+         * `FALSE` being returned.
+         * @returns true if @type is definite Since 2.24
          */
         is_definite(): boolean;
         /**
-         * Determines if the given `type` is a dictionary entry type.  This is
-         * true if the type string for `type` starts with a '{'.
+         * Determines if the given `type` is a dictionary entry type.
          *
-         * This function returns %TRUE for any indefinite type for which every
-         * definite subtype is a dictionary entry type --
-         * %G_VARIANT_TYPE_DICT_ENTRY, for example.
-         * @returns %TRUE if @type is a dictionary entry type Since 2.24
+         * This is true if the type string for `type` starts with a `{`.
+         *
+         * This function returns true for any indefinite type for which every
+         * definite subtype is a dictionary entry type —
+         * `G_VARIANT_TYPE_DICT_ENTRY`, for example.
+         * @returns true if @type is a dictionary entry type Since 2.24
          */
         is_dict_entry(): boolean;
         /**
-         * Determines if the given `type` is a maybe type.  This is true if the
-         * type string for `type` starts with an 'm'.
+         * Determines if the given `type` is a ‘maybe’ type.
          *
-         * This function returns %TRUE for any indefinite type for which every
-         * definite subtype is a maybe type -- %G_VARIANT_TYPE_MAYBE, for
+         * This is true if the type string for `type` starts with an `m`.
+         *
+         * This function returns true for any indefinite type for which every
+         * definite subtype is a ‘maybe’ type — `G_VARIANT_TYPE_MAYBE`, for
          * example.
-         * @returns %TRUE if @type is a maybe type Since 2.24
+         * @returns true if @type is a ‘maybe’ type Since 2.24
          */
         is_maybe(): boolean;
         /**
          * Checks if `type` is a subtype of `supertype`.
          *
-         * This function returns %TRUE if `type` is a subtype of `supertype`.  All
+         * This function returns true if `type` is a subtype of `supertype`.  All
          * types are considered to be subtypes of themselves.  Aside from that,
          * only indefinite types can have subtypes.
-         * @param supertype a #GVariantType
-         * @returns %TRUE if @type is a subtype of @supertype Since 2.24
+         * @param supertype type of potential supertype
+         * @returns true if @type is a subtype of @supertype Since 2.24
          */
         is_subtype_of(supertype: VariantType): boolean;
         /**
-         * Determines if the given `type` is a tuple type.  This is true if the
-         * type string for `type` starts with a '(' or if `type` is
-         * %G_VARIANT_TYPE_TUPLE.
+         * Determines if the given `type` is a tuple type.
          *
-         * This function returns %TRUE for any indefinite type for which every
-         * definite subtype is a tuple type -- %G_VARIANT_TYPE_TUPLE, for
+         * This is true if the type string for `type` starts with a `(` or if `type` is
+         * `G_VARIANT_TYPE_TUPLE`.
+         *
+         * This function returns true for any indefinite type for which every
+         * definite subtype is a tuple type — `G_VARIANT_TYPE_TUPLE`, for
          * example.
-         * @returns %TRUE if @type is a tuple type Since 2.24
+         * @returns true if @type is a tuple type Since 2.24
          */
         is_tuple(): boolean;
         /**
          * Determines if the given `type` is the variant type.
-         * @returns %TRUE if @type is the variant type Since 2.24
+         * @returns true if @type is the variant type Since 2.24
          */
         is_variant(): boolean;
         /**
@@ -26955,7 +27225,7 @@ export namespace GLib {
          *
          * This function may only be used with a dictionary entry type.  Other
          * than the additional restriction, this call is equivalent to
-         * g_variant_type_first().
+         * [method`GLib`.VariantType.first].
          * @returns the key type of the dictionary entry Since 2.24
          */
         key(): VariantType;
@@ -26965,10 +27235,10 @@ export namespace GLib {
          *
          * This function may only be used with tuple or dictionary entry types,
          * but must not be used with the generic tuple type
-         * %G_VARIANT_TYPE_TUPLE.
+         * `G_VARIANT_TYPE_TUPLE`.
          *
          * In the case of a dictionary entry type, this function will always
-         * return 2.
+         * return `2`.
          * @returns the number of items in @type Since 2.24
          */
         n_items(): number;
@@ -26977,16 +27247,16 @@ export namespace GLib {
          * type.
          *
          * `type` must be the result of a previous call to
-         * g_variant_type_first() or g_variant_type_next().
+         * [method`GLib`.VariantType.first] or [method`GLib`.VariantType.next].
          *
          * If called on the key type of a dictionary entry then this call
          * returns the value type.  If called on the value type of a dictionary
-         * entry then this call returns %NULL.
+         * entry then this call returns `NULL`.
          *
-         * For tuples, %NULL is returned when `type` is the last item in a tuple.
-         * @returns the next #GVariantType after @type, or %NULL Since 2.24
+         * For tuples, `NULL` is returned when `type` is the last item in the tuple.
+         * @returns the next type after @type, or `NULL` if   there are no further types Since 2.24
          */
-        next(): VariantType;
+        next(): VariantType | null;
         /**
          * Determines the value type of a dictionary entry type.
          *

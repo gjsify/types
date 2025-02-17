@@ -16,6 +16,7 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type Meta from '@girs/meta-16';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type GDesktopEnums from '@girs/gdesktopenums-3.0';
 import type Cogl from '@girs/cogl-16';
 import type GL from '@girs/gl-1.0';

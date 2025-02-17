@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Wp {
     /**
@@ -1920,12 +1921,12 @@ export namespace Wp {
 
         // Inherited methods
         /**
-         * Gets the source object from a #GAsyncResult.
-         * @returns a new reference to the source    object for the @res, or %NULL if there is none.
+         * Gets the source object from a [iface`Gio`.AsyncResult].
+         * @returns a new reference to the source    object for the @res, or `NULL` if there is none.
          */
         get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a #GAsyncResult.
+         * Gets the user data from a [iface`Gio`.AsyncResult].
          * @returns the user data for @res.
          */
         get_user_data(): any | null;
@@ -1933,29 +1934,29 @@ export namespace Wp {
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
-         * @returns %TRUE if @res has the indicated @source_tag, %FALSE if   not.
+         * @returns `TRUE` if @res has the indicated @source_tag, `FALSE` if   not.
          */
         is_tagged(source_tag?: any | null): boolean;
         /**
-         * If `res` is a #GSimpleAsyncResult, this is equivalent to
-         * g_simple_async_result_propagate_error(). Otherwise it returns
-         * %FALSE.
+         * If `res` is a [class`Gio`.SimpleAsyncResult], this is equivalent to
+         * [method`Gio`.SimpleAsyncResult.propagate_error]. Otherwise it returns
+         * `FALSE`.
          *
-         * This can be used for legacy error handling in async *_finish()
-         * wrapper functions that traditionally handled #GSimpleAsyncResult
+         * This can be used for legacy error handling in async `*_finish()`
+         * wrapper functions that traditionally handled [class`Gio`.SimpleAsyncResult]
          * error returns themselves rather than calling into the virtual method.
-         * This should not be used in new code; #GAsyncResult errors that are
+         * This should not be used in new code; [iface`Gio`.AsyncResult] errors that are
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
-         * @returns %TRUE if @error is has been filled in with an error from   @res, %FALSE if not.
+         * @returns `TRUE` if @error is has been filled in with an error from   @res, `FALSE` if not.
          */
         legacy_propagate_error(): boolean;
         /**
-         * Gets the source object from a #GAsyncResult.
+         * Gets the source object from a [iface`Gio`.AsyncResult].
          */
         vfunc_get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a #GAsyncResult.
+         * Gets the user data from a [iface`Gio`.AsyncResult].
          */
         vfunc_get_user_data(): any | null;
         /**
@@ -5028,30 +5029,30 @@ export namespace Wp {
 
         // Inherited methods
         /**
-         * Gets the user data from a #GAsyncResult.
+         * Gets the user data from a [iface`Gio`.AsyncResult].
          * @returns the user data for @res.
          */
         get_user_data(): any | null;
         /**
-         * If `res` is a #GSimpleAsyncResult, this is equivalent to
-         * g_simple_async_result_propagate_error(). Otherwise it returns
-         * %FALSE.
+         * If `res` is a [class`Gio`.SimpleAsyncResult], this is equivalent to
+         * [method`Gio`.SimpleAsyncResult.propagate_error]. Otherwise it returns
+         * `FALSE`.
          *
-         * This can be used for legacy error handling in async *_finish()
-         * wrapper functions that traditionally handled #GSimpleAsyncResult
+         * This can be used for legacy error handling in async `*_finish()`
+         * wrapper functions that traditionally handled [class`Gio`.SimpleAsyncResult]
          * error returns themselves rather than calling into the virtual method.
-         * This should not be used in new code; #GAsyncResult errors that are
+         * This should not be used in new code; [iface`Gio`.AsyncResult] errors that are
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
-         * @returns %TRUE if @error is has been filled in with an error from   @res, %FALSE if not.
+         * @returns `TRUE` if @error is has been filled in with an error from   @res, `FALSE` if not.
          */
         legacy_propagate_error(): boolean;
         /**
-         * Gets the source object from a #GAsyncResult.
+         * Gets the source object from a [iface`Gio`.AsyncResult].
          */
         vfunc_get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a #GAsyncResult.
+         * Gets the user data from a [iface`Gio`.AsyncResult].
          */
         vfunc_get_user_data(): any | null;
         /**

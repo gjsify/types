@@ -383,6 +383,9 @@ export namespace JavaScriptCore {
     interface ExceptionHandler {
         (context: Context, exception: Exception): void;
     }
+    interface Executor {
+        (resolve: Value, reject: Value): void;
+    }
     interface OptionsFunc {
         (option: string, type: OptionType, description?: string | null): boolean;
     }
@@ -918,6 +921,8 @@ export namespace JavaScriptCore {
         static new_number(context: Context, number: number): Value;
 
         static new_object(context: Context, instance?: any | null, jsc_class?: Class | null): Value;
+
+        static new_promise(context: Context, executor: Executor): Value;
 
         static new_string(context: Context, string?: string | null): Value;
 

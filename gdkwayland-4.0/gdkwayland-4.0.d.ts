@@ -17,8 +17,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace GdkWayland {
     /**
@@ -622,6 +622,13 @@ export namespace GdkWayland {
         constructor(properties?: Partial<WaylandSurface.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Forces next commit.
+         */
+        force_next_commit(): void;
     }
 
     namespace WaylandToplevel {

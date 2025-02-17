@@ -16,6 +16,7 @@ import type GLib from '@girs/glib-2.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace PangoFc {
     /**
@@ -321,8 +322,8 @@ export namespace PangoFc {
          */
         cache_clear(): void;
         /**
-         * Informs font map that the fontconfig configuration (i.e., FcConfig
-         * object) used by this font map has changed.
+         * Informs font map that the fontconfig configuration (i.e.,
+         * the `FcConfig` object) used by this font map has changed.
          *
          * This currently calls [method`PangoFc`.FontMap.cache_clear] which
          * ensures that list of fonts, etc will be regenerated using the

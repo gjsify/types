@@ -14,6 +14,7 @@ import type GLib from '@girs/glib-2.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Pango {
     /**
@@ -1615,6 +1616,10 @@ export namespace Pango {
          *   character boundaries if there is not enough space for a full word.
          */
         WORD_CHAR,
+        /**
+         * do not wrap.
+         */
+        NONE,
     }
     /**
      * Whether the segment should be shifted to center around the baseline.
@@ -2146,15 +2151,13 @@ export namespace Pango {
      *
      * The string must have the form
      *
-     *     "\[FAMILY-LIST] \[STYLE-OPTIONS] \[SIZE] \[VARIATIONS]",
+     *     [FAMILY-LIST] [STYLE-OPTIONS] [SIZE] [VARIATIONS] [FEATURES]
      *
      * where FAMILY-LIST is a comma-separated list of families optionally
      * terminated by a comma, STYLE_OPTIONS is a whitespace-separated list
      * of words where each word describes one of style, variant, weight,
      * stretch, or gravity, and SIZE is a decimal number (size in points)
      * or optionally followed by the unit modifier "px" for absolute size.
-     * VARIATIONS is a comma-separated list of font variation
-     * specifications of the form "\`axis=`value" (the = sign is optional).
      *
      * The following words are understood as styles:
      * "Normal", "Roman", "Oblique", "Italic".
@@ -2177,6 +2180,12 @@ export namespace Pango {
      * "Not-Rotated", "South", "Upside-Down", "North", "Rotated-Left",
      * "East", "Rotated-Right", "West".
      *
+     * VARIATIONS is a comma-separated list of font variations
+     * of the form `‍`axis1=value,axis2=value,...
+     *
+     * FEATURES is a comma-separated list of font features of the form
+     * \#‍feature1=value,feature2=value,...
+     *
      * Any one of the options may be absent. If FAMILY-LIST is absent, then
      * the family_name field of the resulting font description will be
      * initialized to %NULL. If STYLE-OPTIONS is missing, then all style
@@ -2185,7 +2194,7 @@ export namespace Pango {
      *
      * A typical example:
      *
-     *     "Cantarell Italic Light 15 \`wght=`200"
+     *     Cantarell Italic Light 15 `‍`wght=200 #‍tnum=1
      * @param str string representation of a font description.
      * @returns a new `PangoFontDescription`.
      */
@@ -2966,13 +2975,17 @@ export namespace Pango {
          */
         SIZE,
         /**
-         * the font gravity is specified (Since: 1.16.)
+         * The font gravity is specified.
          */
         GRAVITY,
         /**
-         * OpenType font variations are specified (Since: 1.42)
+         * OpenType font variations are specified.
          */
         VARIATIONS,
+        /**
+         * OpenType font features are specified.
+         */
+        FEATURES,
     }
     /**
      * Flags that influence the behavior of [func`Pango`.Layout.deserialize].
@@ -4493,6 +4506,15 @@ export namespace Pango {
         // Methods
 
         /**
+         * Loads a font file with one or more fonts into the `PangoFontMap`.
+         *
+         * The added fonts will take precedence over preexisting
+         * fonts with the same name.
+         * @param filename Path to the font file
+         * @returns True if the font file is successfully loaded     into the fontmap, false if an error occurred.
+         */
+        add_font_file(filename: string): boolean;
+        /**
          * Forces a change in the context, which will cause any `PangoContext`
          * using this fontmap to change.
          *
@@ -5618,7 +5640,6 @@ export namespace Pango {
          * Queries whether the layout had to wrap any paragraphs.
          *
          * This returns %TRUE if a positive width is set on `layout,`
-         * ellipsization mode of `layout` is set to %PANGO_ELLIPSIZE_NONE,
          * and there are paragraphs exceeding the layout width that have
          * to be wrapped.
          * @returns %TRUE if any paragraphs had to be wrapped, %FALSE   otherwise
@@ -5919,7 +5940,7 @@ export namespace Pango {
         set_text(text: string, length: number): void;
         /**
          * Sets the width to which the lines of the `PangoLayout` should wrap or
-         * ellipsized.
+         * get ellipsized.
          *
          * The default value is -1: no width set.
          * @param width the desired width in Pango units, or -1 to indicate that no   wrapping or ellipsization should be performed.
@@ -6711,11 +6732,13 @@ export namespace Pango {
          * In the resulting string, serialized attributes are separated by newlines or commas.
          * Individual attributes are serialized to a string of the form
          *
-         *   START END TYPE VALUE
+         *     [START END] TYPE VALUE
          *
          * Where START and END are the indices (with -1 being accepted in place
          * of MAXUINT), TYPE is the nickname of the attribute value type, e.g.
          * _weight_ or _stretch_, and the value is serialized according to its type:
+         *
+         * Optionally, START and END can be omitted to indicate unlimited extent.
          *
          * - enum values as nick or numeric value
          * - boolean values as _true_ or _false_
@@ -6728,14 +6751,12 @@ export namespace Pango {
          *
          * Examples:
          *
-         * ```
-         * 0 10 foreground red, 5 15 weight bold, 0 200 font-desc "Sans 10"
-         * ```
+         *     0 10 foreground red, 5 15 weight bold, 0 200 font-desc "Sans 10"
          *
-         * ```
-         * 0 -1 weight 700
-         * 0 100 family Times
-         * ```
+         *     0 -1 weight 700
+         *     0 100 family Times
+         *
+         *     weight bold
          *
          * To parse the returned value, use [func`Pango`.AttrList.from_string].
          *
@@ -7100,15 +7121,13 @@ export namespace Pango {
          *
          * The string must have the form
          *
-         *     "\[FAMILY-LIST] \[STYLE-OPTIONS] \[SIZE] \[VARIATIONS]",
+         *     [FAMILY-LIST] [STYLE-OPTIONS] [SIZE] [VARIATIONS] [FEATURES]
          *
          * where FAMILY-LIST is a comma-separated list of families optionally
          * terminated by a comma, STYLE_OPTIONS is a whitespace-separated list
          * of words where each word describes one of style, variant, weight,
          * stretch, or gravity, and SIZE is a decimal number (size in points)
          * or optionally followed by the unit modifier "px" for absolute size.
-         * VARIATIONS is a comma-separated list of font variation
-         * specifications of the form "\`axis=`value" (the = sign is optional).
          *
          * The following words are understood as styles:
          * "Normal", "Roman", "Oblique", "Italic".
@@ -7131,6 +7150,12 @@ export namespace Pango {
          * "Not-Rotated", "South", "Upside-Down", "North", "Rotated-Left",
          * "East", "Rotated-Right", "West".
          *
+         * VARIATIONS is a comma-separated list of font variations
+         * of the form `‍`axis1=value,axis2=value,...
+         *
+         * FEATURES is a comma-separated list of font features of the form
+         * \#‍feature1=value,feature2=value,...
+         *
          * Any one of the options may be absent. If FAMILY-LIST is absent, then
          * the family_name field of the resulting font description will be
          * initialized to %NULL. If STYLE-OPTIONS is missing, then all style
@@ -7139,7 +7164,7 @@ export namespace Pango {
          *
          * A typical example:
          *
-         *     "Cantarell Italic Light 15 \`wght=`200"
+         *     Cantarell Italic Light 15 `‍`wght=200 #‍tnum=1
          * @param str string representation of a font description.
          */
         static from_string(str: string): FontDescription;
@@ -7201,6 +7226,13 @@ export namespace Pango {
          * @returns the family name field for the   font description, or %NULL if not previously set. This has the same   life-time as the font description itself and should not be freed.
          */
         get_family(): string | null;
+        /**
+         * Gets the features field of a font description.
+         *
+         * See [method`Pango`.FontDescription.set_features].
+         * @returns the features field for the font   description, or %NULL if not previously set. This has the same   life-time as the font description itself and should not be freed.
+         */
+        get_features(): string | null;
         /**
          * Gets the gravity field of a font description.
          *
@@ -7327,6 +7359,46 @@ export namespace Pango {
          * @param family a string representing the family name
          */
         set_family_static(family: string): void;
+        /**
+         * Sets the features field of a font description.
+         *
+         * OpenType font features allow to enable or disable certain optional
+         * features of a font, such as tabular numbers.
+         *
+         * The format of the features string is comma-separated list of
+         * feature assignments, with each assignment being one of these forms:
+         *
+         *     FEATURE=n
+         *
+         * where FEATURE must be a 4 character tag that identifies and OpenType
+         * feature, and n an integer (depending on the feature, the allowed
+         * values may be 0, 1 or bigger numbers). Unknown features are ignored.
+         *
+         * Note that font features set in this way are enabled for the entire text
+         * that is using the font, which is not appropriate for all OpenType features.
+         * The intended use case is to select character variations (features cv01 - c99),
+         * style sets (ss01 - ss20) and the like.
+         *
+         * Pango does not currently have a way to find supported OpenType features
+         * of a font. Both harfbuzz and freetype have API for this. See for example
+         * [hb_ot_layout_table_get_feature_tags](https://harfbuzz.github.io/harfbuzz-hb-ot-layout.html#hb-ot-layout-table-get-feature-tags).
+         *
+         * Features that are not supported by the font are silently ignored.
+         * @param features a string representing the features
+         */
+        set_features(features?: string | null): void;
+        /**
+         * Sets the features field of a font description.
+         *
+         * This is like [method`Pango`.FontDescription.set_features], except
+         * that no copy of `featuresis` made. The caller must make sure that
+         * the string passed in stays around until `desc` has been freed
+         * or the name is set again. This function can be used if
+         * `features` is a static string such as a C string literal,
+         * or if `desc` is only needed temporarily.
+         * @param features a string representing the features
+         */
+        set_features_static(features: string): void;
         /**
          * Sets the gravity field of a font description.
          *
@@ -8997,12 +9069,22 @@ export namespace Pango {
         /**
          * Serializes a `PangoTabArray` to a string.
          *
-         * No guarantees are made about the format of the string,
-         * it may change between Pango versions.
+         * In the resulting string, serialized tabs are separated by newlines or commas.
          *
-         * The intended use of this function is testing and
-         * debugging. The format is not meant as a permanent
-         * storage format.
+         * Individual tabs are serialized to a string of the form
+         *
+         *     [ALIGNMENT:]POSITION[:DECIMAL_POINT]
+         *
+         * Where ALIGNMENT is one of _left_, _right_, _center_ or _decimal_, and
+         * POSITION is the position of the tab, optionally followed by the unit _px_.
+         * If ALIGNMENT is omitted, it defaults to _left_. If ALIGNMENT is _decimal_,
+         * the DECIMAL_POINT character may be specified as a Unicode codepoint.
+         *
+         * Note that all tabs in the array must use the same unit.
+         *
+         * A typical example:
+         *
+         *     100px 200px center:300px right:400px
          * @returns a newly allocated string
          */
         to_string(): string;

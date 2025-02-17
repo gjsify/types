@@ -856,10 +856,10 @@ export namespace GObject {
      * generate a my_enum_get_type() function from a usual C enumeration
      * definition  than to write one yourself using g_enum_register_static().
      * @param name A nul-terminated string used as the name of the new type.
-     * @param const_static_values An array of #GEnumValue structs for the possible  enumeration values. The array is terminated by a struct with all  members being 0. GObject keeps a reference to the data, so it cannot  be stack-allocated.
+     * @param const_static_values An array of  #GEnumValue structs for the possible enumeration values. The array is  terminated by a struct with all members being 0. GObject keeps a  reference to the data, so it cannot be stack-allocated.
      * @returns The new type identifier.
      */
-    function enum_register_static(name: string, const_static_values: EnumValue): GType;
+    function enum_register_static(name: string, const_static_values: EnumValue[]): GType;
     /**
      * Pretty-prints `value` in the form of the enum’s name.
      *
@@ -906,10 +906,10 @@ export namespace GObject {
      * generate a my_flags_get_type() function from a usual C enumeration
      * definition than to write one yourself using g_flags_register_static().
      * @param name A nul-terminated string used as the name of the new type.
-     * @param const_static_values An array of #GFlagsValue structs for the possible  flags values. The array is terminated by a struct with all members being 0.  GObject keeps a reference to the data, so it cannot be stack-allocated.
+     * @param const_static_values An array of  #GFlagsValue structs for the possible flags values. The array is  terminated by a struct with all members being 0. GObject keeps a  reference to the data, so it cannot be stack-allocated.
      * @returns The new type identifier.
      */
-    function flags_register_static(name: string, const_static_values: FlagsValue): GType;
+    function flags_register_static(name: string, const_static_values: FlagsValue[]): GType;
     /**
      * Pretty-prints `value` in the form of the flag names separated by ` | ` and
      * sorted. Any extra bits will be shown at the end as a hexadecimal number.
@@ -1491,12 +1491,14 @@ export namespace GObject {
      * for signals which don't have %G_SIGNAL_NO_HOOKS flag set.
      * @param signal_id the signal identifier, as returned by g_signal_lookup().
      * @param detail the detail on which to call the hook.
+     * @param hook_func a #GSignalEmissionHook function.
      * @param data_destroy a #GDestroyNotify for @hook_data.
      * @returns the hook id, for later use with g_signal_remove_emission_hook().
      */
     function signal_add_emission_hook(
         signal_id: number,
         detail: GLib.Quark,
+        hook_func: SignalEmissionHook,
         data_destroy?: GLib.DestroyNotify | null,
     ): number;
     /**
@@ -1513,11 +1515,19 @@ export namespace GObject {
      *
      * If `closure` is a floating reference (see g_closure_sink()), this function
      * takes ownership of `closure`.
+     *
+     * This function cannot fail. If the given signal name doesn’t exist,
+     * a critical warning is emitted. No validation is performed on the
+     * ‘detail’ string when specified in `detailed_signal,` other than a
+     * non-empty check.
+     *
+     * Refer to the [signals documentation](signals.html) for more
+     * details.
      * @param instance the instance to connect to.
      * @param detailed_signal a string of the form "signal-name::detail".
      * @param closure the closure to connect.
      * @param after whether the handler should be called before or after the  default handler of the signal.
-     * @returns the handler ID (always greater than 0 for successful connections)
+     * @returns the handler ID (always greater than 0)
      */
     function signal_connect_closure(
         instance: Object,
@@ -1530,12 +1540,20 @@ export namespace GObject {
      *
      * If `closure` is a floating reference (see g_closure_sink()), this function
      * takes ownership of `closure`.
+     *
+     * This function cannot fail. If the given signal name doesn’t exist,
+     * a critical warning is emitted. No validation is performed on the
+     * ‘detail’ string when specified in `detailed_signal,` other than a
+     * non-empty check.
+     *
+     * Refer to the [signals documentation](signals.html) for more
+     * details.
      * @param instance the instance to connect to.
      * @param signal_id the id of the signal.
      * @param detail the detail.
      * @param closure the closure to connect.
      * @param after whether the handler should be called before or after the  default handler of the signal.
-     * @returns the handler ID (always greater than 0 for successful connections)
+     * @returns the handler ID (always greater than 0)
      */
     function signal_connect_closure_by_id(
         instance: Object,
@@ -1634,6 +1652,7 @@ export namespace GObject {
      * @param mask Mask indicating which of @signal_id, @detail, @closure, @func  and/or @data the handlers have to match.
      * @param signal_id Signal the handlers have to be connected to.
      * @param detail Signal detail the handlers have to be connected to.
+     * @param closure The closure the handlers will invoke.
      * @param func The C closure callback of the handlers (useless for non-C closures).
      * @param data The closure data of the handlers' closures.
      * @returns The number of handlers that matched.
@@ -1643,6 +1662,7 @@ export namespace GObject {
         mask: SignalMatchType | null,
         signal_id: number,
         detail: GLib.Quark,
+        closure?: Closure | null,
         func?: any | null,
         data?: any | null,
     ): number;
@@ -1672,6 +1692,7 @@ export namespace GObject {
      * @param mask Mask indicating which of @signal_id, @detail, @closure, @func  and/or @data the handlers have to match.
      * @param signal_id Signal the handlers have to be connected to.
      * @param detail Signal detail the handlers have to be connected to.
+     * @param closure The closure the handlers will invoke.
      * @param func The C closure callback of the handlers (useless for non-C closures).
      * @param data The closure data of the handlers' closures.
      * @returns The number of handlers that matched.
@@ -1681,6 +1702,7 @@ export namespace GObject {
         mask: SignalMatchType | null,
         signal_id: number,
         detail: GLib.Quark,
+        closure?: Closure | null,
         func?: any | null,
         data?: any | null,
     ): number;
@@ -1704,6 +1726,7 @@ export namespace GObject {
      * @param mask Mask indicating which of @signal_id, @detail, @closure, @func  and/or @data the handlers have to match.
      * @param signal_id Signal the handlers have to be connected to.
      * @param detail Signal detail the handlers have to be connected to.
+     * @param closure The closure the handlers will invoke.
      * @param func The C closure callback of the handlers (useless for non-C closures).
      * @param data The closure data of the handlers' closures.
      * @returns The number of handlers that matched.
@@ -1713,6 +1736,7 @@ export namespace GObject {
         mask: SignalMatchType | null,
         signal_id: number,
         detail: GLib.Quark,
+        closure?: Closure | null,
         func?: any | null,
         data?: any | null,
     ): number;
@@ -1749,9 +1773,8 @@ export namespace GObject {
      * Validate a signal name. This can be useful for dynamically-generated signals
      * which need to be validated at run-time before actually trying to create them.
      *
-     * See [canonical parameter names][canonical-parameter-names] for details of
-     * the rules for valid names. The rules for signal names are the same as those
-     * for property names.
+     * See [func`GObject`.signal_new] for details of the rules for valid names.
+     * The rules for signal names are the same as those for property names.
      * @param name the canonical name of the signal
      * @returns %TRUE if @name is a valid signal name, %FALSE otherwise.
      */
@@ -1789,31 +1812,6 @@ export namespace GObject {
      * @returns the signal name, or %NULL if the signal number was invalid.
      */
     function signal_name(signal_id: number): string | null;
-    /**
-     * Creates a new signal. (This is usually done in the class initializer.)
-     *
-     * See g_signal_new() for details on allowed signal names.
-     *
-     * If c_marshaller is %NULL, g_cclosure_marshal_generic() will be used as
-     * the marshaller for this signal.
-     * @param signal_name the name for the signal
-     * @param itype the type this signal pertains to. It will also pertain to     types which are derived from this type
-     * @param signal_flags a combination of #GSignalFlags specifying detail of when     the default handler is to be invoked. You should at least specify     %G_SIGNAL_RUN_FIRST or %G_SIGNAL_RUN_LAST
-     * @param class_closure The closure to invoke on signal emission;     may be %NULL
-     * @param c_marshaller the function to translate arrays of     parameter values to signal emissions into C language callback     invocations or %NULL
-     * @param return_type the type of return value, or %G_TYPE_NONE for a signal     without a return value
-     * @param param_types an array of types, one for     each parameter (may be %NULL if @n_params is zero)
-     * @returns the signal id
-     */
-    function signal_newv(
-        signal_name: string,
-        itype: GType,
-        signal_flags: SignalFlags | null,
-        class_closure: Closure | null,
-        c_marshaller: SignalCMarshaller | null,
-        return_type: GType,
-        param_types?: GType[] | null,
-    ): number;
     /**
      * Overrides the class closure (i.e. the default handler) for the given signal
      * for emissions on instances of `instance_type`. `instance_type` must be derived
@@ -1870,20 +1868,6 @@ export namespace GObject {
      * @param hook_id the id of the emission hook, as returned by  g_signal_add_emission_hook()
      */
     function signal_remove_emission_hook(signal_id: number, hook_id: number): void;
-    /**
-     * Change the #GSignalCVaMarshaller used for a given signal.  This is a
-     * specialised form of the marshaller that can often be used for the
-     * common case of a single connected signal handler and avoids the
-     * overhead of #GValue.  Its use is optional.
-     * @param signal_id the signal id
-     * @param instance_type the instance type on which to set the marshaller.
-     * @param va_marshaller the marshaller to set.
-     */
-    function signal_set_va_marshaller(
-        signal_id: number,
-        instance_type: GType,
-        va_marshaller: SignalCVaMarshaller,
-    ): void;
     /**
      * Stops a signal's current emission.
      *
@@ -2004,35 +1988,68 @@ export namespace GObject {
     function type_children(type: GType): GType[];
     function type_class_adjust_private_offset(g_class: any | null, private_size_or_offset: number): void;
     /**
-     * This function is essentially the same as g_type_class_ref(),
-     * except that the classes reference count isn't incremented.
+     * Retrieves the type class of the given `type`.
+     *
+     * This function will create the class on demand if it does not exist
+     * already.
+     *
+     * If you don't want to create the class, use g_type_class_peek() instead.
+     * @param type type ID of a classed type
+     * @returns the class structure   for the type
+     */
+    function type_class_get(type: GType): TypeClass;
+    /**
+     * Retrieves the class for a give type.
+     *
+     * This function is essentially the same as g_type_class_get(),
+     * except that the class may have not been instantiated yet.
+     *
      * As a consequence, this function may return %NULL if the class
      * of the type passed in does not currently exist (hasn't been
      * referenced before).
      * @param type type ID of a classed type
-     * @returns the #GTypeClass     structure for the given type ID or %NULL if the class does not     currently exist
+     * @returns the   #GTypeClass structure for the given type ID or %NULL if the class   does not currently exist
      */
-    function type_class_peek(type: GType): TypeClass;
+    function type_class_peek(type: GType): TypeClass | null;
     /**
      * A more efficient version of g_type_class_peek() which works only for
      * static types.
      * @param type type ID of a classed type
-     * @returns the #GTypeClass     structure for the given type ID or %NULL if the class does not     currently exist or is dynamically loaded
+     * @returns the   #GTypeClass structure for the given type ID or %NULL if the class   does not currently exist or is dynamically loaded
      */
-    function type_class_peek_static(type: GType): TypeClass;
+    function type_class_peek_static(type: GType): TypeClass | null;
     /**
      * Increments the reference count of the class structure belonging to
-     * `type`. This function will demand-create the class if it doesn't
-     * exist already.
+     * `type`.
+     *
+     * This function will demand-create the class if it doesn't exist already.
      * @param type type ID of a classed type
-     * @returns the #GTypeClass     structure for the given type ID
+     * @returns the #GTypeClass   structure for the given type ID
      */
     function type_class_ref(type: GType): TypeClass;
+    /**
+     * Returns the default interface vtable for the given `g_type`.
+     *
+     * If the type is not currently in use, then the default vtable
+     * for the type will be created and initialized by calling
+     * the base interface init and default vtable init functions for
+     * the type (the `base_init` and `class_init` members of #GTypeInfo).
+     *
+     * If you don't want to create the interface vtable, you should use
+     * g_type_default_interface_peek() instead.
+     *
+     * Calling g_type_default_interface_get() is useful when you
+     * want to make sure that signals and properties for an interface
+     * have been installed.
+     * @param g_type an interface type
+     * @returns the default   vtable for the interface.
+     */
+    function type_default_interface_get(g_type: GType): TypeInterface;
     /**
      * If the interface type `g_type` is currently in use, returns its
      * default interface vtable.
      * @param g_type an interface type
-     * @returns the default     vtable for the interface, or %NULL if the type is not currently     in use
+     * @returns the default   vtable for the interface, or %NULL if the type is not currently   in use
      */
     function type_default_interface_peek(g_type: GType): TypeInterface;
     /**
@@ -2047,15 +2064,16 @@ export namespace GObject {
      * want to make sure that signals and properties for an interface
      * have been installed.
      * @param g_type an interface type
-     * @returns the default     vtable for the interface; call g_type_default_interface_unref()     when you are done using the interface.
+     * @returns the default   vtable for the interface; call g_type_default_interface_unref()   when you are done using the interface.
      */
     function type_default_interface_ref(g_type: GType): TypeInterface;
     /**
      * Decrements the reference count for the type corresponding to the
-     * interface default vtable `g_iface`. If the type is dynamic, then
-     * when no one is using the interface and all references have
-     * been released, the finalize function for the interface's default
-     * vtable (the `class_finalize` member of #GTypeInfo) will be called.
+     * interface default vtable `g_iface`.
+     *
+     * If the type is dynamic, then when no one is using the interface and all
+     * references have been released, the finalize function for the interface's
+     * default vtable (the `class_finalize` member of #GTypeInfo) will be called.
      * @param g_iface the default vtable     structure for an interface, as returned by g_type_default_interface_ref()
      */
     function type_default_interface_unref(g_iface: TypeInterface): void;
@@ -2203,9 +2221,9 @@ export namespace GObject {
      * passed in class conforms.
      * @param instance_class a #GTypeClass structure
      * @param iface_type an interface ID which this class conforms to
-     * @returns the #GTypeInterface     structure of @iface_type if implemented by @instance_class, %NULL     otherwise
+     * @returns the #GTypeInterface   structure of @iface_type if implemented by @instance_class, %NULL   otherwise
      */
-    function type_interface_peek(instance_class: TypeClass, iface_type: GType): TypeInterface;
+    function type_interface_peek(instance_class: TypeClass, iface_type: GType): TypeInterface | null;
     /**
      * Returns the prerequisites of an interfaces type.
      * @param interface_type an interface type
@@ -2229,11 +2247,12 @@ export namespace GObject {
      */
     function type_is_a(type: GType, is_a_type: GType): boolean;
     /**
-     * Get the unique name that is assigned to a type ID.  Note that this
-     * function (like all other GType API) cannot cope with invalid type
-     * IDs. %G_TYPE_INVALID may be passed to this function, as may be any
-     * other validly registered type ID, but randomized type IDs should
-     * not be passed in and will most likely lead to a crash.
+     * Get the unique name that is assigned to a type ID.
+     *
+     * Note that this function (like all other GType API) cannot cope with
+     * invalid type IDs. %G_TYPE_INVALID may be passed to this function, as
+     * may be any other validly registered type ID, but randomized type IDs
+     * should not be passed in and will most likely lead to a crash.
      * @param type type to return name for
      * @returns static type name or %NULL
      */
@@ -2628,11 +2647,13 @@ export namespace GObject {
          */
         READWRITE,
         /**
-         * the parameter will be set upon object construction
+         * the parameter will be set upon object construction.
+         *   See [vfunc`Object`.constructed] for more details
          */
         CONSTRUCT,
         /**
-         * the parameter can only be set upon object construction
+         * the parameter can only be set upon object construction.
+         *   See [vfunc`Object`.constructed] for more details
          */
         CONSTRUCT_ONLY,
         /**
@@ -3818,8 +3839,8 @@ export namespace GObject {
          * dynamically-generated properties which need to be validated at run-time
          * before actually trying to create them.
          *
-         * See [canonical parameter names][canonical-parameter-names] for details of
-         * the rules for valid names.
+         * See [canonical parameter names][class`GObject`.ParamSpec#parameter-names]
+         * for details of the rules for valid names.
          * @param name the canonical name of the property
          */
         static is_valid_name(name: string): boolean;
@@ -5681,24 +5702,38 @@ export namespace GObject {
 
         static adjust_private_offset(g_class: any | null, private_size_or_offset: number): void;
         /**
-         * This function is essentially the same as g_type_class_ref(),
-         * except that the classes reference count isn't incremented.
+         * Retrieves the type class of the given `type`.
+         *
+         * This function will create the class on demand if it does not exist
+         * already.
+         *
+         * If you don't want to create the class, use g_type_class_peek() instead.
+         * @param type type ID of a classed type
+         */
+        static get(type: GType): TypeClass;
+        /**
+         * Retrieves the class for a give type.
+         *
+         * This function is essentially the same as g_type_class_get(),
+         * except that the class may have not been instantiated yet.
+         *
          * As a consequence, this function may return %NULL if the class
          * of the type passed in does not currently exist (hasn't been
          * referenced before).
          * @param type type ID of a classed type
          */
-        static peek(type: GType): TypeClass;
+        static peek(type: GType): TypeClass | null;
         /**
          * A more efficient version of g_type_class_peek() which works only for
          * static types.
          * @param type type ID of a classed type
          */
-        static peek_static(type: GType): TypeClass;
+        static peek_static(type: GType): TypeClass | null;
         /**
          * Increments the reference count of the class structure belonging to
-         * `type`. This function will demand-create the class if it doesn't
-         * exist already.
+         * `type`.
+         *
+         * This function will demand-create the class if it doesn't exist already.
          * @param type type ID of a classed type
          */
         static ref(type: GType): TypeClass;
@@ -5775,19 +5810,22 @@ export namespace GObject {
         add_private(private_size: number): void;
         get_private(private_type: GType): any | null;
         /**
+         * Retrieves the class structure of the immediate parent type of the
+         * class passed in.
+         *
          * This is a convenience function often needed in class initializers.
-         * It returns the class structure of the immediate parent type of the
-         * class passed in.  Since derived classes hold a reference count on
-         * their parent classes as long as they are instantiated, the returned
-         * class will always exist.
+         *
+         * Since derived classes hold a reference on their parent classes as
+         * long as they are instantiated, the returned class will always exist.
          *
          * This function is essentially equivalent to:
          * g_type_class_peek (g_type_parent (G_TYPE_FROM_CLASS (g_class)))
-         * @returns the parent class     of @g_class
+         * @returns the parent class   of @g_class
          */
         peek_parent(): TypeClass;
         /**
          * Decrements the reference count of the class structure being passed in.
+         *
          * Once the last reference count of a class has been released, classes
          * may be finalized by the type system, so further dereferencing of a
          * class pointer after g_type_class_unref() are invalid.
@@ -5904,7 +5942,7 @@ export namespace GObject {
          * @param instance_class a #GTypeClass structure
          * @param iface_type an interface ID which this class conforms to
          */
-        static peek(instance_class: TypeClass, iface_type: GType): TypeInterface;
+        static peek(instance_class: TypeClass, iface_type: GType): TypeInterface | null;
         /**
          * Returns the prerequisites of an interfaces type.
          * @param interface_type an interface type
@@ -5915,12 +5953,13 @@ export namespace GObject {
 
         /**
          * Returns the corresponding #GTypeInterface structure of the parent type
-         * of the instance type to which `g_iface` belongs. This is useful when
-         * deriving the implementation of an interface from the parent type and
-         * then possibly overriding some methods.
-         * @returns the     corresponding #GTypeInterface structure of the parent type of the     instance type to which @g_iface belongs, or %NULL if the parent     type doesn't conform to the interface
+         * of the instance type to which `g_iface` belongs.
+         *
+         * This is useful when deriving the implementation of an interface from the
+         * parent type and then possibly overriding some methods.
+         * @returns the   corresponding #GTypeInterface structure of the parent type of the   instance type to which @g_iface belongs, or %NULL if the parent   type doesn't conform to the interface
          */
-        peek_parent(): TypeInterface;
+        peek_parent(): TypeInterface | null;
     }
 
     type TypeModuleClass = typeof TypeModule;
@@ -5964,6 +6003,15 @@ export namespace GObject {
     }
 
     /**
+     * - `'i'`: Integers, passed as `collect_values[].v_int`
+     *   - `'l'`: Longs, passed as `collect_values[].v_long`
+     *   - `'d'`: Doubles, passed as `collect_values[].v_double`
+     *   - `'p'`: Pointers, passed as `collect_values[].v_pointer`
+     *
+     *   It should be noted that for variable argument list construction,
+     *   ANSI C promotes every type smaller than an integer to an int, and
+     *   floats to doubles. So for collection of short int or char, `'i'`
+     *   needs to be used, and for collection of floats `'d'`.
      * The #GTypeValueTable provides the functions required by the #GValue
      * implementation, to serve as a container for values of a type.
      */
@@ -6467,7 +6515,7 @@ export namespace GObject {
          */
         copy(): ValueArray;
         /**
-         * Return a pointer to the value at `index_` containd in `value_array`.
+         * Return a pointer to the value at `index_` contained in `value_array`.
          * @param index_ index of the value of interest
          * @returns pointer to a value at @index_ in @value_array
          */

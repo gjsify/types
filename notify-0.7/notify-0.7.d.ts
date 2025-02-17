@@ -101,6 +101,11 @@ export namespace Notify {
      */
     const VERSION_MINOR: number;
     /**
+     * Gets the application icon registered.
+     * @returns The registered application icon, set via [func@set_app_icon].
+     */
+    function get_app_icon(): string;
+    /**
      * Gets the application name registered.
      * @returns The registered application name, passed to [func@init].
      */
@@ -138,6 +143,11 @@ export namespace Notify {
      */
     function is_initted(): boolean;
     /**
+     * Sets the application icon.
+     * @param app_icon The optional icon theme icon name or filename.
+     */
+    function set_app_icon(app_icon?: string | null): void;
+    /**
      * Sets the application name.
      * @param app_name The name of the application
      */
@@ -162,6 +172,8 @@ export namespace Notify {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            app_icon: string;
+            appIcon: string;
             app_name: string;
             appName: string;
             body: string;
@@ -189,6 +201,16 @@ export namespace Notify {
 
         // Properties
 
+        /**
+         * The icon of the application for the notification.
+         */
+        get app_icon(): string;
+        set app_icon(val: string);
+        /**
+         * The icon of the application for the notification.
+         */
+        get appIcon(): string;
+        set appIcon(val: string);
         /**
          * The name of the application for the notification.
          */
@@ -302,6 +324,14 @@ export namespace Notify {
          * @returns An integer representing the closed reason code   (Since 0.8.0 it's also a [enum@ClosedReason]).
          */
         get_closed_reason(): number;
+        /**
+         * Sets the application icon for the notification.
+         *
+         * If this function is not called or if `app_icon` is %NULL, the application icon
+         * will be set from the value set via [func`set_app_icon]`.
+         * @param app_icon The optional icon theme icon name or filename.
+         */
+        set_app_icon(app_icon?: string | null): void;
         /**
          * Sets the application name for the notification.
          *

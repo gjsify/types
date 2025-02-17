@@ -1,7 +1,7 @@
 {
     "name": "@girs/atk-1.0",
-    "version": "2.54.0-4.0.0-beta.20",
-    "description": "GJS TypeScript type definitions for Atk-1.0, generated from library version 2.54.0",
+    "version": "2.55.2-4.0.0-beta.21",
+    "description": "GJS TypeScript type definitions for Atk-1.0, generated from library version 2.55.2",
     "type": "module",
     "module": "atk-1.0.js",
     "main": "atk-1.0.js",

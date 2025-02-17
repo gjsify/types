@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type GUdev from '@girs/gudev-1.0';
 
 export namespace Manette {
@@ -18,6 +19,31 @@ export namespace Manette {
      * Manette-0.2
      */
 
+    /**
+     * Describes available types of a #ManetteDevice.
+     *
+     * More values may be added to this enumeration over time.
+     */
+
+    /**
+     * Describes available types of a #ManetteDevice.
+     *
+     * More values may be added to this enumeration over time.
+     */
+    export namespace DeviceType {
+        export const $gtype: GObject.GType<DeviceType>;
+    }
+
+    enum DeviceType {
+        /**
+         * Generic gamepads
+         */
+        GENERIC,
+        /**
+         * Steam Deck
+         */
+        STEAM_DECK,
+    }
     /**
      * Specifies the type of the event.
      */
@@ -120,6 +146,23 @@ export namespace Manette {
         // Methods
 
         /**
+         * Gets the device type of `self`.
+         * @returns the device type
+         */
+        get_device_type(): DeviceType;
+        /**
+         * Gets the identifier used by SDL mappings to discriminate game controller
+         * devices.
+         * @returns the identifier used by SDL mappings
+         */
+        get_guid(): string;
+        /**
+         * Gets the user mapping for `self,` or default mapping if there isn't any. Can
+         * return %NULL if there's no mapping or `self` doesn't support mappings.
+         * @returns the mapping for @self
+         */
+        get_mapping(): string | null;
+        /**
          * Gets the device's name.
          * @returns the name of @self, do not modify it or free it
          */
@@ -133,6 +176,10 @@ export namespace Manette {
          * @returns whether the device has the given input
          */
         has_input(type: number, code: number): boolean;
+        /**
+         * Gets whether `self` supports rumble.
+         * @returns whether @self supports rumble
+         */
         has_rumble(): boolean;
         /**
          * Gets whether `self` has a user mapping.
@@ -143,12 +190,27 @@ export namespace Manette {
          * Removes the user mapping for `self`.
          */
         remove_user_mapping(): void;
+        /**
+         * Make `self` rumble during `milliseconds` milliseconds, with the heavy and light
+         * motors rumbling at their respectively defined magnitudes.
+         *
+         * The duration cannot exceed 32767 milliseconds.
+         * @param strong_magnitude the magnitude for the heavy motor
+         * @param weak_magnitude the magnitude for the light motor
+         * @param milliseconds the rumble effect play time in milliseconds
+         * @returns whether the rumble effect was played
+         */
         rumble(strong_magnitude: number, weak_magnitude: number, milliseconds: number): boolean;
         /**
          * Saves `mapping_string` as the user mapping for `self`.
          * @param mapping_string the mapping string
          */
         save_user_mapping(mapping_string: string): void;
+        /**
+         * Gets whether `self` supports mapping.
+         * @returns whether @self supports mapping
+         */
+        supports_mapping(): boolean;
     }
 
     namespace Monitor {
@@ -192,6 +254,10 @@ export namespace Manette {
 
         // Methods
 
+        /**
+         * Creates a new #ManetteMonitorIter iterating on `self`.
+         * @returns a new #ManetteMonitorIter iterating on @self
+         */
         iterate(): MonitorIter;
     }
 
@@ -268,8 +334,10 @@ export namespace Manette {
          */
         get_hat(): [boolean, number, number];
         /**
-         * Gets the time stamp of `self`.
-         * @returns the time stamp of @self
+         * Gets the timestamp of when `self` was received by the input driver that takes
+         * care of its device. Use this timestamp to ensure external factors such as
+         * synchronous disk writes don't influence your timing computations.
+         * @returns the timestamp of when @self was received by the input driver
          */
         get_time(): number;
     }

@@ -1,6 +1,6 @@
 {
     "name": "@girs/socialwebclient-0.25",
-    "version": "0.25.0-4.0.0-beta.20",
+    "version": "0.25.0-4.0.0-beta.21",
     "description": "GJS TypeScript type definitions for SocialWebClient-0.25, generated from library version 0.25.0",
     "type": "module",
     "module": "socialwebclient-0.25.js",
@@ -34,6 +34,7 @@
         "@girs/gio-2.0": "workspace:^",
         "@girs/gjs": "workspace:^",
         "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
         "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {

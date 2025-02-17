@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Ggit {
     /**
@@ -696,6 +697,10 @@ export namespace Ggit {
      * libgit2-glib major version component (e.g. 1 if %GGIT_VERSION is 1.2.3)
      */
     const MAJOR_VERSION: number;
+    /**
+     * libgit2-glib micro version component (e.g. 3 if %GGIT_VERSION is 1.2.3)
+     */
+    const MICRO_VERSION: number;
     /**
      * libgit2-glib minor version component (e.g. 2 if %GGIT_VERSION is 1.2.3)
      */
