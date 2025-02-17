@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./shell-16.d.ts"],
+    "readme": "./README.md",
+    "name": "Shell-16",
+    "tsconfig": "./tsconfig.json"
+}
+

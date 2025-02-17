@@ -1,0 +1,76 @@
+{
+    "name": "@girs/st-16",
+    "version": "16.0.0-4.0.0-beta.20",
+    "description": "GJS TypeScript type definitions for St-16, generated from library version 16.0.0",
+    "type": "module",
+    "module": "st-16.js",
+    "main": "st-16.js",
+    "exports": {
+        "./ambient": {
+            "types": "./st-16-ambient.d.ts",
+            "import": "./st-16-ambient.js",
+            "default": "./st-16-ambient.js"
+        },
+        "./import": {
+            "types": "./st-16-import.d.ts",
+            "import": "./st-16-import.js",
+            "default": "./st-16-import.js"
+        },
+        "./st-16": {
+            "types": "./st-16.d.ts",
+            "import": "./st-16.js",
+            "default": "./st-16.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
+    },
+    "scripts": {
+        "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/clutter-16": "workspace:^",
+        "@girs/cogl-16": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdesktopenums-3.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/meta-16": "workspace:^",
+        "@girs/mtk-16": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/xfixes-4.0": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "St-16"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/st-16#readme"
+}

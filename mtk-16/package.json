@@ -1,0 +1,60 @@
+{
+    "name": "@girs/mtk-16",
+    "version": "16.0.0-4.0.0-beta.20",
+    "description": "GJS TypeScript type definitions for Mtk-16, generated from library version 16.0.0",
+    "type": "module",
+    "module": "mtk-16.js",
+    "main": "mtk-16.js",
+    "exports": {
+        "./ambient": {
+            "types": "./mtk-16-ambient.d.ts",
+            "import": "./mtk-16-ambient.js",
+            "default": "./mtk-16-ambient.js"
+        },
+        "./import": {
+            "types": "./mtk-16-import.d.ts",
+            "import": "./mtk-16-import.js",
+            "default": "./mtk-16-import.js"
+        },
+        "./mtk-16": {
+            "types": "./mtk-16.d.ts",
+            "import": "./mtk-16.js",
+            "default": "./mtk-16.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
+    },
+    "scripts": {
+        "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Mtk-16"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/mtk-16#readme"
+}

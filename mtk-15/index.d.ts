@@ -9,7 +9,5 @@
 
 import './mtk-15-ambient.d.ts';
 
-import './mtk-15-import.d.ts';
-
 import Mtk from './mtk-15.js';
 export default Mtk;

@@ -1,9 +1,1 @@
-import Shell15 from '@girs/shell-15';
-
-declare global {
-    export interface GjsGiImports {
-        Shell: typeof Shell15;
-    }
-}
-
-export default GjsGiImports;
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Shell"

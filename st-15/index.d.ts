@@ -9,7 +9,5 @@
 
 import './st-15-ambient.d.ts';
 
-import './st-15-import.d.ts';
-
 import St from './st-15.js';
 export default St;

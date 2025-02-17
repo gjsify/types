@@ -1,0 +1,63 @@
+{
+    "name": "@girs/cogl-16",
+    "version": "16.0.0-4.0.0-beta.20",
+    "description": "GJS TypeScript type definitions for Cogl-16, generated from library version 16.0.0",
+    "type": "module",
+    "module": "cogl-16.js",
+    "main": "cogl-16.js",
+    "exports": {
+        "./ambient": {
+            "types": "./cogl-16-ambient.d.ts",
+            "import": "./cogl-16-ambient.js",
+            "default": "./cogl-16-ambient.js"
+        },
+        "./import": {
+            "types": "./cogl-16-import.d.ts",
+            "import": "./cogl-16-import.js",
+            "default": "./cogl-16-import.js"
+        },
+        "./cogl-16": {
+            "types": "./cogl-16.d.ts",
+            "import": "./cogl-16.js",
+            "default": "./cogl-16.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
+    },
+    "scripts": {
+        "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+        "@girs/gjs": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/mtk-16": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Cogl-16"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/cogl-16#readme"
+}
